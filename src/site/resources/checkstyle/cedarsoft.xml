@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_1.dtd">
+
+<module name="Checker">
+
+  <module name="TreeWalker">
+
+    <property name="cacheFile" value="${checkstyle.cache.file}" />
+
+    <property name="tabWidth" value="2" />
+
+    <module name="LeftCurly">
+      <property name="option" value="eol" />
+    </module>
+
+    <module name="LineLength">
+      <property name="max" value="180" />
+      <property name="ignorePattern" value="@version|@see" />
+    </module>
+
+    <module name="MemberName" />
+
+    <!-- Checks for Javadoc comments.                     -->
+    <!-- See http://checkstyle.sf.net/config_javadoc.html -->
+    <!--<module name="JavadocMethod">-->
+    <!--<property name="scope" value="protected"/>-->
+    <!--</module>-->
+    <module name="JavadocType">
+      <property name="scope" value="protected" />
+    </module>
+
+    <!-- Checks for Naming Conventions.                  -->
+    <!-- See http://checkstyle.sf.net/config_naming.html -->
+    <module name="ConstantName" />
+    <module name="LocalFinalVariableName" />
+    <module name="LocalVariableName" />
+    <module name="MethodName" />
+    <module name="PackageName" />
+    <module name="ParameterName" />
+    <module name="StaticVariableName" />
+    <module name="TypeName" />
+
+
+    <!-- Checks for imports                              -->
+    <!-- See http://checkstyle.sf.net/config_import.html -->
+    <module name="AvoidStarImport" />
+    <module name="IllegalImport" />
+    <module name="RedundantImport" />
+    <module name="UnusedImports" />
+
+
+    <!-- Checks for Size Violations.                    -->
+    <!-- See http://checkstyle.sf.net/config_sizes.html -->
+    <module name="FileLength" />
+    <module name="MethodLength" />
+    <module name="ParameterNumber" />
+
+
+    <!-- Checks for whitespace                               -->
+    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+    <module name="EmptyForIteratorPad" />
+    <module name="OperatorWrap" />
+    <module name="ParenPad">
+      <property name="option" value="space" />
+    </module>
+    <module name="TabCharacter" />
+    <module name="WhitespaceAfter">
+      <property name="tokens" value="COMMA, SEMI, TYPECAST" />
+    </module>
+    <module name="WhitespaceAround">
+      <property name="tokens"
+                value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, EQUAL, GE, GT, LAND, LCURLY, LE, LITERAL_ASSERT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN, QUESTION, RCURLY, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN, TYPE_EXTENSION_AND" />
+    </module>
+
+    <!-- Modifier Checks                                    -->
+    <!-- See http://checkstyle.sf.net/config_modifiers.html -->
+    <module name="ModifierOrder" />
+    <module name="RedundantModifier" />
+
+
+    <!-- Checks for blocks. You know, those {}'s         -->
+    <!-- See http://checkstyle.sf.net/config_blocks.html -->
+    <module name="AvoidNestedBlocks" />
+    <module name="NeedBraces" />
+
+
+    <!-- Checks for common coding problems               -->
+    <!-- See http://checkstyle.sf.net/config_coding.html -->
+    <module name="AvoidInlineConditionals" />
+    <module name="DoubleCheckedLocking" />
+    <module name="EmptyStatement" />
+    <module name="EqualsHashCode" />
+    <module name="HiddenField" />
+    <module name="IllegalInstantiation" />
+    <module name="InnerAssignment" />
+    <module name="MagicNumber" />
+    <module name="MissingSwitchDefault" />
+    <module name="RedundantThrows" />
+    <module name="SimplifyBooleanExpression" />
+    <module name="SimplifyBooleanReturn" />
+
+    <!-- Checks for class design                         -->
+    <!-- See http://checkstyle.sf.net/config_design.html -->
+    <module name="FinalClass" />
+    <module name="HideUtilityClassConstructor" />
+    <module name="InterfaceIsType" />
+    <module name="VisibilityModifier" />
+
+
+    <!-- Miscellaneous other checks.                   -->
+    <!-- See http://checkstyle.sf.net/config_misc.html -->
+    <!-- module name="ArrayTypeStyle"/ -->
+    <!-- module name="FinalParameters"/ -->
+    <!--Line with Trailing Spaces (disabled as it's to noisy)-->
+
+    <module name="GenericIllegalRegexp">
+      <property name="format" value="\s+$" />
+      <property name="message" value="Line has trailing spaces." />
+    </module>
+
+    <module name="UpperEll" />
+    <module name="ArrayTypeStyle" />
+    <module name="TrailingComment" />
+
+    <module name="BooleanExpressionComplexity" />
+    <module name="ClassDataAbstractionCoupling" />
+    <module name="CyclomaticComplexity" />
+    <module name="NPathComplexity" />
+    <module name="JavaNCSS" />
+
+    <module name="Indentation">
+      <property name="basicOffset" value="2" />
+      <property name="caseIndent" value="2" />
+    </module>
+
+  </module>
+
+</module>

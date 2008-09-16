@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>pom</packaging>
+  <groupId>com.cedarsoft</groupId>
+  <artifactId>open</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>cedarsoft Open</name>
+  <description>cedarsoft Open Projects</description>
+  <url>http://www.cedarsoft.org</url>
+  <licenses>
+    <license>
+      <name>GLPv3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>cedarsoft GmbH</name>
+    <url>http://cedarsoft.com</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>jschneider</id>
+      <name>Johannes Schneider</name>
+      <email>js@cedarsoft.com</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+        <role>admin</role>
+      </roles>
+      <timezone>2</timezone>
+      <url>http://johannes-schneider.info</url>
+      <organization>cedarsoft GmbH</organization>
+      <organizationUrl>http://www.cedarsoft.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:svn:https://svn.cedarsoft.eu/open/com.cedarsoft.open/trunk</connection>
+    <developerConnection>scm:svn:https://svn.cedarsoft.eu/open/com.cedarsoft.open/trunk</developerConnection>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>cedarsoftRepository</id>
+      <name>cedarsoft Repository</name>
+      <url>scp://maven.cedarsoft.com/home/maven/public/release</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>cedarsoftSnapshotRepository</id>
+      <name>cedarsoft Snapshot Repository</name>
+      <url>scp://maven.cedarsoft.com/home/maven/public/snapshots</url>
+    </snapshotRepository>
+
+    <site>
+      <id>cedarsoftWeb</id>
+      <name>cedarsoft Web</name>
+      <url>scp://cedarsoft.org/var/customers/webs/jschneider/cedarsoft.org</url>
+    </site>
+  </distributionManagement>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.intellij</groupId>
+        <artifactId>annotations</artifactId>
+        <version>7.0-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.4</version>
+      </dependency>
+
+			<!-- Test deps -->
+	    <dependency>
+  	    <groupId>fest</groupId>
+  	    <artifactId>fest-assert</artifactId>
+  	    <version>1.0a1</version>
+  	  </dependency>
+  	  <dependency>
+  	    <groupId>fest</groupId>
+  	    <artifactId>fest-reflect</artifactId>
+  	    <version>0.4</version>
+  	  </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.intellij</groupId>
+      <artifactId>annotations</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+		<!-- Test deps -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+ 	    <groupId>fest</groupId>
+ 	    <artifactId>fest-assert</artifactId>
+      <scope>test</scope>
+ 	  </dependency>
+ 	  <dependency>
+ 	    <groupId>fest</groupId>
+ 	    <artifactId>fest-reflect</artifactId>
+      <scope>test</scope>
+ 	  </dependency>    
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>cedarsoftSnapshotRepository</id>
+      <name>cedarsoft Snapshot Repository</name>
+      <url>http://maven.cedarsoft.com/public/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>cedarsoftRepository</id>
+      <name>cedarsoft Repository</name>
+      <url>http://maven.cedarsoft.com/public/release</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+
+    <repository>
+      <id>cedarsoftInternalSnapshotRepository</id>
+      <name>cedarsoft Internal Snapshot Repository</name>
+      <url>http://maven.cedarsoft.com/internal/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>cedarsoftInternalRepository</id>
+      <name>cedarsoft Internal Repository</name>
+      <url>http://maven.cedarsoft.com/internal/release</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+
+
+    <repository>
+      <id>maven</id>
+      <name>Maven Central Repository</name>
+      <url>http://repo1.maven.org/maven/</url>
+    </repository>
+
+    <repository>
+      <id>codehaus</id>
+      <name>Codehaus Repository</name>
+      <url>http://maven.codehaus.org/maven2/</url>
+    </repository>
+
+    <repository>
+      <id>maven2-repository.dev.java.net</id>
+      <name>Java.net Repository for Maven</name>
+      <url>http://download.java.net/maven/2</url>
+      <layout>default</layout>
+    </repository>
+    
+    <repository>
+    	<id>fest-repository</id>
+    	<name>Fest Repository</name>
+    	<url>http://fest.googlecode.com/svn/trunk/fest/m2/repository</url>
+    </repository>    
+
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <commitByProject>true</commitByProject>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <preparationGoals>clean install</preparationGoals>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+          <!--<stylesheetfile>/home/johannes/projects/com/cedarsoft/open/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
+          <!--<stylesheetfile>http://www.cedarsoft.org/javadoc/cedarsoft.css</stylesheetfile>-->
+        </configuration>
+
+      </plugin>
+
+      <!--<plugin>-->
+      <!--<groupId>org.codehaus.mojo</groupId>-->
+      <!--<artifactId>javancss-maven-plugin</artifactId>-->
+      <!--<version>2.0-beta-2</version>-->
+      <!--</plugin>-->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>1.5</targetJdk>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>http://www.cedarsoft.org/checkstyle/cedarsoft.xml</configLocation>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <configuration>
+          <headingDateFormat>yyyy-MM-dd HH:mm</headingDateFormat>
+        </configuration>
+      </plugin>
+
+      <!--<plugin>-->
+      <!--<groupId>org.apache.maven.plugins</groupId>-->
+      <!--<artifactId>maven-changes-plugin</artifactId>-->
+      <!--<reportSets>-->
+      <!--<reportSet>-->
+      <!--<reports>-->
+      <!--<report>changes-report</report>-->
+      <!--</reports>-->
+      <!--</reportSet>-->
+      <!--</reportSets>-->
+      <!--</plugin>-->
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+  </reporting>
+
+</project>
+

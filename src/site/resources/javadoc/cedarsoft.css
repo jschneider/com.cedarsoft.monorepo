@@ -1,0 +1,104 @@
+/* Javadoc style sheet */
+
+/* Define colors, fonts and other style attributes here to override the defaults  */
+
+/* Page background color */
+body {
+  background-color: white;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+hr {
+  background: transparent none repeat scroll 0;
+  border-color: -moz-use-text-color -moz-use-text-color #CFD8E2;
+  border-style: none none solid;
+  border-width: 0 0 1px;
+  color: #FFFFFF;
+  margin: 0 0 0.5em;
+  padding: 0 0 0.5em;
+}
+
+a:link,
+  a:visited {
+  color: #666666;
+  text-decoration: none;
+}
+
+a:active, a:hover {
+  color: #297198;
+  text-decoration: underline;
+}
+
+a:link.selfref, a:visited.selfref {
+  color: #555 !important;
+}
+
+table {
+  border-color: #CFD8E2;
+}
+
+td {
+  border-width: 1px;
+  border-color: #CFD8E2;
+}
+
+.a td {
+  background: #ddd;
+  color: #000;
+}
+
+.TableHeadingColor {
+  background: #297198;
+  color: #FFFFFF
+}
+
+.TableSubHeadingColor {
+  background: #bbb;
+  color: #fff
+}
+
+.TableRowColor {
+  background: #fFFFEf
+}
+
+.FrameTitleFont {
+  color: #000000
+}
+
+.FrameHeadingFont {
+  color: #000000
+}
+
+.FrameItemFont {
+  color: #000000
+}
+
+.NavBarCell1 {
+  background-color: #297198;
+}
+
+.NavBarCell1Rev {
+  background-color: #297198;
+}
+
+.NavBarFont1 {
+  color: white;
+}
+
+a:hover .NavBarFont1 {
+  text-decoration: underline;
+}
+
+.NavBarFont1Rev {
+  font-style: italic;
+  color: lightgray;
+}
+
+.NavBarCell2 {
+  background-color: #FFFFFF;
+}
+
+.NavBarCell3 {
+  background-color: #FFFFFF;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <bannerLeft>
+    <name>${project} ${project.toString()}</name>
+    <src>open.jpg</src>
+    <href>index.html</href>
+  </bannerLeft>
+
+  <bannerRight>
+    <name>cedarsoft</name>
+    <src>images/cedarsoft.jpg</src>
+    <href>http://cedarsoft.com/</href>
+  </bannerRight>
+
+  <body>
+    <breadcrumbs>
+      <item href="http://www.cedarsoft.org/" name="cedarsoft Open" />
+    </breadcrumbs>
+
+    <links>
+      <item name="cedarsoft" href="http://cedarsoft.de/" />
+      <item name="Maven" href="http://maven.apache.org/" />
+      <item name="Apache" href="http://www.apache.org/" />
+    </links>
+
+    <menu name="Overview">
+      <item name="Introduction" href="index.html" />
+      <!--<item name="Usage" href="usage.html" />-->
+      <item name="Downloads" href="downloads.html" />
+      <!--<item name="Integration" href="integration.html" />-->
+      <!--<item name="FAQs" href="faqs.html" />-->
+    </menu>
+
+    <menu name="Projects">      
+      <item name="Utils" href="utils/index.html" />
+      <item name="Commons" href="commons/index.html" />
+      <item name="devTools" href="http://devtools.cedarsoft.org" />
+      <item name="Wicket" href="wicket/index.html" />
+    </menu>
+
+    <menu ref="modules" inherit="bottom" />
+    <menu ref="reports" inherit="bottom" />
+  </body>
+
+  <project>
+    <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />
+
+    <poweredBy>
+      <logo name="cedarsoft" href="http://cedarsoft.com/" img="http://cedarsoft.de/objects/poweredby.png" />
+    </poweredBy>
+
+    <skin>
+      <groupId>eu.cedarsoft.maven</groupId>
+      <artifactId>cedarsoft-skin</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </skin>
+  </project>
+
+</project>
+
