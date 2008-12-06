@@ -72,18 +72,14 @@
         <version>7.0.3</version>
       </dependency>
 
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.4</version>
-      </dependency>
-
       <!-- Test deps -->
       <dependency>
-        <groupId>eu.cedarsoft.utils</groupId>
-        <artifactId>test-utils</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>5.8</version>
+        <classifier>jdk15</classifier>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -96,18 +92,19 @@
 
     <!-- Test deps -->
     <dependency>
-      <groupId>eu.cedarsoft.utils</groupId>
-      <artifactId>test-utils</artifactId>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>5.8</version>
+      <classifier>jdk15</classifier>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <repositories>
     <repository>
       <id>cedarsoftSnapshotRepository</id>
       <name>cedarsoft Snapshot Repository</name>
-      <url>http://maven.cedarsoft.com/public/snapshots</url>
+      <url>http://maven.cedarsoft.eu/public/snapshots</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -116,7 +113,7 @@
     <repository>
       <id>cedarsoftRepository</id>
       <name>cedarsoft Repository</name>
-      <url>http://maven.cedarsoft.com/public/release</url>
+      <url>http://maven.cedarsoft.eu/public/release</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -125,7 +122,7 @@
     <repository>
       <id>cedarsoftInternalSnapshotRepository</id>
       <name>cedarsoft Internal Snapshot Repository</name>
-      <url>http://maven.cedarsoft.com/internal/snapshots</url>
+      <url>http://maven.cedarsoft.eu/internal/snapshots</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -134,7 +131,7 @@
     <repository>
       <id>cedarsoftInternalRepository</id>
       <name>cedarsoft Internal Repository</name>
-      <url>http://maven.cedarsoft.com/internal/release</url>
+      <url>http://maven.cedarsoft.eu/internal/release</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -215,7 +212,8 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <aggregate>true</aggregate>
-          <!--<stylesheetfile>/home/johannes/projects/com/cedarsoft/open/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
+          <!--<stylesheetfile>${basedir}/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
+          <!--<stylesheetfile>/home/johannes/projects/eu/cedarsoft/open/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
           <!--<stylesheetfile>http://www.cedarsoft.org/javadoc/cedarsoft.css</stylesheetfile>-->
         </configuration>
 
