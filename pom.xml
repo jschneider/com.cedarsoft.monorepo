@@ -84,7 +84,6 @@
         <artifactId>test-utils</artifactId>
         <version>1.2-SNAPSHOT</version>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
 
