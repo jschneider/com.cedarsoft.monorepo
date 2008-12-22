@@ -10,10 +10,11 @@
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
+
   <licenses>
     <license>
-      <name>GLPv3</name>
-      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+      <name>GLP with Classpath Exception</name>
+      <url>http://www.cedarsoft.org/gpl2ce.txt</url>
     </license>
   </licenses>
 
@@ -173,6 +174,7 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+          <encoding>utf-8</encoding>
         </configuration>
       </plugin>
       <plugin>
@@ -186,6 +188,14 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>utf-8</encoding>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -211,6 +221,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
+          <encoding>utf-8</encoding>
           <aggregate>true</aggregate>
           <!--<stylesheetfile>${basedir}/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
           <!--<stylesheetfile>/home/johannes/projects/eu/cedarsoft/open/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->

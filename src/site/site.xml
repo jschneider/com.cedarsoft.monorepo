@@ -8,9 +8,9 @@
   </bannerLeft>
 
   <bannerRight>
-    <name>cedarsoft</name>
+    <name>devTools</name>
     <src>images/cedarsoft.jpg</src>
-    <href>http://cedarsoft.com/</href>
+    <href>http://www.cedarsoft.com/</href>
   </bannerRight>
 
   <body>
@@ -19,7 +19,7 @@
     </breadcrumbs>
 
     <links>
-      <item name="cedarsoft" href="http://cedarsoft.de/" />
+      <item name="cedarsoft" href="http://www.cedarsoft.de/" />
       <item name="Maven" href="http://maven.apache.org/" />
       <item name="Apache" href="http://www.apache.org/" />
     </links>
@@ -33,10 +33,10 @@
     </menu>
 
     <menu name="Projects">      
-      <item name="Utils" href="utils/index.html" />
-      <item name="Commons" href="commons/index.html" />
+      <item name="utils" href="utils/index.html" />
+      <item name="commons" href="commons/index.html" />
       <item name="devTools" href="http://devtools.cedarsoft.org" />
-      <item name="Wicket" href="wicket/index.html" />
+      <!--item name="wicket" href="wicket/index.html" /-->
     </menu>
 
     <menu ref="modules" inherit="bottom" />
@@ -47,7 +47,7 @@
     <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />
 
     <poweredBy>
-      <logo name="cedarsoft" href="http://cedarsoft.com/" img="http://cedarsoft.de/objects/poweredby.png" />
+      <logo name="cedarsoft" href="http://www.cedarsoft.com" img="http://www.cedarsoft.com/objects/poweredby.png" />
     </poweredBy>
 
     <skin>
