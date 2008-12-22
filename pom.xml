@@ -40,9 +40,9 @@
     </developer>
   </developers>
 
-  <scm>
-    <connection>scm:svn:https://svn.cedarsoft.eu/open/com.cedarsoft.open/trunk</connection>
-    <developerConnection>scm:svn:https://svn.cedarsoft.eu/open/com.cedarsoft.open/trunk</developerConnection>
+  <scm>	
+    <connection>scm:git:git://git.cedarsoft.eu/com.cedarsoft.open</connection>
+    <developerConnection>scm:git:ssh://git.cedarsoft.eu/home/git/com.cedarsoft.open</developerConnection>
   </scm>
 
   <distributionManagement>
