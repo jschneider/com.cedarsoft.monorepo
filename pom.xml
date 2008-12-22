@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
