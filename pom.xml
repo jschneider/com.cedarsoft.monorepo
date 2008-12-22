@@ -41,8 +41,8 @@
   </developers>
 
   <scm>	
-    <connection>scm:git:git://git.cedarsoft.eu/com.cedarsoft.open</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.eu/home/git/com.cedarsoft.open</developerConnection>
+    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.open</connection>
+    <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.open</developerConnection>
   </scm>
 
   <distributionManagement>
