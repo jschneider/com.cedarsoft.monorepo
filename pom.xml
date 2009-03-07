@@ -95,7 +95,7 @@
     <repository>
       <id>cedarsoftSnapshotRepository</id>
       <name>cedarsoft Snapshot Repository</name>
-      <url>http://maven.cedarsoft.eu/public/snapshots</url>
+      <url>http://nexus.cedarsoft.com/content/repositories/snapshots/</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -104,30 +104,11 @@
     <repository>
       <id>cedarsoftRepository</id>
       <name>cedarsoft Repository</name>
-      <url>http://maven.cedarsoft.eu/public/release</url>
+      <url>http://nexus.cedarsoft.com/content/repositories/releases/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
-    </repository>
-
-    <repository>
-      <id>cedarsoftInternalSnapshotRepository</id>
-      <name>cedarsoft Internal Snapshot Repository</name>
-      <url>http://maven.cedarsoft.eu/internal/snapshots</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-
-    <repository>
-      <id>cedarsoftInternalRepository</id>
-      <name>cedarsoft Internal Repository</name>
-      <url>http://maven.cedarsoft.eu/internal/release</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-
+    </repository>    
 
     <repository>
       <id>central</id>
@@ -136,9 +117,9 @@
     </repository>
 
     <repository>
-      <id>codehaus-snapshots</id>
+      <id>codehaus</id>
       <name>Codehaus Repository</name>
-      <url>http://snapshots.repository.codehaus.org/</url>
+      <url>http://maven.codehaus.org/maven2/</url>
     </repository>
 
     <repository>
@@ -147,13 +128,8 @@
       <url>http://download.java.net/maven/2</url>
       <layout>default</layout>
     </repository>
-
-    <repository>
-      <id>fest-repository</id>
-      <name>Fest Repository</name>
-      <url>http://fest.googlecode.com/svn/trunk/fest/m2/repository</url>
-    </repository>
   </repositories>
+
 
   <build>
     <pluginManagement>
