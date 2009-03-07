@@ -126,9 +126,15 @@
     </repository>
 
     <repository>
-      <id>codehaus</id>
-      <name>Codehaus Repository</name>
-      <url>http://maven.codehaus.org/maven2/</url>
+      <id>codehaus-snapshots</id>
+      <name>Codehaus Snapshots</name>
+      <url>http://snapshots.repository.codehaus.org/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
     </repository>
 
     <repository>
@@ -139,6 +145,20 @@
     </repository>
   </repositories>
 
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>codehaus-snapshots</id>
+      <name>Codehaus Snapshots</name>
+      <url>http://snapshots.repository.codehaus.org/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
 
   <build>
     <pluginManagement>
