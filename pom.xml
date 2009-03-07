@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
@@ -48,13 +49,13 @@
     <repository>
       <id>cedarsoftRepository</id>
       <name>cedarsoft Repository</name>
-      <url>scp://maven.cedarsoft.com/home/maven/public/release</url>
+      <url>http://nexus.cedarsoft.com/content/repositories/releases/</url>
     </repository>
 
     <snapshotRepository>
       <id>cedarsoftSnapshotRepository</id>
       <name>cedarsoft Snapshot Repository</name>
-      <url>scp://maven.cedarsoft.com/home/maven/public/snapshots</url>
+      <url>http://nexus.cedarsoft.com/content/repositories/snapshots/</url>
     </snapshotRepository>
 
     <site>
@@ -130,15 +131,15 @@
 
 
     <repository>
-      <id>maven</id>
+      <id>central</id>
       <name>Maven Central Repository</name>
       <url>http://repo1.maven.org/maven/</url>
     </repository>
 
     <repository>
-      <id>codehaus</id>
+      <id>codehaus-snapshots</id>
       <name>Codehaus Repository</name>
-      <url>http://maven.codehaus.org/maven2/</url>
+      <url>http://snapshots.repository.codehaus.org/</url>
     </repository>
 
     <repository>
@@ -269,11 +270,11 @@
       </plugin>
 
       <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-changelog-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<headingDateFormat>yyyy-MM-dd HH:mm</headingDateFormat>-->
-        <!--</configuration>-->
+      <!--<groupId>org.apache.maven.plugins</groupId>-->
+      <!--<artifactId>maven-changelog-plugin</artifactId>-->
+      <!--<configuration>-->
+      <!--<headingDateFormat>yyyy-MM-dd HH:mm</headingDateFormat>-->
+      <!--</configuration>-->
       <!--</plugin>-->
 
       <!--<plugin>-->
