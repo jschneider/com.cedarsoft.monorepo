@@ -111,6 +111,15 @@
     </repository>    
 
     <repository>
+      <id>cedarsoft3rdParty</id>
+      <name>cedarsoft 3rd Party Repository</name>
+      <url>http://nexus.cedarsoft.com/content/repositories/thirdparty/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+
+    <repository>
       <id>central</id>
       <name>Maven Central Repository</name>
       <url>http://repo1.maven.org/maven/</url>
