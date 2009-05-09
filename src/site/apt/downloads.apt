@@ -3,7 +3,7 @@ Downloads
  The fragments may be downloaded using Maven. They are stored within the central maven repository
   {{{http://repo1.maven.org/maven2/com/cedarsoft/}central maven repository}}.
 
-  Snapshots are available at {{{http://maven.cedarsoft.com/public/snapshots/}cedarsoft public snapshots repository}}.
+  Snapshots are available at {{{http://nexus.cedarsoft.com/content/repositories/snapshots}cedarsoft public snapshots repository}}.
 
 
 * Adding cedarsoft snapshots repository
@@ -13,8 +13,8 @@ Downloads
 ---
     <repository>
       <id>cedarsoftSnapshotRepository</id>
-      <name>Cedarsoft Snapshot Repository</name>
-      <url>http://maven.cedarsoft.com/public/snapshots</url>
+      <name>cedarsoft Snapshot Repository</name>
+      <url>http://nexus.cedarsoft.com/content/repositories/snapshots</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
