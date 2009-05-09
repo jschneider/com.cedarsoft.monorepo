@@ -8,7 +8,7 @@
   </bannerLeft>
 
   <bannerRight>
-    <name>devTools</name>
+    <name>cedarsoft</name>
     <src>images/cedarsoft.jpg</src>
     <href>http://www.cedarsoft.com/</href>
   </bannerRight>
@@ -36,7 +36,7 @@
       <item name="utils" href="utils/index.html" />
       <item name="commons" href="commons/index.html" />
       <item name="devTools" href="http://devtools.cedarsoft.org" />
-      <!--item name="wicket" href="wicket/index.html" /-->
+      <item name="wicket" href="wicket/index.html" />
     </menu>
 
     <menu ref="modules" inherit="bottom" />
