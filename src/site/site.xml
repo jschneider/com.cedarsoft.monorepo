@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
   <bannerLeft>
     <name>${project} ${project.toString()}</name>
     <src>open.jpg</src>
@@ -14,17 +17,15 @@
   </bannerRight>
 
   <body>
-    <breadcrumbs>
-      <item href="http://www.cedarsoft.org/" name="cedarsoft Open" />
-    </breadcrumbs>
-
     <links>
       <item name="cedarsoft" href="http://www.cedarsoft.de/" />
       <item name="Maven" href="http://maven.apache.org/" />
       <item name="Apache" href="http://www.apache.org/" />
     </links>
 
-    <menu ref="parent" inherit="top" />
+    <breadcrumbs>
+      <item href="http://www.cedarsoft.org/" name="cedarsoft Open" />
+    </breadcrumbs>
 
     <menu name="Overview">
       <item name="Introduction" href="index.html" />
@@ -34,7 +35,7 @@
       <!--<item name="FAQs" href="faqs.html" />-->
     </menu>
 
-    <menu name="Projects">      
+    <menu name="Projects">
       <item name="utils" href="utils/index.html" />
       <item name="commons" href="commons/index.html" />
       <item name="devTools" href="http://devtools.cedarsoft.org" />
@@ -45,19 +46,17 @@
     <menu ref="reports" inherit="bottom" />
   </body>
 
-  <project>
-    <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />
 
-    <poweredBy>
-      <logo name="cedarsoft" href="http://www.cedarsoft.com" img="http://www.cedarsoft.com/objects/poweredby.png" />
-    </poweredBy>
+  <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />
 
-    <skin>
-      <groupId>com.cedarsoft.maven</groupId>
-      <artifactId>cedarsoft-skin</artifactId>
-      <version>1.1.3</version>
-    </skin>
-  </project>
+  <poweredBy>
+    <logo name="cedarsoft" href="http://www.cedarsoft.com" img="http://www.cedarsoft.com/objects/poweredby.png" />
+  </poweredBy>
 
+  <skin>
+    <groupId>com.cedarsoft.maven</groupId>
+    <artifactId>cedarsoft-skin</artifactId>
+    <version>1.1.3</version>
+  </skin>
 </project>
 
