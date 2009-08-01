@@ -40,22 +40,25 @@
         <artifactId>repository</artifactId>
         <version>${pom.version}</version>
       </dependency>
+      
       <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
+        <groupId>com.cedarsoft.commons.swing</groupId>
         <artifactId>swing-presenter</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.swing</groupId>
+        <artifactId>actions</artifactId>
         <version>${pom.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
   <modules>
-    <module>actions</module>
+    <module>swing</module>
     <module>struct</module>
     <module>lookup</module>
     <module>repository</module>
     <module>presenter</module>
-    <module>swing-presenter</module>
-    <!--<module>swing-presenter/demo</module>-->
-    <!--<module>swing-presenter/avat-demo</module>-->
   </modules>
 </project>
