@@ -36,7 +36,6 @@
     </menu>
 
     <menu name="Projects">
-      <item name="utils" href="utils/index.html" />
       <item name="commons" href="commons/index.html" />
       <item name="devTools" href="http://devtools.cedarsoft.org" />
       <item name="wicket" href="wicket/index.html" />
