@@ -397,6 +397,7 @@
     <module>xml-commons</module>
     <module>zip</module>
     <module>spring</module>
+    <module>serialization</module>
 
     <module>swing</module>
     <module>struct</module>
