@@ -70,7 +70,102 @@
       <!--internal dependencies-->
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>common</artifactId>
+        <artifactId>commons</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>test-utils</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>execution</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>workflow</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>cmd</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>collections</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>id</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>swing</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.spring</groupId>
+        <artifactId>configuration-spring</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.spring</groupId>
+        <artifactId>spring-extensions</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>configuration</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>crypt</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>xml-commons</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>io</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.db</groupId>
+        <artifactId>genericdao</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.db</groupId>
+        <artifactId>async</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>rmi</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.history</groupId>
+        <artifactId>core</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.history</groupId>
+        <artifactId>ui</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>tags</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
@@ -281,8 +376,28 @@
   </dependencyManagement>
 
   <modules>
-    <module>common</module>
+    <module>commons</module>
     <module>test-utils</module>
+    <module>cmd</module>
+    <module>collections</module>
+    <module>configuration</module>
+    <module>crypt</module>
+    <module>db</module>
+    <module>execution</module>
+    <module>history</module>
+    <module>id</module>
+    <module>image</module>
+    <module>io</module>
+    <module>legacy</module>
+    <module>mail</module>
+    <!--<module>ooorg</module>-->
+    <module>rmi</module>
+    <module>string-conversion</module>
+    <module>tags</module>
+    <module>workflow</module>
+    <module>xml-commons</module>
+    <module>zip</module>
+    <module>spring</module>
 
     <module>swing</module>
     <module>struct</module>

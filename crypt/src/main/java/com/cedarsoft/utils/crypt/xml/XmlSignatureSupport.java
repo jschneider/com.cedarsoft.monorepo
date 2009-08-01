@@ -1,0 +1,131 @@
+package com.cedarsoft.utils.crypt.xml;
+
+import com.google.inject.Inject;
+import com.cedarsoft.utils.crypt.X509Support;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.crypto.XMLStructure;
+import javax.xml.crypto.dom.DOMStructure;
+import javax.xml.crypto.dsig.CanonicalizationMethod;
+import javax.xml.crypto.dsig.DigestMethod;
+import javax.xml.crypto.dsig.Reference;
+import javax.xml.crypto.dsig.SignatureMethod;
+import javax.xml.crypto.dsig.SignedInfo;
+import javax.xml.crypto.dsig.XMLObject;
+import javax.xml.crypto.dsig.XMLSignature;
+import javax.xml.crypto.dsig.XMLSignatureFactory;
+import javax.xml.crypto.dsig.dom.DOMSignContext;
+import javax.xml.crypto.dsig.dom.DOMValidateContext;
+import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.util.Collections;
+
+/**
+ * Easy support for xml signatures.
+ * Be carefull! The {@link DocumentBuilderFactory} has to be namespace aware
+ * ({@link DocumentBuilderFactory#setNamespaceAware(boolean)}).
+ */
+public class XmlSignatureSupport {
+  @NotNull
+  private static final XMLSignatureFactory SIGNATURE_FACTORY = XMLSignatureFactory.getInstance( "DOM" );
+
+  @NotNull
+  private final X509Support x509Support;
+
+  @Inject
+  public XmlSignatureSupport( @NotNull X509Support x509Support ) {
+    this.x509Support = x509Support;
+  }
+
+  public Document sign( @NotNull Document xmlDocument ) {
+    try {
+      @NotNull @NonNls String elementName = xmlDocument.getFirstChild().getNodeName();
+      Reference ref = SIGNATURE_FACTORY.newReference( '#' + elementName, SIGNATURE_FACTORY.newDigestMethod( DigestMethod.SHA256, null ) );
+
+      Node invoice = xmlDocument.getDocumentElement();
+      XMLStructure content = new DOMStructure( invoice );
+      XMLObject obj = SIGNATURE_FACTORY.newXMLObject( Collections.singletonList( content ), elementName, null, null );
+
+      SignedInfo si = SIGNATURE_FACTORY.newSignedInfo( SIGNATURE_FACTORY.newCanonicalizationMethod( CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS, ( C14NMethodParameterSpec ) null ),
+                                                       SIGNATURE_FACTORY.newSignatureMethod( SignatureMethod.RSA_SHA1, null ), Collections.singletonList( ref ) );
+
+      XMLSignature signature = SIGNATURE_FACTORY.newXMLSignature( si, null, Collections.singletonList( obj ), null, null );
+
+      DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+      documentBuilderFactory.setNamespaceAware( true );
+      Document signedDoc = documentBuilderFactory.newDocumentBuilder().newDocument();
+      DOMSignContext dsc = new DOMSignContext( x509Support.getPrivateKey(), signedDoc );
+
+      signature.sign( dsc );
+
+      return signedDoc;
+    } catch ( Exception e ) {
+      throw new RuntimeException( e );
+    }
+  }
+
+  public boolean hasValidSignature( @NotNull Document doc ) throws Exception {
+    NodeList nl = doc.getElementsByTagNameNS( XMLSignature.XMLNS, "Signature" );
+    if ( nl.getLength() == 0 ) {
+      throw new IllegalStateException( "Cannot find Signature element!" );
+    }
+
+    DOMValidateContext valContext = new DOMValidateContext( x509Support.getCertificate().getPublicKey(), nl.item( 0 ) );
+    XMLSignature signature = SIGNATURE_FACTORY.unmarshalXMLSignature( valContext );
+    return signature.validate( valContext );
+
+    //    if ( signature.validate( valContext ) ) {
+    //      System.out.println( "Signature passed core validation!" );
+    //    } else {
+    //      System.err.println( "Signature failed core validation!" );
+    //      boolean sv = signature.getSignatureValue().validate( valContext );
+    //      System.out.println( "Signature validation status: " + sv );
+    //      // Check the validation status of each Reference
+    //      Iterator<?> i = signature.getSignedInfo().getReferences().iterator();
+    //      int j = 0;
+    //
+    //      while ( i.hasNext() ) {
+    //        boolean refValid = ( ( Reference ) i.next() ).validate( valContext );
+    //        System.out.println( "Reference (" + j + ") validation status: " + refValid );
+    //        j++;
+    //      }
+    //    }
+  }
+
+  /**
+   * Returns the node that is the root node of the original signedDocument
+   *
+   * @param signedDocument the signed signedDocument
+   * @return the root node of the original signedDocument
+   */
+  @NotNull
+  public Node getOriginalNode( @NotNull Document signedDocument ) {
+    NodeList nl = signedDocument.getElementsByTagNameNS( XMLSignature.XMLNS, "Object" );
+    if ( nl.getLength() == 0 ) {
+      throw new IllegalStateException( "Cannot find Object element!" );
+    }
+
+    Node objectNode = nl.item( 0 );
+    return objectNode.getFirstChild();
+  }
+
+  @NotNull
+  public Document getOriginalDocument( @NotNull Document signedDocument ) {
+    try {
+      Node node = getOriginalNode( signedDocument );
+
+      DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+      documentBuilderFactory.setNamespaceAware( true );
+      Document originalDoc = documentBuilderFactory.newDocumentBuilder().newDocument();
+      originalDoc.appendChild( originalDoc.adoptNode( node ) );
+      return originalDoc;
+    } catch ( ParserConfigurationException e ) {
+      throw new RuntimeException( e );
+    }
+  }
+}
