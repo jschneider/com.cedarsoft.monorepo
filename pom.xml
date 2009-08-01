@@ -12,7 +12,7 @@
 
   <licenses>
     <license>
-      <name>GLP with Classpath Exception</name>
+      <name>GLP2 with Classpath Exception</name>
       <url>http://www.cedarsoft.org/gpl2ce.txt</url>
     </license>
   </licenses>
