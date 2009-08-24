@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft.commons</groupId>
     <artifactId>legacy</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.2</version>
   </parent>
 
   <groupId>com.cedarsoft.commons.legacy</groupId>
