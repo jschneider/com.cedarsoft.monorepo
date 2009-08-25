@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
@@ -389,14 +390,14 @@
     <module>io</module>
     <module>rmi</module>
     <module>legacy</module>
-    <module>mail</module>    
+    <module>mail</module>
     <module>string-conversion</module>
     <module>tags</module>
     <module>workflow</module>
     <module>xml-commons</module>
     <module>zip</module>
     <module>spring</module>
-    <module>serialization</module>    
+    <module>serialization</module>
     <module>swing</module>
     <module>struct</module>
     <module>lookup</module>
@@ -405,4 +406,22 @@
     <!--<module>ooorg</module>-->
     <!--<module>excel</module>-->
   </modules>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
