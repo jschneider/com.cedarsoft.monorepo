@@ -389,7 +389,7 @@
     <module>image</module>
     <module>io</module>
     <module>rmi</module>
-    <module>legacy</module>
+    <!--<module>legacy</module>-->
     <module>mail</module>
     <module>string-conversion</module>
     <module>tags</module>
