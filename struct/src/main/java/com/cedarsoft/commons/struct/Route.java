@@ -91,14 +91,14 @@ public class Route {
 
     Route route = ( Route ) o;
 
-    if ( nodes != null ? !nodes.equals( route.nodes ) : route.nodes != null ) return false;
+    if ( !nodes.equals( route.nodes ) ) return false;
 
     return true;
   }
 
   @Override
   public int hashCode() {
-    return ( nodes != null ? nodes.hashCode() : 0 );
+    return nodes.hashCode();
   }
 
   /**
