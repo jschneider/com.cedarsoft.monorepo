@@ -10,8 +10,8 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons.swing</groupId>
-  <artifactId>swing</artifactId>
-  <name>Swing stuff</name>
+  <artifactId>common</artifactId>
+  <name>Common Swing stuff</name>
 
   <dependencies>
     <dependency>
