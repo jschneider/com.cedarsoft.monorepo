@@ -2,9 +2,11 @@ package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.TestOnly;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +14,9 @@ import java.util.List;
  * Represents a path of several nodes.
  * A path is a string representation.
  * <p/>
- * If you want to get a "list" of nodes try {@link com.cedarsoft.commons.struct.Route} instead.
+ * If you want to get a "list" of nodes try {@link Route} instead.
+ * <p/>
+ * A path is *immutable*
  */
 public class Path implements Serializable {
   private static final long serialVersionUID = -201844652320294645L;
@@ -45,30 +49,39 @@ public class Path implements Serializable {
     return PathFactory.createPath( pathRepresentation );
   }
 
-  private boolean absolute;
+  private final boolean absolute;
+  @NotNull
+  @NonNls
   private final List<String> elements = new ArrayList<String>();
 
-  @NotNull
-  public Path createParent( @NotNull @NonNls String parentPathRepresentation ) {
-    return PathFactory.createParentPath( parentPathRepresentation, this );
+  /**
+   * Creates a new path
+   *
+   * @param elements the elements
+   */
+  public Path( @NotNull String... elements ) {
+    this( Arrays.asList( elements ) );
   }
 
+  @TestOnly
+  @Deprecated
+  public Path( boolean relative, @NotNull String... elements ) {
+    this( Arrays.asList( elements ), relative );
+  }
+
+  /**
+   * Creates a new *relative* path
+   *
+   * @param elements the elements
+   */
   public Path( @NotNull List<? extends String> elements ) {
+    this( elements, false );
+  }
+
+  public Path( @NotNull List<? extends String> elements, boolean absolute ) {
+    this.absolute = absolute;
     if ( elements.isEmpty() ) {
       throw new IllegalArgumentException( "elements.size must not be 0" );
-    }
-
-    for ( String element : elements ) {
-      if ( element.length() == 0 ) {
-        continue;
-      }
-      this.elements.add( element );
-    }
-  }
-
-  public Path( @NotNull String... elements ) {
-    if ( elements.length == 0 ) {
-      throw new IllegalArgumentException( "elements.length must not be 0" );
     }
 
     for ( String element : elements ) {
@@ -84,11 +97,14 @@ public class Path implements Serializable {
    *
    * @return a list containing all path elements
    */
-  public List<String> getElements() {
+  @NotNull
+  @NonNls
+  public List<? extends String> getElements() {
     return Collections.unmodifiableList( elements );
   }
 
   @NotNull
+  @NonNls
   @Override
   public String toString() {
     StringBuilder buffer = new StringBuilder();
@@ -116,8 +132,22 @@ public class Path implements Serializable {
     return absolute;
   }
 
-  public void setAbsolute( boolean absolute ) {
-    this.absolute = absolute;
+  @NotNull
+  public Path absolute() {
+    return absolute( true );
+  }
+
+  @NotNull
+  public Path relative() {
+    return absolute( false );
+  }
+
+  @NotNull
+  public Path absolute( boolean newAbsolute ) {
+    if ( absolute == newAbsolute ) {
+      return this;
+    }
+    return new Path( elements, newAbsolute );
   }
 
   @NotNull
@@ -126,12 +156,30 @@ public class Path implements Serializable {
   }
 
   /**
+   * Creates a new path where the first element has been removed
+   *
+   * @return a new path without the first element
+   */
+  @NotNull
+  public Path popped() {
+    if ( elements.isEmpty() ) {
+      throw new ArrayIndexOutOfBoundsException( "No elements left to pop" );
+    }
+    return subPath( 1, elements.size() );
+  }
+
+  @NotNull
+  public Path withParent( @NotNull @NonNls String parentPathRepresentation ) {
+    return PathFactory.createParentPath( parentPathRepresentation, this );
+  }
+
+  /**
    * Creates a new path that represents the child with the given name
    *
    * @param childName the name of the child
    * @return the path of the child
    */
-  public Path createChild( @NotNull String childName ) {
+  public Path withChild( @NotNull String childName ) {
     List<String> childElements = new ArrayList<String>( elements.size() + 1 );
     childElements.addAll( elements );
     childElements.add( childName );

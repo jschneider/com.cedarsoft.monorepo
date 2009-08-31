@@ -1,9 +1,8 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -12,10 +11,22 @@ import java.util.Queue;
 /**
  *
  */
-public class PathFactoryTest  {
+public class PathFactoryTest {
 
   @BeforeMethod
   protected void setUp() throws Exception {
+  }
+
+  @Test
+  public void testCreateParent() {
+    assertEquals( PathFactory.createParentPath( "/a", PathFactory.createPath( "b" ) ).toString(), "/a/b" );
+    assertEquals( PathFactory.createParentPath( "a", PathFactory.createPath( "b" ) ).toString(), "a/b" );
+
+    try {
+      PathFactory.createParentPath( "a", PathFactory.createPath( "/b" ) );
+      fail( "Where is the Exception" );
+    } catch ( IllegalArgumentException ignore ) {
+    }
   }
 
   @Test

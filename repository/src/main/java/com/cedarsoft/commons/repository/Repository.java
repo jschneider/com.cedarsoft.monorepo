@@ -71,7 +71,7 @@ public class Repository {
         return child;
       }
     }
-    throw new ChildNotFoundException( parent.getPath().createChild( name ) );
+    throw new ChildNotFoundException( parent.getPath().withChild( name ) );
   }
 
   /**

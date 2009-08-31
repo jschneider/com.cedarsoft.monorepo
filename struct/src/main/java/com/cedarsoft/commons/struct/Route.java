@@ -134,7 +134,7 @@ public class Route {
       return Route.EMPTY;
     }
 
-    Iterator<String> iterator = path.getElements().iterator();
+    Iterator<? extends String> iterator = path.getElements().iterator();
     //If the path is absolute, we have to verify the root node
     if ( path.isAbsolute() ) {
       String firstElement = iterator.next();

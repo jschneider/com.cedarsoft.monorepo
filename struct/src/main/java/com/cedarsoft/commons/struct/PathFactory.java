@@ -51,9 +51,7 @@ public class PathFactory {
 
     parts.add( actualName.toString() );
 
-    Path path = new Path( parts );
-    path.setAbsolute( isAbsolute );
-    return path;
+    return new Path( parts, isAbsolute );
   }
 
 
@@ -110,9 +108,7 @@ public class PathFactory {
     List<String> elements = new ArrayList<String>( parentPath.getElements() );
     elements.addAll( child.getElements() );
 
-    Path completePath = new Path( elements );
-    completePath.setAbsolute( parentPath.isAbsolute() );
-    return completePath;
+    return new Path( elements, parentPath.isAbsolute() );
   }
 
   /**
