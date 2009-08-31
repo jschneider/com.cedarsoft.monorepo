@@ -7,6 +7,9 @@ import java.util.WeakHashMap;
 
 /**
  * Special implementation of a child detector that always returns the same list for a given parent.
+ *
+ * @param <C> the type of the children
+ * @param <P> the type of the parent
  */
 public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
   @NotNull

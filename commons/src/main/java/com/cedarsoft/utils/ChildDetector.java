@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * Implementations detect all children of an element that shall be added to the recursion
- * P: The type of the Parent
- * C: The type of the children
- * Z: The type of the context
+ *
+ * @param <C> the type of the children
+ * @param <P> the type of the parent
  */
 public interface ChildDetector<P, C> {
   /**
@@ -22,6 +22,8 @@ public interface ChildDetector<P, C> {
 
   /**
    * Registers a change listener that is notified when the child detector changes its children
+   *
+   * @param changeListener the listener
    */
   void addChangeListener( @NotNull ChildChangeListener<P> changeListener );
 

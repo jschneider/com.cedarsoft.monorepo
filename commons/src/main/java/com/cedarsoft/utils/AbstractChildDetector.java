@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Abstract base class for child detectors
+ *
+ * @param <C> the type of the children
+ * @param <P> the type of the parent
  */
 public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C> {
   @NotNull
