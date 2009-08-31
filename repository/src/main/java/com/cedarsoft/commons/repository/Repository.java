@@ -114,7 +114,7 @@ public class Repository {
    */
   @NotNull
   public Path getPath( @NotNull Node node ) {
-    Path path = new PathFactory().buildPath( node );
+    Path path = PathFactory.buildPath( node );
     path.setAbsolute( true );
     return path;
   }

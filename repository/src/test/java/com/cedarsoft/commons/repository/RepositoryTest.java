@@ -1,6 +1,5 @@
 package com.cedarsoft.commons.repository;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.ChildNotFoundException;
@@ -46,7 +45,7 @@ public class RepositoryTest  {
   @Test
   public void testRootNode() {
     Node root = repository.getRootNode();
-    assertSame( root, repository.getNode( new PathFactory().createPath( "/" ) ) );
+    assertSame( root, repository.getNode( PathFactory.createPath( "/" ) ) );
 
     assertNotNull( root );
     assertEquals( "", root.getName() );
@@ -73,14 +72,14 @@ public class RepositoryTest  {
   @Test
   public void testFindNode() throws ChildNotFoundException {
     repository.getRootNode().addChild( new DefaultNode( "asdf" ) );
-    Node node = repository.findNode( new PathFactory().createPath( "/asdf" ) );
+    Node node = repository.findNode( PathFactory.createPath( "/asdf" ) );
     assertNotNull( node );
     assertEquals( "asdf", node.getName() );
   }
 
   @Test
   public void testSilentCreation() {
-    Path path = new PathFactory().createPath( "/home/schneide" );
+    Path path = PathFactory.createPath( "/home/schneide" );
     try {
       repository.findNode( path );
       fail( "Where is the Exception" );

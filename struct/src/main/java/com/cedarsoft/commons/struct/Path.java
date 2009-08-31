@@ -17,7 +17,10 @@ import java.util.List;
 public class Path implements Serializable {
   private static final long serialVersionUID = -201844652320294645L;
 
+  @NonNls
   public static final char PATH_SEPARATOR_CHAR = '/';
+  @NotNull
+  @NonNls
   public static final String PATH_SEPARATOR = String.valueOf( PATH_SEPARATOR_CHAR );
 
   /**
@@ -28,7 +31,7 @@ public class Path implements Serializable {
    */
   @NotNull
   public static Path buildPath( @NotNull Node node ) {
-    return new PathFactory().buildPath( node );
+    return PathFactory.buildPath( node );
   }
 
   /**
@@ -37,10 +40,9 @@ public class Path implements Serializable {
    * @param pathRepresentation the path representation
    * @return the path
    */
-  @Deprecated
   @NotNull
   public static Path createPath( @NotNull @NonNls String pathRepresentation ) {
-    return new PathFactory().createPath( pathRepresentation );
+    return PathFactory.createPath( pathRepresentation );
   }
 
   private boolean absolute;
@@ -48,10 +50,10 @@ public class Path implements Serializable {
 
   @NotNull
   public Path createParent( @NotNull @NonNls String parentPathRepresentation ) {
-    return new PathFactory().createParentPath( parentPathRepresentation, this );
+    return PathFactory.createParentPath( parentPathRepresentation, this );
   }
 
-  public Path( @NotNull List<String> elements ) {
+  public Path( @NotNull List<? extends String> elements ) {
     if ( elements.isEmpty() ) {
       throw new IllegalArgumentException( "elements.size must not be 0" );
     }
@@ -104,6 +106,10 @@ public class Path implements Serializable {
     }
 
     return buffer.toString();
+  }
+
+  public int size() {
+    return elements.size();
   }
 
   public boolean isAbsolute() {

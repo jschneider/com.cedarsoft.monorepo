@@ -1,6 +1,5 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
@@ -14,11 +13,9 @@ import java.util.Queue;
  *
  */
 public class PathFactoryTest  {
-  private PathFactory pathFactory;
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    pathFactory = new PathFactory();
   }
 
   @Test
@@ -49,14 +46,14 @@ public class PathFactoryTest  {
 
   @Test
   public void testAbsolute() {
-    assertTrue( pathFactory.createPath( "/a" ).isAbsolute() );
-    assertFalse( pathFactory.createPath( "a" ).isAbsolute() );
+    assertTrue( PathFactory.createPath( "/a" ).isAbsolute() );
+    assertFalse( PathFactory.createPath( "a" ).isAbsolute() );
   }
 
   @Test
   public void testEmpty() {
     try {
-      pathFactory.createPath( "a//" );
+      PathFactory.createPath( "a//" );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
@@ -73,8 +70,8 @@ public class PathFactoryTest  {
 
     final Queue<Node> expected = new LinkedList<Node>( Arrays.asList( childChild, child, root ) );
 
-    assertEquals( "0/1/2", pathFactory.buildPath( childChild ).toString() );
-    assertEquals( "0/1/2", pathFactory.buildPath( childChild, new PathValidator() {
+    assertEquals( "0/1/2", PathFactory.buildPath( childChild ).toString() );
+    assertEquals( "0/1/2", PathFactory.buildPath( childChild, new PathValidator() {
       public void validate( @NotNull Path path ) throws ValidationFailedException {
         assertFalse( path.isAbsolute() );
       }

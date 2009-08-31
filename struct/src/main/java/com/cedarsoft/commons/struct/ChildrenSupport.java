@@ -25,6 +25,7 @@ public interface ChildrenSupport {
   /**
    * Adds a child
    *
+   * @param index the index
    * @param child the child that is added
    */
   void addChild( int index, @NotNull Node child );

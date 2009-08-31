@@ -34,6 +34,17 @@ public class RouteTest  {
   }
 
   @Test
+  public void testRouteWithRelative() throws Exception{
+    Route route = Route.buildRoute( root, Path.createPath( "a/b" ) );
+    assertEquals( route.size(), 3 );
+
+    assertEquals( route.getLastNode().getName(), "b" );
+    assertEquals( route.getNodes().get( 0 ).getName(), "asdf" );
+    assertEquals( route.getNodes().get( 1 ).getName(), "a" );
+    assertEquals( route.getNodes().get( 2 ).getName(), "b" );
+  }
+  
+  @Test
   public void testCreateChildPath() throws ChildNotFoundException {
     Route route = Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) );
     assertNotNull( route );
@@ -50,12 +61,10 @@ public class RouteTest  {
   public void testEquals() throws ChildNotFoundException {
     assertEquals( Route.buildRoute( root, Path.createPath( "/" ) ), Route.buildRoute( root, Path.createPath( "/" ) ) );
     assertEquals( Route.buildRoute( root, Path.createPath( "/asdf" ) ), Route.buildRoute( root, Path.createPath( "/asdf" ) ) );
-    assertEquals( Route.buildRoute( root, Path.createPath( "asdf/a" ) ), Route.buildRoute( root, Path.createPath( "asdf/a" ) ) );
-    assertEquals( Route.buildRoute( root, Path.createPath( "asdf/a/b" ) ), Route.buildRoute( root, Path.createPath( "asdf/a/b" ) ) );
+    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a" ) ), Route.buildRoute( root, Path.createPath( "a" ) ) );
+    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) ), Route.buildRoute( root, Path.createPath( "a/b" ) ) );
 
-    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) ), Route.buildRoute( root, Path.createPath( "asdf/a/b" ) ) );
-    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b/" ) ), Route.buildRoute( root, Path.createPath( "asdf/a/b" ) ) );
+    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) ), Route.buildRoute( root, Path.createPath( "a/b" ) ) );
+    assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b/" ) ), Route.buildRoute( root, Path.createPath( "a/b" ) ) );
   }
-
-
 }

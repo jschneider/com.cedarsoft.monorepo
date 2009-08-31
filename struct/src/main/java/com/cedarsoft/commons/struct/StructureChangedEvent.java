@@ -1,9 +1,10 @@
 package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
+import com.cedarsoft.commons.struct.StructureListener;
 
 /**
- * Event that is used with {@link com.cedarsoft.commons.struct.StructureListener}.
+ * Event that is used with {@link StructureListener}.
  */
 public class StructureChangedEvent {
   @NotNull

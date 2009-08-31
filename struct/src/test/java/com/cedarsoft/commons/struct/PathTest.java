@@ -1,7 +1,5 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -50,23 +48,23 @@ public class PathTest  {
 
   @Test
   public void testCreateParent() {
-    assertEquals( "ab/asdf/a/b", new PathFactory().createPath( "asdf/a/b" ).createParent( "ab" ).toString() );
+    assertEquals( "ab/asdf/a/b", PathFactory.createPath( "asdf/a/b" ).createParent( "ab" ).toString() );
 
     //cannot create path for root
     try {
-      Path child = new PathFactory().createPath( "/asdf/a/b" );
+      Path child = PathFactory.createPath( "/asdf/a/b" );
       assertTrue( child.isAbsolute() );
       child.createParent( "ab" );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
 
-    assertEquals( "/ab/asdf/a/b", new PathFactory().createPath( "asdf/a/b" ).createParent( "/ab" ).toString() );
+    assertEquals( "/ab/asdf/a/b", PathFactory.createPath( "asdf/a/b" ).createParent( "/ab" ).toString() );
   }
 
   @Test
   public void testCreateChildPath() {
-    Path path = new PathFactory().createPath( "/asdf/a/b" );
+    Path path = PathFactory.createPath( "/asdf/a/b" );
     Path child = path.createChild( "c" );
     assertEquals( "asdf/a/b/c", child.toString() );
   }
@@ -83,7 +81,7 @@ public class PathTest  {
 
   @Test
   public void testPathElements() {
-    Path path = new PathFactory().createPath( "/asdf/a/b" );
+    Path path = PathFactory.createPath( "/asdf/a/b" );
     List<String> elements = path.getElements();
     assertEquals( 3, elements.size() );
     assertEquals( "asdf", elements.get( 0 ) );
@@ -93,10 +91,10 @@ public class PathTest  {
 
   @Test
   public void testEquals() {
-    assertEquals( new PathFactory().createPath( "/" ), new PathFactory().createPath( "/" ) );
-    assertEquals( new PathFactory().createPath( "/asdf" ), new PathFactory().createPath( "/asdf" ) );
-    assertEquals( new PathFactory().createPath( "/a/b" ), new PathFactory().createPath( "/a/b" ) );
-    assertEquals( new PathFactory().createPath( "/a/" ), new PathFactory().createPath( "/a" ) );
+    assertEquals( PathFactory.createPath( "/" ), PathFactory.createPath( "/" ) );
+    assertEquals( PathFactory.createPath( "/asdf" ), PathFactory.createPath( "/asdf" ) );
+    assertEquals( PathFactory.createPath( "/a/b" ), PathFactory.createPath( "/a/b" ) );
+    assertEquals( PathFactory.createPath( "/a/" ), PathFactory.createPath( "/a" ) );
   }
 
   @Test
@@ -107,7 +105,7 @@ public class PathTest  {
 
   @Test
   public void testPath() {
-    Path path = new PathFactory().createPath( "/" );
+    Path path = PathFactory.createPath( "/" );
     assertTrue( path.getElements().isEmpty() );
   }
 
@@ -120,7 +118,7 @@ public class PathTest  {
     Node child1 = new DefaultNode( "child1" );
     child0.addChild( child1 );
 
-    Path path = new PathFactory().buildPath( child1 );
+    Path path = PathFactory.buildPath( child1 );
     assertEquals( "a/child0/child1", path.toString() );
   }
 
@@ -139,7 +137,7 @@ public class PathTest  {
 
   @Test
   public void testCreatePath() {
-    Path path = new PathFactory().createPath( "/a/b/c" );
+    Path path = PathFactory.createPath( "/a/b/c" );
     assertTrue( path.isAbsolute() );
     assertNotNull( path );
     assertEquals( 3, path.getElements().size() );
@@ -148,21 +146,21 @@ public class PathTest  {
 
   @Test
   public void testCreatePath2() {
-    assertEquals( "/a/b/c", new PathFactory().createPath( "/a/b/c" ).toString() );
-    assertEquals( "a/b/c", new PathFactory().createPath( "a/b/c" ).toString() );
-    assertEquals( "a", new PathFactory().createPath( "a" ).toString() );
+    assertEquals( "/a/b/c", PathFactory.createPath( "/a/b/c" ).toString() );
+    assertEquals( "a/b/c", PathFactory.createPath( "a/b/c" ).toString() );
+    assertEquals( "a", PathFactory.createPath( "a" ).toString() );
 
-    assertEquals( "/a", new PathFactory().createPath( "/a/" ).toString() );
-    assertEquals( "/a/b/c", new PathFactory().createPath( "/a/b/c/" ).toString() );
+    assertEquals( "/a", PathFactory.createPath( "/a/" ).toString() );
+    assertEquals( "/a/b/c", PathFactory.createPath( "/a/b/c/" ).toString() );
 
     try {
-      new PathFactory().createPath( "" );
+      PathFactory.createPath( "" );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
 
     try {
-      new PathFactory().createPath( "/a///" );
+      PathFactory.createPath( "/a///" );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }

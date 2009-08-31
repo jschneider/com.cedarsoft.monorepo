@@ -17,6 +17,7 @@ public class LeafNode implements Node {
   @NonNls
   @NotNull
   private final String name;
+  @Nullable
   private Node parent;
 
   public LeafNode( @NotNull String name, @NotNull Lookup lookup ) {
@@ -80,7 +81,7 @@ public class LeafNode implements Node {
 
   @NotNull
   public Path getPath() {
-    return new PathFactory().buildPath( this );
+    return PathFactory.buildPath( this );
   }
 
   public boolean isChild( @NotNull Node child ) {

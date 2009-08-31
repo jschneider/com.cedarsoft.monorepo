@@ -14,6 +14,7 @@ public class ChildNotFoundException extends RuntimeException {
   private final Path path;
 
   public ChildNotFoundException( @NotNull Path path ) {
+    super( "Child not found <" + path.toString() + '>' );
     this.path = path;
   }
 

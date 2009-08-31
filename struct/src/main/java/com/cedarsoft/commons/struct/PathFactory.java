@@ -11,6 +11,8 @@ import java.util.List;
  *
  */
 public class PathFactory {
+  private PathFactory() {
+  }
 
   /**
    * Create a path object for a given path representation
@@ -19,7 +21,7 @@ public class PathFactory {
    * @return the path
    */
   @NotNull
-  public Path createPath( @NonNls @NotNull String pathRepresentation ) {
+  public static Path createPath( @NonNls @NotNull String pathRepresentation ) {
     if ( pathRepresentation.trim().length() == 0 ) {
       throw new IllegalArgumentException( "Path representation is empty" );
     }
@@ -62,7 +64,7 @@ public class PathFactory {
    * @return the path for the given node
    */
   @NotNull
-  public Path buildPath( @NotNull StructPart node ) {
+  public static Path buildPath( @NotNull StructPart node ) {
     return buildPath( node, null );
   }
 
@@ -70,10 +72,11 @@ public class PathFactory {
    * Creates a path for a node
    *
    * @param node the node
+   * @param validator the validator
    * @return the path for the given node
    */
   @NotNull
-  public Path buildPath( @NotNull StructPart node, @Nullable PathValidator validator ) {
+  public static Path buildPath( @NotNull StructPart node, @Nullable PathValidator validator ) {
     List<String> elements = new ArrayList<String>();
 
     //add parent node
@@ -98,11 +101,11 @@ public class PathFactory {
    * @return the path for the parent string representation and the child
    */
   @NotNull
-  public Path createParentPath( @NotNull String parentPathRepresentation, @NotNull Path child ) {
+  public static Path createParentPath( @NotNull String parentPathRepresentation, @NotNull Path child ) {
     if ( child.isAbsolute() ) {
       throw new IllegalArgumentException( "Cannot create parent path for absolute child path" );
     }
-    Path parentPath = createPath( parentPathRepresentation );
+    Path parentPath = PathFactory.createPath( parentPathRepresentation );
 
     List<String> elements = new ArrayList<String>( parentPath.getElements() );
     elements.addAll( child.getElements() );

@@ -70,7 +70,7 @@ public class LinkedNode implements Node {
 
   @NotNull
   public Path getPath() {
-    return new PathFactory().buildPath( this );
+    return PathFactory.buildPath( this );
   }
 
   public boolean isChild( @NotNull Node child ) {

@@ -14,10 +14,11 @@ public class DefaultNode implements Node {
   @NotNull
   @NonNls
   private final String name;
+  @NotNull
   private final ChildrenSupport childrenSupport;
   @NotNull
   private final Lookup lookup;
-
+  @Nullable
   private Node parent;
 
   public DefaultNode( @NonNls @NotNull String name ) {
@@ -97,7 +98,7 @@ public class DefaultNode implements Node {
 
   @NotNull
   public Path getPath() {
-    return new PathFactory().buildPath( this );
+    return PathFactory.buildPath( this );
   }
 
   public void addStructureListener( @NotNull StructureListener structureListener ) {
@@ -120,10 +121,10 @@ public class DefaultNode implements Node {
   @Override
   public String toString() {
     return "DefaultNode{" +
-        "name='" + name + '\'' +
-        ", parent=" + parent +
-        ", children.size=" + childrenSupport.getChildren().size() +
-        '}';
+      "name='" + name + '\'' +
+      ", parent=" + parent +
+      ", children.size=" + childrenSupport.getChildren().size() +
+      '}';
   }
 
   /**
