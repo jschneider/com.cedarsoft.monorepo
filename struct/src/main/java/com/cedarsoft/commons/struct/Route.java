@@ -1,6 +1,7 @@
 package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -111,13 +112,29 @@ public class Route {
    */
   @NotNull
   public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path ) throws ChildNotFoundException {
-    List<Node> nodes = new ArrayList<Node>();
-    Iterator<String> iterator = path.getElements().iterator();
+    return buildRouteInternal( rootNode, path, null );
+  }
 
-    if ( !iterator.hasNext() ) {
+  /**
+   * Builds the route. Creates and add all necessary nodes
+   *
+   * @param rootNode    the root
+   * @param path        the path
+   * @param nodeFactory the node factory that creates the nodes
+   * @return the route
+   */
+  @NotNull
+  public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path, @NotNull NodeFactory nodeFactory ) {
+    return buildRouteInternal( rootNode, path, nodeFactory );
+  }
+
+  @NotNull
+  public static Route buildRouteInternal( @NotNull Node rootNode, @NotNull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {
+    if ( path.size() == 0 ) {
       return Route.EMPTY;
     }
 
+    Iterator<String> iterator = path.getElements().iterator();
     //If the path is absolute, we have to verify the root node
     if ( path.isAbsolute() ) {
       String firstElement = iterator.next();
@@ -126,11 +143,23 @@ public class Route {
       }
     }
 
+    List<Node> nodes = new ArrayList<Node>();
     nodes.add( rootNode );
     while ( iterator.hasNext() ) {
       String element = iterator.next();
       Node lastNode = nodes.get( nodes.size() - 1 );
-      nodes.add( lastNode.findChild( element ) );
+      try {
+        nodes.add( lastNode.findChild( element ) );
+      } catch ( ChildNotFoundException e ) {
+        //Throw the exception if no node factory is available
+        if ( nodeFactory == null ) {
+          throw e;
+        } else {
+          Node created = nodeFactory.createNode( element );
+          lastNode.addChild( created );
+          nodes.add( created );
+        }
+      }
     }
 
     return new Route( nodes );

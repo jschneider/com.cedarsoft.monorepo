@@ -1,14 +1,14 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 /**
  *
  */
-public class RouteTest  {
+public class RouteTest {
   private DefaultNode root;
   private DefaultNode nodeA;
   private DefaultNode nodeB;
@@ -29,12 +29,36 @@ public class RouteTest  {
     try {
       Route.buildRoute( new DefaultNode( "invalid" ), Path.createPath( "/asdf/a/b" ) );
       fail( "Where is the Exception" );
-    } catch ( Exception e ) {
+    } catch ( IllegalArgumentException ignore ) {
     }
   }
 
   @Test
-  public void testRouteWithRelative() throws Exception{
+  public void testCreate() {
+    assertEquals( root.getChildren().size(), 1 );
+
+    Path path = Path.createPath( "z" );
+    try {
+      Route.buildRoute( root, path );
+      fail( "Where is the Exception" );
+    } catch ( ChildNotFoundException ignore ) {
+    }
+
+    Route route = Route.buildRoute( root, path, new NodeFactory() {
+      @NotNull
+      public Node createNode( @NotNull @NonNls String name ) {
+        return new DefaultNode( name );
+      }
+    } );
+
+    assertEquals( route.size(), 2 );
+    assertEquals( route.getNodes().get( 0 ), root );
+    assertEquals( route.getNodes().get( 1 ).getName(), "z" );
+    assertEquals( root.getChildren().size(), 2 );
+  }
+
+  @Test
+  public void testRouteWithRelative() throws Exception {
     Route route = Route.buildRoute( root, Path.createPath( "a/b" ) );
     assertEquals( route.size(), 3 );
 
@@ -43,7 +67,7 @@ public class RouteTest  {
     assertEquals( route.getNodes().get( 1 ).getName(), "a" );
     assertEquals( route.getNodes().get( 2 ).getName(), "b" );
   }
-  
+
   @Test
   public void testCreateChildPath() throws ChildNotFoundException {
     Route route = Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) );
