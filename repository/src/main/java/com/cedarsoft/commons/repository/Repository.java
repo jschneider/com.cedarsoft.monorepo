@@ -113,8 +113,6 @@ public class Repository {
    */
   @NotNull
   public Path getPath( @NotNull Node node ) {
-    Path path = Path.buildPath( node );
-    path.setAbsolute( true );
-    return path;
+    return Path.buildPath( node ).absolute();
   }
 }
