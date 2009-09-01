@@ -2,13 +2,18 @@ package com.cedarsoft.commons.struct.io;
 
 import com.cedarsoft.commons.struct.BreadthFirstStructureTreeWalker;
 import com.cedarsoft.commons.struct.Node;
+import com.cedarsoft.commons.struct.NodeFactory;
 import com.cedarsoft.commons.struct.Path;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.commons.struct.StructureTreeWalker;
+import com.cedarsoft.lookup.Lookups;
+import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.util.Arrays;
 
 /**
  *
@@ -30,7 +35,7 @@ public class DirRepresenter {
    * @param baseDir  the base dir
    * @param callback the callback that is called for each created directory
    */
-  public void store( @NotNull final File baseDir, @Nullable final Callback callback ) {
+  public void store( @NotNull final File baseDir, @Nullable final StoreCallback callback ) {
     if ( !baseDir.isDirectory() ) {
       throw new IllegalArgumentException( "Base dir is not a directory" );
     }
@@ -54,6 +59,44 @@ public class DirRepresenter {
   }
 
   /**
+   * Parses the file structure and adds the nodes to the root
+   *
+   * @param baseDir     the base dir
+   * @param nodeFactory the node factory used to create new nodes. The context will contain the directory (File) and the parent Node
+   */
+  public void parse( @NotNull File baseDir, @NotNull NodeFactory nodeFactory ) {
+    if ( !root.getChildren().isEmpty() ) {
+      throw new IllegalStateException( "Root still has children!" );
+    }
+
+    if ( rootVisible ) {
+      File[] subDirs = baseDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY );
+      if ( subDirs.length != 1 ) {
+        throw new IllegalStateException( "Invalid dirs count <" + Arrays.toString( subDirs ) + ">" );
+      }
+      File dir = subDirs[0];
+      if ( !dir.getName().equals( root.getName() ) ) {
+        throw new IllegalArgumentException( "Root node does not match dir. Node: <" + root.getName() + ">, Dir: <" + dir.getName() + '>' );
+      }
+
+      parse( root, dir, nodeFactory );
+    } else {
+      parse( root, baseDir, nodeFactory );
+    }
+  }
+
+  protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory ) {
+    for ( File dir : currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) {
+      String name = dir.getName();
+
+      Node child = nodeFactory.createNode( name, Lookups.dynamicLookup( currentDir, node ) );
+      node.addChild( child );
+
+      parse( child, dir, nodeFactory );
+    }
+  }
+
+  /**
    * Returns the directory for the given base dir and path
    *
    * @param baseDir the base dir
@@ -70,11 +113,10 @@ public class DirRepresenter {
     return current;
   }
 
-
   /**
    * Callback
    */
-  public interface Callback {
+  public interface StoreCallback {
     /**
      * Is called every time a directory has been created
      *
