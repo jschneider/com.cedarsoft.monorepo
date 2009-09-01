@@ -67,7 +67,10 @@ public class DirRepresentationTest {
       representer.parse( baseDir, new NodeFactory() {
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
-          assertNotNull( context.lookup( File.class ) );
+          File file = context.lookupNonNull( File.class );
+          assertEquals( file.getName(), name );
+
+          assertNotNull( file );
           assertNotNull( context.lookup( Node.class ) );
           return new DefaultNode( name );
         }
@@ -102,7 +105,9 @@ public class DirRepresentationTest {
       representer.parse( baseDir, new NodeFactory() {
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
-          assertNotNull( context.lookup( File.class ) );
+          File file = context.lookupNonNull( File.class );
+          assertEquals( file.getName(), name );
+
           assertNotNull( context.lookup( Node.class ) );
           return new DefaultNode( name );
         }

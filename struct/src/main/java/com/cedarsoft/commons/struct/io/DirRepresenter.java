@@ -89,7 +89,7 @@ public class DirRepresenter {
     for ( File dir : currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) {
       String name = dir.getName();
 
-      Node child = nodeFactory.createNode( name, Lookups.dynamicLookup( currentDir, node ) );
+      Node child = nodeFactory.createNode( name, Lookups.dynamicLookup( dir, node ) );
       node.addChild( child );
 
       parse( child, dir, nodeFactory );
