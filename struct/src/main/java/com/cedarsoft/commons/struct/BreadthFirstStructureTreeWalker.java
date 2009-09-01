@@ -17,7 +17,7 @@ public class BreadthFirstStructureTreeWalker implements StructureTreeWalker {
     while ( !queue.isEmpty() ) {
       StructPart actual = queue.poll();
       queue.addAll( actual.getChildren() );
-      walkerCallBack.nodeReached( actual, PathFactory.calculateLevel( root, actual ) );
+      walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
     }
   }
 }

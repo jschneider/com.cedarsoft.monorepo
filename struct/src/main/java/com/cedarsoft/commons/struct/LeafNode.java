@@ -81,7 +81,7 @@ public class LeafNode implements Node {
 
   @NotNull
   public Path getPath() {
-    return PathFactory.buildPath( this );
+    return Path.buildPath( this );
   }
 
   public boolean isChild( @NotNull Node child ) {

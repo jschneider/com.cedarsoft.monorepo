@@ -2,6 +2,7 @@ package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 
 import java.io.Serializable;
@@ -20,34 +21,13 @@ import java.util.List;
  */
 public class Path implements Serializable {
   private static final long serialVersionUID = -201844652320294645L;
-
   @NonNls
   public static final char PATH_SEPARATOR_CHAR = '/';
   @NotNull
   @NonNls
   public static final String PATH_SEPARATOR = String.valueOf( PATH_SEPARATOR_CHAR );
-
-  /**
-   * Creates a path for a node
-   *
-   * @param node the node
-   * @return the path for the given node
-   */
   @NotNull
-  public static Path buildPath( @NotNull Node node ) {
-    return PathFactory.buildPath( node );
-  }
-
-  /**
-   * Create a path object for a given path representation
-   *
-   * @param pathRepresentation the path representation
-   * @return the path
-   */
-  @NotNull
-  public static Path createPath( @NotNull @NonNls String pathRepresentation ) {
-    return PathFactory.createPath( pathRepresentation );
-  }
+  public static final Path EMPTY = new Path();
 
   private final boolean absolute;
   @NotNull
@@ -80,9 +60,6 @@ public class Path implements Serializable {
 
   public Path( @NotNull List<? extends String> elements, boolean absolute ) {
     this.absolute = absolute;
-    if ( elements.isEmpty() ) {
-      throw new IllegalArgumentException( "elements.size must not be 0" );
-    }
 
     for ( String element : elements ) {
       if ( element.length() == 0 ) {
@@ -170,7 +147,7 @@ public class Path implements Serializable {
 
   @NotNull
   public Path withParent( @NotNull @NonNls String parentPathRepresentation ) {
-    return PathFactory.createParentPath( parentPathRepresentation, this );
+    return createParentPath( parentPathRepresentation, this );
   }
 
   /**
@@ -200,6 +177,125 @@ public class Path implements Serializable {
 
   @Override
   public int hashCode() {
-    return ( elements != null ? elements.hashCode() : 0 );
+    return elements != null ? elements.hashCode() : 0;
+  }
+
+  /**
+   * Create a path object for a given path representation
+   *
+   * @param pathRepresentation the path representation
+   * @return the path
+   */
+  @NotNull
+  public static Path createPath( @NonNls @NotNull String pathRepresentation ) {
+    boolean isAbsolute = false;
+    if ( pathRepresentation.startsWith( PATH_SEPARATOR ) ) {
+      //noinspection AssignmentToMethodParameter
+      pathRepresentation = pathRepresentation.substring( 1 );
+      isAbsolute = true;
+    }
+
+    List<String> parts = new ArrayList<String>();
+
+    StringBuilder actualName = new StringBuilder();
+    for ( char actualChar : pathRepresentation.toCharArray() ) {
+      if ( actualChar == PATH_SEPARATOR_CHAR ) {
+        if ( actualName.length() == 0 ) {
+          throw new IllegalArgumentException( "Name must not be empty: " + pathRepresentation );
+        }
+
+        parts.add( actualName.toString() );
+        actualName = new StringBuilder();
+      } else {
+        actualName.append( actualChar );
+      }
+    }
+
+    parts.add( actualName.toString() );
+
+    return new Path( parts, isAbsolute );
+  }
+
+  /**
+   * Creates a path for a node
+   *
+   * @param node the node
+   * @return the path for the given node
+   */
+  @NotNull
+  public static Path buildPath( @NotNull StructPart node ) {
+    return buildPath( node, null );
+  }
+
+  /**
+   * Creates a path for a node
+   *
+   * @param node      the node
+   * @param validator the validator
+   * @return the path for the given node
+   */
+  @NotNull
+  public static Path buildPath( @NotNull StructPart node, @Nullable PathValidator validator ) {
+    List<String> elements = new ArrayList<String>();
+
+    //add parent node
+    elements.add( 0, node.getName() );
+
+    StructPart actualNode = node;
+    while ( ( actualNode = actualNode.getParent() ) != null ) {
+      elements.add( 0, actualNode.getName() );
+    }
+    Path path = new Path( elements );
+    if ( validator != null ) {
+      validator.validate( path );
+    }
+    return path;
+  }
+
+  /**
+   * Creates a parent path
+   *
+   * @param parentPathRepresentation the string representation of the path of the parent
+   * @param child                    the child path
+   * @return the path for the parent string representation and the child
+   */
+  @NotNull
+  public static Path createParentPath( @NotNull String parentPathRepresentation, @NotNull Path child ) {
+    if ( child.isAbsolute() ) {
+      throw new IllegalArgumentException( "Cannot create parent path for absolute child path" );
+    }
+    Path parentPath = createPath( parentPathRepresentation );
+
+    List<String> elements = new ArrayList<String>( parentPath.getElements() );
+    elements.addAll( child.getElements() );
+
+    return new Path( elements, parentPath.isAbsolute() );
+  }
+
+  /**
+   * Calculates the level of the given node relative to the root.
+   * If the node is a child of root, the returned level is "1".
+   *
+   * @param root the root
+   * @param node the node
+   * @return the level
+   */
+  public static int calculateLevel( @NotNull StructPart root, @NotNull StructPart node ) {
+    if ( root.equals( node ) ) {
+      return 0;
+    }
+
+    int level = 1;
+
+    StructPart currentParent = node.getParent();
+    while ( currentParent != null ) {
+      if ( currentParent.equals( root ) ) {
+        return level;
+      }
+      currentParent = currentParent.getParent();
+      level++;
+    }
+
+    throw new IllegalArgumentException( "Root is not parent of node: " + root + " - " + node );
   }
 }

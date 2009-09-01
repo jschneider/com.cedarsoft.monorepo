@@ -19,11 +19,11 @@ public class PathFactoryTest {
 
   @Test
   public void testCreateParent() {
-    assertEquals( PathFactory.createParentPath( "/a", PathFactory.createPath( "b" ) ).toString(), "/a/b" );
-    assertEquals( PathFactory.createParentPath( "a", PathFactory.createPath( "b" ) ).toString(), "a/b" );
+    assertEquals( Path.createParentPath( "/a", Path.createPath( "b" ) ).toString(), "/a/b" );
+    assertEquals( Path.createParentPath( "a", Path.createPath( "b" ) ).toString(), "a/b" );
 
     try {
-      PathFactory.createParentPath( "a", PathFactory.createPath( "/b" ) );
+      Path.createParentPath( "a", Path.createPath( "/b" ) );
       fail( "Where is the Exception" );
     } catch ( IllegalArgumentException ignore ) {
     }
@@ -37,19 +37,19 @@ public class PathFactoryTest {
     DefaultNode childChild = new DefaultNode( "childChild" );
     child.addChild( childChild );
 
-    assertEquals( 0, PathFactory.calculateLevel( root, root ) );
-    assertEquals( 0, PathFactory.calculateLevel( child, child ) );
-    assertEquals( 1, PathFactory.calculateLevel( root, child ) );
-    assertEquals( 2, PathFactory.calculateLevel( root, childChild ) );
+    assertEquals( 0, Path.calculateLevel( root, root ) );
+    assertEquals( 0, Path.calculateLevel( child, child ) );
+    assertEquals( 1, Path.calculateLevel( root, child ) );
+    assertEquals( 2, Path.calculateLevel( root, childChild ) );
 
     try {
-      PathFactory.calculateLevel( root, new DefaultNode( "otherChild" ) );
+      Path.calculateLevel( root, new DefaultNode( "otherChild" ) );
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
     }
 
     try {
-      PathFactory.calculateLevel( childChild, root );
+      Path.calculateLevel( childChild, root );
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
     }
@@ -57,14 +57,14 @@ public class PathFactoryTest {
 
   @Test
   public void testAbsolute() {
-    assertTrue( PathFactory.createPath( "/a" ).isAbsolute() );
-    assertFalse( PathFactory.createPath( "a" ).isAbsolute() );
+    assertTrue( Path.createPath( "/a" ).isAbsolute() );
+    assertFalse( Path.createPath( "a" ).isAbsolute() );
   }
 
   @Test
   public void testEmpty() {
     try {
-      PathFactory.createPath( "a//" );
+      Path.createPath( "a//" );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
@@ -81,8 +81,8 @@ public class PathFactoryTest {
 
     final Queue<Node> expected = new LinkedList<Node>( Arrays.asList( childChild, child, root ) );
 
-    assertEquals( "0/1/2", PathFactory.buildPath( childChild ).toString() );
-    assertEquals( "0/1/2", PathFactory.buildPath( childChild, new PathValidator() {
+    assertEquals( "0/1/2", Path.buildPath( childChild ).toString() );
+    assertEquals( "0/1/2", Path.buildPath( childChild, new PathValidator() {
       public void validate( @NotNull Path path ) throws ValidationFailedException {
         assertFalse( path.isAbsolute() );
       }

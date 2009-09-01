@@ -20,7 +20,7 @@ public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
         StructPart child = actual.getChildren().get( i );
         queue.add( child );
       }
-      walkerCallBack.nodeReached( actual, PathFactory.calculateLevel( root, actual ) );
+      walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
     }
   }
 }

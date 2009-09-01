@@ -4,7 +4,6 @@ import com.cedarsoft.commons.struct.ChildNotFoundException;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.Path;
-import com.cedarsoft.commons.struct.PathFactory;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -114,7 +113,7 @@ public class Repository {
    */
   @NotNull
   public Path getPath( @NotNull Node node ) {
-    Path path = PathFactory.buildPath( node );
+    Path path = Path.buildPath( node );
     path.setAbsolute( true );
     return path;
   }

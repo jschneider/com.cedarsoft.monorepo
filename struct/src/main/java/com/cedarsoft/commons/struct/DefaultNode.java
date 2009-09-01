@@ -98,7 +98,7 @@ public class DefaultNode implements Node {
 
   @NotNull
   public Path getPath() {
-    return PathFactory.buildPath( this );
+    return Path.buildPath( this );
   }
 
   public void addStructureListener( @NotNull StructureListener structureListener ) {

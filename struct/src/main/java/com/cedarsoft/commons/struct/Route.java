@@ -130,13 +130,13 @@ public class Route {
 
   @NotNull
   public static Route buildRouteInternal( @NotNull Node rootNode, @NotNull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {
-    if ( path.size() == 0 ) {
-      return Route.EMPTY;
-    }
-
     Iterator<? extends String> iterator = path.getElements().iterator();
     //If the path is absolute, we have to verify the root node
     if ( path.isAbsolute() ) {
+      if ( !iterator.hasNext() ) {
+        throw new IllegalArgumentException( "Invalid path. Is absolute but does not have any element." );
+      }
+
       String firstElement = iterator.next();
       if ( !rootNode.getName().equals( firstElement ) ) {
         throw new IllegalArgumentException( "Invalid root node. Expected \"" + path.getElements().get( 0 ) + "\" but was \"" + rootNode.getName() + "\"" );

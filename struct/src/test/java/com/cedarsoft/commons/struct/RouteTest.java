@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.util.Collections;
+
 /**
  *
  */
@@ -22,6 +24,23 @@ public class RouteTest {
     nodeB = new DefaultNode( "b" );
     nodeA.addChild( nodeB );
     nodeC = new DefaultNode( "c" );
+  }
+
+  @Test
+  public void testEmptyRoute() {
+    Route route = new Route( Collections.<Node>emptyList() );
+    assertEquals( route.size(), 0 );
+  }
+
+  @Test
+  public void testEmptyRoute2() {
+    assertEquals( Route.buildRoute( root, Path.EMPTY ).size(), 1 );
+
+    try {
+      Route.buildRoute( root, Path.EMPTY.absolute() );
+      fail("Where is the Exception");
+    } catch ( IllegalArgumentException ignore ) {
+    }
   }
 
   @Test
@@ -83,7 +102,6 @@ public class RouteTest {
 
   @Test
   public void testEquals() throws ChildNotFoundException {
-    assertEquals( Route.buildRoute( root, Path.createPath( "/" ) ), Route.buildRoute( root, Path.createPath( "/" ) ) );
     assertEquals( Route.buildRoute( root, Path.createPath( "/asdf" ) ), Route.buildRoute( root, Path.createPath( "/asdf" ) ) );
     assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a" ) ), Route.buildRoute( root, Path.createPath( "a" ) ) );
     assertEquals( Route.buildRoute( root, Path.createPath( "/asdf/a/b" ) ), Route.buildRoute( root, Path.createPath( "a/b" ) ) );
