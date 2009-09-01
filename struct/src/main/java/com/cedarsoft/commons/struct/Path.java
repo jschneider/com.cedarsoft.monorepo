@@ -65,6 +65,11 @@ public class Path implements Serializable {
       if ( element.length() == 0 ) {
         continue;
       }
+
+      if ( element.contains( PATH_SEPARATOR ) ) {
+        throw new IllegalArgumentException( "Invalid character (" + PATH_SEPARATOR + ") in <" + element + '>' );
+      }
+
       this.elements.add( element );
     }
   }

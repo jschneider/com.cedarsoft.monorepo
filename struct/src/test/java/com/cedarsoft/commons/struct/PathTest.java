@@ -193,7 +193,9 @@ public class PathTest {
 
   @Test
   public void testToStringAbsolute() {
-    assertEquals( new Path( "/a/b" ).toString(), "/a/b" );
-    assertEquals( new Path( "a/b" ).toString(), "a/b" );
+    assertEquals( Path.createPath( "/a/b" ).toString(), "/a/b" );
+    assertTrue( Path.createPath( "/a/b" ).isAbsolute() );
+    assertEquals( Path.createPath( "a/b" ).toString(), "a/b" );
+    assertFalse( Path.createPath( "a/b" ).isAbsolute() );
   }
 }
