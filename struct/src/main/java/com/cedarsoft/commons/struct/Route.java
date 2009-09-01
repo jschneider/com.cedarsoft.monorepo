@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.struct;
 
+import com.cedarsoft.CanceledException;
+import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -120,7 +122,7 @@ public class Route {
    *
    * @param rootNode    the root
    * @param path        the path
-   * @param nodeFactory the node factory that creates the nodes
+   * @param nodeFactory the node factory that creates the nodes. The context will contain the parent node
    * @return the route
    */
   @NotNull
@@ -155,9 +157,13 @@ public class Route {
         if ( nodeFactory == null ) {
           throw e;
         } else {
-          Node created = nodeFactory.createNode( element );
-          lastNode.addChild( created );
-          nodes.add( created );
+          try {
+            Node created = nodeFactory.createNode( element, Lookups.singletonLookup( Node.class, lastNode ) );
+            lastNode.addChild( created );
+            nodes.add( created );
+          } catch ( CanceledException ignore ) { //if the creation has been canceled
+            throw e;
+          }
         }
       }
     }

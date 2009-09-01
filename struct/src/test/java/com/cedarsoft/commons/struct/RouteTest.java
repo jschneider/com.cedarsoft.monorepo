@@ -7,6 +7,8 @@ import org.testng.annotations.*;
 
 import java.util.Collections;
 
+import com.cedarsoft.lookup.Lookup;
+
 /**
  *
  */
@@ -65,7 +67,7 @@ public class RouteTest {
 
     Route route = Route.buildRoute( root, path, new NodeFactory() {
       @NotNull
-      public Node createNode( @NotNull @NonNls String name ) {
+      public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) {
         return new DefaultNode( name );
       }
     } );
