@@ -13,6 +13,9 @@ public interface Node extends StructPart {
   @NotNull
   List<? extends Node> getChildren();
 
+  @NotNull
+  Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
+
   /**
    * Returns the parent (if it has one)
    *
@@ -33,7 +36,6 @@ public interface Node extends StructPart {
    *
    * @param index the index
    * @param child the child
-   * @return this
    */
   void addChild( int index, @NotNull Node child );
 
@@ -57,35 +59,4 @@ public interface Node extends StructPart {
    * @param parent the parent
    */
   void setParent( @Nullable Node parent );
-
-  /**
-   * Returns the path of this node
-   *
-   * @return the path
-   */
-  @NotNull
-  Path getPath();
-
-  /**
-   * Returns whether the given node is a child of this or not
-   *
-   * @param child the possible child
-   * @return true if the given node is a child, false otherwise
-   */
-  boolean isChild( @NotNull Node child );
-
-  /**
-   * Returns true if the node has a parent
-   *
-   * @return true if the node has a parent, false otherwise
-   */
-  boolean hasParent();
-
-  /**
-   * Returns the child with the given childName
-   *
-   * @param childName the childName of the children
-   * @return the child with the given childName
-   */
-  Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
 }

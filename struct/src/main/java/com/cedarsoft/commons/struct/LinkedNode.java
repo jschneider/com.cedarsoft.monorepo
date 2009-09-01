@@ -64,6 +64,7 @@ public class LinkedNode implements Node {
     source.detachChild( index );
   }
 
+  @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     return source.findChild( childName );
   }
@@ -73,7 +74,7 @@ public class LinkedNode implements Node {
     return Path.buildPath( this );
   }
 
-  public boolean isChild( @NotNull Node child ) {
+  public boolean isChild( @NotNull StructPart child ) {
     return source.isChild( child );
   }
 

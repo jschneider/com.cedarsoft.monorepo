@@ -50,6 +50,7 @@ public class LeafNode implements Node {
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
   }
 
+  @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     throw new UnsupportedOperationException();
   }
@@ -84,7 +85,7 @@ public class LeafNode implements Node {
     return Path.buildPath( this );
   }
 
-  public boolean isChild( @NotNull Node child ) {
+  public boolean isChild( @NotNull StructPart child ) {
     return false;
   }
 

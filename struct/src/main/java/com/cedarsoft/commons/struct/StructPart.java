@@ -65,4 +65,36 @@ public interface StructPart {
    * @param structureListener the child listener
    */
   void removeStructureListener( @NotNull StructureListener structureListener );
+
+  /**
+   * Returns the path of this node
+   *
+   * @return the path
+   */
+  @NotNull
+  Path getPath();
+
+  /**
+   * Returns whether the given node is a child of this or not
+   *
+   * @param child the possible child
+   * @return true if the given node is a child, false otherwise
+   */
+  boolean isChild( @NotNull StructPart child );
+
+  /**
+   * Returns true if the node has a parent
+   *
+   * @return true if the node has a parent, false otherwise
+   */
+  boolean hasParent();
+
+  /**
+   * Returns the child with the given childName
+   *
+   * @param childName the childName of the children
+   * @return the child with the given childName
+   */
+  @NotNull
+  StructPart findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
 }

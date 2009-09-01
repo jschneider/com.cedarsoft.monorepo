@@ -87,7 +87,8 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     this.parentNode = parentNode;
   }
 
-  public boolean isChild( @NotNull Node child ) {
+  public boolean isChild( @NotNull StructPart child ) {
+    //noinspection SuspiciousMethodCalls
     return nodes.contains( child );
   }
 

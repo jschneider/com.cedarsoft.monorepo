@@ -43,7 +43,7 @@ public class DefaultNode implements Node {
     this.parent = parent;
   }
 
-  public boolean isChild( @NotNull Node child ) {
+  public boolean isChild( @NotNull StructPart child ) {
     return childrenSupport.isChild( child );
   }
 
@@ -51,6 +51,7 @@ public class DefaultNode implements Node {
     return parent != null;
   }
 
+  @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     return childrenSupport.findChild( childName );
   }

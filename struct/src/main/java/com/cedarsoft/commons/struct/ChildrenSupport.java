@@ -66,7 +66,7 @@ public interface ChildrenSupport {
    * @param child the child
    * @return whether the given child is managed by this children support
    */
-  boolean isChild( @NotNull Node child );
+  boolean isChild( @NotNull StructPart child );
 
   /**
    * Adds a structure listener
