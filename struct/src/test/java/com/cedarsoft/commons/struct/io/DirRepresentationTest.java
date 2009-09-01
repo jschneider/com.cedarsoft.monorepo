@@ -40,6 +40,40 @@ public class DirRepresentationTest {
   }
 
   @Test
+  public void testSubDirs() {
+    File baseDir = TestUtils.createEmptyTmpDir();
+    assertEquals( baseDir.list().length, 0 );
+
+    {
+      DirRepresenter representer = new DirRepresenter( root, false );
+      representer.store( baseDir, null );
+
+      assertTrue( new File( baseDir, "a/aa" ).isDirectory() );
+      new File( baseDir, "a/aa/sub" ).mkdir();
+    }
+
+
+    Node root = new DefaultNode( "root" );
+    assertEquals( root.getChildren().size(), 0 );
+
+    DirRepresenter representer = new DirRepresenter( root, false );
+    representer.parse( baseDir, new NodeFactory() {
+      @NotNull
+      public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
+        File file = context.lookupNonNull( File.class );
+        assertEquals( file.getName(), name );
+
+        assertNotNull( file );
+        assertNotNull( context.lookup( Node.class ) );
+        return new DefaultNode( name );
+      }
+    }, 2 );
+
+    assertEquals( root.getChildren().size(), 2 );
+    assertEquals( root.findChild( "a" ).findChild( "aa" ).getChildren().size(), 0 );
+  }
+
+  @Test
   public void testRootInvisible() {
     File baseDir = TestUtils.createEmptyTmpDir();
     assertEquals( baseDir.list().length, 0 );
@@ -74,7 +108,7 @@ public class DirRepresentationTest {
           assertNotNull( context.lookup( Node.class ) );
           return new DefaultNode( name );
         }
-      } );
+      }, 99 );
 
       assertEquals( root.getChildren().size(), 2 );
       assertEquals( root.findChild( "a" ).getChildren().size(), 2 );
@@ -111,7 +145,7 @@ public class DirRepresentationTest {
           assertNotNull( context.lookup( Node.class ) );
           return new DefaultNode( name );
         }
-      } );
+      }, 99 );
 
       assertEquals( root.getChildren().size(), 2 );
       assertEquals( root.findChild( "a" ).getChildren().size(), 2 );

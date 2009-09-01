@@ -64,7 +64,7 @@ public class DirRepresenter {
    * @param baseDir     the base dir
    * @param nodeFactory the node factory used to create new nodes. The context will contain the directory (File) and the parent Node
    */
-  public void parse( @NotNull File baseDir, @NotNull NodeFactory nodeFactory ) {
+  public void parse( @NotNull File baseDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
     if ( !root.getChildren().isEmpty() ) {
       throw new IllegalStateException( "Root still has children!" );
     }
@@ -79,20 +79,24 @@ public class DirRepresenter {
         throw new IllegalArgumentException( "Root node does not match dir. Node: <" + root.getName() + ">, Dir: <" + dir.getName() + '>' );
       }
 
-      parse( root, dir, nodeFactory );
+      parse( root, dir, nodeFactory, maxDepth );
     } else {
-      parse( root, baseDir, nodeFactory );
+      parse( root, baseDir, nodeFactory, maxDepth );
     }
   }
 
-  protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory ) {
+  protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
+    if ( maxDepth == 0 ) {
+      return;
+    }
+
     for ( File dir : currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) {
       String name = dir.getName();
 
       Node child = nodeFactory.createNode( name, Lookups.dynamicLookup( dir, node ) );
       node.addChild( child );
 
-      parse( child, dir, nodeFactory );
+      parse( child, dir, nodeFactory, maxDepth - 1 );
     }
   }
 
