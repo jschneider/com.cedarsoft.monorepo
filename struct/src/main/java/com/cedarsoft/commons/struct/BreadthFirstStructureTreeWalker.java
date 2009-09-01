@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.struct;
 
+import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
@@ -16,8 +17,15 @@ public class BreadthFirstStructureTreeWalker implements StructureTreeWalker {
 
     while ( !queue.isEmpty() ) {
       StructPart actual = queue.poll();
-      queue.addAll( actual.getChildren() );
-      walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
+
+      try {
+        walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
+
+        //Add the children
+        queue.addAll( actual.getChildren() );
+      } catch ( CanceledException ignore ) {
+        //Ignore the children
+      }
     }
   }
 }

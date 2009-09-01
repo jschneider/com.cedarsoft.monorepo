@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.struct;
 
+import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Stack;
@@ -15,12 +16,17 @@ public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
 
     while ( !queue.isEmpty() ) {
       StructPart actual = queue.pop();
-      //add the children reversed
-      for ( int i = actual.getChildren().size() - 1; i >= 0; i-- ) {
-        StructPart child = actual.getChildren().get( i );
-        queue.add( child );
+      try {
+        walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
+
+        //add the children reversed
+        for ( int i = actual.getChildren().size() - 1; i >= 0; i-- ) {
+          StructPart child = actual.getChildren().get( i );
+          queue.add( child );
+        }
+      } catch ( CanceledException ignore ) {
+        //If canceled the children are *not* added
       }
-      walkerCallBack.nodeReached( actual, Path.calculateLevel( root, actual ) );
     }
   }
 }

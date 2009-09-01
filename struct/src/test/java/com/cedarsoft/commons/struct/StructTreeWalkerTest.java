@@ -1,10 +1,9 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
+import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
+import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +12,7 @@ import java.util.List;
 /**
  *
  */
-public class StructTreeWalkerTest  {
+public class StructTreeWalkerTest {
   private Node root;
 
   @BeforeMethod
@@ -28,6 +27,45 @@ public class StructTreeWalkerTest  {
     child.addChild( new DefaultNode( "013" ) );
     root.addChild( new DefaultNode( "02" ) );
   }
+
+  @Test
+  public void testSkipDepthFirst() {
+    final List<String> expected = new ArrayList<String>( Arrays.asList( "0", "00", "02" ) );
+
+    StructureTreeWalker walker = new DepthFirstStructureTreeWalker();
+
+    walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      public void nodeReached( @NotNull StructPart node, int level ) {
+        if ( node.getName().equals( "01" ) ) {
+          throw new CanceledException();
+        }
+
+        assertSame( expected.remove( 0 ), node.getName() );
+        assertEquals( node.getName().length() - 1, level );
+      }
+    } );
+
+    assertTrue( expected.isEmpty() );
+  }
+
+  @Test
+  public void testBreadthFirstSkip() {
+    final List<String> expected = new ArrayList<String>( Arrays.asList( "0", "00", "02" ) );
+
+    StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
+    walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      public void nodeReached( @NotNull StructPart node, int level ) {
+        if ( node.getName().equals( "01" ) ) {
+          throw new CanceledException();
+        }
+
+        assertSame( expected.remove( 0 ), node.getName() );
+        assertEquals( node.getName().length() - 1, level );
+      }
+    } );
+    assertTrue( expected.isEmpty() );
+  }
+
 
   @Test
   public void testDeepFirst() {
@@ -56,6 +94,4 @@ public class StructTreeWalkerTest  {
     } );
     assertTrue( expected.isEmpty() );
   }
-
-
 }

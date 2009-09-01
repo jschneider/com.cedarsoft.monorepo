@@ -1,6 +1,7 @@
 package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
+import com.cedarsoft.CanceledException;
 
 /**
  * Traverses a structure.
@@ -23,7 +24,8 @@ public interface StructureTreeWalker {
      *
      * @param node  the node that is reached
      * @param level the level of the node (0 for the root node, 1 for the direct children of the root)
+     * @throws CanceledException if the current node and its children should be skipped
      */
-    void nodeReached( @NotNull StructPart node, int level );
+    void nodeReached( @NotNull StructPart node, int level ) throws CanceledException;
   }
 }
