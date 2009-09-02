@@ -24,6 +24,11 @@
     </dependency>
 
     <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
       <scope>test</scope>

@@ -13,7 +13,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -90,7 +93,7 @@ public class DirRepresenter {
       return;
     }
 
-    for ( File dir : currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) {
+    for ( File dir : listDirsSorted( currentDir ) ) {
       String name = dir.getName();
 
       Node child = nodeFactory.createNode( name, Lookups.dynamicLookup( dir, node ) );
@@ -98,6 +101,13 @@ public class DirRepresenter {
 
       parse( child, dir, nodeFactory, maxDepth - 1 );
     }
+  }
+
+  @NotNull
+  private static Iterable<? extends File> listDirsSorted( @NotNull File currentDir ) {
+    List<File> subDirs = new ArrayList<File>( Arrays.asList( currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) );
+    Collections.sort( subDirs );
+    return subDirs;
   }
 
   /**
