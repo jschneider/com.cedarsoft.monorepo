@@ -10,7 +10,7 @@ public abstract class AbstractLookup implements Lookup {
   public final <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException {
     T value = lookup( type );
     if ( value == null ) {
-      throw new IllegalStateException( "Nothing found for " + type.getName() );
+      throw new IllegalArgumentException( "Nothing found for " + type.getName() );
     } else {
       return value;
     }

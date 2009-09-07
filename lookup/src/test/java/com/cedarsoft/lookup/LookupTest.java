@@ -31,6 +31,19 @@ public class LookupTest  {
   }
 
   @Test
+  public void testException() {
+    Lookup lookup = Lookups.createLookup( "a", 5 );
+
+    assertEquals( lookup.lookupNonNull( String.class ), "a" );
+
+    try {
+      lookup.lookupNonNull( List.class );
+      fail("Where is the Exception");
+    } catch ( IllegalArgumentException ignore ) {
+    }
+  }
+
+  @Test
   public void testLookup() {
     checkLookupStore( new MappedLookup() );
   }
