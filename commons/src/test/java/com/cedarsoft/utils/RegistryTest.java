@@ -13,7 +13,7 @@ public class RegistryTest {
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    registry = new Registry<String>();
+    registry = new DefaultRegistry<String>();
   }
 
   @Test
@@ -26,7 +26,7 @@ public class RegistryTest {
 
   @Test
   public void testListener() throws Exception {
-    final Registry.Listener<String> listener = EasyMock.createMock( Registry.Listener.class );
+    final DefaultRegistry.Listener<String> listener = EasyMock.createMock( DefaultRegistry.Listener.class );
 
 
     new EasyMockTemplate( listener ) {

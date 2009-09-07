@@ -3,6 +3,7 @@ package com.cedarsoft.utils.serialization;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.utils.Registry;
 import com.cedarsoft.utils.StillContainedException;
+import com.cedarsoft.utils.DefaultRegistry;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
@@ -25,8 +26,10 @@ public class RegistrySerializerTest {
     access = new InMemorySerializedObjectsAccess();
     serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractSerializer<String>( "text" ) {
       @Override
-      public void serialize( @NotNull Element element, @NotNull String object, @NotNull Lookup context ) {
+      @NotNull
+      public Element serialize( @NotNull Element element, @NotNull String object, @NotNull Lookup context ) {
         element.setText( object );
+        return element;
       }
 
       @Override
@@ -80,7 +83,7 @@ public class RegistrySerializerTest {
 
   @Test
   public void testEmptyConstrucot() throws IOException {
-    Registry<String> registry = new Registry<String>( serializer.deserialize() );
+    Registry<String> registry = new DefaultRegistry<String>( serializer.deserialize() );
     assertEquals( registry.getStoredObjects().size(), 0 );
   }
 
@@ -107,7 +110,7 @@ public class RegistrySerializerTest {
   private static class MyRegistryFactory implements RegistrySerializer.RegistryFactory<String, Registry<String>> {
     @NotNull
     public Registry<String> createRegistry( @NotNull List<? extends String> objects, @NotNull Comparator<String> comparator ) {
-      return new Registry<String>( objects, comparator );
+      return new DefaultRegistry<String>( objects, comparator );
     }
   }
 }

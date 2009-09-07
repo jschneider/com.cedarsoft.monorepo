@@ -1,7 +1,8 @@
 package com.cedarsoft.utils.serialization;
 
-import com.cedarsoft.utils.Registry;
 import com.cedarsoft.utils.StillContainedException;
+import com.cedarsoft.utils.DefaultRegistry;
+import com.cedarsoft.utils.Registry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -106,7 +107,7 @@ public class RegistrySerializer<T, R extends Registry<T>> {
       }
     } );
 
-    registry.addListener( new Registry.Listener<T>() {
+    registry.addListener( new DefaultRegistry.Listener<T>() {
       public void objectAdded( @NotNull T object ) {
         try {
           add( object );
