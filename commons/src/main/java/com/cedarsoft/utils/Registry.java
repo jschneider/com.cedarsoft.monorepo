@@ -73,13 +73,29 @@ public class Registry<T> {
 
   @NotNull
   public List<? extends T> findStoredObjects( @NotNull @NonNls Matcher<T> matcher ) {
-
     lock.readLock().lock();
     try {
       List<T> found = new ArrayList<T>();
       for ( T object : storedObjects ) {
         if ( matcher.matches( object ) ) {
           found.add( object );
+        }
+      }
+
+      return found;
+    } finally {
+      lock.readLock().unlock();
+    }
+  }
+
+  @NotNull
+  public <C> List<? extends C> findStoredObjects( @NotNull @NonNls Matcher<T> matcher, @NotNull Converter<T,C> converter ) {
+    lock.readLock().lock();
+    try {
+      List<C> found = new ArrayList<C>();
+      for ( T object : storedObjects ) {
+        if ( matcher.matches( object ) ) {
+          found.add( converter.convert( object ) );
         }
       }
 
