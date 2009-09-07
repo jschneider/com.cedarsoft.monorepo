@@ -18,6 +18,11 @@ import java.security.NoSuchAlgorithmException;
  */
 public class HashTest {
   @Test
+  public void testDigestTest() {
+    assertNotSame( Algorithm.SHA256.getMessageDigest(), Algorithm.SHA256.getMessageDigest() );
+  }
+  
+  @Test
   public void testSerialization() throws IOException, ClassNotFoundException {
     Hash hash = Hash.fromHex( Algorithm.SHA256, "1234" );
 
