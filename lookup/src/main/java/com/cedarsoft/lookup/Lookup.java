@@ -30,7 +30,7 @@ public interface Lookup {
       <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException;
 
   /**
-   * Retuns a  map containing the available lookup objects.
+   * Returns a  map containing the available lookup objects.
    * This method can throw an {@link UnsupportedOperationException} if the map is not available.
    * If no exception is thrown the map must contain every possible lookup object.
    *
