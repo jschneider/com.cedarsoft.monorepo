@@ -83,8 +83,10 @@ public abstract class AbstractSerializer<T> implements ExtendedSerializer<T> {
    * @param element the element
    * @param object  the object
    * @param context the context
+   * @return the element (for fluent writing)
    */
-  public abstract void serialize( @NotNull Element element, @NotNull T object, @NotNull Lookup context ) throws IOException;
+  @NotNull
+  public abstract Element serialize( @NotNull Element element, @NotNull T object, @NotNull Lookup context ) throws IOException;
 
   /**
    * Deserializes the object from the diven document

@@ -20,9 +20,10 @@ public class DimensionSerializer extends AbstractSerializer<Dimension> {
     super( "dimension" );
   }
 
+  @NotNull
   @Override
-  public void serialize( @NonNls @NotNull Element element, @NotNull Dimension object, @NotNull Lookup context ) throws IOException {
-    element.setText( object.width + SEPARATOR + object.height );
+  public Element serialize( @NonNls @NotNull Element element, @NotNull Dimension object, @NotNull Lookup context ) throws IOException {
+    return element.setText( object.width + SEPARATOR + object.height );
   }
 
   @NotNull
