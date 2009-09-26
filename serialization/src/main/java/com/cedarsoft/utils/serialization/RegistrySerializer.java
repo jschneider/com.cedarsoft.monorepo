@@ -130,6 +130,21 @@ public class RegistrySerializer<T, R extends Registry<T>> {
     return serializer;
   }
 
+  @NotNull
+  public SerializedObjectsAccess getSerializedObjectsAccess() {
+    return serializedObjectsAccess;
+  }
+
+  @NotNull
+  public IdResolver<T> getIdResolver() {
+    return idResolver;
+  }
+
+  @Nullable
+  public Comparator<T> getComparator() {
+    return comparator;
+  }
+
   public interface IdResolver<T> {
     /**
      * Returns the id for the given object
