@@ -1,5 +1,6 @@
 package com.cedarsoft.utils.serialization;
 
+import com.cedarsoft.utils.StillContainedException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,8 +12,6 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import com.cedarsoft.utils.StillContainedException;
 
 /**
  *
@@ -50,5 +49,9 @@ public class InMemorySerializedObjectsAccess implements RegistrySerializer.Seria
         serialized.put( id, toByteArray() );
       }
     };
+  }
+
+  public void clear() {
+    serialized.clear();
   }
 }
