@@ -9,8 +9,9 @@ import java.net.URL;
 import java.security.MessageDigest;
 
 /**
- * Calculates the hashs of resources
+ * Calculates the hashes of resources
  */
+@Deprecated
 public class ResourceHashCalculator {
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {

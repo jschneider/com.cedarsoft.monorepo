@@ -3,6 +3,9 @@ package com.cedarsoft.utils.crypt;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -30,16 +33,38 @@ public class HashCalculator {
   }
 
   @NotNull
+  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
+    return calculate( algorithm.getMessageDigest(), resource );
+  }
+
+  @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull URL resource ) throws IOException {
-    InputStream in = null;
+    InputStream in = resource.openStream();
     try {
-      in = resource.openStream();
       return calculate( messageDigest, in );
     } finally {
-      if ( in != null ) {
-        in.close();
-      }
+      in.close();
     }
+  }
+
+  @NotNull
+  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull File file ) throws IOException {
+    return calculate( algorithm.getMessageDigest(), file );
+  }
+
+  @NotNull
+  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull File file ) throws IOException {
+    InputStream in = new BufferedInputStream( new FileInputStream( file ) );
+    try {
+      return calculate( messageDigest, in );
+    } finally {
+      in.close();
+    }
+  }
+
+  @NotNull
+  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resourceIn ) throws IOException {
+    return calculate( algorithm.getMessageDigest(), resourceIn );
   }
 
   @NotNull
