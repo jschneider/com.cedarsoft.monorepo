@@ -66,15 +66,14 @@ public class DefaultRegistry<T> implements Registry<T> {
     this.comparator = comparator;
 
     if ( comparator != null ) {
-      Set<T> set = new TreeSet<T>( comparator );
+      Collection<T> set = new TreeSet<T>( comparator );
       set.addAll( storedObjects );
       if ( storedObjects.size() != set.size() ) {
         throw new StillContainedException( "The stored objects collections contains duplicate entries" );
       }
-    } else {
-      this.storedObjects.addAll( storedObjects );
     }
 
+    this.storedObjects.addAll( storedObjects );
   }
 
   @NotNull
