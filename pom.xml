@@ -307,11 +307,16 @@
       <dependency>
         <groupId>com.cedarsoft</groupId>
         <artifactId>guice-annotations</artifactId>
-        <version>1.1.2</version>
+        <version>2.0.1</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.guice</groupId>
         <artifactId>guice</artifactId>
+        <version>2.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>aopalliance</groupId>
+        <artifactId>aopalliance</artifactId>
         <version>1.0</version>
       </dependency>
 
