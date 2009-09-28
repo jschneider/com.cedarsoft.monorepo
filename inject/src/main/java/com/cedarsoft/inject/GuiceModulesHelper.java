@@ -18,35 +18,50 @@ public class GuiceModulesHelper {
   }
 
   @NotNull
-  public static Result minimize( @NotNull List<? extends Module> moduleTypes, @NotNull Class<?> testType ) {
-    Result best = new Result( moduleTypes );
+  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
+    //Verify to ensure it works with all modules
+    verifyInjection( modules, testType );
 
-    //Iterate over all types
-    for ( Module current : moduleTypes ) {
+    return minimize( new Result( modules ), testType );
+  }
+
+  @NotNull
+  public static Result minimize( @NotNull Result result, @NotNull Class<?> testType ) {
+    //Iterate over all types (copy because the result is updated)
+    List<Module> modules = new ArrayList<Module>( result.getTypes() );
+    for ( Module current : modules ) {
+
       try {
-        List<Module> copy = new ArrayList<Module>( moduleTypes );
+        List<Module> copy = new ArrayList<Module>( modules );
         copy.remove( current );
-        Guice.createInjector( copy ).getInstance( testType );
+        verifyInjection( copy, testType );
 
-        best.remove( current );
-
+        //Update the result
+        result.remove( current );
 
         if ( copy.isEmpty() ) {
-          best.removeAll();
-          return best; //fast exit
+          result.removeAll();
+          return result; //fast exit
         }
 
-        //Check further
-        Result currentBest = minimize( copy, testType );
-
-        if ( best.size() > currentBest.size() ) {
-          best = currentBest;
-        }
+        //Try to minimize further
+        return minimize( result, testType );
       } catch ( Exception ignore ) {
       }
     }
 
-    return best;
+    return new Result( modules ); //no minimization
+  }
+
+  private static void verifyInjection( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
+    Guice.createInjector( modules ).getInstance( testType );
+  }
+
+  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) throws AssertionError {
+    GuiceModulesHelper.Result minimal = minimize( modules, testType );
+    if ( !minimal.getRemoved().isEmpty() ) {
+      throw new AssertionError( "Can be minimized:\nRemove:\n" + minimal.getRemovedClassNamesAsString() + minimal.asInstantiations() );
+    }
   }
 
   public static class Result {
@@ -82,6 +97,20 @@ public class GuiceModulesHelper {
     @NotNull
     public List<? extends Module> getRemoved() {
       return Collections.unmodifiableList( removed );
+    }
+
+    @NotNull
+    @NonNls
+    public String getRemovedClassNamesAsString() {
+      StringBuilder builder = new StringBuilder();
+
+      for ( Module module : removed ) {
+        builder.append( "- " );
+        builder.append( module.getClass().getName() );
+        builder.append( "\n" );
+      }
+
+      return builder.toString();
     }
 
     @NotNull
