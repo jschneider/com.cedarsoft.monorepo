@@ -50,10 +50,10 @@ public class GuiceModulesHelper {
       }
     }
 
-    return new Result( modules ); //no minimization
+    return result; //no minimization
   }
 
-  private static void verifyInjection( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
+  private static void verifyInjection( @NotNull Iterable<? extends Module> modules, @NotNull Class<?> testType ) {
     Guice.createInjector( modules ).getInstance( testType );
   }
 
