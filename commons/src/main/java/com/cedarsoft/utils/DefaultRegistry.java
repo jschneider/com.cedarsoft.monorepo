@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -28,17 +30,51 @@ public class DefaultRegistry<T> implements Registry<T> {
   @Nullable
   protected final Comparator<T> comparator;
 
+  /**
+   * Creates an empty registry
+   */
   public DefaultRegistry() {
     comparator = null;
   }
 
+  /**
+   * Creates a registry with containing the given objects.
+   * No comparator is set
+   *
+   * @param storedObjects the stored objects
+   */
   public DefaultRegistry( @NotNull Collection<? extends T> storedObjects ) {
     this( storedObjects, null );
   }
 
-  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) {
+  /**
+   * Creates an empty registry with the given (optional) comparator
+   *
+   * @param comparator the comparator
+   */
+  public DefaultRegistry( @Nullable Comparator<T> comparator ) {
     this.comparator = comparator;
-    this.storedObjects.addAll( storedObjects );
+  }
+
+  /**
+   * Creates a new registry
+   *
+   * @param storedObjects the initially stored objects
+   * @param comparator    the (optional) comparator
+   */
+  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException{
+    this.comparator = comparator;
+
+    if ( comparator != null ) {
+      Set<T> set = new TreeSet<T>( comparator );
+      set.addAll( storedObjects );
+      if ( storedObjects.size() != set.size() ) {
+        throw new StillContainedException( "The stored objects collections contains duplicate entries" );
+      }
+    } else {
+      this.storedObjects.addAll( storedObjects );
+    }
+
   }
 
   @NotNull
