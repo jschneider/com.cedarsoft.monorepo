@@ -5,7 +5,7 @@ import com.cedarsoft.gdao.Finder;
 import com.cedarsoft.gdao.GenericDao;
 import com.cedarsoft.history.ClusteredElementsCollection;
 import com.cedarsoft.history.ClusteredObservableObjectAccess;
-import com.cedarsoft.history.ElementVisistor;
+import com.cedarsoft.history.ElementVisitor;
 import com.cedarsoft.history.ElementsListener;
 import com.cedarsoft.history.NoElementFoundException;
 import org.hibernate.Session;
@@ -147,26 +147,26 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
   }
 
   @NotNull
-  public List<? extends T> findElements( @NotNull ElementVisistor<? super T> elementVisistor ) {
-    return cache.findElements( elementVisistor );
+  public List<? extends T> findElements( @NotNull ElementVisitor<? super T> elementVisitor ) {
+    return cache.findElements( elementVisitor );
   }
 
   @NotNull
-  public T findFirstElement( @NotNull ElementVisistor<? super T> elementVisistor ) throws NoElementFoundException {
-    return cache.findFirstElement( elementVisistor );
+  public T findFirstElement( @NotNull ElementVisitor<? super T> elementVisitor ) throws NoElementFoundException {
+    return cache.findFirstElement( elementVisitor );
   }
 
   @Nullable
-  public T findFirstElementNullable( @NotNull ElementVisistor<? super T> elementVisistor ) {
-    return cache.findFirstElementNullable( elementVisistor );
+  public T findFirstElementNullable( @NotNull ElementVisitor<? super T> elementVisitor ) {
+    return cache.findFirstElementNullable( elementVisitor );
   }
 
   public boolean contains( @NotNull T element ) {
     return cache.contains( element );
   }
 
-  public boolean contains( @NotNull ElementVisistor<? super T> elementVisistor ) throws NoElementFoundException {
-    return cache.contains( elementVisistor );
+  public boolean contains( @NotNull ElementVisitor<? super T> elementVisitor ) throws NoElementFoundException {
+    return cache.contains( elementVisitor );
   }
 
   public void shutdown() {

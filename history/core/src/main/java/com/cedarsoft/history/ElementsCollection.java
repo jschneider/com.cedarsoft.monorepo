@@ -179,13 +179,13 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   }
 
   @NotNull
-  public List<? extends E> findElements( @NotNull ElementVisistor<? super E> visistor ) {
+  public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> found = new ArrayList<E>();
 
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           found.add( element );
         }
       }
@@ -199,26 +199,26 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * Returns the first entry that matches the visistor
    *
-   * @param visistor the visitor that identifies the entries
+   * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
    * @throws NoElementFoundException if no entry has been found
    */
   @NotNull
-  public E findFirstElement( @NotNull ElementVisistor<? super E> visistor ) throws NoElementFoundException {
-    E found = findFirstElementNullable( visistor );
+  public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
+    E found = findFirstElementNullable( visitor );
     if ( found == null ) {
-      throw new NoElementFoundException( "No element found for " + visistor.getIdentifier() );
+      throw new NoElementFoundException( "No element found for " + visitor.getIdentifier() );
     }
     return found;
   }
 
   @Nullable
-  public E findFirstElementNullable( @NotNull ElementVisistor<? super E> visistor ) {
+  public E findFirstElementNullable( @NotNull ElementVisitor<? super E> visitor ) {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           return element;
         }
       }
@@ -237,11 +237,11 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
-  public boolean contains( @NotNull ElementVisistor<? super E> visistor ) throws NoElementFoundException {
+  public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           return true;
         }
       }
@@ -254,17 +254,17 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * Removes the entries
    *
-   * @param visistor the visitor that describes the entries
+   * @param visitor the visitor that describes the entries
    * @return the removed elememnts
    */
   @NotNull
-  public List<? extends E> removeElements( @NotNull ElementVisistor<? super E> visistor ) {
+  public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> removed = new ArrayList<E>();
     lock.writeLock().lock();
     try {
       for ( int i = 0; i < elements.size(); ) {
         E element = elements.get( i );
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           elements.remove( i );
           removed.add( element );
           collectionSupport.elementDeleted( element, i );

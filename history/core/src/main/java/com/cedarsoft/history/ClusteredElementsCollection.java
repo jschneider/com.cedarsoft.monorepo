@@ -182,13 +182,13 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   }
 
   @NotNull
-  public List<? extends E> findElements( @NotNull ElementVisistor<? super E> visistor ) {
+  public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> found = new ArrayList<E>();
 
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           found.add( element );
         }
       }
@@ -202,27 +202,27 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * Returns the first entry that matches the visistor
    *
-   * @param visistor the visitor that identifies the entries
+   * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
    * @throws com.cedarsoft.history.NoElementFoundException
    *          if no entry has been found
    */
   @NotNull
-  public E findFirstElement( @NotNull ElementVisistor<? super E> visistor ) throws NoElementFoundException {
-    E found = findFirstElementNullable( visistor );
+  public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
+    E found = findFirstElementNullable( visitor );
     if ( found == null ) {
-      throw new NoElementFoundException( "No element found for " + visistor.getIdentifier() );
+      throw new NoElementFoundException( "No element found for " + visitor.getIdentifier() );
     }
     return found;
   }
 
   @Nullable
-  public E findFirstElementNullable( @NotNull ElementVisistor<? super E> visistor ) {
+  public E findFirstElementNullable( @NotNull ElementVisitor<? super E> visitor ) {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           return element;
         }
       }
@@ -241,11 +241,11 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
-  public boolean contains( @NotNull ElementVisistor<? super E> visistor ) throws NoElementFoundException {
+  public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           return true;
         }
       }
@@ -258,16 +258,16 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * Removes the entries
    *
-   * @param visistor the visitor that describes the entries
+   * @param visitor the visitor that describes the entries
    */
   @NotNull
-  public List<? extends E> removeElements( @NotNull ElementVisistor<? super E> visistor ) {
+  public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> removed = new ArrayList<E>();
     lock.writeLock().lock();
     try {
       for ( Iterator<E> it = elements.iterator(); it.hasNext(); ) {
         E element = it.next();
-        if ( visistor.fits( element ) ) {
+        if ( visitor.fits( element ) ) {
           it.remove();
           removed.add( element );
         }

@@ -6,12 +6,12 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public abstract class ElementVisistor<E> {
+public abstract class ElementVisitor<E> {
   @NotNull
   @NonNls
   private final String identifier;
 
-  protected ElementVisistor( @NonNls @NotNull String identifier ) {
+  protected ElementVisitor( @NonNls @NotNull String identifier ) {
     this.identifier = identifier;
   }
 

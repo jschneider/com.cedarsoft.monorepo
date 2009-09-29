@@ -5,10 +5,8 @@ import org.easymock.classextension.EasyMock;
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
-import org.fest.reflect.core.Reflection;
 
 import java.util.List;
-import java.lang.reflect.Method;
 
 /**
  *
@@ -19,7 +17,7 @@ public class ElementsCollectionTest {
     ElementsCollection<Integer> collection = new ElementsCollection<Integer>( 0, 1, 2, 3, 4, 5, 6, 7 );
     assertEquals( collection.size(), 8 );
 
-    List<? extends Integer> removed = collection.removeElements( new ElementVisistor<Integer>( "" ) {
+    List<? extends Integer> removed = collection.removeElements( new ElementVisitor<Integer>( "" ) {
       @Override
       public boolean fits( @NotNull Integer element ) {
         return true;
@@ -53,7 +51,7 @@ public class ElementsCollectionTest {
       protected void codeToTest() {
         collection.addElementListener( listener );
 
-        assertEquals( collection.removeElements( new ElementVisistor<Integer>( "" ) {
+        assertEquals( collection.removeElements( new ElementVisitor<Integer>( "" ) {
           @Override
           public boolean fits( @NotNull Integer element ) {
             return true;
