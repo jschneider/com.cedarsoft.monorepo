@@ -44,6 +44,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 </project>
     
