@@ -1,6 +1,8 @@
 package com.cedarsoft.inject;
 
 import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Key;
 import com.google.inject.Module;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -19,14 +21,23 @@ public class GuiceModulesHelper {
 
   @NotNull
   public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
-    //Verify to ensure it works with all modules
-    verifyInjection( modules, testType );
+    return minimize( modules, Key.get( testType ) );
+  }
 
-    return minimize( new Result( modules ), testType );
+  @NotNull
+  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) {
+    //Verify to ensure it works with all modules
+    verifyInjection( modules, keys );
+
+    return minimize( new Result( modules ), keys );
   }
 
   @NotNull
   public static Result minimize( @NotNull Result result, @NotNull Class<?> testType ) {
+    return minimize( result, Key.get( testType ) );
+  }
+
+  public static Result minimize( @NotNull Result result, @NotNull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)
     List<Module> modules = new ArrayList<Module>( result.getTypes() );
     for ( Module current : modules ) {
@@ -34,7 +45,7 @@ public class GuiceModulesHelper {
       try {
         List<Module> copy = new ArrayList<Module>( modules );
         copy.remove( current );
-        verifyInjection( copy, testType );
+        verifyInjection( copy, keys );
 
         //Update the result
         result.remove( current );
@@ -45,7 +56,7 @@ public class GuiceModulesHelper {
         }
 
         //Try to minimize further
-        return minimize( result, testType );
+        return minimize( result, keys );
       } catch ( Exception ignore ) {
       }
     }
@@ -53,12 +64,20 @@ public class GuiceModulesHelper {
     return result; //no minimization
   }
 
-  private static void verifyInjection( @NotNull Iterable<? extends Module> modules, @NotNull Class<?> testType ) {
-    Guice.createInjector( modules ).getInstance( testType );
+  private static void verifyInjection( @NotNull Iterable<? extends Module> modules, @NotNull Key<?>... keys ) {
+    Injector injector = Guice.createInjector( modules );
+
+    for ( Key<?> key : keys ) {
+      injector.getInstance( key );
+    }
   }
 
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) throws AssertionError {
-    GuiceModulesHelper.Result minimal = minimize( modules, testType );
+    assertMinimizeNotPossible( modules, Key.get( testType ) );
+  }
+
+  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) throws AssertionError {
+    GuiceModulesHelper.Result minimal = minimize( modules, keys );
     if ( !minimal.getRemoved().isEmpty() ) {
       throw new AssertionError( "Can be minimized:\nRemove:\n" + minimal.getRemovedClassNamesAsString() + minimal.asInstantiations() );
     }
