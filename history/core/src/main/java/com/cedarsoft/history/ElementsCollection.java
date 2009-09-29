@@ -255,7 +255,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    * Removes the entries
    *
    * @param visitor the visitor that describes the entries
-   * @return the removed elememnts
+   * @return the removed elements
    */
   @NotNull
   public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {
