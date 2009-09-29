@@ -96,7 +96,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return !hasElements();
   }
 
-  public void addAll( @NotNull List<? extends E> additionalElements ) {
+  public void addAll( @NotNull Iterable<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
       add( element );
     }
@@ -132,7 +132,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    * @param elements the elements
    */
   public void setElements( @NotNull List<? extends E> elements ) {
-    List<E> newElements = new ArrayList<E>( elements );
+    Collection<E> newElements = new ArrayList<E>( elements );
 
     lock.writeLock().lock();
     try {
