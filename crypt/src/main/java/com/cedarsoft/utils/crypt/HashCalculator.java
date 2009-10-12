@@ -19,17 +19,28 @@ public class HashCalculator {
   }
 
   @NotNull
+  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls byte[] value ) {
+    return calculate( algorithm.getMessageDigest(), value );
+  }
+  
+  @NotNull
+  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls byte[] value ) {
+    messageDigest.reset();
+    messageDigest.update( value );
+
+    byte[] digest = messageDigest.digest();
+    return new Hash( Algorithm.getAlgorithm( messageDigest.getAlgorithm() ), digest );
+  }
+
+
+  @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls String value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
 
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls String value ) {
-    messageDigest.reset();
-    messageDigest.update( value.getBytes() );
-
-    byte[] digest = messageDigest.digest();
-    return new Hash( Algorithm.getAlgorithm( messageDigest.getAlgorithm() ), digest );
+    return calculate( messageDigest, value.getBytes() );
   }
 
   @NotNull
