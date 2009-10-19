@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft;
 
 import com.google.inject.BindingAnnotation;
 

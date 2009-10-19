@@ -1,5 +1,6 @@
 package com.cedarsoft.utils;
 
+import com.cedarsoft.ApplicationName;
 import com.google.inject.Inject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
