@@ -25,7 +25,7 @@ public interface SerializingStrategy<T> {
    * @param object the reference
    * @return true if this strategy supports the reference, false otherwise
    */
-  boolean supports( @NotNull T object );
+  boolean supports( @NotNull Object object );
 
   /**
    * Serializes the reference

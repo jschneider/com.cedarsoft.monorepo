@@ -24,7 +24,7 @@ public abstract class AbstractSerializingStrategy<T> implements SerializingStrat
     return id;
   }
 
-  public boolean supports( @NotNull T object ) {
+  public boolean supports( @NotNull Object object ) {
     return supportedType.isAssignableFrom( object.getClass() );
   }
 }

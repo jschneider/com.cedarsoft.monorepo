@@ -23,13 +23,13 @@ public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
   private static final String ATTRIBUTE_TYPE = "type";
 
   @NotNull
-  private final List<SerializingStrategy<T>> strategies = new ArrayList<SerializingStrategy<T>>();
+  private final List<SerializingStrategy<? extends T>> strategies = new ArrayList<SerializingStrategy<? extends T>>();
 
-  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull SerializingStrategy<T>... strategies ) {
+  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull SerializingStrategy<? extends T>... strategies ) {
     this( defaultElementName, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends SerializingStrategy<T>> strategies ) {
+  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends SerializingStrategy<? extends T>> strategies ) {
     super( defaultElementName );
     this.strategies.addAll( strategies );
   }
@@ -55,9 +55,9 @@ public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
 
   @NotNull
   private SerializingStrategy<T> findStrategy( @NotNull @NonNls String type ) throws NotFoundException {
-    for ( SerializingStrategy<T> strategy : strategies ) {
+    for ( SerializingStrategy<? extends T> strategy : strategies ) {
       if ( strategy.getId().equals( type ) ) {
-        return strategy;
+        return ( SerializingStrategy<T> ) strategy;
       }
     }
 
@@ -66,9 +66,9 @@ public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
 
   @NotNull
   private SerializingStrategy<T> findStrategy( @NotNull T object ) throws NotFoundException {
-    for ( SerializingStrategy<T> strategy : strategies ) {
+    for ( SerializingStrategy<? extends T> strategy : strategies ) {
       if ( strategy.supports( object ) ) {
-        return strategy;
+        return ( SerializingStrategy<T> ) strategy;
       }
     }
 
@@ -76,7 +76,7 @@ public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
   }
 
   @NotNull
-  public List<? extends SerializingStrategy<T>> getStrategies() {
+  public Collection<? extends SerializingStrategy<? extends T>> getStrategies() {
     return Collections.unmodifiableList( strategies );
   }
 }
