@@ -1,6 +1,6 @@
 package com.cedarsoft.app;
 
-import com.cedarsoft.app.Version;
+import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 /**

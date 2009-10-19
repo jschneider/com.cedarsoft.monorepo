@@ -1,6 +1,5 @@
 package com.cedarsoft.app;
 
-import com.cedarsoft.collustra.processing.Application;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.jdom.Element;

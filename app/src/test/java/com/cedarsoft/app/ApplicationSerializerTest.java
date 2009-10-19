@@ -1,12 +1,9 @@
 package com.cedarsoft.app;
 
-import com.cedarsoft.app.ApplicationSerializer;
-import com.cedarsoft.app.Version;
-import com.cedarsoft.app.VersionSerializer;
-import com.cedarsoft.collustra.processing.Application;
-import com.cedarsoft.serialization.AbstractSerializerTest;
 import com.cedarsoft.serialization.AbstractSerializer;
+import com.cedarsoft.serialization.AbstractSerializerTest;
 import org.jetbrains.annotations.NotNull;
+import static org.testng.Assert.*;
 
 /**
  *

@@ -1,6 +1,5 @@
 package com.cedarsoft.app;
 
-import com.cedarsoft.app.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.jdom.Element;

@@ -146,6 +146,12 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>serialization</artifactId>
+        <type>test-jar</type>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>app</artifactId>
         <version>${pom.version}</version>
       </dependency>
