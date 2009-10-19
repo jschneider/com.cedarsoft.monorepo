@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
@@ -136,6 +137,16 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>xml-commons</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>serialization</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>app</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
@@ -392,6 +403,7 @@
 
   <modules>
     <module>commons</module>
+    <module>app</module>
     <module>test-utils</module>
     <module>cmd</module>
     <module>collections</module>
