@@ -2,6 +2,7 @@ package com.cedarsoft.app;
 
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.AbstractSerializer;
+import com.google.inject.Inject;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,7 @@ public class ApplicationSerializer extends AbstractSerializer<Application> {
   private final VersionSerializer versionSerializer;
   private static final String ELEMENT_NAME = "name";
 
+  @Inject
   public ApplicationSerializer( @NotNull VersionSerializer versionSerializer ) {
     super( "application" );
     this.versionSerializer = versionSerializer;
