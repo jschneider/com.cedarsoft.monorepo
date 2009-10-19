@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.serialization;
+package com.cedarsoft.serialization;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.SuffixFileFilter;

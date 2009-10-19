@@ -1,4 +1,4 @@
-package com.cedarsoft;
+package com.cedarsoft.app;
 
 import org.jetbrains.annotations.Nullable;
 

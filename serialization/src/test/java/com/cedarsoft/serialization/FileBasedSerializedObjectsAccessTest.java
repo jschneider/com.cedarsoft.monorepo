@@ -1,7 +1,7 @@
-package com.cedarsoft.utils.serialization;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.TestUtils;
-import com.cedarsoft.utils.serialization.FileBasedSerializedObjectsAccess;
+import com.cedarsoft.serialization.FileBasedSerializedObjectsAccess;
 import com.cedarsoft.utils.StillContainedException;
 import org.apache.commons.io.IOUtils;
 import static org.testng.Assert.*;

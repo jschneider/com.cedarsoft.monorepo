@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.serialization;
+package com.cedarsoft.serialization;
 
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;

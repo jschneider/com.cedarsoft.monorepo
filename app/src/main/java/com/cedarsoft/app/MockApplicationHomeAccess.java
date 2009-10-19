@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.app;
 
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;

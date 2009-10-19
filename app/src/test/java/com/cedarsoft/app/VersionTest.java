@@ -1,4 +1,4 @@
-package com.cedarsoft;
+package com.cedarsoft.app;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.*;

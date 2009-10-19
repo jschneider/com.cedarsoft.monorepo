@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.serialization;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
