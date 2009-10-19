@@ -1,6 +1,6 @@
 package com.cedarsoft.gdao;
 
-import com.cedarsoft.utils.MultiLock;
+import com.cedarsoft.utils.lock.MultiLock;
 import com.cedarsoft.utils.ThreadUtils;
 import org.jetbrains.annotations.Nullable;
 import static org.testng.Assert.*;

@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.utils.lock;
 
 import org.jetbrains.annotations.NotNull;
 
