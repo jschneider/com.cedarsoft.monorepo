@@ -47,4 +47,10 @@ public class Application {
     result = 31 * result + version.hashCode();
     return result;
   }
+
+  @NonNls
+  @Override
+  public String toString() {
+    return name + " (" + version + ')';
+  }
 }
