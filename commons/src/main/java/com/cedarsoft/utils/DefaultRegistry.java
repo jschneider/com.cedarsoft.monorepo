@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -161,7 +160,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     listenersLock.readLock().lock();
     try {
       for ( Listener<T> listener : listeners ) {
-        listener.objectAdded( object );
+        listener.objectStored( object );
       }
     } finally {
       listenersLock.readLock().unlock();

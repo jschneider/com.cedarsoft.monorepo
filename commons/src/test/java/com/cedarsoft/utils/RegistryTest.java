@@ -72,7 +72,7 @@ public class RegistryTest {
     new EasyMockTemplate( listener ) {
       @Override
       protected void expectations() throws Exception {
-        listener.objectAdded( "asdf" );
+        listener.objectStored( "asdf" );
       }
 
       @Override

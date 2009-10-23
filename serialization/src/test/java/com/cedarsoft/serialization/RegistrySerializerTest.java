@@ -61,7 +61,7 @@ public class RegistrySerializerTest {
 
   @Test
   public void testDeserialize() throws IOException {
-    serializer.add( "1" );
+    serializer.serialize( "1" );
 
     assertEquals( serializer.deserialize().size(), 1 );
     assertEquals( serializer.deserialize().get( 0 ), "1" );
@@ -69,7 +69,7 @@ public class RegistrySerializerTest {
 
   @Test
   public void testConnected() throws IOException {
-    serializer.add( "1" );
+    serializer.serialize( "1" );
 
     Registry<String> registry = serializer.createConnectedRegistry( new MyRegistryFactory() );
     assertEquals( registry.getStoredObjects().size(), 1 );
@@ -91,11 +91,11 @@ public class RegistrySerializerTest {
   public void testMulti() throws IOException {
     assertEquals( access.getStoredIds().size(), 0 );
 
-    serializer.add( "1" );
+    serializer.serialize( "1" );
 
     assertEquals( access.getStoredIds().size(), 1 );
     try {
-      serializer.add( "1" );
+      serializer.serialize( "1" );
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
     }

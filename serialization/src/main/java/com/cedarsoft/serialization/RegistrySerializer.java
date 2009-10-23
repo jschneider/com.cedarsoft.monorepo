@@ -1,8 +1,8 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.utils.StillContainedException;
 import com.cedarsoft.utils.DefaultRegistry;
 import com.cedarsoft.utils.Registry;
+import com.cedarsoft.utils.StillContainedException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,12 +76,12 @@ public class RegistrySerializer<T, R extends Registry<T>> {
   }
 
   /**
-   * Adds an object
+   * Serializes an object
    *
    * @param object the object
    * @throws IOException
    */
-  public void add( @NotNull T object ) throws StillContainedException, IOException {
+  public void serialize( @NotNull T object ) throws StillContainedException, IOException {
     OutputStream out = serializedObjectsAccess.openOut( getId( object ) );
     try {
       serializer.serialize( object, out );
@@ -108,9 +108,9 @@ public class RegistrySerializer<T, R extends Registry<T>> {
     } );
 
     registry.addListener( new DefaultRegistry.Listener<T>() {
-      public void objectAdded( @NotNull T object ) {
+      public void objectStored( @NotNull T object ) {
         try {
-          add( object );
+          serialize( object );
         } catch ( IOException e ) {
           throw new RuntimeException( e );
         }

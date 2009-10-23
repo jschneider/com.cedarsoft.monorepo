@@ -96,7 +96,7 @@ public interface Registry<T> {
      *
      * @param object the object
      */
-    void objectAdded( @NotNull T object );
+    void objectStored( @NotNull T object );
   }
 
   /**
