@@ -1,5 +1,6 @@
 package com.cedarsoft.utils;
 
+import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +62,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
    */
-  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException{
+  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
 
     if ( comparator != null ) {
@@ -99,6 +100,16 @@ public class DefaultRegistry<T> implements Registry<T> {
     } finally {
       lock.readLock().unlock();
     }
+  }
+
+  @NotNull
+  public T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException {
+    T found = findStoredObject( matcher );
+    if ( found == null ) {
+      throw new NotFoundException( notFoundMessage );
+    }
+
+    return found;
   }
 
   @NotNull
