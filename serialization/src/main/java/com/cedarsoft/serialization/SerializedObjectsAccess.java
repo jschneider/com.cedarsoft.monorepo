@@ -19,8 +19,8 @@ public interface SerializedObjectsAccess {
    * @param id the id
    * @return the output stream
    *
-   * @throws java.io.FileNotFoundException
-   * @throws com.cedarsoft.utils.StillContainedException if an object with the given id is still contained
+   * @throws FileNotFoundException
+   * @throws StillContainedException if an object with the given id is still contained
    */
   @NotNull
   OutputStream openOut( @NotNull @NonNls String id ) throws StillContainedException, FileNotFoundException;
@@ -40,7 +40,7 @@ public interface SerializedObjectsAccess {
    * @param id the id
    * @return the input stream
    *
-   * @throws java.io.FileNotFoundException
+   * @throws FileNotFoundException
    */
   @NotNull
   InputStream getInputStream( @NotNull @NonNls String id ) throws FileNotFoundException;
