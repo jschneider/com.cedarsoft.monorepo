@@ -19,7 +19,7 @@ import java.util.Set;
  */
 public class RegistrySerializerTest {
   private RegistrySerializer<String, Registry<String>> serializer;
-  private RegistrySerializer.SerializedObjectsAccess access;
+  private SerializedObjectsAccess access;
 
   @BeforeMethod
   public void setup() {

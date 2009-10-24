@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  *
  */
-public class InMemorySerializedObjectsAccess implements RegistrySerializer.SerializedObjectsAccess {
+public class InMemorySerializedObjectsAccess implements SerializedObjectsAccess {
   @NotNull
   @NonNls
   private final Map<String, byte[]> serialized = new HashMap<String, byte[]>();

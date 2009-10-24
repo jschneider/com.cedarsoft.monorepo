@@ -7,9 +7,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -169,40 +167,4 @@ public class RegistrySerializer<T, R extends Registry<T>> {
     R createRegistry( @NotNull List<? extends T> objects, @NotNull Comparator<T> comparator );
   }
 
-  /**
-   * The serialized objects access
-   */
-  public interface SerializedObjectsAccess {
-    /**
-     * Returns the output for the given id
-     *
-     * @param id the id
-     * @return the output stream
-     *
-     * @throws FileNotFoundException
-     * @throws StillContainedException if an object with the given id is still contained
-     */
-    @NotNull
-    OutputStream openOut( @NotNull @NonNls String id ) throws StillContainedException, FileNotFoundException;
-
-    /**
-     * Returns all stored ids
-     *
-     * @return the stored ids
-     */
-    @NotNull
-    @NonNls
-    Set<? extends String> getStoredIds() throws FileNotFoundException;
-
-    /**
-     * Returns the input stream
-     *
-     * @param id the id
-     * @return the input stream
-     *
-     * @throws FileNotFoundException
-     */
-    @NotNull
-    InputStream getInputStream( @NotNull @NonNls String id ) throws FileNotFoundException;
-  }
 }

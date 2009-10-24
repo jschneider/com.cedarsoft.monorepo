@@ -22,7 +22,7 @@ import com.cedarsoft.utils.StillContainedException;
 /**
  *
  */
-public class FileBasedSerializedObjectsAccess implements RegistrySerializer.SerializedObjectsAccess {
+public class FileBasedSerializedObjectsAccess implements SerializedObjectsAccess {
   @NotNull
   @NonNls
   private final File baseDir;
