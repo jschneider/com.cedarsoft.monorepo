@@ -18,6 +18,11 @@ public class ProviderTest {
       public String provide() throws IOException {
         throw new IOException( "Uuups" );
       }
+
+      @NotNull
+      public String getDescription() {
+        return "asdf";
+      }
     };
 
     try {
