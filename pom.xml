@@ -115,6 +115,11 @@
         <version>${pom.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>provider</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.cedarsoft.commons.spring</groupId>
         <artifactId>configuration-spring</artifactId>
         <version>${pom.version}</version>
@@ -411,6 +416,7 @@
     <module>commons</module>
     <module>app</module>
     <module>test-utils</module>
+    <module>provider</module>
     <module>cmd</module>
     <module>collections</module>
     <module>configuration</module>
