@@ -18,6 +18,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * Abstract serializer based on JDom
+ *
  * @param <T> the type
  */
 public abstract class AbstractSerializer<T> implements ExtendedSerializer<T> {
