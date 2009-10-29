@@ -1,16 +1,16 @@
 package com.cedarsoft.app;
 
-import com.cedarsoft.serialization.AbstractSerializer;
-import com.cedarsoft.serialization.AbstractSerializerTest;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 
 /**
  *
  */
-public class VersionSerializerTest extends AbstractSerializerTest<Version> {
+public class VersionJDomSerializerTest extends AbstractJDomSerializerTest<Version> {
   @NotNull
-  protected AbstractSerializer<Version> getSerializer() {
+  protected AbstractJDomSerializer<Version> getSerializer() {
     return new VersionSerializer();
   }
 

@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +12,7 @@ import java.io.IOException;
 /**
  *
  */
-public class DimensionSerializer extends AbstractSerializer<Dimension> {
+public class DimensionSerializer extends AbstractJDomSerializer<Dimension> {
   @NotNull
   @NonNls
   public static final String SEPARATOR = "x";

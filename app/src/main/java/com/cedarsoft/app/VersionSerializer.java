@@ -1,7 +1,7 @@
 package com.cedarsoft.app;
 
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.AbstractSerializer;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  *
  */
-public class VersionSerializer extends AbstractSerializer<Version> {
+public class VersionSerializer extends AbstractJDomSerializer<Version> {
   public VersionSerializer() {
     super( "version" );
   }

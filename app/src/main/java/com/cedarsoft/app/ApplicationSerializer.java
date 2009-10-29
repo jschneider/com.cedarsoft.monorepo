@@ -1,7 +1,7 @@
 package com.cedarsoft.app;
 
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.AbstractSerializer;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.google.inject.Inject;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  *
  */
-public class ApplicationSerializer extends AbstractSerializer<Application> {
+public class ApplicationSerializer extends AbstractJDomSerializer<Application> {
   @NotNull
   @NonNls
   private static final String ELEMENT_VERSION = "version";

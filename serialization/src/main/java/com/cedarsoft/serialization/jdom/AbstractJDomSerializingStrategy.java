@@ -1,6 +1,7 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.SerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +11,7 @@ import java.io.IOException;
 /**
  * @param <T> the type
  */
-public abstract class AbstractSerializingStrategy<T> extends AbstractSerializer<T> implements SerializingStrategy<T> {
+public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSerializer<T> implements SerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;
@@ -18,7 +19,7 @@ public abstract class AbstractSerializingStrategy<T> extends AbstractSerializer<
   @NotNull
   private final Class<? extends T> supportedType;
 
-  protected AbstractSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType ) {
+  protected AbstractJDomSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType ) {
     super( id );
     this.id = id;
     this.supportedType = supportedType;

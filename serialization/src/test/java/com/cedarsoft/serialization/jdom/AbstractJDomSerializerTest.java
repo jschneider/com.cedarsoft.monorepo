@@ -1,5 +1,6 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
@@ -9,10 +10,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 
-public abstract class AbstractSerializerTest<T> {
+public abstract class AbstractJDomSerializerTest<T> {
   @Test
   public void testSerializer() throws IOException {
-    AbstractSerializer<T> serializer = getSerializer();
+    AbstractJDomSerializer<T> serializer = getSerializer();
 
     T objectToSerialize = createObjectToSerialize();
 
@@ -31,7 +32,7 @@ public abstract class AbstractSerializerTest<T> {
    * @return the serializer
    */
   @NotNull
-  protected abstract AbstractSerializer<T> getSerializer();
+  protected abstract AbstractJDomSerializer<T> getSerializer();
 
   /**
    * Creates the object to serialize

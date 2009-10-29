@@ -1,5 +1,7 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 
@@ -8,10 +10,10 @@ import java.awt.Dimension;
 /**
  *
  */
-public class DimensionSerializerTest extends AbstractSerializerTest<Dimension> {
+public class DimensionSerializerTest extends AbstractJDomSerializerTest<Dimension> {
   @NotNull
   @Override
-  protected AbstractSerializer<Dimension> getSerializer() {
+  protected AbstractJDomSerializer<Dimension> getSerializer() {
     return new DimensionSerializer();
   }
 

@@ -1,7 +1,8 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
+import com.cedarsoft.serialization.ExtendedSerializer;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -22,7 +23,7 @@ import java.io.OutputStream;
  *
  * @param <T> the type
  */
-public abstract class AbstractSerializer<T> implements ExtendedSerializer<T> {
+public abstract class AbstractJDomSerializer<T> implements ExtendedSerializer<T> {
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
@@ -31,7 +32,7 @@ public abstract class AbstractSerializer<T> implements ExtendedSerializer<T> {
   @NonNls
   private final String defaultElementName;
 
-  protected AbstractSerializer( @NotNull @NonNls String defaultElementName ) {
+  protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName ) {
     this.defaultElementName = defaultElementName;
   }
 

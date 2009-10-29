@@ -1,5 +1,10 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.jdom.AbstractDelegatingJDomSerializer;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
+import com.cedarsoft.serialization.jdom.AbstractJDomSerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -12,12 +17,12 @@ import java.util.Collection;
 /**
  *
  */
-public class DelegatingSerializerTest extends AbstractSerializerTest<Number> {
+public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Number> {
   private MySerializer serializer;
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractSerializingStrategy<Integer> intSerializer = new AbstractSerializingStrategy<Integer>( "int", Integer.class ) {
+    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class ) {
       public void serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
         element.setText( object.toString() );
       }
@@ -27,7 +32,7 @@ public class DelegatingSerializerTest extends AbstractSerializerTest<Number> {
         return 1;
       }
     };
-    AbstractSerializingStrategy<Double> doubleSerializer = new AbstractSerializingStrategy<Double>( "double", Double.class ) {
+    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class ) {
       public void serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
         element.setText( object.toString() );
       }
@@ -42,7 +47,7 @@ public class DelegatingSerializerTest extends AbstractSerializerTest<Number> {
 
   @NotNull
   @Override
-  protected AbstractSerializer<Number> getSerializer() {
+  protected AbstractJDomSerializer<Number> getSerializer() {
     return serializer;
   }
 
@@ -75,7 +80,7 @@ public class DelegatingSerializerTest extends AbstractSerializerTest<Number> {
   }
 
 
-  public static class MySerializer extends AbstractDelegatingSerializer<Number> {
+  public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
     public MySerializer( @NotNull SerializingStrategy<? extends Number>... serializingStrategies ) {
       super( "number", serializingStrategies );
     }

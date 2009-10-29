@@ -1,7 +1,8 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.SerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * @param <T> the type
  */
-public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
+public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<T> {
 
   @NotNull
   @NonNls
@@ -25,11 +26,11 @@ public class AbstractDelegatingSerializer<T> extends AbstractSerializer<T> {
   @NotNull
   private final List<SerializingStrategy<? extends T>> strategies = new ArrayList<SerializingStrategy<? extends T>>();
 
-  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull SerializingStrategy<? extends T>... strategies ) {
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull SerializingStrategy<? extends T>... strategies ) {
     this( defaultElementName, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends SerializingStrategy<? extends T>> strategies ) {
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends SerializingStrategy<? extends T>> strategies ) {
     super( defaultElementName );
     this.strategies.addAll( strategies );
   }
