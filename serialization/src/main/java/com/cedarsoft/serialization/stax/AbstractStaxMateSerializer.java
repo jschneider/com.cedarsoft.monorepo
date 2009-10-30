@@ -57,4 +57,38 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
       throw new IllegalStateException( "Invalid tag. Was <" + current + "> but expected <" + tagName + ">" );
     }
   }
+
+  @NotNull
+  protected String getText( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException {
+    int result = deserializeFrom.next();
+    if ( result != XMLStreamReader2.CHARACTERS ) {
+      throw new IllegalStateException( "Invalid state: " + result );
+    }
+
+    return deserializeFrom.getText();
+  }
+
+  @NotNull
+  protected String getChildText( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException {
+    deserializeFrom.nextTag();
+    ensureTag( deserializeFrom, tagName );
+    String name = getText( deserializeFrom );
+    closeTag( deserializeFrom );
+    return name;
+  }
+
+  protected void closeTag( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException {
+    int result = deserializeFrom.nextTag();
+    if ( result != XMLStreamReader.END_ELEMENT ) {
+      throw new IllegalStateException( "Invalid result: " + result );
+    }
+  }
+
+  protected void nextTag( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException {
+    int result = deserializeFrom.nextTag();
+    if ( result != XMLStreamReader.START_ELEMENT ) {
+      throw new IllegalStateException( "Invalid result: " + result );
+    }
+    ensureTag( deserializeFrom, tagName );
+  }
 }

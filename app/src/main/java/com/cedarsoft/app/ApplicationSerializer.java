@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -19,8 +20,11 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
   @NonNls
   private static final String ELEMENT_VERSION = "version";
   @NotNull
-  private final VersionSerializer versionSerializer;
+  @NonNls
   private static final String ELEMENT_NAME = "name";
+
+  @NotNull
+  private final VersionSerializer versionSerializer;
 
   @Inject
   public ApplicationSerializer( @NotNull VersionSerializer versionSerializer ) {
@@ -40,14 +44,9 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @NotNull
   public Application deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
-    deserializeFrom.nextTag();
-    ensureTag( deserializeFrom, ELEMENT_NAME );
-    deserializeFrom.next();
-    String name = deserializeFrom.getText();
-    deserializeFrom.nextTag();
+    String name = getChildText( deserializeFrom, ELEMENT_NAME );
 
-    deserializeFrom.nextTag();
-    ensureTag( deserializeFrom, ELEMENT_VERSION );
+    nextTag( deserializeFrom, ELEMENT_VERSION );
     Version version = versionSerializer.deserialize( deserializeFrom, context );
 
     return new Application( name, version );
