@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -47,6 +48,13 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
       return deserialize( reader, context != null ? context : Lookups.emtyLookup() );
     } catch ( XMLStreamException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
+    }
+  }
+
+  protected void ensureTag( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) {
+    String current = deserializeFrom.getName().getLocalPart();
+    if ( !current.equals( tagName ) ) {
+      throw new IllegalStateException( "Invalid tag. Was <" + current + "> but expected <" + tagName + ">" );
     }
   }
 }
