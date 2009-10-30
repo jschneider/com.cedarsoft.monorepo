@@ -5,6 +5,7 @@ import org.custommonkey.xmlunit.NodeTest;
 import org.custommonkey.xmlunit.NodeTester;
 import org.custommonkey.xmlunit.Validator;
 import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.exceptions.ConfigurationException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,7 +26,10 @@ import java.util.List;
 public class AssertUtils {
   private AssertUtils() {
   }
-  
+
+  public static void setIgnoreWhitespace( boolean ignore ) {
+    XMLUnit.setIgnoreWhitespace( true );
+  }
 
   public static void assertXMLEqual( Diff diff, boolean assertion ) {
     XMLAssert.assertXMLEqual( diff, assertion );
@@ -48,7 +52,13 @@ public class AssertUtils {
   }
 
   public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
+    assertXMLEqual( test, control, false );
+  }
+
+  public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    setIgnoreWhitespace( ignoreWhiteSpace );
     XMLAssert.assertXMLEqual( test, control );
+    setIgnoreWhitespace( false );
   }
 
   public static void assertXMLEqual( Document test, Document control ) {
