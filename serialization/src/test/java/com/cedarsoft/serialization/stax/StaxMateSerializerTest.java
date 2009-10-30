@@ -28,7 +28,6 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
       @NotNull
       @Override
       public String deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException, XMLStreamException {
-        reader.nextTag();
         reader.next();
         return reader.getText();
       }

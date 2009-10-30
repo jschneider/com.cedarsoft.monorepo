@@ -61,6 +61,7 @@ public abstract class AbstractStaxMateSerializer<T> implements ExtendedSerialize
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {
       XMLStreamReader2 reader = new SMInputFactory( XMLInputFactory.newInstance() ).createStax2Reader( in );
+      reader.nextTag();
       return deserialize( reader, context != null ? context : Lookups.emtyLookup() );
     } catch ( XMLStreamException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
@@ -97,7 +98,7 @@ public abstract class AbstractStaxMateSerializer<T> implements ExtendedSerialize
   /**
    * Deserializes the object from the given document
    *
-   * @param reader  the reader for the document
+   * @param reader  the reader for the document (standing at the first tag)
    * @param context the context
    * @return the deserialized object
    */
