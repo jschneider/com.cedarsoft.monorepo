@@ -19,9 +19,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * @param <T> the type
  */
-public class AbstractDelegatingStaxMateSerializer <T> extends AbstractStaxMateSerializer<T> {
+public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSerializer<T> {
 
   @NotNull
   @NonNls
@@ -44,7 +44,7 @@ public class AbstractDelegatingStaxMateSerializer <T> extends AbstractStaxMateSe
   public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object, @NotNull Lookup context ) throws IOException {
     try {
       StaxMateSerializingStrategy<T> strategy = findStrategy( object );
-      element.addAttribute(   ATTRIBUTE_TYPE, strategy.getId() );
+      element.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
       strategy.serialize( element, object );
 
       return element;
