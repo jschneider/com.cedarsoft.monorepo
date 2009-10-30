@@ -7,16 +7,18 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 
+import java.io.IOException;
+
 import static org.testng.Assert.assertEquals;
 
 /**
  *
  */
-public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String> {
+public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTest<String> {
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
-    return new AbstractStaxMateSerializer<String>( "aString" ) {
+    final AbstractStaxMateSerializer<String> stringSerializer = new AbstractStaxMateSerializer<String>( "asdf" ) {
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
         serializeTo.addCharacters( object );
@@ -31,6 +33,23 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
         return text;
       }
     };
+
+    return new AbstractStaxMateSerializer<String>( "aString" ) {
+      @NotNull
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        stringSerializer.serialize( serializeTo.addElement( "sub" ), object, context );
+        return serializeTo;
+      }
+
+      @NotNull
+      public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        nextTag( deserializeFrom, "sub" );
+        String string = stringSerializer.deserialize( deserializeFrom, context );
+        closeTag( deserializeFrom );
+
+        return string;
+      }
+    };
   }
 
   @NotNull
@@ -42,7 +61,7 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   @NotNull
   @Override
   protected String getExpectedSerializedString() {
-    return "<aString>asdf</aString>";
+    return "<aString><sub>asdf</sub></aString>";
   }
 
   @Override

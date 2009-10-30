@@ -48,6 +48,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
     nextTag( deserializeFrom, ELEMENT_VERSION );
     Version version = versionSerializer.deserialize( deserializeFrom, context );
+    closeTag( deserializeFrom );
 
     return new Application( name, version );
   }

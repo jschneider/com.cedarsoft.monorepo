@@ -45,7 +45,17 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     try {
       XMLStreamReader2 reader = new SMInputFactory( XMLInputFactory.newInstance() ).createStax2Reader( in );
       reader.nextTag();
-      return deserialize( reader, context != null ? context : Lookups.emtyLookup() );
+      T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
+
+      if ( !reader.isEndElement() ) {
+        throw new IllegalStateException( "Not consumed everything!" );
+      }
+
+      if ( reader.next() != XMLStreamReader2.END_DOCUMENT ) {
+        throw new IllegalStateException( "Not consumed everything!" );
+      }
+
+      return deserialized;
     } catch ( XMLStreamException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
     }
@@ -92,11 +102,19 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     ensureTag( deserializeFrom, tagName );
   }
 
-  protected void visitChildren( @NotNull XMLStreamReader2 deserializeFrom, @NotNull CB callback ) throws XMLStreamException, IOException {
-    while ( deserializeFrom.nextTag() != XMLStreamReader.END_ELEMENT ) {
-      String tagName = deserializeFrom.getName().getLocalPart();
-      callback.tagEntered( deserializeFrom, tagName );
-      closeTag( deserializeFrom );
+  /**
+   * Attention! The current element will be closed!
+   *
+   * @param streamReader the stream reader
+   * @param callback     the callback
+   * @throws XMLStreamException
+   * @throws IOException
+   */
+  protected void visitChildren( @NotNull XMLStreamReader2 streamReader, @NotNull CB callback ) throws XMLStreamException, IOException {
+    while ( streamReader.nextTag() != XMLStreamReader.END_ELEMENT ) {
+      String tagName = streamReader.getName().getLocalPart();
+      callback.tagEntered( streamReader, tagName );
+      closeTag( streamReader );
     }
   }
 

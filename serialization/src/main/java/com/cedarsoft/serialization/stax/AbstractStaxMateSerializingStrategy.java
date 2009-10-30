@@ -10,6 +10,9 @@ import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 
 /**
+ * Attention:
+ * On deserialization every subclass has to *consume* everything including the end event for their tag.
+ *
  * @param <T> the type
  */
 public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractStaxMateSerializer<T> implements StaxMateSerializingStrategy<T> {

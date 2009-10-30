@@ -31,6 +31,8 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
       @NotNull
       public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        getText( deserializeFrom );
+        closeTag( deserializeFrom );
         return 1;
       }
     };
@@ -44,6 +46,8 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
       @NotNull
       public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        getText( deserializeFrom );
+        closeTag( deserializeFrom );
         return 2.0;
       }
     };
