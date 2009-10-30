@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.AssertUtils;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
@@ -15,10 +14,10 @@ import static org.testng.Assert.assertEquals;
 /**
  * @param <T> the type
  */
-public abstract class AbstractStaxSerializerTest<T> {
+public abstract class AbstractStaxMateSerializerTest<T> {
   @Test
   public void testSerializer() throws IOException, SAXException {
-    AbstractStaxSerializer<T> serializer = getSerializer();
+    AbstractStaxMateSerializer<T> serializer = getSerializer();
 
     T objectToSerialize = createObjectToSerialize();
 
@@ -36,7 +35,7 @@ public abstract class AbstractStaxSerializerTest<T> {
    * @return the serializer
    */
   @NotNull
-  protected abstract AbstractStaxSerializer<T> getSerializer();
+  protected abstract AbstractStaxMateSerializer<T> getSerializer();
 
   /**
    * Creates the object to serialize

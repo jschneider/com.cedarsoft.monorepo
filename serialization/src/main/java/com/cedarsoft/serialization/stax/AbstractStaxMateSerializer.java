@@ -30,12 +30,12 @@ import java.io.StringReader;
 /**
  * @param <T> the type
  */
-public abstract class AbstractStaxSerializer<T> implements ExtendedSerializer<T> {
+public abstract class AbstractStaxMateSerializer<T> implements ExtendedSerializer<T> {
   @NotNull
   @NonNls
   private final String defaultElementName;
 
-  protected AbstractStaxSerializer( @NotNull @NonNls String defaultElementName ) {
+  protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName ) {
     this.defaultElementName = defaultElementName;
   }
 
