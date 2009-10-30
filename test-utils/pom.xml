@@ -41,12 +41,12 @@
     </dependency>
 
     <dependency>
-      <groupId>fest</groupId>
+      <groupId>org.easytesting</groupId>
       <artifactId>fest-assert</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>fest</groupId>
+      <groupId>org.easytesting</groupId>
       <artifactId>fest-reflect</artifactId>
     </dependency>
 
