@@ -2,7 +2,7 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -24,13 +24,13 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   private static final String ATTRIBUTE_TYPE = "type";
 
   @NotNull
-  private final List<SerializingStrategy<? extends T>> strategies = new ArrayList<SerializingStrategy<? extends T>>();
+  private final List<JDomSerializingStrategy<? extends T>> strategies = new ArrayList<JDomSerializingStrategy<? extends T>>();
 
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull SerializingStrategy<? extends T>... strategies ) {
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull JDomSerializingStrategy<? extends T>... strategies ) {
     this( defaultElementName, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends SerializingStrategy<? extends T>> strategies ) {
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends JDomSerializingStrategy<? extends T>> strategies ) {
     super( defaultElementName );
     this.strategies.addAll( strategies );
   }
@@ -38,7 +38,7 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   @NotNull
   @Override
   public Element serialize( @NotNull Element element, @NotNull T object, @NotNull Lookup context ) throws IOException {
-    SerializingStrategy<T> strategy = findStrategy( object );
+    JDomSerializingStrategy<T> strategy = findStrategy( object );
     element.setAttribute( ATTRIBUTE_TYPE, strategy.getId() );
     strategy.serialize( element, object );
 
@@ -50,15 +50,15 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   public T deserialize( @NotNull Element element, @NotNull Lookup context ) throws IOException {
     String type = element.getAttributeValue( ATTRIBUTE_TYPE );
 
-    SerializingStrategy<T> strategy = findStrategy( type );
+    JDomSerializingStrategy<T> strategy = findStrategy( type );
     return strategy.deserialize( element );
   }
 
   @NotNull
-  private SerializingStrategy<T> findStrategy( @NotNull @NonNls String type ) throws NotFoundException {
-    for ( SerializingStrategy<? extends T> strategy : strategies ) {
+  private JDomSerializingStrategy<T> findStrategy( @NotNull @NonNls String type ) throws NotFoundException {
+    for ( JDomSerializingStrategy<? extends T> strategy : strategies ) {
       if ( strategy.getId().equals( type ) ) {
-        return ( SerializingStrategy<T> ) strategy;
+        return ( JDomSerializingStrategy<T> ) strategy;
       }
     }
 
@@ -66,10 +66,10 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   }
 
   @NotNull
-  private SerializingStrategy<T> findStrategy( @NotNull T object ) throws NotFoundException {
-    for ( SerializingStrategy<? extends T> strategy : strategies ) {
+  private JDomSerializingStrategy<T> findStrategy( @NotNull T object ) throws NotFoundException {
+    for ( JDomSerializingStrategy<? extends T> strategy : strategies ) {
       if ( strategy.supports( object ) ) {
-        return ( SerializingStrategy<T> ) strategy;
+        return ( JDomSerializingStrategy<T> ) strategy;
       }
     }
 
@@ -77,7 +77,7 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   }
 
   @NotNull
-  public Collection<? extends SerializingStrategy<? extends T>> getStrategies() {
+  public Collection<? extends JDomSerializingStrategy<? extends T>> getStrategies() {
     return Collections.unmodifiableList( strategies );
   }
 }

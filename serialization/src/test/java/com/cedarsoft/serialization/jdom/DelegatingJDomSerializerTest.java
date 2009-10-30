@@ -1,6 +1,6 @@
 package com.cedarsoft.serialization.jdom;
 
-import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import com.cedarsoft.serialization.jdom.AbstractDelegatingJDomSerializer;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
@@ -8,7 +8,9 @@ import com.cedarsoft.serialization.jdom.AbstractJDomSerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+
 import static org.testng.Assert.*;
+
 import org.testng.annotations.*;
 
 import java.io.IOException;
@@ -81,11 +83,11 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
 
   public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
-    public MySerializer( @NotNull SerializingStrategy<? extends Number>... serializingStrategies ) {
+    public MySerializer( @NotNull JDomSerializingStrategy<? extends Number>... serializingStrategies ) {
       super( "number", serializingStrategies );
     }
 
-    public MySerializer( @NotNull Collection<? extends SerializingStrategy<? extends Number>> serializingStrategies ) {
+    public MySerializer( @NotNull Collection<? extends JDomSerializingStrategy<? extends Number>> serializingStrategies ) {
       super( "number", serializingStrategies );
     }
   }

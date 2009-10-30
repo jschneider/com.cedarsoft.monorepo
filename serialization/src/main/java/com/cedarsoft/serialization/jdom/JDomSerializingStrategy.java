@@ -1,4 +1,4 @@
-package com.cedarsoft.serialization;
+package com.cedarsoft.serialization.jdom;
 
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * @param <T> the type
  */
-public interface SerializingStrategy<T> {
+public interface JDomSerializingStrategy<T> {
   /**
    * Returns the id
    *
