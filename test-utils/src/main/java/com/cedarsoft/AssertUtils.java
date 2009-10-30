@@ -61,6 +61,12 @@ public class AssertUtils {
     setIgnoreWhitespace( false );
   }
 
+  public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    setIgnoreWhitespace( ignoreWhiteSpace );
+    XMLAssert.assertXMLEqual( err, test, control );
+    setIgnoreWhitespace( false );
+  }
+
   public static void assertXMLEqual( Document test, Document control ) {
     XMLAssert.assertXMLEqual( test, control );
   }

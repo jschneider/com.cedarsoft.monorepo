@@ -22,7 +22,7 @@ public abstract class AbstractStaxMateSerializerTest<T> {
     T objectToSerialize = createObjectToSerialize();
 
     byte[] serialized = serializer.serialize( objectToSerialize );
-    AssertUtils.assertXMLEqual( new String( serialized ), getExpectedSerializedString() );
+    AssertUtils.assertXMLEqual( "Was ---\n" + new String( serialized ) + "\n---", new String( serialized ), getExpectedSerializedString(), true );
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 

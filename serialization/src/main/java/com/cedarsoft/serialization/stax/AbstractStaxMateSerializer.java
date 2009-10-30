@@ -91,4 +91,16 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     }
     ensureTag( deserializeFrom, tagName );
   }
+
+  protected void visitChildren( @NotNull XMLStreamReader2 deserializeFrom, @NotNull CB callback ) throws XMLStreamException, IOException {
+    while ( deserializeFrom.nextTag() != XMLStreamReader.END_ELEMENT ) {
+      String tagName = deserializeFrom.getName().getLocalPart();
+      callback.tagEntered( deserializeFrom, tagName );
+      closeTag( deserializeFrom );
+    }
+  }
+
+  public interface CB {
+    void tagEntered( @NotNull XMLStreamReader2 deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException;
+  }
 }
