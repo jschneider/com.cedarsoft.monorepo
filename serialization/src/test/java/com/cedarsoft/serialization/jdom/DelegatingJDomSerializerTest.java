@@ -25,8 +25,10 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   @BeforeMethod
   protected void setUp() throws Exception {
     AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class ) {
-      public void serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
+      @NotNull
+      public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
         element.setText( object.toString() );
+        return element;
       }
 
       @NotNull
@@ -35,8 +37,10 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
       }
     };
     AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class ) {
-      public void serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
+      @NotNull
+      public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
         element.setText( object.toString() );
+        return element;
       }
 
       @NotNull

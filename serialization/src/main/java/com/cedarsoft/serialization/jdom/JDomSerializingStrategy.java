@@ -32,9 +32,12 @@ public interface JDomSerializingStrategy<T> {
    *
    * @param element the element
    * @param object  the object
+   * @return the element (for fluent writing)
+   *
    * @throws IOException
    */
-  void serialize( @NotNull Element element, @NotNull T object ) throws IOException;
+  @NotNull
+  Element serialize( @NotNull Element element, @NotNull T object ) throws IOException;
 
   /**
    * Deserializes the file reference
