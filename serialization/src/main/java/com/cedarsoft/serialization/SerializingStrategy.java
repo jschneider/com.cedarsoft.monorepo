@@ -1,11 +1,8 @@
 package com.cedarsoft.serialization;
 
-import org.codehaus.stax2.XMLStreamReader2;
-import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 
 /**
@@ -34,23 +31,23 @@ public interface SerializingStrategy<T, S, D> {
   /**
    * Serializes the reference
    *
-   * @param element the element
-   * @param object  the object
-   * @return the output element (for fluent usage)
+   * @param serializeTo the serializeTo
+   * @param object      the object
+   * @return the output serializeTo (for fluent usage)
    *
    * @throws IOException
    */
   @NotNull
-  S serialize( @NotNull S element, @NotNull T object ) throws IOException;
+  S serialize( @NotNull S serializeTo, @NotNull T object ) throws IOException;
 
   /**
    * Deserializes the file reference
    *
-   * @param reader the reader
+   * @param deserializeFrom the deserializeFrom
    * @return the file reference
    *
    * @throws IOException
    */
   @NotNull
-  T deserialize( @NotNull @NonNls D reader ) throws IOException;
+  T deserialize( @NotNull @NonNls D deserializeFrom ) throws IOException;
 }
