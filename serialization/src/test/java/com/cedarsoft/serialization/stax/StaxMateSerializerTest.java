@@ -6,7 +6,6 @@ import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
 
@@ -20,16 +19,16 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
     return new AbstractStaxMateSerializer<String>( "aString" ) {
       @NotNull
       @Override
-      public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
-        element.addCharacters( object );
-        return element;
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
+        serializeTo.addCharacters( object );
+        return serializeTo;
       }
 
       @NotNull
       @Override
-      public String deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws XMLStreamException {
-        reader.next();
-        return reader.getText();
+      public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
+        deserializeFrom.next();
+        return deserializeFrom.getText();
       }
     };
   }

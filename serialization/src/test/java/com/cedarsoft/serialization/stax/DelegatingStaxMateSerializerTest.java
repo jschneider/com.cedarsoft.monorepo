@@ -2,15 +2,8 @@ package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.AssertUtils;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.jdom.AbstractDelegatingJDomSerializer;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializingStrategy;
-import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
-import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
@@ -32,14 +25,14 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
     AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", Integer.class ) {
       @NotNull
       @Override
-      public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull Integer object, @NotNull Lookup context ) throws IOException, XMLStreamException {
-        element.addCharacters( object.toString() );
-        return element;
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        serializeTo.addCharacters( object.toString() );
+        return serializeTo;
       }
 
       @NotNull
       @Override
-      public Integer deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         return 1;
       }
     };
@@ -47,14 +40,14 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
     AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", Double.class ) {
       @NotNull
       @Override
-      public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull Double object, @NotNull Lookup context ) throws IOException, XMLStreamException {
-        element.addCharacters( object.toString() );
-        return element;
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+        serializeTo.addCharacters( object.toString() );
+        return serializeTo;
       }
 
       @NotNull
       @Override
-      public Double deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         return 2.0;
       }
     };

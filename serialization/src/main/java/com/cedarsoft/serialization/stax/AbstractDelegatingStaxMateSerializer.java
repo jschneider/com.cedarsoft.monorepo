@@ -2,11 +2,8 @@ package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
-import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
-import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,13 +38,13 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object, @NotNull Lookup context ) throws IOException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     try {
       StaxMateSerializingStrategy<T> strategy = findStrategy( object );
-      element.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
-      strategy.serialize( element, object );
+      serializeTo.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
+      strategy.serialize( serializeTo, object );
 
-      return element;
+      return serializeTo;
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }
@@ -55,11 +52,11 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   @NotNull
   @Override
-  public T deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException {
-    String type = reader.getAttributeValue( null, ATTRIBUTE_TYPE );
+  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException {
+    String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 
     StaxMateSerializingStrategy<T> strategy = findStrategy( type );
-    return strategy.deserialize( reader );
+    return strategy.deserialize( deserializeFrom );
   }
 
   @NotNull

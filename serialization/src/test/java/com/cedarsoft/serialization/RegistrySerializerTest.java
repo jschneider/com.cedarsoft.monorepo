@@ -28,15 +28,15 @@ public class RegistrySerializerTest {
     serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text" ) {
       @Override
       @NotNull
-      public Element serialize( @NotNull Element element, @NotNull String object, @NotNull Lookup context ) {
-        element.setText( object );
-        return element;
+      public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {
+        serializeTo.setText( object );
+        return serializeTo;
       }
 
       @Override
       @NotNull
-      public String deserialize( @NotNull Element element, @NotNull Lookup context ) {
-        return element.getTextNormalize();
+      public String deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) {
+        return deserializeFrom.getTextNormalize();
       }
     }, new RegistrySerializer.IdResolver<String>() {
       @NotNull
