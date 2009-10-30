@@ -1,12 +1,16 @@
 package com.cedarsoft.serialization.stax;
 
+import com.cedarsoft.AssertUtils;
 import com.ctc.wstx.stax.WstxOutputFactory;
+import org.codehaus.stax2.XMLStreamReader2;
+import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.SMOutputFactory;
 import org.codehaus.staxmate.out.SMOutputDocument;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -19,9 +23,11 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
+import java.util.NoSuchElementException;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -36,7 +42,7 @@ public class StaxTest {
     "</fileType>";
 
   @Test
-  public void testStaxMate() throws XMLStreamException {
+  public void testStaxMate() throws XMLStreamException, IOException, SAXException {
     XMLOutputFactory factory = XMLOutputFactory.newInstance();
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -59,7 +65,44 @@ public class StaxTest {
 
     doc.closeRoot();
 
-    assertEquals( out.toString(), CONTENT_SAMPLE );
+    AssertUtils.assertXMLEqual( out.toString(), CONTENT_SAMPLE, false );
+  }
+
+  @Test
+  public void testStaxMateRead() throws XMLStreamException {
+    SMInputFactory smInputFactory = new SMInputFactory( XMLInputFactory.newInstance() );
+    XMLStreamReader2 reader = smInputFactory.createStax2Reader( new StringReader( CONTENT_SAMPLE ) );
+
+    assertEquals( reader.nextTag(), XMLStreamReader.START_ELEMENT );
+    assertEquals( reader.getLocalName(), "fileType" );
+    assertEquals( reader.getName().getLocalPart(), "fileType" );
+    assertEquals( reader.getAttributeValue( null, "dependent" ), "false" );
+
+    assertEquals( reader.nextTag(), XMLStreamReader.START_ELEMENT );
+    assertEquals( reader.getName().getLocalPart(), "id" );
+    assertEquals( reader.next(), XMLStreamReader.CHARACTERS );
+    assertEquals( reader.getText(), "Canon Raw" );
+    assertEquals( reader.nextTag(), XMLStreamReader.END_ELEMENT );
+    assertEquals( reader.getName().getLocalPart(), "id" );
+
+    assertEquals( reader.nextTag(), XMLStreamReader.START_ELEMENT );
+    assertEquals( reader.getName().getLocalPart(), "extension" );
+    assertEquals( reader.getAttributeValue( null, "default" ), "true" );
+    assertEquals( reader.getAttributeValue( null, "delimiter" ), "." );
+    assertEquals( reader.next(), XMLStreamReader.CHARACTERS );
+    assertEquals( reader.getText(), "cr2" );
+    assertEquals( reader.nextTag(), XMLStreamReader.END_ELEMENT );
+    assertEquals( reader.getName().getLocalPart(), "extension" );
+
+    assertEquals( reader.nextTag(), XMLStreamReader.END_ELEMENT );
+    assertEquals( reader.getName().getLocalPart(), "fileType" );
+    assertEquals( reader.next(), XMLStreamReader.END_DOCUMENT );
+
+    try {
+      reader.next();
+      fail("Where is the Exception");
+    } catch ( NoSuchElementException ignore ) {
+    }
   }
 
   @Test
@@ -75,7 +118,7 @@ public class StaxTest {
   }
 
   @Test
-  public void testWrite() throws XMLStreamException {
+  public void testWrite() throws XMLStreamException, IOException, SAXException {
     XMLOutputFactory factory = XMLOutputFactory.newInstance();
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -99,7 +142,7 @@ public class StaxTest {
     writer.writeEndDocument();
     writer.close();
 
-    assertEquals( out.toString(), CONTENT_SAMPLE );
+    AssertUtils.assertXMLEqual( out.toString(), CONTENT_SAMPLE, true );
   }
 
   @Test
