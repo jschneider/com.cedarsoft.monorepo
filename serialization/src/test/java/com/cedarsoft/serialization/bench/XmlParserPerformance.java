@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization.bench;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.codehaus.staxmate.SMInputFactory;
 import org.jdom.input.SAXBuilder;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -55,6 +56,9 @@ public class XmlParserPerformance {
     System.out.println();
     System.out.println( "Stax:" );
     new XmlParserPerformance().benchStax();
+    System.out.println();
+    System.out.println( "StaxMate:" );
+    new XmlParserPerformance().benchStaxMate();
   }
 
   /*
@@ -173,37 +177,48 @@ public class XmlParserPerformance {
       }
     }, 4 );
   }
+  
+  public void benchStaxMate() {
+    runBenchmark( new Runnable() {
+      public void run() {
+        try {
+          SMInputFactory inf = new SMInputFactory( XMLInputFactory.newInstance() );
 
-  @Test
-  public void testStax() throws XMLStreamException {
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-    XMLStreamReader parser = inputFactory.createXMLStreamReader( new StringReader( CONTENT_SAMPLE ) );
 
-    assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
-    assertEquals( parser.getLocalName(), "fileType" );
-    assertEquals( parser.getName().getLocalPart(), "fileType" );
-    assertEquals( parser.getAttributeValue( null, "dependent" ), "false" );
+          for ( int i = 0; i < 100000; i++ ) {
+            XMLStreamReader parser = inf.createStax2Reader( new StringReader( CONTENT_SAMPLE ) );
 
-    assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
-    assertEquals( parser.getName().getLocalPart(), "id" );
-    assertEquals( parser.next(), XMLStreamReader.CHARACTERS );
-    assertEquals( parser.getText(), "Canon Raw" );
-    assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
-    assertEquals( parser.getName().getLocalPart(), "id" );
+            assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
+            assertEquals( parser.getLocalName(), "fileType" );
+            assertEquals( parser.getName().getLocalPart(), "fileType" );
+            assertEquals( parser.getAttributeValue( null, "dependent" ), "false" );
 
-    assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
-    assertEquals( parser.getName().getLocalPart(), "extension" );
-    assertEquals( parser.getAttributeValue( null, "default" ), "true" );
-    assertEquals( parser.getAttributeValue( null, "delimiter" ), "." );
-    assertEquals( parser.next(), XMLStreamReader.CHARACTERS );
-    assertEquals( parser.getText(), "cr2" );
-    assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
-    assertEquals( parser.getName().getLocalPart(), "extension" );
+            assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
+            assertEquals( parser.getName().getLocalPart(), "id" );
+            assertEquals( parser.next(), XMLStreamReader.CHARACTERS );
+            assertEquals( parser.getText(), "Canon Raw" );
+            assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
+            assertEquals( parser.getName().getLocalPart(), "id" );
 
-    assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
-    assertEquals( parser.getName().getLocalPart(), "fileType" );
-    assertEquals( parser.next(), XMLStreamReader.END_DOCUMENT );
+            assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
+            assertEquals( parser.getName().getLocalPart(), "extension" );
+            assertEquals( parser.getAttributeValue( null, "default" ), "true" );
+            assertEquals( parser.getAttributeValue( null, "delimiter" ), "." );
+            assertEquals( parser.next(), XMLStreamReader.CHARACTERS );
+            assertEquals( parser.getText(), "cr2" );
+            assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
+            assertEquals( parser.getName().getLocalPart(), "extension" );
 
+            assertEquals( parser.nextTag(), XMLStreamReader.END_ELEMENT );
+            assertEquals( parser.getName().getLocalPart(), "fileType" );
+            assertEquals( parser.next(), XMLStreamReader.END_DOCUMENT );
+
+          }
+        } catch ( Exception e ) {
+          throw new RuntimeException( e );
+        }
+      }
+    }, 4 );
   }
 
   private void runBenchmark( @NotNull Runnable runnable, final int count ) {
