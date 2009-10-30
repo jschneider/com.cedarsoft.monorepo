@@ -1,9 +1,10 @@
 package com.cedarsoft.serialization.jdom;
 
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+
 import static org.testng.Assert.*;
+
 import org.testng.annotations.*;
 
 import java.io.ByteArrayInputStream;
