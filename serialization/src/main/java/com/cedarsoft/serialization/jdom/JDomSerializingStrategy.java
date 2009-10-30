@@ -2,10 +2,6 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.serialization.SerializingStrategy;
 import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 
 /**
  * @param <T> the type
