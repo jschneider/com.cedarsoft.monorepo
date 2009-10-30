@@ -41,17 +41,21 @@ public class AbstractDelegatingStaxMateSerializer <T> extends AbstractStaxMateSe
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object, @NotNull Lookup context ) throws IOException, XMLStreamException {
-    StaxMateSerializingStrategy<T> strategy = findStrategy( object );
-    element.addAttribute(   ATTRIBUTE_TYPE, strategy.getId() );
-    strategy.serialize( element, object );
+  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object, @NotNull Lookup context ) throws IOException {
+    try {
+      StaxMateSerializingStrategy<T> strategy = findStrategy( object );
+      element.addAttribute(   ATTRIBUTE_TYPE, strategy.getId() );
+      strategy.serialize( element, object );
 
-    return element;
+      return element;
+    } catch ( XMLStreamException e ) {
+      throw new IOException( e );
+    }
   }
 
   @NotNull
   @Override
-  public T deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public T deserialize( @NotNull XMLStreamReader2 reader, @NotNull Lookup context ) throws IOException {
     String type = reader.getAttributeValue( null, ATTRIBUTE_TYPE );
 
     StaxMateSerializingStrategy<T> strategy = findStrategy( type );

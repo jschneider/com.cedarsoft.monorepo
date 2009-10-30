@@ -39,12 +39,20 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
   }
 
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object ) throws IOException, XMLStreamException {
-    return serialize( element, object, Lookups.emtyLookup() );
+  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object ) throws IOException {
+    try {
+      return serialize( element, object, Lookups.emtyLookup() );
+    } catch ( XMLStreamException e ) {
+      throw new IOException( e );
+    }
   }
 
   @NotNull
-  public T deserialize( @NotNull @NonNls XMLStreamReader2 reader ) throws IOException, XMLStreamException {
-    return deserialize( reader, Lookups.emtyLookup() );
+  public T deserialize( @NotNull @NonNls XMLStreamReader2 reader ) throws IOException {
+    try {
+      return deserialize( reader, Lookups.emtyLookup() );
+    } catch ( XMLStreamException e ) {
+      throw new IOException( e );
+    }
   }
 }
