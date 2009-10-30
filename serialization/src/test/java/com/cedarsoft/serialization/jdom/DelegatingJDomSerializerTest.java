@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.AssertUtils;
 import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import com.cedarsoft.serialization.jdom.AbstractDelegatingJDomSerializer;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 
 import org.testng.annotations.*;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -76,15 +78,14 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   }
 
   @Test
-  public void tetIt() throws IOException {
+  public void tetIt() throws IOException, SAXException {
     assertEquals( serializer.getStrategies().size(), 2 );
 
-    assertEquals( new String( serializer.serialize( 1 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serialize( 1 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"int\">1</number>" );
-    assertEquals( new String( serializer.serialize( 2.0 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serialize( 2.0 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"double\">2.0</number>" );
   }
-
 
   public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
     public MySerializer( @NotNull JDomSerializingStrategy<? extends Number>... serializingStrategies ) {
