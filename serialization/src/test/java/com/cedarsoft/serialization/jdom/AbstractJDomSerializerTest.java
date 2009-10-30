@@ -1,11 +1,13 @@
 package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.AssertUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import static org.testng.Assert.*;
 
 import org.testng.annotations.*;
+import org.xml.sax.SAXException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,13 +15,13 @@ import java.io.IOException;
 
 public abstract class AbstractJDomSerializerTest<T> {
   @Test
-  public void testSerializer() throws IOException {
+  public void testSerializer() throws IOException, SAXException {
     AbstractJDomSerializer<T> serializer = getSerializer();
 
     T objectToSerialize = createObjectToSerialize();
 
     byte[] serialized = serializer.serialize( objectToSerialize );
-    assertEquals( new String( serialized ).trim(), getExpectedSerializedString().trim() );
+    AssertUtils.assertXMLEqual( new String( serialized ), getExpectedSerializedString() );
 
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
