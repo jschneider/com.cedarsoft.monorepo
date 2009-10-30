@@ -35,14 +35,12 @@ public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSer
   }
 
   @NotNull
-  @Override
   public Element serialize( @NotNull Element serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     serialize( serializeTo, object );
     return serializeTo;
   }
 
   @NotNull
-  @Override
   public T deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     return deserialize( deserializeFrom );
   }

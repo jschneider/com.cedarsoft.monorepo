@@ -27,7 +27,6 @@ public class ApplicationSerializer extends AbstractJDomSerializer<Application> {
   }
 
   @NotNull
-  @Override
   public Element serialize( @NotNull Element serializeTo, @NotNull Application object, @NotNull Lookup context ) throws IOException {
     serializeTo.setContent( new Element( ELEMENT_NAME ).setText( object.getName() ) );
     serializeTo.addContent( versionSerializer.serialize( new Element( ELEMENT_VERSION ), object.getVersion(), context ) );
@@ -35,7 +34,6 @@ public class ApplicationSerializer extends AbstractJDomSerializer<Application> {
   }
 
   @NotNull
-  @Override
   public Application deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     return new Application( deserializeFrom.getChild( ELEMENT_NAME ).getTextNormalize(), versionSerializer.deserialize( deserializeFrom.getChild( ELEMENT_VERSION ), context ) );
   }

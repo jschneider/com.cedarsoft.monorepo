@@ -26,14 +26,12 @@ public class RegistrySerializerTest {
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
     serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text" ) {
-      @Override
       @NotNull
       public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {
         serializeTo.setText( object );
         return serializeTo;
       }
 
-      @Override
       @NotNull
       public String deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) {
         return deserializeFrom.getTextNormalize();

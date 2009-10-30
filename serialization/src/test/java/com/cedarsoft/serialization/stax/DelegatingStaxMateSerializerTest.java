@@ -24,14 +24,12 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
   protected void setUp() throws Exception {
     AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", Integer.class ) {
       @NotNull
-      @Override
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @NotNull
-      @Override
       public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         return 1;
       }
@@ -39,14 +37,12 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
     AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", Double.class ) {
       @NotNull
-      @Override
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @NotNull Lookup context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @NotNull
-      @Override
       public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         return 2.0;
       }

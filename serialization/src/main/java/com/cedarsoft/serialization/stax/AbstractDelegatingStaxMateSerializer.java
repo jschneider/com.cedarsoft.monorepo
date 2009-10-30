@@ -37,7 +37,6 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
   }
 
   @NotNull
-  @Override
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     try {
       StaxMateSerializingStrategy<T> strategy = findStrategy( object );
@@ -51,7 +50,6 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
   }
 
   @NotNull
-  @Override
   public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 

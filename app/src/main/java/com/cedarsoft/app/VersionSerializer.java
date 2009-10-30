@@ -16,14 +16,12 @@ public class VersionSerializer extends AbstractJDomSerializer<Version> {
   }
 
   @NotNull
-  @Override
   public Element serialize( @NotNull Element serializeTo, @NotNull Version object, @NotNull Lookup context ) throws IOException {
     serializeTo.setText( object.toString() );
     return serializeTo;
   }
 
   @NotNull
-  @Override
   public Version deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     return Version.parse( deserializeFrom.getTextNormalize() );
   }

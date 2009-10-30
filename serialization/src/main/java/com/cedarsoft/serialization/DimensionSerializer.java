@@ -22,13 +22,11 @@ public class DimensionSerializer extends AbstractJDomSerializer<Dimension> {
   }
 
   @NotNull
-  @Override
   public Element serialize( @NonNls @NotNull Element serializeTo, @NotNull Dimension object, @NotNull Lookup context ) throws IOException {
     return serializeTo.setText( object.width + SEPARATOR + object.height );
   }
 
   @NotNull
-  @Override
   public Dimension deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     String[] parts = deserializeFrom.getText().split( SEPARATOR );
     return new Dimension( Integer.parseInt( parts[0] ), Integer.parseInt( parts[1] ) );

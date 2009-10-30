@@ -36,7 +36,6 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   }
 
   @NotNull
-  @Override
   public Element serialize( @NotNull Element serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     JDomSerializingStrategy<T> strategy = findStrategy( object );
     serializeTo.setAttribute( ATTRIBUTE_TYPE, strategy.getId() );
@@ -46,7 +45,6 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   }
 
   @NotNull
-  @Override
   public T deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     String type = deserializeFrom.getAttributeValue( ATTRIBUTE_TYPE );
 

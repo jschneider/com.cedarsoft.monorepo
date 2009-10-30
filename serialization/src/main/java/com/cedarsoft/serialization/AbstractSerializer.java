@@ -1,6 +1,5 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +14,7 @@ import java.io.OutputStream;
  * @param <D> the object to deserialize from
  * @param <E> the exception that might be thrown
  */
-public abstract class AbstractSerializer<T, S, D, E extends Throwable> implements ExtendedSerializer<T> {
+public abstract class AbstractSerializer<T, S, D, E extends Throwable> implements PluggableSerializer<T,S,D,E> {
   @NotNull
   @NonNls
   private final String defaultElementName;
@@ -46,24 +45,4 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
     return deserialize( in, null );
   }
 
-  /**
-   * Serializes the object to the given element
-   *
-   * @param serializeTo the serializeTo
-   * @param object      the object
-   * @param context     the context
-   * @return the serializeTo (for fluent writing)
-   */
-  @NotNull
-  public abstract S serialize( @NotNull S serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException, E;
-
-  /**
-   * Deserializes the object from the given document
-   *
-   * @param deserializeFrom the deserializeFrom
-   * @param context         the context
-   * @return the deserialized object
-   */
-  @NotNull
-  public abstract T deserialize( @NotNull D deserializeFrom, @NotNull Lookup context ) throws IOException, E;
 }

@@ -18,14 +18,12 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   protected AbstractStaxMateSerializer<String> getSerializer() {
     return new AbstractStaxMateSerializer<String>( "aString" ) {
       @NotNull
-      @Override
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
         serializeTo.addCharacters( object );
         return serializeTo;
       }
 
       @NotNull
-      @Override
       public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
         deserializeFrom.next();
         return deserializeFrom.getText();
