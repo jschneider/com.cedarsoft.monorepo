@@ -332,7 +332,7 @@
       </dependency>
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
-        <artifactId>wstx-lgpl</artifactId>
+        <artifactId>woodstox-core-asl</artifactId>
         <version>4.0.6</version>
         <exclusions>
           <exclusion>

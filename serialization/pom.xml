@@ -33,7 +33,7 @@
 
     <dependency>
       <groupId>org.codehaus.woodstox</groupId>
-      <artifactId>wstx-lgpl</artifactId>
+      <artifactId>woodstox-core-asl</artifactId>
     </dependency>
 
     <dependency>
