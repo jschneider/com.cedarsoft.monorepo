@@ -1,11 +1,8 @@
 package com.cedarsoft.serialization.stax;
 
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
-import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
-import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,18 +36,18 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
   }
 
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement element, @NotNull T object ) throws IOException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object ) throws IOException {
     try {
-      return serialize( element, object, Lookups.emtyLookup() );
+      return serialize( serializeTo, object, Lookups.emtyLookup() );
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }
   }
 
   @NotNull
-  public T deserialize( @NotNull @NonNls XMLStreamReader2 reader ) throws IOException {
+  public T deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
     try {
-      return deserialize( reader, Lookups.emtyLookup() );
+      return deserialize( deserializeFrom, Lookups.emtyLookup() );
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }

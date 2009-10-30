@@ -2,6 +2,7 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
+import com.cedarsoft.serialization.AbstractSerializer;
 import com.cedarsoft.serialization.ExtendedSerializer;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -23,17 +24,13 @@ import java.io.OutputStream;
  *
  * @param <T> the type
  */
-public abstract class AbstractJDomSerializer<T> implements ExtendedSerializer<T> {
+public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, Element, Element, IOException> {
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
 
-  @NotNull
-  @NonNls
-  private final String defaultElementName;
-
   protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName ) {
-    this.defaultElementName = defaultElementName;
+    super( defaultElementName );
   }
 
   @NotNull
@@ -50,12 +47,6 @@ public abstract class AbstractJDomSerializer<T> implements ExtendedSerializer<T>
   }
 
   @NotNull
-  @NonNls
-  protected String getDefaultElementName() {
-    return defaultElementName;
-  }
-
-  @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {
       return deserialize( new SAXBuilder().build( in ).getRootElement(), context != null ? context : Lookups.emtyLookup() );
@@ -63,41 +54,4 @@ public abstract class AbstractJDomSerializer<T> implements ExtendedSerializer<T>
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
     }
   }
-
-  @NotNull
-  public byte[] serialize( @NotNull T object ) throws IOException {
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    serialize( object, out );
-    return out.toByteArray();
-  }
-
-  public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
-    serialize( object, out, null );
-  }
-
-  @NotNull
-  public T deserialize( @NotNull InputStream in ) throws IOException {
-    return deserialize( in, null );
-  }
-
-  /**
-   * Serializes the object to the given element
-   *
-   * @param element the element
-   * @param object  the object
-   * @param context the context
-   * @return the element (for fluent writing)
-   */
-  @NotNull
-  public abstract Element serialize( @NotNull Element element, @NotNull T object, @NotNull Lookup context ) throws IOException;
-
-  /**
-   * Deserializes the object from the diven document
-   *
-   * @param element the element
-   * @param context the context
-   * @return the deserialized object
-   */
-  @NotNull
-  public abstract T deserialize( @NotNull Element element, @NotNull Lookup context ) throws IOException;
 }
