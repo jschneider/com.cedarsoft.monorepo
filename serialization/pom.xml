@@ -44,6 +44,12 @@
 
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>xml-commons</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
       <scope>test</scope>
     </dependency>
