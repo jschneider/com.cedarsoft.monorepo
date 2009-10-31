@@ -1,9 +1,12 @@
 package com.cedarsoft.utils;
 
 import org.jdom.Document;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jdom.transform.JDOMResult;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.xml.sax.SAXException;
 
@@ -21,6 +24,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 
@@ -29,6 +33,20 @@ import java.io.Writer;
  */
 public class XmlCommons {
   private XmlCommons() {
+  }
+
+  @NotNull @NonNls
+  public static String format( @NotNull @NonNls String xml ) {
+    if ( xml.length() == 0 ) {
+      return "";
+    }
+
+    try {
+      Document doc = new SAXBuilder().build( new StringReader( xml ) );
+      return new XMLOutputter( Format.getPrettyFormat() ).outputString( doc );
+    } catch ( Exception e ) {
+      throw new RuntimeException( e );
+    }
   }
 
   /**
