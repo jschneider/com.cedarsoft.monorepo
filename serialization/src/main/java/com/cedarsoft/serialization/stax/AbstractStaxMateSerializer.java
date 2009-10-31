@@ -114,11 +114,19 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     while ( streamReader.nextTag() != XMLStreamReader.END_ELEMENT ) {
       String tagName = streamReader.getName().getLocalPart();
       callback.tagEntered( streamReader, tagName );
-      closeTag( streamReader );
     }
   }
 
   public interface CB {
+    /**
+     * Is called for each child.
+     * ATTENTION: This method *must* close the tag
+     *
+     * @param deserializeFrom the reader
+     * @param tagName         the tag name
+     * @throws XMLStreamException
+     * @throws IOException
+     */
     void tagEntered( @NotNull XMLStreamReader2 deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException;
   }
 }
