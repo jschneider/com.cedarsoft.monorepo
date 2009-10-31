@@ -35,7 +35,8 @@ public class XmlCommons {
   private XmlCommons() {
   }
 
-  @NotNull @NonNls
+  @NotNull
+  @NonNls
   public static String format( @NotNull @NonNls String xml ) {
     if ( xml.length() == 0 ) {
       return "";
@@ -43,7 +44,9 @@ public class XmlCommons {
 
     try {
       Document doc = new SAXBuilder().build( new StringReader( xml ) );
-      return new XMLOutputter( Format.getPrettyFormat() ).outputString( doc );
+      Format format = Format.getPrettyFormat();
+      format.setLineSeparator( "\n" );
+      return new XMLOutputter( format ).outputString( doc );
     } catch ( Exception e ) {
       throw new RuntimeException( e );
     }

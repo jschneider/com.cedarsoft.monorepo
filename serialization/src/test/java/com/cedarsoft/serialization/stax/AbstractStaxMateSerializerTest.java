@@ -29,12 +29,12 @@ public abstract class AbstractStaxMateSerializerTest<T> {
     T objectToSerialize = createObjectToSerialize();
 
     byte[] serialized = serializer.serialize( objectToSerialize );
-    AssertUtils.assertXMLEqual( "Was ---\n" + new String( serialized ) + "\n---\nExpected:---\n" + XmlCommons.format( getExpectedSerializedString() ) + "\n---\n", XmlCommons.format( new String( serialized ) ), getExpectedSerializedString(), true );
+    AssertUtils.assertXMLEqual( "Was ---\n" + XmlCommons.format( new String( serialized ) ) + "\n---\nExpected:---\n" + XmlCommons.format( getExpectedSerializedString() ) + "\n---\n", new String( serialized ), getExpectedSerializedString(), true );
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 
     verifyDeserialized( deserialized );
-  }it
+  }
 
   /**
    * Returns the serializer
