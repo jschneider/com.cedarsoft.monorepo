@@ -43,7 +43,9 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {
-      XMLStreamReader2 reader = new SMInputFactory( XMLInputFactory.newInstance() ).createStax2Reader( in );
+      XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+      //      inputFactory.setProperty( XMLInputFactory.IS_COALESCING, true );
+      XMLStreamReader2 reader = new SMInputFactory( inputFactory ).createStax2Reader( in );
       reader.nextTag();
       T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
 
@@ -70,24 +72,25 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
 
   /**
    * Returns the text and closes the tag
+   *
    * @param reader the reader
    * @return the text
+   *
    * @throws XMLStreamException
    */
   @NotNull
   protected String getText( @NotNull XMLStreamReader reader ) throws XMLStreamException {
-    int result = reader.next();
-    if ( result == XMLStreamReader2.END_ELEMENT ) {
-      return ""; //no characters available
-    }
-    if ( result != XMLStreamReader2.CHARACTERS ) {
-      throw new IllegalStateException( "Invalid state: " + result );
+    StringBuilder content = new StringBuilder();
+
+    int result;
+    while ( ( result = reader.next() ) != XMLStreamReader.END_ELEMENT ) {
+      if ( result != XMLStreamReader.CHARACTERS ) {
+        throw new IllegalStateException( "Invalid state: " + result );
+      }
+      content.append( reader.getText() );
     }
 
-    String text = reader.getText();
-
-    closeTag( reader );
-    return text;
+    return content.toString();
   }
 
   @NotNull
