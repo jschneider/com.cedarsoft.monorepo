@@ -32,7 +32,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends StaxMateSerializingStrategy<? extends T>> strategies ) {
     super( defaultElementName );
-    serializingStrategySupport = new SerializingStrategySupport<T, StaxMateSerializingStrategy<T>>( ( Collection<? extends StaxMateSerializingStrategy<T>> ) strategies );
+    serializingStrategySupport = new SerializingStrategySupport<T, StaxMateSerializingStrategy<T>>( strategies );
   }
 
   @NotNull
@@ -49,7 +49,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
   }
 
   @NotNull
-  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException {
+  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 
     StaxMateSerializingStrategy<? extends T> strategy = serializingStrategySupport.findStrategy( type );
