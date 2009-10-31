@@ -29,9 +29,4 @@ public class ApplicationSerializerTest extends AbstractStaxMateSerializerTest<Ap
       "  <version>1.2.3</version>\n" +
       "</application>";
   }
-
-  @Override
-  protected void verifyDeserialized( @NotNull Application application ) {
-    assertEquals( new Application( "gimp", new Version( 1, 2, 3 ) ), application );
-  }
 }

@@ -48,11 +48,11 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
       T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
 
       if ( !reader.isEndElement() ) {
-        throw new IllegalStateException( "Not consumed everything!" );
+        throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">. Currently at <" + reader.getName() + ">" );
       }
 
       if ( reader.next() != XMLStreamReader2.END_DOCUMENT ) {
-        throw new IllegalStateException( "Not consumed everything!" );
+        throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">. Currently at <" + reader.getName() + ">" );
       }
 
       return deserialized;

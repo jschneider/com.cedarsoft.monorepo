@@ -70,9 +70,4 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
   protected String getExpectedSerializedString() {
     return "<aString><string>1</string><string>2</string><string>3</string><description>descr</description></aString>";
   }
-
-  @Override
-  protected void verifyDeserialized( @NotNull List<String> deserialized ) {
-    assertEquals( deserialized, createObjectToSerialize() );
-  }
 }

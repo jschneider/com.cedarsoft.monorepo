@@ -63,9 +63,4 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
   protected String getExpectedSerializedString() {
     return "<aString><sub>asdf</sub></aString>";
   }
-
-  @Override
-  protected void verifyDeserialized( @NotNull String deserialized ) {
-    assertEquals( deserialized, "asdf" );
-  }
 }

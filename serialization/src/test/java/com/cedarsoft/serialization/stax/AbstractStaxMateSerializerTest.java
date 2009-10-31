@@ -55,9 +55,12 @@ public abstract class AbstractStaxMateSerializerTest<T> {
   protected abstract String getExpectedSerializedString();
 
   /**
-   * Verifies the deserialized object
+   * Verifies the deserialized object.
+   * The default implementation simply calls equals
    *
    * @param deserialized the deserialized object
    */
-  protected abstract void verifyDeserialized( @NotNull T deserialized );
+  protected void verifyDeserialized( @NotNull T deserialized ) {
+    assertEquals( deserialized, createObjectToSerialize() );
+  }
 }
