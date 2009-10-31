@@ -34,7 +34,7 @@ public abstract class AbstractStaxMateSerializerTest<T> {
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 
     verifyDeserialized( deserialized );
-  }
+  }it
 
   /**
    * Returns the serializer

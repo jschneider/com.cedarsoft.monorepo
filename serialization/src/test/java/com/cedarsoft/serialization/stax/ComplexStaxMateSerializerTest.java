@@ -38,6 +38,8 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws IOException, XMLStreamException {
         stringSerializer.serialize( serializeTo.addElement( "sub" ), object, context );
+        serializeTo.addElement( "emptyChild" ).addCharacters( "" );
+
         return serializeTo;
       }
 
@@ -45,6 +47,8 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
       public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         nextTag( deserializeFrom, "sub" );
         String string = stringSerializer.deserialize( deserializeFrom, context );
+
+        assertEquals( getChildText( deserializeFrom, "emptyChild" ), "" );
         closeTag( deserializeFrom );
 
         return string;
@@ -61,6 +65,6 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
   @NotNull
   @Override
   protected String getExpectedSerializedString() {
-    return "<aString><sub>asdf</sub></aString>";
+    return "<aString><sub>asdf</sub><emptyChild/></aString>";
   }
 }

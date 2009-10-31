@@ -49,7 +49,6 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
             } else {
               strings.add( getText( deserializeFrom ) );
             }
-            closeTag( deserializeFrom );
           }
         } );
 

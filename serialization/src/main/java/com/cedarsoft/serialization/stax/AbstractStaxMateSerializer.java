@@ -68,38 +68,48 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     }
   }
 
+  /**
+   * Returns the text and closes the tag
+   * @param reader the reader
+   * @return the text
+   * @throws XMLStreamException
+   */
   @NotNull
-  protected String getText( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException {
-    int result = deserializeFrom.next();
+  protected String getText( @NotNull XMLStreamReader reader ) throws XMLStreamException {
+    int result = reader.next();
+    if ( result == XMLStreamReader2.END_ELEMENT ) {
+      return ""; //no characters available
+    }
     if ( result != XMLStreamReader2.CHARACTERS ) {
       throw new IllegalStateException( "Invalid state: " + result );
     }
 
-    return deserializeFrom.getText();
+    String text = reader.getText();
+
+    closeTag( reader );
+    return text;
   }
 
   @NotNull
-  protected String getChildText( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException {
-    deserializeFrom.nextTag();
-    ensureTag( deserializeFrom, tagName );
-    String name = getText( deserializeFrom );
-    closeTag( deserializeFrom );
-    return name;
+  protected String getChildText( @NotNull XMLStreamReader reader, @NotNull @NonNls String tagName ) throws XMLStreamException {
+    reader.nextTag();
+    ensureTag( reader, tagName );
+    return getText( reader );
   }
 
-  protected void closeTag( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException {
-    int result = deserializeFrom.nextTag();
+  protected void closeTag( @NotNull XMLStreamReader reader ) throws XMLStreamException {
+    int result = reader.nextTag();
     if ( result != XMLStreamReader.END_ELEMENT ) {
       throw new IllegalStateException( "Invalid result: " + result );
     }
   }
 
-  protected void nextTag( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException {
-    int result = deserializeFrom.nextTag();
+  protected void nextTag( @NotNull XMLStreamReader reader, @NotNull @NonNls String tagName ) throws XMLStreamException {
+    int result = reader.nextTag();
     if ( result != XMLStreamReader.START_ELEMENT ) {
       throw new IllegalStateException( "Invalid result: " + result );
     }
-    ensureTag( deserializeFrom, tagName );
+    ensureTag( reader, tagName );
   }
 
   /**
