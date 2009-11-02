@@ -15,7 +15,9 @@ import java.io.IOException;
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @NotNull
   private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
-
+  @NotNull
+  @NonNls
+  public static final String SUFFIX_SANDBOX = "-sandbox";
   @NonNls
   private final String applicationName;
   private final File applicationHome;
@@ -29,6 +31,20 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @Inject
   public DefaultApplicationHomeAccess( @ApplicationName @NotNull @NonNls String applicationName ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + applicationName ), applicationName );
+  }
+
+  public DefaultApplicationHomeAccess( @NotNull @NonNls String applicationName, boolean sandbox ) throws IOException {
+    this( new File( new File( System.getProperty( "user.home" ) ), '.' + getApplicationDirName( applicationName, sandbox ) ), applicationName );
+  }
+
+  @NotNull
+  @NonNls
+  public static String getApplicationDirName( @NotNull @NonNls String applicationName, boolean sandbox ) {
+    if ( sandbox ) {
+      return applicationName + SUFFIX_SANDBOX;
+    } else {
+      return applicationName;
+    }
   }
 
   /**
