@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Offers acces to the application home.
+ * Offers access to the application home.
  */
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   private static final Log log = LogFactory.getLog( DefaultApplicationHomeAccess.class );
@@ -23,7 +23,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * Create a new application home access
    *
    * @param applicationName the name of the application
-   * @throws IOException if an io exceptino occures
+   * @throws IOException if an io exception occures
    */
   @Inject
   public DefaultApplicationHomeAccess( @ApplicationName @NotNull @NonNls String applicationName ) throws IOException {
