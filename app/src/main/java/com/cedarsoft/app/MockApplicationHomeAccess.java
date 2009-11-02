@@ -2,6 +2,7 @@ package com.cedarsoft.app;
 
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -13,19 +14,29 @@ import java.io.IOException;
 @Deprecated
 @Singleton
 public class MockApplicationHomeAccess implements ApplicationHomeAccess {
-  public static final String APPNAME = "mockAppHome";
+  @NotNull
+  @NonNls
+  public static final String APP_NAME = "mockAppHome";
+  @NotNull
+  @NonNls
+  public static final String SKIP_DELETION = "skipDeletion";
 
   @NotNull
   private final File projectHome;
 
   public MockApplicationHomeAccess() {
-    projectHome = new File( new File( System.getProperty( "java.io.tmpdir" ) ), "." + APPNAME );
+    projectHome = new File( new File( System.getProperty( "java.io.tmpdir" ) ), "." + APP_NAME );
+
     try {
-      FileUtils.deleteDirectory( projectHome );
+      if ( !Boolean.parseBoolean( System.getProperty( SKIP_DELETION ) ) ) {
+        FileUtils.deleteDirectory( projectHome );
+      }
     } catch ( IOException ignore ) {
     }
 
-    if ( !projectHome.mkdirs() ) {
+    projectHome.mkdirs();
+
+    if ( !projectHome.isDirectory() ) {
       throw new IllegalStateException( "Could not create " + projectHome.getAbsolutePath() );
     }
 
@@ -34,7 +45,7 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
 
   @NotNull
   public String getApplicationName() {
-    return APPNAME;
+    return APP_NAME;
   }
 
   @NotNull
