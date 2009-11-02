@@ -13,7 +13,8 @@ import java.io.IOException;
  * Offers access to the application home.
  */
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
-  private static final Log log = LogFactory.getLog( DefaultApplicationHomeAccess.class );
+  @NotNull
+  private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
 
   @NonNls
   private final String applicationName;
@@ -46,7 +47,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
 
     if ( !applicationHome.exists() || !applicationHome.isDirectory() ) {
       applicationHome.mkdirs();
-      log.info( "Creating Application Directory: " + applicationHome.getAbsolutePath() );
+      LOG.info( "Creating Application Directory: " + applicationHome.getAbsolutePath() );
     }
     if ( !applicationHome.canWrite() ) {
       throw new IOException( "Cannot write " + applicationHome.getAbsolutePath() );
