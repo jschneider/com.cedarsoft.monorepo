@@ -1,8 +1,13 @@
 package com.cedarsoft;
 
+import org.apache.commons.io.IOUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -35,6 +40,20 @@ public class TestUtils {
   @NotNull
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
+  }
+
+  @NotNull
+  public static File createTmpFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @NotNull InputStream in ) throws IOException {
+    File file = File.createTempFile( prefix, suffix );
+    file.deleteOnExit();
+
+    FileOutputStream out = new FileOutputStream( file );
+    try {
+      IOUtils.copy( in, out );
+    } finally {
+      out.close();
+    }
+    return file;
   }
 
   @NotNull
