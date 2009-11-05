@@ -30,7 +30,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
 
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
     try {
-      SMOutputDocument doc = new SMOutputFactory( XMLOutputFactory.newInstance() ).createOutputDocument( out );
+      SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
       //    doc.setIndentation( "\n  ", 1, 2 );
       SMOutputElement root = doc.addElement( getDefaultElementName() );
       serialize( root, object, context != null ? context : Lookups.emtyLookup() );
@@ -43,9 +43,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {
-      XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-      //      inputFactory.setProperty( XMLInputFactory.IS_COALESCING, true );
-      XMLStreamReader2 reader = new SMInputFactory( inputFactory ).createStax2Reader( in );
+      XMLStreamReader2 reader = StaxSupport.getSmInputFactory().createStax2Reader( in );
       reader.nextTag();
       T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
 
