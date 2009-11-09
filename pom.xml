@@ -451,6 +451,7 @@
     <module>db</module>
     <module>execution</module>
     <module>history</module>
+    <module>file</module>
     <module>id</module>
     <module>inject</module>
     <module>image</module>
