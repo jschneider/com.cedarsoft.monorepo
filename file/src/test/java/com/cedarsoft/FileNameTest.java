@@ -12,7 +12,7 @@ import static org.testng.Assert.*;
 public class FileNameTest {
   @Test
   public void testDel() {
-    Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName(), "asdf" );
+    Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
     Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension(), "jpg" );
     Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getDelimiter(), "." );
 
@@ -22,8 +22,8 @@ public class FileNameTest {
 
   @Test
   public void testCase() {
-    Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName(), "asdf" );
-    Assert.assertEquals( new FileName( "aSdf", ".", "JPG" ).getBaseName(), "aSdf" );
+    Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
+    Assert.assertEquals( new FileName( "aSdf", ".", "JPG" ).getBaseName().getName(), "aSdf" );
 
     Assert.assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension(), "jpg" );
     Assert.assertEquals( new FileName( "asdf", ".", "JPG" ).getExtension(), "JPG" );

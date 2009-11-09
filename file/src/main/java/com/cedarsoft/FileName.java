@@ -1,6 +1,5 @@
 package com.cedarsoft;
 
-import com.cedarsoft.Extension;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +16,7 @@ public class FileName {
   private final String extension;
   @NotNull
   @NonNls
-  private final String baseName;
+  private final BaseName baseName;
   @NonNls
   @Nullable
   private final String delimiter;
@@ -42,6 +41,10 @@ public class FileName {
     this( baseName, extension.getDelimiter(), extension.getExtension() );
   }
 
+  public FileName( @NonNls @NotNull String baseName, @NonNls @Nullable String delimiter, @NonNls @Nullable String extension ) {
+    this( new BaseName( baseName ), delimiter, extension );
+  }
+
   /**
    * Creates a file name
    *
@@ -49,15 +52,14 @@ public class FileName {
    * @param delimiter the delimiter
    * @param extension the extension
    */
-  public FileName( @NonNls @NotNull String baseName, @NonNls @Nullable String delimiter, @NonNls @Nullable String extension ) {
+  public FileName( @NonNls @NotNull BaseName baseName, @NonNls @Nullable String delimiter, @NonNls @Nullable String extension ) {
     this.baseName = baseName;
     this.delimiter = delimiter;
     this.extension = extension;
   }
 
-  @NonNls
   @NotNull
-  public String getBaseName() {
+  public BaseName getBaseName() {
     return baseName;
   }
 
@@ -105,7 +107,7 @@ public class FileName {
     FileName fileName = ( FileName ) o;
 
     if ( !baseName.equals( fileName.baseName ) ) return false;
-    if ( !delimiter.equals( fileName.delimiter ) ) return false;
+    if ( delimiter != null ? !delimiter.equals( fileName.delimiter ) : fileName.delimiter != null ) return false;
     if ( extension != null ? !extension.equals( fileName.extension ) : fileName.extension != null ) return false;
 
     return true;
@@ -115,14 +117,14 @@ public class FileName {
   public int hashCode() {
     int result = extension != null ? extension.hashCode() : 0;
     result = 31 * result + baseName.hashCode();
-    result = 31 * result + delimiter.hashCode();
+    result = 31 * result + ( delimiter != null ? delimiter.hashCode() : 0 );
     return result;
   }
 
   @Override
   public String toString() {
     if ( extension == null ) {
-      return baseName;
+      return baseName.toString();
     }
     return getName();
   }
