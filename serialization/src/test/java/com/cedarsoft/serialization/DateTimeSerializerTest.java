@@ -1,17 +1,20 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.AssertUtils;
-import com.cedarsoft.serialization.DateTimeSerializer;
+import com.cedarsoft.DateTimeTest;
 import com.google.inject.Inject;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
+import org.testng.*;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -56,7 +59,7 @@ public class DateTimeSerializerTest extends DateTimeTest {
 
     byte[] serialized = serializer.serialize( dateTime );
 
-  AssertUtils.assertXMLEqual( new String( serialized ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serialized ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<dateTime>20091231T235901.999-0500</dateTime>" );
 
     DateTime deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );

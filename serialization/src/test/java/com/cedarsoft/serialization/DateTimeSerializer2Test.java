@@ -1,16 +1,33 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.serialization.DateTimeSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
-
-import static org.testng.Assert.assertEquals;
+import org.joda.time.DateTimeZone;
+import org.testng.*;
+import org.testng.annotations.*;
 
 /**
  *
  */
-public class DateTimeSerializer2Test extends CollustraAbstractSerializerTest<DateTime> {
+public class DateTimeSerializer2Test extends AbstractStaxMateSerializerTest<DateTime> {
+  @NotNull
+  protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
+
+  private DateTimeZone oldTimeZone;
+
+  @BeforeMethod
+  protected void setUpDateTimeZone() throws Exception {
+    oldTimeZone = DateTimeZone.getDefault();
+    DateTimeZone.setDefault( zone );
+  }
+
+  @AfterMethod
+  protected void tearDownDateTimeZone() {
+    DateTimeZone.setDefault( oldTimeZone );
+  }
+
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<DateTime> getSerializer() {
