@@ -2,6 +2,7 @@ package com.cedarsoft.utils.lock;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,6 +27,7 @@ public class MultiLock implements Lock {
     this.locks.addAll( locks );
   }
 
+  @Override
   public void lock() {
     for ( Lock lock : locks ) {
       //noinspection LockAcquiredButNotSafelyReleased
@@ -33,24 +35,29 @@ public class MultiLock implements Lock {
     }
   }
 
+  @Override
   public void lockInterruptibly() throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  @Override
   public boolean tryLock() {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  @Override
   public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  @Override
   public void unlock() {
     for ( Lock lock : locks ) {
       lock.unlock();
     }
   }
 
+  @Override
   public Condition newCondition() {
     throw new UnsupportedOperationException( "Cannot create a condition for a multi lock" );
   }

@@ -8,6 +8,8 @@ import org.apache.commons.configuration.Configuration;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Override;
+
 /**
  * <p/>
  * Date: Jul 5, 2007<br>
@@ -41,14 +43,17 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
     connector.readFromConfiguration();
   }
 
+  @Override
   public Object getObject() throws Exception {
     return connector;
   }
 
+  @Override
   public Class<ConfigurationConnector> getObjectType() {
     return ConfigurationConnector.class;
   }
 
+  @Override
   public boolean isSingleton() {
     return true;
   }

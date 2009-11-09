@@ -18,6 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.Override;
 
 /**
  * Abstract serializer based on JDom
@@ -40,12 +41,14 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
     return element;
   }
 
+  @Override
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
     Element root = new Element( getDefaultElementName() );
     serialize( root, object, context != null ? context : Lookups.emtyLookup() );
     new XMLOutputter( Format.getPrettyFormat().setLineSeparator( LINE_SEPARATOR ) ).output( new Document( root ), out );
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {

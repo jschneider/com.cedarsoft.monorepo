@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.Override;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,6 +40,7 @@ public class FileBasedSerializedObjectsAccess implements SerializedObjectsAccess
     this.extension = extension;
   }
 
+  @Override
   @NotNull
   public Set<? extends String> getStoredIds() throws FileNotFoundException {
     assert baseDir.exists();
@@ -55,6 +57,7 @@ public class FileBasedSerializedObjectsAccess implements SerializedObjectsAccess
     return ids;
   }
 
+  @Override
   @NotNull
   public OutputStream openOut( @NotNull @NonNls String id ) throws FileNotFoundException {
     File file = getFile( id );
@@ -64,6 +67,7 @@ public class FileBasedSerializedObjectsAccess implements SerializedObjectsAccess
     return new BufferedOutputStream( new FileOutputStream( file ) );
   }
 
+  @Override
   @NotNull
   public InputStream getInputStream( @NotNull @NonNls String id ) throws FileNotFoundException {
     return new BufferedInputStream( new FileInputStream( getFile( id ) ) );

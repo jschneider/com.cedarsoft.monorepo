@@ -6,6 +6,8 @@ import com.cedarsoft.utils.Cache;
 import org.hibernate.SessionFactory;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * Creates Hibernate DAOs if needed.
  */
@@ -22,6 +24,7 @@ public class HibernateDaoFactory implements Cache.Factory<DaoTypeDescriptor<Obje
     this.sessionFactory = sessionFactory;
   }
 
+  @Override
   @NotNull
   public GenericDao<Object> create( @NotNull DaoTypeDescriptor<Object> key ) {
     return new HibernateDao<Object>( sessionFactory, key.getType(), key.getLockProvider() );

@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 
@@ -48,11 +49,13 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
   public void initializeDelegatingDao( @NotNull final GenericDao<T> delegatingDao, @Nullable final Lock lock ) {
     log.info( "initializing with " + delegatingDao );
     asyncCallSupport.initializeWorker( new CallbackCaller<DaoAction<T, ?>>() {
+      @Override
       @NotNull
       public String getDescription() {
         return "AsynchroniousDao-CallbackCaller for " + delegatingDao;
       }
 
+      @Override
       public Object call( @NotNull DaoAction<T, ?> callback ) throws Exception {
         log.debug( "executing " + callback );
         if ( lock != null ) {
@@ -70,9 +73,11 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   @NotNull
   public <LT extends T> Long save( @NotNull final LT newInstance ) {
     return invoke( new DaoAction<T, Long>() {
+      @Override
       @NotNull
       public Long execute( @NotNull GenericDao<T> dao ) {
         return dao.save( newInstance );
@@ -96,6 +101,7 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     return null;
   }
 
+  @Override
   public <LT extends T> void update( @NotNull final LT transientObject ) {
     invokeVoid( new VoidDaoAction<T>() {
       @Override
@@ -110,6 +116,7 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   public <LT extends T> void saveOrUpdate( @NotNull final LT object ) {
     invokeVoid( new VoidDaoAction<T>() {
       @Override
@@ -124,6 +131,7 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   public <LT extends T> void delete( @NotNull final LT persistentObject ) {
     invokeVoid( new VoidDaoAction<T>() {
       @Override
@@ -138,9 +146,11 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   @NotNull
   public T findById( @NotNull final Long id ) {
     return invoke( new DaoAction<T, T>() {
+      @Override
       @NotNull
       public T execute( @NotNull GenericDao<T> dao ) {
         return dao.findById( id );
@@ -153,9 +163,11 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   @NotNull
   public <R> R find( @NotNull final Finder<R> finder ) {
     return invoke( new DaoAction<T, R>() {
+      @Override
       @NotNull
       public R execute( @NotNull GenericDao<T> dao ) {
         return dao.find( finder );
@@ -168,9 +180,11 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   @NotNull
   public List<? extends T> findAll() {
     return invoke( new DaoAction<T, List<? extends T>>() {
+      @Override
       public List<? extends T> execute( @NotNull GenericDao<T> dao ) {
         return dao.findAll();
       }
@@ -182,8 +196,10 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     } );
   }
 
+  @Override
   public int getCount() {
     return invoke( new DaoAction<T, Integer>() {
+      @Override
       public Integer execute( @NotNull GenericDao<T> dao ) {
         return dao.getCount();
       }
@@ -217,6 +233,7 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
     asyncCallSupport.invokeVoid( actionVoid );
   }
 
+  @Override
   public void shutdown() {
     asyncCallSupport.shutdown();
   }
@@ -225,6 +242,7 @@ public class AsynchronousDao<T> extends AbstractGenericDao<T> {
    * A action that doesn't have a return value
    */
   public abstract static class VoidDaoAction<T> implements DaoAction<T, Object> {
+    @Override
     @Nullable
     public Object execute( @NotNull GenericDao<T> dao ) {
       executeVoid( dao );

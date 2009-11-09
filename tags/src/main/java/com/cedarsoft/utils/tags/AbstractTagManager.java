@@ -4,6 +4,7 @@ import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,29 +24,35 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
     this.tagProvider = tagProvider;
   }
 
+  @Override
   @NotNull
   public Tag getTag( @NotNull @NonNls String description ) {
     return tagProvider.getTag( description );
   }
 
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     return tagProvider.getTags();
   }
 
+  @Override
   @NotNull
-  public Tag findTag( @NonNls @NotNull String description ) throws com.cedarsoft.NotFoundException {
+  public Tag findTag( @NonNls @NotNull String description ) throws NotFoundException {
     return tagProvider.findTag( description );
   }
 
+  @Override
   public void removeTag( @NotNull Tag tag ) {
     tagProvider.removeTag( tag );
   }
 
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagProvider.addTagChangeListener( listener );
   }
 
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagProvider.removeTagChangeListener( listener );
   }
@@ -59,6 +66,7 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
   @NotNull
   protected abstract Taggable createTaggable( @NotNull T o );
 
+  @Override
   @NotNull
   public Taggable getTaggable( @NotNull T o ) {
     try {
@@ -68,6 +76,7 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
     }
   }
 
+  @Override
   @NotNull
   public String getTagsAsString( @NotNull T o ) {
     List<? extends Tag> tags = getTaggable( o ).getTags();
@@ -83,10 +92,12 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
     return s.toString();
   }
 
+  @Override
   public void addTag( @NotNull T object, @NotNull String description ) {
     getTaggable( object ).addTag( getTag( description ) );
   }
 
+  @Override
   public void removeTag( @NotNull T object, @NotNull String description ) {
     getTaggable( object ).removeTag( getTag( description ) );
   }
@@ -97,10 +108,12 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
    *
    * @param description the description
    */
+  @Override
   public void removeTag( @NonNls @NotNull String description ) throws NotFoundException {
     tagProvider.removeTag( description );
   }
 
+  @Override
   @NotNull
   public Tagged findTagged( @NotNull T o ) throws NotFoundException {
     return findTaggable( o );

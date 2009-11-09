@@ -63,14 +63,17 @@ public class ObservableObjectAccessViewTest {
     final List<Integer> changed = new ArrayList<Integer>();
 
     view.addElementListener( new SingleElementsListener<Integer>() {
+      @java.lang.Override
       public void elementDeleted( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         deleted.add( element );
       }
 
+      @java.lang.Override
       public void elementAdded( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         added.add( element );
       }
 
+      @java.lang.Override
       public void elementChanged( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         changed.add( element );
       }
@@ -93,14 +96,17 @@ public class ObservableObjectAccessViewTest {
     final List<Integer> changed = new ArrayList<Integer>();
 
     view.addElementListener( new SingleElementsListener<Integer>() {
+      @java.lang.Override
       public void elementDeleted( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         deleted.add( element );
       }
 
+      @java.lang.Override
       public void elementAdded( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         added.add( element );
       }
 
+      @java.lang.Override
       public void elementChanged( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
         changed.add( element );
       }

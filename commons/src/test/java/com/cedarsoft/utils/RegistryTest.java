@@ -36,6 +36,7 @@ public class RegistryTest {
     assertEquals( registry.getStoredObjects().size(), 2 );
 
     registry = new DefaultRegistry<String>( new Comparator<String>() {
+      @java.lang.Override
       public int compare( String o1, String o2 ) {
         return o1.compareTo( o2 );
       }
@@ -55,6 +56,7 @@ public class RegistryTest {
   public void testInitiWithComp() {
     try {
       new DefaultRegistry<String>( Arrays.asList( "a", "b", "a" ), new Comparator<String>() {
+        @java.lang.Override
         public int compare( String o1, String o2 ) {
           return o1.compareTo( o2 );
         }

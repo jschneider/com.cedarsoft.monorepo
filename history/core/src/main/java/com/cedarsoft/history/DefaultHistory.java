@@ -3,6 +3,7 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   @NotNull
   private final ClusteredHistoryListenerSupport<E> listenerSupport = new ClusteredHistoryListenerSupport<E>();
 
+  @Override
   @NotNull
   public List<? extends E> getEntries() {
     return Collections.unmodifiableList( entries );
@@ -42,6 +44,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public boolean hasEntries() {
     lock.readLock().lock();
     try {
@@ -51,6 +54,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public void addEntry( @NotNull E entry ) {
     lock.writeLock().lock();
     try {
@@ -62,6 +66,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     listenerSupport.notifyEntryAdded( entry );
   }
 
+  @Override
   public boolean removeEntry( @NotNull E entry ) {
     lock.writeLock().lock();
     try {
@@ -72,10 +77,12 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public void commitEntry( @NotNull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
+  @Override
   @NotNull
   public E getFirstEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
@@ -89,6 +96,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public void clear() {
     lock.writeLock().lock();
     try {
@@ -101,6 +109,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   @NotNull
   public E getLatestEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
@@ -114,6 +123,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public boolean isLatestEntry( @NotNull E entry ) {
     lock.readLock().lock();
     try {
@@ -127,11 +137,13 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
@@ -151,22 +163,27 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }
 
+  @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  @Override
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
+  @Override
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
+  @Override
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();

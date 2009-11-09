@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.ComboBoxModel;
+import java.lang.Override;
 
 /**
  * A combo box model based on a node.
@@ -17,10 +18,12 @@ public class StructBasedComboBoxModel extends StructBasedListModel implements Co
     super( node );
   }
 
+  @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     selected = ( StructPart ) anItem;
   }
 
+  @Override
   @Nullable
   public Object getSelectedItem() {
     return selected;

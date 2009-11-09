@@ -2,6 +2,7 @@ package com.cedarsoft.utils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.List;
 import java.util.WeakHashMap;
 
@@ -14,6 +15,7 @@ import java.util.WeakHashMap;
 public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
   @NotNull
   private final Cache<P, List<? extends C>> childrenCache = new HashedCache<P, List<? extends C>>( new WeakHashMap<P, List<? extends C>>(), new Cache.Factory<P, List<? extends C>>() {
+    @Override
     @NotNull
     public List<? extends C> create( @NotNull P key ) {
       return createChildren( key );
@@ -23,6 +25,7 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
   @NotNull
   protected abstract List<? extends C> createChildren( @NotNull P parent );
 
+  @Override
   @NotNull
   public final List<? extends C> findChildren( @NotNull P parent ) {
     return childrenCache.get( parent );

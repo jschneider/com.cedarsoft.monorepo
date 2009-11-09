@@ -3,6 +3,7 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -55,44 +56,54 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
     }, false );
   }
 
+  @Override
   public void commit( @NotNull E element ) {
     base.commit( element );
   }
 
+  @Override
   public void remove( @NotNull E element ) {
     base.remove( element );
   }
 
+  @Override
   public void add( @NotNull E element ) {
     base.add( element );
   }
 
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     base.setElements( elements );
   }
 
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     return view.getElements();
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.addElementListener( listener );
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     view.addElementListener( listener, isTransient );
   }
 
+  @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.removeElementListener( listener );
   }
 
+  @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {
     return view.getLock();
   }
 
+  @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return view.getTransientElementListeners();
@@ -117,6 +128,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
       this.type = type;
     }
 
+    @Override
     @Nullable
     public T getBridged( @NotNull Object element ) {
       if ( type.isAssignableFrom( element.getClass() ) ) {

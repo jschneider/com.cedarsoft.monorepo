@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 
 /**
  * Base class for application actions.
@@ -15,10 +16,11 @@ public abstract class ApplicationAction extends AbstractAction {
   }
 
   /**
-   * Default implementation that delegates to {@link #applicationActionPerformed(java.awt.event.ActionEvent)}.
+   * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
    *
    * @param e the event
    */
+  @Override
   public final void actionPerformed( @NotNull ActionEvent e ) {
     try {
       applicationActionPerformed( e );

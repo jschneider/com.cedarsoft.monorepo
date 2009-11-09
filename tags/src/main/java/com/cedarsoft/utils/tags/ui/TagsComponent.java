@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Override;
 
 /**
  */
@@ -63,6 +64,7 @@ public class TagsComponent extends JPanel {
 
     editorComponent.getInputMap().put( KeyStroke.getKeyStroke( "ENTER" ), ACTION_KEY_ADD_TAG );
     editorComponent.getActionMap().put( ACTION_KEY_ADD_TAG, new AbstractAction() {
+      @Override
       public void actionPerformed( ActionEvent e ) {
         tagCombo.setSelectedItem( tagCombo.getEditor().getItem() );
         if ( tagCombo.isPopupVisible() ) {
@@ -79,6 +81,7 @@ public class TagsComponent extends JPanel {
 
     tagList.getInputMap().put( KeyStroke.getKeyStroke( "DELETE" ), ACTION_REMOVE_SELECTED_TAG );
     tagList.getActionMap().put( ACTION_REMOVE_SELECTED_TAG, new AbstractAction() {
+      @Override
       public void actionPerformed( ActionEvent e ) {
         removeSelectedTag();
       }
@@ -86,6 +89,7 @@ public class TagsComponent extends JPanel {
 
     //The Button Actions
     ActionListener addListener = new ActionListener() {
+      @Override
       public void actionPerformed( ActionEvent e ) {
         addSelectedTag();
       }
@@ -93,6 +97,7 @@ public class TagsComponent extends JPanel {
     addButton.addActionListener( addListener );
 
     removeButton.addActionListener( new ActionListener() {
+      @Override
       public void actionPerformed( ActionEvent e ) {
         removeSelectedTag();
       }
@@ -154,6 +159,7 @@ public class TagsComponent extends JPanel {
 
     tagList.setSelectionModel( new TagListSelectionMode( tagListModel ) );
     tagList.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
+      @Override
       public void valueChanged( ListSelectionEvent e ) {
         if ( e.getValueIsAdjusting() ) {
           return;

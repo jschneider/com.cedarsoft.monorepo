@@ -31,6 +31,7 @@ public class ClusteredPropertyChangeSupportTest {
     assertEquals( 0, pcs.getNonTransientListeners().size() );
 
     pcs.addPropertyChangeListener( new PropertyChangeListener() {
+      @java.lang.Override
       public void propertyChange( PropertyChangeEvent evt ) {
       }
     }, true );
@@ -39,6 +40,7 @@ public class ClusteredPropertyChangeSupportTest {
     assertEquals( 0, pcs.getNonTransientListeners().size() );
 
     pcs.addPropertyChangeListener( new PropertyChangeListener() {
+      @java.lang.Override
       public void propertyChange( PropertyChangeEvent evt ) {
       }
     }, false );
@@ -53,6 +55,7 @@ public class ClusteredPropertyChangeSupportTest {
     final List<PropertyChangeEvent> events = new ArrayList<PropertyChangeEvent>();
 
     PropertyChangeListener listener = new PropertyChangeListener() {
+      @java.lang.Override
       public void propertyChange( PropertyChangeEvent evt ) {
         events.add( evt );
       }

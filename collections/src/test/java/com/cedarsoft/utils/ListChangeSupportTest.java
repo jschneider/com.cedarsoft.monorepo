@@ -31,11 +31,13 @@ public class ListChangeSupportTest {
     final List<String> eventStrings = new ArrayList<String>();
 
     listChangeSupport.addListener( new ListChangeListener<String>() {
+      @java.lang.Override
       public void elementAdded( int index, @NotNull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );
       }
 
+      @java.lang.Override
       public void elementRemoved( int index, @NotNull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );

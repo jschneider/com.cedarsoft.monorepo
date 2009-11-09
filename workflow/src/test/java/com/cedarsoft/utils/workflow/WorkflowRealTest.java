@@ -17,6 +17,7 @@ public class WorkflowRealTest {
 
     State<MyObject> audit = new State<MyObject>( "audit" );
     input.createTransition( audit, new Action<MyObject>() {
+      @java.lang.Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }

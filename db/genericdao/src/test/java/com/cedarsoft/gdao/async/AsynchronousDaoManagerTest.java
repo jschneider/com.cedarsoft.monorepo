@@ -97,6 +97,7 @@ public class AsynchronousDaoManagerTest {
 
     try {
       service.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
+        @java.lang.Override
         protected void addRestrictions( @NotNull Criteria criteria ) {
         }
       } );

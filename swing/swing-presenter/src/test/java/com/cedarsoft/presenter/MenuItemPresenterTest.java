@@ -30,6 +30,7 @@ public class MenuItemPresenterTest {
     MappedLookup lookup = new MappedLookup();
     Node node = new DefaultNode( "menu", lookup );
     AbstractAction action = new AbstractAction( "The action" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -50,6 +51,7 @@ public class MenuItemPresenterTest {
     MappedLookup lookup = new MappedLookup();
     Node node = new DefaultNode( "menu", lookup );
     AbstractAction action = new AbstractAction( "The action" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -70,6 +72,7 @@ public class MenuItemPresenterTest {
 
     MappedLookup lookup = new MappedLookup();
     AbstractAction action = new AbstractAction( "The action" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };

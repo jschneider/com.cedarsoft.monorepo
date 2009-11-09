@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDate;
 
+import java.lang.Override;
+
 /**
  * Default entry for a history with validity dates.
  * Each entry has exactly one validity date where the entry is valid at.
@@ -39,6 +41,7 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
     this.validityDate = validityDate;
   }
 
+  @Override
   @NotNull
   public LocalDate getValidityDate() {
     return validityDate;

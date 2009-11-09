@@ -22,6 +22,7 @@ public class DefaultRegistryTest {
   @Test
   public void testUnique() {
     DefaultRegistry<String> registry = new DefaultRegistry<String>( new Comparator<String>() {
+      @java.lang.Override
       public int compare( String o1, String o2 ) {
         return o1.compareTo( o2 );
       }

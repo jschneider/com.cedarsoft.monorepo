@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -65,6 +66,7 @@ public class NonTransientChangeListenerSupport<T> {
     System.arraycopy( propertiesPath, 0, actual, 0, propertiesPath.length );
 
     return new PropertyChangeListener() {
+      @Override
       public void propertyChange( PropertyChangeEvent evt ) {
         actual[actual.length - 1] = evt.getPropertyName();
         changed( actual );

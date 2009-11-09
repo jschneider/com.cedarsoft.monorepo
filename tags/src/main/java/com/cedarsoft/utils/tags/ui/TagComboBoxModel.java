@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.ComboBoxModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.lang.Override;
 
 /**
  * ComboboxModel prsenting tags
@@ -37,6 +38,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     return taggable;
   }
 
+  @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     //noinspection ObjectEquality
     if ( anItem == getSelectedItem() ) {
@@ -77,6 +79,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     }
   }
 
+  @Override
   @Nullable
   public Tag getSelectedItem() {
     return taggable.getSelectedTag();

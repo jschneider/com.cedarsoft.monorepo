@@ -3,6 +3,7 @@ package com.cedarsoft.utils.tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class SingleTaggable implements Taggable {
     }
   }
 
+  @Override
   public boolean addTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
     if ( tag == selectedTag ) {
@@ -44,6 +46,7 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
+  @Override
   public boolean removeTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
     if ( selectedTag != tag ) {
@@ -55,6 +58,7 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     if ( selectedTag != null ) {
@@ -64,10 +68,12 @@ public class SingleTaggable implements Taggable {
     }
   }
 
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.addTagChangeListener( listener );
   }
 
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.removeTagChangeListener( listener );
   }

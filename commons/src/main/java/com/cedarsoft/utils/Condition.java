@@ -2,6 +2,8 @@ package com.cedarsoft.utils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * A condition.
  */
@@ -11,6 +13,7 @@ public interface Condition {
    */
   @NotNull
   Condition FALSE = new Condition() {
+    @Override
     public boolean isValid() {
       return false;
     }
@@ -20,6 +23,7 @@ public interface Condition {
    */
   @NotNull
   Condition TRUE = new Condition() {
+    @Override
     public boolean isValid() {
       return true;
     }

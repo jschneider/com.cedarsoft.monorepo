@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.NoSuchElementException;
 
 /**
@@ -27,6 +28,7 @@ public class ConfigurationAccess<T> {
 
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull final T defaultValue ) {
     this( configuration, type, key, new DefaultValueProvider() {
+      @Override
       @NotNull
       public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
         return type.cast( defaultValue );

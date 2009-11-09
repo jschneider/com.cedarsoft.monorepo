@@ -4,15 +4,18 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.List;
 
 /**
  * A node extends the interface {@link StructPart} with read/write support.
  */
 public interface Node extends StructPart {
+  @Override
   @NotNull
   List<? extends Node> getChildren();
 
+  @Override
   @NotNull
   Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
 
@@ -21,6 +24,7 @@ public interface Node extends StructPart {
    *
    * @return the parent
    */
+  @Override
   @Nullable
   Node getParent();
 

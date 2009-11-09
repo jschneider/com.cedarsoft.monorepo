@@ -3,6 +3,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 /**
@@ -34,6 +35,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
     this.listenerReference = new WeakReference<LookupChangeListener<? super T>>( listener );
   }
 
+  @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     LookupChangeListener<? super T> delegatingListener = getWrappedListener();
     if ( delegatingListener == null ) {

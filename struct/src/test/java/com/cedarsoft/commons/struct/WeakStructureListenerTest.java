@@ -15,10 +15,12 @@ public class WeakStructureListenerTest  {
   @Test
   public void testAdd() {
     node.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
 
       }
 
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     } );
@@ -29,9 +31,11 @@ public class WeakStructureListenerTest  {
   @Test
   public void testAddRemoveWeakListener() {
     StructureListener listener = new StructureListener() {
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
       }
 
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     };
@@ -48,9 +52,11 @@ public class WeakStructureListenerTest  {
   public void testAutoRemoving() {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
     node.addStructureListenerWeak( new StructureListener() {
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
       }
 
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     } );

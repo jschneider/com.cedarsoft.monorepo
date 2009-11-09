@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class TagListModel implements ListModel {
     this.availableTags = availableTags;
     this.nullable = nullable;
     availableTags.addTagChangeListener( new TagChangeListener() {
+      @Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         notifyTagChanged( event );
       }
@@ -43,6 +45,7 @@ public class TagListModel implements ListModel {
     return nullable;
   }
 
+  @Override
   public int getSize() {
     if ( nullable ) {
       return availableTags.getTags().size() + 1;
@@ -51,6 +54,7 @@ public class TagListModel implements ListModel {
     }
   }
 
+  @Override
   @Nullable
   public Tag getElementAt( int index ) {
     if ( index < 0 ) {
@@ -72,10 +76,12 @@ public class TagListModel implements ListModel {
     }
   }
 
+  @Override
   public void addListDataListener( @NotNull ListDataListener l ) {
     listeners.add( l );
   }
 
+  @Override
   public void removeListDataListener( @NotNull ListDataListener l ) {
     listeners.remove( l );
   }

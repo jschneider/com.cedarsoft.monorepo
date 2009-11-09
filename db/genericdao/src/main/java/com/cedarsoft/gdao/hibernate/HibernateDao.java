@@ -17,6 +17,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 
@@ -57,44 +58,54 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     return lockProvider;
   }
 
+  @Override
   public final void remove( @NotNull T element ) throws DataAccessException {
     delete( element );
   }
 
+  @Override
   public final void add( @NotNull T element ) {
     saveOrUpdate( element );
   }
 
+  @Override
   public void commit( @NotNull T element ) {
     update( element );
   }
 
+  @Override
   public void setElements( @NotNull List<? extends T> elements ) {
     throw new UnsupportedOperationException( "Not supported for daos" );
   }
 
+  @Override
   @NotNull
   public final List<? extends T> getElements() {
     return findAll();
   }
 
+  @Override
   @NotNull
   public List<? extends T> findAll() {
     return getHibernateTemplate().executeFind( new HibernateCallback() {
+      @Override
       public Object doInHibernate( Session session ) throws HibernateException {
         return session.createCriteria( type ).list();
       }
     } );
   }
 
+  @Override
   public int getCount() {
     return ( Integer ) getHibernateTemplate().execute( new HibernateCallback() {
+      @Override
       public Object doInHibernate( Session session ) throws HibernateException {
         return session.createCriteria( type ).list().size();
       }
     } );
   }
 
+  @Override
   @NotNull
   public <LT extends T> Long save( @NotNull LT newInstance ) {
     Lock writeLock = getWriteLock( newInstance );
@@ -121,6 +132,7 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     }
   }
 
+  @Override
   @NotNull
   public T findById( @NotNull Long id ) throws DataAccessException {
     T found = type.cast( getHibernateTemplate().get( type, id ) );
@@ -130,6 +142,7 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     return found;
   }
 
+  @Override
   public <LT extends T> void saveOrUpdate( @NotNull LT object ) {
     Lock lock = getWriteLock( object );
     lock.lock();
@@ -140,6 +153,7 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     }
   }
 
+  @Override
   public <LT extends T> void update( @NotNull LT transientObject ) {
     Lock lock = getWriteLock( transientObject );
     lock.lock();
@@ -150,6 +164,7 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     }
   }
 
+  @Override
   public <LT extends T> void delete( @NotNull LT persistentObject ) throws DataAccessException {
     Lock lock = getWriteLock( persistentObject );
     lock.lock();
@@ -163,10 +178,12 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     }
   }
 
+  @Override
   @NotNull
   public <T> T find( @NotNull final Finder<T> finder ) throws EmptyResultDataAccessException {
     //noinspection unchecked
     return ( T ) getHibernateTemplate().execute( new HibernateCallback() {
+      @Override
       @NotNull
       public T doInHibernate( @NotNull Session session ) throws HibernateException {
         return finder.find( session );
@@ -174,6 +191,7 @@ public class HibernateDao<T> extends HibernateDaoSupport implements GenericDao<T
     } );
   }
 
+  @Override
   public void shutdown() {
   }
 

@@ -5,6 +5,7 @@ import com.cedarsoft.utils.HashedCache;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Iterator;
 
 /**
@@ -30,16 +31,19 @@ public class DefaultGenericDaoManager implements GenericDaoManager {
    * @param type the type
    * @return the dao for the given type
    */
+  @Override
   @NotNull
   public <T> GenericDao<T> getDao( @NotNull Class<T> type ) {
     return getDao( type, null );
   }
 
+  @Override
   @NotNull
   public <T> GenericDao<T> getDao( @NotNull Class<T> type, @Nullable LockProvider<T> lockProvider ) {
     return ( GenericDao<T> ) daoCache.get( new DaoTypeDescriptor<T>( type, lockProvider ) );
   }
 
+  @Override
   public void shutdown() {
     for ( Iterator<GenericDao<Object>> it = daoCache.values().iterator(); it.hasNext(); ) {
       GenericDao<Object> dao = it.next();

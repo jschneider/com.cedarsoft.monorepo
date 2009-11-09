@@ -58,6 +58,7 @@ public class DirRepresentationTest {
 
     DirRepresenter representer = new DirRepresenter( root, false );
     representer.parse( baseDir, new NodeFactory() {
+      @java.lang.Override
       @NotNull
       public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
         File file = context.lookupNonNull( File.class );
@@ -99,6 +100,7 @@ public class DirRepresentationTest {
 
       DirRepresenter representer = new DirRepresenter( root, false );
       representer.parse( baseDir, new NodeFactory() {
+        @java.lang.Override
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );
@@ -137,6 +139,7 @@ public class DirRepresentationTest {
 
       DirRepresenter representer = new DirRepresenter( root, true );
       representer.parse( baseDir, new NodeFactory() {
+        @java.lang.Override
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );

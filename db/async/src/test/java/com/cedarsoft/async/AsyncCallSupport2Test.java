@@ -66,6 +66,7 @@ public class AsyncCallSupport2Test {
   @Test
   public void testMultipleThreads() throws InterruptedException, ExecutionException {
     new Thread( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           assertEquals( 0, callSupport.invoke( action ).get().intValue() );
@@ -79,6 +80,7 @@ public class AsyncCallSupport2Test {
     assertEquals( 1, callSupport.invoke( action ).get().intValue() );
 
     new Thread( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           Thread.sleep( 1000 );
@@ -117,6 +119,7 @@ public class AsyncCallSupport2Test {
 
     for ( int i = 0; i < THREAD_COUNT; i++ ) {
       Runnable runnable = new Runnable() {
+        @java.lang.Override
         public void run() {
           try {
             Thread.sleep( random.nextInt( 100 ) );
@@ -156,6 +159,7 @@ public class AsyncCallSupport2Test {
   public static class MyAction implements Callable<Integer> {
     private int counter;
 
+    @java.lang.Override
     @NotNull
     public Integer call() throws Exception {
       if ( counter == 5 ) {

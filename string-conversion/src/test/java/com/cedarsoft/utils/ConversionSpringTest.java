@@ -41,11 +41,13 @@ public class ConversionSpringTest {
   }
 
   public static class AnObjectConverter implements StringConverter<StringBuilder> {
+    @java.lang.Override
     @NotNull
     public String createRepresentation( @NotNull StringBuilder object ) {
       return object.toString();
     }
 
+    @java.lang.Override
     @NotNull
     public StringBuilder createObject( @NotNull String representation ) {
       return new StringBuilder( representation );

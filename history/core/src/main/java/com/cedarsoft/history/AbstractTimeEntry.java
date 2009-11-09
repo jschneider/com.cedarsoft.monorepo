@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joda.time.LocalDate;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -25,6 +27,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     this.begin = begin;
   }
 
+  @Override
   @NotNull
   public LocalDate getBegin() {
     return begin;
@@ -34,19 +37,23 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     this.begin = begin;
   }
 
+  @Override
   public void setEnd( @Nullable LocalDate end ) {
     this.end = end;
   }
 
+  @Override
   @Nullable
   public LocalDate getEnd() {
     return end;
   }
 
+  @Override
   public boolean hasEnd() {
     return end != null;
   }
 
+  @Override
   public boolean isActiveAt( @NotNull LocalDate date ) {
     if ( !getBegin().isBefore( date ) ) {
       return false;
@@ -60,6 +67,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     }
   }
 
+  @Override
   public int compareTo( TimeEntry o ) {
     return getBegin().compareTo( o.getBegin() );
   }

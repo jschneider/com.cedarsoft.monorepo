@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,6 +63,7 @@ public class TagSet implements Taggable {
     setTags( Arrays.asList( tags ) );
   }
 
+  @Override
   public boolean addTag( @NotNull Tag tag ) {
     if ( tags.contains( tag ) ) {
       return false;
@@ -72,6 +74,7 @@ public class TagSet implements Taggable {
     }
   }
 
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     return Collections.unmodifiableList( tags );
@@ -98,6 +101,7 @@ public class TagSet implements Taggable {
     }
   }
 
+  @Override
   public boolean removeTag( @NotNull Tag tag ) {
     int index = tags.indexOf( tag );
     if ( index > -1 ) {
@@ -109,10 +113,12 @@ public class TagSet implements Taggable {
     }
   }
 
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );
   }

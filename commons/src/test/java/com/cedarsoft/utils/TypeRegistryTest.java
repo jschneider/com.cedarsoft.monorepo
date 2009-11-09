@@ -32,6 +32,7 @@ public class TypeRegistryTest {
   @Test
   public void testInterfaces() {
     registry.addElement( String.class, new AbstractChildDetector<String, Object>() {
+      @java.lang.Override
       @NotNull
       public List<? extends Object> findChildren( @NotNull String parent ) {
         return Collections.singletonList( "String" );
@@ -39,6 +40,7 @@ public class TypeRegistryTest {
     } );
 
     registry.addElement( Integer.class, new AbstractChildDetector<Integer, Object>() {
+      @java.lang.Override
       @NotNull
       public List<? extends Object> findChildren( @NotNull Integer parent ) {
         return Collections.singletonList( "Integer" );
@@ -52,6 +54,7 @@ public class TypeRegistryTest {
   @Test
   public void testSuperTypes() {
     registry.addElement( Collection.class, new AbstractChildDetector<Object, Object>() {
+      @java.lang.Override
       @NotNull
       public List<? extends Object> findChildren( @NotNull Object parent ) {
         return Collections.singletonList( "Collection" );
@@ -66,6 +69,7 @@ public class TypeRegistryTest {
   @Test
   public void testFindDefault() {
     registry.addElement( Object.class, new AbstractChildDetector<Object, Object>() {
+      @java.lang.Override
       @NotNull
       public List<? extends Object> findChildren( @NotNull Object parent ) {
         throw new UnsupportedOperationException();
@@ -78,6 +82,7 @@ public class TypeRegistryTest {
   @Test
   public void testRegistry() {
     registry.addElement( JComponent.class, new AbstractChildDetector<String, String>() {
+      @java.lang.Override
       @NotNull
       public List<? extends String> findChildren( @NotNull String parent ) {
         throw new UnsupportedOperationException();
@@ -95,6 +100,7 @@ public class TypeRegistryTest {
     registry = new TypeRegistry<ChildDetector<?, ?>>( false );
 
     registry.addElement( JComponent.class, new AbstractChildDetector<String, String>() {
+      @java.lang.Override
       @NotNull
       public List<? extends String> findChildren( @NotNull String parent ) {
         throw new UnsupportedOperationException();

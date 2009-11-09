@@ -7,6 +7,8 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * Configures configurations
  */
@@ -23,6 +25,7 @@ public class XmlConfigurationManager {
 
     if ( this.configuration.getFileName() != null ) {
       Runtime.getRuntime().addShutdownHook( new Thread( new Runnable() {
+        @Override
         public void run() {
           try {
             XmlConfigurationManager.this.configuration.save();

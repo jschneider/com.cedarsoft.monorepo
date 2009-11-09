@@ -8,6 +8,8 @@ import y.base.Node;
 import y.layout.tree.TreeLayouter;
 import y.view.Graph2D;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -54,6 +56,7 @@ public class Graph2DPresenter extends AbstractPresenter<Graph2D> {
     return new NodePresenter();
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return true;
   }

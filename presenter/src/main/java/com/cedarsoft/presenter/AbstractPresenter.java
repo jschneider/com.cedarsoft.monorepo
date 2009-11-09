@@ -6,6 +6,7 @@ import com.cedarsoft.commons.struct.StructureListener;
 import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +29,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * @param struct the struct
    * @return the presentation that has been created
    */
+  @Override
   @NotNull
   public T present( @NotNull StructPart struct ) {
     Lookup lookup = struct.getLookup();
@@ -122,6 +124,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
       this.presenter = presenter;
     }
 
+    @Override
     public void childAdded( @NotNull StructureChangedEvent event ) {
       StructPart child = event.getStructPart();
       T presentation = weakPresentationReference.get();
@@ -130,6 +133,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
       }
     }
 
+    @Override
     public void childDetached( @NotNull StructureChangedEvent event ) {
       StructPart child = event.getStructPart();
       T presentation = weakPresentationReference.get();

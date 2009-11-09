@@ -5,13 +5,17 @@ import com.cedarsoft.gdao.GenericService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
+
 /**
  *
  */
 public class AsynchronousService<T> extends AsynchronousDao<T> implements GenericService<T> {
+  @Override
   @Nullable
   public <R> R perform( @NotNull final ServiceCallback<T, R> callback ) {
     return asyncCallSupport.<R>invokeNullable( new DaoAction<T, R>() {
+      @Override
       public R execute( @NotNull GenericDao<T> dao ) {
         GenericService<T> service = ( GenericService<T> ) dao;
         return callback.perform( service );

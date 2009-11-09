@@ -3,6 +3,8 @@ package com.cedarsoft.gdao;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
+
 /**
  * A generic service that extends the behaviour of simple DAOs with transaction support.
  */
@@ -35,6 +37,7 @@ public interface GenericService<T> extends GenericDao<T> {
    * Abstract base class for service callbacks without return value.
    */
   abstract class ServiceCallbackWithoutReturnValue<T> implements ServiceCallback<T, Object> {
+    @Override
     @Nullable
     public Object perform( @NotNull GenericService<T> service ) {
       performVoid( service );

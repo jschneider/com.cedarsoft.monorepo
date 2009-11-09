@@ -73,14 +73,17 @@ public class TagListModelTest {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
+      @java.lang.Override
       public void intervalAdded( ListDataEvent e ) {
         events.add( e );
       }
 
+      @java.lang.Override
       public void intervalRemoved( ListDataEvent e ) {
         events.add( e );
       }
 
+      @java.lang.Override
       public void contentsChanged( ListDataEvent e ) {
         events.add( e );
       }

@@ -35,6 +35,7 @@ public class ConfigBindingGuiceTest {
           @Inject
           Configuration configuration;
 
+          @java.lang.Override
           @NotNull
           public MyBean get() {
             MyBean myBean = new MyBean();

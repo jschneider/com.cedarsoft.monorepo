@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -100,12 +101,14 @@ public class RegistrySerializer<T, R extends Registry<T>> {
   public R createConnectedRegistry( @NotNull RegistryFactory<T, R> factory ) throws IOException {
     List<? extends T> objects = deserialize();
     R registry = factory.createRegistry( objects, new Comparator<T>() {
+      @Override
       public int compare( T o1, T o2 ) {
         return getId( o1 ).compareTo( getId( o2 ) );
       }
     } );
 
     registry.addListener( new DefaultRegistry.Listener<T>() {
+      @Override
       public void objectStored( @NotNull T object ) {
         try {
           serialize( object );

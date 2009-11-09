@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 
 /**
  *
@@ -70,6 +71,7 @@ public class TwoFramesDemo {
       super( name );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       System.out.println( "clicked on: " + getValue( Action.NAME ) );
       setEnabled( false );

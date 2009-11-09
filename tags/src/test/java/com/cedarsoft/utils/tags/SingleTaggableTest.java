@@ -53,6 +53,7 @@ public class SingleTaggableTest {
   public void testListeners() {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
     taggable.addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

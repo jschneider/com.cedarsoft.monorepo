@@ -65,10 +65,12 @@ public class LookupChangeSupportTest  {
 
   private void addWeakListener() {
     lookupChangeSupport.addChangeListenerWeak( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } );
     lookupChangeSupport.addChangeListenerWeak( new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
@@ -78,11 +80,13 @@ public class LookupChangeSupportTest  {
   public void testAddListeners() {
     assertEquals( 0, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
     assertEquals( 1, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
@@ -90,11 +94,13 @@ public class LookupChangeSupportTest  {
     assertEquals( 2, lookupChangeSupport.getListeners().size() );
 
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
     assertEquals( 3, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );

@@ -3,6 +3,7 @@ package com.cedarsoft.commons.struct;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 /**
@@ -24,6 +25,7 @@ public class WeakStructureListener implements StructureListener {
     source.removeStructureListener( this );
   }
 
+  @Override
   public void childAdded( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
     if ( wrappedListener == null ) {
@@ -33,6 +35,7 @@ public class WeakStructureListener implements StructureListener {
     }
   }
 
+  @Override
   public void childDetached( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
     if ( wrappedListener == null ) {

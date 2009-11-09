@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joda.time.LocalDate;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -98,6 +99,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  @Override
   public boolean isLatestEntry( @NotNull E entry ) {
     ensureListenersRegistered();
 
@@ -119,6 +121,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @return all entries
    */
+  @Override
   @NotNull
   public List<? extends E> getEntries() {
     ensureListenersRegistered();
@@ -139,6 +142,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * Removes all entries
    */
+  @Override
   public void clear() {
     lock.writeLock().lock();
     try {
@@ -156,14 +160,17 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param entry the entry
    */
+  @Override
   public void addEntry( @NotNull E entry ) {
     getOrCreateSubHistory( entry.getValidityDate() ).addEntry( entry );
   }
 
+  @Override
   public void commitEntry( @NotNull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
+  @Override
   public boolean hasEntries() {
     ensureListenersRegistered();
 
@@ -183,6 +190,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
+  @Override
   public boolean removeEntry( @NotNull E entry ) {
     ensureListenersRegistered();
 
@@ -208,6 +216,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
+  @Override
   @NotNull
   public E getLatestEntry() throws NoValidElementFoundException {
     try {
@@ -217,6 +226,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  @Override
   @NotNull
   public E getFirstEntry() throws NoValidElementFoundException {
     try {
@@ -253,14 +263,17 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     lock.writeLock().lock();
     try {
       HistoryListener<E> listener = new HistoryListener<E>() {
+        @Override
         public void entryAdded( @NotNull E entry ) {
           listenerSupport.notifyEntryAdded( entry );
         }
 
+        @Override
         public void entryChanged( @NotNull E entry ) {
           listenerSupport.notifyEntryChanged( entry );
         }
 
+        @Override
         public void entryRemoved( @NotNull E entry ) {
           listenerSupport.notifyEntryRemoved( entry );
         }
@@ -421,27 +434,33 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     throw new UnsupportedOperationException( "Cannot set the elements yet" ); //todo implement
   }
 
+  @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }
 
+  @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  @Override
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
+  @Override
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
@@ -450,6 +469,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
+  @Override
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();

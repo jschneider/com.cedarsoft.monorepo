@@ -2,10 +2,13 @@ package com.cedarsoft.lookup;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  *
  */
 public abstract class AbstractLookup implements Lookup {
+  @Override
   @NotNull
   public final <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException {
     T value = lookup( type );

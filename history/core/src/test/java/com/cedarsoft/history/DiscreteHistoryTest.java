@@ -119,14 +119,17 @@ public class DiscreteHistoryTest {
 
 
     history.addHistoryListener( new HistoryListener<DefaultDiscreteHistoryEntry>() {
+      @java.lang.Override
       public void entryAdded( @NotNull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
+      @java.lang.Override
       public void entryRemoved( @NotNull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
+      @java.lang.Override
       public void entryChanged( @NotNull DefaultDiscreteHistoryEntry entry ) {
       }
     } );

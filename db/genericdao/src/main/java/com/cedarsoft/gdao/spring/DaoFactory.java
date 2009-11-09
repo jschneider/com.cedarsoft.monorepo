@@ -5,6 +5,8 @@ import com.cedarsoft.gdao.GenericDaoManager;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Override;
+
 /**
  * Special factory bean that resolves DAOs for a class
  */
@@ -26,15 +28,18 @@ public class DaoFactory<T> implements FactoryBean {
     this.type = type;
   }
 
+  @Override
   @NotNull
   public GenericDao<T> getObject() throws Exception {
     return genericDaoManager.getDao( type );
   }
 
+  @Override
   public Class<GenericDao> getObjectType() {
     return GenericDao.class;
   }
 
+  @Override
   public boolean isSingleton() {
     return true;
   }

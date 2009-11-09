@@ -41,6 +41,7 @@ public class PopupMenuPresenterTest  {
   @NotNull
   private static Action createAction( int id ) {
     return new AbstractAction( String.valueOf( id ) ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -96,6 +97,7 @@ public class PopupMenuPresenterTest  {
     start( menues );
 
     new Thread( new Runnable() {
+      @java.lang.Override
       public void run() {
         while ( true ) {
           try {
@@ -128,6 +130,7 @@ public class PopupMenuPresenterTest  {
     JFrame frame = new JFrame();
 
     frame.getContentPane().addMouseListener( new MouseAdapter() {
+      @java.lang.Override
       public void mouseClicked( MouseEvent e ) {
         JPopupMenu menu = new DefaultJPopupMenuPresenter().present( test.root );
         menu.show( ( Component ) e.getSource(), e.getX(), e.getY() );

@@ -12,6 +12,7 @@ public class TransitionsTest {
   public void testAction() {
     State<MyObject> source = new State<MyObject>( "source" );
     TransitionDefinition<MyObject> transitionDefinition = new TransitionDefinition<MyObject>( source, new State<MyObject>( "target" ), new Action<MyObject>() {
+      @java.lang.Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }

@@ -52,6 +52,7 @@ public class TagComboboxModelTest {
 
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
     selection.addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

@@ -22,11 +22,13 @@ public class AsyncCallSupportTest {
   protected void setUp() throws Exception {
     callSupport = new AsyncCallSupport<MyAction>();
     callSupport.initializeWorker( new CallbackCaller<MyAction>() {
+      @java.lang.Override
       public Object call( @NotNull MyAction callback ) throws Exception {
         ensureNotThisThread();
         return callback.count();
       }
 
+      @java.lang.Override
       @NotNull
       public String getDescription() {
         return "MyCaller";
@@ -70,6 +72,7 @@ public class AsyncCallSupportTest {
   @Test
   public void testMultipleThreads() throws InterruptedException {
     new Thread( new Runnable() {
+      @java.lang.Override
       public void run() {
         assertEquals( 0, callSupport.invoke( action ) );
       }
@@ -80,6 +83,7 @@ public class AsyncCallSupportTest {
     assertEquals( 1, callSupport.invoke( action ) );
 
     new Thread( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           Thread.sleep( 1000 );
@@ -114,6 +118,7 @@ public class AsyncCallSupportTest {
 
     for ( int i = 0; i < THREAD_COUNT; i++ ) {
       Runnable runnable = new Runnable() {
+        @java.lang.Override
         public void run() {
           try {
             Thread.sleep( random.nextInt( 100 ) );

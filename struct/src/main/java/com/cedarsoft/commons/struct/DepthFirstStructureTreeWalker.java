@@ -3,6 +3,7 @@ package com.cedarsoft.commons.struct;
 import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.Stack;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Stack;
 public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Stack<StructPart> queue = new Stack<StructPart>();
 
+  @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );
 

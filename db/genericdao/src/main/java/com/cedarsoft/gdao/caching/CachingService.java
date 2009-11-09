@@ -4,6 +4,8 @@ import com.cedarsoft.gdao.GenericService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -17,6 +19,7 @@ public class CachingService<T> extends CachingDao<T> implements GenericService<T
     return ( GenericService<T> ) super.getBackingDao();
   }
 
+  @Override
   @Nullable
   public <R> R perform( @NotNull final ServiceCallback<T, R> callback ) {
     R returnValue = getBackingService().perform( callback );

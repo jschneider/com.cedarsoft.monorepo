@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -37,6 +38,7 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
     this.serializingStrategySupport = new SerializingStrategySupport<T, JDomSerializingStrategy<T>>( strategies );
   }
 
+  @Override
   @NotNull
   public Element serialize( @NotNull Element serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     JDomSerializingStrategy<T> strategy = serializingStrategySupport.findStrategy( object );
@@ -46,6 +48,7 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
     return serializeTo;
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
     String type = deserializeFrom.getAttributeValue( ATTRIBUTE_TYPE );

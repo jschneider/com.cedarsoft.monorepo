@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Iterator;
 
 /**
@@ -30,6 +31,7 @@ public final class AsynchronousDaoManager implements GenericDaoManager {
   @NotNull
   private final Cache<Class<Object>, AsynchronousDao<Object>> daoCache = new HashedCache<Class<Object>, AsynchronousDao<Object>>(
       new Cache.Factory<Class<Object>, AsynchronousDao<Object>>() {
+        @Override
         @NotNull
         public AsynchronousDao<Object> create( @NotNull Class<Object> key ) {
           return asyncCallSupport.invoke( new AsyncDaoCreator<Object>( key ) );
@@ -39,11 +41,13 @@ public final class AsynchronousDaoManager implements GenericDaoManager {
 
   public AsynchronousDaoManager( @NotNull final String description, @NotNull final GenericDaoManager delegatingManager ) {
     asyncCallSupport.initializeWorker( new CallbackCaller<AsyncDaoCreator<?>>() {
+      @Override
       public Object call( @NotNull AsyncDaoCreator<?> callback ) throws Exception {
         log.debug( "executing callback" );
         return callback.execute( delegatingManager );
       }
 
+      @Override
       @NotNull
       public String getDescription() {
         return description;
@@ -57,11 +61,13 @@ public final class AsynchronousDaoManager implements GenericDaoManager {
    * @param type the type
    * @return the asynchronous dao for the given type
    */
+  @Override
   @NotNull
   public <T> AsynchronousDao<T> getDao( @NotNull Class<T> type ) {
     return ( AsynchronousDao<T> ) daoCache.get( type );
   }
 
+  @Override
   @NotNull
   public <T> GenericDao<T> getDao( @NotNull Class<T> type, @Nullable LockProvider<T> lockProvider ) {
     if ( lockProvider == null ) {
@@ -71,6 +77,7 @@ public final class AsynchronousDaoManager implements GenericDaoManager {
     }
   }
 
+  @Override
   public void shutdown() {
     for ( Iterator<AsynchronousDao<Object>> it = daoCache.values().iterator(); it.hasNext(); ) {
       AsynchronousDao<Object> dao = it.next();

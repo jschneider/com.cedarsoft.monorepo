@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.lang.Override;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +27,7 @@ public class EnumUserType<E extends Enum<E>> implements UserType, ParameterizedT
   @NonNls
   public static final String ENUM_CLASS_NAME = "enumClassName";
 
+  @Override
   public void setParameterValues( Properties parameters ) {
     if ( parameters == null ) {
       throw new MappingException( "Must set enumClassName as parameter" );
@@ -43,15 +45,18 @@ public class EnumUserType<E extends Enum<E>> implements UserType, ParameterizedT
     }
   }
 
+  @Override
   public int[] sqlTypes() {
     //noinspection ReturnOfCollectionOrArrayField
     return SQL_TYPES;
   }
 
+  @Override
   public Class<?> returnedClass() {
     return enumType;
   }
 
+  @Override
   public Object nullSafeGet( ResultSet rs, String[] names, Object owner ) throws HibernateException, SQLException {
     String name = rs.getString( names[0] );
     E result = null;
@@ -61,6 +66,7 @@ public class EnumUserType<E extends Enum<E>> implements UserType, ParameterizedT
     return result;
   }
 
+  @Override
   public void nullSafeSet( PreparedStatement st, Object value, int index ) throws HibernateException, SQLException {
     if ( null == value ) {
       st.setNull( index, Types.VARCHAR );
@@ -69,30 +75,37 @@ public class EnumUserType<E extends Enum<E>> implements UserType, ParameterizedT
     }
   }
 
+  @Override
   public Object deepCopy( Object value ) throws HibernateException {
     return value;
   }
 
+  @Override
   public boolean isMutable() {
     return false;
   }
 
+  @Override
   public Object assemble( Serializable cached, Object owner ) throws HibernateException {
     return cached;
   }
 
+  @Override
   public Serializable disassemble( Object value ) throws HibernateException {
     return ( Serializable ) value;
   }
 
+  @Override
   public Object replace( Object original, Object target, Object owner ) throws HibernateException {
     return original;
   }
 
+  @Override
   public int hashCode( Object x ) throws HibernateException {
     return x.hashCode();
   }
 
+  @Override
   public boolean equals( Object x, Object y ) throws HibernateException {
     if ( x == y )
       return true;

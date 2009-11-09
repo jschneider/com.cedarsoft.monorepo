@@ -66,6 +66,7 @@ public class RouteTest {
     }
 
     Route route = Route.buildRoute( root, path, new NodeFactory() {
+      @java.lang.Override
       @NotNull
       public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) {
         return new DefaultNode( name );

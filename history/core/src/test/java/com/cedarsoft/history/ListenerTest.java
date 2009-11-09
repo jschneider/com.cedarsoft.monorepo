@@ -24,13 +24,16 @@ public class ListenerTest {
     final List<DefaultHistoryEntry> removes = new ArrayList<DefaultHistoryEntry>();
 
     history.addHistoryListener( new HistoryListener<DefaultHistoryEntry>() {
+      @java.lang.Override
       public void entryAdded( @NotNull DefaultHistoryEntry entry ) {
         adds.add( entry );
       }
 
+      @java.lang.Override
       public void entryChanged( @NotNull DefaultHistoryEntry entry ) {
       }
 
+      @java.lang.Override
       public void entryRemoved( @NotNull DefaultHistoryEntry entry ) {
         removes.add( entry );
       }
@@ -53,13 +56,16 @@ public class ListenerTest {
     final List<ContinuousEntry> removes = new ArrayList<ContinuousEntry>();
 
     entriesInformation.addHistoryListener( new HistoryListener<ContinuousEntry>() {
+      @java.lang.Override
       public void entryChanged( @NotNull ContinuousEntry entry ) {
       }
 
+      @java.lang.Override
       public void entryAdded( @NotNull ContinuousEntry entry ) {
         adds.add( entry );
       }
 
+      @java.lang.Override
       public void entryRemoved( @NotNull ContinuousEntry entry ) {
         removes.add( entry );
       }
@@ -82,14 +88,17 @@ public class ListenerTest {
     final List<DiscreteHistoryEntry> removes = new ArrayList<DiscreteHistoryEntry>();
 
     history.addHistoryListener( new HistoryListener<DiscreteHistoryEntry>() {
+      @java.lang.Override
       public void entryAdded( @NotNull DiscreteHistoryEntry entry ) {
         adds.add( entry );
       }
 
+      @java.lang.Override
       public void entryRemoved( @NotNull DiscreteHistoryEntry entry ) {
         removes.add( entry );
       }
 
+      @java.lang.Override
       public void entryChanged( @NotNull DiscreteHistoryEntry entry ) {
       }
     } );

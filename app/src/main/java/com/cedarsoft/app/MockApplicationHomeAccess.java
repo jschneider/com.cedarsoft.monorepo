@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  *
@@ -43,11 +44,13 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
     assert projectHome.exists();
   }
 
+  @Override
   @NotNull
   public String getApplicationName() {
     return APP_NAME;
   }
 
+  @Override
   @NotNull
   public File getApplicationHome() {
     return projectHome;

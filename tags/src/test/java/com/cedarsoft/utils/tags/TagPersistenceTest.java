@@ -121,6 +121,7 @@ public class TagPersistenceTest extends TagDbTest {
 
       final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
       loaded.addTagChangeListener( new TagChangeListener() {
+        @java.lang.Override
         public void tagChanged( @NotNull TagChangeEvent event ) {
           events.add( event );
         }

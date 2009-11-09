@@ -23,6 +23,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakRemove() {
     LookupChangeListener<String> listener = new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     };
@@ -36,6 +37,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testAdd() {
     LookupChangeListener<String> listener = new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     };
@@ -48,6 +50,7 @@ public class WeakLookupChangeListenerTest  {
   public void testWeakDirect() {
     {
       lookup.addChangeListenerWeak( new LookupChangeListener<String>() {
+        @java.lang.Override
         public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
         }
       } );
@@ -63,6 +66,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakListener() {
     lookup.addChangeListener( new WeakLookupChangeListener<String>( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } ) );
@@ -77,6 +81,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakFactoryMethod() {
     lookup.addChangeListener( WeakLookupChangeListener.wrap( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } ) );
@@ -91,6 +96,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakBind() {
     lookup.bindWeak( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } );
@@ -105,9 +111,11 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakBindTyped() {
     lookup.bindWeak( new TypedLookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
 
+      @java.lang.Override
       @NotNull
       public Class<String> getType() {
         return String.class;
@@ -124,6 +132,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakAdd() {
     lookup.addChangeListenerWeak( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } );
@@ -138,6 +147,7 @@ public class WeakLookupChangeListenerTest  {
   @Test
   public void testWeakAdd2() {
     lookup.addLookupChangeListenerWeak( new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } );
@@ -154,6 +164,7 @@ public class WeakLookupChangeListenerTest  {
     final List<LookupChangeEvent<?>> events = new ArrayList<LookupChangeEvent<?>>();
 
     lookup.addChangeListener( WeakLookupChangeListener.wrap( new LookupChangeListener<Object>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
         events.add( event );
       }

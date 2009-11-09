@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,6 +44,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     this( Arrays.asList( elements ) );
   }
 
+  @Override
   public final void add( @NotNull E element ) {
     addElement( element );
   }
@@ -64,6 +66,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     collectionSupport.elementAdded( element, index );
   }
 
+  @Override
   public void commit( @NotNull E element ) {
     lock.readLock().lock();
     int index;
@@ -116,6 +119,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    *
    * @return the cessions
    */
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     lock.readLock().lock();
@@ -131,6 +135,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    *
    * @param elements the elements
    */
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     Collection<E> newElements = new ArrayList<E>( elements );
 
@@ -150,6 +155,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  @Override
   public final void remove( @NotNull E element ) {
     removeEntry( element );
   }
@@ -170,10 +176,12 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return removed;
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.addElementListener( listener );
   }
 
+  @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
   }
@@ -301,6 +309,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {
     return lock;

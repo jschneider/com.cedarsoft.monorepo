@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class DefaultNode implements Node {
     this.name = name;
   }
 
+  @Override
   public void setParent( @Nullable Node parent ) {
     if ( parent != null && !parent.isChild( this ) ) {
       throw new IllegalArgumentException( "invalid parent " + parent );
@@ -43,30 +45,36 @@ public class DefaultNode implements Node {
     this.parent = parent;
   }
 
+  @Override
   public boolean isChild( @NotNull StructPart child ) {
     return childrenSupport.isChild( child );
   }
 
+  @Override
   public boolean hasParent() {
     return parent != null;
   }
 
+  @Override
   @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     return childrenSupport.findChild( childName );
   }
 
+  @Override
   @NotNull
   @NonNls
   public String getName() {
     return name;
   }
 
+  @Override
   @NotNull
   public Lookup getLookup() {
     return lookup;
   }
 
+  @Override
   @NotNull
   public List<? extends Node> getChildren() {
     return childrenSupport.getChildren();
@@ -76,40 +84,49 @@ public class DefaultNode implements Node {
     childrenSupport.setChildren( children );
   }
 
+  @Override
   public void addChild( int index, @NotNull Node child ) {
     childrenSupport.addChild( index, child );
   }
 
+  @Override
   public void addChild( @NotNull Node child ) {
     childrenSupport.addChild( child );
   }
 
+  @Override
   public void detachChild( @NotNull Node child ) {
     childrenSupport.detachChild( child );
   }
 
+  @Override
   public void detachChild( int index ) {
     childrenSupport.detachChild( index );
   }
 
+  @Override
   @Nullable
   public Node getParent() {
     return parent;
   }
 
+  @Override
   @NotNull
   public Path getPath() {
     return Path.buildPath( this );
   }
 
+  @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
     childrenSupport.addStructureListener( structureListener );
   }
 
+  @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
     childrenSupport.addStructureListenerWeak( structureListener );
   }
 
+  @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     childrenSupport.removeStructureListener( structureListener );
   }

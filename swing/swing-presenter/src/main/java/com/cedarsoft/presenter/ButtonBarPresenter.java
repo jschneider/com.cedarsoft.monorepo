@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.lang.Override;
 
 /**
  *
@@ -38,6 +39,7 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
     return new JButtonPresenter();
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return true;
   }

@@ -5,6 +5,7 @@ import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JMenuBar;
+import java.lang.Override;
 
 /**
  */
@@ -29,6 +30,7 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
   protected void bind( @NotNull JMenuBar presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return true;
   }

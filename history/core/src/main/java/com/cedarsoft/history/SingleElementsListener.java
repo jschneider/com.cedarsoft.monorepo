@@ -2,6 +2,8 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * Special element implementation that delegates the calls of {@link ElementsListener}
  * to methods with only *one* element as argument.
@@ -63,6 +65,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   public abstract void elementChanged( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
 
 
+  @Override
   public void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );
@@ -71,6 +74,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
     }
   }
 
+  @Override
   public void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );
@@ -79,6 +83,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
     }
   }
 
+  @Override
   public void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );

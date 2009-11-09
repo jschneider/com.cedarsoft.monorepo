@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  * Attention:
@@ -29,15 +30,18 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
     this.supportedType = supportedType;
   }
 
+  @Override
   @NotNull
   public String getId() {
     return id;
   }
 
+  @Override
   public boolean supports( @NotNull Object object ) {
     return supportedType.isAssignableFrom( object.getClass() );
   }
 
+  @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object ) throws IOException {
     try {
@@ -47,6 +51,7 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
     }
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
     try {

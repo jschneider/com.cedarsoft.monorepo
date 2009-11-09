@@ -3,6 +3,7 @@ package com.cedarsoft.utils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.text.MessageFormat;
 
 /**
@@ -23,16 +24,19 @@ public class AnsiAwareConsolePrinter implements ConsolePrinter {
   @NonNls
   private static final String ANSI_DEFAULT = ANSI_ESCAPE + "[0m";
 
+  @Override
   @NotNull
   public String createError( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_RED + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
+  @Override
   @NotNull
   public String createWarning( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_BLUE + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
+  @Override
   @NotNull
   public String createSuccess( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_GREEN + MessageFormat.format( message, objects ) + ANSI_DEFAULT;

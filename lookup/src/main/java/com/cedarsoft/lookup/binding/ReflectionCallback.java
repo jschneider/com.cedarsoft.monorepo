@@ -4,6 +4,7 @@ import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -20,6 +21,7 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
     this.setter = setter;
   }
 
+  @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {
       setter.invoke( object, event.getNewValue() );

@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.Override;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -134,6 +135,7 @@ public class ZipExtractor {
       this.condition = condition;
     }
 
+    @Override
     public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
       return !condition.shallExtract( zipEntry );
     }

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,6 +46,7 @@ public class DirRepresenter {
 
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      @Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         Path path = Path.buildPath( node ); //pop the root
         if ( !rootVisible ) {

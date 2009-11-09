@@ -22,6 +22,7 @@ public class LookupChangeListenerMock implements LookupChangeListener<Object> {
     }
   }
 
+  @java.lang.Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
     verify( event );
   }

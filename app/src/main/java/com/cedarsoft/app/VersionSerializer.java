@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  *
@@ -18,12 +19,14 @@ public class VersionSerializer extends AbstractStaxMateSerializer<Version> {
     super( "version" );
   }
 
+  @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Version object, @NotNull Lookup context ) throws IOException, XMLStreamException {
     serializeTo.addCharacters( object.toString() );
     return serializeTo;
   }
 
+  @Override
   @NotNull
   public Version deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
     String text = getText( deserializeFrom );

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Override;
 
 /**
  * You don't have to use this class directly. Instead use
@@ -61,6 +62,7 @@ public class ConfigurationConnector<T> {
   }
 
   private class SubjectChangeListener implements PropertyChangeListener {
+    @Override
     public void propertyChange( PropertyChangeEvent evt ) {
       T value = configurationAccess.getType().cast( evt.getNewValue() );
       configurationAccess.store( value );

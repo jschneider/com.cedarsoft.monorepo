@@ -4,10 +4,13 @@ import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  *
  */
 public abstract class AbstractTagProvider implements TagProvider {
+  @Override
   @NotNull
   public Tag getTag( @NotNull @NonNls String description ) {
     try {
@@ -17,6 +20,7 @@ public abstract class AbstractTagProvider implements TagProvider {
     }
   }
 
+  @Override
   public void removeTag( @NotNull String description ) {
     Tag found = findTag( description );
     removeTag( found );

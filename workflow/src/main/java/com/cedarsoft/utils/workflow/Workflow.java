@@ -2,6 +2,7 @@ package com.cedarsoft.utils.workflow;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -96,6 +97,7 @@ public class Workflow<T> {
   @NotNull
   private Transition<T> createTransition( @NotNull final TransitionDefinition<T> definition ) {
     return new Transition<T>() {
+      @Override
       public void transit() {
         lock.writeLock().lock();
         try {

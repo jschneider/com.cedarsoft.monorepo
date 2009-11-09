@@ -10,6 +10,7 @@ import y.base.Node;
 import y.view.Graph2D;
 
 import javax.swing.Action;
+import java.lang.Override;
 
 /**
  *
@@ -20,6 +21,7 @@ public class NodePresenter extends AbstractPresenter<Node> {
     final Graph2D graph2D = getGraph( presentation );
 
     lookup.bind( Action.class, new LookupChangeListener<Action>() {
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Action> event ) {
         Action newValue = event.getNewValue();
         if ( newValue != null ) {
@@ -41,6 +43,7 @@ public class NodePresenter extends AbstractPresenter<Node> {
     return true;
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return true;
   }

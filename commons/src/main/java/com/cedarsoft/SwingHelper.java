@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import java.awt.Component;
 import java.awt.Window;
+import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -83,6 +84,7 @@ public class SwingHelper {
    */
   public static void waitForSwingThread() {
     invokeAndWait( new Runnable() {
+      @Override
       public void run() {
       }
     } );

@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -262,6 +263,7 @@ public class AsyncCallSupport<T> {
       this.callbackCaller = callbackCaller;
     }
 
+    @Override
     public void run() {
       log.debug( "up and running" );
       //noinspection InfiniteLoopStatement

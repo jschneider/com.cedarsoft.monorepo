@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.lang.Override;
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -14,22 +15,27 @@ import java.util.List;
  * Base class that delegates all methods to the a few core methods.
  */
 public abstract class AbstractCmdLine implements CmdLine {
+  @Override
   public void warning( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createWarning( message, objects ) );
   }
 
+  @Override
   public void error( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createError( message, objects ) );
   }
 
+  @Override
   public void success( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createSuccess( message, objects ) );
   }
 
+  @Override
   public void outNl() {
     getOut().println();
   }
 
+  @Override
   public void out( @NotNull String message, @NotNull Object... objects ) {
     if ( objects.length == 0 ) {
       getOut().println( message );
@@ -38,6 +44,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
+  @Override
   public void out( @NotNull Process process ) {
     try {
       BufferedReader defaultIn = new BufferedReader( new InputStreamReader( process.getInputStream() ) );
@@ -64,6 +71,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
+  @Override
   @NotNull
   public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements ) {
     return readSelection( message, elements, null );
@@ -81,6 +89,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
+  @Override
   @NotNull
   public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
     out( message );
@@ -88,6 +97,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     return elements.get( readInt( "Enter the number of the element you want to select", 0, elements.size() ) );
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message, @NotNull List<String> elements ) {
     out( message );
@@ -115,6 +125,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     throw new IllegalStateException( "Should not reach" );
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message, @NotNull List<String> elements, @NotNull String preselected ) {
     out( message );
@@ -129,6 +140,7 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
+  @Override
   @NotNull
   public <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory ) {
     out( message );

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  *
@@ -32,6 +33,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
     this.versionSerializer = versionSerializer;
   }
 
+  @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @NotNull Lookup context ) throws IOException, XMLStreamException {
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
@@ -42,6 +44,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
     return serializeTo;
   }
 
+  @Override
   @NotNull
   public Application deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
     String name = getChildText( deserializeFrom, ELEMENT_NAME );

@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.Override;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class InMemorySerializedObjectsAccess implements SerializedObjectsAccess 
   @NonNls
   private final Map<String, byte[]> serialized = new HashMap<String, byte[]>();
 
+  @Override
   @NotNull
   public InputStream getInputStream( @NotNull @NonNls String id ) {
     byte[] found = serialized.get( id );
@@ -30,11 +32,13 @@ public class InMemorySerializedObjectsAccess implements SerializedObjectsAccess 
     return new ByteArrayInputStream( found );
   }
 
+  @Override
   @NotNull
   public Set<? extends String> getStoredIds() {
     return serialized.keySet();
   }
 
+  @Override
   @NotNull
   public OutputStream openOut( @NotNull @NonNls final String id ) {
     byte[] stored = serialized.get( id );

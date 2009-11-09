@@ -7,6 +7,8 @@ import org.jetbrains.annotations.Nullable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -34,6 +36,7 @@ public abstract class AbstractFinder<T, R> implements Finder<R> {
     return session.createCriteria( type );
   }
 
+  @Override
   @NotNull
   public final R find( @NotNull Session session ) throws DataAccessException {
     Criteria criteria = createCriteria( session );

@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
+import java.lang.Override;
 
 /**
  * Presents a JPopupMenu
@@ -41,6 +42,7 @@ public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> imple
   protected void bind( @NotNull JPopupMenu presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return true;
   }

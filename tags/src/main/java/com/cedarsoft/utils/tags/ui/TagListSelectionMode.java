@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,6 +23,7 @@ public class TagListSelectionMode extends DefaultListSelectionModel implements T
   public TagListSelectionMode( @NotNull TagListModel model ) {
     this.model = model;
     addListSelectionListener( new ListSelectionListener() {
+      @Override
       public void valueChanged( ListSelectionEvent e ) {
         if ( e.getValueIsAdjusting() ) {
           return;
@@ -31,14 +33,17 @@ public class TagListSelectionMode extends DefaultListSelectionModel implements T
     } );
   }
 
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );
   }
 
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     int min = getMinSelectionIndex();

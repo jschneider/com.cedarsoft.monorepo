@@ -21,6 +21,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.lang.Override;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,6 +61,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * @param out                  the output stream
    * @throws IOException
    */
+  @Override
   public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out ) throws IOException {
     persist( configurationManager, out, null );
   }
@@ -70,6 +72,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * @param encoding
    * @throws IOException
    */
+  @Override
   public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     persist( configurationManager.getConfigurations(), out, encoding );
   }
@@ -81,10 +84,12 @@ public class XStreamPersister implements ConfigurationPersister {
    * @param out            the writer
    * @throws IOException
    */
+  @Override
   public void persist( @NotNull List<?> configurations, @NotNull Writer out ) throws IOException {
     persist( configurations, out, null );
   }
 
+  @Override
   public void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     out.write( createXmlHeader( encoding ) );
     out.write( "\n" );
@@ -109,6 +114,7 @@ public class XStreamPersister implements ConfigurationPersister {
    *
    * @throws IOException
    */
+  @Override
   @NotNull
   @NonNls
   public String persist( @NotNull ConfigurationManager manager ) throws IOException {
@@ -123,12 +129,14 @@ public class XStreamPersister implements ConfigurationPersister {
    * @param serialized the serialized configurations
    * @return the deserialized configurations
    */
+  @Override
   @NotNull
   public List<?> load( @NotNull @NonNls String serialized ) throws IOException {
     StringReader reader = new StringReader( serialized );
     return load( reader );
   }
 
+  @Override
   @NotNull
   public List<?> load( @NotNull File file ) throws IOException {
     BufferedInputStream in = new BufferedInputStream( new FileInputStream( file ) );
@@ -139,12 +147,14 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
+  @Override
   @NotNull
   public List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
     return load( ( Reader ) new InputStreamReader( in, charset ) );
   }
 
+  @Override
   @NotNull
   public List<?> load( @NotNull Reader in ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
@@ -158,6 +168,7 @@ public class XStreamPersister implements ConfigurationPersister {
     return ( ( Configurations ) xStream.fromXML( br ) ).getConfigurations();
   }
 
+  @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException {
     OutputStream out = new BufferedOutputStream( new FileOutputStream( file ) );
     try {
@@ -167,6 +178,7 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
+  @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
     Writer writer = new OutputStreamWriter( out, charset );

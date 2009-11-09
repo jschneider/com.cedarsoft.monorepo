@@ -18,15 +18,18 @@ public class WorkflowTest {
     workflow = workflowDefinition.createWorkflow( new MyObject() );
 
     workflowDefinition.getInitialState().createTransition( new State<MyObject>( "target1" ), new Action<MyObject>() {
+      @java.lang.Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }
     } );
     workflowDefinition.getInitialState().createTransition( new State<MyObject>( "target2" ), new Action<MyObject>() {
+      @java.lang.Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "first" );
       }
     }, new Action<MyObject>() {
+      @java.lang.Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "2" );
       }

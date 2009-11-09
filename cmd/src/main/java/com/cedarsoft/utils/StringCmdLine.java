@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.lang.Override;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,11 +59,13 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     return consolePrinter;
   }
 
+  @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Boolean ) getNextAnswer();
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message ) {
     messages.add( message );
@@ -83,21 +86,25 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     return answers.remove( 0 );
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     return read( message );
   }
 
+  @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
+  @Override
   public int readInt( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
+  @Override
   public void pause( int seconds ) {
   }
 
@@ -191,16 +198,19 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   }
 
   private static class SimpleConsolePrinter implements ConsolePrinter {
+    @Override
     @NotNull
     public String createError( @NotNull String message, @NotNull Object... objects ) {
       return "ERROR: " + MessageFormat.format( message, objects );
     }
 
+    @Override
     @NotNull
     public String createWarning( @NotNull String message, @NotNull Object... objects ) {
       return "WARN: " + MessageFormat.format( message, objects );
     }
 
+    @Override
     @NotNull
     public String createSuccess( @NotNull String message, @NotNull Object... objects ) {
       return MessageFormat.format( message, objects );

@@ -33,6 +33,7 @@ public class TagTest {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
 
     taggedObject.addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

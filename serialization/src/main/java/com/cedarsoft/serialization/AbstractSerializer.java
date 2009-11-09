@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.Override;
 
 /**
  * @param <T> the type
@@ -29,6 +30,7 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
     return defaultElementName;
   }
 
+  @Override
   @NotNull
   public byte[] serialize( @NotNull T object ) throws IOException {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -36,10 +38,12 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
     return out.toByteArray();
   }
 
+  @Override
   public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
     serialize( object, out, null );
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull InputStream in ) throws IOException {
     return deserialize( in, null );

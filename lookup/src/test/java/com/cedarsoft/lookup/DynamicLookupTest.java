@@ -61,6 +61,7 @@ public class DynamicLookupTest {
   @Test
   public void testMultiple() {
     DynamicLookup lookup = Lookups.dynamicLookup( new AbstractAction( "myAction" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
         throw new UnsupportedOperationException();
       }

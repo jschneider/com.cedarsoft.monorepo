@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Container;
+import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -29,6 +30,7 @@ public class FrameUtils {
     frame.setContentPane( contentPane );
 
     Runnable startFrame = new Runnable() {
+      @Override
       public void run() {
         frame.pack();
         frame.setSize( 800, 600 );

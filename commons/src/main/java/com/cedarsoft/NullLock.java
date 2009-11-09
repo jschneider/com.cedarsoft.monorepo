@@ -2,6 +2,7 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -20,33 +21,41 @@ public class NullLock implements Lock, ReadWriteLock {
   private NullLock() {
   }
 
+  @Override
   @NotNull
   public Lock readLock() {
     return this;
   }
 
+  @Override
   @NotNull
   public Lock writeLock() {
     return this;
   }
 
+  @Override
   public void lock() {
   }
 
+  @Override
   public void lockInterruptibly() throws InterruptedException {
   }
 
+  @Override
   public boolean tryLock() {
     return true;
   }
 
+  @Override
   public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
     return true;
   }
 
+  @Override
   public void unlock() {
   }
 
+  @Override
   public Condition newCondition() {
     throw new NullPointerException( "Cannot create a condition for a null lock" );
   }

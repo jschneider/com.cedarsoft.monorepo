@@ -3,6 +3,7 @@ package com.cedarsoft.utils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.zip.ZipEntry;
 
 /**
@@ -26,6 +27,7 @@ public class PathBasedClassFielCondition implements ZipExtractor.Condition {
     this.pathPrefix = pathPrefix;
   }
 
+  @Override
   public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
     return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );
   }

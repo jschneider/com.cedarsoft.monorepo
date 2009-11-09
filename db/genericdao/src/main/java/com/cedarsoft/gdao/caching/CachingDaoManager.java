@@ -8,6 +8,7 @@ import com.cedarsoft.utils.HashedCache;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Iterator;
 
 /**
@@ -19,6 +20,7 @@ public class CachingDaoManager implements GenericDaoManager {
 
   @SuppressWarnings( {"MismatchedQueryAndUpdateOfCollection"} )
   private final Cache<Class<Object>, CachingDao<Object>> daoCache = new HashedCache<Class<Object>, CachingDao<Object>>( new Cache.Factory<Class<Object>, CachingDao<Object>>() {
+    @Override
     @NotNull
     public CachingDao<Object> create( @NotNull Class<Object> key ) {
       GenericDao<Object> backingDao = backingDaoManager.getDao( key );
@@ -32,11 +34,13 @@ public class CachingDaoManager implements GenericDaoManager {
     this.backingDaoManager = backingDaoManager;
   }
 
+  @Override
   @NotNull
   public <T> GenericDao<T> getDao( @NotNull Class<T> type ) {
     return ( GenericDao<T> ) daoCache.get( type );
   }
 
+  @Override
   @NotNull
   public <T> GenericDao<T> getDao( @NotNull Class<T> type, @Nullable LockProvider<T> lockProvider ) {
     if ( lockProvider == null ) {
@@ -46,6 +50,7 @@ public class CachingDaoManager implements GenericDaoManager {
     }
   }
 
+  @Override
   public void shutdown() {
     for ( Iterator<CachingDao<Object>> it = daoCache.values().iterator(); it.hasNext(); ) {
       CachingDao<Object> dao = it.next();

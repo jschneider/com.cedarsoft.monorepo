@@ -65,14 +65,17 @@ public class DiscreteHistoryTableModelTest {
       this.entriesInformation = entriesInformation;
     }
 
+    @java.lang.Override
     public int getColumnCount() {
       return columnNames.length;
     }
 
+    @java.lang.Override
     public String getColumnName( int column ) {
       return columnNames[column];
     }
 
+    @java.lang.Override
     public Object getColumnValue( @NotNull DefaultContinuousEntry baseObject, int column ) {
       switch ( column ) {
         case 0:

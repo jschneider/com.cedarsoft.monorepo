@@ -4,16 +4,12 @@ import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
-import org.codehaus.staxmate.SMInputFactory;
-import org.codehaus.staxmate.SMOutputFactory;
 import org.codehaus.staxmate.out.SMOutputDocument;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
@@ -28,6 +24,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     super( defaultElementName );
   }
 
+  @Override
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
     try {
       SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
@@ -40,6 +37,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     }
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {

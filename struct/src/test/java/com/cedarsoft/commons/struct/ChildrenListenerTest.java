@@ -27,10 +27,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -58,10 +60,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -96,10 +100,12 @@ public class ChildrenListenerTest  {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
 
     support.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -131,10 +137,12 @@ public class ChildrenListenerTest  {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
 
     parent.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -160,10 +168,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
+      @java.lang.Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
+      @java.lang.Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }

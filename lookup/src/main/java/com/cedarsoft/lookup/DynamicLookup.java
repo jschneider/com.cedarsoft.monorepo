@@ -3,6 +3,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +45,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
    * @param type  the ignored type
    * @param value the value
    */
+  @Override
   public <T> void store( @NotNull Class<T> type, @NotNull T value ) {
     addValue( value );
   }
@@ -170,52 +172,64 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return removed;
   }
 
+  @Override
   @Nullable
   public <T> T lookup( @NotNull Class<T> type ) {
     return type.cast( store.get( type ) );
   }
 
+  @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
     return Collections.unmodifiableMap( store );
   }
 
+  @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bind( type, lookupChangeListener );
   }
 
+  @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bind( lookupChangeListener );
   }
 
+  @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bindWeak( type, lookupChangeListener );
   }
 
+  @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bindWeak( lookupChangeListener );
   }
 
+  @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
+  @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListenerWeak( type, lookupChangeListener );
   }
 
+  @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListener( lookupChangeListener );
   }
 
+  @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListener( type, lookupChangeListener );
   }
 
+  @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.removeChangeListener( lookupChangeListener );
   }
 
+  @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.removeChangeListener( type, lookupChangeListener );
   }

@@ -3,6 +3,7 @@ package com.cedarsoft.utils.tags;
 import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -27,6 +28,7 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
     return taggable;
   }
 
+  @Override
   @NotNull
   public Taggable findTaggable( @NotNull T o ) throws NotFoundException {
     WeakReference<Taggable> weakReference = store.get( o );

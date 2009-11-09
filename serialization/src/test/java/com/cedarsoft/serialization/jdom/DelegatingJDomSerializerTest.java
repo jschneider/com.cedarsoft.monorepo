@@ -27,24 +27,28 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   @BeforeMethod
   protected void setUp() throws Exception {
     AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class ) {
+      @java.lang.Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
         element.setText( object.toString() );
         return element;
       }
 
+      @java.lang.Override
       @NotNull
       public Integer deserialize( @NotNull @NonNls Element element ) throws IOException {
         return 1;
       }
     };
     AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class ) {
+      @java.lang.Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
         element.setText( object.toString() );
         return element;
       }
 
+      @java.lang.Override
       @NotNull
       public Double deserialize( @NotNull @NonNls Element element ) throws IOException {
         return 2.0;

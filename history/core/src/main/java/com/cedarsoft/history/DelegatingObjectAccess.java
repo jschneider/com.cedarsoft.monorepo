@@ -6,6 +6,7 @@ import com.cedarsoft.PartTimeObjectAdd;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,18 +18,21 @@ import java.util.concurrent.locks.ReadWriteLock;
 public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, PartTimeObjectAdd<T> {
   @NotNull
   private final ElementsListener<T> delegatingListener = new ElementsListener<T>() {
+    @Override
     public void elementsDeleted( @NotNull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsDeleted( event );
       }
     }
 
+    @Override
     public void elementsAdded( @NotNull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsAdded( event );
       }
     }
 
+    @Override
     public void elementsChanged( @NotNull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsChanged( event );
@@ -153,6 +157,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    *
    * @return the lock for the current delegate
    */
+  @Override
   @NotNull
   public ReadWriteLock getLock() {
     ObservableObjectAccess<T> delegate = getCurrentDelegateSafe();
@@ -168,10 +173,12 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
+  @Override
   public void commit( @NotNull T element ) {
     getCurrentDelegateSafe().commit( element );
   }
 
+  @Override
   @NotNull
   public List<? extends T> getElements() {
     if ( isCurrentDelegatingObjectAccessAvailable() ) {
@@ -181,22 +188,27 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
+  @Override
   public void add( @NotNull T element ) {
     getCurrentDelegateSafe().add( element );
   }
 
+  @Override
   public void setElements( @NotNull List<? extends T> elements ) {
     getCurrentDelegateSafe().setElements( elements );
   }
 
+  @Override
   public void remove( @NotNull T element ) {
     getCurrentDelegateSafe().remove( element );
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.add( listener );
   }
 
+  @Override
   public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.remove( listener );
   }
@@ -209,14 +221,17 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     this.delegateListeners.remove( listener );
   }
 
+  @Override
   public boolean canAdd() {
     return isCurrentDelegatingObjectAccessAvailable();
   }
 
+  @Override
   public void addPartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.add( listener );
   }
 
+  @Override
   public void removePartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.remove( listener );
   }

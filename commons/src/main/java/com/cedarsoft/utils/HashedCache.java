@@ -3,6 +3,7 @@ package com.cedarsoft.utils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * @param key the key
    * @return the value
    */
+  @Override
   public T get( @NotNull Object key ) {
     lock.writeLock().lock();
     try {
@@ -70,6 +72,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
  MAP DELEGATES
   */
 
+  @Override
   public boolean containsKey( Object key ) {
     lock.readLock().lock();
     try {
@@ -79,6 +82,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public boolean containsValue( Object value ) {
     lock.readLock().lock();
     try {
@@ -88,10 +92,12 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public T put( K key, T value ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
+  @Override
   @Nullable
   public T remove( @NotNull Object key ) {
     lock.writeLock().lock();
@@ -102,10 +108,12 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public void putAll( Map<? extends K, ? extends T> m ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
+  @Override
   public Set<K> keySet() {
     lock.readLock().lock();
     try {
@@ -115,6 +123,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public Collection<T> values() {
     lock.readLock().lock();
     try {
@@ -129,6 +138,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    *
    * @return the live entry set for the cache
    */
+  @Override
   @NotNull
   public Set<Entry<K, T>> entrySet() {
     lock.readLock().lock();
@@ -139,6 +149,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public int size() {
     lock.readLock().lock();
     try {
@@ -148,6 +159,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public boolean isEmpty() {
     lock.readLock().lock();
     try {
@@ -173,6 +185,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  @Override
   public void clear() {
     throw new UnsupportedOperationException();
   }

@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.xml.stream.XMLStreamException;
 import java.awt.Dimension;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  *
@@ -25,12 +26,14 @@ public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension> {
     super( "dimension" );
   }
 
+  @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Dimension object, @NotNull Lookup context ) throws IOException, XMLStreamException {
     serializeTo.addCharacters( object.width + SEPARATOR + object.height );
     return serializeTo;
   }
 
+  @Override
   @NotNull
   public Dimension deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
     String[] parts = getText( deserializeFrom ).split( SEPARATOR );

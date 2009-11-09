@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     this.elements.addAll( elements );
   }
 
+  @Override
   public final void add( @NotNull E element ) {
     addElement( element );
   }
@@ -65,6 +67,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     collectionSupport.elementAdded( element, index );
   }
 
+  @Override
   public void commit( @NotNull E element ) {
 
     lock.readLock().lock();
@@ -116,6 +119,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @return the cessions
    */
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     lock.readLock().lock();
@@ -126,6 +130,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
@@ -145,6 +150,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  @Override
   public final void remove( @NotNull E element ) {
     removeEntry( element );
   }
@@ -164,19 +170,23 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return removed;
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     addElementListener( listener, true );
   }
 
+  @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return collectionSupport.getTransientElementListeners();
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     collectionSupport.addElementListener( listener, isTransient );
   }
 
+  @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
   }
@@ -205,7 +215,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
-   * @throws com.cedarsoft.history.NoElementFoundException
+   * @throws NoElementFoundException
    *          if no entry has been found
    */
   @NotNull
@@ -301,6 +311,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {
     return lock;

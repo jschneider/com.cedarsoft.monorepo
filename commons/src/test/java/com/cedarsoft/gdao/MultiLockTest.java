@@ -36,6 +36,7 @@ public class MultiLockTest {
     multiLock.lock();
 
     ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+      @java.lang.Override
       @Nullable
       public Object call() throws Exception {
         assertFalse( lock0.tryLock() );

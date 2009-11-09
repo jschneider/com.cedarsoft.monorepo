@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Override;
 
 /**
  * A change listener support with transient and non transient listeners support
@@ -80,6 +81,7 @@ public class ClusteredChangeListenerSupport<T> {
     System.arraycopy( propertiesPath, 0, actual, 0, propertiesPath.length );
 
     return new PropertyChangeListener() {
+      @Override
       public void propertyChange( PropertyChangeEvent evt ) {
         actual[actual.length - 1] = evt.getPropertyName();
         changed( actual );

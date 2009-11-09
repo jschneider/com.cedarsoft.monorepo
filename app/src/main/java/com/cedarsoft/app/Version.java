@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
+
 /**
  * A version
  */
@@ -75,6 +77,7 @@ public class Version implements Comparable<Version> {
     }
   }
 
+  @Override
   public int compareTo( Version o ) {
     if ( major != o.major ) {
       return Integer.valueOf( major ).compareTo( o.major );

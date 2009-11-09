@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
 
 import java.beans.PropertyChangeListener;
+import java.lang.Override;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -36,6 +37,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     this.begin = begin;
   }
 
+  @Override
   @NotNull
   public LocalDate getBegin() {
     lock.readLock().lock();
@@ -46,6 +48,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     }
   }
 
+  @Override
   public void setBegin( @NotNull LocalDate begin ) {
     lock.writeLock().lock();
     try {
@@ -55,6 +58,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     }
   }
 
+  @Override
   public int compareTo( ContinuousEntry o ) {
     return getBegin().compareTo( o.getBegin() );
   }

@@ -14,11 +14,13 @@ public class ProviderTest {
   @Test
   public void testException() {
     Provider<String, IOException> provider = new Provider<String, IOException>() {
+      @java.lang.Override
       @NotNull
       public String provide() throws IOException {
         throw new IOException( "Uuups" );
       }
 
+      @java.lang.Override
       @NotNull
       public String getDescription() {
         return "asdf";

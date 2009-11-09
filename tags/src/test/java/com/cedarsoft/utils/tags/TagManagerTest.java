@@ -31,6 +31,7 @@ public class TagManagerTest {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
 
     manager.addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }
@@ -129,6 +130,7 @@ public class TagManagerTest {
 
     Taggable taggable = manager.getTaggable( object );
     taggable.addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 
 /**
  * Demonstrates the building of a demo
@@ -66,12 +67,14 @@ public class MenuDemo {
       final AbstractAction[] actions = new AbstractAction[2];
 
       actions[0] = new AbstractAction( "action0" ) {
+        @Override
         public void actionPerformed( ActionEvent e ) {
           lookup.addValue( actions[1] );
         }
       };
 
       actions[1] = new AbstractAction( "action1" ) {
+        @Override
         public void actionPerformed( ActionEvent e ) {
           lookup.addValue( actions[0] );
         }
@@ -84,6 +87,7 @@ public class MenuDemo {
     fileMenuNode.addChild( new DefaultNode( "separator1", Lookups.dynamicLookup( new JSeparator() ) ) );
 
     addAction = new AbstractAction( "Add Another Item" ) {
+      @Override
       public void actionPerformed( ActionEvent e ) {
         fileMenuNode.addChild( new DefaultNode( String.valueOf( System.currentTimeMillis() ), Lookups.singletonLookup( Action.class, addAction ) ) );
       }
@@ -118,6 +122,7 @@ public class MenuDemo {
       super( name );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       System.out.println( "Clicked on recent file " + getValue( Action.NAME ) );
     }
@@ -133,6 +138,7 @@ public class MenuDemo {
       return theMenu;
     }
 
+    @Override
     protected boolean shallAddChildren() {
       return false;
     }
@@ -143,6 +149,7 @@ public class MenuDemo {
       super( "File" );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       throw new UnsupportedOperationException();
     }
@@ -153,6 +160,7 @@ public class MenuDemo {
       super( "Open" );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       System.out.println( "Opening file" );
     }
@@ -163,6 +171,7 @@ public class MenuDemo {
       super( "Close" );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       System.out.println( "Closing file" );
     }
@@ -179,6 +188,7 @@ public class MenuDemo {
       this.putValue( Action.NAME, "Counter: " + counter );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       counter++;
       updateName();
@@ -190,6 +200,7 @@ public class MenuDemo {
       super( "Recent Files" );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       throw new UnsupportedOperationException();
     }
@@ -200,6 +211,7 @@ public class MenuDemo {
       super( "Edit" );
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       throw new UnsupportedOperationException();
     }

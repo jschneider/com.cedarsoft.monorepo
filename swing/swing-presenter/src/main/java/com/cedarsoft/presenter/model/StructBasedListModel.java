@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,7 @@ public class StructBasedListModel implements ListModel {
     }
 
     structureListener = new StructureListener() {
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         addChildLookupListener( event.getStructPart() );
 
@@ -48,6 +50,7 @@ public class StructBasedListModel implements ListModel {
         }
       }
 
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         detachChildLookupListener( event.getStructPart() );
 
@@ -89,19 +92,23 @@ public class StructBasedListModel implements ListModel {
     child.getLookup().addChangeListenerWeak( listener );
   }
 
+  @Override
   public int getSize() {
     return node.getChildren().size();
   }
 
+  @Override
   @NotNull
   public StructPart getElementAt( int index ) {
     return node.getChildren().get( index );
   }
 
+  @Override
   public void addListDataListener( ListDataListener l ) {
     listeners.add( l );
   }
 
+  @Override
   public void removeListDataListener( ListDataListener l ) {
     listeners.remove( l );
   }
@@ -117,6 +124,7 @@ public class StructBasedListModel implements ListModel {
       this.part = part;
     }
 
+    @Override
     public void lookupChanged( @NotNull LookupChangeEvent<?> event ) {
       int index = node.getChildren().indexOf( part );
 

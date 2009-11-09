@@ -13,6 +13,7 @@ import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.net.URL;
 import java.util.List;
 
@@ -113,6 +114,7 @@ public class AvatMenuDemo {
       this.command = command;
     }
 
+    @Override
     public void actionPerformed( ActionEvent e ) {
       System.out.println( "Performing command: " + command );
     }

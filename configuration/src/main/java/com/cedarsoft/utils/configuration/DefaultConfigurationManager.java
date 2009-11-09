@@ -3,6 +3,7 @@ package com.cedarsoft.utils.configuration;
 import com.cedarsoft.utils.configuration.ConfigurationManager;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,15 +22,18 @@ public class DefaultConfigurationManager implements ConfigurationManager {
     configurations.addAll( initialConfigurations );
   }
 
+  @Override
   public void addConfiguration( @NotNull Object configuration ) {
     configurations.add( configuration );
   }
 
+  @Override
   @NotNull
   public List<?> getConfigurations() {
     return Collections.unmodifiableList( configurations );
   }
 
+  @Override
   @NotNull
   public <T> T getConfiguration( @NotNull Class<T> configurationType ) throws IllegalArgumentException {
     for ( Object configuration : configurations ) {

@@ -17,6 +17,7 @@ public class MyObjectService extends AbstractService<MyObject> {
 
   public void changeAllNames( @NotNull @NonNls final String newName ) {
     getTransactionTemplate().execute( new TransactionCallbackWithoutResult() {
+      @java.lang.Override
       protected void doInTransactionWithoutResult( TransactionStatus status ) {
         for ( MyObject myObject : findAll() ) {
           myObject.setName( newName );

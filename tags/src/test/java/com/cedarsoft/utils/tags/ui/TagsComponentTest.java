@@ -71,6 +71,7 @@ public class TagsComponentTest {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
 
     model.getSelectedTags().addTagChangeListener( new TagChangeListener() {
+      @java.lang.Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }
@@ -121,6 +122,7 @@ public class TagsComponentTest {
     JFrame frame = new JFrame();
     frame.getContentPane().add( tagsComponent, BorderLayout.CENTER );
     frame.getContentPane().add( new JToggleButton( new AbstractAction( "Toggle New Tags" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
         tagsComponent.setAllowNewTagCreation( !( ( AbstractButton ) e.getSource() ).isSelected() );
       }

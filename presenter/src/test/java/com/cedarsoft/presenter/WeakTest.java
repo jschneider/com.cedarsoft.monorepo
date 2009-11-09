@@ -34,17 +34,21 @@ public class WeakTest  {
   }
 
   public static class MyPresenter extends AbstractPresenter<String> {
+    @java.lang.Override
     protected boolean shallAddChildren() {
       return true;
     }
 
+    @java.lang.Override
     protected void bind( @NotNull String presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
     }
 
+    @java.lang.Override
     protected boolean addChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
       return true;
     }
 
+    @java.lang.Override
     protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
     }
 

@@ -31,20 +31,24 @@ public class SerializingStrategySupportTest {
   }
 
   private static class MyStrategy implements StaxMateSerializingStrategy<String> {
+    @java.lang.Override
     @NotNull
     public String getId() {
       throw new UnsupportedOperationException();
     }
 
+    @java.lang.Override
     public boolean supports( @NotNull Object object ) {
       throw new UnsupportedOperationException();
     }
 
+    @java.lang.Override
     @NotNull
     public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object ) throws IOException {
       throw new UnsupportedOperationException();
     }
 
+    @java.lang.Override
     @NotNull
     public String deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
       throw new UnsupportedOperationException();

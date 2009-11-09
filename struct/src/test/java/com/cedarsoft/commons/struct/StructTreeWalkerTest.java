@@ -35,6 +35,7 @@ public class StructTreeWalkerTest {
     StructureTreeWalker walker = new DepthFirstStructureTreeWalker();
 
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      @java.lang.Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         if ( node.getName().equals( "01" ) ) {
           throw new CanceledException();
@@ -54,6 +55,7 @@ public class StructTreeWalkerTest {
 
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      @java.lang.Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         if ( node.getName().equals( "01" ) ) {
           throw new CanceledException();
@@ -73,6 +75,7 @@ public class StructTreeWalkerTest {
 
     StructureTreeWalker walker = new DepthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      @java.lang.Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         assertSame( expected.remove( 0 ), node.getName() );
         assertEquals( node.getName().length() - 1, level );
@@ -87,6 +90,7 @@ public class StructTreeWalkerTest {
 
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
+      @java.lang.Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         assertSame( expected.remove( 0 ), node.getName() );
         assertEquals( node.getName().length() - 1, level );

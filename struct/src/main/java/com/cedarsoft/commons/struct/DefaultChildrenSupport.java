@@ -2,6 +2,7 @@ package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -16,12 +17,14 @@ public class DefaultChildrenSupport implements ChildrenSupport {
   private List<Node> nodes = new ArrayList<Node>();
   private List<Node> nodesUm = Collections.unmodifiableList( nodes );
 
+  @Override
   @NotNull
   public List<? extends Node> getChildren() {
     //noinspection ReturnOfCollectionOrArrayField
     return nodesUm;
   }
 
+  @Override
   public void addChild( int index, @NotNull Node child ) {
     validateName( child.getName() );
 
@@ -30,10 +33,12 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     notifyChildAdded( child, index );
   }
 
+  @Override
   public void addChild( @NotNull Node child ) {
     addChild( nodes.size(), child );
   }
 
+  @Override
   public void setChildren( @NotNull List<? extends Node> children ) {
     detachChildren();
     for ( Node child : children ) {
@@ -44,6 +49,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
   /**
    * Detaches all children
    */
+  @Override
   public void detachChildren() {
     if ( !nodes.isEmpty() ) {
       for ( Node node : new ArrayList<Node>( nodes ) ) {
@@ -60,6 +66,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     }
   }
 
+  @Override
   public void detachChild( @NotNull Node child ) {
     int oldIndex = nodes.indexOf( child );
     if ( oldIndex < 0 ) {
@@ -68,6 +75,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     detachChild( oldIndex, child );
   }
 
+  @Override
   public void detachChild( int index ) {
     detachChild( index, nodes.get( index ) );
   }
@@ -78,15 +86,18 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     notifyChildDetached( childToDetach, index );
   }
 
+  @Override
   @NotNull
   public Node getParentNode() {
     return parentNode;
   }
 
+  @Override
   public void setParentNode( @NotNull Node parentNode ) {
     this.parentNode = parentNode;
   }
 
+  @Override
   public boolean isChild( @NotNull StructPart child ) {
     //noinspection SuspiciousMethodCalls
     return nodes.contains( child );
@@ -94,14 +105,17 @@ public class DefaultChildrenSupport implements ChildrenSupport {
 
   private final List<StructureListener> structureListeners = new ArrayList<StructureListener>();
 
+  @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
     structureListeners.add( structureListener );
   }
 
+  @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
     structureListeners.add( new WeakStructureListener( structureListener ) );
   }
 
+  @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     for ( Iterator<StructureListener> it = structureListeners.iterator(); it.hasNext(); ) {
       StructureListener listener = it.next();
@@ -112,11 +126,13 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     structureListeners.remove( structureListener );
   }
 
+  @Override
   @NotNull
   public List<? extends StructureListener> getStructureListeners() {
     return Collections.unmodifiableList( structureListeners );
   }
 
+  @Override
   @NotNull
   public Node findChild( @NotNull String childName ) throws ChildNotFoundException {
     for ( Node node : nodes ) {

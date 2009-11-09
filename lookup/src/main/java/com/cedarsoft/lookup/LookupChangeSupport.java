@@ -57,7 +57,7 @@ public class LookupChangeSupport {
   }
 
   /**
-   * Binds the given lookup change listener that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener}.
+   * Binds the given lookup change listener that is wrapped within a {@link WeakLookupChangeListener}.
    * Adds the given listener and calls
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
@@ -69,7 +69,7 @@ public class LookupChangeSupport {
   }
 
   /**
-   * Binds the given lookup change listener (that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener})
+   * Binds the given lookup change listener (that is wrapped within a {@link WeakLookupChangeListener})
    * with the key retrieved from {@link TypedLookupChangeListener#getType()}.
    * Adds the given listener and calls
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.

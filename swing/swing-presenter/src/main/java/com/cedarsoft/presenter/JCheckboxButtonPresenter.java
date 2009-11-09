@@ -3,6 +3,7 @@ package com.cedarsoft.presenter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JCheckBox;
+import java.lang.Override;
 
 /**
  * <p/>
@@ -16,6 +17,7 @@ public class JCheckboxButtonPresenter extends AbstractButtonPresenter<JCheckBox>
     return new JCheckBox();
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return false;
   }

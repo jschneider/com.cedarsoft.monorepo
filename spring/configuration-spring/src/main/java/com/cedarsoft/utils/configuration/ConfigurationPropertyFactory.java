@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Override;
+
 /**
  * This factory reads a value from the configuration manager
  */
@@ -19,16 +21,19 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
     this.configurationAccess = new ConfigurationAccess<T>( configuration, type, key, defaultValueProvider );
   }
 
+  @Override
   @Nullable
   public Object getObject() throws Exception {
     return configurationAccess.resolve();
   }
 
+  @Override
   @NotNull
   public Class<?> getObjectType() {
     return configurationAccess.getType();
   }
 
+  @Override
   public boolean isSingleton() {
     return true;
   }

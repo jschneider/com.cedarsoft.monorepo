@@ -20,6 +20,7 @@ public class ChildDetectorManagerTest {
   protected void setUp() throws Exception {
     manager = new ChildDetectorManager();
     manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
+      @java.lang.Override
       @NotNull
       public List<? extends String> findChildren( @NotNull String parent ) {
         return Collections.emptyList();

@@ -6,6 +6,8 @@ import com.cedarsoft.commons.struct.StructureTreeWalker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -23,12 +25,14 @@ public class StructStringPresenter implements Presenter<String> {
     this.intendSequence = intendSequence;
   }
 
+  @Override
   @NotNull
   public String present( @NotNull StructPart struct ) {
     final StringBuilder builder = new StringBuilder();
 
     StructureTreeWalker treeWalker = new DepthFirstStructureTreeWalker();
     treeWalker.walk( struct, new StructureTreeWalker.WalkerCallBack() {
+      @Override
       public void nodeReached( @NotNull StructPart node, int level ) {
         for ( int i = 0; i < level; i++ ) {
           builder.append( intendSequence );

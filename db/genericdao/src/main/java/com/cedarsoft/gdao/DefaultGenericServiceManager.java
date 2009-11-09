@@ -5,6 +5,8 @@ import com.cedarsoft.utils.HashedCache;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 
+import java.lang.Override;
+
 /**
  * Manages the services
  */
@@ -42,6 +44,7 @@ public class DefaultGenericServiceManager implements GenericServiceManager {
     this.transactionManager = transactionManager;
     this.daoManager = daoManager;
     serviceCache = new HashedCache<Class<Object>, GenericService<Object>>( new Cache.Factory<Class<Object>, GenericService<Object>>() {
+      @Override
       @NotNull
       public GenericService<Object> create( @NotNull Class<Object> key ) {
         return new GenericServiceImpl<Object>( DefaultGenericServiceManager.this.daoManager.getDao( key ), DefaultGenericServiceManager.this.transactionManager );
@@ -55,6 +58,7 @@ public class DefaultGenericServiceManager implements GenericServiceManager {
    * @param type the type
    * @return the service for the given type
    */
+  @Override
   @NotNull
   public <T> GenericService<T> getService( @NotNull Class<T> type ) {
     return ( GenericService<T> ) serviceCache.get( type );

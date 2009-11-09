@@ -59,7 +59,7 @@ public interface Lookup {
   <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener );
 
   /**
-   * Binds the given lookup change listener that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener}.
+   * Binds the given lookup change listener that is wrapped within a {@link WeakLookupChangeListener}.
    * Adds the given listener and calls
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
@@ -68,7 +68,7 @@ public interface Lookup {
   <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
-   * Binds the given lookup change listener (that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener})
+   * Binds the given lookup change listener (that is wrapped within a {@link WeakLookupChangeListener})
    * with the key retrieved from {@link TypedLookupChangeListener#getType()}.
    * Adds the given listener and calls
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
@@ -93,14 +93,14 @@ public interface Lookup {
   <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
-   * Adds a lookup change listener that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener}
+   * Adds a lookup change listener that is wrapped within a {@link WeakLookupChangeListener}
    *
    * @param lookupChangeListener the lookup change listener
    */
   void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener );
 
   /**
-   * Add a lookup change listener that is wrapped within a {@link com.cedarsoft.lookup.WeakLookupChangeListener} for a given type
+   * Add a lookup change listener that is wrapped within a {@link WeakLookupChangeListener} for a given type
    *
    * @param type                 the type
    * @param lookupChangeListener the listener

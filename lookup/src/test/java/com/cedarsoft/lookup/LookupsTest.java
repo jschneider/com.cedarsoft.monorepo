@@ -22,11 +22,13 @@ public class LookupsTest  {
     lookups.add( new SingletonLookup<String>( String.class, VALUE ) );
     lookups.add( new DynamicLookup( VALUE ) );
     lookups.add( new InstantiatorLookup<String>( new Instantiater.Typed<String>() {
+      @java.lang.Override
       @NotNull
       public Class<? extends String> getType() {
         return String.class;
       }
 
+      @java.lang.Override
       @NotNull
       public String createInstance() throws InstantiationFailedException {
         return VALUE;
@@ -61,6 +63,7 @@ public class LookupsTest  {
     for ( Lookup lookup : lookups ) {
       final String[] called = new String[1];
       lookup.bind( String.class, new LookupChangeListener<String>() {
+        @java.lang.Override
         public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
@@ -74,10 +77,12 @@ public class LookupsTest  {
     for ( Lookup lookup : lookups ) {
       final String[] called = new String[1];
       lookup.bind( new TypedLookupChangeListener<String>() {
+        @java.lang.Override
         public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
 
+        @java.lang.Override
         @NotNull
         public Class<String> getType() {
           return String.class;
@@ -92,6 +97,7 @@ public class LookupsTest  {
     for ( Lookup lookup : lookups ) {
       final String[] called = new String[1];
       lookup.bindWeak( String.class, new LookupChangeListener<String>() {
+        @java.lang.Override
         public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
@@ -105,10 +111,12 @@ public class LookupsTest  {
     for ( Lookup lookup : lookups ) {
       final String[] called = new String[1];
       lookup.bindWeak( new TypedLookupChangeListener<String>() {
+        @java.lang.Override
         public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
 
+        @java.lang.Override
         @NotNull
         public Class<String> getType() {
           return String.class;

@@ -32,6 +32,7 @@ public class JComboBoxPresenterTest  {
   @BeforeMethod
   protected void setUp() throws Exception {
     rootAction = new AbstractAction() {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -53,6 +54,7 @@ public class JComboBoxPresenterTest  {
     assertNull( box.getAction() );
 
     AbstractAction newAction = new AbstractAction( "theAction" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -75,6 +77,7 @@ public class JComboBoxPresenterTest  {
 
   private void addChild( @NotNull @NonNls String name ) {
     root.addChild( new DefaultNode( name, Lookups.createLookup( Action.class, new AbstractAction( name ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     } ) ) );
@@ -122,6 +125,7 @@ public class JComboBoxPresenterTest  {
   public void testComboBoxPlain() {
     JComboBox box = new JComboBox();
     box.setAction( new AbstractAction( "the value" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
         System.out.println( "event... " + e );
       }

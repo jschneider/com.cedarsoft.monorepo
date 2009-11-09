@@ -30,6 +30,7 @@ public class StringPresenter extends AbstractPresenter<String> {
   protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
   }
 
+  @java.lang.Override
   protected boolean shallAddChildren() {
     return false;
   }

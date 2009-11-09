@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -35,6 +36,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     this.blacklistedFieldNames.addAll( Arrays.asList( blacklistedFieldNames ) );
   }
 
+  @Override
   public boolean matches( Object o ) {
     if ( object == null && o == null ) {
       return true;
@@ -86,6 +88,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     return true;
   }
 
+  @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "Object did not fit: Expected <" + object + ">" );
   }

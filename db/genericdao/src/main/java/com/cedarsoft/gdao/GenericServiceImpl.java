@@ -6,6 +6,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 import org.springframework.transaction.support.TransactionCallback;
 
+import java.lang.Override;
+
 /**
  * A generic service that can be used generally.
  */
@@ -26,9 +28,11 @@ public class GenericServiceImpl<T> extends AbstractService<T> implements Generic
    * @param callback the callback
    * @return the return value (optional)
    */
+  @Override
   @Nullable
   public <R> R perform( @NotNull final GenericService.ServiceCallback<T, R> callback ) {
     Object o = transactionTemplate.execute( new TransactionCallback() {
+      @Override
       @Nullable
       public Object doInTransaction( TransactionStatus status ) {
         return callback.perform( GenericServiceImpl.this );

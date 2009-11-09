@@ -3,6 +3,7 @@ package com.cedarsoft.utils.workflow;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -82,6 +83,7 @@ public class State<T> {
   }
 
   private class EmptyAction<T> implements Action<T> {
+    @Override
     public void execute( @NotNull T object, @NotNull TransitionDefinition<T> definition ) {
     }
   }

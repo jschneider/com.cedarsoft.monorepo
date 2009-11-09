@@ -6,6 +6,8 @@ import com.cedarsoft.gdao.GenericServiceManager;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -28,15 +30,18 @@ public class ServiceFactory<T> implements FactoryBean {
     this.type = type;
   }
 
+  @Override
   @NotNull
   public GenericDao<T> getObject() throws Exception {
     return genericServiceManager.getService( type );
   }
 
+  @Override
   public Class<GenericService> getObjectType() {
     return GenericService.class;
   }
 
+  @Override
   public boolean isSingleton() {
     return true;
   }

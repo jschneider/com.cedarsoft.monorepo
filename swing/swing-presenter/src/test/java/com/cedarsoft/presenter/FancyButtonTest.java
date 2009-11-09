@@ -23,6 +23,7 @@ public class FancyButtonTest {
     FancyButtonPresenter presenter = new FancyButtonPresenter();
     JFrame frame = new JFrame();
     frame.getContentPane().add( presenter.present( new DefaultNode( "asdf", Lookups.singletonLookup( Action.class, new AbstractAction( "asdf" ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     } ) ) ) );

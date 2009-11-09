@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Override;
+
 /**
  * <p/>
  * Date: Jul 1, 2007<br>
@@ -28,6 +30,7 @@ public class ConfigurationFactory implements FactoryBean {
     this.moduleType = moduleType;
   }
 
+  @Override
   @NotNull
   public Object getObject() throws Exception {
     if ( moduleType != null ) {
@@ -37,11 +40,13 @@ public class ConfigurationFactory implements FactoryBean {
     }
   }
 
+  @Override
   @NotNull
   public Class<Configuration> getObjectType() {
     return Configuration.class;
   }
 
+  @Override
   public boolean isSingleton() {
     return true;
   }

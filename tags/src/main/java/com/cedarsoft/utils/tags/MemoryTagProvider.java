@@ -4,6 +4,7 @@ import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.List;
 
 /**
@@ -21,23 +22,28 @@ public class MemoryTagProvider extends AbstractTagProvider {
     return newTag;
   }
 
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tags.addTagChangeListener( listener );
   }
 
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tags.removeTagChangeListener( listener );
   }
 
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     return tags.getTags();
   }
 
+  @Override
   public void removeTag( @NotNull Tag tag ) {
     tags.removeTag( tag );
   }
 
+  @Override
   @NotNull
   public Tag findTag( @NonNls @NotNull String description ) throws NotFoundException {
     for ( Tag tag : tags.getTags() ) {

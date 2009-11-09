@@ -3,6 +3,7 @@ package com.cedarsoft.presenter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JMenuItem;
+import java.lang.Override;
 
 /**
  * This presenter creates a JMenuItem for a action.
@@ -14,6 +15,7 @@ public class DefaultJMenuItemPresenter extends AbstractButtonPresenter<JMenuItem
     return new JMenuItem();
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return false;
   }

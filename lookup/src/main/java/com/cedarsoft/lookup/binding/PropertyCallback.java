@@ -5,6 +5,7 @@ import com.cedarsoft.lookup.TypedLookupChangeListener;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -26,11 +27,13 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
     }
   }
 
+  @Override
   @NotNull
   public Class<T> getType() {
     return propertyType;
   }
 
+  @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {
       setter.invoke( object, event.getNewValue() );

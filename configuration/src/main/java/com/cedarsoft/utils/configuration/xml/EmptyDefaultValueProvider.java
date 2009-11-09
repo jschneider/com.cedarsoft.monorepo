@@ -4,6 +4,7 @@ import com.cedarsoft.utils.configuration.DefaultValueProvider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ public final class EmptyDefaultValueProvider implements DefaultValueProvider {
   @NotNull
   public static final EmptyDefaultValueProvider INSTANCE = new EmptyDefaultValueProvider();
 
+  @Override
   @NotNull
   public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
     if ( Map.class.isAssignableFrom( type ) ) {

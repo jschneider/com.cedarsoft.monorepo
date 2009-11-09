@@ -2,6 +2,8 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * This listener wraps another listener that only wants to listen for a subclass of the given type.
  *
@@ -20,18 +22,21 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     this.type = type;
   }
 
+  @Override
   public void elementDeleted( @NotNull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementDeleted( type.cast( element ) );
     }
   }
 
+  @Override
   public void elementAdded( @NotNull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementAdded( type.cast( element ) );
     }
   }
 
+  @Override
   public void elementChanged( @NotNull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementChanged( type.cast( element ) );

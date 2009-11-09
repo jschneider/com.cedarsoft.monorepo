@@ -15,6 +15,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import javax.swing.SwingUtilities;
+import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
 
@@ -32,6 +33,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     this.backingDao = backingDao;
   }
 
+  @Override
   @NotNull
   public ReadWriteLock getLock() {
     throw new UnsupportedOperationException(); //todo implement(?)
@@ -55,6 +57,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     return backingDao;
   }
 
+  @Override
   @NotNull
   public <LT extends T> Long save( @NotNull LT newInstance ) throws DataAccessException {
     ensureNotEDT();
@@ -64,6 +67,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     return id;
   }
 
+  @Override
   public <LT extends T> void update( @NotNull LT transientObject ) throws DataAccessException {
     ensureNotEDT();
 
@@ -82,6 +86,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     update( element );
   }
 
+  @Override
   public <LT extends T> void saveOrUpdate( @NotNull LT object ) throws DataAccessException {
     ensureNotEDT();
 
@@ -93,6 +98,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     }
   }
 
+  @Override
   public <LT extends T> void delete( @NotNull LT persistentObject ) throws DataAccessException {
     ensureNotEDT();
 
@@ -100,14 +106,17 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     cache.remove( persistentObject );
   }
 
+  @Override
   @NotNull
   public T findById( @NotNull Long id ) throws EmptyResultDataAccessException {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   @NotNull
   public <R> R find( @NotNull final Finder<R> finder ) throws EmptyResultDataAccessException {
     return getBackingDao().find( new Finder<R>() {
+      @Override
       @NotNull
       public R find( @NotNull Session session ) throws DataAccessException {
         ensureNotEDT();
@@ -120,27 +129,33 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     } );
   }
 
+  @Override
   @NotNull
   public List<? extends T> findAll() throws DataAccessException {
     return cache.getElements();
   }
 
+  @Override
   public int getCount() throws DataAccessException {
     return cache.size();
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
     cache.addElementListener( listener );
   }
 
+  @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener, boolean isTransient ) {
     cache.addElementListener( listener, isTransient );
   }
 
+  @Override
   public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
     cache.removeElementListener( listener );
   }
 
+  @Override
   @NotNull
   public List<? extends ElementsListener<? super T>> getTransientElementListeners() {
     return cache.getTransientElementListeners();
@@ -169,6 +184,7 @@ public class CachingDao<T> extends AbstractGenericDao<T> implements ClusteredObs
     return cache.contains( elementVisitor );
   }
 
+  @Override
   public void shutdown() {
     backingDao.shutdown();
   }

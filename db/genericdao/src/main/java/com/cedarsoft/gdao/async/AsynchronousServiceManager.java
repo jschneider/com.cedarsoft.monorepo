@@ -8,6 +8,7 @@ import com.cedarsoft.utils.Cache;
 import com.cedarsoft.utils.HashedCache;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.Iterator;
 
 /**
@@ -21,6 +22,7 @@ public class AsynchronousServiceManager implements GenericServiceManager {
   @NotNull
   private final Cache<Class<Object>, AsynchronousService<Object>> serviceCache = new HashedCache<Class<Object>, AsynchronousService<Object>>(
           new Cache.Factory<Class<Object>, AsynchronousService<Object>>() {
+            @Override
             @NotNull
             public AsynchronousService<Object> create( @NotNull Class<Object> key ) {
               return asyncCallSupport.invoke( new AsyncServiceCreator<Object>( key ) );
@@ -30,17 +32,20 @@ public class AsynchronousServiceManager implements GenericServiceManager {
 
   public AsynchronousServiceManager( @NotNull final String description, @NotNull final GenericServiceManager delegatingManager ) {
     asyncCallSupport.initializeWorker( new CallbackCaller<AsyncServiceCreator<?>>() {
+      @Override
       @NotNull
       public String getDescription() {
         return description;
       }
 
+      @Override
       public Object call( @NotNull AsyncServiceCreator<?> callback ) throws Exception {
         return callback.execute( delegatingManager );
       }
     } );
   }
 
+  @Override
   @NotNull
   public <T> GenericService<T> getService( @NotNull Class<T> type ) {
     return ( GenericService<T> ) serviceCache.get( type );

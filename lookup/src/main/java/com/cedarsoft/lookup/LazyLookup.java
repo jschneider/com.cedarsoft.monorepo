@@ -3,6 +3,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.HashSet;
@@ -25,6 +26,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
   protected LazyLookup() {
   }
 
+  @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
     if ( this.lookups == null ) {
@@ -68,6 +70,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * @param type the key
    * @return the found object or null if no object has been found
    */
+  @Override
   @Nullable
   public <T> T lookup( @NotNull Class<T> type ) {
     if ( type.isAssignableFrom( getType() ) ) {
@@ -90,37 +93,47 @@ public abstract class LazyLookup<T> extends AbstractLookup {
     return instance;
   }
 
+  @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
@@ -155,16 +168,19 @@ public abstract class LazyLookup<T> extends AbstractLookup {
       this.aClass = aClass;
     }
 
+    @Override
     @NotNull
     public Class<?> getKey() {
       return aClass;
     }
 
+    @Override
     @Nullable
     public Object getValue() {
       return LazyLookup.this.getValue();
     }
 
+    @Override
     public Object setValue( Object value ) {
       throw new UnsupportedOperationException();
     }

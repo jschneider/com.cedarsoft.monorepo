@@ -83,6 +83,7 @@ public class PathFactoryTest {
 
     assertEquals( "0/1/2", Path.buildPath( childChild ).toString() );
     assertEquals( "0/1/2", Path.buildPath( childChild, new PathValidator() {
+      @java.lang.Override
       public void validate( @NotNull Path path ) throws ValidationFailedException {
         assertFalse( path.isAbsolute() );
       }

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -76,6 +77,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     this.storedObjects.addAll( storedObjects );
   }
 
+  @Override
   @NotNull
   public List<? extends T> getStoredObjects() {
     lock.readLock().lock();
@@ -86,6 +88,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  @Override
   @Nullable
   public T findStoredObject( @NotNull @NonNls Matcher<T> matcher ) {
     lock.readLock().lock();
@@ -112,6 +115,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     return found;
   }
 
+  @Override
   @NotNull
   public List<? extends T> findStoredObjects( @NotNull @NonNls Matcher<T> matcher ) {
     lock.readLock().lock();
@@ -129,6 +133,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  @Override
   @NotNull
   public <C> List<? extends C> findStoredObjects( @NotNull @NonNls Matcher<T> matcher, @NotNull Converter<T, C> converter ) {
     lock.readLock().lock();
@@ -152,6 +157,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @param object the object
    * @throws StillContainedException if a comparator is set and the object still exists within this registry
    */
+  @Override
   public void store( @NotNull T object ) throws StillContainedException {
     lock.writeLock().lock();
     try {
@@ -178,11 +184,13 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  @Override
   @Nullable
   public Comparator<T> getComparator() {
     return comparator;
   }
 
+  @Override
   public boolean containsOnlyUniqueElements() {
     return comparator != null;
   }
@@ -193,6 +201,7 @@ public class DefaultRegistry<T> implements Registry<T> {
   @NotNull
   protected final List<Listener<T>> listeners = new ArrayList<Listener<T>>();
 
+  @Override
   public void addListener( @NotNull Listener<T> listener ) {
     listenersLock.writeLock().lock();
     try {
@@ -202,6 +211,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  @Override
   public void removeListener( @NotNull Listener<T> listener ) {
     listenersLock.writeLock().lock();
     try {

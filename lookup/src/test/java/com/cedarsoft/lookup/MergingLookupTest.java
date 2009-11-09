@@ -48,6 +48,7 @@ public class MergingLookupTest  {
     final List<String> newValues = new ArrayList<String>();
 
     mergingLookup.addChangeListener( String.class, new LookupChangeListener<String>() {
+      @java.lang.Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
         newValues.add( event.getNewValue() );
       }

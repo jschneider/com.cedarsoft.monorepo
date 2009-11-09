@@ -3,6 +3,7 @@ package com.cedarsoft.commons.struct;
 import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -12,6 +13,7 @@ import java.util.Queue;
 public class BreadthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Queue<StructPart> queue = new LinkedList<StructPart>();
 
+  @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );
 

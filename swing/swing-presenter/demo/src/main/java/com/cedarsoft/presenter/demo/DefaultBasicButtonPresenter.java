@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JButton;
 import java.awt.Color;
+import java.lang.Override;
 
 /**
  *
@@ -19,6 +20,7 @@ public class DefaultBasicButtonPresenter extends AbstractButtonPresenter<JButton
     return button;
   }
 
+  @Override
   protected boolean shallAddChildren() {
     return false;
   }

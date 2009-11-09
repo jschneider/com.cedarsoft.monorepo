@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.File;
+import java.lang.Override;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,12 +111,14 @@ public class StringConverterManager {
   }
 
   public static class BooleanConverter implements StringConverter<Boolean> {
+    @Override
     @NotNull
     @NonNls
     public String createRepresentation( @NotNull Boolean object ) {
       return object.toString();
     }
 
+    @Override
     @NotNull
     public Boolean createObject( @NotNull @NonNls String representation ) {
       return Boolean.parseBoolean( representation );
@@ -123,11 +126,13 @@ public class StringConverterManager {
   }
 
   public static class FileConverter implements StringConverter<File> {
+    @Override
     @NotNull
     public String createRepresentation( @NotNull File object ) {
       return object.getAbsolutePath();
     }
 
+    @Override
     @NotNull
     public File createObject( @NotNull String representation ) {
       return new File( representation );
@@ -135,11 +140,13 @@ public class StringConverterManager {
   }
 
   public static class ClassConverter implements StringConverter<Class<?>> {
+    @Override
     @NotNull
     public String createRepresentation( @NotNull Class<?> object ) {
       return object.getName();
     }
 
+    @Override
     @NotNull
     public Class<?> createObject( @NotNull String representation ) {
       try {
@@ -151,12 +158,14 @@ public class StringConverterManager {
   }
 
   public static class RectangleConverter implements StringConverter<Rectangle> {
+    @Override
     @NotNull
     @NonNls
     public String createRepresentation( @NotNull Rectangle object ) {
       return object.x + ":" + object.y + ':' + object.width + ':' + object.height;
     }
 
+    @Override
     @NotNull
     public Rectangle createObject( @NotNull String representation ) {
       String[] parts = representation.split( "\\:" );
@@ -165,12 +174,14 @@ public class StringConverterManager {
   }
 
   public static class PointConverter implements StringConverter<Point> {
+    @Override
     @NotNull
     @NonNls
     public String createRepresentation( @NotNull Point object ) {
       return object.x + ":" + object.y;
     }
 
+    @Override
     @NotNull
     public Point createObject( @NotNull String representation ) {
       String[] parts = representation.split( "\\:" );
@@ -179,12 +190,14 @@ public class StringConverterManager {
   }
 
   public static class StringStringConverter implements StringConverter<String> {
+    @Override
     @NotNull
     @NonNls
     public String createRepresentation( @NonNls @NotNull String object ) {
       return object;
     }
 
+    @Override
     @NotNull
     public String createObject( @NotNull @NonNls String representation ) {
       return representation;

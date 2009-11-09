@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.Override;
 
 /**
  * The default command line
@@ -39,6 +40,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return consolePrinter;
   }
 
+  @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     String answer = read( message + " (y/n)" );
     if ( answer.equalsIgnoreCase( "y" ) ) {
@@ -53,11 +55,13 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return Boolean.parseBoolean( message );
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message ) {
     return read( message, ( String ) null );
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     if ( defaultValue == null ) {
@@ -91,6 +95,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return System.out;
   }
 
+  @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     try {
       while ( true ) {
@@ -106,6 +111,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
+  @Override
   public int readInt( @NotNull String message ) throws IOException {
     while ( true ) {
       String value = read( message );
@@ -118,6 +124,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
+  @Override
   public void pause( int seconds ) {
     getOut().print( "Pausing for " + seconds + " seconds:" );
     for ( int i = 1; i <= seconds; i++ ) {

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.Override;
 
 /**
  * @author Johannes Schneider
@@ -20,28 +21,34 @@ public class DummyCmdLine extends AbstractCmdLine {
     this.out = out;
   }
 
+  @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message ) {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public int readInt( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public void pause( int seconds ) {
   }
 

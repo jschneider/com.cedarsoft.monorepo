@@ -110,16 +110,19 @@ public class ListModelTest  {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
+      @java.lang.Override
       public void intervalAdded( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_ADDED, e.getType() );
         events.add( e );
       }
 
+      @java.lang.Override
       public void intervalRemoved( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_REMOVED, e.getType() );
         events.add( e );
       }
 
+      @java.lang.Override
       public void contentsChanged( ListDataEvent e ) {
         assertSame( ListDataEvent.CONTENTS_CHANGED, e.getType() );
         events.add( e );
@@ -141,16 +144,19 @@ public class ListModelTest  {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
+      @java.lang.Override
       public void intervalAdded( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_ADDED, e.getType() );
         events.add( e );
       }
 
+      @java.lang.Override
       public void intervalRemoved( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_REMOVED, e.getType() );
         events.add( e );
       }
 
+      @java.lang.Override
       public void contentsChanged( ListDataEvent e ) {
         assertSame( ListDataEvent.CONTENTS_CHANGED, e.getType() );
         events.add( e );

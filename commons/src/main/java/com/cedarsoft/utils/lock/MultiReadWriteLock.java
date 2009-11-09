@@ -2,6 +2,7 @@ package com.cedarsoft.utils.lock;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,11 +36,13 @@ public class MultiReadWriteLock implements ReadWriteLock {
   }
 
 
+  @Override
   @NotNull
   public Lock readLock() {
     return multiReadLock;
   }
 
+  @Override
   @NotNull
   public Lock writeLock() {
     return multiWriteLock;

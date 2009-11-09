@@ -70,6 +70,7 @@ public class SwingPresenterTest {
       return panel;
     }
 
+    @java.lang.Override
     protected boolean shallAddChildren() {
       return true;
     }

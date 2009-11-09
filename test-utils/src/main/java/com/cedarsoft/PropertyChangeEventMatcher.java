@@ -6,6 +6,7 @@ import org.easymock.IArgumentMatcher;
 import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
+import java.lang.Override;
 
 /**
  * Compares property changes
@@ -24,6 +25,7 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
     this.expected = expected;
   }
 
+  @Override
   public boolean matches( Object argument ) {
     if ( ObjectUtils.equals( expected, argument ) ) {
       return true;
@@ -43,6 +45,7 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
       ObjectUtils.equals( actual.getOldValue(), expected.getOldValue() );
   }
 
+  @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "PropertyChangeEvent did not fit: Expected <" + expected + ">" );
   }

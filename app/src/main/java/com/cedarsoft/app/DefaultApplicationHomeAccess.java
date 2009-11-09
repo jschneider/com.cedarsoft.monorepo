@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.Override;
 
 /**
  * Offers access to the application home.
@@ -75,6 +76,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    *
    * @return the application name
    */
+  @Override
   @NotNull
   public String getApplicationName() {
     return applicationName;
@@ -85,6 +87,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    *
    * @return the application home dir
    */
+  @Override
   @NotNull
   public File getApplicationHome() {
     return applicationHome;

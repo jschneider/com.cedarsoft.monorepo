@@ -68,6 +68,7 @@ public class ConfigurationAccessTest {
     assertEquals( 3, ( ( List<String> ) configuration.getList( "asdf" ) ).size() );
 
     ConfigurationAccess<List> configurationAccess = new ConfigurationAccess<List>( configuration, List.class, "asdf", new DefaultValueProvider() {
+      @java.lang.Override
       @NotNull
       public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
         throw new UnsupportedOperationException();
@@ -81,6 +82,7 @@ public class ConfigurationAccessTest {
   @Test
   public void testCallback() {
     DefaultValueProvider defaultValueProvider = new DefaultValueProvider() {
+      @java.lang.Override
       @NotNull
       public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
         return type.cast( "1234" );

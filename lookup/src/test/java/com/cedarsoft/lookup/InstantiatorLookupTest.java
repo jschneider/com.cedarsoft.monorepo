@@ -16,6 +16,7 @@ public class InstantiatorLookupTest  {
   @BeforeMethod
   protected void setUp() throws Exception {
     Instantiater<String> instantiater = new Instantiater<String>() {
+      @java.lang.Override
       @NotNull
       public String createInstance() throws InstantiationFailedException {
         if ( called ) {

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import java.lang.Override;
 import java.util.List;
 
 /**
@@ -41,42 +42,51 @@ public abstract class AbstractService<T> extends AbstractGenericDao<T> {
     return dao;
   }
 
+  @Override
   @NotNull
   public List<? extends T> findAll() {
     return dao.findAll();
   }
 
+  @Override
   public int getCount() {
     return dao.getCount();
   }
 
+  @Override
   @NotNull
   public <LT extends T> Long save( @NotNull LT newInstance ) {
     return dao.save( newInstance );
   }
 
+  @Override
   @NotNull
   public T findById( @NotNull Long id ) {
     return dao.findById( id );
   }
 
+  @Override
   public <LT extends T> void update( @NotNull LT transientObject ) {
     dao.update( transientObject );
   }
 
+  @Override
   public <LT extends T> void saveOrUpdate( @NotNull LT transientObject ) {
     dao.saveOrUpdate( transientObject );
   }
 
+  @Override
   public <LT extends T> void delete( @NotNull LT persistentObject ) {
     dao.delete( persistentObject );
   }
 
+  @Override
   @NotNull
   public <T> T find( @NotNull Finder<T> finder ) {
     return dao.find( finder );
   }
 
+  @Override
   public void shutdown() {
     dao.shutdown();
   }

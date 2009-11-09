@@ -69,6 +69,7 @@ public class XmlParserPerformance {
   */
   public void benchJdom() {
     runBenchmark( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           for ( int i = 0; i < 1000; i++ ) {
@@ -137,6 +138,7 @@ public class XmlParserPerformance {
    */
   public void benchStax() {
     runBenchmark( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -180,6 +182,7 @@ public class XmlParserPerformance {
   
   public void benchStaxMate() {
     runBenchmark( new Runnable() {
+      @java.lang.Override
       public void run() {
         try {
           SMInputFactory inf = new SMInputFactory( XMLInputFactory.newInstance() );

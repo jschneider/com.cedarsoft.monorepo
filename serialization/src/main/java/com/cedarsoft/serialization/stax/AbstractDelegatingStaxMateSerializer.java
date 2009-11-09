@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -35,6 +36,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
     serializingStrategySupport = new SerializingStrategySupport<T, StaxMateSerializingStrategy<T>>( strategies );
   }
 
+  @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
     try {
@@ -48,6 +50,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
     }
   }
 
+  @Override
   @NotNull
   public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );

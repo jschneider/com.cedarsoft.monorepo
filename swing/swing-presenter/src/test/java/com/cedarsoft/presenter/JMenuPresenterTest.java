@@ -51,6 +51,7 @@ public class JMenuPresenterTest  {
 
   private static Action createAction( int id ) {
     AbstractAction action = new AbstractAction( String.valueOf( id ) ) {
+      @java.lang.Override
       public void actionPerformed( ActionEvent e ) {
       }
     };

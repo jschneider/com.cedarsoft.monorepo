@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joda.time.LocalDate;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -59,15 +60,18 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
     this.end = end;
   }
 
+  @Override
   public void commit( @NotNull E element ) {
     commitEntry( element );
   }
 
+  @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
+  @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
@@ -87,10 +91,12 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
     }
   }
 
+  @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }

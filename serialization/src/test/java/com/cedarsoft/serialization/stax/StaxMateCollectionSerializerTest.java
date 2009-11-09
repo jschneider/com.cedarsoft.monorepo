@@ -24,6 +24,7 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
   @Override
   protected AbstractStaxMateSerializer<List<String>> getSerializer() {
     return new AbstractStaxMateSerializer<List<String>>( "aString" ) {
+      @java.lang.Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @NotNull Lookup context ) throws XMLStreamException {
         for ( String s : object ) {
@@ -35,6 +36,7 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
         return serializeTo;
       }
 
+      @java.lang.Override
       @NotNull
       public List<String> deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException, IOException {
         final List<String> strings = new ArrayList<String>();
@@ -42,6 +44,7 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
         final boolean[] called = {false};
 
         visitChildren( deserializeFrom, new CB() {
+          @java.lang.Override
           public void tagEntered( @NotNull XMLStreamReader2 deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException {
             if ( tagName.equals( "description" ) ) {
               assertEquals( getText( deserializeFrom ), "descr" );
