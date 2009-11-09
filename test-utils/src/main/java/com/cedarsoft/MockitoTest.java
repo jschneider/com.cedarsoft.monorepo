@@ -35,7 +35,7 @@ public class MockitoTest {
         try {
           list.clear();
           fail( "Where is the Exception" );
-        } catch ( RuntimeException e ) {
+        } catch ( RuntimeException ignore ) {
         }
       }
 
@@ -68,7 +68,7 @@ public class MockitoTest {
     try {
       list.clear();
       fail( "Where is the Exception" );
-    } catch ( RuntimeException e ) {
+    } catch ( RuntimeException ignore ) {
     }
 
     verify( list, times( 2 ) ).size();

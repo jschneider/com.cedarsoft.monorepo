@@ -68,7 +68,6 @@ public class DatabaseConfiguration {
     return databaseTypeType.getDriverClassName();
   }
 
-  @NotNull
   public boolean isValid() {
     return databaseTypeType != null && url != null && user != null && pass != null;
   }
@@ -104,6 +103,7 @@ public class DatabaseConfiguration {
     this.user = user;
   }
 
+  @java.lang.Override
   @NotNull
   @Override
   public String toString() {

@@ -103,32 +103,32 @@ public class Os {
 
   public static boolean isFamily( @NotNull @NonNls String family ) {
     if ( family.equals( "windows" ) ) {
-      return OS_NAME.indexOf( "windows" ) > -1;
+      return OS_NAME.contains( "windows" );
     } else if ( family.equals( "os/2" ) ) {
-      return OS_NAME.indexOf( "os/2" ) > -1;
+      return OS_NAME.contains( "os/2" );
     } else if ( family.equals( "netware" ) ) {
-      return OS_NAME.indexOf( "netware" ) > -1;
+      return OS_NAME.contains( "netware" );
     } else if ( family.equals( "dos" ) ) {
       return PATH_SEP.equals( ";" ) && !isFamily( "netware" );
     } else if ( family.equals( "mac" ) ) {
-      return OS_NAME.indexOf( "mac" ) > -1;
+      return OS_NAME.contains( "mac" );
     } else if ( family.equals( "tandem" ) ) {
-      return OS_NAME.indexOf( "nonstop_kernel" ) > -1;
+      return OS_NAME.contains( "nonstop_kernel" );
     } else if ( family.equals( "unix" ) ) {
       return PATH_SEP.equals( ":" ) && !isFamily( "openvms" ) && ( !isFamily( "mac" ) || OS_NAME.endsWith( "x" ) );
     } else if ( family.equals( "win9x" ) ) {
       return isFamily( "windows" )
-        && ( OS_NAME.indexOf( "95" ) >= 0
-        || OS_NAME.indexOf( "98" ) >= 0
-        || OS_NAME.indexOf( "me" ) >= 0
-        || OS_NAME.indexOf( "ce" ) >= 0 );
+        && ( OS_NAME.contains( "95" )
+        || OS_NAME.contains( "98" )
+        || OS_NAME.contains( "me" )
+        || OS_NAME.contains( "ce" ) );
     } else if ( family.equals( "z/os" ) ) {
-      return OS_NAME.indexOf( "z/os" ) > -1
-        || OS_NAME.indexOf( "os/390" ) > -1;
+      return OS_NAME.contains( "z/os" )
+        || OS_NAME.contains( "os/390" );
     } else if ( family.equals( "os/400" ) ) {
-      return OS_NAME.indexOf( "os/400" ) > -1;
+      return OS_NAME.contains( "os/400" );
     } else if ( family.equals( "openvms" ) ) {
-      return OS_NAME.indexOf( "openvms" ) > -1;
+      return OS_NAME.contains( "openvms" );
     }
 
     throw new IllegalStateException( "Don\'t know how to detect os family \"" + family + "\"" );

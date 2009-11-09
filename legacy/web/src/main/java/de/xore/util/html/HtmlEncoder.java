@@ -13,7 +13,7 @@ public class HtmlEncoder {
   }
 
   public static final String escapeHTML( String nonHtml ) {
-    StringBuffer sb = new StringBuffer();
+    StringBuilder sb = new StringBuilder();
     int n = nonHtml.length();
     for ( int i = 0; i < n; i++ ) {
       char c = nonHtml.charAt( i );

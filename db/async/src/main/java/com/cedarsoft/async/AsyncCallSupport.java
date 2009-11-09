@@ -223,8 +223,6 @@ public class AsyncCallSupport<T> {
 
     int count = 0;
 
-    StringBuilder found = new StringBuilder();
-
     for ( Thread thread : threads ) {
       if ( thread.getName().contains( NAME_PREFIX ) ) {
         count++;
