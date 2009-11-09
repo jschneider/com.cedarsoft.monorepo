@@ -23,6 +23,11 @@ public class DateTimeSerializerTest extends DateTimeTest {
   @Inject
   private DateTimeSerializer serializer;
 
+  @BeforeMethod
+  public void setup() {
+    serializer = new DateTimeSerializer();
+  }
+
   @Test
   public void testA() throws IOException, SAXException {
     byte[] serialized = serializer.serialize( new DateTime( 2001, 1, 1, 1, 1, 1, 1, zone ) );
@@ -68,6 +73,9 @@ public class DateTimeSerializerTest extends DateTimeTest {
 
   @Test
   public void testLegacy() throws IOException {
+    assertNotNull( serializer );
+    assertNotNull( zone );
+
     DateTimeZone oldDefault = DateTimeZone.getDefault();
 
     try {
