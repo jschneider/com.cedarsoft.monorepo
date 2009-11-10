@@ -1,6 +1,6 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.FileName;
+import com.cedarsoft.file.FileName;
 import com.cedarsoft.provider.Provider;
 import com.cedarsoft.utils.StillContainedException;
 import org.jetbrains.annotations.NonNls;

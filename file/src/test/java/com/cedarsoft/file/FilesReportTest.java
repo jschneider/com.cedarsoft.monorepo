@@ -1,6 +1,6 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.FileName;
+import com.cedarsoft.file.FileName;
 import com.cedarsoft.file.FilesReport;
 import com.cedarsoft.provider.Provider;
 import org.jetbrains.annotations.NotNull;

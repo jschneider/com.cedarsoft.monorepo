@@ -1,4 +1,4 @@
-package com.cedarsoft;
+package com.cedarsoft.file;
 
 import com.cedarsoft.file.FileType;
 import com.cedarsoft.serialization.RegistrySerializer;

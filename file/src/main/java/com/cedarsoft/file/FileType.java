@@ -1,7 +1,7 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.Extension;
-import com.cedarsoft.FileName;
+import com.cedarsoft.file.Extension;
+import com.cedarsoft.file.FileName;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

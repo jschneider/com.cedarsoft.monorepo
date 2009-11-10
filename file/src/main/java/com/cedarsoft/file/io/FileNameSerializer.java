@@ -1,6 +1,6 @@
-package com.cedarsoft.io;
+package com.cedarsoft.file.io;
 
-import com.cedarsoft.FileName;
+import com.cedarsoft.file.FileName;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;

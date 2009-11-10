@@ -1,7 +1,7 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.FileName;
-import com.cedarsoft.FileTypeRegistry;
+import com.cedarsoft.file.FileName;
+import com.cedarsoft.file.FileTypeRegistry;
 import org.apache.commons.io.filefilter.FileFileFilter;
 import org.jetbrains.annotations.NotNull;
 
