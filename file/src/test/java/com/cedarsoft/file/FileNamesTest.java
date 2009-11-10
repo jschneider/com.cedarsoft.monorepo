@@ -56,7 +56,7 @@ public class FileNamesTest {
       FileUtils.touch( new File( dir, "5.jpg" ) );
       FileUtils.touch( new File( dir, "5.cr2" ) );
 
-      FileNames fileNames = FileNamesFactory.create( dir, new FileTypeRegistry() );
+      FileNames fileNames = new FileNamesFactory( new FileTypeRegistry() ).create( dir );
 
       assertEquals( fileNames.getFileNames().size(), 6 );
     } finally {
