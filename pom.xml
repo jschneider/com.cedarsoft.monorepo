@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -474,22 +474,5 @@
     <!--<module>ooorg</module>-->
     <!--<module>excel</module>-->
   </modules>
-
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>
