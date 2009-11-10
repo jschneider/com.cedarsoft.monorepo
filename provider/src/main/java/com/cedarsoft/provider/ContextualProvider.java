@@ -19,4 +19,7 @@ public interface ContextualProvider<T, C, E extends Throwable> {
    */
   @NotNull
   T provide( @NotNull C context ) throws E;
+
+  @NotNull
+  String getDescription( @NotNull C context );
 }
