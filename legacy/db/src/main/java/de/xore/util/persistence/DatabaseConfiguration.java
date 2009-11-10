@@ -5,6 +5,7 @@ package de.xore.util.persistence;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ResourceBundle;
 
 /**
@@ -103,7 +104,7 @@ public class DatabaseConfiguration {
     this.user = user;
   }
 
-  @java.lang.Override
+  @Override
   @NotNull
   @Override
   public String toString() {
