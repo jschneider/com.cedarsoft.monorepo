@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>db</artifactId>
-  <name>Database related projects</name>
+  <name>Database</name>
   <packaging>pom</packaging>
 
   <modules>

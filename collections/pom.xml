@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>collections</artifactId>
-  <name>Collection Utils</name>
+  <name>Collections</name>
 
   <dependencies>
   </dependencies>

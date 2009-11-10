@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>inject</artifactId>
-  <name>Injection related stuff</name>
+  <name>Injection</name>
 
   <dependencies>
     <dependency>

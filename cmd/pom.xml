@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>cmd</artifactId>
-  <name>Cmd line Utils</name>
+  <name>Command line</name>
 
   <description>Utils for access to the command line.</description>
 
