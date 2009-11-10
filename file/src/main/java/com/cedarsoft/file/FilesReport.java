@@ -1,6 +1,5 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.file.FileName;
 import com.cedarsoft.provider.Provider;
 import com.cedarsoft.utils.StillContainedException;
 import org.jetbrains.annotations.NonNls;
@@ -20,33 +19,33 @@ import java.util.TreeMap;
  */
 public class FilesReport {
   @NotNull
-  private final SortedMap<String, BaseNameEntry> entries = new TreeMap<String, BaseNameEntry>();
+  private final SortedMap<String, SameBaseNameEntry> entries = new TreeMap<String, SameBaseNameEntry>();
 
   public void add( @NotNull FileName fileName, @NotNull Provider<? extends InputStream, IOException> inputStreamProvider ) {
     getEntry( fileName.getBaseName().getName() ).add( fileName, inputStreamProvider );
   }
 
   @NotNull
-  public Collection<? extends BaseNameEntry> getEntries() {
+  public Collection<? extends SameBaseNameEntry> getEntries() {
     return Collections.unmodifiableCollection( entries.values() );
   }
 
-  public BaseNameEntry getEntry( @NotNull @NonNls String baseName ) {
-    BaseNameEntry found = entries.get( baseName );
+  public SameBaseNameEntry getEntry( @NotNull @NonNls String baseName ) {
+    SameBaseNameEntry found = entries.get( baseName );
     if ( found != null ) {
       return found;
     }
 
-    BaseNameEntry baseNameEntry = new BaseNameEntry( baseName );
-    entries.put( baseName, baseNameEntry );
-    return baseNameEntry;
+    SameBaseNameEntry sameBaseNameEntry = new SameBaseNameEntry( baseName );
+    entries.put( baseName, sameBaseNameEntry );
+    return sameBaseNameEntry;
   }
 
   public int size() {
     return entries.size();
   }
 
-  public static class BaseNameEntry {
+  public static class SameBaseNameEntry {
     @NotNull
     private final List<Entry> entries = new ArrayList<Entry>();
 
@@ -54,7 +53,7 @@ public class FilesReport {
     @NonNls
     private final String baseName;
 
-    public BaseNameEntry( @NotNull @NonNls String baseName ) {
+    public SameBaseNameEntry( @NotNull @NonNls String baseName ) {
       this.baseName = baseName;
     }
 

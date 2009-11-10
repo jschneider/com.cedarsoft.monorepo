@@ -39,10 +39,10 @@ public class FilesReportTest {
     report.add( new FileName( "base2", ".", "txt" ) ,provider);
     report.add( new FileName( "base3", ".", "txt" ) ,provider);
 
-    FilesReport.BaseNameEntry baseNameEntry = report.getEntry( "base1" );
-    assertNotNull( baseNameEntry );
+    FilesReport.SameBaseNameEntry sameBaseNameEntry = report.getEntry( "base1" );
+    assertNotNull( sameBaseNameEntry );
 
-    assertEquals( baseNameEntry.getEntries().size(), 3 );
+    assertEquals( sameBaseNameEntry.getEntries().size(), 3 );
   }
 
   @BeforeMethod
