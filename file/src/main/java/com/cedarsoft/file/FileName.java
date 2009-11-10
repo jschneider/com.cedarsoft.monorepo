@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
+
 /**
  * Represents a file name
  */
@@ -127,5 +129,17 @@ public class FileName {
       return baseName.toString();
     }
     return getName();
+  }
+
+  /**
+   * Returns the corresponding file
+   *
+   * @param baseDir the base dir
+   * @return the file represented
+   */
+  @NotNull
+  public File getFile( @NotNull File baseDir ) {
+    assert baseDir.isDirectory();
+    return new File( baseDir, getName() );
   }
 }

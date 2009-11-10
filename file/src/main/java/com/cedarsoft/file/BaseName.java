@@ -3,14 +3,21 @@ package com.cedarsoft.file;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
+
 /**
  * A base name of a file
  */
-public class BaseName {
+public class BaseName implements Comparable<BaseName>, Serializable {
   @NotNull
   @NonNls
   private final String name;
 
+  /**
+   * Creates a new base name
+   *
+   * @param name the name
+   */
   public BaseName( @NonNls @NotNull String name ) {
     this.name = name;
   }
@@ -41,5 +48,10 @@ public class BaseName {
   @Override
   public int hashCode() {
     return name.hashCode();
+  }
+
+  @Override
+  public int compareTo( BaseName o ) {
+    return name.compareTo( o.name );
   }
 }
