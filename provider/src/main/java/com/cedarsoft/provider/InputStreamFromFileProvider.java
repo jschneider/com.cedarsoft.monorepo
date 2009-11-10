@@ -7,10 +7,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.Override;
 
 /**
- *
+ * A provider that returns an input stream using a file
  */
 public class InputStreamFromFileProvider implements Provider<InputStream, IOException> {
   @NotNull
