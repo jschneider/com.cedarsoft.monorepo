@@ -1,6 +1,8 @@
-package com.cedarsoft.serialization.stax;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;

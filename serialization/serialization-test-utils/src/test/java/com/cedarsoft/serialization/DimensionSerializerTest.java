@@ -1,12 +1,11 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializerTest;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 
 import java.awt.Dimension;
+
+import static org.testng.Assert.*;
 
 /**
  *

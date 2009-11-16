@@ -22,8 +22,8 @@
     </dependency>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>serialization</artifactId>
-      <type>test-jar</type>
+      <artifactId>serialization-test-utils</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>

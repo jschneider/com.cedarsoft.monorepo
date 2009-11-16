@@ -1,10 +1,16 @@
-package com.cedarsoft.serialization.stax;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.AssertUtils;
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.stax.AbstractDelegatingStaxMateSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
+import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
+import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
+import org.testng.*;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -12,7 +18,7 @@ import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.Collection;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -82,7 +88,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   @Test
   public void tetIt() throws IOException, SAXException {
-    assertEquals( serializer.getStrategies().size(), 2 );
+    Assert.assertEquals( serializer.getStrategies().size(), 2 );
 
     AssertUtils.assertXMLEqual( new String( serializer.serialize( 1 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"int\">1</number>" );
