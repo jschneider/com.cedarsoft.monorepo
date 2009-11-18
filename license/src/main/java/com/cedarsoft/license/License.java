@@ -8,6 +8,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class License {
   @NotNull
+  public static final License UNKNOWN = new License( "UNKNOWN", "Unknown" );
+  @NotNull
   public static final License ALL_RIGHTS_RESERVED = new License( "ALL_RIGHTS_RESERVED", "All rights reserved" );
   @NotNull
   public static final License PUBLIC_DOMAIN = new License( "PUBLIC_DOMAIN", "Public Domain" );
