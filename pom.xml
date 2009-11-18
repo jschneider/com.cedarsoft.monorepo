@@ -454,6 +454,7 @@
     <module>inject</module>
     <module>image</module>
     <module>io</module>
+    <module>license</module>
     <module>rmi</module>
     <!--<module>legacy</module>-->
     <module>mail</module>
