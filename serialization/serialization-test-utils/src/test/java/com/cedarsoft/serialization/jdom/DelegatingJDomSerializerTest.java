@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
-import java.util.Collection;
 
 import static org.testng.Assert.*;
 
@@ -21,7 +20,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class, new Version( 1, 0, 0 ) ) {
+    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class, new Version( 1, 0, 1 ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
@@ -35,7 +34,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
         return 1;
       }
     };
-    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class, new Version( 1, 0, 0 ) ) {
+    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class, new Version( 1, 0, 2 ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
@@ -50,6 +49,12 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
       }
     };
     serializer = new MySerializer( intSerializer, doubleSerializer );
+  }
+
+  @Override
+  protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
+    super.verifySerialized( serialized );
+    assertEquals( new String( serialized ).trim(), getExpectedSerializedString().trim() );
   }
 
   @NotNull
@@ -68,6 +73,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   @Override
   protected String getExpectedSerializedString() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<?format 1.2.3?>\n" +
       "<number type=\"int\">1</number>";
   }
 
@@ -88,11 +94,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
     public MySerializer( @NotNull JDomSerializingStrategy<? extends Number>... serializingStrategies ) {
-      super( "number", new Version( 1, 0, 0 ), serializingStrategies );
-    }
-
-    public MySerializer( @NotNull Collection<? extends JDomSerializingStrategy<? extends Number>> serializingStrategies ) {
-      super( "number", new Version( 1, 0, 0 ), serializingStrategies );
+      super( "number", new Version( 1, 2, 3 ), serializingStrategies );
     }
   }
 }

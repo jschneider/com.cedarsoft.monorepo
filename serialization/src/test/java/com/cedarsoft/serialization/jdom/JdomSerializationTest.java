@@ -1,0 +1,87 @@
+package com.cedarsoft.serialization.jdom;
+
+import com.cedarsoft.Version;
+import com.cedarsoft.VersionMismatchException;
+import com.cedarsoft.lookup.Lookup;
+import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import static org.testng.Assert.*;
+
+/**
+ *
+ */
+public class JdomSerializationTest {
+  private MySerializer serializer;
+
+  @BeforeMethod
+  protected void setUp() throws Exception {
+    serializer = new MySerializer();
+  }
+
+  @Test
+  public void testIt() throws IOException {
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    serializer.serialize( 7, out );
+
+    assertEquals( out.toString().trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<?format 1.2.3?>\n" +
+      "<my>7</my>" );
+
+
+    ByteArrayInputStream in = new ByteArrayInputStream( ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<?format 1.2.3?>\n" +
+      "<my>7</my>" ).getBytes() );
+
+    assertEquals( serializer.deserialize( in, null ), new Integer( 7 ) );
+  }
+
+  @Test
+  public void testWrongVersion() throws IOException {
+    ByteArrayInputStream in = new ByteArrayInputStream( ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<?format 1.2.2?>\n" +
+      "<my>7</my>" ).getBytes() );
+
+    try {
+      serializer.deserialize( in, null );
+      fail( "Where is the Exception" );
+    } catch ( VersionMismatchException ignore ) {
+    }
+  }
+
+  @Test
+  public void testNoVersion() throws IOException {
+    ByteArrayInputStream in = new ByteArrayInputStream( ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<my>7</my>" ).getBytes() );
+
+    try {
+      serializer.deserialize( in, null );
+      fail( "Where is the Exception" );
+    } catch ( IllegalStateException ignore ) {
+    }
+  }
+
+  public static class MySerializer extends AbstractJDomSerializer<Integer> {
+    public MySerializer() {
+      super( "my", new Version( 1, 2, 3 ) );
+    }
+
+    @NotNull
+    @Override
+    public Element serialize( @NotNull Element serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, IOException {
+      serializeTo.setText( String.valueOf( object ) );
+      return serializeTo;
+    }
+
+    @NotNull
+    @Override
+    public Integer deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException, IOException {
+      return Integer.parseInt( deserializeFrom.getText() );
+    }
+  }
+}

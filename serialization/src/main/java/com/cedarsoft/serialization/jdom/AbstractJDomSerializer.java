@@ -1,12 +1,16 @@
 package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jdom.Parent;
+import org.jdom.ProcessingInstruction;
+import org.jdom.filter.Filter;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
@@ -17,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.Override;
+import java.util.List;
 
 /**
  * Abstract serializer based on JDom
@@ -28,6 +32,9 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
+  @NotNull
+  @NonNls
+  private static final String PI_TARGET_FORMAT = "format";
 
   protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
     super( defaultElementName, formatVersion );
@@ -42,18 +49,62 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
 
   @Override
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
+    Document document = new Document();
+    //Add the format version
+    document.addContent( new ProcessingInstruction( PI_TARGET_FORMAT, getFormatVersion().toString() ) );
+
+    //Create the root
     Element root = new Element( getDefaultElementName() );
+    document.setRootElement( root );
+
     serialize( root, object, context != null ? context : Lookups.emtyLookup() );
-    new XMLOutputter( Format.getPrettyFormat().setLineSeparator( LINE_SEPARATOR ) ).output( new Document( root ), out );
+    new XMLOutputter( Format.getPrettyFormat().setLineSeparator( LINE_SEPARATOR ) ).output( document, out );
   }
 
   @Override
   @NotNull
-  public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
+  public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException, VersionMismatchException {
     try {
-      return deserialize( new SAXBuilder().build( in ).getRootElement(), context != null ? context : Lookups.emtyLookup() );
+      Document document = new SAXBuilder().build( in );
+
+      ProcessingInstruction processingInstruction = getFormatInstruction( document );
+
+      Version formatVersion = parseVersion( processingInstruction );
+
+      Version.verifyMatch( getFormatVersion(), formatVersion );
+
+      return deserialize( document.getRootElement(), context != null ? context : Lookups.emtyLookup() );
     } catch ( JDOMException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
+    }
+  }
+
+  @NotNull
+  private static ProcessingInstruction getFormatInstruction( @NotNull Parent document ) {
+    List<? extends ProcessingInstruction> processingInstructions = document.getContent( new PiFormatFilter() );
+    if ( processingInstructions.size() != 1 ) {
+      throw new IllegalStateException( "No processing instructions found" );
+    }
+    return processingInstructions.get( 0 );
+  }
+
+  @NotNull
+  private static Version parseVersion( @NotNull ProcessingInstruction processingInstruction ) {
+    if ( !processingInstruction.getTarget().equals( PI_TARGET_FORMAT ) ) {
+      throw new IllegalStateException( "Invalid target: <" + processingInstruction.getTarget() + "> but expected <" + PI_TARGET_FORMAT + ">" );
+    }
+
+    String data = processingInstruction.getData();
+    return Version.parse( data );
+  }
+
+  /**
+   * Filter that recognizes processing instructions containing the format version number
+   */
+  private static class PiFormatFilter implements Filter {
+    @Override
+    public boolean matches( Object obj ) {
+      return obj instanceof ProcessingInstruction && ( ( ProcessingInstruction ) obj ).getTarget().equals( PI_TARGET_FORMAT );
     }
   }
 }

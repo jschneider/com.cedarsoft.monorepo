@@ -3,9 +3,6 @@ package com.cedarsoft.serialization.jdom;
 import com.cedarsoft.AssertUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-
-import static org.testng.Assert.*;
-
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -21,12 +18,16 @@ public abstract class AbstractJDomSerializerTest<T> {
     T objectToSerialize = createObjectToSerialize();
 
     byte[] serialized = serializer.serialize( objectToSerialize );
-    AssertUtils.assertXMLEqual( new String( serialized ), getExpectedSerializedString() );
+    verifySerialized( serialized );
 
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 
     verifyDeserialized( deserialized );
+  }
+
+  protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
+    AssertUtils.assertXMLEqual( new String( serialized ), getExpectedSerializedString() );
   }
 
   /**
