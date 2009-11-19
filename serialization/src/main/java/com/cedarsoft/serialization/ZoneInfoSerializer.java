@@ -1,8 +1,7 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.lookup.Lookups;
-import com.cedarsoft.serialization.Serializer;
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,5 +24,11 @@ public class ZoneInfoSerializer implements Serializer<DateTimeZone, Lookup> {
   @Override
   public DateTimeZone deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     return DateTimeZone.forID( IOUtils.toString( in ) );
+  }
+
+  @NotNull
+  @Override
+  public Version getFormatVersion() {
+    return new Version( 1, 0, 0 );
   }
 }

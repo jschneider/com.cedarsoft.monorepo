@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.AssertUtils;
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractDelegatingStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -16,7 +17,6 @@ import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
-import java.lang.Override;
 import java.util.Collection;
 
 import static org.testng.Assert.*;
@@ -29,7 +29,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", Integer.class ) {
+    AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", Integer.class, new Version( 1, 0, 0 ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, XMLStreamException {
@@ -45,7 +45,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
       }
     };
 
-    AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", Double.class ) {
+    AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", Double.class, new Version( 1, 0, 0 ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @NotNull Lookup context ) throws IOException, XMLStreamException {
@@ -100,11 +100,11 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   public static class MySerializer extends AbstractDelegatingStaxMateSerializer<Number> {
     public MySerializer( @NotNull StaxMateSerializingStrategy<? extends Number>... serializingStrategies ) {
-      super( "number", serializingStrategies );
+      super( "number", new Version( 1, 0, 0 ), serializingStrategies );
     }
 
     public MySerializer( @NotNull Collection<? extends StaxMateSerializingStrategy<? extends Number>> serializingStrategies ) {
-      super( "number", serializingStrategies );
+      super( "number", new Version( 1, 0, 0 ), serializingStrategies );
     }
   }
 }

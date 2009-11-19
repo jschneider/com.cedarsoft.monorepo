@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,4 +33,7 @@ public interface Serializer<T, C> {
    */
   @NotNull
   T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException;
+
+  @NotNull
+  Version getFormatVersion();
 }

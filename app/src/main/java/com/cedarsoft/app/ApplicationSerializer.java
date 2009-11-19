@@ -30,7 +30,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Inject
   public ApplicationSerializer( @NotNull VersionSerializer versionSerializer ) {
-    super( "application" );
+    super( "application", new Version( 1, 0, 0 ) );
     this.versionSerializer = versionSerializer;
   }
 

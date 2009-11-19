@@ -16,7 +16,7 @@ import java.lang.Override;
  */
 public class VersionSerializer extends AbstractStaxMateSerializer<Version> {
   public VersionSerializer() {
-    super( "version" );
+    super( "version", new Version( 1, 0, 0 ) );
   }
 
   @Override

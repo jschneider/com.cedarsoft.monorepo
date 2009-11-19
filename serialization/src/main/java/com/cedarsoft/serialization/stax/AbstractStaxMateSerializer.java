@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
@@ -20,8 +21,8 @@ import java.io.OutputStream;
  * @param <T> the type
  */
 public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T, SMOutputElement, XMLStreamReader2, XMLStreamException> {
-  protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName ) {
-    super( defaultElementName );
+  protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
+    super( defaultElementName, formatVersion );
   }
 
   @Override

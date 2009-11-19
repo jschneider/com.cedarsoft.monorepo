@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.cedarsoft.utils.Registry;
@@ -26,7 +27,7 @@ public class RegistrySerializerTest {
   @BeforeMethod
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
-    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text" ) {
+    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text", new Version( 1, 0, 0 ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {

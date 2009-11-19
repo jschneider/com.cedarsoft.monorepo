@@ -1,5 +1,6 @@
 package com.cedarsoft.file;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -20,7 +21,7 @@ public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension> {
   private static final String ATTRIBUTE_DELIMITER = "delimiter";
 
   public ExtensionSerializer() {
-    super( "extension" );
+    super( "extension", new Version( 1, 0, 0 ) );
   }
 
   @NotNull

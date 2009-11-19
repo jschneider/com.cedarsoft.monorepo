@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -23,7 +24,7 @@ public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension> {
   public static final String SEPARATOR = "x";
 
   public DimensionSerializer() {
-    super( "dimension" );
+    super( "dimension", new Version( 1, 0, 0 ) );
   }
 
   @Override

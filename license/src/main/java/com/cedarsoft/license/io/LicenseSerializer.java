@@ -1,5 +1,6 @@
 package com.cedarsoft.license.io;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.license.License;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
@@ -23,7 +24,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
   private static final String ELEMENT_NAME = "name";
 
   public LicenseSerializer() {
-    super( "license", License.class );
+    super( "license", License.class, new Version( 1, 0, 0 ) );
   }
 
   @NotNull

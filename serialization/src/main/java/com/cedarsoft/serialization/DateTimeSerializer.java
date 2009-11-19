@@ -1,11 +1,10 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.AbstractSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
-import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
@@ -18,7 +17,7 @@ import java.io.IOException;
  */
 public class DateTimeSerializer extends AbstractStaxMateSerializer<DateTime> {
   public DateTimeSerializer() {
-    super( "dateTime" );
+    super( "dateTime", new Version( 1, 0, 0 ) );
   }
 
   @NotNull

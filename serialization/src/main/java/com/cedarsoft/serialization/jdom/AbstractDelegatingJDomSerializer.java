@@ -1,21 +1,15 @@
 package com.cedarsoft.serialization.jdom;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.SerializingStrategySupport;
-import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
-import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.lang.Override;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @param <T> the type
@@ -29,12 +23,12 @@ public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<
   private final SerializingStrategySupport<T, JDomSerializingStrategy<T>> serializingStrategySupport;
 
 
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull JDomSerializingStrategy<? extends T>... strategies ) {
-    this( defaultElementName, Arrays.asList( strategies ) );
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull JDomSerializingStrategy<? extends T>... strategies ) {
+    this( defaultElementName, formatVersion, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends JDomSerializingStrategy<? extends T>> strategies ) {
-    super( defaultElementName );
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull Collection<? extends JDomSerializingStrategy<? extends T>> strategies ) {
+    super( defaultElementName, formatVersion );
     this.serializingStrategySupport = new SerializingStrategySupport<T, JDomSerializingStrategy<T>>( strategies );
   }
 

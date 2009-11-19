@@ -1,9 +1,9 @@
 package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
-import com.cedarsoft.serialization.ExtendedSerializer;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,8 +29,8 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
 
-  protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName ) {
-    super( defaultElementName );
+  protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
+    super( defaultElementName, formatVersion );
   }
 
   @NotNull

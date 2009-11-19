@@ -1,5 +1,6 @@
 package com.cedarsoft.file.io;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -26,7 +27,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
   public static final String ELEMENT_BASE_NAME = "baseName";
 
   public FileNameSerializer() {
-    super( "fileName" );
+    super( "fileName", new Version( 1, 0, 0 ) );
   }
 
   @NotNull

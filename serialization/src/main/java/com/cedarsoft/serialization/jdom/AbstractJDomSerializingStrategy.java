@@ -1,13 +1,12 @@
 package com.cedarsoft.serialization.jdom;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.jdom.JDomSerializingStrategy;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.lang.Override;
 
 /**
  * @param <T> the type
@@ -20,8 +19,9 @@ public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSer
   @NotNull
   private final Class<? extends T> supportedType;
 
-  protected AbstractJDomSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType ) {
-    super( id );
+ 
+  protected AbstractJDomSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType, @NotNull Version formatVersion ) {
+    super( id, formatVersion );
     this.id = id;
     this.supportedType = supportedType;
   }

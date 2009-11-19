@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookups;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
@@ -24,8 +25,8 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
   @NotNull
   private final Class<? extends T> supportedType;
 
-  protected AbstractStaxMateSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType ) {
-    super( id );
+  protected AbstractStaxMateSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType, @NotNull Version formatVersion ) {
+    super( id, formatVersion );
     this.id = id;
     this.supportedType = supportedType;
   }

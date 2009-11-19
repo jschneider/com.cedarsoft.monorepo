@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
@@ -26,7 +27,7 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<List<String>> getSerializer() {
-    return new AbstractStaxMateSerializer<List<String>>( "aString" ) {
+    return new AbstractStaxMateSerializer<List<String>>( "aString", new Version( 1, 0, 0 ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @NotNull Lookup context ) throws XMLStreamException {

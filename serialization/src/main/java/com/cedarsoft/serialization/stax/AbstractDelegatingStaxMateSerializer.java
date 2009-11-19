@@ -1,6 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.SerializingStrategySupport;
 import org.codehaus.stax2.XMLStreamReader2;
@@ -10,12 +10,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
-import java.lang.Override;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @param <T> the type
@@ -27,12 +23,12 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   private final SerializingStrategySupport<T, StaxMateSerializingStrategy<T>> serializingStrategySupport;
 
-  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull StaxMateSerializingStrategy<? extends T>... strategies ) {
-    this( defaultElementName, Arrays.asList( strategies ) );
+  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull StaxMateSerializingStrategy<? extends T>... strategies ) {
+    this( defaultElementName, formatVersion, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull Collection<? extends StaxMateSerializingStrategy<? extends T>> strategies ) {
-    super( defaultElementName );
+  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull Collection<? extends StaxMateSerializingStrategy<? extends T>> strategies ) {
+    super( defaultElementName, formatVersion );
     serializingStrategySupport = new SerializingStrategySupport<T, StaxMateSerializingStrategy<T>>( strategies );
   }
 
