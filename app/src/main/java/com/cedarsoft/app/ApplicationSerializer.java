@@ -1,5 +1,6 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;
@@ -9,7 +10,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.lang.Override;
 

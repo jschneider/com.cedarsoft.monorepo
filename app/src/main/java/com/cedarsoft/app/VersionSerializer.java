@@ -1,7 +1,7 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;

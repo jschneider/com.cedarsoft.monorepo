@@ -1,8 +1,8 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.Version;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 
 /**
  *

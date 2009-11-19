@@ -1,5 +1,6 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.Version;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
