@@ -32,6 +32,8 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
   public ApplicationSerializer( @NotNull VersionSerializer versionSerializer ) {
     super( "application", new Version( 1, 0, 0 ) );
     this.versionSerializer = versionSerializer;
+
+    verifyDelegatingSerializerVersion( versionSerializer, new Version( 1, 0, 0 ) );
   }
 
   @Override
