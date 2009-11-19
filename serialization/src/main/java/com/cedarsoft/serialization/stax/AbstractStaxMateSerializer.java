@@ -5,6 +5,7 @@ import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
+import org.codehaus.staxmate.out.SMOutputContainer;
 import org.codehaus.staxmate.out.SMOutputDocument;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
@@ -29,7 +30,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
     try {
       SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
-      doc.addProcessingInstruction( PI_TARGET_FORMAT, getFormatVersion().toString() );
+      serializeFormatVersion( doc, getFormatVersion() );
 
       SMOutputElement root = doc.addElement( getDefaultElementName() );
       serialize( root, object, context != null ? context : Lookups.emtyLookup() );
@@ -37,6 +38,17 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }
+  }
+
+  /**
+   * Serializes the format version to the given element
+   *
+   * @param element       the element
+   * @param formatVersion the format version
+   * @throws XMLStreamException
+   */
+  protected void serializeFormatVersion( @NotNull SMOutputContainer element, @NotNull Version formatVersion ) throws XMLStreamException {
+    element.addProcessingInstruction( PI_TARGET_FORMAT, formatVersion.toString() );
   }
 
   @Override
