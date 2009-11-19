@@ -1,10 +1,7 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.file.FileName;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -111,13 +108,14 @@ public class FileType {
     return new FileName( bestBase, bestExtension );
   }
 
-  @Nullable
+  @NotNull
   @NonNls
-  public String getExtension( @NonNls @NotNull String fileName ) {
+  public Extension getExtension( @NonNls @NotNull String fileName ) {
     return getFileName( fileName ).getExtension();
   }
 
-  @Nullable
+  @Deprecated
+  @NotNull
   @NonNls
   public String getDelimiter( @NonNls @NotNull String fileName ) {
     return getFileName( fileName ).getDelimiter();

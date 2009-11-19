@@ -2,7 +2,6 @@ package com.cedarsoft.file;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
@@ -10,18 +9,12 @@ import java.io.File;
  * Represents a file name
  */
 public class FileName {
-  @NonNls
-  private static final String DEFAULT_DELIMITER = ".";
-
-  @Nullable
-  @NonNls
-  private final String extension;
   @NotNull
   @NonNls
   private final BaseName baseName;
+  @NotNull
   @NonNls
-  @Nullable
-  private final String delimiter;
+  private final Extension extension;
 
   /**
    * Creates a new file name
@@ -29,8 +22,8 @@ public class FileName {
    * @param baseName  the base name
    * @param extension the file extension
    */
-  public FileName( @NonNls @NotNull String baseName, @NonNls @Nullable String extension ) {
-    this( baseName, DEFAULT_DELIMITER, extension );
+  public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String extension ) {
+    this( new BaseName( baseName ), new Extension( extension ) );
   }
 
   /**
@@ -40,11 +33,11 @@ public class FileName {
    * @param extension the extension
    */
   public FileName( @NonNls @NotNull String baseName, @NotNull Extension extension ) {
-    this( baseName, extension.getDelimiter(), extension.getExtension() );
+    this( new BaseName( baseName ), extension );
   }
 
-  public FileName( @NonNls @NotNull String baseName, @NonNls @Nullable String delimiter, @NonNls @Nullable String extension ) {
-    this( new BaseName( baseName ), delimiter, extension );
+  public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
+    this( new BaseName( baseName ), new Extension( delimiter, extension ) );
   }
 
   /**
@@ -54,9 +47,18 @@ public class FileName {
    * @param delimiter the delimiter
    * @param extension the extension
    */
-  public FileName( @NonNls @NotNull BaseName baseName, @NonNls @Nullable String delimiter, @NonNls @Nullable String extension ) {
+  public FileName( @NonNls @NotNull BaseName baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
+    this( baseName, new Extension( delimiter, extension ) );
+  }
+
+  /**
+   * Creates a file name
+   *
+   * @param baseName  the base name
+   * @param extension the extension
+   */
+  public FileName( @NonNls @NotNull BaseName baseName, @NotNull Extension extension ) {
     this.baseName = baseName;
-    this.delimiter = delimiter;
     this.extension = extension;
   }
 
@@ -66,39 +68,29 @@ public class FileName {
   }
 
   @NonNls
-  @Nullable
-  public String getExtension() {
-    return extension;
-  }
-
-  @NonNls
   @NotNull
-  public String getExtensionNonNull() {
-    if ( extension == null ) {
-      return "";
-    }
+  public Extension getExtension() {
     return extension;
   }
 
   @NotNull
   @NonNls
   public String getName() {
-    return baseName + delimiter + extension;
+    return baseName + extension.getCombined();
   }
 
-  @Nullable
+  @Deprecated
+  @NotNull
   @NonNls
   public String getDelimiter() {
-    return delimiter;
+    return getExtension().getDelimiter();
   }
 
+  @Deprecated
   @NotNull
   @NonNls
   public String getDelimiterNonNull() {
-    if ( delimiter == null ) {
-      return "";
-    }
-    return delimiter;
+    return getDelimiter();
   }
 
   @Override
@@ -109,26 +101,21 @@ public class FileName {
     FileName fileName = ( FileName ) o;
 
     if ( !baseName.equals( fileName.baseName ) ) return false;
-    if ( delimiter != null ? !delimiter.equals( fileName.delimiter ) : fileName.delimiter != null ) return false;
-    if ( extension != null ? !extension.equals( fileName.extension ) : fileName.extension != null ) return false;
+    if ( !extension.equals( fileName.extension ) ) return false;
 
     return true;
   }
 
   @Override
   public int hashCode() {
-    int result = extension != null ? extension.hashCode() : 0;
-    result = 31 * result + baseName.hashCode();
-    result = 31 * result + ( delimiter != null ? delimiter.hashCode() : 0 );
+    int result = baseName.hashCode();
+    result = 31 * result + extension.hashCode();
     return result;
   }
 
   @Override
   public String toString() {
-    if ( extension == null ) {
-      return baseName.toString();
-    }
-    return getName();
+    return baseName.toString() + extension.toString();
   }
 
   /**
