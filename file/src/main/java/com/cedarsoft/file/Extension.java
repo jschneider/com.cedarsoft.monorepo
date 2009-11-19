@@ -7,12 +7,21 @@ import org.jetbrains.annotations.NotNull;
  * An extension of a file
  */
 public class Extension {
+  @NonNls
+  public static final String DEFAULT_DELIMITER = ".";
+  @NotNull
+  public static final Extension NONE = new Extension( "", "" );
+
   @NotNull
   @NonNls
   private final String delimiter;
   @NotNull
   @NonNls
   private final String extension;
+
+  public Extension( @NotNull @NonNls String extension ) {
+    this( DEFAULT_DELIMITER, extension );
+  }
 
   public Extension( @NonNls @NotNull String delimiter, @NotNull @NonNls String extension ) {
     this.delimiter = delimiter;
