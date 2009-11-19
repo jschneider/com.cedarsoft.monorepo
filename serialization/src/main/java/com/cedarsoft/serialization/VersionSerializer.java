@@ -1,4 +1,4 @@
-package com.cedarsoft.app;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;

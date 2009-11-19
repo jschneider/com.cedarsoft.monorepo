@@ -2,6 +2,7 @@ package com.cedarsoft.app;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.VersionSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;
 import org.codehaus.stax2.XMLStreamReader2;
