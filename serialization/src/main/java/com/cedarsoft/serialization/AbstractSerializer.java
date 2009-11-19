@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,12 +22,17 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
   private final String defaultElementName;
 
   @NotNull
-  private final Version formatVersion;
+  private final VersionRange formatVersionRange;
 
-
-  protected AbstractSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
+  /**
+   * Creates a new version range
+   *
+   * @param defaultElementName the default element name
+   * @param formatVersionRange the version range. The max value is used when written.
+   */
+  protected AbstractSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     this.defaultElementName = defaultElementName;
-    this.formatVersion = formatVersion;
+    this.formatVersionRange = formatVersionRange;
   }
 
   /**
@@ -45,7 +51,12 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
   @Override
   @NotNull
   public Version getFormatVersion() {
-    return formatVersion;
+    return formatVersionRange.getMax();
+  }
+
+  @NotNull
+  public VersionRange getFormatVersionRange() {
+    return formatVersionRange;
   }
 
   @NotNull

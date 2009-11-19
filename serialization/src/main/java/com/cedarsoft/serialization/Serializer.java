@@ -39,6 +39,11 @@ public interface Serializer<T, C> {
   @NotNull
   T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException;
 
+  /**
+   * Returns the format version that is written
+   *
+   * @return the format version that is written
+   */
   @NotNull
   Version getFormatVersion();
 }

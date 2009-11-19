@@ -1,6 +1,6 @@
 package com.cedarsoft.serialization.jdom;
 
-import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
@@ -19,9 +19,9 @@ public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSer
   @NotNull
   private final Class<? extends T> supportedType;
 
- 
-  protected AbstractJDomSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType, @NotNull Version formatVersion ) {
-    super( id, formatVersion );
+
+  protected AbstractJDomSerializingStrategy( @NotNull String id, @NotNull Class<? extends T> supportedType, @NotNull VersionRange formatVersionRange ) {
+    super( id, formatVersionRange );
     this.id = id;
     this.supportedType = supportedType;
   }

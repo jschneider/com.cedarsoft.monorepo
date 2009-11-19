@@ -2,6 +2,7 @@ package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
@@ -25,7 +26,7 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
-    return new AbstractStaxMateSerializer<String>( "aString", new Version( 1, 5, 3 ) ) {
+    return new AbstractStaxMateSerializer<String>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {

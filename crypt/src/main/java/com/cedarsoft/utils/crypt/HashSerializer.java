@@ -1,6 +1,7 @@
 package com.cedarsoft.utils.crypt;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
@@ -20,7 +21,7 @@ public class HashSerializer extends AbstractStaxMateSerializer<Hash> {
   private static final String ATTRIBUTE_ALGORITHM = "algorithm";
 
   public HashSerializer() {
-    super( "hash", new Version( 1, 0, 0 ) );
+    super( "hash", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
   }
 
   @NotNull

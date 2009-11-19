@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
@@ -17,7 +18,7 @@ import java.io.IOException;
  */
 public class DateTimeSerializer extends AbstractStaxMateSerializer<DateTime> {
   public DateTimeSerializer() {
-    super( "dateTime", new Version( 1, 0, 0 ) );
+    super( "dateTime", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
   }
 
   @NotNull

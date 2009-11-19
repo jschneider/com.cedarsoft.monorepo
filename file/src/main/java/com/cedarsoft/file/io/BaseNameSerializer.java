@@ -1,6 +1,7 @@
 package com.cedarsoft.file.io;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 public class BaseNameSerializer extends AbstractStaxMateSerializer<BaseName> {
   public BaseNameSerializer() {
-    super( "baseName", new Version( 1, 0, 0 ) );
+    super( "baseName", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
   }
 
   @NotNull

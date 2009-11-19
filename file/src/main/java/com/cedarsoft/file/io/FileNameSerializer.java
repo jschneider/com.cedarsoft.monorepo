@@ -1,6 +1,7 @@
 package com.cedarsoft.file.io;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.file.ExtensionSerializer;
@@ -32,7 +33,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
   private final BaseNameSerializer baseNameSerializer;
 
   public FileNameSerializer( @NotNull BaseNameSerializer baseNameSerializer, @NotNull ExtensionSerializer extensionSerializer ) {
-    super( "fileName", new Version( 1, 0, 0 ) );
+    super( "fileName", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
     this.extensionSerializer = extensionSerializer;
     this.baseNameSerializer = baseNameSerializer;
 

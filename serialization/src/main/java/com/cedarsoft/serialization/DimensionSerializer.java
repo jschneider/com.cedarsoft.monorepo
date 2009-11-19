@@ -1,19 +1,17 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
-import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.awt.Dimension;
 import java.io.IOException;
-import java.lang.Override;
 
 /**
  *
@@ -24,7 +22,7 @@ public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension> {
   public static final String SEPARATOR = "x";
 
   public DimensionSerializer() {
-    super( "dimension", new Version( 1, 0, 0 ) );
+    super( "dimension", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
   }
 
   @Override

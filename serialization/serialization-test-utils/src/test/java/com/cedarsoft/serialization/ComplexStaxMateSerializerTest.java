@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
@@ -9,11 +10,9 @@ import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
-
 import java.io.IOException;
-import java.lang.Override;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -22,7 +21,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
-    final AbstractStaxMateSerializer<String> stringSerializer = new AbstractStaxMateSerializer<String>( "asdf", new Version( 1, 0, 0 ) ) {
+    final AbstractStaxMateSerializer<String> stringSerializer = new AbstractStaxMateSerializer<String>( "asdf", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
@@ -40,7 +39,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
       }
     };
 
-    return new AbstractStaxMateSerializer<String>( "aString", new Version( 1, 0, 0 ) ) {
+    return new AbstractStaxMateSerializer<String>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws IOException, XMLStreamException {

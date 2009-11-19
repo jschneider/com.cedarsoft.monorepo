@@ -2,6 +2,7 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
@@ -33,8 +34,8 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
 
-  protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
-    super( defaultElementName, formatVersion );
+  protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
+    super( defaultElementName, formatVersionRange );
   }
 
   @NotNull

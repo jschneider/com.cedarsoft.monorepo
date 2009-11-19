@@ -1,6 +1,7 @@
 package com.cedarsoft.app;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.VersionSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
@@ -12,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
-import java.lang.Override;
 
 /**
  *
@@ -30,7 +30,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Inject
   public ApplicationSerializer( @NotNull VersionSerializer versionSerializer ) {
-    super( "application", new Version( 1, 0, 0 ) );
+    super( "application", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
     this.versionSerializer = versionSerializer;
 
     verifyDelegatingSerializerVersion( versionSerializer, new Version( 1, 0, 0 ) );

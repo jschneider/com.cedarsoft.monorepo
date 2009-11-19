@@ -1,6 +1,8 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionMismatchException;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
@@ -22,8 +24,8 @@ import java.io.OutputStream;
  * @param <T> the type
  */
 public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T, SMOutputElement, XMLStreamReader2, XMLStreamException> {
-  protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
-    super( defaultElementName, formatVersion );
+  protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
+    super( defaultElementName, formatVersionRange );
   }
 
   @Override
@@ -57,7 +59,9 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     try {
       XMLStreamReader2 reader = StaxSupport.getSmInputFactory().createStax2Reader( in );
       Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
-      Version.verifyMatch( getFormatVersion(), version );
+      if ( !getFormatVersionRange().contains( version ) ) {
+        throw new VersionMismatchException( getFormatVersion(), version );
+      }
 
       reader.nextTag();
       T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );

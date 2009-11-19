@@ -1,7 +1,7 @@
 package com.cedarsoft.file;
 
 import com.cedarsoft.Version;
-import com.cedarsoft.file.Extension;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
@@ -21,7 +21,7 @@ public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension> {
   private static final String ATTRIBUTE_DELIMITER = "delimiter";
 
   public ExtensionSerializer() {
-    super( "extension", new Version( 1, 0, 0 ) );
+    super( "extension", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
   }
 
   @NotNull

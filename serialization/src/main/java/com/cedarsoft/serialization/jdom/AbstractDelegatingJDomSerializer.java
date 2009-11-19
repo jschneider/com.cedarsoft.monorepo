@@ -1,6 +1,6 @@
 package com.cedarsoft.serialization.jdom;
 
-import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.SerializingStrategySupport;
 import org.jdom.Element;
@@ -15,20 +15,18 @@ import java.util.Collection;
  * @param <T> the type
  */
 public class AbstractDelegatingJDomSerializer<T> extends AbstractJDomSerializer<T> {
-
   @NotNull
   @NonNls
   private static final String ATTRIBUTE_TYPE = "type";
-
+  @NotNull
   private final SerializingStrategySupport<T, JDomSerializingStrategy<T>> serializingStrategySupport;
 
-
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull JDomSerializingStrategy<? extends T>... strategies ) {
-    this( defaultElementName, formatVersion, Arrays.asList( strategies ) );
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull JDomSerializingStrategy<? extends T>... strategies ) {
+    this( defaultElementName, formatVersionRange, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull Version formatVersion, @NotNull Collection<? extends JDomSerializingStrategy<? extends T>> strategies ) {
-    super( defaultElementName, formatVersion );
+  public AbstractDelegatingJDomSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull Collection<? extends JDomSerializingStrategy<? extends T>> strategies ) {
+    super( defaultElementName, formatVersionRange );
     this.serializingStrategySupport = new SerializingStrategySupport<T, JDomSerializingStrategy<T>>( strategies );
   }
 

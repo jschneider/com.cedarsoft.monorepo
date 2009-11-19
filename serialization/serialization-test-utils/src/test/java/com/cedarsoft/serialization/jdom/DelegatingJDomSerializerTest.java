@@ -2,6 +2,7 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.AssertUtils;
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +21,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class, new Version( 1, 0, 1 ) ) {
+    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class, new VersionRange( new Version( 1, 0, 1 ), new Version( 1, 0, 1 ) ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
@@ -34,7 +35,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
         return 1;
       }
     };
-    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class, new Version( 1, 0, 2 ) ) {
+    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class, new VersionRange( new Version( 1, 0, 2 ), new Version( 1, 0, 2 ) ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
@@ -94,7 +95,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
     public MySerializer( @NotNull JDomSerializingStrategy<? extends Number>... serializingStrategies ) {
-      super( "number", new Version( 1, 2, 3 ), serializingStrategies );
+      super( "number", new VersionRange( new Version( 1, 2, 3 ), new Version( 1, 2, 3 ) ), serializingStrategies );
     }
   }
 }

@@ -1,21 +1,22 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
+import com.cedarsoft.utils.DefaultRegistry;
 import com.cedarsoft.utils.Registry;
 import com.cedarsoft.utils.StillContainedException;
-import com.cedarsoft.utils.DefaultRegistry;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.IOException;
-import java.lang.Override;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -27,7 +28,7 @@ public class RegistrySerializerTest {
   @BeforeMethod
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
-    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text", new Version( 1, 0, 0 ) ) {
+    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {

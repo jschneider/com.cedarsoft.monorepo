@@ -2,6 +2,7 @@ package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
+import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +45,20 @@ public class JdomSerializationTest {
   @Test
   public void testWrongVersion() throws IOException {
     ByteArrayInputStream in = new ByteArrayInputStream( ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<?format 1.2.2?>\n" +
+      "<?format 1.0.2?>\n" +
+      "<my>7</my>" ).getBytes() );
+
+    try {
+      serializer.deserialize( in, null );
+      fail( "Where is the Exception" );
+    } catch ( VersionMismatchException ignore ) {
+    }
+  }
+
+  @Test
+  public void testVersionRange() throws IOException {
+    ByteArrayInputStream in = new ByteArrayInputStream( ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<?format 1.2.1?>\n" +
       "<my>7</my>" ).getBytes() );
 
     try {
@@ -68,7 +82,7 @@ public class JdomSerializationTest {
 
   public static class MySerializer extends AbstractJDomSerializer<Integer> {
     public MySerializer() {
-      super( "my", new Version( 1, 2, 3 ) );
+      super( "my", new VersionRange( new Version( 1, 2, 1 ), new Version( 1, 2, 3 ) ) );
     }
 
     @NotNull
