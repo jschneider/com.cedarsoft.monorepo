@@ -8,6 +8,7 @@ import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
+import com.google.inject.Inject;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
@@ -32,6 +33,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
   @NotNull
   private final BaseNameSerializer baseNameSerializer;
 
+  @Inject
   public FileNameSerializer( @NotNull BaseNameSerializer baseNameSerializer, @NotNull ExtensionSerializer extensionSerializer ) {
     super( "fileName", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) );
     this.extensionSerializer = extensionSerializer;
