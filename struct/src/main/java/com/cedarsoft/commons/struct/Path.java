@@ -54,11 +54,11 @@ public class Path implements Serializable {
    *
    * @param elements the elements
    */
-  public Path( @NotNull List<? extends String> elements ) {
+  public Path( @NotNull Iterable<? extends String> elements ) {
     this( elements, false );
   }
 
-  public Path( @NotNull List<? extends String> elements, boolean absolute ) {
+  public Path( @NotNull Iterable<? extends String> elements, boolean absolute ) {
     this.absolute = absolute;
 
     for ( String element : elements ) {

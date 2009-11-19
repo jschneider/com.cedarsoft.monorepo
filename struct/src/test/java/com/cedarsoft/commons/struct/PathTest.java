@@ -1,6 +1,5 @@
 package com.cedarsoft.commons.struct;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.ByteArrayInputStream;
@@ -9,7 +8,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>
@@ -60,7 +62,7 @@ public class PathTest {
 
   @Test
   public void testPopAbs() {
-    Path path = new Path( true, "a", "b", "c" );
+    Path path = new Path( Arrays.asList( "a", "b", "c" ), true );
 
     assertEquals( path.toString(), "/a/b/c" );
     assertEquals( path.popped().toString(), "b/c" );

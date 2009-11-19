@@ -114,6 +114,7 @@ public class XStreamPersister implements ConfigurationPersister {
    *
    * @throws IOException
    */
+  @Deprecated
   @Override
   @NotNull
   @NonNls
