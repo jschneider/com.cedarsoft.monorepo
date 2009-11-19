@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.AssertUtils;
-import com.ctc.wstx.stax.WstxOutputFactory;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.SMOutputFactory;
@@ -21,8 +20,6 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 import javax.xml.stream.events.XMLEvent;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.NoSuchElementException;
@@ -40,6 +37,49 @@ public class StaxTest {
     "  <id>Canon Raw</id>\n" +
     "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
     "</fileType>";
+
+  @Test
+  public void testProcssingInstructions() throws Exception {
+    XMLOutputFactory factory = XMLOutputFactory.newInstance();
+
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    SMOutputFactory smOutputFactory = new SMOutputFactory( factory );
+
+    SMOutputDocument doc = smOutputFactory.createOutputDocument( out );
+    doc.setIndentation( "\n  ", 1, 2 );
+    doc.addProcessingInstruction( "format", "version=\"1.0\"" );
+
+    SMOutputElement fileTypeElement = doc.addElement( "fileType" );
+    fileTypeElement.addAttribute( "dependent", "false" );
+
+    SMOutputElement idElement = fileTypeElement.addElement( "id" );
+    idElement.addCharacters( "Canon Raw" );
+
+    SMOutputElement extensionElement = fileTypeElement.addElement( "extension" );
+    extensionElement.addAttribute( "default", "true" );
+    extensionElement.addAttribute( "delimiter", "." );
+    extensionElement.addCharacters( "cr2" );
+
+    doc.closeRoot();
+
+    AssertUtils.assertXMLEqual( out.toString(), CONTENT_SAMPLE, false );
+    assertTrue( out.toString().contains( "<?format version=\"1.0\"?>" ), out.toString() );
+
+
+    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+    inputFactory.setProperty( XMLInputFactory.IS_COALESCING, true );
+    XMLStreamReader parser = inputFactory.createXMLStreamReader( new StringReader( out.toString() ) );
+
+    assertEquals( parser.next(), XMLStreamReader.PROCESSING_INSTRUCTION );
+    assertEquals( parser.getPITarget(), "format" );
+    assertEquals( parser.getPIData(), "version=\"1.0\"" );
+
+    assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
+    assertEquals( parser.getLocalName(), "fileType" );
+    assertEquals( parser.getName().getLocalPart(), "fileType" );
+    assertEquals( parser.getAttributeValue( null, "dependent" ), "false" );
+  }
 
   @Test
   public void testStaxMate() throws XMLStreamException, IOException, SAXException {
@@ -100,7 +140,7 @@ public class StaxTest {
 
     try {
       reader.next();
-      fail("Where is the Exception");
+      fail( "Where is the Exception" );
     } catch ( NoSuchElementException ignore ) {
     }
   }
