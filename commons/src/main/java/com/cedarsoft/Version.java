@@ -178,4 +178,12 @@ public class Version implements Comparable<Version>, Serializable {
       throw new VersionMismatchException( expected, actual );
     }
   }
+
+  public boolean sameOrSmallerThan( @NotNull Version version ) {
+    return this.compareTo( version ) <= 0;
+  }
+
+  public boolean sameOrGreaterThan( @NotNull Version version ) {
+    return this.compareTo( version ) >= 0;
+  }
 }
