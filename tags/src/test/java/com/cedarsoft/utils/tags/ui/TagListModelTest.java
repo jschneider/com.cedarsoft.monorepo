@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,17 +74,17 @@ public class TagListModelTest {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
-      @java.lang.Override
+      @Override
       public void intervalAdded( ListDataEvent e ) {
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void intervalRemoved( ListDataEvent e ) {
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void contentsChanged( ListDataEvent e ) {
         events.add( e );
       }

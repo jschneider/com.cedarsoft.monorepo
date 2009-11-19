@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Collections;
 
 import com.cedarsoft.lookup.Lookup;
@@ -66,7 +67,7 @@ public class RouteTest {
     }
 
     Route route = Route.buildRoute( root, path, new NodeFactory() {
-      @java.lang.Override
+      @Override
       @NotNull
       public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) {
         return new DefaultNode( name );

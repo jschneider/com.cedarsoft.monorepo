@@ -7,6 +7,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -17,7 +19,7 @@ public class MyObjectService extends AbstractService<MyObject> {
 
   public void changeAllNames( @NotNull @NonNls final String newName ) {
     getTransactionTemplate().execute( new TransactionCallbackWithoutResult() {
-      @java.lang.Override
+      @Override
       protected void doInTransactionWithoutResult( TransactionStatus status ) {
         for ( MyObject myObject : findAll() ) {
           myObject.setName( newName );

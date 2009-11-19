@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class SingleTaggableTest {
   public void testListeners() {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
     taggable.addTagChangeListener( new TagChangeListener() {
-      @java.lang.Override
+      @Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

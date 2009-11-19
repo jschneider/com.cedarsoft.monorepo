@@ -9,6 +9,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -40,7 +42,7 @@ public class AsynchroniousDaoTest extends AsyncTest {
 
     try {
       asyncDao.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-        @java.lang.Override
+        @Override
         protected void addRestrictions( @NotNull Criteria criteria ) {
           throw new IllegalStateException( "Hehe" );
         }
@@ -54,7 +56,7 @@ public class AsynchroniousDaoTest extends AsyncTest {
   @Test
   public void testMultipleThreads() {
     new Thread( new Runnable() {
-      @java.lang.Override
+      @Override
       public void run() {
         assertEquals( 0, asyncDao.getCount() );
       }
@@ -63,7 +65,7 @@ public class AsynchroniousDaoTest extends AsyncTest {
     assertEquals( 0, asyncDao.getCount() );
 
     new Thread( new Runnable() {
-      @java.lang.Override
+      @Override
       public void run() {
         try {
           Thread.sleep( 1000 );

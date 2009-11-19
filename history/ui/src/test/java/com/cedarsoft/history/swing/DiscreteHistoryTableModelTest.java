@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.BorderLayout;
+import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -65,17 +66,17 @@ public class DiscreteHistoryTableModelTest {
       this.entriesInformation = entriesInformation;
     }
 
-    @java.lang.Override
+    @Override
     public int getColumnCount() {
       return columnNames.length;
     }
 
-    @java.lang.Override
+    @Override
     public String getColumnName( int column ) {
       return columnNames[column];
     }
 
-    @java.lang.Override
+    @Override
     public Object getColumnValue( @NotNull DefaultContinuousEntry baseObject, int column ) {
       switch ( column ) {
         case 0:

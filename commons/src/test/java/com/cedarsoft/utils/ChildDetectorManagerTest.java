@@ -5,6 +5,7 @@ import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JFrame;
+import java.lang.Override;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ChildDetectorManagerTest {
   protected void setUp() throws Exception {
     manager = new ChildDetectorManager();
     manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public List<? extends String> findChildren( @NotNull String parent ) {
         return Collections.emptyList();

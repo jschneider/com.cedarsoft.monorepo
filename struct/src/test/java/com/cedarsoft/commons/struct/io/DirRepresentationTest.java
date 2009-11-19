@@ -16,6 +16,7 @@ import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.File;
+import java.lang.Override;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -58,7 +59,7 @@ public class DirRepresentationTest {
 
     DirRepresenter representer = new DirRepresenter( root, false );
     representer.parse( baseDir, new NodeFactory() {
-      @java.lang.Override
+      @Override
       @NotNull
       public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
         File file = context.lookupNonNull( File.class );
@@ -100,7 +101,7 @@ public class DirRepresentationTest {
 
       DirRepresenter representer = new DirRepresenter( root, false );
       representer.parse( baseDir, new NodeFactory() {
-        @java.lang.Override
+        @Override
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );
@@ -139,7 +140,7 @@ public class DirRepresentationTest {
 
       DirRepresenter representer = new DirRepresenter( root, true );
       representer.parse( baseDir, new NodeFactory() {
-        @java.lang.Override
+        @Override
         @NotNull
         public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );

@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
+import java.lang.Override;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +62,7 @@ public class DynamicLookupTest {
   @Test
   public void testMultiple() {
     DynamicLookup lookup = Lookups.dynamicLookup( new AbstractAction( "myAction" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
         throw new UnsupportedOperationException();
       }

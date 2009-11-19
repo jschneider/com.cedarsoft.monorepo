@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 
 /**
  * <p/>
@@ -23,7 +24,7 @@ public class FancyButtonTest {
     FancyButtonPresenter presenter = new FancyButtonPresenter();
     JFrame frame = new JFrame();
     frame.getContentPane().add( presenter.present( new DefaultNode( "asdf", Lookups.singletonLookup( Action.class, new AbstractAction( "asdf" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     } ) ) ) );

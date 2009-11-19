@@ -5,6 +5,7 @@ import org.testng.annotations.*;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import java.lang.Override;
 
 /**
  * <p/>
@@ -27,7 +28,7 @@ public class RendererManagerTest {
   @Test
   public void testGenerics() {
     manager.addRenderer( JLabel.class, new Renderer<JComponent, Object>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public String render( @NotNull JComponent obj, Object context ) {
         throw new UnsupportedOperationException();

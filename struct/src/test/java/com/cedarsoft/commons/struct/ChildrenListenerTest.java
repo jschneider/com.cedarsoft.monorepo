@@ -8,6 +8,7 @@ import com.cedarsoft.lookup.MappedLookup;
 import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,12 +28,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -60,12 +61,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -100,12 +101,12 @@ public class ChildrenListenerTest  {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
 
     support.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -137,12 +138,12 @@ public class ChildrenListenerTest  {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
 
     parent.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
@@ -168,12 +169,12 @@ public class ChildrenListenerTest  {
 
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }
 
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
         events.add( event );
       }

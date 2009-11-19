@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 
@@ -31,7 +32,7 @@ public class ButtonPresenterTest  {
     buttonPresenter = new JButtonPresenter();
     lookup = new MockLookup();
     action = new AbstractAction( "The Action" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -74,7 +75,7 @@ public class ButtonPresenterTest  {
     assertEquals( 1, lookup.getLookupChangeSupport().getListeners().size() );
 
     lookup.store( Action.class, new AbstractAction( "otherAction" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     } );
@@ -86,7 +87,7 @@ public class ButtonPresenterTest  {
   public void testIt() {
     JCheckBox checkBox = new JCheckBox();
     AbstractAction daAction = new AbstractAction( "asf" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -139,7 +140,7 @@ public class ButtonPresenterTest  {
     assertSame( action, button.getAction() );
 
     AbstractAction otherAction = new AbstractAction( "other Action" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };

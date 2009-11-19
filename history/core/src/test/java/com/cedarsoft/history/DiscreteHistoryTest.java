@@ -13,6 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.lang.Override;
 import java.util.List;
 import java.util.Map;
 
@@ -119,17 +120,17 @@ public class DiscreteHistoryTest {
 
 
     history.addHistoryListener( new HistoryListener<DefaultDiscreteHistoryEntry>() {
-      @java.lang.Override
+      @Override
       public void entryAdded( @NotNull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
-      @java.lang.Override
+      @Override
       public void entryRemoved( @NotNull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
-      @java.lang.Override
+      @Override
       public void entryChanged( @NotNull DefaultDiscreteHistoryEntry entry ) {
       }
     } );

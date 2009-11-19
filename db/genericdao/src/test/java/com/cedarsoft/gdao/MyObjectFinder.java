@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -28,7 +30,7 @@ public class MyObjectFinder extends AbstractCollectionFinder<MyObject> {
     this.name = name;
   }
 
-  @java.lang.Override
+  @Override
   protected void addRestrictions( @NotNull Criteria criteria ) {
     if ( name != null ) {
       criteria.add( Restrictions.eq( "name", name ) );

@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -17,7 +19,7 @@ public class WorkflowRealTest {
 
     State<MyObject> audit = new State<MyObject>( "audit" );
     input.createTransition( audit, new Action<MyObject>() {
-      @java.lang.Override
+      @Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }

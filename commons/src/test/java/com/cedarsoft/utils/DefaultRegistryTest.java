@@ -3,6 +3,7 @@ package com.cedarsoft.utils;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Comparator;
 
 /**
@@ -22,7 +23,7 @@ public class DefaultRegistryTest {
   @Test
   public void testUnique() {
     DefaultRegistry<String> registry = new DefaultRegistry<String>( new Comparator<String>() {
-      @java.lang.Override
+      @Override
       public int compare( String o1, String o2 ) {
         return o1.compareTo( o2 );
       }

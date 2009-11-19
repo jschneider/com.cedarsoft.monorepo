@@ -12,6 +12,7 @@ import org.testng.annotations.*;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Component;
+import java.lang.Override;
 
 /**
  *
@@ -70,7 +71,7 @@ public class SwingPresenterTest {
       return panel;
     }
 
-    @java.lang.Override
+    @Override
     protected boolean shallAddChildren() {
       return true;
     }

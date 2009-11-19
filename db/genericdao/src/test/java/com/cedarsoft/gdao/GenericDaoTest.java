@@ -8,6 +8,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Collection;
 
 /**
@@ -37,7 +38,7 @@ public class GenericDaoTest extends AbstractDaoTest {
 
     try {
       service.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-        @java.lang.Override
+        @Override
         protected void addRestrictions( @NotNull Criteria criteria ) {
         }
       } );
@@ -59,7 +60,7 @@ public class GenericDaoTest extends AbstractDaoTest {
     assertEquals( 2, service.getCount() );
 
     service.perform( new GenericService.ServiceCallback<MyObject, Object>() {
-      @java.lang.Override
+      @Override
       @Nullable
       public Object perform( @NotNull GenericService<MyObject> service ) {
         for ( MyObject myObject : service.findAll() ) {
@@ -88,7 +89,7 @@ public class GenericDaoTest extends AbstractDaoTest {
     assertEquals( 2, service.findAll().size() );
 
     service.perform( new GenericService.ServiceCallbackWithoutReturnValue<MyObject>() {
-      @java.lang.Override
+      @Override
       protected void performVoid( @NotNull GenericService<MyObject> service ) {
         for ( MyObject myObject : service.findAll() ) {
           myObject.setName( "new" );
@@ -127,7 +128,7 @@ public class GenericDaoTest extends AbstractDaoTest {
     dao.save( new MyObject( "markus" ) );
 
     MyObject loaded = dao.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-      @java.lang.Override
+      @Override
       protected void addRestrictions( @NotNull Criteria criteria ) {
         criteria.add( Restrictions.eq( "name", "markus" ) );
       }
@@ -136,7 +137,7 @@ public class GenericDaoTest extends AbstractDaoTest {
 
     {
       Collection<? extends MyObject> loadedList = dao.find( new AbstractCollectionFinder<MyObject>( MyObject.class ) {
-        @java.lang.Override
+        @Override
         protected void addRestrictions( @NotNull Criteria criteria ) {
           criteria.add( Restrictions.eq( "name", "markus" ) );
         }

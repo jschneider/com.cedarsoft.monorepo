@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -83,7 +84,7 @@ public class PathFactoryTest {
 
     assertEquals( "0/1/2", Path.buildPath( childChild ).toString() );
     assertEquals( "0/1/2", Path.buildPath( childChild, new PathValidator() {
-      @java.lang.Override
+      @Override
       public void validate( @NotNull Path path ) throws ValidationFailedException {
         assertFalse( path.isAbsolute() );
       }

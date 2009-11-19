@@ -18,6 +18,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -41,7 +42,7 @@ public class PopupMenuPresenterTest  {
   @NotNull
   private static Action createAction( int id ) {
     return new AbstractAction( String.valueOf( id ) ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -97,7 +98,7 @@ public class PopupMenuPresenterTest  {
     start( menues );
 
     new Thread( new Runnable() {
-      @java.lang.Override
+      @Override
       public void run() {
         while ( true ) {
           try {
@@ -130,7 +131,7 @@ public class PopupMenuPresenterTest  {
     JFrame frame = new JFrame();
 
     frame.getContentPane().addMouseListener( new MouseAdapter() {
-      @java.lang.Override
+      @Override
       public void mouseClicked( MouseEvent e ) {
         JPopupMenu menu = new DefaultJPopupMenuPresenter().present( test.root );
         menu.show( ( Component ) e.getSource(), e.getX(), e.getY() );

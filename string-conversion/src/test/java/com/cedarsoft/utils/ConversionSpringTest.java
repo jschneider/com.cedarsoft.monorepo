@@ -9,6 +9,8 @@ import org.springframework.core.io.ClassPathResource;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 /**
  * <p/>
  * Date: 23.01.2007<br>
@@ -41,13 +43,13 @@ public class ConversionSpringTest {
   }
 
   public static class AnObjectConverter implements StringConverter<StringBuilder> {
-    @java.lang.Override
+    @Override
     @NotNull
     public String createRepresentation( @NotNull StringBuilder object ) {
       return object.toString();
     }
 
-    @java.lang.Override
+    @Override
     @NotNull
     public StringBuilder createObject( @NotNull String representation ) {
       return new StringBuilder( representation );

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ public class CacheTest {
   @BeforeMethod
   protected void setUp() throws Exception {
     cache = new HashedCache<Integer, String>( new Cache.Factory<Integer, String>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public String create( @NotNull Integer key ) {
         counter++;

@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.Collections;
 
 /**
@@ -65,12 +66,12 @@ public class LookupChangeSupportTest  {
 
   private void addWeakListener() {
     lookupChangeSupport.addChangeListenerWeak( String.class, new LookupChangeListener<String>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
       }
     } );
     lookupChangeSupport.addChangeListenerWeak( new LookupChangeListener<Object>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
@@ -80,13 +81,13 @@ public class LookupChangeSupportTest  {
   public void testAddListeners() {
     assertEquals( 0, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
     assertEquals( 1, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( new LookupChangeListener<Object>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
@@ -94,13 +95,13 @@ public class LookupChangeSupportTest  {
     assertEquals( 2, lookupChangeSupport.getListeners().size() );
 
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );
     assertEquals( 3, lookupChangeSupport.getListeners().size() );
     lookupChangeSupport.addChangeListener( String.class, new LookupChangeListener<Object>() {
-      @java.lang.Override
+      @Override
       public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
       }
     } );

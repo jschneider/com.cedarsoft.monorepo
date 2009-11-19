@@ -9,6 +9,7 @@ import com.cedarsoft.lookup.Lookup;
 import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 /**
@@ -34,21 +35,21 @@ public class WeakTest  {
   }
 
   public static class MyPresenter extends AbstractPresenter<String> {
-    @java.lang.Override
+    @Override
     protected boolean shallAddChildren() {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     protected void bind( @NotNull String presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
     }
 
-    @java.lang.Override
+    @Override
     protected boolean addChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
     }
 

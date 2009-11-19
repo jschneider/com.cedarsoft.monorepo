@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.text.DefaultEditorKit;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 /**
@@ -30,7 +31,7 @@ public class MenuItemPresenterTest {
     MappedLookup lookup = new MappedLookup();
     Node node = new DefaultNode( "menu", lookup );
     AbstractAction action = new AbstractAction( "The action" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -51,7 +52,7 @@ public class MenuItemPresenterTest {
     MappedLookup lookup = new MappedLookup();
     Node node = new DefaultNode( "menu", lookup );
     AbstractAction action = new AbstractAction( "The action" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -72,7 +73,7 @@ public class MenuItemPresenterTest {
 
     MappedLookup lookup = new MappedLookup();
     AbstractAction action = new AbstractAction( "The action" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };

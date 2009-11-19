@@ -16,6 +16,7 @@ import org.testng.annotations.*;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.lang.Override;
 
 /**
  *
@@ -35,7 +36,7 @@ public class ConfigBindingGuiceTest {
           @Inject
           Configuration configuration;
 
-          @java.lang.Override
+          @Override
           @NotNull
           public MyBean get() {
             MyBean myBean = new MyBean();

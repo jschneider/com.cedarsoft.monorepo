@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 
+import java.lang.Override;
+
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -19,14 +21,14 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
     return new AbstractStaxMateSerializer<String>( "aString" ) {
-      @java.lang.Override
+      @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
         serializeTo.addCharacters( object );
         return serializeTo;
       }
 
-      @java.lang.Override
+      @Override
       @NotNull
       public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
         deserializeFrom.next();

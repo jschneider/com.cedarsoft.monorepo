@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,13 +32,13 @@ public class ListChangeSupportTest {
     final List<String> eventStrings = new ArrayList<String>();
 
     listChangeSupport.addListener( new ListChangeListener<String>() {
-      @java.lang.Override
+      @Override
       public void elementAdded( int index, @NotNull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );
       }
 
-      @java.lang.Override
+      @Override
       public void elementRemoved( int index, @NotNull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );

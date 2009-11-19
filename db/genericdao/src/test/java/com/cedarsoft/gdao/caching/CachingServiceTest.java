@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 
 /**
  *
@@ -42,7 +44,7 @@ public class CachingServiceTest extends AbstractDaoTest {
     assertEquals( 5, cachingService.getCount() );
 
     cachingService.perform( new GenericService.ServiceCallbackWithoutReturnValue<MyObject>() {
-      @java.lang.Override
+      @Override
       protected void performVoid( @NotNull GenericService<MyObject> service ) {
         for ( MyObject myObject : service.getElements() ) {
           myObject.setName( "new" );
@@ -62,7 +64,7 @@ public class CachingServiceTest extends AbstractDaoTest {
   @Test
   public void testPerform2() {
     cachingService.perform( new GenericService.ServiceCallbackWithoutReturnValue<MyObject>() {
-      @java.lang.Override
+      @Override
       protected void performVoid( @NotNull GenericService<MyObject> service ) {
         for ( int i = 0; i < 5; i++ ) {
           MyObject myObject = new MyObject( "new" );
@@ -84,13 +86,13 @@ public class CachingServiceTest extends AbstractDaoTest {
     MyObject saved = new MyObject( "asdf" );
     final Long id = cachingService.save( saved );
     assertSame( saved, cachingService.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-      @java.lang.Override
+      @Override
       protected void addRestrictions( @NotNull Criteria criteria ) {
         criteria.add( Restrictions.eq( "id", id ) );
       }
     } ) );
     assertSame( saved, cachingService.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-      @java.lang.Override
+      @Override
       protected void addRestrictions( @NotNull Criteria criteria ) {
         criteria.add( Restrictions.eq( "name", "asdf" ) );
       }

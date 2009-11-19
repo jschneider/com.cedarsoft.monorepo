@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -15,12 +17,12 @@ public class WeakStructureListenerTest  {
   @Test
   public void testAdd() {
     node.addStructureListener( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
 
       }
 
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     } );
@@ -31,11 +33,11 @@ public class WeakStructureListenerTest  {
   @Test
   public void testAddRemoveWeakListener() {
     StructureListener listener = new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
       }
 
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     };
@@ -52,11 +54,11 @@ public class WeakStructureListenerTest  {
   public void testAutoRemoving() {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
     node.addStructureListenerWeak( new StructureListener() {
-      @java.lang.Override
+      @Override
       public void childAdded( @NotNull StructureChangedEvent event ) {
       }
 
-      @java.lang.Override
+      @Override
       public void childDetached( @NotNull StructureChangedEvent event ) {
       }
     } );

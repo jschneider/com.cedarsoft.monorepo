@@ -17,6 +17,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 
@@ -32,7 +33,7 @@ public class JComboBoxPresenterTest  {
   @BeforeMethod
   protected void setUp() throws Exception {
     rootAction = new AbstractAction() {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -54,7 +55,7 @@ public class JComboBoxPresenterTest  {
     assertNull( box.getAction() );
 
     AbstractAction newAction = new AbstractAction( "theAction" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };
@@ -77,7 +78,7 @@ public class JComboBoxPresenterTest  {
 
   private void addChild( @NotNull @NonNls String name ) {
     root.addChild( new DefaultNode( name, Lookups.createLookup( Action.class, new AbstractAction( name ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     } ) ) );
@@ -125,7 +126,7 @@ public class JComboBoxPresenterTest  {
   public void testComboBoxPlain() {
     JComboBox box = new JComboBox();
     box.setAction( new AbstractAction( "the value" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
         System.out.println( "event... " + e );
       }

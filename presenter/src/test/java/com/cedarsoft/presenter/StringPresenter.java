@@ -5,6 +5,8 @@ import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  * Very simple implementation that is able to present a string.
  */
@@ -30,7 +32,7 @@ public class StringPresenter extends AbstractPresenter<String> {
   protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
   }
 
-  @java.lang.Override
+  @Override
   protected boolean shallAddChildren() {
     return false;
   }

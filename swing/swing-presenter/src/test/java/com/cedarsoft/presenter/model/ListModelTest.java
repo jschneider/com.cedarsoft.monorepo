@@ -21,6 +21,7 @@ import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,19 +111,19 @@ public class ListModelTest  {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
-      @java.lang.Override
+      @Override
       public void intervalAdded( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_ADDED, e.getType() );
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void intervalRemoved( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_REMOVED, e.getType() );
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void contentsChanged( ListDataEvent e ) {
         assertSame( ListDataEvent.CONTENTS_CHANGED, e.getType() );
         events.add( e );
@@ -144,19 +145,19 @@ public class ListModelTest  {
     final List<ListDataEvent> events = new ArrayList<ListDataEvent>();
 
     model.addListDataListener( new ListDataListener() {
-      @java.lang.Override
+      @Override
       public void intervalAdded( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_ADDED, e.getType() );
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void intervalRemoved( ListDataEvent e ) {
         assertSame( ListDataEvent.INTERVAL_REMOVED, e.getType() );
         events.add( e );
       }
 
-      @java.lang.Override
+      @Override
       public void contentsChanged( ListDataEvent e ) {
         assertSame( ListDataEvent.CONTENTS_CHANGED, e.getType() );
         events.add( e );

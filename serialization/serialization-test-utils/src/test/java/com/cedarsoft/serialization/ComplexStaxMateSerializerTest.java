@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.xml.stream.XMLStreamException;
 
 import java.io.IOException;
+import java.lang.Override;
 
 import static org.testng.Assert.assertEquals;
 
@@ -21,14 +22,14 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
     final AbstractStaxMateSerializer<String> stringSerializer = new AbstractStaxMateSerializer<String>( "asdf" ) {
-      @java.lang.Override
+      @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
         serializeTo.addCharacters( object );
         return serializeTo;
       }
 
-      @java.lang.Override
+      @Override
       @NotNull
       public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
         deserializeFrom.next();
@@ -39,7 +40,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
     };
 
     return new AbstractStaxMateSerializer<String>( "aString" ) {
-      @java.lang.Override
+      @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws IOException, XMLStreamException {
         stringSerializer.serialize( serializeTo.addElement( "sub" ), object, context );
@@ -48,7 +49,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
         return serializeTo;
       }
 
-      @java.lang.Override
+      @Override
       @NotNull
       public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
         nextTag( deserializeFrom, "sub" );

@@ -11,6 +11,7 @@ import org.testng.annotations.*;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class TagComboboxModelTest {
 
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
     selection.addTagChangeListener( new TagChangeListener() {
-      @java.lang.Override
+      @Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

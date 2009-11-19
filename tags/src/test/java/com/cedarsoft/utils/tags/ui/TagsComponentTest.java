@@ -14,6 +14,7 @@ import javax.swing.JToggleButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class TagsComponentTest {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
 
     model.getSelectedTags().addTagChangeListener( new TagChangeListener() {
-      @java.lang.Override
+      @Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }
@@ -122,7 +123,7 @@ public class TagsComponentTest {
     JFrame frame = new JFrame();
     frame.getContentPane().add( tagsComponent, BorderLayout.CENTER );
     frame.getContentPane().add( new JToggleButton( new AbstractAction( "Toggle New Tags" ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
         tagsComponent.setAllowNewTagCreation( !( ( AbstractButton ) e.getSource() ).isSelected() );
       }

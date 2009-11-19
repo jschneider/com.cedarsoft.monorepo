@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.Lock;
@@ -36,7 +37,7 @@ public class MultiLockTest {
     multiLock.lock();
 
     ThreadUtils.inokeInOtherThread( new Callable<Object>() {
-      @java.lang.Override
+      @Override
       @Nullable
       public Object call() throws Exception {
         assertFalse( lock0.tryLock() );

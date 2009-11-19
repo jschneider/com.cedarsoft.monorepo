@@ -9,6 +9,7 @@ import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JList;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class TagListSelectionTest {
     final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
 
     selectionModel.addTagChangeListener( new TagChangeListener() {
-      @java.lang.Override
+      @Override
       public void tagChanged( @NotNull TagChangeEvent event ) {
         events.add( event );
       }

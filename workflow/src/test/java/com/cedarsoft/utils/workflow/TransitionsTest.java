@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -12,7 +14,7 @@ public class TransitionsTest {
   public void testAction() {
     State<MyObject> source = new State<MyObject>( "source" );
     TransitionDefinition<MyObject> transitionDefinition = new TransitionDefinition<MyObject>( source, new State<MyObject>( "target" ), new Action<MyObject>() {
-      @java.lang.Override
+      @Override
       public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }

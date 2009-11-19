@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 
 /**
  *
@@ -36,13 +38,13 @@ public class CachingAsyncTest extends AsyncTest {
     MyObject saved = new MyObject( "asdf" );
     final Long id = cachingDao.save( saved );
     assertSame( saved, cachingDao.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-      @java.lang.Override
+      @Override
       protected void addRestrictions( @NotNull Criteria criteria ) {
         criteria.add( Restrictions.eq( "id", id ) );
       }
     } ) );
     assertSame( saved, cachingDao.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-      @java.lang.Override
+      @Override
       protected void addRestrictions( @NotNull Criteria criteria ) {
         criteria.add( Restrictions.eq( "name", "asdf" ) );
       }

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class LookupChangeListenerMock implements LookupChangeListener<Object> {
     }
   }
 
-  @java.lang.Override
+  @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
     verify( event );
   }

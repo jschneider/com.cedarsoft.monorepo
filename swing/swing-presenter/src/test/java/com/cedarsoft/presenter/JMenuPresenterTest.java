@@ -22,6 +22,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JSeparator;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class JMenuPresenterTest  {
 
   private static Action createAction( int id ) {
     AbstractAction action = new AbstractAction( String.valueOf( id ) ) {
-      @java.lang.Override
+      @Override
       public void actionPerformed( ActionEvent e ) {
       }
     };

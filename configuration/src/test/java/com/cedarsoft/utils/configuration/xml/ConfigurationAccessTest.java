@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -68,7 +69,7 @@ public class ConfigurationAccessTest {
     assertEquals( 3, ( ( List<String> ) configuration.getList( "asdf" ) ).size() );
 
     ConfigurationAccess<List> configurationAccess = new ConfigurationAccess<List>( configuration, List.class, "asdf", new DefaultValueProvider() {
-      @java.lang.Override
+      @Override
       @NotNull
       public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
         throw new UnsupportedOperationException();
@@ -82,7 +83,7 @@ public class ConfigurationAccessTest {
   @Test
   public void testCallback() {
     DefaultValueProvider defaultValueProvider = new DefaultValueProvider() {
-      @java.lang.Override
+      @Override
       @NotNull
       public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
         return type.cast( "1234" );

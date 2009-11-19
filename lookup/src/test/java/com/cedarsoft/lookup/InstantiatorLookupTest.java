@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -16,7 +18,7 @@ public class InstantiatorLookupTest  {
   @BeforeMethod
   protected void setUp() throws Exception {
     Instantiater<String> instantiater = new Instantiater<String>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public String createInstance() throws InstantiationFailedException {
         if ( called ) {

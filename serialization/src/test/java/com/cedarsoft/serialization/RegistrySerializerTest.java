@@ -11,6 +11,7 @@ import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.lang.Override;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -26,20 +27,20 @@ public class RegistrySerializerTest {
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
     serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text" ) {
-      @java.lang.Override
+      @Override
       @NotNull
       public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {
         serializeTo.setText( object );
         return serializeTo;
       }
 
-      @java.lang.Override
+      @Override
       @NotNull
       public String deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) {
         return deserializeFrom.getTextNormalize();
       }
     }, new RegistrySerializer.IdResolver<String>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public String getId( @NotNull String object ) {
         return object;
@@ -110,7 +111,7 @@ public class RegistrySerializerTest {
   }
 
   private static class MyRegistryFactory implements RegistrySerializer.RegistryFactory<String, Registry<String>> {
-    @java.lang.Override
+    @Override
     @NotNull
     public Registry<String> createRegistry( @NotNull List<? extends String> objects, @NotNull Comparator<String> comparator ) {
       return new DefaultRegistry<String>( objects, comparator );

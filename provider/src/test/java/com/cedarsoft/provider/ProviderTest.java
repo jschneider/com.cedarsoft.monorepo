@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.lang.Override;
 
 import static org.testng.Assert.fail;
 
@@ -14,13 +15,13 @@ public class ProviderTest {
   @Test
   public void testException() {
     Provider<String, IOException> provider = new Provider<String, IOException>() {
-      @java.lang.Override
+      @Override
       @NotNull
       public String provide() throws IOException {
         throw new IOException( "Uuups" );
       }
 
-      @java.lang.Override
+      @Override
       @NotNull
       public String getDescription() {
         return "asdf";

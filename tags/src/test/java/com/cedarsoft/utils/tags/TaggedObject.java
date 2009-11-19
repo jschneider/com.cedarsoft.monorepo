@@ -2,6 +2,7 @@ package com.cedarsoft.utils.tags;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Override;
 import java.util.List;
 
 /**
@@ -10,12 +11,12 @@ import java.util.List;
 public class TaggedObject implements Taggable {
   private final TagSet tagSet = new TagSet( this );
 
-  @java.lang.Override
+  @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagSet.addTagChangeListener( listener );
   }
 
-  @java.lang.Override
+  @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagSet.removeTagChangeListener( listener );
   }
@@ -24,17 +25,17 @@ public class TaggedObject implements Taggable {
     tagSet.setTags( tags );
   }
 
-  @java.lang.Override
+  @Override
   public boolean addTag( @NotNull Tag tag ) {
     return tagSet.addTag( tag );
   }
 
-  @java.lang.Override
+  @Override
   public boolean removeTag( @NotNull Tag tag ) {
     return tagSet.removeTag( tag );
   }
 
-  @java.lang.Override
+  @Override
   @NotNull
   public List<? extends Tag> getTags() {
     return tagSet.getTags();

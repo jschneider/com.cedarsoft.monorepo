@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -121,7 +122,7 @@ public class TagPersistenceTest extends TagDbTest {
 
       final List<TagChangeListener.TagChangeEvent> events = new ArrayList<TagChangeListener.TagChangeEvent>();
       loaded.addTagChangeListener( new TagChangeListener() {
-        @java.lang.Override
+        @Override
         public void tagChanged( @NotNull TagChangeEvent event ) {
           events.add( event );
         }

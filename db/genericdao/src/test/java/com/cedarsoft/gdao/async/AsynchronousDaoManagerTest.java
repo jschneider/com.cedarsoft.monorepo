@@ -18,6 +18,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
+import java.lang.Override;
+
 /**
  *
  */
@@ -97,7 +99,7 @@ public class AsynchronousDaoManagerTest {
 
     try {
       service.find( new AbstractInstanceFinder<MyObject>( MyObject.class ) {
-        @java.lang.Override
+        @Override
         protected void addRestrictions( @NotNull Criteria criteria ) {
         }
       } );

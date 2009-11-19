@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,24 +32,24 @@ public class SerializingStrategySupportTest {
   }
 
   private static class MyStrategy implements StaxMateSerializingStrategy<String> {
-    @java.lang.Override
+    @Override
     @NotNull
     public String getId() {
       throw new UnsupportedOperationException();
     }
 
-    @java.lang.Override
+    @Override
     public boolean supports( @NotNull Object object ) {
       throw new UnsupportedOperationException();
     }
 
-    @java.lang.Override
+    @Override
     @NotNull
     public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object ) throws IOException {
       throw new UnsupportedOperationException();
     }
 
-    @java.lang.Override
+    @Override
     @NotNull
     public String deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
       throw new UnsupportedOperationException();
