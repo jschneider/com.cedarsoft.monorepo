@@ -12,8 +12,8 @@ public class FileNameTest {
   @Test
   public void testDel() {
     assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension(), "jpg" );
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getDelimiter(), "." );
+    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getExtension(), "jpg" );
+    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter(), "." );
 
     assertEquals( new FileName( "asdf", ".", "jpg" ).getName(), "asdf.jpg" );
     assertEquals( new FileName( "asdf", ".", "jpg" ).toString(), "asdf.jpg" );
@@ -24,10 +24,10 @@ public class FileNameTest {
     assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
     assertEquals( new FileName( "aSdf", ".", "JPG" ).getBaseName().getName(), "aSdf" );
 
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension(), "jpg" );
-    assertEquals( new FileName( "asdf", ".", "JPG" ).getExtension(), "JPG" );
+    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getExtension(), "jpg" );
+    assertEquals( new FileName( "asdf", ".", "JPG" ).getExtension().getExtension(), "JPG" );
 
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getDelimiter(), "." );
+    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter(), "." );
   }
 
   @Test

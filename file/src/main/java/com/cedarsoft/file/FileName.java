@@ -79,20 +79,6 @@ public class FileName {
     return baseName + extension.getCombined();
   }
 
-  @Deprecated
-  @NotNull
-  @NonNls
-  public String getDelimiter() {
-    return getExtension().getDelimiter();
-  }
-
-  @Deprecated
-  @NotNull
-  @NonNls
-  public String getDelimiterNonNull() {
-    return getDelimiter();
-  }
-
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;

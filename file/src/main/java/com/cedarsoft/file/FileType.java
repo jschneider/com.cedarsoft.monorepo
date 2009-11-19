@@ -114,13 +114,6 @@ public class FileType {
     return getFileName( fileName ).getExtension();
   }
 
-  @Deprecated
-  @NotNull
-  @NonNls
-  public String getDelimiter( @NonNls @NotNull String fileName ) {
-    return getFileName( fileName ).getDelimiter();
-  }
-
   @NotNull
   @NonNls
   public String getBaseName( @NonNls @NotNull String fileName ) {
