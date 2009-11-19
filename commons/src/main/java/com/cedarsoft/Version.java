@@ -37,6 +37,16 @@ public class Version implements Comparable<Version>, Serializable {
     this.build = build;
     this.minor = minor;
     this.suffix = suffix;
+
+    if ( major > MAX || major < 0 ) {
+      throw new IllegalArgumentException( "Invalid major <" + major + ">" );
+    }
+    if ( minor > MAX || minor < 0 ) {
+      throw new IllegalArgumentException( "Invalid minor <" + minor + ">" );
+    }
+    if ( build > MAX || build < 0 ) {
+      throw new IllegalArgumentException( "Invalid build <" + build + ">" );
+    }
   }
 
   /**
