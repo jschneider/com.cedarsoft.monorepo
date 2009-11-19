@@ -4,12 +4,12 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
+import java.io.Serializable;
 
 /**
  * A version
  */
-public class Version implements Comparable<Version> {
+public class Version implements Comparable<Version>, Serializable {
   protected static final int MAX = 99;
 
   protected final int major;
@@ -161,5 +161,11 @@ public class Version implements Comparable<Version> {
     int minor = Integer.parseInt( parts[1] );
 
     return new Version( major, minor, build, suffix );
+  }
+
+  public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
+    if ( !expected.equals( actual ) ) {
+      throw new VersionMismatchException( expected, actual );
+    }
   }
 }
