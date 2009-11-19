@@ -81,8 +81,8 @@ public class DateTimeSerializerTest extends DateTimeTest {
     try {
       DateTimeZone.setDefault( zone );
 
-      assertEquals( serializer.deserialize( new ByteArrayInputStream( "<startTime>20090701T140952.653+0200</startTime>".getBytes() ) ), new DateTime( 2009, 07, 01, 8, 9, 52, 653, zone ) );
-      assertEquals( serializer.deserialize( new ByteArrayInputStream( "<startTime>1245859619998</startTime>".getBytes() ) ).withZone( DateTimeZone.UTC ), new DateTime( 2009, 6, 24, 16, 6, 59, 998, DateTimeZone.UTC ) );
+      assertEquals( serializer.deserialize( new ByteArrayInputStream( "<?format 1.0.0?><startTime>20090701T140952.653+0200</startTime>".getBytes() ) ), new DateTime( 2009, 07, 01, 8, 9, 52, 653, zone ) );
+      assertEquals( serializer.deserialize( new ByteArrayInputStream( "<?format 1.0.0?><startTime>1245859619998</startTime>".getBytes() ) ).withZone( DateTimeZone.UTC ), new DateTime( 2009, 6, 24, 16, 6, 59, 998, DateTimeZone.UTC ) );
     } finally {
       DateTimeZone.setDefault( oldDefault );
     }

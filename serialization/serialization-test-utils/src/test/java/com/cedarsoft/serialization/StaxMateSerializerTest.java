@@ -1,18 +1,22 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
+import com.cedarsoft.utils.XmlCommons;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
-import java.lang.Override;
-
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -21,7 +25,7 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
-    return new AbstractStaxMateSerializer<String>( "aString", new Version( 1, 0, 0 ) ) {
+    return new AbstractStaxMateSerializer<String>( "aString", new Version( 1, 5, 3 ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
@@ -40,6 +44,12 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
     };
   }
 
+  @Override
+  protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
+    super.verifySerialized( serialized );
+    assertTrue( new String( serialized ).contains( "<?format 1.5.3?>" ), XmlCommons.format( new String( serialized ) ) );
+  }
+
   @NotNull
   @Override
   protected String createObjectToSerialize() {
@@ -55,5 +65,25 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
   @Override
   protected void verifyDeserialized( @NotNull String deserialized ) {
     assertEquals( deserialized, "asdf" );
+  }
+
+  @Test
+  public void testnoVersion() throws IOException {
+    try {
+      getSerializer().deserialize( new ByteArrayInputStream( "<aString>asdf</aString>".getBytes() ) );
+      fail( "Where is the Exception" );
+    } catch ( IllegalArgumentException ignore ) {
+
+    }
+  }
+
+  @Test
+  public void testWrongVersion() throws IOException {
+    try {
+      getSerializer().deserialize( new ByteArrayInputStream( "<?format 0.9.9?><aString>asdf</aString>".getBytes() ) );
+      fail( "Where is the Exception" );
+    } catch ( VersionMismatchException ignore ) {
+
+    }
   }
 }

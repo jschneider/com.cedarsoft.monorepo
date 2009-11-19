@@ -29,7 +29,8 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
     try {
       SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
-      //    doc.setIndentation( "\n  ", 1, 2 );
+      doc.addProcessingInstruction( PI_TARGET_FORMAT, getFormatVersion().toString() );
+
       SMOutputElement root = doc.addElement( getDefaultElementName() );
       serialize( root, object, context != null ? context : Lookups.emtyLookup() );
       doc.closeRoot();
@@ -43,6 +44,9 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
   public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
     try {
       XMLStreamReader2 reader = StaxSupport.getSmInputFactory().createStax2Reader( in );
+      Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
+      Version.verifyMatch( getFormatVersion(), version );
+
       reader.nextTag();
       T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
 
@@ -58,6 +62,22 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
     } catch ( XMLStreamException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
     }
+  }
+
+  @NotNull
+  @NonNls
+  protected String getProcessingInstructionData( @NotNull XMLStreamReader2 reader, @NotNull @NonNls String piTarget ) throws XMLStreamException {
+    int result = reader.next();
+    if ( result != XMLStreamReader.PROCESSING_INSTRUCTION ) {
+      throw new IllegalArgumentException( "No processing instruction found. Was <" + result + ">" );
+    }
+
+    String foundTarget = reader.getPITarget();
+    if ( !foundTarget.equals( piTarget ) ) {
+      throw new IllegalArgumentException( "Invalid processing instruction. Expected <" + piTarget + "> but was <" + foundTarget + ">" );
+    }
+
+    return reader.getPIData();
   }
 
   protected void ensureTag( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) {

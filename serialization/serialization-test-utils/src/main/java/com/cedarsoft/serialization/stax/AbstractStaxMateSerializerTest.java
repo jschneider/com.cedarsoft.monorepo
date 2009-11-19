@@ -23,11 +23,15 @@ public abstract class AbstractStaxMateSerializerTest<T> {
     T objectToSerialize = createObjectToSerialize();
 
     byte[] serialized = serializer.serialize( objectToSerialize );
-    AssertUtils.assertXMLEqual( "Was ---\n" + XmlCommons.format( new String( serialized ) ) + "\n---\nExpected:---\n" + XmlCommons.format( getExpectedSerializedString() ) + "\n---\n", new String( serialized ), getExpectedSerializedString(), true );
+    verifySerialized( serialized );
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 
     verifyDeserialized( deserialized );
+  }
+
+  protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
+    AssertUtils.assertXMLEqual( "Was ---\n" + XmlCommons.format( new String( serialized ) ) + "\n---\nExpected:---\n" + XmlCommons.format( getExpectedSerializedString() ) + "\n---\n", new String( serialized ), getExpectedSerializedString(), true );
   }
 
   /**

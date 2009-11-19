@@ -1,6 +1,7 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,6 +16,10 @@ import java.io.OutputStream;
  * @param <C> the type of the context
  */
 public interface Serializer<T, C> {
+  @NotNull
+  @NonNls
+  String PI_TARGET_FORMAT = "format";
+
   /**
    * Serializes the object to the given output stream
    *

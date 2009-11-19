@@ -32,9 +32,6 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
-  @NotNull
-  @NonNls
-  private static final String PI_TARGET_FORMAT = "format";
 
   protected AbstractJDomSerializer( @NotNull @NonNls String defaultElementName, @NotNull Version formatVersion ) {
     super( defaultElementName, formatVersion );
