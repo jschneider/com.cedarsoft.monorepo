@@ -54,11 +54,20 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
     return formatVersionRange.getMax();
   }
 
+  /**
+   * Returns the format version range that is supported for read
+   *
+   * @return the format version range that is supported
+   */
   @NotNull
   public VersionRange getFormatVersionRange() {
     return formatVersionRange;
   }
 
+  /**
+   * Returns the default element name
+   * @return the default element name
+   */
   @NotNull
   @NonNls
   protected String getDefaultElementName() {

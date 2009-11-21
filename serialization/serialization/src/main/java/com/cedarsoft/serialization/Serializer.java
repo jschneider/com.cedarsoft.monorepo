@@ -16,6 +16,9 @@ import java.io.OutputStream;
  * @param <C> the type of the context
  */
 public interface Serializer<T, C> {
+  /**
+   * The target of the processing instruction containing the version information
+   */
   @NotNull
   @NonNls
   String PI_TARGET_FORMAT = "format";
