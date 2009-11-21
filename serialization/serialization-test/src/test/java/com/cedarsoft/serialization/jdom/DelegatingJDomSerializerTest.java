@@ -55,7 +55,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   @Override
   protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
     super.verifySerialized( serialized );
-    assertEquals( new String( serialized ).trim(), getExpectedSerializedString().trim() );
+    assertEquals( new String( serialized ).trim(), getExpectedSerialized().trim() );
   }
 
   @NotNull
@@ -72,7 +72,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<?format 1.2.3?>\n" +
       "<number type=\"int\">1</number>";

@@ -25,7 +25,7 @@ public class VersionSerializerTest extends AbstractStaxMateSerializerTest<Versio
 
   @Override
   @NotNull
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<version>1.2.3-build65</version>";
   }

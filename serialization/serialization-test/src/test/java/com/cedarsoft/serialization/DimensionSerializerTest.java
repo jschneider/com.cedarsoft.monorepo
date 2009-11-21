@@ -25,7 +25,7 @@ public class DimensionSerializerTest extends AbstractStaxMateSerializerTest<Dime
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<dimension>1600x600</dimension>";
   }

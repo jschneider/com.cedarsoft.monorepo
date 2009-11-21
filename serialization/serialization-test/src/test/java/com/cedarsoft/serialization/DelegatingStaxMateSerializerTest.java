@@ -78,7 +78,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"int\">1</number>";
   }

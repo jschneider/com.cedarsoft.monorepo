@@ -21,7 +21,7 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializerTest<List<String>> {
+public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<List<String>, Lookup> {
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<List<String>> getSerializer() {
@@ -72,7 +72,7 @@ public class StaxMateCollectionSerializerTest extends AbstractStaxMateSerializer
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<aString><string>1</string><string>2</string><string>3</string><description>descr</description></aString>";
   }
 }

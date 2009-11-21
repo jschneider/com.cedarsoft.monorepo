@@ -2,8 +2,9 @@ package com.cedarsoft.file.io;
 
 import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
+import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.serialization.AbstractXmlSerializerTest;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import com.cedarsoft.utils.XmlCommons;
 import org.jetbrains.annotations.NotNull;
 import org.xml.sax.SAXException;
@@ -15,7 +16,7 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class FileNameSerializerTest extends AbstractStaxMateSerializerTest<FileName> {
+public class FileNameSerializerTest extends AbstractXmlSerializerTest<FileName, Lookup> {
   @NotNull
   @Override
   protected AbstractStaxMateSerializer<FileName> getSerializer() {
@@ -30,7 +31,7 @@ public class FileNameSerializerTest extends AbstractStaxMateSerializerTest<FileN
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<fileName>\n" +
       "  <baseName>a</baseName>\n" +
       "  <extension delimiter=\",\">pdf</extension>\n" +

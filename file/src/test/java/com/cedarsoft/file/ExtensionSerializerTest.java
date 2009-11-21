@@ -26,7 +26,7 @@ public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Exte
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<extension delimiter=\",\">jpg</extension>";
   }

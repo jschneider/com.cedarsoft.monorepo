@@ -42,7 +42,7 @@ public class DateTimeSerializer2Test extends AbstractStaxMateSerializerTest<Date
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<dateTime>20090501T020205.004-0400</dateTime>";
   }
 

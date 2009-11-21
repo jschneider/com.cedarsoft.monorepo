@@ -22,7 +22,7 @@ public class HashSerializerTest extends AbstractStaxMateSerializerTest<Hash> {
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<hash algorithm=\"SHA256\">11223344</hash>";
   }
 }

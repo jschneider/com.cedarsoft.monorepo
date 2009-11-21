@@ -23,7 +23,7 @@ public class BaseNameSerializerTest extends AbstractStaxMateSerializerTest<BaseN
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<baseName>asdf</baseName>";
   }
 }

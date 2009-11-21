@@ -23,7 +23,7 @@ public class LicenseSerializerTest extends AbstractStaxMateSerializerTest<Licens
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return
       "<license id=\"PUBLIC_DOMAIN\">\n" +
         "  <name>Public Domain</name>\n" +

@@ -59,7 +59,7 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
 
   @NotNull
   @Override
-  protected String getExpectedSerializedString() {
+  protected String getExpectedSerialized() {
     return "<aString>asdf</aString>";
   }
 
