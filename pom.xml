@@ -150,7 +150,7 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>serialization-test-utils</artifactId>
+        <artifactId>serialization-test</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
@@ -465,7 +465,6 @@
     <module>zip</module>
     <module>spring</module>
     <module>serialization</module>
-    <module>serialization/serialization-test-utils</module>
     <module>swing</module>
     <module>struct</module>
     <module>lookup</module>

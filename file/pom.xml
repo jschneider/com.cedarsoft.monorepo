@@ -33,7 +33,7 @@
     </dependency>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>serialization-test-utils</artifactId>
+      <artifactId>serialization-test</artifactId>
       <scope>test</scope>
     </dependency>
 

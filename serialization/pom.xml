@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
@@ -8,56 +9,13 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
-  <artifactId>serialization</artifactId>
-  <name>Serialization</name>
+  <artifactId>serialization-parent</artifactId>
+  <name>Serialization Parent</name>
+  <packaging>pom</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>commons</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>lookup</artifactId>
-    </dependency>
+  <modules>
+    <module>serialization</module>
+    <module>serialization-test</module>
+  </modules>
 
-    <dependency>
-      <groupId>org.codehaus.staxmate</groupId>
-      <artifactId>staxmate</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.codehaus.woodstox</groupId>
-      <artifactId>woodstox-core-asl</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <optional>true</optional>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-      <optional>true</optional>
-    </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>xml-commons</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>test-utils</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-  </dependencies>
 </project>
