@@ -4,12 +4,12 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.license.License;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -37,7 +37,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
 
   @NotNull
   @Override
-  public License deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public License deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     String id = deserializeFrom.getAttributeValue( null, ATTRIBUTE_ID );
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 

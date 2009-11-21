@@ -8,12 +8,12 @@ import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -52,7 +52,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Obj
 
   @NotNull
   @Override
-  public FileName deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public FileName deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     nextTag( deserializeFrom, ELEMENT_BASE_NAME );
     BaseName baseName = baseNameSerializer.deserialize( deserializeFrom, context );
 

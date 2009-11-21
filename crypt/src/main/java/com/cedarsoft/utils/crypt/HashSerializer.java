@@ -3,12 +3,12 @@ package com.cedarsoft.utils.crypt;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -33,7 +33,7 @@ public class HashSerializer extends AbstractStaxMateSerializer<Hash, Object> {
 
   @NotNull
   @Override
-  public Hash deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public Hash deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     String algorithm = deserializeFrom.getAttributeValue( null, ATTRIBUTE_ALGORITHM );
     String valueAsHex = getText( deserializeFrom );
 

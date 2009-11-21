@@ -1,7 +1,7 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.AssertUtils;
-import org.codehaus.stax2.XMLStreamReader2;
+
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.SMOutputFactory;
 import org.codehaus.staxmate.out.SMOutputDocument;
@@ -111,7 +111,8 @@ public class StaxTest {
   @Test
   public void testStaxMateRead() throws XMLStreamException {
     SMInputFactory smInputFactory = new SMInputFactory( XMLInputFactory.newInstance() );
-    XMLStreamReader2 reader = smInputFactory.createStax2Reader( new StringReader( CONTENT_SAMPLE ) );
+//    XMLStreamReader reader = smInputFactory.createStax2Reader( new StringReader( CONTENT_SAMPLE ) );
+    XMLStreamReader reader = smInputFactory.getStaxFactory().createXMLStreamReader( new StringReader( CONTENT_SAMPLE ) );
 
     assertEquals( reader.nextTag(), XMLStreamReader.START_ELEMENT );
     assertEquals( reader.getLocalName(), "fileType" );

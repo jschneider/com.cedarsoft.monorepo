@@ -2,13 +2,13 @@ package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.SerializingStrategySupport;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,7 +49,7 @@ public class AbstractDelegatingStaxMateSerializer<T, C> extends AbstractStaxMate
 
   @Override
   @NotNull
-  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable C context ) throws IOException, XMLStreamException {
+  public T deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable C context ) throws IOException, XMLStreamException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 
     StaxMateSerializingStrategy<? extends T> strategy = serializingStrategySupport.findStrategy( type );

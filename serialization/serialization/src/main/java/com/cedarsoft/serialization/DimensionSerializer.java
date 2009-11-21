@@ -3,13 +3,13 @@ package com.cedarsoft.serialization;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.awt.Dimension;
 import java.io.IOException;
 
@@ -34,7 +34,7 @@ public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension, O
 
   @Override
   @NotNull
-  public Dimension deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
+  public Dimension deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     String[] parts = getText( deserializeFrom ).split( SEPARATOR );
 
     return new Dimension( Integer.parseInt( parts[0] ), Integer.parseInt( parts[1] ) );

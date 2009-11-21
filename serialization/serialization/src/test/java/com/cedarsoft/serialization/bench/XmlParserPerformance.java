@@ -5,13 +5,10 @@ import org.codehaus.staxmate.SMInputFactory;
 import org.jdom.input.SAXBuilder;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
 
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.StringReader;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +65,7 @@ public class XmlParserPerformance {
 --> 638
 --> 500
   */
+
   public void benchJdom() {
     runBenchmark( new Runnable() {
       @Override
@@ -137,6 +135,7 @@ public class XmlParserPerformance {
 --> 1764
 --> 1693
    */
+
   public void benchStax() {
     runBenchmark( new Runnable() {
       @Override
@@ -180,7 +179,7 @@ public class XmlParserPerformance {
       }
     }, 4 );
   }
-  
+
   public void benchStaxMate() {
     runBenchmark( new Runnable() {
       @Override
@@ -190,7 +189,7 @@ public class XmlParserPerformance {
 
 
           for ( int i = 0; i < 100000; i++ ) {
-            XMLStreamReader parser = inf.createStax2Reader( new StringReader( CONTENT_SAMPLE ) );
+            XMLStreamReader parser = inf.getStaxFactory().createXMLStreamReader( new StringReader( CONTENT_SAMPLE ) );
 
             assertEquals( parser.nextTag(), XMLStreamReader.START_ELEMENT );
             assertEquals( parser.getLocalName(), "fileType" );

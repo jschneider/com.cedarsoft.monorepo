@@ -4,11 +4,11 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -28,7 +28,7 @@ public class BaseNameSerializer extends AbstractStaxMateSerializer<BaseName, Obj
 
   @NotNull
   @Override
-  public BaseName deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public BaseName deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     return new BaseName( getText( deserializeFrom ) );
   }
 }

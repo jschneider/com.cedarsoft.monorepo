@@ -7,13 +7,13 @@ import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import com.cedarsoft.utils.XmlCommons;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<Strin
 
       @Override
       @NotNull
-      public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
+      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
         deserializeFrom.next();
         String text = deserializeFrom.getText();
         closeTag( deserializeFrom );

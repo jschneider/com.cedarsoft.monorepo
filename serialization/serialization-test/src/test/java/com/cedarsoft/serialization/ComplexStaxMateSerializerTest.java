@@ -5,12 +5,12 @@ import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 import static org.testng.Assert.*;
@@ -32,7 +32,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
 
       @Override
       @NotNull
-      public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws XMLStreamException {
+      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws XMLStreamException {
         deserializeFrom.next();
         String text = deserializeFrom.getText();
         closeTag( deserializeFrom );
@@ -52,7 +52,7 @@ public class ComplexStaxMateSerializerTest extends AbstractStaxMateSerializerTes
 
       @Override
       @NotNull
-      public String deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
         nextTag( deserializeFrom, "sub" );
         String string = stringSerializer.deserialize( deserializeFrom, context );
 

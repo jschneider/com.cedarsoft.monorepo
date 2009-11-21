@@ -9,7 +9,6 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
 import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -18,6 +17,7 @@ import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -41,7 +41,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
       @Override
       @NotNull
-      public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public Integer deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 1;
       }
@@ -57,7 +57,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
       @Override
       @NotNull
-      public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public Double deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 2.0;
       }

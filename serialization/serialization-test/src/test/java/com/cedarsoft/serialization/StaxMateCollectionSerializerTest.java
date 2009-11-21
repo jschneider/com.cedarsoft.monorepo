@@ -4,12 +4,12 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,14 +39,14 @@ public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<
 
       @Override
       @NotNull
-      public List<String> deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws XMLStreamException, IOException {
+      public List<String> deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Lookup context ) throws XMLStreamException, IOException {
         final List<String> strings = new ArrayList<String>();
 
         final boolean[] called = {false};
 
         visitChildren( deserializeFrom, new CB() {
           @Override
-          public void tagEntered( @NotNull XMLStreamReader2 deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException {
+          public void tagEntered( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException {
             if ( tagName.equals( "description" ) ) {
               assertEquals( getText( deserializeFrom ), "descr" );
               called[0] = true;

@@ -4,7 +4,6 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.AbstractSerializer;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputContainer;
 import org.codehaus.staxmate.out.SMOutputDocument;
 import org.codehaus.staxmate.out.SMOutputElement;
@@ -22,7 +21,7 @@ import java.io.OutputStream;
  * @param <T> the type
  * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerializer<T, C, SMOutputElement, XMLStreamReader2, XMLStreamException> {
+public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerializer<T, C, SMOutputElement, XMLStreamReader, XMLStreamException> {
   protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     super( defaultElementName, formatVersionRange );
   }
@@ -56,7 +55,7 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerialize
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException {
     try {
-      XMLStreamReader2 reader = StaxSupport.getSmInputFactory().createStax2Reader( in );
+      XMLStreamReader reader = StaxSupport.getSmInputFactory().getStaxFactory().createXMLStreamReader( in );
       Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
       if ( !getFormatVersionRange().contains( version ) ) {
         throw new VersionMismatchException( getFormatVersion(), version );
@@ -69,7 +68,7 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerialize
         throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">" );
       }
 
-      if ( reader.next() != XMLStreamReader2.END_DOCUMENT ) {
+      if ( reader.next() != XMLStreamReader.END_DOCUMENT ) {
         throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">" );
       }
 
@@ -81,7 +80,7 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerialize
 
   @NotNull
   @NonNls
-  protected String getProcessingInstructionData( @NotNull XMLStreamReader2 reader, @NotNull @NonNls String piTarget ) throws XMLStreamException {
+  protected String getProcessingInstructionData( @NotNull XMLStreamReader reader, @NotNull @NonNls String piTarget ) throws XMLStreamException {
     int result = reader.next();
     if ( result != XMLStreamReader.PROCESSING_INSTRUCTION ) {
       throw new IllegalArgumentException( "No processing instruction found. Was <" + result + ">" );
@@ -155,7 +154,7 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerialize
    * @throws XMLStreamException
    * @throws IOException
    */
-  protected void visitChildren( @NotNull XMLStreamReader2 streamReader, @NotNull CB callback ) throws XMLStreamException, IOException {
+  protected void visitChildren( @NotNull XMLStreamReader streamReader, @NotNull CB callback ) throws XMLStreamException, IOException {
     while ( streamReader.nextTag() != XMLStreamReader.END_ELEMENT ) {
       String tagName = streamReader.getName().getLocalPart();
       callback.tagEntered( streamReader, tagName );
@@ -172,6 +171,6 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerialize
      * @throws XMLStreamException
      * @throws IOException
      */
-    void tagEntered( @NotNull XMLStreamReader2 deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException;
+    void tagEntered( @NotNull XMLStreamReader deserializeFrom, @NotNull @NonNls String tagName ) throws XMLStreamException, IOException;
   }
 }

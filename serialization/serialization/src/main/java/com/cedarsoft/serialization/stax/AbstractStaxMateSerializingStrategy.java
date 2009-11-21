@@ -1,12 +1,12 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.VersionRange;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
@@ -53,7 +53,7 @@ public abstract class AbstractStaxMateSerializingStrategy<T, C> extends Abstract
 
   @Override
   @NotNull
-  public T deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
+  public T deserialize( @NotNull @NonNls XMLStreamReader deserializeFrom ) throws IOException {
     try {
       return deserialize( deserializeFrom, null );
     } catch ( XMLStreamException e ) {

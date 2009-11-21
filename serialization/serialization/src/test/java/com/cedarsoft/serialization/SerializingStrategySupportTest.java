@@ -1,14 +1,13 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
 
+import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -51,7 +50,7 @@ public class SerializingStrategySupportTest {
 
     @Override
     @NotNull
-    public String deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
+    public String deserialize( @NotNull @NonNls XMLStreamReader deserializeFrom ) throws IOException {
       throw new UnsupportedOperationException();
     }
   }
