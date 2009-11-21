@@ -80,7 +80,7 @@ public class JdomSerializationTest {
     }
   }
 
-  public static class MySerializer extends AbstractJDomSerializer<Integer> {
+  public static class MySerializer extends AbstractJDomSerializer<Integer, Lookup> {
     public MySerializer() {
       super( "my", new VersionRange( new Version( 1, 2, 1 ), new Version( 1, 2, 3 ) ) );
     }

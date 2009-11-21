@@ -3,8 +3,6 @@ package com.cedarsoft.serialization.stax;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputContainer;
@@ -22,20 +20,21 @@ import java.io.OutputStream;
 
 /**
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T, SMOutputElement, XMLStreamReader2, XMLStreamException> {
+public abstract class AbstractStaxMateSerializer<T, C> extends AbstractSerializer<T, C, SMOutputElement, XMLStreamReader2, XMLStreamException> {
   protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     super( defaultElementName, formatVersionRange );
   }
 
   @Override
-  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
+  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
     try {
       SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
       serializeFormatVersion( doc, getFormatVersion() );
 
       SMOutputElement root = doc.addElement( getDefaultElementName() );
-      serialize( root, object, context != null ? context : Lookups.emtyLookup() );
+      serialize( root, object, context );
       doc.closeRoot();
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
@@ -55,7 +54,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
 
   @Override
   @NotNull
-  public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException {
+  public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException {
     try {
       XMLStreamReader2 reader = StaxSupport.getSmInputFactory().createStax2Reader( in );
       Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
@@ -64,7 +63,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractSerializer<T
       }
 
       reader.nextTag();
-      T deserialized = deserialize( reader, context != null ? context : Lookups.emtyLookup() );
+      T deserialized = deserialize( reader, context );
 
       if ( !reader.isEndElement() ) {
         throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">" );

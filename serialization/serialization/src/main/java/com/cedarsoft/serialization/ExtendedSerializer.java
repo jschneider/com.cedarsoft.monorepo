@@ -1,6 +1,5 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -11,8 +10,9 @@ import java.io.OutputStream;
  * Serializer with several convenience methods.
  *
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public interface ExtendedSerializer<T> extends Serializer<T, Lookup> {
+public interface ExtendedSerializer<T, C> extends Serializer<T, C> {
   /**
    * Serializes the given object
    *

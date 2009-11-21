@@ -12,6 +12,7 @@ import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.testng.*;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
@@ -25,38 +26,38 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializerTest<Number> {
+public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializerTest<Number, Object> {
   private MySerializer serializer;
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    AbstractStaxMateSerializingStrategy<Integer, Lookup> intSerializer = new AbstractStaxMateSerializingStrategy<Integer, Lookup>( "int", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @Nullable Lookup context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public Integer deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 1;
       }
     };
 
-    AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", Double.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    AbstractStaxMateSerializingStrategy<Double, Lookup> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double, Lookup>( "double", Double.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @Nullable Lookup context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+      public Double deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 2.0;
       }
@@ -66,7 +67,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<Number> getSerializer() {
+  protected AbstractStaxMateSerializer<Number, Object> getSerializer() {
     return serializer;
   }
 
@@ -99,7 +100,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
   }
 
 
-  public static class MySerializer extends AbstractDelegatingStaxMateSerializer<Number> {
+  public static class MySerializer extends AbstractDelegatingStaxMateSerializer<Number, Object> {
     public MySerializer( @NotNull StaxMateSerializingStrategy<? extends Number>... serializingStrategies ) {
       super( "number", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ), serializingStrategies );
     }

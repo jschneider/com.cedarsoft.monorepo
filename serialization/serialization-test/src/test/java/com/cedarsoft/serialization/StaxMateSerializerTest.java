@@ -22,11 +22,11 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String> {
+public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String, Lookup> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<String> getSerializer() {
-    return new AbstractStaxMateSerializer<String>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
+  protected AbstractStaxMateSerializer<String, Lookup> getSerializer() {
+    return new AbstractStaxMateSerializer<String, Lookup>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {

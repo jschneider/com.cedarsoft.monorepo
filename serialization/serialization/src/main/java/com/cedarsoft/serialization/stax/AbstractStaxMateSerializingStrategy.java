@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookups;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
@@ -15,8 +14,9 @@ import java.io.IOException;
  * On deserialization every subclass has to *consume* everything including the end event for their tag.
  *
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractStaxMateSerializer<T> implements StaxMateSerializingStrategy<T> {
+public abstract class AbstractStaxMateSerializingStrategy<T, C> extends AbstractStaxMateSerializer<T, C> implements StaxMateSerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;
@@ -45,7 +45,7 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object ) throws IOException {
     try {
-      return serialize( serializeTo, object, Lookups.emtyLookup() );
+      return serialize( serializeTo, object, null );
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }
@@ -55,7 +55,7 @@ public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractSta
   @NotNull
   public T deserialize( @NotNull @NonNls XMLStreamReader2 deserializeFrom ) throws IOException {
     try {
-      return deserialize( deserializeFrom, Lookups.emtyLookup() );
+      return deserialize( deserializeFrom, null );
     } catch ( XMLStreamException e ) {
       throw new IOException( e );
     }

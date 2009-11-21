@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class LicenseSerializerTest extends AbstractStaxMateSerializerTest<License> {
+public class LicenseSerializerTest extends AbstractStaxMateSerializerTest<License, Object> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<License> getSerializer() {
+  protected AbstractStaxMateSerializer<License, Object> getSerializer() {
     return new LicenseSerializer();
   }
 

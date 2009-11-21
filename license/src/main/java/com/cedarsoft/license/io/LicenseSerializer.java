@@ -3,7 +3,6 @@ package com.cedarsoft.license.io;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.license.License;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
@@ -16,7 +15,7 @@ import java.io.IOException;
 /**
  *
  */
-public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<License> {
+public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<License, Object> {
   @NotNull
   @NonNls
   private static final String ATTRIBUTE_ID = "id";
@@ -30,7 +29,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull License object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull License object, @NotNull Object context ) throws IOException, XMLStreamException {
     serializeTo.addAttribute( ATTRIBUTE_ID, object.getId() );
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
     return serializeTo;
@@ -38,7 +37,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
 
   @NotNull
   @Override
-  public License deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public License deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     String id = deserializeFrom.getAttributeValue( null, ATTRIBUTE_ID );
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 

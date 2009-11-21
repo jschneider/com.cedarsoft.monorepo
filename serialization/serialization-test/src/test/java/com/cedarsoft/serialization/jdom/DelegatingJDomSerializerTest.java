@@ -16,12 +16,12 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Number> {
+public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Number, Object> {
   private MySerializer serializer;
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractJDomSerializingStrategy<Integer> intSerializer = new AbstractJDomSerializingStrategy<Integer>( "int", Integer.class, new VersionRange( new Version( 1, 0, 1 ), new Version( 1, 0, 1 ) ) ) {
+    AbstractJDomSerializingStrategy<Integer, Object> intSerializer = new AbstractJDomSerializingStrategy<Integer, Object>( "int", Integer.class, new VersionRange( new Version( 1, 0, 1 ), new Version( 1, 0, 1 ) ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
@@ -35,7 +35,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
         return 1;
       }
     };
-    AbstractJDomSerializingStrategy<Double> doubleSerializer = new AbstractJDomSerializingStrategy<Double>( "double", Double.class, new VersionRange( new Version( 1, 0, 2 ), new Version( 1, 0, 2 ) ) ) {
+    AbstractJDomSerializingStrategy<Double, Object> doubleSerializer = new AbstractJDomSerializingStrategy<Double, Object>( "double", Double.class, new VersionRange( new Version( 1, 0, 2 ), new Version( 1, 0, 2 ) ) ) {
       @Override
       @NotNull
       public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
@@ -60,7 +60,7 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
 
   @NotNull
   @Override
-  protected AbstractJDomSerializer<Number> getSerializer() {
+  protected AbstractJDomSerializer<Number, Object> getSerializer() {
     return serializer;
   }
 

@@ -1,12 +1,12 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.SerializingStrategySupport;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -15,8 +15,9 @@ import java.util.Collection;
 
 /**
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSerializer<T> {
+public class AbstractDelegatingStaxMateSerializer<T, C> extends AbstractStaxMateSerializer<T, C> {
   @NotNull
   @NonNls
   private static final String ATTRIBUTE_TYPE = "type";
@@ -34,7 +35,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   @Override
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @Nullable C context ) throws IOException {
     try {
       StaxMateSerializingStrategy<T> strategy = serializingStrategySupport.findStrategy( object );
       serializeTo.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
@@ -48,7 +49,7 @@ public class AbstractDelegatingStaxMateSerializer<T> extends AbstractStaxMateSer
 
   @Override
   @NotNull
-  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public T deserialize( @NotNull XMLStreamReader2 deserializeFrom, @Nullable C context ) throws IOException, XMLStreamException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 
     StaxMateSerializingStrategy<? extends T> strategy = serializingStrategySupport.findStrategy( type );

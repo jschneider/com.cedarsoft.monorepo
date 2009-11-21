@@ -4,7 +4,6 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
@@ -24,8 +23,8 @@ import static org.testng.Assert.*;
 public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<List<String>, Lookup> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<List<String>> getSerializer() {
-    return new AbstractStaxMateSerializer<List<String>>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+  protected AbstractStaxMateSerializer<List<String>, Lookup> getSerializer() {
+    return new AbstractStaxMateSerializer<List<String>, Lookup>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
       public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @NotNull Lookup context ) throws XMLStreamException {

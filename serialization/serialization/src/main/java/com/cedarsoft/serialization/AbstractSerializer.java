@@ -12,11 +12,12 @@ import java.io.OutputStream;
 
 /**
  * @param <T> the type
+ * @param <C> the type of the context
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
  * @param <E> the exception that might be thrown
  */
-public abstract class AbstractSerializer<T, S, D, E extends Throwable> implements PluggableSerializer<T, S, D, E> {
+public abstract class AbstractSerializer<T, C, S, D, E extends Throwable> implements PluggableSerializer<T, C, S, D, E> {
   @NotNull
   @NonNls
   private final String defaultElementName;
@@ -66,6 +67,7 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable> implement
 
   /**
    * Returns the default element name
+   *
    * @return the default element name
    */
   @NotNull

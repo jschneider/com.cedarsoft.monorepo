@@ -6,7 +6,6 @@ import com.cedarsoft.file.BaseName;
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;
 import org.codehaus.stax2.XMLStreamReader2;
@@ -20,7 +19,7 @@ import java.io.IOException;
 /**
  * Serializer for file names
  */
-public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
+public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Object> {
   @NotNull
   @NonNls
   public static final String ELEMENT_EXTENSION = "extension";
@@ -45,7 +44,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object, @NotNull Object context ) throws IOException, XMLStreamException {
     baseNameSerializer.serialize( serializeTo.addElement( ELEMENT_BASE_NAME ), object.getBaseName(), context );
     extensionSerializer.serialize( serializeTo.addElement( ELEMENT_EXTENSION ), object.getExtension(), context );
     return serializeTo;
@@ -53,7 +52,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
 
   @NotNull
   @Override
-  public FileName deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public FileName deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     nextTag( deserializeFrom, ELEMENT_BASE_NAME );
     BaseName baseName = baseNameSerializer.deserialize( deserializeFrom, context );
 

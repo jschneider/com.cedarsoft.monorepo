@@ -1,20 +1,18 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.file.Extension;
-
-import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.assertEquals;
+
+import static org.testng.Assert.*;
 
 /**
  *
  */
-public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Extension> {
+public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Extension, Object> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<Extension> getSerializer() {
+  protected AbstractStaxMateSerializer<Extension, Object> getSerializer() {
     return new ExtensionSerializer();
   }
 

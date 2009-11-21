@@ -2,7 +2,6 @@ package com.cedarsoft.file.io;
 
 import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.AbstractXmlSerializerTest;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.utils.XmlCommons;
@@ -16,10 +15,10 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class FileNameSerializerTest extends AbstractXmlSerializerTest<FileName, Lookup> {
+public class FileNameSerializerTest extends AbstractXmlSerializerTest<FileName, Object> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<FileName> getSerializer() {
+  protected AbstractStaxMateSerializer<FileName, Object> getSerializer() {
     return new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
   }
 

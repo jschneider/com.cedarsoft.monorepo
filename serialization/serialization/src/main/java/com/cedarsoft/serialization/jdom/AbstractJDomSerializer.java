@@ -3,8 +3,6 @@ package com.cedarsoft.serialization.jdom;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
-import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -28,8 +26,9 @@ import java.util.List;
  * Abstract serializer based on JDom
  *
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, Element, Element, IOException> {
+public abstract class AbstractJDomSerializer<T, C> extends AbstractSerializer<T, C, Element, Element, IOException> {
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
@@ -39,14 +38,14 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
   }
 
   @NotNull
-  public Element serializeToElement( @NotNull T object, @Nullable Lookup context ) throws IOException {
+  public Element serializeToElement( @NotNull T object, @Nullable C context ) throws IOException {
     Element element = new Element( getDefaultElementName() );
-    serialize( element, object, context != null ? context : Lookups.emtyLookup() );
+    serialize( element, object, context );
     return element;
   }
 
   @Override
-  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable Lookup context ) throws IOException {
+  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
     Document document = new Document();
     //Add the format version
     document.addContent( new ProcessingInstruction( PI_TARGET_FORMAT, getFormatVersion().toString() ) );
@@ -55,13 +54,13 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
     Element root = new Element( getDefaultElementName() );
     document.setRootElement( root );
 
-    serialize( root, object, context != null ? context : Lookups.emtyLookup() );
+    serialize( root, object, context );
     new XMLOutputter( Format.getPrettyFormat().setLineSeparator( LINE_SEPARATOR ) ).output( document, out );
   }
 
   @Override
   @NotNull
-  public T deserialize( @NotNull InputStream in, @Nullable Lookup context ) throws IOException, VersionMismatchException {
+  public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException, VersionMismatchException {
     try {
       Document document = new SAXBuilder().build( in );
 
@@ -71,7 +70,7 @@ public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, El
 
       Version.verifyMatch( getFormatVersion(), formatVersion );
 
-      return deserialize( document.getRootElement(), context != null ? context : Lookups.emtyLookup() );
+      return deserialize( document.getRootElement(), context );
     } catch ( JDOMException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
     }

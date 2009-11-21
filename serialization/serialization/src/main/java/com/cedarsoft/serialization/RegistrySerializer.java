@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,11 +17,12 @@ import java.util.Set;
 
 /**
  * @param <T> the type
+ * @param <C> the type of the context
  * @param <R> the registry for the given type
  */
-public class RegistrySerializer<T, R extends Registry<T>> {
+public class RegistrySerializer<T, C, R extends Registry<T>> {
   @NotNull
-  private final ExtendedSerializer<T> serializer;
+  private final ExtendedSerializer<T, C> serializer;
   @NotNull
   private final SerializedObjectsAccess serializedObjectsAccess;
   @NotNull
@@ -38,7 +38,7 @@ public class RegistrySerializer<T, R extends Registry<T>> {
    * @param serializer              the serializer
    * @param idResolver              the id resolver
    */
-  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T> serializer, @NotNull IdResolver<T> idResolver ) {
+  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T, C> serializer, @NotNull IdResolver<T> idResolver ) {
     this( serializedObjectsAccess, serializer, idResolver, null );
   }
 
@@ -50,7 +50,7 @@ public class RegistrySerializer<T, R extends Registry<T>> {
    * @param idResolver              the id resolver
    * @param comparator              the (optional) comparator
    */
-  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T> serializer, @NotNull IdResolver<T> idResolver, @Nullable Comparator<T> comparator ) {
+  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T, C> serializer, @NotNull IdResolver<T> idResolver, @Nullable Comparator<T> comparator ) {
     this.serializer = serializer;
     this.serializedObjectsAccess = serializedObjectsAccess;
     this.idResolver = idResolver;
@@ -127,7 +127,7 @@ public class RegistrySerializer<T, R extends Registry<T>> {
   }
 
   @NotNull
-  public ExtendedSerializer<T> getSerializer() {
+  public ExtendedSerializer<T, C> getSerializer() {
     return serializer;
   }
 

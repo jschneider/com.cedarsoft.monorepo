@@ -9,6 +9,7 @@ import com.cedarsoft.utils.Registry;
 import com.cedarsoft.utils.StillContainedException;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 
 import java.io.IOException;
@@ -22,23 +23,23 @@ import static org.testng.Assert.*;
  *
  */
 public class RegistrySerializerTest {
-  private RegistrySerializer<String, Registry<String>> serializer;
+  private RegistrySerializer<String, Lookup, Registry<String>> serializer;
   private SerializedObjectsAccess access;
 
   @BeforeMethod
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
-    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    serializer = new RegistrySerializer<String, Lookup, Registry<String>>( access, new AbstractJDomSerializer<String, Lookup>( "text", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public Element serialize( @NotNull Element serializeTo, @NotNull String object, @NotNull Lookup context ) {
+      public Element serialize( @NotNull Element serializeTo, @NotNull String object, @Nullable Lookup context ) {
         serializeTo.setText( object );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public String deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) {
+      public String deserialize( @NotNull Element deserializeFrom, @Nullable Lookup context ) {
         return deserializeFrom.getTextNormalize();
       }
     }, new RegistrySerializer.IdResolver<String>() {

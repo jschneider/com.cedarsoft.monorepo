@@ -2,7 +2,6 @@ package com.cedarsoft.app;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.VersionSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;
@@ -17,7 +16,7 @@ import java.io.IOException;
 /**
  *
  */
-public class ApplicationSerializer extends AbstractStaxMateSerializer<Application> {
+public class ApplicationSerializer extends AbstractStaxMateSerializer<Application, Object> {
   @NotNull
   @NonNls
   private static final String ELEMENT_VERSION = "version";
@@ -38,7 +37,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Override
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @NotNull Object context ) throws IOException, XMLStreamException {
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
 
     SMOutputElement versionElement = serializeTo.addElement( ELEMENT_VERSION );
@@ -49,7 +48,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Override
   @NotNull
-  public Application deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Lookup context ) throws IOException, XMLStreamException {
+  public Application deserialize( @NotNull XMLStreamReader2 deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 
     nextTag( deserializeFrom, ELEMENT_VERSION );

@@ -1,17 +1,18 @@
 package com.cedarsoft.serialization.jdom;
 
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
 /**
  * @param <T> the type
+ * @param <C> the type of the context
  */
-public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSerializer<T> implements JDomSerializingStrategy<T> {
+public abstract class AbstractJDomSerializingStrategy<T, C> extends AbstractJDomSerializer<T, C> implements JDomSerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;
@@ -39,14 +40,14 @@ public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSer
 
   @Override
   @NotNull
-  public Element serialize( @NotNull Element serializeTo, @NotNull T object, @NotNull Lookup context ) throws IOException {
+  public Element serialize( @NotNull Element serializeTo, @NotNull T object, @Nullable C context ) throws IOException {
     serialize( serializeTo, object );
     return serializeTo;
   }
 
   @Override
   @NotNull
-  public T deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException {
+  public T deserialize( @NotNull Element deserializeFrom, @Nullable Object context ) throws IOException {
     return deserialize( deserializeFrom );
   }
 }
