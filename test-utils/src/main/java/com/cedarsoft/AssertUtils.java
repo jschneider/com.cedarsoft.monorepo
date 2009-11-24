@@ -1,24 +1,16 @@
 package com.cedarsoft;
 
-import com.cedarsoft.utils.XmlCommons;
+import com.cedarsoft.xml.XmlCommons;
 import junit.framework.AssertionFailedError;
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.NodeTest;
-import org.custommonkey.xmlunit.NodeTester;
-import org.custommonkey.xmlunit.Validator;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.custommonkey.xmlunit.exceptions.ConfigurationException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import static org.testng.Assert.*;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 

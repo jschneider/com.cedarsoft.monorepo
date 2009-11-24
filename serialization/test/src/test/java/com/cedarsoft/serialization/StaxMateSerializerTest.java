@@ -5,7 +5,7 @@ import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
-import com.cedarsoft.utils.XmlCommons;
+import com.cedarsoft.xml.XmlCommons;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;

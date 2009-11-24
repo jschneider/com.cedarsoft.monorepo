@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.zip;
 
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;

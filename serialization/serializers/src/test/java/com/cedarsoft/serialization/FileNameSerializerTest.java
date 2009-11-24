@@ -2,7 +2,7 @@ package com.cedarsoft.serialization;
 
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
-import com.cedarsoft.utils.XmlCommons;
+import com.cedarsoft.xml.XmlCommons;
 import org.jetbrains.annotations.NotNull;
 import org.xml.sax.SAXException;
 
