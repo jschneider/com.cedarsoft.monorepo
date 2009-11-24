@@ -28,13 +28,11 @@
     <dependency>
       <groupId>org.codehaus.staxmate</groupId>
       <artifactId>staxmate</artifactId>
-      <optional>true</optional>
     </dependency>
 
     <dependency>
       <groupId>org.codehaus.woodstox</groupId>
       <artifactId>woodstox-core-asl</artifactId>
-      <optional>true</optional>
     </dependency>
 
     <dependency>

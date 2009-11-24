@@ -16,6 +16,16 @@
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>serialization</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.codehaus.staxmate</groupId>
+          <artifactId>staxmate</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.codehaus.woodstox</groupId>
+          <artifactId>woodstox-core-asl</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
