@@ -2,8 +2,8 @@ package com.cedarsoft.serialization;
 
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
-import com.cedarsoft.utils.crypt.Algorithm;
-import com.cedarsoft.utils.crypt.Hash;
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
 import org.jetbrains.annotations.NotNull;
 
 /**

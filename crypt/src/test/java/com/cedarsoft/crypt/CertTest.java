@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.crypt;
 
 import org.apache.commons.codec.binary.Base64;
 import static org.testng.Assert.*;

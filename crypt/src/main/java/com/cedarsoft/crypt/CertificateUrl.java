@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.crypt;
 
 import com.google.inject.BindingAnnotation;
 
@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER} )
 @BindingAnnotation
-public @interface PrivateKeyUrl {
+public @interface CertificateUrl {
 }

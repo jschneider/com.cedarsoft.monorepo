@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.crypt;
 
 import com.google.inject.Inject;
 import org.apache.commons.io.IOUtils;
@@ -103,15 +103,15 @@ public class X509Support {
   }
 
   @NotNull
-  public com.cedarsoft.utils.crypt.Signature sign( @NotNull byte[] plainText ) throws GeneralSecurityException {
+  public com.cedarsoft.crypt.Signature sign( @NotNull byte[] plainText ) throws GeneralSecurityException {
     Signature signature = Signature.getInstance( SHA_256_WITH_RSA );
     signature.initSign( getPrivateKey() );
 
     signature.update( plainText );
-    return new com.cedarsoft.utils.crypt.Signature( signature.sign() );
+    return new com.cedarsoft.crypt.Signature( signature.sign() );
   }
 
-  public boolean verifySignature( @NotNull byte[] plainText, @NotNull com.cedarsoft.utils.crypt.Signature signature ) throws GeneralSecurityException {
+  public boolean verifySignature( @NotNull byte[] plainText, @NotNull com.cedarsoft.crypt.Signature signature ) throws GeneralSecurityException {
     Signature sign = Signature.getInstance( SHA_256_WITH_RSA );
     sign.initVerify( certificate );
     sign.update( plainText );

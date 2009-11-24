@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.crypt;
 
 import org.jetbrains.annotations.NotNull;
 

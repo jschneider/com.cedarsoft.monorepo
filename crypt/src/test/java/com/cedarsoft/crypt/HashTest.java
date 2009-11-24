@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.crypt;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.*;

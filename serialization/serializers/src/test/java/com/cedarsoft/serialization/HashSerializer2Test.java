@@ -1,8 +1,8 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.AssertUtils;
-import com.cedarsoft.utils.crypt.Algorithm;
-import com.cedarsoft.utils.crypt.Hash;
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
 import org.testng.*;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;

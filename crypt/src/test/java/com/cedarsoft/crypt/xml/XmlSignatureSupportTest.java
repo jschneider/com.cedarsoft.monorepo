@@ -1,6 +1,6 @@
-package com.cedarsoft.utils.crypt.xml;
+package com.cedarsoft.crypt.xml;
 
-import com.cedarsoft.utils.crypt.X509Support;
+import com.cedarsoft.crypt.X509Support;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 import org.w3c.dom.Document;
