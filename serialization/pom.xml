@@ -16,6 +16,8 @@
   <modules>
     <module>serialization</module>
     <module>serialization-test</module>
+    <module>serialization-stax-test</module>
+    <module>performance-test</module>
   </modules>
 
 </project>

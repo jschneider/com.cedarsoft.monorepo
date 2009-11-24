@@ -10,10 +10,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * @param <T> the type
@@ -29,7 +27,7 @@ public abstract class AbstractStaxBasedSerializer<T, C, S> extends AbstractSeria
   @NotNull
   public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException {
     try {
-      XMLStreamReader reader = StaxSupport.getSmInputFactory().getStaxFactory().createXMLStreamReader( in );
+      XMLStreamReader reader = StaxSupport.getXmlInputFactory().createXMLStreamReader( in );
       Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
       if ( !getFormatVersionRange().contains( version ) ) {
         throw new VersionMismatchException( getFormatVersion(), version );

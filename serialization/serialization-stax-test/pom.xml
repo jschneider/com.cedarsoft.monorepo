@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.cedarsoft.commons</groupId>
+    <artifactId>serialization-parent</artifactId>
+    <version>1.6.3-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cedarsoft.commons</groupId>
+  <artifactId>serialization-stax-test</artifactId>
+  <name>Serialization Stax Tests</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>serialization</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>serialization-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>xml-commons</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+</project>

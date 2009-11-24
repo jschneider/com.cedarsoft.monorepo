@@ -25,7 +25,7 @@ public abstract class AbstractStaxMateSerializer<T, C> extends AbstractStaxBased
   @Override
   public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
     try {
-      SMOutputDocument doc = StaxSupport.getSmOutputFactory().createOutputDocument( out );
+      SMOutputDocument doc = StaxMateSupport.getSmOutputFactory().createOutputDocument( out );
       serializeFormatVersion( doc, getFormatVersion() );
 
       SMOutputElement root = doc.addElement( getDefaultElementName() );
