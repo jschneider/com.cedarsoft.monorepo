@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.mail;
+package com.cedarsoft.mail;
 
 import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
