@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.collection;
 
 import org.jetbrains.annotations.NotNull;
 
