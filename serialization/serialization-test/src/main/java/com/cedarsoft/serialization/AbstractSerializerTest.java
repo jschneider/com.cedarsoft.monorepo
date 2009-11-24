@@ -57,6 +57,14 @@ public abstract class AbstractSerializerTest<T, C> {
   }
 
   /**
+   * Returns the serializer
+   *
+   * @return the serializer
+   */
+  @NotNull
+  protected abstract Serializer<T, C> getSerializer();
+
+  /**
    * Verifies the serialized object
    *
    * @param serialized the serialized object
@@ -64,14 +72,6 @@ public abstract class AbstractSerializerTest<T, C> {
    * @throws IOException
    */
   protected abstract void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException;
-
-  /**
-   * Returns the serializer
-   *
-   * @return the serializer
-   */
-  @NotNull
-  protected abstract Serializer<T, C> getSerializer();
 
   /**
    * Creates the object to serialize
