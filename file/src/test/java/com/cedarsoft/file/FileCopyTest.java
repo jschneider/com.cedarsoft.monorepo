@@ -1,6 +1,6 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.file;
 
-import com.cedarsoft.utils.io.FileCopyManager;
+import com.cedarsoft.file.FileCopyManager;
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
