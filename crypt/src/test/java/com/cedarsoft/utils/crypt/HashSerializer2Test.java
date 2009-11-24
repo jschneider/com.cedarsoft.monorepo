@@ -21,7 +21,7 @@ public class HashSerializer2Test {
 
   @Test
   public void testIt() throws IOException, SAXException {
-    byte[] serialized = serializer.serializeToByteArray( Hash.fromHex( Algorithm.MD5, "121212" ), null );
+    byte[] serialized = serializer.serializeToByteArray( Hash.fromHex( Algorithm.MD5, "121212" ) );
     AssertUtils.assertXMLEqual( new String( serialized ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<hash algorithm=\"MD5\">121212</hash>" );
 

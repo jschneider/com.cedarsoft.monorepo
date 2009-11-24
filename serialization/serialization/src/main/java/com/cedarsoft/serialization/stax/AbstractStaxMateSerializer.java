@@ -7,7 +7,6 @@ import org.codehaus.staxmate.out.SMOutputDocument;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -15,21 +14,20 @@ import java.io.OutputStream;
 
 /**
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializer<T, C> extends AbstractStaxBasedSerializer<T, C, SMOutputElement> {
+public abstract class AbstractStaxMateSerializer<T> extends AbstractStaxBasedSerializer<T, SMOutputElement> {
   protected AbstractStaxMateSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     super( defaultElementName, formatVersionRange );
   }
 
   @Override
-  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
+  public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
     try {
       SMOutputDocument doc = StaxMateSupport.getSmOutputFactory().createOutputDocument( out );
       serializeFormatVersion( doc, getFormatVersion() );
 
       SMOutputElement root = doc.addElement( getDefaultElementName() );
-      serialize( root, object, context );
+      serialize( root, object );
       doc.closeRoot();
     } catch ( XMLStreamException e ) {
       throw new IOException( e );

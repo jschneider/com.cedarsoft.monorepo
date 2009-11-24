@@ -6,7 +6,6 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -16,7 +15,7 @@ import java.io.IOException;
 /**
  *
  */
-public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension, Object> {
+public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension> {
   @NotNull
   @NonNls
   public static final String SEPARATOR = "x";
@@ -27,14 +26,14 @@ public class DimensionSerializer extends AbstractStaxMateSerializer<Dimension, O
 
   @Override
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Dimension object, @Nullable Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Dimension object ) throws IOException, XMLStreamException {
     serializeTo.addCharacters( object.width + SEPARATOR + object.height );
     return serializeTo;
   }
 
   @Override
   @NotNull
-  public Dimension deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
+  public Dimension deserialize( @NotNull XMLStreamReader deserializeFrom ) throws IOException, XMLStreamException {
     String[] parts = getText( deserializeFrom ).split( SEPARATOR );
 
     return new Dimension( Integer.parseInt( parts[0] ), Integer.parseInt( parts[1] ) );

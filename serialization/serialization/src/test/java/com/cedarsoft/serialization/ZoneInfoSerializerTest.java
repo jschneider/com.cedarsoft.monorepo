@@ -1,6 +1,5 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.serialization.ZoneInfoSerializer;
 import org.joda.time.DateTimeZone;
 
@@ -29,11 +28,11 @@ public class ZoneInfoSerializerTest {
     ZoneInfoSerializer serializer = new ZoneInfoSerializer();
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    serializer.serialize( zone, out, Lookups.emtyLookup() );
+    serializer.serialize( zone, out );
 
     assertEquals( out.toString(), zone.getID() );
 
-    DateTimeZone deserialized = serializer.deserialize( new ByteArrayInputStream( out.toByteArray() ), Lookups.emtyLookup() );
+    DateTimeZone deserialized = serializer.deserialize( new ByteArrayInputStream( out.toByteArray() ) );
     assertEquals( deserialized, zone );
   }
 }

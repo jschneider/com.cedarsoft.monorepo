@@ -6,9 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractJDomSerializingStrategy<T, C> extends AbstractJDomSerializer<T, C> implements JDomSerializingStrategy<T, C> {
+public abstract class AbstractJDomSerializingStrategy<T> extends AbstractJDomSerializer<T> implements JDomSerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;

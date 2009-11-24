@@ -11,9 +11,8 @@ import java.io.IOException;
  * Abstract base class for XML based serializers.
  *
  * @param <T> the type of the serialized object
- * @param <C> the context type
  */
-public abstract class AbstractXmlSerializerTest<T, C> extends AbstractSerializerTest<T, C> {
+public abstract class AbstractXmlSerializerTest<T> extends AbstractSerializerTest<T> {
   @Override
   protected void verifySerialized( @NotNull byte[] serialized ) throws SAXException, IOException {
     AssertUtils.assertXMLEqual( new String( serialized ), getExpectedSerialized() );

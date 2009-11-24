@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class HashSerializerTest extends AbstractStaxMateSerializerTest<Hash, Object> {
+public class HashSerializerTest extends AbstractStaxMateSerializerTest<Hash> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<Hash, Object> getSerializer() {
+  protected AbstractStaxMateSerializer<Hash> getSerializer() {
     return new HashSerializer();
   }
 

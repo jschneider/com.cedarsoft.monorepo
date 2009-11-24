@@ -4,7 +4,6 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -13,21 +12,20 @@ import java.io.OutputStream;
 
 /**
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractStaxSerializer<T, C> extends AbstractStaxBasedSerializer<T, C, XMLStreamWriter> {
+public abstract class AbstractStaxSerializer<T> extends AbstractStaxBasedSerializer<T, XMLStreamWriter> {
   protected AbstractStaxSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     super( defaultElementName, formatVersionRange );
   }
 
   @Override
-  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
+  public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
     try {
       XMLStreamWriter writer = StaxSupport.getXmlOutputFactory().createXMLStreamWriter( out );
       serializeFormatVersion( writer, getFormatVersion() );
 
       writer.writeStartElement( getDefaultElementName() );
-      serialize( writer, object, context );
+      serialize( writer, object );
       writer.writeEndElement();
 
       writer.close();

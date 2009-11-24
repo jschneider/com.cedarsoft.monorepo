@@ -11,7 +11,6 @@ import com.google.inject.Inject;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -20,7 +19,7 @@ import java.io.IOException;
 /**
  * Serializer for file names
  */
-public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Object> {
+public class FileNameSerializer extends AbstractStaxMateSerializer<FileName> {
   @NotNull
   @NonNls
   public static final String ELEMENT_EXTENSION = "extension";
@@ -45,20 +44,20 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Obj
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object, @Nullable Object context ) throws IOException, XMLStreamException {
-    baseNameSerializer.serialize( serializeTo.addElement( ELEMENT_BASE_NAME ), object.getBaseName(), context );
-    extensionSerializer.serialize( serializeTo.addElement( ELEMENT_EXTENSION ), object.getExtension(), context );
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object ) throws IOException, XMLStreamException {
+    baseNameSerializer.serialize( serializeTo.addElement( ELEMENT_BASE_NAME ), object.getBaseName() );
+    extensionSerializer.serialize( serializeTo.addElement( ELEMENT_EXTENSION ), object.getExtension() );
     return serializeTo;
   }
 
   @NotNull
   @Override
-  public FileName deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
+  public FileName deserialize( @NotNull XMLStreamReader deserializeFrom ) throws IOException, XMLStreamException {
     nextTag( deserializeFrom, ELEMENT_BASE_NAME );
-    BaseName baseName = baseNameSerializer.deserialize( deserializeFrom, context );
+    BaseName baseName = baseNameSerializer.deserialize( deserializeFrom );
 
     nextTag( deserializeFrom, ELEMENT_EXTENSION );
-    Extension extension = extensionSerializer.deserialize( deserializeFrom, context );
+    Extension extension = extensionSerializer.deserialize( deserializeFrom );
 
     closeTag( deserializeFrom );
 

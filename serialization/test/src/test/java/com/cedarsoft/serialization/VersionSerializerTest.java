@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class VersionSerializerTest extends AbstractStaxMateSerializerTest<Version, Object> {
+public class VersionSerializerTest extends AbstractStaxMateSerializerTest<Version> {
   @Override
   @NotNull
   protected VersionSerializer getSerializer() {

@@ -6,7 +6,6 @@ import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.AbstractSerializer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -15,17 +14,16 @@ import java.io.InputStream;
 
 /**
  * @param <T> the type
- * @param <C> the type of the context
  * @param <S> the object to serialize to
  */
-public abstract class AbstractStaxBasedSerializer<T, C, S> extends AbstractSerializer<T, C, S, XMLStreamReader, XMLStreamException> {
+public abstract class AbstractStaxBasedSerializer<T, S> extends AbstractSerializer<T, S, XMLStreamReader, XMLStreamException> {
   protected AbstractStaxBasedSerializer( @NotNull @NonNls String defaultElementName, @NotNull VersionRange formatVersionRange ) {
     super( defaultElementName, formatVersionRange );
   }
 
   @Override
   @NotNull
-  public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException {
+  public T deserialize( @NotNull InputStream in ) throws IOException {
     try {
       XMLStreamReader reader = StaxSupport.getXmlInputFactory().createXMLStreamReader( in );
       Version version = Version.parse( getProcessingInstructionData( reader, PI_TARGET_FORMAT ) );
@@ -34,7 +32,7 @@ public abstract class AbstractStaxBasedSerializer<T, C, S> extends AbstractSeria
       }
 
       reader.nextTag();
-      T deserialized = deserialize( reader, context );
+      T deserialized = deserialize( reader );
 
       if ( !reader.isEndElement() ) {
         throw new IllegalStateException( "Not consumed everything in <" + getClass().getName() + ">" );

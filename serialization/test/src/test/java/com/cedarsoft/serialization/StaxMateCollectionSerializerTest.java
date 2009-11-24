@@ -2,12 +2,10 @@ package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -21,14 +19,14 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<List<String>, Lookup> {
+public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<List<String>> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<List<String>, Lookup> getSerializer() {
-    return new AbstractStaxMateSerializer<List<String>, Lookup>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+  protected AbstractStaxMateSerializer<List<String>> getSerializer() {
+    return new AbstractStaxMateSerializer<List<String>>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @Nullable Lookup context ) throws XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object ) throws XMLStreamException {
         for ( String s : object ) {
           serializeTo.addElement( "string" ).addCharacters( s );
         }
@@ -40,7 +38,7 @@ public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<
 
       @Override
       @NotNull
-      public List<String> deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws XMLStreamException, IOException {
+      public List<String> deserialize( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException, IOException {
         final List<String> strings = new ArrayList<String>();
 
         final boolean[] called = {false};

@@ -3,13 +3,11 @@ package com.cedarsoft.serialization;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import com.cedarsoft.utils.XmlCommons;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -23,21 +21,21 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String, Object> {
+public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<String, Object> getSerializer() {
-    return new AbstractStaxMateSerializer<String, Object>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
+  protected AbstractStaxMateSerializer<String> getSerializer() {
+    return new AbstractStaxMateSerializer<String>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @Nullable Object context ) throws XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object ) throws XMLStreamException {
         serializeTo.addCharacters( object );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws XMLStreamException {
+      public String deserialize( @NotNull XMLStreamReader deserializeFrom ) throws XMLStreamException {
         deserializeFrom.next();
         String text = deserializeFrom.getText();
         closeTag( deserializeFrom );

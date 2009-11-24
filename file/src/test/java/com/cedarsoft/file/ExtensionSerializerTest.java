@@ -9,10 +9,10 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Extension, Object> {
+public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Extension> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<Extension, Object> getSerializer() {
+  protected AbstractStaxMateSerializer<Extension> getSerializer() {
     return new ExtensionSerializer();
   }
 

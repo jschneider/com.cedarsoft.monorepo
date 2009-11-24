@@ -1,23 +1,16 @@
 package com.cedarsoft.serialization.stax;
 
 import com.cedarsoft.VersionRange;
-import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
 
 /**
  * Attention:
  * On deserialization every subclass has to *consume* everything including the end event for their tag.
  *
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializingStrategy<T, C> extends AbstractStaxMateSerializer<T, C> implements StaxMateSerializingStrategy<T, C> {
+public abstract class AbstractStaxMateSerializingStrategy<T> extends AbstractStaxMateSerializer<T> implements StaxMateSerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;

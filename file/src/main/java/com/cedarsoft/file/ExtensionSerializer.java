@@ -6,7 +6,6 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -15,7 +14,7 @@ import java.io.IOException;
 /**
  *
  */
-public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension, Object> {
+public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension> {
   @NotNull
   @NonNls
   private static final String ATTRIBUTE_DELIMITER = "delimiter";
@@ -26,7 +25,7 @@ public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension, O
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Extension object, @Nullable Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Extension object ) throws IOException, XMLStreamException {
     serializeTo.addAttribute( ATTRIBUTE_DELIMITER, object.getDelimiter() );
     serializeTo.addCharacters( object.getExtension() );
     return serializeTo;
@@ -34,7 +33,7 @@ public class ExtensionSerializer extends AbstractStaxMateSerializer<Extension, O
 
   @NotNull
   @Override
-  public Extension deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
+  public Extension deserialize( @NotNull XMLStreamReader deserializeFrom ) throws IOException, XMLStreamException {
     String delimiter = deserializeFrom.getAttributeValue( null, ATTRIBUTE_DELIMITER );
 
     deserializeFrom.next();

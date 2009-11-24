@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 /**
  *
  */
-public class StaxTestSerializerTest extends AbstractXmlSerializerTest<Integer, Object> {
+public class StaxTestSerializerTest extends AbstractXmlSerializerTest<Integer> {
   @NotNull
   @Override
   protected String getExpectedSerialized() {
@@ -19,7 +19,7 @@ public class StaxTestSerializerTest extends AbstractXmlSerializerTest<Integer, O
 
   @NotNull
   @Override
-  protected Serializer<Integer, Object> getSerializer() {
+  protected Serializer<Integer> getSerializer() {
     return new StaxIntegerSerializer();
   }
 

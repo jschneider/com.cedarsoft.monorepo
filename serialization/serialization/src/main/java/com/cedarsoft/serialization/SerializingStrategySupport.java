@@ -12,13 +12,12 @@ import java.util.List;
 /**
  * @param <T> the type
  * @param <S> the serializing strategy type
- * @param <C> the type of the context
  */
-public class SerializingStrategySupport<T, C, S extends SerializingStrategy<? extends T, C, ?, ?, ?>> {
+public class SerializingStrategySupport<T, S extends SerializingStrategy<? extends T, ?, ?, ?>> {
   @NotNull
   private final List<S> strategies = new ArrayList<S>();
 
-  public SerializingStrategySupport( Collection<? extends SerializingStrategy<? extends T, C, ?, ?, ?>> strategies ) {
+  public SerializingStrategySupport( Collection<? extends SerializingStrategy<? extends T, ?, ?, ?>> strategies ) {
     this.strategies.addAll( ( Collection<? extends S> ) strategies );
   }
 

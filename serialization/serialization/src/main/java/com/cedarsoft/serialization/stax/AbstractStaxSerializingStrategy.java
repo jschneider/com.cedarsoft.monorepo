@@ -9,9 +9,8 @@ import org.jetbrains.annotations.NotNull;
  * On deserialization every subclass has to *consume* everything including the end event for their tag.
  *
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractStaxSerializingStrategy<T, C> extends AbstractStaxSerializer<T, C> implements StaxSerializingStrategy<T, C> {
+public abstract class AbstractStaxSerializingStrategy<T> extends AbstractStaxSerializer<T> implements StaxSerializingStrategy<T> {
   @NotNull
   @NonNls
   private final String id;

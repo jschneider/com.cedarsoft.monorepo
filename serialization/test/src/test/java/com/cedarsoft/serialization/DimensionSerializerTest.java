@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class DimensionSerializerTest extends AbstractStaxMateSerializerTest<Dimension, Object> {
+public class DimensionSerializerTest extends AbstractStaxMateSerializerTest<Dimension> {
   @NotNull
   @Override
   protected DimensionSerializer getSerializer() {

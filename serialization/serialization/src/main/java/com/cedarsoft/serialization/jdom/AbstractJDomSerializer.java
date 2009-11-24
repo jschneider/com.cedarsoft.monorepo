@@ -15,7 +15,6 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,9 +25,8 @@ import java.util.List;
  * Abstract serializer based on JDom
  *
  * @param <T> the type
- * @param <C> the type of the context
  */
-public abstract class AbstractJDomSerializer<T, C> extends AbstractSerializer<T, C, Element, Element, IOException> {
+public abstract class AbstractJDomSerializer<T> extends AbstractSerializer<T, Element, Element, IOException> {
   @NotNull
   @NonNls
   protected static final String LINE_SEPARATOR = "\n";
@@ -38,14 +36,14 @@ public abstract class AbstractJDomSerializer<T, C> extends AbstractSerializer<T,
   }
 
   @NotNull
-  public Element serializeToElement( @NotNull T object, @Nullable C context ) throws IOException {
+  public Element serializeToElement( @NotNull T object ) throws IOException {
     Element element = new Element( getDefaultElementName() );
-    serialize( element, object, context );
+    serialize( element, object );
     return element;
   }
 
   @Override
-  public void serialize( @NotNull T object, @NotNull OutputStream out, @Nullable C context ) throws IOException {
+  public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
     Document document = new Document();
     //Add the format version
     document.addContent( new ProcessingInstruction( PI_TARGET_FORMAT, getFormatVersion().toString() ) );
@@ -54,13 +52,13 @@ public abstract class AbstractJDomSerializer<T, C> extends AbstractSerializer<T,
     Element root = new Element( getDefaultElementName() );
     document.setRootElement( root );
 
-    serialize( root, object, context );
+    serialize( root, object );
     new XMLOutputter( Format.getPrettyFormat().setLineSeparator( LINE_SEPARATOR ) ).output( document, out );
   }
 
   @Override
   @NotNull
-  public T deserialize( @NotNull InputStream in, @Nullable C context ) throws IOException, VersionMismatchException {
+  public T deserialize( @NotNull InputStream in ) throws IOException, VersionMismatchException {
     try {
       Document document = new SAXBuilder().build( in );
 
@@ -70,7 +68,7 @@ public abstract class AbstractJDomSerializer<T, C> extends AbstractSerializer<T,
 
       Version.verifyMatch( getFormatVersion(), formatVersion );
 
-      return deserialize( document.getRootElement(), context );
+      return deserialize( document.getRootElement() );
     } catch ( JDOMException e ) {
       throw new IOException( "Could not parse stream due to " + e.getMessage(), e );
     }

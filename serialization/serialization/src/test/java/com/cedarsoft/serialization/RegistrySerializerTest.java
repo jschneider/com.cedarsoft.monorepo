@@ -2,14 +2,12 @@ package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.serialization.jdom.AbstractJDomSerializer;
 import com.cedarsoft.utils.DefaultRegistry;
 import com.cedarsoft.utils.Registry;
 import com.cedarsoft.utils.StillContainedException;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 
 import java.io.IOException;
@@ -23,23 +21,23 @@ import static org.testng.Assert.*;
  *
  */
 public class RegistrySerializerTest {
-  private RegistrySerializer<String, Lookup, Registry<String>> serializer;
+  private RegistrySerializer<String, Registry<String>> serializer;
   private SerializedObjectsAccess access;
 
   @BeforeMethod
   public void setup() {
     access = new InMemorySerializedObjectsAccess();
-    serializer = new RegistrySerializer<String, Lookup, Registry<String>>( access, new AbstractJDomSerializer<String, Lookup>( "text", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    serializer = new RegistrySerializer<String, Registry<String>>( access, new AbstractJDomSerializer<String>( "text", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public Element serialize( @NotNull Element serializeTo, @NotNull String object, @Nullable Lookup context ) {
+      public Element serialize( @NotNull Element serializeTo, @NotNull String object ) {
         serializeTo.setText( object );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public String deserialize( @NotNull Element deserializeFrom, @Nullable Lookup context ) {
+      public String deserialize( @NotNull Element deserializeFrom ) {
         return deserializeFrom.getTextNormalize();
       }
     }, new RegistrySerializer.IdResolver<String>() {
@@ -110,7 +108,7 @@ public class RegistrySerializerTest {
     assertEquals( ids.size(), 1 );
     assertTrue( ids.contains( "1" ) );
 
-    assertEquals( serializer.getSerializer().deserialize( access.getInputStream( "1" ), null ), "1" );
+    assertEquals( serializer.getSerializer().deserialize( access.getInputStream( "1" ) ), "1" );
   }
 
   private static class MyRegistryFactory implements RegistrySerializer.RegistryFactory<String, Registry<String>> {

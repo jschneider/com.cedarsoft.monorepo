@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class BaseNameSerializerTest extends AbstractStaxMateSerializerTest<BaseName, Object> {
+public class BaseNameSerializerTest extends AbstractStaxMateSerializerTest<BaseName> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<BaseName, Object> getSerializer() {
+  protected AbstractStaxMateSerializer<BaseName> getSerializer() {
     return new BaseNameSerializer();
   }
 

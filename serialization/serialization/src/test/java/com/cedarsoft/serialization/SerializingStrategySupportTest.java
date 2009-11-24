@@ -5,7 +5,6 @@ import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 
 import javax.xml.stream.XMLStreamReader;
@@ -23,18 +22,18 @@ import java.util.List;
 public class SerializingStrategySupportTest {
   @Test
   public void testGenerics() {
-    SerializingStrategySupport<String, Object, MyStrategy> support = new SerializingStrategySupport<String, Object, MyStrategy>( Arrays.asList( new MyStrategy() ) );
-    SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>> support2 = new SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>>( Arrays.asList( new MyStrategy() ) );
+    SerializingStrategySupport<String, MyStrategy> support = new SerializingStrategySupport<String, MyStrategy>( Arrays.asList( new MyStrategy() ) );
+    SerializingStrategySupport<String, StaxMateSerializingStrategy<String>> support2 = new SerializingStrategySupport<String, StaxMateSerializingStrategy<String>>( Arrays.asList( new MyStrategy() ) );
 
-    List<StaxMateSerializingStrategy<? extends String, Object>> strategies1 = Arrays.<StaxMateSerializingStrategy<? extends String, Object>>asList( new MyStrategy() );
+    List<StaxMateSerializingStrategy<? extends String>> strategies1 = Arrays.<StaxMateSerializingStrategy<? extends String>>asList( new MyStrategy() );
 
-    SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>> support5 = new SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>>( strategies1 );
+    SerializingStrategySupport<String, StaxMateSerializingStrategy<String>> support5 = new SerializingStrategySupport<String, StaxMateSerializingStrategy<String>>( strategies1 );
 
-    Collection<? extends StaxMateSerializingStrategy<? extends String, Object>> strategies = new ArrayList<StaxMateSerializingStrategy<? extends String, Object>>();
-    SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>> support3 = new SerializingStrategySupport<String, Object, StaxMateSerializingStrategy<String, Object>>( strategies );
+    Collection<? extends StaxMateSerializingStrategy<? extends String>> strategies = new ArrayList<StaxMateSerializingStrategy<? extends String>>();
+    SerializingStrategySupport<String, StaxMateSerializingStrategy<String>> support3 = new SerializingStrategySupport<String, StaxMateSerializingStrategy<String>>( strategies );
   }
 
-  private static class MyStrategy implements StaxMateSerializingStrategy<String, Object> {
+  private static class MyStrategy implements StaxMateSerializingStrategy<String> {
     @Override
     @NotNull
     public String getId() {
@@ -42,13 +41,13 @@ public class SerializingStrategySupportTest {
     }
 
     @Override
-    public void serialize( @NotNull String object, @NotNull OutputStream out, @Nullable Object context ) throws IOException {
+    public void serialize( @NotNull String object, @NotNull OutputStream out ) throws IOException {
       throw new UnsupportedOperationException();
     }
 
     @NotNull
     @Override
-    public String deserialize( @NotNull InputStream in, @Nullable Object context ) throws IOException {
+    public String deserialize( @NotNull InputStream in ) throws IOException {
       throw new UnsupportedOperationException();
     }
 
@@ -65,13 +64,13 @@ public class SerializingStrategySupportTest {
 
     @Override
     @NotNull
-    public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @Nullable Object context ) throws IOException {
+    public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object ) throws IOException {
       throw new UnsupportedOperationException();
     }
 
     @Override
     @NotNull
-    public String deserialize( @NotNull @NonNls XMLStreamReader deserializeFrom, Object context ) throws IOException {
+    public String deserialize( @NotNull @NonNls XMLStreamReader deserializeFrom ) throws IOException {
       throw new UnsupportedOperationException();
     }
   }

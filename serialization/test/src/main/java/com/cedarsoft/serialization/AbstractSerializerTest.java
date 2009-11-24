@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -15,45 +14,23 @@ import static org.testng.Assert.*;
  * Abstract class for serializer tests
  *
  * @param <T> the type of the serialized object
- * @param <C> the context type
  */
-public abstract class AbstractSerializerTest<T, C> {
+public abstract class AbstractSerializerTest<T> {
   @Test
   public void testSerializer() throws IOException, SAXException {
-    Serializer<T, C> serializer = getSerializer();
+    Serializer<T> serializer = getSerializer();
 
     T objectToSerialize = createObjectToSerialize();
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    serializer.serialize( objectToSerialize, out, createSerializeContext() );
+    serializer.serialize( objectToSerialize, out );
 
     byte[] serialized = out.toByteArray();
     verifySerialized( serialized );
 
-    T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ), createDeserializeContext() );
+    T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
 
     verifyDeserialized( deserialized );
-  }
-
-  /**
-   * Creates the context to serialize
-   *
-   * @return the context to serialize
-   */
-  @Nullable
-  protected C createSerializeContext() {
-    return null;
-  }
-
-
-  /**
-   * Creates the context to deserialize
-   *
-   * @return the context to deserialize
-   */
-  @Nullable
-  protected C createDeserializeContext() {
-    return null;
   }
 
   /**
@@ -62,7 +39,7 @@ public abstract class AbstractSerializerTest<T, C> {
    * @return the serializer
    */
   @NotNull
-  protected abstract Serializer<T, C> getSerializer();
+  protected abstract Serializer<T> getSerializer();
 
   /**
    * Verifies the serialized object

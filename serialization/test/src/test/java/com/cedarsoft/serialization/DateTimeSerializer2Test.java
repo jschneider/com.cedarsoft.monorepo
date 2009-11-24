@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 /**
  *
  */
-public class DateTimeSerializer2Test extends AbstractStaxMateSerializerTest<DateTime, Object> {
+public class DateTimeSerializer2Test extends AbstractStaxMateSerializerTest<DateTime> {
   @NotNull
   protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
 
@@ -30,7 +30,7 @@ public class DateTimeSerializer2Test extends AbstractStaxMateSerializerTest<Date
 
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<DateTime, Object> getSerializer() {
+  protected AbstractStaxMateSerializer<DateTime> getSerializer() {
     return new DateTimeSerializer();
   }
 

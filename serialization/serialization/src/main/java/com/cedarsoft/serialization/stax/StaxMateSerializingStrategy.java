@@ -8,7 +8,6 @@ import javax.xml.stream.XMLStreamReader;
 
 /**
  * @param <T> the type this strategy serializes
- * @param <C> the type of the context
  */
-public interface StaxMateSerializingStrategy<T, C> extends SerializingStrategy<T, C, SMOutputElement, XMLStreamReader, XMLStreamException> {
+public interface StaxMateSerializingStrategy<T> extends SerializingStrategy<T, SMOutputElement, XMLStreamReader, XMLStreamException> {
 }

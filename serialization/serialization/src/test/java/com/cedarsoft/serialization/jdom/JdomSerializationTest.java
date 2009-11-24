@@ -3,10 +3,8 @@ package com.cedarsoft.serialization.jdom;
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionMismatchException;
 import com.cedarsoft.VersionRange;
-import com.cedarsoft.lookup.Lookup;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 
 import java.io.ByteArrayInputStream;
@@ -40,7 +38,7 @@ public class JdomSerializationTest {
       "<?format 1.2.3?>\n" +
       "<my>7</my>" ).getBytes() );
 
-    assertEquals( serializer.deserialize( in, null ), new Integer( 7 ) );
+    assertEquals( serializer.deserialize( in ), new Integer( 7 ) );
   }
 
   @Test
@@ -50,7 +48,7 @@ public class JdomSerializationTest {
       "<my>7</my>" ).getBytes() );
 
     try {
-      serializer.deserialize( in, null );
+      serializer.deserialize( in );
       fail( "Where is the Exception" );
     } catch ( VersionMismatchException ignore ) {
     }
@@ -63,7 +61,7 @@ public class JdomSerializationTest {
       "<my>7</my>" ).getBytes() );
 
     try {
-      serializer.deserialize( in, null );
+      serializer.deserialize( in );
       fail( "Where is the Exception" );
     } catch ( VersionMismatchException ignore ) {
     }
@@ -75,27 +73,27 @@ public class JdomSerializationTest {
       "<my>7</my>" ).getBytes() );
 
     try {
-      serializer.deserialize( in, null );
+      serializer.deserialize( in );
       fail( "Where is the Exception" );
     } catch ( IllegalStateException ignore ) {
     }
   }
 
-  public static class MySerializer extends AbstractJDomSerializer<Integer, Lookup> {
+  public static class MySerializer extends AbstractJDomSerializer<Integer> {
     public MySerializer() {
       super( "my", new VersionRange( new Version( 1, 2, 1 ), new Version( 1, 2, 3 ) ) );
     }
 
     @NotNull
     @Override
-    public Element serialize( @NotNull Element serializeTo, @NotNull Integer object, @Nullable Lookup context ) throws IOException, IOException {
+    public Element serialize( @NotNull Element serializeTo, @NotNull Integer object ) throws IOException, IOException {
       serializeTo.setText( String.valueOf( object ) );
       return serializeTo;
     }
 
     @NotNull
     @Override
-    public Integer deserialize( @NotNull Element deserializeFrom, @Nullable Lookup context ) throws IOException, IOException {
+    public Integer deserialize( @NotNull Element deserializeFrom ) throws IOException, IOException {
       return Integer.parseInt( deserializeFrom.getText() );
     }
   }

@@ -8,7 +8,6 @@ import com.google.inject.Inject;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -17,7 +16,7 @@ import java.io.IOException;
 /**
  *
  */
-public class ApplicationSerializer extends AbstractStaxMateSerializer<Application, Object> {
+public class ApplicationSerializer extends AbstractStaxMateSerializer<Application> {
   @NotNull
   @NonNls
   private static final String ELEMENT_VERSION = "version";
@@ -38,22 +37,22 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Override
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @Nullable Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object ) throws IOException, XMLStreamException {
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
 
     SMOutputElement versionElement = serializeTo.addElement( ELEMENT_VERSION );
-    versionSerializer.serialize( versionElement, object.getVersion(), context );
+    versionSerializer.serialize( versionElement, object.getVersion() );
 
     return serializeTo;
   }
 
   @Override
   @NotNull
-  public Application deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
+  public Application deserialize( @NotNull XMLStreamReader deserializeFrom ) throws IOException, XMLStreamException {
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 
     nextTag( deserializeFrom, ELEMENT_VERSION );
-    Version version = versionSerializer.deserialize( deserializeFrom, context );
+    Version version = versionSerializer.deserialize( deserializeFrom );
     closeTag( deserializeFrom );
 
     return new Application( name, version );

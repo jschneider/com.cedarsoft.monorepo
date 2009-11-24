@@ -15,10 +15,10 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class FileNameSerializerTest extends AbstractXmlSerializerTest<FileName, Object> {
+public class FileNameSerializerTest extends AbstractXmlSerializerTest<FileName> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<FileName, Object> getSerializer() {
+  protected AbstractStaxMateSerializer<FileName> getSerializer() {
     return new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
   }
 

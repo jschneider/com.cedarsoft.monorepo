@@ -7,7 +7,6 @@ import java.io.IOException;
 
 /**
  * @param <T> the type
- * @param <C> the type of the context
  */
-public interface JDomSerializingStrategy<T, C> extends SerializingStrategy<T, C, Element, Element, IOException> {
+public interface JDomSerializingStrategy<T> extends SerializingStrategy<T, Element, Element, IOException> {
 }
