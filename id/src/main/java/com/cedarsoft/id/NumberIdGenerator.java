@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.id;
+package com.cedarsoft.id;
 
 /**
  * Helper class that offers support for id number generation
