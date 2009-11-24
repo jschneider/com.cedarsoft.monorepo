@@ -2,10 +2,10 @@ package com.cedarsoft.gdao.async;
 
 import com.cedarsoft.async.AsyncCallSupport;
 import com.cedarsoft.async.CallbackCaller;
+import com.cedarsoft.cache.Cache;
+import com.cedarsoft.cache.HashedCache;
 import com.cedarsoft.gdao.GenericService;
 import com.cedarsoft.gdao.GenericServiceManager;
-import com.cedarsoft.utils.Cache;
-import com.cedarsoft.utils.HashedCache;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.Override;

@@ -3,8 +3,8 @@ package com.cedarsoft.gdao.caching;
 import com.cedarsoft.gdao.GenericDao;
 import com.cedarsoft.gdao.GenericDaoManager;
 import com.cedarsoft.gdao.LockProvider;
-import com.cedarsoft.utils.Cache;
-import com.cedarsoft.utils.HashedCache;
+import com.cedarsoft.cache.Cache;
+import com.cedarsoft.cache.HashedCache;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

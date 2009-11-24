@@ -83,6 +83,16 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>registry</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>renderer</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>workflow</artifactId>
         <version>${pom.version}</version>
       </dependency>
@@ -159,6 +169,11 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>serialization</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons.serialization</groupId>
+        <artifactId>serializers</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
@@ -472,6 +487,8 @@
     <module>objectaccess</module>
     <module>presenter</module>
     <module>provider</module>
+    <module>renderer</module>
+    <module>registry</module>
     <module>repository</module>
     <module>rmi</module>
     <module>serialization</module>

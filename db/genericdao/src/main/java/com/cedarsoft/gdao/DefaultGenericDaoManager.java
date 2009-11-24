@@ -1,7 +1,7 @@
 package com.cedarsoft.gdao;
 
-import com.cedarsoft.utils.Cache;
-import com.cedarsoft.utils.HashedCache;
+import com.cedarsoft.cache.Cache;
+import com.cedarsoft.cache.HashedCache;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

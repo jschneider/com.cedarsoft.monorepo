@@ -1,7 +1,7 @@
 package com.cedarsoft;
 
-import com.cedarsoft.utils.ChangeListener;
-import com.cedarsoft.utils.ChangedEvent;
+import com.cedarsoft.ChangeListener;
+import com.cedarsoft.ChangedEvent;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

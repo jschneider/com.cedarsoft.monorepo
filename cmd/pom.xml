@@ -18,6 +18,10 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>commons</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>renderer</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

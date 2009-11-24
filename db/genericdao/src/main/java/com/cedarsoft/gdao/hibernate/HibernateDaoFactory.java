@@ -2,7 +2,7 @@ package com.cedarsoft.gdao.hibernate;
 
 import com.cedarsoft.gdao.DaoTypeDescriptor;
 import com.cedarsoft.gdao.GenericDao;
-import com.cedarsoft.utils.Cache;
+import com.cedarsoft.cache.Cache;
 import org.hibernate.SessionFactory;
 import org.jetbrains.annotations.NotNull;
 

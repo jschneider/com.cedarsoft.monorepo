@@ -1,6 +1,6 @@
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.utils.StillContainedException;
+import com.cedarsoft.StillContainedException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

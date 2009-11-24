@@ -14,6 +14,7 @@
 
   <modules>
     <module>serialization</module>
+    <module>serializers</module>
     <module>test</module>
     <module>stax-test</module>
     <module>performance-test</module>

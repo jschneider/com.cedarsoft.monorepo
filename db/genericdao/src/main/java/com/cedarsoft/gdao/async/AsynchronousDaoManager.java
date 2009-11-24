@@ -2,11 +2,11 @@ package com.cedarsoft.gdao.async;
 
 import com.cedarsoft.async.AsyncCallSupport;
 import com.cedarsoft.async.CallbackCaller;
+import com.cedarsoft.cache.Cache;
+import com.cedarsoft.cache.HashedCache;
 import com.cedarsoft.gdao.GenericDao;
 import com.cedarsoft.gdao.GenericDaoManager;
 import com.cedarsoft.gdao.LockProvider;
-import com.cedarsoft.utils.Cache;
-import com.cedarsoft.utils.HashedCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NonNls;

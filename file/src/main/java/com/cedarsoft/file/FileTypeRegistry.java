@@ -1,9 +1,8 @@
 package com.cedarsoft.file;
 
-import com.cedarsoft.file.FileType;
-import com.cedarsoft.serialization.RegistrySerializer;
-import com.cedarsoft.utils.DefaultRegistry;
-import com.cedarsoft.utils.StillContainedException;
+import com.cedarsoft.StillContainedException;
+import com.cedarsoft.registry.DefaultRegistry;
+import com.cedarsoft.registry.RegistryFactory;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -42,7 +41,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
 
   @Deprecated
   @TestOnly
-  public FileTypeRegistry(boolean registerDefaultTypes) {
+  public FileTypeRegistry( boolean registerDefaultTypes ) {
     if ( registerDefaultTypes ) {
       ensureDefaultTypesRegistered();
     }
@@ -116,6 +115,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
 
   /**
    * Parses a file name
+   *
    * @param fileName the file name to parse
    * @return the file name
    */
@@ -125,7 +125,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
     return type.getFileName( fileName );
   }
 
-  public static class Factory implements RegistrySerializer.RegistryFactory<FileType, FileTypeRegistry> {
+  public static class Factory implements RegistryFactory<FileType, FileTypeRegistry> {
     @NotNull
     @Override
     public FileTypeRegistry createRegistry( @NotNull List<? extends FileType> objects, @NotNull Comparator<FileType> comparator ) {

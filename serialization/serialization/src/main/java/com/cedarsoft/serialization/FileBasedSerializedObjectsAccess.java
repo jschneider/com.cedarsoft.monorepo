@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization;
 
+import com.cedarsoft.StillContainedException;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.jetbrains.annotations.NonNls;
@@ -17,8 +18,6 @@ import java.io.OutputStream;
 import java.lang.Override;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.cedarsoft.utils.StillContainedException;
 
 /**
  *

@@ -35,13 +35,7 @@
       <groupId>org.codehaus.woodstox</groupId>
       <artifactId>woodstox-core-asl</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <optional>true</optional>
-    </dependency>
-
+    
     <dependency>
       <groupId>org.jdom</groupId>
       <artifactId>jdom</artifactId>

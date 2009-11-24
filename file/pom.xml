@@ -20,6 +20,10 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>provider</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>registry</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>commons-io</groupId>
