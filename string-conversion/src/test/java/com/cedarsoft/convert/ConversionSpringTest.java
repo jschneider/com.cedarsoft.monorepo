@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.convert;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.BeanFactory;
@@ -19,7 +19,7 @@ import java.lang.Override;
 public class ConversionSpringTest {
   @Test
   public void testIt() {
-    ClassPathResource resource = new ClassPathResource( "/com/cedarsoft/utils/converter.spr.xml" );
+    ClassPathResource resource = new ClassPathResource( "/com/cedarsoft/convert/converter.spr.xml" );
 
     BeanFactory factory = new XmlBeanFactory( resource );
     StringConverterManager manager = ( StringConverterManager ) factory.getBean( "defaultStringConverterManager", StringConverterManager.class );
@@ -32,8 +32,8 @@ public class ConversionSpringTest {
   @Test
   public void testOverride() {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext( new String[]{
-        "/com/cedarsoft/utils/converter.spr.xml",
-        "/com/cedarsoft/utils/converter_test.spr.xml"
+      "/com/cedarsoft/convert/converter.spr.xml",
+      "/com/cedarsoft/convert/converter_test.spr.xml"
     } );
     StringConverterManager manager = ( StringConverterManager ) applicationContext.getBean( "customStringConverterManager", StringConverterManager.class );
     assertNotNull( manager );
