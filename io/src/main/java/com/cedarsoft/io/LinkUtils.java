@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.io;
+package com.cedarsoft.io;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

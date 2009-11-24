@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.io;
+package com.cedarsoft.io;
 
 import com.cedarsoft.TestUtils;
 import static org.testng.Assert.*;

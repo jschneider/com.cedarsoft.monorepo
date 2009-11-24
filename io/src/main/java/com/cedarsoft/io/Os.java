@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.io;
+package com.cedarsoft.io;
 
 /*
  * Copyright  2001-2005 The Apache Software Foundation

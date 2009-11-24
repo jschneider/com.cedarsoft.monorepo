@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.io;
+package com.cedarsoft.io;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
