@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.workflow;
+package com.cedarsoft.workflow;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.*;

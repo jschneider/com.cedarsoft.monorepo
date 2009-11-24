@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.workflow;
+package com.cedarsoft.workflow;
 
 import junit.framework.Assert;
 import static org.testng.Assert.*;

@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.workflow;
+package com.cedarsoft.workflow;
 
 import org.jetbrains.annotations.NotNull;
 import static org.testng.Assert.*;
