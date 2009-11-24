@@ -12,17 +12,6 @@
   <name>Licenses</name>
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>serialization</artifactId>
-      <optional>true</optional>
-    </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>serialization-test</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
 </project>

@@ -1,10 +1,9 @@
-package com.cedarsoft.file.io;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.file.Extension;
-import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.google.inject.Inject;

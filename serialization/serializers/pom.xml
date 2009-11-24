@@ -23,6 +23,10 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
@@ -44,6 +48,21 @@
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>app</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>license</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>file</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>crypt</artifactId>
       <optional>true</optional>
     </dependency>
     <dependency>

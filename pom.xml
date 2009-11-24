@@ -73,6 +73,11 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>license</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>test-utils</artifactId>
         <version>${pom.version}</version>
       </dependency>
@@ -164,6 +169,11 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>xml-commons</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>file</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>

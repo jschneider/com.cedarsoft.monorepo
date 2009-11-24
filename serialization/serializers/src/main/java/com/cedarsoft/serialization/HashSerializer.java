@@ -1,8 +1,10 @@
-package com.cedarsoft.utils.crypt;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
+import com.cedarsoft.utils.crypt.Algorithm;
+import com.cedarsoft.utils.crypt.Hash;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;

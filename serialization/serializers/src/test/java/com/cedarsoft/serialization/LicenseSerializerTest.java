@@ -1,4 +1,4 @@
-package com.cedarsoft.license.io;
+package com.cedarsoft.serialization;
 
 import com.cedarsoft.license.License;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;

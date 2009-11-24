@@ -1,10 +1,10 @@
-package com.cedarsoft.file;
+package com.cedarsoft.serialization;
 
+import com.cedarsoft.file.Extension;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import org.jetbrains.annotations.NotNull;
-
-import static org.testng.Assert.*;
+import org.testng.*;
 
 /**
  *
@@ -31,6 +31,6 @@ public class ExtensionSerializerTest extends AbstractStaxMateSerializerTest<Exte
 
   @Override
   protected void verifyDeserialized( @NotNull Extension extension ) {
-    assertEquals( new Extension( ",", "jpg" ), extension );
+    Assert.assertEquals( new Extension( ",", "jpg" ), extension );
   }
 }

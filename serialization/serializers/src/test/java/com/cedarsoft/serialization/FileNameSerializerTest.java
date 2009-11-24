@@ -1,8 +1,6 @@
-package com.cedarsoft.file.io;
+package com.cedarsoft.serialization;
 
-import com.cedarsoft.file.ExtensionSerializer;
 import com.cedarsoft.file.FileName;
-import com.cedarsoft.serialization.AbstractXmlSerializerTest;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import com.cedarsoft.utils.XmlCommons;
 import org.jetbrains.annotations.NotNull;
