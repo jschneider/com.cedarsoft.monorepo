@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.image;
+package com.cedarsoft.image;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.*;

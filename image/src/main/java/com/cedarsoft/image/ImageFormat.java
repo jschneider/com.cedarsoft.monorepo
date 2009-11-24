@@ -1,4 +1,4 @@
-package com.cedarsoft.utils.image;
+package com.cedarsoft.image;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;

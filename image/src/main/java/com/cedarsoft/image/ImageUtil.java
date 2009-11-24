@@ -27,7 +27,7 @@
 * THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package com.cedarsoft.utils.image;
+package com.cedarsoft.image;
 
 import javax.imageio.ImageIO;
 import java.awt.Component;
