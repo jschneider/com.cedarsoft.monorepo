@@ -5,6 +5,7 @@ import com.cedarsoft.VersionRange;
 import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
@@ -22,14 +23,14 @@ public class DateTimeSerializer extends AbstractStaxMateSerializer<DateTime, Obj
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull DateTime object, @NotNull Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull DateTime object, @Nullable Object context ) throws IOException, XMLStreamException {
     serializeTo.addCharacters( ISODateTimeFormat.basicDateTime().print( object ) );
     return serializeTo;
   }
 
   @NotNull
   @Override
-  public DateTime deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public DateTime deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     String text = getText( deserializeFrom );
 
     try {

@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -44,7 +45,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Obj
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object, @NotNull Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull FileName object, @Nullable Object context ) throws IOException, XMLStreamException {
     baseNameSerializer.serialize( serializeTo.addElement( ELEMENT_BASE_NAME ), object.getBaseName(), context );
     extensionSerializer.serialize( serializeTo.addElement( ELEMENT_EXTENSION ), object.getExtension(), context );
     return serializeTo;
@@ -52,7 +53,7 @@ public class FileNameSerializer extends AbstractStaxMateSerializer<FileName, Obj
 
   @NotNull
   @Override
-  public FileName deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public FileName deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     nextTag( deserializeFrom, ELEMENT_BASE_NAME );
     BaseName baseName = baseNameSerializer.deserialize( deserializeFrom, context );
 

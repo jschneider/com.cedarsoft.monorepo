@@ -6,6 +6,7 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -25,7 +26,7 @@ public class HashSerializer extends AbstractStaxMateSerializer<Hash, Object> {
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Hash object, @NotNull Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Hash object, @Nullable Object context ) throws IOException, XMLStreamException {
     serializeTo.addAttribute( ATTRIBUTE_ALGORITHM, object.getAlgorithm().name() );
     serializeTo.addCharacters( object.getValueAsHex() );
     return serializeTo;
@@ -33,7 +34,7 @@ public class HashSerializer extends AbstractStaxMateSerializer<Hash, Object> {
 
   @NotNull
   @Override
-  public Hash deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public Hash deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     String algorithm = deserializeFrom.getAttributeValue( null, ATTRIBUTE_ALGORITHM );
     String valueAsHex = getText( deserializeFrom );
 

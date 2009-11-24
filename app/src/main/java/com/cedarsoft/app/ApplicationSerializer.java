@@ -8,6 +8,7 @@ import com.google.inject.Inject;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -37,7 +38,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Override
   @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @NotNull Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Application object, @Nullable Object context ) throws IOException, XMLStreamException {
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
 
     SMOutputElement versionElement = serializeTo.addElement( ELEMENT_VERSION );
@@ -48,7 +49,7 @@ public class ApplicationSerializer extends AbstractStaxMateSerializer<Applicatio
 
   @Override
   @NotNull
-  public Application deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public Application deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 
     nextTag( deserializeFrom, ELEMENT_VERSION );

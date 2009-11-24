@@ -110,7 +110,7 @@ public class RegistrySerializerTest {
     assertEquals( ids.size(), 1 );
     assertTrue( ids.contains( "1" ) );
 
-    assertEquals( serializer.getSerializer().deserialize( access.getInputStream( "1" ) ), "1" );
+    assertEquals( serializer.getSerializer().deserialize( access.getInputStream( "1" ), null ), "1" );
   }
 
   private static class MyRegistryFactory implements RegistrySerializer.RegistryFactory<String, Registry<String>> {

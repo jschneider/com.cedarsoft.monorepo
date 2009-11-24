@@ -6,6 +6,7 @@ import com.cedarsoft.VersionRange;
 import com.cedarsoft.lookup.Lookup;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 
 import java.io.ByteArrayInputStream;
@@ -87,14 +88,14 @@ public class JdomSerializationTest {
 
     @NotNull
     @Override
-    public Element serialize( @NotNull Element serializeTo, @NotNull Integer object, @NotNull Lookup context ) throws IOException, IOException {
+    public Element serialize( @NotNull Element serializeTo, @NotNull Integer object, @Nullable Lookup context ) throws IOException, IOException {
       serializeTo.setText( String.valueOf( object ) );
       return serializeTo;
     }
 
     @NotNull
     @Override
-    public Integer deserialize( @NotNull Element deserializeFrom, @NotNull Lookup context ) throws IOException, IOException {
+    public Integer deserialize( @NotNull Element deserializeFrom, @Nullable Lookup context ) throws IOException, IOException {
       return Integer.parseInt( deserializeFrom.getText() );
     }
   }

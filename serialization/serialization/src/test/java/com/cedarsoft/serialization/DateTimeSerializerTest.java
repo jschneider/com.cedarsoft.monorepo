@@ -30,7 +30,7 @@ public class DateTimeSerializerTest extends DateTimeTest {
 
   @Test
   public void testA() throws IOException, SAXException {
-    byte[] serialized = serializer.serialize( new DateTime( 2001, 1, 1, 1, 1, 1, 1, zone ) );
+    byte[] serialized = serializer.serializeToByteArray( new DateTime( 2001, 1, 1, 1, 1, 1, 1, zone ), ( Object ) null );
     AssertUtils.assertXMLEqual( new String( serialized ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<dateTime>20010101T010101.001-0500</dateTime>"
     );
@@ -62,7 +62,7 @@ public class DateTimeSerializerTest extends DateTimeTest {
   public void testIt() throws IOException, SAXException {
     DateTime dateTime = new DateTime( 2009, 12, 31, 23, 59, 01, 999, zone );
 
-    byte[] serialized = serializer.serialize( dateTime );
+    byte[] serialized = serializer.serializeToByteArray( dateTime, ( Object ) null );
 
     AssertUtils.assertXMLEqual( new String( serialized ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<dateTime>20091231T235901.999-0500</dateTime>" );

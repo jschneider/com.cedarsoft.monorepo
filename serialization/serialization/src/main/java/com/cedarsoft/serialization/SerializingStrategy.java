@@ -3,14 +3,15 @@ package com.cedarsoft.serialization;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-
 /**
  * @param <T> the type for this strategy
+ * @param <C> the type of the context
  * @param <S> the serializing object
  * @param <D> the deserializing object
+ * @param <E> the exception that might be thrown
  */
-public interface SerializingStrategy<T, S, D> {
+public interface SerializingStrategy<T, C, S, D, E extends Throwable> extends PluggableSerializer<T, C, S, D, E> {
+
   /**
    * Returns the id
    *
@@ -27,27 +28,4 @@ public interface SerializingStrategy<T, S, D> {
    * @return true if this strategy supports the reference, false otherwise
    */
   boolean supports( @NotNull Object object );
-
-  /**
-   * Serializes the reference
-   *
-   * @param serializeTo the serializeTo
-   * @param object      the object
-   * @return the output serializeTo (for fluent usage)
-   *
-   * @throws IOException
-   */
-  @NotNull
-  S serialize( @NotNull S serializeTo, @NotNull T object ) throws IOException;
-
-  /**
-   * Deserializes the file reference
-   *
-   * @param deserializeFrom the deserializeFrom
-   * @return the file reference
-   *
-   * @throws IOException
-   */
-  @NotNull
-  T deserialize( @NotNull @NonNls D deserializeFrom ) throws IOException;
 }

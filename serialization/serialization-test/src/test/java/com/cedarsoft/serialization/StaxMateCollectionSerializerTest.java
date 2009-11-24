@@ -7,6 +7,7 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializer;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -27,7 +28,7 @@ public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<
     return new AbstractStaxMateSerializer<List<String>, Lookup>( "aString", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @NotNull Lookup context ) throws XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull List<String> object, @Nullable Lookup context ) throws XMLStreamException {
         for ( String s : object ) {
           serializeTo.addElement( "string" ).addCharacters( s );
         }
@@ -39,7 +40,7 @@ public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<
 
       @Override
       @NotNull
-      public List<String> deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Lookup context ) throws XMLStreamException, IOException {
+      public List<String> deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws XMLStreamException, IOException {
         final List<String> strings = new ArrayList<String>();
 
         final boolean[] called = {false};

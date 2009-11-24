@@ -14,7 +14,7 @@ import java.io.IOException;
  * @param <D> the object to deserialize from
  * @param <E> the exception that might be thrown
  */
-public interface PluggableSerializer<T, C, S, D, E extends Throwable> extends ExtendedSerializer<T, C> {
+public interface PluggableSerializer<T, C, S, D, E extends Throwable> extends Serializer<T, C>{
   /**
    * Serializes the object to the given element
    *

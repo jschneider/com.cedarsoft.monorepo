@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class RegistrySerializer<T, C, R extends Registry<T>> {
   @NotNull
-  private final ExtendedSerializer<T, C> serializer;
+  private final Serializer<T, C> serializer;
   @NotNull
   private final SerializedObjectsAccess serializedObjectsAccess;
   @NotNull
@@ -38,7 +38,7 @@ public class RegistrySerializer<T, C, R extends Registry<T>> {
    * @param serializer              the serializer
    * @param idResolver              the id resolver
    */
-  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T, C> serializer, @NotNull IdResolver<T> idResolver ) {
+  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull Serializer<T, C> serializer, @NotNull IdResolver<T> idResolver ) {
     this( serializedObjectsAccess, serializer, idResolver, null );
   }
 
@@ -50,7 +50,7 @@ public class RegistrySerializer<T, C, R extends Registry<T>> {
    * @param idResolver              the id resolver
    * @param comparator              the (optional) comparator
    */
-  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull ExtendedSerializer<T, C> serializer, @NotNull IdResolver<T> idResolver, @Nullable Comparator<T> comparator ) {
+  public RegistrySerializer( @NotNull SerializedObjectsAccess serializedObjectsAccess, @NotNull Serializer<T, C> serializer, @NotNull IdResolver<T> idResolver, @Nullable Comparator<T> comparator ) {
     this.serializer = serializer;
     this.serializedObjectsAccess = serializedObjectsAccess;
     this.idResolver = idResolver;
@@ -63,7 +63,7 @@ public class RegistrySerializer<T, C, R extends Registry<T>> {
 
     List<T> objects = new ArrayList<T>();
     for ( String id : ids ) {
-      objects.add( serializer.deserialize( serializedObjectsAccess.getInputStream( id ) ) );
+      objects.add( serializer.deserialize( serializedObjectsAccess.getInputStream( id ), null ) );
     }
 
     //Sort the objects - if a comparator has been set
@@ -83,7 +83,7 @@ public class RegistrySerializer<T, C, R extends Registry<T>> {
   public void serialize( @NotNull T object ) throws StillContainedException, IOException {
     OutputStream out = serializedObjectsAccess.openOut( getId( object ) );
     try {
-      serializer.serialize( object, out );
+      serializer.serialize( object, out, null );
     } finally {
       out.close();
     }
@@ -127,7 +127,7 @@ public class RegistrySerializer<T, C, R extends Registry<T>> {
   }
 
   @NotNull
-  public ExtendedSerializer<T, C> getSerializer() {
+  public Serializer<T, C> getSerializer() {
     return serializer;
   }
 

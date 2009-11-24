@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization;
 
 import com.cedarsoft.NotFoundException;
-import com.cedarsoft.serialization.stax.StaxMateSerializingStrategy;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,12 +12,13 @@ import java.util.List;
 /**
  * @param <T> the type
  * @param <S> the serializing strategy type
+ * @param <C> the type of the context
  */
-public class SerializingStrategySupport<T, S extends SerializingStrategy<? extends T, ?, ?>> {
+public class SerializingStrategySupport<T, C, S extends SerializingStrategy<? extends T, C, ?, ?, ?>> {
   @NotNull
   private final List<S> strategies = new ArrayList<S>();
 
-  public SerializingStrategySupport( Collection<? extends SerializingStrategy<? extends T, ?, ?>> strategies ) {
+  public SerializingStrategySupport( Collection<? extends SerializingStrategy<? extends T, C, ?, ?, ?>> strategies ) {
     this.strategies.addAll( ( Collection<? extends S> ) strategies );
   }
 

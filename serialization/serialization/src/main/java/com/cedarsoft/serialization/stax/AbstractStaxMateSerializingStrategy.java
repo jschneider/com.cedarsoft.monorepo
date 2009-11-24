@@ -4,6 +4,7 @@ import com.cedarsoft.VersionRange;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -16,7 +17,7 @@ import java.io.IOException;
  * @param <T> the type
  * @param <C> the type of the context
  */
-public abstract class AbstractStaxMateSerializingStrategy<T, C> extends AbstractStaxMateSerializer<T, C> implements StaxMateSerializingStrategy<T> {
+public abstract class AbstractStaxMateSerializingStrategy<T, C> extends AbstractStaxMateSerializer<T, C> implements StaxMateSerializingStrategy<T, C> {
   @NotNull
   @NonNls
   private final String id;
@@ -39,25 +40,5 @@ public abstract class AbstractStaxMateSerializingStrategy<T, C> extends Abstract
   @Override
   public boolean supports( @NotNull Object object ) {
     return supportedType.isAssignableFrom( object.getClass() );
-  }
-
-  @Override
-  @NotNull
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object ) throws IOException {
-    try {
-      return serialize( serializeTo, object, null );
-    } catch ( XMLStreamException e ) {
-      throw new IOException( e );
-    }
-  }
-
-  @Override
-  @NotNull
-  public T deserialize( @NotNull @NonNls XMLStreamReader deserializeFrom ) throws IOException {
-    try {
-      return deserialize( deserializeFrom, null );
-    } catch ( XMLStreamException e ) {
-      throw new IOException( e );
-    }
   }
 }

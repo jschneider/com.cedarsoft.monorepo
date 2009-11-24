@@ -31,33 +31,33 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    AbstractStaxMateSerializingStrategy<Integer, Lookup> intSerializer = new AbstractStaxMateSerializingStrategy<Integer, Lookup>( "int", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    AbstractStaxMateSerializingStrategy<Integer, Object> intSerializer = new AbstractStaxMateSerializingStrategy<Integer, Object>( "int", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Integer object, @Nullable Object context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public Integer deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public Integer deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 1;
       }
     };
 
-    AbstractStaxMateSerializingStrategy<Double, Lookup> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double, Lookup>( "double", Double.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
+    AbstractStaxMateSerializingStrategy<Double, Object> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double, Object>( "double", Double.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull Double object, @Nullable Object context ) throws IOException, XMLStreamException {
         serializeTo.addCharacters( object.toString() );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public Double deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Lookup context ) throws IOException, XMLStreamException {
+      public Double deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
         getText( deserializeFrom );
         return 2.0;
       }
@@ -93,19 +93,19 @@ public class DelegatingStaxMateSerializerTest extends AbstractStaxMateSerializer
   public void tetIt() throws IOException, SAXException {
     Assert.assertEquals( serializer.getStrategies().size(), 2 );
 
-    AssertUtils.assertXMLEqual( new String( serializer.serialize( 1 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serializeToByteArray( 1, null ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"int\">1</number>" );
-    AssertUtils.assertXMLEqual( new String( serializer.serialize( 2.0 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serializeToByteArray( 2.0, null ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"double\">2.0</number>" );
   }
 
 
   public static class MySerializer extends AbstractDelegatingStaxMateSerializer<Number, Object> {
-    public MySerializer( @NotNull StaxMateSerializingStrategy<? extends Number>... serializingStrategies ) {
+    public MySerializer( @NotNull StaxMateSerializingStrategy<? extends Number, Object>... serializingStrategies ) {
       super( "number", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ), serializingStrategies );
     }
 
-    public MySerializer( @NotNull Collection<? extends StaxMateSerializingStrategy<? extends Number>> serializingStrategies ) {
+    public MySerializer( @NotNull Collection<? extends StaxMateSerializingStrategy<? extends Number, Object>> serializingStrategies ) {
       super( "number", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ), serializingStrategies );
     }
   }

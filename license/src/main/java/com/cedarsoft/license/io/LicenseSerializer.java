@@ -7,6 +7,7 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializingStrategy;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -29,7 +30,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
 
   @NotNull
   @Override
-  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull License object, @NotNull Object context ) throws IOException, XMLStreamException {
+  public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull License object, @Nullable Object context ) throws IOException, XMLStreamException {
     serializeTo.addAttribute( ATTRIBUTE_ID, object.getId() );
     serializeTo.addElement( ELEMENT_NAME ).addCharacters( object.getName() );
     return serializeTo;
@@ -37,7 +38,7 @@ public class LicenseSerializer extends AbstractStaxMateSerializingStrategy<Licen
 
   @NotNull
   @Override
-  public License deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Object context ) throws IOException, XMLStreamException {
+  public License deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws IOException, XMLStreamException {
     String id = deserializeFrom.getAttributeValue( null, ATTRIBUTE_ID );
     String name = getChildText( deserializeFrom, ELEMENT_NAME );
 

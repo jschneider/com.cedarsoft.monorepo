@@ -9,6 +9,7 @@ import com.cedarsoft.serialization.stax.AbstractStaxMateSerializerTest;
 import com.cedarsoft.utils.XmlCommons;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -22,21 +23,21 @@ import static org.testng.Assert.*;
 /**
  *
  */
-public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String, Lookup> {
+public class StaxMateSerializerTest extends AbstractStaxMateSerializerTest<String, Object> {
   @NotNull
   @Override
-  protected AbstractStaxMateSerializer<String, Lookup> getSerializer() {
-    return new AbstractStaxMateSerializer<String, Lookup>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
+  protected AbstractStaxMateSerializer<String, Object> getSerializer() {
+    return new AbstractStaxMateSerializer<String, Object>( "aString", new VersionRange( new Version( 1, 5, 3 ), new Version( 1, 5, 3 ) ) ) {
       @Override
       @NotNull
-      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @NotNull Lookup context ) throws XMLStreamException {
+      public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull String object, @Nullable Object context ) throws XMLStreamException {
         serializeTo.addCharacters( object );
         return serializeTo;
       }
 
       @Override
       @NotNull
-      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @NotNull Lookup context ) throws XMLStreamException {
+      public String deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable Object context ) throws XMLStreamException {
         deserializeFrom.next();
         String text = deserializeFrom.getText();
         closeTag( deserializeFrom );

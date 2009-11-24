@@ -22,24 +22,24 @@ public class AbstractDelegatingStaxMateSerializer<T, C> extends AbstractStaxMate
   @NonNls
   private static final String ATTRIBUTE_TYPE = "type";
 
-  private final SerializingStrategySupport<T, StaxMateSerializingStrategy<T>> serializingStrategySupport;
+  private final SerializingStrategySupport<T, C, StaxMateSerializingStrategy<T, C>> serializingStrategySupport;
 
-  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull StaxMateSerializingStrategy<? extends T>... strategies ) {
+  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull StaxMateSerializingStrategy<? extends T, C>... strategies ) {
     this( defaultElementName, formatVersionRange, Arrays.asList( strategies ) );
   }
 
-  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull Collection<? extends StaxMateSerializingStrategy<? extends T>> strategies ) {
+  public AbstractDelegatingStaxMateSerializer( @NotNull String defaultElementName, @NotNull VersionRange formatVersionRange, @NotNull Collection<? extends StaxMateSerializingStrategy<? extends T, C>> strategies ) {
     super( defaultElementName, formatVersionRange );
-    serializingStrategySupport = new SerializingStrategySupport<T, StaxMateSerializingStrategy<T>>( strategies );
+    serializingStrategySupport = new SerializingStrategySupport<T, C, StaxMateSerializingStrategy<T, C>>( strategies );
   }
 
   @Override
   @NotNull
   public SMOutputElement serialize( @NotNull SMOutputElement serializeTo, @NotNull T object, @Nullable C context ) throws IOException {
     try {
-      StaxMateSerializingStrategy<T> strategy = serializingStrategySupport.findStrategy( object );
+      StaxMateSerializingStrategy<T, C> strategy = serializingStrategySupport.findStrategy( object );
       serializeTo.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
-      strategy.serialize( serializeTo, object );
+      strategy.serialize( serializeTo, object, null );
 
       return serializeTo;
     } catch ( XMLStreamException e ) {
@@ -52,12 +52,12 @@ public class AbstractDelegatingStaxMateSerializer<T, C> extends AbstractStaxMate
   public T deserialize( @NotNull XMLStreamReader deserializeFrom, @Nullable C context ) throws IOException, XMLStreamException {
     String type = deserializeFrom.getAttributeValue( null, ATTRIBUTE_TYPE );
 
-    StaxMateSerializingStrategy<? extends T> strategy = serializingStrategySupport.findStrategy( type );
-    return strategy.deserialize( deserializeFrom );
+    StaxMateSerializingStrategy<? extends T, C> strategy = serializingStrategySupport.findStrategy( type );
+    return strategy.deserialize( deserializeFrom, null );
   }
 
   @NotNull
-  public Collection<? extends StaxMateSerializingStrategy<T>> getStrategies() {
+  public Collection<? extends StaxMateSerializingStrategy<T, C>> getStrategies() {
     return serializingStrategySupport.getStrategies();
   }
 }

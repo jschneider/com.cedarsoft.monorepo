@@ -24,28 +24,28 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
     AbstractJDomSerializingStrategy<Integer, Object> intSerializer = new AbstractJDomSerializingStrategy<Integer, Object>( "int", Integer.class, new VersionRange( new Version( 1, 0, 1 ), new Version( 1, 0, 1 ) ) ) {
       @Override
       @NotNull
-      public Element serialize( @NotNull Element element, @NotNull Integer object ) throws IOException {
+      public Element serialize( @NotNull Element element, @NotNull Integer object, Object context ) throws IOException {
         element.setText( object.toString() );
         return element;
       }
 
       @Override
       @NotNull
-      public Integer deserialize( @NotNull @NonNls Element element ) throws IOException {
+      public Integer deserialize( @NotNull @NonNls Element element, Object context ) throws IOException {
         return 1;
       }
     };
     AbstractJDomSerializingStrategy<Double, Object> doubleSerializer = new AbstractJDomSerializingStrategy<Double, Object>( "double", Double.class, new VersionRange( new Version( 1, 0, 2 ), new Version( 1, 0, 2 ) ) ) {
       @Override
       @NotNull
-      public Element serialize( @NotNull Element element, @NotNull Double object ) throws IOException {
+      public Element serialize( @NotNull Element element, @NotNull Double object, Object context ) throws IOException {
         element.setText( object.toString() );
         return element;
       }
 
       @Override
       @NotNull
-      public Double deserialize( @NotNull @NonNls Element element ) throws IOException {
+      public Double deserialize( @NotNull @NonNls Element element, Object context ) throws IOException {
         return 2.0;
       }
     };
@@ -87,14 +87,14 @@ public class DelegatingJDomSerializerTest extends AbstractJDomSerializerTest<Num
   public void tetIt() throws IOException, SAXException {
     assertEquals( serializer.getStrategies().size(), 2 );
 
-    AssertUtils.assertXMLEqual( new String( serializer.serialize( 1 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serializeToByteArray( 1, (Object) null ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"int\">1</number>" );
-    AssertUtils.assertXMLEqual( new String( serializer.serialize( 2.0 ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    AssertUtils.assertXMLEqual( new String( serializer.serializeToByteArray( 2.0, (Object)null ) ).trim(), "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
       "<number type=\"double\">2.0</number>" );
   }
 
   public static class MySerializer extends AbstractDelegatingJDomSerializer<Number> {
-    public MySerializer( @NotNull JDomSerializingStrategy<? extends Number>... serializingStrategies ) {
+    public MySerializer( @NotNull JDomSerializingStrategy<? extends Number, Object>... serializingStrategies ) {
       super( "number", new VersionRange( new Version( 1, 2, 3 ), new Version( 1, 2, 3 ) ), serializingStrategies );
     }
   }

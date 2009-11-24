@@ -4,6 +4,7 @@ import com.cedarsoft.Version;
 import com.cedarsoft.VersionRange;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -76,23 +77,43 @@ public abstract class AbstractSerializer<T, C, S, D, E extends Throwable> implem
     return defaultElementName;
   }
 
-  @Override
+  /**
+   * Helper method that serializes to a byte array
+   *
+   * @param object  the object
+   * @param context the context
+   * @return the serialized object
+   *
+   * @throws IOException
+   */
   @NotNull
-  public byte[] serialize( @NotNull T object ) throws IOException {
+  public byte[] serializeToByteArray( @NotNull T object, @Nullable C context ) throws IOException {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    serialize( object, out );
+    serialize( object, out, context );
     return out.toByteArray();
   }
 
-  @Override
+  /**
+   * Serializes with a null context
+   *
+   * @param object the object
+   * @param out    the output stream
+   * @throws IOException
+   */
   public void serialize( @NotNull T object, @NotNull OutputStream out ) throws IOException {
     serialize( object, out, null );
   }
 
-  @Override
+  /**
+   * Deserializes without a context
+   *
+   * @param in the input stream
+   * @return the deserialized object
+   *
+   * @throws IOException
+   */
   @NotNull
   public T deserialize( @NotNull InputStream in ) throws IOException {
     return deserialize( in, null );
   }
-
 }
