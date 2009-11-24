@@ -3,7 +3,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-  <class name="com.cedarsoft.utils.tags.Tag">
+  <class name="com.cedarsoft.tags.Tag">
     <id name="id" type="java.lang.Long" column="id" access="field" unsaved-value="0">
       <generator class="native" />
     </id>

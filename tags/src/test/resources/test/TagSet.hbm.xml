@@ -2,17 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="com.cedarsoft.utils.tags.TagSet">
+  <class name="com.cedarsoft.tags.TagSet">
     <id name="id" type="java.lang.Long" column="id" access="field" unsaved-value="0">
       <generator class="native" />
     </id>
 
-    <many-to-one name="source" class="com.cedarsoft.utils.tags.AnObject" access="property" cascade="save-update" />
+    <many-to-one name="source" class="com.cedarsoft.tags.AnObject" access="property" cascade="save-update" />
 
     <list name="tags" cascade="save-update" access="field" lazy="true">
       <key column="tagSetId" />
       <index column="tagsIndex" />
-      <many-to-many class="com.cedarsoft.utils.tags.Tag" column="tagId" />
+      <many-to-many class="com.cedarsoft.tags.Tag" column="tagId" />
     </list>
   </class>
 </hibernate-mapping>

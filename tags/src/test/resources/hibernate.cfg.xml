@@ -32,7 +32,7 @@
     <property name="hbm2ddl.auto">create</property>
 
 
-    <!--<mapping class="com.cedarsoft.utils.tags.Tag" />-->
+    <!--<mapping class="com.cedarsoft.tags.Tag" />-->
     <mapping resource="test/Tag.hbm.xml" />
     <mapping resource="test/TagSet.hbm.xml" />
     <mapping resource="test/AnObject.hbm.xml" />
