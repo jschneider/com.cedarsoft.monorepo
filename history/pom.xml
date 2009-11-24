@@ -18,6 +18,15 @@
       <artifactId>commons</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>cluster</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>objectaccess</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
     </dependency>

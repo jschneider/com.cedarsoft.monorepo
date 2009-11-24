@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
@@ -111,6 +112,26 @@
         <version>${pom.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>concurrent</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>cluster</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>objectaccess</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>version</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.cedarsoft.commons.spring</groupId>
         <artifactId>configuration-spring</artifactId>
         <version>${pom.version}</version>
@@ -190,7 +211,6 @@
         <artifactId>test-utils</artifactId>
         <version>${pom.version}</version>
       </dependency>
-
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>struct</artifactId>
@@ -430,38 +450,42 @@
   </dependencyManagement>
 
   <modules>
-    <module>commons</module>
     <module>app</module>
-    <module>test-utils</module>
-    <module>provider</module>
+    <module>cluster</module>
     <module>cmd</module>
     <module>collections</module>
+    <module>commons</module>
+    <module>concurrent</module>
     <module>configuration</module>
     <module>crypt</module>
     <module>db</module>
     <module>execution</module>
-    <module>history</module>
     <module>file</module>
+    <module>history</module>
     <module>id</module>
-    <module>inject</module>
     <module>image</module>
+    <module>inject</module>
     <module>io</module>
     <module>license</module>
-    <module>rmi</module>
-    <!--<module>legacy</module>-->
+    <module>lookup</module>
     <module>mail</module>
+    <module>objectaccess</module>
+    <module>presenter</module>
+    <module>provider</module>
+    <module>repository</module>
+    <module>rmi</module>
+    <module>serialization</module>
+    <module>spring</module>
     <module>string-conversion</module>
+    <module>struct</module>
+    <module>swing</module>
     <module>tags</module>
+    <module>test-utils</module>
+    <module>version</module>
     <module>workflow</module>
     <module>xml-commons</module>
     <module>zip</module>
-    <module>spring</module>
-    <module>serialization</module>
-    <module>swing</module>
-    <module>struct</module>
-    <module>lookup</module>
-    <module>repository</module>
-    <module>presenter</module>
+    <!--<module>legacy</module>-->
     <!--<module>ooorg</module>-->
     <!--<module>excel</module>-->
   </modules>

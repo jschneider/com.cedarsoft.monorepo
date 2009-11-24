@@ -1,12 +1,11 @@
 package com.cedarsoft.history;
 
-import com.cedarsoft.utils.event.ClusteredPropertyChangeSupport;
+import com.cedarsoft.event.ClusteredPropertyChangeSupport;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
 
 import java.beans.PropertyChangeListener;
-import java.lang.Override;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 

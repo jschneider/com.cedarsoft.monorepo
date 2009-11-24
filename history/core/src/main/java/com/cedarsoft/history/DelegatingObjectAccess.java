@@ -1,12 +1,11 @@
 package com.cedarsoft.history;
 
-import com.cedarsoft.Lockable;
 import com.cedarsoft.NullLock;
 import com.cedarsoft.PartTimeObjectAdd;
+import com.cedarsoft.lock.Lockable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

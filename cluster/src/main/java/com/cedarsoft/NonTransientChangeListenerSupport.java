@@ -1,5 +1,7 @@
-package com.cedarsoft.utils;
+package com.cedarsoft;
 
+import com.cedarsoft.utils.ChangeListener;
+import com.cedarsoft.utils.ChangedEvent;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -12,51 +14,26 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * Offers support for change listeners.
  *
- * @param <T> the type
  */
-public class ChangeListenerSupport<T> {
+public class NonTransientChangeListenerSupport<T> {
   @NotNull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
   @NotNull
   protected final T observedObject;
 
-  public ChangeListenerSupport( @NotNull T observedObject ) {
+  @NotNull
+  private final List<ChangeListener<T>> transientListeners = new ArrayList<ChangeListener<T>>();
+
+  public NonTransientChangeListenerSupport( @NotNull T observedObject ) {
     this.observedObject = observedObject;
   }
-
-  @NotNull
-  protected List<ChangeListener<T>> getTransientListeners() {
-    lock.readLock().lock();
-    try {
-      if ( transientListeners != null ) {
-        //noinspection ReturnOfCollectionOrArrayField
-        return transientListeners;
-      }
-    } finally {
-      lock.readLock().unlock();
-    }
-
-    lock.writeLock().lock();
-    try {
-      if ( transientListeners == null ) {
-        transientListeners = new ArrayList<ChangeListener<T>>();
-      }
-      //noinspection ReturnOfCollectionOrArrayField
-      return transientListeners;
-    } finally {
-      lock.writeLock().unlock();
-    }
-  }
-
-  private transient List<ChangeListener<T>> transientListeners;
 
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      getTransientListeners().add( listener );
+      transientListeners.add( listener );
     } finally {
       lock.writeLock().unlock();
     }
@@ -65,23 +42,22 @@ public class ChangeListenerSupport<T> {
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      getTransientListeners().remove( listener );
+      transientListeners.remove( listener );
     } finally {
       lock.writeLock().unlock();
     }
   }
 
-  public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
+  public void changed( @Nullable Object context, @NotNull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
-    lock.writeLock().lock();
+    lock.readLock().lock();
     try {
-      List<ChangeListener<T>> listeners = getTransientListeners();
-      for ( ChangeListener<T> listener : listeners ) {
+      for ( ChangeListener<T> listener : transientListeners ) {
         listener.entryChanged( event );
       }
     } finally {
-      lock.writeLock().unlock();
+      lock.readLock().unlock();
     }
   }
 
