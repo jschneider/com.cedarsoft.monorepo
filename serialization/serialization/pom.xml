@@ -20,10 +20,6 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>lookup</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.codehaus.staxmate</groupId>
@@ -47,11 +43,11 @@
       <optional>true</optional>
     </dependency>
 
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>xml-commons</artifactId>
-      <scope>test</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.cedarsoft.commons</groupId>-->
+      <!--<artifactId>xml-commons</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
