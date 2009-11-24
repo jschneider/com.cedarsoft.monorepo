@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.xml;
 
 import org.jdom.Document;
 import org.jdom.Element;
