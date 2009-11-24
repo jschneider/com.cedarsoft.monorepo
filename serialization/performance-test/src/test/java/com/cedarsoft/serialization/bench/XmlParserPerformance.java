@@ -55,6 +55,9 @@ public class XmlParserPerformance {
     System.out.println();
     System.out.println( "Java6:" );
     new XmlParserPerformance().benchJava();
+//    System.out.println();
+//    System.out.println( "Aalto:" );
+//    new XmlParserPerformance().benchAalto();
     System.out.println();
     System.out.println( "Woodstox:" );
     new XmlParserPerformance().benchWoodstox();
@@ -161,6 +164,22 @@ public class XmlParserPerformance {
       }
     }, 4 );
   }
+
+//  public void benchAalto() {
+//    runBenchmark( new Runnable() {
+//      @Override
+//      public void run() {
+//        try {
+//          //          XMLInputFactory inputFactory = XMLInputFactory.newInstance( "StAXInputFactory", getClass().getClassLoader() );
+//          XMLInputFactory inputFactory = XMLInputFactory.newInstance( "com.fasterxml.aalto.stax.InputFactoryImpl", getClass().getClassLoader() );
+//
+//          benchParse( inputFactory );
+//        } catch ( Exception e ) {
+//          throw new RuntimeException( e );
+//        }
+//      }
+//    }, 4 );
+//  }
 
   public void benchWoodstox() {
     runBenchmark( new Runnable() {
