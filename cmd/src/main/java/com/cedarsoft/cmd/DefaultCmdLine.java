@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.cmd;
 
 import com.google.inject.Singleton;
 import org.jetbrains.annotations.NotNull;

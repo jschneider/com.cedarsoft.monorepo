@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.cmd;
 
 import com.cedarsoft.renderer.DefaultRenderer;
 import com.cedarsoft.renderer.Renderer;

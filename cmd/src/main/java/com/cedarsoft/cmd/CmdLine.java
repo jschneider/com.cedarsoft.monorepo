@@ -1,4 +1,4 @@
-package com.cedarsoft.utils;
+package com.cedarsoft.cmd;
 
 import com.cedarsoft.renderer.Renderer;
 import org.jetbrains.annotations.NotNull;
