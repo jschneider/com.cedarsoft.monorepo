@@ -14,9 +14,5 @@
   <name>Version</name>
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>commons</artifactId>
-    </dependency>
   </dependencies>
 </project>

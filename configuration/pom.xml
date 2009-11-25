@@ -14,11 +14,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>commons</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
     </dependency>
