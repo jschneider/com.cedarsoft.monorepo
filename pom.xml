@@ -178,21 +178,6 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>serialization</artifactId>
-        <version>${pom.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons.serialization</groupId>
-        <artifactId>serializers</artifactId>
-        <version>${pom.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>serialization-test</artifactId>
-        <version>${pom.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>app</artifactId>
         <version>${pom.version}</version>
       </dependency>
@@ -501,7 +486,6 @@
     <module>registry</module>
     <module>repository</module>
     <module>rmi</module>
-    <module>serialization</module>
     <module>spring</module>
     <module>string-conversion</module>
     <module>struct</module>
