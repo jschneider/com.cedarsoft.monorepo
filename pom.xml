@@ -468,7 +468,6 @@
     <module>concurrent</module>
     <module>configuration</module>
     <module>crypt</module>
-    <module>db</module>
     <module>execution</module>
     <module>file</module>
     <module>history</module>
