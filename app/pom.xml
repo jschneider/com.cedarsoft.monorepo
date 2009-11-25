@@ -14,6 +14,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>guice-annotations</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>version</artifactId>
     </dependency>

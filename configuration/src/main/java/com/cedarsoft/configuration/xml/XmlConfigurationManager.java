@@ -7,8 +7,6 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * Configures configurations
  */

@@ -21,11 +21,6 @@
 
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft</groupId>
-      <artifactId>guice-annotations</artifactId>
-    </dependency>
-
     <!-- Test dependencies -->
     <dependency>
       <groupId>commons-io</groupId>
