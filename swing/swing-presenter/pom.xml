@@ -16,6 +16,14 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>presenter</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>struct</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>lookup</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

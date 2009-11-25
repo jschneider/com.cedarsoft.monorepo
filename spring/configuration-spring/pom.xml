@@ -22,12 +22,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>configuration</artifactId>
-    </dependency>
-
   </dependencies>
 </project>
     
