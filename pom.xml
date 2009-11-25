@@ -183,17 +183,7 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.db</groupId>
-        <artifactId>genericdao</artifactId>
-        <version>${pom.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons.db</groupId>
         <artifactId>async</artifactId>
-        <version>${pom.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>rmi</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
@@ -484,7 +474,6 @@
     <module>renderer</module>
     <module>registry</module>
     <module>repository</module>
-    <module>rmi</module>
     <module>spring</module>
     <module>string-conversion</module>
     <module>struct</module>
