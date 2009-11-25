@@ -1,19 +1,17 @@
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  *
  */
-public class WeakLookupChangeListenerTest  {
+public class WeakLookupChangeListenerTest {
   private MockLookup lookup;
 
   @BeforeMethod

@@ -1,11 +1,12 @@
 package com.cedarsoft.swing;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

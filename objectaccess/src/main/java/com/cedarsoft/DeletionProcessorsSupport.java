@@ -1,6 +1,5 @@
 package com.cedarsoft;
 
-import com.cedarsoft.DeletionProcessor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

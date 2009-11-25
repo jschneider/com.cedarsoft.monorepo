@@ -3,7 +3,6 @@ package com.cedarsoft.commons.struct;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
 import java.lang.ref.WeakReference;
 
 /**

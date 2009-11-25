@@ -1,7 +1,5 @@
 package com.cedarsoft.lock;
 
-import java.lang.Override;
-
 /**
  *
  */

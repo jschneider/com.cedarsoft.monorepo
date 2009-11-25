@@ -6,7 +6,6 @@ import org.easymock.IArgumentMatcher;
 import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
-import java.lang.Override;
 
 /**
  * Compares property changes

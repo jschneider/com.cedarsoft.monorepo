@@ -3,12 +3,12 @@ package com.cedarsoft.tags;
 import junit.framework.AssertionFailedError;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

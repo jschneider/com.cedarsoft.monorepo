@@ -11,12 +11,12 @@ import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.lang.Override;
+
+import static org.testng.Assert.*;
 
 /**
  *

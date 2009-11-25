@@ -8,7 +8,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 
 /**
  * <p/>

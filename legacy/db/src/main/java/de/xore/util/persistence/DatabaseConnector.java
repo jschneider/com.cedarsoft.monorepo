@@ -31,7 +31,7 @@ public interface DatabaseConnector<T> {
   void delete( @NotNull Object object ) throws DatabaseException;
 
   @NotNull
-      <T> T load( @NotNull Class<T> aClass, Serializable id ) throws DatabaseException;
+  <T> T load( @NotNull Class<T> aClass, Serializable id ) throws DatabaseException;
 
   void rollback() throws DatabaseException;
 

@@ -1,13 +1,12 @@
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>
@@ -17,7 +16,7 @@ import java.util.Map;
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
-public class LookupTest  {
+public class LookupTest {
   @BeforeMethod
   protected void setUp() throws Exception {
   }
@@ -38,7 +37,7 @@ public class LookupTest  {
 
     try {
       lookup.lookupNonNull( List.class );
-      fail("Where is the Exception");
+      fail( "Where is the Exception" );
     } catch ( IllegalArgumentException ignore ) {
     }
   }

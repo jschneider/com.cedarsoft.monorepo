@@ -1,8 +1,8 @@
 package com.cedarsoft.tags.ui;
 
 import com.cedarsoft.tags.Tag;
-import com.cedarsoft.tags.TagProvider;
 import com.cedarsoft.tags.TagObservable;
+import com.cedarsoft.tags.TagProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**

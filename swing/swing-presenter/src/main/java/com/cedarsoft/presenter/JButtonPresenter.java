@@ -3,7 +3,6 @@ package com.cedarsoft.presenter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JButton;
-import java.lang.Override;
 
 /**
  * Creates a button

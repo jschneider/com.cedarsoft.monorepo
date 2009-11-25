@@ -1,15 +1,12 @@
 package com.cedarsoft.presenter.model;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.DynamicLookup;
 import com.cedarsoft.lookup.LookupStore;
 import com.cedarsoft.lookup.Lookups;
-import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
@@ -21,14 +18,15 @@ import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  *
  */
-public class ListModelTest  {
+public class ListModelTest {
   public static void main( String[] args ) throws Exception {
     ListModelTest test = new ListModelTest();
     test.setUp();

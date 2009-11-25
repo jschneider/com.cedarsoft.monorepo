@@ -1,12 +1,13 @@
 package com.cedarsoft.image;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.imageio.ImageIO;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import static org.testng.Assert.*;
 
 /**
  *

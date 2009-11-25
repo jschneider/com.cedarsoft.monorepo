@@ -1,10 +1,8 @@
 package com.cedarsoft.file;
 
-import static org.testng.Assert.*;
-
-import com.cedarsoft.file.FileName;
-import com.cedarsoft.file.FileTypeRegistry;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  *

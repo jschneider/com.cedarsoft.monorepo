@@ -2,8 +2,9 @@ package com.cedarsoft.tags.ui;
 
 import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagManager;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

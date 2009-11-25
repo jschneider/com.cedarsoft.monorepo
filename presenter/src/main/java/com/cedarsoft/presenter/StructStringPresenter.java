@@ -6,8 +6,6 @@ import com.cedarsoft.commons.struct.StructureTreeWalker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  *
  */

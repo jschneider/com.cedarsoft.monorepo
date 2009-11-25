@@ -1,16 +1,15 @@
 package com.cedarsoft.event;
 
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
-
 import org.testng.*;
 import org.testng.annotations.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  *

@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * This is a special registry that registers an implementation of T for
  * given type. (A map with a class as key and value T).
+ *
  * @param <T> the type that is stored within this registry
  */
 public class TypeRegistry<T> {

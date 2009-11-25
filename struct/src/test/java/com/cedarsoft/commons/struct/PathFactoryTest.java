@@ -1,13 +1,13 @@
 package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import static org.testng.Assert.*;
 
 /**
  *

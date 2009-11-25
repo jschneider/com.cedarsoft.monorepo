@@ -5,7 +5,6 @@ package de.xore.util.persistence;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.ResourceBundle;
 
 /**
@@ -109,10 +108,10 @@ public class DatabaseConfiguration {
   @Override
   public String toString() {
     return "DatabaseConfiguration{" +
-        "databaseTypeType=" + databaseTypeType +
-        ", url='" + url + '\'' +
-        ", user='" + user + '\'' +
-        '}';
+      "databaseTypeType=" + databaseTypeType +
+      ", url='" + url + '\'' +
+      ", user='" + user + '\'' +
+      '}';
   }
 
   @Override

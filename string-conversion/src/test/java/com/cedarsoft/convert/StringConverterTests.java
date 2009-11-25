@@ -1,10 +1,11 @@
 package com.cedarsoft.convert;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

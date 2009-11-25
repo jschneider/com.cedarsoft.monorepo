@@ -2,11 +2,10 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * Special element implementation that delegates the calls of {@link ElementsListener}
  * to methods with only *one* element as argument.
+ *
  * @param <E> the type of the elements
  */
 public abstract class SingleElementsListener<E> implements ElementsListener<E> {

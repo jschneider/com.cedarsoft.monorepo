@@ -3,7 +3,6 @@ package com.cedarsoft.zip;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.zip.ZipEntry;
 
 /**

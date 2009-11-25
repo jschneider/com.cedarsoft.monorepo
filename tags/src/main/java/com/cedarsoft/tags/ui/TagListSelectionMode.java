@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

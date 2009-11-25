@@ -3,8 +3,6 @@ package com.cedarsoft.tags.ui;
 import com.cedarsoft.tags.TagProvider;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  *
  */

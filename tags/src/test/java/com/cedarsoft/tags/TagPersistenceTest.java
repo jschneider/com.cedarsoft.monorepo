@@ -3,16 +3,16 @@ package com.cedarsoft.tags;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

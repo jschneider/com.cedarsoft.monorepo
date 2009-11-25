@@ -1,14 +1,13 @@
 package com.cedarsoft.commons.struct;
 
+import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.Collections;
 
-import com.cedarsoft.lookup.Lookup;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -41,7 +40,7 @@ public class RouteTest {
 
     try {
       Route.buildRoute( root, Path.EMPTY.absolute() );
-      fail("Where is the Exception");
+      fail( "Where is the Exception" );
     } catch ( IllegalArgumentException ignore ) {
     }
   }

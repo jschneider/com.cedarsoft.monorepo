@@ -17,12 +17,12 @@ import org.hibernate.dialect.FirebirdDialect;
 import org.hibernate.dialect.MySQLDialect;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-import java.io.Serializable;
 
 /**
  * Diese Klasse dient dazu, die Verbindungen zu der Datenbank entsprechend zu kapseln. Es sollte moeglichst wenig

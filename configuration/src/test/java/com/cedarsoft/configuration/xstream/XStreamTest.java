@@ -2,12 +2,13 @@ package com.cedarsoft.configuration.xstream;
 
 import com.cedarsoft.configuration.DefaultConfigurationManager;
 import org.apache.commons.io.FileUtils;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -36,11 +37,11 @@ public class XStreamTest {
 
     persister.persist( manager, out );
     assertEquals( "<?xml version=\"1.0\"?>\n" +
-        "<configurations>\n" +
-        "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "    <name>asdf</name>\n" +
-        "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "</configurations>", out.toString() );
+      "<configurations>\n" +
+      "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "    <name>asdf</name>\n" +
+      "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "</configurations>", out.toString() );
   }
 
   @Test
@@ -51,11 +52,11 @@ public class XStreamTest {
     persister.persist( manager, file );
 
     assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-        "<configurations>\n" +
-        "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "    <name>asdf</name>\n" +
-        "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "</configurations>", FileUtils.readFileToString( file ) );
+      "<configurations>\n" +
+      "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "    <name>asdf</name>\n" +
+      "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "</configurations>", FileUtils.readFileToString( file ) );
 
 
     DefaultConfigurationManager deserialized = new DefaultConfigurationManager( persister.load( file ) );
@@ -79,7 +80,7 @@ public class XStreamTest {
   @Test
   public void testIt() throws IOException {
     assertEquals( "<?xml version=\"1.0\"?>\n" +
-        "<configurations/>", persister.persist( manager ) );
+      "<configurations/>", persister.persist( manager ) );
   }
 
   @Test
@@ -89,11 +90,11 @@ public class XStreamTest {
 
     String serialized = persister.persist( manager );
     assertEquals( "<?xml version=\"1.0\"?>\n" +
-        "<configurations>\n" +
-        "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "    <name>asdf</name>\n" +
-        "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "</configurations>", serialized );
+      "<configurations>\n" +
+      "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "    <name>asdf</name>\n" +
+      "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "</configurations>", serialized );
 
     DefaultConfigurationManager deserialized = new DefaultConfigurationManager( persister.load( serialized ) );
     assertNotNull( deserialized );
@@ -107,11 +108,11 @@ public class XStreamTest {
 
     String serialized = persister.persist( manager );
     assertEquals( "<?xml version=\"1.0\"?>\n" +
-        "<configurations>\n" +
-        "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "    <name>theName</name>\n" +
-        "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
-        "</configurations>", serialized );
+      "<configurations>\n" +
+      "  <com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "    <name>theName</name>\n" +
+      "  </com.cedarsoft.configuration.xstream.XStreamTest_-MyModuleConfiguration>\n" +
+      "</configurations>", serialized );
 
     DefaultConfigurationManager deserialized = new DefaultConfigurationManager( persister.load( serialized ) );
     assertNotNull( deserialized );

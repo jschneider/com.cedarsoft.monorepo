@@ -1,11 +1,9 @@
 package com.cedarsoft.presenter.demo.avat;
 
-import static org.testng.Assert.*;
-
 import java.io.InputStream;
 import java.net.URL;
 
-public class TestProduct  {
+public class TestProduct {
   //String xmlFile = "src/xml/product/productFixed.xml";
   //String xmlFile = "src/xml/product/productVariableSubGroups.xml";
   private final URL xmlFile = getClass().getResource( "productVariableSubGroupsMasks.xml" );

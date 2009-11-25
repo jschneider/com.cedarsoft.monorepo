@@ -22,7 +22,7 @@ public class HashCalculator {
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls byte[] value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
-  
+
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls byte[] value ) {
     messageDigest.reset();

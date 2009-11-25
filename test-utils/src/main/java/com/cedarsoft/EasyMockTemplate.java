@@ -1,13 +1,14 @@
 package com.cedarsoft;
 
 import net.sf.cglib.proxy.Enhancer;
-import static org.easymock.classextension.EasyMock.replay;
-import static org.easymock.classextension.EasyMock.verify;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.easymock.classextension.EasyMock.replay;
+import static org.easymock.classextension.EasyMock.verify;
 
 /**
  *

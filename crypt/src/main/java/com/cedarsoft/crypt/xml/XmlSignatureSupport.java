@@ -1,7 +1,7 @@
 package com.cedarsoft.crypt.xml;
 
-import com.google.inject.Inject;
 import com.cedarsoft.crypt.X509Support;
+import com.google.inject.Inject;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;

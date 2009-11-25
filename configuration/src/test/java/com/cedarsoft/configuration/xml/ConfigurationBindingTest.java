@@ -6,7 +6,6 @@ import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.beans.PropertyChangeListener;
@@ -15,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

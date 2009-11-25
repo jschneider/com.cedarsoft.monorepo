@@ -1,18 +1,16 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.lookup.MappedLookup;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>
@@ -20,7 +18,7 @@ import java.util.List;
  * Time: 10:49:21 AM<br>
  */
 
-public class ChildrenListenerTest  {
+public class ChildrenListenerTest {
   @Test
   public void testDetach() {
     DefaultChildrenSupport support = new DefaultChildrenSupport();

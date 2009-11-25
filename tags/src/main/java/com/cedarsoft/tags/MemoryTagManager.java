@@ -3,7 +3,6 @@ package com.cedarsoft.tags;
 import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;

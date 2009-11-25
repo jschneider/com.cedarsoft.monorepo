@@ -4,7 +4,6 @@ import com.cedarsoft.commons.struct.StructPart;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPopupMenu;
-import java.lang.Override;
 
 /**
  *

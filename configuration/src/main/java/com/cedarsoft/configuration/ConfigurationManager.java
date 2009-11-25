@@ -15,7 +15,7 @@ public interface ConfigurationManager {
    * @return the configuration
    */
   @NotNull
-      <T> T getConfiguration( @NotNull Class<T> configurationType );
+  <T> T getConfiguration( @NotNull Class<T> configurationType );
 
   /**
    * Adds a configuration

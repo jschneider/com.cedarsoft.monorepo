@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.File;
-import java.lang.Override;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

@@ -7,8 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
-import java.lang.Override;
-
 /**
  * This factory reads a value from the configuration manager
  */

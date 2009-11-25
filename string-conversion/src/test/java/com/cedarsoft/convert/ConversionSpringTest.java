@@ -6,10 +6,9 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
+import static org.testng.Assert.*;
 
 /**
  * <p/>

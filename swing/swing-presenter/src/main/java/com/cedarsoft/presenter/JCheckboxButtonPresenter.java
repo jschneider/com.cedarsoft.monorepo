@@ -3,7 +3,6 @@ package com.cedarsoft.presenter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JCheckBox;
-import java.lang.Override;
 
 /**
  * <p/>

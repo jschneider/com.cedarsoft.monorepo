@@ -3,7 +3,6 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDate;
 
 /**
  * A continuous entry.

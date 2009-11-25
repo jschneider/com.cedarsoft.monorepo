@@ -1,12 +1,13 @@
 package com.cedarsoft;
 
 import org.mockito.Mock;
-import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.List;
+
+import static org.mockito.Mockito.*;
+import static org.testng.Assert.*;
 
 /**
  *

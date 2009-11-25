@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
-import java.lang.Override;
 
 /**
  *

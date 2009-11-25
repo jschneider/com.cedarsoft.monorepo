@@ -1,10 +1,11 @@
 package com.cedarsoft.zip;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.testng.Assert.*;
 
 /**
  * Platform dependen test!

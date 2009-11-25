@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Is notified when anything has changed.
+ *
  * @param <T> the type
  */
 public interface ChangeListener<T> {

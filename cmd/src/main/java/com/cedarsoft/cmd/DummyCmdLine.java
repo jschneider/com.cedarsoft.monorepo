@@ -5,7 +5,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.Override;
 
 /**
  * @author Johannes Schneider

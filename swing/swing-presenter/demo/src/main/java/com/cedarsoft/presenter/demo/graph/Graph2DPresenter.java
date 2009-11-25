@@ -8,8 +8,6 @@ import y.base.Node;
 import y.layout.tree.TreeLayouter;
 import y.view.Graph2D;
 
-import java.lang.Override;
-
 /**
  *
  */

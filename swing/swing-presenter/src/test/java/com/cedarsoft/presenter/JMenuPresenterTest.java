@@ -1,15 +1,12 @@
 package com.cedarsoft.presenter;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookups;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -22,14 +19,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JSeparator;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.testng.Assert.*;
+
 /**
  */
-public class JMenuPresenterTest  {
+public class JMenuPresenterTest {
   @Nullable
   private static Action getAction( int index ) {
     return actions.get( index );

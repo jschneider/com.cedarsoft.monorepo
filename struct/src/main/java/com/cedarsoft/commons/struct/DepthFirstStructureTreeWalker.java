@@ -3,7 +3,6 @@ package com.cedarsoft.commons.struct;
 import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.Stack;
 
 /**

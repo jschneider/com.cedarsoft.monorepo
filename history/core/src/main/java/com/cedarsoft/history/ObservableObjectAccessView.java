@@ -3,7 +3,6 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 

@@ -1,7 +1,7 @@
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
 import com.cedarsoft.CanceledException;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Traverses a structure.

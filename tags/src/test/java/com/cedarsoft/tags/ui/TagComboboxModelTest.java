@@ -5,15 +5,15 @@ import com.cedarsoft.tags.TagChangeListener;
 import com.cedarsoft.tags.TagManager;
 import com.cedarsoft.tags.Taggable;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

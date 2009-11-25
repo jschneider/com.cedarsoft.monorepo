@@ -4,7 +4,6 @@ import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagChangeListener;
 import com.cedarsoft.tags.TagManager;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
@@ -14,9 +13,10 @@ import javax.swing.JToggleButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

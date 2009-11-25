@@ -4,8 +4,6 @@ import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * This presenter creates a string representation of the path of the given node.
  */

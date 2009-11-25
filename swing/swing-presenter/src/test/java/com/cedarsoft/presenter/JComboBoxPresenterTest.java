@@ -1,14 +1,11 @@
 package com.cedarsoft.presenter;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.lookup.LookupStore;
 import com.cedarsoft.lookup.Lookups;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -17,14 +14,15 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 import java.lang.ref.WeakReference;
+
+import static org.testng.Assert.*;
 
 
 /**
  *
  */
-public class JComboBoxPresenterTest  {
+public class JComboBoxPresenterTest {
   DefaultNode root;
   private Action rootAction;
   private JComboBoxPresenter presenter;

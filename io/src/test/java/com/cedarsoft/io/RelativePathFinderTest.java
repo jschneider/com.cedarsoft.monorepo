@@ -1,9 +1,10 @@
 package com.cedarsoft.io;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.File;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -28,7 +29,7 @@ public class RelativePathFinderTest {
     assertEquals( RelativePathFinder.getRelativePath( "/a", "/a/b/c", "/" ), "../.." );
     assertEquals( RelativePathFinder.getRelativePath( "/a", "/a/b/c/d", "/" ), "../../.." );
 
-    
+
     assertEquals( RelativePathFinder.getRelativePath( "/a", "/other/a/b", "/" ), "../../../a" );
   }
 

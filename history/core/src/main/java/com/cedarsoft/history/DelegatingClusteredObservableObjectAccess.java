@@ -2,7 +2,6 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
 

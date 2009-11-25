@@ -1,10 +1,8 @@
 package com.cedarsoft.lock;
 
-import static org.testng.Assert.*;
-
-import com.cedarsoft.lock.InvalidLockStateException;
-import com.cedarsoft.lock.LogingReentrantLock;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  *

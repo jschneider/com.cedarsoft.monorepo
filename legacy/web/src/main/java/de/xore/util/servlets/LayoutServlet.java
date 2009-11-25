@@ -111,7 +111,8 @@ public abstract class LayoutServlet extends VelocityServlet {
     return getLayoutTemplate();
   }
 
-  @Nullable @NonNls
+  @Nullable
+  @NonNls
   private String getRedirectUrl( @NotNull HttpServletRequest request ) {
     if ( getRedirectUrl() != null ) {
       return getRedirectUrl();
@@ -123,7 +124,8 @@ public abstract class LayoutServlet extends VelocityServlet {
     return getRedirectUrl( request ) != null;
   }
 
-  @Nullable @NonNls
+  @Nullable
+  @NonNls
   protected String getRedirectUrl() {
     return null;
   }
@@ -133,8 +135,9 @@ public abstract class LayoutServlet extends VelocityServlet {
    * Context
    * <p/>
    * Z.B. einhaengen des SessioNContext
-   * @param ctx the context
-   * @param request the request
+   *
+   * @param ctx      the context
+   * @param request  the request
    * @param response the response
    */
   protected abstract void postProcessingContext( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Context ctx );
@@ -142,6 +145,7 @@ public abstract class LayoutServlet extends VelocityServlet {
   /**
    * Sicherheits-Ueberpruefungen (statisch bzw. deklarativ) koennen hier stattfinden. Wird direkt nach
    * refreshSessionContext und vor handle() aufgerufen.
+   *
    * @param sessionContext thhe session context
    * @throws XoreException the exception
    */

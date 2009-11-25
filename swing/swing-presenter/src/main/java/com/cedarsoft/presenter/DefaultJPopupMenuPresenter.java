@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
-import java.lang.Override;
 
 /**
  * Presents a JPopupMenu

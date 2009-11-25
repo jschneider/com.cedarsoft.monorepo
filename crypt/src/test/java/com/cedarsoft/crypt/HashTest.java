@@ -1,15 +1,16 @@
 package com.cedarsoft.crypt;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>
@@ -21,7 +22,7 @@ public class HashTest {
   public void testDigestTest() {
     assertNotSame( Algorithm.SHA256.getMessageDigest(), Algorithm.SHA256.getMessageDigest() );
   }
-  
+
   @Test
   public void testSerialization() throws IOException, ClassNotFoundException {
     Hash hash = Hash.fromHex( Algorithm.SHA256, "1234" );
@@ -49,7 +50,7 @@ public class HashTest {
     assertEquals( hash.getValueAsHex(), "61736466" );
     assertEquals( Hash.fromHex( hash.getAlgorithm(), hash.getValueAsHex() ), hash );
   }
-  
+
   @Test
   public void testAlgos() throws IOException {
     URL paris = getClass().getResource( "/paris.jpg" );

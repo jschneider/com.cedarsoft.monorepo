@@ -2,18 +2,17 @@ package com.cedarsoft.registry;
 
 import com.cedarsoft.hierarchy.AbstractChildDetector;
 import com.cedarsoft.hierarchy.ChildDetector;
-import com.cedarsoft.registry.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

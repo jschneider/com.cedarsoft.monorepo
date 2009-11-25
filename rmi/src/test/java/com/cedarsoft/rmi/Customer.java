@@ -8,9 +8,9 @@ import java.io.Serializable;
 /**
  *
  */
-public class Customer implements Serializable{
+public class Customer implements Serializable {
   private static final long serialVersionUID = -3159228476750691008L;
-  
+
   private Long id;
   @NotNull
   private final Address address;

@@ -2,11 +2,12 @@ package com.cedarsoft.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.ConfigurationException;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -48,7 +49,7 @@ public class GuiceModulesHelperTest {
     }
   }
 
-  public static class MyObject{
+  public static class MyObject {
     private final String id;
 
     public MyObject( String id ) {

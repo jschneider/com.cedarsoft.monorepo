@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 
 /**
  *

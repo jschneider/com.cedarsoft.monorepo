@@ -2,8 +2,6 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * This listener wraps another listener that only wants to listen for a subclass of the given type.
  *

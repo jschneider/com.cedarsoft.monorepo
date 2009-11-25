@@ -1,7 +1,6 @@
 package com.cedarsoft.crypt.xml;
 
 import com.cedarsoft.crypt.X509Support;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -30,6 +29,8 @@ import java.io.ByteArrayOutputStream;
 import java.security.PrivateKey;
 import java.util.Collections;
 import java.util.Iterator;
+
+import static org.testng.Assert.*;
 
 
 /**
@@ -128,39 +129,39 @@ public class XmlSignTest {
   }
 
   public static final String SIGNED = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments\"/><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\"/><Reference URI=\"#invoice\"><DigestMethod Algorithm=\"http://www.w3.org/2001/04/xmlenc#sha256\"/><DigestValue>FQjnB+kEsz8RPrCiQG/yHrClkcRcMr7e3bLUYlEVqY8=</DigestValue></Reference></SignedInfo><SignatureValue>bjAeHa8fX+xXmlb6DVya8luyRRLF/G2j0h3mWnGeNSZFp+qSchDbe5r9vdJBFQSNs1qthOqi1ree\n" +
-      "5XtQdddstxgj4Z6+EVNKTXSTeNA0QzRRY+U3izrFjAB3QgzHL/E+LaB6wF7nJ9TzOpb223bgmQAV\n" +
-      "mkdbqqwtCEqmXb1REP4=</SignatureValue><Object Id=\"invoice\"><invoice xmlns=\"http://www.company.com/accounting\">\n" +
-      "  <items>\n" +
-      "    <item>\n" +
-      "      <desc>Applied Cryptography</desc>\n" +
-      "      <type>book</type>\n" +
-      "      <unitprice>44.50</unitprice>\n" +
-      "      <quantity>1</quantity>\n" +
-      "    </item>\n" +
-      "  </items>\n" +
-      "  <creditcard>\n" +
-      "    <number>123456789</number>\n" +
-      "    <expiry>10/20/2009</expiry>\n" +
-      "    <lastname>John</lastname>\n" +
-      "    <firstname>Smith</firstname>\n" +
-      "  </creditcard>\n" +
-      "</invoice></Object></Signature>";
+    "5XtQdddstxgj4Z6+EVNKTXSTeNA0QzRRY+U3izrFjAB3QgzHL/E+LaB6wF7nJ9TzOpb223bgmQAV\n" +
+    "mkdbqqwtCEqmXb1REP4=</SignatureValue><Object Id=\"invoice\"><invoice xmlns=\"http://www.company.com/accounting\">\n" +
+    "  <items>\n" +
+    "    <item>\n" +
+    "      <desc>Applied Cryptography</desc>\n" +
+    "      <type>book</type>\n" +
+    "      <unitprice>44.50</unitprice>\n" +
+    "      <quantity>1</quantity>\n" +
+    "    </item>\n" +
+    "  </items>\n" +
+    "  <creditcard>\n" +
+    "    <number>123456789</number>\n" +
+    "    <expiry>10/20/2009</expiry>\n" +
+    "    <lastname>John</lastname>\n" +
+    "    <firstname>Smith</firstname>\n" +
+    "  </creditcard>\n" +
+    "</invoice></Object></Signature>";
 
   public static final String UNSIGNED = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<invoice xmlns=\"http://www.company.com/accounting\">\n" +
-      "  <items>\n" +
-      "    <item>\n" +
-      "      <desc>Applied Cryptography</desc>\n" +
-      "      <type>book</type>\n" +
-      "      <unitprice>44.50</unitprice>\n" +
-      "      <quantity>1</quantity>\n" +
-      "    </item>\n" +
-      "  </items>\n" +
-      "  <creditcard>\n" +
-      "    <number>123456789</number>\n" +
-      "    <expiry>10/20/2009</expiry>\n" +
-      "    <lastname>John</lastname>\n" +
-      "    <firstname>Smith</firstname>\n" +
-      "  </creditcard>\n" +
-      "</invoice>\n";
+    "<invoice xmlns=\"http://www.company.com/accounting\">\n" +
+    "  <items>\n" +
+    "    <item>\n" +
+    "      <desc>Applied Cryptography</desc>\n" +
+    "      <type>book</type>\n" +
+    "      <unitprice>44.50</unitprice>\n" +
+    "      <quantity>1</quantity>\n" +
+    "    </item>\n" +
+    "  </items>\n" +
+    "  <creditcard>\n" +
+    "    <number>123456789</number>\n" +
+    "    <expiry>10/20/2009</expiry>\n" +
+    "    <lastname>John</lastname>\n" +
+    "    <firstname>Smith</firstname>\n" +
+    "  </creditcard>\n" +
+    "</invoice>\n";
 }

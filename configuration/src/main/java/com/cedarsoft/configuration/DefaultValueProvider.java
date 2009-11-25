@@ -18,5 +18,5 @@ public interface DefaultValueProvider {
    * @return the default value
    */
   @NotNull
-      <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type );
+  <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type );
 }

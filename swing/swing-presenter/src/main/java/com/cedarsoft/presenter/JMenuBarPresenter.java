@@ -5,7 +5,6 @@ import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JMenuBar;
-import java.lang.Override;
 
 /**
  */

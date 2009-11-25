@@ -1,8 +1,8 @@
 package com.cedarsoft.configuration.xstream;
 
-import com.thoughtworks.xstream.XStream;
 import com.cedarsoft.configuration.ConfigurationManager;
 import com.cedarsoft.configuration.ConfigurationPersister;
+import com.thoughtworks.xstream.XStream;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +21,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.Override;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;

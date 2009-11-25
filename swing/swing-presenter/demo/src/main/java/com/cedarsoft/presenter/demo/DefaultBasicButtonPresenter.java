@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JButton;
 import java.awt.Color;
-import java.lang.Override;
 
 /**
  *

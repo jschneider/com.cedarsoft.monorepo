@@ -2,8 +2,6 @@ package com.cedarsoft.tags;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * The default implementation holds the tags in memory
  */

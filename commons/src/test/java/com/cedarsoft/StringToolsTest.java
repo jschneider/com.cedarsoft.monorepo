@@ -1,9 +1,8 @@
 package com.cedarsoft;
 
-import static org.testng.Assert.*;
-
-import com.cedarsoft.Strings;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

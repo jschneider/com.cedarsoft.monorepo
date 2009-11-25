@@ -1,11 +1,12 @@
 package com.cedarsoft.io;
 
 import com.cedarsoft.TestUtils;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.testng.Assert.*;
 
 /**
  *

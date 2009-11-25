@@ -1,18 +1,18 @@
 package com.cedarsoft.lookup;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
-import java.lang.Override;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.RandomAccess;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

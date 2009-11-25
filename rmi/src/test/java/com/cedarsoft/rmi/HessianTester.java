@@ -10,11 +10,12 @@ import org.springframework.util.StopWatch;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.servlet.ServletContext;
 import java.net.MalformedURLException;
+
+import static org.testng.Assert.*;
 
 /**
  *

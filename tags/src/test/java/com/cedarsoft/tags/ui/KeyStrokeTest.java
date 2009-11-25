@@ -1,10 +1,11 @@
 package com.cedarsoft.tags.ui;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
+
+import static org.testng.Assert.*;
 
 /**
  *

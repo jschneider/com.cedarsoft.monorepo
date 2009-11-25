@@ -1,9 +1,7 @@
 package com.cedarsoft.configuration;
 
-import com.cedarsoft.configuration.ConfigurationManager;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,7 @@ public class DefaultConfigurationManager implements ConfigurationManager {
   public DefaultConfigurationManager() {
   }
 
-  public DefaultConfigurationManager(@NotNull  List<?> initialConfigurations ) {
+  public DefaultConfigurationManager( @NotNull List<?> initialConfigurations ) {
     configurations.addAll( initialConfigurations );
   }
 

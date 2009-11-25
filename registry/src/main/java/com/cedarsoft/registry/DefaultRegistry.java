@@ -1,13 +1,12 @@
 package com.cedarsoft.registry;
 
+import com.cedarsoft.Converter;
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
-import com.cedarsoft.Converter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

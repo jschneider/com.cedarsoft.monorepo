@@ -1,8 +1,9 @@
 package com.cedarsoft.workflow;
 
 import junit.framework.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  *

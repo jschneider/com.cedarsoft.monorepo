@@ -1,16 +1,16 @@
 package com.cedarsoft.commons.repository;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.ChildNotFoundException;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.Path;
+import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
 
 /**
  */
-public class RepositoryTest  {
+public class RepositoryTest {
   private Repository repository;
 
   @BeforeMethod

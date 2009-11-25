@@ -1,19 +1,17 @@
 package com.cedarsoft.presenter;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
-import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 import java.lang.ref.WeakReference;
+
+import static org.testng.Assert.*;
 
 
 /**
@@ -21,7 +19,7 @@ import java.lang.ref.WeakReference;
  * Date: May 25, 2007<br>
  * Time: 3:27:15 PM<br>
  */
-public class ButtonPresenterTest  {
+public class ButtonPresenterTest {
   private JButtonPresenter buttonPresenter;
   private Node node;
   private AbstractAction action;

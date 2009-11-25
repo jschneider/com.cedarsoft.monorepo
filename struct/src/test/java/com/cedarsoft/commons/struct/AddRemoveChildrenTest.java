@@ -1,14 +1,13 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
 
 /**
  *
  */
-public class AddRemoveChildrenTest  {
+public class AddRemoveChildrenTest {
   @Test
   public void testAdd() {
     Node parent = new DefaultNode( "parent" );

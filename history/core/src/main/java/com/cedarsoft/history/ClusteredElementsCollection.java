@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -215,8 +214,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
-   * @throws NoElementFoundException
-   *          if no entry has been found
+   * @throws NoElementFoundException if no entry has been found
    */
   @NotNull
   public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {

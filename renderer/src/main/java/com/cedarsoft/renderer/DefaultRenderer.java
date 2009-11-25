@@ -2,8 +2,6 @@ package com.cedarsoft.renderer;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * Default implementation of {@link Renderer} that simply returns
  * {@link String#valueOf(Object)}.

@@ -150,7 +150,7 @@ public class JavaCommandBuilder {
       elements.add( "-cp" );
       elements.add( classPath );
     }
-    
+
     elements.add( getMainClass() );
 
     for ( String argument : getArguments() ) {

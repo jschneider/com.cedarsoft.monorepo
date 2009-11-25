@@ -3,8 +3,9 @@ package com.cedarsoft.rmi;
 import com.cedarsoft.gdao.GenericDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StopWatch;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  *

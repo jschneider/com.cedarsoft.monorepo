@@ -5,8 +5,6 @@ import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * Very simple implementation that is able to present a string.
  */

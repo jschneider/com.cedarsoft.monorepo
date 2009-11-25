@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
   <bean name="/CustomerService" class="org.springframework.remoting.caucho.BurlapServiceExporter">
-  <!--<bean name="/CustomerService" class="org.springframework.remoting.caucho.HessianServiceExporter">-->
+    <!--<bean name="/CustomerService" class="org.springframework.remoting.caucho.HessianServiceExporter">-->
     <property name="service">
       <bean class="com.cedarsoft.gdao.spring.ServiceFactory">
         <constructor-arg ref="genericServiceManager" />
@@ -15,7 +15,7 @@
   </bean>
 
   <bean name="/AddressService" class="org.springframework.remoting.caucho.BurlapServiceExporter">
-  <!--<bean name="/AddressService" class="org.springframework.remoting.caucho.HessianServiceExporter">-->
+    <!--<bean name="/AddressService" class="org.springframework.remoting.caucho.HessianServiceExporter">-->
     <property name="service">
       <bean class="com.cedarsoft.gdao.spring.ServiceFactory">
         <constructor-arg ref="genericServiceManager" />

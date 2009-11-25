@@ -1,20 +1,19 @@
 package com.cedarsoft.lookup.binding;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.Lookups;
-import static org.testng.Assert.*;
+import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>
  * Date: Jun 1, 2007<br>
  * Time: 1:30:20 PM<br>
  */
-public class ReflectionListenerTest  {
+public class ReflectionListenerTest {
   @Test
   public void testPropertyCallback() {
     MyObject object = new MyObject();

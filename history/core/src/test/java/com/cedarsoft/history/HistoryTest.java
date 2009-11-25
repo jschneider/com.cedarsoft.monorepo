@@ -1,8 +1,9 @@
 package com.cedarsoft.history;
 
 import org.joda.time.LocalDate;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 /**
  *

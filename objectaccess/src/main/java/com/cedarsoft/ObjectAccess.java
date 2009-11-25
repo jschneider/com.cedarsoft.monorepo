@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Implementing classes offer access to a list of elements
+ *
  * @param <T> the type
  */
 public interface ObjectAccess<T> {

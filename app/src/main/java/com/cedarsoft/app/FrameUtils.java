@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Container;
-import java.lang.Override;
 import java.lang.reflect.InvocationTargetException;
 
 /**

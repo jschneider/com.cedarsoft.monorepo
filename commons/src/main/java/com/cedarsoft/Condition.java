@@ -2,8 +2,6 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
-
 /**
  * A condition.
  */

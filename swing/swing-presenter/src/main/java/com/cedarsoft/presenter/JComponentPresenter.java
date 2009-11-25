@@ -4,7 +4,6 @@ import com.cedarsoft.commons.struct.StructPart;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JComponent;
-import java.lang.Override;
 
 /**
  * This presenter can be used to simply show a JComponent that is contained within the lookup.

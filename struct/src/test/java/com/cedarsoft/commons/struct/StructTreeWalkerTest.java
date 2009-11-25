@@ -2,13 +2,13 @@ package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.CanceledException;
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  *

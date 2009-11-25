@@ -49,5 +49,5 @@
     <constructor-arg ref="genericDaoManager" />
     <constructor-arg ref="transactionManager" />
   </bean>
-  
+
 </beans>

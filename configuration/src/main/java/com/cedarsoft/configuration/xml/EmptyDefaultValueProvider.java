@@ -4,7 +4,6 @@ import com.cedarsoft.configuration.DefaultValueProvider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;

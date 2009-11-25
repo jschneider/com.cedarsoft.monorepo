@@ -2,9 +2,6 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDate;
-
-import java.lang.Override;
 
 /**
  * Default entry for a history with validity dates.

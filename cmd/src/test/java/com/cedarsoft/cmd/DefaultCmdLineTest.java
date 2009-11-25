@@ -1,12 +1,13 @@
 package com.cedarsoft.cmd;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Insets;
-import java.lang.Override;
 
 /**
  * <p/>

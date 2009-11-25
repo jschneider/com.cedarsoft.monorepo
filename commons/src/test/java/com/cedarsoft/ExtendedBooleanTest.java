@@ -1,9 +1,10 @@
 package com.cedarsoft;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.Locale;
+
+import static org.testng.Assert.*;
 
 /**
  *

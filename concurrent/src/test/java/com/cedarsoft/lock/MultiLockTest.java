@@ -1,16 +1,15 @@
 package com.cedarsoft.lock;
 
-import com.cedarsoft.lock.MultiLock;
 import com.cedarsoft.ThreadUtils;
 import org.jetbrains.annotations.Nullable;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static org.testng.Assert.*;
 
 /**
  *

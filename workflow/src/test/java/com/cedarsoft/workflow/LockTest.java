@@ -1,9 +1,10 @@
 package com.cedarsoft.workflow;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.concurrent.locks.ReentrantLock;
+
+import static org.testng.Assert.*;
 
 /**
  *

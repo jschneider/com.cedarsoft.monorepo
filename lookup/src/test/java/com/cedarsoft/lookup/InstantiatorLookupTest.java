@@ -1,17 +1,14 @@
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
-import java.lang.Override;
+import static org.testng.Assert.*;
 
 /**
  *
  */
-public class InstantiatorLookupTest  {
+public class InstantiatorLookupTest {
   private InstantiatorLookup<String> lookup;
   private boolean called;
 

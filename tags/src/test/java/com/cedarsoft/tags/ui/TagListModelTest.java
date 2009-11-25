@@ -3,16 +3,16 @@ package com.cedarsoft.tags.ui;
 import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagManager;
 import com.cedarsoft.tags.Taggable;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

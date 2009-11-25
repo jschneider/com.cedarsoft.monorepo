@@ -1,13 +1,13 @@
 package com.cedarsoft.hierarchy;
 
 import org.jetbrains.annotations.NotNull;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import javax.swing.JFrame;
-import java.lang.Override;
 import java.util.Collections;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.ComboBoxModel;
-import java.lang.Override;
 
 /**
  * A combo box model based on a node.

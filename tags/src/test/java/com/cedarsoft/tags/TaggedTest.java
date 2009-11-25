@@ -1,9 +1,10 @@
 package com.cedarsoft.tags;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.Collection;
+
+import static org.testng.Assert.*;
 
 /**
  * <p/>

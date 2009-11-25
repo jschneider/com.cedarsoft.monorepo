@@ -19,7 +19,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 
 /**
  * Demonstrates the building of a demo

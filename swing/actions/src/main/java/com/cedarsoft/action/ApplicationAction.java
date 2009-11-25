@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
-import java.lang.Override;
 
 /**
  * Base class for application actions.

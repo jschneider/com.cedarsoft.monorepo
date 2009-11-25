@@ -1,15 +1,11 @@
 package com.cedarsoft.file;
 
-import static org.testng.Assert.assertEquals;
-
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.file.FileName;
-import com.cedarsoft.file.FileTypeRegistry;
-import com.cedarsoft.file.FileType;
 import org.testng.annotations.*;
 
 import java.util.Collections;
 import java.util.Comparator;
+
+import static org.testng.Assert.*;
 
 /**
  *

@@ -1,8 +1,7 @@
 package com.cedarsoft.commons.struct;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
 
 /**
@@ -10,7 +9,7 @@ import static org.testng.Assert.*;
  * Date: May 25, 2007<br>
  * Time: 4:10:09 PM<br>
  */
-public class LinkedNodeTest  {
+public class LinkedNodeTest {
   private Node childChild;
   private Node childChildchild;
   private Node node;

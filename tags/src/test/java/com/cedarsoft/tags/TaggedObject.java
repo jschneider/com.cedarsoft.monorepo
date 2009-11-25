@@ -2,7 +2,6 @@ package com.cedarsoft.tags;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.Override;
 import java.util.List;
 
 /**

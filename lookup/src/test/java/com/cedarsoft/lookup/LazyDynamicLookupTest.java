@@ -1,18 +1,17 @@
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
 import java.io.Serializable;
 import java.util.Map;
 
+import static org.testng.Assert.*;
+
 /**
  *
  */
-public class LazyDynamicLookupTest  {
+public class LazyDynamicLookupTest {
   private LazyLookup<String> lookup;
 
   private boolean called;

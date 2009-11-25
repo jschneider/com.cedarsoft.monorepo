@@ -5,15 +5,15 @@ import org.apache.commons.codec.binary.Hex;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * Represents a hash value
  */
 public class Hash implements Serializable {
   private static final long serialVersionUID = 5728176239480983210L;
-  
+
   @NotNull
   @NonNls
   private final Algorithm algorithm;

@@ -4,11 +4,11 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Provides;
-import com.google.inject.util.Modules;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.Arrays;
+
+import static org.testng.Assert.*;
 
 /**
  *

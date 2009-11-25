@@ -1,14 +1,12 @@
 package com.cedarsoft.configuration;
 
-import com.jgoodies.binding.beans.BeanAdapter;
-import com.jgoodies.binding.value.ValueModel;
 import com.cedarsoft.configuration.xml.ConfigurationAccess;
 import com.cedarsoft.configuration.xml.ConfigurationConnector;
+import com.jgoodies.binding.beans.BeanAdapter;
+import com.jgoodies.binding.value.ValueModel;
 import org.apache.commons.configuration.Configuration;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.FactoryBean;
-
-import java.lang.Override;
 
 /**
  * <p/>

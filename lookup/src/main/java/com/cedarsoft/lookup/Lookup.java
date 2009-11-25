@@ -16,7 +16,7 @@ public interface Lookup {
    * @return the lookup object or null if nothing has been found
    */
   @Nullable
-      <T> T lookup( @NotNull Class<T> type );
+  <T> T lookup( @NotNull Class<T> type );
 
   /**
    * Lookks up a given object
@@ -27,7 +27,7 @@ public interface Lookup {
    * @throws IllegalArgumentException if no object has been found
    */
   @NotNull
-      <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException;
+  <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException;
 
   /**
    * Returns a  map containing the available lookup objects.

@@ -1,8 +1,7 @@
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
 
 /**
@@ -13,7 +12,7 @@ import static org.testng.Assert.*;
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
-public class LookupWrapperTest  {
+public class LookupWrapperTest {
   private MappedLookup lookup;
 
   @BeforeMethod

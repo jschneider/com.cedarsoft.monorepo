@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.ComboBoxModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
-import java.lang.Override;
 
 /**
  * ComboboxModel prsenting tags

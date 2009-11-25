@@ -1,7 +1,6 @@
 package com.cedarsoft.crypt.xml;
 
 import com.cedarsoft.crypt.X509Support;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -12,6 +11,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+
+import static org.testng.Assert.*;
 
 /**
  *
@@ -73,19 +74,19 @@ public class XmlSignatureSupportTest {
   }
 
   public static final String NEW_UNSINGED = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><invoice xmlns=\"http://www.company.com/accounting\">\n" +
-      "  <items>\n" +
-      "    <item>\n" +
-      "      <desc>Applied Cryptography</desc>\n" +
-      "      <type>book</type>\n" +
-      "      <unitprice>44.50</unitprice>\n" +
-      "      <quantity>1</quantity>\n" +
-      "    </item>\n" +
-      "  </items>\n" +
-      "  <creditcard>\n" +
-      "    <number>123456789</number>\n" +
-      "    <expiry>10/20/2009</expiry>\n" +
-      "    <lastname>John</lastname>\n" +
-      "    <firstname>Smith</firstname>\n" +
-      "  </creditcard>\n" +
-      "</invoice>";
+    "  <items>\n" +
+    "    <item>\n" +
+    "      <desc>Applied Cryptography</desc>\n" +
+    "      <type>book</type>\n" +
+    "      <unitprice>44.50</unitprice>\n" +
+    "      <quantity>1</quantity>\n" +
+    "    </item>\n" +
+    "  </items>\n" +
+    "  <creditcard>\n" +
+    "    <number>123456789</number>\n" +
+    "    <expiry>10/20/2009</expiry>\n" +
+    "    <lastname>John</lastname>\n" +
+    "    <firstname>Smith</firstname>\n" +
+    "  </creditcard>\n" +
+    "</invoice>";
 }

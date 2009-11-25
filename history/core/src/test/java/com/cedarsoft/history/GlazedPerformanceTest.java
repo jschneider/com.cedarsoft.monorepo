@@ -3,11 +3,12 @@ package com.cedarsoft.history;
 import ca.odell.glazedlists.GlazedLists;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.util.StopWatch;
-import static org.testng.Assert.*;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * Checks the performance of the glazed lists

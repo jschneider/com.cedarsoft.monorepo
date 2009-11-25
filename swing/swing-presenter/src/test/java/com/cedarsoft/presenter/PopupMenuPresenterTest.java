@@ -1,12 +1,9 @@
 package com.cedarsoft.presenter;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.lookup.Lookups;
-import static org.testng.Assert.*;
 import org.jetbrains.annotations.NotNull;
+import org.testng.annotations.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -18,16 +15,17 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.Override;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import static org.testng.Assert.*;
+
 /**
  *
  */
-public class PopupMenuPresenterTest  {
+public class PopupMenuPresenterTest {
   DefaultNode root;
 
   @BeforeMethod

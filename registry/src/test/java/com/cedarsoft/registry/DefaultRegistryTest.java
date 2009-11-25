@@ -1,13 +1,11 @@
 package com.cedarsoft.registry;
 
-import static org.testng.Assert.*;
-
 import com.cedarsoft.StillContainedException;
-import com.cedarsoft.registry.DefaultRegistry;
 import org.testng.annotations.*;
 
-import java.lang.Override;
 import java.util.Comparator;
+
+import static org.testng.Assert.*;
 
 /**
  *
