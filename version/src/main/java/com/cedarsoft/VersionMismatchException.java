@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class VersionMismatchException extends VersionProblemExpection {
+public class VersionMismatchException extends VersionException {
   @NotNull
   private final Version expected;
 
