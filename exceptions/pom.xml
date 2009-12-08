@@ -8,20 +8,10 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
-  <artifactId>commons</artifactId>
-  <name>Commons</name>
+  <artifactId>exceptions</artifactId>
+  <name>Exceptions</name>
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>exceptions</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>test-utils</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
 </project>
