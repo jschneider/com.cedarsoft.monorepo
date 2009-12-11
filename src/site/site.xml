@@ -16,18 +16,21 @@
     <src>images/cedarsoft.jpg</src>
     <href>http://www.cedarsoft.com/</href>
   </bannerRight>
-  
-  <version position="bottom"/>
+
+  <version position="bottom" />
 
   <body>
     <links>
+      <item name="Blog" href="http://blog.cedarsoft.com/" />
       <item name="cedarsoft" href="http://www.cedarsoft.com/" />
       <item name="Maven" href="http://maven.apache.org/" />
       <item name="Apache" href="http://www.apache.org/" />
     </links>
 
     <breadcrumbs>
-      <item href="http://www.cedarsoft.org/" name="cedarsoft Open" />
+      <item name="cedarsoft" href="http://www.cedarsoft.com" />
+      <!--<item href="http://www.cedarsoft.org/" name="cedarsoft Open" />-->
+      <item name="Open" />
     </breadcrumbs>
 
     <menu name="Overview">
@@ -39,7 +42,11 @@
     </menu>
 
     <menu name="Projects">
+      <item name="Serialization" href="http://serialization.cedarsoft.org" />
       <item name="commons" href="commons/index.html" />
+    </menu>
+
+    <menu name="Other projects">
       <item name="devTools" href="http://devtools.cedarsoft.org" />
       <item name="wicket" href="wicket/index.html" />
     </menu>
