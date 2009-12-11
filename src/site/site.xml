@@ -55,7 +55,7 @@
   <skin>
     <groupId>com.cedarsoft.maven</groupId>
     <artifactId>cedarsoft-skin</artifactId>
-    <version>1.1.4</version>
+    <version>${maven.skin.version}</version>
   </skin>
 </project>
 
