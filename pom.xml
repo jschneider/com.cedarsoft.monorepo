@@ -290,7 +290,6 @@
           <inputEncoding>utf-8</inputEncoding>
           <outputEncoding>utf-8</outputEncoding>
           <stylesheet>xref/cedarsoft.css</stylesheet>
-          <bottom>Copyright &copy; {inceptionYear}-{currentYear} ${project.organization.name}. Released under {$project.license}.</bottom>
         </configuration>
 
         <dependencies>
@@ -333,7 +332,6 @@
           <inputEncoding>utf-8</inputEncoding>
           <outputEncoding>utf-8</outputEncoding>
           <stylesheet>xref/cedarsoft.css</stylesheet>
-          <bottom>Copyright &copy; {inceptionYear}-{currentYear} ${project.organization.name}. Released under {$project.license}.</bottom>
         </configuration>
       </plugin>
 
