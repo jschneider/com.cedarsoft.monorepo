@@ -10,11 +10,14 @@
     <href>index.html</href>
   </bannerLeft>
 
+
   <bannerRight>
     <name>cedarsoft</name>
     <src>images/cedarsoft.jpg</src>
     <href>http://www.cedarsoft.com/</href>
   </bannerRight>
+  
+  <version position="bottom"/>
 
   <body>
     <links>
