@@ -66,7 +66,7 @@
   </distributionManagement>
 
   <properties>
-    <maven.skin.version>1.1.6-SNAPSHOT</maven.skin.version>
+    <maven.skin.version>1.1.6</maven.skin.version>
   </properties>
 
   <dependencyManagement>
