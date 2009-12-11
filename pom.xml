@@ -220,6 +220,24 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <encoding>utf-8</encoding>
+          <aggregate>true</aggregate>
+          <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
+        </configuration>
+
+        <dependencies>
+          <dependency>
+            <groupId>com.cedarsoft.maven</groupId>
+            <artifactId>cedarsoft-skin</artifactId>
+            <version>1.1.5</version>
+          </dependency>
+        </dependencies>
+      </plugin>
     </plugins>
   </build>
 
@@ -231,11 +249,8 @@
         <configuration>
           <encoding>utf-8</encoding>
           <aggregate>true</aggregate>
-          <!--<stylesheetfile>${basedir}/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
-          <!--<stylesheetfile>/home/johannes/projects/eu/cedarsoft/open/src/site/resources/javadoc/cedarsoft.css</stylesheetfile>-->
-          <!--<stylesheetfile>http://www.cedarsoft.org/javadoc/cedarsoft.css</stylesheetfile>-->
+          <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
         </configuration>
-
       </plugin>
 
       <plugin>
