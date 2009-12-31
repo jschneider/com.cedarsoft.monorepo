@@ -127,9 +127,9 @@
       <id>thirdparty-snapshots</id>
       <name>cedarsoft 3rd Party Snapshots Repository</name>
       <url>http://nexus.cedarsoft.com/content/repositories/thirdparty-snapshots/</url>
-      <releases>
+      <snapshots>
         <enabled>true</enabled>
-      </releases>
+      </snapshots>
     </repository>
 
     <repository>
