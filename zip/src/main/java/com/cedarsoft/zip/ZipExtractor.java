@@ -4,10 +4,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -16,36 +15,32 @@ import java.util.zip.ZipInputStream;
  */
 public class ZipExtractor {
   private static final int BUFFER_LENGTH = 1024;
-  private final File zipFile;
-  private Condition condition;
 
-  /**
-   * Creates a new extractor for the given file
-   *
-   * @param zipFile the zip file that will be extracted
-   * @throws FileNotFoundException if the file does not exist
-   */
-  public ZipExtractor( @NotNull File zipFile ) throws FileNotFoundException {
-    if ( !zipFile.exists() ) {
-      throw new FileNotFoundException( "File not found " + zipFile.getAbsolutePath() );
-    }
-    this.zipFile = zipFile;
+  @Nullable
+  private final Condition condition;
+
+  public ZipExtractor() {
+    this( null );
+  }
+
+  public ZipExtractor( @Nullable Condition condition ) {
+    this.condition = condition;
   }
 
   /**
    * Extract the zip file to the given destination
    *
    * @param destination the destination the file will be extracted to
+   * @param inputStream the input stream providing the zipped content
    * @throws IOException
    */
-  public void extract( @NotNull File destination ) throws IOException {
+  public void extract( @NotNull File destination, @NotNull final InputStream inputStream ) throws IOException {
     if ( !destination.exists() || !destination.isDirectory() ) {
       throw new IllegalArgumentException( "Invalid destination: " + destination.getCanonicalPath() );
     }
 
-    ZipInputStream zipInputStream = null;
+    ZipInputStream zipInputStream = new ZipInputStream( inputStream );
     try {
-      zipInputStream = new ZipInputStream( new FileInputStream( zipFile ) );
 
       byte[] buf = new byte[BUFFER_LENGTH];
       for ( ZipEntry zipEntry = zipInputStream.getNextEntry(); zipEntry != null; zipEntry = zipInputStream.getNextEntry() ) {
@@ -65,24 +60,18 @@ public class ZipExtractor {
         //Make the directory structure
         newFile.getParentFile().mkdirs();
 
-        FileOutputStream fileoutputstream = null;
+        FileOutputStream fileoutputstream = new FileOutputStream( newFile );
         try {
-          fileoutputstream = new FileOutputStream( newFile );
-
           int n;
           while ( ( n = zipInputStream.read( buf, 0, BUFFER_LENGTH ) ) > -1 ) {
             fileoutputstream.write( buf, 0, n );
           }
         } finally {
-          if ( fileoutputstream != null ) {
-            fileoutputstream.close();
-          }
+          fileoutputstream.close();
         }
       }
     } finally {
-      if ( zipInputStream != null ) {
-        zipInputStream.close();
-      }
+      zipInputStream.close();
     }
   }
 
@@ -94,15 +83,6 @@ public class ZipExtractor {
   @Nullable
   public Condition getCondition() {
     return condition;
-  }
-
-  /**
-   * Sets the (optional) condition
-   *
-   * @param condition the condition
-   */
-  public void setCondition( @Nullable Condition condition ) {
-    this.condition = condition;
   }
 
   /**
