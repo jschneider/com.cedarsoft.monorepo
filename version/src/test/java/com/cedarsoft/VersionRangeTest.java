@@ -9,6 +9,37 @@ import static org.testng.Assert.*;
  */
 public class VersionRangeTest {
   @Test
+  public void testMinMax() {
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) );
+      assertEquals( range.getMin(), new Version( 1, 0, 0 ) );
+      assertEquals( range.getMax(), new Version( 2, 0, 0 ) );
+    }
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, false );
+      assertEquals( range.getMin(), new Version( 1, 0, 0 ) );
+      assertEquals( range.getMax(), new Version( 2, 0, 0 ) );
+    }
+  }
+
+  @Test
+  public void testOverlap() {
+    VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) );
+
+    assertTrue( range.overlaps( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+    assertTrue( range.overlaps( new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) );
+    assertTrue( range.overlaps( new VersionRange( new Version( 2, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+
+    assertFalse( range.overlaps( new VersionRange( new Version( 0, 0, 0 ), new Version( 0, 99, 99 ) ) ) );
+    assertFalse( range.overlaps( new VersionRange( new Version( 0, 0, 0 ), new Version( 1, 0, 0 ), true, false ) ) );
+    assertTrue( range.overlaps( new VersionRange( new Version( 0, 0, 0 ), new Version( 1, 0, 0 ), true, true ) ) );
+
+    assertFalse( range.overlaps( new VersionRange( new Version( 2, 0, 1 ), new Version( 3, 0, 0 ) ) ) );
+    assertFalse( range.overlaps( new VersionRange( new Version( 2, 0, 0 ), new Version( 3, 0, 0 ), false, true ) ) );
+    assertTrue( range.overlaps( new VersionRange( new Version( 2, 0, 0 ), new Version( 3, 0, 0 ), true, true ) ) );
+  }
+
+  @Test
   public void testExclude() {
     {
       VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true );

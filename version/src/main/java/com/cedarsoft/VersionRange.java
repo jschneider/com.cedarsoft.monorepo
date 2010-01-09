@@ -64,6 +64,24 @@ public class VersionRange implements Serializable {
     }
   }
 
+  public boolean overlaps( @NotNull VersionRange other ) {
+    boolean lower;
+    if ( includeLower && other.includeUpper ) {
+      lower = getMin().sameOrSmallerThan( other.getMax() );
+    }else{
+      lower = getMin().smallerThan( other.getMax() );
+    }
+
+    boolean upper;
+    if ( includeUpper && other.includeLower ) {
+      upper = getMax().sameOrGreaterThan( other.getMin() );
+    }else{
+      upper = getMax().greaterThan( other.getMin() );
+    }
+
+    return lower && upper;
+  }
+
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
