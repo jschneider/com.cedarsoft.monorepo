@@ -183,7 +183,15 @@ public class Version implements Comparable<Version>, Serializable {
     return this.compareTo( version ) <= 0;
   }
 
+  public boolean smallerThan( @NotNull Version version ) {
+    return this.compareTo( version ) < 0;
+  }
+
   public boolean sameOrGreaterThan( @NotNull Version version ) {
     return this.compareTo( version ) >= 0;
+  }
+
+  public boolean greaterThan( @NotNull Version version ) {
+    return this.compareTo( version ) > 0;
   }
 }

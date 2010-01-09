@@ -9,6 +9,45 @@ import static org.testng.Assert.*;
  */
 public class VersionRangeTest {
   @Test
+  public void testExclude() {
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true );
+      assertTrue( range.contains( new Version( 1, 0, 0 ) ) );
+      assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
+      assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
+      assertTrue( range.contains( new Version( 2, 0, 0 ) ) );
+      assertEquals( range.toString(), "[1.0.0-2.0.0]" );
+    }
+
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false );
+      assertTrue( range.contains( new Version( 1, 0, 0 ) ) );
+      assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
+      assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
+      assertFalse( range.contains( new Version( 2, 0, 0 ) ) );
+      assertEquals( range.toString(), "[1.0.0-2.0.0[" );
+    }
+
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true );
+      assertFalse( range.contains( new Version( 1, 0, 0 ) ) );
+      assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
+      assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
+      assertTrue( range.contains( new Version( 2, 0, 0 ) ) );
+      assertEquals( range.toString(), "]1.0.0-2.0.0]" );
+    }
+
+    {
+      VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, false );
+      assertFalse( range.contains( new Version( 1, 0, 0 ) ) );
+      assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
+      assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
+      assertFalse( range.contains( new Version( 2, 0, 0 ) ) );
+      assertEquals( range.toString(), "]1.0.0-2.0.0[" );
+    }
+  }
+
+  @Test
   public void testIt() {
     VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 1, 90 ) );
 
@@ -34,6 +73,6 @@ public class VersionRangeTest {
 
   @Test
   public void testToString() {
-    assertEquals( new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 1, 90 ) ).toString(), "1.0.0-1.1.90" );
+    assertEquals( new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 1, 90 ) ).toString(), "[1.0.0-1.1.90]" );
   }
 }
