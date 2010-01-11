@@ -9,6 +9,11 @@ import static org.testng.Assert.*;
  */
 public class VersionRangeTest {
   @Test
+  public void testFluent() {
+    assertEquals( VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ), new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) );
+  }
+
+  @Test
   public void testMinMax() {
     {
       VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) );
@@ -58,7 +63,7 @@ public class VersionRangeTest {
     assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
     assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ) ) );
 
-    
+
     assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
   }
 

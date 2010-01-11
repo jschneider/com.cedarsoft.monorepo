@@ -155,4 +155,33 @@ public class VersionRange implements Serializable {
 
     return builder.toString();
   }
+
+  @NotNull
+  public static Factory from( @NotNull Version min ) {
+    return new Factory( min );
+  }
+
+  @NotNull
+  public static Factory from( int major, int minor, int build ) {
+    return new Factory( new Version( major, minor, build ) );
+  }
+
+  public static class Factory {
+    @NotNull
+    private final Version min;
+
+    public Factory( @NotNull Version min ) {
+      this.min = min;
+    }
+
+    @NotNull
+    public VersionRange to( @NotNull Version max ) {
+      return new VersionRange( min, max );
+    }
+
+    @NotNull
+    public VersionRange to( int major, int minor, int build ) {
+      return to( new Version( major, minor, build ) );
+    }
+  }
 }
