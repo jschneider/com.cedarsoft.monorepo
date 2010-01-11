@@ -46,12 +46,39 @@ public class VersionRange implements Serializable {
     return includeUpper;
   }
 
+  /**
+   * Returns true if this range contains the other range completely
+   *
+   * @param other the other range
+   * @return true if this contains the other range completely, false otherwise
+   */
+  public boolean containsCompletely( @NotNull VersionRange other ) {
+    //Verify the lower border
+    final boolean lower;
+    if ( includeLower ) {
+      lower = getMin().sameOrSmallerThan( other.getMin() );
+    } else {
+      lower = getMin().smallerThan( other.getMin() );
+    }
+
+    if ( !lower ) {
+      return false;
+    }
+
+    //Verify the upper border
+    if ( includeUpper ) {
+      return getMax().sameOrGreaterThan( other.getMax() );
+    } else {
+      return getMax().greaterThan( other.getMax() );
+    }
+  }
+
   public boolean contains( @NotNull Version version ) {
     if ( includeLower ) {
       if ( !version.sameOrGreaterThan( min ) ) {
         return false;
       }
-    }else{
+    } else {
       if ( !version.greaterThan( min ) ) {
         return false;
       }
@@ -59,7 +86,7 @@ public class VersionRange implements Serializable {
 
     if ( includeUpper ) {
       return version.sameOrSmallerThan( max );
-    }else {
+    } else {
       return version.smallerThan( max );
     }
   }
@@ -68,14 +95,14 @@ public class VersionRange implements Serializable {
     boolean lower;
     if ( includeLower && other.includeUpper ) {
       lower = getMin().sameOrSmallerThan( other.getMax() );
-    }else{
+    } else {
       lower = getMin().smallerThan( other.getMax() );
     }
 
     boolean upper;
     if ( includeUpper && other.includeLower ) {
       upper = getMax().sameOrGreaterThan( other.getMin() );
-    }else{
+    } else {
       upper = getMax().greaterThan( other.getMin() );
     }
 

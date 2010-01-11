@@ -40,6 +40,29 @@ public class VersionRangeTest {
   }
 
   @Test
+  public void testContains() {
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) );
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ).containsCompletely( new VersionRange( new Version( 2, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) ) );
+
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, false ) ) );
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ) ) );
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ) ) );
+    assertTrue( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
+
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ) ) );
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, true ) ) );
+
+    
+    assertFalse( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), false, false ).containsCompletely( new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true ) ) );
+  }
+
+  @Test
   public void testExclude() {
     {
       VersionRange range = new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ), true, true );
