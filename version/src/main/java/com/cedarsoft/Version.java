@@ -194,4 +194,9 @@ public class Version implements Comparable<Version>, Serializable {
   public boolean greaterThan( @NotNull Version version ) {
     return this.compareTo( version ) > 0;
   }
+
+  @NotNull
+  public static Version valueOf( int major, int minor, int build ) {
+    return new Version( major, minor, build );
+  }
 }

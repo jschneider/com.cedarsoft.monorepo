@@ -183,5 +183,11 @@ public class VersionRange implements Serializable {
     public VersionRange to( int major, int minor, int build ) {
       return to( new Version( major, minor, build ) );
     }
+
+    @NotNull
+    public VersionRange single() {
+      return new VersionRange( min, min );
+    }
+
   }
 }
