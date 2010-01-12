@@ -356,6 +356,20 @@
         </executions>
       </plugin>
 
+      <!--This is a duplicate definition to avoid problems with the jxr plugin that else can't resolve the style sheet-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.1</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.cedarsoft.maven</groupId>
+            <artifactId>cedarsoft-skin</artifactId>
+            <version>${maven.skin.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
     </plugins>
   </build>
 
