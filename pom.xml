@@ -210,7 +210,7 @@
           <artifactId>maven-source-plugin</artifactId>
           <version>2.1</version>
         </plugin>
-        
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
@@ -301,6 +301,38 @@
             <goals>
               <goal>test-jar</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.0-beta-1</version>
+        <executions>
+          <execution>
+            <id>enforce-plugin-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>1.5.0</version>
+                </requireJavaVersion>
+                <requirePluginVersions>
+                  <message>Best Practice is to always define plugin versions!</message>
+                  <banLatest>true</banLatest>
+                  <banRelease>true</banRelease>
+                  <banSnapshots>true</banSnapshots>
+                  <phases>clean,deploy,site</phases>
+                  <additionalPlugins>
+                    <!--<additionalPlugin>org.apache.maven.plugins:maven-eclipse-plugin</additionalPlugin>-->
+                    <!--<additionalPlugin>org.apache.maven.plugins:maven-reactor-plugin</additionalPlugin>-->
+                  </additionalPlugins>
+                </requirePluginVersions>
+              </rules>
+            </configuration>
           </execution>
         </executions>
       </plugin>
