@@ -284,6 +284,12 @@
             </dependency>
           </dependencies>
         </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changelog-plugin</artifactId>
+          <version>2.1.1-cedarsoft</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -425,6 +431,13 @@
           <outputEncoding>utf-8</outputEncoding>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.1.1-cedarsoft</version>
+      </plugin>
+
     </plugins>
   </reporting>
 
