@@ -290,6 +290,7 @@
           <artifactId>maven-changelog-plugin</artifactId>
           <version>2.1.1-cedarsoft</version>
         </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -436,6 +437,21 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>2.1.1-cedarsoft</version>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+
+        <reportSets>
+          <reportSet>
+            <id>myReport</id>
+            <reports>
+              <report>changelog</report>
+              <report>file-activity</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+
       </plugin>
 
     </plugins>
