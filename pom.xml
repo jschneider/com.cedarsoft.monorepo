@@ -405,7 +405,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.3</version>
+        <version>2.4</version>
         <configuration>
           <configLocation>http://www.cedarsoft.org/checkstyle/cedarsoft.xml</configLocation>
         </configuration>
