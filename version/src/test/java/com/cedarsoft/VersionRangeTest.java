@@ -9,6 +9,18 @@ import static org.testng.Assert.*;
  */
 public class VersionRangeTest {
   @Test
+  public void testConstructor() {
+    VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
+    VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 );
+
+    try {
+      VersionRange.from( 1, 0, 1 ).to( 1, 0, 0 );
+      fail( "Where is the Exception" );
+    } catch ( Exception ignore ) {
+    }
+  }
+
+  @Test
   public void testFluent() {
     assertEquals( VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ), new VersionRange( new Version( 1, 0, 0 ), new Version( 2, 0, 0 ) ) );
   }

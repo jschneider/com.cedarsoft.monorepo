@@ -22,6 +22,10 @@ public class VersionRange implements Serializable {
   }
 
   public VersionRange( @NotNull Version min, @NotNull Version max, boolean includeLower, boolean includeUpper ) {
+    if ( max.smallerThan( min ) ) {
+      throw new IllegalArgumentException( "Max <" + max + "> is smaller than min <" + min + ">" );
+    }
+
     this.min = min;
     this.max = max;
     this.includeLower = includeLower;
