@@ -104,6 +104,9 @@
       <id>cedarsoftSnapshotRepository</id>
       <name>cedarsoft Snapshot Repository</name>
       <url>http://nexus.cedarsoft.com/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -116,6 +119,9 @@
       <releases>
         <enabled>true</enabled>
       </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </repository>
 
     <repository>
@@ -125,12 +131,18 @@
       <releases>
         <enabled>true</enabled>
       </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </repository>
 
     <repository>
       <id>thirdparty-snapshots</id>
       <name>cedarsoft 3rd Party Snapshots Repository</name>
       <url>http://nexus.cedarsoft.com/content/repositories/thirdparty-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -143,15 +155,27 @@
     </repository>
 
     <repository>
+      <id>codehaus</id>
+      <name>Codehaus</name>
+      <url>http://repository.codehaus.org/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
       <id>codehaus-snapshots</id>
       <name>Codehaus Snapshots</name>
       <url>http://snapshots.repository.codehaus.org/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
       <releases>
         <enabled>false</enabled>
       </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
 
     <repository>
@@ -168,12 +192,12 @@
       <id>codehaus-snapshots</id>
       <name>Codehaus Snapshots</name>
       <url>http://snapshots.repository.codehaus.org/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
     </pluginRepository>
   </pluginRepositories>
 
