@@ -420,6 +420,7 @@
           <aggregate>true</aggregate>
           <excludes>
             <exclude>src/site/resources/gpl*.txt</exclude>
+            <exclude>.repository</exclude>
           </excludes>
           <properties>
             <year>2010</year>
