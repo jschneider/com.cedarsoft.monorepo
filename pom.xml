@@ -391,7 +391,7 @@
         <artifactId>maven-license-plugin</artifactId>
         <version>1.5.0</version>
         <configuration>
-          <header>src/license/header_gpl3ce.txt</header>
+          <header>http://www.cedarsoft.org/gpl3ce_header.txt</header>
           <failIfMissing>true</failIfMissing>
           <aggregate>true</aggregate>
           <excludes>
