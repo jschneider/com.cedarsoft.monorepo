@@ -421,6 +421,11 @@
           <excludes>
             <exclude>src/site/resources/gpl*.txt</exclude>
             <exclude>**/.repository/**</exclude>
+            <exclude>**/*.md5</exclude>
+            <exclude>**/*.sha1</exclude>
+            <exclude>**/*.tiff</exclude>
+            <exclude>**/*.tif</exclude>
+            <exclude>**/*.cr2</exclude>
           </excludes>
           <properties>
             <year>2010</year>
