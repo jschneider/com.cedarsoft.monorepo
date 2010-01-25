@@ -451,6 +451,7 @@
           <excludes>
             <exclude>src/site/resources/gpl*</exclude>
             <exclude>src/site/resources/apache*</exclude>
+            <exclude>src/site/resources/commercial*</exclude>
             <exclude>**/.repository/**</exclude>
             <exclude>**/*.md5</exclude>
             <exclude>**/*.sha1</exclude>
