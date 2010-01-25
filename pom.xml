@@ -13,7 +13,7 @@
   <licenses>
     <license>
       <name>GLPv3 with Classpath Exception</name>
-      <url>http://www.cedarsoft.org/gpl3ce.txt</url>
+      <url>http://www.cedarsoft.org/gpl3ce</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -69,7 +69,7 @@
     <maven.skin.version>1.1.6</maven.skin.version>
     <javadoc.plugin.version>2.6.1</javadoc.plugin.version>
     <site.plugin.version>2.1</site.plugin.version>
-    <license.header.url>http://www.cedarsoft.org/gpl3ce_header.txt</license.header.url>
+    <license.header.url>${project.licenses[0].url}.header</license.header.url>
   </properties>
 
   <dependencyManagement>
@@ -429,7 +429,8 @@
           <failIfMissing>true</failIfMissing>
           <aggregate>true</aggregate>
           <excludes>
-            <exclude>src/site/resources/gpl*.txt</exclude>
+            <exclude>src/site/resources/gpl*</exclude>
+            <exclude>src/site/resources/apache*</exclude>
             <exclude>**/.repository/**</exclude>
             <exclude>**/*.md5</exclude>
             <exclude>**/*.sha1</exclude>
