@@ -458,7 +458,14 @@
             <exclude>**/*.tiff</exclude>
             <exclude>**/*.tif</exclude>
             <exclude>**/*.cr2</exclude>
+            <exclude>**/*.xcf</exclude>
           </excludes>
+
+          <mapping>
+            <fx>JAVADOC_STYLE</fx>
+            <ufraw>XML_STYLE</ufraw>
+          </mapping>
+
           <properties>
             <year>2010</year>
           </properties>
