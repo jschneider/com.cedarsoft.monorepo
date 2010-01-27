@@ -466,10 +466,6 @@
             <fx>JAVADOC_STYLE</fx>
             <ufraw>XML_STYLE</ufraw>
           </mapping>
-
-          <properties>
-            <year>2010</year>
-          </properties>
         </configuration>
         <executions>
           <execution>
