@@ -449,6 +449,7 @@
           <failIfMissing>true</failIfMissing>
           <aggregate>true</aggregate>
           <excludes>
+	    <exclude>**/.idea/**</exclude>
             <exclude>**/src/test/resources/**</exclude>
             <exclude>src/site/resources/gpl*</exclude>
             <exclude>src/site/resources/apache*</exclude>
