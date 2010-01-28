@@ -31,6 +31,8 @@
 
 package com.cedarsoft;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Common exception for all kinds of version related problems
  */
@@ -48,5 +50,16 @@ public class VersionException extends RuntimeException {
 
   public VersionException( Throwable cause ) {
     super( cause );
+  }
+
+  /**
+   * Creates a new version exception
+   *
+   * @param message       the message (is always used)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param appendSuffix  whether to append the suffix
+   */
+  public VersionException( @NotNull String message, @NotNull String messageSuffix, boolean appendSuffix ) {
+    super( message + ( appendSuffix ? messageSuffix : "" ) );
   }
 }

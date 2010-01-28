@@ -49,7 +49,15 @@ public class UnsupportedVersionException extends VersionException {
   }
 
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
-    super( "Unsupported version <" + actual + ">. Supported range <" + ( supportedRange == null ? "unknown" : supportedRange.toString() ) + ">" );
+    this( actual, supportedRange, "Unsupported version. " );
+  }
+
+  public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix ) {
+    this( actual, supportedRange, messagePrefix, true );
+  }
+
+  public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
+    super( messagePrefix, "Was <" + actual + ">. Supported range <" + ( supportedRange == null ? "unknown" : supportedRange.toString() ) + ">", appendSuffix );
     this.actual = actual;
     this.supportedRange = supportedRange;
   }

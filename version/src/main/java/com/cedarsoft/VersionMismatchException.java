@@ -39,12 +39,34 @@ import org.jetbrains.annotations.NotNull;
 public class VersionMismatchException extends VersionException {
   @NotNull
   private final Version expected;
-
   @NotNull
   private final Version actual;
 
   public VersionMismatchException( @NotNull Version expected, @NotNull Version actual ) {
-    super( "Version mismatch. Expected <" + expected + "> but was <" + actual + ">" );
+    this( expected, actual, "Version mismatch. " );
+  }
+
+  /**
+   * Creates a new version mismatch exception
+   *
+   * @param expected      the expected version
+   * @param actual        the actual version
+   * @param messagePrefix the message prefix. This constructor automatically appends the version info (expected/actual) to the message
+   */
+  public VersionMismatchException( @NotNull Version expected, @NotNull Version actual, @NotNull String messagePrefix ) {
+    this( expected, actual, messagePrefix, true );
+  }
+
+  /**
+   * Creates a new exception
+   *
+   * @param expected          the expected version
+   * @param actual            the actual version
+   * @param messagePrefix     the message prefix
+   * @param appendVersionInfo whether to append the expected/actual version info to the message
+   */
+  public VersionMismatchException( @NotNull Version expected, @NotNull Version actual, @NotNull String messagePrefix, boolean appendVersionInfo ) {
+    super( messagePrefix, "Expected <" + expected + "> but was <" + actual + ">", appendVersionInfo );
     this.expected = expected;
     this.actual = actual;
   }
