@@ -201,6 +201,11 @@ public class VersionRange implements Serializable {
     return new Factory( new Version( major, minor, build ) );
   }
 
+  @NotNull
+  public VersionRange single( int major, int minor, int build ) {
+    return new VersionRange( Version.valueOf( major, minor, build ), Version.valueOf( major, minor, build ) );
+  }
+
   public static class Factory {
     @NotNull
     private final Version min;
