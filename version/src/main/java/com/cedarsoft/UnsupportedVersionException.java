@@ -31,6 +31,7 @@
 
 package com.cedarsoft;
 
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -57,7 +58,7 @@ public class UnsupportedVersionException extends VersionException {
   }
 
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
-    super( messagePrefix, "Was <" + actual + ">. Supported range <" + ( supportedRange == null ? "unknown" : supportedRange.toString() ) + ">", appendSuffix );
+    super( messagePrefix, createMessageSuffix( actual, supportedRange ), appendSuffix );
     this.actual = actual;
     this.supportedRange = supportedRange;
   }
@@ -70,5 +71,15 @@ public class UnsupportedVersionException extends VersionException {
   @Nullable
   public VersionRange getSupportedRange() {
     return supportedRange;
+  }
+
+  @NotNull
+  @NonNls
+  private static String createMessageSuffix( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
+    if ( supportedRange == null ) {
+      return "Was <" + actual + ">";
+    }
+
+    return "Was <" + actual + ">. Supported range <" + supportedRange.toString() + ">";
   }
 }

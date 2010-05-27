@@ -56,8 +56,8 @@ public class UnsupportedVersionRangeException extends VersionException {
     this( actual, supportedRange, messagePrefix, true );
   }
 
-  public UnsupportedVersionRangeException( @NotNull VersionRange actual, VersionRange supportedRange, @NotNull String message, boolean appendSuffix ) {
-    super( message, "Was <" + actual + "> but expected <" + ( supportedRange == null ? "unknown" : supportedRange.toString() ) + ">", appendSuffix );
+  public UnsupportedVersionRangeException( @NotNull VersionRange actual, @Nullable VersionRange supportedRange, @NotNull String message, boolean appendSuffix ) {
+    super( message, createMessageSuffix( actual, supportedRange ), appendSuffix );
     this.actual = actual;
     this.supportedRange = supportedRange;
   }
@@ -70,5 +70,13 @@ public class UnsupportedVersionRangeException extends VersionException {
   @Nullable
   public VersionRange getSupportedRange() {
     return supportedRange;
+  }
+
+  private static String createMessageSuffix( @NotNull VersionRange actual, @Nullable VersionRange supportedRange ) {
+    if ( supportedRange == null ) {
+      return "Was <" + actual + ">";
+    }
+
+    return "Was <" + actual + "> but expected <" + supportedRange.toString() + ">";
   }
 }
