@@ -443,13 +443,15 @@
       <plugin>
         <groupId>com.mycila.maven-license-plugin</groupId>
         <artifactId>maven-license-plugin</artifactId>
-        <version>1.5.0</version>
+        <version>1.6.0</version>
         <configuration>
           <header>${license.header.url}</header>
           <failIfMissing>true</failIfMissing>
           <aggregate>true</aggregate>
           <excludes>
-	    <exclude>**/.idea/**</exclude>
+            <exclude>**/.idea/**</exclude>
+            <exclude>**/dist/**</exclude>
+            <exclude>**/build/**</exclude>
             <exclude>**/src/test/resources/**</exclude>
             <exclude>src/site/resources/gpl*</exclude>
             <exclude>src/site/resources/apache*</exclude>
