@@ -494,4 +494,16 @@
     <!--<module>excel</module>-->
   </modules>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>clirr-maven-plugin</artifactId>
+        <configuration>
+          <comparisonVersion>2.0.0</comparisonVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
