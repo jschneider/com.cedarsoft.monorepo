@@ -48,12 +48,22 @@ public class AssertUtilsTest {
       AssertUtils.assertXMLEqual( "<xml/>", "<xml2/>" );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
-      System.out.println( "---------" );
-      System.out.println( e.getMessage() );
-      System.out.println( "---------" );
       assertEquals( e.getMessage().trim(), ( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
         "<xml2 />> but was:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
         "<xml />>" ).trim() );
+    }
+  }
+
+  @Test
+  public void testAssertWithResource() throws IOException {
+    AssertUtils.assertEquals( "the content of the file...\n" +
+      "second line!\n" +
+      "third line!", getClass().getResource( "equals.txt" ) );
+
+    try {
+      AssertUtils.assertEquals( "other!", getClass().getResource( "equals.txt" ) );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError ignore ) {
     }
   }
 }

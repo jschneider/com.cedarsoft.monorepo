@@ -33,17 +33,18 @@ package com.cedarsoft;
 
 import com.cedarsoft.xml.XmlCommons;
 import junit.framework.AssertionFailedError;
+import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.testng.*;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.testng.Assert.*;
 
 /**
  *
@@ -79,7 +80,7 @@ public class AssertUtils {
 
     for ( Object expectedAlternative : expectedAlternatives ) {
       try {
-        assertEquals( current, expectedAlternative );
+        Assert.assertEquals( current, expectedAlternative );
         return; //Successfully
       } catch ( AssertionError e ) {
         failed.add( e );
@@ -94,5 +95,10 @@ public class AssertUtils {
     }
 
     throw new AssertionError( message.toString() );
+  }
+
+  public static void assertEquals( @Nullable Object actual, @NotNull URL expectedResourceUri ) throws IOException {
+    String expected = IOUtils.toString( expectedResourceUri.openStream() );
+    Assert.assertEquals( actual, expected );
   }
 }
