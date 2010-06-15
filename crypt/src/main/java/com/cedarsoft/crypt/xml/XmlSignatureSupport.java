@@ -118,6 +118,7 @@ public class XmlSignatureSupport {
    *
    * @param doc a {@link org.w3c.dom.Document} object.
    * @return a boolean.
+   *
    * @throws java.lang.Exception if any.
    */
   public boolean hasValidSignature( @NotNull Document doc ) throws Exception {

@@ -60,7 +60,7 @@ public class OutputRedirector implements Runnable {
   /**
    * <p>redirect</p>
    *
-   * @param process a {@link java.lang.Process} object.
+   * @param process   a {@link java.lang.Process} object.
    * @param targetOut a {@link java.io.OutputStream} object.
    * @param targetErr a {@link java.io.OutputStream} object.
    */
@@ -83,7 +83,9 @@ public class OutputRedirector implements Runnable {
     this.out = out;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void run() {
     try {

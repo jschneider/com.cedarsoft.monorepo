@@ -44,7 +44,9 @@ import java.util.Stack;
 public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Stack<StructPart> queue = new Stack<StructPart>();
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );

@@ -60,9 +60,9 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Constructor for ElementsChangedEvent.</p>
    *
-   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
-   * @param elements a {@link java.util.List} object.
-   * @param lowestIndex a int.
+   * @param source       a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param elements     a {@link java.util.List} object.
+   * @param lowestIndex  a int.
    * @param highestIndex a int.
    */
   public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, int lowestIndex, int highestIndex ) {
@@ -72,7 +72,7 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Constructor for ElementsChangedEvent.</p>
    *
-   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source   a {@link com.cedarsoft.history.ObservableCollection} object.
    * @param elements a {@link java.util.List} object.
    * @param indicies a {@link java.util.List} object.
    */

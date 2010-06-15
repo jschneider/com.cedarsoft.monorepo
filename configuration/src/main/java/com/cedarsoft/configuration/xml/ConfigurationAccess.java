@@ -62,9 +62,9 @@ public class ConfigurationAccess<T> {
    * <p>Constructor for ConfigurationAccess.</p>
    *
    * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type a {@link java.lang.Class} object.
-   * @param key a {@link java.lang.String} object.
-   * @param defaultValue a T object.
+   * @param type          a {@link java.lang.Class} object.
+   * @param key           a {@link java.lang.String} object.
+   * @param defaultValue  a T object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull final T defaultValue ) {
     this( configuration, type, key, new DefaultValueProvider() {
@@ -79,9 +79,9 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type a {@link java.lang.Class} object.
-   * @param key a {@link java.lang.String} object.
+   * @param configuration        a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type                 a {@link java.lang.Class} object.
+   * @param key                  a {@link java.lang.String} object.
    * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
@@ -91,11 +91,11 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type a {@link java.lang.Class} object.
-   * @param key a {@link java.lang.String} object.
+   * @param configuration        a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type                 a {@link java.lang.Class} object.
+   * @param key                  a {@link java.lang.String} object.
    * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
-   * @param resolver a {@link com.cedarsoft.configuration.xml.ConfigurationResolver} object.
+   * @param resolver             a {@link com.cedarsoft.configuration.xml.ConfigurationResolver} object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider, @NotNull ConfigurationResolver<T> resolver ) {
     this.configuration = configuration;
@@ -130,7 +130,9 @@ public class ConfigurationAccess<T> {
    * Resolves the value
    *
    * @return the resolved value
-   * @throws java.lang.IllegalArgumentException if the key is invalid
+   *
+   * @throws java.lang.IllegalArgumentException
+   *          if the key is invalid
    */
   @NotNull
   public T resolveSafe() throws IllegalArgumentException {

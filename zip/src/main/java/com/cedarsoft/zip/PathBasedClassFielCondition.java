@@ -59,7 +59,9 @@ public class PathBasedClassFielCondition implements ZipExtractor.Condition {
     this.pathPrefix = pathPrefix;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
     return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );

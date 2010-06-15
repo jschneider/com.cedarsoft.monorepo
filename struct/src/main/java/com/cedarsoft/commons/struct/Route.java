@@ -80,7 +80,9 @@ public class Route {
    * Returns the last node of the route
    *
    * @return the last node
-   * @throws java.lang.IllegalStateException if the route is empty
+   *
+   * @throws java.lang.IllegalStateException
+   *          if the route is empty
    */
   @NotNull
   public Node getLastNode() throws IllegalStateException {
@@ -123,7 +125,9 @@ public class Route {
     return new Path( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -136,7 +140,9 @@ public class Route {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     return nodes.hashCode();
@@ -148,7 +154,9 @@ public class Route {
    * @param rootNode the root node
    * @param path     the path
    * @return the route
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if any.
    */
   @NotNull
   public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path ) throws ChildNotFoundException {
@@ -171,11 +179,13 @@ public class Route {
   /**
    * <p>buildRouteInternal</p>
    *
-   * @param rootNode a {@link com.cedarsoft.commons.struct.Node} object.
-   * @param path a {@link com.cedarsoft.commons.struct.Path} object.
+   * @param rootNode    a {@link com.cedarsoft.commons.struct.Node} object.
+   * @param path        a {@link com.cedarsoft.commons.struct.Path} object.
    * @param nodeFactory a {@link com.cedarsoft.commons.struct.NodeFactory} object.
    * @return a {@link com.cedarsoft.commons.struct.Route} object.
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if any.
    */
   @NotNull
   public static Route buildRouteInternal( @NotNull Node rootNode, @NotNull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {

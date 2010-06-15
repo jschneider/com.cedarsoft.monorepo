@@ -45,7 +45,9 @@ import java.util.Queue;
 public class BreadthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Queue<StructPart> queue = new LinkedList<StructPart>();
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );

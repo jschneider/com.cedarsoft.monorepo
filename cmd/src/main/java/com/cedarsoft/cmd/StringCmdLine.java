@@ -77,28 +77,36 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public PrintStream getOut() {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Boolean ) getNextAnswer();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
@@ -130,40 +138,52 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     return answers.remove( 0 );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     return read( message );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void pause( int seconds ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void out( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( consolePrinter.createSuccess( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void out( @NotNull Process process ) {
     try {
@@ -197,28 +217,36 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void error( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createError( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void warning( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createWarning( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void success( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createSuccess( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void outNl() {
     checkExpectedOut( "" );

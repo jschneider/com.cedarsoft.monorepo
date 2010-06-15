@@ -43,9 +43,11 @@ public interface Instantiater<T> {
   /**
    * Creates the instance
    *
-   * @return the instance
-   * @throws com.cedarsoft.lookup.InstantiationFailedException if any.
    * @param <T> a T object.
+   * @return the instance
+   *
+   * @throws com.cedarsoft.lookup.InstantiationFailedException
+   *          if any.
    */
   @NotNull
   T createInstance() throws InstantiationFailedException;

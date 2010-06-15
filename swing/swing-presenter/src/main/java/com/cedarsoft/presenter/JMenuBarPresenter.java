@@ -43,14 +43,18 @@ import javax.swing.JMenuBar;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public JMenuBar createPresentation() {
     return new JMenuBar();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected JMenuPresenter getChildPresenter( @NotNull StructPart child ) {
@@ -61,12 +65,16 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
     return new DefaultJMenuPresenter();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void bind( @NotNull JMenuBar presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;

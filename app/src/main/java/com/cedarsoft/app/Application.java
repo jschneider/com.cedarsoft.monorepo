@@ -50,7 +50,7 @@ public class Application {
   /**
    * <p>Constructor for Application.</p>
    *
-   * @param name a {@link java.lang.String} object.
+   * @param name    a {@link java.lang.String} object.
    * @param version a {@link com.cedarsoft.Version} object.
    */
   public Application( @NotNull String name, @NotNull Version version ) {
@@ -78,7 +78,9 @@ public class Application {
     return version;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -92,7 +94,9 @@ public class Application {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = name.hashCode();
@@ -100,7 +104,9 @@ public class Application {
     return result;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @NonNls
   @Override
   public String toString() {

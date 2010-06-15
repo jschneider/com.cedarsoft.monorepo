@@ -40,8 +40,8 @@ import java.util.Map;
  * This is a special registry that registers an implementation of T for
  * given type. (A map with a class as key and value T).
  *
- * @param <T> the type that is stored within this registry
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type that is stored within this registry
  */
 public class TypeRegistry<T> {
   private final boolean searchSuperTypes;
@@ -109,7 +109,9 @@ public class TypeRegistry<T> {
    *
    * @param type the type
    * @return the stored element
-   * @throws java.lang.IllegalArgumentException if any.
+   *
+   * @throws java.lang.IllegalArgumentException
+   *          if any.
    */
   @NotNull
   public T getElement( @NotNull Class<?> type ) throws IllegalArgumentException {

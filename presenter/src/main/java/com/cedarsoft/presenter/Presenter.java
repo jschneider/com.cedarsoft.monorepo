@@ -39,16 +39,16 @@ import org.jetbrains.annotations.NotNull;
  * The presentation is updated according to changes within the struct.
  * <p/>
  *
- * @param <T> the type of the presentation this presenter creates.
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type of the presentation this presenter creates.
  */
 public interface Presenter<T> {
   /**
    * Creates the presentation
    *
    * @param struct the struct representing the structure for the presentation
+   * @param <T>    a T object.
    * @return the presentation
-   * @param <T> a T object.
    */
   @NotNull
   T present( @NotNull StructPart struct );

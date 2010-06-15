@@ -63,14 +63,18 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
     this.orientation = orientation;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected JPanel createPresentation() {
     return new JPanel( new GridLayout( orientation.getRowCount(), orientation.getColCount(), 4, 4 ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
@@ -81,13 +85,17 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
     return new JButtonPresenter();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void bind( @NotNull JPanel presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }

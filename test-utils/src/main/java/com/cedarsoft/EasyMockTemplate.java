@@ -58,7 +58,8 @@ public abstract class EasyMockTemplate {
    * Constructor.
    *
    * @param mocks the mocks for this template to manage.
-   * @throws java.lang.IllegalArgumentException if the list of mock objects is <code>null</code> or empty.
+   * @throws java.lang.IllegalArgumentException
+   *          if the list of mock objects is <code>null</code> or empty.
    */
   protected EasyMockTemplate( @NotNull Object... mocks ) {
     if ( mocks.length == 0 ) {

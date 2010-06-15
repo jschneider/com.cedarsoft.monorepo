@@ -54,14 +54,20 @@ import java.util.List;
  */
 public class Path implements Serializable {
   private static final long serialVersionUID = -201844652320294645L;
-  /** Constant <code>PATH_SEPARATOR_CHAR='/'</code> */
+  /**
+   * Constant <code>PATH_SEPARATOR_CHAR='/'</code>
+   */
   @NonNls
   public static final char PATH_SEPARATOR_CHAR = '/';
-  /** Constant <code>PATH_SEPARATOR="String.valueOf( PATH_SEPARATOR_CHAR )"</code> */
+  /**
+   * Constant <code>PATH_SEPARATOR="String.valueOf( PATH_SEPARATOR_CHAR )"</code>
+   */
   @NotNull
   @NonNls
   public static final String PATH_SEPARATOR = String.valueOf( PATH_SEPARATOR_CHAR );
-  /** Constant <code>EMPTY</code> */
+  /**
+   * Constant <code>EMPTY</code>
+   */
   @NotNull
   public static final Path EMPTY = new Path();
 
@@ -133,7 +139,9 @@ public class Path implements Serializable {
     return Collections.unmodifiableList( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @NotNull
   @NonNls
   @Override
@@ -256,7 +264,9 @@ public class Path implements Serializable {
     return new Path( childElements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -269,7 +279,9 @@ public class Path implements Serializable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     return elements != null ? elements.hashCode() : 0;

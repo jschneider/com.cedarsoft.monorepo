@@ -73,6 +73,7 @@ public interface ConfigurationPersister {
    *
    * @param manager the manager the configurations are persisted of
    * @return the persisted configurations as string
+   *
    * @throws java.io.IOException if any.
    */
   @Deprecated
@@ -93,8 +94,8 @@ public interface ConfigurationPersister {
    * <p>persist</p>
    *
    * @param configurationManager a {@link com.cedarsoft.configuration.ConfigurationManager} object.
-   * @param out a {@link java.io.Writer} object.
-   * @param encoding a {@link java.lang.String} object.
+   * @param out                  a {@link java.io.Writer} object.
+   * @param encoding             a {@link java.lang.String} object.
    * @throws java.io.IOException if any.
    */
   void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
@@ -103,8 +104,8 @@ public interface ConfigurationPersister {
    * <p>persist</p>
    *
    * @param configurations a {@link java.util.List} object.
-   * @param out a {@link java.io.Writer} object.
-   * @param encoding a {@link java.lang.String} object.
+   * @param out            a {@link java.io.Writer} object.
+   * @param encoding       a {@link java.lang.String} object.
    * @throws java.io.IOException if any.
    */
   void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
@@ -113,7 +114,7 @@ public interface ConfigurationPersister {
    * <p>persist</p>
    *
    * @param manager a {@link com.cedarsoft.configuration.ConfigurationManager} object.
-   * @param out a {@link java.io.OutputStream} object.
+   * @param out     a {@link java.io.OutputStream} object.
    * @param charset a {@link java.nio.charset.Charset} object.
    * @throws java.io.IOException if any.
    */
@@ -124,6 +125,7 @@ public interface ConfigurationPersister {
    *
    * @param serialized a {@link java.lang.String} object.
    * @return a {@link java.util.List} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -134,6 +136,7 @@ public interface ConfigurationPersister {
    *
    * @param in a {@link java.io.Reader} object.
    * @return a {@link java.util.List} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -144,6 +147,7 @@ public interface ConfigurationPersister {
    *
    * @param file a {@link java.io.File} object.
    * @return a {@link java.util.List} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -152,9 +156,10 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param in a {@link java.io.BufferedInputStream} object.
+   * @param in      a {@link java.io.BufferedInputStream} object.
    * @param charset a {@link java.nio.charset.Charset} object.
    * @return a {@link java.util.List} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull

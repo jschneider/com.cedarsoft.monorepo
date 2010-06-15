@@ -38,18 +38,18 @@ import java.util.List;
 /**
  * Implementations detect all children of an element that shall be added to the recursion
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <C> the type of the children
  * @param <P> the type of the parent
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ChildDetector<P, C> {
   /**
    * Finds the children for the given parent
    *
    * @param parent the parent
+   * @param <P>    a P object.
+   * @param <C>    a C object.
    * @return the children
-   * @param <P> a P object.
-   * @param <C> a C object.
    */
   @NotNull
   List<? extends C> findChildren( @NotNull P parent );

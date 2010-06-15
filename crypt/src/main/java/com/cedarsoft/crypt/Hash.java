@@ -57,7 +57,7 @@ public class Hash implements Serializable {
    * <p>Constructor for Hash.</p>
    *
    * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param value an array of byte.
+   * @param value     an array of byte.
    */
   public Hash( @NotNull Algorithm algorithm, @NotNull byte[] value ) {
     this.algorithm = algorithm;
@@ -94,7 +94,9 @@ public class Hash implements Serializable {
     return value.clone();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NonNls
   public String toString() {
@@ -104,7 +106,9 @@ public class Hash implements Serializable {
       '}';
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -118,7 +122,9 @@ public class Hash implements Serializable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result;

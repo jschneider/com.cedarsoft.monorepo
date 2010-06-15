@@ -58,7 +58,7 @@ public class VersionException extends RuntimeException {
    * <p>Constructor for VersionException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public VersionException( String message, Throwable cause ) {
     super( message, cause );

@@ -43,19 +43,23 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Node extends StructPart {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   List<? extends Node> getChildren();
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns the parent (if it has one)
    */
   @Override

@@ -67,7 +67,7 @@ public class PasswordUtils {
   /**
    * <p>hasExpectedHash</p>
    *
-   * @param password a {@link java.lang.String} object.
+   * @param password     a {@link java.lang.String} object.
    * @param expectedHash an array of byte.
    * @return a boolean.
    */
@@ -89,8 +89,9 @@ public class PasswordUtils {
    * <p>validatePasswordHash</p>
    *
    * @param expected an array of byte.
-   * @param actual an array of byte.
-   * @throws com.cedarsoft.app.InvalidPasswordException if any.
+   * @param actual   an array of byte.
+   * @throws com.cedarsoft.app.InvalidPasswordException
+   *          if any.
    */
   public static void validatePasswordHash( @Nullable byte[] expected, @Nullable byte[] actual ) throws InvalidPasswordException {
     if ( expected == null || actual == null ) {

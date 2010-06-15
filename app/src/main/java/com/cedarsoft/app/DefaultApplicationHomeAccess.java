@@ -48,7 +48,9 @@ import java.io.IOException;
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @NotNull
   private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
-  /** Constant <code>SUFFIX_SANDBOX="-sandbox"</code> */
+  /**
+   * Constant <code>SUFFIX_SANDBOX="-sandbox"</code>
+   */
   @NotNull
   @NonNls
   public static final String SUFFIX_SANDBOX = "-sandbox";
@@ -71,7 +73,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * <p>Constructor for DefaultApplicationHomeAccess.</p>
    *
    * @param applicationName a {@link java.lang.String} object.
-   * @param sandbox a boolean.
+   * @param sandbox         a boolean.
    * @throws java.io.IOException if any.
    */
   public DefaultApplicationHomeAccess( @NotNull @NonNls String applicationName, boolean sandbox ) throws IOException {
@@ -82,7 +84,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * <p>getApplicationDirName</p>
    *
    * @param applicationName a {@link java.lang.String} object.
-   * @param sandbox a boolean.
+   * @param sandbox         a boolean.
    * @return a {@link java.lang.String} object.
    */
   @NotNull
@@ -120,7 +122,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * The application name
    */
   @Override
@@ -131,7 +133,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * The application home dir
    */
   @Override

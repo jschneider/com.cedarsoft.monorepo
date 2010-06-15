@@ -60,9 +60,9 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id a {@link java.lang.String} object.
+   * @param id            a {@link java.lang.String} object.
    * @param dependentType a boolean.
-   * @param extensions a {@link com.cedarsoft.file.Extension} object.
+   * @param extensions    a {@link com.cedarsoft.file.Extension} object.
    */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
     this( id, dependentType, Arrays.<Extension>asList( extensions ) );
@@ -71,9 +71,9 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id a {@link java.lang.String} object.
+   * @param id            a {@link java.lang.String} object.
    * @param dependentType a boolean.
-   * @param extensions a {@link java.util.Collection} object.
+   * @param extensions    a {@link java.util.Collection} object.
    */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
     this.dependentType = dependentType;
@@ -218,7 +218,9 @@ public class FileType {
     return getFileName( fileName ).getBaseName().getName();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String toString() {
     return "FileType{" +
@@ -236,7 +238,9 @@ public class FileType {
     return getDefaultExtension().equals( extension );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -251,7 +255,9 @@ public class FileType {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = extensions.hashCode();

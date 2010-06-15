@@ -56,6 +56,7 @@ public class LinkUtils {
    *
    * @param file a {@link java.io.File} object.
    * @return whether the given file is a sym link
+   *
    * @throws java.io.IOException if any.
    */
   public static boolean isLink( @NotNull File file ) throws IOException {
@@ -77,6 +78,7 @@ public class LinkUtils {
    * @param linkFile   the link file
    * @param linkType   the type of link
    * @return whether the link has been created
+   *
    * @throws java.io.IOException if any.
    */
   public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, @NotNull LinkType linkType ) throws IOException {
@@ -89,6 +91,7 @@ public class LinkUtils {
    * @param linkTarget the link source
    * @param linkFile   the link file
    * @return whether the link has been created
+   *
    * @throws java.io.IOException if any.
    */
   public static boolean createSymbolicLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
@@ -101,6 +104,7 @@ public class LinkUtils {
    * @param linkTarget the link source
    * @param linkFile   the link file
    * @return whether the link has been created
+   *
    * @throws java.io.IOException if any.
    */
   public static boolean createHardLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
@@ -115,6 +119,7 @@ public class LinkUtils {
    * @param linkFile   the link file
    * @param symbolic   whether to create a symbolic link
    * @return whether the link has been created (returns false if the link still existed)
+   *
    * @throws java.io.IOException if something went wrong
    */
   public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, boolean symbolic ) throws IOException {
@@ -224,6 +229,7 @@ public class LinkUtils {
    *
    * @param file the file
    * @return whether the given file is a symbolic link
+   *
    * @throws java.io.IOException if any.
    */
   public boolean isSymbolicLink( @NotNull File file ) throws IOException {

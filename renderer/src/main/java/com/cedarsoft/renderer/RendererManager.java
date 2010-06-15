@@ -73,7 +73,7 @@ public class RendererManager {
   /**
    * <p>addRenderer</p>
    *
-   * @param type a {@link java.lang.Class} object.
+   * @param type     a {@link java.lang.Class} object.
    * @param renderer a {@link com.cedarsoft.renderer.Renderer} object.
    */
   public <T> void addRenderer( @NotNull Class<T> type, @NotNull Renderer<? super T, Object> renderer ) {
@@ -85,7 +85,9 @@ public class RendererManager {
    *
    * @param type a {@link java.lang.Class} object.
    * @return a {@link com.cedarsoft.renderer.Renderer} object.
-   * @throws java.lang.IllegalArgumentException if any.
+   *
+   * @throws java.lang.IllegalArgumentException
+   *          if any.
    */
   @NotNull
   public <T> Renderer<? super T, Object> getRenderer( @NotNull Class<T> type ) throws IllegalArgumentException {

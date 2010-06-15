@@ -42,8 +42,8 @@ public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
   /**
    * Returns true if objects can be added
    *
-   * @return true if objects can be added, false otherwise
    * @param <T> a T object.
+   * @return true if objects can be added, false otherwise
    */
   boolean canAdd();
 

@@ -73,7 +73,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * The type is ignored
    */
   @Override
@@ -234,75 +234,99 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return removed;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public <T> T lookup( @NotNull Class<T> type ) {
     return type.cast( store.get( type ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
     return Collections.unmodifiableMap( store );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bind( type, lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bind( lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bindWeak( type, lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bindWeak( lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListenerWeak( type, lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListener( lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListener( type, lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.removeChangeListener( lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.removeChangeListener( type, lookupChangeListener );

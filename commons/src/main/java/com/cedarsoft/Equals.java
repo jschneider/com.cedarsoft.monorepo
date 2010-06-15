@@ -45,7 +45,7 @@ public class Equals {
   /**
    * <p>isEqual</p>
    *
-   * @param first a {@link java.lang.Object} object.
+   * @param first  a {@link java.lang.Object} object.
    * @param second a {@link java.lang.Object} object.
    * @return a boolean.
    */

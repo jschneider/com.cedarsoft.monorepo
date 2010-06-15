@@ -97,7 +97,7 @@ public class StringConverterManager {
    *
    * @param type      the type the converter can convert
    * @param converter the converter
-   * @param <T> a T object.
+   * @param <T>       a T object.
    */
   public <T> void addStringConverter( Class<T> type, StringConverter<T> converter ) {
     converterMap.put( type, converter );
@@ -107,8 +107,8 @@ public class StringConverterManager {
    * Find a converter for the given type
    *
    * @param type the type
+   * @param <T>  a T object.
    * @return the converter for this type
-   * @param <T> a T object.
    */
   @NotNull
   public <T> StringConverter<T> findConverter( @NotNull Class<? extends T> type ) {
@@ -137,8 +137,8 @@ public class StringConverterManager {
    *
    * @param type           the type
    * @param representation the representation
+   * @param <T>            a T object.
    * @return the deserialized object
-   * @param <T> a T object.
    */
   @NotNull
   public <T> T deserialize( @NotNull Class<T> type, @NotNull String representation ) {

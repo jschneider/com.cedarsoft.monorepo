@@ -47,11 +47,15 @@ import java.io.IOException;
 @Deprecated
 @Singleton
 public class MockApplicationHomeAccess implements ApplicationHomeAccess {
-  /** Constant <code>APP_NAME="mockAppHome"</code> */
+  /**
+   * Constant <code>APP_NAME="mockAppHome"</code>
+   */
   @NotNull
   @NonNls
   public static final String APP_NAME = "mockAppHome";
-  /** Constant <code>SKIP_DELETION="skipDeletion"</code> */
+  /**
+   * Constant <code>SKIP_DELETION="skipDeletion"</code>
+   */
   @NotNull
   @NonNls
   public static final String SKIP_DELETION = "skipDeletion";
@@ -81,14 +85,18 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
     assert projectHome.exists();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String getApplicationName() {
     return APP_NAME;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public File getApplicationHome() {

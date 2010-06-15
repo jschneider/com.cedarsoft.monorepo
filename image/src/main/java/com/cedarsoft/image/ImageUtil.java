@@ -114,6 +114,7 @@ public class ImageUtil {
    *
    * @param filename the image to be read
    * @return the image object
+   *
    * @throws java.io.IOException if any.
    */
   public static BufferedImage readImage( String filename ) throws IOException {
@@ -125,10 +126,10 @@ public class ImageUtil {
   /**
    * Loades the passed image into memory.
    *
-   * @param toLoad the image that will be loaded into memory
-   * @param c      the Component to be notified
-   * @return boolen representing success of operation
+   * @param toLoad  the image that will be loaded into memory
+   * @param c       the Component to be notified
    * @param timeout a int.
+   * @return boolen representing success of operation
    */
   public static boolean loadImageNow( Image toLoad, Component c, int timeout ) {
     MediaTracker tracker = new MediaTracker( c );
@@ -148,9 +149,10 @@ public class ImageUtil {
    * Useful ref: 	http://saloon.javaranch.com/cgi-bin/ubb/ultimatebb.cgi?ubb=get_topic&f=34&t=002153
    *
    * @param imageIn a {@link java.awt.image.BufferedImage} object.
-   * @param width a int.
-   * @param height a int.
+   * @param width   a int.
+   * @param height  a int.
    * @return a {@link java.awt.image.BufferedImage} object.
+   *
    * @throws java.io.IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height ) throws IOException {
@@ -160,11 +162,12 @@ public class ImageUtil {
   /**
    * <p>scaleImage</p>
    *
-   * @param imageIn a {@link java.awt.image.BufferedImage} object.
-   * @param width a int.
-   * @param height a int.
+   * @param imageIn      a {@link java.awt.image.BufferedImage} object.
+   * @param width        a int.
+   * @param height       a int.
    * @param scaleQuality a int.
    * @return a {@link java.awt.image.BufferedImage} object.
+   *
    * @throws java.io.IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality ) throws IOException {
@@ -175,12 +178,13 @@ public class ImageUtil {
   /**
    * <p>scaleImage</p>
    *
-   * @param imageIn a {@link java.awt.image.BufferedImage} object.
-   * @param width a int.
-   * @param height a int.
-   * @param scaleQuality a int.
+   * @param imageIn        a {@link java.awt.image.BufferedImage} object.
+   * @param width          a int.
+   * @param height         a int.
+   * @param scaleQuality   a int.
    * @param maintainAspect a boolean.
    * @return a {@link java.awt.image.BufferedImage} object.
+   *
    * @throws java.io.IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality, boolean maintainAspect ) throws IOException {
@@ -245,7 +249,7 @@ public class ImageUtil {
   /**
    * <p>rotateImage</p>
    *
-   * @param bi a {@link java.awt.image.BufferedImage} object.
+   * @param bi        a {@link java.awt.image.BufferedImage} object.
    * @param rotations a int.
    * @return a {@link java.awt.image.BufferedImage} object.
    */

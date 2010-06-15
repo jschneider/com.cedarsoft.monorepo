@@ -61,51 +61,67 @@ public class DummyCmdLine extends AbstractCmdLine {
     this.out = out;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void pause( int seconds ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public PrintStream getOut() {
     return out;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected ConsolePrinter getConsolePrinter() {

@@ -41,14 +41,18 @@ import javax.swing.JButton;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JButtonPresenter extends AbstractButtonPresenter<JButton> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public JButton createPresentation() {
     return new JButton();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return false;

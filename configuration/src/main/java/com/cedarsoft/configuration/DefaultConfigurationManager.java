@@ -61,20 +61,26 @@ public class DefaultConfigurationManager implements ConfigurationManager {
     configurations.addAll( initialConfigurations );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addConfiguration( @NotNull Object configuration ) {
     configurations.add( configuration );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<?> getConfigurations() {
     return Collections.unmodifiableList( configurations );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public <T> T getConfiguration( @NotNull Class<T> configurationType ) throws IllegalArgumentException {

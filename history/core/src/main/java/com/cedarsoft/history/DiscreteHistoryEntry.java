@@ -41,7 +41,9 @@ import org.joda.time.LocalDate;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface DiscreteHistoryEntry extends HistoryEntry {
-  /** Constant <code>PROPERTY_VALIDITY_DATE="validityDate"</code> */
+  /**
+   * Constant <code>PROPERTY_VALIDITY_DATE="validityDate"</code>
+   */
   @NonNls
   @NotNull
   String PROPERTY_VALIDITY_DATE = "validityDate";

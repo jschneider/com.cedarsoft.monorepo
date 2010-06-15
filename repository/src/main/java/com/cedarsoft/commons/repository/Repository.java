@@ -71,7 +71,9 @@ public class Repository {
    *
    * @param path the path (must be absolute)
    * @return the node
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if the path could not be resolved
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if the path could not be resolved
    */
   @NotNull
   public Node findNode( @NotNull Path path ) throws ChildNotFoundException {
@@ -92,7 +94,9 @@ public class Repository {
    * @param parent the parent node
    * @param name   the name
    * @return the found node
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if the child could not be found
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if the child could not be found
    */
   @NotNull
   protected Node findChild( @NotNull Node parent, @NonNls @NotNull String name ) throws ChildNotFoundException {

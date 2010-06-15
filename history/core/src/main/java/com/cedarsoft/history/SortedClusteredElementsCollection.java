@@ -63,7 +63,9 @@ public class SortedClusteredElementsCollection<E> extends ClusteredElementsColle
     this.comparator = comparator;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElement( @NotNull E element ) {
     lock.writeLock().lock();

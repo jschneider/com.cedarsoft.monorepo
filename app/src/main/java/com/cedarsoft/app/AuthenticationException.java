@@ -56,7 +56,7 @@ public class AuthenticationException extends Exception {
    * <p>Constructor for AuthenticationException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public AuthenticationException( String message, Throwable cause ) {
     super( message, cause );

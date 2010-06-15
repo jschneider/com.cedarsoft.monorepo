@@ -43,7 +43,7 @@ public interface DeletionProcessor<T> {
    * Is called whenever the object will be deleted
    *
    * @param object the object that will be deleted
-   * @param <T> a T object.
+   * @param <T>    a T object.
    */
   void willBeDeleted( @NotNull T object );
 }

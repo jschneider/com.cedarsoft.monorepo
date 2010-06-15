@@ -49,7 +49,7 @@ public class DefaultTagsComponentModel extends AbstractTagsComponentModel {
   /**
    * <p>Constructor for DefaultTagsComponentModel.</p>
    *
-   * @param tagProvider a {@link com.cedarsoft.tags.TagProvider} object.
+   * @param tagProvider  a {@link com.cedarsoft.tags.TagProvider} object.
    * @param selectedTags a {@link com.cedarsoft.tags.Taggable} object.
    */
   public DefaultTagsComponentModel( @NotNull TagProvider tagProvider, @NotNull Taggable selectedTags ) {
@@ -57,20 +57,26 @@ public class DefaultTagsComponentModel extends AbstractTagsComponentModel {
     this.selectedTags = selectedTags;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void selectTag( @NotNull Tag tag ) {
     selectedTags.addTag( tag );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public TagObservable getSelectedTags() {
     return selectedTags;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void unselectTag( @NotNull Tag tag ) {
     if ( !selectedTags.removeTag( tag ) ) {

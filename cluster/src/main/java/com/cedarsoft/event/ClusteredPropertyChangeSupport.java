@@ -81,7 +81,7 @@ public class ClusteredPropertyChangeSupport {
    * <p>removePropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     transientSupport.removePropertyChangeListener( propertyName, listener );
@@ -100,7 +100,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener    a {@link java.beans.PropertyChangeListener} object.
    * @param isTransient a boolean.
    */
   public void addPropertyChangeListener( @NotNull PropertyChangeListener listener, boolean isTransient ) {
@@ -115,7 +115,7 @@ public class ClusteredPropertyChangeSupport {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     addPropertyChangeListener( propertyName, listener, true );
@@ -125,8 +125,8 @@ public class ClusteredPropertyChangeSupport {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
-   * @param isTransient a boolean.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
+   * @param isTransient  a boolean.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener, boolean isTransient ) {
     if ( isTransient ) {
@@ -140,8 +140,8 @@ public class ClusteredPropertyChangeSupport {
    * <p>firePropertyChange</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param oldValue a {@link java.lang.Object} object.
-   * @param newValue a {@link java.lang.Object} object.
+   * @param oldValue     a {@link java.lang.Object} object.
+   * @param newValue     a {@link java.lang.Object} object.
    */
   public void firePropertyChange( @NotNull @NonNls String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
     if ( oldValue != null && newValue != null && oldValue.equals( newValue ) ) {

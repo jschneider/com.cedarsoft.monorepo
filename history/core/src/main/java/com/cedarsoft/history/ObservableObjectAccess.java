@@ -36,8 +36,8 @@ import com.cedarsoft.CommitableObjectAccess;
 /**
  * <p>ObservableObjectAccess interface.</p>
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public interface ObservableObjectAccess<T> extends CommitableObjectAccess<T>, ObservableCollection<T> {
 }

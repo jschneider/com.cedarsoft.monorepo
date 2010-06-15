@@ -75,7 +75,7 @@ public class NonTransientPropertyChangeSupport {
    * <p>removePropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     getChild( propertyName ).removePropertyChangeListener( listener );
@@ -94,7 +94,7 @@ public class NonTransientPropertyChangeSupport {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     getChild( propertyName ).addPropertyChangeListener( listener );

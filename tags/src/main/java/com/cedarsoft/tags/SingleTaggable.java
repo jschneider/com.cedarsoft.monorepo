@@ -72,7 +72,9 @@ public class SingleTaggable implements Taggable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean addTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
@@ -89,7 +91,9 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean removeTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
@@ -102,7 +106,9 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {
@@ -113,13 +119,17 @@ public class SingleTaggable implements Taggable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.addTagChangeListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.removeTagChangeListener( listener );

@@ -53,7 +53,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
   /**
    * <p>Constructor for ObservableObjectAccessView.</p>
    *
-   * @param base a {@link com.cedarsoft.history.ClusteredObservableObjectAccess} object.
+   * @param base   a {@link com.cedarsoft.history.ClusteredObservableObjectAccess} object.
    * @param bridge a {@link com.cedarsoft.history.ObservableObjectAccessView.Bridge} object.
    */
   public ObservableObjectAccessView( @NotNull ClusteredObservableObjectAccess<? super E> base, @NotNull final Bridge<E> bridge ) {
@@ -94,63 +94,83 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
     }, false );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commit( @NotNull E element ) {
     base.commit( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void remove( @NotNull E element ) {
     base.remove( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void add( @NotNull E element ) {
     base.add( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     base.setElements( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends E> getElements() {
     return view.getElements();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.addElementListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     view.addElementListener( listener, isTransient );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.removeElementListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {
     return view.getLock();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {

@@ -55,13 +55,17 @@ public class StructBasedComboBoxModel extends StructBasedListModel implements Co
     super( node );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     selected = ( StructPart ) anItem;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public Object getSelectedItem() {

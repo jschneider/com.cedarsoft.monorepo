@@ -37,7 +37,9 @@ package com.cedarsoft.lock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void deadlockDetected( Thread[] deadlockedThreads ) {
     System.err.println( "Deadlocked Threads:" );

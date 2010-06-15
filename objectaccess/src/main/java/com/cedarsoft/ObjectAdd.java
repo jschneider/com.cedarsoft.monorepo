@@ -43,7 +43,7 @@ public interface ObjectAdd<T> {
    * Adds an element
    *
    * @param element the element that is added
-   * @param <T> a T object.
+   * @param <T>     a T object.
    */
   void add( @NotNull T element );
 }

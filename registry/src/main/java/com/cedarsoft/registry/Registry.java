@@ -43,15 +43,15 @@ import java.util.List;
 /**
  * <p>Registry interface.</p>
  *
- * @param <T> the type this registry stores
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type this registry stores
  */
 public interface Registry<T> {
   /**
    * Returns the stored objects
    *
-   * @return the stored objects
    * @param <T> a T object.
+   * @return the stored objects
    */
   @NotNull
   List<? extends T> getStoredObjects();
@@ -89,7 +89,8 @@ public interface Registry<T> {
    * Stores the object
    *
    * @param object the object that is stored
-   * @throws com.cedarsoft.StillContainedException if any.
+   * @throws com.cedarsoft.StillContainedException
+   *          if any.
    */
   void store( @NotNull T object ) throws StillContainedException;
 

@@ -50,7 +50,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    *
    * @param entry           the entry that is added
    * @param closeOldEntries whether the old entries shall be closed
-   * @param <E> a E object.
+   * @param <E>             a E object.
    */
   public void addEntry( @NotNull E entry, boolean closeOldEntries ) {
     if ( closeOldEntries ) {

@@ -65,7 +65,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
    * <p>Constructor for TagComboBoxModel.</p>
    *
    * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
-   * @param nullable a boolean.
+   * @param nullable      a boolean.
    */
   public TagComboBoxModel( @NotNull TagObservable availableTags, boolean nullable ) {
     super( availableTags, nullable );
@@ -81,7 +81,9 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     return taggable;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     //noinspection ObjectEquality
@@ -123,7 +125,9 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public Tag getSelectedItem() {

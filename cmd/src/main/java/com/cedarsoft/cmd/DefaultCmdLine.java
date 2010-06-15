@@ -74,14 +74,18 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @NotNull
   @Override
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     String answer = read( message + " (y/n)" );
@@ -97,14 +101,18 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return Boolean.parseBoolean( message );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
     return read( message, ( String ) null );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
@@ -138,14 +146,18 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return System.in;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public PrintStream getOut() {
     return System.out;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     try {
@@ -162,7 +174,9 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     while ( true ) {
@@ -176,7 +190,9 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void pause( int seconds ) {
     getOut().print( "Pausing for " + seconds + " seconds:" );

@@ -50,7 +50,7 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param object      the object the taggable is availableTags for
    * @param description the description of the tag
-   * @param <T> a T object.
+   * @param <T>         a T object.
    */
   void addTag( @NotNull T object, @NotNull String description );
 
@@ -59,7 +59,9 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param o the object the taggable is searched for
    * @return the taggable - if one is found
-   * @throws com.cedarsoft.NotFoundException if no taggable has been found
+   *
+   * @throws com.cedarsoft.NotFoundException
+   *          if no taggable has been found
    */
   @NotNull
   Taggable findTaggable( @NotNull T o ) throws NotFoundException;
@@ -69,7 +71,9 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param o the object the availableTags is searched for
    * @return the availableTags - if one is found
-   * @throws com.cedarsoft.NotFoundException if no availableTags has been found
+   *
+   * @throws com.cedarsoft.NotFoundException
+   *          if no availableTags has been found
    */
   @NotNull
   Tagged findTagged( @NotNull T o ) throws NotFoundException;

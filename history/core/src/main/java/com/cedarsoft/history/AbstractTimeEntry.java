@@ -63,7 +63,9 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     this.begin = begin;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public LocalDate getBegin() {
@@ -79,26 +81,34 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     this.begin = begin;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setEnd( @Nullable LocalDate end ) {
     this.end = end;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public LocalDate getEnd() {
     return end;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean hasEnd() {
     return end != null;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isActiveAt( @NotNull LocalDate date ) {
     if ( !getBegin().isBefore( date ) ) {
@@ -113,13 +123,17 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int compareTo( TimeEntry o ) {
     return getBegin().compareTo( o.getBegin() );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -133,7 +147,9 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result;

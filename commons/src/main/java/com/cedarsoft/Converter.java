@@ -36,9 +36,9 @@ import org.jetbrains.annotations.NotNull;
 /**
  * <p>Converter interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type that is converted
  * @param <C> the target type this converts to
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Converter<T, C> {
   /**

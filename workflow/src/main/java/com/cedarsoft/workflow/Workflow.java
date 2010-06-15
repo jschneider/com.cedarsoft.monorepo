@@ -59,7 +59,7 @@ public class Workflow<T> {
    *
    * @param bean               the bean the workflow is created for
    * @param workflowDefinition the definition
-   * @param <T> a T object.
+   * @param <T>                a T object.
    */
   public Workflow( @NotNull T bean, @NotNull WorkflowDefinition<T> workflowDefinition ) {
     this.workflowDefinition = workflowDefinition;

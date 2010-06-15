@@ -71,7 +71,9 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
     this.validityDate = validityDate;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public LocalDate getValidityDate() {

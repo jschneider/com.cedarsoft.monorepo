@@ -76,7 +76,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   * @param listener    a {@link com.cedarsoft.ChangeListener} object.
    * @param isTransient a boolean.
    */
   public void addChangeListener( @NotNull ChangeListener<T> listener, boolean isTransient ) {
@@ -114,7 +114,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context a {@link java.lang.Object} object.
+   * @param context        a {@link java.lang.Object} object.
    * @param propertiesPath a {@link java.lang.String} object.
    */
   public void changed( @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {

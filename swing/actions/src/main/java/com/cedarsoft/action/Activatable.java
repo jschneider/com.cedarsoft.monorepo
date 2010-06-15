@@ -74,7 +74,7 @@ public interface Activatable {
    * Adds a pcs listener
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   void addPropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
 
@@ -82,7 +82,7 @@ public interface Activatable {
    * remove the pcs listener
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   void removePropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
 }

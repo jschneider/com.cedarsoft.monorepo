@@ -65,14 +65,16 @@ public class ConfigurationFactory implements FactoryBean {
    * <p>Constructor for ConfigurationFactory.</p>
    *
    * @param configurationManager a {@link com.cedarsoft.configuration.xml.XmlConfigurationManager} object.
-   * @param moduleType a {@link java.lang.Class} object.
+   * @param moduleType           a {@link java.lang.Class} object.
    */
   public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
     this.configurationManager = configurationManager;
     this.moduleType = moduleType;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Object getObject() throws Exception {
@@ -83,14 +85,18 @@ public class ConfigurationFactory implements FactoryBean {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Class<Configuration> getObjectType() {
     return Configuration.class;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isSingleton() {
     return true;

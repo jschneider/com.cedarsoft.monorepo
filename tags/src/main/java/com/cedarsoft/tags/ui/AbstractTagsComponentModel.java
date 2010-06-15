@@ -52,7 +52,9 @@ public abstract class AbstractTagsComponentModel implements TagsComponentModel {
     this.tagProvider = tagProvider;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public TagProvider getTagProvider() {

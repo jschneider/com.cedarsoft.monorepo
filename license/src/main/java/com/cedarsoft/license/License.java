@@ -40,13 +40,19 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class License {
-  /** Constant <code>UNKNOWN</code> */
+  /**
+   * Constant <code>UNKNOWN</code>
+   */
   @NotNull
   public static final License UNKNOWN = new License( "UNKNOWN", "Unknown" );
-  /** Constant <code>ALL_RIGHTS_RESERVED</code> */
+  /**
+   * Constant <code>ALL_RIGHTS_RESERVED</code>
+   */
   @NotNull
   public static final License ALL_RIGHTS_RESERVED = new License( "ALL_RIGHTS_RESERVED", "All rights reserved" );
-  /** Constant <code>PUBLIC_DOMAIN</code> */
+  /**
+   * Constant <code>PUBLIC_DOMAIN</code>
+   */
   @NotNull
   public static final License PUBLIC_DOMAIN = new License( "PUBLIC_DOMAIN", "Public Domain" );
 
@@ -60,7 +66,7 @@ public class License {
   /**
    * <p>Constructor for License.</p>
    *
-   * @param id a {@link java.lang.String} object.
+   * @param id   a {@link java.lang.String} object.
    * @param name a {@link java.lang.String} object.
    */
   public License( @NotNull @NonNls String id, @NotNull @NonNls String name ) {
@@ -89,7 +95,9 @@ public class License {
     return id;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -103,7 +111,9 @@ public class License {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = id.hashCode();

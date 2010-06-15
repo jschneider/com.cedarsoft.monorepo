@@ -55,7 +55,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param value an array of byte.
+   * @param value     an array of byte.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
    */
   @NotNull
@@ -67,7 +67,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param value an array of byte.
+   * @param value         an array of byte.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
    */
   @NotNull
@@ -84,7 +84,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param value a {@link java.lang.String} object.
+   * @param value     a {@link java.lang.String} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
    */
   @NotNull
@@ -96,7 +96,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param value a {@link java.lang.String} object.
+   * @param value         a {@link java.lang.String} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
    */
   @NotNull
@@ -108,8 +108,9 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param resource a {@link java.net.URL} object.
+   * @param resource  a {@link java.net.URL} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -121,8 +122,9 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param resource a {@link java.net.URL} object.
+   * @param resource      a {@link java.net.URL} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -139,8 +141,9 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param file a {@link java.io.File} object.
+   * @param file      a {@link java.io.File} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -152,8 +155,9 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param file a {@link java.io.File} object.
+   * @param file          a {@link java.io.File} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -169,9 +173,10 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param algorithm  a {@link com.cedarsoft.crypt.Algorithm} object.
    * @param resourceIn a {@link java.io.InputStream} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -183,8 +188,9 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param resourceIn a {@link java.io.InputStream} object.
+   * @param resourceIn    a {@link java.io.InputStream} object.
    * @return a {@link com.cedarsoft.crypt.Hash} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull

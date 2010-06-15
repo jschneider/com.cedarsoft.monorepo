@@ -56,7 +56,7 @@ public class NoValidElementFoundException extends NoElementFoundException {
    * <p>Constructor for NoValidElementFoundException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public NoValidElementFoundException( String message, Throwable cause ) {
     super( message, cause );

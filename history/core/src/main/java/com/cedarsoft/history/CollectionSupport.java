@@ -112,7 +112,7 @@ public class CollectionSupport<E> {
    * <p>elementDeleted</p>
    *
    * @param element a E object.
-   * @param index a int.
+   * @param index   a int.
    */
   public void elementDeleted( @NotNull E element, int index ) {
     //noinspection TooBroadScope
@@ -135,7 +135,7 @@ public class CollectionSupport<E> {
    * <p>elementChanged</p>
    *
    * @param element a E object.
-   * @param index a int.
+   * @param index   a int.
    */
   public void elementChanged( @NotNull E element, int index ) {
     //noinspection TooBroadScope
@@ -157,7 +157,7 @@ public class CollectionSupport<E> {
    * <p>elementAdded</p>
    *
    * @param element a E object.
-   * @param index a int.
+   * @param index   a int.
    */
   public void elementAdded( @NotNull E element, int index ) {
     //noinspection TooBroadScope

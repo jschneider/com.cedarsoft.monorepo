@@ -52,8 +52,8 @@ public class ChangedEvent<T> {
   /**
    * <p>Constructor for ChangedEvent.</p>
    *
-   * @param changedObject a T object.
-   * @param context a {@link java.lang.Object} object.
+   * @param changedObject  a T object.
+   * @param context        a {@link java.lang.Object} object.
    * @param propertiesPath a {@link java.lang.String} object.
    */
   public ChangedEvent( @NotNull T changedObject, @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {

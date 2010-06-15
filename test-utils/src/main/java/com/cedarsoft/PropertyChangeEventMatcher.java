@@ -68,7 +68,9 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
     this.expected = expected;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean matches( Object argument ) {
     if ( ObjectUtils.equals( expected, argument ) ) {
@@ -89,7 +91,9 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
       ObjectUtils.equals( actual.getOldValue(), expected.getOldValue() );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "PropertyChangeEvent did not fit: Expected <" + expected + ">" );

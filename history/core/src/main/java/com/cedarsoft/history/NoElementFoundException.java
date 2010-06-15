@@ -56,7 +56,7 @@ public class NoElementFoundException extends RuntimeException {
    * <p>Constructor for NoElementFoundException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public NoElementFoundException( String message, Throwable cause ) {
     super( message, cause );

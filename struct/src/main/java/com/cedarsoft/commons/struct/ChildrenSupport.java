@@ -128,7 +128,9 @@ public interface ChildrenSupport {
    *
    * @param childName the name of the child
    * @return the child
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if no child with that name is found
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if no child with that name is found
    */
   @NotNull
   Node findChild( @NotNull String childName ) throws ChildNotFoundException;

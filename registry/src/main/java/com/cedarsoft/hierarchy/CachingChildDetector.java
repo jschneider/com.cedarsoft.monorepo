@@ -41,9 +41,9 @@ import java.util.WeakHashMap;
 /**
  * Special implementation of a child detector that always returns the same list for a given parent.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <C> the type of the children
  * @param <P> the type of the parent
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
   @NotNull
@@ -64,7 +64,9 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
   @NotNull
   protected abstract List<? extends C> createChildren( @NotNull P parent );
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public final List<? extends C> findChildren( @NotNull P parent ) {

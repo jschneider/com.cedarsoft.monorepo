@@ -41,7 +41,9 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractTagProvider implements TagProvider {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Tag getTag( @NotNull @NonNls String description ) {
@@ -52,7 +54,9 @@ public abstract class AbstractTagProvider implements TagProvider {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeTag( @NotNull String description ) {
     Tag found = findTag( description );

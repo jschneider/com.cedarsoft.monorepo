@@ -55,7 +55,9 @@ public interface TagProvider extends TagObservable {
    *
    * @param description the description
    * @return the tag
-   * @throws com.cedarsoft.NotFoundException if any.
+   *
+   * @throws com.cedarsoft.NotFoundException
+   *          if any.
    */
   @NotNull
   Tag findTag( @NonNls @NotNull String description ) throws NotFoundException;

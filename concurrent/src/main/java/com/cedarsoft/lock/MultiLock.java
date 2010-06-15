@@ -69,7 +69,9 @@ public class MultiLock implements Lock {
     this.locks.addAll( locks );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lock() {
     for ( Lock lock : locks ) {
@@ -78,25 +80,33 @@ public class MultiLock implements Lock {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lockInterruptibly() throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean tryLock() {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void unlock() {
     for ( Lock lock : locks ) {
@@ -104,7 +114,9 @@ public class MultiLock implements Lock {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Condition newCondition() {
     throw new UnsupportedOperationException( "Cannot create a condition for a multi lock" );

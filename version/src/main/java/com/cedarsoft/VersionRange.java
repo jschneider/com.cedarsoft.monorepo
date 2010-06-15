@@ -63,8 +63,8 @@ public class VersionRange implements Serializable {
   /**
    * <p>Constructor for VersionRange.</p>
    *
-   * @param min a {@link com.cedarsoft.Version} object.
-   * @param max a {@link com.cedarsoft.Version} object.
+   * @param min          a {@link com.cedarsoft.Version} object.
+   * @param max          a {@link com.cedarsoft.Version} object.
    * @param includeLower a boolean.
    * @param includeUpper a boolean.
    */
@@ -192,7 +192,9 @@ public class VersionRange implements Serializable {
     return lower && upper;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -206,7 +208,9 @@ public class VersionRange implements Serializable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = min.hashCode();
@@ -214,7 +218,9 @@ public class VersionRange implements Serializable {
     return result;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   @NonNls

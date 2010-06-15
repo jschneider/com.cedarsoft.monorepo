@@ -78,6 +78,7 @@ public class ZipCreator {
    *
    * @param directories the directories all files are zipped within
    * @return the zipped file
+   *
    * @throws java.io.IOException if an io exception occures
    */
   public File zip( @NotNull File... directories ) throws IOException {
@@ -143,6 +144,7 @@ public class ZipCreator {
    * @param baseName the base path
    * @param file     the file
    * @return the path of the given file relative to the base name
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull

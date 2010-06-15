@@ -40,22 +40,34 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class CreativeCommonsLicense extends License {
-  /** Constant <code>CC_BY</code> */
+  /**
+   * Constant <code>CC_BY</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY = new CreativeCommonsLicense( "CC-BY", "CC Attribution", false, ModificationsAllowed.YES );
-  /** Constant <code>CC_BY_SA</code> */
+  /**
+   * Constant <code>CC_BY_SA</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_SA = new CreativeCommonsLicense( "CC-BY-SA", "CC Attribution Share Alike", false, ModificationsAllowed.SHARE_ALIKE );
-  /** Constant <code>CC_BY_ND</code> */
+  /**
+   * Constant <code>CC_BY_ND</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_ND = new CreativeCommonsLicense( "CC-BY-ND", "CC Attribution No Derivates", false, ModificationsAllowed.NO );
-  /** Constant <code>CC_BY_NC</code> */
+  /**
+   * Constant <code>CC_BY_NC</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC = new CreativeCommonsLicense( "CC-BY-NC", "CC Attribution Non-Commercial", true, ModificationsAllowed.YES );
-  /** Constant <code>CC_BY_NC_SA</code> */
+  /**
+   * Constant <code>CC_BY_NC_SA</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC_SA = new CreativeCommonsLicense( "CC-BY-NC-SA", "CC Attribution Non-Commercial Share Alike", true, ModificationsAllowed.SHARE_ALIKE );
-  /** Constant <code>CC_BY_NC_ND</code> */
+  /**
+   * Constant <code>CC_BY_NC_ND</code>
+   */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC_ND = new CreativeCommonsLicense( "CC-BY-NC-ND", "CC Attribution Non-Commercial No Derivates", true, ModificationsAllowed.NO );
 
@@ -68,10 +80,10 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Constructor for CreativeCommonsLicense.</p>
    *
-   * @param id a {@link java.lang.String} object.
-   * @param name a {@link java.lang.String} object.
+   * @param id                        a {@link java.lang.String} object.
+   * @param name                      a {@link java.lang.String} object.
    * @param restrictedToNonCommercial a boolean.
-   * @param modificationsAllowed a {@link com.cedarsoft.license.CreativeCommonsLicense.ModificationsAllowed} object.
+   * @param modificationsAllowed      a {@link com.cedarsoft.license.CreativeCommonsLicense.ModificationsAllowed} object.
    */
   public CreativeCommonsLicense( @NotNull @NonNls String id, @NotNull @NonNls String name, boolean restrictedToNonCommercial, @NotNull ModificationsAllowed modificationsAllowed ) {
     super( id, name );

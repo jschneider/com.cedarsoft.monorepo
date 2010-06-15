@@ -41,13 +41,17 @@ import javax.swing.JCheckBox;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JCheckboxPresenter extends AbstractButtonPresenter<JCheckBox> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return false;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected JCheckBox createPresentation() {

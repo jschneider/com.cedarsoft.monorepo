@@ -129,26 +129,34 @@ public class StructBasedListModel implements ListModel {
     child.getLookup().addChangeListenerWeak( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int getSize() {
     return node.getChildren().size();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public StructPart getElementAt( int index ) {
     return node.getChildren().get( index );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addListDataListener( ListDataListener l ) {
     listeners.add( l );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeListDataListener( ListDataListener l ) {
     listeners.remove( l );

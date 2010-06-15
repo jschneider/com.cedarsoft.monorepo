@@ -45,8 +45,8 @@ public interface ConfigurationManager {
    * Returns the configuration of the given type
    *
    * @param configurationType the configuration type
+   * @param <T>               a T object.
    * @return the configuration
-   * @param <T> a T object.
    */
   @NotNull
   <T> T getConfiguration( @NotNull Class<T> configurationType );

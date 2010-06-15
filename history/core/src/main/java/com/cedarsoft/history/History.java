@@ -43,11 +43,15 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E> {
-  /** Constant <code>PROPERTY_ENTRIES="entries"</code> */
+  /**
+   * Constant <code>PROPERTY_ENTRIES="entries"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_ENTRIES = "entries";
-  /** Constant <code>PROPERTY_FIRST_ENTRIES="firstEntry"</code> */
+  /**
+   * Constant <code>PROPERTY_FIRST_ENTRIES="firstEntry"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_FIRST_ENTRIES = "firstEntry";
@@ -55,8 +59,8 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
   /**
    * Returns all entries of the history
    *
-   * @return the entries
    * @param <E> a E object.
+   * @return the entries
    */
   @NotNull
   List<? extends E> getEntries();
@@ -86,7 +90,9 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Returns the latest entry
    *
    * @return the latest entry
-   * @throws com.cedarsoft.history.NoValidElementFoundException if any.
+   *
+   * @throws com.cedarsoft.history.NoValidElementFoundException
+   *          if any.
    */
   @NotNull
   E getLatestEntry() throws NoValidElementFoundException;
@@ -133,7 +139,9 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Returns the first entry
    *
    * @return the first entry
-   * @throws com.cedarsoft.history.NoValidElementFoundException if no entry is available within this history
+   *
+   * @throws com.cedarsoft.history.NoValidElementFoundException
+   *          if no entry is available within this history
    */
   @NotNull
   E getFirstEntry() throws NoValidElementFoundException;

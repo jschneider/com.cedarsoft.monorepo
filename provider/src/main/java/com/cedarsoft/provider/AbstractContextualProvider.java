@@ -36,10 +36,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * <p>Abstract AbstractContextualProvider class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type that is provided
  * @param <C> the context
  * @param <E> the exception that is thrown
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractContextualProvider<T, C, E extends Throwable> implements ContextualProvider<T, C, E> {
   @NotNull

@@ -59,7 +59,7 @@ public class ClusteredCollectionSupport<E> {
   /**
    * <p>addElementListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener    a {@link com.cedarsoft.history.ElementsListener} object.
    * @param isTransient a boolean.
    */
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {

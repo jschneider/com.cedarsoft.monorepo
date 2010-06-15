@@ -55,7 +55,9 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
     super( new MemoryTagProvider() );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @NotNull
   @Override
   protected TagSet createTaggable( @NotNull T o ) {
@@ -64,7 +66,9 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
     return taggable;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Taggable findTaggable( @NotNull T o ) throws NotFoundException {

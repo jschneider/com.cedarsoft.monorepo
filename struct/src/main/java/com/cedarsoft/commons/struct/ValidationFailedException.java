@@ -56,7 +56,7 @@ public class ValidationFailedException extends RuntimeException {
    * <p>Constructor for ValidationFailedException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public ValidationFailedException( String message, Throwable cause ) {
     super( message, cause );

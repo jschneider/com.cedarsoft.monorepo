@@ -48,8 +48,8 @@ public interface DefaultValueProvider {
    *
    * @param key  the key
    * @param type the type
+   * @param <T>  a T object.
    * @return the default value
-   * @param <T> a T object.
    */
   @NotNull
   <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type );

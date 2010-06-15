@@ -127,7 +127,9 @@ public interface StructPart {
    *
    * @param childName the childName of the children
    * @return the child with the given childName
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
+   *
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   *          if any.
    */
   @NotNull
   StructPart findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;

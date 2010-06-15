@@ -51,7 +51,7 @@ public class ClusteredHistoryListenerSupport<E> {
    * <p>addHistoryListener</p>
    *
    * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
-   * @param isTransient a boolean.
+   * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
     if ( isTransient ) {

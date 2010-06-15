@@ -41,8 +41,8 @@ import java.util.List;
 /**
  * Defines a transition between two states.
  *
- * @paramt <T> the type of object that is used within the workflow
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @paramt <T> the type of object that is used within the workflow
  */
 public class TransitionDefinition<T> {
   @NotNull
@@ -55,8 +55,8 @@ public class TransitionDefinition<T> {
   /**
    * <p>Constructor for TransitionDefinition.</p>
    *
-   * @param source a {@link com.cedarsoft.workflow.State} object.
-   * @param target a {@link com.cedarsoft.workflow.State} object.
+   * @param source  a {@link com.cedarsoft.workflow.State} object.
+   * @param target  a {@link com.cedarsoft.workflow.State} object.
    * @param actions a {@link com.cedarsoft.workflow.Action} object.
    */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull Action<T>... actions ) {
@@ -66,8 +66,8 @@ public class TransitionDefinition<T> {
   /**
    * Creates a new transition definition between the given source and target
    *
-   * @param source the source
-   * @param target the target
+   * @param source  the source
+   * @param target  the target
    * @param actions a {@link java.util.List} object.
    */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull List<? extends Action<T>> actions ) {

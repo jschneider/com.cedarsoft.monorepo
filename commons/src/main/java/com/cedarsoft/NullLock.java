@@ -41,60 +41,78 @@ import java.util.concurrent.locks.ReadWriteLock;
 /**
  * An Null-Lock that does nothing
  *
- * @noinspection Singleton
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @noinspection Singleton
  */
 @SuppressWarnings( {"LockAcquiredButNotSafelyReleased"} )
 public class NullLock implements Lock, ReadWriteLock {
-  /** Constant <code>LOCK</code> */
+  /**
+   * Constant <code>LOCK</code>
+   */
   @NotNull
   public static final NullLock LOCK = new NullLock();
 
   private NullLock() {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Lock readLock() {
     return this;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Lock writeLock() {
     return this;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lock() {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lockInterruptibly() throws InterruptedException {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean tryLock() {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void unlock() {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Condition newCondition() {
     throw new NullPointerException( "Cannot create a condition for a null lock" );

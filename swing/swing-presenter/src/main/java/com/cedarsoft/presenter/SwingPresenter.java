@@ -42,14 +42,18 @@ import javax.swing.JComponent;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class SwingPresenter<T extends JComponent> extends AbstractPresenter<T> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void removeChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
     presentation.remove( index );
     presentation.validate();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean addChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
     Presenter<? extends JComponent> childPresenter = getChildPresenter( child );
@@ -59,8 +63,8 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
   /**
    * <p>addChild</p>
    *
-   * @param presentation a T object.
-   * @param index a int.
+   * @param presentation      a T object.
+   * @param index             a int.
    * @param childPresentation a {@link javax.swing.JComponent} object.
    * @return a boolean.
    */

@@ -54,7 +54,7 @@ public class Executer {
   /**
    * <p>Constructor for Executer.</p>
    *
-   * @param processBuilder a {@link java.lang.ProcessBuilder} object.
+   * @param processBuilder  a {@link java.lang.ProcessBuilder} object.
    * @param redirectStreams a boolean.
    */
   public Executer( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
@@ -75,7 +75,8 @@ public class Executer {
    * <p>execute</p>
    *
    * @return a int.
-   * @throws java.io.IOException if any.
+   *
+   * @throws java.io.IOException            if any.
    * @throws java.lang.InterruptedException if any.
    */
   public int execute() throws IOException, InterruptedException {

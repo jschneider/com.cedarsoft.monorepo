@@ -44,8 +44,8 @@ public interface TypedLookupChangeListener<T> extends LookupChangeListener<T> {
   /**
    * Returns the type this callback is bound to
    *
-   * @return the type
    * @param <T> a T object.
+   * @return the type
    */
   @NotNull
   Class<T> getType();

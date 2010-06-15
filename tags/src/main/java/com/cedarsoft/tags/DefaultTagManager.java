@@ -39,7 +39,9 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultTagManager<T> extends MemoryTagManager<T> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commit( @NotNull Taggable taggable ) {
     //do nothing - we have no database

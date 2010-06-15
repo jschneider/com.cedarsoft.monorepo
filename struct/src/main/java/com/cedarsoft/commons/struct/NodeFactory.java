@@ -48,7 +48,9 @@ public interface NodeFactory {
    * @param name    the name
    * @param context the context
    * @return the node
-   * @throws com.cedarsoft.CanceledException if any.
+   *
+   * @throws com.cedarsoft.CanceledException
+   *          if any.
    */
   @NotNull
   Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException;

@@ -71,7 +71,7 @@ public class FileCopyManager {
   /**
    * <p>copy</p>
    *
-   * @param src a {@link java.io.File} object.
+   * @param src  a {@link java.io.File} object.
    * @param dest a {@link java.io.File} object.
    * @throws java.io.IOException if any.
    */
@@ -120,7 +120,7 @@ public class FileCopyManager {
   /**
    * <p>copyDirectory</p>
    *
-   * @param srcDir a {@link java.io.File} object.
+   * @param srcDir  a {@link java.io.File} object.
    * @param destDir a {@link java.io.File} object.
    * @throws java.io.IOException if any.
    */

@@ -52,11 +52,15 @@ import java.awt.Component;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
-  /** Constant <code>PROPERTY_ACTION="action"</code> */
+  /**
+   * Constant <code>PROPERTY_ACTION="action"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_ACTION = "action";
-  /** Constant <code>PROPERTY_RENDERER="renderer"</code> */
+  /**
+   * Constant <code>PROPERTY_RENDERER="renderer"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_RENDERER = "renderer";
@@ -70,20 +74,26 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
   private static final Object KEY_RENDERER_CALLBACK = JComboBoxPresenter.class.getName() + "###RendererCallback";
 
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return false;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void bind( @NotNull JComboBox presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
     {
@@ -107,7 +117,9 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
     presentation.setModel( new StructBasedComboBoxModel( struct ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected JComboBox createPresentation() {

@@ -44,8 +44,8 @@ public interface StringConverter<T> {
    * Create a string representation for an object
    *
    * @param object the object that is serialized
+   * @param <T>    a T object.
    * @return the string representation
-   * @param <T> a T object.
    */
   @NotNull
   @NonNls

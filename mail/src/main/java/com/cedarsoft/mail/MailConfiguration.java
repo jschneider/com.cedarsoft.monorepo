@@ -68,11 +68,11 @@ public class MailConfiguration {
   /**
    * <p>Constructor for MailConfiguration.</p>
    *
-   * @param mailHost a {@link java.lang.String} object.
-   * @param mailFrom a {@link java.lang.String} object.
+   * @param mailHost     a {@link java.lang.String} object.
+   * @param mailFrom     a {@link java.lang.String} object.
    * @param mailPersonal a {@link java.lang.String} object.
-   * @param smtpUser a {@link java.lang.String} object.
-   * @param smtpPass a {@link java.lang.String} object.
+   * @param smtpUser     a {@link java.lang.String} object.
+   * @param smtpPass     a {@link java.lang.String} object.
    * @param mailSmtpAuth a {@link java.lang.String} object.
    */
   public MailConfiguration( @NonNls @NotNull String mailHost, @NonNls @NotNull String mailFrom, @NonNls @NotNull String mailPersonal, @NonNls @NotNull String smtpUser, @NonNls @NotNull String smtpPass, @NonNls @NotNull String mailSmtpAuth ) {

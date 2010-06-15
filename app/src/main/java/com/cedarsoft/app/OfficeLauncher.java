@@ -80,6 +80,7 @@ public class OfficeLauncher {
    *
    * @param file a {@link java.io.File} object.
    * @return a {@link java.lang.Process} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull
@@ -92,6 +93,7 @@ public class OfficeLauncher {
    *
    * @param file a {@link java.io.File} object.
    * @return a {@link java.lang.Process} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull

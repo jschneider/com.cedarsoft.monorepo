@@ -69,13 +69,17 @@ public class LogingReentrantLock implements ReadWriteLock {
   };
 
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Lock readLock() {
     return readLock;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Lock writeLock() {
     return writeLock;

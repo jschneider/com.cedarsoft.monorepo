@@ -46,7 +46,7 @@ public interface LookupChangeListener<T> extends EventListener {
    * Is notified when the content of the lookup has been changed
    *
    * @param event describes the change of the lookup
-   * @param <T> a T object.
+   * @param <T>   a T object.
    */
   void lookupChanged( @NotNull LookupChangeEvent<? extends T> event );
 }

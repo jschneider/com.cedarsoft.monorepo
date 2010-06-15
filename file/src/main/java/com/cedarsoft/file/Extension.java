@@ -40,10 +40,14 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Extension {
-  /** Constant <code>DEFAULT_DELIMITER="."</code> */
+  /**
+   * Constant <code>DEFAULT_DELIMITER="."</code>
+   */
   @NonNls
   public static final String DEFAULT_DELIMITER = ".";
-  /** Constant <code>NONE</code> */
+  /**
+   * Constant <code>NONE</code>
+   */
   @NotNull
   public static final Extension NONE = new Extension( "", "" );
 
@@ -107,13 +111,17 @@ public class Extension {
     return delimiter + extension;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String toString() {
     return getCombined();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -127,7 +135,9 @@ public class Extension {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = delimiter.hashCode();

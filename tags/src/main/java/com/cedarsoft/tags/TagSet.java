@@ -47,7 +47,9 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagSet implements Taggable {
-  /** Constant <code>PROPERTY_TAGS="tags"</code> */
+  /**
+   * Constant <code>PROPERTY_TAGS="tags"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_TAGS = "tags";
@@ -96,7 +98,9 @@ public class TagSet implements Taggable {
     setTags( Arrays.asList( tags ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean addTag( @NotNull Tag tag ) {
     if ( tags.contains( tag ) ) {
@@ -108,7 +112,9 @@ public class TagSet implements Taggable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {
@@ -136,7 +142,9 @@ public class TagSet implements Taggable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean removeTag( @NotNull Tag tag ) {
     int index = tags.indexOf( tag );
@@ -149,13 +157,17 @@ public class TagSet implements Taggable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );

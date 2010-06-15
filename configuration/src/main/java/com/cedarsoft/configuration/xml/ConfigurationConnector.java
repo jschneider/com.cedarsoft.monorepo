@@ -59,7 +59,7 @@ public class ConfigurationConnector<T> {
    *
    * @param subject             the value model of the bean
    * @param configurationAccess the configuration access
-   * @param <T> a T object.
+   * @param <T>                 a T object.
    */
   public ConfigurationConnector( @NotNull ValueModel subject, @NotNull ConfigurationAccess<T> configurationAccess ) {
     this.subject = subject;

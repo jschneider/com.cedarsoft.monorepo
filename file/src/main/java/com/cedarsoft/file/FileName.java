@@ -72,7 +72,7 @@ public class FileName {
   /**
    * <p>Constructor for FileName.</p>
    *
-   * @param baseName a {@link java.lang.String} object.
+   * @param baseName  a {@link java.lang.String} object.
    * @param delimiter a {@link java.lang.String} object.
    * @param extension a {@link java.lang.String} object.
    */
@@ -134,7 +134,9 @@ public class FileName {
     return baseName + extension.getCombined();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -148,7 +150,9 @@ public class FileName {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = baseName.hashCode();
@@ -156,7 +160,9 @@ public class FileName {
     return result;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String toString() {
     return baseName.toString() + extension.toString();

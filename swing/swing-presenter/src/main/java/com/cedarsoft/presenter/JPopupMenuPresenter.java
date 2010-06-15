@@ -42,7 +42,9 @@ import javax.swing.JPopupMenu;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface JPopupMenuPresenter extends Presenter<JPopupMenu> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   JPopupMenu present( @NotNull StructPart struct );

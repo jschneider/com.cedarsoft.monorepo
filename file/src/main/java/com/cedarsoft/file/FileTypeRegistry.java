@@ -50,22 +50,34 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileTypeRegistry extends DefaultRegistry<FileType> {
-  /** Constant <code>LIGHT_ZONE</code> */
+  /**
+   * Constant <code>LIGHT_ZONE</code>
+   */
   @NotNull
   public static final FileType LIGHT_ZONE = new FileType( "LightZone", true, new Extension( "_", "lzn.jpg" ) );
-  /** Constant <code>JPEG</code> */
+  /**
+   * Constant <code>JPEG</code>
+   */
   @NotNull
   public static final FileType JPEG = new FileType( "JPEG", false, new Extension( ".", "jpg" ), new Extension( ".", "jpeg" ) );
-  /** Constant <code>TIFF</code> */
+  /**
+   * Constant <code>TIFF</code>
+   */
   @NotNull
   public static final FileType TIFF = new FileType( "TIFF", false, new Extension( ".", "tiff" ), new Extension( ".", "tiff" ) );
-  /** Constant <code>GIMP</code> */
+  /**
+   * Constant <code>GIMP</code>
+   */
   @NotNull
   public static final FileType GIMP = new FileType( "Gimp", false, new Extension( ".", "xcf" ) );
-  /** Constant <code>PHOTO_SHOP</code> */
+  /**
+   * Constant <code>PHOTO_SHOP</code>
+   */
   @NotNull
   public static final FileType PHOTO_SHOP = new FileType( "Photoshop", false, new Extension( ".", "psd" ) );
-  /** Constant <code>RAW_CANON</code> */
+  /**
+   * Constant <code>RAW_CANON</code>
+   */
   @NotNull
   public static final FileType RAW_CANON = new FileType( "Canon Raw", false, new Extension( ".", "cr2" ) );
 
@@ -97,9 +109,10 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>Constructor for FileTypeRegistry.</p>
    *
-   * @param storedObjects a {@link java.util.Collection} object.
+   * @param storedObjects      a {@link java.util.Collection} object.
    * @param fileTypeComparator a {@link java.util.Comparator} object.
-   * @throws com.cedarsoft.StillContainedException if any.
+   * @throws com.cedarsoft.StillContainedException
+   *          if any.
    */
   public FileTypeRegistry( @NotNull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {
     super( storedObjects, fileTypeComparator );

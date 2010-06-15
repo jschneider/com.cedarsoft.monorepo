@@ -45,11 +45,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * Contains a collection of entries
  *
- * @param <E> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <E> the type
  */
 public class ClusteredElementsCollection<E> implements ClusteredObservableObjectAccess<E> {
-  /** Constant <code>PROPERTY_ELEMENTS="elements"</code> */
+  /**
+   * Constant <code>PROPERTY_ELEMENTS="elements"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_ELEMENTS = "elements";
@@ -79,7 +81,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     this.elements.addAll( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public final void add( @NotNull E element ) {
     addElement( element );
@@ -113,7 +117,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     collectionSupport.elementAdded( element, index );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commit( @NotNull E element ) {
 
@@ -178,7 +184,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns all cessions
    */
   @Override
@@ -192,7 +198,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
@@ -213,7 +221,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public final void remove( @NotNull E element ) {
     removeEntry( element );
@@ -240,26 +250,34 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return removed;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     addElementListener( listener, true );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return collectionSupport.getTransientElementListeners();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     collectionSupport.addElementListener( listener, isTransient );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
@@ -294,7 +312,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param visitor the visitor that identifies the entries
    * @return the first entry
-   * @throws com.cedarsoft.history.NoElementFoundException if no entry has been found
+   *
+   * @throws com.cedarsoft.history.NoElementFoundException
+   *          if no entry has been found
    */
   @NotNull
   public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
@@ -346,7 +366,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
    * @return a boolean.
-   * @throws com.cedarsoft.history.NoElementFoundException if any.
+   *
+   * @throws com.cedarsoft.history.NoElementFoundException
+   *          if any.
    */
   public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
@@ -412,7 +434,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {

@@ -45,8 +45,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * Offers support for change listeners.
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public class ChangeListenerSupport<T> {
   @NotNull
@@ -126,7 +126,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context a {@link java.lang.Object} object.
+   * @param context        a {@link java.lang.Object} object.
    * @param propertiesPath a {@link java.lang.String} object.
    */
   public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {

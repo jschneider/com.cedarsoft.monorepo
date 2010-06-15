@@ -47,7 +47,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
   /**
    * <p>Constructor for InstantiatorLookup.</p>
    *
-   * @param type a {@link java.lang.Class} object.
+   * @param type         a {@link java.lang.Class} object.
    * @param instantiater a {@link com.cedarsoft.lookup.Instantiater} object.
    */
   public InstantiatorLookup( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
@@ -64,7 +64,9 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
     this.instantiater = instantiater;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected T createInstance() {
@@ -75,7 +77,9 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Class<? extends T> getType() {
     if ( type != null ) {

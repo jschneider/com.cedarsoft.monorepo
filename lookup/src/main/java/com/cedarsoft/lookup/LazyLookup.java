@@ -61,7 +61,9 @@ public abstract class LazyLookup<T> extends AbstractLookup {
   protected LazyLookup() {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
@@ -104,7 +106,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * This lookup calls {@link #getValue()} when the parameter fits the type ({@link #getType()}).
    */
   @Override
@@ -130,56 +132,76 @@ public abstract class LazyLookup<T> extends AbstractLookup {
     return instance;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }

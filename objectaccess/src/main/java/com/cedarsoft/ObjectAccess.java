@@ -38,15 +38,15 @@ import java.util.List;
 /**
  * Implementing classes offer access to a list of elements
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public interface ObjectAccess<T> {
   /**
    * Returns all elements
    *
-   * @return all elements
    * @param <T> a T object.
+   * @return all elements
    */
   @NotNull
   List<? extends T> getElements();

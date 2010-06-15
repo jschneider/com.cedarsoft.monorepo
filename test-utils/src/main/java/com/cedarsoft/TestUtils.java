@@ -55,7 +55,8 @@ public class TestUtils {
    * Cleans up all fields within a given test
    *
    * @param test the test that is cleaned up
-   * @throws java.lang.IllegalAccessException if any.
+   * @throws java.lang.IllegalAccessException
+   *          if any.
    */
   public static void cleanupFields( Object test ) throws IllegalAccessException {
     if ( test == null ) {
@@ -86,8 +87,9 @@ public class TestUtils {
    *
    * @param prefix a {@link java.lang.String} object.
    * @param suffix a {@link java.lang.String} object.
-   * @param in a {@link java.io.InputStream} object.
+   * @param in     a {@link java.io.InputStream} object.
    * @return a {@link java.io.File} object.
+   *
    * @throws java.io.IOException if any.
    */
   @NotNull

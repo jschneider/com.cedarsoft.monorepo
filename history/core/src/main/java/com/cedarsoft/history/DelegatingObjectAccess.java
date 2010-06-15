@@ -85,7 +85,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * Creates a new delegating object access
    *
    * @param currentDelegate the current  delegate
-   * @param <T> a T object.
+   * @param <T>             a T object.
    */
   public DelegatingObjectAccess( @Nullable ObservableObjectAccess<T> currentDelegate ) {
     this.currentDelegate = currentDelegate;
@@ -197,7 +197,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns the lock for the current delegate
    */
   @Override
@@ -216,13 +216,17 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commit( @NotNull T element ) {
     getCurrentDelegateSafe().commit( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends T> getElements() {
@@ -233,31 +237,41 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void add( @NotNull T element ) {
     getCurrentDelegateSafe().add( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setElements( @NotNull List<? extends T> elements ) {
     getCurrentDelegateSafe().setElements( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void remove( @NotNull T element ) {
     getCurrentDelegateSafe().remove( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.add( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.remove( listener );
@@ -281,19 +295,25 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     this.delegateListeners.remove( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean canAdd() {
     return isCurrentDelegatingObjectAccessAvailable();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addPartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.add( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removePartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.remove( listener );

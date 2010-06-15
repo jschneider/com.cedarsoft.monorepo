@@ -37,15 +37,15 @@ import org.jetbrains.annotations.NotNull;
  * Can be registered to be notified about updates.
  * There exist two types of "added", "changed" and "deleted" methods.
  *
- * @param <E> the type of the elements
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <E> the type of the elements
  */
 public interface ElementsListener<E> {
   /**
    * Is notified when the elements have been deleted
    *
    * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
-   * @param <E> a E object.
+   * @param <E>   a E object.
    */
   void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event );
 

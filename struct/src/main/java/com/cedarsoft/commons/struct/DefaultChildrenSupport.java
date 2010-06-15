@@ -49,7 +49,9 @@ public class DefaultChildrenSupport implements ChildrenSupport {
   private List<Node> nodes = new ArrayList<Node>();
   private List<Node> nodesUm = Collections.unmodifiableList( nodes );
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends Node> getChildren() {
@@ -57,7 +59,9 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     return nodesUm;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChild( int index, @NotNull Node child ) {
     validateName( child.getName() );
@@ -67,13 +71,17 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     notifyChildAdded( child, index );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addChild( @NotNull Node child ) {
     addChild( nodes.size(), child );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setChildren( @NotNull List<? extends Node> children ) {
     detachChildren();
@@ -84,7 +92,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Detaches all children
    */
   @Override
@@ -104,7 +112,9 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void detachChild( @NotNull Node child ) {
     int oldIndex = nodes.indexOf( child );
@@ -114,7 +124,9 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     detachChild( oldIndex, child );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void detachChild( int index ) {
     detachChild( index, nodes.get( index ) );
@@ -126,20 +138,26 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     notifyChildDetached( childToDetach, index );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Node getParentNode() {
     return parentNode;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setParentNode( @NotNull Node parentNode ) {
     this.parentNode = parentNode;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isChild( @NotNull StructPart child ) {
     //noinspection SuspiciousMethodCalls
@@ -148,19 +166,25 @@ public class DefaultChildrenSupport implements ChildrenSupport {
 
   private final List<StructureListener> structureListeners = new ArrayList<StructureListener>();
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
     structureListeners.add( structureListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
     structureListeners.add( new WeakStructureListener( structureListener ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     for ( Iterator<StructureListener> it = structureListeners.iterator(); it.hasNext(); ) {
@@ -172,14 +196,18 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     structureListeners.remove( structureListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends StructureListener> getStructureListeners() {
     return Collections.unmodifiableList( structureListeners );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Node findChild( @NotNull String childName ) throws ChildNotFoundException {

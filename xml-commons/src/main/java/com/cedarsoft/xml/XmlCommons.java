@@ -129,7 +129,7 @@ public class XmlCommons {
    * <p>out</p>
    *
    * @param document a {@link org.w3c.dom.Document} object.
-   * @param out a {@link java.io.OutputStream} object.
+   * @param out      a {@link java.io.OutputStream} object.
    */
   public static void out( @NotNull org.w3c.dom.Document document, @NotNull OutputStream out ) {
     try {
@@ -143,7 +143,7 @@ public class XmlCommons {
    * <p>out</p>
    *
    * @param document a {@link org.w3c.dom.Document} object.
-   * @param out a {@link java.io.Writer} object.
+   * @param out      a {@link java.io.Writer} object.
    */
   public static void out( @NotNull org.w3c.dom.Document document, @NotNull Writer out ) {
     try {
@@ -175,7 +175,8 @@ public class XmlCommons {
    *
    * @param bytes an array of byte.
    * @return a {@link org.w3c.dom.Document} object.
-   * @throws java.io.IOException if any.
+   *
+   * @throws java.io.IOException      if any.
    * @throws org.xml.sax.SAXException if any.
    */
   @NotNull
@@ -188,7 +189,8 @@ public class XmlCommons {
    *
    * @param in a {@link java.io.InputStream} object.
    * @return a {@link org.w3c.dom.Document} object.
-   * @throws java.io.IOException if any.
+   *
+   * @throws java.io.IOException      if any.
    * @throws org.xml.sax.SAXException if any.
    */
   @NotNull

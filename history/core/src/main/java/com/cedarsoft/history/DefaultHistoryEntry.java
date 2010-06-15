@@ -62,7 +62,9 @@ public class DefaultHistoryEntry implements HistoryEntry {
     this.verificationDate = verificationDate;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public LocalDate getVerificationDate() {
@@ -71,7 +73,9 @@ public class DefaultHistoryEntry implements HistoryEntry {
 
   //todo really necessary????
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int compareTo( @NotNull HistoryEntry o ) {
     return verificationDate.compareTo( o.getVerificationDate() );

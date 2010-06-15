@@ -63,7 +63,9 @@ public class SortedElementsCollection<E> extends ElementsCollection<E> {
     this.comparator = comparator;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElement( @NotNull E element ) {
     lock.writeLock().lock();

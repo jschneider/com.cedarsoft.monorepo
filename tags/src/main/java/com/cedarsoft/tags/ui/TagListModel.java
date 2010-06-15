@@ -71,7 +71,7 @@ public class TagListModel implements ListModel {
    * <p>Constructor for TagListModel.</p>
    *
    * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
-   * @param nullable a boolean.
+   * @param nullable      a boolean.
    */
   public TagListModel( @NotNull TagObservable availableTags, boolean nullable ) {
     this.availableTags = availableTags;
@@ -93,7 +93,9 @@ public class TagListModel implements ListModel {
     return nullable;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int getSize() {
     if ( nullable ) {
@@ -103,7 +105,9 @@ public class TagListModel implements ListModel {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public Tag getElementAt( int index ) {
@@ -126,13 +130,17 @@ public class TagListModel implements ListModel {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addListDataListener( @NotNull ListDataListener l ) {
     listeners.add( l );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeListDataListener( @NotNull ListDataListener l ) {
     listeners.remove( l );

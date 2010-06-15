@@ -63,9 +63,9 @@ public class ParentCache {
    * Returns the parent of the given child
    *
    * @param child the child
+   * @param <P>   a P object.
+   * @param <C>   a C object.
    * @return the parent
-   * @param <P> a P object.
-   * @param <C> a C object.
    */
   @Nullable
   public <P, C> P findParent( @NotNull C child ) {
@@ -123,9 +123,9 @@ public class ParentCache {
    *
    * @param child  the child
    * @param parent the parent
-   * @param index a int.
-   * @param <P> a P object.
-   * @param <C> a C object.
+   * @param index  a int.
+   * @param <P>    a P object.
+   * @param <C>    a C object.
    */
   public <P, C> void store( @NotNull C child, @NotNull P parent, int index ) {
     storeParent( child, parent );

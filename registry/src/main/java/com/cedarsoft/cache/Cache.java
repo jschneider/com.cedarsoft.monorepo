@@ -39,9 +39,9 @@ import java.util.Map;
  * A mapped cache.
  * If there is no entry for a given key, the entry is automatically created using a factory.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <K> the key
  * @param <T> the type that is stored within the cache
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Cache<K, T> extends Map<K, T> {
 

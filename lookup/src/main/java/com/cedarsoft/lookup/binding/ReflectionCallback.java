@@ -60,7 +60,9 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
     this.setter = setter;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {

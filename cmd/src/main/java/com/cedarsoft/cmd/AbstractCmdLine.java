@@ -49,31 +49,41 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractCmdLine implements CmdLine {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void warning( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createWarning( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void error( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createError( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void success( @NotNull String message, @NotNull Object... objects ) {
     getOut().println( getConsolePrinter().createSuccess( message, objects ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void outNl() {
     getOut().println();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void out( @NotNull String message, @NotNull Object... objects ) {
     if ( objects.length == 0 ) {
@@ -83,7 +93,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void out( @NotNull Process process ) {
     try {
@@ -111,7 +123,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements ) {
@@ -121,7 +135,7 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>printPossibleElements</p>
    *
-   * @param elements a {@link java.util.List} object.
+   * @param elements  a {@link java.util.List} object.
    * @param presenter a {@link com.cedarsoft.renderer.Renderer} object.
    */
   protected <T> void printPossibleElements( @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
@@ -136,7 +150,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
@@ -145,7 +161,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     return elements.get( readInt( "Enter the number of the element you want to select", 0, elements.size() ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message, @NotNull List<String> elements ) {
@@ -174,7 +192,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     throw new IllegalStateException( "Should not reach" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String read( @NotNull String message, @NotNull List<String> elements, @NotNull String preselected ) {
@@ -190,7 +210,9 @@ public abstract class AbstractCmdLine implements CmdLine {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory ) {

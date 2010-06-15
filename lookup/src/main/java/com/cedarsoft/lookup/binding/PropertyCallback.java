@@ -52,7 +52,7 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
   /**
    * <p>Constructor for PropertyCallback.</p>
    *
-   * @param object a {@link java.lang.Object} object.
+   * @param object       a {@link java.lang.Object} object.
    * @param propertyName a {@link java.lang.String} object.
    * @param propertyType a {@link java.lang.Class} object.
    */
@@ -66,14 +66,18 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Class<T> getType() {
     return propertyType;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {

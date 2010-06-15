@@ -64,7 +64,7 @@ public class ChildDetectorManager {
   /**
    * <p>addChildDetector</p>
    *
-   * @param parentType a {@link java.lang.Class} object.
+   * @param parentType    a {@link java.lang.Class} object.
    * @param childDetector a {@link com.cedarsoft.hierarchy.ChildDetector} object.
    */
   public <P, C> void addChildDetector( @NotNull Class<P> parentType, @NotNull ChildDetector<P, C> childDetector ) {
@@ -85,7 +85,9 @@ public class ChildDetectorManager {
    *
    * @param parentType a {@link java.lang.Class} object.
    * @return a {@link com.cedarsoft.hierarchy.ChildDetector} object.
-   * @throws java.lang.IllegalArgumentException if any.
+   *
+   * @throws java.lang.IllegalArgumentException
+   *          if any.
    */
   @NotNull
   public <P, C> ChildDetector<P, C> getChildDetector( @NotNull Class<P> parentType ) throws IllegalArgumentException {

@@ -49,6 +49,7 @@ public interface CmdLine {
    *
    * @param message the message that is shown
    * @return the value the user has entered
+   *
    * @throws java.io.IOException if any.
    */
   boolean readBoolean( @NotNull String message ) throws IOException;
@@ -121,6 +122,7 @@ public interface CmdLine {
    *
    * @param message the message
    * @return the int
+   *
    * @throws java.io.IOException if any.
    */
   int readInt( @NotNull String message ) throws IOException;
@@ -131,8 +133,8 @@ public interface CmdLine {
    * @param message   the message
    * @param elements  the elements that may be choosen @return the selected element
    * @param presenter an optional presenter that creates a string representation for the elements
+   * @param <T>       a T object.
    * @return the selected element
-   * @param <T> a T object.
    */
   @NotNull
   <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter );
@@ -142,8 +144,8 @@ public interface CmdLine {
    *
    * @param message  the message
    * @param elements the elements
+   * @param <T>      a T object.
    * @return the selected element
-   * @param <T> a T object.
    */
   @NotNull
   <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements );
@@ -178,12 +180,12 @@ public interface CmdLine {
   /**
    * Reads a string from the console
    *
-   * @param message   the message
-   * @param elements  the elements (the user may select one of them)
-   * @param presenter the presenter
-   * @return the string that has been entered manually or the object that has been selected (String or T)
+   * @param message       the message
+   * @param elements      the elements (the user may select one of them)
+   * @param presenter     the presenter
    * @param objectFactory a {@link com.cedarsoft.cmd.ObjectFactory} object.
-   * @param <T> a T object.
+   * @param <T>           a T object.
+   * @return the string that has been entered manually or the object that has been selected (String or T)
    */
   @NotNull
   <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory );

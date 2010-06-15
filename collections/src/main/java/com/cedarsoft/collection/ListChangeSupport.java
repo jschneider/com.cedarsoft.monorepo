@@ -62,7 +62,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>fireAddEvent</p>
    *
-   * @param index a int.
+   * @param index   a int.
    * @param element a T object.
    */
   public void fireAddEvent( int index, @NotNull T element ) {
@@ -75,7 +75,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>fireRemoveEvent</p>
    *
-   * @param index a int.
+   * @param index   a int.
    * @param element a T object.
    */
   public void fireRemoveEvent( int index, @NotNull T element ) {

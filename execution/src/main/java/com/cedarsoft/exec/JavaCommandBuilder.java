@@ -264,6 +264,7 @@ public class JavaCommandBuilder {
    * For creating a process use {@link #getCommandLineElements()} instead.
    *
    * @return the command line as string
+   *
    * @see #getCommandLineElements()
    */
   @NotNull

@@ -71,19 +71,25 @@ public class TagListSelectionMode extends DefaultListSelectionModel implements T
     } );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {

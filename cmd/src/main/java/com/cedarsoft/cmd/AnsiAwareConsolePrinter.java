@@ -56,21 +56,27 @@ public class AnsiAwareConsolePrinter implements ConsolePrinter {
   @NonNls
   private static final String ANSI_DEFAULT = ANSI_ESCAPE + "[0m";
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String createError( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_RED + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String createWarning( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_BLUE + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String createSuccess( @NotNull String message, @NotNull Object... objects ) {

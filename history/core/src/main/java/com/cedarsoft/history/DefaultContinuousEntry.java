@@ -74,7 +74,9 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     this.begin = begin;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public LocalDate getBegin() {
@@ -86,7 +88,9 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setBegin( @NotNull LocalDate begin ) {
     lock.writeLock().lock();
@@ -97,7 +101,9 @@ public class DefaultContinuousEntry implements ContinuousEntry {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int compareTo( ContinuousEntry o ) {
     return getBegin().compareTo( o.getBegin() );
@@ -121,7 +127,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>removePropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -149,7 +155,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener    a {@link java.beans.PropertyChangeListener} object.
    * @param isTransient a boolean.
    */
   public void addPropertyChangeListener( @NotNull PropertyChangeListener listener, boolean isTransient ) {
@@ -165,7 +171,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -180,8 +186,8 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a {@link java.lang.String} object.
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
-   * @param isTransient a boolean.
+   * @param listener     a {@link java.beans.PropertyChangeListener} object.
+   * @param isTransient  a boolean.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener, boolean isTransient ) {
     lock.writeLock().lock();

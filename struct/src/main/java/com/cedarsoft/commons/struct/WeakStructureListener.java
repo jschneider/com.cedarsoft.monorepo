@@ -67,7 +67,9 @@ public class WeakStructureListener implements StructureListener {
     source.removeStructureListener( this );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void childAdded( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
@@ -78,7 +80,9 @@ public class WeakStructureListener implements StructureListener {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void childDetached( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();

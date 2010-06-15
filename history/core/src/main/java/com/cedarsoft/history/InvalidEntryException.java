@@ -1,4 +1,3 @@
-
 /**
  * Copyright (C) cedarsoft GmbH.
  *
@@ -33,6 +32,7 @@
  */
 
 package com.cedarsoft.history;
+
 public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
@@ -53,7 +53,7 @@ public class InvalidEntryException extends RuntimeException {
    * <p>Constructor for InvalidEntryException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public InvalidEntryException( String message, Throwable cause ) {
     super( message, cause );

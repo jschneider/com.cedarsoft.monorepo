@@ -64,7 +64,9 @@ public class StructStringPresenter implements Presenter<String> {
     this.intendSequence = intendSequence;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String present( @NotNull StructPart struct ) {

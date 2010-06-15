@@ -43,7 +43,9 @@ import java.io.Serializable;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Version implements Comparable<Version>, Serializable {
-  /** Constant <code>MAX=99</code> */
+  /**
+   * Constant <code>MAX=99</code>
+   */
   protected static final int MAX = 99;
 
   protected final int major;
@@ -139,7 +141,9 @@ public class Version implements Comparable<Version>, Serializable {
     return toString();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String toString() {
     if ( suffix != null && suffix.length() > 0 ) {
@@ -149,7 +153,9 @@ public class Version implements Comparable<Version>, Serializable {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int compareTo( Version o ) {
     if ( major != o.major ) {
@@ -163,7 +169,9 @@ public class Version implements Comparable<Version>, Serializable {
     return Integer.valueOf( build ).compareTo( o.build );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -183,7 +191,9 @@ public class Version implements Comparable<Version>, Serializable {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int hashCode() {
     int result = major;
@@ -207,7 +217,9 @@ public class Version implements Comparable<Version>, Serializable {
    *
    * @param version the version number as string
    * @return the parsed version
-   * @throws java.lang.IllegalArgumentException if any.
+   *
+   * @throws java.lang.IllegalArgumentException
+   *          if any.
    */
   @NotNull
   public static Version parse( @NotNull @NonNls String version ) throws IllegalArgumentException {
@@ -241,8 +253,9 @@ public class Version implements Comparable<Version>, Serializable {
    * <p>verifyMatch</p>
    *
    * @param expected a {@link com.cedarsoft.Version} object.
-   * @param actual a {@link com.cedarsoft.Version} object.
-   * @throws com.cedarsoft.VersionMismatchException if any.
+   * @param actual   a {@link com.cedarsoft.Version} object.
+   * @throws com.cedarsoft.VersionMismatchException
+   *          if any.
    */
   public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
     if ( !expected.equals( actual ) ) {

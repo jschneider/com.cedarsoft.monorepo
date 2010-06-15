@@ -44,7 +44,7 @@ public interface LookupStore extends Lookup {
    *
    * @param type  the type
    * @param value the value
-   * @param <T> a T object.
+   * @param <T>   a T object.
    */
   <T> void store( @NotNull Class<T> type, @NotNull T value );
 }

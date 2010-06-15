@@ -39,7 +39,9 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractLookup implements Lookup {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public final <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException {

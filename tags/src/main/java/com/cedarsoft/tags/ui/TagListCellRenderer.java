@@ -45,7 +45,9 @@ import java.awt.Component;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagListCellRenderer extends DefaultListCellRenderer {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Component getListCellRendererComponent( JList list, Object value, int index, boolean isSelected, boolean cellHasFocus ) {
     super.getListCellRendererComponent( list, value, index, isSelected, cellHasFocus );

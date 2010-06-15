@@ -56,7 +56,7 @@ public class UserNotFoundException extends AuthenticationException {
    * <p>Constructor for UserNotFoundException.</p>
    *
    * @param message a {@link java.lang.String} object.
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause   a {@link java.lang.Throwable} object.
    */
   public UserNotFoundException( String message, Throwable cause ) {
     super( message, cause );

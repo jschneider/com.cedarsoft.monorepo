@@ -78,14 +78,18 @@ public class MultiReadWriteLock implements ReadWriteLock {
   }
 
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Lock readLock() {
     return multiReadLock;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public Lock writeLock() {

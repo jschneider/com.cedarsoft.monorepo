@@ -45,7 +45,9 @@ import java.awt.Insets;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FancyButtonPresenter extends AbstractButtonPresenter<JButton> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected JButton createPresentation() {
@@ -60,7 +62,9 @@ public class FancyButtonPresenter extends AbstractButtonPresenter<JButton> {
     return button;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return false;

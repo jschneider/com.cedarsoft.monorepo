@@ -44,7 +44,9 @@ import javax.swing.JComponent;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JComponentPresenter implements Presenter<JComponent> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public JComponent present( @NotNull StructPart struct ) {

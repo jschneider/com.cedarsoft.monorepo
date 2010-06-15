@@ -88,7 +88,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Persists the given configuration manager
    */
   @Override
@@ -96,7 +96,9 @@ public class XStreamPersister implements ConfigurationPersister {
     persist( configurationManager, out, null );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     persist( configurationManager.getConfigurations(), out, encoding );
@@ -104,7 +106,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Persists the given configurations
    */
   @Override
@@ -112,7 +114,9 @@ public class XStreamPersister implements ConfigurationPersister {
     persist( configurations, out, null );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     out.write( createXmlHeader( encoding ) );
@@ -138,7 +142,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Persists the configurations for the given manager into a string
    */
   @Deprecated
@@ -153,7 +157,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Loads the configurations
    */
   @Override
@@ -163,7 +167,9 @@ public class XStreamPersister implements ConfigurationPersister {
     return load( reader );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<?> load( @NotNull File file ) throws IOException {
@@ -175,7 +181,9 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException {
@@ -183,7 +191,9 @@ public class XStreamPersister implements ConfigurationPersister {
     return load( ( Reader ) new InputStreamReader( in, charset ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<?> load( @NotNull Reader in ) throws IOException {
@@ -198,7 +208,9 @@ public class XStreamPersister implements ConfigurationPersister {
     return ( ( Configurations ) xStream.fromXML( br ) ).getConfigurations();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException {
     OutputStream out = new BufferedOutputStream( new FileOutputStream( file ) );
@@ -209,7 +221,9 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed

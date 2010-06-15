@@ -44,7 +44,7 @@ public interface ListChangeListener<T> extends EventListener {
   /**
    * <p>elementAdded</p>
    *
-   * @param index a int.
+   * @param index   a int.
    * @param element a T object.
    */
   void elementAdded( int index, @NotNull T element );
@@ -52,7 +52,7 @@ public interface ListChangeListener<T> extends EventListener {
   /**
    * <p>elementRemoved</p>
    *
-   * @param index a int.
+   * @param index   a int.
    * @param element a T object.
    */
   void elementRemoved( int index, @NotNull T element );

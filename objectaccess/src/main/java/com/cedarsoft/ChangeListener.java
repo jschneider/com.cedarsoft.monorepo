@@ -36,15 +36,15 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Is notified when anything has changed.
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public interface ChangeListener<T> {
   /**
    * Is called when an entry has been changed
    *
    * @param event the changed event
-   * @param <T> a T object.
+   * @param <T>   a T object.
    */
   void entryChanged( @NotNull ChangedEvent<T> event );
 }

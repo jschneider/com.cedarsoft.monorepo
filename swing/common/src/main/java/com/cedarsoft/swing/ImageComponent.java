@@ -54,7 +54,9 @@ public class ImageComponent extends JComponent {
   private Image image;
   private Dimension imageSize;
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void paintComponent( @NotNull Graphics g ) {
     super.paintComponent( g );
@@ -77,7 +79,9 @@ public class ImageComponent extends JComponent {
     painters.add( painter );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Dimension getPreferredSize() {
     if ( isPreferredSizeSet() ) {

@@ -55,7 +55,7 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules a {@link java.util.List} object.
+   * @param modules  a {@link java.util.List} object.
    * @param testType a {@link java.lang.Class} object.
    * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
    */
@@ -68,7 +68,7 @@ public class GuiceModulesHelper {
    * <p>minimize</p>
    *
    * @param modules a {@link java.util.List} object.
-   * @param keys a {@link com.google.inject.Key} object.
+   * @param keys    a {@link com.google.inject.Key} object.
    * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
    */
   @NotNull
@@ -82,7 +82,7 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param result   a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
    * @param testType a {@link java.lang.Class} object.
    * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
    */
@@ -95,7 +95,7 @@ public class GuiceModulesHelper {
    * <p>minimize</p>
    *
    * @param result a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
-   * @param keys a {@link com.google.inject.Key} object.
+   * @param keys   a {@link com.google.inject.Key} object.
    * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
    */
   public static Result minimize( @NotNull Result result, @NotNull Key<?>... keys ) {
@@ -136,7 +136,7 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules a {@link java.util.List} object.
+   * @param modules  a {@link java.util.List} object.
    * @param testType a {@link java.lang.Class} object.
    * @throws java.lang.AssertionError if any.
    */
@@ -148,7 +148,7 @@ public class GuiceModulesHelper {
    * <p>assertMinimizeNotPossible</p>
    *
    * @param modules a {@link java.util.List} object.
-   * @param keys a {@link com.google.inject.Key} object.
+   * @param keys    a {@link com.google.inject.Key} object.
    * @throws java.lang.AssertionError if any.
    */
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) throws AssertionError {

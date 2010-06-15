@@ -52,7 +52,7 @@ public class Lookups {
   /**
    * <p>instantiator</p>
    *
-   * @param type a {@link java.lang.Class} object.
+   * @param type         a {@link java.lang.Class} object.
    * @param instantiater a {@link com.cedarsoft.lookup.Instantiater} object.
    * @return a {@link com.cedarsoft.lookup.InstantiatorLookup} object.
    */
@@ -75,7 +75,7 @@ public class Lookups {
   /**
    * <p>merge</p>
    *
-   * @param first a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param first  a {@link com.cedarsoft.lookup.Lookup} object.
    * @param second a {@link com.cedarsoft.lookup.Lookup} object.
    * @return a {@link com.cedarsoft.lookup.MergingLookup} object.
    */
@@ -111,8 +111,8 @@ public class Lookups {
    *
    * @param type  the type
    * @param value the value
+   * @param <T>   a T object.
    * @return the singleton lookup
-   * @param <T> a T object.
    */
   public static <T> Lookup singletonLookup( @NotNull Class<T> type, @NotNull T value ) {
     return new SingletonLookup<T>( type, value );

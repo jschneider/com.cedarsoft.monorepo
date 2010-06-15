@@ -48,8 +48,8 @@ public class ConfigurationBinding {
    *
    * @param configurationAccess the configuration access
    * @param valueModel          the value model
+   * @param <T>                 a T object.
    * @return the configuration connector
-   * @param <T> a T object.
    */
   public static <T> ConfigurationConnector<T> bind( @NotNull ConfigurationAccess<T> configurationAccess, @NotNull ValueModel valueModel ) {
     ConfigurationConnector<T> connector = new ConfigurationConnector<T>( valueModel, configurationAccess );

@@ -1,4 +1,3 @@
-
 /**
  * Copyright (C) cedarsoft GmbH.
  *
@@ -56,6 +55,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
+
 public class Os {
   @NotNull
   @NonNls
@@ -122,6 +122,7 @@ public class Os {
    * @param arch    The OS architecture
    * @param version The OS version
    * @return true if the OS matches
+   *
    * @since 1.7
    */
   public static boolean isOs( @NotNull @NonNls String family, @NotNull @NonNls String name, @NotNull @NonNls String arch, @NotNull @NonNls String version ) {

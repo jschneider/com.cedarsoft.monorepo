@@ -59,7 +59,7 @@ public class State<T> {
   /**
    * Creates a new state
    *
-   * @param id the id
+   * @param id  the id
    * @param <T> a T object.
    */
   public State( @NotNull @NonNls String id ) {
@@ -99,7 +99,7 @@ public class State<T> {
    * <p>createTransition</p>
    *
    * @param targetState a {@link com.cedarsoft.workflow.State} object.
-   * @param actions a {@link com.cedarsoft.workflow.Action} object.
+   * @param actions     a {@link com.cedarsoft.workflow.Action} object.
    * @return a {@link com.cedarsoft.workflow.TransitionDefinition} object.
    */
   @NotNull

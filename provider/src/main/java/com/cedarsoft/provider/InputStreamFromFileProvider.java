@@ -57,14 +57,18 @@ public class InputStreamFromFileProvider implements Provider<InputStream, IOExce
     this.file = file;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public InputStream provide() throws IOException {
     return new BufferedInputStream( new FileInputStream( file ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public String getDescription() {

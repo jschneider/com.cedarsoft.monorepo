@@ -46,14 +46,14 @@ import java.util.Set;
 /**
  * a reflection based matcher
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public class ReflectionMatcher<T> implements IArgumentMatcher {
   /**
    * <p>create</p>
    *
-   * @param object a T object.
+   * @param object                a T object.
    * @param blacklistedFieldNames a {@link java.lang.String} object.
    * @return a T object.
    */
@@ -72,7 +72,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
   /**
    * <p>Constructor for ReflectionMatcher.</p>
    *
-   * @param object a T object.
+   * @param object                a T object.
    * @param blacklistedFieldNames a {@link java.lang.String} object.
    */
   public ReflectionMatcher( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
@@ -80,7 +80,9 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     this.blacklistedFieldNames.addAll( Arrays.asList( blacklistedFieldNames ) );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean matches( Object o ) {
     if ( object == null && o == null ) {
@@ -133,7 +135,9 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     return true;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "Object did not fit: Expected <" + object + ">" );

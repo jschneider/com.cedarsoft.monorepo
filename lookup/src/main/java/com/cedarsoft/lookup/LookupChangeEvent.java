@@ -52,8 +52,8 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Constructor for LookupChangeEvent.</p>
    *
-   * @param source a {@link com.cedarsoft.lookup.Lookup} object.
-   * @param type a {@link java.lang.Class} object.
+   * @param source   a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param type     a {@link java.lang.Class} object.
    * @param oldValue a T object.
    * @param newValue a T object.
    */

@@ -77,7 +77,7 @@ public class GuiceHelper {
    *
    * @param binder the binder
    * @param type   the type
-   * @param <T> a T object.
+   * @param <T>    a T object.
    */
   public static <T> void bindWildcardCollectionForSet( @NotNull Binder binder, @NotNull Type type ) {
     binder.bind( ( Key<Collection<? extends T>> ) Key.get( GuiceHelper.superCollectionOf( type ) ) ).to( ( Key<? extends Collection<? extends T>> ) Key.get( Types.setOf( type ) ) );

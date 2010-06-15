@@ -36,20 +36,21 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Represents a provider.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type that is provided
  * @param <C> the context
  * @param <E> the exception that is thrown
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ContextualProvider<T, C, E extends Throwable> {
   /**
    * Provides the object
    *
    * @param context the context
+   * @param <T>     a T object.
+   * @param <C>     a C object.
+   * @param <E>     a E object.
    * @return the object that is provided
-   * @param <T> a T object.
-   * @param <C> a C object.
-   * @param <E> a E object.
+   *
    * @throws E if any.
    */
   @NotNull

@@ -45,14 +45,18 @@ import javax.swing.JMenu;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implements JMenuPresenter {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public JMenu createPresentation() {
     return new JMenu();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
@@ -79,7 +83,9 @@ public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implem
     throw new IllegalStateException( "No suiteable child presenter found" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;

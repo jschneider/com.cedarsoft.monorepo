@@ -170,8 +170,8 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param target a {@link java.io.File} object.
-   * @param base a {@link java.io.File} object.
+   * @param target        a {@link java.io.File} object.
+   * @param base          a {@link java.io.File} object.
    * @param pathSeparator a {@link java.lang.String} object.
    * @return a {@link java.io.File} object.
    */
@@ -185,7 +185,7 @@ public class RelativePathFinder {
    * <p>getRelativePath</p>
    *
    * @param target a {@link java.io.File} object.
-   * @param base a {@link java.io.File} object.
+   * @param base   a {@link java.io.File} object.
    * @return a {@link java.io.File} object.
    */
   public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base ) {
@@ -196,7 +196,7 @@ public class RelativePathFinder {
    * <p>getRelativePath</p>
    *
    * @param targetPath a {@link java.lang.String} object.
-   * @param basePath a {@link java.lang.String} object.
+   * @param basePath   a {@link java.lang.String} object.
    * @return a {@link java.lang.String} object.
    */
   @NotNull

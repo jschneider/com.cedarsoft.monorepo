@@ -59,8 +59,8 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Creates a new hashed cache
    *
    * @param factory the factory
-   * @param <K> a K object.
-   * @param <T> a T object.
+   * @param <K>     a K object.
+   * @param <T>     a T object.
    */
   public HashedCache( @NotNull Factory<K, T> factory ) {
     this.factory = factory;
@@ -82,7 +82,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns the value for the given key.
    * If no value is stored, a new one is created using the registered factory
    */
@@ -105,7 +105,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
  MAP DELEGATES
   */
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean containsKey( Object key ) {
     lock.readLock().lock();
@@ -116,7 +118,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean containsValue( Object value ) {
     lock.readLock().lock();
@@ -127,13 +131,17 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public T put( K key, T value ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nullable
   public T remove( @NotNull Object key ) {
@@ -145,13 +153,17 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void putAll( Map<? extends K, ? extends T> m ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Set<K> keySet() {
     lock.readLock().lock();
@@ -162,7 +174,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Collection<T> values() {
     lock.readLock().lock();
@@ -175,7 +189,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns the *LIVE* entry set. Use with care!
    */
   @Override
@@ -189,7 +203,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int size() {
     lock.readLock().lock();
@@ -200,7 +216,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isEmpty() {
     lock.readLock().lock();
@@ -229,7 +247,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void clear() {
     throw new UnsupportedOperationException();

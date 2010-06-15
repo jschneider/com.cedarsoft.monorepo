@@ -42,63 +42,83 @@ import java.util.concurrent.locks.ReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class DelegatingClusteredObservableObjectAccess<T> implements ClusteredObservableObjectAccess<T> {
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public ReadWriteLock getLock() {
     return getDelegate().getLock();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commit( @NotNull T element ) {
     getDelegate().commit( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void remove( @NotNull T element ) {
     getDelegate().remove( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void add( @NotNull T element ) {
     getDelegate().add( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setElements( @NotNull List<? extends T> elements ) {
     getDelegate().setElements( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends T> getElements() {
     return getDelegate().getElements();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
     getDelegate().addElementListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener, boolean isTransient ) {
     getDelegate().addElementListener( listener, isTransient );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
     getDelegate().removeElementListener( listener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends ElementsListener<? super T>> getTransientElementListeners() {

@@ -52,6 +52,7 @@ public class ScreenSizeUtils {
    * Returns the size of the first screen size
    *
    * @return the size of the first screen
+   *
    * @throws java.awt.HeadlessException if any.
    */
   @Nullable

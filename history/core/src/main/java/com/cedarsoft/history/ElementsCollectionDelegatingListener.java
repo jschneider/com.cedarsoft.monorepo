@@ -51,19 +51,25 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
     this.delegate = delegate;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementDeleted( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.remove( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementAdded( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.add( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementChanged( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.commit( element );

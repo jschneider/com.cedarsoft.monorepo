@@ -59,7 +59,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param actual         a {@link com.cedarsoft.Version} object.
    * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
@@ -69,9 +69,9 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param actual         a {@link com.cedarsoft.Version} object.
    * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
-   * @param messagePrefix a {@link java.lang.String} object.
+   * @param messagePrefix  a {@link java.lang.String} object.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix ) {
     this( actual, supportedRange, messagePrefix, true );
@@ -80,10 +80,10 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param actual         a {@link com.cedarsoft.Version} object.
    * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
-   * @param messagePrefix a {@link java.lang.String} object.
-   * @param appendSuffix a boolean.
+   * @param messagePrefix  a {@link java.lang.String} object.
+   * @param appendSuffix   a boolean.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
     super( messagePrefix, createMessageSuffix( actual, supportedRange ), appendSuffix );

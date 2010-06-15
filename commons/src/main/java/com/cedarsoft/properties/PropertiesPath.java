@@ -46,15 +46,21 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PropertiesPath {
-  /** Constant <code>PROPERTY_REPRESENTATION="presentation"</code> */
+  /**
+   * Constant <code>PROPERTY_REPRESENTATION="presentation"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_REPRESENTATION = "presentation";
-  /** Constant <code>PROPERTY_ROOT_PROPERTY="rootProperty"</code> */
+  /**
+   * Constant <code>PROPERTY_ROOT_PROPERTY="rootProperty"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_ROOT_PROPERTY = "rootProperty";
-  /** Constant <code>PROPERTY_ELEMENTS="elements"</code> */
+  /**
+   * Constant <code>PROPERTY_ELEMENTS="elements"</code>
+   */
   @NotNull
   @NonNls
   public static final String PROPERTY_ELEMENTS = "elements";
@@ -112,7 +118,9 @@ public class PropertiesPath {
     return Collections.unmodifiableList( elements );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String toString() {
     return getPresentation();

@@ -39,9 +39,9 @@ import java.util.List;
 /**
  * A factory that creates a registry
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type contained within a registry
  * @param <R> the type for the registry
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface RegistryFactory<T, R extends Registry<T>> {
   /**
@@ -49,9 +49,9 @@ public interface RegistryFactory<T, R extends Registry<T>> {
    *
    * @param objects    the initial objects
    * @param comparator the comparator that must be used for the created registry
+   * @param <T>        a T object.
+   * @param <R>        a R object.
    * @return the newly created registry
-   * @param <T> a T object.
-   * @param <R> a R object.
    */
   @NotNull
   R createRegistry( @NotNull List<? extends T> objects, @NotNull Comparator<T> comparator );

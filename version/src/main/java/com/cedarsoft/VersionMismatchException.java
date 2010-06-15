@@ -48,7 +48,7 @@ public class VersionMismatchException extends VersionException {
    * <p>Constructor for VersionMismatchException.</p>
    *
    * @param expected a {@link com.cedarsoft.Version} object.
-   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param actual   a {@link com.cedarsoft.Version} object.
    */
   public VersionMismatchException( @NotNull Version expected, @NotNull Version actual ) {
     this( expected, actual, "Version mismatch. " );

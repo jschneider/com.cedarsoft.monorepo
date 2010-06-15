@@ -70,9 +70,11 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Returns the entries for the given date
    *
    * @param date the date the entries are searched for
+   * @param <E>  a E object.
    * @return the entries
-   * @throws com.cedarsoft.history.HistoryNotFoundException if no history could be found for the given date
-   * @param <E> a E object.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if no history could be found for the given date
    */
   @NotNull
   public List<? extends E> getEntries( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -101,7 +103,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the latest entry for the given date
-   * @throws com.cedarsoft.history.HistoryNotFoundException if no history could be found for the given date
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if no history could be found for the given date
    */
   @NotNull
   public E getLatestEntry( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -130,7 +134,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isLatestEntry( @NotNull E entry ) {
     ensureListenersRegistered();
@@ -150,7 +156,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Returns all entries
    */
   @Override
@@ -173,7 +179,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Removes all entries
    */
   @Override
@@ -191,7 +197,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   *
+   * <p/>
    * Adds an entry.
    */
   @Override
@@ -199,13 +205,17 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     getOrCreateSubHistory( entry.getValidityDate() ).addEntry( entry );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void commitEntry( @NotNull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean hasEntries() {
     ensureListenersRegistered();
@@ -226,7 +236,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean removeEntry( @NotNull E entry ) {
     ensureListenersRegistered();
@@ -253,7 +265,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public E getLatestEntry() throws NoValidElementFoundException {
@@ -264,7 +278,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public E getFirstEntry() throws NoValidElementFoundException {
@@ -329,7 +345,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date the sub history is searched for
    * @return the sub history for the given date
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public History<E> getSubHistory( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -352,7 +370,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the sub history before the given date
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public History<E> getSubHistoryBefore( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -399,7 +419,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the best history
-   * @throws com.cedarsoft.history.HistoryNotFoundException if absolutly no history could be found
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if absolutly no history could be found
    */
   @NotNull
   public History<E> getBestSubHistoryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -415,7 +437,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Returns the most up to date entry (over all histories)
    *
    * @return the most up to date entry (over all histories)
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public E getMostUpToDateEntry() throws HistoryNotFoundException {
@@ -445,7 +469,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date a {@link org.joda.time.LocalDate} object.
    * @return a E object.
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public E getBestEntryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -456,7 +482,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * <p>getLastSubHistory</p>
    *
    * @return a {@link com.cedarsoft.history.History} object.
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public History<E> getLastSubHistory() throws HistoryNotFoundException {
@@ -477,7 +505,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * <p>getFirstSubHistory</p>
    *
    * @return a {@link com.cedarsoft.history.History} object.
-   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   *
+   * @throws com.cedarsoft.history.HistoryNotFoundException
+   *          if any.
    */
   @NotNull
   public History<E> getFirstSubHistory() throws HistoryNotFoundException {
@@ -494,38 +524,50 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     throw new UnsupportedOperationException( "Cannot set the elements yet" ); //todo implement
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
@@ -535,13 +577,15 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * <p>addHistoryListener</p>
    *
    * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
-   * @param isTransient a boolean.
+   * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {

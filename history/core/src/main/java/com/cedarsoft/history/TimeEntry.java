@@ -42,15 +42,21 @@ import org.joda.time.LocalDate;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TimeEntry extends Comparable<TimeEntry> {
-  /** Constant <code>PROPERTY_BEGIN="begin"</code> */
+  /**
+   * Constant <code>PROPERTY_BEGIN="begin"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_BEGIN = "begin";
-  /** Constant <code>PROPERTY_END="end"</code> */
+  /**
+   * Constant <code>PROPERTY_END="end"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_END = "end";
-  /** Constant <code>PROPERTY_HAS_END="hasEnd"</code> */
+  /**
+   * Constant <code>PROPERTY_HAS_END="hasEnd"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_HAS_END = "hasEnd";

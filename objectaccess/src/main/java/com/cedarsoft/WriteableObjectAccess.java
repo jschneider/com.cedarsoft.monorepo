@@ -39,8 +39,8 @@ import java.util.List;
  * Offers simple methods for accessing a list of methods.
  * Implementations may use a database or some sort of memory
  *
- * @param <T> the type
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
 public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemove<T> {
   /**
@@ -49,8 +49,9 @@ public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemo
    * After this method has called {@link #getElements()} will return the given elements.
    *
    * @param elements the elements
-   * @throws java.lang.UnsupportedOperationException if the method is not supported
-   * @param <T> a T object.
+   * @param <T>      a T object.
+   * @throws java.lang.UnsupportedOperationException
+   *          if the method is not supported
    */
   void setElements( @NotNull List<? extends T> elements ) throws UnsupportedOperationException;
 }

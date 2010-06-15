@@ -36,9 +36,9 @@ import org.jetbrains.annotations.NotNull;
 /**
  * This listener wraps another listener that only wants to listen for a subclass of the given type.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <D> the type of the ObservableCollection
  * @param <T> the type of the delegating listener
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class TypeFilteredElementsListener<D, T extends D> implements ElementListener<D> {
@@ -50,7 +50,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
   /**
    * <p>Constructor for TypeFilteredElementsListener.</p>
    *
-   * @param type a {@link java.lang.Class} object.
+   * @param type     a {@link java.lang.Class} object.
    * @param delegate a {@link com.cedarsoft.history.ElementListener} object.
    */
   public TypeFilteredElementsListener( @NotNull Class<T> type, @NotNull ElementListener<T> delegate ) {
@@ -58,7 +58,9 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     this.type = type;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementDeleted( @NotNull D element ) {
     if ( isValidType( element ) ) {
@@ -66,7 +68,9 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementAdded( @NotNull D element ) {
     if ( isValidType( element ) ) {
@@ -74,7 +78,9 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     }
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void elementChanged( @NotNull D element ) {
     if ( isValidType( element ) ) {

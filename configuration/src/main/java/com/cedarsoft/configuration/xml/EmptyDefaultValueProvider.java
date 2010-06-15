@@ -45,11 +45,15 @@ import java.util.Map;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public final class EmptyDefaultValueProvider implements DefaultValueProvider {
-  /** Constant <code>INSTANCE</code> */
+  /**
+   * Constant <code>INSTANCE</code>
+   */
   @NotNull
   public static final EmptyDefaultValueProvider INSTANCE = new EmptyDefaultValueProvider();
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @NotNull
   public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {

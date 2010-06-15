@@ -51,7 +51,9 @@ public class FrameUtils {
    *
    * @param contentPane the content pane
    * @return the JFrame that is shown
-   * @throws java.lang.reflect.InvocationTargetException if any.
+   *
+   * @throws java.lang.reflect.InvocationTargetException
+   *                                        if any.
    * @throws java.lang.InterruptedException if any.
    */
   @NotNull

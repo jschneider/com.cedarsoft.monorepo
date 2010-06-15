@@ -48,7 +48,9 @@ import java.util.Properties;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
-  /** Constant <code>STAGE_KEY="stage"</code> */
+  /**
+   * Constant <code>STAGE_KEY="stage"</code>
+   */
   @NotNull
   @NonNls
   public static final String STAGE_KEY = "stage";
@@ -82,7 +84,9 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
     this.actualStage = actualStage;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected void processProperties( @NotNull ConfigurableListableBeanFactory beanFactoryToProcess, @NotNull Properties props ) throws BeansException {
     super.processProperties( beanFactoryToProcess, filter( props ) );

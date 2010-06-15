@@ -60,7 +60,8 @@ public class ThreadUtils {
   /**
    * <p>assertEventDispatchThread</p>
    *
-   * @throws java.lang.IllegalThreadStateException if any.
+   * @throws java.lang.IllegalThreadStateException
+   *          if any.
    */
   public static void assertEventDispatchThread() throws IllegalThreadStateException {
     if ( !isEventDispatchThread() ) {
@@ -71,7 +72,8 @@ public class ThreadUtils {
   /**
    * <p>assertNotEventDispatchThread</p>
    *
-   * @throws java.lang.IllegalThreadStateException if any.
+   * @throws java.lang.IllegalThreadStateException
+   *          if any.
    */
   public static void assertNotEventDispatchThread() throws IllegalThreadStateException {
     if ( isEventDispatchThread() ) {
@@ -84,7 +86,9 @@ public class ThreadUtils {
    *
    * @param callable a {@link java.util.concurrent.Callable} object.
    * @return a T object.
-   * @throws java.util.concurrent.ExecutionException if any.
+   *
+   * @throws java.util.concurrent.ExecutionException
+   *                                        if any.
    * @throws java.lang.InterruptedException if any.
    */
   @Nullable
