@@ -520,6 +520,7 @@
         <configuration>
           <type>range</type>
           <range>90</range>
+          <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
     </plugins>
