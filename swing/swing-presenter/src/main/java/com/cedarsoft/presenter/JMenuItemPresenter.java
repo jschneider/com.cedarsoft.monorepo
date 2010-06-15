@@ -37,7 +37,7 @@ import javax.swing.JComponent;
  * Presents a child of JMenu.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <T extends JComponent> the type of menu item this presenter creates
+ * @param <T> the type of menu item this presenter creates
  */
 public interface JMenuItemPresenter<T extends JComponent> extends Presenter<T> {
 }

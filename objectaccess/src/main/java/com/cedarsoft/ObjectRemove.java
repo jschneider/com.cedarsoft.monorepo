@@ -43,7 +43,6 @@ public interface ObjectRemove<T> {
    * Removes an element
    *
    * @param element the element that is removed
-   * @param <T>     a T object.
    */
   void remove( @NotNull T element );
 }

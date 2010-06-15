@@ -50,7 +50,6 @@ public interface Registry<T> {
   /**
    * Returns the stored objects
    *
-   * @param <T> a T object.
    * @return the stored objects
    */
   @NotNull

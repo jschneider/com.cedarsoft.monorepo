@@ -47,8 +47,6 @@ public interface ChildDetector<P, C> {
    * Finds the children for the given parent
    *
    * @param parent the parent
-   * @param <P>    a P object.
-   * @param <C>    a C object.
    * @return the children
    */
   @NotNull

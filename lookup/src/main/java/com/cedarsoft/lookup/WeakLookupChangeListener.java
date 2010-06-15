@@ -51,7 +51,6 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * Creates a new instance with {@link #getTypeClass()} set to null
    *
    * @param listener the listener that is wrapped
-   * @param <T>      a T object.
    */
   public WeakLookupChangeListener( @NotNull LookupChangeListener<T> listener ) {
     this( null, listener );

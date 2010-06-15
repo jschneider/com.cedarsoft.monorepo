@@ -47,7 +47,6 @@ public interface Presenter<T> {
    * Creates the presentation
    *
    * @param struct the struct representing the structure for the presentation
-   * @param <T>    a T object.
    * @return the presentation
    */
   @NotNull

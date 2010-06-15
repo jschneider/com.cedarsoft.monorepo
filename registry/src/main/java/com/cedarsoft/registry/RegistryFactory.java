@@ -49,8 +49,6 @@ public interface RegistryFactory<T, R extends Registry<T>> {
    *
    * @param objects    the initial objects
    * @param comparator the comparator that must be used for the created registry
-   * @param <T>        a T object.
-   * @param <R>        a R object.
    * @return the newly created registry
    */
   @NotNull

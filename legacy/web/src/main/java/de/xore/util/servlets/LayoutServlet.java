@@ -200,6 +200,8 @@ public abstract class LayoutServlet extends VelocityServlet {
   /**
    * Liefert das "Haupt-Template", welches entsprechend das von getContentTemplateName zurückgegebene Template
    * inkludiert
+   * @return the Template
+   * @throws Exception
    */
   public abstract Template getLayoutTemplate() throws Exception;
 

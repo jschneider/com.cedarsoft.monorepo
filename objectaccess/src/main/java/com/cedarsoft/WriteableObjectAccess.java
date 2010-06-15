@@ -49,7 +49,6 @@ public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemo
    * After this method has called {@link #getElements()} will return the given elements.
    *
    * @param elements the elements
-   * @param <T>      a T object.
    * @throws java.lang.UnsupportedOperationException
    *          if the method is not supported
    */

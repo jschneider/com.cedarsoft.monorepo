@@ -49,11 +49,6 @@ public class ImageConverter {
    *
    * @param original           the original image
    * @param originalResolution the original resolution
-   * @param originalResolution the original resolution
-   * @param originalResolution the original resolution
-   * @param originalResolution the original resolution
-   * @param originalResolution the original resolution
-   * @param originalResolution the original resolution
    * @param targetResolution   the target resolution
    * @return the dimension
    */

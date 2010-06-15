@@ -46,7 +46,6 @@ public interface ClusteredObservableCollection<E> extends ObservableCollection<E
    *
    * @param listener    the listener
    * @param isTransient whether this listener is added transient or not
-   * @param <E>         a E object.
    */
   void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient );
 

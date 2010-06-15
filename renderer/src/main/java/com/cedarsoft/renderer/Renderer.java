@@ -47,8 +47,6 @@ public interface Renderer<T, C> {
    *
    * @param object  the object
    * @param context the context
-   * @param <T>     a T object.
-   * @param <C>     a C object.
    * @return the rendered string
    */
   @NotNull

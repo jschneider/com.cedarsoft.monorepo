@@ -43,7 +43,6 @@ public interface ChildChangeListener<P> {
    * Is called when the parent has changed
    *
    * @param parent the parent
-   * @param <P>    a P object.
    */
   void notifyChildrenChangedFor( @NotNull P parent );
 }

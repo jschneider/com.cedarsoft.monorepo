@@ -43,7 +43,6 @@ public interface Instantiater<T> {
   /**
    * Creates the instance
    *
-   * @param <T> a T object.
    * @return the instance
    *
    * @throws com.cedarsoft.lookup.InstantiationFailedException

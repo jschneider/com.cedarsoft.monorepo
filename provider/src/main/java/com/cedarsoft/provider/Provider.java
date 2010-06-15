@@ -45,8 +45,6 @@ public interface Provider<T, E extends Throwable> {
   /**
    * Provides the object
    *
-   * @param <T> a T object.
-   * @param <E> a E object.
    * @return the object that is provided
    *
    * @throws E if any.

@@ -50,7 +50,6 @@ public class DeletionProcessorsSupport<T> {
    * Sets the deletion processors
    *
    * @param deletionProcessors the processors
-   * @param <T>                a T object.
    */
   public void setDeletionProcessors( @NotNull List<? extends DeletionProcessor<T>> deletionProcessors ) {
     this.deletionProcessors.clear();

@@ -70,7 +70,6 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Returns the entries for the given date
    *
    * @param date the date the entries are searched for
-   * @param <E>  a E object.
    * @return the entries
    *
    * @throws com.cedarsoft.history.HistoryNotFoundException

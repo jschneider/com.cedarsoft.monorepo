@@ -54,7 +54,6 @@ public abstract class ConfigurationResolver<T> {
    *
    * @param configuration the configuration the value is extracted for
    * @param key           the key
-   * @param <T>           a T object.
    * @return the value
    */
   @Nullable

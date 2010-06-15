@@ -59,8 +59,6 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Creates a new hashed cache
    *
    * @param factory the factory
-   * @param <K>     a K object.
-   * @param <T>     a T object.
    */
   public HashedCache( @NotNull Factory<K, T> factory ) {
     this.factory = factory;
@@ -68,7 +66,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
   }
 
   /**
-   * Use with care. It is preferred to use {@link #HashedCache(Cache.Factory)} instead.
+   * Use with care. It is preferred to use  instead.
    * Uses the given store.
    *
    * @param store   the store

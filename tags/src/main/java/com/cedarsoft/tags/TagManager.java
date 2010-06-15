@@ -50,7 +50,6 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param object      the object the taggable is availableTags for
    * @param description the description of the tag
-   * @param <T>         a T object.
    */
   void addTag( @NotNull T object, @NotNull String description );
 

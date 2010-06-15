@@ -85,7 +85,6 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * Creates a new delegating object access
    *
    * @param currentDelegate the current  delegate
-   * @param <T>             a T object.
    */
   public DelegatingObjectAccess( @Nullable ObservableObjectAccess<T> currentDelegate ) {
     this.currentDelegate = currentDelegate;

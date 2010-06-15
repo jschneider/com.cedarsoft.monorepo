@@ -43,7 +43,6 @@ public interface ElementListener<E> {
    * Is called when an entry has been deleted
    *
    * @param element the entry that has been deleted
-   * @param <E>     a E object.
    */
   void elementDeleted( @NotNull E element );
 

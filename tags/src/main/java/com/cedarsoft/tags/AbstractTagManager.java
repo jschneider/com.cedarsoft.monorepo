@@ -51,7 +51,6 @@ public abstract class AbstractTagManager<T> implements TagManager<T> {
    * Creates a new abstract tag manager with the given factory
    *
    * @param tagProvider a {@link com.cedarsoft.tags.TagProvider} object.
-   * @param <T>         a T object.
    */
   protected AbstractTagManager( @NotNull TagProvider tagProvider ) {
     this.tagProvider = tagProvider;

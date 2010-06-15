@@ -46,7 +46,6 @@ public interface ObservableCollection<E> extends ObjectAccess<E>, Lockable {
    * Adds an entry listener
    *
    * @param listener the listener
-   * @param <E>      a E object.
    */
   void addElementListener( @NotNull ElementsListener<? super E> listener );
 

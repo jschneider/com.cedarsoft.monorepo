@@ -42,7 +42,7 @@ import java.util.List;
  * Defines a transition between two states.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @paramt <T> the type of object that is used within the workflow
+ * @param <T> the type of object that is used within the workflow
  */
 public class TransitionDefinition<T> {
   @NotNull

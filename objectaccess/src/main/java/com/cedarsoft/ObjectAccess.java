@@ -45,7 +45,6 @@ public interface ObjectAccess<T> {
   /**
    * Returns all elements
    *
-   * @param <T> a T object.
    * @return all elements
    */
   @NotNull

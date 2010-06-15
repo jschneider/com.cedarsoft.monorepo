@@ -46,9 +46,6 @@ public interface ContextualProvider<T, C, E extends Throwable> {
    * Provides the object
    *
    * @param context the context
-   * @param <T>     a T object.
-   * @param <C>     a C object.
-   * @param <E>     a E object.
    * @return the object that is provided
    *
    * @throws E if any.

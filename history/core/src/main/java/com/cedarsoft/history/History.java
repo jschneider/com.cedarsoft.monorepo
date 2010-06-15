@@ -59,7 +59,6 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
   /**
    * Returns all entries of the history
    *
-   * @param <E> a E object.
    * @return the entries
    */
   @NotNull

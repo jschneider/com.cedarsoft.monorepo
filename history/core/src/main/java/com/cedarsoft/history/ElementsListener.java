@@ -45,7 +45,6 @@ public interface ElementsListener<E> {
    * Is notified when the elements have been deleted
    *
    * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
-   * @param <E>   a E object.
    */
   void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event );
 

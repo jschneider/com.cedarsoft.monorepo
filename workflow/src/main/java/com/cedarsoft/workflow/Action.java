@@ -44,7 +44,6 @@ public interface Action<T> {
    *
    * @param object     the object
    * @param definition the definition of the transition
-   * @param <T>        a T object.
    */
   void execute( @NotNull T object, @NotNull TransitionDefinition<T> definition );
 }

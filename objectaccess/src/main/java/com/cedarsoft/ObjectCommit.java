@@ -43,7 +43,6 @@ public interface ObjectCommit<T> {
    * Commit changes
    *
    * @param element the element that has been changed
-   * @param <T>     a T object.
    */
   void commit( @NotNull T element );
 }

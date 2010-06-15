@@ -44,7 +44,6 @@ public interface ChangeListener<T> {
    * Is called when an entry has been changed
    *
    * @param event the changed event
-   * @param <T>   a T object.
    */
   void entryChanged( @NotNull ChangedEvent<T> event );
 }

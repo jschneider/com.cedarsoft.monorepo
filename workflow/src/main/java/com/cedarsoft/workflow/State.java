@@ -60,7 +60,6 @@ public class State<T> {
    * Creates a new state
    *
    * @param id  the id
-   * @param <T> a T object.
    */
   public State( @NotNull @NonNls String id ) {
     this.id = id;

@@ -46,7 +46,6 @@ public interface HistoryListener<E> extends EventListener {
    * Is called when an entry has been added
    *
    * @param entry the entry that has been added
-   * @param <E>   a E object.
    */
   void entryAdded( @NotNull E entry );
 

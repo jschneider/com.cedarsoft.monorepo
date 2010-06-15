@@ -42,11 +42,10 @@ public interface ObjectFactory<T> {
   /**
    * <p>create</p>
    *
-   * @param representation a {@link java.lang.String} object.
+   * @param representation the representation
    * @return a T object.
    *
-   * @throws com.cedarsoft.cmd.ObjectFactory$InvalidRepresentationException
-   *          if any.
+   * @throws com.cedarsoft.cmd.ObjectFactory.InvalidRepresentationException
    */
   @NotNull
   T create( @NotNull String representation ) throws InvalidRepresentationException;

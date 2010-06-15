@@ -51,8 +51,6 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
    * Notifies the listeners that the children have been changed for the given parent
    *
    * @param parent the parent
-   * @param <P>    a P object.
-   * @param <C>    a C object.
    */
   protected void notifyChildrenChangedFor( @NotNull P parent ) {
     for ( ChildChangeListener<P> listener : new ArrayList<ChildChangeListener<P>>( listeners ) ) {

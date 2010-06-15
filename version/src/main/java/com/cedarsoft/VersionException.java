@@ -78,11 +78,6 @@ public class VersionException extends RuntimeException {
    *
    * @param message       the message (is always used)
    * @param messageSuffix the suffix (only used when appendSuffix==true)
-   * @param messageSuffix the suffix (only used when appendSuffix==true)
-   * @param messageSuffix the suffix (only used when appendSuffix==true)
-   * @param messageSuffix the suffix (only used when appendSuffix==true)
-   * @param messageSuffix the suffix (only used when appendSuffix==true)
-   * @param messageSuffix the suffix (only used when appendSuffix==true)
    * @param appendSuffix  whether to append the suffix
    */
   public VersionException( @NotNull String message, @NotNull String messageSuffix, boolean appendSuffix ) {

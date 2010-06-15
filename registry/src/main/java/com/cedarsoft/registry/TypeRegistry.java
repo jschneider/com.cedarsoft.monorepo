@@ -93,11 +93,6 @@ public class TypeRegistry<T> {
    * added for all superclasses and declared interfaces.
    *
    * @param type the type
-   * @param type the type
-   * @param type the type
-   * @param type the type
-   * @param type the type
-   * @param type the type
    * @param t    the element that is stored for the given type
    */
   public void addElement( @NotNull Class<?> type, @NotNull T t ) {
