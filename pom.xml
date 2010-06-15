@@ -25,7 +25,7 @@
 
   <developers>
     <developer>
-      <id>jschneider</id>
+      <id>Johannes Schneider &lt;js@cedarsoft.com&gt;</id>
       <name>Johannes Schneider</name>
       <email>js@cedarsoft.com</email>
       <roles>
@@ -34,7 +34,7 @@
         <role>admin</role>
       </roles>
       <timezone>2</timezone>
-      <url>http://www.cedarsoft.de</url>
+      <url>http://blog.cedarsoft.de</url>
       <organization>cedarsoft GmbH</organization>
       <organizationUrl>http://www.cedarsoft.com</organizationUrl>
     </developer>
