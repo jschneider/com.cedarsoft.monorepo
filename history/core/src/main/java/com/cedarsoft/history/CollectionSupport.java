@@ -39,7 +39,9 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>CollectionSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class CollectionSupport<E> {
   @NotNull
@@ -48,10 +50,20 @@ public class CollectionSupport<E> {
   @NotNull
   private final ReentrantReadWriteLock.WriteLock writeLock = new ReentrantReadWriteLock().writeLock();
 
+  /**
+   * <p>Constructor for CollectionSupport.</p>
+   *
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   */
   public CollectionSupport( @NotNull ObservableCollection<E> source ) {
     this.source = source;
   }
 
+  /**
+   * <p>Getter for the field <code>listeners</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   protected List<ElementsListener<? super E>> getListeners() {
     writeLock.lock();
@@ -68,6 +80,11 @@ public class CollectionSupport<E> {
 
   private transient List<ElementsListener<? super E>> listeners;
 
+  /**
+   * <p>addElementListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   */
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     writeLock.lock();
     try {
@@ -77,6 +94,11 @@ public class CollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>removeElementListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   */
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     writeLock.lock();
     try {
@@ -86,6 +108,12 @@ public class CollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementDeleted</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementDeleted( @NotNull E element, int index ) {
     //noinspection TooBroadScope
     List<ElementsListener<? super E>> elementsListeners;
@@ -103,6 +131,12 @@ public class CollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementChanged</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementChanged( @NotNull E element, int index ) {
     //noinspection TooBroadScope
     List<ElementsListener<? super E>> elementsListeners;
@@ -119,6 +153,12 @@ public class CollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementAdded</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementAdded( @NotNull E element, int index ) {
     //noinspection TooBroadScope
     List<ElementsListener<? super E>> elementsListeners;
@@ -135,6 +175,11 @@ public class CollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>hasListeners</p>
+   *
+   * @return a boolean.
+   */
   public boolean hasListeners() {
     writeLock.lock();
     try {

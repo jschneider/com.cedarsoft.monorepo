@@ -40,6 +40,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
+ * <p>DefaultNode class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultNode implements Node {
   @NotNull
@@ -52,14 +55,32 @@ public class DefaultNode implements Node {
   @Nullable
   private Node parent;
 
+  /**
+   * <p>Constructor for DefaultNode.</p>
+   *
+   * @param name a {@link java.lang.String} object.
+   */
   public DefaultNode( @NonNls @NotNull String name ) {
     this( name, new DefaultChildrenSupport(), Lookups.emtyLookup() );
   }
 
+  /**
+   * <p>Constructor for DefaultNode.</p>
+   *
+   * @param name a {@link java.lang.String} object.
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   public DefaultNode( @NonNls @NotNull String name, @NotNull Lookup lookup ) {
     this( name, new DefaultChildrenSupport(), lookup );
   }
 
+  /**
+   * <p>Constructor for DefaultNode.</p>
+   *
+   * @param name a {@link java.lang.String} object.
+   * @param childrenSupport a {@link com.cedarsoft.commons.struct.ChildrenSupport} object.
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   public DefaultNode( @NonNls @NotNull String name, @NotNull ChildrenSupport childrenSupport, @NotNull Lookup lookup ) {
     this.lookup = lookup;
     this.childrenSupport = childrenSupport;
@@ -67,6 +88,7 @@ public class DefaultNode implements Node {
     this.name = name;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setParent( @Nullable Node parent ) {
     if ( parent != null && !parent.isChild( this ) ) {
@@ -75,22 +97,26 @@ public class DefaultNode implements Node {
     this.parent = parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isChild( @NotNull StructPart child ) {
     return childrenSupport.isChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasParent() {
     return parent != null;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     return childrenSupport.findChild( childName );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   @NonNls
@@ -98,64 +124,80 @@ public class DefaultNode implements Node {
     return name;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Lookup getLookup() {
     return lookup;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Node> getChildren() {
     return childrenSupport.getChildren();
   }
 
+  /**
+   * <p>setChildren</p>
+   *
+   * @param children a {@link java.util.List} object.
+   */
   public void setChildren( @NotNull List<? extends Node> children ) {
     childrenSupport.setChildren( children );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( int index, @NotNull Node child ) {
     childrenSupport.addChild( index, child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( @NotNull Node child ) {
     childrenSupport.addChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( @NotNull Node child ) {
     childrenSupport.detachChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( int index ) {
     childrenSupport.detachChild( index );
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Node getParent() {
     return parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Path getPath() {
     return Path.buildPath( this );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
     childrenSupport.addStructureListener( structureListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
     childrenSupport.addStructureListenerWeak( structureListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     childrenSupport.removeStructureListener( structureListener );
@@ -166,6 +208,7 @@ public class DefaultNode implements Node {
     return childrenSupport;
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return "DefaultNode{" +

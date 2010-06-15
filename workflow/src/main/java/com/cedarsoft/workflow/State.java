@@ -42,6 +42,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Represents a state within the workflow
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class State<T> {
   @NotNull
@@ -58,6 +60,7 @@ public class State<T> {
    * Creates a new state
    *
    * @param id the id
+   * @param <T> a T object.
    */
   public State( @NotNull @NonNls String id ) {
     this.id = id;
@@ -92,6 +95,13 @@ public class State<T> {
     }
   }
 
+  /**
+   * <p>createTransition</p>
+   *
+   * @param targetState a {@link com.cedarsoft.workflow.State} object.
+   * @param actions a {@link com.cedarsoft.workflow.Action} object.
+   * @return a {@link com.cedarsoft.workflow.TransitionDefinition} object.
+   */
   @NotNull
   public TransitionDefinition<T> createTransition( @NotNull State<T> targetState, @NotNull Action<T>... actions ) {
     return createTransition( targetState, Arrays.asList( actions ) );

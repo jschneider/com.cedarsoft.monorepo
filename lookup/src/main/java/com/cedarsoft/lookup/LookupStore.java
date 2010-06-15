@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A lookup store is an extended lookup with write access
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface LookupStore extends Lookup {
   /**
@@ -42,6 +44,7 @@ public interface LookupStore extends Lookup {
    *
    * @param type  the type
    * @param value the value
+   * @param <T> a T object.
    */
   <T> void store( @NotNull Class<T> type, @NotNull T value );
 }

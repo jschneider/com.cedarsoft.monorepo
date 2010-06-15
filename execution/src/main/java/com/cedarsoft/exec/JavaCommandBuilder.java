@@ -43,6 +43,8 @@ import java.util.List;
 
 /**
  * Class that is able to start a new java process
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JavaCommandBuilder {
   @NonNls
@@ -58,15 +60,30 @@ public class JavaCommandBuilder {
   @NotNull
   private final List<String> arguments = new ArrayList<String>();
 
+  /**
+   * <p>Constructor for JavaCommandBuilder.</p>
+   *
+   * @param mainClass a {@link java.lang.String} object.
+   */
   public JavaCommandBuilder( @NotNull @NonNls String mainClass ) {
     this.mainClass = mainClass;
   }
 
+  /**
+   * <p>Getter for the field <code>classPathElements</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getClassPathElements() {
     return Collections.unmodifiableList( classPathElements );
   }
 
+  /**
+   * <p>Setter for the field <code>classPathElements</code>.</p>
+   *
+   * @param classPathElements a {@link java.lang.String} object.
+   */
   public void setClassPathElements( @NotNull @NonNls String... classPathElements ) {
     this.classPathElements.clear();
     for ( String element : classPathElements ) {
@@ -77,6 +94,11 @@ public class JavaCommandBuilder {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>javaBin</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getJavaBin() {
@@ -117,21 +139,41 @@ public class JavaCommandBuilder {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>mainClass</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getMainClass() {
     return mainClass;
   }
 
+  /**
+   * <p>addClassPathElement</p>
+   *
+   * @param classPathElement a {@link java.lang.String} object.
+   */
   public void addClassPathElement( @NotNull @NonNls String classPathElement ) {
     classPathElements.add( classPathElement );
   }
 
+  /**
+   * <p>Getter for the field <code>vmProperties</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getVmProperties() {
     return Collections.unmodifiableList( vmProperties );
   }
 
+  /**
+   * <p>Setter for the field <code>vmProperties</code>.</p>
+   *
+   * @param vmProperties a {@link java.lang.String} object.
+   */
   public void setVmProperties( @NonNls @NotNull String... vmProperties ) {
     this.vmProperties.clear();
     for ( String vmProperty : vmProperties ) {
@@ -142,14 +184,29 @@ public class JavaCommandBuilder {
     }
   }
 
+  /**
+   * <p>addVmProperty</p>
+   *
+   * @param vmProeprty a {@link java.lang.String} object.
+   */
   public void addVmProperty( @NotNull @NonNls String vmProeprty ) {
     vmProperties.add( vmProeprty );
   }
 
+  /**
+   * <p>addArgument</p>
+   *
+   * @param argument a {@link java.lang.String} object.
+   */
   public void addArgument( @NotNull @NonNls String argument ) {
     this.arguments.add( argument );
   }
 
+  /**
+   * <p>Setter for the field <code>arguments</code>.</p>
+   *
+   * @param arguments a {@link java.lang.String} object.
+   */
   public void setArguments( @NotNull @NonNls String... arguments ) {
     this.arguments.clear();
     for ( String argument : arguments ) {
@@ -160,12 +217,22 @@ public class JavaCommandBuilder {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>arguments</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   @NonNls
   public List<String> getArguments() {
     return Collections.unmodifiableList( arguments );
   }
 
+  /**
+   * <p>getCommandLineElements</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   @NonNls
   public List<String> getCommandLineElements() {
@@ -197,7 +264,6 @@ public class JavaCommandBuilder {
    * For creating a process use {@link #getCommandLineElements()} instead.
    *
    * @return the command line as string
-   *
    * @see #getCommandLineElements()
    */
   @NotNull

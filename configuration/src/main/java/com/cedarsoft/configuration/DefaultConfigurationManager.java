@@ -39,29 +39,42 @@ import java.util.List;
 
 /**
  * Default implementation for configuration manager
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultConfigurationManager implements ConfigurationManager {
   @NotNull
   private final List<Object> configurations = new ArrayList<Object>();
 
+  /**
+   * <p>Constructor for DefaultConfigurationManager.</p>
+   */
   public DefaultConfigurationManager() {
   }
 
+  /**
+   * <p>Constructor for DefaultConfigurationManager.</p>
+   *
+   * @param initialConfigurations a {@link java.util.List} object.
+   */
   public DefaultConfigurationManager( @NotNull List<?> initialConfigurations ) {
     configurations.addAll( initialConfigurations );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addConfiguration( @NotNull Object configuration ) {
     configurations.add( configuration );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<?> getConfigurations() {
     return Collections.unmodifiableList( configurations );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public <T> T getConfiguration( @NotNull Class<T> configurationType ) throws IllegalArgumentException {

@@ -34,7 +34,9 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>InstantiatorLookup class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InstantiatorLookup<T> extends LazyLookup<T> {
   @NotNull
@@ -42,15 +44,27 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
 
   private Class<? extends T> type;
 
+  /**
+   * <p>Constructor for InstantiatorLookup.</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater} object.
+   */
   public InstantiatorLookup( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
     this.type = type;
     this.instantiater = instantiater;
   }
 
+  /**
+   * <p>Constructor for InstantiatorLookup.</p>
+   *
+   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater.Typed} object.
+   */
   public InstantiatorLookup( @NotNull Instantiater.Typed<T> instantiater ) {
     this.instantiater = instantiater;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected T createInstance() {
@@ -61,6 +75,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public Class<? extends T> getType() {
     if ( type != null ) {

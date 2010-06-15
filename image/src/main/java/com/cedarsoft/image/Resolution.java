@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * For each scan images in several resoltutions are stored. This enum represents the different resolutions.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum Resolution {
   DPI_300( 300 ),
@@ -46,10 +48,21 @@ public enum Resolution {
     this.dpi = dpi;
   }
 
+  /**
+   * <p>Getter for the field <code>dpi</code>.</p>
+   *
+   * @return a int.
+   */
   public int getDpi() {
     return dpi;
   }
 
+  /**
+   * <p>find</p>
+   *
+   * @param dpi a int.
+   * @return a {@link com.cedarsoft.image.Resolution} object.
+   */
   @NotNull
   public static Resolution find( int dpi ) {
     for ( Resolution resolution : values() ) {

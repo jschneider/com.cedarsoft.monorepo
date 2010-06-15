@@ -44,6 +44,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 /**
  * An object access that is based on the current selection
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, PartTimeObjectAdd<T> {
   @NotNull
@@ -83,6 +85,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * Creates a new delegating object access
    *
    * @param currentDelegate the current  delegate
+   * @param <T> a T object.
    */
   public DelegatingObjectAccess( @Nullable ObservableObjectAccess<T> currentDelegate ) {
     this.currentDelegate = currentDelegate;
@@ -101,6 +104,11 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     return currentDelegate;
   }
 
+  /**
+   * <p>Getter for the field <code>currentDelegate</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.history.ObservableObjectAccess} object.
+   */
   @Nullable
   public ObservableObjectAccess<T> getCurrentDelegate() {
     return currentDelegate;
@@ -109,6 +117,11 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   @Nullable
   protected ObservableObjectAccess<T> currentDelegate;
 
+  /**
+   * <p>isCurrentDelegatingObjectAccessAvailable</p>
+   *
+   * @return a boolean.
+   */
   public boolean isCurrentDelegatingObjectAccessAvailable() {
     return currentDelegate != null;
   }
@@ -183,9 +196,9 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   }
 
   /**
-   * Returns the lock for the current delegate
+   * {@inheritDoc}
    *
-   * @return the lock for the current delegate
+   * Returns the lock for the current delegate
    */
   @Override
   @NotNull
@@ -203,11 +216,13 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commit( @NotNull T element ) {
     getCurrentDelegateSafe().commit( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends T> getElements() {
@@ -218,49 +233,67 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void add( @NotNull T element ) {
     getCurrentDelegateSafe().add( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setElements( @NotNull List<? extends T> elements ) {
     getCurrentDelegateSafe().setElements( elements );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void remove( @NotNull T element ) {
     getCurrentDelegateSafe().remove( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.add( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
     this.listeners.remove( listener );
   }
 
+  /**
+   * <p>addDelegateListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.DelegatingObjectAccess.DelegateListener} object.
+   */
   public void addDelegateListener( @NotNull DelegateListener<T> listener ) {
     this.delegateListeners.add( listener );
   }
 
+  /**
+   * <p>removeDelegateListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.DelegatingObjectAccess.DelegateListener} object.
+   */
   public void removeDelegateListener( @NotNull DelegateListener<T> listener ) {
     this.delegateListeners.remove( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean canAdd() {
     return isCurrentDelegatingObjectAccessAvailable();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addPartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.add( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removePartTimeListener( @NotNull PartTimeListener listener ) {
     partTimeListeners.remove( listener );

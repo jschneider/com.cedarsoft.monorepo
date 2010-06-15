@@ -35,17 +35,30 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Object can't always be added.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
   /**
    * Returns true if objects can be added
    *
    * @return true if objects can be added, false otherwise
+   * @param <T> a T object.
    */
   boolean canAdd();
 
+  /**
+   * <p>addPartTimeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.PartTimeObjectAdd.PartTimeListener} object.
+   */
   void addPartTimeListener( @NotNull PartTimeListener listener );
 
+  /**
+   * <p>removePartTimeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.PartTimeObjectAdd.PartTimeListener} object.
+   */
   void removePartTimeListener( @NotNull PartTimeListener listener );
 
   interface PartTimeListener {

@@ -40,30 +40,70 @@ import java.net.URL;
 
 /**
  * Calculates the hashes of resources
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ResourceHashCalculator {
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param resource a {@link java.net.URL} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
     return HashCalculator.calculate( algorithm.getMessageDigest(), resource );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param resource a {@link java.io.InputStream} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resource ) throws IOException {
     return HashCalculator.calculate( algorithm.getMessageDigest(), resource );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param resource an array of byte.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull byte[] resource ) throws IOException {
     return HashCalculator.calculate( algorithm.getMessageDigest(), new ByteArrayInputStream( resource ) );
   }
 
+  /**
+   * <p>calculateSHA1</p>
+   *
+   * @param resource a {@link java.io.InputStream} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @Deprecated
   @NotNull
   public Hash calculateSHA1( @NotNull InputStream resource ) throws IOException {
     return calculate( Algorithm.SHA1, resource );
   }
 
+  /**
+   * <p>calculateMD5</p>
+   *
+   * @param resource a {@link java.io.InputStream} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @Deprecated
   @NotNull
   public Hash calculateMD5( @NotNull InputStream resource ) throws IOException {

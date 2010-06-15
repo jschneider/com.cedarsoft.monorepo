@@ -38,6 +38,8 @@ import java.util.EventListener;
 
 /**
  * TagChangeListeners are notified when tags are changed
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagChangeListener extends EventListener {
   /**

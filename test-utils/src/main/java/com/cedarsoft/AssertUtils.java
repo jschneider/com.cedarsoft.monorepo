@@ -47,24 +47,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p>AssertUtils class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class AssertUtils {
   private AssertUtils() {
   }
 
+  /**
+   * <p>setIgnoreWhitespace</p>
+   *
+   * @param ignore a boolean.
+   */
   public static void setIgnoreWhitespace( boolean ignore ) {
     XMLUnit.setIgnoreWhitespace( true );
   }
 
+  /**
+   * <p>assertXMLEqual</p>
+   *
+   * @param test a {@link java.lang.String} object.
+   * @param control a {@link java.lang.String} object.
+   * @throws org.xml.sax.SAXException if any.
+   * @throws java.io.IOException if any.
+   */
   public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
     assertXMLEqual( test, control, false );
   }
 
+  /**
+   * <p>assertXMLEqual</p>
+   *
+   * @param test a {@link java.lang.String} object.
+   * @param control a {@link java.lang.String} object.
+   * @param ignoreWhiteSpace a boolean.
+   * @throws org.xml.sax.SAXException if any.
+   * @throws java.io.IOException if any.
+   */
   public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEqual( null, test, control, ignoreWhiteSpace );
   }
 
+  /**
+   * <p>assertXMLEqual</p>
+   *
+   * @param err a {@link java.lang.String} object.
+   * @param test a {@link java.lang.String} object.
+   * @param control a {@link java.lang.String} object.
+   * @param ignoreWhiteSpace a boolean.
+   * @throws org.xml.sax.SAXException if any.
+   * @throws java.io.IOException if any.
+   */
   public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     try {
       setIgnoreWhitespace( ignoreWhiteSpace );
@@ -75,6 +109,12 @@ public class AssertUtils {
     }
   }
 
+  /**
+   * <p>assertOne</p>
+   *
+   * @param current a {@link java.lang.Object} object.
+   * @param expectedAlternatives a {@link java.lang.Object} object.
+   */
   public static void assertOne( @Nullable Object current, @NotNull Object... expectedAlternatives ) {
     List<AssertionError> failed = new ArrayList<AssertionError>();
 
@@ -97,6 +137,13 @@ public class AssertUtils {
     throw new AssertionError( message.toString() );
   }
 
+  /**
+   * <p>assertEquals</p>
+   *
+   * @param actual a {@link java.lang.Object} object.
+   * @param expectedResourceUri a {@link java.net.URL} object.
+   * @throws java.io.IOException if any.
+   */
   public static void assertEquals( @Nullable Object actual, @NotNull URL expectedResourceUri ) throws IOException {
     String expected = IOUtils.toString( expectedResourceUri.openStream() );
     Assert.assertEquals( actual, expected );

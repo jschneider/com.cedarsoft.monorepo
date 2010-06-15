@@ -35,12 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Will be notified whenever an object will be deleted.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface DeletionProcessor<T> {
   /**
    * Is called whenever the object will be deleted
    *
    * @param object the object that will be deleted
+   * @param <T> a T object.
    */
   void willBeDeleted( @NotNull T object );
 }

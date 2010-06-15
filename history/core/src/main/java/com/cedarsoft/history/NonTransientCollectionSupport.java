@@ -39,7 +39,9 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>NonTransientCollectionSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NonTransientCollectionSupport<E> {
   @NotNull
@@ -50,10 +52,20 @@ public class NonTransientCollectionSupport<E> {
 
   private final List<ElementsListener<? super E>> listeners = new ArrayList<ElementsListener<? super E>>();
 
+  /**
+   * <p>Constructor for NonTransientCollectionSupport.</p>
+   *
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   */
   public NonTransientCollectionSupport( @NotNull ObservableCollection<E> source ) {
     this.source = source;
   }
 
+  /**
+   * <p>addEntryListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   */
   public void addEntryListener( @NotNull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();
     try {
@@ -63,6 +75,11 @@ public class NonTransientCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>removeEntryListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   */
   public void removeEntryListener( @NotNull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();
     try {
@@ -72,6 +89,12 @@ public class NonTransientCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementDeleted</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementDeleted( @NotNull E element, int index ) {
     lock.readLock().lock();
     try {
@@ -84,6 +107,12 @@ public class NonTransientCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementChanged</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementChanged( @NotNull E element, int index ) {
     lock.readLock().lock();
     try {
@@ -96,6 +125,12 @@ public class NonTransientCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>elementAdded</p>
+   *
+   * @param element a E object.
+   * @param index a int.
+   */
   public void elementAdded( @NotNull E element, int index ) {
     lock.readLock().lock();
     try {
@@ -108,6 +143,11 @@ public class NonTransientCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>hasListeners</p>
+   *
+   * @return a boolean.
+   */
   public boolean hasListeners() {
     lock.readLock().lock();
     try {

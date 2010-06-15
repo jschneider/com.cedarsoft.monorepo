@@ -35,12 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Supports object addition
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObjectAdd<T> {
   /**
    * Adds an element
    *
    * @param element the element that is added
+   * @param <T> a T object.
    */
   void add( @NotNull T element );
 }

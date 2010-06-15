@@ -37,6 +37,8 @@ import java.util.EventListener;
 
 /**
  * A LookupChangeListener is notified whenever an element of a lookup has been changed
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface LookupChangeListener<T> extends EventListener {
 
@@ -44,6 +46,7 @@ public interface LookupChangeListener<T> extends EventListener {
    * Is notified when the content of the lookup has been changed
    *
    * @param event describes the change of the lookup
+   * @param <T> a T object.
    */
   void lookupChanged( @NotNull LookupChangeEvent<? extends T> event );
 }

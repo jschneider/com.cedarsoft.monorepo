@@ -37,6 +37,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A tag provider provides available tags
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagProvider extends TagObservable {
   /**
@@ -53,8 +55,7 @@ public interface TagProvider extends TagObservable {
    *
    * @param description the description
    * @return the tag
-   *
-   * @throws NotFoundException
+   * @throws com.cedarsoft.NotFoundException if any.
    */
   @NotNull
   Tag findTag( @NonNls @NotNull String description ) throws NotFoundException;

@@ -40,6 +40,8 @@ import java.beans.PropertyChangeListener;
 
 /**
  * A change listener support with transient and non transient listeners support
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredChangeListenerSupport<T> {
   @NotNull
@@ -50,16 +52,33 @@ public class ClusteredChangeListenerSupport<T> {
   @Nullable
   private ContextProvider contextProvider;
 
+  /**
+   * <p>Constructor for ClusteredChangeListenerSupport.</p>
+   *
+   * @param observerdObject a T object.
+   */
   public ClusteredChangeListenerSupport( @NotNull T observerdObject ) {
     this( observerdObject, null );
   }
 
+  /**
+   * <p>Constructor for ClusteredChangeListenerSupport.</p>
+   *
+   * @param observerdObject a T object.
+   * @param contextProvider a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   */
   public ClusteredChangeListenerSupport( @NotNull T observerdObject, @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
     transientSupport = new ChangeListenerSupport<T>( observerdObject );
     nonTransientSupport = new NonTransientChangeListenerSupport<T>( observerdObject );
   }
 
+  /**
+   * <p>addChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   * @param isTransient a boolean.
+   */
   public void addChangeListener( @NotNull ChangeListener<T> listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addChangeListener( listener );
@@ -68,6 +87,11 @@ public class ClusteredChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>removeChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   */
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     transientSupport.removeChangeListener( listener );
     nonTransientSupport.removeChangeListener( listener );
@@ -87,6 +111,12 @@ public class ClusteredChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>changed</p>
+   *
+   * @param context a {@link java.lang.Object} object.
+   * @param propertiesPath a {@link java.lang.String} object.
+   */
   public void changed( @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
       throw new IllegalArgumentException( "Empty properties path" );
@@ -96,15 +126,31 @@ public class ClusteredChangeListenerSupport<T> {
     nonTransientSupport.changed( context, propertiesPath );
   }
 
+  /**
+   * <p>Getter for the field <code>contextProvider</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   */
   @Nullable
   public ContextProvider getContextProvider() {
     return contextProvider;
   }
 
+  /**
+   * <p>Setter for the field <code>contextProvider</code>.</p>
+   *
+   * @param contextProvider a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   */
   public void setContextProvider( @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
   }
 
+  /**
+   * <p>createPropertyListenerDelegate</p>
+   *
+   * @param propertiesPath a {@link java.lang.String} object.
+   * @return a {@link java.beans.PropertyChangeListener} object.
+   */
   @NotNull
   public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
     final String[] actual = new String[propertiesPath.length + 1];

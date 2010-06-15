@@ -36,20 +36,38 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A workflow definition.
  * A workflow definition is used to create a specific workflow for a given object.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class WorkflowDefinition<T> {
   @NotNull
   private final State<T> initialState;
 
+  /**
+   * <p>Constructor for WorkflowDefinition.</p>
+   *
+   * @param initialState a {@link com.cedarsoft.workflow.State} object.
+   */
   public WorkflowDefinition( @NotNull State<T> initialState ) {
     this.initialState = initialState;
   }
 
+  /**
+   * <p>Getter for the field <code>initialState</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.workflow.State} object.
+   */
   @NotNull
   public State<T> getInitialState() {
     return initialState;
   }
 
+  /**
+   * <p>createWorkflow</p>
+   *
+   * @param object a T object.
+   * @return a {@link com.cedarsoft.workflow.Workflow} object.
+   */
   @NotNull
   public Workflow<T> createWorkflow( @NotNull T object ) {
     return new Workflow<T>( object, this );

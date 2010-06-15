@@ -32,7 +32,9 @@
 package com.cedarsoft.history;
 
 /**
+ * <p>ClusteredObservableObjectAccess interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ClusteredObservableObjectAccess<T> extends ClusteredObservableCollection<T>, ObservableObjectAccess<T> {
 }

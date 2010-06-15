@@ -43,6 +43,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * A simple history that contains several entries.
  * Each entry has a verification date
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   private Long id;
@@ -55,12 +57,20 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   @NotNull
   private final ClusteredHistoryListenerSupport<E> listenerSupport = new ClusteredHistoryListenerSupport<E>();
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends E> getEntries() {
     return Collections.unmodifiableList( entries );
   }
 
+  /**
+   * <p>getEntry</p>
+   *
+   * @param index a int.
+   * @return a E object.
+   * @throws com.cedarsoft.history.NoValidElementFoundException if any.
+   */
   @NotNull
   protected E getEntry( int index ) throws NoValidElementFoundException {
     lock.readLock().lock();
@@ -74,6 +84,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasEntries() {
     lock.readLock().lock();
@@ -84,6 +95,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addEntry( @NotNull E entry ) {
     lock.writeLock().lock();
@@ -96,6 +108,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     listenerSupport.notifyEntryAdded( entry );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean removeEntry( @NotNull E entry ) {
     lock.writeLock().lock();
@@ -107,11 +120,13 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commitEntry( @NotNull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public E getFirstEntry() throws NoValidElementFoundException {
@@ -126,6 +141,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void clear() {
     lock.writeLock().lock();
@@ -139,6 +155,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public E getLatestEntry() throws NoValidElementFoundException {
@@ -153,6 +170,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isLatestEntry( @NotNull E entry ) {
     lock.readLock().lock();
@@ -167,12 +185,14 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
@@ -193,36 +213,52 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();
   }
 
+  /**
+   * <p>addHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param isTransient a boolean.
+   */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
+  /**
+   * <p>Getter for the field <code>lock</code>.</p>
+   *
+   * @return a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   */
   @NotNull
   public ReadWriteLock getLock() {
     return lock;

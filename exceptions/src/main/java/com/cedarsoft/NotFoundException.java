@@ -32,20 +32,41 @@
 package com.cedarsoft;
 
 /**
+ * <p>NotFoundException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NotFoundException extends RuntimeException {
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   */
   public NotFoundException() {
   }
 
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public NotFoundException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NotFoundException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NotFoundException( Throwable cause ) {
     super( cause );
   }

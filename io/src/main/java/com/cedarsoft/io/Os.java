@@ -1,3 +1,4 @@
+
 /**
  * Copyright (C) cedarsoft GmbH.
  *
@@ -27,6 +28,8 @@
  * Please contact cedarsoft GmbH, 72810 Gomaringen, Germany,
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 
 package com.cedarsoft.io;
@@ -53,7 +56,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
-
 public class Os {
   @NotNull
   @NonNls
@@ -71,21 +73,41 @@ public class Os {
   private Os() {
   }
 
+  /**
+   * <p>getOsName</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String getOsName() {
     return OS_NAME;
   }
 
+  /**
+   * <p>getOsArch</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String getOsArch() {
     return OS_ARCH;
   }
 
+  /**
+   * <p>getOsVersion</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String getOsVersion() {
     return OS_VERSION;
   }
 
+  /**
+   * <p>getPathSep</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String getPathSep() {
     return PATH_SEP;
@@ -100,7 +122,6 @@ public class Os {
    * @param arch    The OS architecture
    * @param version The OS version
    * @return true if the OS matches
-   *
    * @since 1.7
    */
   public static boolean isOs( @NotNull @NonNls String family, @NotNull @NonNls String name, @NotNull @NonNls String arch, @NotNull @NonNls String version ) {
@@ -132,6 +153,12 @@ public class Os {
     return name.equals( OS_NAME );
   }
 
+  /**
+   * <p>isFamily</p>
+   *
+   * @param family a {@link java.lang.String} object.
+   * @return a boolean.
+   */
   public static boolean isFamily( @NotNull @NonNls String family ) {
     if ( family.equals( "windows" ) ) {
       return OS_NAME.contains( "windows" );

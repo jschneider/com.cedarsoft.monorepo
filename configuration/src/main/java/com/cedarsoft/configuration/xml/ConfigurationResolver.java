@@ -45,6 +45,8 @@ import java.util.Map;
 /**
  * Resolves a value from a configuration.
  * This class offers a common access to a configuration for every type.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class ConfigurationResolver<T> {
   /**
@@ -53,6 +55,7 @@ public abstract class ConfigurationResolver<T> {
    * @param configuration the configuration the value is extracted for
    * @param key           the key
    * @return the value
+   * @param <T> a T object.
    */
   @Nullable
   public abstract T resolve( @NotNull Configuration configuration, @NotNull @NonNls String key );
@@ -71,6 +74,7 @@ public abstract class ConfigurationResolver<T> {
    *
    * @param type the type
    * @return the resolver for the given type
+   * @param <T> a T object.
    */
   @NotNull
   public static <T> ConfigurationResolver<T> getResolver( @NotNull Class<? extends T> type ) {

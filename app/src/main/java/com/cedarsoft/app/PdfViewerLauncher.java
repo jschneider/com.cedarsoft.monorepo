@@ -37,7 +37,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JOptionPane;
 
 /**
+ * <p>PdfViewerLauncher class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PdfViewerLauncher {
   private static final String ERR_MSG = "Error attempting to launch pdf viewer";

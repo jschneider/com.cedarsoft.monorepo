@@ -42,6 +42,8 @@ import java.util.Set;
 
 /**
  * Lazy implementation of lookup. This class will call {@link #getValue()} as late as possible and cache the results.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class LazyLookup<T> extends AbstractLookup {
   /**
@@ -53,9 +55,13 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    */
   private Map<Class<?>, Object> lookups;
 
+  /**
+   * <p>Constructor for LazyLookup.</p>
+   */
   protected LazyLookup() {
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
@@ -91,14 +97,15 @@ public abstract class LazyLookup<T> extends AbstractLookup {
 
   /**
    * The type the instance.
+   *
+   * @return a {@link java.lang.Class} object.
    */
   public abstract Class<? extends T> getType();
 
   /**
-   * This lookup calls {@link #getValue()} when the parameter fits the type ({@link #getType()}).
+   * {@inheritDoc}
    *
-   * @param type the key
-   * @return the found object or null if no object has been found
+   * This lookup calls {@link #getValue()} when the parameter fits the type ({@link #getType()}).
    */
   @Override
   @Nullable
@@ -123,46 +130,56 @@ public abstract class LazyLookup<T> extends AbstractLookup {
     return instance;
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }

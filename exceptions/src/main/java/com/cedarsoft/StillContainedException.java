@@ -34,17 +34,29 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>StillContainedException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StillContainedException extends RuntimeException {
   @NotNull
   private final Object object;
 
+  /**
+   * <p>Constructor for StillContainedException.</p>
+   *
+   * @param object a {@link java.lang.Object} object.
+   */
   public StillContainedException( @NotNull Object object ) {
     super( "The object <" + object + "> is still contained" );
     this.object = object;
   }
 
+  /**
+   * <p>Getter for the field <code>object</code>.</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   @NotNull
   public Object getObject() {
     return object;

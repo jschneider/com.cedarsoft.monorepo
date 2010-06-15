@@ -39,14 +39,18 @@ import javax.swing.JCheckBox;
  * <p/>
  * Date: Jun 1, 2007<br>
  * Time: 4:19:22 PM<br>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JCheckboxButtonPresenter extends AbstractButtonPresenter<JCheckBox> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public JCheckBox createPresentation() {
     return new JCheckBox();
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return false;

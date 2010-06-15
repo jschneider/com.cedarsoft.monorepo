@@ -36,7 +36,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * <p>UnsupportedVersionException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class UnsupportedVersionException extends VersionException {
   @NotNull
@@ -45,29 +47,65 @@ public class UnsupportedVersionException extends VersionException {
   @Nullable
   private final VersionRange supportedRange;
 
+  /**
+   * <p>Constructor for UnsupportedVersionException.</p>
+   *
+   * @param actual a {@link com.cedarsoft.Version} object.
+   */
   public UnsupportedVersionException( @NotNull Version actual ) {
     this( actual, null );
   }
 
+  /**
+   * <p>Constructor for UnsupportedVersionException.</p>
+   *
+   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
+   */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
     this( actual, supportedRange, "Unsupported version. " );
   }
 
+  /**
+   * <p>Constructor for UnsupportedVersionException.</p>
+   *
+   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
+   * @param messagePrefix a {@link java.lang.String} object.
+   */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix ) {
     this( actual, supportedRange, messagePrefix, true );
   }
 
+  /**
+   * <p>Constructor for UnsupportedVersionException.</p>
+   *
+   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
+   * @param messagePrefix a {@link java.lang.String} object.
+   * @param appendSuffix a boolean.
+   */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
     super( messagePrefix, createMessageSuffix( actual, supportedRange ), appendSuffix );
     this.actual = actual;
     this.supportedRange = supportedRange;
   }
 
+  /**
+   * <p>Getter for the field <code>actual</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getActual() {
     return actual;
   }
 
+  /**
+   * <p>Getter for the field <code>supportedRange</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.VersionRange} object.
+   */
   @Nullable
   public VersionRange getSupportedRange() {
     return supportedRange;

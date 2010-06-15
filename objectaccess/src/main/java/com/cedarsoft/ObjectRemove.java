@@ -35,13 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Supports object removals
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObjectRemove<T> {
   /**
    * Removes an element
    *
    * @param element the element that is removed
-   * @return whether the element has been removed
+   * @param <T> a T object.
    */
   void remove( @NotNull T element );
 }

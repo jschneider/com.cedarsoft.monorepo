@@ -34,7 +34,9 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>VersionMismatchException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class VersionMismatchException extends VersionException {
   @NotNull
@@ -42,6 +44,12 @@ public class VersionMismatchException extends VersionException {
   @NotNull
   private final Version actual;
 
+  /**
+   * <p>Constructor for VersionMismatchException.</p>
+   *
+   * @param expected a {@link com.cedarsoft.Version} object.
+   * @param actual a {@link com.cedarsoft.Version} object.
+   */
   public VersionMismatchException( @NotNull Version expected, @NotNull Version actual ) {
     this( expected, actual, "Version mismatch. " );
   }
@@ -71,11 +79,21 @@ public class VersionMismatchException extends VersionException {
     this.actual = actual;
   }
 
+  /**
+   * <p>Getter for the field <code>expected</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getExpected() {
     return expected;
   }
 
+  /**
+   * <p>Getter for the field <code>actual</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getActual() {
     return actual;

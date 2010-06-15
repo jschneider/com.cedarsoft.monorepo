@@ -44,24 +44,49 @@ import java.util.concurrent.Future;
 
 /**
  * Offers static thread utils
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ThreadUtils {
+  /**
+   * <p>isEventDispatchThread</p>
+   *
+   * @return a boolean.
+   */
   public static boolean isEventDispatchThread() {
     return SwingUtilities.isEventDispatchThread();
   }
 
+  /**
+   * <p>assertEventDispatchThread</p>
+   *
+   * @throws java.lang.IllegalThreadStateException if any.
+   */
   public static void assertEventDispatchThread() throws IllegalThreadStateException {
     if ( !isEventDispatchThread() ) {
       throw new IllegalThreadStateException( "Not in EDT" );
     }
   }
 
+  /**
+   * <p>assertNotEventDispatchThread</p>
+   *
+   * @throws java.lang.IllegalThreadStateException if any.
+   */
   public static void assertNotEventDispatchThread() throws IllegalThreadStateException {
     if ( isEventDispatchThread() ) {
       throw new IllegalThreadStateException( "Is EDT" );
     }
   }
 
+  /**
+   * <p>inokeInOtherThread</p>
+   *
+   * @param callable a {@link java.util.concurrent.Callable} object.
+   * @return a T object.
+   * @throws java.util.concurrent.ExecutionException if any.
+   * @throws java.lang.InterruptedException if any.
+   */
   @Nullable
   public static <T> T inokeInOtherThread( @NotNull Callable<T> callable ) throws ExecutionException, InterruptedException {
     ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -75,6 +100,8 @@ public class ThreadUtils {
 
   /**
    * Invokes the runnable within the EDT
+   *
+   * @param runnable a {@link java.lang.Runnable} object.
    */
   public static void invokeInEventDispatchThread( @NotNull Runnable runnable ) {
     if ( isEventDispatchThread() ) {

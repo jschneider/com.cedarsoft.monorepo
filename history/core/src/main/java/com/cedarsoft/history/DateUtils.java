@@ -36,6 +36,8 @@ import org.joda.time.LocalDate;
 
 /**
  * Static class that offers utilty methods for Joda Time
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DateUtils {
 
@@ -47,7 +49,6 @@ public class DateUtils {
    * @param end   the end (exclusive)
    * @return whether the given date is between the two given dates
    */
-
   public static boolean isBetween( @NotNull LocalDate date, @NotNull LocalDate begin, @NotNull LocalDate end ) {
     if ( begin.isAfter( date ) ) {
       return false;

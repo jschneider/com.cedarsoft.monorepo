@@ -41,6 +41,8 @@ import java.util.Map;
 
 /**
  * A dynamic lookup
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DynamicLookup extends AbstractLookup implements LookupStore {
   @NotNull
@@ -70,10 +72,9 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   }
 
   /**
-   * The type is ignored
+   * {@inheritDoc}
    *
-   * @param type  the ignored type
-   * @param value the value
+   * The type is ignored
    */
   @Override
   public <T> void store( @NotNull Class<T> type, @NotNull T value ) {
@@ -85,6 +86,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
    * and interfaces.
    *
    * @param value the value that is added
+   * @return a boolean.
    */
   public final boolean addValue( @NotNull Object value ) {
     boolean added = false;
@@ -108,6 +110,12 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return added;
   }
 
+  /**
+   * <p>removeValue</p>
+   *
+   * @param value a {@link java.lang.Object} object.
+   * @return a boolean.
+   */
   public final boolean removeValue( @NotNull Object value ) {
     boolean removed = false;
 
@@ -164,6 +172,12 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return removed;
   }
 
+  /**
+   * <p>addValues</p>
+   *
+   * @param objects a {@link java.lang.Object} object.
+   * @return a boolean.
+   */
   public final boolean addValues( @NotNull Object... objects ) {
     boolean added = false;
 
@@ -175,6 +189,12 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return added;
   }
 
+  /**
+   * <p>addValues</p>
+   *
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @return a boolean.
+   */
   public final boolean addValues( @NotNull Lookup lookup ) {
     boolean added = false;
     for ( Map.Entry<Class<?>, Object> entry : lookup.lookups().entrySet() ) {
@@ -184,6 +204,12 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return added;
   }
 
+  /**
+   * <p>removeValues</p>
+   *
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @return a boolean.
+   */
   public final boolean removeValues( @NotNull Lookup lookup ) {
     boolean removed = false;
     for ( Map.Entry<Class<?>, Object> entry : lookup.lookups().entrySet() ) {
@@ -193,6 +219,12 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return removed;
   }
 
+  /**
+   * <p>removeValues</p>
+   *
+   * @param objects a {@link java.lang.Object} object.
+   * @return a boolean.
+   */
   public final boolean removeValues( @NotNull Object... objects ) {
     boolean removed = false;
     for ( Object object : objects ) {
@@ -202,68 +234,85 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
     return removed;
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public <T> T lookup( @NotNull Class<T> type ) {
     return type.cast( store.get( type ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
     return Collections.unmodifiableMap( store );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bind( type, lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bind( lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bindWeak( type, lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bindWeak( lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListenerWeak( type, lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListener( lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListener( type, lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.removeChangeListener( lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.removeChangeListener( type, lookupChangeListener );
   }
 
+  /**
+   * <p>getLookupChangeListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends LookupChangeListener<?>> getLookupChangeListeners() {
     return lcs.getListeners();

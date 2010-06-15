@@ -41,6 +41,8 @@ import org.springframework.beans.factory.FactoryBean;
  * <p/>
  * Date: Jul 1, 2007<br>
  * Time: 6:39:21 PM<br>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ConfigurationFactory implements FactoryBean {
@@ -49,16 +51,28 @@ public class ConfigurationFactory implements FactoryBean {
   @Nullable
   private final Class<?> moduleType;
 
+  /**
+   * <p>Constructor for ConfigurationFactory.</p>
+   *
+   * @param configurationManager a {@link com.cedarsoft.configuration.xml.XmlConfigurationManager} object.
+   */
   public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager ) {
     this.configurationManager = configurationManager;
     moduleType = null;
   }
 
+  /**
+   * <p>Constructor for ConfigurationFactory.</p>
+   *
+   * @param configurationManager a {@link com.cedarsoft.configuration.xml.XmlConfigurationManager} object.
+   * @param moduleType a {@link java.lang.Class} object.
+   */
   public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
     this.configurationManager = configurationManager;
     this.moduleType = moduleType;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Object getObject() throws Exception {
@@ -69,12 +83,14 @@ public class ConfigurationFactory implements FactoryBean {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Class<Configuration> getObjectType() {
     return Configuration.class;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isSingleton() {
     return true;

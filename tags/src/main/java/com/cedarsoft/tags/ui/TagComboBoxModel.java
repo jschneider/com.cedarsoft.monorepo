@@ -45,15 +45,28 @@ import javax.swing.event.ListDataListener;
 
 /**
  * ComboboxModel prsenting tags
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
   @NotNull
   private final SingleTaggable taggable = new SingleTaggable( this );
 
+  /**
+   * <p>Constructor for TagComboBoxModel.</p>
+   *
+   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   */
   public TagComboBoxModel( @NotNull TagObservable availableTags ) {
     this( availableTags, true );
   }
 
+  /**
+   * <p>Constructor for TagComboBoxModel.</p>
+   *
+   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   * @param nullable a boolean.
+   */
   public TagComboBoxModel( @NotNull TagObservable availableTags, boolean nullable ) {
     super( availableTags, nullable );
   }
@@ -68,6 +81,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     return taggable;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     //noinspection ObjectEquality
@@ -109,6 +123,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Tag getSelectedItem() {

@@ -49,14 +49,19 @@ import java.util.List;
  * If you want to get a "list" of nodes try {@link Route} instead.
  * <p/>
  * A path is *immutable*
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Path implements Serializable {
   private static final long serialVersionUID = -201844652320294645L;
+  /** Constant <code>PATH_SEPARATOR_CHAR='/'</code> */
   @NonNls
   public static final char PATH_SEPARATOR_CHAR = '/';
+  /** Constant <code>PATH_SEPARATOR="String.valueOf( PATH_SEPARATOR_CHAR )"</code> */
   @NotNull
   @NonNls
   public static final String PATH_SEPARATOR = String.valueOf( PATH_SEPARATOR_CHAR );
+  /** Constant <code>EMPTY</code> */
   @NotNull
   public static final Path EMPTY = new Path();
 
@@ -74,6 +79,12 @@ public class Path implements Serializable {
     this( Arrays.asList( elements ) );
   }
 
+  /**
+   * <p>Constructor for Path.</p>
+   *
+   * @param relative a boolean.
+   * @param elements a {@link java.lang.String} object.
+   */
   @TestOnly
   @Deprecated
   public Path( boolean relative, @NotNull String... elements ) {
@@ -89,6 +100,12 @@ public class Path implements Serializable {
     this( elements, false );
   }
 
+  /**
+   * <p>Constructor for Path.</p>
+   *
+   * @param elements a {@link java.lang.Iterable} object.
+   * @param absolute a boolean.
+   */
   public Path( @NotNull Iterable<? extends String> elements, boolean absolute ) {
     this.absolute = absolute;
 
@@ -116,6 +133,7 @@ public class Path implements Serializable {
     return Collections.unmodifiableList( elements );
   }
 
+  /** {@inheritDoc} */
   @NotNull
   @NonNls
   @Override
@@ -137,24 +155,50 @@ public class Path implements Serializable {
     return buffer.toString();
   }
 
+  /**
+   * <p>size</p>
+   *
+   * @return a int.
+   */
   public int size() {
     return elements.size();
   }
 
+  /**
+   * <p>isAbsolute</p>
+   *
+   * @return a boolean.
+   */
   public boolean isAbsolute() {
     return absolute;
   }
 
+  /**
+   * <p>absolute</p>
+   *
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path absolute() {
     return absolute( true );
   }
 
+  /**
+   * <p>relative</p>
+   *
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path relative() {
     return absolute( false );
   }
 
+  /**
+   * <p>absolute</p>
+   *
+   * @param newAbsolute a boolean.
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path absolute( boolean newAbsolute ) {
     if ( absolute == newAbsolute ) {
@@ -163,6 +207,13 @@ public class Path implements Serializable {
     return new Path( elements, newAbsolute );
   }
 
+  /**
+   * <p>subPath</p>
+   *
+   * @param index0 a int.
+   * @param index1 a int.
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path subPath( int index0, int index1 ) {
     return new Path( elements.subList( index0, index1 ) );
@@ -181,6 +232,12 @@ public class Path implements Serializable {
     return subPath( 1, elements.size() );
   }
 
+  /**
+   * <p>withParent</p>
+   *
+   * @param parentPathRepresentation a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path withParent( @NotNull @NonNls String parentPathRepresentation ) {
     return createParentPath( parentPathRepresentation, this );
@@ -199,6 +256,7 @@ public class Path implements Serializable {
     return new Path( childElements );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -211,6 +269,7 @@ public class Path implements Serializable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return elements != null ? elements.hashCode() : 0;

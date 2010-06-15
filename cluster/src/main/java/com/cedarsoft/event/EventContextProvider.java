@@ -35,8 +35,15 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Provides the context for an event
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface EventContextProvider {
+  /**
+   * <p>getContext</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   @Nullable
   Object getContext();
 }

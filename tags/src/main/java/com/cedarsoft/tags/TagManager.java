@@ -38,6 +38,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The TagManager offers methods to tag objects that do not directly implement {@link Taggable} oder
  * {@link Tagged}
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagManager<T> extends TagProvider {
   /**
@@ -48,6 +50,7 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param object      the object the taggable is availableTags for
    * @param description the description of the tag
+   * @param <T> a T object.
    */
   void addTag( @NotNull T object, @NotNull String description );
 
@@ -56,8 +59,7 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param o the object the taggable is searched for
    * @return the taggable - if one is found
-   *
-   * @throws NotFoundException if no taggable has been found
+   * @throws com.cedarsoft.NotFoundException if no taggable has been found
    */
   @NotNull
   Taggable findTaggable( @NotNull T o ) throws NotFoundException;
@@ -67,8 +69,7 @@ public interface TagManager<T> extends TagProvider {
    *
    * @param o the object the availableTags is searched for
    * @return the availableTags - if one is found
-   *
-   * @throws NotFoundException if no availableTags has been found
+   * @throws com.cedarsoft.NotFoundException if no availableTags has been found
    */
   @NotNull
   Tagged findTagged( @NotNull T o ) throws NotFoundException;

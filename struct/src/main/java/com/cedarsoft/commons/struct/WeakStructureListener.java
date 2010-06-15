@@ -37,15 +37,27 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.ref.WeakReference;
 
 /**
+ * <p>WeakStructureListener class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class WeakStructureListener implements StructureListener {
   private final WeakReference<StructureListener> listenerReference;
 
+  /**
+   * <p>Constructor for WeakStructureListener.</p>
+   *
+   * @param wrappedListener a {@link com.cedarsoft.commons.struct.StructureListener} object.
+   */
   public WeakStructureListener( @NotNull StructureListener wrappedListener ) {
     listenerReference = new WeakReference<StructureListener>( wrappedListener );
   }
 
+  /**
+   * <p>getWrappedListener</p>
+   *
+   * @return a {@link com.cedarsoft.commons.struct.StructureListener} object.
+   */
   @Nullable
   public StructureListener getWrappedListener() {
     return listenerReference.get();
@@ -55,6 +67,7 @@ public class WeakStructureListener implements StructureListener {
     source.removeStructureListener( this );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void childAdded( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
@@ -65,6 +78,7 @@ public class WeakStructureListener implements StructureListener {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void childDetached( @NotNull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();

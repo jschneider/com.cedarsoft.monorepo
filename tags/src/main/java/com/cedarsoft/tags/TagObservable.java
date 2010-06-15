@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Implementing classes can be observed and notify listeners about tag changes.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagObservable extends Tagged {
   /**

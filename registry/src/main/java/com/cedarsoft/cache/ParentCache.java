@@ -43,6 +43,8 @@ import java.util.WeakHashMap;
 
 /**
  * Stores the parent of children (and their indicies) in weak maps.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ParentCache {
   /**
@@ -62,6 +64,8 @@ public class ParentCache {
    *
    * @param child the child
    * @return the parent
+   * @param <P> a P object.
+   * @param <C> a C object.
    */
   @Nullable
   public <P, C> P findParent( @NotNull C child ) {
@@ -81,11 +85,21 @@ public class ParentCache {
     indicies.remove( child );
   }
 
+  /**
+   * <p>remove</p>
+   *
+   * @param child a {@link java.lang.Object} object.
+   */
   public void remove( @NotNull Object child ) {
     removeParent( child );
     removeIndex( child );
   }
 
+  /**
+   * <p>removeAll</p>
+   *
+   * @param children a {@link java.util.List} object.
+   */
   public void removeAll( @NotNull List<? extends Object> children ) {
     for ( Object child : children ) {
       remove( child );
@@ -109,6 +123,9 @@ public class ParentCache {
    *
    * @param child  the child
    * @param parent the parent
+   * @param index a int.
+   * @param <P> a P object.
+   * @param <C> a C object.
    */
   public <P, C> void store( @NotNull C child, @NotNull P parent, int index ) {
     storeParent( child, parent );
@@ -116,10 +133,22 @@ public class ParentCache {
   }
 
 
+  /**
+   * <p>storeIndex</p>
+   *
+   * @param child a C object.
+   * @param index a int.
+   */
   public <C> void storeIndex( @NotNull C child, int index ) {
     indicies.put( child, index );
   }
 
+  /**
+   * <p>findIndex</p>
+   *
+   * @param child a C object.
+   * @return a {@link java.lang.Integer} object.
+   */
   @Nullable
   public <C> Integer findIndex( @NotNull C child ) {
     return indicies.get( child );

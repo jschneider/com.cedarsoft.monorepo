@@ -41,6 +41,8 @@ import java.util.Map;
 
 /**
  * LookupChangeSupport
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LookupChangeSupport {
   private static final LookupChangeListener<?>[] EMPTY_LISTENERS_ARRAY = new LookupChangeListener[0];
@@ -59,6 +61,11 @@ public class LookupChangeSupport {
     this.source = source;
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   @NotNull
   public Object getSource() {
     return source;
@@ -69,6 +76,8 @@ public class LookupChangeSupport {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param type a {@link java.lang.Class} object.
+   * @param <T> a T object.
    */
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListener( type, lookupChangeListener );
@@ -81,6 +90,7 @@ public class LookupChangeSupport {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param <T> a T object.
    */
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     Class<T> type = lookupChangeListener.getType();
@@ -93,6 +103,8 @@ public class LookupChangeSupport {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param type a {@link java.lang.Class} object.
+   * @param <T> a T object.
    */
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListenerWeak( type, lookupChangeListener );
@@ -106,6 +118,7 @@ public class LookupChangeSupport {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param <T> a T object.
    */
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     Class<T> type = lookupChangeListener.getType();
@@ -126,15 +139,27 @@ public class LookupChangeSupport {
    *
    * @param type                 the type the listener is registered for
    * @param lookupChangeListener the listener that is wrapped and added
+   * @param <T> a T object.
    */
   public <T> void addChangeListenerWeak( @Nullable Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListener( type, WeakLookupChangeListener.wrap( type, lookupChangeListener ) );
   }
 
+  /**
+   * <p>addChangeListener</p>
+   *
+   * @param lookupChangeListener a {@link com.cedarsoft.lookup.LookupChangeListener} object.
+   */
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     addChangeListener( null, lookupChangeListener );
   }
 
+  /**
+   * <p>addChangeListener</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param lookupChangeListener a {@link com.cedarsoft.lookup.LookupChangeListener} object.
+   */
   public void addChangeListener( @Nullable Class<?> type, @NotNull LookupChangeListener<?> lookupChangeListener ) {
     Object[] newListeners = new Object[listeners.length + 2];
     System.arraycopy( listeners, 0, newListeners, 0, listeners.length );
@@ -143,10 +168,21 @@ public class LookupChangeSupport {
     this.listeners = newListeners;
   }
 
+  /**
+   * <p>removeChangeListener</p>
+   *
+   * @param lookupChangeListener a {@link com.cedarsoft.lookup.LookupChangeListener} object.
+   */
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     removeChangeListener( null, lookupChangeListener );
   }
 
+  /**
+   * <p>removeChangeListener</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param lookupChangeListener a {@link com.cedarsoft.lookup.LookupChangeListener} object.
+   */
   public void removeChangeListener( @Nullable Class<?> type, @NotNull LookupChangeListener<?> lookupChangeListener ) {
     for ( int i = 0; i < listeners.length; i += 2 ) {
       if ( listeners[i] == type ) {
@@ -162,6 +198,13 @@ public class LookupChangeSupport {
     }
   }
 
+  /**
+   * <p>fireLookupChanged</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param oldValue a T object.
+   * @param value a T object.
+   */
   public <T> void fireLookupChanged( @NotNull Class<? super T> type, @Nullable T oldValue, @Nullable T value ) {
     //noinspection ObjectEquality
     if ( oldValue == value ) {
@@ -170,6 +213,11 @@ public class LookupChangeSupport {
     fireLookupChanged( new LookupChangeEvent<T>( source, type, oldValue, value ) );
   }
 
+  /**
+   * <p>fireLookupChanged</p>
+   *
+   * @param event a {@link com.cedarsoft.lookup.LookupChangeEvent} object.
+   */
   public <T> void fireLookupChanged( @NotNull LookupChangeEvent<T> event ) {
     if ( event.getNewValue() == event.getOldValue() ) {
       return;
@@ -194,6 +242,11 @@ public class LookupChangeSupport {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>listeners</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<LookupChangeListener<?>> getListeners() {
     List<LookupChangeListener<?>> changeListeners = new ArrayList<LookupChangeListener<?>>();
@@ -231,6 +284,12 @@ public class LookupChangeSupport {
   }
 
 
+  /**
+   * <p>fireDelta</p>
+   *
+   * @param oldLookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param newLookup a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   public void fireDelta( @Nullable Lookup oldLookup, @Nullable Lookup newLookup ) {
     if ( listeners.length == 0 ) {
       return;
@@ -244,6 +303,12 @@ public class LookupChangeSupport {
     fireDelta( oldLookups, newLookup );
   }
 
+  /**
+   * <p>fireDelta</p>
+   *
+   * @param oldEntries a {@link java.util.Map} object.
+   * @param newLookup a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   public void fireDelta( Map<Class<?>, Object> oldEntries, Lookup newLookup ) {
     if ( listeners.length == 0 ) {
       return;

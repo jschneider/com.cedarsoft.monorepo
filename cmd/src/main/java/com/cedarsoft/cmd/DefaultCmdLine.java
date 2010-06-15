@@ -41,9 +41,16 @@ import java.io.PrintStream;
 
 /**
  * The default command line
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Singleton
 public class DefaultCmdLine extends AbstractCmdLine {
+  /**
+   * <p>isAnsiAware</p>
+   *
+   * @return a boolean.
+   */
   public static boolean isAnsiAware() {
     String osName = System.getProperty( "os.name" );
     if ( osName.contains( "indows" ) ) {
@@ -56,6 +63,9 @@ public class DefaultCmdLine extends AbstractCmdLine {
 
   private final ConsolePrinter consolePrinter;
 
+  /**
+   * <p>Constructor for DefaultCmdLine.</p>
+   */
   public DefaultCmdLine() {
     if ( isAnsiAware() ) {
       this.consolePrinter = new AnsiAwareConsolePrinter();
@@ -64,12 +74,14 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
+  /** {@inheritDoc} */
   @NotNull
   @Override
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     String answer = read( message + " (y/n)" );
@@ -85,12 +97,14 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return Boolean.parseBoolean( message );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
     return read( message, ( String ) null );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
@@ -114,17 +128,24 @@ public class DefaultCmdLine extends AbstractCmdLine {
     return read;
   }
 
+  /**
+   * <p>getIn</p>
+   *
+   * @return a {@link java.io.InputStream} object.
+   */
   @NotNull
   public InputStream getIn() {
     return System.in;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public PrintStream getOut() {
     return System.out;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     try {
@@ -141,6 +162,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     while ( true ) {
@@ -154,6 +176,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void pause( int seconds ) {
     getOut().print( "Pausing for " + seconds + " seconds:" );

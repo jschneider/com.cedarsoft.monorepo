@@ -37,14 +37,18 @@ import javax.swing.JMenuItem;
 
 /**
  * This presenter creates a JMenuItem for a action.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultJMenuItemPresenter extends AbstractButtonPresenter<JMenuItem> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public JMenuItem createPresentation() {
     return new JMenuItem();
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return false;

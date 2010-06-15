@@ -42,6 +42,8 @@ import java.util.NoSuchElementException;
 /**
  * Offers common access to configurations.
  * Implementations are independant of the type.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ConfigurationAccess<T> {
   @NotNull
@@ -56,6 +58,14 @@ public class ConfigurationAccess<T> {
   @NotNull
   private final Configuration configuration;
 
+  /**
+   * <p>Constructor for ConfigurationAccess.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param key a {@link java.lang.String} object.
+   * @param defaultValue a T object.
+   */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull final T defaultValue ) {
     this( configuration, type, key, new DefaultValueProvider() {
       @Override
@@ -66,10 +76,27 @@ public class ConfigurationAccess<T> {
     } );
   }
 
+  /**
+   * <p>Constructor for ConfigurationAccess.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param key a {@link java.lang.String} object.
+   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
     this( configuration, type, key, defaultValueProvider, ConfigurationResolver.getResolver( type ) );
   }
 
+  /**
+   * <p>Constructor for ConfigurationAccess.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param key a {@link java.lang.String} object.
+   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   * @param resolver a {@link com.cedarsoft.configuration.xml.ConfigurationResolver} object.
+   */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider, @NotNull ConfigurationResolver<T> resolver ) {
     this.configuration = configuration;
     this.type = type;
@@ -78,6 +105,11 @@ public class ConfigurationAccess<T> {
     this.resolver = resolver;
   }
 
+  /**
+   * <p>resolve</p>
+   *
+   * @return a T object.
+   */
   @Nullable
   public T resolve() {
     try {
@@ -98,8 +130,7 @@ public class ConfigurationAccess<T> {
    * Resolves the value
    *
    * @return the resolved value
-   *
-   * @throws IllegalArgumentException if the key is invalid
+   * @throws java.lang.IllegalArgumentException if the key is invalid
    */
   @NotNull
   public T resolveSafe() throws IllegalArgumentException {
@@ -110,17 +141,32 @@ public class ConfigurationAccess<T> {
     return resolved;
   }
 
+  /**
+   * <p>Getter for the field <code>type</code>.</p>
+   *
+   * @return a {@link java.lang.Class} object.
+   */
   @NotNull
   public Class<? extends T> getType() {
     return type;
   }
 
+  /**
+   * <p>Getter for the field <code>key</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getKey() {
     return key;
   }
 
+  /**
+   * <p>store</p>
+   *
+   * @param value a T object.
+   */
   public void store( @NotNull T value ) {
     resolver.store( configuration, key, value );
   }

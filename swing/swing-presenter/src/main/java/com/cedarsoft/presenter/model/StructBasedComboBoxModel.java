@@ -39,20 +39,29 @@ import javax.swing.ComboBoxModel;
 
 /**
  * A combo box model based on a node.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructBasedComboBoxModel extends StructBasedListModel implements ComboBoxModel {
   @Nullable
   private StructPart selected;
 
+  /**
+   * <p>Constructor for StructBasedComboBoxModel.</p>
+   *
+   * @param node a {@link com.cedarsoft.commons.struct.StructPart} object.
+   */
   public StructBasedComboBoxModel( @NotNull StructPart node ) {
     super( node );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setSelectedItem( @Nullable Object anItem ) {
     selected = ( StructPart ) anItem;
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Object getSelectedItem() {

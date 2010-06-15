@@ -37,6 +37,8 @@ import java.util.Arrays;
 
 /**
  * Represents a signature
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Signature {
   /**
@@ -67,6 +69,7 @@ public class Signature {
     return bytes.clone();
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -79,6 +82,7 @@ public class Signature {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Arrays.hashCode( bytes );

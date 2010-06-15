@@ -51,6 +51,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * This can be used to store a hole history of entries related to a given date.
  * <p/>
  * Be careful: Listeners that have ben registered to a sub history aren't notified of entries changes!
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<E> {
   @NotNull
@@ -69,8 +71,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date the entries are searched for
    * @return the entries
-   *
-   * @throws HistoryNotFoundException if no history could be found for the given date
+   * @throws com.cedarsoft.history.HistoryNotFoundException if no history could be found for the given date
+   * @param <E> a E object.
    */
   @NotNull
   public List<? extends E> getEntries( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -99,8 +101,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the latest entry for the given date
-   *
-   * @throws HistoryNotFoundException if no history could be found for the given date
+   * @throws com.cedarsoft.history.HistoryNotFoundException if no history could be found for the given date
    */
   @NotNull
   public E getLatestEntry( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -129,6 +130,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isLatestEntry( @NotNull E entry ) {
     ensureListenersRegistered();
@@ -147,9 +149,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   }
 
   /**
-   * Returns all entries
+   * {@inheritDoc}
    *
-   * @return all entries
+   * Returns all entries
    */
   @Override
   @NotNull
@@ -170,6 +172,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Removes all entries
    */
   @Override
@@ -186,20 +190,22 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   }
 
   /**
-   * Adds an entry.
+   * {@inheritDoc}
    *
-   * @param entry the entry
+   * Adds an entry.
    */
   @Override
   public void addEntry( @NotNull E entry ) {
     getOrCreateSubHistory( entry.getValidityDate() ).addEntry( entry );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commitEntry( @NotNull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasEntries() {
     ensureListenersRegistered();
@@ -220,6 +226,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean removeEntry( @NotNull E entry ) {
     ensureListenersRegistered();
@@ -246,6 +253,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return false;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public E getLatestEntry() throws NoValidElementFoundException {
@@ -256,6 +264,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public E getFirstEntry() throws NoValidElementFoundException {
@@ -320,6 +329,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date the sub history is searched for
    * @return the sub history for the given date
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
    */
   @NotNull
   public History<E> getSubHistory( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -342,6 +352,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the sub history before the given date
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
    */
   @NotNull
   public History<E> getSubHistoryBefore( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -388,8 +399,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param date the date
    * @return the best history
-   *
-   * @throws HistoryNotFoundException if absolutly no history could be found
+   * @throws com.cedarsoft.history.HistoryNotFoundException if absolutly no history could be found
    */
   @NotNull
   public History<E> getBestSubHistoryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
@@ -405,6 +415,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Returns the most up to date entry (over all histories)
    *
    * @return the most up to date entry (over all histories)
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
    */
   @NotNull
   public E getMostUpToDateEntry() throws HistoryNotFoundException {
@@ -429,11 +440,24 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     return upToDate;
   }
 
+  /**
+   * <p>getBestEntryFor</p>
+   *
+   * @param date a {@link org.joda.time.LocalDate} object.
+   * @return a E object.
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   */
   @NotNull
   public E getBestEntryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
     return getBestSubHistoryFor( date ).getLatestEntry();
   }
 
+  /**
+   * <p>getLastSubHistory</p>
+   *
+   * @return a {@link com.cedarsoft.history.History} object.
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   */
   @NotNull
   public History<E> getLastSubHistory() throws HistoryNotFoundException {
     ensureListenersRegistered();
@@ -449,6 +473,12 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  /**
+   * <p>getFirstSubHistory</p>
+   *
+   * @return a {@link com.cedarsoft.history.History} object.
+   * @throws com.cedarsoft.history.HistoryNotFoundException if any.
+   */
   @NotNull
   public History<E> getFirstSubHistory() throws HistoryNotFoundException {
     ensureListenersRegistered();
@@ -464,41 +494,54 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends E> getElements() {
     return getEntries();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     throw new UnsupportedOperationException( "Cannot set the elements yet" ); //todo implement
   }
 
+  /** {@inheritDoc} */
   @Override
   public void add( @NotNull E element ) {
     addEntry( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
+  /**
+   * <p>addHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param isTransient a boolean.
+   */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
@@ -537,6 +580,11 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
+  /**
+   * <p>Getter for the field <code>lock</code>.</p>
+   *
+   * @return a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   */
   @NotNull
   public ReadWriteLock getLock() {
     return lock;

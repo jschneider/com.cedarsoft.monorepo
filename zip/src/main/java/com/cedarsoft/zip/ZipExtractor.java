@@ -43,6 +43,8 @@ import java.util.zip.ZipInputStream;
 
 /**
  * Extracts ZIP files
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ZipExtractor {
   private static final int BUFFER_LENGTH = 1024;
@@ -50,10 +52,18 @@ public class ZipExtractor {
   @Nullable
   private final Condition condition;
 
+  /**
+   * <p>Constructor for ZipExtractor.</p>
+   */
   public ZipExtractor() {
     this( null );
   }
 
+  /**
+   * <p>Constructor for ZipExtractor.</p>
+   *
+   * @param condition a {@link com.cedarsoft.zip.ZipExtractor.Condition} object.
+   */
   public ZipExtractor( @Nullable Condition condition ) {
     this.condition = condition;
   }
@@ -63,7 +73,7 @@ public class ZipExtractor {
    *
    * @param destination the destination the file will be extracted to
    * @param inputStream the input stream providing the zipped content
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   public void extract( @NotNull File destination, @NotNull final InputStream inputStream ) throws IOException {
     if ( !destination.exists() || !destination.isDirectory() ) {

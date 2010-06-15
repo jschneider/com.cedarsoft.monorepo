@@ -45,6 +45,8 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * Helper class that creates zip files
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ZipCreator {
   static final int BUFFER_SIZE = 2048;
@@ -76,8 +78,7 @@ public class ZipCreator {
    *
    * @param directories the directories all files are zipped within
    * @return the zipped file
-   *
-   * @throws IOException if an io exception occures
+   * @throws java.io.IOException if an io exception occures
    */
   public File zip( @NotNull File... directories ) throws IOException {
     ZipOutputStream outStream = new ZipOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
@@ -98,7 +99,7 @@ public class ZipCreator {
    * @param baseName  represents the relative base name within the zip file
    * @param outStream the ouput stream
    * @param directory the directory
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   protected void addFiles( @NotNull String baseName, @NotNull ZipOutputStream outStream, @NotNull File directory ) throws IOException {
     byte[] data = new byte[BUFFER_SIZE];
@@ -142,8 +143,7 @@ public class ZipCreator {
    * @param baseName the base path
    * @param file     the file
    * @return the path of the given file relative to the base name
-   *
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   @NotNull
   protected static String getRelativePath( @NotNull String baseName, @NotNull File file ) throws IOException {

@@ -41,21 +41,30 @@ import java.io.InputStream;
 
 /**
  * A provider that returns an input stream using a file
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InputStreamFromFileProvider implements Provider<InputStream, IOException> {
   @NotNull
   private final File file;
 
+  /**
+   * <p>Constructor for InputStreamFromFileProvider.</p>
+   *
+   * @param file a {@link java.io.File} object.
+   */
   public InputStreamFromFileProvider( @NotNull File file ) {
     this.file = file;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public InputStream provide() throws IOException {
     return new BufferedInputStream( new FileInputStream( file ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String getDescription() {

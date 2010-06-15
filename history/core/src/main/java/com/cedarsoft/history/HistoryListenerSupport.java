@@ -40,12 +40,19 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>HistoryListenerSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HistoryListenerSupport<E> {
   @NotNull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
+  /**
+   * <p>addHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
@@ -55,6 +62,11 @@ public class HistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>removeHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
@@ -64,6 +76,11 @@ public class HistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryChanged</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryChanged( @NotNull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
@@ -77,6 +94,11 @@ public class HistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryAdded</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryAdded( @NotNull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
@@ -90,6 +112,11 @@ public class HistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryRemoved</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryRemoved( @NotNull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
@@ -118,6 +145,11 @@ public class HistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>getHistoryListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return Collections.unmodifiableList( getListeners() );

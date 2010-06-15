@@ -37,8 +37,11 @@ import org.joda.time.LocalDate;
 
 /**
  * A continuous entry.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ContinuousEntry extends Comparable<ContinuousEntry> {
+  /** Constant <code>PROPERTY_BEGIN="begin"</code> */
   @NotNull
   @NonNls
   String PROPERTY_BEGIN = "begin";

@@ -37,7 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p>ElementsChangedEvent class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ElementsChangedEvent<T> {
   @NotNull
@@ -55,10 +57,25 @@ public class ElementsChangedEvent<T> {
   @NotNull
   private final List<? extends Integer> indicies;
 
+  /**
+   * <p>Constructor for ElementsChangedEvent.</p>
+   *
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param elements a {@link java.util.List} object.
+   * @param lowestIndex a int.
+   * @param highestIndex a int.
+   */
   public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, int lowestIndex, int highestIndex ) {
     this( source, elements, createIndicies( lowestIndex, highestIndex ) );
   }
 
+  /**
+   * <p>Constructor for ElementsChangedEvent.</p>
+   *
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param elements a {@link java.util.List} object.
+   * @param indicies a {@link java.util.List} object.
+   */
   public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, @NotNull List<? extends Integer> indicies ) {
     this.source = source;
 
@@ -72,17 +89,32 @@ public class ElementsChangedEvent<T> {
     this.indicies = indicies;
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.history.ObservableCollection} object.
+   */
   @NotNull
   public ObservableCollection<T> getSource() {
     return source;
   }
 
+  /**
+   * <p>Getter for the field <code>elements</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends T> getElements() {
     //noinspection ReturnOfCollectionOrArrayField
     return elements;
   }
 
+  /**
+   * <p>Getter for the field <code>indicies</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends Integer> getIndicies() {
     //noinspection ReturnOfCollectionOrArrayField

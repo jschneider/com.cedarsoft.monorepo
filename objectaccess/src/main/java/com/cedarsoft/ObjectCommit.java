@@ -34,13 +34,16 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>ObjectCommit interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObjectCommit<T> {
   /**
    * Commit changes
    *
    * @param element the element that has been changed
+   * @param <T> a T object.
    */
   void commit( @NotNull T element );
 }

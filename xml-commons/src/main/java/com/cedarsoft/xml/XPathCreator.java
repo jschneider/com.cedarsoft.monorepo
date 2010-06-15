@@ -40,6 +40,8 @@ import java.util.List;
 
 /**
  * Utility method that offers methods related to XPath
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XPathCreator {
   private XPathCreator() {

@@ -39,16 +39,25 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> the type that is provided
  * @param <E> the exception that is thrown
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Provider<T, E extends Throwable> {
   /**
    * Provides the object
    *
    * @return the object that is provided
+   * @param <T> a T object.
+   * @param <E> a E object.
+   * @throws E if any.
    */
   @NotNull
   T provide() throws E;
 
+  /**
+   * <p>getDescription</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   String getDescription();

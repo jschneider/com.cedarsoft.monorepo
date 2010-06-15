@@ -38,6 +38,8 @@ import java.util.zip.ZipEntry;
 
 /**
  * Condition for class files that is based on a path prefix.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PathBasedClassFielCondition implements ZipExtractor.Condition {
   @NonNls
@@ -57,6 +59,7 @@ public class PathBasedClassFielCondition implements ZipExtractor.Condition {
     this.pathPrefix = pathPrefix;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
     return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );

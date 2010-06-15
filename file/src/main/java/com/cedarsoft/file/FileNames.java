@@ -39,11 +39,18 @@ import java.util.List;
 
 /**
  * Represents a list of file names
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileNames {
   @NotNull
   private final List<FileName> fileNames = new ArrayList<FileName>();
 
+  /**
+   * <p>add</p>
+   *
+   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   */
   public void add( @NotNull FileName fileName ) {
     if ( this.fileNames.contains( fileName ) ) {
       throw new IllegalArgumentException( "FileName still contained <" + fileName + ">" );
@@ -51,6 +58,11 @@ public class FileNames {
     this.fileNames.add( fileName );
   }
 
+  /**
+   * <p>Getter for the field <code>fileNames</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends FileName> getFileNames() {
     return Collections.unmodifiableList( fileNames );

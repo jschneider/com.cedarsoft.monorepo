@@ -41,9 +41,16 @@ import static org.mockito.Mockito.*;
 import static org.testng.Assert.*;
 
 /**
+ * <p>MockitoTest class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MockitoTest {
+  /**
+   * <p>testTemplate</p>
+   *
+   * @throws java.lang.Exception if any.
+   */
   @Test
   public void testTemplate() throws Exception {
     new MockitoTemplate() {
@@ -84,6 +91,9 @@ public class MockitoTest {
     }.run();
   }
 
+  /**
+   * <p>testIt</p>
+   */
   @Test
   public void testIt() {
     List<String> list = mock( List.class );
@@ -120,6 +130,9 @@ public class MockitoTest {
   @Mock
   private List<String> mock;
 
+  /**
+   * <p>testAnnotations</p>
+   */
   @Test
   public void testAnnotations() {
     MockitoAnnotations.initMocks( this );

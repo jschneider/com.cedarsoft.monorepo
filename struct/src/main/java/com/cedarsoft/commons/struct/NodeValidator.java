@@ -35,12 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The validator may be used to validate a path during creation.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface NodeValidator {
   /**
    * Validates the actual node
    *
    * @param actualNode the actual node
+   * @throws com.cedarsoft.commons.struct.ValidationFailedException if any.
    */
   void validate( @NotNull Node actualNode ) throws ValidationFailedException;
 }

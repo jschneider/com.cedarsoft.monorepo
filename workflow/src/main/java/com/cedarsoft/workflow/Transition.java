@@ -33,7 +33,12 @@ package com.cedarsoft.workflow;
 
 /**
  * A transition.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Transition<T> {
+  /**
+   * <p>transit</p>
+   */
   void transit();
 }

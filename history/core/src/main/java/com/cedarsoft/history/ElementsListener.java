@@ -38,26 +38,28 @@ import org.jetbrains.annotations.NotNull;
  * There exist two types of "added", "changed" and "deleted" methods.
  *
  * @param <E> the type of the elements
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ElementsListener<E> {
   /**
    * Is notified when the elements have been deleted
    *
-   * @param event
+   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
+   * @param <E> a E object.
    */
   void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event );
 
   /**
    * The elements are added
    *
-   * @param event
+   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
    */
   void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event );
 
   /**
    * Elements have been changed
    *
-   * @param event
+   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
    */
   void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event );
 }

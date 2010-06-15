@@ -37,6 +37,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 /**
  * Implementations provide a lock
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Lockable {
   /**

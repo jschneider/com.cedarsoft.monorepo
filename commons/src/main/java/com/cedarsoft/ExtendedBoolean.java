@@ -38,20 +38,37 @@ import java.util.ResourceBundle;
 
 /**
  * An extended type of Boolean that has a third option: {@link #UNKNOWN}.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum ExtendedBoolean {
   UNKNOWN(),
   TRUE(),
   FALSE();
 
+  /**
+   * <p>isTrue</p>
+   *
+   * @return a boolean.
+   */
   public boolean isTrue() {
     return this == TRUE;
   }
 
+  /**
+   * <p>isFalse</p>
+   *
+   * @return a boolean.
+   */
   public boolean isFalse() {
     return this == FALSE;
   }
 
+  /**
+   * <p>isUnknown</p>
+   *
+   * @return a boolean.
+   */
   public boolean isUnknown() {
     return this == UNKNOWN;
   }

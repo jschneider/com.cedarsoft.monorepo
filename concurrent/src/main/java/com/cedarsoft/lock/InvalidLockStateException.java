@@ -38,12 +38,19 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * <p>InvalidLockStateException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InvalidLockStateException extends RuntimeException {
   @NotNull
   private final List<String> readLockingThreads = new ArrayList<String>();
 
+  /**
+   * <p>Constructor for InvalidLockStateException.</p>
+   *
+   * @param readLockingThreads a {@link java.util.List} object.
+   */
   public InvalidLockStateException( @NotNull List<? extends Thread> readLockingThreads ) {
     super( createMessage( readLockingThreads ) );
     for ( Thread readLockingThread : readLockingThreads ) {
@@ -51,6 +58,11 @@ public class InvalidLockStateException extends RuntimeException {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>readLockingThreads</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getReadLockingThreads() {
     return Collections.unmodifiableList( readLockingThreads );

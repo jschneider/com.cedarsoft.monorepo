@@ -40,6 +40,8 @@ import java.util.List;
 
 /**
  * Provides access to the command line
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface CmdLine {
   /**
@@ -47,8 +49,7 @@ public interface CmdLine {
    *
    * @param message the message that is shown
    * @return the value the user has entered
-   *
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   boolean readBoolean( @NotNull String message ) throws IOException;
 
@@ -120,8 +121,7 @@ public interface CmdLine {
    *
    * @param message the message
    * @return the int
-   *
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   int readInt( @NotNull String message ) throws IOException;
 
@@ -132,6 +132,7 @@ public interface CmdLine {
    * @param elements  the elements that may be choosen @return the selected element
    * @param presenter an optional presenter that creates a string representation for the elements
    * @return the selected element
+   * @param <T> a T object.
    */
   @NotNull
   <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter );
@@ -142,6 +143,7 @@ public interface CmdLine {
    * @param message  the message
    * @param elements the elements
    * @return the selected element
+   * @param <T> a T object.
    */
   @NotNull
   <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements );
@@ -180,6 +182,8 @@ public interface CmdLine {
    * @param elements  the elements (the user may select one of them)
    * @param presenter the presenter
    * @return the string that has been entered manually or the object that has been selected (String or T)
+   * @param objectFactory a {@link com.cedarsoft.cmd.ObjectFactory} object.
+   * @param <T> a T object.
    */
   @NotNull
   <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory );

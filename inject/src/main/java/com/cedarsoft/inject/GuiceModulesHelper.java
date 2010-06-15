@@ -44,17 +44,33 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * <p>GuiceModulesHelper class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class GuiceModulesHelper {
   private GuiceModulesHelper() {
   }
 
+  /**
+   * <p>minimize</p>
+   *
+   * @param modules a {@link java.util.List} object.
+   * @param testType a {@link java.lang.Class} object.
+   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   */
   @NotNull
   public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
     return minimize( modules, Key.get( testType ) );
   }
 
+  /**
+   * <p>minimize</p>
+   *
+   * @param modules a {@link java.util.List} object.
+   * @param keys a {@link com.google.inject.Key} object.
+   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   */
   @NotNull
   public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) {
     //Verify to ensure it works with all modules
@@ -63,11 +79,25 @@ public class GuiceModulesHelper {
     return minimize( new Result( modules ), keys );
   }
 
+  /**
+   * <p>minimize</p>
+   *
+   * @param result a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param testType a {@link java.lang.Class} object.
+   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   */
   @NotNull
   public static Result minimize( @NotNull Result result, @NotNull Class<?> testType ) {
     return minimize( result, Key.get( testType ) );
   }
 
+  /**
+   * <p>minimize</p>
+   *
+   * @param result a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param keys a {@link com.google.inject.Key} object.
+   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   */
   public static Result minimize( @NotNull Result result, @NotNull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)
     List<Module> modules = new ArrayList<Module>( result.getTypes() );
@@ -103,10 +133,24 @@ public class GuiceModulesHelper {
     }
   }
 
+  /**
+   * <p>assertMinimizeNotPossible</p>
+   *
+   * @param modules a {@link java.util.List} object.
+   * @param testType a {@link java.lang.Class} object.
+   * @throws java.lang.AssertionError if any.
+   */
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) throws AssertionError {
     assertMinimizeNotPossible( modules, Key.get( testType ) );
   }
 
+  /**
+   * <p>assertMinimizeNotPossible</p>
+   *
+   * @param modules a {@link java.util.List} object.
+   * @param keys a {@link com.google.inject.Key} object.
+   * @throws java.lang.AssertionError if any.
+   */
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) throws AssertionError {
     GuiceModulesHelper.Result minimal = minimize( modules, keys );
     if ( !minimal.getRemoved().isEmpty() ) {

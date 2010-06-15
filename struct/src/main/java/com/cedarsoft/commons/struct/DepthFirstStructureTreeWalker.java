@@ -37,11 +37,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Stack;
 
 /**
+ * <p>DepthFirstStructureTreeWalker class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Stack<StructPart> queue = new Stack<StructPart>();
 
+  /** {@inheritDoc} */
   @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );

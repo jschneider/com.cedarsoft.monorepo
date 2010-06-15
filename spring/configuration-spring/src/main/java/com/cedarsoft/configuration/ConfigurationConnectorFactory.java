@@ -43,6 +43,8 @@ import org.springframework.beans.factory.FactoryBean;
  * <p/>
  * Date: Jul 5, 2007<br>
  * Time: 1:30:53 PM<br>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ConfigurationConnectorFactory<T> implements FactoryBean {
@@ -51,6 +53,15 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
   private ValueModel valueModel;
   private final ConfigurationConnector<T> connector;
 
+  /**
+   * <p>Constructor for ConfigurationConnectorFactory.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param propertyName a {@link java.lang.String} object.
+   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   * @param beanAdapter a {@link com.jgoodies.binding.beans.BeanAdapter} object.
+   */
   public ConfigurationConnectorFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull String propertyName, @NotNull DefaultValueProvider defaultValueProvider, @NotNull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
     configurationAccess = new ConfigurationAccess<T>( configuration, type, propertyName, defaultValueProvider );
@@ -58,6 +69,15 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
     connector.readFromConfiguration();
   }
 
+  /**
+   * <p>Constructor for ConfigurationConnectorFactory.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param propertyName a {@link java.lang.String} object.
+   * @param defaultValue a T object.
+   * @param beanAdapter a {@link com.jgoodies.binding.beans.BeanAdapter} object.
+   */
   public ConfigurationConnectorFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull String propertyName, @NotNull T defaultValue, @NotNull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
     configurationAccess = new ConfigurationAccess<T>( configuration, type, propertyName, defaultValue );
@@ -65,6 +85,12 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
     connector.readFromConfiguration();
   }
 
+  /**
+   * <p>Constructor for ConfigurationConnectorFactory.</p>
+   *
+   * @param configurationAccess a {@link com.cedarsoft.configuration.xml.ConfigurationAccess} object.
+   * @param beanAdapter a {@link com.jgoodies.binding.beans.BeanAdapter} object.
+   */
   public ConfigurationConnectorFactory( @NotNull ConfigurationAccess<T> configurationAccess, @NotNull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( configurationAccess.getKey() );
     this.configurationAccess = configurationAccess;
@@ -72,16 +98,19 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
     connector.readFromConfiguration();
   }
 
+  /** {@inheritDoc} */
   @Override
   public Object getObject() throws Exception {
     return connector;
   }
 
+  /** {@inheritDoc} */
   @Override
   public Class<ConfigurationConnector> getObjectType() {
     return ConfigurationConnector.class;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isSingleton() {
     return true;

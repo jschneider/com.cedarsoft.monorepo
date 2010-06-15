@@ -41,12 +41,21 @@ import java.lang.reflect.Method;
 
 /**
  * A special LookupChangeListener that changes the property of a given object (using reflection).
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
   private final Class<T> propertyType;
   private final Object object;
   private final Method setter;
 
+  /**
+   * <p>Constructor for PropertyCallback.</p>
+   *
+   * @param object a {@link java.lang.Object} object.
+   * @param propertyName a {@link java.lang.String} object.
+   * @param propertyType a {@link java.lang.Class} object.
+   */
   public PropertyCallback( @NotNull Object object, @NotNull @NonNls String propertyName, @NotNull Class<T> propertyType ) {
     this.propertyType = propertyType;
     this.object = object;
@@ -57,12 +66,14 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Class<T> getType() {
     return propertyType;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {

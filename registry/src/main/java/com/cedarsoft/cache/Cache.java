@@ -41,6 +41,7 @@ import java.util.Map;
  *
  * @param <K> the key
  * @param <T> the type that is stored within the cache
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Cache<K, T> extends Map<K, T> {
 

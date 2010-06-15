@@ -39,27 +39,38 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Dummy implementation
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultTagsComponentModel extends AbstractTagsComponentModel {
   @NotNull
   private final Taggable selectedTags;
 
+  /**
+   * <p>Constructor for DefaultTagsComponentModel.</p>
+   *
+   * @param tagProvider a {@link com.cedarsoft.tags.TagProvider} object.
+   * @param selectedTags a {@link com.cedarsoft.tags.Taggable} object.
+   */
   public DefaultTagsComponentModel( @NotNull TagProvider tagProvider, @NotNull Taggable selectedTags ) {
     super( tagProvider );
     this.selectedTags = selectedTags;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void selectTag( @NotNull Tag tag ) {
     selectedTags.addTag( tag );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public TagObservable getSelectedTags() {
     return selectedTags;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void unselectTag( @NotNull Tag tag ) {
     if ( !selectedTags.removeTag( tag ) ) {

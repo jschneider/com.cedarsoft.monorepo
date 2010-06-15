@@ -40,14 +40,18 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * <p>MockApplicationHomeAccess class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 @Singleton
 public class MockApplicationHomeAccess implements ApplicationHomeAccess {
+  /** Constant <code>APP_NAME="mockAppHome"</code> */
   @NotNull
   @NonNls
   public static final String APP_NAME = "mockAppHome";
+  /** Constant <code>SKIP_DELETION="skipDeletion"</code> */
   @NotNull
   @NonNls
   public static final String SKIP_DELETION = "skipDeletion";
@@ -55,6 +59,9 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
   @NotNull
   private final File projectHome;
 
+  /**
+   * <p>Constructor for MockApplicationHomeAccess.</p>
+   */
   public MockApplicationHomeAccess() {
     projectHome = new File( new File( System.getProperty( "java.io.tmpdir" ) ), "." + APP_NAME );
 
@@ -74,12 +81,14 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
     assert projectHome.exists();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String getApplicationName() {
     return APP_NAME;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public File getApplicationHome() {

@@ -39,6 +39,8 @@ import java.util.List;
 
 /**
  * Executes a process and notifies execution listeners whenever the process has finished
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @SuppressWarnings( {"UseOfProcessBuilder"} )
 public class Executer {
@@ -49,15 +51,33 @@ public class Executer {
   private final ProcessBuilder processBuilder;
   private boolean redirectStreams = true;
 
+  /**
+   * <p>Constructor for Executer.</p>
+   *
+   * @param processBuilder a {@link java.lang.ProcessBuilder} object.
+   * @param redirectStreams a boolean.
+   */
   public Executer( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
     this.processBuilder = processBuilder;
     this.redirectStreams = redirectStreams;
   }
 
+  /**
+   * <p>Constructor for Executer.</p>
+   *
+   * @param processBuilder a {@link java.lang.ProcessBuilder} object.
+   */
   public Executer( @NotNull ProcessBuilder processBuilder ) {
     this( processBuilder, true );
   }
 
+  /**
+   * <p>execute</p>
+   *
+   * @return a int.
+   * @throws java.io.IOException if any.
+   * @throws java.lang.InterruptedException if any.
+   */
   public int execute() throws IOException, InterruptedException {
     Process process = processBuilder.start();
     redirectStreams( process );
@@ -68,12 +88,20 @@ public class Executer {
     return answer;
   }
 
+  /**
+   * <p>redirectStreams</p>
+   *
+   * @param process a {@link java.lang.Process} object.
+   */
   protected void redirectStreams( @NotNull Process process ) {
     if ( redirectStreams ) {
       OutputRedirector.redirect( process );
     }
   }
 
+  /**
+   * <p>executeAsync</p>
+   */
   public void executeAsync() {
     new Thread( new Runnable() {
       @Override
@@ -99,18 +127,38 @@ public class Executer {
     }
   }
 
+  /**
+   * <p>addExecutionListener</p>
+   *
+   * @param executionListener a {@link com.cedarsoft.exec.ExecutionListener} object.
+   */
   public void addExecutionListener( @NotNull ExecutionListener executionListener ) {
     this.executionListeners.add( executionListener );
   }
 
+  /**
+   * <p>removeExecutionListener</p>
+   *
+   * @param executionListener a {@link com.cedarsoft.exec.ExecutionListener} object.
+   */
   public void removeExecutionListener( @NotNull ExecutionListener executionListener ) {
     this.executionListeners.remove( executionListener );
   }
 
+  /**
+   * <p>isRedirectStreams</p>
+   *
+   * @return a boolean.
+   */
   public boolean isRedirectStreams() {
     return redirectStreams;
   }
 
+  /**
+   * <p>Setter for the field <code>redirectStreams</code>.</p>
+   *
+   * @param redirectStreams a boolean.
+   */
   public void setRedirectStreams( boolean redirectStreams ) {
     this.redirectStreams = redirectStreams;
   }

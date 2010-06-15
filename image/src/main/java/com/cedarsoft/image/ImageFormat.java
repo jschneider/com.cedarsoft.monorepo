@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The format of the scanned image
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum ImageFormat {
   JPEG( "jpg" );
@@ -48,12 +50,23 @@ public enum ImageFormat {
     this.suffix = suffix;
   }
 
+  /**
+   * <p>Getter for the field <code>suffix</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getSuffix() {
     return suffix;
   }
 
+  /**
+   * <p>find</p>
+   *
+   * @param suffix a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.image.ImageFormat} object.
+   */
   @NotNull
   public static ImageFormat find( String suffix ) {
     for ( ImageFormat format : values() ) {

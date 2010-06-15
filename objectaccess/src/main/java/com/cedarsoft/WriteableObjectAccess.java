@@ -40,6 +40,7 @@ import java.util.List;
  * Implementations may use a database or some sort of memory
  *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemove<T> {
   /**
@@ -48,7 +49,8 @@ public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemo
    * After this method has called {@link #getElements()} will return the given elements.
    *
    * @param elements the elements
-   * @throws UnsupportedOperationException if the method is not supported
+   * @throws java.lang.UnsupportedOperationException if the method is not supported
+   * @param <T> a T object.
    */
   void setElements( @NotNull List<? extends T> elements ) throws UnsupportedOperationException;
 }

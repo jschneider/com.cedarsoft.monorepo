@@ -39,8 +39,11 @@ import java.io.Serializable;
 
 /**
  * A version
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Version implements Comparable<Version>, Serializable {
+  /** Constant <code>MAX=99</code> */
   protected static final int MAX = 99;
 
   protected final int major;
@@ -51,6 +54,13 @@ public class Version implements Comparable<Version>, Serializable {
   protected final String suffix;
 
 
+  /**
+   * <p>Constructor for Version.</p>
+   *
+   * @param major a int.
+   * @param minor a int.
+   * @param build a int.
+   */
   public Version( int major, int minor, int build ) {
     this( major, minor, build, null );
   }
@@ -91,24 +101,45 @@ public class Version implements Comparable<Version>, Serializable {
     return suffix;
   }
 
+  /**
+   * <p>Getter for the field <code>build</code>.</p>
+   *
+   * @return a int.
+   */
   public int getBuild() {
     return build;
   }
 
+  /**
+   * <p>Getter for the field <code>major</code>.</p>
+   *
+   * @return a int.
+   */
   public int getMajor() {
     return major;
   }
 
+  /**
+   * <p>Getter for the field <code>minor</code>.</p>
+   *
+   * @return a int.
+   */
   public int getMinor() {
     return minor;
   }
 
+  /**
+   * <p>format</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String format() {
     return toString();
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     if ( suffix != null && suffix.length() > 0 ) {
@@ -118,6 +149,7 @@ public class Version implements Comparable<Version>, Serializable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public int compareTo( Version o ) {
     if ( major != o.major ) {
@@ -131,6 +163,7 @@ public class Version implements Comparable<Version>, Serializable {
     return Integer.valueOf( build ).compareTo( o.build );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -150,6 +183,7 @@ public class Version implements Comparable<Version>, Serializable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = major;
@@ -173,8 +207,7 @@ public class Version implements Comparable<Version>, Serializable {
    *
    * @param version the version number as string
    * @return the parsed version
-   *
-   * @throws IllegalArgumentException
+   * @throws java.lang.IllegalArgumentException if any.
    */
   @NotNull
   public static Version parse( @NotNull @NonNls String version ) throws IllegalArgumentException {
@@ -204,28 +237,67 @@ public class Version implements Comparable<Version>, Serializable {
     return new Version( major, minor, build, suffix );
   }
 
+  /**
+   * <p>verifyMatch</p>
+   *
+   * @param expected a {@link com.cedarsoft.Version} object.
+   * @param actual a {@link com.cedarsoft.Version} object.
+   * @throws com.cedarsoft.VersionMismatchException if any.
+   */
   public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
     if ( !expected.equals( actual ) ) {
       throw new VersionMismatchException( expected, actual );
     }
   }
 
+  /**
+   * <p>sameOrSmallerThan</p>
+   *
+   * @param version a {@link com.cedarsoft.Version} object.
+   * @return a boolean.
+   */
   public boolean sameOrSmallerThan( @NotNull Version version ) {
     return this.compareTo( version ) <= 0;
   }
 
+  /**
+   * <p>smallerThan</p>
+   *
+   * @param version a {@link com.cedarsoft.Version} object.
+   * @return a boolean.
+   */
   public boolean smallerThan( @NotNull Version version ) {
     return this.compareTo( version ) < 0;
   }
 
+  /**
+   * <p>sameOrGreaterThan</p>
+   *
+   * @param version a {@link com.cedarsoft.Version} object.
+   * @return a boolean.
+   */
   public boolean sameOrGreaterThan( @NotNull Version version ) {
     return this.compareTo( version ) >= 0;
   }
 
+  /**
+   * <p>greaterThan</p>
+   *
+   * @param version a {@link com.cedarsoft.Version} object.
+   * @return a boolean.
+   */
   public boolean greaterThan( @NotNull Version version ) {
     return this.compareTo( version ) > 0;
   }
 
+  /**
+   * <p>valueOf</p>
+   *
+   * @param major a int.
+   * @param minor a int.
+   * @param build a int.
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public static Version valueOf( int major, int minor, int build ) {
     return new Version( major, minor, build );

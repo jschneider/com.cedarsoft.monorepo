@@ -43,7 +43,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 /**
+ * <p>TestUtils class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TestUtils {
   private TestUtils() {
@@ -53,6 +55,7 @@ public class TestUtils {
    * Cleans up all fields within a given test
    *
    * @param test the test that is cleaned up
+   * @throws java.lang.IllegalAccessException if any.
    */
   public static void cleanupFields( Object test ) throws IllegalAccessException {
     if ( test == null ) {
@@ -68,11 +71,25 @@ public class TestUtils {
     }
   }
 
+  /**
+   * <p>getTmpDir</p>
+   *
+   * @return a {@link java.io.File} object.
+   */
   @NotNull
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
   }
 
+  /**
+   * <p>createTmpFile</p>
+   *
+   * @param prefix a {@link java.lang.String} object.
+   * @param suffix a {@link java.lang.String} object.
+   * @param in a {@link java.io.InputStream} object.
+   * @return a {@link java.io.File} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static File createTmpFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @NotNull InputStream in ) throws IOException {
     File file = File.createTempFile( prefix, suffix );
@@ -87,6 +104,11 @@ public class TestUtils {
     return file;
   }
 
+  /**
+   * <p>createEmptyTmpDir</p>
+   *
+   * @return a {@link java.io.File} object.
+   */
   @NotNull
   public static File createEmptyTmpDir() {
     File tmp = getTmpDir();

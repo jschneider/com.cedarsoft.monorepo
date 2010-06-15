@@ -41,15 +41,21 @@ import java.util.WeakHashMap;
 /**
  * A abstract implementation of {@link TagManager} that holds the tags in memory.
  * This implementation can be used when the instance of the tag itself is not important.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
   @NotNull
   protected final Map<T, WeakReference<Taggable>> store = new WeakHashMap<T, WeakReference<Taggable>>();
 
+  /**
+   * <p>Constructor for MemoryTagManager.</p>
+   */
   protected MemoryTagManager() {
     super( new MemoryTagProvider() );
   }
 
+  /** {@inheritDoc} */
   @NotNull
   @Override
   protected TagSet createTaggable( @NotNull T o ) {
@@ -58,6 +64,7 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
     return taggable;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Taggable findTaggable( @NotNull T o ) throws NotFoundException {
@@ -72,6 +79,12 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
     return taggable;
   }
 
+  /**
+   * <p>getObject</p>
+   *
+   * @param taggable a {@link com.cedarsoft.tags.Taggable} object.
+   * @return a T object.
+   */
   @NotNull
   protected T getObject( @NotNull Taggable taggable ) {
     for ( Map.Entry<T, WeakReference<Taggable>> entry : store.entrySet() ) {

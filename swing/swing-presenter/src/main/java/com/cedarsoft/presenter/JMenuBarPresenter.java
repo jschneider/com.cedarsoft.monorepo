@@ -38,14 +38,19 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JMenuBar;
 
 /**
+ * <p>JMenuBarPresenter class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public JMenuBar createPresentation() {
     return new JMenuBar();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected JMenuPresenter getChildPresenter( @NotNull StructPart child ) {
@@ -56,10 +61,12 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
     return new DefaultJMenuPresenter();
   }
 
+  /** {@inheritDoc} */
   @Override
   protected void bind( @NotNull JMenuBar presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return true;

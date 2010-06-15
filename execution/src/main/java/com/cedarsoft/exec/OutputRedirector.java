@@ -41,6 +41,8 @@ import java.io.PrintStream;
 
 /**
  * Redirects a stream into another
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class OutputRedirector implements Runnable {
   /**
@@ -55,6 +57,13 @@ public class OutputRedirector implements Runnable {
     redirect( process, targetOut, targetErr );
   }
 
+  /**
+   * <p>redirect</p>
+   *
+   * @param process a {@link java.lang.Process} object.
+   * @param targetOut a {@link java.io.OutputStream} object.
+   * @param targetErr a {@link java.io.OutputStream} object.
+   */
   public static void redirect( @NotNull Process process, @NotNull OutputStream targetOut, @NotNull OutputStream targetErr ) {
     new Thread( new OutputRedirector( process.getInputStream(), targetOut ) ).start();
     new Thread( new OutputRedirector( process.getErrorStream(), targetErr ) ).start();
@@ -74,6 +83,7 @@ public class OutputRedirector implements Runnable {
     this.out = out;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void run() {
     try {

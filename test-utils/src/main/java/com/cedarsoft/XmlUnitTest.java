@@ -38,9 +38,17 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 /**
+ * <p>XmlUnitTest class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlUnitTest {
+  /**
+   * <p>testIt</p>
+   *
+   * @throws java.io.IOException if any.
+   * @throws org.xml.sax.SAXException if any.
+   */
   @Test
   public void testIt() throws IOException, SAXException {
     XMLAssert.assertXMLEqual( "<?xml version='1.0' encoding='UTF-8'?>\n" +
@@ -67,6 +75,12 @@ public class XmlUnitTest {
     );
   }
 
+  /**
+   * <p>testProblem</p>
+   *
+   * @throws java.io.IOException if any.
+   * @throws org.xml.sax.SAXException if any.
+   */
   @Test
   public void testProblem() throws IOException, SAXException {
     AssertUtils.setIgnoreWhitespace( true );

@@ -44,6 +44,7 @@ import java.text.MessageFormat;
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class DefaultConsolePrinter implements ConsolePrinter {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createError( @NotNull String message, @NotNull Object... objects ) {
@@ -61,6 +62,7 @@ public class DefaultConsolePrinter implements ConsolePrinter {
     return sb.toString();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createWarning( @NotNull String message, @NotNull Object... objects ) {
@@ -76,6 +78,7 @@ public class DefaultConsolePrinter implements ConsolePrinter {
     return sb.toString();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createSuccess( @NotNull String message, @NotNull Object... objects ) {

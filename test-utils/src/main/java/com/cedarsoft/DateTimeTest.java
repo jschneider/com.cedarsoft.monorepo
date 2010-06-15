@@ -36,7 +36,9 @@ import org.joda.time.DateTimeZone;
 import org.testng.annotations.*;
 
 /**
+ * <p>DateTimeTest class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DateTimeTest {
   @NotNull
@@ -44,17 +46,28 @@ public class DateTimeTest {
 
   private DateTimeZone oldTimeZone;
 
+  /**
+   * <p>setUpDateTimeZone</p>
+   *
+   * @throws java.lang.Exception if any.
+   */
   @BeforeMethod
   protected void setUpDateTimeZone() throws Exception {
     oldTimeZone = DateTimeZone.getDefault();
     DateTimeZone.setDefault( zone );
   }
 
+  /**
+   * <p>tearDownDateTimeZone</p>
+   */
   @AfterMethod
   protected void tearDownDateTimeZone() {
     DateTimeZone.setDefault( oldTimeZone );
   }
 
+  /**
+   * <p>testDummy</p>
+   */
   @Test
   public void testDummy() {
   }

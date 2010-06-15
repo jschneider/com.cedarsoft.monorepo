@@ -34,18 +34,32 @@ package com.cedarsoft.provider;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>Abstract AbstractContextualProvider class.</p>
+ *
  * @param <T> the type that is provided
  * @param <C> the context
  * @param <E> the exception that is thrown
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractContextualProvider<T, C, E extends Throwable> implements ContextualProvider<T, C, E> {
   @NotNull
   private final ContextualProvider<T, C, E> contextualProvider;
 
+  /**
+   * <p>Constructor for AbstractContextualProvider.</p>
+   *
+   * @param contextualProvider a {@link com.cedarsoft.provider.ContextualProvider} object.
+   */
   protected AbstractContextualProvider( @NotNull ContextualProvider<T, C, E> contextualProvider ) {
     this.contextualProvider = contextualProvider;
   }
 
+  /**
+   * <p>createProvider</p>
+   *
+   * @param context a C object.
+   * @return a {@link com.cedarsoft.provider.Provider} object.
+   */
   @NotNull
   public Provider<T, E> createProvider( @NotNull final C context ) {
     return new Provider<T, E>() {

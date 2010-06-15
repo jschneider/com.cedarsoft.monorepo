@@ -42,6 +42,7 @@ import java.util.List;
  * Defines a transition between two states.
  *
  * @paramt <T> the type of object that is used within the workflow
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TransitionDefinition<T> {
   @NotNull
@@ -51,6 +52,13 @@ public class TransitionDefinition<T> {
   @NotNull
   private final List<Action<T>> actions = new ArrayList<Action<T>>();
 
+  /**
+   * <p>Constructor for TransitionDefinition.</p>
+   *
+   * @param source a {@link com.cedarsoft.workflow.State} object.
+   * @param target a {@link com.cedarsoft.workflow.State} object.
+   * @param actions a {@link com.cedarsoft.workflow.Action} object.
+   */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
   }
@@ -60,6 +68,7 @@ public class TransitionDefinition<T> {
    *
    * @param source the source
    * @param target the target
+   * @param actions a {@link java.util.List} object.
    */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull List<? extends Action<T>> actions ) {
     this.source = source;
@@ -67,11 +76,21 @@ public class TransitionDefinition<T> {
     this.actions.addAll( actions );
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.workflow.State} object.
+   */
   @NotNull
   public State<T> getSource() {
     return source;
   }
 
+  /**
+   * <p>Getter for the field <code>target</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.workflow.State} object.
+   */
   @NotNull
   public State<T> getTarget() {
     return target;
@@ -87,6 +106,11 @@ public class TransitionDefinition<T> {
     return Collections.unmodifiableList( actions );
   }
 
+  /**
+   * <p>getFirstAction</p>
+   *
+   * @return a {@link com.cedarsoft.workflow.Action} object.
+   */
   @Deprecated
   @NotNull
   public Action<T> getFirstAction() {

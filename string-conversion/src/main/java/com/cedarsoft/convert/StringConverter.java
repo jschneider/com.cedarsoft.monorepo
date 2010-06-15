@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A string converter is able to convert objects to string representations and vice versa.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface StringConverter<T> {
   /**
@@ -43,6 +45,7 @@ public interface StringConverter<T> {
    *
    * @param object the object that is serialized
    * @return the string representation
+   * @param <T> a T object.
    */
   @NotNull
   @NonNls

@@ -36,7 +36,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
+ * <p>ClusteredCollectionSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredCollectionSupport<E> {
   @NotNull
@@ -44,11 +46,22 @@ public class ClusteredCollectionSupport<E> {
   @NotNull
   private final NonTransientCollectionSupport<E> nonTransientSupport;
 
+  /**
+   * <p>Constructor for ClusteredCollectionSupport.</p>
+   *
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   */
   public ClusteredCollectionSupport( @NotNull ObservableCollection<E> source ) {
     transientSupport = new CollectionSupport<E>( source );
     nonTransientSupport = new NonTransientCollectionSupport<E>( source );
   }
 
+  /**
+   * <p>addElementListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param isTransient a boolean.
+   */
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addElementListener( listener );
@@ -57,30 +70,63 @@ public class ClusteredCollectionSupport<E> {
     }
   }
 
+  /**
+   * <p>removeElementListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   */
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     transientSupport.removeElementListener( listener );
     nonTransientSupport.removeEntryListener( listener );
   }
 
+  /**
+   * <p>elementDeleted</p>
+   *
+   * @param entry a E object.
+   * @param index a int.
+   */
   public void elementDeleted( @NotNull E entry, int index ) {
     transientSupport.elementDeleted( entry, index );
     nonTransientSupport.elementDeleted( entry, index );
   }
 
+  /**
+   * <p>elementChanged</p>
+   *
+   * @param entry a E object.
+   * @param index a int.
+   */
   public void elementChanged( @NotNull E entry, int index ) {
     transientSupport.elementChanged( entry, index );
     nonTransientSupport.elementChanged( entry, index );
   }
 
+  /**
+   * <p>elementAdded</p>
+   *
+   * @param entry a E object.
+   * @param index a int.
+   */
   public void elementAdded( @NotNull E entry, int index ) {
     transientSupport.elementAdded( entry, index );
     nonTransientSupport.elementAdded( entry, index );
   }
 
+  /**
+   * <p>hasListeners</p>
+   *
+   * @return a boolean.
+   */
   public boolean hasListeners() {
     return !transientSupport.getListeners().isEmpty() || nonTransientSupport.hasListeners();
   }
 
+  /**
+   * <p>getTransientElementListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return transientSupport.getListeners();

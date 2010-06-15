@@ -43,7 +43,9 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>LogingReentrantLock class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LogingReentrantLock implements ReadWriteLock {
   @NotNull
@@ -67,11 +69,13 @@ public class LogingReentrantLock implements ReadWriteLock {
   };
 
 
+  /** {@inheritDoc} */
   @Override
   public Lock readLock() {
     return readLock;
   }
 
+  /** {@inheritDoc} */
   @Override
   public Lock writeLock() {
     return writeLock;

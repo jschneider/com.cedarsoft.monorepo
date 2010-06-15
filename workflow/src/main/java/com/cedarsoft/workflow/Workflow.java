@@ -38,7 +38,9 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>Workflow class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Workflow<T> {
   @NotNull
@@ -57,6 +59,7 @@ public class Workflow<T> {
    *
    * @param bean               the bean the workflow is created for
    * @param workflowDefinition the definition
+   * @param <T> a T object.
    */
   public Workflow( @NotNull T bean, @NotNull WorkflowDefinition<T> workflowDefinition ) {
     this.workflowDefinition = workflowDefinition;

@@ -37,12 +37,19 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * <p>TagFormat class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagFormat {
   private TagFormat() {
   }
 
+  /**
+   * <p>getSimple</p>
+   *
+   * @return a {@link com.cedarsoft.tags.TagFormatter} object.
+   */
   @NotNull
   public static TagFormatter getSimple() {
     return new TagFormatter() {

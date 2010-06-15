@@ -35,19 +35,40 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Common exception for all kinds of version related problems
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class VersionException extends RuntimeException {
+  /**
+   * <p>Constructor for VersionException.</p>
+   */
   public VersionException() {
   }
 
+  /**
+   * <p>Constructor for VersionException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public VersionException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for VersionException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public VersionException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for VersionException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public VersionException( Throwable cause ) {
     super( cause );
   }
@@ -56,6 +77,11 @@ public class VersionException extends RuntimeException {
    * Creates a new version exception
    *
    * @param message       the message (is always used)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
    * @param messageSuffix the suffix (only used when appendSuffix==true)
    * @param appendSuffix  whether to append the suffix
    */

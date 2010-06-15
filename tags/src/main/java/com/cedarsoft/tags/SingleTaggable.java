@@ -39,6 +39,8 @@ import java.util.List;
 
 /**
  * This implementation holds only *one* tag
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class SingleTaggable implements Taggable {
   private final TagChangeSupport tcs;
@@ -46,10 +48,20 @@ public class SingleTaggable implements Taggable {
   @Nullable
   private Tag selectedTag;
 
+  /**
+   * <p>Constructor for SingleTaggable.</p>
+   *
+   * @param source a {@link java.lang.Object} object.
+   */
   public SingleTaggable( @NotNull Object source ) {
     tcs = new TagChangeSupport( source );
   }
 
+  /**
+   * <p>Setter for the field <code>selectedTag</code>.</p>
+   *
+   * @param tag a {@link com.cedarsoft.tags.Tag} object.
+   */
   public void setSelectedTag( @Nullable Tag tag ) {
     if ( tag == null ) {
       if ( selectedTag != null ) {
@@ -60,6 +72,7 @@ public class SingleTaggable implements Taggable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean addTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
@@ -76,6 +89,7 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean removeTag( @NotNull Tag tag ) {
     //noinspection ObjectEquality
@@ -88,6 +102,7 @@ public class SingleTaggable implements Taggable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {
@@ -98,16 +113,23 @@ public class SingleTaggable implements Taggable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.addTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tcs.removeTagChangeListener( listener );
   }
 
+  /**
+   * <p>Getter for the field <code>selectedTag</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.tags.Tag} object.
+   */
   @Nullable
   public Tag getSelectedTag() {
     return selectedTag;

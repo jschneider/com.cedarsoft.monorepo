@@ -39,7 +39,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * <p>PrivateKeyUrl class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER} )

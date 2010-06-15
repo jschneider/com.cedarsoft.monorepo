@@ -77,24 +77,28 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public PrintStream getOut() {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Boolean ) getNextAnswer();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
@@ -104,11 +108,21 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
 
   private final List<String> messages = new ArrayList<String>();
 
+  /**
+   * <p>Getter for the field <code>messages</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getMessages() {
     return Collections.unmodifiableList( messages );
   }
 
+  /**
+   * <p>getNextAnswer</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   protected Object getNextAnswer() {
     if ( answers.isEmpty() ) {
       throw new IllegalStateException( "No answer left" );
@@ -116,34 +130,40 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     return answers.remove( 0 );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     return read( message );
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void pause( int seconds ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void out( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( consolePrinter.createSuccess( message, objects ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void out( @NotNull Process process ) {
     try {
@@ -177,52 +197,86 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void error( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createError( message, objects ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void warning( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createWarning( message, objects ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void success( @NotNull String message, @NotNull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createSuccess( message, objects ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void outNl() {
     checkExpectedOut( "" );
   }
 
+  /**
+   * <p>addExpectedOut</p>
+   *
+   * @param expected a {@link java.lang.String} object.
+   */
   public void addExpectedOut( @Nullable String expected ) {
     expectedOut.add( expected );
   }
 
+  /**
+   * <p>Getter for the field <code>expectedOut</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getExpectedOut() {
     return Collections.unmodifiableList( expectedOut );
   }
 
+  /**
+   * <p>Getter for the field <code>answers</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<Object> getAnswers() {
     return Collections.unmodifiableList( answers );
   }
 
+  /**
+   * <p>Setter for the field <code>answers</code>.</p>
+   *
+   * @param answers a {@link java.util.List} object.
+   */
   public void setAnswers( @NotNull List<Object> answers ) {
     this.answers.clear();
     this.answers.addAll( answers );
   }
 
+  /**
+   * <p>addAnswer</p>
+   *
+   * @param answer a {@link java.lang.Object} object.
+   */
   public void addAnswer( @NotNull Object answer ) {
     answers.add( answer );
   }
 
+  /**
+   * <p>removeAnswer</p>
+   *
+   * @param answer a {@link java.lang.Object} object.
+   */
   public void removeAnswer( @NotNull Object answer ) {
     answers.remove( answer );
   }

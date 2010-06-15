@@ -39,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The model for a {@link TagsComponent}.
  * Only the selected tags are observable!
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagsComponentModel {
   /**

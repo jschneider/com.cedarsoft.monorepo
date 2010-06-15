@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Event that is used with {@link StructureListener}.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructureChangedEvent {
   @NotNull

@@ -38,27 +38,55 @@ import java.util.Map;
 
 /**
  * Manages {@link ChildDetector}s
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ChildDetectorManager {
   @NotNull
   private final TypeRegistry<ChildDetector<?, ?>> registry;
 
+  /**
+   * <p>Constructor for ChildDetectorManager.</p>
+   */
   public ChildDetectorManager() {
     this( true );
   }
 
+  /**
+   * <p>Constructor for ChildDetectorManager.</p>
+   *
+   * @param registerSuperTypes a boolean.
+   */
   public ChildDetectorManager( boolean registerSuperTypes ) {
     registry = new TypeRegistry<ChildDetector<?, ?>>( registerSuperTypes );
   }
 
+  /**
+   * <p>addChildDetector</p>
+   *
+   * @param parentType a {@link java.lang.Class} object.
+   * @param childDetector a {@link com.cedarsoft.hierarchy.ChildDetector} object.
+   */
   public <P, C> void addChildDetector( @NotNull Class<P> parentType, @NotNull ChildDetector<P, C> childDetector ) {
     registry.addElement( parentType, childDetector );
   }
 
+  /**
+   * <p>setChildDetectors</p>
+   *
+   * @param childDetectors a {@link java.util.Map} object.
+   */
   public void setChildDetectors( Map<Class<?>, ChildDetector<?, ?>> childDetectors ) {
     registry.setElements( childDetectors );
   }
 
+  /**
+   * <p>getChildDetector</p>
+   *
+   * @param parentType a {@link java.lang.Class} object.
+   * @return a {@link com.cedarsoft.hierarchy.ChildDetector} object.
+   * @throws java.lang.IllegalArgumentException if any.
+   */
   @NotNull
   public <P, C> ChildDetector<P, C> getChildDetector( @NotNull Class<P> parentType ) throws IllegalArgumentException {
     return ( ChildDetector<P, C> ) registry.getElement( parentType );

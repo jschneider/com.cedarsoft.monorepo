@@ -43,6 +43,8 @@ import java.util.List;
 
 /**
  * Represents route of several nodes.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Route {
   @NotNull
@@ -78,8 +80,7 @@ public class Route {
    * Returns the last node of the route
    *
    * @return the last node
-   *
-   * @throws IllegalStateException if the route is empty
+   * @throws java.lang.IllegalStateException if the route is empty
    */
   @NotNull
   public Node getLastNode() throws IllegalStateException {
@@ -99,6 +100,11 @@ public class Route {
     return Collections.unmodifiableList( nodes );
   }
 
+  /**
+   * <p>size</p>
+   *
+   * @return a int.
+   */
   public int size() {
     return nodes.size();
   }
@@ -117,6 +123,7 @@ public class Route {
     return new Path( elements );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -129,6 +136,7 @@ public class Route {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return nodes.hashCode();
@@ -140,8 +148,7 @@ public class Route {
    * @param rootNode the root node
    * @param path     the path
    * @return the route
-   *
-   * @throws ChildNotFoundException
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
    */
   @NotNull
   public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path ) throws ChildNotFoundException {
@@ -161,6 +168,15 @@ public class Route {
     return buildRouteInternal( rootNode, path, nodeFactory );
   }
 
+  /**
+   * <p>buildRouteInternal</p>
+   *
+   * @param rootNode a {@link com.cedarsoft.commons.struct.Node} object.
+   * @param path a {@link com.cedarsoft.commons.struct.Path} object.
+   * @param nodeFactory a {@link com.cedarsoft.commons.struct.NodeFactory} object.
+   * @return a {@link com.cedarsoft.commons.struct.Route} object.
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
+   */
   @NotNull
   public static Route buildRouteInternal( @NotNull Node rootNode, @NotNull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {
     Iterator<? extends String> iterator = path.getElements().iterator();

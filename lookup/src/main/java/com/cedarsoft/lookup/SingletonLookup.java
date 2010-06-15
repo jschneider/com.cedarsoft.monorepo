@@ -39,16 +39,25 @@ import java.util.Map;
 
 /**
  * This is a simpel Lookup that contains just one object under a given key
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class SingletonLookup<T> extends AbstractLookup {
   private final T singleton;
   private final Class<T> singletonType;
 
+  /**
+   * <p>Constructor for SingletonLookup.</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param value a T object.
+   */
   public SingletonLookup( @NotNull Class<T> type, @NotNull T value ) {
     this.singletonType = type;
     this.singleton = value;
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public <T> T lookup( @NotNull Class<T> type ) {
@@ -58,17 +67,28 @@ public class SingletonLookup<T> extends AbstractLookup {
     return null;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Map<Class<?>, Object> lookups() {
     return Collections.<Class<?>, Object>singletonMap( ( Class<?> ) singletonType, ( Object ) singleton );
   }
 
+  /**
+   * <p>Getter for the field <code>singleton</code>.</p>
+   *
+   * @return a T object.
+   */
   @NotNull
   public T getSingleton() {
     return singleton;
   }
 
+  /**
+   * <p>Getter for the field <code>singletonType</code>.</p>
+   *
+   * @return a {@link java.lang.Class} object.
+   */
   @NotNull
   public Class<T> getSingletonType() {
     return singletonType;
@@ -78,46 +98,56 @@ public class SingletonLookup<T> extends AbstractLookup {
    * The value can't be changed. Therefore the listeners are not supported
    */
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
   }

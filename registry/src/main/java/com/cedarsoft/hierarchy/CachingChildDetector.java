@@ -43,6 +43,7 @@ import java.util.WeakHashMap;
  *
  * @param <C> the type of the children
  * @param <P> the type of the parent
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
   @NotNull
@@ -54,19 +55,36 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
     }
   } );
 
+  /**
+   * <p>createChildren</p>
+   *
+   * @param parent a P object.
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   protected abstract List<? extends C> createChildren( @NotNull P parent );
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public final List<? extends C> findChildren( @NotNull P parent ) {
     return childrenCache.get( parent );
   }
 
+  /**
+   * <p>handleModified</p>
+   *
+   * @param parent a P object.
+   */
   public void handleModified( @NotNull P parent ) {
     invalidateCache( parent );
   }
 
+  /**
+   * <p>invalidateCache</p>
+   *
+   * @param parent a P object.
+   */
   public void invalidateCache( @NotNull P parent ) {
     childrenCache.remove( parent );
     notifyChildrenChangedFor( parent );

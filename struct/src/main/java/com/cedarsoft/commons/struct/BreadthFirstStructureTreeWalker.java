@@ -38,11 +38,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * <p>BreadthFirstStructureTreeWalker class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class BreadthFirstStructureTreeWalker implements StructureTreeWalker {
   private final Queue<StructPart> queue = new LinkedList<StructPart>();
 
+  /** {@inheritDoc} */
   @Override
   public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
     queue.add( root );

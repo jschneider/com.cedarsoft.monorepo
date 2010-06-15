@@ -43,17 +43,33 @@ import java.net.URL;
 import java.security.MessageDigest;
 
 /**
+ * <p>HashCalculator class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HashCalculator {
   private HashCalculator() {
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param value an array of byte.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls byte[] value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param value an array of byte.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls byte[] value ) {
     messageDigest.reset();
@@ -64,21 +80,51 @@ public class HashCalculator {
   }
 
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param value a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls String value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param value a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls String value ) {
     return calculate( messageDigest, value.getBytes() );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param resource a {@link java.net.URL} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
     return calculate( algorithm.getMessageDigest(), resource );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param resource a {@link java.net.URL} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull URL resource ) throws IOException {
     InputStream in = resource.openStream();
@@ -89,11 +135,27 @@ public class HashCalculator {
     }
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param file a {@link java.io.File} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull File file ) throws IOException {
     return calculate( algorithm.getMessageDigest(), file );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param file a {@link java.io.File} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull File file ) throws IOException {
     InputStream in = new BufferedInputStream( new FileInputStream( file ) );
@@ -104,11 +166,27 @@ public class HashCalculator {
     }
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param resourceIn a {@link java.io.InputStream} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resourceIn ) throws IOException {
     return calculate( algorithm.getMessageDigest(), resourceIn );
   }
 
+  /**
+   * <p>calculate</p>
+   *
+   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param resourceIn a {@link java.io.InputStream} object.
+   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull InputStream resourceIn ) throws IOException {
     messageDigest.reset();

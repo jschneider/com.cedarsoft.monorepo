@@ -48,7 +48,10 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>DefaultRegistry class.</p>
+ *
  * @param <T> the type that is stored within this registry
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultRegistry<T> implements Registry<T> {
   @NotNull
@@ -94,6 +97,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
+   * @throws com.cedarsoft.StillContainedException if any.
    */
   public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
@@ -109,6 +113,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     this.storedObjects.addAll( storedObjects );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends T> getStoredObjects() {
@@ -120,6 +125,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public T findStoredObject( @NotNull @NonNls Matcher<T> matcher ) {
@@ -137,6 +143,14 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  /**
+   * <p>findStoredObject</p>
+   *
+   * @param matcher a Matcher object.
+   * @param notFoundMessage a {@link java.lang.String} object.
+   * @return a T object.
+   * @throws com.cedarsoft.NotFoundException if any.
+   */
   @NotNull
   public T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException {
     T found = findStoredObject( matcher );
@@ -147,6 +161,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     return found;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends T> findStoredObjects( @NotNull @NonNls Matcher<T> matcher ) {
@@ -165,6 +180,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public <C> List<? extends C> findStoredObjects( @NotNull @NonNls Matcher<T> matcher, @NotNull Converter<T, C> converter ) {
@@ -184,10 +200,9 @@ public class DefaultRegistry<T> implements Registry<T> {
   }
 
   /**
-   * Stores the object within the registry
+   * {@inheritDoc}
    *
-   * @param object the object
-   * @throws StillContainedException if a comparator is set and the object still exists within this registry
+   * Stores the object within the registry
    */
   @Override
   public void store( @NotNull T object ) throws StillContainedException {
@@ -216,12 +231,14 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Comparator<T> getComparator() {
     return comparator;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean containsOnlyUniqueElements() {
     return comparator != null;
@@ -233,6 +250,7 @@ public class DefaultRegistry<T> implements Registry<T> {
   @NotNull
   protected final List<Listener<T>> listeners = new ArrayList<Listener<T>>();
 
+  /** {@inheritDoc} */
   @Override
   public void addListener( @NotNull Listener<T> listener ) {
     listenersLock.writeLock().lock();
@@ -243,6 +261,7 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeListener( @NotNull Listener<T> listener ) {
     listenersLock.writeLock().lock();

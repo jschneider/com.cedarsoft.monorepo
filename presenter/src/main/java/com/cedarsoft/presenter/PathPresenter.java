@@ -37,8 +37,11 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * This presenter creates a string representation of the path of the given node.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PathPresenter implements Presenter<String> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String present( @NotNull StructPart struct ) {

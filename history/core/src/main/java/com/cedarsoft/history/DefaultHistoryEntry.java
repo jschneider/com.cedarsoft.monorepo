@@ -37,6 +37,8 @@ import org.joda.time.LocalDate;
 
 /**
  * Contains information that are valid at a given point in time.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultHistoryEntry implements HistoryEntry {
   private Long id;
@@ -60,6 +62,7 @@ public class DefaultHistoryEntry implements HistoryEntry {
     this.verificationDate = verificationDate;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public LocalDate getVerificationDate() {
@@ -68,6 +71,7 @@ public class DefaultHistoryEntry implements HistoryEntry {
 
   //todo really necessary????
 
+  /** {@inheritDoc} */
   @Override
   public int compareTo( @NotNull HistoryEntry o ) {
     return verificationDate.compareTo( o.getVerificationDate() );

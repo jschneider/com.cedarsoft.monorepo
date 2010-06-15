@@ -34,13 +34,16 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>ElementListener interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ElementListener<E> {
   /**
    * Is called when an entry has been deleted
    *
    * @param element the entry that has been deleted
+   * @param <E> a E object.
    */
   void elementDeleted( @NotNull E element );
 

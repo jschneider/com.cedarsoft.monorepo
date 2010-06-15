@@ -36,7 +36,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
+ * <p>ClusteredObservableCollection interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ClusteredObservableCollection<E> extends ObservableCollection<E> {
   /**
@@ -44,6 +46,7 @@ public interface ClusteredObservableCollection<E> extends ObservableCollection<E
    *
    * @param listener    the listener
    * @param isTransient whether this listener is added transient or not
+   * @param <E> a E object.
    */
   void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient );
 

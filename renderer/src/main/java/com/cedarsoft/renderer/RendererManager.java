@@ -38,27 +38,55 @@ import java.util.Map;
 
 /**
  * Manages {@link Renderer}
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class RendererManager {
   @NotNull
   private final TypeRegistry<Renderer<?, Object>> registry;
 
+  /**
+   * <p>Constructor for RendererManager.</p>
+   */
   public RendererManager() {
     this( false );
   }
 
+  /**
+   * <p>Constructor for RendererManager.</p>
+   *
+   * @param registerSuperTypes a boolean.
+   */
   public RendererManager( boolean registerSuperTypes ) {
     registry = new TypeRegistry<Renderer<?, Object>>( registerSuperTypes );
   }
 
+  /**
+   * <p>setRenderer</p>
+   *
+   * @param renderer a {@link java.util.Map} object.
+   */
   public void setRenderer( @NotNull Map<Class<?>, Renderer<?, Object>> renderer ) {
     registry.setElements( renderer );
   }
 
+  /**
+   * <p>addRenderer</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param renderer a {@link com.cedarsoft.renderer.Renderer} object.
+   */
   public <T> void addRenderer( @NotNull Class<T> type, @NotNull Renderer<? super T, Object> renderer ) {
     registry.addElement( type, renderer );
   }
 
+  /**
+   * <p>getRenderer</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @return a {@link com.cedarsoft.renderer.Renderer} object.
+   * @throws java.lang.IllegalArgumentException if any.
+   */
   @NotNull
   public <T> Renderer<? super T, Object> getRenderer( @NotNull Class<T> type ) throws IllegalArgumentException {
     return ( Renderer<T, Object> ) registry.getElement( type );

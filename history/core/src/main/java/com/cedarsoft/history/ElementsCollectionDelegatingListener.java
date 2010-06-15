@@ -34,26 +34,36 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>ElementsCollectionDelegatingListener class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ElementsCollectionDelegatingListener<T> extends SingleElementsListener<T> {
   @NotNull
   private final ObservableObjectAccess<T> delegate;
 
+  /**
+   * <p>Constructor for ElementsCollectionDelegatingListener.</p>
+   *
+   * @param delegate a {@link com.cedarsoft.history.ObservableObjectAccess} object.
+   */
   public ElementsCollectionDelegatingListener( @NotNull ObservableObjectAccess<T> delegate ) {
     this.delegate = delegate;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementDeleted( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.remove( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementAdded( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.add( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementChanged( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
     delegate.commit( element );

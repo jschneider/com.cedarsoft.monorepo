@@ -48,6 +48,8 @@ import java.util.List;
  * <p/>
  * Date: May 3, 2007<br>
  * Time: 2:21:23 PM<br>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagListModel implements ListModel {
   protected final List<ListDataListener> listeners = new ArrayList<ListDataListener>();
@@ -56,10 +58,21 @@ public class TagListModel implements ListModel {
 
   private boolean nullable;
 
+  /**
+   * <p>Constructor for TagListModel.</p>
+   *
+   * @param availableTags a {@link com.cedarsoft.tags.TagProvider} object.
+   */
   public TagListModel( @NotNull TagProvider availableTags ) {
     this( availableTags, false );
   }
 
+  /**
+   * <p>Constructor for TagListModel.</p>
+   *
+   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   * @param nullable a boolean.
+   */
   public TagListModel( @NotNull TagObservable availableTags, boolean nullable ) {
     this.availableTags = availableTags;
     this.nullable = nullable;
@@ -71,10 +84,16 @@ public class TagListModel implements ListModel {
     } );
   }
 
+  /**
+   * <p>isNullable</p>
+   *
+   * @return a boolean.
+   */
   public boolean isNullable() {
     return nullable;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int getSize() {
     if ( nullable ) {
@@ -84,6 +103,7 @@ public class TagListModel implements ListModel {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Tag getElementAt( int index ) {
@@ -106,16 +126,23 @@ public class TagListModel implements ListModel {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addListDataListener( @NotNull ListDataListener l ) {
     listeners.add( l );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeListDataListener( @NotNull ListDataListener l ) {
     listeners.remove( l );
   }
 
+  /**
+   * <p>notifyTagChanged</p>
+   *
+   * @param event a {@link com.cedarsoft.tags.TagChangeListener.TagChangeEvent} object.
+   */
   protected void notifyTagChanged( @NotNull TagChangeListener.TagChangeEvent event ) {
     if ( listeners.isEmpty() ) {
       return;
@@ -145,6 +172,11 @@ public class TagListModel implements ListModel {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>availableTags</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.tags.TagObservable} object.
+   */
   @NotNull
   public TagObservable getAvailableTags() {
     return availableTags;

@@ -36,6 +36,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
+ * <p>ChildrenSupport interface.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ChildrenSupport {
   /**
@@ -125,8 +128,7 @@ public interface ChildrenSupport {
    *
    * @param childName the name of the child
    * @return the child
-   *
-   * @throws ChildNotFoundException if no child with that name is found
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if no child with that name is found
    */
   @NotNull
   Node findChild( @NotNull String childName ) throws ChildNotFoundException;
@@ -143,6 +145,11 @@ public interface ChildrenSupport {
    */
   void detachChildren();
 
+  /**
+   * <p>getStructureListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   List<? extends StructureListener> getStructureListeners();
 }

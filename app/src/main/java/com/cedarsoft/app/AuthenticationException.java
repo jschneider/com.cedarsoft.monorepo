@@ -32,20 +32,41 @@
 package com.cedarsoft.app;
 
 /**
+ * <p>AuthenticationException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class AuthenticationException extends Exception {
+  /**
+   * <p>Constructor for AuthenticationException.</p>
+   */
   public AuthenticationException() {
   }
 
+  /**
+   * <p>Constructor for AuthenticationException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public AuthenticationException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for AuthenticationException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public AuthenticationException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for AuthenticationException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public AuthenticationException( Throwable cause ) {
     super( cause );
   }

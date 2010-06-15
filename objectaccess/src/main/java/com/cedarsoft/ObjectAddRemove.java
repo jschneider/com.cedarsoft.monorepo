@@ -32,7 +32,10 @@
 package com.cedarsoft;
 
 /**
+ * <p>ObjectAddRemove interface.</p>
+ *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObjectAddRemove<T> extends ObjectAdd<T>, ObjectRemove<T> {
 }

@@ -43,16 +43,21 @@ import javax.swing.JComponent;
 
 /**
  * Abstract base class for presenters that create AbstractButtons that are associated with Actions.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractButtonPresenter<T extends AbstractButton> extends SwingPresenter<T> {
+  /** Constant <code>PROPERTY_ACTION="action"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_ACTION = "action";
 
+  /** Constant <code>KEY_ACTION_LISTENER</code> */
   @NotNull
   @NonNls
   public static final Object KEY_ACTION_LISTENER = "actionListener";
 
+  /** {@inheritDoc} */
   @Override
   protected void bind( @NotNull T presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
     Action action = lookup.lookup( Action.class );
@@ -64,6 +69,7 @@ public abstract class AbstractButtonPresenter<T extends AbstractButton> extends 
     lookup.bindWeak( callback );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {

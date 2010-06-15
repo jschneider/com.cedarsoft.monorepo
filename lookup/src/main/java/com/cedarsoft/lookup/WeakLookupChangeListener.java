@@ -40,6 +40,8 @@ import java.lang.ref.WeakReference;
  * This listener can be used to automatically register a lookup change listener to a lookup.
  * The listener is automatically unregistered whenever the delegating listener
  * has been garbage collected.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
   private WeakReference<LookupChangeListener<? super T>> listenerReference;
@@ -49,6 +51,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * Creates a new instance with {@link #getTypeClass()} set to null
    *
    * @param listener the listener that is wrapped
+   * @param <T> a T object.
    */
   public WeakLookupChangeListener( @NotNull LookupChangeListener<T> listener ) {
     this( null, listener );
@@ -65,6 +68,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
     this.listenerReference = new WeakReference<LookupChangeListener<? super T>>( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     LookupChangeListener<? super T> delegatingListener = getWrappedListener();
@@ -85,6 +89,11 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
     return this.listenerReference.get();
   }
 
+  /**
+   * <p>Getter for the field <code>typeClass</code>.</p>
+   *
+   * @return a {@link java.lang.Class} object.
+   */
   @NotNull
   public Class<T> getTypeClass() {
     return typeClass;
@@ -103,6 +112,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    *
    * @param listener the listener that is wrapped
    * @return the weak lookup change listener that wraps the given listener
+   * @param <T> a T object.
    */
   public static <T> WeakLookupChangeListener<T> wrap( @NotNull LookupChangeListener<T> listener ) {
     return wrap( null, listener );
@@ -114,6 +124,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * @param type     the type the listener is resgistered for
    * @param listener the listener that is wrapped
    * @return the weak lookup change listener that wraps the given listener
+   * @param <T> a T object.
    */
   @NotNull
   public static <T> WeakLookupChangeListener<T> wrap( @Nullable Class<T> type, @NotNull LookupChangeListener<? super T> listener ) {

@@ -39,11 +39,14 @@ import java.util.List;
 
 /**
  * Holds the tags within a tag set
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MemoryTagProvider extends AbstractTagProvider {
   @NotNull
   protected final TagSet tags = new TagSet( this );
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Tag createTag( @NotNull @NonNls String description ) {
@@ -52,27 +55,32 @@ public class MemoryTagProvider extends AbstractTagProvider {
     return newTag;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tags.addTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tags.removeTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {
     return tags.getTags();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeTag( @NotNull Tag tag ) {
     tags.removeTag( tag );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Tag findTag( @NonNls @NotNull String description ) throws NotFoundException {

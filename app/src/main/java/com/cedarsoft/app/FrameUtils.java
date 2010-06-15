@@ -40,7 +40,9 @@ import java.awt.Container;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * <p>FrameUtils class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FrameUtils {
 
@@ -49,6 +51,8 @@ public class FrameUtils {
    *
    * @param contentPane the content pane
    * @return the JFrame that is shown
+   * @throws java.lang.reflect.InvocationTargetException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   @NotNull
   public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {

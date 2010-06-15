@@ -38,6 +38,8 @@ import java.io.File;
 
 /**
  * Represents a file name
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileName {
   @NotNull
@@ -67,6 +69,13 @@ public class FileName {
     this( new BaseName( baseName ), extension );
   }
 
+  /**
+   * <p>Constructor for FileName.</p>
+   *
+   * @param baseName a {@link java.lang.String} object.
+   * @param delimiter a {@link java.lang.String} object.
+   * @param extension a {@link java.lang.String} object.
+   */
   public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
     this( new BaseName( baseName ), new Extension( delimiter, extension ) );
   }
@@ -93,23 +102,39 @@ public class FileName {
     this.extension = extension;
   }
 
+  /**
+   * <p>Getter for the field <code>baseName</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.file.BaseName} object.
+   */
   @NotNull
   public BaseName getBaseName() {
     return baseName;
   }
 
+  /**
+   * <p>Getter for the field <code>extension</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.file.Extension} object.
+   */
   @NonNls
   @NotNull
   public Extension getExtension() {
     return extension;
   }
 
+  /**
+   * <p>getName</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getName() {
     return baseName + extension.getCombined();
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -123,6 +148,7 @@ public class FileName {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = baseName.hashCode();
@@ -130,6 +156,7 @@ public class FileName {
     return result;
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return baseName.toString() + extension.toString();

@@ -38,6 +38,8 @@ import java.io.File;
 
 /**
  * Resolves the relative path
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class RelativePathFinder {
   private static final char BACKSLASH = '\\';
@@ -165,16 +167,38 @@ public class RelativePathFinder {
     return relativePath.toString();
   }
 
+  /**
+   * <p>getRelativePath</p>
+   *
+   * @param target a {@link java.io.File} object.
+   * @param base a {@link java.io.File} object.
+   * @param pathSeparator a {@link java.lang.String} object.
+   * @return a {@link java.io.File} object.
+   */
   @NotNull
   @NonNls
   public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base, @NotNull @NonNls String pathSeparator ) {
     return new File( getRelativePath( target.getPath(), base.getPath(), pathSeparator ) );
   }
 
+  /**
+   * <p>getRelativePath</p>
+   *
+   * @param target a {@link java.io.File} object.
+   * @param base a {@link java.io.File} object.
+   * @return a {@link java.io.File} object.
+   */
   public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base ) {
     return getRelativePath( target, base, File.separator );
   }
 
+  /**
+   * <p>getRelativePath</p>
+   *
+   * @param targetPath a {@link java.lang.String} object.
+   * @param basePath a {@link java.lang.String} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public static String getRelativePath( @NotNull @NonNls String targetPath, @NotNull @NonNls String basePath ) {

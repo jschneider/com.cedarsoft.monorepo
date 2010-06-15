@@ -40,28 +40,41 @@ import org.springframework.beans.factory.FactoryBean;
 
 /**
  * This factory reads a value from the configuration manager
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ConfigurationPropertyFactory<T> implements FactoryBean {
   @NotNull
   private final ConfigurationAccess<T> configurationAccess;
 
+  /**
+   * <p>Constructor for ConfigurationPropertyFactory.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param key a {@link java.lang.String} object.
+   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   */
   public ConfigurationPropertyFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
     this.configurationAccess = new ConfigurationAccess<T>( configuration, type, key, defaultValueProvider );
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Object getObject() throws Exception {
     return configurationAccess.resolve();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Class<?> getObjectType() {
     return configurationAccess.getType();
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isSingleton() {
     return true;

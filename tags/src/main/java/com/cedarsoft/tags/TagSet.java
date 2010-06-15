@@ -43,8 +43,11 @@ import java.util.List;
 
 /**
  * A tag set contains several tags.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagSet implements Taggable {
+  /** Constant <code>PROPERTY_TAGS="tags"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_TAGS = "tags";
@@ -93,6 +96,7 @@ public class TagSet implements Taggable {
     setTags( Arrays.asList( tags ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean addTag( @NotNull Tag tag ) {
     if ( tags.contains( tag ) ) {
@@ -104,6 +108,7 @@ public class TagSet implements Taggable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {
@@ -131,6 +136,7 @@ public class TagSet implements Taggable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean removeTag( @NotNull Tag tag ) {
     int index = tags.indexOf( tag );
@@ -143,16 +149,23 @@ public class TagSet implements Taggable {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   @Nullable
   public Object getSource() {
     return source;
@@ -188,6 +201,11 @@ public class TagSet implements Taggable {
     return this;
   }
 
+  /**
+   * <p>addAll</p>
+   *
+   * @param tags a {@link java.util.List} object.
+   */
   public void addAll( @NotNull List<? extends Tag> tags ) {
     for ( Tag tag : tags ) {
       addTag( tag );

@@ -39,13 +39,20 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 /**
+ * <p>ImageConverter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageConverter {
   /**
    * Calculates the new dimension of the image
    *
    * @param original           the original image
+   * @param originalResolution the original resolution
+   * @param originalResolution the original resolution
+   * @param originalResolution the original resolution
+   * @param originalResolution the original resolution
+   * @param originalResolution the original resolution
    * @param originalResolution the original resolution
    * @param targetResolution   the target resolution
    * @return the dimension
@@ -58,6 +65,10 @@ public class ImageConverter {
 
   /**
    * Resizes the image to the given size
+   *
+   * @param original a {@link java.awt.image.BufferedImage} object.
+   * @param targetDimension a {@link java.awt.Dimension} object.
+   * @return a {@link java.awt.image.BufferedImage} object.
    */
   @NotNull
   public BufferedImage resize( @NotNull BufferedImage original, @NotNull Dimension targetDimension ) {
@@ -68,6 +79,14 @@ public class ImageConverter {
     return resized;
   }
 
+  /**
+   * <p>resize</p>
+   *
+   * @param original a {@link java.awt.image.BufferedImage} object.
+   * @param originalResolution a {@link com.cedarsoft.image.Resolution} object.
+   * @param targetResolution a {@link com.cedarsoft.image.Resolution} object.
+   * @return a {@link java.awt.image.BufferedImage} object.
+   */
   @NotNull
   public BufferedImage resize( @NotNull BufferedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {
     return resize( original, calculateNewDimensions( original, originalResolution, targetResolution ) );

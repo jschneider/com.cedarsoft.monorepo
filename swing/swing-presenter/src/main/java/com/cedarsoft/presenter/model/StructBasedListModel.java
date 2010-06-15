@@ -47,7 +47,9 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
+ * <p>StructBasedListModel class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructBasedListModel implements ListModel {
   @NotNull
@@ -60,6 +62,11 @@ public class StructBasedListModel implements ListModel {
   //Keep as field --> is only added weak
   private final StructureListener structureListener;
 
+  /**
+   * <p>Constructor for StructBasedListModel.</p>
+   *
+   * @param node a {@link com.cedarsoft.commons.struct.StructPart} object.
+   */
   public StructBasedListModel( @NotNull StructPart node ) {
     this.node = node;
 
@@ -122,22 +129,26 @@ public class StructBasedListModel implements ListModel {
     child.getLookup().addChangeListenerWeak( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public int getSize() {
     return node.getChildren().size();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public StructPart getElementAt( int index ) {
     return node.getChildren().get( index );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addListDataListener( ListDataListener l ) {
     listeners.add( l );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeListDataListener( ListDataListener l ) {
     listeners.remove( l );

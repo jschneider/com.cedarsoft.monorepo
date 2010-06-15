@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A listener that is notified whenever the structure has been changed
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface StructureListener {
   /**

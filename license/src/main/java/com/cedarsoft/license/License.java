@@ -36,12 +36,17 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents the license of the image
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class License {
+  /** Constant <code>UNKNOWN</code> */
   @NotNull
   public static final License UNKNOWN = new License( "UNKNOWN", "Unknown" );
+  /** Constant <code>ALL_RIGHTS_RESERVED</code> */
   @NotNull
   public static final License ALL_RIGHTS_RESERVED = new License( "ALL_RIGHTS_RESERVED", "All rights reserved" );
+  /** Constant <code>PUBLIC_DOMAIN</code> */
   @NotNull
   public static final License PUBLIC_DOMAIN = new License( "PUBLIC_DOMAIN", "Public Domain" );
 
@@ -52,22 +57,39 @@ public class License {
   @NonNls
   private final String name;
 
+  /**
+   * <p>Constructor for License.</p>
+   *
+   * @param id a {@link java.lang.String} object.
+   * @param name a {@link java.lang.String} object.
+   */
   public License( @NotNull @NonNls String id, @NotNull @NonNls String name ) {
     this.id = id;
     this.name = name;
   }
 
+  /**
+   * <p>Getter for the field <code>name</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public String getName() {
     return name;
   }
 
+  /**
+   * <p>Getter for the field <code>id</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getId() {
     return id;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -81,6 +103,7 @@ public class License {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = id.hashCode();

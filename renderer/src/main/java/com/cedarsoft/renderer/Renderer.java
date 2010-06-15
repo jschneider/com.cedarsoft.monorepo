@@ -38,6 +38,8 @@ import org.jetbrains.annotations.Nullable;
  * Renders an object
  * T: The type of the object
  * C: The context type (optional)
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Renderer<T, C> {
   /**
@@ -46,6 +48,8 @@ public interface Renderer<T, C> {
    * @param object  the object
    * @param context the context
    * @return the rendered string
+   * @param <T> a T object.
+   * @param <C> a C object.
    */
   @NotNull
   String render( @NotNull T object, @Nullable C context );

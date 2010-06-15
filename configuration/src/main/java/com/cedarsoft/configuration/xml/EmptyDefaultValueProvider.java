@@ -40,12 +40,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * <p>EmptyDefaultValueProvider class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public final class EmptyDefaultValueProvider implements DefaultValueProvider {
+  /** Constant <code>INSTANCE</code> */
   @NotNull
   public static final EmptyDefaultValueProvider INSTANCE = new EmptyDefaultValueProvider();
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {

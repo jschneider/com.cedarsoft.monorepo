@@ -63,6 +63,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * <p>TagsComponent class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagsComponent extends JPanel {
   @NonNls
@@ -73,10 +76,18 @@ public class TagsComponent extends JPanel {
   @NonNls
   private static final String ACTION_REMOVE_SELECTED_TAG = "removeSelectedTag";
 
+  /**
+   * <p>Constructor for TagsComponent.</p>
+   */
   public TagsComponent() {
     this( null );
   }
 
+  /**
+   * <p>Constructor for TagsComponent.</p>
+   *
+   * @param model a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   */
   public TagsComponent( @Nullable TagsComponentModel model ) {
     initComponents();
 
@@ -141,6 +152,9 @@ public class TagsComponent extends JPanel {
     }
   }
 
+  /**
+   * <p>removeSelectedTag</p>
+   */
   protected void removeSelectedTag() {
     Object[] selected = tagList.getSelectedValues();
     if ( selected == null ) {
@@ -154,33 +168,66 @@ public class TagsComponent extends JPanel {
     }
   }
 
+  /**
+   * <p>setAllowNewTagCreation</p>
+   *
+   * @param allowNewTagCreation a boolean.
+   */
   public void setAllowNewTagCreation( boolean allowNewTagCreation ) {
     tagCombo.setEditable( allowNewTagCreation );
   }
 
+  /**
+   * <p>isAllowNewTagCreation</p>
+   *
+   * @return a boolean.
+   */
   public boolean isAllowNewTagCreation() {
     return tagCombo.isEditable();
   }
 
+  /**
+   * <p>updateRemoveButtonState</p>
+   */
   protected void updateRemoveButtonState() {
     removeButton.setEnabled( tagList.getSelectedIndices().length > 0 );
   }
 
+  /**
+   * <p>Getter for the field <code>model</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   */
   @NotNull
   public TagsComponentModel getModel() {
     return model;
   }
 
+  /**
+   * <p>Getter for the field <code>tagCombo</code>.</p>
+   *
+   * @return a {@link javax.swing.JComboBox} object.
+   */
   @NotNull
   public JComboBox getTagCombo() {
     return tagCombo;
   }
 
+  /**
+   * <p>Getter for the field <code>tagList</code>.</p>
+   *
+   * @return a {@link javax.swing.JList} object.
+   */
   @NotNull
   public JList getTagList() {
     return tagList;
   }
 
+  /**
+   * <p>Setter for the field <code>model</code>.</p>
+   *
+   * @param model a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   */
   public final void setModel( @NotNull TagsComponentModel model ) {
     this.model = model;
     tagCombo.setModel( new TagComboBoxModel( getModel().getTagProvider(), false ) );
@@ -265,11 +312,21 @@ public class TagsComponent extends JPanel {
   private JButton removeButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
+  /**
+   * <p>Getter for the field <code>addButton</code>.</p>
+   *
+   * @return a {@link javax.swing.JButton} object.
+   */
   @NotNull
   public JButton getAddButton() {
     return addButton;
   }
 
+  /**
+   * <p>Getter for the field <code>removeButton</code>.</p>
+   *
+   * @return a {@link javax.swing.JButton} object.
+   */
   @NotNull
   public JButton getRemoveButton() {
     return removeButton;

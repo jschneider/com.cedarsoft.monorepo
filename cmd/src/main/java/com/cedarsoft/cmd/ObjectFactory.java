@@ -35,8 +35,17 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Creates an object from a string
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObjectFactory<T> {
+  /**
+   * <p>create</p>
+   *
+   * @param representation a {@link java.lang.String} object.
+   * @return a T object.
+   * @throws com.cedarsoft.cmd.ObjectFactory$InvalidRepresentationException if any.
+   */
   @NotNull
   T create( @NotNull String representation ) throws InvalidRepresentationException;
 

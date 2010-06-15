@@ -34,10 +34,19 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>Converter interface.</p>
+ *
  * @param <T> the type that is converted
  * @param <C> the target type this converts to
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Converter<T, C> {
+  /**
+   * <p>convert</p>
+   *
+   * @param toConvert a T object.
+   * @return a C object.
+   */
   @NotNull
   C convert( @NotNull T toConvert );
 }

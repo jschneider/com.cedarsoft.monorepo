@@ -43,7 +43,9 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>NonTransientChangeListenerSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NonTransientChangeListenerSupport<T> {
   @NotNull
@@ -55,10 +57,20 @@ public class NonTransientChangeListenerSupport<T> {
   @NotNull
   private final List<ChangeListener<T>> transientListeners = new ArrayList<ChangeListener<T>>();
 
+  /**
+   * <p>Constructor for NonTransientChangeListenerSupport.</p>
+   *
+   * @param observedObject a T object.
+   */
   public NonTransientChangeListenerSupport( @NotNull T observedObject ) {
     this.observedObject = observedObject;
   }
 
+  /**
+   * <p>addChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   */
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
@@ -68,6 +80,11 @@ public class NonTransientChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>removeChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   */
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
@@ -77,6 +94,12 @@ public class NonTransientChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>changed</p>
+   *
+   * @param context a {@link java.lang.Object} object.
+   * @param propertiesPath a {@link java.lang.String} object.
+   */
   public void changed( @Nullable Object context, @NotNull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
@@ -90,6 +113,12 @@ public class NonTransientChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>createPropertyListenerDelegate</p>
+   *
+   * @param propertiesPath a {@link java.lang.String} object.
+   * @return a {@link java.beans.PropertyChangeListener} object.
+   */
   @NotNull
   public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
     final String[] actual = new String[propertiesPath.length + 1];

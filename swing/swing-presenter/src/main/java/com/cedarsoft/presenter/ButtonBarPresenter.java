@@ -40,25 +40,37 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 
 /**
+ * <p>ButtonBarPresenter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ButtonBarPresenter extends SwingPresenter<JPanel> {
   private final Orientation orientation;
 
+  /**
+   * <p>Constructor for ButtonBarPresenter.</p>
+   */
   public ButtonBarPresenter() {
     this( Orientation.Horizontal );
   }
 
+  /**
+   * <p>Constructor for ButtonBarPresenter.</p>
+   *
+   * @param orientation a {@link com.cedarsoft.presenter.ButtonBarPresenter.Orientation} object.
+   */
   public ButtonBarPresenter( @NotNull Orientation orientation ) {
     this.orientation = orientation;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected JPanel createPresentation() {
     return new JPanel( new GridLayout( orientation.getRowCount(), orientation.getColCount(), 4, 4 ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
@@ -69,11 +81,13 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
     return new JButtonPresenter();
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   protected void bind( @NotNull JPanel presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }

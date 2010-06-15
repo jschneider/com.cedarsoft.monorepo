@@ -46,6 +46,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Offers support for change listeners.
  *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ChangeListenerSupport<T> {
   @NotNull
@@ -54,10 +55,20 @@ public class ChangeListenerSupport<T> {
   @NotNull
   protected final T observedObject;
 
+  /**
+   * <p>Constructor for ChangeListenerSupport.</p>
+   *
+   * @param observedObject a T object.
+   */
   public ChangeListenerSupport( @NotNull T observedObject ) {
     this.observedObject = observedObject;
   }
 
+  /**
+   * <p>Getter for the field <code>transientListeners</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   protected List<ChangeListener<T>> getTransientListeners() {
     lock.readLock().lock();
@@ -84,6 +95,11 @@ public class ChangeListenerSupport<T> {
 
   private transient List<ChangeListener<T>> transientListeners;
 
+  /**
+   * <p>addChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   */
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
@@ -93,6 +109,11 @@ public class ChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>removeChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   */
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
@@ -102,6 +123,12 @@ public class ChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>changed</p>
+   *
+   * @param context a {@link java.lang.Object} object.
+   * @param propertiesPath a {@link java.lang.String} object.
+   */
   public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
@@ -116,6 +143,12 @@ public class ChangeListenerSupport<T> {
     }
   }
 
+  /**
+   * <p>createPropertyListenerDelegate</p>
+   *
+   * @param propertiesPath a {@link java.lang.String} object.
+   * @return a {@link java.beans.PropertyChangeListener} object.
+   */
   @NotNull
   public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
     final String[] actual = new String[propertiesPath.length + 1];

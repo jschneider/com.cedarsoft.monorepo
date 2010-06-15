@@ -38,56 +38,74 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 /**
+ * <p>DummyCmdLine class.</p>
+ *
  * @author Johannes Schneider
  */
 public class DummyCmdLine extends AbstractCmdLine {
   private PrintStream out;
 
+  /**
+   * <p>Constructor for DummyCmdLine.</p>
+   */
   public DummyCmdLine() {
     this( System.out );
   }
 
+  /**
+   * <p>Constructor for DummyCmdLine.</p>
+   *
+   * @param out a {@link java.io.PrintStream} object.
+   */
   public DummyCmdLine( @NotNull PrintStream out ) {
     this.out = out;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean readBoolean( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message, int lower, int upper ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public int readInt( @NotNull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void pause( int seconds ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public PrintStream getOut() {
     return out;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected ConsolePrinter getConsolePrinter() {

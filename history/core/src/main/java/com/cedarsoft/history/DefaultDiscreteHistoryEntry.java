@@ -37,6 +37,8 @@ import org.joda.time.LocalDate;
 /**
  * Default entry for a history with validity dates.
  * Each entry has exactly one validity date where the entry is valid at.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements DiscreteHistoryEntry {
   @NotNull
@@ -69,6 +71,7 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
     this.validityDate = validityDate;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public LocalDate getValidityDate() {

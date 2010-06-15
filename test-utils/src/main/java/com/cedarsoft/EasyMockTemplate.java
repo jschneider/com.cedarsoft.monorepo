@@ -42,7 +42,9 @@ import static org.easymock.classextension.EasyMock.replay;
 import static org.easymock.classextension.EasyMock.verify;
 
 /**
+ * <p>Abstract EasyMockTemplate class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class EasyMockTemplate {
 
@@ -56,7 +58,7 @@ public abstract class EasyMockTemplate {
    * Constructor.
    *
    * @param mocks the mocks for this template to manage.
-   * @throws IllegalArgumentException if the list of mock objects is <code>null</code> or empty.
+   * @throws java.lang.IllegalArgumentException if the list of mock objects is <code>null</code> or empty.
    */
   protected EasyMockTemplate( @NotNull Object... mocks ) {
     if ( mocks.length == 0 ) {
@@ -90,6 +92,8 @@ public abstract class EasyMockTemplate {
    * </ol>
    * Steps 2 and 4 are considered invariant behavior while steps 1 and 3 should be implemented by subclasses of this
    * template.
+   *
+   * @throws java.lang.Exception if any.
    */
   public final void run() throws Exception {
     setUp();
@@ -105,11 +109,15 @@ public abstract class EasyMockTemplate {
 
   /**
    * Sets the expectations on the mock objects.
+   *
+   * @throws java.lang.Exception if any.
    */
   protected abstract void expectations() throws Exception;
 
   /**
    * Executes the code that is under test.
+   *
+   * @throws java.lang.Exception if any.
    */
   protected abstract void codeToTest() throws Exception;
 

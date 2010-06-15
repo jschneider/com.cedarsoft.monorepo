@@ -32,20 +32,41 @@
 package com.cedarsoft.history;
 
 /**
+ * <p>NoElementFoundException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NoElementFoundException extends RuntimeException {
+  /**
+   * <p>Constructor for NoElementFoundException.</p>
+   */
   public NoElementFoundException() {
   }
 
+  /**
+   * <p>Constructor for NoElementFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public NoElementFoundException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for NoElementFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NoElementFoundException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for NoElementFoundException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NoElementFoundException( Throwable cause ) {
     super( cause );
   }

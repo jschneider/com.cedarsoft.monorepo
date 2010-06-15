@@ -60,6 +60,8 @@ import java.util.Collections;
  * Easy support for xml signatures.
  * Be carefull! The {@link DocumentBuilderFactory} has to be namespace aware
  * ({@link DocumentBuilderFactory#setNamespaceAware(boolean)}).
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlSignatureSupport {
   @NotNull
@@ -68,11 +70,22 @@ public class XmlSignatureSupport {
   @NotNull
   private final X509Support x509Support;
 
+  /**
+   * <p>Constructor for XmlSignatureSupport.</p>
+   *
+   * @param x509Support a {@link com.cedarsoft.crypt.X509Support} object.
+   */
   @Inject
   public XmlSignatureSupport( @NotNull X509Support x509Support ) {
     this.x509Support = x509Support;
   }
 
+  /**
+   * <p>sign</p>
+   *
+   * @param xmlDocument a {@link org.w3c.dom.Document} object.
+   * @return a {@link org.w3c.dom.Document} object.
+   */
   public Document sign( @NotNull Document xmlDocument ) {
     try {
       @NotNull @NonNls String elementName = xmlDocument.getFirstChild().getNodeName();
@@ -100,6 +113,13 @@ public class XmlSignatureSupport {
     }
   }
 
+  /**
+   * <p>hasValidSignature</p>
+   *
+   * @param doc a {@link org.w3c.dom.Document} object.
+   * @return a boolean.
+   * @throws java.lang.Exception if any.
+   */
   public boolean hasValidSignature( @NotNull Document doc ) throws Exception {
     NodeList nl = doc.getElementsByTagNameNS( XMLSignature.XMLNS, "Signature" );
     if ( nl.getLength() == 0 ) {
@@ -145,6 +165,12 @@ public class XmlSignatureSupport {
     return objectNode.getFirstChild();
   }
 
+  /**
+   * <p>getOriginalDocument</p>
+   *
+   * @param signedDocument a {@link org.w3c.dom.Document} object.
+   * @return a {@link org.w3c.dom.Document} object.
+   */
   @NotNull
   public Document getOriginalDocument( @NotNull Document signedDocument ) {
     try {

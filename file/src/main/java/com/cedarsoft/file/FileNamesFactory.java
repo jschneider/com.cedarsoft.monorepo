@@ -40,28 +40,53 @@ import java.io.FileFilter;
 import java.util.Arrays;
 
 /**
+ * <p>FileNamesFactory class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileNamesFactory {
   @NotNull
   private final FileTypeRegistry fileTypeRegistry;
 
+  /**
+   * <p>Constructor for FileNamesFactory.</p>
+   *
+   * @param fileTypeRegistry a {@link com.cedarsoft.file.FileTypeRegistry} object.
+   */
   @Inject
   public FileNamesFactory( @NotNull FileTypeRegistry fileTypeRegistry ) {
     this.fileTypeRegistry = fileTypeRegistry;
   }
 
+  /**
+   * <p>create</p>
+   *
+   * @param baseDir a {@link java.io.File} object.
+   * @return a {@link com.cedarsoft.file.FileNames} object.
+   */
   @NotNull
   public FileNames create( @NotNull File baseDir ) {
     File[] files = listFiles( baseDir );
     return create( files );
   }
 
+  /**
+   * <p>create</p>
+   *
+   * @param sourceFiles an array of {@link java.io.File} objects.
+   * @return a {@link com.cedarsoft.file.FileNames} object.
+   */
   @NotNull
   public FileNames create( @NotNull File[] sourceFiles ) {
     return create( Arrays.asList( sourceFiles ) );
   }
 
+  /**
+   * <p>create</p>
+   *
+   * @param sourceFiles a {@link java.lang.Iterable} object.
+   * @return a {@link com.cedarsoft.file.FileNames} object.
+   */
   public FileNames create( @NotNull Iterable<? extends File> sourceFiles ) {
     FileNames fileNames = new FileNames();
 
@@ -73,16 +98,34 @@ public class FileNamesFactory {
     return fileNames;
   }
 
+  /**
+   * <p>createBaseNameAware</p>
+   *
+   * @param baseDir a {@link java.io.File} object.
+   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull File baseDir ) {
     return createBaseNameAware( listFiles( baseDir ) );
   }
 
+  /**
+   * <p>createBaseNameAware</p>
+   *
+   * @param sourceFiles an array of {@link java.io.File} objects.
+   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull File[] sourceFiles ) {
     return createBaseNameAware( Arrays.asList( sourceFiles ) );
   }
 
+  /**
+   * <p>createBaseNameAware</p>
+   *
+   * @param sourceFiles a {@link java.lang.Iterable} object.
+   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull Iterable<? extends File> sourceFiles ) {
     BaseNameAwareFileNames report = new BaseNameAwareFileNames();

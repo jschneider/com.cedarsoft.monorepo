@@ -38,6 +38,8 @@ import java.text.MessageFormat;
 
 /**
  * A console printer that is ansi aware
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class AnsiAwareConsolePrinter implements ConsolePrinter {
   private static final char ANSI_ESCAPE = ( char ) 27;
@@ -54,18 +56,21 @@ public class AnsiAwareConsolePrinter implements ConsolePrinter {
   @NonNls
   private static final String ANSI_DEFAULT = ANSI_ESCAPE + "[0m";
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createError( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_RED + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createWarning( @NotNull String message, @NotNull Object... objects ) {
     return ANSI_BLUE + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String createSuccess( @NotNull String message, @NotNull Object... objects ) {

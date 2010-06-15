@@ -40,7 +40,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 
 /**
+ * <p>MultiReadWriteLock class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MultiReadWriteLock implements ReadWriteLock {
   @NotNull
@@ -48,10 +50,20 @@ public class MultiReadWriteLock implements ReadWriteLock {
   @NotNull
   private final MultiLock multiWriteLock;
 
+  /**
+   * <p>Constructor for MultiReadWriteLock.</p>
+   *
+   * @param locks a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   */
   public MultiReadWriteLock( @NotNull ReadWriteLock... locks ) {
     this( Arrays.asList( locks ) );
   }
 
+  /**
+   * <p>Constructor for MultiReadWriteLock.</p>
+   *
+   * @param locks a {@link java.util.List} object.
+   */
   public MultiReadWriteLock( @NotNull List<? extends ReadWriteLock> locks ) {
     List<Lock> readLocks = new ArrayList<Lock>();
     List<Lock> writeLocks = new ArrayList<Lock>();
@@ -66,12 +78,14 @@ public class MultiReadWriteLock implements ReadWriteLock {
   }
 
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Lock readLock() {
     return multiReadLock;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Lock writeLock() {

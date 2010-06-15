@@ -40,6 +40,7 @@ import org.jetbrains.annotations.NotNull;
  * <p/>
  *
  * @param <T> the type of the presentation this presenter creates.
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Presenter<T> {
   /**
@@ -47,6 +48,7 @@ public interface Presenter<T> {
    *
    * @param struct the struct representing the structure for the presentation
    * @return the presentation
+   * @param <T> a T object.
    */
   @NotNull
   T present( @NotNull StructPart struct );

@@ -39,20 +39,24 @@ import java.util.List;
 
 /**
  * A node extends the interface {@link StructPart} with read/write support.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Node extends StructPart {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   List<? extends Node> getChildren();
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
 
   /**
-   * Returns the parent (if it has one)
+   * {@inheritDoc}
    *
-   * @return the parent
+   * Returns the parent (if it has one)
    */
   @Override
   @Nullable

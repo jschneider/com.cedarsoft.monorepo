@@ -46,12 +46,15 @@ import java.util.List;
 
 /**
  * The image component is able to render images
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageComponent extends JComponent {
   private List<Painter> painters = new ArrayList<Painter>();
   private Image image;
   private Dimension imageSize;
 
+  /** {@inheritDoc} */
   @Override
   protected void paintComponent( @NotNull Graphics g ) {
     super.paintComponent( g );
@@ -74,6 +77,7 @@ public class ImageComponent extends JComponent {
     painters.add( painter );
   }
 
+  /** {@inheritDoc} */
   @Override
   public Dimension getPreferredSize() {
     if ( isPreferredSizeSet() ) {
@@ -89,7 +93,7 @@ public class ImageComponent extends JComponent {
    * Sets the image
    *
    * @param imageFile the image file
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   public void setImage( @NotNull File imageFile ) throws IOException {
     setImage( ImageIO.read( imageFile ) );

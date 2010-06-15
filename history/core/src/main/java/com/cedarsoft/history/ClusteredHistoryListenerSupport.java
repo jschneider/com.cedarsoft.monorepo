@@ -37,6 +37,8 @@ import java.util.List;
 
 /**
  * Clustered history listener support
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredHistoryListenerSupport<E> {
   @NotNull
@@ -45,6 +47,12 @@ public class ClusteredHistoryListenerSupport<E> {
   private final NonTransientHistoryListenerSupport<E> nonTransientDelegate = new NonTransientHistoryListenerSupport<E>();
 
 
+  /**
+   * <p>addHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param isTransient a boolean.
+   */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
     if ( isTransient ) {
       transientDelegate.addHistoryListener( historyListener );
@@ -53,26 +61,51 @@ public class ClusteredHistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>removeHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     transientDelegate.removeHistoryListener( historyListener );
     nonTransientDelegate.removeHistoryListener( historyListener );
   }
 
+  /**
+   * <p>notifyEntryChanged</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryChanged( @NotNull E entry ) {
     transientDelegate.notifyEntryChanged( entry );
     nonTransientDelegate.notifyEntryChanged( entry );
   }
 
+  /**
+   * <p>notifyEntryAdded</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryAdded( @NotNull E entry ) {
     transientDelegate.notifyEntryAdded( entry );
     nonTransientDelegate.notifyEntryAdded( entry );
   }
 
+  /**
+   * <p>notifyEntryRemoved</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryRemoved( @NotNull E entry ) {
     transientDelegate.notifyEntryRemoved( entry );
     nonTransientDelegate.notifyEntryRemoved( entry );
   }
 
+  /**
+   * <p>getTransientHistoryListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends HistoryListener<E>> getTransientHistoryListeners() {
     return transientDelegate.getHistoryListeners();

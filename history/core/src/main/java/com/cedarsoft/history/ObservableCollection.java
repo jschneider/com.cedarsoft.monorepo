@@ -39,12 +39,14 @@ import org.jetbrains.annotations.NotNull;
  * An observable collection
  *
  * @param <E> the element type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObservableCollection<E> extends ObjectAccess<E>, Lockable {
   /**
    * Adds an entry listener
    *
    * @param listener the listener
+   * @param <E> a E object.
    */
   void addElementListener( @NotNull ElementsListener<? super E> listener );
 

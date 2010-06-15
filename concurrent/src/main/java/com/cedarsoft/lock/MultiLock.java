@@ -44,19 +44,32 @@ import java.util.concurrent.locks.Lock;
 /**
  * USE WITH CARE!!!
  * May easily result in dead locks
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MultiLock implements Lock {
   @NotNull
   private final List<Lock> locks = new ArrayList<Lock>();
 
+  /**
+   * <p>Constructor for MultiLock.</p>
+   *
+   * @param locks a {@link java.util.concurrent.locks.Lock} object.
+   */
   public MultiLock( @NotNull Lock... locks ) {
     this( Arrays.asList( locks ) );
   }
 
+  /**
+   * <p>Constructor for MultiLock.</p>
+   *
+   * @param locks a {@link java.util.Collection} object.
+   */
   public MultiLock( @NotNull Collection<? extends Lock> locks ) {
     this.locks.addAll( locks );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void lock() {
     for ( Lock lock : locks ) {
@@ -65,21 +78,25 @@ public class MultiLock implements Lock {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void lockInterruptibly() throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean tryLock() {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
     throw new UnsupportedOperationException( "Not supported for a multi lock" );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void unlock() {
     for ( Lock lock : locks ) {
@@ -87,6 +104,7 @@ public class MultiLock implements Lock {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public Condition newCondition() {
     throw new UnsupportedOperationException( "Cannot create a condition for a multi lock" );

@@ -38,6 +38,8 @@ import java.util.List;
 
 /**
  * Support class for TagChangeListeners
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagChangeSupport {
   private final List<TagChangeListener> listeners = new ArrayList<TagChangeListener>();
@@ -71,6 +73,11 @@ public class TagChangeSupport {
     this.source = source;
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link java.lang.Object} object.
+   */
   @NotNull
   public Object getSource() {
     if ( source == null ) {
@@ -79,10 +86,20 @@ public class TagChangeSupport {
     return source;
   }
 
+  /**
+   * <p>addTagChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.tags.TagChangeListener} object.
+   */
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     listeners.add( listener );
   }
 
+  /**
+   * <p>removeTagChangeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.tags.TagChangeListener} object.
+   */
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     listeners.remove( listener );
   }

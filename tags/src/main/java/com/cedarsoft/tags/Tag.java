@@ -36,8 +36,11 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A Tag
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Tag {
+  /** Constant <code>PROPERTY_DESCRIPTION="description"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_DESCRIPTION = "description";
@@ -79,6 +82,7 @@ public class Tag {
     return description;
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return getDescription();

@@ -114,6 +114,7 @@ public class ImageUtil {
    *
    * @param filename the image to be read
    * @return the image object
+   * @throws java.io.IOException if any.
    */
   public static BufferedImage readImage( String filename ) throws IOException {
     File imagein = new File( filename );
@@ -126,8 +127,8 @@ public class ImageUtil {
    *
    * @param toLoad the image that will be loaded into memory
    * @param c      the Component to be notified
-   * @param timout the number of milliseconds before loading will be aborted
    * @return boolen representing success of operation
+   * @param timeout a int.
    */
   public static boolean loadImageNow( Image toLoad, Component c, int timeout ) {
     MediaTracker tracker = new MediaTracker( c );
@@ -145,17 +146,43 @@ public class ImageUtil {
    * Scales an Image.
    * <p/>
    * Useful ref: 	http://saloon.javaranch.com/cgi-bin/ubb/ultimatebb.cgi?ubb=get_topic&f=34&t=002153
+   *
+   * @param imageIn a {@link java.awt.image.BufferedImage} object.
+   * @param width a int.
+   * @param height a int.
+   * @return a {@link java.awt.image.BufferedImage} object.
+   * @throws java.io.IOException if any.
    */
-
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height ) throws IOException {
     return scaleImage( imageIn, width, height, Image.SCALE_SMOOTH, false );
   }
 
+  /**
+   * <p>scaleImage</p>
+   *
+   * @param imageIn a {@link java.awt.image.BufferedImage} object.
+   * @param width a int.
+   * @param height a int.
+   * @param scaleQuality a int.
+   * @return a {@link java.awt.image.BufferedImage} object.
+   * @throws java.io.IOException if any.
+   */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality ) throws IOException {
     return scaleImage( imageIn, width, height, scaleQuality, false );
 
   }
 
+  /**
+   * <p>scaleImage</p>
+   *
+   * @param imageIn a {@link java.awt.image.BufferedImage} object.
+   * @param width a int.
+   * @param height a int.
+   * @param scaleQuality a int.
+   * @param maintainAspect a boolean.
+   * @return a {@link java.awt.image.BufferedImage} object.
+   * @throws java.io.IOException if any.
+   */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality, boolean maintainAspect ) throws IOException {
 
 
@@ -190,6 +217,10 @@ public class ImageUtil {
 
   /**
    * Writes a buffered Image to disk
+   *
+   * @param toWrite a {@link java.awt.image.BufferedImage} object.
+   * @param fileout a {@link java.lang.String} object.
+   * @throws java.io.IOException if any.
    */
   public static void writeImage( BufferedImage toWrite, String fileout ) throws IOException {
     // The output file
@@ -211,6 +242,13 @@ public class ImageUtil {
 
   }
 
+  /**
+   * <p>rotateImage</p>
+   *
+   * @param bi a {@link java.awt.image.BufferedImage} object.
+   * @param rotations a int.
+   * @return a {@link java.awt.image.BufferedImage} object.
+   */
   public static BufferedImage rotateImage( BufferedImage bi, int rotations ) {
     rotations %= 4;
 

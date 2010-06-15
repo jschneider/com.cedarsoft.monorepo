@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
  * to methods with only *one* element as argument.
  *
  * @param <E> the type of the elements
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   /**
@@ -70,31 +71,32 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   /**
    * Is called when an entry has been deleted
    *
-   * @param source
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
    * @param element the entry that has been deleted
-   * @param index
+   * @param index a int.
    */
   public abstract void elementDeleted( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
 
   /**
    * Is called when an entry has been added
    *
-   * @param source
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
    * @param element the entry that has been added
-   * @param index
+   * @param index a int.
    */
   public abstract void elementAdded( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
 
   /**
    * Is called when an enty has been changed
    *
-   * @param source
+   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
    * @param element the entry that has been changed
-   * @param index
+   * @param index a int.
    */
   public abstract void elementChanged( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
 
 
+  /** {@inheritDoc} */
   @Override
   public void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
@@ -104,6 +106,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
@@ -113,6 +116,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {

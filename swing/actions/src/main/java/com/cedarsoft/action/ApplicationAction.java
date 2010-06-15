@@ -39,16 +39,23 @@ import java.awt.event.ActionEvent;
 
 /**
  * Base class for application actions.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class ApplicationAction extends AbstractAction {
+  /**
+   * <p>Constructor for ApplicationAction.</p>
+   *
+   * @param name a {@link String} object.
+   */
   protected ApplicationAction( @NonNls @NotNull String name ) {
     super( name );
   }
 
   /**
+   * {@inheritDoc}
+   * <p/>
    * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
-   *
-   * @param e the event
    */
   @Override
   public final void actionPerformed( @NotNull ActionEvent e ) {
@@ -59,6 +66,11 @@ public abstract class ApplicationAction extends AbstractAction {
     }
   }
 
+  /**
+   * <p>handleApplicationException</p>
+   *
+   * @param exception a {@link ApplicationException} object.
+   */
   protected abstract void handleApplicationException( @NotNull ApplicationException exception );
 
   /**

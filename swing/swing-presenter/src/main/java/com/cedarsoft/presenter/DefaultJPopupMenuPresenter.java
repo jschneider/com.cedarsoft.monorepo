@@ -40,14 +40,18 @@ import javax.swing.JPopupMenu;
 
 /**
  * Presents a JPopupMenu
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> implements JPopupMenuPresenter {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected JPopupMenu createPresentation() {
     return new JPopupMenu();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
@@ -68,10 +72,12 @@ public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> imple
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   protected void bind( @NotNull JPopupMenu presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return true;

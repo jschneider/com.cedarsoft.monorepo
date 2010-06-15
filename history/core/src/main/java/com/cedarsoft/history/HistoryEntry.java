@@ -37,8 +37,11 @@ import org.joda.time.LocalDate;
 
 /**
  * An entry for a history
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface HistoryEntry extends Comparable<HistoryEntry> {
+  /** Constant <code>PROPERTY_VERIFICATION_DATE="verificationDate"</code> */
   @NonNls
   @NotNull
   String PROPERTY_VERIFICATION_DATE = "verificationDate";

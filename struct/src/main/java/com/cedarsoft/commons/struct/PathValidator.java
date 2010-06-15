@@ -35,13 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Validates a path
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface PathValidator {
   /**
    * Validate the path
    *
    * @param path the path
-   * @throws ValidationFailedException
+   * @throws com.cedarsoft.commons.struct.ValidationFailedException if any.
    */
   void validate( @NotNull Path path ) throws ValidationFailedException;
 }

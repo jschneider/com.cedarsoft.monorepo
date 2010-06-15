@@ -41,8 +41,11 @@ import java.awt.Insets;
  * <p/>
  * Date: Jun 5, 2007<br>
  * Time: 3:22:10 PM<br>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FancyButtonPresenter extends AbstractButtonPresenter<JButton> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected JButton createPresentation() {
@@ -57,6 +60,7 @@ public class FancyButtonPresenter extends AbstractButtonPresenter<JButton> {
     return button;
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return false;

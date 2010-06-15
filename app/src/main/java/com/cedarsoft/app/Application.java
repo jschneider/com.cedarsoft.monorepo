@@ -36,7 +36,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * Informations about an
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Application {
   @NotNull
@@ -45,21 +47,38 @@ public class Application {
   @NotNull
   private final Version version;
 
+  /**
+   * <p>Constructor for Application.</p>
+   *
+   * @param name a {@link java.lang.String} object.
+   * @param version a {@link com.cedarsoft.Version} object.
+   */
   public Application( @NotNull String name, @NotNull Version version ) {
     this.name = name;
     this.version = version;
   }
 
+  /**
+   * <p>Getter for the field <code>name</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public String getName() {
     return name;
   }
 
+  /**
+   * <p>Getter for the field <code>version</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getVersion() {
     return version;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -73,6 +92,7 @@ public class Application {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = name.hashCode();
@@ -80,6 +100,7 @@ public class Application {
     return result;
   }
 
+  /** {@inheritDoc} */
   @NonNls
   @Override
   public String toString() {

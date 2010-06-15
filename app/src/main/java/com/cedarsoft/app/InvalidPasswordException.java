@@ -32,7 +32,9 @@
 package com.cedarsoft.app;
 
 /**
+ * <p>InvalidPasswordException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InvalidPasswordException extends AuthenticationException {
 

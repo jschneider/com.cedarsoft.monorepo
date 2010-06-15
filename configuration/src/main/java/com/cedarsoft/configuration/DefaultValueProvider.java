@@ -38,6 +38,8 @@ import org.jetbrains.annotations.NotNull;
  * Provides the default value for a configuration. Sometimes it is usefull to provide
  * a hard coded default value. But sometimes it is necessary to check the system or ask
  * the user for the value.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface DefaultValueProvider {
   /**
@@ -47,6 +49,7 @@ public interface DefaultValueProvider {
    * @param key  the key
    * @param type the type
    * @return the default value
+   * @param <T> a T object.
    */
   @NotNull
   <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type );

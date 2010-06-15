@@ -34,12 +34,21 @@ package com.cedarsoft;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * <p>Equals class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Equals {
   private Equals() {
   }
 
+  /**
+   * <p>isEqual</p>
+   *
+   * @param first a {@link java.lang.Object} object.
+   * @param second a {@link java.lang.Object} object.
+   * @return a boolean.
+   */
   public static boolean isEqual( @Nullable Object first, @Nullable Object second ) {
     //noinspection ObjectEquality
     if ( first == second ) {

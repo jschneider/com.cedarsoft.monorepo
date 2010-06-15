@@ -41,6 +41,8 @@ import java.util.Arrays;
 
 /**
  * Represents a hash value
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Hash implements Serializable {
   private static final long serialVersionUID = 5728176239480983210L;
@@ -51,26 +53,48 @@ public class Hash implements Serializable {
   @NotNull
   private final byte[] value;
 
+  /**
+   * <p>Constructor for Hash.</p>
+   *
+   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param value an array of byte.
+   */
   public Hash( @NotNull Algorithm algorithm, @NotNull byte[] value ) {
     this.algorithm = algorithm;
     this.value = value.clone();
   }
 
+  /**
+   * <p>Getter for the field <code>algorithm</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.crypt.Algorithm} object.
+   */
   @NotNull
   public Algorithm getAlgorithm() {
     return algorithm;
   }
 
+  /**
+   * <p>getValueAsHex</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public String getValueAsHex() {
     return new String( Hex.encodeHex( value ) );
   }
 
+  /**
+   * <p>Getter for the field <code>value</code>.</p>
+   *
+   * @return an array of byte.
+   */
   @NotNull
   public byte[] getValue() {
     return value.clone();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NonNls
   public String toString() {
@@ -80,6 +104,7 @@ public class Hash implements Serializable {
       '}';
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -93,6 +118,7 @@ public class Hash implements Serializable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result;

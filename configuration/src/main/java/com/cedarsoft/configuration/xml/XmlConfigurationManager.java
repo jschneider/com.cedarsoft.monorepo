@@ -40,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Configures configurations
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlConfigurationManager {
   @NonNls
@@ -48,6 +50,11 @@ public class XmlConfigurationManager {
   @NotNull
   private final XMLConfiguration configuration;
 
+  /**
+   * <p>Constructor for XmlConfigurationManager.</p>
+   *
+   * @param configuration a {@link org.apache.commons.configuration.XMLConfiguration} object.
+   */
   @Inject
   public XmlConfigurationManager( @NotNull XMLConfiguration configuration ) {
     this.configuration = configuration;
@@ -94,6 +101,11 @@ public class XmlConfigurationManager {
     }
   }
 
+  /**
+   * <p>Getter for the field <code>configuration</code>.</p>
+   *
+   * @return a {@link org.apache.commons.configuration.HierarchicalConfiguration} object.
+   */
   @NotNull
   public HierarchicalConfiguration getConfiguration() {
     return configuration;

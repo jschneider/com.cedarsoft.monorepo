@@ -45,11 +45,21 @@ import org.jetbrains.annotations.NotNull;
 public class ChildNotFoundException extends NotFoundException {
   private final Path path;
 
+  /**
+   * <p>Constructor for ChildNotFoundException.</p>
+   *
+   * @param path a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   public ChildNotFoundException( @NotNull Path path ) {
     super( "Child not found <" + path.toString() + '>' );
     this.path = path;
   }
 
+  /**
+   * <p>Getter for the field <code>path</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   */
   @NotNull
   public Path getPath() {
     return path;

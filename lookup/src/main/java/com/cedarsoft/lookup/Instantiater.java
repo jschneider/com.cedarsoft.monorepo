@@ -36,14 +36,16 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Creates an instance.
  * Implementations may be used to instantiate elements lazy.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Instantiater<T> {
   /**
    * Creates the instance
    *
    * @return the instance
-   *
-   * @throws InstantiationFailedException
+   * @throws com.cedarsoft.lookup.InstantiationFailedException if any.
+   * @param <T> a T object.
    */
   @NotNull
   T createInstance() throws InstantiationFailedException;

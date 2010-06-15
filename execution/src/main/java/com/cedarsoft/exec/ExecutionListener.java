@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Listener that is notified about the execution of a process
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ExecutionListener {
 

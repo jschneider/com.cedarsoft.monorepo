@@ -36,11 +36,19 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Utility method for string operations
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Strings {
   private Strings() {
   }
 
+  /**
+   * <p>stripQuotes</p>
+   *
+   * @param value a {@link java.lang.String} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String stripQuotes( @NotNull String value ) {
     if ( value.indexOf( '\"' ) == 0 ) {

@@ -47,8 +47,16 @@ import java.util.Set;
  * a reflection based matcher
  *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ReflectionMatcher<T> implements IArgumentMatcher {
+  /**
+   * <p>create</p>
+   *
+   * @param object a T object.
+   * @param blacklistedFieldNames a {@link java.lang.String} object.
+   * @return a T object.
+   */
   @Nullable
   public static <T> T create( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
     EasyMock.reportMatcher( new ReflectionMatcher<T>( object, blacklistedFieldNames ) );
@@ -61,11 +69,18 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
   @NotNull
   private final Set<String> blacklistedFieldNames = new HashSet<String>();
 
+  /**
+   * <p>Constructor for ReflectionMatcher.</p>
+   *
+   * @param object a T object.
+   * @param blacklistedFieldNames a {@link java.lang.String} object.
+   */
   public ReflectionMatcher( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
     this.object = object;
     this.blacklistedFieldNames.addAll( Arrays.asList( blacklistedFieldNames ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean matches( Object o ) {
     if ( object == null && o == null ) {
@@ -118,6 +133,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "Object did not fit: Expected <" + object + ">" );

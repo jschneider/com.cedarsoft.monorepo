@@ -38,7 +38,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>StructStringPresenter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructStringPresenter implements Presenter<String> {
   @NotNull
@@ -46,14 +48,23 @@ public class StructStringPresenter implements Presenter<String> {
   private final String intendSequence;
   private static final char NEWLINE_CHAR = '\n';
 
+  /**
+   * <p>Constructor for StructStringPresenter.</p>
+   */
   public StructStringPresenter() {
     this( "  " );
   }
 
+  /**
+   * <p>Constructor for StructStringPresenter.</p>
+   *
+   * @param intendSequence a {@link java.lang.String} object.
+   */
   public StructStringPresenter( @NotNull String intendSequence ) {
     this.intendSequence = intendSequence;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String present( @NotNull StructPart struct ) {

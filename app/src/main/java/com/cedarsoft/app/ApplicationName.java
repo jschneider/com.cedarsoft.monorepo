@@ -40,6 +40,8 @@ import java.lang.annotation.Target;
 
 /**
  * Application name annotation
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER} )

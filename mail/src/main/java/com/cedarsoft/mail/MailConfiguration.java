@@ -65,6 +65,16 @@ public class MailConfiguration {
   private final String mailSmtpAuth;
 
 
+  /**
+   * <p>Constructor for MailConfiguration.</p>
+   *
+   * @param mailHost a {@link java.lang.String} object.
+   * @param mailFrom a {@link java.lang.String} object.
+   * @param mailPersonal a {@link java.lang.String} object.
+   * @param smtpUser a {@link java.lang.String} object.
+   * @param smtpPass a {@link java.lang.String} object.
+   * @param mailSmtpAuth a {@link java.lang.String} object.
+   */
   public MailConfiguration( @NonNls @NotNull String mailHost, @NonNls @NotNull String mailFrom, @NonNls @NotNull String mailPersonal, @NonNls @NotNull String smtpUser, @NonNls @NotNull String smtpPass, @NonNls @NotNull String mailSmtpAuth ) {
     this.mailHost = mailHost;
     this.mailFrom = mailFrom;
@@ -74,36 +84,66 @@ public class MailConfiguration {
     this.mailSmtpAuth = mailSmtpAuth;
   }
 
+  /**
+   * <p>Getter for the field <code>mailFrom</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getMailFrom() {
     return mailFrom;
   }
 
+  /**
+   * <p>Getter for the field <code>mailHost</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getMailHost() {
     return mailHost;
   }
 
+  /**
+   * <p>Getter for the field <code>smtpUser</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getSmtpUser() {
     return smtpUser;
   }
 
+  /**
+   * <p>Getter for the field <code>smtpPass</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getSmtpPass() {
     return smtpPass;
   }
 
+  /**
+   * <p>Getter for the field <code>mailPersonal</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getMailPersonal() {
     return mailPersonal;
   }
 
+  /**
+   * <p>Getter for the field <code>mailSmtpAuth</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NonNls
   @NotNull
   public String getMailSmtpAuth() {

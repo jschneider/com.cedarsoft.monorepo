@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Helper method for nodes
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Nodes {
   private Nodes() {

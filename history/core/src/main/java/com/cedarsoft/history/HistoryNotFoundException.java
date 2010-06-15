@@ -32,20 +32,41 @@
 package com.cedarsoft.history;
 
 /**
+ * <p>HistoryNotFoundException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HistoryNotFoundException extends RuntimeException {
+  /**
+   * <p>Constructor for HistoryNotFoundException.</p>
+   */
   public HistoryNotFoundException() {
   }
 
+  /**
+   * <p>Constructor for HistoryNotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public HistoryNotFoundException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for HistoryNotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public HistoryNotFoundException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for HistoryNotFoundException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public HistoryNotFoundException( Throwable cause ) {
     super( cause );
   }

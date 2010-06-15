@@ -43,6 +43,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * A cache implementation that is backed up using a map
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HashedCache<K, T> implements Cache<K, T> {
   @NotNull
@@ -57,6 +59,8 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Creates a new hashed cache
    *
    * @param factory the factory
+   * @param <K> a K object.
+   * @param <T> a T object.
    */
   public HashedCache( @NotNull Factory<K, T> factory ) {
     this.factory = factory;
@@ -77,11 +81,10 @@ public class HashedCache<K, T> implements Cache<K, T> {
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Returns the value for the given key.
    * If no value is stored, a new one is created using the registered factory
-   *
-   * @param key the key
-   * @return the value
    */
   @Override
   public T get( @NotNull Object key ) {
@@ -102,6 +105,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
  MAP DELEGATES
   */
 
+  /** {@inheritDoc} */
   @Override
   public boolean containsKey( Object key ) {
     lock.readLock().lock();
@@ -112,6 +116,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean containsValue( Object value ) {
     lock.readLock().lock();
@@ -122,11 +127,13 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public T put( K key, T value ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public T remove( @NotNull Object key ) {
@@ -138,11 +145,13 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void putAll( Map<? extends K, ? extends T> m ) {
     throw new UnsupportedOperationException( "Use the factory instead" );
   }
 
+  /** {@inheritDoc} */
   @Override
   public Set<K> keySet() {
     lock.readLock().lock();
@@ -153,6 +162,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public Collection<T> values() {
     lock.readLock().lock();
@@ -164,9 +174,9 @@ public class HashedCache<K, T> implements Cache<K, T> {
   }
 
   /**
-   * Returns the *LIVE* entry set. Use with care!
+   * {@inheritDoc}
    *
-   * @return the live entry set for the cache
+   * Returns the *LIVE* entry set. Use with care!
    */
   @Override
   @NotNull
@@ -179,6 +189,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public int size() {
     lock.readLock().lock();
@@ -189,6 +200,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isEmpty() {
     lock.readLock().lock();
@@ -202,6 +214,8 @@ public class HashedCache<K, T> implements Cache<K, T> {
   /**
    * Returns the internal store.
    * USE WITH CARE!
+   *
+   * @return a {@link java.util.Map} object.
    */
   @Deprecated
   @NotNull
@@ -215,6 +229,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void clear() {
     throw new UnsupportedOperationException();

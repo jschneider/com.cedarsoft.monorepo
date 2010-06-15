@@ -32,20 +32,41 @@
 package com.cedarsoft.commons.struct;
 
 /**
+ * <p>ValidationFailedException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ValidationFailedException extends RuntimeException {
+  /**
+   * <p>Constructor for ValidationFailedException.</p>
+   */
   public ValidationFailedException() {
   }
 
+  /**
+   * <p>Constructor for ValidationFailedException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public ValidationFailedException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for ValidationFailedException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public ValidationFailedException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for ValidationFailedException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public ValidationFailedException( Throwable cause ) {
     super( cause );
   }

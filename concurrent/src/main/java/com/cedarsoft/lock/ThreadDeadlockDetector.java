@@ -42,7 +42,9 @@ import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
+ * <p>ThreadDeadlockDetector class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ThreadDeadlockDetector {
   @NotNull
@@ -59,10 +61,18 @@ public class ThreadDeadlockDetector {
    */
   private static final int DEFAULT_DEADLOCK_CHECK_PERIOD = 10000;
 
+  /**
+   * <p>Constructor for ThreadDeadlockDetector.</p>
+   */
   public ThreadDeadlockDetector() {
     this( DEFAULT_DEADLOCK_CHECK_PERIOD );
   }
 
+  /**
+   * <p>Constructor for ThreadDeadlockDetector.</p>
+   *
+   * @param deadlockCheckPeriod a int.
+   */
   public ThreadDeadlockDetector( int deadlockCheckPeriod ) {
     threadCheck.schedule( new TimerTask() {
       @Override
@@ -108,10 +118,22 @@ public class ThreadDeadlockDetector {
     throw new IllegalStateException( "Deadlocked Thread not found" );
   }
 
+  /**
+   * <p>addListener</p>
+   *
+   * @param l a {@link com.cedarsoft.lock.ThreadDeadlockDetector.Listener} object.
+   * @return a boolean.
+   */
   public boolean addListener( Listener l ) {
     return listeners.add( l );
   }
 
+  /**
+   * <p>removeListener</p>
+   *
+   * @param l a {@link com.cedarsoft.lock.ThreadDeadlockDetector.Listener} object.
+   * @return a boolean.
+   */
   public boolean removeListener( Listener l ) {
     return listeners.remove( l );
   }

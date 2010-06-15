@@ -36,7 +36,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.EventListener;
 
 /**
+ * <p>HistoryListener interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface HistoryListener<E> extends EventListener {
 
@@ -44,6 +46,7 @@ public interface HistoryListener<E> extends EventListener {
    * Is called when an entry has been added
    *
    * @param entry the entry that has been added
+   * @param <E> a E object.
    */
   void entryAdded( @NotNull E entry );
 

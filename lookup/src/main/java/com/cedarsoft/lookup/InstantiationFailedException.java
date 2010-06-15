@@ -32,20 +32,41 @@
 package com.cedarsoft.lookup;
 
 /**
+ * <p>InstantiationFailedException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InstantiationFailedException extends Exception {
+  /**
+   * <p>Constructor for InstantiationFailedException.</p>
+   */
   public InstantiationFailedException() {
   }
 
+  /**
+   * <p>Constructor for InstantiationFailedException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public InstantiationFailedException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for InstantiationFailedException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public InstantiationFailedException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for InstantiationFailedException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public InstantiationFailedException( Throwable cause ) {
     super( cause );
   }

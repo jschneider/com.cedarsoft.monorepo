@@ -34,9 +34,12 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>Abstract AbstractLookup class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractLookup implements Lookup {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public final <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException {

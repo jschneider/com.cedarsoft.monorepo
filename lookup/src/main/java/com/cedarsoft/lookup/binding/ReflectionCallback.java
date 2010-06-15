@@ -39,6 +39,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * <p>ReflectionCallback class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ReflectionCallback<T> implements LookupChangeListener<T> {
   @NotNull
@@ -46,11 +49,18 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
   @NotNull
   private final Method setter;
 
+  /**
+   * <p>Constructor for ReflectionCallback.</p>
+   *
+   * @param object a {@link java.lang.Object} object.
+   * @param setter a {@link java.lang.reflect.Method} object.
+   */
   public ReflectionCallback( @NotNull Object object, @NotNull Method setter ) {
     this.object = object;
     this.setter = setter;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
     try {

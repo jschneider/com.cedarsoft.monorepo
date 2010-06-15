@@ -36,34 +36,36 @@ import org.mockito.MockitoAnnotations;
 
 /**
  * Simple template for mockito.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class MockitoTemplate {
 
   /**
    * Stub the mocks
    *
-   * @throws Exception
+   * @throws java.lang.Exception if any.
    */
   protected abstract void stub() throws Exception;
 
   /**
    * Execute the test code / assertions
    *
-   * @throws Exception
+   * @throws java.lang.Exception if any.
    */
   protected abstract void execute() throws Exception;
 
   /**
    * Finally verify the mocks using {@link Mockito#verify(Object)}
    *
-   * @throws Exception
+   * @throws java.lang.Exception if any.
    */
   protected abstract void verifyMocks() throws Exception;
 
   /**
    * Runs the tests
    *
-   * @throws Exception
+   * @throws java.lang.Exception if any.
    */
   public void run() throws Exception {
     initMocks();
@@ -72,6 +74,9 @@ public abstract class MockitoTemplate {
     verifyMocks();
   }
 
+  /**
+   * <p>initMocks</p>
+   */
   protected void initMocks() {
     MockitoAnnotations.initMocks( this );
   }

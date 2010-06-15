@@ -40,6 +40,7 @@ import java.util.List;
  *
  * @param <C> the type of the children
  * @param <P> the type of the parent
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ChildDetector<P, C> {
   /**
@@ -47,6 +48,8 @@ public interface ChildDetector<P, C> {
    *
    * @param parent the parent
    * @return the children
+   * @param <P> a P object.
+   * @param <C> a C object.
    */
   @NotNull
   List<? extends C> findChildren( @NotNull P parent );

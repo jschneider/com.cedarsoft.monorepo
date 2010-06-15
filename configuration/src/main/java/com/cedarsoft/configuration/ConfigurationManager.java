@@ -37,6 +37,8 @@ import java.util.List;
 
 /**
  * Configuration manager that offers configurations for several modules
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ConfigurationManager {
   /**
@@ -44,6 +46,7 @@ public interface ConfigurationManager {
    *
    * @param configurationType the configuration type
    * @return the configuration
+   * @param <T> a T object.
    */
   @NotNull
   <T> T getConfiguration( @NotNull Class<T> configurationType );

@@ -45,11 +45,19 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * <p>TagListSelectionMode class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TagListSelectionMode extends DefaultListSelectionModel implements TagObservable {
   private final transient TagChangeSupport tagChangeSupport = new TagChangeSupport();
   private final transient TagListModel model;
 
+  /**
+   * <p>Constructor for TagListSelectionMode.</p>
+   *
+   * @param model a {@link com.cedarsoft.tags.ui.TagListModel} object.
+   */
   public TagListSelectionMode( @NotNull TagListModel model ) {
     this.model = model;
     addListSelectionListener( new ListSelectionListener() {
@@ -63,16 +71,19 @@ public class TagListSelectionMode extends DefaultListSelectionModel implements T
     } );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.addTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     tagChangeSupport.removeTagChangeListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Tag> getTags() {

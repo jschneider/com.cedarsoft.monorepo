@@ -42,6 +42,8 @@ import org.jetbrains.annotations.NotNull;
  * A repository is a treelike structure where informations may be saved within nodes.
  * <p/>
  * The repository stores Nodes within an absolute structure.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Repository {
   private final Node rootNode;
@@ -69,8 +71,7 @@ public class Repository {
    *
    * @param path the path (must be absolute)
    * @return the node
-   *
-   * @throws ChildNotFoundException if the path could not be resolved
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if the path could not be resolved
    */
   @NotNull
   public Node findNode( @NotNull Path path ) throws ChildNotFoundException {
@@ -91,8 +92,7 @@ public class Repository {
    * @param parent the parent node
    * @param name   the name
    * @return the found node
-   *
-   * @throws ChildNotFoundException if the child could not be found
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if the child could not be found
    */
   @NotNull
   protected Node findChild( @NotNull Node parent, @NonNls @NotNull String name ) throws ChildNotFoundException {

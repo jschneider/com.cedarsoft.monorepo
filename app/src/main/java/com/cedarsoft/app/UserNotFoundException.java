@@ -32,20 +32,41 @@
 package com.cedarsoft.app;
 
 /**
+ * <p>UserNotFoundException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class UserNotFoundException extends AuthenticationException {
+  /**
+   * <p>Constructor for UserNotFoundException.</p>
+   */
   public UserNotFoundException() {
   }
 
+  /**
+   * <p>Constructor for UserNotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public UserNotFoundException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for UserNotFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public UserNotFoundException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for UserNotFoundException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public UserNotFoundException( Throwable cause ) {
     super( cause );
   }

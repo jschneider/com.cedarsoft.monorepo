@@ -1,3 +1,4 @@
+
 /**
  * Copyright (C) cedarsoft GmbH.
  *
@@ -27,22 +28,42 @@
  * Please contact cedarsoft GmbH, 72810 Gomaringen, Germany,
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 
 package com.cedarsoft.history;
-
 public class InvalidEntryException extends RuntimeException {
+  /**
+   * <p>Constructor for InvalidEntryException.</p>
+   */
   public InvalidEntryException() {
   }
 
+  /**
+   * <p>Constructor for InvalidEntryException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public InvalidEntryException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for InvalidEntryException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public InvalidEntryException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for InvalidEntryException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public InvalidEntryException( Throwable cause ) {
     super( cause );
   }

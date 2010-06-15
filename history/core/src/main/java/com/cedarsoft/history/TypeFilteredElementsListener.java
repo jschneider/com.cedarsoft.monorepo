@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <D> the type of the ObservableCollection
  * @param <T> the type of the delegating listener
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class TypeFilteredElementsListener<D, T extends D> implements ElementListener<D> {
@@ -46,11 +47,18 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
   @NotNull
   private final Class<T> type;
 
+  /**
+   * <p>Constructor for TypeFilteredElementsListener.</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param delegate a {@link com.cedarsoft.history.ElementListener} object.
+   */
   public TypeFilteredElementsListener( @NotNull Class<T> type, @NotNull ElementListener<T> delegate ) {
     this.delegate = delegate;
     this.type = type;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementDeleted( @NotNull D element ) {
     if ( isValidType( element ) ) {
@@ -58,6 +66,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementAdded( @NotNull D element ) {
     if ( isValidType( element ) ) {
@@ -65,6 +74,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void elementChanged( @NotNull D element ) {
     if ( isValidType( element ) ) {

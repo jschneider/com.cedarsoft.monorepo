@@ -35,16 +35,24 @@ import com.cedarsoft.tags.TagProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>Abstract AbstractTagsComponentModel class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractTagsComponentModel implements TagsComponentModel {
   @NotNull
   protected final TagProvider tagProvider;
 
+  /**
+   * <p>Constructor for AbstractTagsComponentModel.</p>
+   *
+   * @param tagProvider a {@link com.cedarsoft.tags.TagProvider} object.
+   */
   protected AbstractTagsComponentModel( @NotNull TagProvider tagProvider ) {
     this.tagProvider = tagProvider;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public TagProvider getTagProvider() {

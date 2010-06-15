@@ -40,8 +40,11 @@ import javax.swing.JComponent;
  * This presenter can be used to simply show a JComponent that is contained within the lookup.
  * This is especially useful for JSeparators.
  * Don't use this for "normal" components. Create a custom presenter instead any only add the action to the struct.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JComponentPresenter implements Presenter<JComponent> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public JComponent present( @NotNull StructPart struct ) {

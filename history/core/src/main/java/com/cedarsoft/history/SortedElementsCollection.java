@@ -40,19 +40,30 @@ import java.util.List;
 
 /**
  * Holds a list of entries
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class SortedElementsCollection<E> extends ElementsCollection<E> {
   @Nullable
   private final Comparator<? super E> comparator;
 
+  /**
+   * <p>Constructor for SortedElementsCollection.</p>
+   */
   public SortedElementsCollection() {
     this( null );
   }
 
+  /**
+   * <p>Constructor for SortedElementsCollection.</p>
+   *
+   * @param comparator a {@link java.util.Comparator} object.
+   */
   public SortedElementsCollection( @Nullable Comparator<? super E> comparator ) {
     this.comparator = comparator;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElement( @NotNull E element ) {
     lock.writeLock().lock();

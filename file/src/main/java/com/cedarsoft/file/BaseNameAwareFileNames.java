@@ -41,21 +41,39 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
+ * <p>BaseNameAwareFileNames class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class BaseNameAwareFileNames {
   @NotNull
   private final SortedMap<BaseName, FileNames> entries = new TreeMap<BaseName, FileNames>();
 
+  /**
+   * <p>add</p>
+   *
+   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   */
   public void add( @NotNull FileName fileName ) {
     getEntry( fileName.getBaseName() ).add( fileName );
   }
 
+  /**
+   * <p>Getter for the field <code>entries</code>.</p>
+   *
+   * @return a {@link java.util.Collection} object.
+   */
   @NotNull
   public Collection<? extends Map.Entry<BaseName, FileNames>> getEntries() {
     return Collections.unmodifiableCollection( entries.entrySet() );
   }
 
+  /**
+   * <p>getEntry</p>
+   *
+   * @param baseName a {@link com.cedarsoft.file.BaseName} object.
+   * @return a {@link com.cedarsoft.file.FileNames} object.
+   */
   @NotNull
   public FileNames getEntry( @NotNull @NonNls BaseName baseName ) {
     FileNames found = entries.get( baseName );
@@ -68,6 +86,11 @@ public class BaseNameAwareFileNames {
     return created;
   }
 
+  /**
+   * <p>size</p>
+   *
+   * @return a int.
+   */
   public int size() {
     return entries.size();
   }

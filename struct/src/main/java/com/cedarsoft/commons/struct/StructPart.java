@@ -40,6 +40,8 @@ import java.util.List;
 
 /**
  * A struct part is a read only view. For adding/removing children a {@link Node} is needed.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface StructPart {
   /**
@@ -125,6 +127,7 @@ public interface StructPart {
    *
    * @param childName the childName of the children
    * @return the child with the given childName
+   * @throws com.cedarsoft.commons.struct.ChildNotFoundException if any.
    */
   @NotNull
   StructPart findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;

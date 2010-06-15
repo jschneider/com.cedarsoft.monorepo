@@ -35,12 +35,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Listener that may be registered at a parent
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ChildChangeListener<P> {
   /**
    * Is called when the parent has changed
    *
    * @param parent the parent
+   * @param <P> a P object.
    */
   void notifyChildrenChangedFor( @NotNull P parent );
 }

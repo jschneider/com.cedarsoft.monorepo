@@ -39,10 +39,19 @@ import java.util.List;
 
 /**
  * Supplies support for list change support.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ListChangeSupport<T> {
   private List<ListChangeListener<T>> listeners = new ArrayList<ListChangeListener<T>>();
 
+  /**
+   * <p>add</p>
+   *
+   * @param backend a {@link java.util.List} object.
+   * @param element a T object.
+   * @return a boolean.
+   */
   public boolean add( @NotNull List<T> backend, @NotNull T element ) {
     int index = backend.size();
     boolean returnValue = backend.add( element );
@@ -50,6 +59,12 @@ public class ListChangeSupport<T> {
     return returnValue;
   }
 
+  /**
+   * <p>fireAddEvent</p>
+   *
+   * @param index a int.
+   * @param element a T object.
+   */
   public void fireAddEvent( int index, @NotNull T element ) {
     if ( listeners.isEmpty() ) return;
     for ( ListChangeListener<T> listener : new ArrayList<ListChangeListener<T>>( listeners ) ) {
@@ -57,6 +72,12 @@ public class ListChangeSupport<T> {
     }
   }
 
+  /**
+   * <p>fireRemoveEvent</p>
+   *
+   * @param index a int.
+   * @param element a T object.
+   */
   public void fireRemoveEvent( int index, @NotNull T element ) {
     if ( listeners.isEmpty() ) return;
     for ( ListChangeListener<T> listener : new ArrayList<ListChangeListener<T>>( listeners ) ) {
@@ -64,6 +85,13 @@ public class ListChangeSupport<T> {
     }
   }
 
+  /**
+   * <p>remove</p>
+   *
+   * @param backend a {@link java.util.List} object.
+   * @param element a T object.
+   * @return a boolean.
+   */
   public boolean remove( @NotNull List<T> backend, @NotNull T element ) {
     int index = backend.indexOf( element );
     boolean returnValue = backend.remove( element );
@@ -71,14 +99,29 @@ public class ListChangeSupport<T> {
     return returnValue;
   }
 
+  /**
+   * <p>addListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.collection.ListChangeListener} object.
+   */
   public void addListener( @NotNull ListChangeListener<T> listener ) {
     listeners.add( listener );
   }
 
+  /**
+   * <p>removeListener</p>
+   *
+   * @param listener a {@link com.cedarsoft.collection.ListChangeListener} object.
+   */
   public void removeListener( @NotNull ListChangeListener<T> listener ) {
     listeners.remove( listener );
   }
 
+  /**
+   * <p>Getter for the field <code>listeners</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<ListChangeListener<T>> getListeners() {
     return Collections.unmodifiableList( listeners );

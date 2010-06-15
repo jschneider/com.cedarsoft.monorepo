@@ -43,7 +43,9 @@ import java.awt.Window;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * <p>SwingHelper class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class SwingHelper {
   private SwingHelper() {
@@ -68,6 +70,11 @@ public class SwingHelper {
     }
   }
 
+  /**
+   * <p>invokeAndWait</p>
+   *
+   * @param runnable a {@link java.lang.Runnable} object.
+   */
   public static void invokeAndWait( @NotNull Runnable runnable ) {
     if ( SwingUtilities.isEventDispatchThread() ) {
       runnable.run();
@@ -86,7 +93,7 @@ public class SwingHelper {
   /**
    * Liefert das Rootfenster (JFrame) für eine Komponente.
    *
-   * @param component
+   * @param component a {@link java.awt.Component} object.
    * @return das Rootfenster zu einer Komponente oder null falls die Komponente nicht zu einem
    *         JFrame gehört.
    */
@@ -141,6 +148,8 @@ public class SwingHelper {
    *
    * @param contentPane the content pane
    * @return the JFrame that is shown
+   * @throws java.lang.reflect.InvocationTargetException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   @NotNull
   public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {

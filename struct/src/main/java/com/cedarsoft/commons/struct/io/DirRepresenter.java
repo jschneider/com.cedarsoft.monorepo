@@ -50,7 +50,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * <p>DirRepresenter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DirRepresenter {
   @NotNull
@@ -58,6 +60,12 @@ public class DirRepresenter {
 
   private final boolean rootVisible;
 
+  /**
+   * <p>Constructor for DirRepresenter.</p>
+   *
+   * @param root a {@link com.cedarsoft.commons.struct.Node} object.
+   * @param rootVisible a boolean.
+   */
   public DirRepresenter( @NotNull Node root, boolean rootVisible ) {
     this.root = root;
     this.rootVisible = rootVisible;
@@ -98,6 +106,7 @@ public class DirRepresenter {
    *
    * @param baseDir     the base dir
    * @param nodeFactory the node factory used to create new nodes. The context will contain the directory (File) and the parent Node
+   * @param maxDepth a int.
    */
   public void parse( @NotNull File baseDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
     if ( !root.getChildren().isEmpty() ) {
@@ -120,6 +129,14 @@ public class DirRepresenter {
     }
   }
 
+  /**
+   * <p>parse</p>
+   *
+   * @param node a {@link com.cedarsoft.commons.struct.Node} object.
+   * @param currentDir a {@link java.io.File} object.
+   * @param nodeFactory a {@link com.cedarsoft.commons.struct.NodeFactory} object.
+   * @param maxDepth a int.
+   */
   protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
     if ( maxDepth == 0 ) {
       return;

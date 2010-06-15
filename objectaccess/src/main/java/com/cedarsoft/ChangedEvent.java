@@ -38,6 +38,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Event that represents the change of something
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ChangedEvent<T> {
   @NotNull
@@ -47,6 +49,13 @@ public class ChangedEvent<T> {
   @Nullable
   private final Object context;
 
+  /**
+   * <p>Constructor for ChangedEvent.</p>
+   *
+   * @param changedObject a T object.
+   * @param context a {@link java.lang.Object} object.
+   * @param propertiesPath a {@link java.lang.String} object.
+   */
   public ChangedEvent( @NotNull T changedObject, @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
       throw new IllegalArgumentException( "Empty properties path" );
@@ -56,6 +65,11 @@ public class ChangedEvent<T> {
     this.propertiesPath = new PropertiesPath( propertiesPath );
   }
 
+  /**
+   * <p>Getter for the field <code>propertiesPath</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.properties.PropertiesPath} object.
+   */
   @NotNull
   public PropertiesPath getPropertiesPath() {
     return propertiesPath;
@@ -81,6 +95,11 @@ public class ChangedEvent<T> {
     return changedObject;
   }
 
+  /**
+   * <p>getRootProperty</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @Deprecated
   @NotNull
   @NonNls

@@ -43,6 +43,8 @@ import java.util.List;
 
 /**
  * Represents an algorithm
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum Algorithm {
   MD5( "MD5" ),
@@ -50,6 +52,12 @@ public enum Algorithm {
   SHA256( "SHA-256", "SHA256" ),
   SHA512( "SHA-512", "SHA512" ),;
 
+  /**
+   * <p>getAlgorithm</p>
+   *
+   * @param algorithmString a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.crypt.Algorithm} object.
+   */
   @NotNull
   public static Algorithm getAlgorithm( @NotNull @NonNls String algorithmString ) {
     //First search for the exact match

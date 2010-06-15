@@ -49,8 +49,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Contains a collection of entries
  *
  * @param <E> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockable {
+  /** Constant <code>PROPERTY_ELEMENTS="elements"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_ELEMENTS = "elements";
@@ -63,17 +65,31 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   @NotNull
   protected final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
+  /**
+   * <p>Constructor for ElementsCollection.</p>
+   */
   public ElementsCollection() {
   }
 
+  /**
+   * <p>Constructor for ElementsCollection.</p>
+   *
+   * @param elements a {@link java.util.Collection} object.
+   */
   public ElementsCollection( @NotNull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
   }
 
+  /**
+   * <p>Constructor for ElementsCollection.</p>
+   *
+   * @param elements a E object.
+   */
   public ElementsCollection( @NotNull E... elements ) {
     this( Arrays.asList( elements ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   public final void add( @NotNull E element ) {
     addElement( element );
@@ -96,6 +112,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     collectionSupport.elementAdded( element, index );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commit( @NotNull E element ) {
     lock.readLock().lock();
@@ -125,16 +142,31 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  /**
+   * <p>isEmpty</p>
+   *
+   * @return a boolean.
+   */
   public boolean isEmpty() {
     return !hasElements();
   }
 
+  /**
+   * <p>addAll</p>
+   *
+   * @param additionalElements a {@link java.lang.Iterable} object.
+   */
   public void addAll( @NotNull Iterable<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
       add( element );
     }
   }
 
+  /**
+   * <p>size</p>
+   *
+   * @return a int.
+   */
   public int size() {
     lock.readLock().lock();
     try {
@@ -145,9 +177,9 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   }
 
   /**
-   * Returns all cessions
+   * {@inheritDoc}
    *
-   * @return the cessions
+   * Returns all cessions
    */
   @Override
   @NotNull
@@ -161,9 +193,9 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   }
 
   /**
-   * Sets the elements
+   * {@inheritDoc}
    *
-   * @param elements the elements
+   * Sets the elements
    */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
@@ -185,11 +217,18 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public final void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  /**
+   * <p>removeEntry</p>
+   *
+   * @param element a E object.
+   * @return a boolean.
+   */
   public boolean removeEntry( @NotNull E element ) {
     lock.writeLock().lock();
     boolean removed;
@@ -206,16 +245,24 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return removed;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.addElementListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
   }
 
+  /**
+   * <p>findElements</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> found = new ArrayList<E>();
@@ -239,8 +286,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    *
    * @param visitor the visitor that identifies the entries
    * @return the first entry
-   *
-   * @throws NoElementFoundException if no entry has been found
+   * @throws com.cedarsoft.history.NoElementFoundException if no entry has been found
    */
   @NotNull
   public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
@@ -251,6 +297,12 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return found;
   }
 
+  /**
+   * <p>findFirstElementNullable</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a E object.
+   */
   @Nullable
   public E findFirstElementNullable( @NotNull ElementVisitor<? super E> visitor ) {
     lock.readLock().lock();
@@ -266,6 +318,12 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return null;
   }
 
+  /**
+   * <p>contains</p>
+   *
+   * @param element a E object.
+   * @return a boolean.
+   */
   public boolean contains( @NotNull E element ) {
     lock.readLock().lock();
     try {
@@ -275,6 +333,13 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  /**
+   * <p>contains</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a boolean.
+   * @throws com.cedarsoft.history.NoElementFoundException if any.
+   */
   public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
     try {
@@ -317,6 +382,9 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     return removed;
   }
 
+  /**
+   * <p>clear</p>
+   */
   public void clear() {
     if ( !collectionSupport.hasListeners() ) {
       lock.writeLock().lock();
@@ -339,6 +407,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {

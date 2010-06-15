@@ -42,17 +42,31 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * <p>GuiceHelper class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class GuiceHelper {
   private GuiceHelper() {
   }
 
+  /**
+   * <p>superCollectionOf</p>
+   *
+   * @param type a {@link java.lang.reflect.Type} object.
+   * @return a {@link java.lang.reflect.ParameterizedType} object.
+   */
   @NotNull
   public static ParameterizedType superCollectionOf( @NotNull Type type ) {
     return Types.newParameterizedType( Collection.class, Types.subtypeOf( type ) );
   }
 
+  /**
+   * <p>superListOf</p>
+   *
+   * @param type a {@link java.lang.reflect.Type} object.
+   * @return a {@link java.lang.reflect.ParameterizedType} object.
+   */
   @NotNull
   public static ParameterizedType superListOf( @NotNull Type type ) {
     return Types.newParameterizedType( List.class, Types.subtypeOf( type ) );
@@ -63,6 +77,7 @@ public class GuiceHelper {
    *
    * @param binder the binder
    * @param type   the type
+   * @param <T> a T object.
    */
   public static <T> void bindWildcardCollectionForSet( @NotNull Binder binder, @NotNull Type type ) {
     binder.bind( ( Key<Collection<? extends T>> ) Key.get( GuiceHelper.superCollectionOf( type ) ) ).to( ( Key<? extends Collection<? extends T>> ) Key.get( Types.setOf( type ) ) );

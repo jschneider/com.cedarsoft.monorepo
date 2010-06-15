@@ -44,6 +44,8 @@ import java.util.Map;
 /**
  * This manager manages several {@link StringConverter}s and offers several convinience methods
  * to serialize/deserialization
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StringConverterManager {
   private final Map<Class<?>, StringConverter<?>> converterMap = new HashMap<Class<?>, StringConverter<?>>();
@@ -95,6 +97,7 @@ public class StringConverterManager {
    *
    * @param type      the type the converter can convert
    * @param converter the converter
+   * @param <T> a T object.
    */
   public <T> void addStringConverter( Class<T> type, StringConverter<T> converter ) {
     converterMap.put( type, converter );
@@ -105,6 +108,7 @@ public class StringConverterManager {
    *
    * @param type the type
    * @return the converter for this type
+   * @param <T> a T object.
    */
   @NotNull
   public <T> StringConverter<T> findConverter( @NotNull Class<? extends T> type ) {
@@ -134,6 +138,7 @@ public class StringConverterManager {
    * @param type           the type
    * @param representation the representation
    * @return the deserialized object
+   * @param <T> a T object.
    */
   @NotNull
   public <T> T deserialize( @NotNull Class<T> type, @NotNull String representation ) {

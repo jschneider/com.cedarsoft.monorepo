@@ -59,6 +59,8 @@ import java.util.List;
 
 /**
  * Persists a configuration using XStream
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XStreamPersister implements ConfigurationPersister {
   @NonNls
@@ -85,40 +87,32 @@ public class XStreamPersister implements ConfigurationPersister {
   }
 
   /**
-   * Persists the given configuration manager
+   * {@inheritDoc}
    *
-   * @param configurationManager the configuration manager
-   * @param out                  the output stream
-   * @throws IOException
+   * Persists the given configuration manager
    */
   @Override
   public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out ) throws IOException {
     persist( configurationManager, out, null );
   }
 
-  /**
-   * @param configurationManager
-   * @param out
-   * @param encoding
-   * @throws IOException
-   */
+  /** {@inheritDoc} */
   @Override
   public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     persist( configurationManager.getConfigurations(), out, encoding );
   }
 
   /**
-   * Persists the given configurations
+   * {@inheritDoc}
    *
-   * @param configurations the configurations that are persisted
-   * @param out            the writer
-   * @throws IOException
+   * Persists the given configurations
    */
   @Override
   public void persist( @NotNull List<?> configurations, @NotNull Writer out ) throws IOException {
     persist( configurations, out, null );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
     out.write( createXmlHeader( encoding ) );
@@ -126,6 +120,12 @@ public class XStreamPersister implements ConfigurationPersister {
     xStream.toXML( new Configurations( configurations ), out );
   }
 
+  /**
+   * <p>createXmlHeader</p>
+   *
+   * @param encoding a {@link java.lang.String} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   protected String createXmlHeader( @Nullable @NonNls String encoding ) {
@@ -137,12 +137,9 @@ public class XStreamPersister implements ConfigurationPersister {
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Persists the configurations for the given manager into a string
-   *
-   * @param manager the manager
-   * @return the persisted manager
-   *
-   * @throws IOException
    */
   @Deprecated
   @Override
@@ -155,10 +152,9 @@ public class XStreamPersister implements ConfigurationPersister {
   }
 
   /**
-   * Loads the configurations
+   * {@inheritDoc}
    *
-   * @param serialized the serialized configurations
-   * @return the deserialized configurations
+   * Loads the configurations
    */
   @Override
   @NotNull
@@ -167,6 +163,7 @@ public class XStreamPersister implements ConfigurationPersister {
     return load( reader );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<?> load( @NotNull File file ) throws IOException {
@@ -178,6 +175,7 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException {
@@ -185,6 +183,7 @@ public class XStreamPersister implements ConfigurationPersister {
     return load( ( Reader ) new InputStreamReader( in, charset ) );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<?> load( @NotNull Reader in ) throws IOException {
@@ -199,6 +198,7 @@ public class XStreamPersister implements ConfigurationPersister {
     return ( ( Configurations ) xStream.fromXML( br ) ).getConfigurations();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException {
     OutputStream out = new BufferedOutputStream( new FileOutputStream( file ) );
@@ -209,6 +209,7 @@ public class XStreamPersister implements ConfigurationPersister {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed

@@ -41,6 +41,7 @@ import java.util.Map;
  * given type. (A map with a class as key and value T).
  *
  * @param <T> the type that is stored within this registry
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TypeRegistry<T> {
   private final boolean searchSuperTypes;
@@ -92,6 +93,11 @@ public class TypeRegistry<T> {
    * added for all superclasses and declared interfaces.
    *
    * @param type the type
+   * @param type the type
+   * @param type the type
+   * @param type the type
+   * @param type the type
+   * @param type the type
    * @param t    the element that is stored for the given type
    */
   public void addElement( @NotNull Class<?> type, @NotNull T t ) {
@@ -103,6 +109,7 @@ public class TypeRegistry<T> {
    *
    * @param type the type
    * @return the stored element
+   * @throws java.lang.IllegalArgumentException if any.
    */
   @NotNull
   public T getElement( @NotNull Class<?> type ) throws IllegalArgumentException {

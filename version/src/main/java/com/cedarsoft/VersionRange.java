@@ -37,7 +37,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 
 /**
+ * <p>VersionRange class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class VersionRange implements Serializable {
   @NotNull
@@ -48,10 +50,24 @@ public class VersionRange implements Serializable {
   private final boolean includeLower;
   private final boolean includeUpper;
 
+  /**
+   * <p>Constructor for VersionRange.</p>
+   *
+   * @param min a {@link com.cedarsoft.Version} object.
+   * @param max a {@link com.cedarsoft.Version} object.
+   */
   public VersionRange( @NotNull Version min, @NotNull Version max ) {
     this( min, max, true, true );
   }
 
+  /**
+   * <p>Constructor for VersionRange.</p>
+   *
+   * @param min a {@link com.cedarsoft.Version} object.
+   * @param max a {@link com.cedarsoft.Version} object.
+   * @param includeLower a boolean.
+   * @param includeUpper a boolean.
+   */
   public VersionRange( @NotNull Version min, @NotNull Version max, boolean includeLower, boolean includeUpper ) {
     if ( max.smallerThan( min ) ) {
       throw new IllegalArgumentException( "Max <" + max + "> is smaller than min <" + min + ">" );
@@ -63,20 +79,40 @@ public class VersionRange implements Serializable {
     this.includeUpper = includeUpper;
   }
 
+  /**
+   * <p>Getter for the field <code>min</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getMin() {
     return min;
   }
 
+  /**
+   * <p>Getter for the field <code>max</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.Version} object.
+   */
   @NotNull
   public Version getMax() {
     return max;
   }
 
+  /**
+   * <p>isIncludeLower</p>
+   *
+   * @return a boolean.
+   */
   public boolean isIncludeLower() {
     return includeLower;
   }
 
+  /**
+   * <p>isIncludeUpper</p>
+   *
+   * @return a boolean.
+   */
   public boolean isIncludeUpper() {
     return includeUpper;
   }
@@ -108,6 +144,12 @@ public class VersionRange implements Serializable {
     }
   }
 
+  /**
+   * <p>contains</p>
+   *
+   * @param version a {@link com.cedarsoft.Version} object.
+   * @return a boolean.
+   */
   public boolean contains( @NotNull Version version ) {
     if ( includeLower ) {
       if ( !version.sameOrGreaterThan( min ) ) {
@@ -126,6 +168,12 @@ public class VersionRange implements Serializable {
     }
   }
 
+  /**
+   * <p>overlaps</p>
+   *
+   * @param other a {@link com.cedarsoft.VersionRange} object.
+   * @return a boolean.
+   */
   public boolean overlaps( @NotNull VersionRange other ) {
     boolean lower;
     if ( includeLower && other.includeUpper ) {
@@ -144,6 +192,7 @@ public class VersionRange implements Serializable {
     return lower && upper;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -157,6 +206,7 @@ public class VersionRange implements Serializable {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = min.hashCode();
@@ -164,6 +214,7 @@ public class VersionRange implements Serializable {
     return result;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   @NonNls
@@ -191,16 +242,38 @@ public class VersionRange implements Serializable {
     return builder.toString();
   }
 
+  /**
+   * <p>from</p>
+   *
+   * @param min a {@link com.cedarsoft.Version} object.
+   * @return a {@link com.cedarsoft.VersionRange.Factory} object.
+   */
   @NotNull
   public static Factory from( @NotNull Version min ) {
     return new Factory( min );
   }
 
+  /**
+   * <p>from</p>
+   *
+   * @param major a int.
+   * @param minor a int.
+   * @param build a int.
+   * @return a {@link com.cedarsoft.VersionRange.Factory} object.
+   */
   @NotNull
   public static Factory from( int major, int minor, int build ) {
     return new Factory( new Version( major, minor, build ) );
   }
 
+  /**
+   * <p>single</p>
+   *
+   * @param major a int.
+   * @param minor a int.
+   * @param build a int.
+   * @return a {@link com.cedarsoft.VersionRange} object.
+   */
   @NotNull
   public VersionRange single( int major, int minor, int build ) {
     return new VersionRange( Version.valueOf( major, minor, build ), Version.valueOf( major, minor, build ) );

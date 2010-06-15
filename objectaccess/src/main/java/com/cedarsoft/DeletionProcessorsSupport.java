@@ -39,6 +39,8 @@ import java.util.List;
 
 /**
  * Support for deletion processors.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DeletionProcessorsSupport<T> {
   @NotNull
@@ -48,21 +50,37 @@ public class DeletionProcessorsSupport<T> {
    * Sets the deletion processors
    *
    * @param deletionProcessors the processors
+   * @param <T> a T object.
    */
   public void setDeletionProcessors( @NotNull List<? extends DeletionProcessor<T>> deletionProcessors ) {
     this.deletionProcessors.clear();
     this.deletionProcessors.addAll( deletionProcessors );
   }
 
+  /**
+   * <p>Getter for the field <code>deletionProcessors</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends DeletionProcessor<T>> getDeletionProcessors() {
     return Collections.unmodifiableList( deletionProcessors );
   }
 
+  /**
+   * <p>addDeletionProcessor</p>
+   *
+   * @param processor a {@link com.cedarsoft.DeletionProcessor} object.
+   */
   public void addDeletionProcessor( @NotNull DeletionProcessor<T> processor ) {
     this.deletionProcessors.add( processor );
   }
 
+  /**
+   * <p>removeDeletionProcessor</p>
+   *
+   * @param processor a {@link com.cedarsoft.DeletionProcessor} object.
+   */
   public void removeDeletionProcessor( @NotNull DeletionProcessor<T> processor ) {
     this.deletionProcessors.remove( processor );
   }

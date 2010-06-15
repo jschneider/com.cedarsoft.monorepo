@@ -35,22 +35,40 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * <p>Abstract ElementVisitor class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class ElementVisitor<E> {
   @NotNull
   @NonNls
   private final String identifier;
 
+  /**
+   * <p>Constructor for ElementVisitor.</p>
+   *
+   * @param identifier a {@link java.lang.String} object.
+   */
   protected ElementVisitor( @NonNls @NotNull String identifier ) {
     this.identifier = identifier;
   }
 
+  /**
+   * <p>Getter for the field <code>identifier</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getIdentifier() {
     return identifier;
   }
 
+  /**
+   * <p>fits</p>
+   *
+   * @param element a E object.
+   * @return a boolean.
+   */
   public abstract boolean fits( @NotNull E element );
 }

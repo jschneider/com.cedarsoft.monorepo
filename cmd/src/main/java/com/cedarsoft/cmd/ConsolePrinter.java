@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Interface that creates messages to be printed to the console.
  * Depending on the implementation the messages may be formated differently.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ConsolePrinter {
   /**

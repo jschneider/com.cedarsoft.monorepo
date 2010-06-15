@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Binds a configuration to a bean.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ConfigurationBinding {
   private ConfigurationBinding() {
@@ -47,6 +49,7 @@ public class ConfigurationBinding {
    * @param configurationAccess the configuration access
    * @param valueModel          the value model
    * @return the configuration connector
+   * @param <T> a T object.
    */
   public static <T> ConfigurationConnector<T> bind( @NotNull ConfigurationAccess<T> configurationAccess, @NotNull ValueModel valueModel ) {
     ConfigurationConnector<T> connector = new ConfigurationConnector<T>( valueModel, configurationAccess );

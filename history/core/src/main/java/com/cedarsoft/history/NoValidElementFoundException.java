@@ -32,20 +32,41 @@
 package com.cedarsoft.history;
 
 /**
+ * <p>NoValidElementFoundException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NoValidElementFoundException extends NoElementFoundException {
+  /**
+   * <p>Constructor for NoValidElementFoundException.</p>
+   */
   public NoValidElementFoundException() {
   }
 
+  /**
+   * <p>Constructor for NoValidElementFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public NoValidElementFoundException( String message ) {
     super( message );
   }
 
+  /**
+   * <p>Constructor for NoValidElementFoundException.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NoValidElementFoundException( String message, Throwable cause ) {
     super( message, cause );
   }
 
+  /**
+   * <p>Constructor for NoValidElementFoundException.</p>
+   *
+   * @param cause a {@link java.lang.Throwable} object.
+   */
   public NoValidElementFoundException( Throwable cause ) {
     super( cause );
   }

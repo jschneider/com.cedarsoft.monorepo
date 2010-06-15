@@ -40,7 +40,9 @@ import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
 
 /**
+ * <p>ScreenSizeUtils class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ScreenSizeUtils {
   private ScreenSizeUtils() {
@@ -50,6 +52,7 @@ public class ScreenSizeUtils {
    * Returns the size of the first screen size
    *
    * @return the size of the first screen
+   * @throws java.awt.HeadlessException if any.
    */
   @Nullable
   public static Dimension getScreenSize() throws HeadlessException {

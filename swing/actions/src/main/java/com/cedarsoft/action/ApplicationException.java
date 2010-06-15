@@ -34,6 +34,8 @@ package com.cedarsoft.action;
 /**
  * This is an exception that is excepted to be thrown during application actions.
  * This exceptions is shown to the user who is responsible to fix the issues.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ApplicationException extends Exception {
 

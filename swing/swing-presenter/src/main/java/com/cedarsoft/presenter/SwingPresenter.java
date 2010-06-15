@@ -38,26 +38,44 @@ import javax.swing.JComponent;
 
 /**
  * Base class for swing presenters.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class SwingPresenter<T extends JComponent> extends AbstractPresenter<T> {
+  /** {@inheritDoc} */
   @Override
   protected void removeChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
     presentation.remove( index );
     presentation.validate();
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean addChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
     Presenter<? extends JComponent> childPresenter = getChildPresenter( child );
     return addChild( presentation, index, childPresenter.present( child ) );
   }
 
+  /**
+   * <p>addChild</p>
+   *
+   * @param presentation a T object.
+   * @param index a int.
+   * @param childPresentation a {@link javax.swing.JComponent} object.
+   * @return a boolean.
+   */
   protected boolean addChild( @NotNull T presentation, int index, @NotNull JComponent childPresentation ) {
     presentation.add( childPresentation, index );
     presentation.validate();
     return true;
   }
 
+  /**
+   * <p>getChildPresenter</p>
+   *
+   * @param child a {@link com.cedarsoft.commons.struct.StructPart} object.
+   * @return a {@link com.cedarsoft.presenter.Presenter} object.
+   */
   @NotNull
   protected abstract Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child );
 }

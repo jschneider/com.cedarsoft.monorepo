@@ -51,6 +51,8 @@ import java.security.spec.PKCS8EncodedKeySpec;
 
 /**
  * X509 Support
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class X509Support {
   @NonNls
@@ -72,7 +74,8 @@ public class X509Support {
    * Creates a new X509 support without any signing capabilities
    *
    * @param certificate the certificate
-   * @throws IOException
+   * @throws java.io.IOException if any.
+   * @throws java.security.GeneralSecurityException if any.
    */
   public X509Support( @NotNull URL certificate ) throws IOException, GeneralSecurityException {
     this( certificate, null );
@@ -83,7 +86,8 @@ public class X509Support {
    *
    * @param certificate the certificate
    * @param privateKey  the private key (if available)
-   * @throws IOException
+   * @throws java.io.IOException if any.
+   * @throws java.security.GeneralSecurityException if any.
    */
   @Inject
   public X509Support( @CertificateUrl @NotNull URL certificate, @PrivateKeyUrl @Nullable URL privateKey ) throws IOException, GeneralSecurityException {
@@ -119,6 +123,13 @@ public class X509Support {
     return privateKey != null;
   }
 
+  /**
+   * <p>cipher</p>
+   *
+   * @param plainText an array of byte.
+   * @return an array of byte.
+   * @throws java.security.GeneralSecurityException if any.
+   */
   @NotNull
   public byte[] cipher( @NotNull byte[] plainText ) throws GeneralSecurityException {
     Cipher cipher = Cipher.getInstance( RSA );
@@ -126,6 +137,13 @@ public class X509Support {
     return cipher.doFinal( plainText );
   }
 
+  /**
+   * <p>decipher</p>
+   *
+   * @param bytes an array of byte.
+   * @return an array of byte.
+   * @throws java.security.GeneralSecurityException if any.
+   */
   @NotNull
   public byte[] decipher( @NotNull byte[] bytes ) throws GeneralSecurityException {
     Cipher cipher = Cipher.getInstance( RSA );
@@ -133,6 +151,13 @@ public class X509Support {
     return cipher.doFinal( bytes );
   }
 
+  /**
+   * <p>sign</p>
+   *
+   * @param plainText an array of byte.
+   * @return a {@link com.cedarsoft.crypt.Signature} object.
+   * @throws java.security.GeneralSecurityException if any.
+   */
   @NotNull
   public com.cedarsoft.crypt.Signature sign( @NotNull byte[] plainText ) throws GeneralSecurityException {
     Signature signature = Signature.getInstance( SHA_256_WITH_RSA );
@@ -142,6 +167,14 @@ public class X509Support {
     return new com.cedarsoft.crypt.Signature( signature.sign() );
   }
 
+  /**
+   * <p>verifySignature</p>
+   *
+   * @param plainText an array of byte.
+   * @param signature a {@link com.cedarsoft.crypt.Signature} object.
+   * @return a boolean.
+   * @throws java.security.GeneralSecurityException if any.
+   */
   public boolean verifySignature( @NotNull byte[] plainText, @NotNull com.cedarsoft.crypt.Signature signature ) throws GeneralSecurityException {
     Signature sign = Signature.getInstance( SHA_256_WITH_RSA );
     sign.initVerify( certificate );
@@ -177,8 +210,8 @@ public class X509Support {
    *
    * @param privateKeyUrl the url containing the private key
    * @return the read private key
-   *
-   * @throws IOException
+   * @throws java.io.IOException if any.
+   * @throws java.security.GeneralSecurityException if any.
    */
   @Nullable
   public static RSAPrivateKey readPrivateKey( @Nullable URL privateKeyUrl ) throws IOException, GeneralSecurityException {
@@ -205,8 +238,8 @@ public class X509Support {
    *
    * @param certificateUrl the certificate url
    * @return the certificate
-   *
-   * @throws IOException
+   * @throws java.io.IOException if any.
+   * @throws java.security.GeneralSecurityException if any.
    */
   @NotNull
   public static X509Certificate readCertificate( @NotNull URL certificateUrl ) throws IOException, GeneralSecurityException {

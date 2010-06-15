@@ -41,6 +41,8 @@ import java.util.List;
 
 /**
  * Holds a list of entries. Each of the entries has an beginning and an (optional) end.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TimeElementsCollection<E extends TimeEntry> extends SortedClusteredElementsCollection<E> {
   /**
@@ -48,6 +50,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    *
    * @param entry           the entry that is added
    * @param closeOldEntries whether the old entries shall be closed
+   * @param <E> a E object.
    */
   public void addEntry( @NotNull E entry, boolean closeOldEntries ) {
     if ( closeOldEntries ) {
@@ -73,6 +76,11 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
     return elements.get( elements.size() - 1 );
   }
 
+  /**
+   * <p>getOldestEntry</p>
+   *
+   * @return a E object.
+   */
   @NotNull
   public E getOldestEntry() {
     if ( elements.isEmpty() ) {
@@ -112,6 +120,11 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
     return getYoungestEntry().getBegin().toDateTimeAtStartOfDay().toDate();
   }
 
+  /**
+   * <p>getFirstEntryDate</p>
+   *
+   * @return a {@link java.util.Date} object.
+   */
   @Nullable
   public Date getFirstEntryDate() {
     if ( !hasElements() ) {

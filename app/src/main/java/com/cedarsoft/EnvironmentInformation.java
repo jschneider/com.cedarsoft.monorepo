@@ -38,12 +38,19 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
+ * Offers information about the environment
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class EnvironmentInformation {
   private EnvironmentInformation() {
   }
 
+  /**
+   * Returns the host name
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public static String getHostName() {
@@ -54,6 +61,11 @@ public class EnvironmentInformation {
     }
   }
 
+  /**
+   * Returns the current user name
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public static String getUserName() {

@@ -42,10 +42,13 @@ import java.io.IOException;
 
 /**
  * Offers access to the application home.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @NotNull
   private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
+  /** Constant <code>SUFFIX_SANDBOX="-sandbox"</code> */
   @NotNull
   @NonNls
   public static final String SUFFIX_SANDBOX = "-sandbox";
@@ -57,17 +60,31 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * Create a new application home access
    *
    * @param applicationName the name of the application
-   * @throws IOException if an io exception occures
+   * @throws java.io.IOException if an io exception occures
    */
   @Inject
   public DefaultApplicationHomeAccess( @ApplicationName @NotNull @NonNls String applicationName ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + applicationName ), applicationName );
   }
 
+  /**
+   * <p>Constructor for DefaultApplicationHomeAccess.</p>
+   *
+   * @param applicationName a {@link java.lang.String} object.
+   * @param sandbox a boolean.
+   * @throws java.io.IOException if any.
+   */
   public DefaultApplicationHomeAccess( @NotNull @NonNls String applicationName, boolean sandbox ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + getApplicationDirName( applicationName, sandbox ) ), applicationName );
   }
 
+  /**
+   * <p>getApplicationDirName</p>
+   *
+   * @param applicationName a {@link java.lang.String} object.
+   * @param sandbox a boolean.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public static String getApplicationDirName( @NotNull @NonNls String applicationName, boolean sandbox ) {
@@ -83,7 +100,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    *
    * @param applicationHome the application home
    * @param applicationName the application name
-   * @throws IOException
+   * @throws java.io.IOException if any.
    */
   public DefaultApplicationHomeAccess( @NotNull File applicationHome, @NotNull @NonNls String applicationName ) throws IOException {
     if ( applicationName.length() < 3 ) {
@@ -102,9 +119,9 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   }
 
   /**
-   * The application name
+   * {@inheritDoc}
    *
-   * @return the application name
+   * The application name
    */
   @Override
   @NotNull
@@ -113,9 +130,9 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   }
 
   /**
-   * The application home dir
+   * {@inheritDoc}
    *
-   * @return the application home dir
+   * The application home dir
    */
   @Override
   @NotNull

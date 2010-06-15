@@ -44,8 +44,11 @@ import java.util.Properties;
  * Staged property placeholder configurer.
  * The system property {@link #STAGE_KEY} is used as prefix for the given properties file.
  * If the property is not set, the default value "dev" is used.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
+  /** Constant <code>STAGE_KEY="stage"</code> */
   @NotNull
   @NonNls
   public static final String STAGE_KEY = "stage";
@@ -53,6 +56,11 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   @NonNls
   private String actualStage;
 
+  /**
+   * <p>Getter for the field <code>actualStage</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getActualStage() {
@@ -65,10 +73,16 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
     return actualStage;
   }
 
+  /**
+   * <p>Setter for the field <code>actualStage</code>.</p>
+   *
+   * @param actualStage a {@link java.lang.String} object.
+   */
   public void setActualStage( @NotNull @NonNls String actualStage ) {
     this.actualStage = actualStage;
   }
 
+  /** {@inheritDoc} */
   @Override
   protected void processProperties( @NotNull ConfigurableListableBeanFactory beanFactoryToProcess, @NotNull Properties props ) throws BeansException {
     super.processProperties( beanFactoryToProcess, filter( props ) );

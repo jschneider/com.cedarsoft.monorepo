@@ -41,6 +41,7 @@ import java.util.List;
  *
  * @param <C> the type of the children
  * @param <P> the type of the parent
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C> {
   @NotNull
@@ -50,6 +51,8 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
    * Notifies the listeners that the children have been changed for the given parent
    *
    * @param parent the parent
+   * @param <P> a P object.
+   * @param <C> a C object.
    */
   protected void notifyChildrenChangedFor( @NotNull P parent ) {
     for ( ChildChangeListener<P> listener : new ArrayList<ChildChangeListener<P>>( listeners ) ) {
@@ -57,11 +60,13 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChangeListener( @NotNull ChildChangeListener<P> changeListener ) {
     listeners.add( changeListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeChangeListener( @NotNull ChildChangeListener<P> changeListener ) {
     listeners.remove( changeListener );

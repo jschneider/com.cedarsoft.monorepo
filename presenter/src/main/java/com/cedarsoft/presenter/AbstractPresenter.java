@@ -45,6 +45,7 @@ import java.util.Set;
  * An abstract implementation of {@link Presenter}.
  *
  * @param <T> the type of the presentation that is created
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractPresenter<T> implements Presenter<T> {
   /**
@@ -54,10 +55,9 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
   private Set<StructureListener> structureListeners = new HashSet<StructureListener>();
 
   /**
-   * Creates the presentation for the given struct. This method should not be overridden.
+   * {@inheritDoc}
    *
-   * @param struct the struct
-   * @return the presentation that has been created
+   * Creates the presentation for the given struct. This method should not be overridden.
    */
   @Override
   @NotNull
@@ -107,7 +107,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    *
    * @param presentation the presentation
    * @param struct       the struct
-   * @param lookup
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
    */
   protected abstract void bind( @NotNull T presentation, @NotNull StructPart struct, @NotNull Lookup lookup );
 

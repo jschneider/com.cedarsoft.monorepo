@@ -36,7 +36,9 @@ import org.jetbrains.annotations.Nullable;
 import org.joda.time.LocalDate;
 
 /**
+ * <p>Abstract AbstractTimeEntry class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class AbstractTimeEntry implements TimeEntry {
   private Long id;
@@ -52,36 +54,51 @@ public abstract class AbstractTimeEntry implements TimeEntry {
   protected AbstractTimeEntry() {
   }
 
+  /**
+   * <p>Constructor for AbstractTimeEntry.</p>
+   *
+   * @param begin a {@link org.joda.time.LocalDate} object.
+   */
   protected AbstractTimeEntry( @NotNull LocalDate begin ) {
     this.begin = begin;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public LocalDate getBegin() {
     return begin;
   }
 
+  /**
+   * <p>Setter for the field <code>begin</code>.</p>
+   *
+   * @param begin a {@link org.joda.time.LocalDate} object.
+   */
   public void setBegin( @NotNull LocalDate begin ) {
     this.begin = begin;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setEnd( @Nullable LocalDate end ) {
     this.end = end;
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public LocalDate getEnd() {
     return end;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasEnd() {
     return end != null;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isActiveAt( @NotNull LocalDate date ) {
     if ( !getBegin().isBefore( date ) ) {
@@ -96,11 +113,13 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public int compareTo( TimeEntry o ) {
     return getBegin().compareTo( o.getBegin() );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -114,6 +133,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result;

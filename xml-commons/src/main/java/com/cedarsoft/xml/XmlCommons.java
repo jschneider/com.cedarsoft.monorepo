@@ -60,11 +60,19 @@ import java.io.Writer;
 
 /**
  * Common xml methods
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlCommons {
   private XmlCommons() {
   }
 
+  /**
+   * <p>format</p>
+   *
+   * @param xml a {@link java.lang.String} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public static String format( @NotNull @NonNls String xml ) {
@@ -87,7 +95,7 @@ public class XmlCommons {
    *
    * @param file     the file
    * @param document the document
-   * @throws IOException if an io exception occures
+   * @throws java.io.IOException if an io exception occures
    */
   public static void writeXml( @NotNull File file, @NotNull Document document ) throws IOException {
     Writer writer = null;
@@ -101,6 +109,11 @@ public class XmlCommons {
     }
   }
 
+  /**
+   * <p>getDocumentBuilder</p>
+   *
+   * @return a {@link javax.xml.parsers.DocumentBuilder} object.
+   */
   @NotNull
   public static DocumentBuilder getDocumentBuilder() {
     try {
@@ -112,6 +125,12 @@ public class XmlCommons {
     }
   }
 
+  /**
+   * <p>out</p>
+   *
+   * @param document a {@link org.w3c.dom.Document} object.
+   * @param out a {@link java.io.OutputStream} object.
+   */
   public static void out( @NotNull org.w3c.dom.Document document, @NotNull OutputStream out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
@@ -120,6 +139,12 @@ public class XmlCommons {
     }
   }
 
+  /**
+   * <p>out</p>
+   *
+   * @param document a {@link org.w3c.dom.Document} object.
+   * @param out a {@link java.io.Writer} object.
+   */
   public static void out( @NotNull org.w3c.dom.Document document, @NotNull Writer out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
@@ -128,6 +153,12 @@ public class XmlCommons {
     }
   }
 
+  /**
+   * <p>toJDom</p>
+   *
+   * @param document a {@link org.w3c.dom.Document} object.
+   * @return a {@link org.jdom.Document} object.
+   */
   @NotNull
   public static Document toJDom( @NotNull org.w3c.dom.Document document ) {
     try {
@@ -139,16 +170,38 @@ public class XmlCommons {
     }
   }
 
+  /**
+   * <p>parse</p>
+   *
+   * @param bytes an array of byte.
+   * @return a {@link org.w3c.dom.Document} object.
+   * @throws java.io.IOException if any.
+   * @throws org.xml.sax.SAXException if any.
+   */
   @NotNull
   public static org.w3c.dom.Document parse( @NotNull byte[] bytes ) throws IOException, SAXException {
     return parse( new ByteArrayInputStream( bytes ) );
   }
 
+  /**
+   * <p>parse</p>
+   *
+   * @param in a {@link java.io.InputStream} object.
+   * @return a {@link org.w3c.dom.Document} object.
+   * @throws java.io.IOException if any.
+   * @throws org.xml.sax.SAXException if any.
+   */
   @NotNull
   public static org.w3c.dom.Document parse( @NotNull InputStream in ) throws IOException, SAXException {
     return getDocumentBuilder().parse( in );
   }
 
+  /**
+   * <p>toString</p>
+   *
+   * @param document a {@link org.w3c.dom.Document} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public static String toString( org.w3c.dom.Document document ) {
     StringWriter stringWriter = new StringWriter();

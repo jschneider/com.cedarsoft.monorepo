@@ -41,15 +41,20 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * <p>PropertiesPath class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PropertiesPath {
+  /** Constant <code>PROPERTY_REPRESENTATION="presentation"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_REPRESENTATION = "presentation";
+  /** Constant <code>PROPERTY_ROOT_PROPERTY="rootProperty"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_ROOT_PROPERTY = "rootProperty";
+  /** Constant <code>PROPERTY_ELEMENTS="elements"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_ELEMENTS = "elements";
@@ -65,10 +70,20 @@ public class PropertiesPath {
   protected PropertiesPath() {
   }
 
+  /**
+   * <p>Constructor for PropertiesPath.</p>
+   *
+   * @param elements a {@link java.lang.String} object.
+   */
   public PropertiesPath( @NotNull @NonNls String... elements ) {
     this( Arrays.asList( elements ) );
   }
 
+  /**
+   * <p>Constructor for PropertiesPath.</p>
+   *
+   * @param elements a {@link java.util.List} object.
+   */
   public PropertiesPath( @NotNull @NonNls List<String> elements ) {
     if ( elements.isEmpty() ) {
       throw new IllegalArgumentException( "Need at least one element in path" );
@@ -76,22 +91,38 @@ public class PropertiesPath {
     this.elements.addAll( elements );
   }
 
+  /**
+   * <p>getRootProperty</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getRootProperty() {
     return elements.get( 0 );
   }
 
+  /**
+   * <p>Getter for the field <code>elements</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<String> getElements() {
     return Collections.unmodifiableList( elements );
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return getPresentation();
   }
 
+  /**
+   * <p>getPresentation</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getPresentation() {

@@ -41,14 +41,18 @@ import javax.swing.JMenu;
 /**
  * Creates a JMenu.
  * Looks for {@link JMenuItemPresenter} for each of its children.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implements JMenuPresenter {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public JMenu createPresentation() {
     return new JMenu();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
@@ -75,6 +79,7 @@ public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implem
     throw new IllegalStateException( "No suiteable child presenter found" );
   }
 
+  /** {@inheritDoc} */
   @Override
   protected boolean shallAddChildren() {
     return true;

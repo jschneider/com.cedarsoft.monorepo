@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Implementing classes may be availableTags
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Taggable extends TagObservable {
   /**

@@ -40,8 +40,16 @@ import java.beans.PropertyChangeEvent;
 
 /**
  * Compares property changes
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PropertyChangeEventMatcher implements IArgumentMatcher {
+  /**
+   * <p>create</p>
+   *
+   * @param event a {@link java.beans.PropertyChangeEvent} object.
+   * @return a {@link java.beans.PropertyChangeEvent} object.
+   */
   @Nullable
   public static PropertyChangeEvent create( @Nullable PropertyChangeEvent event ) {
     EasyMock.reportMatcher( new PropertyChangeEventMatcher( event ) );
@@ -51,10 +59,16 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
   @Nullable
   private final PropertyChangeEvent expected;
 
+  /**
+   * <p>Constructor for PropertyChangeEventMatcher.</p>
+   *
+   * @param expected a {@link java.beans.PropertyChangeEvent} object.
+   */
   public PropertyChangeEventMatcher( @Nullable PropertyChangeEvent expected ) {
     this.expected = expected;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean matches( Object argument ) {
     if ( ObjectUtils.equals( expected, argument ) ) {
@@ -75,6 +89,7 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
       ObjectUtils.equals( actual.getOldValue(), expected.getOldValue() );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void appendTo( StringBuffer buffer ) {
     buffer.append( "PropertyChangeEvent did not fit: Expected <" + expected + ">" );

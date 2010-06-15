@@ -43,6 +43,11 @@ package com.cedarsoft.id;
 public class NumberIdGenerator {
   private static int lastGivenId;
 
+  /**
+   * <p>createId</p>
+   *
+   * @return a int.
+   */
   public static synchronized int createId() {
     //todo check overflow
     return lastGivenId++;

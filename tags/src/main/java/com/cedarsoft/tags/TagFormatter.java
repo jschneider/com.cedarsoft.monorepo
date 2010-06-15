@@ -37,6 +37,8 @@ import java.util.List;
 
 /**
  * Formats several tags
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TagFormatter {
   /**
@@ -48,6 +50,12 @@ public interface TagFormatter {
   @NotNull
   String formatTags( @NotNull List<? extends Tag> tags );
 
+  /**
+   * <p>format</p>
+   *
+   * @param tagged a {@link com.cedarsoft.tags.Tagged} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   String format( @NotNull Tagged tagged );
 }

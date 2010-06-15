@@ -40,6 +40,8 @@ import java.util.Map;
 
 /**
  * This is a utily class that creates several lookups for special purposes
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Lookups {
   private static final Lookup EMPTY_LOOKUP = new EmptyLookup();
@@ -47,16 +49,36 @@ public class Lookups {
   private Lookups() {
   }
 
+  /**
+   * <p>instantiator</p>
+   *
+   * @param type a {@link java.lang.Class} object.
+   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater} object.
+   * @return a {@link com.cedarsoft.lookup.InstantiatorLookup} object.
+   */
   @NotNull
   public static <T> InstantiatorLookup<T> instantiator( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
     return new InstantiatorLookup<T>( type, instantiater );
   }
 
+  /**
+   * <p>instantiator</p>
+   *
+   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater.Typed} object.
+   * @return a {@link com.cedarsoft.lookup.InstantiatorLookup} object.
+   */
   @NotNull
   public static <T> InstantiatorLookup<T> instantiator( @NotNull Instantiater.Typed<T> instantiater ) {
     return new InstantiatorLookup<T>( instantiater );
   }
 
+  /**
+   * <p>merge</p>
+   *
+   * @param first a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param second a {@link com.cedarsoft.lookup.Lookup} object.
+   * @return a {@link com.cedarsoft.lookup.MergingLookup} object.
+   */
   @NotNull
   public static MergingLookup merge( @NotNull Lookup first, @NotNull Lookup second ) {
     return new MergingLookup( first, second );
@@ -90,11 +112,18 @@ public class Lookups {
    * @param type  the type
    * @param value the value
    * @return the singleton lookup
+   * @param <T> a T object.
    */
   public static <T> Lookup singletonLookup( @NotNull Class<T> type, @NotNull T value ) {
     return new SingletonLookup<T>( type, value );
   }
 
+  /**
+   * <p>mappedLookup</p>
+   *
+   * @param values a {@link java.util.Map} object.
+   * @return a {@link com.cedarsoft.lookup.MappedLookup} object.
+   */
   @NotNull
   public static MappedLookup mappedLookup( @NotNull Map<Class<?>, ?> values ) {
     return new MappedLookup( values );

@@ -39,7 +39,9 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * <p>NonTransientHistoryListenerSupport class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NonTransientHistoryListenerSupport<E> {
   @NotNull
@@ -48,6 +50,11 @@ public class NonTransientHistoryListenerSupport<E> {
   @NotNull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
+  /**
+   * <p>addHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
@@ -57,6 +64,11 @@ public class NonTransientHistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>removeHistoryListener</p>
+   *
+   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
@@ -66,6 +78,11 @@ public class NonTransientHistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryChanged</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryChanged( @NotNull E entry ) {
     lock.readLock().lock();
     List<HistoryListener<E>> copy;
@@ -79,6 +96,11 @@ public class NonTransientHistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryAdded</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryAdded( @NotNull E entry ) {
     lock.readLock().lock();
     List<HistoryListener<E>> copy;
@@ -92,6 +114,11 @@ public class NonTransientHistoryListenerSupport<E> {
     }
   }
 
+  /**
+   * <p>notifyEntryRemoved</p>
+   *
+   * @param entry a E object.
+   */
   public void notifyEntryRemoved( @NotNull E entry ) {
     lock.readLock().lock();
     List<HistoryListener<E>> copy;

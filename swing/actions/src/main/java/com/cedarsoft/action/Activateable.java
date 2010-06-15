@@ -37,9 +37,14 @@ import org.jetbrains.annotations.NotNull;
 import java.beans.PropertyChangeListener;
 
 /**
+ * Interface for activatable classes.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Activateable {
+  /**
+   * Constant <code>PROPERTY_ACTIVE="active"</code>
+   */
   @NotNull
   @NonNls
   String PROPERTY_ACTIVE = "active";
@@ -51,11 +56,33 @@ public interface Activateable {
    */
   boolean isActive();
 
+  /**
+   * Adds a property change listener
+   *
+   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   */
   void addPropertyChangeListener( @NotNull PropertyChangeListener listener );
 
+  /**
+   * Removes a property change listener
+   *
+   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   */
   void removePropertyChangeListener( @NotNull PropertyChangeListener listener );
 
+  /**
+   * Adds a pcs listener
+   *
+   * @param propertyName a {@link java.lang.String} object.
+   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   */
   void addPropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
 
+  /**
+   * remove the pcs listener
+   *
+   * @param propertyName a {@link java.lang.String} object.
+   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   */
   void removePropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
 }

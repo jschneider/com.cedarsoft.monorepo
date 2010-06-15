@@ -42,7 +42,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * <p>FileType class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileType {
 
@@ -55,10 +57,24 @@ public class FileType {
   private final String id;
   private final boolean dependentType;
 
+  /**
+   * <p>Constructor for FileType.</p>
+   *
+   * @param id a {@link java.lang.String} object.
+   * @param dependentType a boolean.
+   * @param extensions a {@link com.cedarsoft.file.Extension} object.
+   */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
     this( id, dependentType, Arrays.<Extension>asList( extensions ) );
   }
 
+  /**
+   * <p>Constructor for FileType.</p>
+   *
+   * @param id a {@link java.lang.String} object.
+   * @param dependentType a boolean.
+   * @param extensions a {@link java.util.Collection} object.
+   */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
     this.dependentType = dependentType;
     assert !extensions.isEmpty();
@@ -66,11 +82,22 @@ public class FileType {
     this.extensions.addAll( extensions );
   }
 
+  /**
+   * <p>Getter for the field <code>extensions</code>.</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends Extension> getExtensions() {
     return Collections.unmodifiableList( extensions );
   }
 
+  /**
+   * <p>matches</p>
+   *
+   * @param fileName a {@link java.lang.String} object.
+   * @return a boolean.
+   */
   public boolean matches( @NotNull @NonNls String fileName ) {
     for ( @NotNull @NonNls Extension ex : extensions ) {
       if ( fileName.toLowerCase().endsWith( ex.getCombined() ) ) {
@@ -80,10 +107,21 @@ public class FileType {
     return false;
   }
 
+  /**
+   * <p>matches</p>
+   *
+   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   * @return a boolean.
+   */
   public boolean matches( @NotNull @NonNls FileName fileName ) {
     return matches( fileName.getName() );
   }
 
+  /**
+   * <p>getDefaultExtension</p>
+   *
+   * @return a {@link com.cedarsoft.file.Extension} object.
+   */
   @NotNull
   @NonNls
   public Extension getDefaultExtension() {
@@ -93,6 +131,11 @@ public class FileType {
     return extensions.get( 0 );
   }
 
+  /**
+   * <p>Getter for the field <code>id</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   public String getId() {
     return id;
@@ -108,11 +151,23 @@ public class FileType {
     return dependentType;
   }
 
+  /**
+   * <p>getFileName</p>
+   *
+   * @param file a {@link java.io.File} object.
+   * @return a {@link com.cedarsoft.file.FileName} object.
+   */
   @NotNull
   public FileName getFileName( @NonNls @NotNull File file ) {
     return getFileName( file.getName() );
   }
 
+  /**
+   * <p>getFileName</p>
+   *
+   * @param fileName a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.file.FileName} object.
+   */
   @NotNull
   public FileName getFileName( @NonNls @NotNull String fileName ) {
     @NonNls
@@ -139,18 +194,31 @@ public class FileType {
     return new FileName( bestBase, bestExtension );
   }
 
+  /**
+   * <p>getExtension</p>
+   *
+   * @param fileName a {@link java.lang.String} object.
+   * @return a {@link com.cedarsoft.file.Extension} object.
+   */
   @NotNull
   @NonNls
   public Extension getExtension( @NonNls @NotNull String fileName ) {
     return getFileName( fileName ).getExtension();
   }
 
+  /**
+   * <p>getBaseName</p>
+   *
+   * @param fileName a {@link java.lang.String} object.
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getBaseName( @NonNls @NotNull String fileName ) {
     return getFileName( fileName ).getBaseName().getName();
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return "FileType{" +
@@ -158,10 +226,17 @@ public class FileType {
       '}';
   }
 
+  /**
+   * <p>isDefaultExtension</p>
+   *
+   * @param extension a {@link com.cedarsoft.file.Extension} object.
+   * @return a boolean.
+   */
   public boolean isDefaultExtension( @NotNull Extension extension ) {
     return getDefaultExtension().equals( extension );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -176,6 +251,7 @@ public class FileType {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = extensions.hashCode();

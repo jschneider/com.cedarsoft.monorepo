@@ -37,12 +37,15 @@ import org.jetbrains.annotations.NotNull;
  * This is a special LookupChangeListener that knows the type it is listening to.
  * This interface may be used to bind the listener to the {@link Lookup}
  * more easily using the method {@link Lookup#bind(TypedLookupChangeListener)}
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface TypedLookupChangeListener<T> extends LookupChangeListener<T> {
   /**
    * Returns the type this callback is bound to
    *
    * @return the type
+   * @param <T> a T object.
    */
   @NotNull
   Class<T> getType();

@@ -37,9 +37,23 @@ import java.util.EventListener;
 
 /**
  * Is notified whenever a list changes its content.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ListChangeListener<T> extends EventListener {
+  /**
+   * <p>elementAdded</p>
+   *
+   * @param index a int.
+   * @param element a T object.
+   */
   void elementAdded( int index, @NotNull T element );
 
+  /**
+   * <p>elementRemoved</p>
+   *
+   * @param index a int.
+   * @param element a T object.
+   */
   void elementRemoved( int index, @NotNull T element );
 }

@@ -36,6 +36,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * This event is thrown whenever a lookup has been changed.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LookupChangeEvent<T> {
   @NotNull
@@ -47,6 +49,14 @@ public class LookupChangeEvent<T> {
   @Nullable
   private final T newValue;
 
+  /**
+   * <p>Constructor for LookupChangeEvent.</p>
+   *
+   * @param source a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param type a {@link java.lang.Class} object.
+   * @param oldValue a T object.
+   * @param newValue a T object.
+   */
   public LookupChangeEvent( @NotNull Lookup source, @NotNull Class<? super T> type, @Nullable T oldValue, @Nullable T newValue ) {
     this.source = source;
     this.type = type;
@@ -54,21 +64,41 @@ public class LookupChangeEvent<T> {
     this.newValue = newValue;
   }
 
+  /**
+   * <p>Getter for the field <code>type</code>.</p>
+   *
+   * @return a {@link java.lang.Class} object.
+   */
   @NotNull
   public Class<? super T> getType() {
     return type;
   }
 
+  /**
+   * <p>Getter for the field <code>oldValue</code>.</p>
+   *
+   * @return a T object.
+   */
   @Nullable
   public T getOldValue() {
     return oldValue;
   }
 
+  /**
+   * <p>Getter for the field <code>newValue</code>.</p>
+   *
+   * @return a T object.
+   */
   @Nullable
   public T getNewValue() {
     return newValue;
   }
 
+  /**
+   * <p>Getter for the field <code>source</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   @NotNull
   public Lookup getSource() {
     return source;

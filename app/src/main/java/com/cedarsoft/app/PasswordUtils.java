@@ -39,12 +39,20 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * <p>PasswordUtils class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PasswordUtils {
   private PasswordUtils() {
   }
 
+  /**
+   * <p>calculateMD5Hash</p>
+   *
+   * @param password a {@link java.lang.String} object.
+   * @return an array of byte.
+   */
   @NotNull
   public static byte[] calculateMD5Hash( @NotNull @NonNls String password ) {
     byte[] bytes = password.getBytes();
@@ -56,6 +64,13 @@ public class PasswordUtils {
     }
   }
 
+  /**
+   * <p>hasExpectedHash</p>
+   *
+   * @param password a {@link java.lang.String} object.
+   * @param expectedHash an array of byte.
+   * @return a boolean.
+   */
   public static boolean hasExpectedHash( @NotNull @NonNls String password, @Nullable byte[] expectedHash ) {
     if ( expectedHash == null ) {
       return false;
@@ -70,6 +85,13 @@ public class PasswordUtils {
     }
   }
 
+  /**
+   * <p>validatePasswordHash</p>
+   *
+   * @param expected an array of byte.
+   * @param actual an array of byte.
+   * @throws com.cedarsoft.app.InvalidPasswordException if any.
+   */
   public static void validatePasswordHash( @Nullable byte[] expected, @Nullable byte[] actual ) throws InvalidPasswordException {
     if ( expected == null || actual == null ) {
       throw new InvalidPasswordException();

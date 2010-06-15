@@ -36,8 +36,11 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Default implementation of {@link Renderer} that simply returns
  * {@link String#valueOf(Object)}.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultRenderer implements Renderer<Object, Object> {
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public String render( @NotNull Object object, Object context ) {

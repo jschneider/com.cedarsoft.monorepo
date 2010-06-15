@@ -37,6 +37,8 @@ import java.io.File;
 
 /**
  * Offers access to the application home dir.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ApplicationHomeAccess {
   /**

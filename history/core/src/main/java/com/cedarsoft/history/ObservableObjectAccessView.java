@@ -40,6 +40,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * A view on an ObservableObjectAccess that shows only some elements of the base object access...
  * This can be used to create an object access for only a sub type of the elements contains within an object access.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ObservableObjectAccessView<E> implements ClusteredObservableObjectAccess<E> {
   @NotNull
@@ -48,6 +50,12 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
   @NotNull
   private final ClusteredElementsCollection<E> view = new ClusteredElementsCollection<E>();
 
+  /**
+   * <p>Constructor for ObservableObjectAccessView.</p>
+   *
+   * @param base a {@link com.cedarsoft.history.ClusteredObservableObjectAccess} object.
+   * @param bridge a {@link com.cedarsoft.history.ObservableObjectAccessView.Bridge} object.
+   */
   public ObservableObjectAccessView( @NotNull ClusteredObservableObjectAccess<? super E> base, @NotNull final Bridge<E> bridge ) {
     this.base = base;
 
@@ -86,53 +94,63 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
     }, false );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commit( @NotNull E element ) {
     base.commit( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void remove( @NotNull E element ) {
     base.remove( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void add( @NotNull E element ) {
     base.add( element );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     base.setElements( elements );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends E> getElements() {
     return view.getElements();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.addElementListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     view.addElementListener( listener, isTransient );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     view.removeElementListener( listener );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {
     return view.getLock();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {

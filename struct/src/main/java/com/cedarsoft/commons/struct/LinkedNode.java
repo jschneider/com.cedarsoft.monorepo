@@ -40,38 +40,50 @@ import java.util.List;
 
 /**
  * This node is linked to other nodes.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LinkedNode implements Node {
   @NotNull
   private final Node source;
   private Node parent;
 
+  /**
+   * <p>Constructor for LinkedNode.</p>
+   *
+   * @param source a {@link com.cedarsoft.commons.struct.Node} object.
+   */
   public LinkedNode( @NotNull Node source ) {
     this.source = source;
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Node getParent() {
     return parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setParent( @Nullable Node parent ) {
     this.parent = parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasParent() {
     return parent != null;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Lookup getLookup() {
     return source.getLookup();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   @NonNls
@@ -79,59 +91,70 @@ public class LinkedNode implements Node {
     return source.getName();
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Node> getChildren() {
     return source.getChildren();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( int index, @NotNull Node child ) {
     source.addChild( index, child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( @NotNull Node child ) {
     source.addChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( @NotNull Node child ) {
     source.detachChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( int index ) {
     source.detachChild( index );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     return source.findChild( childName );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Path getPath() {
     return Path.buildPath( this );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isChild( @NotNull StructPart child ) {
     return source.isChild( child );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
     source.addStructureListener( structureListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
     source.addStructureListenerWeak( structureListener );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     source.removeStructureListener( structureListener );

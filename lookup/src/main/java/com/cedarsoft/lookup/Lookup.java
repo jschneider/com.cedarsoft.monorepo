@@ -38,6 +38,8 @@ import java.util.Map;
 
 /**
  * A lookup offers a simple way to get "extensions" of the current object.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Lookup {
   /**
@@ -45,6 +47,7 @@ public interface Lookup {
    *
    * @param type the type
    * @return the lookup object or null if nothing has been found
+   * @param <T> a T object.
    */
   @Nullable
   <T> T lookup( @NotNull Class<T> type );
@@ -54,8 +57,8 @@ public interface Lookup {
    *
    * @param type the type
    * @return the looked up object
-   *
-   * @throws IllegalArgumentException if no object has been found
+   * @throws java.lang.IllegalArgumentException if no object has been found
+   * @param <T> a T object.
    */
   @NotNull
   <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException;
@@ -66,8 +69,7 @@ public interface Lookup {
    * If no exception is thrown the map must contain every possible lookup object.
    *
    * @return a  map containing the available lookup objects.
-   *
-   * @throws UnsupportedOperationException if this method is not supported
+   * @throws java.lang.UnsupportedOperationException if this method is not supported
    */
   @NotNull
   Map<Class<?>, Object> lookups();
@@ -77,6 +79,8 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param type a {@link java.lang.Class} object.
+   * @param <T> a T object.
    */
   <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
@@ -86,6 +90,7 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param <T> a T object.
    */
   <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener );
 
@@ -95,6 +100,8 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param type a {@link java.lang.Class} object.
+   * @param <T> a T object.
    */
   <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
@@ -105,6 +112,7 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
+   * @param <T> a T object.
    */
   <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener );
 
@@ -120,6 +128,7 @@ public interface Lookup {
    *
    * @param type                 the type
    * @param lookupChangeListener the listener
+   * @param <T> a T object.
    */
   <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
@@ -135,6 +144,7 @@ public interface Lookup {
    *
    * @param type                 the type
    * @param lookupChangeListener the listener
+   * @param <T> a T object.
    */
   <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 
@@ -150,6 +160,7 @@ public interface Lookup {
    *
    * @param type                 the type of the listener
    * @param lookupChangeListener the listener
+   * @param <T> a T object.
    */
   <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
 }

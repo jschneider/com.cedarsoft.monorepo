@@ -34,7 +34,10 @@ package com.cedarsoft.history;
 import com.cedarsoft.CommitableObjectAccess;
 
 /**
+ * <p>ObservableObjectAccess interface.</p>
+ *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface ObservableObjectAccess<T> extends CommitableObjectAccess<T>, ObservableCollection<T> {
 }

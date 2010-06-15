@@ -35,6 +35,7 @@ package com.cedarsoft;
  * Object access that offers a commit method
  *
  * @param <T> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface CommitableObjectAccess<T> extends WriteableObjectAccess<T>, ObjectCommit<T> {
 }

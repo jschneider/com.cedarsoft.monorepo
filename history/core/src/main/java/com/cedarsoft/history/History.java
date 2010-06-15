@@ -39,11 +39,15 @@ import java.util.List;
 
 /**
  * A history contains several entries - each with a validation date
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E> {
+  /** Constant <code>PROPERTY_ENTRIES="entries"</code> */
   @NotNull
   @NonNls
   String PROPERTY_ENTRIES = "entries";
+  /** Constant <code>PROPERTY_FIRST_ENTRIES="firstEntry"</code> */
   @NotNull
   @NonNls
   String PROPERTY_FIRST_ENTRIES = "firstEntry";
@@ -52,14 +56,16 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Returns all entries of the history
    *
    * @return the entries
+   * @param <E> a E object.
    */
   @NotNull
   List<? extends E> getEntries();
 
   /**
    * Whether the history contains any entries
+   *
+   * @return a boolean.
    */
-
   boolean hasEntries();
 
   /**
@@ -80,8 +86,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Returns the latest entry
    *
    * @return the latest entry
-   *
-   * @throws NoValidElementFoundException
+   * @throws com.cedarsoft.history.NoValidElementFoundException if any.
    */
   @NotNull
   E getLatestEntry() throws NoValidElementFoundException;
@@ -93,6 +98,11 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    */
   void addHistoryListener( @NotNull HistoryListener<E> historyListener );
 
+  /**
+   * <p>getHistoryListeners</p>
+   *
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   List<? extends HistoryListener<E>> getHistoryListeners();
 
@@ -115,6 +125,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Removes the entry
    *
    * @param entry the entry that is removed
+   * @return a boolean.
    */
   boolean removeEntry( @NotNull E entry );
 
@@ -122,8 +133,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * Returns the first entry
    *
    * @return the first entry
-   *
-   * @throws NoValidElementFoundException if no entry is available within this history
+   * @throws com.cedarsoft.history.NoValidElementFoundException if no entry is available within this history
    */
   @NotNull
   E getFirstEntry() throws NoValidElementFoundException;

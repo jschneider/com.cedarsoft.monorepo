@@ -41,6 +41,8 @@ import java.util.List;
 
 /**
  * Represents a leaf. This node cannot have any children.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LeafNode implements Node {
   @NotNull
@@ -51,17 +53,25 @@ public class LeafNode implements Node {
   @Nullable
   private Node parent;
 
+  /**
+   * <p>Constructor for LeafNode.</p>
+   *
+   * @param name a {@link java.lang.String} object.
+   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   */
   public LeafNode( @NotNull String name, @NotNull Lookup lookup ) {
     this.name = name;
     this.lookup = lookup;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Lookup getLookup() {
     return lookup;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   @NonNls
@@ -69,72 +79,86 @@ public class LeafNode implements Node {
     return name;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends Node> getChildren() {
     return Collections.emptyList();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListener( @NotNull StructureListener structureListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( @NotNull Node child ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addChild( int index, @NotNull Node child ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( @NotNull Node child ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void detachChild( int index ) {
     throw new UnsupportedOperationException();
   }
 
+  /** {@inheritDoc} */
   @Override
   @Nullable
   public Node getParent() {
     return parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setParent( @Nullable Node parent ) {
     this.parent = parent;
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public Path getPath() {
     return Path.buildPath( this );
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean isChild( @NotNull StructPart child ) {
     return false;
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean hasParent() {
     return parent != null;

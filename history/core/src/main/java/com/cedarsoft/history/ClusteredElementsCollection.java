@@ -46,8 +46,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Contains a collection of entries
  *
  * @param <E> the type
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredElementsCollection<E> implements ClusteredObservableObjectAccess<E> {
+  /** Constant <code>PROPERTY_ELEMENTS="elements"</code> */
   @NotNull
   @NonNls
   public static final String PROPERTY_ELEMENTS = "elements";
@@ -62,18 +64,32 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   @NotNull
   protected final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
+  /**
+   * <p>Constructor for ClusteredElementsCollection.</p>
+   */
   public ClusteredElementsCollection() {
   }
 
+  /**
+   * <p>Constructor for ClusteredElementsCollection.</p>
+   *
+   * @param elements a {@link java.util.Collection} object.
+   */
   public ClusteredElementsCollection( @NotNull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
   }
 
+  /** {@inheritDoc} */
   @Override
   public final void add( @NotNull E element ) {
     addElement( element );
   }
 
+  /**
+   * <p>Getter for the field <code>collectionSupport</code>.</p>
+   *
+   * @return a {@link com.cedarsoft.history.ClusteredCollectionSupport} object.
+   */
   @Deprecated
   @NotNull
   public ClusteredCollectionSupport<E> getCollectionSupport() {
@@ -97,6 +113,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     collectionSupport.elementAdded( element, index );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void commit( @NotNull E element ) {
 
@@ -125,16 +142,31 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  /**
+   * <p>isEmpty</p>
+   *
+   * @return a boolean.
+   */
   public boolean isEmpty() {
     return !hasElements();
   }
 
+  /**
+   * <p>addAll</p>
+   *
+   * @param additionalElements a {@link java.util.List} object.
+   */
   public void addAll( @NotNull List<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
       add( element );
     }
   }
 
+  /**
+   * <p>size</p>
+   *
+   * @return a int.
+   */
   public int size() {
     lock.readLock().lock();
     try {
@@ -145,9 +177,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   }
 
   /**
-   * Returns all cessions
+   * {@inheritDoc}
    *
-   * @return the cessions
+   * Returns all cessions
    */
   @Override
   @NotNull
@@ -160,6 +192,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public void setElements( @NotNull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
@@ -180,11 +213,18 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   public final void remove( @NotNull E element ) {
     removeEntry( element );
   }
 
+  /**
+   * <p>removeEntry</p>
+   *
+   * @param element a E object.
+   * @return a boolean.
+   */
   public boolean removeEntry( @NotNull E element ) {
     lock.writeLock().lock();
     boolean removed;
@@ -200,27 +240,37 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return removed;
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     addElementListener( listener, true );
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return collectionSupport.getTransientElementListeners();
   }
 
+  /** {@inheritDoc} */
   @Override
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
     collectionSupport.addElementListener( listener, isTransient );
   }
 
+  /** {@inheritDoc} */
   @Override
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
   }
 
+  /**
+   * <p>findElements</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a {@link java.util.List} object.
+   */
   @NotNull
   public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
     List<E> found = new ArrayList<E>();
@@ -244,8 +294,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param visitor the visitor that identifies the entries
    * @return the first entry
-   *
-   * @throws NoElementFoundException if no entry has been found
+   * @throws com.cedarsoft.history.NoElementFoundException if no entry has been found
    */
   @NotNull
   public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
@@ -256,6 +305,12 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return found;
   }
 
+  /**
+   * <p>findFirstElementNullable</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a E object.
+   */
   @Nullable
   public E findFirstElementNullable( @NotNull ElementVisitor<? super E> visitor ) {
     lock.readLock().lock();
@@ -271,6 +326,12 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return null;
   }
 
+  /**
+   * <p>contains</p>
+   *
+   * @param element a E object.
+   * @return a boolean.
+   */
   public boolean contains( @NotNull E element ) {
     lock.readLock().lock();
     try {
@@ -280,6 +341,13 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  /**
+   * <p>contains</p>
+   *
+   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @return a boolean.
+   * @throws com.cedarsoft.history.NoElementFoundException if any.
+   */
   public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
     try {
@@ -298,6 +366,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * Removes the entries
    *
    * @param visitor the visitor that describes the entries
+   * @return a {@link java.util.List} object.
    */
   @NotNull
   public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {
@@ -318,6 +387,9 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     return removed;
   }
 
+  /**
+   * <p>clear</p>
+   */
   public void clear() {
     if ( !collectionSupport.hasListeners() ) {
       lock.writeLock().lock();
@@ -340,6 +412,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
     }
   }
 
+  /** {@inheritDoc} */
   @Override
   @NotNull
   public ReentrantReadWriteLock getLock() {

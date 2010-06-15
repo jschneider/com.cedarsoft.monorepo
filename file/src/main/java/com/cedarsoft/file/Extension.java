@@ -36,10 +36,14 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * An extension of a file
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Extension {
+  /** Constant <code>DEFAULT_DELIMITER="."</code> */
   @NonNls
   public static final String DEFAULT_DELIMITER = ".";
+  /** Constant <code>NONE</code> */
   @NotNull
   public static final Extension NONE = new Extension( "", "" );
 
@@ -50,38 +54,66 @@ public class Extension {
   @NonNls
   private final String extension;
 
+  /**
+   * <p>Constructor for Extension.</p>
+   *
+   * @param extension a {@link java.lang.String} object.
+   */
   public Extension( @NotNull @NonNls String extension ) {
     this( DEFAULT_DELIMITER, extension );
   }
 
+  /**
+   * <p>Constructor for Extension.</p>
+   *
+   * @param delimiter a {@link java.lang.String} object.
+   * @param extension a {@link java.lang.String} object.
+   */
   public Extension( @NonNls @NotNull String delimiter, @NotNull @NonNls String extension ) {
     this.delimiter = delimiter;
     this.extension = extension;
   }
 
+  /**
+   * <p>Getter for the field <code>delimiter</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getDelimiter() {
     return delimiter;
   }
 
+  /**
+   * <p>Getter for the field <code>extension</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getExtension() {
     return extension;
   }
 
+  /**
+   * <p>getCombined</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   @NotNull
   @NonNls
   public String getCombined() {
     return delimiter + extension;
   }
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     return getCombined();
   }
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -95,6 +127,7 @@ public class Extension {
     return true;
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     int result = delimiter.hashCode();

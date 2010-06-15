@@ -32,16 +32,26 @@
 package com.cedarsoft;
 
 /**
+ * <p>Sleep class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Sleep {
   private Sleep() {
   }
 
+  /**
+   * <p>forever</p>
+   */
   public static void forever() {
     now( Long.MAX_VALUE );
   }
 
+  /**
+   * <p>now</p>
+   *
+   * @param millis a long.
+   */
   public static void now( long millis ) {
     try {
       Thread.sleep( millis );

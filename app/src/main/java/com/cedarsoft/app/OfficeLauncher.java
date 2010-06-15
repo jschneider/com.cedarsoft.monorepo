@@ -40,7 +40,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p>OfficeLauncher class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class OfficeLauncher {
   @NonNls
@@ -73,11 +75,25 @@ public class OfficeLauncher {
     spreadsheetBins.add( EXCEL_WINDOWS );
   }
 
+  /**
+   * <p>openWriter</p>
+   *
+   * @param file a {@link java.io.File} object.
+   * @return a {@link java.lang.Process} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Process openWriter( @NotNull File file ) throws IOException {
     return openFile( writerBins, file );
   }
 
+  /**
+   * <p>openSpreadsheet</p>
+   *
+   * @param file a {@link java.io.File} object.
+   * @return a {@link java.lang.Process} object.
+   * @throws java.io.IOException if any.
+   */
   @NotNull
   public static Process openSpreadsheet( @NotNull File file ) throws IOException {
     return openFile( spreadsheetBins, file );
