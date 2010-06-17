@@ -26,5 +26,11 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava-io</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-xjc</artifactId>
+      <version>2.2</version>
+    </dependency>
   </dependencies>
 </project>
