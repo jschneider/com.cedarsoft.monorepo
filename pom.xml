@@ -138,6 +138,11 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>codegen</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>objectaccess</artifactId>
         <version>${pom.version}</version>
       </dependency>
@@ -458,6 +463,7 @@
     <module>app</module>
     <module>cluster</module>
     <module>cmd</module>
+    <module>codegen</module>
     <module>collections</module>
     <module>commons</module>
     <module>concurrent</module>
