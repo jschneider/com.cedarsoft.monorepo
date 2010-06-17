@@ -48,6 +48,11 @@ public interface FieldDeclarationInfo extends FieldTypeInformation, FieldInfo {
   @NotNull
   FieldDeclaration getFieldDeclaration();
 
+  /**
+   * Returns the getter declaration
+   *
+   * @return the getter
+   */
   @NotNull
   @NonNls
   MethodDeclaration getGetterDeclaration();
