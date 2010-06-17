@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NotNull;

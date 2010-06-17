@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
@@ -37,36 +37,23 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * Contains informations about a field and its initialization
  */
-public class DefaultFieldDeclarationInfo extends DefaultFieldTypeInformation implements FieldDeclarationInfo {
+public interface FieldDeclarationInfo extends FieldTypeInformation, FieldInfo {
+  /**
+   * Returns the the field declaration
+   *
+   * @return the field declaration
+   */
   @NotNull
-  protected final FieldDeclaration fieldDeclaration;
-  @NotNull
-  protected final MethodDeclaration getterDeclaration;
+  FieldDeclaration getFieldDeclaration();
 
-  public DefaultFieldDeclarationInfo( @NotNull MethodDeclaration getterDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
-    super( fieldDeclaration.getType() );
-    this.getterDeclaration = getterDeclaration;
-    this.fieldDeclaration = fieldDeclaration;
-  }
-
-  @Override
+  /**
+   * Returns the getter declaration
+   *
+   * @return the getter
+   */
   @NotNull
-  public FieldDeclaration getFieldDeclaration() {
-    return fieldDeclaration;
-  }
-
-  @NotNull
-  @Override
-  public MethodDeclaration getGetterDeclaration() {
-    return getterDeclaration;
-  }
-
-  @NotNull
-  @Override
   @NonNls
-  public String getSimpleName() {
-    return fieldDeclaration.getSimpleName();
-  }
+  MethodDeclaration getGetterDeclaration();
 }

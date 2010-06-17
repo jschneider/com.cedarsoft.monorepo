@@ -29,46 +29,44 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.model;
 
-import com.sun.mirror.type.TypeMirror;
+import com.sun.mirror.declaration.FieldDeclaration;
+import com.sun.mirror.declaration.MethodDeclaration;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class DefaultFieldTypeInformation implements FieldTypeInformation {
+public class DefaultFieldDeclarationInfo extends DefaultFieldTypeInformation implements FieldDeclarationInfo {
   @NotNull
-  private final TypeMirror typeMirror;
-
-  public DefaultFieldTypeInformation( @NotNull TypeMirror typeMirror ) {
-    this.typeMirror = typeMirror;
-  }
-
+  protected final FieldDeclaration fieldDeclaration;
   @NotNull
-  public TypeMirror getTypeMirror() {
-    return typeMirror;
-  }
+  protected final MethodDeclaration getterDeclaration;
 
-  @NotNull
-  @Override
-  public TypeMirror getType() {
-    return typeMirror;
-  }
-
-  @Override
-  public boolean isType( @NotNull Class<?> type ) {
-    return TypeUtils.isType( getType(), type );
-  }
-
-  @Override
-  public boolean isCollectionType() {
-    return TypeUtils.isCollectionType( getType() );
+  public DefaultFieldDeclarationInfo( @NotNull MethodDeclaration getterDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
+    super( fieldDeclaration.getType() );
+    this.getterDeclaration = getterDeclaration;
+    this.fieldDeclaration = fieldDeclaration;
   }
 
   @Override
   @NotNull
-  public TypeMirror getCollectionParam() {
-    return TypeUtils.getCollectionParam( getType() );
+  public FieldDeclaration getFieldDeclaration() {
+    return fieldDeclaration;
+  }
+
+  @NotNull
+  @Override
+  public MethodDeclaration getGetterDeclaration() {
+    return getterDeclaration;
+  }
+
+  @NotNull
+  @Override
+  @NonNls
+  public String getSimpleName() {
+    return fieldDeclaration.getSimpleName();
   }
 }

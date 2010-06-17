@@ -29,21 +29,47 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.model;
 
-import org.jetbrains.annotations.NonNls;
+import com.cedarsoft.codegen.TypeUtils;
+import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public interface FieldInfo {
-  /**
-   * Returns the simple name of the field
-   *
-   * @return the simple name of the field
-   */
+public class DefaultFieldTypeInformation implements FieldTypeInformation {
   @NotNull
-  @NonNls
-  String getSimpleName();
+  private final TypeMirror typeMirror;
+
+  public DefaultFieldTypeInformation( @NotNull TypeMirror typeMirror ) {
+    this.typeMirror = typeMirror;
+  }
+
+  @NotNull
+  public TypeMirror getTypeMirror() {
+    return typeMirror;
+  }
+
+  @NotNull
+  @Override
+  public TypeMirror getType() {
+    return typeMirror;
+  }
+
+  @Override
+  public boolean isType( @NotNull Class<?> type ) {
+    return TypeUtils.isType( getType(), type );
+  }
+
+  @Override
+  public boolean isCollectionType() {
+    return TypeUtils.isCollectionType( getType() );
+  }
+
+  @Override
+  @NotNull
+  public TypeMirror getCollectionParam() {
+    return TypeUtils.getCollectionParam( getType() );
+  }
 }
