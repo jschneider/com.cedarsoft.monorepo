@@ -31,4 +31,16 @@
       <artifactId>jaxb-xjc</artifactId>
     </dependency>
   </dependencies>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>clirr-maven-plugin</artifactId>
+        <configuration>
+          <comparisonVersion>2.0.5-SNAPSHOT</comparisonVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
