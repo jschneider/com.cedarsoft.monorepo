@@ -31,21 +31,12 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.codemodel.JFieldVar;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
-  }
-
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
-  }
+public interface Decorator {
+  void decorateConstant( @NotNull CodeGenerator<?> codeGenerator, @NotNull JFieldVar constant );
 }

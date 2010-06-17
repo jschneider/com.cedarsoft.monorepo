@@ -31,21 +31,42 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.mirror.declaration.FieldDeclaration;
+import com.sun.mirror.declaration.MethodDeclaration;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
+public class DefaultFieldDeclarationInfo extends DefaultFieldTypeInformation implements FieldDeclarationInfo {
+  @NotNull
+  protected final FieldDeclaration fieldDeclaration;
+  @NotNull
+  protected final MethodDeclaration getterDeclaration;
+
+  public DefaultFieldDeclarationInfo( @NotNull MethodDeclaration getterDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
+    super( fieldDeclaration.getType() );
+    this.getterDeclaration = getterDeclaration;
+    this.fieldDeclaration = fieldDeclaration;
   }
 
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
+  @Override
+  @NotNull
+  public FieldDeclaration getFieldDeclaration() {
+    return fieldDeclaration;
+  }
+
+  @NotNull
+  @Override
+  public MethodDeclaration getGetterDeclaration() {
+    return getterDeclaration;
+  }
+
+  @NotNull
+  @Override
+  @NonNls
+  public String getSimpleName() {
+    return fieldDeclaration.getSimpleName();
   }
 }

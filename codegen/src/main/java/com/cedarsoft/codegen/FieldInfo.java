@@ -31,21 +31,19 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
-  }
-
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
-  }
+public interface FieldInfo {
+  /**
+   * Returns the simple name of the field
+   *
+   * @return the simple name of the field
+   */
+  @NotNull
+  @NonNls
+  String getSimpleName();
 }

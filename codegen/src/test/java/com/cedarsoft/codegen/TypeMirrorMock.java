@@ -31,21 +31,28 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.mirror.type.ReferenceType;
+import com.sun.mirror.util.TypeVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
+public class TypeMirrorMock implements ReferenceType {
+  @NotNull
+  private final Class<?> type;
+
+  public TypeMirrorMock( @NotNull Class<?> type ) {
+    this.type = type;
   }
 
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
+  @Override
+  public void accept( TypeVisitor v ) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public String toString() {
+    return type.getName();
   }
 }

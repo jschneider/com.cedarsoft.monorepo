@@ -31,21 +31,24 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.mirror.declaration.FieldDeclaration;
+import com.sun.mirror.declaration.MethodDeclaration;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * Contains informations about a field and its initialization
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
-  }
+public interface FieldDeclarationInfo extends FieldTypeInformation, FieldInfo {
+  /**
+   * Returns the the field declaration
+   *
+   * @return the field declaration
+   */
+  @NotNull
+  FieldDeclaration getFieldDeclaration();
 
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
-  }
+  @NotNull
+  @NonNls
+  MethodDeclaration getGetterDeclaration();
 }

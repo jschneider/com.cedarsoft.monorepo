@@ -31,21 +31,44 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.mirror.type.TypeMirror;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
+public class DefaultFieldTypeInformation implements FieldTypeInformation {
+  @NotNull
+  private final TypeMirror typeMirror;
+
+  public DefaultFieldTypeInformation( @NotNull TypeMirror typeMirror ) {
+    this.typeMirror = typeMirror;
   }
 
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
+  @NotNull
+  public TypeMirror getTypeMirror() {
+    return typeMirror;
+  }
+
+  @NotNull
+  @Override
+  public TypeMirror getType() {
+    return typeMirror;
+  }
+
+  @Override
+  public boolean isType( @NotNull Class<?> type ) {
+    return TypeUtils.isType( getType(), type );
+  }
+
+  @Override
+  public boolean isCollectionType() {
+    return TypeUtils.isCollectionType( getType() );
+  }
+
+  @Override
+  @NotNull
+  public TypeMirror getCollectionParam() {
+    return TypeUtils.getCollectionParam( getType() );
   }
 }

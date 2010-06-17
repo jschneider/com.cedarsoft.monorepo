@@ -31,21 +31,37 @@
 
 package com.cedarsoft.codegen;
 
-import org.testng.annotations.*;
-
-import static org.testng.Assert.*;
+import com.sun.mirror.declaration.ConstructorDeclaration;
+import com.sun.mirror.declaration.ParameterDeclaration;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @BeforeMethod
-  protected void setUp() throws Exception {
+public class ConstructorCallInfo {
+  @NotNull
+  private final ConstructorDeclaration constructorDeclaration;
+  private final int index;
+  @NotNull
+  private final ParameterDeclaration parameterDeclaration;
+
+  public ConstructorCallInfo( @NotNull ConstructorDeclaration constructorDeclaration, int index, @NotNull ParameterDeclaration parameterDeclaration ) {
+    this.constructorDeclaration = constructorDeclaration;
+    this.index = index;
+    this.parameterDeclaration = parameterDeclaration;
   }
 
-  @Test
-  public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
+  @NotNull
+  public ConstructorDeclaration getConstructorDeclaration() {
+    return constructorDeclaration;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  @NotNull
+  public ParameterDeclaration getParameterDeclaration() {
+    return parameterDeclaration;
   }
 }
