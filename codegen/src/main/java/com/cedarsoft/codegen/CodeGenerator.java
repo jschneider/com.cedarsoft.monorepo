@@ -39,6 +39,8 @@ import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMod;
+import com.sun.mirror.type.TypeMirror;
+import com.sun.mirror.type.WildcardType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -139,7 +141,31 @@ public class CodeGenerator<T extends DecisionCallback> {
   }
 
   @NotNull
+  public JClass ref( @NotNull @NonNls Class<?> type ) {
+    return getClassRefSupport().ref( type );
+  }
+
+  @NotNull
   public JInvocation createGetterInvocation( @NotNull JExpression object, @NotNull FieldDeclarationInfo fieldInfo ) {
     return object.invoke( fieldInfo.getGetterDeclaration().getSimpleName() );
+  }
+
+  @NotNull
+  public JClass ref( @NotNull TypeMirror type ) {
+    if ( TypeUtils.isCollectionType( type ) ) {
+      TypeMirror collectionParamType = TypeUtils.getCollectionParam( type );
+
+      JClass collectionParam;
+      if ( collectionParamType instanceof WildcardType ) {
+        collectionParam = ref( TypeUtils.getErasure( collectionParamType ).toString() ).wildcard();
+      } else {
+        collectionParam = ref( collectionParamType.toString() );
+      }
+
+      JClass collection = ref( TypeUtils.getErasure( type ) );
+      return collection.narrow( collectionParam );
+    }
+
+    return ref( TypeUtils.getErasure( type ).toString() );
   }
 }

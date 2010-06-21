@@ -31,42 +31,39 @@
 
 package com.cedarsoft.codegen;
 
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 
 /**
  *
  */
-public class NamingSupport {
-  private NamingSupport() {
+public class GeneratorConfiguration {
+  @NotNull
+  private final File domainSourceFile;
+  @NotNull
+  private final File destination;
+  @NotNull
+  private final File testDestination;
 
+  public GeneratorConfiguration( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination ) {
+    this.domainSourceFile = domainSourceFile;
+    this.destination = destination;
+    this.testDestination = testDestination;
   }
 
   @NotNull
-  @NonNls
-  public static String createXmlElementName( @NotNull @NonNls String simpleClassName ) {
-    return simpleClassName.toLowerCase();
+  public File getDomainSourceFile() {
+    return domainSourceFile;
   }
 
   @NotNull
-  @NonNls
-  public static String createVarName( @NotNull @NonNls String simpleClassName ) {
-    if ( simpleClassName.length() == 0 ) {
-      throw new IllegalArgumentException( "Invalid class name: Is empty" );
-    }
-
-    return simpleClassName.substring( 0, 1 ).toLowerCase() + simpleClassName.substring( 1 );
+  public File getDestination() {
+    return destination;
   }
 
   @NotNull
-  @NonNls
-  public static String createSetter( @NotNull @NonNls String fieldName ) {
-    return "set" + fieldName.substring( 0, 1 ).toUpperCase() + fieldName.substring( 1 );
-  }
-
-  @NotNull
-  @NonNls
-  public static String createGetterName( @NotNull @NonNls String simpleName ) {
-    return "get" + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
+  public File getTestDestination() {
+    return testDestination;
   }
 }
