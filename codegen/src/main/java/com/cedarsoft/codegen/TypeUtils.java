@@ -31,7 +31,6 @@
 
 package com.cedarsoft.codegen;
 
-import com.cedarsoft.codegen.NamingSupport;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
@@ -45,6 +44,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Offers utility methods related to types
@@ -69,10 +69,12 @@ public class TypeUtils {
     TYPES.set( types );
   }
 
+  @NotNull
   public static TypeMirror getErasure( @NotNull TypeMirror type ) {
     return getTypes().getErasure( type );
   }
 
+  @NotNull
   public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) {
     if ( !( type instanceof DeclaredType ) ) {
       throw new IllegalStateException( "Invalid type: " + type );
@@ -83,12 +85,12 @@ public class TypeUtils {
       throw new IllegalStateException( "No declaration found for <" + type + ">" );
     }
 
-    if ( declaredType.getQualifiedName().equals( Collection.class.getName() ) ) {
+    if ( isCollection( declaredType.getQualifiedName() ) ) {
       return getFirstTypeParam( ( DeclaredType ) type );
     }
 
     for ( InterfaceType interfaceType : declaredType.getSuperinterfaces() ) {
-      if ( interfaceType.getDeclaration().getQualifiedName().equals( Collection.class.getName() ) ) {
+      if ( isCollection( interfaceType.getDeclaration().getQualifiedName() ) ) {
         return getFirstTypeParam( ( DeclaredType ) type );
       }
     }
@@ -113,6 +115,29 @@ public class TypeUtils {
     } catch ( IllegalStateException ignore ) {
       return false;
     }
+  }
+
+  public static boolean isSetType( @NotNull TypeMirror type ) {
+    if ( !( type instanceof DeclaredType ) ) {
+      return false;
+    }
+
+    TypeDeclaration declaredType = ( ( DeclaredType ) type ).getDeclaration();
+    if ( declaredType == null ) {
+      throw new IllegalStateException( "No declaration found for <" + type + ">" );
+    }
+
+    if ( isSet( declaredType.getQualifiedName() ) ) {
+      return true;
+    }
+
+    for ( InterfaceType interfaceType : declaredType.getSuperinterfaces() ) {
+      if ( isSet( interfaceType.getDeclaration().getQualifiedName() ) ) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public static boolean isAssignable( TypeMirror t1, TypeMirror t2 ) {
@@ -204,5 +229,13 @@ public class TypeUtils {
     @NonNls
     String typeAsName = type.getName();
     return typeMirror.toString().equals( typeAsName );
+  }
+
+  private static boolean isCollection( @NotNull @NonNls String qualifiedName ) {
+    return qualifiedName.equals( Collection.class.getName() );
+  }
+
+  private static boolean isSet( @NotNull @NonNls String qualifiedName ) {
+    return qualifiedName.equals( Set.class.getName() );
   }
 }

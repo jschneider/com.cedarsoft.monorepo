@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.mock.ReferenceTypeMock;
 import com.cedarsoft.codegen.model.DefaultFieldTypeInformation;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JExpr;
@@ -75,7 +76,7 @@ public class ParseExpressionFactoryTest {
   }
 
   private void checkForType( @NotNull Class<?> type, @NotNull @NonNls String expected ) {
-    JExpression parseExpression = factory.createParseExpression( JExpr.invoke( "aCall" ), new DefaultFieldTypeInformation( new TypeMirrorMock( type ) ) );
+    JExpression parseExpression = factory.createParseExpression( JExpr.invoke( "aCall" ), new DefaultFieldTypeInformation( new ReferenceTypeMock( type ) ) );
 
     StringWriter out = new StringWriter();
     parseExpression.generate( new JFormatter( out ) );

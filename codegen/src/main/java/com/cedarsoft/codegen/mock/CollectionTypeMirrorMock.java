@@ -29,73 +29,59 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.mock;
 
 import com.sun.mirror.declaration.TypeDeclaration;
-import com.sun.mirror.declaration.TypeParameterDeclaration;
-import com.sun.mirror.type.ArrayType;
 import com.sun.mirror.type.DeclaredType;
-import com.sun.mirror.type.PrimitiveType;
-import com.sun.mirror.type.ReferenceType;
+import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
-import com.sun.mirror.type.TypeVariable;
-import com.sun.mirror.type.VoidType;
-import com.sun.mirror.type.WildcardType;
-import com.sun.mirror.util.Types;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 /**
  *
  */
-public class TypesMock implements Types {
+public class CollectionTypeMirrorMock extends ReferenceTypeMock implements DeclaredType {
+  @NotNull
+  private final Class<?> collectionType;
+
+  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType, @NotNull Class<?> type ) {
+    super( type );
+    this.collectionType = collectionType;
+  }
+
   @Override
-  public boolean isSubtype( TypeMirror t1, TypeMirror t2 ) {
+  public TypeDeclaration getDeclaration() {
+    return new TypeDeclarationMock( collectionType );
+  }
+
+  @Override
+  public DeclaredType getContainingType() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public boolean isAssignable( TypeMirror t1, TypeMirror t2 ) {
-    throw new UnsupportedOperationException();
+  public Collection<TypeMirror> getActualTypeArguments() {
+    return Arrays.<TypeMirror>asList( new ClassTypeMock( type ) );
   }
 
   @Override
-  public TypeMirror getErasure( TypeMirror t ) {
+  public Collection<InterfaceType> getSuperinterfaces() {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public PrimitiveType getPrimitiveType( PrimitiveType.Kind kind ) {
-    throw new UnsupportedOperationException();
+  @NotNull
+  public Class<?> getCollectionType() {
+    return collectionType;
   }
 
   @Override
-  public VoidType getVoidType() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public ArrayType getArrayType( TypeMirror componentType ) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public TypeVariable getTypeVariable( TypeParameterDeclaration tparam ) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public WildcardType getWildcardType( Collection<ReferenceType> upperBounds, Collection<ReferenceType> lowerBounds ) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeclaredType getDeclaredType( TypeDeclaration decl, TypeMirror... typeArgs ) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeclaredType getDeclaredType( DeclaredType containing, TypeDeclaration decl, TypeMirror... typeArgs ) {
-    throw new UnsupportedOperationException();
+  public String toString() {
+    return "CollectionTypeMirrorMock{" +
+      "type=" + type +
+      "collectionType=" + collectionType +
+      '}';
   }
 }

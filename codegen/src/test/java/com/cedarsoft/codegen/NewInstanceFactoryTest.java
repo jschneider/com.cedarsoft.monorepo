@@ -31,8 +31,12 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
+import com.cedarsoft.codegen.mock.ReferenceTypeMock;
+import com.cedarsoft.codegen.mock.TypesMock;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JFormatter;
+import com.sun.mirror.type.ReferenceType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.*;
@@ -40,8 +44,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
+import java.util.Set;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -93,9 +99,21 @@ public class NewInstanceFactoryTest {
     assertFactory( Object.class, "new java.lang.Object()" );
   }
 
+  @Test
+  public void testList() throws IOException {
+    TypeUtils.setTypes( new TypesMock() );
+    assertFactory( new CollectionTypeMirrorMock( List.class, String.class ), "java.util.Arrays.asList(\"daValue\")" );
+    assertFactory( new CollectionTypeMirrorMock( Set.class, String.class ), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+  }
+
   private void assertFactory( @NotNull Class<?> type, @NotNull @NonNls String expected ) throws IOException {
+    ReferenceType referenceType = new ReferenceTypeMock( type );
+    assertFactory( referenceType, expected );
+  }
+
+  private void assertFactory( @NotNull ReferenceType referenceType, @NotNull @NonNls String expected ) {
     initializeFormatter();
-    factory.create( new TypeMirrorMock( type ), "daValue" ).generate( formatter );
+    factory.create( referenceType, "daValue" ).generate( formatter );
     assertEquals( out.toString().trim(), expected.trim() );
   }
 }

@@ -34,11 +34,13 @@ package com.cedarsoft.codegen;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JExpression;
+import com.sun.codemodel.JInvocation;
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  *
@@ -113,7 +115,12 @@ public class NewInstanceFactory {
       TypeMirror collectionParamType = TypeUtils.getCollectionParam( type );
       JExpression expression = create( TypeUtils.getErasure( collectionParamType ), simpleName );
 
-      return classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
+      JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
+      if ( TypeUtils.isSetType( type ) ) {
+        return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
+      } else {
+        return listInvocation;
+      }
     } else {
       return JExpr._new( classRefSupport.ref( type.toString() ) );
     }

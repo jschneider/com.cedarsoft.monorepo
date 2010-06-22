@@ -29,30 +29,16 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.mock;
 
-import com.sun.mirror.type.ReferenceType;
-import com.sun.mirror.util.TypeVisitor;
+import com.sun.mirror.declaration.InterfaceDeclaration;
 import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
-public class TypeMirrorMock implements ReferenceType {
-  @NotNull
-  private final Class<?> type;
-
-  public TypeMirrorMock( @NotNull Class<?> type ) {
-    this.type = type;
-  }
-
-  @Override
-  public void accept( TypeVisitor v ) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String toString() {
-    return type.getName();
+public class InterfaceDeclarationMock extends TypeDeclarationMock implements InterfaceDeclaration {
+  public InterfaceDeclarationMock( @NotNull Class<?> type ) {
+    super( type );
   }
 }
