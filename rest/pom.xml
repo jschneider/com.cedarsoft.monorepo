@@ -17,6 +17,7 @@
     <module>model</module>
     <module>server</module>
     <module>test</module>
+    <module>generator</module>
   </modules>
 
   <dependencyManagement>
