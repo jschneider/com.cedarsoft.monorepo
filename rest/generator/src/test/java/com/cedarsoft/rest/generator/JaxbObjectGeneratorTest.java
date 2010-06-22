@@ -22,21 +22,36 @@ import static org.testng.Assert.*;
  *
  */
 public class JaxbObjectGeneratorTest {
+  private URL resource;
+  private Result result;
+  private DomainObjectDescriptor descriptor;
+  private CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator;
+
+  @BeforeMethod
+  protected void setUp() throws Exception {
+    resource = getClass().getResource( "test/BarModel.java" );
+    result = Parser.parse( new File( resource.toURI() ) );
+    descriptor = new DomainObjectDescriptorFactory( result.getClassDeclaration() ).create();
+    codeGenerator = new CodeGenerator<JaxbObjectGenerator.MyDecisionCallback>( new JaxbObjectGenerator.MyDecisionCallback() );
+  }
+
   @Test
-  public void testGeneratorTest() throws URISyntaxException, JClassAlreadyExistsException, IOException {
-    URL resource = getClass().getResource( "test/BarModel.java" );
-    Result result = Parser.parse( new File( resource.toURI() ) );
-
-    DomainObjectDescriptor descriptor = new DomainObjectDescriptorFactory( result.getClassDeclaration() ).create();
-
-    CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator = new CodeGenerator<JaxbObjectGenerator.MyDecisionCallback>( new JaxbObjectGenerator.MyDecisionCallback() );
+  public void testGeneratModel() throws URISyntaxException, JClassAlreadyExistsException, IOException {
     new Generator( codeGenerator, descriptor ).generate();
-
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
 
     AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.1.txt" ) );
+  }
+
+  @Test
+  public void testGeneratTest() throws Exception {
+    new TestGenerator( codeGenerator, descriptor ).generateTest();
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
+
+    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.test.txt" ) );
   }
 
   @Test

@@ -21,15 +21,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  */
-public class Generator {
-  @NotNull
-  private final CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator;
-  @NotNull
-  private final DomainObjectDescriptor descriptor;
+public class Generator extends AbstractGenerator {
 
   public Generator( @NotNull CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator, @NotNull DomainObjectDescriptor descriptor ) {
-    this.codeGenerator = codeGenerator;
-    this.descriptor = descriptor;
+    super( codeGenerator, descriptor );
   }
 
   public void generate() throws JClassAlreadyExistsException {
@@ -60,17 +55,4 @@ public class Generator {
     return jaxbClass.field( JMod.PRIVATE, fieldType, fieldInfo.getSimpleName() );
   }
 
-  @NotNull
-  @NonNls
-  private String getJaxbClassName() {
-    String fqn = descriptor.getQualifiedName();
-    return insertSubPackage( fqn, "jaxb" );
-  }
-
-  @NotNull
-  @NonNls
-  public static String insertSubPackage( @NotNull @NonNls String fqn, @NotNull @NonNls String packagePart ) {
-    int lastIndex = fqn.lastIndexOf( "." );
-    return fqn.substring( 0, lastIndex ) + "." + packagePart + fqn.substring( lastIndex );
-  }
 }
