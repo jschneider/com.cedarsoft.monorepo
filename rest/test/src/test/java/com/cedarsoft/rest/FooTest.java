@@ -31,16 +31,14 @@
 
 package com.cedarsoft.rest;
 
-import com.cedarsoft.jaxb.AbstractJaxbObject;
 import org.jetbrains.annotations.NotNull;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.net.URI;
 
 /**
  *
  */
-public class FooTest extends AbstractJaxbTest<FooTest.Foo> {
+public class FooTest extends AbstractJaxbTest<Foo> {
   @NotNull
   @Override
   protected Class<Foo> getJaxbType() {
@@ -66,16 +64,4 @@ public class FooTest extends AbstractJaxbTest<FooTest.Foo> {
     return foo;
   }
 
-  @XmlRootElement( namespace = "test:foo" )
-  public static class Foo extends AbstractJaxbObject {
-    private String daValue = "default";
-
-    public String getDaValue() {
-      return daValue;
-    }
-
-    public void setDaValue( String daValue ) {
-      this.daValue = daValue;
-    }
-  }
 }

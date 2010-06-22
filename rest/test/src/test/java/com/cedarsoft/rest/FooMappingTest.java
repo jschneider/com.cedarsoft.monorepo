@@ -40,10 +40,10 @@ import java.net.URISyntaxException;
 /**
  *
  */
-public class FooMappingTest extends AbstractMappedJaxbTest<FooMappingTest.FooModel, FooTest.Foo> {
+public class FooMappingTest extends AbstractMappedJaxbTest<FooModel, Foo> {
   @NotNull
   @Override
-  protected JaxbMapping<FooMappingTest.FooModel, FooTest.Foo> createMapping() {
+  protected JaxbMapping<FooModel, Foo> createMapping() {
     return new FooMapping();
   }
 
@@ -55,8 +55,8 @@ public class FooMappingTest extends AbstractMappedJaxbTest<FooMappingTest.FooMod
 
   @NotNull
   @Override
-  protected Class<FooTest.Foo> getJaxbType() {
-    return FooTest.Foo.class;
+  protected Class<Foo> getJaxbType() {
+    return Foo.class;
   }
 
   @NotNull
@@ -68,28 +68,16 @@ public class FooMappingTest extends AbstractMappedJaxbTest<FooMappingTest.FooMod
         "</ns2:foo>";
   }
 
-  public static class FooModel {
-    private final String daValue;
-
-    public FooModel( String daValue ) {
-      this.daValue = daValue;
-    }
-
-    public String getDaValue() {
-      return daValue;
-    }
-  }
-
-  private static class FooMapping extends JaxbMapping<FooModel, FooTest.Foo> {
+  private static class FooMapping extends JaxbMapping<FooModel, Foo> {
     @Override
-    protected void setUris( @NotNull FooTest.Foo object, @NotNull UriBuilder uriBuilder ) throws URISyntaxException {
+    protected void setUris( @NotNull Foo object, @NotNull UriBuilder uriBuilder ) throws URISyntaxException {
       object.setHref( new URI( "test:daUri" ) );
     }
 
     @NotNull
     @Override
-    protected FooTest.Foo createJaxbObject( @NotNull FooModel object ) {
-      FooTest.Foo foo = new FooTest.Foo();
+    protected Foo createJaxbObject( @NotNull FooModel object ) {
+      Foo foo = new Foo();
       foo.setDaValue( object.getDaValue() );
       return foo;
     }
