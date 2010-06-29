@@ -76,6 +76,10 @@ public class AssertUtils {
     assertXMLEqual( test, control, false );
   }
 
+  public static void assertXMLEqual( String test, URL control ) throws SAXException, IOException {
+    assertXMLEqual( test, toString( control ) );
+  }
+
   /**
    * <p>assertXMLEqual</p>
    *
@@ -87,6 +91,10 @@ public class AssertUtils {
    */
   public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEqual( null, test, control, ignoreWhiteSpace );
+  }
+
+  public static void assertXMLEqual( String test, URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEqual( test, toString( control ), ignoreWhiteSpace );
   }
 
   /**
@@ -107,6 +115,10 @@ public class AssertUtils {
     } catch ( AssertionFailedError e ) {
       throw new AssertionError( "expected:<" + XmlCommons.format( control ).trim() + "> but was:<" + XmlCommons.format( test ).trim() + '>' );
     }
+  }
+
+  public static void assertXMLEqual( String err, String test, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEqual( err, test, toString( control ), ignoreWhiteSpace );
   }
 
   /**
@@ -145,7 +157,11 @@ public class AssertUtils {
    * @throws java.io.IOException if any.
    */
   public static void assertEquals( @Nullable Object actual, @NotNull URL expectedResourceUri ) throws IOException {
-    String expected = IOUtils.toString( expectedResourceUri.openStream() );
-    Assert.assertEquals( actual, expected );
+    Assert.assertEquals( actual, toString( expectedResourceUri ) );
+  }
+
+  @NotNull
+  private static String toString( @NotNull URL expectedResourceUri ) throws IOException {
+    return IOUtils.toString( expectedResourceUri.openStream() );
   }
 }
