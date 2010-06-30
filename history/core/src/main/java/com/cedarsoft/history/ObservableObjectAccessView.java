@@ -53,8 +53,8 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
   /**
    * <p>Constructor for ObservableObjectAccessView.</p>
    *
-   * @param base   a {@link com.cedarsoft.history.ClusteredObservableObjectAccess} object.
-   * @param bridge a {@link com.cedarsoft.history.ObservableObjectAccessView.Bridge} object.
+   * @param base   a {@link ClusteredObservableObjectAccess} object.
+   * @param bridge a {@link ObservableObjectAccessView.Bridge} object.
    */
   public ObservableObjectAccessView( @NotNull ClusteredObservableObjectAccess<? super E> base, @NotNull final Bridge<E> bridge ) {
     this.base = base;

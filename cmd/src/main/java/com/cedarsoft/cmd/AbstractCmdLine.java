@@ -135,8 +135,8 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>printPossibleElements</p>
    *
-   * @param elements  a {@link java.util.List} object.
-   * @param presenter a {@link com.cedarsoft.renderer.Renderer} object.
+   * @param elements  a {@link List} object.
+   * @param presenter a {@link Renderer} object.
    */
   protected <T> void printPossibleElements( @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
     if ( presenter == null ) {
@@ -246,7 +246,7 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>getOut</p>
    *
-   * @return a {@link java.io.PrintStream} object.
+   * @return a {@link PrintStream} object.
    */
   @NotNull
   public abstract PrintStream getOut();
@@ -254,7 +254,7 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>getConsolePrinter</p>
    *
-   * @return a {@link com.cedarsoft.cmd.ConsolePrinter} object.
+   * @return a {@link ConsolePrinter} object.
    */
   @NotNull
   protected abstract ConsolePrinter getConsolePrinter();

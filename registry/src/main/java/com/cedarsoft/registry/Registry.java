@@ -88,7 +88,7 @@ public interface Registry<T> {
    * Stores the object
    *
    * @param object the object that is stored
-   * @throws com.cedarsoft.StillContainedException
+   * @throws StillContainedException
    *          if any.
    */
   void store( @NotNull T object ) throws StillContainedException;

@@ -107,7 +107,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    *
    * @param presentation the presentation
    * @param struct       the struct
-   * @param lookup       a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param lookup       a {@link Lookup} object.
    */
   protected abstract void bind( @NotNull T presentation, @NotNull StructPart struct, @NotNull Lookup lookup );
 

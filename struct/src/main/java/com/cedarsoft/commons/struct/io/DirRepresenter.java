@@ -63,7 +63,7 @@ public class DirRepresenter {
   /**
    * <p>Constructor for DirRepresenter.</p>
    *
-   * @param root        a {@link com.cedarsoft.commons.struct.Node} object.
+   * @param root        a {@link Node} object.
    * @param rootVisible a boolean.
    */
   public DirRepresenter( @NotNull Node root, boolean rootVisible ) {
@@ -132,9 +132,9 @@ public class DirRepresenter {
   /**
    * <p>parse</p>
    *
-   * @param node        a {@link com.cedarsoft.commons.struct.Node} object.
-   * @param currentDir  a {@link java.io.File} object.
-   * @param nodeFactory a {@link com.cedarsoft.commons.struct.NodeFactory} object.
+   * @param node        a {@link Node} object.
+   * @param currentDir  a {@link File} object.
+   * @param nodeFactory a {@link NodeFactory} object.
    * @param maxDepth    a int.
    */
   protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {

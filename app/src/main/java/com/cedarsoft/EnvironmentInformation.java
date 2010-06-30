@@ -34,6 +34,7 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -49,7 +50,7 @@ public class EnvironmentInformation {
   /**
    * Returns the host name
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -64,7 +65,7 @@ public class EnvironmentInformation {
   /**
    * Returns the current user name
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

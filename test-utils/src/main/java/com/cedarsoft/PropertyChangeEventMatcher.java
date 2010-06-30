@@ -47,8 +47,8 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
   /**
    * <p>create</p>
    *
-   * @param event a {@link java.beans.PropertyChangeEvent} object.
-   * @return a {@link java.beans.PropertyChangeEvent} object.
+   * @param event a {@link PropertyChangeEvent} object.
+   * @return a {@link PropertyChangeEvent} object.
    */
   @Nullable
   public static PropertyChangeEvent create( @Nullable PropertyChangeEvent event ) {
@@ -62,7 +62,7 @@ public class PropertyChangeEventMatcher implements IArgumentMatcher {
   /**
    * <p>Constructor for PropertyChangeEventMatcher.</p>
    *
-   * @param expected a {@link java.beans.PropertyChangeEvent} object.
+   * @param expected a {@link PropertyChangeEvent} object.
    */
   public PropertyChangeEventMatcher( @Nullable PropertyChangeEvent expected ) {
     this.expected = expected;

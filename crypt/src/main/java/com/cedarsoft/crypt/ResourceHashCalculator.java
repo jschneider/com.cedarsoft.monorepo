@@ -48,11 +48,11 @@ public class ResourceHashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param resource  a {@link java.net.URL} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm a {@link Algorithm} object.
+   * @param resource  a {@link URL} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
@@ -62,11 +62,11 @@ public class ResourceHashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param resource  a {@link java.io.InputStream} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm a {@link Algorithm} object.
+   * @param resource  a {@link InputStream} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resource ) throws IOException {
@@ -76,11 +76,11 @@ public class ResourceHashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param algorithm a {@link Algorithm} object.
    * @param resource  an array of byte.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public Hash calculate( @NotNull Algorithm algorithm, @NotNull byte[] resource ) throws IOException {
@@ -90,10 +90,10 @@ public class ResourceHashCalculator {
   /**
    * <p>calculateSHA1</p>
    *
-   * @param resource a {@link java.io.InputStream} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param resource a {@link InputStream} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @Deprecated
   @NotNull
@@ -104,10 +104,10 @@ public class ResourceHashCalculator {
   /**
    * <p>calculateMD5</p>
    *
-   * @param resource a {@link java.io.InputStream} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param resource a {@link InputStream} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @Deprecated
   @NotNull

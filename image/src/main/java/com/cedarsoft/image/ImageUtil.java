@@ -71,6 +71,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.String;
 
 /**
  * Image manipulation methods.
@@ -115,7 +116,7 @@ public class ImageUtil {
    * @param filename the image to be read
    * @return the image object
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static BufferedImage readImage( String filename ) throws IOException {
     File imagein = new File( filename );
@@ -148,12 +149,12 @@ public class ImageUtil {
    * <p/>
    * Useful ref: 	http://saloon.javaranch.com/cgi-bin/ubb/ultimatebb.cgi?ubb=get_topic&f=34&t=002153
    *
-   * @param imageIn a {@link java.awt.image.BufferedImage} object.
+   * @param imageIn a {@link BufferedImage} object.
    * @param width   a int.
    * @param height  a int.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @return a {@link BufferedImage} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height ) throws IOException {
     return scaleImage( imageIn, width, height, Image.SCALE_SMOOTH, false );
@@ -162,13 +163,13 @@ public class ImageUtil {
   /**
    * <p>scaleImage</p>
    *
-   * @param imageIn      a {@link java.awt.image.BufferedImage} object.
+   * @param imageIn      a {@link BufferedImage} object.
    * @param width        a int.
    * @param height       a int.
    * @param scaleQuality a int.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @return a {@link BufferedImage} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality ) throws IOException {
     return scaleImage( imageIn, width, height, scaleQuality, false );
@@ -178,14 +179,14 @@ public class ImageUtil {
   /**
    * <p>scaleImage</p>
    *
-   * @param imageIn        a {@link java.awt.image.BufferedImage} object.
+   * @param imageIn        a {@link BufferedImage} object.
    * @param width          a int.
    * @param height         a int.
    * @param scaleQuality   a int.
    * @param maintainAspect a boolean.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @return a {@link BufferedImage} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static BufferedImage scaleImage( BufferedImage imageIn, int width, int height, int scaleQuality, boolean maintainAspect ) throws IOException {
 
@@ -222,9 +223,9 @@ public class ImageUtil {
   /**
    * Writes a buffered Image to disk
    *
-   * @param toWrite a {@link java.awt.image.BufferedImage} object.
-   * @param fileout a {@link java.lang.String} object.
-   * @throws java.io.IOException if any.
+   * @param toWrite a {@link BufferedImage} object.
+   * @param fileout a {@link String} object.
+   * @throws IOException if any.
    */
   public static void writeImage( BufferedImage toWrite, String fileout ) throws IOException {
     // The output file
@@ -249,9 +250,9 @@ public class ImageUtil {
   /**
    * <p>rotateImage</p>
    *
-   * @param bi        a {@link java.awt.image.BufferedImage} object.
+   * @param bi        a {@link BufferedImage} object.
    * @param rotations a int.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @return a {@link BufferedImage} object.
    */
   public static BufferedImage rotateImage( BufferedImage bi, int rotations ) {
     rotations %= 4;

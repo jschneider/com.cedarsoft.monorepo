@@ -34,6 +34,9 @@ package com.cedarsoft.exec;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.InterruptedException;
+import java.lang.Process;
+import java.lang.ProcessBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +57,7 @@ public class Executer {
   /**
    * <p>Constructor for Executer.</p>
    *
-   * @param processBuilder  a {@link java.lang.ProcessBuilder} object.
+   * @param processBuilder  a {@link ProcessBuilder} object.
    * @param redirectStreams a boolean.
    */
   public Executer( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
@@ -65,7 +68,7 @@ public class Executer {
   /**
    * <p>Constructor for Executer.</p>
    *
-   * @param processBuilder a {@link java.lang.ProcessBuilder} object.
+   * @param processBuilder a {@link ProcessBuilder} object.
    */
   public Executer( @NotNull ProcessBuilder processBuilder ) {
     this( processBuilder, true );
@@ -76,8 +79,8 @@ public class Executer {
    *
    * @return a int.
    *
-   * @throws java.io.IOException            if any.
-   * @throws java.lang.InterruptedException if any.
+   * @throws IOException            if any.
+   * @throws InterruptedException if any.
    */
   public int execute() throws IOException, InterruptedException {
     Process process = processBuilder.start();
@@ -92,7 +95,7 @@ public class Executer {
   /**
    * <p>redirectStreams</p>
    *
-   * @param process a {@link java.lang.Process} object.
+   * @param process a {@link Process} object.
    */
   protected void redirectStreams( @NotNull Process process ) {
     if ( redirectStreams ) {
@@ -131,7 +134,7 @@ public class Executer {
   /**
    * <p>addExecutionListener</p>
    *
-   * @param executionListener a {@link com.cedarsoft.exec.ExecutionListener} object.
+   * @param executionListener a {@link ExecutionListener} object.
    */
   public void addExecutionListener( @NotNull ExecutionListener executionListener ) {
     this.executionListeners.add( executionListener );
@@ -140,7 +143,7 @@ public class Executer {
   /**
    * <p>removeExecutionListener</p>
    *
-   * @param executionListener a {@link com.cedarsoft.exec.ExecutionListener} object.
+   * @param executionListener a {@link ExecutionListener} object.
    */
   public void removeExecutionListener( @NotNull ExecutionListener executionListener ) {
     this.executionListeners.remove( executionListener );

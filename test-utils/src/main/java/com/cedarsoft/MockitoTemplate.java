@@ -34,6 +34,8 @@ package com.cedarsoft;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.lang.Exception;
+
 /**
  * Simple template for mockito.
  *
@@ -44,28 +46,28 @@ public abstract class MockitoTemplate {
   /**
    * Stub the mocks
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   protected abstract void stub() throws Exception;
 
   /**
    * Execute the test code / assertions
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   protected abstract void execute() throws Exception;
 
   /**
    * Finally verify the mocks using {@link Mockito#verify(Object)}
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   protected abstract void verifyMocks() throws Exception;
 
   /**
    * Runs the tests
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   public void run() throws Exception {
     initMocks();

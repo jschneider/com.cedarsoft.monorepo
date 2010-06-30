@@ -75,7 +75,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>Constructor for ClusteredElementsCollection.</p>
    *
-   * @param elements a {@link java.util.Collection} object.
+   * @param elements a {@link Collection} object.
    */
   public ClusteredElementsCollection( @NotNull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
@@ -92,7 +92,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>Getter for the field <code>collectionSupport</code>.</p>
    *
-   * @return a {@link com.cedarsoft.history.ClusteredCollectionSupport} object.
+   * @return a {@link ClusteredCollectionSupport} object.
    */
   @Deprecated
   @NotNull
@@ -160,7 +160,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>addAll</p>
    *
-   * @param additionalElements a {@link java.util.List} object.
+   * @param additionalElements a {@link List} object.
    */
   public void addAll( @NotNull List<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
@@ -286,8 +286,8 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>findElements</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
-   * @return a {@link java.util.List} object.
+   * @param visitor a {@link ElementVisitor} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
@@ -313,7 +313,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
-   * @throws com.cedarsoft.history.NoElementFoundException
+   * @throws NoElementFoundException
    *          if no entry has been found
    */
   @NotNull
@@ -328,7 +328,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>findFirstElementNullable</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @param visitor a {@link ElementVisitor} object.
    * @return a E object.
    */
   @Nullable
@@ -364,10 +364,10 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>contains</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @param visitor a {@link ElementVisitor} object.
    * @return a boolean.
    *
-   * @throws com.cedarsoft.history.NoElementFoundException
+   * @throws NoElementFoundException
    *          if any.
    */
   public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
@@ -388,7 +388,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * Removes the entries
    *
    * @param visitor the visitor that describes the entries
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {

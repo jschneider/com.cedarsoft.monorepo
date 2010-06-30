@@ -33,6 +33,9 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * Common exception for all kinds of version related problems
  *
@@ -48,7 +51,7 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public VersionException( String message ) {
     super( message );
@@ -57,8 +60,8 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public VersionException( String message, Throwable cause ) {
     super( message, cause );
@@ -67,7 +70,7 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public VersionException( Throwable cause ) {
     super( cause );

@@ -37,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Object;
+import java.lang.String;
 
 /**
  * A change listener support with transient and non transient listeners support
@@ -65,7 +67,7 @@ public class ClusteredChangeListenerSupport<T> {
    * <p>Constructor for ClusteredChangeListenerSupport.</p>
    *
    * @param observerdObject a T object.
-   * @param contextProvider a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   * @param contextProvider a {@link ClusteredChangeListenerSupport.ContextProvider} object.
    */
   public ClusteredChangeListenerSupport( @NotNull T observerdObject, @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
@@ -76,7 +78,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener    a {@link com.cedarsoft.ChangeListener} object.
+   * @param listener    a {@link ChangeListener} object.
    * @param isTransient a boolean.
    */
   public void addChangeListener( @NotNull ChangeListener<T> listener, boolean isTransient ) {
@@ -90,7 +92,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   * @param listener a {@link ChangeListener} object.
    */
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     transientSupport.removeChangeListener( listener );
@@ -114,8 +116,8 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context        a {@link java.lang.Object} object.
-   * @param propertiesPath a {@link java.lang.String} object.
+   * @param context        a {@link Object} object.
+   * @param propertiesPath a {@link String} object.
    */
   public void changed( @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
@@ -129,7 +131,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>Getter for the field <code>contextProvider</code>.</p>
    *
-   * @return a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   * @return a {@link ClusteredChangeListenerSupport.ContextProvider} object.
    */
   @Nullable
   public ContextProvider getContextProvider() {
@@ -139,7 +141,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>Setter for the field <code>contextProvider</code>.</p>
    *
-   * @param contextProvider a {@link com.cedarsoft.ClusteredChangeListenerSupport.ContextProvider} object.
+   * @param contextProvider a {@link ClusteredChangeListenerSupport.ContextProvider} object.
    */
   public void setContextProvider( @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
@@ -148,8 +150,8 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>createPropertyListenerDelegate</p>
    *
-   * @param propertiesPath a {@link java.lang.String} object.
-   * @return a {@link java.beans.PropertyChangeListener} object.
+   * @param propertiesPath a {@link String} object.
+   * @return a {@link PropertyChangeListener} object.
    */
   @NotNull
   public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {

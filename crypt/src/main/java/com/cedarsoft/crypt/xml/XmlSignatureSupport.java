@@ -54,6 +54,7 @@ import javax.xml.crypto.dsig.dom.DOMValidateContext;
 import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.lang.Exception;
 import java.util.Collections;
 
 /**
@@ -73,7 +74,7 @@ public class XmlSignatureSupport {
   /**
    * <p>Constructor for XmlSignatureSupport.</p>
    *
-   * @param x509Support a {@link com.cedarsoft.crypt.X509Support} object.
+   * @param x509Support a {@link X509Support} object.
    */
   @Inject
   public XmlSignatureSupport( @NotNull X509Support x509Support ) {
@@ -83,8 +84,8 @@ public class XmlSignatureSupport {
   /**
    * <p>sign</p>
    *
-   * @param xmlDocument a {@link org.w3c.dom.Document} object.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @param xmlDocument a {@link Document} object.
+   * @return a {@link Document} object.
    */
   public Document sign( @NotNull Document xmlDocument ) {
     try {
@@ -116,10 +117,10 @@ public class XmlSignatureSupport {
   /**
    * <p>hasValidSignature</p>
    *
-   * @param doc a {@link org.w3c.dom.Document} object.
+   * @param doc a {@link Document} object.
    * @return a boolean.
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   public boolean hasValidSignature( @NotNull Document doc ) throws Exception {
     NodeList nl = doc.getElementsByTagNameNS( XMLSignature.XMLNS, "Signature" );
@@ -169,8 +170,8 @@ public class XmlSignatureSupport {
   /**
    * <p>getOriginalDocument</p>
    *
-   * @param signedDocument a {@link org.w3c.dom.Document} object.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @param signedDocument a {@link Document} object.
+   * @return a {@link Document} object.
    */
   @NotNull
   public Document getOriginalDocument( @NotNull Document signedDocument ) {

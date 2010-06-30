@@ -33,6 +33,9 @@
 
 package com.cedarsoft.history;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
@@ -43,7 +46,7 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public InvalidEntryException( String message ) {
     super( message );
@@ -52,8 +55,8 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public InvalidEntryException( String message, Throwable cause ) {
     super( message, cause );
@@ -62,7 +65,7 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public InvalidEntryException( Throwable cause ) {
     super( cause );

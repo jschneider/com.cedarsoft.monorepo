@@ -106,7 +106,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>Getter for the field <code>currentDelegate</code>.</p>
    *
-   * @return a {@link com.cedarsoft.history.ObservableObjectAccess} object.
+   * @return a {@link ObservableObjectAccess} object.
    */
   @Nullable
   public ObservableObjectAccess<T> getCurrentDelegate() {
@@ -279,7 +279,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>addDelegateListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.DelegatingObjectAccess.DelegateListener} object.
+   * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
    */
   public void addDelegateListener( @NotNull DelegateListener<T> listener ) {
     this.delegateListeners.add( listener );
@@ -288,7 +288,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>removeDelegateListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.DelegatingObjectAccess.DelegateListener} object.
+   * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
    */
   public void removeDelegateListener( @NotNull DelegateListener<T> listener ) {
     this.delegateListeners.remove( listener );

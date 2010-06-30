@@ -52,7 +52,7 @@ public class BaseNameAwareFileNames {
   /**
    * <p>add</p>
    *
-   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   * @param fileName a {@link FileName} object.
    */
   public void add( @NotNull FileName fileName ) {
     getEntry( fileName.getBaseName() ).add( fileName );
@@ -61,7 +61,7 @@ public class BaseNameAwareFileNames {
   /**
    * <p>Getter for the field <code>entries</code>.</p>
    *
-   * @return a {@link java.util.Collection} object.
+   * @return a {@link Collection} object.
    */
   @NotNull
   public Collection<? extends Map.Entry<BaseName, FileNames>> getEntries() {
@@ -71,8 +71,8 @@ public class BaseNameAwareFileNames {
   /**
    * <p>getEntry</p>
    *
-   * @param baseName a {@link com.cedarsoft.file.BaseName} object.
-   * @return a {@link com.cedarsoft.file.FileNames} object.
+   * @param baseName a {@link BaseName} object.
+   * @return a {@link FileNames} object.
    */
   @NotNull
   public FileNames getEntry( @NotNull @NonNls BaseName baseName ) {

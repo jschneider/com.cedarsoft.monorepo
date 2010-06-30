@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Object;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -56,7 +58,7 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>Constructor for NonTransientPropertyChangeSupport.</p>
    *
-   * @param sourceBean a {@link java.lang.Object} object.
+   * @param sourceBean a {@link Object} object.
    */
   public NonTransientPropertyChangeSupport( @NotNull @NonNls Object sourceBean ) {
     this.sourceBean = sourceBean;
@@ -65,7 +67,7 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>removePropertyChangeListener</p>
    *
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener a {@link PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @NotNull PropertyChangeListener listener ) {
     listeners.remove( listener );
@@ -74,8 +76,8 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>removePropertyChangeListener</p>
    *
-   * @param propertyName a {@link java.lang.String} object.
-   * @param listener     a {@link java.beans.PropertyChangeListener} object.
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     getChild( propertyName ).removePropertyChangeListener( listener );
@@ -84,7 +86,7 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener a {@link java.beans.PropertyChangeListener} object.
+   * @param listener a {@link PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @NotNull PropertyChangeListener listener ) {
     listeners.add( listener );
@@ -93,8 +95,8 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param propertyName a {@link java.lang.String} object.
-   * @param listener     a {@link java.beans.PropertyChangeListener} object.
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
     getChild( propertyName ).addPropertyChangeListener( listener );
@@ -103,7 +105,7 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>firePropertyChange</p>
    *
-   * @param evt a {@link java.beans.PropertyChangeEvent} object.
+   * @param evt a {@link PropertyChangeEvent} object.
    */
   public void firePropertyChange( @NotNull PropertyChangeEvent evt ) {
     for ( PropertyChangeListener listener : listeners ) {
@@ -132,7 +134,7 @@ public class NonTransientPropertyChangeSupport {
   /**
    * <p>getPropertyChangeListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends PropertyChangeListener> getPropertyChangeListeners() {

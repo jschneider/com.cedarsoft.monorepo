@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -97,7 +98,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
-   * @throws com.cedarsoft.StillContainedException
+   * @throws StillContainedException
    *          if any.
    */
   public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
@@ -152,10 +153,10 @@ public class DefaultRegistry<T> implements Registry<T> {
    * <p>findStoredObject</p>
    *
    * @param matcher         a Matcher object.
-   * @param notFoundMessage a {@link java.lang.String} object.
+   * @param notFoundMessage a {@link String} object.
    * @return a T object.
    *
-   * @throws com.cedarsoft.NotFoundException
+   * @throws NotFoundException
    *          if any.
    */
   @NotNull

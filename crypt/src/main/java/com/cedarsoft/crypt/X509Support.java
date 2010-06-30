@@ -74,8 +74,8 @@ public class X509Support {
    * Creates a new X509 support without any signing capabilities
    *
    * @param certificate the certificate
-   * @throws java.io.IOException if any.
-   * @throws java.security.GeneralSecurityException
+   * @throws IOException if any.
+   * @throws GeneralSecurityException
    *                             if any.
    */
   public X509Support( @NotNull URL certificate ) throws IOException, GeneralSecurityException {
@@ -87,8 +87,8 @@ public class X509Support {
    *
    * @param certificate the certificate
    * @param privateKey  the private key (if available)
-   * @throws java.io.IOException if any.
-   * @throws java.security.GeneralSecurityException
+   * @throws IOException if any.
+   * @throws GeneralSecurityException
    *                             if any.
    */
   @Inject
@@ -131,7 +131,7 @@ public class X509Support {
    * @param plainText an array of byte.
    * @return an array of byte.
    *
-   * @throws java.security.GeneralSecurityException
+   * @throws GeneralSecurityException
    *          if any.
    */
   @NotNull
@@ -147,7 +147,7 @@ public class X509Support {
    * @param bytes an array of byte.
    * @return an array of byte.
    *
-   * @throws java.security.GeneralSecurityException
+   * @throws GeneralSecurityException
    *          if any.
    */
   @NotNull
@@ -163,7 +163,7 @@ public class X509Support {
    * @param plainText an array of byte.
    * @return a {@link com.cedarsoft.crypt.Signature} object.
    *
-   * @throws java.security.GeneralSecurityException
+   * @throws GeneralSecurityException
    *          if any.
    */
   @NotNull
@@ -182,7 +182,7 @@ public class X509Support {
    * @param signature a {@link com.cedarsoft.crypt.Signature} object.
    * @return a boolean.
    *
-   * @throws java.security.GeneralSecurityException
+   * @throws GeneralSecurityException
    *          if any.
    */
   public boolean verifySignature( @NotNull byte[] plainText, @NotNull com.cedarsoft.crypt.Signature signature ) throws GeneralSecurityException {
@@ -221,8 +221,8 @@ public class X509Support {
    * @param privateKeyUrl the url containing the private key
    * @return the read private key
    *
-   * @throws java.io.IOException if any.
-   * @throws java.security.GeneralSecurityException
+   * @throws IOException if any.
+   * @throws GeneralSecurityException
    *                             if any.
    */
   @Nullable
@@ -251,8 +251,8 @@ public class X509Support {
    * @param certificateUrl the certificate url
    * @return the certificate
    *
-   * @throws java.io.IOException if any.
-   * @throws java.security.GeneralSecurityException
+   * @throws IOException if any.
+   * @throws GeneralSecurityException
    *                             if any.
    */
   @NotNull

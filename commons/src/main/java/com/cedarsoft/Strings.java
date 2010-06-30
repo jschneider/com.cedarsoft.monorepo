@@ -34,6 +34,8 @@ package com.cedarsoft;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
+
 /**
  * Utility method for string operations
  *
@@ -46,8 +48,8 @@ public class Strings {
   /**
    * <p>stripQuotes</p>
    *
-   * @param value a {@link java.lang.String} object.
-   * @return a {@link java.lang.String} object.
+   * @param value a {@link String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public static String stripQuotes( @NotNull String value ) {

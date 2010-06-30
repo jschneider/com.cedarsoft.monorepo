@@ -52,7 +52,7 @@ public class FileCopyManager {
   /**
    * <p>deleteForced</p>
    *
-   * @param toDelete a {@link java.io.File} object.
+   * @param toDelete a {@link File} object.
    */
   public static void deleteForced( @NotNull File toDelete ) {
     if ( !toDelete.exists() ) {
@@ -71,9 +71,9 @@ public class FileCopyManager {
   /**
    * <p>copy</p>
    *
-   * @param src  a {@link java.io.File} object.
-   * @param dest a {@link java.io.File} object.
-   * @throws java.io.IOException if any.
+   * @param src  a {@link File} object.
+   * @param dest a {@link File} object.
+   * @throws IOException if any.
    */
   public static void copy( @NotNull File src, @NotNull File dest ) throws IOException {
     if ( src.isDirectory() ) {
@@ -86,9 +86,9 @@ public class FileCopyManager {
   /**
    * <p>copyFile</p>
    *
-   * @param source a {@link java.io.File} object.
-   * @param target a {@link java.io.File} object.
-   * @throws java.io.IOException if any.
+   * @param source a {@link File} object.
+   * @param target a {@link File} object.
+   * @throws IOException if any.
    */
   public static void copyFile( @NotNull File source, @NotNull File target ) throws IOException {
     FileChannel sourceChannel = null;
@@ -120,9 +120,9 @@ public class FileCopyManager {
   /**
    * <p>copyDirectory</p>
    *
-   * @param srcDir  a {@link java.io.File} object.
-   * @param destDir a {@link java.io.File} object.
-   * @throws java.io.IOException if any.
+   * @param srcDir  a {@link File} object.
+   * @param destDir a {@link File} object.
+   * @throws IOException if any.
    */
   public static void copyDirectory( @NotNull File srcDir, @NotNull File destDir ) throws IOException {
     if ( !destDir.exists() ) {

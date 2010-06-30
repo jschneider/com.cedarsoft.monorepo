@@ -33,6 +33,7 @@ package com.cedarsoft.tags;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Object;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class TagChangeSupport {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link java.lang.Object} object.
+   * @return a {@link Object} object.
    */
   @NotNull
   public Object getSource() {
@@ -89,7 +90,7 @@ public class TagChangeSupport {
   /**
    * <p>addTagChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.tags.TagChangeListener} object.
+   * @param listener a {@link TagChangeListener} object.
    */
   public void addTagChangeListener( @NotNull TagChangeListener listener ) {
     listeners.add( listener );
@@ -98,7 +99,7 @@ public class TagChangeSupport {
   /**
    * <p>removeTagChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.tags.TagChangeListener} object.
+   * @param listener a {@link TagChangeListener} object.
    */
   public void removeTagChangeListener( @NotNull TagChangeListener listener ) {
     listeners.remove( listener );

@@ -72,7 +72,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * @param index a int.
    * @return a E object.
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -281,7 +281,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -291,7 +291,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   * @return a {@link ReadWriteLock} object.
    */
   @NotNull
   public ReadWriteLock getLock() {

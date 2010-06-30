@@ -33,6 +33,7 @@ package com.cedarsoft.tags;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
 import java.util.List;
 
 /**
@@ -53,8 +54,8 @@ public interface TagFormatter {
   /**
    * <p>format</p>
    *
-   * @param tagged a {@link com.cedarsoft.tags.Tagged} object.
-   * @return a {@link java.lang.String} object.
+   * @param tagged a {@link Tagged} object.
+   * @return a {@link String} object.
    */
   @NotNull
   String format( @NotNull Tagged tagged );

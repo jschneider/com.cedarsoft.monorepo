@@ -37,6 +37,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Class;
+
 /**
  * <p/>
  * Date: Jul 1, 2007<br>
@@ -54,7 +56,7 @@ public class ConfigurationFactory implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationFactory.</p>
    *
-   * @param configurationManager a {@link com.cedarsoft.configuration.xml.XmlConfigurationManager} object.
+   * @param configurationManager a {@link XmlConfigurationManager} object.
    */
   public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager ) {
     this.configurationManager = configurationManager;
@@ -64,8 +66,8 @@ public class ConfigurationFactory implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationFactory.</p>
    *
-   * @param configurationManager a {@link com.cedarsoft.configuration.xml.XmlConfigurationManager} object.
-   * @param moduleType           a {@link java.lang.Class} object.
+   * @param configurationManager a {@link XmlConfigurationManager} object.
+   * @param moduleType           a {@link Class} object.
    */
   public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
     this.configurationManager = configurationManager;

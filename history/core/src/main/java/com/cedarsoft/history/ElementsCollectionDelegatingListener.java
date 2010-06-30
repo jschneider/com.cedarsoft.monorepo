@@ -45,7 +45,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
   /**
    * <p>Constructor for ElementsCollectionDelegatingListener.</p>
    *
-   * @param delegate a {@link com.cedarsoft.history.ObservableObjectAccess} object.
+   * @param delegate a {@link ObservableObjectAccess} object.
    */
   public ElementsCollectionDelegatingListener( @NotNull ObservableObjectAccess<T> delegate ) {
     this.delegate = delegate;

@@ -34,6 +34,8 @@ package com.cedarsoft.history;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * <p>Abstract ElementVisitor class.</p>
  *
@@ -47,7 +49,7 @@ public abstract class ElementVisitor<E> {
   /**
    * <p>Constructor for ElementVisitor.</p>
    *
-   * @param identifier a {@link java.lang.String} object.
+   * @param identifier a {@link String} object.
    */
   protected ElementVisitor( @NonNls @NotNull String identifier ) {
     this.identifier = identifier;
@@ -56,7 +58,7 @@ public abstract class ElementVisitor<E> {
   /**
    * <p>Getter for the field <code>identifier</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.lang.Iterable;
 import java.util.Arrays;
 
 /**
@@ -51,7 +52,7 @@ public class FileNamesFactory {
   /**
    * <p>Constructor for FileNamesFactory.</p>
    *
-   * @param fileTypeRegistry a {@link com.cedarsoft.file.FileTypeRegistry} object.
+   * @param fileTypeRegistry a {@link FileTypeRegistry} object.
    */
   @Inject
   public FileNamesFactory( @NotNull FileTypeRegistry fileTypeRegistry ) {
@@ -61,8 +62,8 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param baseDir a {@link java.io.File} object.
-   * @return a {@link com.cedarsoft.file.FileNames} object.
+   * @param baseDir a {@link File} object.
+   * @return a {@link FileNames} object.
    */
   @NotNull
   public FileNames create( @NotNull File baseDir ) {
@@ -73,8 +74,8 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param sourceFiles an array of {@link java.io.File} objects.
-   * @return a {@link com.cedarsoft.file.FileNames} object.
+   * @param sourceFiles an array of {@link File} objects.
+   * @return a {@link FileNames} object.
    */
   @NotNull
   public FileNames create( @NotNull File[] sourceFiles ) {
@@ -84,8 +85,8 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param sourceFiles a {@link java.lang.Iterable} object.
-   * @return a {@link com.cedarsoft.file.FileNames} object.
+   * @param sourceFiles a {@link Iterable} object.
+   * @return a {@link FileNames} object.
    */
   public FileNames create( @NotNull Iterable<? extends File> sourceFiles ) {
     FileNames fileNames = new FileNames();
@@ -101,8 +102,8 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param baseDir a {@link java.io.File} object.
-   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   * @param baseDir a {@link File} object.
+   * @return a {@link BaseNameAwareFileNames} object.
    */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull File baseDir ) {
@@ -112,8 +113,8 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param sourceFiles an array of {@link java.io.File} objects.
-   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   * @param sourceFiles an array of {@link File} objects.
+   * @return a {@link BaseNameAwareFileNames} object.
    */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull File[] sourceFiles ) {
@@ -123,8 +124,8 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param sourceFiles a {@link java.lang.Iterable} object.
-   * @return a {@link com.cedarsoft.file.BaseNameAwareFileNames} object.
+   * @param sourceFiles a {@link Iterable} object.
+   * @return a {@link BaseNameAwareFileNames} object.
    */
   @NotNull
   public BaseNameAwareFileNames createBaseNameAware( @NotNull Iterable<? extends File> sourceFiles ) {

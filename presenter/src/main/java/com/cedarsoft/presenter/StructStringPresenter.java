@@ -37,6 +37,8 @@ import com.cedarsoft.commons.struct.StructureTreeWalker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * <p>StructStringPresenter class.</p>
  *
@@ -58,7 +60,7 @@ public class StructStringPresenter implements Presenter<String> {
   /**
    * <p>Constructor for StructStringPresenter.</p>
    *
-   * @param intendSequence a {@link java.lang.String} object.
+   * @param intendSequence a {@link String} object.
    */
   public StructStringPresenter( @NotNull String intendSequence ) {
     this.intendSequence = intendSequence;

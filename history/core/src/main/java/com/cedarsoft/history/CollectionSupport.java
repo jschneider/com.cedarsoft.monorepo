@@ -53,7 +53,7 @@ public class CollectionSupport<E> {
   /**
    * <p>Constructor for CollectionSupport.</p>
    *
-   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source a {@link ObservableCollection} object.
    */
   public CollectionSupport( @NotNull ObservableCollection<E> source ) {
     this.source = source;
@@ -62,7 +62,7 @@ public class CollectionSupport<E> {
   /**
    * <p>Getter for the field <code>listeners</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   protected List<ElementsListener<? super E>> getListeners() {
@@ -83,7 +83,7 @@ public class CollectionSupport<E> {
   /**
    * <p>addElementListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener a {@link ElementsListener} object.
    */
   public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
     writeLock.lock();
@@ -97,7 +97,7 @@ public class CollectionSupport<E> {
   /**
    * <p>removeElementListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener a {@link ElementsListener} object.
    */
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     writeLock.lock();

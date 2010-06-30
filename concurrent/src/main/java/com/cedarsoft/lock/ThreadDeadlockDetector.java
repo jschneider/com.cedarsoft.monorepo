@@ -121,7 +121,7 @@ public class ThreadDeadlockDetector {
   /**
    * <p>addListener</p>
    *
-   * @param l a {@link com.cedarsoft.lock.ThreadDeadlockDetector.Listener} object.
+   * @param l a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
   public boolean addListener( Listener l ) {
@@ -131,7 +131,7 @@ public class ThreadDeadlockDetector {
   /**
    * <p>removeListener</p>
    *
-   * @param l a {@link com.cedarsoft.lock.ThreadDeadlockDetector.Listener} object.
+   * @param l a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
   public boolean removeListener( Listener l ) {

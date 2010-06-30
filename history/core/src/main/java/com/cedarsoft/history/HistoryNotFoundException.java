@@ -31,6 +31,9 @@
 
 package com.cedarsoft.history;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * <p>HistoryNotFoundException class.</p>
  *
@@ -46,7 +49,7 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public HistoryNotFoundException( String message ) {
     super( message );
@@ -55,8 +58,8 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public HistoryNotFoundException( String message, Throwable cause ) {
     super( message, cause );
@@ -65,7 +68,7 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public HistoryNotFoundException( Throwable cause ) {
     super( cause );

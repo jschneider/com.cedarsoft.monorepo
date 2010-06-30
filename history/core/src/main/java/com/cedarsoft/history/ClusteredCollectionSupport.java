@@ -49,7 +49,7 @@ public class ClusteredCollectionSupport<E> {
   /**
    * <p>Constructor for ClusteredCollectionSupport.</p>
    *
-   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source a {@link ObservableCollection} object.
    */
   public ClusteredCollectionSupport( @NotNull ObservableCollection<E> source ) {
     transientSupport = new CollectionSupport<E>( source );
@@ -59,7 +59,7 @@ public class ClusteredCollectionSupport<E> {
   /**
    * <p>addElementListener</p>
    *
-   * @param listener    a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener    a {@link ElementsListener} object.
    * @param isTransient a boolean.
    */
   public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
@@ -73,7 +73,7 @@ public class ClusteredCollectionSupport<E> {
   /**
    * <p>removeElementListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener a {@link ElementsListener} object.
    */
   public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
     transientSupport.removeElementListener( listener );
@@ -125,7 +125,7 @@ public class ClusteredCollectionSupport<E> {
   /**
    * <p>getTransientElementListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {

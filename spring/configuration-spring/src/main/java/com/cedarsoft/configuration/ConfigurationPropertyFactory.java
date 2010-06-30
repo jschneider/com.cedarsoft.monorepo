@@ -38,6 +38,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
+import java.lang.Class;
+import java.lang.String;
+
 /**
  * This factory reads a value from the configuration manager
  *
@@ -51,10 +54,10 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationPropertyFactory.</p>
    *
-   * @param configuration        a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type                 a {@link java.lang.Class} object.
-   * @param key                  a {@link java.lang.String} object.
-   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   * @param configuration        a {@link Configuration} object.
+   * @param type                 a {@link Class} object.
+   * @param key                  a {@link String} object.
+   * @param defaultValueProvider a {@link DefaultValueProvider} object.
    */
   public ConfigurationPropertyFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
     this.configurationAccess = new ConfigurationAccess<T>( configuration, type, key, defaultValueProvider );

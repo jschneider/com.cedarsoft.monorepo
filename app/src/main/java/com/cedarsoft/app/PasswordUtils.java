@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -50,7 +51,7 @@ public class PasswordUtils {
   /**
    * <p>calculateMD5Hash</p>
    *
-   * @param password a {@link java.lang.String} object.
+   * @param password a {@link String} object.
    * @return an array of byte.
    */
   @NotNull
@@ -67,7 +68,7 @@ public class PasswordUtils {
   /**
    * <p>hasExpectedHash</p>
    *
-   * @param password     a {@link java.lang.String} object.
+   * @param password     a {@link String} object.
    * @param expectedHash an array of byte.
    * @return a boolean.
    */
@@ -90,7 +91,7 @@ public class PasswordUtils {
    *
    * @param expected an array of byte.
    * @param actual   an array of byte.
-   * @throws com.cedarsoft.app.InvalidPasswordException
+   * @throws InvalidPasswordException
    *          if any.
    */
   public static void validatePasswordHash( @Nullable byte[] expected, @Nullable byte[] actual ) throws InvalidPasswordException {

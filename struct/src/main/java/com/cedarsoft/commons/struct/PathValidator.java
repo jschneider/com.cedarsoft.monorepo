@@ -43,7 +43,7 @@ public interface PathValidator {
    * Validate the path
    *
    * @param path the path
-   * @throws com.cedarsoft.commons.struct.ValidationFailedException
+   * @throws ValidationFailedException
    *          if any.
    */
   void validate( @NotNull Path path ) throws ValidationFailedException;

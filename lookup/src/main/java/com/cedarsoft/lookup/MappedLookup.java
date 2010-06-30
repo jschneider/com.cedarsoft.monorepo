@@ -56,7 +56,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>Constructor for MappedLookup.</p>
    *
-   * @param entries a {@link java.util.Map} object.
+   * @param entries a {@link Map} object.
    */
   public MappedLookup( @NotNull Map<Class<?>, ?> entries ) {
     this.store.putAll( entries );
@@ -140,7 +140,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>addLookupChangeListenerWeak</p>
    *
-   * @param lookupChangeListener a {@link com.cedarsoft.lookup.LookupChangeListener} object.
+   * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
   public void addLookupChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );

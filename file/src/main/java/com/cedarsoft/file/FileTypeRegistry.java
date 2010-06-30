@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 
+import java.lang.String;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
@@ -109,9 +110,9 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>Constructor for FileTypeRegistry.</p>
    *
-   * @param storedObjects      a {@link java.util.Collection} object.
-   * @param fileTypeComparator a {@link java.util.Comparator} object.
-   * @throws com.cedarsoft.StillContainedException
+   * @param storedObjects      a {@link Collection} object.
+   * @param fileTypeComparator a {@link Comparator} object.
+   * @throws StillContainedException
    *          if any.
    */
   public FileTypeRegistry( @NotNull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {
@@ -153,8 +154,8 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>valueOf</p>
    *
-   * @param id a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.file.FileType} object.
+   * @param id a {@link String} object.
+   * @return a {@link FileType} object.
    */
   @NotNull
   public FileType valueOf( @NotNull @NonNls final String id ) {
@@ -169,8 +170,8 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>get</p>
    *
-   * @param fileName a {@link com.cedarsoft.file.FileName} object.
-   * @return a {@link com.cedarsoft.file.FileType} object.
+   * @param fileName a {@link FileName} object.
+   * @return a {@link FileType} object.
    */
   @NotNull
   public FileType get( @NotNull final FileName fileName ) {
@@ -185,8 +186,8 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>get</p>
    *
-   * @param fileName a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.file.FileType} object.
+   * @param fileName a {@link String} object.
+   * @return a {@link FileType} object.
    */
   @NotNull
   public FileType get( @NotNull @NonNls final String fileName ) {

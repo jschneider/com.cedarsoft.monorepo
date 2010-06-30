@@ -48,7 +48,7 @@ public class TagFormat {
   /**
    * <p>getSimple</p>
    *
-   * @return a {@link com.cedarsoft.tags.TagFormatter} object.
+   * @return a {@link TagFormatter} object.
    */
   @NotNull
   public static TagFormatter getSimple() {

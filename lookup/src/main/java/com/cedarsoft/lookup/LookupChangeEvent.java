@@ -34,6 +34,8 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
+
 /**
  * This event is thrown whenever a lookup has been changed.
  *
@@ -52,8 +54,8 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Constructor for LookupChangeEvent.</p>
    *
-   * @param source   a {@link com.cedarsoft.lookup.Lookup} object.
-   * @param type     a {@link java.lang.Class} object.
+   * @param source   a {@link Lookup} object.
+   * @param type     a {@link Class} object.
    * @param oldValue a T object.
    * @param newValue a T object.
    */
@@ -67,7 +69,7 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Getter for the field <code>type</code>.</p>
    *
-   * @return a {@link java.lang.Class} object.
+   * @return a {@link Class} object.
    */
   @NotNull
   public Class<? super T> getType() {
@@ -97,7 +99,7 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link com.cedarsoft.lookup.Lookup} object.
+   * @return a {@link Lookup} object.
    */
   @NotNull
   public Lookup getSource() {

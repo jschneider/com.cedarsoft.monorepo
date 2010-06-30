@@ -46,8 +46,8 @@ public class XmlUnitTest {
   /**
    * <p>testIt</p>
    *
-   * @throws java.io.IOException      if any.
-   * @throws org.xml.sax.SAXException if any.
+   * @throws IOException      if any.
+   * @throws SAXException if any.
    */
   @Test
   public void testIt() throws IOException, SAXException {
@@ -78,8 +78,8 @@ public class XmlUnitTest {
   /**
    * <p>testProblem</p>
    *
-   * @throws java.io.IOException      if any.
-   * @throws org.xml.sax.SAXException if any.
+   * @throws IOException      if any.
+   * @throws SAXException if any.
    */
   @Test
   public void testProblem() throws IOException, SAXException {

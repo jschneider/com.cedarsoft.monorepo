@@ -34,6 +34,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +53,9 @@ public class Lookups {
   /**
    * <p>instantiator</p>
    *
-   * @param type         a {@link java.lang.Class} object.
-   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater} object.
-   * @return a {@link com.cedarsoft.lookup.InstantiatorLookup} object.
+   * @param type         a {@link Class} object.
+   * @param instantiater a {@link Instantiater} object.
+   * @return a {@link InstantiatorLookup} object.
    */
   @NotNull
   public static <T> InstantiatorLookup<T> instantiator( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
@@ -64,8 +65,8 @@ public class Lookups {
   /**
    * <p>instantiator</p>
    *
-   * @param instantiater a {@link com.cedarsoft.lookup.Instantiater.Typed} object.
-   * @return a {@link com.cedarsoft.lookup.InstantiatorLookup} object.
+   * @param instantiater a {@link Instantiater.Typed} object.
+   * @return a {@link InstantiatorLookup} object.
    */
   @NotNull
   public static <T> InstantiatorLookup<T> instantiator( @NotNull Instantiater.Typed<T> instantiater ) {
@@ -75,9 +76,9 @@ public class Lookups {
   /**
    * <p>merge</p>
    *
-   * @param first  a {@link com.cedarsoft.lookup.Lookup} object.
-   * @param second a {@link com.cedarsoft.lookup.Lookup} object.
-   * @return a {@link com.cedarsoft.lookup.MergingLookup} object.
+   * @param first  a {@link Lookup} object.
+   * @param second a {@link Lookup} object.
+   * @return a {@link MergingLookup} object.
    */
   @NotNull
   public static MergingLookup merge( @NotNull Lookup first, @NotNull Lookup second ) {
@@ -121,8 +122,8 @@ public class Lookups {
   /**
    * <p>mappedLookup</p>
    *
-   * @param values a {@link java.util.Map} object.
-   * @return a {@link com.cedarsoft.lookup.MappedLookup} object.
+   * @param values a {@link Map} object.
+   * @return a {@link MappedLookup} object.
    */
   @NotNull
   public static MappedLookup mappedLookup( @NotNull Map<Class<?>, ?> values ) {

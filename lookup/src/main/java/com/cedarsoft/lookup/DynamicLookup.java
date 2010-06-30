@@ -34,6 +34,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -113,7 +114,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValue</p>
    *
-   * @param value a {@link java.lang.Object} object.
+   * @param value a {@link Object} object.
    * @return a boolean.
    */
   public final boolean removeValue( @NotNull Object value ) {
@@ -175,7 +176,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>addValues</p>
    *
-   * @param objects a {@link java.lang.Object} object.
+   * @param objects a {@link Object} object.
    * @return a boolean.
    */
   public final boolean addValues( @NotNull Object... objects ) {
@@ -192,7 +193,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>addValues</p>
    *
-   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param lookup a {@link Lookup} object.
    * @return a boolean.
    */
   public final boolean addValues( @NotNull Lookup lookup ) {
@@ -207,7 +208,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValues</p>
    *
-   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param lookup a {@link Lookup} object.
    * @return a boolean.
    */
   public final boolean removeValues( @NotNull Lookup lookup ) {
@@ -222,7 +223,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValues</p>
    *
-   * @param objects a {@link java.lang.Object} object.
+   * @param objects a {@link Object} object.
    * @return a boolean.
    */
   public final boolean removeValues( @NotNull Object... objects ) {
@@ -335,7 +336,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>getLookupChangeListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends LookupChangeListener<?>> getLookupChangeListeners() {

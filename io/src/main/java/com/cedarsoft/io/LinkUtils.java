@@ -54,10 +54,10 @@ public class LinkUtils {
   /**
    * Returns whether the given file is a link
    *
-   * @param file a {@link java.io.File} object.
+   * @param file a {@link File} object.
    * @return whether the given file is a sym link
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static boolean isLink( @NotNull File file ) throws IOException {
     if ( !file.exists() ) {
@@ -79,7 +79,7 @@ public class LinkUtils {
    * @param linkType   the type of link
    * @return whether the link has been created
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, @NotNull LinkType linkType ) throws IOException {
     return createLink( linkTarget, linkFile, linkType == LinkType.SYMBOLIC );
@@ -92,7 +92,7 @@ public class LinkUtils {
    * @param linkFile   the link file
    * @return whether the link has been created
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static boolean createSymbolicLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
     return createLink( linkTarget, linkFile, true );
@@ -105,7 +105,7 @@ public class LinkUtils {
    * @param linkFile   the link file
    * @return whether the link has been created
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static boolean createHardLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
     return createLink( linkTarget, linkFile, false );
@@ -120,7 +120,7 @@ public class LinkUtils {
    * @param symbolic   whether to create a symbolic link
    * @return whether the link has been created (returns false if the link still existed)
    *
-   * @throws java.io.IOException if something went wrong
+   * @throws IOException if something went wrong
    */
   public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, boolean symbolic ) throws IOException {
     if ( linkFile.exists() ) {
@@ -164,7 +164,7 @@ public class LinkUtils {
    * Deletes the symbolic link
    *
    * @param linkFile the link file
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public static void deleteSymbolicLink( @NotNull File linkFile ) throws IOException {
     if ( !linkFile.exists() ) {
@@ -230,7 +230,7 @@ public class LinkUtils {
    * @param file the file
    * @return whether the given file is a symbolic link
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public boolean isSymbolicLink( @NotNull File file ) throws IOException {
     return !file.getAbsoluteFile().equals( file.getCanonicalFile() );

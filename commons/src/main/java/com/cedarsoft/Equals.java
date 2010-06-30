@@ -33,6 +33,8 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
+
 /**
  * <p>Equals class.</p>
  *
@@ -45,8 +47,8 @@ public class Equals {
   /**
    * <p>isEqual</p>
    *
-   * @param first  a {@link java.lang.Object} object.
-   * @param second a {@link java.lang.Object} object.
+   * @param first  a {@link Object} object.
+   * @param second a {@link Object} object.
    * @return a boolean.
    */
   public static boolean isEqual( @Nullable Object first, @Nullable Object second ) {

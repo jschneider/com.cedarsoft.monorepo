@@ -86,7 +86,7 @@ public abstract class MemoryTagManager<T> extends AbstractTagManager<T> {
   /**
    * <p>getObject</p>
    *
-   * @param taggable a {@link com.cedarsoft.tags.Taggable} object.
+   * @param taggable a {@link Taggable} object.
    * @return a T object.
    */
   @NotNull

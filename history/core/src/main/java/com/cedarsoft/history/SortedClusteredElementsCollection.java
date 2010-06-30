@@ -57,7 +57,7 @@ public class SortedClusteredElementsCollection<E> extends ClusteredElementsColle
   /**
    * <p>Constructor for SortedClusteredElementsCollection.</p>
    *
-   * @param comparator a {@link java.util.Comparator} object.
+   * @param comparator a {@link Comparator} object.
    */
   public SortedClusteredElementsCollection( @Nullable Comparator<? super E> comparator ) {
     this.comparator = comparator;

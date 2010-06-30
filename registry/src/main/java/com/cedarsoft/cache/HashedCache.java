@@ -231,7 +231,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Returns the internal store.
    * USE WITH CARE!
    *
-   * @return a {@link java.util.Map} object.
+   * @return a {@link Map} object.
    */
   @Deprecated
   @NotNull

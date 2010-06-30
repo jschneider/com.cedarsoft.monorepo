@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.String;
 import java.nio.charset.Charset;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public interface ConfigurationPersister {
    *
    * @param configurationManager the configuration manager
    * @param out                  the writer the configuration is written to
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out ) throws IOException;
 
@@ -64,7 +65,7 @@ public interface ConfigurationPersister {
    *
    * @param configurations the configurations
    * @param out            the writer the configurations are written to
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   void persist( @NotNull List<?> configurations, @NotNull Writer out ) throws IOException;
 
@@ -74,7 +75,7 @@ public interface ConfigurationPersister {
    * @param manager the manager the configurations are persisted of
    * @return the persisted configurations as string
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @Deprecated
   @NotNull
@@ -86,47 +87,47 @@ public interface ConfigurationPersister {
    *
    * @param manager the manager
    * @param file    the file the state is persisted to
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException;
 
   /**
    * <p>persist</p>
    *
-   * @param configurationManager a {@link com.cedarsoft.configuration.ConfigurationManager} object.
-   * @param out                  a {@link java.io.Writer} object.
-   * @param encoding             a {@link java.lang.String} object.
-   * @throws java.io.IOException if any.
+   * @param configurationManager a {@link ConfigurationManager} object.
+   * @param out                  a {@link Writer} object.
+   * @param encoding             a {@link String} object.
+   * @throws IOException if any.
    */
   void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
 
   /**
    * <p>persist</p>
    *
-   * @param configurations a {@link java.util.List} object.
-   * @param out            a {@link java.io.Writer} object.
-   * @param encoding       a {@link java.lang.String} object.
-   * @throws java.io.IOException if any.
+   * @param configurations a {@link List} object.
+   * @param out            a {@link Writer} object.
+   * @param encoding       a {@link String} object.
+   * @throws IOException if any.
    */
   void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
 
   /**
    * <p>persist</p>
    *
-   * @param manager a {@link com.cedarsoft.configuration.ConfigurationManager} object.
-   * @param out     a {@link java.io.OutputStream} object.
-   * @param charset a {@link java.nio.charset.Charset} object.
-   * @throws java.io.IOException if any.
+   * @param manager a {@link ConfigurationManager} object.
+   * @param out     a {@link OutputStream} object.
+   * @param charset a {@link Charset} object.
+   * @throws IOException if any.
    */
   void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException;
 
   /**
    * <p>load</p>
    *
-   * @param serialized a {@link java.lang.String} object.
-   * @return a {@link java.util.List} object.
+   * @param serialized a {@link String} object.
+   * @return a {@link List} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   List<?> load( @NotNull @NonNls String serialized ) throws IOException;
@@ -134,10 +135,10 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param in a {@link java.io.Reader} object.
-   * @return a {@link java.util.List} object.
+   * @param in a {@link Reader} object.
+   * @return a {@link List} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   List<?> load( @NotNull Reader in ) throws IOException;
@@ -145,10 +146,10 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param file a {@link java.io.File} object.
-   * @return a {@link java.util.List} object.
+   * @param file a {@link File} object.
+   * @return a {@link List} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   List<?> load( @NotNull File file ) throws IOException;
@@ -156,11 +157,11 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param in      a {@link java.io.BufferedInputStream} object.
-   * @param charset a {@link java.nio.charset.Charset} object.
-   * @return a {@link java.util.List} object.
+   * @param in      a {@link BufferedInputStream} object.
+   * @param charset a {@link Charset} object.
+   * @return a {@link List} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException;

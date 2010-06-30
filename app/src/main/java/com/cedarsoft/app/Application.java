@@ -35,6 +35,8 @@ import com.cedarsoft.Version;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * Informations about an
  *
@@ -50,8 +52,8 @@ public class Application {
   /**
    * <p>Constructor for Application.</p>
    *
-   * @param name    a {@link java.lang.String} object.
-   * @param version a {@link com.cedarsoft.Version} object.
+   * @param name    a {@link String} object.
+   * @param version a {@link Version} object.
    */
   public Application( @NotNull String name, @NotNull Version version ) {
     this.name = name;
@@ -61,7 +63,7 @@ public class Application {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public String getName() {
@@ -71,7 +73,7 @@ public class Application {
   /**
    * <p>Getter for the field <code>version</code>.</p>
    *
-   * @return a {@link com.cedarsoft.Version} object.
+   * @return a {@link Version} object.
    */
   @NotNull
   public Version getVersion() {

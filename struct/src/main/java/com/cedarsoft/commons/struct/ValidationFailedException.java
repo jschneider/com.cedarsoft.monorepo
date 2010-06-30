@@ -31,6 +31,9 @@
 
 package com.cedarsoft.commons.struct;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * <p>ValidationFailedException class.</p>
  *
@@ -46,7 +49,7 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public ValidationFailedException( String message ) {
     super( message );
@@ -55,8 +58,8 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public ValidationFailedException( String message, Throwable cause ) {
     super( message, cause );
@@ -65,7 +68,7 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public ValidationFailedException( Throwable cause ) {
     super( cause );

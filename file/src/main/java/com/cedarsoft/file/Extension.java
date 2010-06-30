@@ -34,6 +34,8 @@ package com.cedarsoft.file;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * An extension of a file
  *
@@ -61,7 +63,7 @@ public class Extension {
   /**
    * <p>Constructor for Extension.</p>
    *
-   * @param extension a {@link java.lang.String} object.
+   * @param extension a {@link String} object.
    */
   public Extension( @NotNull @NonNls String extension ) {
     this( DEFAULT_DELIMITER, extension );
@@ -70,8 +72,8 @@ public class Extension {
   /**
    * <p>Constructor for Extension.</p>
    *
-   * @param delimiter a {@link java.lang.String} object.
-   * @param extension a {@link java.lang.String} object.
+   * @param delimiter a {@link String} object.
+   * @param extension a {@link String} object.
    */
   public Extension( @NonNls @NotNull String delimiter, @NotNull @NonNls String extension ) {
     this.delimiter = delimiter;
@@ -81,7 +83,7 @@ public class Extension {
   /**
    * <p>Getter for the field <code>delimiter</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -92,7 +94,7 @@ public class Extension {
   /**
    * <p>Getter for the field <code>extension</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -103,7 +105,7 @@ public class Extension {
   /**
    * <p>getCombined</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

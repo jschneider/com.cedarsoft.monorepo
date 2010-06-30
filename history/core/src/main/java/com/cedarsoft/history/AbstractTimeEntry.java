@@ -57,7 +57,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
   /**
    * <p>Constructor for AbstractTimeEntry.</p>
    *
-   * @param begin a {@link org.joda.time.LocalDate} object.
+   * @param begin a {@link LocalDate} object.
    */
   protected AbstractTimeEntry( @NotNull LocalDate begin ) {
     this.begin = begin;
@@ -75,7 +75,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
   /**
    * <p>Setter for the field <code>begin</code>.</p>
    *
-   * @param begin a {@link org.joda.time.LocalDate} object.
+   * @param begin a {@link LocalDate} object.
    */
   public void setBegin( @NotNull LocalDate begin ) {
     this.begin = begin;

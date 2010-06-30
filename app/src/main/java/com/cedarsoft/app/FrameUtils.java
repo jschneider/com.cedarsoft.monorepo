@@ -37,6 +37,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Container;
+import java.lang.InterruptedException;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -52,9 +53,9 @@ public class FrameUtils {
    * @param contentPane the content pane
    * @return the JFrame that is shown
    *
-   * @throws java.lang.reflect.InvocationTargetException
+   * @throws InvocationTargetException
    *                                        if any.
-   * @throws java.lang.InterruptedException if any.
+   * @throws InterruptedException if any.
    */
   @NotNull
   public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {

@@ -36,6 +36,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
+import java.lang.String;
+
 /**
  * Event that represents the change of something
  *
@@ -53,8 +56,8 @@ public class ChangedEvent<T> {
    * <p>Constructor for ChangedEvent.</p>
    *
    * @param changedObject  a T object.
-   * @param context        a {@link java.lang.Object} object.
-   * @param propertiesPath a {@link java.lang.String} object.
+   * @param context        a {@link Object} object.
+   * @param propertiesPath a {@link String} object.
    */
   public ChangedEvent( @NotNull T changedObject, @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
@@ -68,7 +71,7 @@ public class ChangedEvent<T> {
   /**
    * <p>Getter for the field <code>propertiesPath</code>.</p>
    *
-   * @return a {@link com.cedarsoft.properties.PropertiesPath} object.
+   * @return a {@link PropertiesPath} object.
    */
   @NotNull
   public PropertiesPath getPropertiesPath() {
@@ -98,7 +101,7 @@ public class ChangedEvent<T> {
   /**
    * <p>getRootProperty</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @Deprecated
   @NotNull

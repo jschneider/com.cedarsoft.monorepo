@@ -34,6 +34,8 @@ package com.cedarsoft.renderer;
 import com.cedarsoft.registry.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Class;
+import java.lang.IllegalArgumentException;
 import java.util.Map;
 
 /**
@@ -64,7 +66,7 @@ public class RendererManager {
   /**
    * <p>setRenderer</p>
    *
-   * @param renderer a {@link java.util.Map} object.
+   * @param renderer a {@link Map} object.
    */
   public void setRenderer( @NotNull Map<Class<?>, Renderer<?, Object>> renderer ) {
     registry.setElements( renderer );
@@ -73,8 +75,8 @@ public class RendererManager {
   /**
    * <p>addRenderer</p>
    *
-   * @param type     a {@link java.lang.Class} object.
-   * @param renderer a {@link com.cedarsoft.renderer.Renderer} object.
+   * @param type     a {@link Class} object.
+   * @param renderer a {@link Renderer} object.
    */
   public <T> void addRenderer( @NotNull Class<T> type, @NotNull Renderer<? super T, Object> renderer ) {
     registry.addElement( type, renderer );
@@ -83,10 +85,10 @@ public class RendererManager {
   /**
    * <p>getRenderer</p>
    *
-   * @param type a {@link java.lang.Class} object.
-   * @return a {@link com.cedarsoft.renderer.Renderer} object.
+   * @param type a {@link Class} object.
+   * @return a {@link Renderer} object.
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if any.
    */
   @NotNull

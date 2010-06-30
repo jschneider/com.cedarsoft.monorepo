@@ -31,6 +31,9 @@
 
 package com.cedarsoft.lookup;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * <p>InstantiationFailedException class.</p>
  *
@@ -46,7 +49,7 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public InstantiationFailedException( String message ) {
     super( message );
@@ -55,8 +58,8 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public InstantiationFailedException( String message, Throwable cause ) {
     super( message, cause );
@@ -65,7 +68,7 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public InstantiationFailedException( Throwable cause ) {
     super( cause );

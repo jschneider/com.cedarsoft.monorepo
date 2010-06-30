@@ -34,6 +34,8 @@ package com.cedarsoft.license;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * Represents the license of the image
  *
@@ -66,8 +68,8 @@ public class License {
   /**
    * <p>Constructor for License.</p>
    *
-   * @param id   a {@link java.lang.String} object.
-   * @param name a {@link java.lang.String} object.
+   * @param id   a {@link String} object.
+   * @param name a {@link String} object.
    */
   public License( @NotNull @NonNls String id, @NotNull @NonNls String name ) {
     this.id = id;
@@ -77,7 +79,7 @@ public class License {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public String getName() {
@@ -87,7 +89,7 @@ public class License {
   /**
    * <p>Getter for the field <code>id</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

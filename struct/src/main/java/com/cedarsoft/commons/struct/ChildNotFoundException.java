@@ -48,7 +48,7 @@ public class ChildNotFoundException extends NotFoundException {
   /**
    * <p>Constructor for ChildNotFoundException.</p>
    *
-   * @param path a {@link com.cedarsoft.commons.struct.Path} object.
+   * @param path a {@link Path} object.
    */
   public ChildNotFoundException( @NotNull Path path ) {
     super( "Child not found <" + path.toString() + '>' );
@@ -58,7 +58,7 @@ public class ChildNotFoundException extends NotFoundException {
   /**
    * <p>Getter for the field <code>path</code>.</p>
    *
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path getPath() {

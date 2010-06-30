@@ -61,9 +61,9 @@ public class ImageConverter {
   /**
    * Resizes the image to the given size
    *
-   * @param original        a {@link java.awt.image.BufferedImage} object.
-   * @param targetDimension a {@link java.awt.Dimension} object.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @param original        a {@link BufferedImage} object.
+   * @param targetDimension a {@link Dimension} object.
+   * @return a {@link BufferedImage} object.
    */
   @NotNull
   public BufferedImage resize( @NotNull BufferedImage original, @NotNull Dimension targetDimension ) {
@@ -77,10 +77,10 @@ public class ImageConverter {
   /**
    * <p>resize</p>
    *
-   * @param original           a {@link java.awt.image.BufferedImage} object.
-   * @param originalResolution a {@link com.cedarsoft.image.Resolution} object.
-   * @param targetResolution   a {@link com.cedarsoft.image.Resolution} object.
-   * @return a {@link java.awt.image.BufferedImage} object.
+   * @param original           a {@link BufferedImage} object.
+   * @param originalResolution a {@link Resolution} object.
+   * @param targetResolution   a {@link Resolution} object.
+   * @return a {@link BufferedImage} object.
    */
   @NotNull
   public BufferedImage resize( @NotNull BufferedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {

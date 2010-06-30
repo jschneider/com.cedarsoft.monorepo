@@ -156,7 +156,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param index a int.
    * @return a E object.
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -175,7 +175,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Getter for the field <code>entries</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends E> getEntries() {
@@ -221,7 +221,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Setter for the field <code>begin</code>.</p>
    *
-   * @param begin a {@link org.joda.time.LocalDate} object.
+   * @param begin a {@link LocalDate} object.
    */
   public void setBegin( @NotNull LocalDate begin ) {
     lock.writeLock().lock();
@@ -244,7 +244,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Setter for the field <code>end</code>.</p>
    *
-   * @param end a {@link org.joda.time.LocalDate} object.
+   * @param end a {@link LocalDate} object.
    */
   public void setEnd( @NotNull LocalDate end ) {
     lock.writeLock().lock();
@@ -291,7 +291,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return a E object.
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -312,7 +312,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return the first entry
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -401,7 +401,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param date the date
    * @return the entry
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -438,7 +438,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param entry a E object.
    * @return a E object.
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -460,9 +460,9 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>findEntries</p>
    *
-   * @param begin a {@link org.joda.time.LocalDate} object.
-   * @param end   a {@link org.joda.time.LocalDate} object.
-   * @return a {@link java.util.List} object.
+   * @param begin a {@link LocalDate} object.
+   * @param end   a {@link LocalDate} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends E> findEntries( @NotNull LocalDate begin, @NotNull LocalDate end ) {
@@ -510,7 +510,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>findEntryWithBegin</p>
    *
-   * @param date a {@link org.joda.time.LocalDate} object.
+   * @param date a {@link LocalDate} object.
    * @return a E object.
    */
   @Nullable
@@ -532,7 +532,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * <p>validate</p>
    *
    * @param entry a E object.
-   * @throws com.cedarsoft.history.InvalidEntryException
+   * @throws InvalidEntryException
    *          if any.
    */
   protected void validate( @NotNull E entry ) throws InvalidEntryException {
@@ -579,7 +579,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>removeHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
@@ -588,7 +588,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
@@ -597,7 +597,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -607,7 +607,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>getTransientHistoryListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   public List<? extends HistoryListener<E>> getTransientHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();
@@ -640,7 +640,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   * @return a {@link ReadWriteLock} object.
    */
   @NotNull
   public ReadWriteLock getLock() {

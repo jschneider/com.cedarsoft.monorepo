@@ -46,7 +46,7 @@ public abstract class AbstractTagsComponentModel implements TagsComponentModel {
   /**
    * <p>Constructor for AbstractTagsComponentModel.</p>
    *
-   * @param tagProvider a {@link com.cedarsoft.tags.TagProvider} object.
+   * @param tagProvider a {@link TagProvider} object.
    */
   protected AbstractTagsComponentModel( @NotNull TagProvider tagProvider ) {
     this.tagProvider = tagProvider;

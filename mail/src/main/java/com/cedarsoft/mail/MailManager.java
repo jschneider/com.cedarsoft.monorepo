@@ -68,7 +68,7 @@ public class MailManager {
   /**
    * <p>Constructor for MailManager.</p>
    *
-   * @param mailConfiguration a {@link com.cedarsoft.mail.MailConfiguration} object.
+   * @param mailConfiguration a {@link MailConfiguration} object.
    */
   public MailManager( @NotNull MailConfiguration mailConfiguration ) {
     this.configuration = mailConfiguration;
@@ -88,7 +88,7 @@ public class MailManager {
   /**
    * <p>getAuthenticator</p>
    *
-   * @return a {@link javax.mail.Authenticator} object.
+   * @return a {@link Authenticator} object.
    */
   @NotNull
   public Authenticator getAuthenticator() {
@@ -122,7 +122,7 @@ public class MailManager {
   /**
    * <p>sendMail</p>
    *
-   * @param message a {@link javax.mail.Message} object.
+   * @param message a {@link Message} object.
    */
   public static void sendMail( @NotNull Message message ) {
     new Thread( new MailWorker( message ) ).start();

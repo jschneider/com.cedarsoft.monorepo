@@ -59,7 +59,7 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
    * <p>createChildren</p>
    *
    * @param parent a P object.
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   protected abstract List<? extends C> createChildren( @NotNull P parent );

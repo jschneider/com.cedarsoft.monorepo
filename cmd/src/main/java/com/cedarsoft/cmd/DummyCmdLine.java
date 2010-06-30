@@ -55,7 +55,7 @@ public class DummyCmdLine extends AbstractCmdLine {
   /**
    * <p>Constructor for DummyCmdLine.</p>
    *
-   * @param out a {@link java.io.PrintStream} object.
+   * @param out a {@link PrintStream} object.
    */
   public DummyCmdLine( @NotNull PrintStream out ) {
     this.out = out;

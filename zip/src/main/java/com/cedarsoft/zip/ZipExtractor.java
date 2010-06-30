@@ -62,7 +62,7 @@ public class ZipExtractor {
   /**
    * <p>Constructor for ZipExtractor.</p>
    *
-   * @param condition a {@link com.cedarsoft.zip.ZipExtractor.Condition} object.
+   * @param condition a {@link ZipExtractor.Condition} object.
    */
   public ZipExtractor( @Nullable Condition condition ) {
     this.condition = condition;
@@ -73,7 +73,7 @@ public class ZipExtractor {
    *
    * @param destination the destination the file will be extracted to
    * @param inputStream the input stream providing the zipped content
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public void extract( @NotNull File destination, @NotNull final InputStream inputStream ) throws IOException {
     if ( !destination.exists() || !destination.isDirectory() ) {

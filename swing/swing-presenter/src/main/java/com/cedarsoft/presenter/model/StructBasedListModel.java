@@ -65,7 +65,7 @@ public class StructBasedListModel implements ListModel {
   /**
    * <p>Constructor for StructBasedListModel.</p>
    *
-   * @param node a {@link com.cedarsoft.commons.struct.StructPart} object.
+   * @param node a {@link StructPart} object.
    */
   public StructBasedListModel( @NotNull StructPart node ) {
     this.node = node;

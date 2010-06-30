@@ -37,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.Object;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -67,7 +69,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>Getter for the field <code>transientListeners</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   protected List<ChangeListener<T>> getTransientListeners() {
@@ -98,7 +100,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   * @param listener a {@link ChangeListener} object.
    */
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -112,7 +114,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.ChangeListener} object.
+   * @param listener a {@link ChangeListener} object.
    */
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -126,8 +128,8 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context        a {@link java.lang.Object} object.
-   * @param propertiesPath a {@link java.lang.String} object.
+   * @param context        a {@link Object} object.
+   * @param propertiesPath a {@link String} object.
    */
   public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
@@ -146,8 +148,8 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>createPropertyListenerDelegate</p>
    *
-   * @param propertiesPath a {@link java.lang.String} object.
-   * @return a {@link java.beans.PropertyChangeListener} object.
+   * @param propertiesPath a {@link String} object.
+   * @return a {@link PropertyChangeListener} object.
    */
   @NotNull
   public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {

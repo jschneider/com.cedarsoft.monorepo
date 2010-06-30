@@ -34,6 +34,8 @@ package com.cedarsoft.hierarchy;
 import com.cedarsoft.registry.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Class;
+import java.lang.IllegalArgumentException;
 import java.util.Map;
 
 /**
@@ -64,8 +66,8 @@ public class ChildDetectorManager {
   /**
    * <p>addChildDetector</p>
    *
-   * @param parentType    a {@link java.lang.Class} object.
-   * @param childDetector a {@link com.cedarsoft.hierarchy.ChildDetector} object.
+   * @param parentType    a {@link Class} object.
+   * @param childDetector a {@link ChildDetector} object.
    */
   public <P, C> void addChildDetector( @NotNull Class<P> parentType, @NotNull ChildDetector<P, C> childDetector ) {
     registry.addElement( parentType, childDetector );
@@ -74,7 +76,7 @@ public class ChildDetectorManager {
   /**
    * <p>setChildDetectors</p>
    *
-   * @param childDetectors a {@link java.util.Map} object.
+   * @param childDetectors a {@link Map} object.
    */
   public void setChildDetectors( Map<Class<?>, ChildDetector<?, ?>> childDetectors ) {
     registry.setElements( childDetectors );
@@ -83,10 +85,10 @@ public class ChildDetectorManager {
   /**
    * <p>getChildDetector</p>
    *
-   * @param parentType a {@link java.lang.Class} object.
-   * @return a {@link com.cedarsoft.hierarchy.ChildDetector} object.
+   * @param parentType a {@link Class} object.
+   * @return a {@link ChildDetector} object.
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if any.
    */
   @NotNull

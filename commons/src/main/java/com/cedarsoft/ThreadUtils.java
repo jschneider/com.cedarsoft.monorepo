@@ -35,6 +35,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
+import java.lang.IllegalThreadStateException;
+import java.lang.InterruptedException;
+import java.lang.Runnable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -60,7 +63,7 @@ public class ThreadUtils {
   /**
    * <p>assertEventDispatchThread</p>
    *
-   * @throws java.lang.IllegalThreadStateException
+   * @throws IllegalThreadStateException
    *          if any.
    */
   public static void assertEventDispatchThread() throws IllegalThreadStateException {
@@ -72,7 +75,7 @@ public class ThreadUtils {
   /**
    * <p>assertNotEventDispatchThread</p>
    *
-   * @throws java.lang.IllegalThreadStateException
+   * @throws IllegalThreadStateException
    *          if any.
    */
   public static void assertNotEventDispatchThread() throws IllegalThreadStateException {
@@ -84,12 +87,12 @@ public class ThreadUtils {
   /**
    * <p>inokeInOtherThread</p>
    *
-   * @param callable a {@link java.util.concurrent.Callable} object.
+   * @param callable a {@link Callable} object.
    * @return a T object.
    *
-   * @throws java.util.concurrent.ExecutionException
+   * @throws ExecutionException
    *                                        if any.
-   * @throws java.lang.InterruptedException if any.
+   * @throws InterruptedException if any.
    */
   @Nullable
   public static <T> T inokeInOtherThread( @NotNull Callable<T> callable ) throws ExecutionException, InterruptedException {
@@ -105,7 +108,7 @@ public class ThreadUtils {
   /**
    * Invokes the runnable within the EDT
    *
-   * @param runnable a {@link java.lang.Runnable} object.
+   * @param runnable a {@link Runnable} object.
    */
   public static void invokeInEventDispatchThread( @NotNull Runnable runnable ) {
     if ( isEventDispatchThread() ) {

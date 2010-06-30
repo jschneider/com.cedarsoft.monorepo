@@ -53,7 +53,7 @@ public class ScreenSizeUtils {
    *
    * @return the size of the first screen
    *
-   * @throws java.awt.HeadlessException if any.
+   * @throws HeadlessException if any.
    */
   @Nullable
   public static Dimension getScreenSize() throws HeadlessException {

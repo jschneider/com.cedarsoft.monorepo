@@ -97,9 +97,9 @@ public class State<T> {
   /**
    * <p>createTransition</p>
    *
-   * @param targetState a {@link com.cedarsoft.workflow.State} object.
-   * @param actions     a {@link com.cedarsoft.workflow.Action} object.
-   * @return a {@link com.cedarsoft.workflow.TransitionDefinition} object.
+   * @param targetState a {@link State} object.
+   * @param actions     a {@link Action} object.
+   * @return a {@link TransitionDefinition} object.
    */
   @NotNull
   public TransitionDefinition<T> createTransition( @NotNull State<T> targetState, @NotNull Action<T>... actions ) {

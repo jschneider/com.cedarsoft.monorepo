@@ -37,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 
 import java.io.Serializable;
+import java.lang.Iterable;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -89,7 +91,7 @@ public class Path implements Serializable {
    * <p>Constructor for Path.</p>
    *
    * @param relative a boolean.
-   * @param elements a {@link java.lang.String} object.
+   * @param elements a {@link String} object.
    */
   @TestOnly
   @Deprecated
@@ -109,7 +111,7 @@ public class Path implements Serializable {
   /**
    * <p>Constructor for Path.</p>
    *
-   * @param elements a {@link java.lang.Iterable} object.
+   * @param elements a {@link Iterable} object.
    * @param absolute a boolean.
    */
   public Path( @NotNull Iterable<? extends String> elements, boolean absolute ) {
@@ -184,7 +186,7 @@ public class Path implements Serializable {
   /**
    * <p>absolute</p>
    *
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path absolute() {
@@ -194,7 +196,7 @@ public class Path implements Serializable {
   /**
    * <p>relative</p>
    *
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path relative() {
@@ -205,7 +207,7 @@ public class Path implements Serializable {
    * <p>absolute</p>
    *
    * @param newAbsolute a boolean.
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path absolute( boolean newAbsolute ) {
@@ -220,7 +222,7 @@ public class Path implements Serializable {
    *
    * @param index0 a int.
    * @param index1 a int.
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path subPath( int index0, int index1 ) {
@@ -243,8 +245,8 @@ public class Path implements Serializable {
   /**
    * <p>withParent</p>
    *
-   * @param parentPathRepresentation a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.commons.struct.Path} object.
+   * @param parentPathRepresentation a {@link String} object.
+   * @return a {@link Path} object.
    */
   @NotNull
   public Path withParent( @NotNull @NonNls String parentPathRepresentation ) {

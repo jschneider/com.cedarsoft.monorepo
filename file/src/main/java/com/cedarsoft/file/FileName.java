@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.lang.String;
 
 /**
  * Represents a file name
@@ -72,9 +73,9 @@ public class FileName {
   /**
    * <p>Constructor for FileName.</p>
    *
-   * @param baseName  a {@link java.lang.String} object.
-   * @param delimiter a {@link java.lang.String} object.
-   * @param extension a {@link java.lang.String} object.
+   * @param baseName  a {@link String} object.
+   * @param delimiter a {@link String} object.
+   * @param extension a {@link String} object.
    */
   public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
     this( new BaseName( baseName ), new Extension( delimiter, extension ) );
@@ -105,7 +106,7 @@ public class FileName {
   /**
    * <p>Getter for the field <code>baseName</code>.</p>
    *
-   * @return a {@link com.cedarsoft.file.BaseName} object.
+   * @return a {@link BaseName} object.
    */
   @NotNull
   public BaseName getBaseName() {
@@ -115,7 +116,7 @@ public class FileName {
   /**
    * <p>Getter for the field <code>extension</code>.</p>
    *
-   * @return a {@link com.cedarsoft.file.Extension} object.
+   * @return a {@link Extension} object.
    */
   @NonNls
   @NotNull
@@ -126,7 +127,7 @@ public class FileName {
   /**
    * <p>getName</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

@@ -55,7 +55,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
   /**
    * <p>Constructor for TagComboBoxModel.</p>
    *
-   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   * @param availableTags a {@link TagObservable} object.
    */
   public TagComboBoxModel( @NotNull TagObservable availableTags ) {
     this( availableTags, true );
@@ -64,7 +64,7 @@ public class TagComboBoxModel extends TagListModel implements ComboBoxModel {
   /**
    * <p>Constructor for TagComboBoxModel.</p>
    *
-   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   * @param availableTags a {@link TagObservable} object.
    * @param nullable      a boolean.
    */
   public TagComboBoxModel( @NotNull TagObservable availableTags, boolean nullable ) {

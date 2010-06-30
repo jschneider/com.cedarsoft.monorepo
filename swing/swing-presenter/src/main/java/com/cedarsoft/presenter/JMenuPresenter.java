@@ -44,7 +44,7 @@ public interface JMenuPresenter extends JMenuItemPresenter<JMenu> {
   /**
    * <p>createPresentation</p>
    *
-   * @return a {@link javax.swing.JMenu} object.
+   * @return a {@link JMenu} object.
    */
   @NotNull
   JMenu createPresentation();

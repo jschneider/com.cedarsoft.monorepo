@@ -53,8 +53,8 @@ public class GuiceHelper {
   /**
    * <p>superCollectionOf</p>
    *
-   * @param type a {@link java.lang.reflect.Type} object.
-   * @return a {@link java.lang.reflect.ParameterizedType} object.
+   * @param type a {@link Type} object.
+   * @return a {@link ParameterizedType} object.
    */
   @NotNull
   public static ParameterizedType superCollectionOf( @NotNull Type type ) {
@@ -64,8 +64,8 @@ public class GuiceHelper {
   /**
    * <p>superListOf</p>
    *
-   * @param type a {@link java.lang.reflect.Type} object.
-   * @return a {@link java.lang.reflect.ParameterizedType} object.
+   * @param type a {@link Type} object.
+   * @return a {@link ParameterizedType} object.
    */
   @NotNull
   public static ParameterizedType superListOf( @NotNull Type type ) {

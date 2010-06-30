@@ -56,7 +56,7 @@ public class TagListSelectionMode extends DefaultListSelectionModel implements T
   /**
    * <p>Constructor for TagListSelectionMode.</p>
    *
-   * @param model a {@link com.cedarsoft.tags.ui.TagListModel} object.
+   * @param model a {@link TagListModel} object.
    */
   public TagListSelectionMode( @NotNull TagListModel model ) {
     this.model = model;

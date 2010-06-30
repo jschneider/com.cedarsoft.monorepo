@@ -34,6 +34,8 @@ package com.cedarsoft.cache;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,7 +90,7 @@ public class ParentCache {
   /**
    * <p>remove</p>
    *
-   * @param child a {@link java.lang.Object} object.
+   * @param child a {@link Object} object.
    */
   public void remove( @NotNull Object child ) {
     removeParent( child );
@@ -98,7 +100,7 @@ public class ParentCache {
   /**
    * <p>removeAll</p>
    *
-   * @param children a {@link java.util.List} object.
+   * @param children a {@link List} object.
    */
   public void removeAll( @NotNull List<? extends Object> children ) {
     for ( Object child : children ) {
@@ -147,7 +149,7 @@ public class ParentCache {
    * <p>findIndex</p>
    *
    * @param child a C object.
-   * @return a {@link java.lang.Integer} object.
+   * @return a {@link Integer} object.
    */
   @Nullable
   public <C> Integer findIndex( @NotNull C child ) {

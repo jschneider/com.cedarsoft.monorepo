@@ -53,7 +53,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
   /**
    * <p>Constructor for MultiReadWriteLock.</p>
    *
-   * @param locks a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   * @param locks a {@link ReadWriteLock} object.
    */
   public MultiReadWriteLock( @NotNull ReadWriteLock... locks ) {
     this( Arrays.asList( locks ) );
@@ -62,7 +62,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
   /**
    * <p>Constructor for MultiReadWriteLock.</p>
    *
-   * @param locks a {@link java.util.List} object.
+   * @param locks a {@link List} object.
    */
   public MultiReadWriteLock( @NotNull List<? extends ReadWriteLock> locks ) {
     List<Lock> readLocks = new ArrayList<Lock>();

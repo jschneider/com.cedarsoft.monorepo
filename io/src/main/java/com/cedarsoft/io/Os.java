@@ -54,6 +54,7 @@ package com.cedarsoft.io;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
 import java.util.Locale;
 
 public class Os {
@@ -76,7 +77,7 @@ public class Os {
   /**
    * <p>getOsName</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public static String getOsName() {
@@ -86,7 +87,7 @@ public class Os {
   /**
    * <p>getOsArch</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public static String getOsArch() {
@@ -96,7 +97,7 @@ public class Os {
   /**
    * <p>getOsVersion</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public static String getOsVersion() {
@@ -106,7 +107,7 @@ public class Os {
   /**
    * <p>getPathSep</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public static String getPathSep() {
@@ -157,7 +158,7 @@ public class Os {
   /**
    * <p>isFamily</p>
    *
-   * @param family a {@link java.lang.String} object.
+   * @param family a {@link String} object.
    * @return a boolean.
    */
   public static boolean isFamily( @NotNull @NonNls String family ) {

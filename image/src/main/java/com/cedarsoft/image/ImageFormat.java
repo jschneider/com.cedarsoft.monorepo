@@ -34,6 +34,8 @@ package com.cedarsoft.image;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * The format of the scanned image
  *
@@ -53,7 +55,7 @@ public enum ImageFormat {
   /**
    * <p>Getter for the field <code>suffix</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -64,8 +66,8 @@ public enum ImageFormat {
   /**
    * <p>find</p>
    *
-   * @param suffix a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.image.ImageFormat} object.
+   * @param suffix a {@link String} object.
+   * @return a {@link ImageFormat} object.
    */
   @NotNull
   public static ImageFormat find( String suffix ) {

@@ -34,6 +34,9 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
+import java.lang.IllegalArgumentException;
+import java.lang.UnsupportedOperationException;
 import java.util.Map;
 
 /**
@@ -59,7 +62,7 @@ public interface Lookup {
    * @param <T>  a T object.
    * @return the looked up object
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if no object has been found
    */
   @NotNull
@@ -72,7 +75,7 @@ public interface Lookup {
    *
    * @return a  map containing the available lookup objects.
    *
-   * @throws java.lang.UnsupportedOperationException
+   * @throws UnsupportedOperationException
    *          if this method is not supported
    */
   @NotNull
@@ -83,7 +86,7 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
-   * @param type                 a {@link java.lang.Class} object.
+   * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
   <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
@@ -104,7 +107,7 @@ public interface Lookup {
    * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
    *
    * @param lookupChangeListener the listener that is added
-   * @param type                 a {@link java.lang.Class} object.
+   * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
   <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );

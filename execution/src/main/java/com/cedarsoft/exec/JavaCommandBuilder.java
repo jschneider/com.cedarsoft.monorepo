@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -63,7 +64,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Constructor for JavaCommandBuilder.</p>
    *
-   * @param mainClass a {@link java.lang.String} object.
+   * @param mainClass a {@link String} object.
    */
   public JavaCommandBuilder( @NotNull @NonNls String mainClass ) {
     this.mainClass = mainClass;
@@ -72,7 +73,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>classPathElements</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<String> getClassPathElements() {
@@ -82,7 +83,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>classPathElements</code>.</p>
    *
-   * @param classPathElements a {@link java.lang.String} object.
+   * @param classPathElements a {@link String} object.
    */
   public void setClassPathElements( @NotNull @NonNls String... classPathElements ) {
     this.classPathElements.clear();
@@ -97,7 +98,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>javaBin</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -142,7 +143,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>mainClass</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -153,7 +154,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addClassPathElement</p>
    *
-   * @param classPathElement a {@link java.lang.String} object.
+   * @param classPathElement a {@link String} object.
    */
   public void addClassPathElement( @NotNull @NonNls String classPathElement ) {
     classPathElements.add( classPathElement );
@@ -162,7 +163,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>vmProperties</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<String> getVmProperties() {
@@ -172,7 +173,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>vmProperties</code>.</p>
    *
-   * @param vmProperties a {@link java.lang.String} object.
+   * @param vmProperties a {@link String} object.
    */
   public void setVmProperties( @NonNls @NotNull String... vmProperties ) {
     this.vmProperties.clear();
@@ -187,7 +188,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addVmProperty</p>
    *
-   * @param vmProeprty a {@link java.lang.String} object.
+   * @param vmProeprty a {@link String} object.
    */
   public void addVmProperty( @NotNull @NonNls String vmProeprty ) {
     vmProperties.add( vmProeprty );
@@ -196,7 +197,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addArgument</p>
    *
-   * @param argument a {@link java.lang.String} object.
+   * @param argument a {@link String} object.
    */
   public void addArgument( @NotNull @NonNls String argument ) {
     this.arguments.add( argument );
@@ -205,7 +206,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>arguments</code>.</p>
    *
-   * @param arguments a {@link java.lang.String} object.
+   * @param arguments a {@link String} object.
    */
   public void setArguments( @NotNull @NonNls String... arguments ) {
     this.arguments.clear();
@@ -220,7 +221,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>arguments</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   @NonNls
@@ -231,7 +232,7 @@ public class JavaCommandBuilder {
   /**
    * <p>getCommandLineElements</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   @NonNls

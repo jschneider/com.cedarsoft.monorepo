@@ -55,7 +55,7 @@ public class NonTransientCollectionSupport<E> {
   /**
    * <p>Constructor for NonTransientCollectionSupport.</p>
    *
-   * @param source a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source a {@link ObservableCollection} object.
    */
   public NonTransientCollectionSupport( @NotNull ObservableCollection<E> source ) {
     this.source = source;
@@ -64,7 +64,7 @@ public class NonTransientCollectionSupport<E> {
   /**
    * <p>addEntryListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener a {@link ElementsListener} object.
    */
   public void addEntryListener( @NotNull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();
@@ -78,7 +78,7 @@ public class NonTransientCollectionSupport<E> {
   /**
    * <p>removeEntryListener</p>
    *
-   * @param listener a {@link com.cedarsoft.history.ElementsListener} object.
+   * @param listener a {@link ElementsListener} object.
    */
   public void removeEntryListener( @NotNull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();

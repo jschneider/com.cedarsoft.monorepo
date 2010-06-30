@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.lang.String;
 import java.util.Arrays;
 
 /**
@@ -56,7 +57,7 @@ public class Hash implements Serializable {
   /**
    * <p>Constructor for Hash.</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param algorithm a {@link Algorithm} object.
    * @param value     an array of byte.
    */
   public Hash( @NotNull Algorithm algorithm, @NotNull byte[] value ) {
@@ -67,7 +68,7 @@ public class Hash implements Serializable {
   /**
    * <p>Getter for the field <code>algorithm</code>.</p>
    *
-   * @return a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @return a {@link Algorithm} object.
    */
   @NotNull
   public Algorithm getAlgorithm() {
@@ -77,7 +78,7 @@ public class Hash implements Serializable {
   /**
    * <p>getValueAsHex</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public String getValueAsHex() {

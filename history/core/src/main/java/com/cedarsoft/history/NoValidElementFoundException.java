@@ -31,6 +31,9 @@
 
 package com.cedarsoft.history;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * <p>NoValidElementFoundException class.</p>
  *
@@ -46,7 +49,7 @@ public class NoValidElementFoundException extends NoElementFoundException {
   /**
    * <p>Constructor for NoValidElementFoundException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public NoValidElementFoundException( String message ) {
     super( message );
@@ -55,8 +58,8 @@ public class NoValidElementFoundException extends NoElementFoundException {
   /**
    * <p>Constructor for NoValidElementFoundException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public NoValidElementFoundException( String message, Throwable cause ) {
     super( message, cause );
@@ -65,7 +68,7 @@ public class NoValidElementFoundException extends NoElementFoundException {
   /**
    * <p>Constructor for NoValidElementFoundException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public NoValidElementFoundException( Throwable cause ) {
     super( cause );

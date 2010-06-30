@@ -35,6 +35,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.*;
 
+import java.lang.Exception;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -49,7 +50,7 @@ public class MockitoTest {
   /**
    * <p>testTemplate</p>
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   @Test
   public void testTemplate() throws Exception {

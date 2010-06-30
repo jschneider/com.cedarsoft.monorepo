@@ -39,6 +39,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.IllegalAccessException;
+import java.lang.String;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -55,7 +57,7 @@ public class TestUtils {
    * Cleans up all fields within a given test
    *
    * @param test the test that is cleaned up
-   * @throws java.lang.IllegalAccessException
+   * @throws IllegalAccessException
    *          if any.
    */
   public static void cleanupFields( Object test ) throws IllegalAccessException {
@@ -75,7 +77,7 @@ public class TestUtils {
   /**
    * <p>getTmpDir</p>
    *
-   * @return a {@link java.io.File} object.
+   * @return a {@link File} object.
    */
   @NotNull
   public static File getTmpDir() {
@@ -85,12 +87,12 @@ public class TestUtils {
   /**
    * <p>createTmpFile</p>
    *
-   * @param prefix a {@link java.lang.String} object.
-   * @param suffix a {@link java.lang.String} object.
-   * @param in     a {@link java.io.InputStream} object.
-   * @return a {@link java.io.File} object.
+   * @param prefix a {@link String} object.
+   * @param suffix a {@link String} object.
+   * @param in     a {@link InputStream} object.
+   * @return a {@link File} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static File createTmpFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @NotNull InputStream in ) throws IOException {
@@ -109,7 +111,7 @@ public class TestUtils {
   /**
    * <p>createEmptyTmpDir</p>
    *
-   * @return a {@link java.io.File} object.
+   * @return a {@link File} object.
    */
   @NotNull
   public static File createEmptyTmpDir() {

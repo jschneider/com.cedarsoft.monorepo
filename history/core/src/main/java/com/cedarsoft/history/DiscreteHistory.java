@@ -72,7 +72,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param date the date the entries are searched for
    * @return the entries
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if no history could be found for the given date
    */
   @NotNull
@@ -103,7 +103,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param date the date
    * @return the latest entry for the given date
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if no history could be found for the given date
    */
   @NotNull
@@ -345,7 +345,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param date the date the sub history is searched for
    * @return the sub history for the given date
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -370,7 +370,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param date the date
    * @return the sub history before the given date
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -419,7 +419,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param date the date
    * @return the best history
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if absolutly no history could be found
    */
   @NotNull
@@ -437,7 +437,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @return the most up to date entry (over all histories)
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -466,10 +466,10 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getBestEntryFor</p>
    *
-   * @param date a {@link org.joda.time.LocalDate} object.
+   * @param date a {@link LocalDate} object.
    * @return a E object.
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -480,9 +480,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getLastSubHistory</p>
    *
-   * @return a {@link com.cedarsoft.history.History} object.
+   * @return a {@link History} object.
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -503,9 +503,9 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getFirstSubHistory</p>
    *
-   * @return a {@link com.cedarsoft.history.History} object.
+   * @return a {@link History} object.
    *
-   * @throws com.cedarsoft.history.HistoryNotFoundException
+   * @throws HistoryNotFoundException
    *          if any.
    */
   @NotNull
@@ -575,7 +575,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -626,7 +626,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link java.util.concurrent.locks.ReadWriteLock} object.
+   * @return a {@link ReadWriteLock} object.
    */
   @NotNull
   public ReadWriteLock getLock() {

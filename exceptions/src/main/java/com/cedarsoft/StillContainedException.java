@@ -33,6 +33,8 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Object;
+
 /**
  * <p>StillContainedException class.</p>
  *
@@ -45,7 +47,7 @@ public class StillContainedException extends RuntimeException {
   /**
    * <p>Constructor for StillContainedException.</p>
    *
-   * @param object a {@link java.lang.Object} object.
+   * @param object a {@link Object} object.
    */
   public StillContainedException( @NotNull Object object ) {
     super( "The object <" + object + "> is still contained" );
@@ -55,7 +57,7 @@ public class StillContainedException extends RuntimeException {
   /**
    * <p>Getter for the field <code>object</code>.</p>
    *
-   * @return a {@link java.lang.Object} object.
+   * @return a {@link Object} object.
    */
   @NotNull
   public Object getObject() {

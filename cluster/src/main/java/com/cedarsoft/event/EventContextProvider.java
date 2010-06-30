@@ -33,6 +33,8 @@ package com.cedarsoft.event;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
+
 /**
  * Provides the context for an event
  *
@@ -42,7 +44,7 @@ public interface EventContextProvider {
   /**
    * <p>getContext</p>
    *
-   * @return a {@link java.lang.Object} object.
+   * @return a {@link Object} object.
    */
   @Nullable
   Object getContext();

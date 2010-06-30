@@ -33,6 +33,8 @@ package com.cedarsoft.history;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Class;
+
 /**
  * This listener wraps another listener that only wants to listen for a subclass of the given type.
  *
@@ -50,8 +52,8 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
   /**
    * <p>Constructor for TypeFilteredElementsListener.</p>
    *
-   * @param type     a {@link java.lang.Class} object.
-   * @param delegate a {@link com.cedarsoft.history.ElementListener} object.
+   * @param type     a {@link Class} object.
+   * @param delegate a {@link ElementListener} object.
    */
   public TypeFilteredElementsListener( @NotNull Class<T> type, @NotNull ElementListener<T> delegate ) {
     this.delegate = delegate;

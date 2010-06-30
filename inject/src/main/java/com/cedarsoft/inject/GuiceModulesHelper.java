@@ -38,6 +38,8 @@ import com.google.inject.Module;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.AssertionError;
+import java.lang.Class;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -55,9 +57,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules  a {@link java.util.List} object.
-   * @param testType a {@link java.lang.Class} object.
-   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param modules  a {@link List} object.
+   * @param testType a {@link Class} object.
+   * @return a {@link GuiceModulesHelper.Result} object.
    */
   @NotNull
   public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
@@ -67,9 +69,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules a {@link java.util.List} object.
-   * @param keys    a {@link com.google.inject.Key} object.
-   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param modules a {@link List} object.
+   * @param keys    a {@link Key} object.
+   * @return a {@link GuiceModulesHelper.Result} object.
    */
   @NotNull
   public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) {
@@ -82,9 +84,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result   a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
-   * @param testType a {@link java.lang.Class} object.
-   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param result   a {@link GuiceModulesHelper.Result} object.
+   * @param testType a {@link Class} object.
+   * @return a {@link GuiceModulesHelper.Result} object.
    */
   @NotNull
   public static Result minimize( @NotNull Result result, @NotNull Class<?> testType ) {
@@ -94,9 +96,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
-   * @param keys   a {@link com.google.inject.Key} object.
-   * @return a {@link com.cedarsoft.inject.GuiceModulesHelper.Result} object.
+   * @param result a {@link GuiceModulesHelper.Result} object.
+   * @param keys   a {@link Key} object.
+   * @return a {@link GuiceModulesHelper.Result} object.
    */
   public static Result minimize( @NotNull Result result, @NotNull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)
@@ -136,9 +138,9 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules  a {@link java.util.List} object.
-   * @param testType a {@link java.lang.Class} object.
-   * @throws java.lang.AssertionError if any.
+   * @param modules  a {@link List} object.
+   * @param testType a {@link Class} object.
+   * @throws AssertionError if any.
    */
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) throws AssertionError {
     assertMinimizeNotPossible( modules, Key.get( testType ) );
@@ -147,9 +149,9 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules a {@link java.util.List} object.
-   * @param keys    a {@link com.google.inject.Key} object.
-   * @throws java.lang.AssertionError if any.
+   * @param modules a {@link List} object.
+   * @param keys    a {@link Key} object.
+   * @throws AssertionError if any.
    */
   public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) throws AssertionError {
     GuiceModulesHelper.Result minimal = minimize( modules, keys );

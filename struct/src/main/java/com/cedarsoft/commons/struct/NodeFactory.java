@@ -49,7 +49,7 @@ public interface NodeFactory {
    * @param context the context
    * @return the node
    *
-   * @throws com.cedarsoft.CanceledException
+   * @throws CanceledException
    *          if any.
    */
   @NotNull

@@ -44,21 +44,21 @@ public interface ElementsListener<E> {
   /**
    * Is notified when the elements have been deleted
    *
-   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
+   * @param event a {@link ElementsChangedEvent} object.
    */
   void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event );
 
   /**
    * The elements are added
    *
-   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
+   * @param event a {@link ElementsChangedEvent} object.
    */
   void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event );
 
   /**
    * Elements have been changed
    *
-   * @param event a {@link com.cedarsoft.history.ElementsChangedEvent} object.
+   * @param event a {@link ElementsChangedEvent} object.
    */
   void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event );
 }

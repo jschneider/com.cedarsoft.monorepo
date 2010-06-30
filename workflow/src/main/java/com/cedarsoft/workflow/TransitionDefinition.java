@@ -55,9 +55,9 @@ public class TransitionDefinition<T> {
   /**
    * <p>Constructor for TransitionDefinition.</p>
    *
-   * @param source  a {@link com.cedarsoft.workflow.State} object.
-   * @param target  a {@link com.cedarsoft.workflow.State} object.
-   * @param actions a {@link com.cedarsoft.workflow.Action} object.
+   * @param source  a {@link State} object.
+   * @param target  a {@link State} object.
+   * @param actions a {@link Action} object.
    */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
@@ -68,7 +68,7 @@ public class TransitionDefinition<T> {
    *
    * @param source  the source
    * @param target  the target
-   * @param actions a {@link java.util.List} object.
+   * @param actions a {@link List} object.
    */
   public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull List<? extends Action<T>> actions ) {
     this.source = source;
@@ -79,7 +79,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link com.cedarsoft.workflow.State} object.
+   * @return a {@link State} object.
    */
   @NotNull
   public State<T> getSource() {
@@ -89,7 +89,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>Getter for the field <code>target</code>.</p>
    *
-   * @return a {@link com.cedarsoft.workflow.State} object.
+   * @return a {@link State} object.
    */
   @NotNull
   public State<T> getTarget() {
@@ -109,7 +109,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>getFirstAction</p>
    *
-   * @return a {@link com.cedarsoft.workflow.Action} object.
+   * @return a {@link Action} object.
    */
   @Deprecated
   @NotNull

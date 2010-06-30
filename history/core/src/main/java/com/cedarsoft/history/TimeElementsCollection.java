@@ -122,7 +122,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
   /**
    * <p>getFirstEntryDate</p>
    *
-   * @return a {@link java.util.Date} object.
+   * @return a {@link Date} object.
    */
   @Nullable
   public Date getFirstEntryDate() {

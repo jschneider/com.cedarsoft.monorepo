@@ -57,7 +57,7 @@ public class SortedElementsCollection<E> extends ElementsCollection<E> {
   /**
    * <p>Constructor for SortedElementsCollection.</p>
    *
-   * @param comparator a {@link java.util.Comparator} object.
+   * @param comparator a {@link Comparator} object.
    */
   public SortedElementsCollection( @Nullable Comparator<? super E> comparator ) {
     this.comparator = comparator;

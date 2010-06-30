@@ -34,6 +34,8 @@ package com.cedarsoft.provider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * Represents a provider.
  *
@@ -55,7 +57,7 @@ public interface Provider<T, E extends Throwable> {
   /**
    * <p>getDescription</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

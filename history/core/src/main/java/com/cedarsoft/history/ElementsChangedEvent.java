@@ -60,8 +60,8 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Constructor for ElementsChangedEvent.</p>
    *
-   * @param source       a {@link com.cedarsoft.history.ObservableCollection} object.
-   * @param elements     a {@link java.util.List} object.
+   * @param source       a {@link ObservableCollection} object.
+   * @param elements     a {@link List} object.
    * @param lowestIndex  a int.
    * @param highestIndex a int.
    */
@@ -72,9 +72,9 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Constructor for ElementsChangedEvent.</p>
    *
-   * @param source   a {@link com.cedarsoft.history.ObservableCollection} object.
-   * @param elements a {@link java.util.List} object.
-   * @param indicies a {@link java.util.List} object.
+   * @param source   a {@link ObservableCollection} object.
+   * @param elements a {@link List} object.
+   * @param indicies a {@link List} object.
    */
   public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, @NotNull List<? extends Integer> indicies ) {
     this.source = source;
@@ -92,7 +92,7 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @return a {@link ObservableCollection} object.
    */
   @NotNull
   public ObservableCollection<T> getSource() {
@@ -102,7 +102,7 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Getter for the field <code>elements</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends T> getElements() {
@@ -113,7 +113,7 @@ public class ElementsChangedEvent<T> {
   /**
    * <p>Getter for the field <code>indicies</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends Integer> getIndicies() {

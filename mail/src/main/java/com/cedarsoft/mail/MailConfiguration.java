@@ -34,6 +34,8 @@ package com.cedarsoft.mail;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * <p/>
  * Date: 21.06.2006<br>
@@ -68,12 +70,12 @@ public class MailConfiguration {
   /**
    * <p>Constructor for MailConfiguration.</p>
    *
-   * @param mailHost     a {@link java.lang.String} object.
-   * @param mailFrom     a {@link java.lang.String} object.
-   * @param mailPersonal a {@link java.lang.String} object.
-   * @param smtpUser     a {@link java.lang.String} object.
-   * @param smtpPass     a {@link java.lang.String} object.
-   * @param mailSmtpAuth a {@link java.lang.String} object.
+   * @param mailHost     a {@link String} object.
+   * @param mailFrom     a {@link String} object.
+   * @param mailPersonal a {@link String} object.
+   * @param smtpUser     a {@link String} object.
+   * @param smtpPass     a {@link String} object.
+   * @param mailSmtpAuth a {@link String} object.
    */
   public MailConfiguration( @NonNls @NotNull String mailHost, @NonNls @NotNull String mailFrom, @NonNls @NotNull String mailPersonal, @NonNls @NotNull String smtpUser, @NonNls @NotNull String smtpPass, @NonNls @NotNull String mailSmtpAuth ) {
     this.mailHost = mailHost;
@@ -87,7 +89,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailFrom</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull
@@ -98,7 +100,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailHost</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull
@@ -109,7 +111,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>smtpUser</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull
@@ -120,7 +122,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>smtpPass</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull
@@ -131,7 +133,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailPersonal</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull
@@ -142,7 +144,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailSmtpAuth</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull

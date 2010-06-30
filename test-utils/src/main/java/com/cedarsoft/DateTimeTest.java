@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTimeZone;
 import org.testng.annotations.*;
 
+import java.lang.Exception;
+
 /**
  * <p>DateTimeTest class.</p>
  *
@@ -49,7 +51,7 @@ public class DateTimeTest {
   /**
    * <p>setUpDateTimeZone</p>
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   @BeforeMethod
   protected void setUpDateTimeZone() throws Exception {

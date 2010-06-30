@@ -36,6 +36,7 @@ import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.IllegalStateException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -81,7 +82,7 @@ public class Route {
    *
    * @return the last node
    *
-   * @throws java.lang.IllegalStateException
+   * @throws IllegalStateException
    *          if the route is empty
    */
   @NotNull
@@ -155,7 +156,7 @@ public class Route {
    * @param path     the path
    * @return the route
    *
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   * @throws ChildNotFoundException
    *          if any.
    */
   @NotNull
@@ -179,12 +180,12 @@ public class Route {
   /**
    * <p>buildRouteInternal</p>
    *
-   * @param rootNode    a {@link com.cedarsoft.commons.struct.Node} object.
-   * @param path        a {@link com.cedarsoft.commons.struct.Path} object.
-   * @param nodeFactory a {@link com.cedarsoft.commons.struct.NodeFactory} object.
-   * @return a {@link com.cedarsoft.commons.struct.Route} object.
+   * @param rootNode    a {@link Node} object.
+   * @param path        a {@link Path} object.
+   * @param nodeFactory a {@link NodeFactory} object.
+   * @return a {@link Route} object.
    *
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   * @throws ChildNotFoundException
    *          if any.
    */
   @NotNull

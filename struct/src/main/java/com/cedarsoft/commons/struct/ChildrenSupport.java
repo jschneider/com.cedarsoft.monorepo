@@ -129,7 +129,7 @@ public interface ChildrenSupport {
    * @param childName the name of the child
    * @return the child
    *
-   * @throws com.cedarsoft.commons.struct.ChildNotFoundException
+   * @throws ChildNotFoundException
    *          if no child with that name is found
    */
   @NotNull
@@ -150,7 +150,7 @@ public interface ChildrenSupport {
   /**
    * <p>getStructureListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   List<? extends StructureListener> getStructureListeners();

@@ -50,7 +50,7 @@ public class ClusteredHistoryListenerSupport<E> {
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -64,7 +64,7 @@ public class ClusteredHistoryListenerSupport<E> {
   /**
    * <p>removeHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     transientDelegate.removeHistoryListener( historyListener );
@@ -104,7 +104,7 @@ public class ClusteredHistoryListenerSupport<E> {
   /**
    * <p>getTransientHistoryListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends HistoryListener<E>> getTransientHistoryListeners() {

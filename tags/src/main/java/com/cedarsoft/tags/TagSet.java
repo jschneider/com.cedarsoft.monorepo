@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -176,7 +177,7 @@ public class TagSet implements Taggable {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link java.lang.Object} object.
+   * @return a {@link Object} object.
    */
   @Nullable
   public Object getSource() {
@@ -216,7 +217,7 @@ public class TagSet implements Taggable {
   /**
    * <p>addAll</p>
    *
-   * @param tags a {@link java.util.List} object.
+   * @param tags a {@link List} object.
    */
   public void addAll( @NotNull List<? extends Tag> tags ) {
     for ( Tag tag : tags ) {

@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
 import java.util.List;
 
 /**
@@ -58,7 +59,7 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name a {@link java.lang.String} object.
+   * @param name a {@link String} object.
    */
   public DefaultNode( @NonNls @NotNull String name ) {
     this( name, new DefaultChildrenSupport(), Lookups.emtyLookup() );
@@ -67,8 +68,8 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name   a {@link java.lang.String} object.
-   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param name   a {@link String} object.
+   * @param lookup a {@link Lookup} object.
    */
   public DefaultNode( @NonNls @NotNull String name, @NotNull Lookup lookup ) {
     this( name, new DefaultChildrenSupport(), lookup );
@@ -77,9 +78,9 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name            a {@link java.lang.String} object.
-   * @param childrenSupport a {@link com.cedarsoft.commons.struct.ChildrenSupport} object.
-   * @param lookup          a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param name            a {@link String} object.
+   * @param childrenSupport a {@link ChildrenSupport} object.
+   * @param lookup          a {@link Lookup} object.
    */
   public DefaultNode( @NonNls @NotNull String name, @NotNull ChildrenSupport childrenSupport, @NotNull Lookup lookup ) {
     this.lookup = lookup;
@@ -155,7 +156,7 @@ public class DefaultNode implements Node {
   /**
    * <p>setChildren</p>
    *
-   * @param children a {@link java.util.List} object.
+   * @param children a {@link List} object.
    */
   public void setChildren( @NotNull List<? extends Node> children ) {
     childrenSupport.setChildren( children );

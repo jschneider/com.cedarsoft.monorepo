@@ -34,6 +34,7 @@ package com.cedarsoft.properties;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,7 +80,7 @@ public class PropertiesPath {
   /**
    * <p>Constructor for PropertiesPath.</p>
    *
-   * @param elements a {@link java.lang.String} object.
+   * @param elements a {@link String} object.
    */
   public PropertiesPath( @NotNull @NonNls String... elements ) {
     this( Arrays.asList( elements ) );
@@ -88,7 +89,7 @@ public class PropertiesPath {
   /**
    * <p>Constructor for PropertiesPath.</p>
    *
-   * @param elements a {@link java.util.List} object.
+   * @param elements a {@link List} object.
    */
   public PropertiesPath( @NotNull @NonNls List<String> elements ) {
     if ( elements.isEmpty() ) {
@@ -100,7 +101,7 @@ public class PropertiesPath {
   /**
    * <p>getRootProperty</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -111,7 +112,7 @@ public class PropertiesPath {
   /**
    * <p>Getter for the field <code>elements</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<String> getElements() {
@@ -129,7 +130,7 @@ public class PropertiesPath {
   /**
    * <p>getPresentation</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

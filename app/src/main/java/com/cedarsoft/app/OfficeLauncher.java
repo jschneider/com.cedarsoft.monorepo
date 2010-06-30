@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.Process;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,10 +79,10 @@ public class OfficeLauncher {
   /**
    * <p>openWriter</p>
    *
-   * @param file a {@link java.io.File} object.
-   * @return a {@link java.lang.Process} object.
+   * @param file a {@link File} object.
+   * @return a {@link Process} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Process openWriter( @NotNull File file ) throws IOException {
@@ -91,10 +92,10 @@ public class OfficeLauncher {
   /**
    * <p>openSpreadsheet</p>
    *
-   * @param file a {@link java.io.File} object.
-   * @return a {@link java.lang.Process} object.
+   * @param file a {@link File} object.
+   * @return a {@link Process} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Process openSpreadsheet( @NotNull File file ) throws IOException {

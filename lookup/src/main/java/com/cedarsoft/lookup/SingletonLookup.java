@@ -34,6 +34,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
 import java.util.Collections;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class SingletonLookup<T> extends AbstractLookup {
   /**
    * <p>Constructor for SingletonLookup.</p>
    *
-   * @param type  a {@link java.lang.Class} object.
+   * @param type  a {@link Class} object.
    * @param value a T object.
    */
   public SingletonLookup( @NotNull Class<T> type, @NotNull T value ) {
@@ -91,7 +92,7 @@ public class SingletonLookup<T> extends AbstractLookup {
   /**
    * <p>Getter for the field <code>singletonType</code>.</p>
    *
-   * @return a {@link java.lang.Class} object.
+   * @return a {@link Class} object.
    */
   @NotNull
   public Class<T> getSingletonType() {

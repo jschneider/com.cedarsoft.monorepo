@@ -50,7 +50,7 @@ public interface CmdLine {
    * @param message the message that is shown
    * @return the value the user has entered
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   boolean readBoolean( @NotNull String message ) throws IOException;
 
@@ -123,7 +123,7 @@ public interface CmdLine {
    * @param message the message
    * @return the int
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   int readInt( @NotNull String message ) throws IOException;
 
@@ -183,7 +183,7 @@ public interface CmdLine {
    * @param message       the message
    * @param elements      the elements (the user may select one of them)
    * @param presenter     the presenter
-   * @param objectFactory a {@link com.cedarsoft.cmd.ObjectFactory} object.
+   * @param objectFactory a {@link ObjectFactory} object.
    * @param <T>           a T object.
    * @return the string that has been entered manually or the object that has been selected (String or T)
    */

@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,8 +57,8 @@ public class LeafNode implements Node {
   /**
    * <p>Constructor for LeafNode.</p>
    *
-   * @param name   a {@link java.lang.String} object.
-   * @param lookup a {@link com.cedarsoft.lookup.Lookup} object.
+   * @param name   a {@link String} object.
+   * @param lookup a {@link Lookup} object.
    */
   public LeafNode( @NotNull String name, @NotNull Lookup lookup ) {
     this.name = name;

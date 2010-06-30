@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.lang.String;
 
 /**
  * Resolves the relative path
@@ -170,10 +171,10 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param target        a {@link java.io.File} object.
-   * @param base          a {@link java.io.File} object.
-   * @param pathSeparator a {@link java.lang.String} object.
-   * @return a {@link java.io.File} object.
+   * @param target        a {@link File} object.
+   * @param base          a {@link File} object.
+   * @param pathSeparator a {@link String} object.
+   * @return a {@link File} object.
    */
   @NotNull
   @NonNls
@@ -184,9 +185,9 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param target a {@link java.io.File} object.
-   * @param base   a {@link java.io.File} object.
-   * @return a {@link java.io.File} object.
+   * @param target a {@link File} object.
+   * @param base   a {@link File} object.
+   * @return a {@link File} object.
    */
   public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base ) {
     return getRelativePath( target, base, File.separator );
@@ -195,9 +196,9 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param targetPath a {@link java.lang.String} object.
-   * @param basePath   a {@link java.lang.String} object.
-   * @return a {@link java.lang.String} object.
+   * @param targetPath a {@link String} object.
+   * @param basePath   a {@link String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

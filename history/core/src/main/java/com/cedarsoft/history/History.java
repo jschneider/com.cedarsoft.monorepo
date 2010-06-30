@@ -90,7 +90,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @return the latest entry
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if any.
    */
   @NotNull
@@ -106,7 +106,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
   /**
    * <p>getHistoryListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   List<? extends HistoryListener<E>> getHistoryListeners();
@@ -139,7 +139,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @return the first entry
    *
-   * @throws com.cedarsoft.history.NoValidElementFoundException
+   * @throws NoValidElementFoundException
    *          if no entry is available within this history
    */
   @NotNull

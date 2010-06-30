@@ -97,7 +97,7 @@ public class ImageComponent extends JComponent {
    * Sets the image
    *
    * @param imageFile the image file
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public void setImage( @NotNull File imageFile ) throws IOException {
     setImage( ImageIO.read( imageFile ) );

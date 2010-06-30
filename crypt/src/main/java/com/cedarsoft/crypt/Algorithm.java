@@ -34,6 +34,7 @@ package com.cedarsoft.crypt;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public enum Algorithm {
   /**
    * <p>getAlgorithm</p>
    *
-   * @param algorithmString a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param algorithmString a {@link String} object.
+   * @return a {@link Algorithm} object.
    */
   @NotNull
   public static Algorithm getAlgorithm( @NotNull @NonNls String algorithmString ) {

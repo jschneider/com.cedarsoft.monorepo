@@ -49,7 +49,7 @@ public class FileNames {
   /**
    * <p>add</p>
    *
-   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   * @param fileName a {@link FileName} object.
    */
   public void add( @NotNull FileName fileName ) {
     if ( this.fileNames.contains( fileName ) ) {
@@ -61,7 +61,7 @@ public class FileNames {
   /**
    * <p>Getter for the field <code>fileNames</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends FileName> getFileNames() {

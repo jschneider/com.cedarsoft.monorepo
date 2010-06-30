@@ -43,7 +43,7 @@ public interface NodeValidator {
    * Validates the actual node
    *
    * @param actualNode the actual node
-   * @throws com.cedarsoft.commons.struct.ValidationFailedException
+   * @throws ValidationFailedException
    *          if any.
    */
   void validate( @NotNull Node actualNode ) throws ValidationFailedException;

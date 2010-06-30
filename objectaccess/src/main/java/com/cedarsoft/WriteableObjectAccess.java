@@ -33,6 +33,7 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.UnsupportedOperationException;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemo
    * After this method has called {@link #getElements()} will return the given elements.
    *
    * @param elements the elements
-   * @throws java.lang.UnsupportedOperationException
+   * @throws UnsupportedOperationException
    *          if the method is not supported
    */
   void setElements( @NotNull List<? extends T> elements ) throws UnsupportedOperationException;

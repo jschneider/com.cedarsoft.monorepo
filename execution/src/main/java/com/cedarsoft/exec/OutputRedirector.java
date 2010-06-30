@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.Process;
 
 /**
  * Redirects a stream into another
@@ -60,9 +61,9 @@ public class OutputRedirector implements Runnable {
   /**
    * <p>redirect</p>
    *
-   * @param process   a {@link java.lang.Process} object.
-   * @param targetOut a {@link java.io.OutputStream} object.
-   * @param targetErr a {@link java.io.OutputStream} object.
+   * @param process   a {@link Process} object.
+   * @param targetOut a {@link OutputStream} object.
+   * @param targetErr a {@link OutputStream} object.
    */
   public static void redirect( @NotNull Process process, @NotNull OutputStream targetOut, @NotNull OutputStream targetErr ) {
     new Thread( new OutputRedirector( process.getInputStream(), targetOut ) ).start();

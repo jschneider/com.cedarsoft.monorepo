@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.lang.String;
 
 /**
  * A base name of a file
@@ -58,7 +59,7 @@ public class BaseName implements Comparable<BaseName>, Serializable {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NonNls
   @NotNull

@@ -36,6 +36,9 @@ import com.cedarsoft.lookup.TypedLookupChangeListener;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Class;
+import java.lang.Object;
+import java.lang.String;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -52,9 +55,9 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
   /**
    * <p>Constructor for PropertyCallback.</p>
    *
-   * @param object       a {@link java.lang.Object} object.
-   * @param propertyName a {@link java.lang.String} object.
-   * @param propertyType a {@link java.lang.Class} object.
+   * @param object       a {@link Object} object.
+   * @param propertyName a {@link String} object.
+   * @param propertyType a {@link Class} object.
    */
   public PropertyCallback( @NotNull Object object, @NotNull @NonNls String propertyName, @NotNull Class<T> propertyType ) {
     this.propertyType = propertyType;

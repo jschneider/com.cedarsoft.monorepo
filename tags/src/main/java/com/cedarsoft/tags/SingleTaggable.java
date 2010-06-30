@@ -34,6 +34,7 @@ package com.cedarsoft.tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Object;
 import java.util.Collections;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class SingleTaggable implements Taggable {
   /**
    * <p>Constructor for SingleTaggable.</p>
    *
-   * @param source a {@link java.lang.Object} object.
+   * @param source a {@link Object} object.
    */
   public SingleTaggable( @NotNull Object source ) {
     tcs = new TagChangeSupport( source );
@@ -60,7 +61,7 @@ public class SingleTaggable implements Taggable {
   /**
    * <p>Setter for the field <code>selectedTag</code>.</p>
    *
-   * @param tag a {@link com.cedarsoft.tags.Tag} object.
+   * @param tag a {@link Tag} object.
    */
   public void setSelectedTag( @Nullable Tag tag ) {
     if ( tag == null ) {
@@ -138,7 +139,7 @@ public class SingleTaggable implements Taggable {
   /**
    * <p>Getter for the field <code>selectedTag</code>.</p>
    *
-   * @return a {@link com.cedarsoft.tags.Tag} object.
+   * @return a {@link Tag} object.
    */
   @Nullable
   public Tag getSelectedTag() {

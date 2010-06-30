@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -60,9 +61,9 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link java.lang.String} object.
+   * @param id            a {@link String} object.
    * @param dependentType a boolean.
-   * @param extensions    a {@link com.cedarsoft.file.Extension} object.
+   * @param extensions    a {@link Extension} object.
    */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
     this( id, dependentType, Arrays.<Extension>asList( extensions ) );
@@ -71,9 +72,9 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link java.lang.String} object.
+   * @param id            a {@link String} object.
    * @param dependentType a boolean.
-   * @param extensions    a {@link java.util.Collection} object.
+   * @param extensions    a {@link Collection} object.
    */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
     this.dependentType = dependentType;
@@ -85,7 +86,7 @@ public class FileType {
   /**
    * <p>Getter for the field <code>extensions</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends Extension> getExtensions() {
@@ -95,7 +96,7 @@ public class FileType {
   /**
    * <p>matches</p>
    *
-   * @param fileName a {@link java.lang.String} object.
+   * @param fileName a {@link String} object.
    * @return a boolean.
    */
   public boolean matches( @NotNull @NonNls String fileName ) {
@@ -110,7 +111,7 @@ public class FileType {
   /**
    * <p>matches</p>
    *
-   * @param fileName a {@link com.cedarsoft.file.FileName} object.
+   * @param fileName a {@link FileName} object.
    * @return a boolean.
    */
   public boolean matches( @NotNull @NonNls FileName fileName ) {
@@ -120,7 +121,7 @@ public class FileType {
   /**
    * <p>getDefaultExtension</p>
    *
-   * @return a {@link com.cedarsoft.file.Extension} object.
+   * @return a {@link Extension} object.
    */
   @NotNull
   @NonNls
@@ -134,7 +135,7 @@ public class FileType {
   /**
    * <p>Getter for the field <code>id</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   public String getId() {
@@ -154,8 +155,8 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param file a {@link java.io.File} object.
-   * @return a {@link com.cedarsoft.file.FileName} object.
+   * @param file a {@link File} object.
+   * @return a {@link FileName} object.
    */
   @NotNull
   public FileName getFileName( @NonNls @NotNull File file ) {
@@ -165,8 +166,8 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param fileName a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.file.FileName} object.
+   * @param fileName a {@link String} object.
+   * @return a {@link FileName} object.
    */
   @NotNull
   public FileName getFileName( @NonNls @NotNull String fileName ) {
@@ -197,8 +198,8 @@ public class FileType {
   /**
    * <p>getExtension</p>
    *
-   * @param fileName a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.file.Extension} object.
+   * @param fileName a {@link String} object.
+   * @return a {@link Extension} object.
    */
   @NotNull
   @NonNls
@@ -209,8 +210,8 @@ public class FileType {
   /**
    * <p>getBaseName</p>
    *
-   * @param fileName a {@link java.lang.String} object.
-   * @return a {@link java.lang.String} object.
+   * @param fileName a {@link String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -231,7 +232,7 @@ public class FileType {
   /**
    * <p>isDefaultExtension</p>
    *
-   * @param extension a {@link com.cedarsoft.file.Extension} object.
+   * @param extension a {@link Extension} object.
    * @return a boolean.
    */
   public boolean isDefaultExtension( @NotNull Extension extension ) {

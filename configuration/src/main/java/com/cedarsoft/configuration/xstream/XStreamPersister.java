@@ -52,6 +52,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.lang.String;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -127,8 +128,8 @@ public class XStreamPersister implements ConfigurationPersister {
   /**
    * <p>createXmlHeader</p>
    *
-   * @param encoding a {@link java.lang.String} object.
-   * @return a {@link java.lang.String} object.
+   * @param encoding a {@link String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

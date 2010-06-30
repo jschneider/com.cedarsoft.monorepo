@@ -48,7 +48,7 @@ public abstract class AbstractContextualProvider<T, C, E extends Throwable> impl
   /**
    * <p>Constructor for AbstractContextualProvider.</p>
    *
-   * @param contextualProvider a {@link com.cedarsoft.provider.ContextualProvider} object.
+   * @param contextualProvider a {@link ContextualProvider} object.
    */
   protected AbstractContextualProvider( @NotNull ContextualProvider<T, C, E> contextualProvider ) {
     this.contextualProvider = contextualProvider;
@@ -58,7 +58,7 @@ public abstract class AbstractContextualProvider<T, C, E extends Throwable> impl
    * <p>createProvider</p>
    *
    * @param context a C object.
-   * @return a {@link com.cedarsoft.provider.Provider} object.
+   * @return a {@link Provider} object.
    */
   @NotNull
   public Provider<T, E> createProvider( @NotNull final C context ) {

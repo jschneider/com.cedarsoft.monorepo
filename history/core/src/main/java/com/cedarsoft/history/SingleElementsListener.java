@@ -71,7 +71,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   /**
    * Is called when an entry has been deleted
    *
-   * @param source  a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source  a {@link ObservableCollection} object.
    * @param element the entry that has been deleted
    * @param index   a int.
    */
@@ -80,7 +80,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   /**
    * Is called when an entry has been added
    *
-   * @param source  a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source  a {@link ObservableCollection} object.
    * @param element the entry that has been added
    * @param index   a int.
    */
@@ -89,7 +89,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
   /**
    * Is called when an enty has been changed
    *
-   * @param source  a {@link com.cedarsoft.history.ObservableCollection} object.
+   * @param source  a {@link ObservableCollection} object.
    * @param element the entry that has been changed
    * @param index   a int.
    */

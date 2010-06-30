@@ -86,7 +86,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Constructor for TagsComponent.</p>
    *
-   * @param model a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   * @param model a {@link TagsComponentModel} object.
    */
   public TagsComponent( @Nullable TagsComponentModel model ) {
     initComponents();
@@ -196,7 +196,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Getter for the field <code>model</code>.</p>
    *
-   * @return a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   * @return a {@link TagsComponentModel} object.
    */
   @NotNull
   public TagsComponentModel getModel() {
@@ -206,7 +206,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Getter for the field <code>tagCombo</code>.</p>
    *
-   * @return a {@link javax.swing.JComboBox} object.
+   * @return a {@link JComboBox} object.
    */
   @NotNull
   public JComboBox getTagCombo() {
@@ -216,7 +216,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Getter for the field <code>tagList</code>.</p>
    *
-   * @return a {@link javax.swing.JList} object.
+   * @return a {@link JList} object.
    */
   @NotNull
   public JList getTagList() {
@@ -226,7 +226,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Setter for the field <code>model</code>.</p>
    *
-   * @param model a {@link com.cedarsoft.tags.ui.TagsComponentModel} object.
+   * @param model a {@link TagsComponentModel} object.
    */
   public final void setModel( @NotNull TagsComponentModel model ) {
     this.model = model;
@@ -315,7 +315,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Getter for the field <code>addButton</code>.</p>
    *
-   * @return a {@link javax.swing.JButton} object.
+   * @return a {@link JButton} object.
    */
   @NotNull
   public JButton getAddButton() {
@@ -325,7 +325,7 @@ public class TagsComponent extends JPanel {
   /**
    * <p>Getter for the field <code>removeButton</code>.</p>
    *
-   * @return a {@link javax.swing.JButton} object.
+   * @return a {@link JButton} object.
    */
   @NotNull
   public JButton getRemoveButton() {

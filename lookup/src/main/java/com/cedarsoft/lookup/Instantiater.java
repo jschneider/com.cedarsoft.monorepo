@@ -45,7 +45,7 @@ public interface Instantiater<T> {
    *
    * @return the instance
    *
-   * @throws com.cedarsoft.lookup.InstantiationFailedException
+   * @throws InstantiationFailedException
    *          if any.
    */
   @NotNull

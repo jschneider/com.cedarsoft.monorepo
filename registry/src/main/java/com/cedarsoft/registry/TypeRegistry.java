@@ -33,6 +33,7 @@ package com.cedarsoft.registry;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.IllegalArgumentException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -105,7 +106,7 @@ public class TypeRegistry<T> {
    * @param type the type
    * @return the stored element
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if any.
    */
   @NotNull

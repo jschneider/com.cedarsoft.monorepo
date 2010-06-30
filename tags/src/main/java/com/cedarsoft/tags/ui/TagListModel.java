@@ -61,7 +61,7 @@ public class TagListModel implements ListModel {
   /**
    * <p>Constructor for TagListModel.</p>
    *
-   * @param availableTags a {@link com.cedarsoft.tags.TagProvider} object.
+   * @param availableTags a {@link TagProvider} object.
    */
   public TagListModel( @NotNull TagProvider availableTags ) {
     this( availableTags, false );
@@ -70,7 +70,7 @@ public class TagListModel implements ListModel {
   /**
    * <p>Constructor for TagListModel.</p>
    *
-   * @param availableTags a {@link com.cedarsoft.tags.TagObservable} object.
+   * @param availableTags a {@link TagObservable} object.
    * @param nullable      a boolean.
    */
   public TagListModel( @NotNull TagObservable availableTags, boolean nullable ) {
@@ -149,7 +149,7 @@ public class TagListModel implements ListModel {
   /**
    * <p>notifyTagChanged</p>
    *
-   * @param event a {@link com.cedarsoft.tags.TagChangeListener.TagChangeEvent} object.
+   * @param event a {@link TagChangeListener.TagChangeEvent} object.
    */
   protected void notifyTagChanged( @NotNull TagChangeListener.TagChangeEvent event ) {
     if ( listeners.isEmpty() ) {
@@ -183,7 +183,7 @@ public class TagListModel implements ListModel {
   /**
    * <p>Getter for the field <code>availableTags</code>.</p>
    *
-   * @return a {@link com.cedarsoft.tags.TagObservable} object.
+   * @return a {@link TagObservable} object.
    */
   @NotNull
   public TagObservable getAvailableTags() {

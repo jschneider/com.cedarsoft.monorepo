@@ -51,7 +51,7 @@ public class HistoryListenerSupport<E> {
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    */
   public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
@@ -65,7 +65,7 @@ public class HistoryListenerSupport<E> {
   /**
    * <p>removeHistoryListener</p>
    *
-   * @param historyListener a {@link com.cedarsoft.history.HistoryListener} object.
+   * @param historyListener a {@link HistoryListener} object.
    */
   public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
@@ -148,7 +148,7 @@ public class HistoryListenerSupport<E> {
   /**
    * <p>getHistoryListeners</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends HistoryListener<E>> getHistoryListeners() {

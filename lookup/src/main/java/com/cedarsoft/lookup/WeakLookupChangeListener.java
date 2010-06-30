@@ -34,6 +34,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
 import java.lang.ref.WeakReference;
 
 /**
@@ -93,7 +94,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
   /**
    * <p>Getter for the field <code>typeClass</code>.</p>
    *
-   * @return a {@link java.lang.Class} object.
+   * @return a {@link Class} object.
    */
   @NotNull
   public Class<T> getTypeClass() {

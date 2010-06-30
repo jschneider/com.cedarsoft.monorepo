@@ -34,6 +34,7 @@ package com.cedarsoft.lookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
 import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.HashSet;
@@ -100,7 +101,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
   /**
    * The type the instance.
    *
-   * @return a {@link java.lang.Class} object.
+   * @return a {@link Class} object.
    */
   public abstract Class<? extends T> getType();
 

@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
+import java.lang.IllegalArgumentException;
+import java.lang.String;
 
 /**
  * A version
@@ -133,7 +135,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>format</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -218,7 +220,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version the version number as string
    * @return the parsed version
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if any.
    */
   @NotNull
@@ -252,9 +254,9 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>verifyMatch</p>
    *
-   * @param expected a {@link com.cedarsoft.Version} object.
-   * @param actual   a {@link com.cedarsoft.Version} object.
-   * @throws com.cedarsoft.VersionMismatchException
+   * @param expected a {@link Version} object.
+   * @param actual   a {@link Version} object.
+   * @throws VersionMismatchException
    *          if any.
    */
   public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
@@ -266,7 +268,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>sameOrSmallerThan</p>
    *
-   * @param version a {@link com.cedarsoft.Version} object.
+   * @param version a {@link Version} object.
    * @return a boolean.
    */
   public boolean sameOrSmallerThan( @NotNull Version version ) {
@@ -276,7 +278,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>smallerThan</p>
    *
-   * @param version a {@link com.cedarsoft.Version} object.
+   * @param version a {@link Version} object.
    * @return a boolean.
    */
   public boolean smallerThan( @NotNull Version version ) {
@@ -286,7 +288,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>sameOrGreaterThan</p>
    *
-   * @param version a {@link com.cedarsoft.Version} object.
+   * @param version a {@link Version} object.
    * @return a boolean.
    */
   public boolean sameOrGreaterThan( @NotNull Version version ) {
@@ -296,7 +298,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>greaterThan</p>
    *
-   * @param version a {@link com.cedarsoft.Version} object.
+   * @param version a {@link Version} object.
    * @return a boolean.
    */
   public boolean greaterThan( @NotNull Version version ) {
@@ -309,7 +311,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param major a int.
    * @param minor a int.
    * @param build a int.
-   * @return a {@link com.cedarsoft.Version} object.
+   * @return a {@link Version} object.
    */
   @NotNull
   public static Version valueOf( int major, int minor, int build ) {

@@ -35,6 +35,7 @@ import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Object;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -52,8 +53,8 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
   /**
    * <p>Constructor for ReflectionCallback.</p>
    *
-   * @param object a {@link java.lang.Object} object.
-   * @param setter a {@link java.lang.reflect.Method} object.
+   * @param object a {@link Object} object.
+   * @param setter a {@link Method} object.
    */
   public ReflectionCallback( @NotNull Object object, @NotNull Method setter ) {
     this.object = object;

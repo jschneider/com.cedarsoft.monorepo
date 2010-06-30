@@ -37,6 +37,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Class;
+import java.lang.IllegalArgumentException;
+import java.lang.String;
 import java.util.NoSuchElementException;
 
 /**
@@ -61,9 +64,9 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type          a {@link java.lang.Class} object.
-   * @param key           a {@link java.lang.String} object.
+   * @param configuration a {@link Configuration} object.
+   * @param type          a {@link Class} object.
+   * @param key           a {@link String} object.
    * @param defaultValue  a T object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull final T defaultValue ) {
@@ -79,10 +82,10 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration        a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type                 a {@link java.lang.Class} object.
-   * @param key                  a {@link java.lang.String} object.
-   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
+   * @param configuration        a {@link Configuration} object.
+   * @param type                 a {@link Class} object.
+   * @param key                  a {@link String} object.
+   * @param defaultValueProvider a {@link DefaultValueProvider} object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
     this( configuration, type, key, defaultValueProvider, ConfigurationResolver.getResolver( type ) );
@@ -91,11 +94,11 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration        a {@link org.apache.commons.configuration.Configuration} object.
-   * @param type                 a {@link java.lang.Class} object.
-   * @param key                  a {@link java.lang.String} object.
-   * @param defaultValueProvider a {@link com.cedarsoft.configuration.DefaultValueProvider} object.
-   * @param resolver             a {@link com.cedarsoft.configuration.xml.ConfigurationResolver} object.
+   * @param configuration        a {@link Configuration} object.
+   * @param type                 a {@link Class} object.
+   * @param key                  a {@link String} object.
+   * @param defaultValueProvider a {@link DefaultValueProvider} object.
+   * @param resolver             a {@link ConfigurationResolver} object.
    */
   public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider, @NotNull ConfigurationResolver<T> resolver ) {
     this.configuration = configuration;
@@ -131,7 +134,7 @@ public class ConfigurationAccess<T> {
    *
    * @return the resolved value
    *
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if the key is invalid
    */
   @NotNull
@@ -146,7 +149,7 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Getter for the field <code>type</code>.</p>
    *
-   * @return a {@link java.lang.Class} object.
+   * @return a {@link Class} object.
    */
   @NotNull
   public Class<? extends T> getType() {
@@ -156,7 +159,7 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Getter for the field <code>key</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls

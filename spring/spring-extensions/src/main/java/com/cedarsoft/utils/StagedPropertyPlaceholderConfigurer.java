@@ -37,6 +37,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
+import java.lang.String;
 import java.util.Map;
 import java.util.Properties;
 
@@ -61,7 +62,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   /**
    * <p>Getter for the field <code>actualStage</code>.</p>
    *
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -78,7 +79,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   /**
    * <p>Setter for the field <code>actualStage</code>.</p>
    *
-   * @param actualStage a {@link java.lang.String} object.
+   * @param actualStage a {@link String} object.
    */
   public void setActualStage( @NotNull @NonNls String actualStage ) {
     this.actualStage = actualStage;

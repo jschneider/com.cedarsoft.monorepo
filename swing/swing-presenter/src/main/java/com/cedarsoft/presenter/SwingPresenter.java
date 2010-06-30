@@ -65,7 +65,7 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    *
    * @param presentation      a T object.
    * @param index             a int.
-   * @param childPresentation a {@link javax.swing.JComponent} object.
+   * @param childPresentation a {@link JComponent} object.
    * @return a boolean.
    */
   protected boolean addChild( @NotNull T presentation, int index, @NotNull JComponent childPresentation ) {
@@ -77,8 +77,8 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
   /**
    * <p>getChildPresenter</p>
    *
-   * @param child a {@link com.cedarsoft.commons.struct.StructPart} object.
-   * @return a {@link com.cedarsoft.presenter.Presenter} object.
+   * @param child a {@link StructPart} object.
+   * @return a {@link Presenter} object.
    */
   @NotNull
   protected abstract Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child );

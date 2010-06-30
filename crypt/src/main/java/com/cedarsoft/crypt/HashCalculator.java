@@ -39,6 +39,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.String;
 import java.net.URL;
 import java.security.MessageDigest;
 
@@ -54,9 +55,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
+   * @param algorithm a {@link Algorithm} object.
    * @param value     an array of byte.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @return a {@link Hash} object.
    */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls byte[] value ) {
@@ -66,9 +67,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link java.security.MessageDigest} object.
+   * @param messageDigest a {@link MessageDigest} object.
    * @param value         an array of byte.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @return a {@link Hash} object.
    */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls byte[] value ) {
@@ -83,9 +84,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param value     a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm a {@link Algorithm} object.
+   * @param value     a {@link String} object.
+   * @return a {@link Hash} object.
    */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls String value ) {
@@ -95,9 +96,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param value         a {@link java.lang.String} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param messageDigest a {@link MessageDigest} object.
+   * @param value         a {@link String} object.
+   * @return a {@link Hash} object.
    */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls String value ) {
@@ -107,11 +108,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param resource  a {@link java.net.URL} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm a {@link Algorithm} object.
+   * @param resource  a {@link URL} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
@@ -121,11 +122,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param resource      a {@link java.net.URL} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param messageDigest a {@link MessageDigest} object.
+   * @param resource      a {@link URL} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull URL resource ) throws IOException {
@@ -140,11 +141,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param file      a {@link java.io.File} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm a {@link Algorithm} object.
+   * @param file      a {@link File} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull File file ) throws IOException {
@@ -154,11 +155,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param file          a {@link java.io.File} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param messageDigest a {@link MessageDigest} object.
+   * @param file          a {@link File} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull File file ) throws IOException {
@@ -173,11 +174,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm  a {@link com.cedarsoft.crypt.Algorithm} object.
-   * @param resourceIn a {@link java.io.InputStream} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param algorithm  a {@link Algorithm} object.
+   * @param resourceIn a {@link InputStream} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resourceIn ) throws IOException {
@@ -187,11 +188,11 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link java.security.MessageDigest} object.
-   * @param resourceIn    a {@link java.io.InputStream} object.
-   * @return a {@link com.cedarsoft.crypt.Hash} object.
+   * @param messageDigest a {@link MessageDigest} object.
+   * @param resourceIn    a {@link InputStream} object.
+   * @return a {@link Hash} object.
    *
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   @NotNull
   public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull InputStream resourceIn ) throws IOException {

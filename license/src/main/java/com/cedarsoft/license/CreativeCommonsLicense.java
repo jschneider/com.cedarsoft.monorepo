@@ -34,6 +34,8 @@ package com.cedarsoft.license;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.String;
+
 /**
  * <p>CreativeCommonsLicense class.</p>
  *
@@ -80,10 +82,10 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Constructor for CreativeCommonsLicense.</p>
    *
-   * @param id                        a {@link java.lang.String} object.
-   * @param name                      a {@link java.lang.String} object.
+   * @param id                        a {@link String} object.
+   * @param name                      a {@link String} object.
    * @param restrictedToNonCommercial a boolean.
-   * @param modificationsAllowed      a {@link com.cedarsoft.license.CreativeCommonsLicense.ModificationsAllowed} object.
+   * @param modificationsAllowed      a {@link CreativeCommonsLicense.ModificationsAllowed} object.
    */
   public CreativeCommonsLicense( @NotNull @NonNls String id, @NotNull @NonNls String name, boolean restrictedToNonCommercial, @NotNull ModificationsAllowed modificationsAllowed ) {
     super( id, name );
@@ -103,7 +105,7 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Getter for the field <code>modificationsAllowed</code>.</p>
    *
-   * @return a {@link com.cedarsoft.license.CreativeCommonsLicense.ModificationsAllowed} object.
+   * @return a {@link CreativeCommonsLicense.ModificationsAllowed} object.
    */
   @NotNull
   public ModificationsAllowed getModificationsAllowed() {

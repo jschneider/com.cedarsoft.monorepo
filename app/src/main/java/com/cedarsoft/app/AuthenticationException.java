@@ -31,6 +31,9 @@
 
 package com.cedarsoft.app;
 
+import java.lang.String;
+import java.lang.Throwable;
+
 /**
  * <p>AuthenticationException class.</p>
  *
@@ -46,7 +49,7 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param message a {@link java.lang.String} object.
+   * @param message a {@link String} object.
    */
   public AuthenticationException( String message ) {
     super( message );
@@ -55,8 +58,8 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param message a {@link java.lang.String} object.
-   * @param cause   a {@link java.lang.Throwable} object.
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
    */
   public AuthenticationException( String message, Throwable cause ) {
     super( message, cause );
@@ -65,7 +68,7 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param cause a {@link java.lang.Throwable} object.
+   * @param cause a {@link Throwable} object.
    */
   public AuthenticationException( Throwable cause ) {
     super( cause );

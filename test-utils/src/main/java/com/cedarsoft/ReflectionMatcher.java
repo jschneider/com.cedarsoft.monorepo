@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -54,7 +55,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
    * <p>create</p>
    *
    * @param object                a T object.
-   * @param blacklistedFieldNames a {@link java.lang.String} object.
+   * @param blacklistedFieldNames a {@link String} object.
    * @return a T object.
    */
   @Nullable
@@ -73,7 +74,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
    * <p>Constructor for ReflectionMatcher.</p>
    *
    * @param object                a T object.
-   * @param blacklistedFieldNames a {@link java.lang.String} object.
+   * @param blacklistedFieldNames a {@link String} object.
    */
   public ReflectionMatcher( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
     this.object = object;

@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.String;
 
 /**
  * Offers access to the application home.
@@ -62,7 +63,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * Create a new application home access
    *
    * @param applicationName the name of the application
-   * @throws java.io.IOException if an io exception occures
+   * @throws IOException if an io exception occures
    */
   @Inject
   public DefaultApplicationHomeAccess( @ApplicationName @NotNull @NonNls String applicationName ) throws IOException {
@@ -72,9 +73,9 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   /**
    * <p>Constructor for DefaultApplicationHomeAccess.</p>
    *
-   * @param applicationName a {@link java.lang.String} object.
+   * @param applicationName a {@link String} object.
    * @param sandbox         a boolean.
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public DefaultApplicationHomeAccess( @NotNull @NonNls String applicationName, boolean sandbox ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + getApplicationDirName( applicationName, sandbox ) ), applicationName );
@@ -83,9 +84,9 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   /**
    * <p>getApplicationDirName</p>
    *
-   * @param applicationName a {@link java.lang.String} object.
+   * @param applicationName a {@link String} object.
    * @param sandbox         a boolean.
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   @NotNull
   @NonNls
@@ -102,7 +103,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    *
    * @param applicationHome the application home
    * @param applicationName the application name
-   * @throws java.io.IOException if any.
+   * @throws IOException if any.
    */
   public DefaultApplicationHomeAccess( @NotNull File applicationHome, @NotNull @NonNls String applicationName ) throws IOException {
     if ( applicationName.length() < 3 ) {

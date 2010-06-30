@@ -61,7 +61,7 @@ public enum Resolution {
    * <p>find</p>
    *
    * @param dpi a int.
-   * @return a {@link com.cedarsoft.image.Resolution} object.
+   * @return a {@link Resolution} object.
    */
   @NotNull
   public static Resolution find( int dpi ) {

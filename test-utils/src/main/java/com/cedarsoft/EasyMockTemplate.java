@@ -34,6 +34,8 @@ package com.cedarsoft;
 import net.sf.cglib.proxy.Enhancer;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.Exception;
+import java.lang.IllegalArgumentException;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +60,7 @@ public abstract class EasyMockTemplate {
    * Constructor.
    *
    * @param mocks the mocks for this template to manage.
-   * @throws java.lang.IllegalArgumentException
+   * @throws IllegalArgumentException
    *          if the list of mock objects is <code>null</code> or empty.
    */
   protected EasyMockTemplate( @NotNull Object... mocks ) {
@@ -94,7 +96,7 @@ public abstract class EasyMockTemplate {
    * Steps 2 and 4 are considered invariant behavior while steps 1 and 3 should be implemented by subclasses of this
    * template.
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   public final void run() throws Exception {
     setUp();
@@ -111,14 +113,14 @@ public abstract class EasyMockTemplate {
   /**
    * Sets the expectations on the mock objects.
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   protected abstract void expectations() throws Exception;
 
   /**
    * Executes the code that is under test.
    *
-   * @throws java.lang.Exception if any.
+   * @throws Exception if any.
    */
   protected abstract void codeToTest() throws Exception;
 

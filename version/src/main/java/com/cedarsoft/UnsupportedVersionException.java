@@ -35,6 +35,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.String;
+
 /**
  * <p>UnsupportedVersionException class.</p>
  *
@@ -50,7 +52,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual a {@link com.cedarsoft.Version} object.
+   * @param actual a {@link Version} object.
    */
   public UnsupportedVersionException( @NotNull Version actual ) {
     this( actual, null );
@@ -59,8 +61,8 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link com.cedarsoft.Version} object.
-   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
+   * @param actual         a {@link Version} object.
+   * @param supportedRange a {@link VersionRange} object.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
     this( actual, supportedRange, "Unsupported version. " );
@@ -69,9 +71,9 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link com.cedarsoft.Version} object.
-   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
-   * @param messagePrefix  a {@link java.lang.String} object.
+   * @param actual         a {@link Version} object.
+   * @param supportedRange a {@link VersionRange} object.
+   * @param messagePrefix  a {@link String} object.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix ) {
     this( actual, supportedRange, messagePrefix, true );
@@ -80,9 +82,9 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link com.cedarsoft.Version} object.
-   * @param supportedRange a {@link com.cedarsoft.VersionRange} object.
-   * @param messagePrefix  a {@link java.lang.String} object.
+   * @param actual         a {@link Version} object.
+   * @param supportedRange a {@link VersionRange} object.
+   * @param messagePrefix  a {@link String} object.
    * @param appendSuffix   a boolean.
    */
   public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
@@ -94,7 +96,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Getter for the field <code>actual</code>.</p>
    *
-   * @return a {@link com.cedarsoft.Version} object.
+   * @return a {@link Version} object.
    */
   @NotNull
   public Version getActual() {
@@ -104,7 +106,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Getter for the field <code>supportedRange</code>.</p>
    *
-   * @return a {@link com.cedarsoft.VersionRange} object.
+   * @return a {@link VersionRange} object.
    */
   @Nullable
   public VersionRange getSupportedRange() {

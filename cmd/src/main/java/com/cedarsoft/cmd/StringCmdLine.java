@@ -39,6 +39,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.lang.Object;
+import java.lang.String;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,7 +121,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>messages</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<String> getMessages() {
@@ -129,7 +131,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>getNextAnswer</p>
    *
-   * @return a {@link java.lang.Object} object.
+   * @return a {@link Object} object.
    */
   protected Object getNextAnswer() {
     if ( answers.isEmpty() ) {
@@ -255,7 +257,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>addExpectedOut</p>
    *
-   * @param expected a {@link java.lang.String} object.
+   * @param expected a {@link String} object.
    */
   public void addExpectedOut( @Nullable String expected ) {
     expectedOut.add( expected );
@@ -264,7 +266,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>expectedOut</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<String> getExpectedOut() {
@@ -274,7 +276,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>answers</code>.</p>
    *
-   * @return a {@link java.util.List} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<Object> getAnswers() {
@@ -284,7 +286,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Setter for the field <code>answers</code>.</p>
    *
-   * @param answers a {@link java.util.List} object.
+   * @param answers a {@link List} object.
    */
   public void setAnswers( @NotNull List<Object> answers ) {
     this.answers.clear();
@@ -294,7 +296,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>addAnswer</p>
    *
-   * @param answer a {@link java.lang.Object} object.
+   * @param answer a {@link Object} object.
    */
   public void addAnswer( @NotNull Object answer ) {
     answers.add( answer );
@@ -303,7 +305,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>removeAnswer</p>
    *
-   * @param answer a {@link java.lang.Object} object.
+   * @param answer a {@link Object} object.
    */
   public void removeAnswer( @NotNull Object answer ) {
     answers.remove( answer );

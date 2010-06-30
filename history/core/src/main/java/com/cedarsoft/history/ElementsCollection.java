@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.Iterable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +77,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>Constructor for ElementsCollection.</p>
    *
-   * @param elements a {@link java.util.Collection} object.
+   * @param elements a {@link Collection} object.
    */
   public ElementsCollection( @NotNull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
@@ -160,7 +161,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>addAll</p>
    *
-   * @param additionalElements a {@link java.lang.Iterable} object.
+   * @param additionalElements a {@link Iterable} object.
    */
   public void addAll( @NotNull Iterable<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
@@ -272,8 +273,8 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>findElements</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
-   * @return a {@link java.util.List} object.
+   * @param visitor a {@link ElementVisitor} object.
+   * @return a {@link List} object.
    */
   @NotNull
   public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
@@ -299,7 +300,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
    * @param visitor the visitor that identifies the entries
    * @return the first entry
    *
-   * @throws com.cedarsoft.history.NoElementFoundException
+   * @throws NoElementFoundException
    *          if no entry has been found
    */
   @NotNull
@@ -314,7 +315,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>findFirstElementNullable</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @param visitor a {@link ElementVisitor} object.
    * @return a E object.
    */
   @Nullable
@@ -350,10 +351,10 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>contains</p>
    *
-   * @param visitor a {@link com.cedarsoft.history.ElementVisitor} object.
+   * @param visitor a {@link ElementVisitor} object.
    * @return a boolean.
    *
-   * @throws com.cedarsoft.history.NoElementFoundException
+   * @throws NoElementFoundException
    *          if any.
    */
   public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
