@@ -65,6 +65,11 @@ public class AssertUtils {
     XMLUnit.setIgnoreWhitespace( ignore );
   }
 
+  @Deprecated
+  public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
+    assertXMLEquals( test, control );
+  }
+
   /**
    * <p>assertXMLEqual</p>
    *
@@ -73,12 +78,17 @@ public class AssertUtils {
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
-    assertXMLEqual( test, control, false );
+  public static void assertXMLEquals( String test, String control ) throws SAXException, IOException {
+    assertXMLEquals( test, control, true );
   }
 
+  @Deprecated
   public static void assertXMLEqual( String test, URL control ) throws SAXException, IOException {
-    assertXMLEqual( test, toString( control ) );
+    assertXMLEquals( test, control );
+  }
+
+  public static void assertXMLEquals( String test, URL control ) throws SAXException, IOException {
+    assertXMLEquals( test, toString( control ) );
   }
 
   /**
@@ -90,14 +100,25 @@ public class AssertUtils {
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
+  public static void assertXMLEquals( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( null, test, control, ignoreWhiteSpace );
+  }
+
+  @Deprecated
   public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEqual( null, test, control, ignoreWhiteSpace );
+    assertXMLEquals( null, test, control, ignoreWhiteSpace );
   }
 
+  @Deprecated
   public static void assertXMLEqual( String test, URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEqual( test, toString( control ), ignoreWhiteSpace );
+    assertXMLEquals( test, toString( control ), ignoreWhiteSpace );
   }
 
+  public static void assertXMLEquals( String test, URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( test, toString( control ), ignoreWhiteSpace );
+  }
+
+  @Deprecated
   public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEquals( err, test, control, ignoreWhiteSpace );
   }
