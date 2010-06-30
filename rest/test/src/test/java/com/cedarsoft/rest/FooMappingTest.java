@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 
 /**
  *
@@ -50,7 +51,7 @@ public class FooMappingTest extends AbstractMappedJaxbTest<FooModel, Foo> {
   @NotNull
   @Override
   protected FooModel createModel() {
-    return new FooModel( "Hello" );
+    return new FooModel( "Hello", Arrays.asList( "A", "B", "C" ), Arrays.asList( new FooModel.BarModel( 1 ), new FooModel.BarModel( 2 ) ) );
   }
 
   @NotNull

@@ -33,14 +33,42 @@ package com.cedarsoft.rest;
 
 import com.cedarsoft.jaxb.AbstractJaxbObject;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
-*
-*/
+ *
+ */
 @XmlRootElement( namespace = "test:foo" )
+@XmlAccessorType( XmlAccessType.FIELD )
 public class Foo extends AbstractJaxbObject {
   private String daValue = "default";
+
+  @XmlElement( name = "daName" )
+  private List<String> names = new ArrayList<String>();
+  @XmlElementRef(name = )
+  private List<Bar> bars = new ArrayList<Bar>();
+
+  public List<String> getNames() {
+    return names;
+  }
+
+  public void setNames( List<String> names ) {
+    this.names = names;
+  }
+
+  public List<Bar> getBars() {
+    return bars;
+  }
+
+  public void setBars( List<Bar> bars ) {
+    this.bars = bars;
+  }
 
   public String getDaValue() {
     return daValue;
@@ -48,5 +76,25 @@ public class Foo extends AbstractJaxbObject {
 
   public void setDaValue( String daValue ) {
     this.daValue = daValue;
+  }
+
+  @XmlRootElement( namespace = "test:bar" )
+  public static class Bar extends AbstractJaxbObject {
+    private int theId;
+
+    public Bar() {
+    }
+
+    public Bar( int theId ) {
+      this.theId = theId;
+    }
+
+    public int getTheId() {
+      return theId;
+    }
+
+    public void setTheId( int theId ) {
+      this.theId = theId;
+    }
   }
 }

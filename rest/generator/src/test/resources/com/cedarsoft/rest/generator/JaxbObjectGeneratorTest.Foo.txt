@@ -1,0 +1,24 @@
+-----------------------------------com.cedarsoft.rest.generator.test.jaxb.FooModel.java-----------------------------------
+
+package com.cedarsoft.rest.generator.test.jaxb;
+
+import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
+import com.cedarsoft.rest.generator.test.BarModel;
+
+@XmlRootElement(namespace = "http://www.cedarsoft.com/rest/generator/test/FooModel")
+@XmlAccess
+public class FooModel {
+
+
+    private List<BarModel> theBars;
+
+    public List<BarModel> getTheBars() {
+        return theBars;
+    }
+
+    public void setTheBars(List<BarModel> theBars) {
+        this.theBars = theBars;
+    }
+
+}

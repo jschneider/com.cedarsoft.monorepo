@@ -33,6 +33,7 @@ package com.cedarsoft.rest.generator;
 
 import com.cedarsoft.codegen.CodeGenerator;
 import com.cedarsoft.codegen.NamingSupport;
+import com.cedarsoft.codegen.TypeUtils;
 import com.cedarsoft.codegen.model.DomainObjectDescriptor;
 import com.cedarsoft.codegen.model.FieldWithInitializationInfo;
 import com.cedarsoft.id.NameSpaceSupport;
@@ -44,9 +45,13 @@ import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JVar;
-import org.jetbrains.annotations.NonNls;
+import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NotNull;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -61,10 +66,21 @@ public class Generator extends AbstractGenerator {
   public void generate() throws JClassAlreadyExistsException {
     JDefinedClass jaxbClass = codeGenerator.getModel()._class( getJaxbClassName() );
     jaxbClass.annotate( XmlRootElement.class ).param( "namespace", NameSpaceSupport.createNameSpaceUriBase( descriptor.getQualifiedName() ) );
+    jaxbClass.annotate( XmlAccessorType.class ).param( "value", XmlAccessType.FIELD );
 
     for ( FieldWithInitializationInfo fieldInfo : descriptor.getFieldsToSerialize() ) {
       JClass fieldType = codeGenerator.ref( fieldInfo.getType() );
       JFieldVar field = addField( jaxbClass, fieldType, fieldInfo );
+
+      if ( TypeUtils.isCollectionType( fieldInfo.getType() ) ) {
+        TypeMirror collectionParam = TypeUtils.getCollectionParam( fieldInfo.getType() );
+        if ( TypeUtils.isSimpleType( collectionParam ) ) {
+          field.annotate( XmlElement.class );
+        } else {
+          field.annotate( XmlElementRef.class );
+        }
+      }
+
       addGetter( jaxbClass, fieldType, fieldInfo, field );
       addSetter( jaxbClass, fieldType, fieldInfo, field );
     }

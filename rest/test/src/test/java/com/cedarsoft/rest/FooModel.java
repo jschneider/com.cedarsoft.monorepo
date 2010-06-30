@@ -31,17 +31,45 @@
 
 package com.cedarsoft.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
-*
-*/
+ *
+ */
 public class FooModel {
   private final String daValue;
 
-  public FooModel( String daValue ) {
+  private final List<String> names = new ArrayList<String>();
+  private final List<BarModel> bars = new ArrayList<BarModel>();
+
+  public FooModel( String daValue, List<String> names, List<BarModel> bars ) {
     this.daValue = daValue;
+    this.names.addAll( names );
+    this.bars.addAll( bars );
   }
 
   public String getDaValue() {
     return daValue;
+  }
+
+  public List<BarModel> getBars() {
+    return bars;
+  }
+
+  public List<String> getNames() {
+    return names;
+  }
+
+  public static class BarModel {
+    private final int id;
+
+    public BarModel( int id ) {
+      this.id = id;
+    }
+
+    public int getId() {
+      return id;
+    }
   }
 }

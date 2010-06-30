@@ -45,7 +45,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 import static org.testng.Assert.*;
 
@@ -53,27 +52,39 @@ import static org.testng.Assert.*;
  *
  */
 public class JaxbObjectGeneratorTest {
-  private URL resource;
-  private Result result;
   private DomainObjectDescriptor descriptor;
   private CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator;
 
   @BeforeMethod
   protected void setUp() throws Exception {
-    resource = getClass().getResource( "test/BarModel.java" );
-    result = Parser.parse( new File( resource.toURI() ) );
+    Result result = Parser.parse( new File( getClass().getResource( "test/BarModel.java" ).toURI() ) );
     descriptor = new DomainObjectDescriptorFactory( result.getClassDeclaration() ).create();
     codeGenerator = new CodeGenerator<JaxbObjectGenerator.MyDecisionCallback>( new JaxbObjectGenerator.MyDecisionCallback() );
   }
 
   @Test
-  public void testGeneratModel() throws URISyntaxException, JClassAlreadyExistsException, IOException {
+  public void testGeneratModelBar() throws URISyntaxException, JClassAlreadyExistsException, IOException {
     new Generator( codeGenerator, descriptor ).generate();
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
 
-    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.1.txt" ) );
+    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.Bar.txt" ) );
+  }
+
+  @Test
+  public void testGeneratModelFoo() throws URISyntaxException, JClassAlreadyExistsException, IOException {
+    Result result = Parser.parse( new File( getClass().getResource( "test/FooModel.java" ).toURI() ) );
+    descriptor = new DomainObjectDescriptorFactory( result.getClassDeclaration() ).create();
+    codeGenerator = new CodeGenerator<JaxbObjectGenerator.MyDecisionCallback>( new JaxbObjectGenerator.MyDecisionCallback() );
+
+
+    new Generator( codeGenerator, descriptor ).generate();
+
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
+
+    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.Foo.txt" ) );
   }
 
   @Test

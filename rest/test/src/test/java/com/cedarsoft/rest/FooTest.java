@@ -34,6 +34,7 @@ package com.cedarsoft.rest;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
+import java.util.Arrays;
 
 /**
  *
@@ -61,6 +62,9 @@ public class FooTest extends AbstractJaxbTest<Foo> {
     foo.setDaValue( "daValueA" );
     foo.setHref( new URI( "my:uri" ) );
     foo.setId( "daId" );
+    foo.setNames( Arrays.asList( "a", "b", "c" ) );
+
+    foo.setBars( Arrays.asList( new Foo.Bar( 1 ), new Foo.Bar( 2 ) ) );
     return foo;
   }
 
