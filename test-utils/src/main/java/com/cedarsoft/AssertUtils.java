@@ -36,6 +36,7 @@ import junit.framework.AssertionFailedError;
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.testng.*;
@@ -61,16 +62,16 @@ public class AssertUtils {
    * @param ignore a boolean.
    */
   public static void setIgnoreWhitespace( boolean ignore ) {
-    XMLUnit.setIgnoreWhitespace( true );
+    XMLUnit.setIgnoreWhitespace( ignore );
   }
 
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param test    a {@link java.lang.String} object.
-   * @param control a {@link java.lang.String} object.
-   * @throws org.xml.sax.SAXException if any.
-   * @throws java.io.IOException      if any.
+   * @param test    a {@link String} object.
+   * @param control a {@link String} object.
+   * @throws SAXException if any.
+   * @throws IOException  if any.
    */
   public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
     assertXMLEqual( test, control, false );
@@ -83,11 +84,11 @@ public class AssertUtils {
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param test             a {@link java.lang.String} object.
-   * @param control          a {@link java.lang.String} object.
+   * @param test             a {@link String} object.
+   * @param control          a {@link String} object.
    * @param ignoreWhiteSpace a boolean.
-   * @throws org.xml.sax.SAXException if any.
-   * @throws java.io.IOException      if any.
+   * @throws SAXException if any.
+   * @throws IOException  if any.
    */
   public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEqual( null, test, control, ignoreWhiteSpace );
@@ -97,17 +98,21 @@ public class AssertUtils {
     assertXMLEqual( test, toString( control ), ignoreWhiteSpace );
   }
 
+  public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( err, test, control, ignoreWhiteSpace );
+  }
+
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param err              a {@link java.lang.String} object.
-   * @param test             a {@link java.lang.String} object.
-   * @param control          a {@link java.lang.String} object.
+   * @param err              a {@link String} object.
+   * @param test             a {@link String} object.
+   * @param control          a {@link String} object.
    * @param ignoreWhiteSpace a boolean.
-   * @throws org.xml.sax.SAXException if any.
-   * @throws java.io.IOException      if any.
+   * @throws SAXException if any.
+   * @throws IOException  if any.
    */
-  public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String test, @NotNull @NonNls String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     try {
       setIgnoreWhitespace( ignoreWhiteSpace );
       XMLAssert.assertXMLEqual( err, test, control );
@@ -117,15 +122,15 @@ public class AssertUtils {
     }
   }
 
-  public static void assertXMLEqual( String err, String test, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEqual( err, test, toString( control ), ignoreWhiteSpace );
+  public static void assertXMLEquals( String err, String test, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( err, test, toString( control ), ignoreWhiteSpace );
   }
 
   /**
    * <p>assertOne</p>
    *
-   * @param current              a {@link java.lang.Object} object.
-   * @param expectedAlternatives a {@link java.lang.Object} object.
+   * @param current              a {@link Object} object.
+   * @param expectedAlternatives a {@link Object} object.
    */
   public static void assertOne( @Nullable Object current, @NotNull Object... expectedAlternatives ) {
     List<AssertionError> failed = new ArrayList<AssertionError>();
@@ -152,9 +157,9 @@ public class AssertUtils {
   /**
    * <p>assertEquals</p>
    *
-   * @param actual              a {@link java.lang.Object} object.
-   * @param expectedResourceUri a {@link java.net.URL} object.
-   * @throws java.io.IOException if any.
+   * @param actual              a {@link Object} object.
+   * @param expectedResourceUri a {@link URL} object.
+   * @throws IOException if any.
    */
   public static void assertEquals( @Nullable Object actual, @NotNull URL expectedResourceUri ) throws IOException {
     Assert.assertEquals( actual, toString( expectedResourceUri ) );
