@@ -41,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.testng.*;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -134,6 +135,13 @@ public class AssertUtils {
    * @throws IOException  if any.
    */
   public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String test, @NotNull @NonNls String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    if ( test.trim().length() == 0 ) {
+      throw new AssertionError( "expected:<" + XmlCommons.format( control ).trim() + "> but was:<" + test + '>' );
+    }
+    if ( control.trim().length() == 0 ) {
+      throw new AssertionError( "expected:<" + control + "> but was:<" + XmlCommons.format( test ).trim() + '>' );
+    }
+
     try {
       setIgnoreWhitespace( ignoreWhiteSpace );
       XMLAssert.assertXMLEqual( err, test, control );

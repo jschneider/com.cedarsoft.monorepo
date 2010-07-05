@@ -37,6 +37,8 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 
+import static org.testng.Assert.*;
+
 /**
  * <p>XmlUnitTest class.</p>
  *
@@ -46,7 +48,7 @@ public class XmlUnitTest {
   /**
    * <p>testIt</p>
    *
-   * @throws IOException      if any.
+   * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Test
@@ -78,7 +80,7 @@ public class XmlUnitTest {
   /**
    * <p>testProblem</p>
    *
-   * @throws IOException      if any.
+   * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Test
@@ -98,4 +100,22 @@ public class XmlUnitTest {
                                   "</fileType>" );
   }
 
+  @Test
+  public void testEmpty() throws IOException, SAXException {
+    try {
+      AssertUtils.assertXMLEquals( "<xml/>", "" );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError e ) {
+    }
+    try {
+      AssertUtils.assertXMLEquals( "", "" );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError e ) {
+    }
+    try {
+      AssertUtils.assertXMLEquals( "", "<xml/>" );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError e ) {
+    }
+  }
 }
