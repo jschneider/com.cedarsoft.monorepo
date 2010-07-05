@@ -168,4 +168,8 @@ public class CodeGenerator<T extends DecisionCallback> {
 
     return ref( TypeUtils.getErasure( type ).toString() );
   }
+
+  public boolean isPrimitiveType( @NotNull TypeMirror type ) {
+    throw new UnsupportedOperationException();
+  }
 }
