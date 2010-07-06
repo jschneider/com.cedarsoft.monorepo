@@ -182,8 +182,7 @@ public abstract class AbstractGenerator {
     ClassLoader aptClassLoader = createAptClassLoader();
     Thread.currentThread().setContextClassLoader( aptClassLoader );
 
-    Class<?> runnerType = aptClassLoader.loadClass( getRunnerClassName() );
-    return runnerType;
+    return aptClassLoader.loadClass( getRunnerClassName() );
   }
 
   /**
