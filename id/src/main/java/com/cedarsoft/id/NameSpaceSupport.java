@@ -54,7 +54,7 @@ public class NameSpaceSupport {
       return "http://" + className;
     }
 
-    StringBuilder uri = new StringBuilder( "http://www." );
+    StringBuilder uri = new StringBuilder( "http://" );
     uri.append( parts[1] );
     uri.append( "." );
     uri.append( parts[0] );
@@ -62,9 +62,33 @@ public class NameSpaceSupport {
     for ( int i = 2, partsLength = parts.length; i < partsLength; i++ ) {
       String part = parts[i];
       uri.append( "/" );
-      uri.append( part );
+
+      uri.append( createNameWithSpaces( part ) );
     }
 
     return uri.toString();
+  }
+
+  @NotNull
+  @NonNls
+  public static String createNameWithSpaces( @NotNull @NonNls String camelName ) {
+    //If it is the same, just return it
+    String lowerCaseName = camelName.toLowerCase();
+    if ( lowerCaseName.equals( camelName ) ) {
+      return camelName;
+    }
+
+    StringBuilder builder = new StringBuilder();
+    for ( int i = 0; i < camelName.length(); i++ ) {
+      @NonNls
+      String camelPart = camelName.substring( i, i + 1 );
+      String asLower = camelPart.toLowerCase();
+      if ( builder.length() > 0 && !asLower.equals( camelPart ) ) {
+        builder.append( "-" );
+      }
+      builder.append( asLower );
+    }
+
+    return builder.toString();
   }
 }

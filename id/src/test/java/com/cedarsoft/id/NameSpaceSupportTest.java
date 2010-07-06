@@ -33,6 +33,8 @@ package com.cedarsoft.id;
 
 import org.testng.annotations.*;
 
+import java.awt.Color;
+
 import static org.testng.Assert.*;
 
 /**
@@ -41,7 +43,15 @@ import static org.testng.Assert.*;
 public class NameSpaceSupportTest {
   @Test
   public void testToUri() {
-    assertEquals( NameSpaceSupport.createNameSpaceUriBase( NameSpaceSupportTest.class ), "http://www.cedarsoft.com/id/NameSpaceSupportTest" );
-    assertEquals( NameSpaceSupport.createNameSpaceUriBase( String.class ), "http://www.lang.java/String" );
+    assertEquals( NameSpaceSupport.createNameSpaceUriBase( NameSpaceSupportTest.class ), "http://cedarsoft.com/id/name-space-support-test" );
+    assertEquals( NameSpaceSupport.createNameSpaceUriBase( String.class ), "http://lang.java/string" );
+    assertEquals( NameSpaceSupport.createNameSpaceUriBase( Color.class ), "http://awt.java/color" );
+  }
+
+  @Test
+  public void testCamel() {
+    assertEquals( NameSpaceSupport.createNameWithSpaces( "ANameWithCamel" ), "a-name-with-camel" );
+    assertEquals( NameSpaceSupport.createNameWithSpaces( "asdf" ), "asdf" );
+    assertEquals( NameSpaceSupport.createNameWithSpaces( "" ), "" );
   }
 }
