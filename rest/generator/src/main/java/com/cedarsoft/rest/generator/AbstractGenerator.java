@@ -38,7 +38,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * @param <T> the type of the decision callback
  */
 public class AbstractGenerator<T extends DecisionCallback> {
   @NotNull
@@ -61,7 +61,7 @@ public class AbstractGenerator<T extends DecisionCallback> {
   @NotNull
   @NonNls
   public static String insertSubPackage( @NotNull @NonNls String fqn, @NotNull @NonNls String packagePart ) {
-    int lastIndex = fqn.lastIndexOf( "." );
+    int lastIndex = fqn.lastIndexOf( '.' );
     return fqn.substring( 0, lastIndex ) + "." + packagePart + fqn.substring( lastIndex );
   }
 }
