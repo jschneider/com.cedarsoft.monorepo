@@ -45,10 +45,7 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.net.URL;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
+import static org.testng.Assert.*;
 
 /**
  *
@@ -64,7 +61,7 @@ public class DomainObjectDescriptorFactoryTest {
     File javaFile = new File( resource.toURI() );
     assertTrue( javaFile.exists() );
 
-    Result parsed = Parser.parse( javaFile );
+    Result parsed = Parser.parse( javaFile, null );
     assertNotNull( parsed );
     assertEquals( parsed.getClassDeclarations().size(), 1 );
     ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.Window" );

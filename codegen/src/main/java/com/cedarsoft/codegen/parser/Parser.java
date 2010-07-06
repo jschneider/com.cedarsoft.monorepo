@@ -39,12 +39,16 @@ import com.sun.mirror.declaration.AnnotationTypeDeclaration;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.tools.apt.Main;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -56,9 +60,25 @@ public class Parser {
 
   @NotNull
   public static Result parse( @NotNull File file ) {
-    CollectingFactory factory = new CollectingFactory();
-    Main.process( factory, file.getAbsolutePath() );
+    return parse( file, null );
+  }
 
+  public static Result parse( @NotNull File file, @Nullable @NonNls String classpath ) {
+    List<String> arguments = new ArrayList<String>();
+
+    arguments.add( "-XclassesAsDecls" );
+    if ( classpath != null ) {
+      arguments.add( "-cp" );
+      arguments.add( classpath );
+    }
+    arguments.add( file.getAbsolutePath() );
+
+    arguments.add( "-nocompile" );
+
+    CollectingFactory factory = new CollectingFactory();
+
+    Main.process( factory, arguments.toArray( new String[arguments.size()] ) );
+    //    Main.process( factory, new PrintWriter( System.out ), arguments.toArray( new String[arguments.size()] ) );
     return factory.getResult();
   }
 
