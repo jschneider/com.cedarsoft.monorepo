@@ -77,7 +77,7 @@ public class XmlCommons {
   @NotNull
   @NonNls
   public static String format( @NotNull @NonNls String xml ) {
-    if ( xml.length() == 0 ) {
+    if ( xml.trim().length() == 0 ) {
       return "";
     }
 
