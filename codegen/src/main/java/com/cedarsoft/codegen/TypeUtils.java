@@ -44,6 +44,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -238,4 +240,52 @@ public class TypeUtils {
   private static boolean isSet( @NotNull @NonNls String qualifiedName ) {
     return qualifiedName.equals( Set.class.getName() );
   }
+
+  /**
+   * Returns true if the given type is a simple type (String, Integer...)
+   *
+   * @param type the type
+   * @return true if the given type is a simple type, false otherwise
+   */
+  public static boolean isSimpleType( @NotNull TypeMirror type ) {
+    return SIMPLE_TYPE_NAMES.contains( type.toString() );
+  }
+
+  @NotNull
+  private static final Set<? extends Class<?>> SIMPLE_TYPES;
+
+  static {
+    Set<Class<?>> types = new HashSet<Class<?>>();
+    types.add( String.class );
+    types.add( Integer.class );
+    types.add( Integer.TYPE );
+    types.add( Long.class );
+    types.add( Long.TYPE );
+    types.add( Float.class );
+    types.add( Float.TYPE );
+    types.add( Double.class );
+    types.add( Double.TYPE );
+    types.add( Short.class );
+    types.add( Short.TYPE );
+    types.add( Byte.class );
+    types.add( Byte.TYPE );
+    types.add( Character.class );
+    types.add( Character.TYPE );
+    types.add( Boolean.class );
+    types.add( Boolean.TYPE );
+
+    SIMPLE_TYPES = Collections.unmodifiableSet( types );
+  }
+
+  @NotNull
+  private static final Set<? extends String> SIMPLE_TYPE_NAMES;
+
+  static {
+    Set<String> names = new HashSet<String>();
+    for ( Class<?> supportedType : SIMPLE_TYPES ) {
+      names.add( supportedType.getName() );
+    }
+    SIMPLE_TYPE_NAMES = Collections.unmodifiableSet( names );
+  }
+
 }

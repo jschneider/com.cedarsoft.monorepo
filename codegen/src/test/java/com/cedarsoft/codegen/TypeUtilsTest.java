@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.mock.ClassTypeMock;
 import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.TypesMock;
 import org.testng.annotations.*;
@@ -54,5 +55,16 @@ public class TypeUtilsTest {
     assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString(), "java.lang.String" );
     assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( Set.class, String.class ) ).toString(), "java.lang.String" );
     assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, Integer.class ) ).toString(), "java.lang.Integer" );
+  }
+
+  @Test
+  public void testPrimitiveType() {
+    assertTrue( TypeUtils.isSimpleType( new ClassTypeMock( Integer.TYPE ) ) );
+    assertTrue( TypeUtils.isSimpleType( new ClassTypeMock( Integer.class ) ) );
+    assertTrue( TypeUtils.isSimpleType( new ClassTypeMock( String.class ) ) );
+    assertTrue( TypeUtils.isSimpleType( new ClassTypeMock( Character.class ) ) );
+
+    assertFalse( TypeUtils.isSimpleType( new ClassTypeMock( Object.class ) ) );
+    assertFalse( TypeUtils.isSimpleType( new ClassTypeMock( List.class ) ) );
   }
 }
