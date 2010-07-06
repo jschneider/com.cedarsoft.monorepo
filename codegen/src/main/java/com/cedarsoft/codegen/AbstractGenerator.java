@@ -35,6 +35,7 @@ import com.cedarsoft.exec.Executer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 import com.sun.tools.xjc.api.util.APTClassLoader;
+import com.sun.tools.xjc.api.util.ToolsJarNotFoundException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -131,8 +132,8 @@ public abstract class AbstractGenerator {
       printError( options, "Test destination <" + testDestination.getAbsolutePath() + "> is not a directory" );
       return;
     }
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination );
 
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
@@ -143,29 +144,78 @@ public abstract class AbstractGenerator {
     System.out.println( "\tSerializer is created in <" + destination.getAbsolutePath() + ">" );
     System.out.println( "\tSerializer tests are created in <" + testDestination.getAbsolutePath() + ">" );
 
-
     //Now start the generator
-    ClassLoader defaultClassLoader = getClass().getClassLoader();
-    if ( defaultClassLoader == null ) {
-      defaultClassLoader = ClassLoader.getSystemClassLoader();
-    }
-
-    ClassLoader aptClassLoader = new APTClassLoader( defaultClassLoader, getPackagePrefixes().toArray( new String[0] ) );
-    Thread.currentThread().setContextClassLoader( aptClassLoader );
-
-    Class<?> runnerType = aptClassLoader.loadClass( getRunnerClassName() );
-
-    Object runner = Reflection.constructor().in( runnerType ).newInstance();
-    Reflection.method( "generate" ).withParameterTypes( GeneratorConfiguration.class ).in( runner ).invoke( tmpConfiguration );
-
+    run( tmpConfiguration );
     System.out.println( "Generation finished!" );
 
-    transferFiles( tmpConfiguration.getDestination(), configuration.getDestination() );
-    transferFiles( tmpConfiguration.getTestDestination(), configuration.getTestDestination() );
+    transferFiles( tmpConfiguration, configuration );
 
     System.out.println( "Cleaning up..." );
     FileUtils.deleteDirectory( tmpDestination );
     FileUtils.deleteDirectory( tmpTestDestination );
+  }
+
+  public void run( @NotNull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
+    run( configuration, createRunner() );
+  }
+
+  public void run( @NotNull Class<?> runnerType, @NotNull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
+    run( configuration, createRunner( runnerType ) );
+  }
+
+  public void run( @NotNull GeneratorConfiguration configuration, @NotNull Object runner ) {
+    Reflection.method( "generate" ).withParameterTypes( GeneratorConfiguration.class ).in( runner ).invoke( configuration );
+  }
+
+  @NotNull
+  public Object createRunner() throws ToolsJarNotFoundException, ClassNotFoundException {
+    Class<?> runnerType = getRunnerType();
+    return createRunner( runnerType );
+  }
+
+  public Object createRunner( @NotNull Class<?> runnerType ) {
+    return Reflection.constructor().in( runnerType ).newInstance();
+  }
+
+  @NotNull
+  public Class<?> getRunnerType() throws ToolsJarNotFoundException, ClassNotFoundException {
+    ClassLoader aptClassLoader = createAptClassLoader();
+    Thread.currentThread().setContextClassLoader( aptClassLoader );
+
+    Class<?> runnerType = aptClassLoader.loadClass( getRunnerClassName() );
+    return runnerType;
+  }
+
+  /**
+   * Transfers the files
+   *
+   * @param tmpConfiguration the temporary configuration (the source)
+   * @param configuration    the configuration (the target)
+   * @throws IOException
+   * @throws InterruptedException
+   */
+  public void transferFiles( @NotNull GeneratorConfiguration tmpConfiguration, @NotNull GeneratorConfiguration configuration ) throws IOException, InterruptedException {
+    transferFiles( tmpConfiguration.getDestination(), configuration.getDestination() );
+    transferFiles( tmpConfiguration.getTestDestination(), configuration.getTestDestination() );
+  }
+
+  @NotNull
+  public APTClassLoader createAptClassLoader() throws ToolsJarNotFoundException {
+    return createAptClassLoader( getDefaultClassLoader() );
+  }
+
+  @NotNull
+  public APTClassLoader createAptClassLoader( @NotNull ClassLoader defaultClassLoader ) throws ToolsJarNotFoundException {
+    return new APTClassLoader( defaultClassLoader, getPackagePrefixes().toArray( new String[0] ) );
+  }
+
+  @NotNull
+  public ClassLoader getDefaultClassLoader() {
+    ClassLoader defaultClassLoader = getClass().getClassLoader();
+    if ( defaultClassLoader == null ) {
+      defaultClassLoader = ClassLoader.getSystemClassLoader();
+    }
+    return defaultClassLoader;
   }
 
   @NotNull
@@ -214,6 +264,9 @@ public abstract class AbstractGenerator {
   @NonNls
   protected abstract String getRunnerClassName();
 
+  /**
+   * The runner interface
+   */
   public interface Runner {
     void generate( @NotNull GeneratorConfiguration configuration ) throws Exception;
   }
