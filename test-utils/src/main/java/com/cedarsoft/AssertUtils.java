@@ -41,7 +41,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.testng.*;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -136,10 +135,10 @@ public class AssertUtils {
    */
   public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String test, @NotNull @NonNls String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
-      throw new AssertionError( "expected:<" + XmlCommons.format( control ).trim() + "> but was:<" + test + '>' );
+      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was:<" + test + '>' );
     }
     if ( control.trim().length() == 0 ) {
-      throw new AssertionError( "expected:<" + control + "> but was:<" + XmlCommons.format( test ).trim() + '>' );
+      throw new AssertionError( "expected:<" + control + "> but was:<" + format( test ).trim() + '>' );
     }
 
     try {
@@ -147,7 +146,18 @@ public class AssertUtils {
       XMLAssert.assertXMLEqual( err, test, control );
       setIgnoreWhitespace( false );
     } catch ( AssertionFailedError e ) {
-      throw new AssertionError( "expected:<" + XmlCommons.format( control ).trim() + "> but was:<" + XmlCommons.format( test ).trim() + '>' );
+      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was:<" + format( test ).trim() + '>' );
+    }
+  }
+
+  @NotNull
+  @NonNls
+  private static String format( @NotNull @NonNls String control ) {
+    try {
+      return XmlCommons.format( control );
+    } catch ( Exception ignore ) {
+      //Do not format if it is not possible...
+      return control;
     }
   }
 
