@@ -34,6 +34,8 @@ package com.cedarsoft.codegen;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
 /**
  *
@@ -46,10 +48,14 @@ public class GeneratorConfiguration {
   @NotNull
   private final File testDestination;
 
-  public GeneratorConfiguration( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination ) {
+  @NotNull
+  private final PrintWriter logOut;
+
+  public GeneratorConfiguration( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) {
     this.domainSourceFile = domainSourceFile;
     this.destination = destination;
     this.testDestination = testDestination;
+    this.logOut = logOut;
   }
 
   @NotNull
@@ -65,5 +71,10 @@ public class GeneratorConfiguration {
   @NotNull
   public File getTestDestination() {
     return testDestination;
+  }
+
+  @NotNull
+  public PrintWriter getLogOut() {
+    return logOut;
   }
 }

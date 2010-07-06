@@ -49,6 +49,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
 
@@ -133,12 +134,12 @@ public abstract class AbstractGenerator {
       return;
     }
 
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination );
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination, new PrintWriter( System.out ) );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
 
-    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFile, tmpDestination, tmpTestDestination );
+    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFile, tmpDestination, tmpTestDestination, new PrintWriter( System.out ) );
 
     System.out.println( "Generating serializer for <" + domainSourceFile.getAbsolutePath() + ">" );
     System.out.println( "\tSerializer is created in <" + destination.getAbsolutePath() + ">" );
