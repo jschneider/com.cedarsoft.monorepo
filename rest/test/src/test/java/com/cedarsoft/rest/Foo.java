@@ -51,7 +51,7 @@ public class Foo extends AbstractJaxbObject {
 
   @XmlElement( name = "daName" )
   private List<String> names = new ArrayList<String>();
-  @XmlElementRef(name = )
+  @XmlElementRef(name = "daBars" )
   private List<Bar> bars = new ArrayList<Bar>();
 
   public List<String> getNames() {
