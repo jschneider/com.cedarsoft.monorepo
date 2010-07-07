@@ -431,6 +431,9 @@
         <configuration>
           <encoding>utf-8</encoding>
           <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
+          <links>
+            <link>http://java.sun.com/javase/6/docs/api/</link>
+          </links>
         </configuration>
         <reportSets>
           <reportSet>
