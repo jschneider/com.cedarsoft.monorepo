@@ -45,7 +45,7 @@ public class AssertUtilsTest {
   @Test
   public void testXml() throws IOException, SAXException {
     try {
-      AssertUtils.assertXMLEquals( "<xml/>", "<xml2/>" );
+      AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
       assertEquals( e.getMessage().trim(), ( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
