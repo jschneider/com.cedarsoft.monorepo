@@ -32,6 +32,7 @@
 package com.cedarsoft.lock;
 
 import org.junit.*;
+import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
@@ -39,14 +40,15 @@ import static org.junit.Assert.*;
  *
  */
 public class LogingLockTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void testIt() {
     LogingReentrantLock lock = new LogingReentrantLock();
     lock.readLock().lock();
-    try {
-      lock.writeLock().lock();
-      fail( "Where is the Exception" );
-    } catch ( InvalidLockStateException ignore ) {
-    }
+
+    thrown.expect( InvalidLockStateException.class );
+    lock.writeLock().lock();
   }
 }

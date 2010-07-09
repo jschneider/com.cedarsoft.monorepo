@@ -34,6 +34,7 @@ package com.cedarsoft.configuration.xstream;
 import com.cedarsoft.configuration.DefaultConfigurationManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
 import java.io.IOException;

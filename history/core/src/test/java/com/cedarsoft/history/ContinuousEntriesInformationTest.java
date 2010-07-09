@@ -33,6 +33,7 @@ package com.cedarsoft.history;
 
 import org.joda.time.LocalDate;
 import org.junit.*;
+import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
@@ -40,6 +41,9 @@ import static org.junit.Assert.*;
  *
  */
 public class ContinuousEntriesInformationTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   private LocalDate begin;
   private LocalDate end;
   private ContinuousEntriesInformation<DefaultContinuousEntry> information;
@@ -66,11 +70,9 @@ public class ContinuousEntriesInformationTest {
     information.addEntry( second );
 
     assertSame( second, information.findNextEntry( first ) );
-    try {
-      information.findNextEntry( second );
-      fail( "Where is the Exception" );
-    } catch ( NoValidElementFoundException ignore ) {
-    }
+
+    thrown.expect( NoValidElementFoundException.class );
+    information.findNextEntry( second );
   }
 
   @Test
@@ -213,11 +215,9 @@ public class ContinuousEntriesInformationTest {
     assertEquals( 1, information.getEntries().size() );
     information.removeLastEntry();
     assertEquals( 0, information.getEntries().size() );
-    try {
-      information.removeLastEntry();
-      fail( "Where is the Exception" );
-    } catch ( Exception e ) {
-    }
+
+    thrown.expect( Exception.class );
+    information.removeLastEntry();
   }
 
   @Test

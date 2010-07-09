@@ -41,6 +41,7 @@ import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.type.TypeMirror;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
 import java.net.URL;
@@ -51,6 +52,9 @@ import static org.junit.Assert.*;
  *
  */
 public class DomainObjectDescriptorFactoryTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   private DomainObjectDescriptorFactory factory;
   public static final String WINDOW_RES = "/com/cedarsoft/codegen/model/test/Window.java";
 
@@ -132,11 +136,9 @@ public class DomainObjectDescriptorFactoryTest {
     FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "width" );
     TypeMirror type = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "description" ).getType();
 
-    try {
-      factory.findConstructorCallInfoForField( fieldDeclaration.getSimpleName(), type );
-      fail( "Where is the Exception" );
-    } catch ( IllegalArgumentException e ) {
-      assertEquals( "Type mismatch for <width>. Was <double> but expected <java.lang.String>", e.getMessage() );
-    }
+    thrown.expect( IllegalArgumentException.class );
+    thrown.expectMessage( "Type mismatch for <width>. Was <double> but expected <java.lang.String>" );
+
+    factory.findConstructorCallInfoForField( fieldDeclaration.getSimpleName(), type );
   }
 }

@@ -37,6 +37,7 @@ import org.apache.commons.configuration.Configuration;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -51,6 +52,9 @@ import static org.junit.Assert.*;
  * Time: 4:04:13 PM<br>
  */
 public class ConfigurationAccessTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   private Configuration configuration;
 
   @Before
@@ -134,11 +138,9 @@ public class ConfigurationAccessTest {
     configuration.setProperty( "key", "2" );
     assertEquals( "2", configurationAccess.resolve() );
     configuration.setProperty( "key", 2 );
-    try {
-      configurationAccess.resolve();
-      fail( "Where is the Exception" );
-    } catch ( Exception e ) {
-    }
+
+    thrown.expect( Exception.class );
+    configurationAccess.resolve();
   }
 
   @Test
