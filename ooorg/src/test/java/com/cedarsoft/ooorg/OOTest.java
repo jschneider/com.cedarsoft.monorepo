@@ -31,7 +31,7 @@
 
 package com.cedarsoft.ooorg;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 /**
  *

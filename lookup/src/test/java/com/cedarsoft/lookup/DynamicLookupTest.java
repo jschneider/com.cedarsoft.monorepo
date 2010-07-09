@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.RandomAccess;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

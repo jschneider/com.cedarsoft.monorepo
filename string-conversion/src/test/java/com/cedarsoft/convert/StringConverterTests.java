@@ -31,12 +31,12 @@
 
 package com.cedarsoft.convert;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

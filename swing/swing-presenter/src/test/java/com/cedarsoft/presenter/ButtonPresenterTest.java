@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -42,7 +42,7 @@ import javax.swing.JCheckBox;
 import java.awt.event.ActionEvent;
 import java.lang.ref.WeakReference;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 
 /**

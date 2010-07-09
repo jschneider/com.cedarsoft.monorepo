@@ -32,13 +32,13 @@
 package com.cedarsoft.commons.struct;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

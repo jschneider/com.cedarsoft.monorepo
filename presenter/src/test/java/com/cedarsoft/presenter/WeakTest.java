@@ -35,11 +35,11 @@ import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.lang.ref.WeakReference;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

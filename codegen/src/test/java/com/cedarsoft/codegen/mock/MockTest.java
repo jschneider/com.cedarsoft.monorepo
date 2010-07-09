@@ -32,7 +32,7 @@
 package com.cedarsoft.codegen.mock;
 
 import com.cedarsoft.codegen.TypeUtils;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

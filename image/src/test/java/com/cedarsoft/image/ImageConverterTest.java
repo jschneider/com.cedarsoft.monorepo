@@ -31,14 +31,14 @@
 
 package com.cedarsoft.image;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.imageio.ImageIO;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

@@ -33,12 +33,12 @@ package com.cedarsoft.file;
 
 import com.cedarsoft.TestUtils;
 import org.apache.commons.io.FileUtils;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.io.IOException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

@@ -40,7 +40,7 @@ import com.cedarsoft.history.ContinuousEntriesInformation;
 import com.cedarsoft.history.DefaultContinuousEntry;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -48,7 +48,7 @@ import javax.swing.JTable;
 import java.awt.BorderLayout;
 import java.lang.reflect.InvocationTargetException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

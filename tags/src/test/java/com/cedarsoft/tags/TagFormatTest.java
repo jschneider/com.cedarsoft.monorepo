@@ -31,11 +31,11 @@
 
 package com.cedarsoft.tags;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

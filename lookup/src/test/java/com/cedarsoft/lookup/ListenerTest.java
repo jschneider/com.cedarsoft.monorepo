@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 /**
  * <p/>

@@ -31,12 +31,12 @@
 
 package com.cedarsoft.exec;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

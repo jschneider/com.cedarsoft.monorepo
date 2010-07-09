@@ -36,13 +36,13 @@ import com.cedarsoft.tags.Tag;
 import com.cedarsoft.tags.TagChangeListener;
 import com.cedarsoft.tags.TagManager;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JList;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

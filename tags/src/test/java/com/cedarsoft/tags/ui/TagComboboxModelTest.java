@@ -36,7 +36,7 @@ import com.cedarsoft.tags.TagChangeListener;
 import com.cedarsoft.tags.TagManager;
 import com.cedarsoft.tags.Taggable;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -44,7 +44,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

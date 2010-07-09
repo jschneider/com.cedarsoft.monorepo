@@ -33,12 +33,12 @@ package com.cedarsoft.tags;
 
 import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

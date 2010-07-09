@@ -34,12 +34,12 @@ package com.cedarsoft.codegen;
 import com.cedarsoft.codegen.mock.ClassTypeMock;
 import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.TypesMock;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.List;
 import java.util.Set;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

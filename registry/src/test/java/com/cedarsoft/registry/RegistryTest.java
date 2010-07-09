@@ -34,12 +34,12 @@ package com.cedarsoft.registry;
 import com.cedarsoft.EasyMockTemplate;
 import com.cedarsoft.StillContainedException;
 import org.easymock.classextension.EasyMock;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

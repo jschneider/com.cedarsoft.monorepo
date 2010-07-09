@@ -32,9 +32,9 @@
 package com.cedarsoft.lookup;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

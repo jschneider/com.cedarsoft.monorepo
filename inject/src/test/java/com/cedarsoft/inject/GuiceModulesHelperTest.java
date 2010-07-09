@@ -33,12 +33,12 @@ package com.cedarsoft.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.ConfigurationException;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

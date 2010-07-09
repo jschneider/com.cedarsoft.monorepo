@@ -32,11 +32,11 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.MappedLookup;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

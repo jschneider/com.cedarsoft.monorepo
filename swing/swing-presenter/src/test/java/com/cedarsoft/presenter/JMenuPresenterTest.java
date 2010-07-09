@@ -37,7 +37,7 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -54,7 +54,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  */

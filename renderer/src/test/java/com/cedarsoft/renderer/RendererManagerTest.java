@@ -32,7 +32,7 @@
 package com.cedarsoft.renderer;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.crypt;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -41,7 +41,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

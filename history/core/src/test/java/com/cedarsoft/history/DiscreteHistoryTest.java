@@ -34,12 +34,12 @@ package com.cedarsoft.history;
 import org.fest.reflect.core.Reflection;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.LocalDate;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

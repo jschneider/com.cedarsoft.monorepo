@@ -35,11 +35,11 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Provides;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

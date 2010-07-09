@@ -36,7 +36,7 @@ import com.cedarsoft.lookup.LookupStore;
 import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -47,7 +47,7 @@ import javax.swing.ListCellRenderer;
 import java.awt.event.ActionEvent;
 import java.lang.ref.WeakReference;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 
 /**

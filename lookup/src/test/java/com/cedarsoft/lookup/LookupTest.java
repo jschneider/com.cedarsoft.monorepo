@@ -31,13 +31,13 @@
 
 package com.cedarsoft.lookup;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

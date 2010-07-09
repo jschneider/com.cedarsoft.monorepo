@@ -33,14 +33,14 @@ package com.cedarsoft.lock;
 
 import com.cedarsoft.ThreadUtils;
 import org.jetbrains.annotations.Nullable;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

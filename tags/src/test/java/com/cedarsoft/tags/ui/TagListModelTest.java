@@ -34,7 +34,7 @@ package com.cedarsoft.tags.ui;
 import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagManager;
 import com.cedarsoft.tags.Taggable;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -43,7 +43,7 @@ import javax.swing.event.ListDataListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

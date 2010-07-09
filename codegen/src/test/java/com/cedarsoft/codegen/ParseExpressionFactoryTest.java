@@ -39,7 +39,7 @@ import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFormatter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.StringWriter;
 

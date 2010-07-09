@@ -40,12 +40,12 @@ import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.type.TypeMirror;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.net.URL;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

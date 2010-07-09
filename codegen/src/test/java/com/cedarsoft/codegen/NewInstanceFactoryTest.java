@@ -39,7 +39,7 @@ import com.sun.codemodel.JFormatter;
 import com.sun.mirror.type.ReferenceType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,7 +47,7 @@ import java.io.StringWriter;
 import java.util.List;
 import java.util.Set;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

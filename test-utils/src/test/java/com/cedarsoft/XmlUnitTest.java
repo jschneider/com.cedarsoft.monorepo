@@ -32,12 +32,12 @@
 package com.cedarsoft;
 
 import org.custommonkey.xmlunit.XMLAssert;
-import org.testng.annotations.*;
+import org.junit.*;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p>XmlUnitTest class.</p>
@@ -45,6 +45,12 @@ import static org.testng.Assert.*;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlUnitTest {
+  @Test
+  public void test() {
+    String o = new String( "O" );
+    assertEquals( o.toLowerCase(), "o" );
+  }
+
   /**
    * <p>testIt</p>
    *

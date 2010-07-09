@@ -31,11 +31,11 @@
 
 package com.cedarsoft.workflow;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

@@ -41,7 +41,7 @@ import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.declaration.ParameterDeclaration;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.net.URL;

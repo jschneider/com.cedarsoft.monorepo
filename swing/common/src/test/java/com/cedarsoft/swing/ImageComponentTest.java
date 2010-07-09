@@ -31,13 +31,13 @@
 
 package com.cedarsoft.swing;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

@@ -37,7 +37,7 @@ import com.cedarsoft.codegen.parser.Result;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.net.URL;

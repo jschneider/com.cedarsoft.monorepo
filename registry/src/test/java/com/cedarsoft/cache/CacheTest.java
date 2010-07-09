@@ -33,7 +33,7 @@ package com.cedarsoft.cache;
 
 import org.jetbrains.annotations.NotNull;
 import org.testng.*;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Iterator;
 import java.util.Map;

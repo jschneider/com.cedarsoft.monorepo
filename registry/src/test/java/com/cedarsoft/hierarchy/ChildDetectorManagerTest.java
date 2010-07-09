@@ -32,13 +32,13 @@
 package com.cedarsoft.hierarchy;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JFrame;
 import java.util.Collections;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

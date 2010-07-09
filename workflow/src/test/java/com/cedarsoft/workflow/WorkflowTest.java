@@ -33,9 +33,9 @@ package com.cedarsoft.workflow;
 
 import junit.framework.Assert;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

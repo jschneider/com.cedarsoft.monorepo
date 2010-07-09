@@ -32,9 +32,9 @@
 package com.cedarsoft.cache;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Stores the parent of children in a weak map

@@ -42,7 +42,7 @@ import com.cedarsoft.lookup.Lookup;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.mockito.Mock;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.util.Arrays;
@@ -50,7 +50,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

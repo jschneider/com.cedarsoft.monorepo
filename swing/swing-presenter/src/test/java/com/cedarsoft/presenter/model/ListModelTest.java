@@ -37,7 +37,7 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.DynamicLookup;
 import com.cedarsoft.lookup.LookupStore;
 import com.cedarsoft.lookup.Lookups;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
@@ -52,7 +52,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

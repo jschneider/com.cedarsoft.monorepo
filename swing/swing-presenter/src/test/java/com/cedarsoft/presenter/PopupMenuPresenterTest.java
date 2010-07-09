@@ -34,7 +34,7 @@ package com.cedarsoft.presenter;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -51,7 +51,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

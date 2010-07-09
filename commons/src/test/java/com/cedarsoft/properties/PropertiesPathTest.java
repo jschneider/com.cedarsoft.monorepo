@@ -31,9 +31,9 @@
 
 package com.cedarsoft.properties;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

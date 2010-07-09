@@ -31,12 +31,12 @@
 
 package com.cedarsoft.tags.ui;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

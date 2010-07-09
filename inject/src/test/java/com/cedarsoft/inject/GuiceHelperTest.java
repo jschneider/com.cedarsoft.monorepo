@@ -35,13 +35,13 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Key;
 import com.google.inject.util.Types;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

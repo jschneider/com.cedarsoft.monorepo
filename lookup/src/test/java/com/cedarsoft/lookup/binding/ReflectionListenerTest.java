@@ -33,11 +33,11 @@ package com.cedarsoft.lookup.binding;
 
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.Lookups;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.lang.reflect.Method;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

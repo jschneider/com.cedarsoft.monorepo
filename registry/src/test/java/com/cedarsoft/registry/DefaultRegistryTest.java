@@ -32,11 +32,11 @@
 package com.cedarsoft.registry;
 
 import com.cedarsoft.StillContainedException;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.Comparator;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

@@ -32,7 +32,7 @@
 package com.cedarsoft.rest;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.JAXBException;

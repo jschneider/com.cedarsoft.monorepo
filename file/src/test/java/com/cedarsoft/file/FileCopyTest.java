@@ -31,13 +31,13 @@
 
 package com.cedarsoft.file;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

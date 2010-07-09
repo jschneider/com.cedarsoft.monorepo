@@ -37,13 +37,13 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Component;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

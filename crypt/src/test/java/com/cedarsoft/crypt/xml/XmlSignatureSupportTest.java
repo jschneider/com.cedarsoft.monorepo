@@ -32,7 +32,7 @@
 package com.cedarsoft.crypt.xml;
 
 import com.cedarsoft.crypt.X509Support;
-import org.testng.annotations.*;
+import org.junit.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -43,7 +43,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

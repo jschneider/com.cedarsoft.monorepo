@@ -34,7 +34,7 @@ package com.cedarsoft.tags;
 import com.cedarsoft.EasyMockTemplate;
 import com.cedarsoft.ReflectionMatcher;
 import org.easymock.EasyMock;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;

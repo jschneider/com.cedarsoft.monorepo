@@ -32,7 +32,7 @@
 package com.cedarsoft.crypt.xml;
 
 import com.cedarsoft.crypt.X509Support;
-import org.testng.annotations.*;
+import org.junit.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -61,7 +61,7 @@ import java.security.PrivateKey;
 import java.util.Collections;
 import java.util.Iterator;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 
 /**

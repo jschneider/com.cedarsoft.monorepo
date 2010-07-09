@@ -33,13 +33,13 @@ package com.cedarsoft;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.lang.Exception;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p>MockitoTest class.</p>

@@ -33,13 +33,13 @@ package com.cedarsoft.configuration.xstream;
 
 import com.cedarsoft.configuration.DefaultConfigurationManager;
 import org.apache.commons.io.FileUtils;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *

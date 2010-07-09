@@ -31,12 +31,12 @@
 
 package com.cedarsoft.zip;
 
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.File;
 import java.io.IOException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Platform dependen test!

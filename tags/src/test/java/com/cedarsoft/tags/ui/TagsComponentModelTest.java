@@ -33,9 +33,9 @@ package com.cedarsoft.tags.ui;
 
 import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagManager;
-import org.testng.annotations.*;
+import org.junit.*;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * <p/>

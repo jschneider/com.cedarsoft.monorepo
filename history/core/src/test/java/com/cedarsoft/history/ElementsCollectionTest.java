@@ -34,11 +34,11 @@ package com.cedarsoft.history;
 import com.cedarsoft.EasyMockTemplate;
 import org.easymock.classextension.EasyMock;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *
