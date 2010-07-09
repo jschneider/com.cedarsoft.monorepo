@@ -79,7 +79,7 @@ public class PathTest {
     assertEquals( "", Path.createPath( "" ).toString() );
     assertEquals( Path.EMPTY, Path.createPath( "" ) );
     assertEquals( "/", Path.createPath( "/" ).toString() );
-    assertTrue( Path.createPath( "/" ).isAbsolute(), "/" );
+    assertTrue( Path.createPath( "/" ).isAbsolute() );
     assertEquals( 0, Path.createPath( "/" ).size() );
   }
 

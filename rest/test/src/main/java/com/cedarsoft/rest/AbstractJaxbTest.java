@@ -112,7 +112,7 @@ public abstract class AbstractJaxbTest<J> {
     StringWriter out = new StringWriter();
     marshaller.marshal( jaxbObject, out );
 
-    AssertUtils.assertXMLEqual( out.toString(), expectedXml() );
+    AssertUtils.assertXMLEquals( out.toString(), expectedXml() );
 
     J deserialized = getJaxbType().cast( createUnmarshaller().unmarshal( new StringReader( out.toString() ) ) );
     assertNotNull( deserialized );
@@ -128,7 +128,7 @@ public abstract class AbstractJaxbTest<J> {
       Object originalValue = field.get( originalJaxbObject );
       Object deserializedValue = field.get( deserialized );
 
-      Assert.assertEquals( deserializedValue, originalValue, "Failed comparing field <" + field.getName() + ">" );
+      Assert.assertEquals( "Failed comparing field <" + field.getName() + ">", deserializedValue, originalValue );
     }
   }
 
@@ -147,7 +147,7 @@ public abstract class AbstractJaxbTest<J> {
   public void testNameSpace() throws Exception {
     String namespace = getJaxbType().getAnnotation( XmlRootElement.class ).namespace();
     assertNotNull( namespace );
-    Assert.assertFalse( namespace.equals( "##default" ), "Missing namespace for <" + getJaxbType().getName() + ">" );
+    Assert.assertFalse( "Missing namespace for <" + getJaxbType().getName() + ">", namespace.equals( "##default" ) );
     Assert.assertTrue( namespace.length() > 0 );
   }
 }

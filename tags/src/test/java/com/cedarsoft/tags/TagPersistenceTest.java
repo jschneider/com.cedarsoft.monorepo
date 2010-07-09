@@ -177,7 +177,7 @@ public class TagPersistenceTest extends TagDbTest {
       assertNotNull( resultSet );
       while ( resultSet.next() ) {
         System.out.println( "--> " + resultSet.getInt( 1 ) );
-        assertFalse( 0 == resultSet.getInt( 1 ), "No Entries in \"TagSet_tags\"" );
+        assertFalse( "No Entries in \"TagSet_tags\"", 0 == resultSet.getInt( 1 ) );
       }
     }
 
