@@ -45,7 +45,7 @@ public class AssertUtilsTest {
   @Test
   public void testXml() throws IOException, SAXException {
     try {
-      AssertUtils.assertXMLEqual( "<xml/>", "<xml2/>" );
+      AssertUtils.assertXMLEquals( "<xml/>", "<xml2/>" );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
       assertEquals( e.getMessage().trim(), ( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -56,12 +56,12 @@ public class AssertUtilsTest {
 
   @Test
   public void testAssertWithResource() throws IOException {
-    AssertUtils.assertEquals( "the content of the file...\n" +
+    AssertUtils.assertEquals( getClass().getResource( "equals.txt" ), "the content of the file...\n" +
       "second line!\n" +
-      "third line!", getClass().getResource( "equals.txt" ) );
+      "third line!" );
 
     try {
-      AssertUtils.assertEquals( "other!", getClass().getResource( "equals.txt" ) );
+      AssertUtils.assertEquals( getClass().getResource( "equals.txt" ), "other!" );
       fail( "Where is the Exception" );
     } catch ( AssertionError ignore ) {
     }

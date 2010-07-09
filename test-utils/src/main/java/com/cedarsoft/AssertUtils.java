@@ -39,7 +39,7 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
+import org.junit.*;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -65,75 +65,50 @@ public class AssertUtils {
     XMLUnit.setIgnoreWhitespace( ignore );
   }
 
-  @Deprecated
-  public static void assertXMLEqual( String test, String control ) throws SAXException, IOException {
-    assertXMLEquals( test, control );
-  }
-
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param test    a {@link String} object.
    * @param control a {@link String} object.
+   * @param test    a {@link String} object.
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEquals( String test, String control ) throws SAXException, IOException {
-    assertXMLEquals( test, control, true );
+  public static void assertXMLEquals( String control, String test ) throws SAXException, IOException {
+    assertXMLEquals( control, test, true );
   }
 
-  @Deprecated
-  public static void assertXMLEqual( String test, URL control ) throws SAXException, IOException {
-    assertXMLEquals( test, control );
-  }
-
-  public static void assertXMLEquals( String test, URL control ) throws SAXException, IOException {
-    assertXMLEquals( test, toString( control ) );
+  public static void assertXMLEquals( URL control, String test ) throws SAXException, IOException {
+    assertXMLEquals( toString( control ), test );
   }
 
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param test             a {@link String} object.
    * @param control          a {@link String} object.
+   * @param test             a {@link String} object.
    * @param ignoreWhiteSpace a boolean.
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEquals( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( null, test, control, ignoreWhiteSpace );
+  public static void assertXMLEquals( String control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( null, control, test, ignoreWhiteSpace );
   }
 
-  @Deprecated
-  public static void assertXMLEqual( String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( null, test, control, ignoreWhiteSpace );
-  }
-
-  @Deprecated
-  public static void assertXMLEqual( String test, URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( test, toString( control ), ignoreWhiteSpace );
-  }
-
-  public static void assertXMLEquals( String test, URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( test, toString( control ), ignoreWhiteSpace );
-  }
-
-  @Deprecated
-  public static void assertXMLEqual( String err, String test, String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( err, test, control, ignoreWhiteSpace );
+  public static void assertXMLEquals( URL control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( toString( control ), test, ignoreWhiteSpace );
   }
 
   /**
    * <p>assertXMLEqual</p>
    *
    * @param err              a {@link String} object.
-   * @param test             a {@link String} object.
    * @param control          a {@link String} object.
+   * @param test             a {@link String} object.
    * @param ignoreWhiteSpace a boolean.
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String test, @NotNull @NonNls String control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String control, @NotNull @NonNls String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
       throw new AssertionError( "expected:<" + format( control ).trim() + "> but was:<" + test + '>' );
     }
@@ -161,8 +136,8 @@ public class AssertUtils {
     }
   }
 
-  public static void assertXMLEquals( String err, String test, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( err, test, toString( control ), ignoreWhiteSpace );
+  public static void assertXMLEquals( String test, String err, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals( err, toString( control ), test, ignoreWhiteSpace );
   }
 
   /**
@@ -196,11 +171,11 @@ public class AssertUtils {
   /**
    * <p>assertEquals</p>
    *
+   * @param expectedResourceUri a {@link java.net.URL} object.
    * @param actual              a {@link Object} object.
-   * @param expectedResourceUri a {@link URL} object.
    * @throws IOException if any.
    */
-  public static void assertEquals( @Nullable Object actual, @NotNull URL expectedResourceUri ) throws IOException {
+  public static void assertEquals( @NotNull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
     Assert.assertEquals( actual, toString( expectedResourceUri ) );
   }
 

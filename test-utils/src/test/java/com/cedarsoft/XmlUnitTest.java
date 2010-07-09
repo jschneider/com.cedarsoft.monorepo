@@ -70,7 +70,7 @@ public class XmlUnitTest {
                                 "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
                                 "</fileType>"
     );
-    AssertUtils.assertXMLEqual( "<?xml version='1.0' encoding='UTF-8'?>\n" +
+    AssertUtils.assertXMLEquals( "<?xml version='1.0' encoding='UTF-8'?>\n" +
       "<fileType dependent=\"false\">\n" +
       "  <id>Canon Raw</id>\n" +
       "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
@@ -98,7 +98,7 @@ public class XmlUnitTest {
                                 "  <id>Canon Raw</id>\n" +
                                 "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
                                 "</fileType>" );
-    AssertUtils.assertXMLEqual( "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>",
+    AssertUtils.assertXMLEquals( "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>",
                                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                                   "<fileType dependent=\"false\">\n" +
                                   "  <id>Canon Raw</id>\n" +
@@ -109,7 +109,7 @@ public class XmlUnitTest {
   @Test
   public void testEmpty() throws IOException, SAXException {
     try {
-      AssertUtils.assertXMLEquals( "<xml/>", "" );
+      AssertUtils.assertXMLEquals( "", "<xml/>" );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
     }
@@ -119,7 +119,7 @@ public class XmlUnitTest {
     } catch ( AssertionError e ) {
     }
     try {
-      AssertUtils.assertXMLEquals( "", "<xml/>" );
+      AssertUtils.assertXMLEquals( "<xml/>", "" );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
     }
