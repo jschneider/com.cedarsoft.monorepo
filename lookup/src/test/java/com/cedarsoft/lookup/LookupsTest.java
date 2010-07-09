@@ -132,7 +132,7 @@ public class LookupsTest {
           called[0] = event.getNewValue();
         }
       } );
-      assertEquals( VALUE, called[0], "Failed at " + lookup.getClass().getName() );
+      assertEquals( "Failed at " + lookup.getClass().getName(), VALUE, called[0] );
     }
   }
 
@@ -152,7 +152,7 @@ public class LookupsTest {
           return String.class;
         }
       } );
-      assertEquals( VALUE, called[0], "Failed at " + lookup.getClass().getName() );
+      assertEquals( "Failed at " + lookup.getClass().getName(), VALUE, called[0] );
     }
   }
 }

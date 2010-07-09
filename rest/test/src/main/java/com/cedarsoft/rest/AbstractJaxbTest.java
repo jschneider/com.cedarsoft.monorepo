@@ -128,7 +128,7 @@ public abstract class AbstractJaxbTest<J> {
       Object originalValue = field.get( originalJaxbObject );
       Object deserializedValue = field.get( deserialized );
 
-      Assert.assertEquals( "Failed comparing field <" + field.getName() + ">", deserializedValue, originalValue );
+      Assert.assertEquals( "Failed comparing field <" + field.getName() + ">", originalValue, deserializedValue );
     }
   }
 
