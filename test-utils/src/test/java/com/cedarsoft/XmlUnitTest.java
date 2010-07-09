@@ -45,12 +45,6 @@ import static org.junit.Assert.*;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlUnitTest {
-  @Test
-  public void test() {
-    String o = new String( "O" );
-    assertEquals( "o", o.toLowerCase() );
-  }
-
   /**
    * <p>testIt</p>
    *
