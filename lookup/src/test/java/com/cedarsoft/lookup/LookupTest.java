@@ -64,7 +64,7 @@ public class LookupTest {
   public void testException() {
     Lookup lookup = Lookups.createLookup( "a", 5 );
 
-    assertEquals( lookup.lookupNonNull( String.class ), "a" );
+    assertEquals( "a", lookup.lookupNonNull( String.class ) );
 
     try {
       lookup.lookupNonNull( List.class );

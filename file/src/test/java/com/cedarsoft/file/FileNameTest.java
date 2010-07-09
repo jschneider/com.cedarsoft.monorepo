@@ -42,30 +42,30 @@ import static org.junit.Assert.*;
 public class FileNameTest {
   @Test
   public void testDel() {
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getExtension(), "jpg" );
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter(), "." );
+    assertEquals( "asdf", new FileName( "asdf", ".", "jpg" ).getBaseName().getName() );
+    assertEquals( "jpg", new FileName( "asdf", ".", "jpg" ).getExtension().getExtension() );
+    assertEquals( ".", new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter() );
 
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getName(), "asdf.jpg" );
-    assertEquals( new FileName( "asdf", ".", "jpg" ).toString(), "asdf.jpg" );
+    assertEquals( "asdf.jpg", new FileName( "asdf", ".", "jpg" ).getName() );
+    assertEquals( "asdf.jpg", new FileName( "asdf", ".", "jpg" ).toString() );
   }
 
   @Test
   public void testCase() {
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( new FileName( "aSdf", ".", "JPG" ).getBaseName().getName(), "aSdf" );
+    assertEquals( "asdf", new FileName( "asdf", ".", "jpg" ).getBaseName().getName() );
+    assertEquals( "aSdf", new FileName( "aSdf", ".", "JPG" ).getBaseName().getName() );
 
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getExtension(), "jpg" );
-    assertEquals( new FileName( "asdf", ".", "JPG" ).getExtension().getExtension(), "JPG" );
+    assertEquals( "jpg", new FileName( "asdf", ".", "jpg" ).getExtension().getExtension() );
+    assertEquals( "JPG", new FileName( "asdf", ".", "JPG" ).getExtension().getExtension() );
 
-    assertEquals( new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter(), "." );
+    assertEquals( ".", new FileName( "asdf", ".", "jpg" ).getExtension().getDelimiter() );
   }
 
   @Test
   public void testFileNameUtils() {
-    assertEquals( FilenameUtils.getExtension( "asdf" ), "" );
-    assertEquals( FilenameUtils.getExtension( "asdf." ), "" );
+    assertEquals( "", FilenameUtils.getExtension( "asdf" ) );
+    assertEquals( "", FilenameUtils.getExtension( "asdf." ) );
 
-    assertEquals( FilenameUtils.getBaseName( "asdf." ), "asdf" );
+    assertEquals( "asdf", FilenameUtils.getBaseName( "asdf." ) );
   }
 }

@@ -63,7 +63,7 @@ public class DomainObjectDescriptorFactoryTest {
 
     Result parsed = Parser.parse( javaFile, null );
     assertNotNull( parsed );
-    assertEquals( parsed.getClassDeclarations().size(), 1 );
+    assertEquals( 1, parsed.getClassDeclarations().size() );
     ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.Window" );
 
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
@@ -73,23 +73,23 @@ public class DomainObjectDescriptorFactoryTest {
   @Test
   public void testFindField() {
     FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "width" );
-    assertEquals( fieldDeclaration.getSimpleName(), "width" );
-    assertEquals( fieldDeclaration.getType().toString(), "double" );
+    assertEquals( "width", fieldDeclaration.getSimpleName() );
+    assertEquals( "double", fieldDeclaration.getType().toString() );
   }
 
   @Test
   public void testCreate() {
     DomainObjectDescriptor model = factory.create();
-    assertEquals( model.getQualifiedName(), "com.cedarsoft.codegen.model.test.Window" );
-    assertEquals( model.getFieldsToSerialize().size(), 3 );
-    assertEquals( model.getFieldsToSerialize().get( 0 ).getSimpleName(), "width" );
-    assertEquals( model.getFieldsToSerialize().get( 0 ).getType().toString(), "double" );
+    assertEquals( "com.cedarsoft.codegen.model.test.Window", model.getQualifiedName() );
+    assertEquals( 3, model.getFieldsToSerialize().size() );
+    assertEquals( "width", model.getFieldsToSerialize().get( 0 ).getSimpleName() );
+    assertEquals( "double", model.getFieldsToSerialize().get( 0 ).getType().toString() );
 
-    assertEquals( model.getFieldsToSerialize().get( 1 ).getSimpleName(), "height" );
-    assertEquals( model.getFieldsToSerialize().get( 1 ).getType().toString(), "double" );
+    assertEquals( "height", model.getFieldsToSerialize().get( 1 ).getSimpleName() );
+    assertEquals( "double", model.getFieldsToSerialize().get( 1 ).getType().toString() );
 
-    assertEquals( model.getFieldsToSerialize().get( 2 ).getSimpleName(), "description" );
-    assertEquals( model.getFieldsToSerialize().get( 2 ).getType().toString(), "java.lang.String" );
+    assertEquals( "description", model.getFieldsToSerialize().get( 2 ).getSimpleName() );
+    assertEquals( "java.lang.String", model.getFieldsToSerialize().get( 2 ).getType().toString() );
   }
 
   @Test
@@ -100,16 +100,16 @@ public class DomainObjectDescriptorFactoryTest {
     assertNotNull( getterDeclaration );
 
     assertEquals( getterDeclaration.getReturnType(), fieldDeclaration.getType() );
-    assertEquals( getterDeclaration.getSimpleName(), "getWidth" );
+    assertEquals( "getWidth", getterDeclaration.getSimpleName() );
   }
 
   @Test
   public void testFieldCons() {
     FieldInitializedInConstructorInfo fieldInfo = factory.findFieldInitializedInConstructor( "width" );
     assertNotNull( fieldInfo );
-    assertEquals( fieldInfo.getFieldDeclaration().getSimpleName(), "width" );
-    assertEquals( fieldInfo.getConstructorCallInfo().getIndex(), 1 );
-    assertEquals( fieldInfo.getConstructorCallInfo().getParameterDeclaration().getSimpleName(), "width" );
+    assertEquals( "width", fieldInfo.getFieldDeclaration().getSimpleName() );
+    assertEquals( 1, fieldInfo.getConstructorCallInfo().getIndex() );
+    assertEquals( "width", fieldInfo.getConstructorCallInfo().getParameterDeclaration().getSimpleName() );
   }
 
   @Test
@@ -123,8 +123,8 @@ public class DomainObjectDescriptorFactoryTest {
     FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "width" );
 
     ConstructorCallInfo found = factory.findConstructorCallInfoForField( fieldDeclaration );
-    assertEquals( found.getIndex(), 1 );
-    assertEquals( found.getParameterDeclaration().getSimpleName(), "width" );
+    assertEquals( 1, found.getIndex() );
+    assertEquals( "width", found.getParameterDeclaration().getSimpleName() );
   }
 
   @Test
@@ -136,7 +136,7 @@ public class DomainObjectDescriptorFactoryTest {
       factory.findConstructorCallInfoForField( fieldDeclaration.getSimpleName(), type );
       fail( "Where is the Exception" );
     } catch ( IllegalArgumentException e ) {
-      assertEquals( e.getMessage(), "Type mismatch for <width>. Was <double> but expected <java.lang.String>" );
+      assertEquals( "Type mismatch for <width>. Was <double> but expected <java.lang.String>", e.getMessage() );
     }
   }
 }

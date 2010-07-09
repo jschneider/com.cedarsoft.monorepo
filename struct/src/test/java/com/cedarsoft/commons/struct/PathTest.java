@@ -72,32 +72,32 @@ public class PathTest {
 
   @Test
   public void testEmptyPath() {
-    assertEquals( Path.EMPTY.toString(), "" );
-    assertEquals( Path.EMPTY.absolute().toString(), "/" );
+    assertEquals( "", Path.EMPTY.toString() );
+    assertEquals( "/", Path.EMPTY.absolute().toString() );
     assertFalse( Path.EMPTY.isAbsolute() );
 
-    assertEquals( Path.createPath( "" ).toString(), "" );
-    assertEquals( Path.createPath( "" ), Path.EMPTY );
-    assertEquals( Path.createPath( "/" ).toString(), "/" );
+    assertEquals( "", Path.createPath( "" ).toString() );
+    assertEquals( Path.EMPTY, Path.createPath( "" ) );
+    assertEquals( "/", Path.createPath( "/" ).toString() );
     assertTrue( Path.createPath( "/" ).isAbsolute(), "/" );
-    assertEquals( Path.createPath( "/" ).size(), 0 );
+    assertEquals( 0, Path.createPath( "/" ).size() );
   }
 
   @Test
   public void testPop() {
     Path path = new Path( "a", "b" );
-    assertEquals( path.toString(), "a/b" );
-    assertEquals( path.popped().toString(), "b" );
-    assertEquals( path.toString(), "a/b" );
+    assertEquals( "a/b", path.toString() );
+    assertEquals( "b", path.popped().toString() );
+    assertEquals( "a/b", path.toString() );
   }
 
   @Test
   public void testPopAbs() {
     Path path = new Path( Arrays.asList( "a", "b", "c" ), true );
 
-    assertEquals( path.toString(), "/a/b/c" );
-    assertEquals( path.popped().toString(), "b/c" );
-    assertEquals( path.toString(), "/a/b/c" );
+    assertEquals( "/a/b/c", path.toString() );
+    assertEquals( "b/c", path.popped().toString() );
+    assertEquals( "/a/b/c", path.toString() );
   }
 
   @Test
@@ -208,14 +208,14 @@ public class PathTest {
 
   @Test
   public void testCreatePath2() {
-    assertEquals( Path.createPath( "/a/b/c" ).toString(), "/a/b/c" );
-    assertEquals( Path.createPath( "a/b/c" ).toString(), "a/b/c" );
-    assertEquals( Path.createPath( "a" ).toString(), "a" );
+    assertEquals( "/a/b/c", Path.createPath( "/a/b/c" ).toString() );
+    assertEquals( "a/b/c", Path.createPath( "a/b/c" ).toString() );
+    assertEquals( "a", Path.createPath( "a" ).toString() );
 
-    assertEquals( Path.createPath( "/a/" ).toString(), "/a" );
-    assertEquals( Path.createPath( "/a/b/c/" ).toString(), "/a/b/c" );
+    assertEquals( "/a", Path.createPath( "/a/" ).toString() );
+    assertEquals( "/a/b/c", Path.createPath( "/a/b/c/" ).toString() );
 
-    assertEquals( Path.createPath( "" ).toString(), "" );
+    assertEquals( "", Path.createPath( "" ).toString() );
 
     try {
       Path.createPath( "/a///" );
@@ -226,9 +226,9 @@ public class PathTest {
 
   @Test
   public void testToStringAbsolute() {
-    assertEquals( Path.createPath( "/a/b" ).toString(), "/a/b" );
+    assertEquals( "/a/b", Path.createPath( "/a/b" ).toString() );
     assertTrue( Path.createPath( "/a/b" ).isAbsolute() );
-    assertEquals( Path.createPath( "a/b" ).toString(), "a/b" );
+    assertEquals( "a/b", Path.createPath( "a/b" ).toString() );
     assertFalse( Path.createPath( "a/b" ).isAbsolute() );
   }
 }

@@ -48,7 +48,7 @@ public class XmlUnitTest {
   @Test
   public void test() {
     String o = new String( "O" );
-    assertEquals( o.toLowerCase(), "o" );
+    assertEquals( "o", o.toLowerCase() );
   }
 
   /**

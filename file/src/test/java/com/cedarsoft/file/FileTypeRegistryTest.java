@@ -56,8 +56,8 @@ public class FileTypeRegistryTest {
     registry.store( new FileType( "Canon Raw", false, new Extension( ".", "cr2" ) ) );
     registry.store( new FileType( "Photoshop", false, new Extension( ".", "psd" ) ) );
 
-    assertEquals( registry.getStoredObjects().size(), 2 );
-    assertEquals( registry.getFileTypes().size(), 2 );
+    assertEquals( 2, registry.getStoredObjects().size() );
+    assertEquals( 2, registry.getFileTypes().size() );
   }
 
   @Test
@@ -69,8 +69,8 @@ public class FileTypeRegistryTest {
       }
     } );
 
-    assertEquals( registry.getStoredObjects().size(), 0 );
+    assertEquals( 0, registry.getStoredObjects().size() );
     registry.ensureDefaultTypesRegistered();
-    assertEquals( registry.getStoredObjects().size(), 6 );
+    assertEquals( 6, registry.getStoredObjects().size() );
   }
 }

@@ -47,7 +47,7 @@ public class ElementsCollectionTest {
   @Test
   public void testMultiRemove() {
     ElementsCollection<Integer> collection = new ElementsCollection<Integer>( 0, 1, 2, 3, 4, 5, 6, 7 );
-    assertEquals( collection.size(), 8 );
+    assertEquals( 8, collection.size() );
 
     List<? extends Integer> removed = collection.removeElements( new ElementVisitor<Integer>( "" ) {
       @Override
@@ -56,13 +56,13 @@ public class ElementsCollectionTest {
       }
     } );
 
-    assertEquals( removed.size(), 8 );
+    assertEquals( 8, removed.size() );
   }
 
   @Test
   public void testMultiRemoveListener() throws Exception {
     final ElementsCollection<Integer> collection = new ElementsCollection<Integer>( 0, 1, 2, 3, 4, 5, 6, 7 );
-    assertEquals( collection.size(), 8 );
+    assertEquals( 8, collection.size() );
 
     final SingleElementsListener<Integer> listener = EasyMock.createMock( SingleElementsListener.class, SingleElementsListener.class.getMethod( "elementDeleted", ObservableCollection.class, Object.class, Integer.TYPE ) );
 
@@ -83,12 +83,12 @@ public class ElementsCollectionTest {
       protected void codeToTest() {
         collection.addElementListener( listener );
 
-        assertEquals( collection.removeElements( new ElementVisitor<Integer>( "" ) {
+        assertEquals( 8, collection.removeElements( new ElementVisitor<Integer>( "" ) {
           @Override
           public boolean fits( @NotNull Integer element ) {
             return true;
           }
-        } ).size(), 8 );
+        } ).size() );
       }
     }.run();
   }

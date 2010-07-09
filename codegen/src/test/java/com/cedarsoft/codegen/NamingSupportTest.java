@@ -45,7 +45,7 @@ public class NamingSupportTest {
 
   @Test
   public void testIt() {
-    assertEquals( NamingSupport.createXmlElementName( "String" ), "string" );
-    assertEquals( NamingSupport.createXmlElementName( "ACamelCase" ), "acamelcase" );
+    assertEquals( "string", NamingSupport.createXmlElementName( "String" ) );
+    assertEquals( "acamelcase", NamingSupport.createXmlElementName( "ACamelCase" ) );
   }
 }

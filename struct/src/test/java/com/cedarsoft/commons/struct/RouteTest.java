@@ -62,12 +62,12 @@ public class RouteTest {
   @Test
   public void testEmptyRoute() {
     Route route = new Route( Collections.<Node>emptyList() );
-    assertEquals( route.size(), 0 );
+    assertEquals( 0, route.size() );
   }
 
   @Test
   public void testEmptyRoute2() {
-    assertEquals( Route.buildRoute( root, Path.EMPTY ).size(), 1 );
+    assertEquals( 1, Route.buildRoute( root, Path.EMPTY ).size() );
 
     try {
       Route.buildRoute( root, Path.EMPTY.absolute() );
@@ -87,7 +87,7 @@ public class RouteTest {
 
   @Test
   public void testCreate() {
-    assertEquals( root.getChildren().size(), 1 );
+    assertEquals( 1, root.getChildren().size() );
 
     Path path = Path.createPath( "z" );
     try {
@@ -104,21 +104,21 @@ public class RouteTest {
       }
     } );
 
-    assertEquals( route.size(), 2 );
+    assertEquals( 2, route.size() );
     assertEquals( route.getNodes().get( 0 ), root );
-    assertEquals( route.getNodes().get( 1 ).getName(), "z" );
-    assertEquals( root.getChildren().size(), 2 );
+    assertEquals( "z", route.getNodes().get( 1 ).getName() );
+    assertEquals( 2, root.getChildren().size() );
   }
 
   @Test
   public void testRouteWithRelative() throws Exception {
     Route route = Route.buildRoute( root, Path.createPath( "a/b" ) );
-    assertEquals( route.size(), 3 );
+    assertEquals( 3, route.size() );
 
-    assertEquals( route.getLastNode().getName(), "b" );
-    assertEquals( route.getNodes().get( 0 ).getName(), "asdf" );
-    assertEquals( route.getNodes().get( 1 ).getName(), "a" );
-    assertEquals( route.getNodes().get( 2 ).getName(), "b" );
+    assertEquals( "b", route.getLastNode().getName() );
+    assertEquals( "asdf", route.getNodes().get( 0 ).getName() );
+    assertEquals( "a", route.getNodes().get( 1 ).getName() );
+    assertEquals( "b", route.getNodes().get( 2 ).getName() );
   }
 
   @Test

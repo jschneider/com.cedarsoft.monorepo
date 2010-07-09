@@ -65,7 +65,7 @@ public class BaseNameAwareFileNamesTest {
     FileNames sameBaseNameEntry = report.getEntry( new BaseName( "base1" ) );
     assertNotNull( sameBaseNameEntry );
 
-    assertEquals( sameBaseNameEntry.getFileNames().size(), 3 );
+    assertEquals( 3, sameBaseNameEntry.getFileNames().size() );
   }
 
   @BeforeMethod

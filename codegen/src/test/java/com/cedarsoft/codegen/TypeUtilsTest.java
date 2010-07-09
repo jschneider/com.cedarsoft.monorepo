@@ -52,9 +52,9 @@ public class TypeUtilsTest {
 
   @Test
   public void testCollParam() {
-    assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString(), "java.lang.String" );
-    assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( Set.class, String.class ) ).toString(), "java.lang.String" );
-    assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, Integer.class ) ).toString(), "java.lang.Integer" );
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString() );
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( Set.class, String.class ) ).toString() );
+    assertEquals( "java.lang.Integer", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, Integer.class ) ).toString() );
   }
 
   @Test

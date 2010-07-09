@@ -41,57 +41,57 @@ import static org.junit.Assert.*;
 public class FileTypeTest {
   @Test
   public void testGetFileName() {
-    assertEquals( FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getExtension().getExtension(), "jpg" );
-    assertEquals( FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getExtension().getDelimiter(), "." );
+    assertEquals( "asdf", FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getBaseName().getName() );
+    assertEquals( "jpg", FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getExtension().getExtension() );
+    assertEquals( ".", FileTypeRegistry.JPEG.getFileName( "asdf.jpg" ).getExtension().getDelimiter() );
 
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.jpg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.jpeg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.JPEG" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "Asdf_.JPEG" ), "Asdf_" );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.jpeg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.JPEG" ) );
+    assertEquals( "Asdf_", FileTypeRegistry.JPEG.getBaseName( "Asdf_.JPEG" ) );
 
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf_lzn.jpg" ), "asdf" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__lzn.jpg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__LZN.JPG" ), "asdf_" );
+    assertEquals( "asdf", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf_lzn.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__lzn.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__LZN.JPG" ) );
   }
 
   @Test
   public void testGetBase() {
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf.jpg" ), "asdf" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.jpg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.jpeg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "asdf_.JPEG" ), "asdf_" );
-    assertEquals( FileTypeRegistry.JPEG.getBaseName( "Asdf_.JPEG" ), "Asdf_" );
+    assertEquals( "asdf", FileTypeRegistry.JPEG.getBaseName( "asdf.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.jpeg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.JPEG.getBaseName( "asdf_.JPEG" ) );
+    assertEquals( "Asdf_", FileTypeRegistry.JPEG.getBaseName( "Asdf_.JPEG" ) );
 
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf_lzn.jpg" ), "asdf" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__lzn.jpg" ), "asdf_" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__LZN.JPG" ), "asdf_" );
+    assertEquals( "asdf", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf_lzn.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__lzn.jpg" ) );
+    assertEquals( "asdf_", FileTypeRegistry.LIGHT_ZONE.getBaseName( "asdf__LZN.JPG" ) );
   }
 
   @Test
   public void testGetExtension() {
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf.jpg" ).getExtension(), "jpg" );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.jpg" ).getExtension(), "jpg" );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.jpeg" ).getExtension(), "jpeg" );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getExtension(), "jpeg" );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getExtension(), "jpeg" );
+    assertEquals( "jpg", FileTypeRegistry.JPEG.getExtension( "asdf.jpg" ).getExtension() );
+    assertEquals( "jpg", FileTypeRegistry.JPEG.getExtension( "asdf_.jpg" ).getExtension() );
+    assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "asdf_.jpeg" ).getExtension() );
+    assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getExtension() );
+    assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getExtension() );
 
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf_lzn.jpg" ).getExtension(), "lzn.jpg" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__lzn.jpg" ).getExtension(), "lzn.jpg" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getExtension(), "lzn.jpg" );
+    assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf_lzn.jpg" ).getExtension() );
+    assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__lzn.jpg" ).getExtension() );
+    assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getExtension() );
   }
 
   @Test
   public void testGetDelimiter() {
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf.jpg" ).getDelimiter(), "." );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.jpg" ).getDelimiter(), "." );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.jpeg" ).getDelimiter(), "." );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getDelimiter(), "." );
-    assertEquals( FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getDelimiter(), "." );
+    assertEquals( ".", FileTypeRegistry.JPEG.getExtension( "asdf.jpg" ).getDelimiter() );
+    assertEquals( ".", FileTypeRegistry.JPEG.getExtension( "asdf_.jpg" ).getDelimiter() );
+    assertEquals( ".", FileTypeRegistry.JPEG.getExtension( "asdf_.jpeg" ).getDelimiter() );
+    assertEquals( ".", FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getDelimiter() );
+    assertEquals( ".", FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getDelimiter() );
 
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf_lzn.jpg" ).getDelimiter(), "_" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__lzn.jpg" ).getDelimiter(), "_" );
-    assertEquals( FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getDelimiter(), "_" );
+    assertEquals( "_", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf_lzn.jpg" ).getDelimiter() );
+    assertEquals( "_", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__lzn.jpg" ).getDelimiter() );
+    assertEquals( "_", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getDelimiter() );
   }
 
   @Test
@@ -110,14 +110,14 @@ public class FileTypeTest {
   public void testLightZone() {
     FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
 
-    assertEquals( fileTypeRegistry.get( "asdf_lzn.jpg" ), FileTypeRegistry.LIGHT_ZONE );
-    assertEquals( fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getDelimiter(), "_" );
-    assertEquals( fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getExtension(), "lzn.jpg" );
+    assertEquals( FileTypeRegistry.LIGHT_ZONE, fileTypeRegistry.get( "asdf_lzn.jpg" ) );
+    assertEquals( "asdf", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getBaseName().getName() );
+    assertEquals( "_", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getDelimiter() );
+    assertEquals( "lzn.jpg", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getExtension() );
 
-    assertEquals( new FileName( "asdf", "_", "lzn.jpg" ).getBaseName().getName(), "asdf" );
-    assertEquals( new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getDelimiter(), "_" );
-    assertEquals( new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getExtension(), "lzn.jpg" );
+    assertEquals( "asdf", new FileName( "asdf", "_", "lzn.jpg" ).getBaseName().getName() );
+    assertEquals( "_", new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getDelimiter() );
+    assertEquals( "lzn.jpg", new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getExtension() );
 
     assertTrue( FileTypeRegistry.LIGHT_ZONE.matches( "my_lzn.jpg" ) );
   }

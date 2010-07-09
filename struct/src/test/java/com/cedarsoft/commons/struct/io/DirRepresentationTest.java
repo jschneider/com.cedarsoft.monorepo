@@ -74,7 +74,7 @@ public class DirRepresentationTest {
   @Test
   public void testSubDirs() {
     File baseDir = TestUtils.createEmptyTmpDir();
-    assertEquals( baseDir.list().length, 0 );
+    assertEquals( 0, baseDir.list().length );
 
     {
       DirRepresenter representer = new DirRepresenter( root, false );
@@ -86,7 +86,7 @@ public class DirRepresentationTest {
 
 
     Node root = new DefaultNode( "root" );
-    assertEquals( root.getChildren().size(), 0 );
+    assertEquals( 0, root.getChildren().size() );
 
     DirRepresenter representer = new DirRepresenter( root, false );
     representer.parse( baseDir, new NodeFactory() {
@@ -102,14 +102,14 @@ public class DirRepresentationTest {
       }
     }, 2 );
 
-    assertEquals( root.getChildren().size(), 2 );
-    assertEquals( root.findChild( "a" ).findChild( "aa" ).getChildren().size(), 0 );
+    assertEquals( 2, root.getChildren().size() );
+    assertEquals( 0, root.findChild( "a" ).findChild( "aa" ).getChildren().size() );
   }
 
   @Test
   public void testRootInvisible() {
     File baseDir = TestUtils.createEmptyTmpDir();
-    assertEquals( baseDir.list().length, 0 );
+    assertEquals( 0, baseDir.list().length );
 
     {
       DirRepresenter representer = new DirRepresenter( root, false );
@@ -119,7 +119,7 @@ public class DirRepresentationTest {
       Collections.sort( firstLevels );
 
 
-      assertEquals( firstLevels.size(), 2 );
+      assertEquals( 2, firstLevels.size() );
 
       assertTrue( new File( baseDir, "a/aa" ).isDirectory() );
       assertTrue( new File( baseDir, "a/ab" ).isDirectory() );
@@ -128,7 +128,7 @@ public class DirRepresentationTest {
 
     {
       Node root = new DefaultNode( "root" );
-      assertEquals( root.getChildren().size(), 0 );
+      assertEquals( 0, root.getChildren().size() );
 
       DirRepresenter representer = new DirRepresenter( root, false );
       representer.parse( baseDir, new NodeFactory() {
@@ -144,21 +144,21 @@ public class DirRepresentationTest {
         }
       }, 99 );
 
-      assertEquals( root.getChildren().size(), 2 );
-      assertEquals( root.findChild( "a" ).getChildren().size(), 2 );
+      assertEquals( 2, root.getChildren().size() );
+      assertEquals( 2, root.findChild( "a" ).getChildren().size() );
     }
   }
 
   @Test
   public void testRootVisible() {
     File baseDir = TestUtils.createEmptyTmpDir();
-    assertEquals( baseDir.list().length, 0 );
+    assertEquals( 0, baseDir.list().length );
 
     {
       DirRepresenter representer = new DirRepresenter( root, true );
       representer.store( baseDir, null );
 
-      assertEquals( baseDir.listFiles().length, 1 );
+      assertEquals( 1, baseDir.listFiles().length );
 
       assertTrue( new File( baseDir, "root/a/aa" ).isDirectory() );
       assertTrue( new File( baseDir, "root/a/ab" ).isDirectory() );
@@ -167,7 +167,7 @@ public class DirRepresentationTest {
 
     {
       Node root = new DefaultNode( "root" );
-      assertEquals( root.getChildren().size(), 0 );
+      assertEquals( 0, root.getChildren().size() );
 
       DirRepresenter representer = new DirRepresenter( root, true );
       representer.parse( baseDir, new NodeFactory() {
@@ -182,8 +182,8 @@ public class DirRepresentationTest {
         }
       }, 99 );
 
-      assertEquals( root.getChildren().size(), 2 );
-      assertEquals( root.findChild( "a" ).getChildren().size(), 2 );
+      assertEquals( 2, root.getChildren().size() );
+      assertEquals( 2, root.findChild( "a" ).getChildren().size() );
     }
   }
 
@@ -191,7 +191,7 @@ public class DirRepresentationTest {
   public void testCallbackCreation() throws Exception {
     final File baseDir = TestUtils.createEmptyTmpDir();
 
-    assertEquals( baseDir.list().length, 0 );
+    assertEquals( 0, baseDir.list().length );
 
     final DirRepresenter representer = new DirRepresenter( root, true );
 

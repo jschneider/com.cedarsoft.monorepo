@@ -118,7 +118,7 @@ public class VersionRangeTest {
       assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
       assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
       assertTrue( range.contains( new Version( 2, 0, 0 ) ) );
-      assertEquals( range.toString(), "[1.0.0-2.0.0]" );
+      assertEquals( "[1.0.0-2.0.0]", range.toString() );
     }
 
     {
@@ -127,7 +127,7 @@ public class VersionRangeTest {
       assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
       assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
       assertFalse( range.contains( new Version( 2, 0, 0 ) ) );
-      assertEquals( range.toString(), "[1.0.0-2.0.0[" );
+      assertEquals( "[1.0.0-2.0.0[", range.toString() );
     }
 
     {
@@ -136,7 +136,7 @@ public class VersionRangeTest {
       assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
       assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
       assertTrue( range.contains( new Version( 2, 0, 0 ) ) );
-      assertEquals( range.toString(), "]1.0.0-2.0.0]" );
+      assertEquals( "]1.0.0-2.0.0]", range.toString() );
     }
 
     {
@@ -145,7 +145,7 @@ public class VersionRangeTest {
       assertTrue( range.contains( new Version( 1, 0, 1 ) ) );
       assertTrue( range.contains( new Version( 1, 99, 99 ) ) );
       assertFalse( range.contains( new Version( 2, 0, 0 ) ) );
-      assertEquals( range.toString(), "]1.0.0-2.0.0[" );
+      assertEquals( "]1.0.0-2.0.0[", range.toString() );
     }
   }
 
@@ -175,6 +175,6 @@ public class VersionRangeTest {
 
   @Test
   public void testToString() {
-    assertEquals( new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 1, 90 ) ).toString(), "[1.0.0-1.1.90]" );
+    assertEquals( "[1.0.0-1.1.90]", new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 1, 90 ) ).toString() );
   }
 }

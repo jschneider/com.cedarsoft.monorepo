@@ -74,10 +74,10 @@ public class MockTest {
   @Test
   public void testArrayList() {
     assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class, String.class ) ) );
-    assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString(), "java.lang.String" );
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString() );
 
     assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( ArrayList.class, String.class ) ) );
-    assertEquals( TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( ArrayList.class, String.class ) ).toString(), "java.lang.String" );
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( ArrayList.class, String.class ) ).toString() );
   }
 
   @Test

@@ -48,10 +48,10 @@ public class GuiceCirModTest {
   @Test
   public void testIt() {
     MyObject myObject = Guice.createInjector( new Module1(), new Module2() ).getInstance( MyObject.class );
-    assertEquals( myObject.id, 7 );
+    assertEquals( 7, myObject.id );
 
     GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
-    assertEquals( result.getRemoved().size(), 0 );
+    assertEquals( 0, result.getRemoved().size() );
   }
 
   public static class Module1 extends AbstractModule {
@@ -61,7 +61,7 @@ public class GuiceCirModTest {
 
     @Provides
     public Integer providesInteger( String string ) {
-      assertEquals( string, "magic" );
+      assertEquals( "magic", string );
       return 7;
     }
 

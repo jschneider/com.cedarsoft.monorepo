@@ -48,18 +48,18 @@ public class FileNamesTest {
   public void testIt2() {
     FileNames fileNames = new FileNames();
 
-    assertEquals( fileNames.getFileNames().size(), 0 );
+    assertEquals( 0, fileNames.getFileNames().size() );
     fileNames.add( new FileName( "asdf", "txt" ) );
-    assertEquals( fileNames.getFileNames().size(), 1 );
+    assertEquals( 1, fileNames.getFileNames().size() );
     fileNames.add( new FileName( "asdf", "jpg" ) );
-    assertEquals( fileNames.getFileNames().size(), 2 );
+    assertEquals( 2, fileNames.getFileNames().size() );
 
     try {
       fileNames.add( new FileName( "asdf", "jpg" ) );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
-    assertEquals( fileNames.getFileNames().size(), 2 );
+    assertEquals( 2, fileNames.getFileNames().size() );
   }
 
   @Test
@@ -72,7 +72,7 @@ public class FileNamesTest {
     fileNames.add( new FileName( "img_0002", ".", "cr2" ) );
     fileNames.add( new FileName( "img_0003", ".", "jpg" ) );
 
-    assertEquals( fileNames.getFileNames().size(), 5 );
+    assertEquals( 5, fileNames.getFileNames().size() );
   }
 
   @Test
@@ -89,7 +89,7 @@ public class FileNamesTest {
 
       FileNames fileNames = new FileNamesFactory( new FileTypeRegistry() ).create( dir );
 
-      assertEquals( fileNames.getFileNames().size(), 6 );
+      assertEquals( 6, fileNames.getFileNames().size() );
     } finally {
       FileUtils.deleteDirectory( dir );
     }

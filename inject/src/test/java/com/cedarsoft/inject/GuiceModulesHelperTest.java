@@ -56,15 +56,15 @@ public class GuiceModulesHelperTest {
   @Test
   public void testMinimization() {
     GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), Object.class );
-    assertEquals( result.getRemoved().size(), 2 );
-    assertEquals( result.getTypes().size(), 0 );
+    assertEquals( 2, result.getRemoved().size() );
+    assertEquals( 0, result.getTypes().size() );
   }
 
   @Test
   public void testMinimization2() {
     GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
-    assertEquals( result.getRemoved().size(), 1 );
-    assertEquals( result.getTypes().size(), 1 );
+    assertEquals( 1, result.getRemoved().size() );
+    assertEquals( 1, result.getTypes().size() );
   }
 
   public static class Module1 extends AbstractModule {

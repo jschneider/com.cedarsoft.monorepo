@@ -78,7 +78,7 @@ public class HashTest {
   public void testRound() {
     Hash hash = new Hash( Algorithm.SHA256, "asdf".getBytes() );
 
-    assertEquals( hash.getValueAsHex(), "61736466" );
+    assertEquals( "61736466", hash.getValueAsHex() );
     assertEquals( Hash.fromHex( hash.getAlgorithm(), hash.getValueAsHex() ), hash );
   }
 

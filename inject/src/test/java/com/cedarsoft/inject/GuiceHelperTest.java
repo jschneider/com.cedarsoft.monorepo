@@ -62,14 +62,14 @@ public class GuiceHelperTest {
 
   @Test
   public void testIt() {
-    assertEquals( GuiceHelper.superCollectionOf( String.class ).toString(), "java.util.Collection<? extends java.lang.String>" );
-    assertEquals( GuiceHelper.superListOf( String.class ).toString(), "java.util.List<? extends java.lang.String>" );
+    assertEquals( "java.util.Collection<? extends java.lang.String>", GuiceHelper.superCollectionOf( String.class ).toString() );
+    assertEquals( "java.util.List<? extends java.lang.String>", GuiceHelper.superListOf( String.class ).toString() );
   }
 
   @Test
   public void testGuice() {
-    assertEquals( Types.listOf( String.class ).toString(), "java.util.List<java.lang.String>" );
-    assertEquals( Types.listOf( Types.subtypeOf( String.class ) ).toString(), "java.util.List<? extends java.lang.String>" );
-    assertEquals( Types.newParameterizedType( Collection.class, Types.subtypeOf( String.class ) ).toString(), "java.util.Collection<? extends java.lang.String>" );
+    assertEquals( "java.util.List<java.lang.String>", Types.listOf( String.class ).toString() );
+    assertEquals( "java.util.List<? extends java.lang.String>", Types.listOf( Types.subtypeOf( String.class ) ).toString() );
+    assertEquals( "java.util.Collection<? extends java.lang.String>", Types.newParameterizedType( Collection.class, Types.subtypeOf( String.class ) ).toString() );
   }
 }

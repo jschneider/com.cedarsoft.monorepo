@@ -47,8 +47,8 @@ public class VersionTest {
 
   @Test
   public void testToString() {
-    assertEquals( new Version( 1, 2, 3 ).toString(), "1.2.3" );
-    assertEquals( new Version( 1, 2, 3, "asdf" ).toString(), "1.2.3-asdf" );
+    assertEquals( "1.2.3", new Version( 1, 2, 3 ).toString() );
+    assertEquals( "1.2.3-asdf", new Version( 1, 2, 3, "asdf" ).toString() );
   }
 
   @Test

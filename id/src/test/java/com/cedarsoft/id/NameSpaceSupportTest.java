@@ -43,15 +43,15 @@ import static org.junit.Assert.*;
 public class NameSpaceSupportTest {
   @Test
   public void testToUri() {
-    assertEquals( NameSpaceSupport.createNameSpaceUriBase( NameSpaceSupportTest.class ), "http://cedarsoft.com/id/name-space-support-test" );
-    assertEquals( NameSpaceSupport.createNameSpaceUriBase( String.class ), "http://lang.java/string" );
-    assertEquals( NameSpaceSupport.createNameSpaceUriBase( Color.class ), "http://awt.java/color" );
+    assertEquals( "http://cedarsoft.com/id/name-space-support-test", NameSpaceSupport.createNameSpaceUriBase( NameSpaceSupportTest.class ) );
+    assertEquals( "http://lang.java/string", NameSpaceSupport.createNameSpaceUriBase( String.class ) );
+    assertEquals( "http://awt.java/color", NameSpaceSupport.createNameSpaceUriBase( Color.class ) );
   }
 
   @Test
   public void testCamel() {
-    assertEquals( NameSpaceSupport.createNameWithSpaces( "ANameWithCamel" ), "a-name-with-camel" );
-    assertEquals( NameSpaceSupport.createNameWithSpaces( "asdf" ), "asdf" );
-    assertEquals( NameSpaceSupport.createNameWithSpaces( "" ), "" );
+    assertEquals( "a-name-with-camel", NameSpaceSupport.createNameWithSpaces( "ANameWithCamel" ) );
+    assertEquals( "asdf", NameSpaceSupport.createNameWithSpaces( "asdf" ) );
+    assertEquals( "", NameSpaceSupport.createNameWithSpaces( "" ) );
   }
 }

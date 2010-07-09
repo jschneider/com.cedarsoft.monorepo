@@ -41,8 +41,8 @@ import static org.junit.Assert.*;
 public class ExtensionTest {
   @Test
   public void testDefault() {
-    assertEquals( new Extension( ".", "txt" ).getCombined(), ".txt" );
-    assertEquals( new Extension( "txt" ).getCombined(), ".txt" );
+    assertEquals( ".txt", new Extension( ".", "txt" ).getCombined() );
+    assertEquals( ".txt", new Extension( "txt" ).getCombined() );
   }
 
   @Test
@@ -53,8 +53,8 @@ public class ExtensionTest {
 
   @Test
   public void testEmpty() {
-    assertEquals( new Extension( "", "" ).getCombined(), "" );
-    assertEquals( new Extension( "txt" ).getCombined(), ".txt" );
+    assertEquals( "", new Extension( "", "" ).getCombined() );
+    assertEquals( ".txt", new Extension( "txt" ).getCombined() );
   }
 
 }

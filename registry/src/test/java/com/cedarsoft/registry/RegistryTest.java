@@ -57,16 +57,16 @@ public class RegistryTest {
     assertTrue( registry.getStoredObjects().isEmpty() );
     registry.store( "asdf" );
     assertFalse( registry.getStoredObjects().isEmpty() );
-    assertEquals( registry.getStoredObjects().size(), 1 );
+    assertEquals( 1, registry.getStoredObjects().size() );
   }
 
   @Test
   public void addExisting() {
     assertTrue( registry.getStoredObjects().isEmpty() );
     registry.store( "asdf" );
-    assertEquals( registry.getStoredObjects().size(), 1 );
+    assertEquals( 1, registry.getStoredObjects().size() );
     registry.store( "asdf" );
-    assertEquals( registry.getStoredObjects().size(), 2 );
+    assertEquals( 2, registry.getStoredObjects().size() );
 
     registry = new DefaultRegistry<String>( new Comparator<String>() {
       @Override
@@ -76,13 +76,13 @@ public class RegistryTest {
     } );
 
     registry.store( "asdf" );
-    assertEquals( registry.getStoredObjects().size(), 1 );
+    assertEquals( 1, registry.getStoredObjects().size() );
     try {
       registry.store( "asdf" );
       fail( "Where is the Exception" );
     } catch ( StillContainedException ignore ) {
     }
-    assertEquals( registry.getStoredObjects().size(), 1 );
+    assertEquals( 1, registry.getStoredObjects().size() );
   }
 
   @Test

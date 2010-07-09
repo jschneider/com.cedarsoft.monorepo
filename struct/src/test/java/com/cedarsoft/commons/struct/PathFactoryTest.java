@@ -51,8 +51,8 @@ public class PathFactoryTest {
 
   @Test
   public void testCreateParent() {
-    assertEquals( Path.createParentPath( "/a", Path.createPath( "b" ) ).toString(), "/a/b" );
-    assertEquals( Path.createParentPath( "a", Path.createPath( "b" ) ).toString(), "a/b" );
+    assertEquals( "/a/b", Path.createParentPath( "/a", Path.createPath( "b" ) ).toString() );
+    assertEquals( "a/b", Path.createParentPath( "a", Path.createPath( "b" ) ).toString() );
 
     try {
       Path.createParentPath( "a", Path.createPath( "/b" ) );

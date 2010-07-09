@@ -45,11 +45,11 @@ public class DefaultRegistryTest {
   @Test
   public void testIt() {
     DefaultRegistry<String> registry = new DefaultRegistry<String>();
-    assertEquals( registry.getStoredObjects().size(), 0 );
+    assertEquals( 0, registry.getStoredObjects().size() );
 
     registry.store( "1" );
     registry.store( "1" );
-    assertEquals( registry.getStoredObjects().size(), 2 );
+    assertEquals( 2, registry.getStoredObjects().size() );
   }
 
   @Test
@@ -60,7 +60,7 @@ public class DefaultRegistryTest {
         return o1.compareTo( o2 );
       }
     } );
-    assertEquals( registry.getStoredObjects().size(), 0 );
+    assertEquals( 0, registry.getStoredObjects().size() );
 
     registry.store( "1" );
     try {
@@ -68,6 +68,6 @@ public class DefaultRegistryTest {
       fail( "Where is the Exception" );
     } catch ( StillContainedException ignore ) {
     }
-    assertEquals( registry.getStoredObjects().size(), 1 );
+    assertEquals( 1, registry.getStoredObjects().size() );
   }
 }
