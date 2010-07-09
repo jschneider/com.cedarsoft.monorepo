@@ -60,7 +60,7 @@ public class DiscreteHistoryTableModelTest {
   private LocalDate end;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     begin = new LocalDate( 2007, 1, 1 );
     end = new LocalDate( 2007, 12, 31 );
     entriesInformation = new ContinuousEntriesInformation<DefaultContinuousEntry>( begin, end );

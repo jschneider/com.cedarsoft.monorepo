@@ -46,7 +46,7 @@ public class WeakLookupChangeListenerTest {
   private MockLookup lookup;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lookup = new MockLookup();
   }
 

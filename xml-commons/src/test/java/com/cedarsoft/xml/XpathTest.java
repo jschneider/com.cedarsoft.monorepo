@@ -42,7 +42,7 @@ public class XpathTest {
   private Document doc;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     root = new Element( "root" );
     doc = new Document( root );
 

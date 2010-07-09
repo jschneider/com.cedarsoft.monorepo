@@ -45,7 +45,7 @@ public class ListenerTest {
   private LookupStore lookup;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lookup = new MappedLookup();
   }
 

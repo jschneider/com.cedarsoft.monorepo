@@ -46,12 +46,12 @@ public class TaggedTest {
   private TaggedObject object;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     object = new TaggedObject();
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

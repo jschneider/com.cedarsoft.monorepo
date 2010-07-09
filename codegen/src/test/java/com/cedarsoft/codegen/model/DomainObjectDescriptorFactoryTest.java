@@ -55,7 +55,7 @@ public class DomainObjectDescriptorFactoryTest {
   public static final String WINDOW_RES = "/com/cedarsoft/codegen/model/test/Window.java";
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     URL resource = getClass().getResource( WINDOW_RES );
     assertNotNull( resource );
     File javaFile = new File( resource.toURI() );

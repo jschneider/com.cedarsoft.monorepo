@@ -54,12 +54,12 @@ public class TypeRegistryTest {
   private TypeRegistry<ChildDetector<?, ?>> registry;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     registry = new TypeRegistry<ChildDetector<?, ?>>();
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

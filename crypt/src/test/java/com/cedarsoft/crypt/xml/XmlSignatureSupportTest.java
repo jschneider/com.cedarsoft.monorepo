@@ -53,7 +53,7 @@ public class XmlSignatureSupportTest {
   private XmlSignatureSupport signatureSupport;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     x509Support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
     signatureSupport = new XmlSignatureSupport( x509Support );
   }

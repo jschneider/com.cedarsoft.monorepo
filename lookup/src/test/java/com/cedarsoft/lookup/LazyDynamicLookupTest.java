@@ -48,7 +48,7 @@ public class LazyDynamicLookupTest {
   private boolean called;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     called = false;
     lookup = new LazyLookup<String>() {
       @Override

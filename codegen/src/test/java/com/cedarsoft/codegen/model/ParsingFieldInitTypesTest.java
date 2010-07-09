@@ -52,7 +52,7 @@ public class ParsingFieldInitTypesTest {
   private DomainObjectDescriptorFactory factory;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/FieldTypesInit.java" );
     assertNotNull( resource );
     File javaFile = new File( resource.toURI() );

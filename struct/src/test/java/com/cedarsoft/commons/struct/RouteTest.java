@@ -50,7 +50,7 @@ public class RouteTest {
   private DefaultNode nodeC;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     root = new DefaultNode( "asdf" );
     nodeA = new DefaultNode( "a" );
     root.addChild( nodeA );

@@ -49,7 +49,7 @@ public class ChildDetectorManagerTest {
   private ChildDetectorManager manager;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     manager = new ChildDetectorManager();
     manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
       @Override
@@ -61,7 +61,7 @@ public class ChildDetectorManagerTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

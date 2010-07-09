@@ -38,7 +38,7 @@ import org.junit.*;
  */
 public class OOTest {
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
   }
 
   @Test

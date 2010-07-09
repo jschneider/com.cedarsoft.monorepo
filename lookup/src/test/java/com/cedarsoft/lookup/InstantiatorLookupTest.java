@@ -44,7 +44,7 @@ public class InstantiatorLookupTest {
   private boolean called;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     Instantiater<String> instantiater = new Instantiater<String>() {
       @Override
       @NotNull

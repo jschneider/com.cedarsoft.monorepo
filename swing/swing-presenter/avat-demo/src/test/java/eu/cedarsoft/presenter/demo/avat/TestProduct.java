@@ -42,7 +42,7 @@ public class TestProduct {
   Product product;
 
   @Override
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     super.setUp();
 
     InputStream in = xmlFile.openStream();

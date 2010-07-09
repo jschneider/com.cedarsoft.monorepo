@@ -46,7 +46,7 @@ public class CacheTest {
   private int counter;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     cache = new HashedCache<Integer, String>( new Cache.Factory<Integer, String>() {
       @Override
       @NotNull

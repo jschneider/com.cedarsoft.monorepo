@@ -50,12 +50,12 @@ public class SingleTaggableTest {
   private SingleTaggable taggable;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     taggable = new SingleTaggable( this );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

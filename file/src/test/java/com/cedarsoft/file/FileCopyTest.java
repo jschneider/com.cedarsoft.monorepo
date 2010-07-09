@@ -53,7 +53,7 @@ public class FileCopyTest {
 
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     tmp = new File( "/tmp/fileCopyTestTemp" );
     tmp.mkdir();
     myFile = new File( tmp, "test.txt" );
@@ -73,7 +73,7 @@ public class FileCopyTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
     myFile.delete();
     tmp.delete();
 

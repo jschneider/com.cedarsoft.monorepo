@@ -48,7 +48,7 @@ public class RegistryTest {
   private Registry<String> registry;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     registry = new DefaultRegistry<String>();
   }
 

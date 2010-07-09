@@ -45,7 +45,7 @@ public class WorkflowTest {
   private Workflow<MyObject> workflow;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     workflowDefinition = new WorkflowDefinition<MyObject>( new State<MyObject>( "initialState" ) );
     workflow = workflowDefinition.createWorkflow( new MyObject() );
 
@@ -69,7 +69,7 @@ public class WorkflowTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

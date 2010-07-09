@@ -44,13 +44,13 @@ public class WorkflowDefinitionTest {
   private State<MyObject> initialState;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     initialState = new State<MyObject>( "initialState" );
     workflowDefinition = new WorkflowDefinition<MyObject>( initialState );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

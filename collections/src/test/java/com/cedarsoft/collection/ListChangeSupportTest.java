@@ -52,7 +52,7 @@ public class ListChangeSupportTest {
   private ListChangeSupport<String> listChangeSupport;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     backend = new ArrayList<String>();
     listChangeSupport = new ListChangeSupport<String>();
   }

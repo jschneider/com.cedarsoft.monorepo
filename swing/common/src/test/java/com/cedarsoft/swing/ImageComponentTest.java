@@ -48,12 +48,12 @@ public class ImageComponentTest {
   private ImageComponent component;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     component = new ImageComponent();
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

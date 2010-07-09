@@ -60,7 +60,7 @@ public class TagsComponentTest {
   private TagManager<Object> tagManager;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     tagManager.getTag( "a" );
     tagManager.getTag( "b" );
@@ -72,7 +72,7 @@ public class TagsComponentTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

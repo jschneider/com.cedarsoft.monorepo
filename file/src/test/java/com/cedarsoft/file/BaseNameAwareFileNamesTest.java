@@ -69,7 +69,7 @@ public class BaseNameAwareFileNamesTest {
   }
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     report = new BaseNameAwareFileNames();
   }
 }

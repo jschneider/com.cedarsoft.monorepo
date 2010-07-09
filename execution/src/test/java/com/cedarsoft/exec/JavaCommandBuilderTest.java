@@ -47,7 +47,7 @@ public class JavaCommandBuilderTest {
   private JavaCommandBuilder starter;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     starter = new JavaCommandBuilder( "mainClass" );
   }
 

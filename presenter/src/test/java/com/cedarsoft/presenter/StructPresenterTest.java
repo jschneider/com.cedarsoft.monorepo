@@ -44,7 +44,7 @@ public class StructPresenterTest {
   private Node root;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     root = new DefaultNode( "0" );
     root.addChild( new DefaultNode( "00" ) );
     DefaultNode child = new DefaultNode( "01" );

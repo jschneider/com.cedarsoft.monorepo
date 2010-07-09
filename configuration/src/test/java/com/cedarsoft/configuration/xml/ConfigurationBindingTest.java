@@ -57,7 +57,7 @@ public class ConfigurationBindingTest {
   private Configuration configuration;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     configuration = new BaseConfiguration();
   }
 

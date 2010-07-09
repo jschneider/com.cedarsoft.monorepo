@@ -101,7 +101,7 @@ public class WeakStructureListenerTest {
   }
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     node = new DefaultNode( "node" );
   }
 }

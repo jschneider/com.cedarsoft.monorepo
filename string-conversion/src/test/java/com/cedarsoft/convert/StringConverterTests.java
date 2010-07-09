@@ -47,7 +47,7 @@ public class StringConverterTests {
   private StringConverterManager converterManager;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     converterManager = new StringConverterManager( true );
   }
 

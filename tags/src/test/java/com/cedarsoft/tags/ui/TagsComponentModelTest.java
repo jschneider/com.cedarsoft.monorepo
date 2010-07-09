@@ -47,13 +47,13 @@ public class TagsComponentModelTest {
   private TagsComponentModel model;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     model = new DefaultTagsComponentModel( tagManager, tagManager.getTaggable( "asf" ) );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

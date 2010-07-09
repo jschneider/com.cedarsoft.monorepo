@@ -59,7 +59,7 @@ public class NewInstanceFactoryTest {
   private StringWriter out;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     codeModel = new JCodeModel();
     factory = new NewInstanceFactory( codeModel, new ClassRefSupport( codeModel ) );
     initializeFormatter();

@@ -127,6 +127,6 @@ public abstract class EasyMockTemplate {
   /**
    * Sets up the test fixture if necessary.
    */
-  protected void setUp() {
+  public void setUp() {
   }
 }

@@ -53,7 +53,7 @@ public class ParseExpressionFactoryTest {
   private ParseExpressionFactory factory;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     model = new JCodeModel();
     factory = new ParseExpressionFactory( model, new ClassRefSupport( model ) );
   }

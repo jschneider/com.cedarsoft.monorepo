@@ -49,7 +49,7 @@ public class DefaultCmdLineTest {
   private StringCmdLine cmdLine;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     cmdLine = new StringCmdLine();
   }
 

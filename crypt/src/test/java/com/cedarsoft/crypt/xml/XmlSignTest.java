@@ -71,7 +71,7 @@ public class XmlSignTest {
   private X509Support x509Support;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     x509Support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
   }
 

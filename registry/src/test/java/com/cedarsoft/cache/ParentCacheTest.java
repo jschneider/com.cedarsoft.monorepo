@@ -43,12 +43,12 @@ public class ParentCacheTest {
   private ParentCache cache;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     cache = new ParentCache();
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

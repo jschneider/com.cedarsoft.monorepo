@@ -119,7 +119,7 @@ public abstract class TagDbTest {
   protected Session session;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     recreateDatabase();
     session = sessionFactory.openSession();
   }

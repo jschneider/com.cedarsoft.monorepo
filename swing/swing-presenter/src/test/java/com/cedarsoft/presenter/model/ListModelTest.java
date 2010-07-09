@@ -97,7 +97,7 @@ public class ListModelTest {
   private DefaultNode root;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     root = new DefaultNode( "root" );
     root.addChild( new DefaultNode( "0", Lookups.dynamicLookup() ) );
     root.addChild( new DefaultNode( "1", Lookups.dynamicLookup() ) );

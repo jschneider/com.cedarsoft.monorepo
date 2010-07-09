@@ -58,14 +58,14 @@ public class TagComboboxModelTest {
   private TagComboBoxModel comboBoxModel;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     taggable = tagManager.getTaggable( object );
     comboBoxModel = new TagComboBoxModel( tagManager, false );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

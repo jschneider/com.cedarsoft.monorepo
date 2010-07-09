@@ -48,7 +48,7 @@ public class MergingLookupTest {
   private MergingLookup mergingLookup;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lookup0 = new MappedLookup();
     lookup0.store( String.class, "0" );
     lookup0.store( Integer.class, 1 );

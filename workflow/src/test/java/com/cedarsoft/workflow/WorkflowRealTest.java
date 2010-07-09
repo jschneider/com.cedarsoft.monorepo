@@ -43,7 +43,7 @@ public class WorkflowRealTest {
   private WorkflowDefinition<MyObject> workflowDefinition;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     State<MyObject> input = new State<MyObject>( "input" );
     workflowDefinition = new WorkflowDefinition<MyObject>( input );
 
@@ -76,7 +76,7 @@ public class WorkflowRealTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

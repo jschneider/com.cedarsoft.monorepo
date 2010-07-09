@@ -49,7 +49,7 @@ import static org.junit.Assert.*;
  */
 public class LookupTest {
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
   }
 
   @Test

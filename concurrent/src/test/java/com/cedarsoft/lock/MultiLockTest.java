@@ -51,14 +51,14 @@ public class MultiLockTest {
   private MultiLock multiLock;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lock0 = new ReentrantLock();
     lock1 = new ReentrantLock();
     multiLock = new MultiLock( lock0, lock1 );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

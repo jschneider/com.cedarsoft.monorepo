@@ -47,7 +47,7 @@ public class LookupsTest {
   private List<Lookup> lookups;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lookups = new ArrayList<Lookup>();
     lookups.add( new SingletonLookup<String>( String.class, VALUE ) );
     lookups.add( new DynamicLookup( VALUE ) );

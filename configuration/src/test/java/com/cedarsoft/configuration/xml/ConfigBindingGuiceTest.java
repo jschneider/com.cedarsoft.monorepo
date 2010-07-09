@@ -56,7 +56,7 @@ public class ConfigBindingGuiceTest {
   private Injector injector;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
 
     injector = Guice.createInjector( new AbstractModule() {
       @Override

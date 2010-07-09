@@ -46,7 +46,7 @@ public class HistoryTest {
   private LocalDate middle;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     begin = new LocalDate( 2007, 04, 06 );
     end = new LocalDate( 2007, 8, 01 );
     middle = new LocalDate( 2007, 7, 01 );
@@ -54,7 +54,7 @@ public class HistoryTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

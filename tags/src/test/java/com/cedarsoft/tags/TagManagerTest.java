@@ -49,12 +49,12 @@ public class TagManagerTest {
   private DefaultTagManager<Object> manager;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     manager = new DefaultTagManager<Object>();
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

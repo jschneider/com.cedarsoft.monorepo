@@ -57,14 +57,14 @@ public class TagListModelTest {
   private Taggable taggable;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     taggable = tagManager.getTaggable( object );
     model = new TagListModel( taggable, true );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

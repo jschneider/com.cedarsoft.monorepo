@@ -48,12 +48,12 @@ public class ClusteredPropertyChangeSupportTest {
   private ClusteredPropertyChangeSupport pcs;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     pcs = new ClusteredPropertyChangeSupport( "asdf" );
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
 
   }
 

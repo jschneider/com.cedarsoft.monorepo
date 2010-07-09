@@ -50,7 +50,7 @@ public class DiscreteHistoryTest {
   private DiscreteHistory<DefaultDiscreteHistoryEntry> history;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     begin = new LocalDate( 2007, 04, 06 );
     end = new LocalDate( 2007, 8, 01 );
 
@@ -58,7 +58,7 @@ public class DiscreteHistoryTest {
   }
 
   @After
-  protected void tearDown() throws Exception {
+  public void tearDown() throws Exception {
   }
 
   @Test

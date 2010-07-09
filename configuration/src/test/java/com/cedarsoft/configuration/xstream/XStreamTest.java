@@ -49,7 +49,7 @@ public class XStreamTest {
   private XStreamPersister persister;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     manager = new DefaultConfigurationManager();
     persister = new XStreamPersister();
   }

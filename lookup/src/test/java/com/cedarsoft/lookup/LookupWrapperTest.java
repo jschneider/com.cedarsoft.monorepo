@@ -47,7 +47,7 @@ public class LookupWrapperTest {
   private MappedLookup lookup;
 
   @Before
-  protected void setUp() throws Exception {
+  public void setUp() throws Exception {
     lookup = new MappedLookup();
     lookup.store( String.class, "asdf" );
   }
