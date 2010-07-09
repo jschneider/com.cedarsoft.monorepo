@@ -43,7 +43,7 @@ import org.junit.*;
 
 import java.io.StringWriter;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
