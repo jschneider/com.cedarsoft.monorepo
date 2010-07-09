@@ -52,7 +52,7 @@ public class ParseExpressionFactoryTest {
   private JCodeModel model;
   private ParseExpressionFactory factory;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     model = new JCodeModel();
     factory = new ParseExpressionFactory( model, new ClassRefSupport( model ) );

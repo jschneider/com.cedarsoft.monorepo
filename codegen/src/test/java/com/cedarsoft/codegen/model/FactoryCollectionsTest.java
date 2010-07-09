@@ -60,7 +60,7 @@ public class FactoryCollectionsTest {
   private ClassDeclaration classDeclaration;
   private Result parsed;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/Room.java" );
     assertNotNull( resource );

@@ -46,7 +46,7 @@ public class LinkedNodeTest {
   private Node node;
   private Node child;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     node = new DefaultNode( "asdf" );
     child = new DefaultNode( "child" );

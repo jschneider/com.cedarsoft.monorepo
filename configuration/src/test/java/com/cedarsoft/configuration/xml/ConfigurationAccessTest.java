@@ -53,7 +53,7 @@ import static org.junit.Assert.*;
 public class ConfigurationAccessTest {
   private Configuration configuration;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     configuration = new BaseConfiguration();
   }

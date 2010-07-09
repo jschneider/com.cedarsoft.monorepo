@@ -57,14 +57,14 @@ public class TagComboboxModelTest {
   private Taggable taggable;
   private TagComboBoxModel comboBoxModel;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     taggable = tagManager.getTaggable( object );
     comboBoxModel = new TagComboBoxModel( tagManager, false );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

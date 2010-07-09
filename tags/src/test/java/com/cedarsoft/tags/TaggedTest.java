@@ -45,12 +45,12 @@ import static org.junit.Assert.*;
 public class TaggedTest {
   private TaggedObject object;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     object = new TaggedObject();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

@@ -42,7 +42,7 @@ import static org.junit.Assert.*;
 public class WorkflowRealTest {
   private WorkflowDefinition<MyObject> workflowDefinition;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     State<MyObject> input = new State<MyObject>( "input" );
     workflowDefinition = new WorkflowDefinition<MyObject>( input );
@@ -75,7 +75,7 @@ public class WorkflowRealTest {
     bidding.createTransition( new State<MyObject>( "discarded" ) );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

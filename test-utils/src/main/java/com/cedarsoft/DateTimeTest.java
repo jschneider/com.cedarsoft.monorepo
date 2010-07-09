@@ -53,7 +53,7 @@ public class DateTimeTest {
    *
    * @throws Exception if any.
    */
-  @BeforeMethod
+  @Before
   protected void setUpDateTimeZone() throws Exception {
     oldTimeZone = DateTimeZone.getDefault();
     DateTimeZone.setDefault( zone );
@@ -62,7 +62,7 @@ public class DateTimeTest {
   /**
    * <p>tearDownDateTimeZone</p>
    */
-  @AfterMethod
+  @After
   protected void tearDownDateTimeZone() {
     DateTimeZone.setDefault( oldTimeZone );
   }

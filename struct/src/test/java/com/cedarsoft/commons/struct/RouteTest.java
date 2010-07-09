@@ -49,7 +49,7 @@ public class RouteTest {
   private DefaultNode nodeB;
   private DefaultNode nodeC;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     root = new DefaultNode( "asdf" );
     nodeA = new DefaultNode( "a" );

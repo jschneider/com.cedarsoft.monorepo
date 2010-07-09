@@ -56,7 +56,7 @@ import static org.junit.Assert.*;
 public class ConfigurationBindingTest {
   private Configuration configuration;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     configuration = new BaseConfiguration();
   }

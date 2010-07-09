@@ -59,7 +59,7 @@ public class JComboBoxPresenterTest {
   private JComboBoxPresenter presenter;
   private ListCellRenderer renderer;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     rootAction = new AbstractAction() {
       @Override

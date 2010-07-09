@@ -50,14 +50,14 @@ public class MultiLockTest {
   private Lock lock1;
   private MultiLock multiLock;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lock0 = new ReentrantLock();
     lock1 = new ReentrantLock();
     multiLock = new MultiLock( lock0, lock1 );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

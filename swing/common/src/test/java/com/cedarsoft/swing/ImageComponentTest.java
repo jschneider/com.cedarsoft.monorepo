@@ -47,12 +47,12 @@ import static org.junit.Assert.*;
 public class ImageComponentTest {
   private ImageComponent component;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     component = new ImageComponent();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

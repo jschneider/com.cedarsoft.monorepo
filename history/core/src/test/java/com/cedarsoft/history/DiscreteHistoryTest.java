@@ -49,7 +49,7 @@ public class DiscreteHistoryTest {
   private LocalDate end;
   private DiscreteHistory<DefaultDiscreteHistoryEntry> history;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     begin = new LocalDate( 2007, 04, 06 );
     end = new LocalDate( 2007, 8, 01 );
@@ -57,7 +57,7 @@ public class DiscreteHistoryTest {
     history = new DiscreteHistory<DefaultDiscreteHistoryEntry>();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
   }
 

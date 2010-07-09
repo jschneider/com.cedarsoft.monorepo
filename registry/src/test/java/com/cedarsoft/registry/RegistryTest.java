@@ -47,7 +47,7 @@ import static org.junit.Assert.*;
 public class RegistryTest {
   private Registry<String> registry;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     registry = new DefaultRegistry<String>();
   }

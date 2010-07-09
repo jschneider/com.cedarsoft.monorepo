@@ -100,7 +100,7 @@ public class WeakStructureListenerTest {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
   }
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     node = new DefaultNode( "node" );
   }

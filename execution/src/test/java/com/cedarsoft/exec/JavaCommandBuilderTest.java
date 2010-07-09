@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
 public class JavaCommandBuilderTest {
   private JavaCommandBuilder starter;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     starter = new JavaCommandBuilder( "mainClass" );
   }

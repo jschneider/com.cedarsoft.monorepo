@@ -42,12 +42,12 @@ import static org.junit.Assert.*;
 public class ParentCacheTest {
   private ParentCache cache;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     cache = new ParentCache();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

@@ -59,7 +59,7 @@ public class DirRepresentationTest {
 
   private Node root;
 
-  @BeforeMethod
+  @Before
   public void setup() {
     root = new DefaultNode( "root" );
 

@@ -39,7 +39,7 @@ import static org.junit.Assert.*;
  *
  */
 public class NamingSupportTest {
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
   }
 

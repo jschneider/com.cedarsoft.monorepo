@@ -48,7 +48,7 @@ import static org.junit.Assert.*;
 public class ChildDetectorManagerTest {
   private ChildDetectorManager manager;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     manager = new ChildDetectorManager();
     manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
@@ -60,7 +60,7 @@ public class ChildDetectorManagerTest {
     } );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

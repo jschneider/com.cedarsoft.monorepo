@@ -42,7 +42,7 @@ public abstract class AbstractMappedJaxbTest<T, J> extends AbstractJaxbTest<J> {
   protected JaxbMapping<T, J> mapping;
 
   @Override
-  @BeforeMethod
+  @Before
   public void setup() throws JAXBException {
     super.setup();
     mapping = createMapping();

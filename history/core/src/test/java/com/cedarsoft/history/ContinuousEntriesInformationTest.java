@@ -45,7 +45,7 @@ public class ContinuousEntriesInformationTest {
   private ContinuousEntriesInformation<DefaultContinuousEntry> information;
   private LocalDate middle;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     begin = new LocalDate( 2007, 04, 06 );
     end = new LocalDate( 2007, 8, 01 );
@@ -53,7 +53,7 @@ public class ContinuousEntriesInformationTest {
     middle = new LocalDate( 2007, 7, 01 );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

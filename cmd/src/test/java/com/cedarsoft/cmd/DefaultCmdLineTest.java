@@ -48,7 +48,7 @@ import static org.junit.Assert.*;
 public class DefaultCmdLineTest {
   private StringCmdLine cmdLine;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     cmdLine = new StringCmdLine();
   }

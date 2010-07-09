@@ -51,7 +51,7 @@ public class ListChangeSupportTest {
   private List<String> backend;
   private ListChangeSupport<String> listChangeSupport;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     backend = new ArrayList<String>();
     listChangeSupport = new ListChangeSupport<String>();

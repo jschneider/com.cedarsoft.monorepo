@@ -44,7 +44,7 @@ import static org.junit.Assert.*;
  *
  */
 public class ListenerTest {
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
   }
 

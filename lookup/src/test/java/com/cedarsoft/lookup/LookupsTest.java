@@ -46,7 +46,7 @@ public class LookupsTest {
   private static final String VALUE = "asdf";
   private List<Lookup> lookups;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookups = new ArrayList<Lookup>();
     lookups.add( new SingletonLookup<String>( String.class, VALUE ) );

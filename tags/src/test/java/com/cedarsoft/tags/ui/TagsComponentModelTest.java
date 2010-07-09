@@ -46,13 +46,13 @@ public class TagsComponentModelTest {
   private TagManager<Object> tagManager;
   private TagsComponentModel model;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     model = new DefaultTagsComponentModel( tagManager, tagManager.getTaggable( "asf" ) );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

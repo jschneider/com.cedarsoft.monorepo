@@ -58,7 +58,7 @@ public class NewInstanceFactoryTest {
   private JFormatter formatter;
   private StringWriter out;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     codeModel = new JCodeModel();
     factory = new NewInstanceFactory( codeModel, new ClassRefSupport( codeModel ) );

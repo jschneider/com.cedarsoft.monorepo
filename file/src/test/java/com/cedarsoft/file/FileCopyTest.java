@@ -52,7 +52,7 @@ public class FileCopyTest {
   private File myFile;
 
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     tmp = new File( "/tmp/fileCopyTestTemp" );
     tmp.mkdir();
@@ -72,7 +72,7 @@ public class FileCopyTest {
     assertEquals( "test.txt", dst.list()[0] );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
     myFile.delete();
     tmp.delete();

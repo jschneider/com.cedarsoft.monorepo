@@ -52,7 +52,7 @@ import static org.junit.Assert.*;
  */
 public class TagPersistenceTest extends TagDbTest {
   @Override
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     super.setUp();
   }

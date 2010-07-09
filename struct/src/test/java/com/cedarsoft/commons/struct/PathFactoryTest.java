@@ -45,7 +45,7 @@ import static org.junit.Assert.*;
  */
 public class PathFactoryTest {
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
   }
 

@@ -48,12 +48,12 @@ import static org.junit.Assert.*;
 public class ClusteredPropertyChangeSupportTest {
   private ClusteredPropertyChangeSupport pcs;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     pcs = new ClusteredPropertyChangeSupport( "asdf" );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

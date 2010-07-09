@@ -45,12 +45,12 @@ import javax.swing.JLabel;
 public class RendererManagerTest {
   private RendererManager manager;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     manager = new RendererManager();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

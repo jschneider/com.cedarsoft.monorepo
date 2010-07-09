@@ -44,7 +44,7 @@ import org.junit.*;
 public class ListenerTest {
   private LookupStore lookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookup = new MappedLookup();
   }

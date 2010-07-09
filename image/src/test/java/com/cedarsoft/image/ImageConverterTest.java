@@ -47,7 +47,7 @@ public class ImageConverterTest {
   private ImageConverter imageConverter = new ImageConverter();
   private BufferedImage original;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     original = ImageIO.read( getClass().getResource( "/paris.jpg" ) );
   }

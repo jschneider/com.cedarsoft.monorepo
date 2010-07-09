@@ -56,7 +56,7 @@ public class ButtonPresenterTest {
   private AbstractAction action;
   private MockLookup lookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     buttonPresenter = new JButtonPresenter();
     lookup = new MockLookup();

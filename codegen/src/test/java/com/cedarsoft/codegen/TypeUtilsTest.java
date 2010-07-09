@@ -45,7 +45,7 @@ import static org.junit.Assert.*;
  *
  */
 public class TypeUtilsTest {
-  @BeforeMethod
+  @Before
   public void setup() {
     TypeUtils.setTypes( new TypesMock() );
   }

@@ -41,7 +41,7 @@ public class XpathTest {
   private Element root;
   private Document doc;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     root = new Element( "root" );
     doc = new Document( root );

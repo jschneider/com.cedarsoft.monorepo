@@ -47,7 +47,7 @@ public class LazyDynamicLookupTest {
 
   private boolean called;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     called = false;
     lookup = new LazyLookup<String>() {

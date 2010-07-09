@@ -47,7 +47,7 @@ public class MergingLookupTest {
   private MappedLookup lookup1;
   private MergingLookup mergingLookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookup0 = new MappedLookup();
     lookup0.store( String.class, "0" );

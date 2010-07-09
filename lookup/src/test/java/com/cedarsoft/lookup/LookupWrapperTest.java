@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
 public class LookupWrapperTest {
   private MappedLookup lookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookup = new MappedLookup();
     lookup.store( String.class, "asdf" );

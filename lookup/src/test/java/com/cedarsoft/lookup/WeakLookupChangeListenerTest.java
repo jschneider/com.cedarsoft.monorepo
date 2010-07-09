@@ -45,7 +45,7 @@ import static org.junit.Assert.*;
 public class WeakLookupChangeListenerTest {
   private MockLookup lookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookup = new MockLookup();
   }

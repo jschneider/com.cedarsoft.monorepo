@@ -49,12 +49,12 @@ import static org.junit.Assert.*;
 public class SingleTaggableTest {
   private SingleTaggable taggable;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     taggable = new SingleTaggable( this );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

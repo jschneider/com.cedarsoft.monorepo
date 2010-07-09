@@ -59,7 +59,7 @@ import static org.junit.Assert.*;
 public abstract class AbstractJaxbTest<J> {
   protected JAXBContext context;
 
-  @BeforeMethod
+  @Before
   public void setup() throws JAXBException {
     context = createContext();
     assertNotNull( context );

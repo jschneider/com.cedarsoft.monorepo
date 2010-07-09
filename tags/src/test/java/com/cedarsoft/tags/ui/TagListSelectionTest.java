@@ -55,7 +55,7 @@ public class TagListSelectionTest {
   private JList list;
   private TagListSelectionMode selectionModel;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
 
     tagManager = new DefaultTagManager<Object>();
@@ -70,7 +70,7 @@ public class TagListSelectionTest {
     list.setSelectionModel( selectionModel );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

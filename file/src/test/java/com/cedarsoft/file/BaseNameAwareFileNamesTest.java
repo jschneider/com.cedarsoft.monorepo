@@ -68,7 +68,7 @@ public class BaseNameAwareFileNamesTest {
     assertEquals( 3, sameBaseNameEntry.getFileNames().size() );
   }
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     report = new BaseNameAwareFileNames();
   }

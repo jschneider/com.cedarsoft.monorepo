@@ -52,7 +52,7 @@ import static org.testng.Assert.assertTrue;
 public class ParsingFieldInitTypesTest {
   private DomainObjectDescriptorFactory factory;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/FieldTypesInit.java" );
     assertNotNull( resource );

@@ -43,7 +43,7 @@ public class InstantiatorLookupTest {
   private InstantiatorLookup<String> lookup;
   private boolean called;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     Instantiater<String> instantiater = new Instantiater<String>() {
       @Override

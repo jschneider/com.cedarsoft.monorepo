@@ -45,7 +45,7 @@ public class HistoryTest {
   private History<DefaultHistoryEntry> history;
   private LocalDate middle;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     begin = new LocalDate( 2007, 04, 06 );
     end = new LocalDate( 2007, 8, 01 );
@@ -53,7 +53,7 @@ public class HistoryTest {
     history = new DefaultHistory<DefaultHistoryEntry>();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

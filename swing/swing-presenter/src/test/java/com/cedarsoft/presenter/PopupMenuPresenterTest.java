@@ -59,7 +59,7 @@ import static org.junit.Assert.*;
 public class PopupMenuPresenterTest {
   DefaultNode root;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     root = new DefaultNode( "root", Lookups.singletonLookup( Action.class, createAction( 99 ) ) );
     root.addChild( new DefaultNode( "1", Lookups.singletonLookup( Action.class, createAction( 0 ) ) ) );

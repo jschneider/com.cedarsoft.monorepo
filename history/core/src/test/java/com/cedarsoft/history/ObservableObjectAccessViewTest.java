@@ -47,13 +47,13 @@ public class ObservableObjectAccessViewTest {
   private ClusteredElementsCollection<Number> collection;
   private ObservableObjectAccessView<Integer> view;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     collection = new ClusteredElementsCollection<Number>();
     view = new ObservableObjectAccessView<Integer>( collection, new ObservableObjectAccessView.TypeBridge<Integer>( Integer.class ) );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

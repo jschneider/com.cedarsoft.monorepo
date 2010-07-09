@@ -53,12 +53,12 @@ import static org.junit.Assert.*;
 public class TypeRegistryTest {
   private TypeRegistry<ChildDetector<?, ?>> registry;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     registry = new TypeRegistry<ChildDetector<?, ?>>();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

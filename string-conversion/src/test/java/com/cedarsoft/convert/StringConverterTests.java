@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
 public class StringConverterTests {
   private StringConverterManager converterManager;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     converterManager = new StringConverterManager( true );
   }

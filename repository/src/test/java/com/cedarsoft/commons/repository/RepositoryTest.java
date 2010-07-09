@@ -44,7 +44,7 @@ import static org.junit.Assert.*;
 public class RepositoryTest {
   private Repository repository;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     repository = new Repository();
   }

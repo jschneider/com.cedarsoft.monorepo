@@ -59,7 +59,7 @@ public class DiscreteHistoryTableModelTest {
   private LocalDate begin;
   private LocalDate end;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     begin = new LocalDate( 2007, 1, 1 );
     end = new LocalDate( 2007, 12, 31 );

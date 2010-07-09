@@ -45,7 +45,7 @@ public class LookupChangeSupportTest {
   private LookupChangeSupport lookupChangeSupport;
   private MockLookup lookup;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     lookup = new MockLookup();
     lookupChangeSupport = lookup.getLookupChangeSupport();

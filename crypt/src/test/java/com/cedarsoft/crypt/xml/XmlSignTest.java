@@ -70,7 +70,7 @@ import static org.junit.Assert.*;
 public class XmlSignTest {
   private X509Support x509Support;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     x509Support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
   }

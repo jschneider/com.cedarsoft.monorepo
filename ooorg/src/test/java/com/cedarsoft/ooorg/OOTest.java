@@ -37,7 +37,7 @@ import org.junit.*;
  *
  */
 public class OOTest {
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
   }
 

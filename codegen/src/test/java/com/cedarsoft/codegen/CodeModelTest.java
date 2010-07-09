@@ -62,7 +62,7 @@ public class CodeModelTest {
   private CodeWriter codeWriter;
   private JCodeModel model;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     out = new ByteArrayOutputStream();
     codeWriter = new SingleStreamCodeWriter( out );

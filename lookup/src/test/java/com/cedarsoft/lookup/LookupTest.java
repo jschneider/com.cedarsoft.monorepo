@@ -48,7 +48,7 @@ import static org.junit.Assert.*;
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class LookupTest {
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
   }
 

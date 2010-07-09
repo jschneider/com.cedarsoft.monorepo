@@ -48,12 +48,12 @@ import static org.junit.Assert.*;
 public class TagManagerTest {
   private DefaultTagManager<Object> manager;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     manager = new DefaultTagManager<Object>();
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

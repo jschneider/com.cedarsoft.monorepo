@@ -47,7 +47,7 @@ import static org.junit.Assert.*;
 public class StructTreeWalkerTest {
   private Node root;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     root = new DefaultNode( "0" );
     root.addChild( new DefaultNode( "00" ) );

@@ -55,7 +55,7 @@ import static org.junit.Assert.*;
 public class ConfigBindingGuiceTest {
   private Injector injector;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
 
     injector = Guice.createInjector( new AbstractModule() {

@@ -59,7 +59,7 @@ public class TagsComponentTest {
   private DefaultTagsComponentModel model;
   private TagManager<Object> tagManager;
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     tagManager = new DefaultTagManager<Object>();
     tagManager.getTag( "a" );
@@ -71,7 +71,7 @@ public class TagsComponentTest {
     tagsComponent = new TagsComponent( model );
   }
 
-  @AfterMethod
+  @After
   protected void tearDown() throws Exception {
 
   }

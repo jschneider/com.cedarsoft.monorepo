@@ -54,7 +54,7 @@ public class DomainObjectDescriptorFactoryTest {
   private DomainObjectDescriptorFactory factory;
   public static final String WINDOW_RES = "/com/cedarsoft/codegen/model/test/Window.java";
 
-  @BeforeMethod
+  @Before
   protected void setUp() throws Exception {
     URL resource = getClass().getResource( WINDOW_RES );
     assertNotNull( resource );
