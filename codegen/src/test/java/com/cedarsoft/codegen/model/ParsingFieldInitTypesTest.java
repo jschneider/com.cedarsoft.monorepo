@@ -42,9 +42,8 @@ import org.junit.*;
 import java.io.File;
 import java.net.URL;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 
 /**
  *
@@ -61,7 +60,7 @@ public class ParsingFieldInitTypesTest {
 
     Result parsed = Parser.parse( javaFile );
     assertNotNull( parsed );
-    assertEquals( parsed.getClassDeclarations().size(), 1 );
+    assertEquals( 1, parsed.getClassDeclarations().size() );
     ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.FieldTypesInit" );
 
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
@@ -71,8 +70,8 @@ public class ParsingFieldInitTypesTest {
   @Test
   public void testFindField() {
     FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "width" );
-    assertEquals( fieldDeclaration.getSimpleName(), "width" );
-    assertEquals( fieldDeclaration.getType().toString(), "double" );
+    assertEquals( "width", fieldDeclaration.getSimpleName() );
+    assertEquals( "double", fieldDeclaration.getType().toString() );
   }
 
   @Test
@@ -80,17 +79,17 @@ public class ParsingFieldInitTypesTest {
     FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "height" );
     MethodDeclaration setter = DomainObjectDescriptor.findSetter( factory.getClassDeclaration(), fieldDeclaration );
     assertNotNull( setter );
-    assertEquals( setter.getSimpleName(), "setHeight" );
+    assertEquals( "setHeight", setter.getSimpleName() );
   }
 
   @Test
   public void testInitTypes() {
     DomainObjectDescriptor descriptor = factory.create();
-    assertEquals( descriptor.getFieldsInitializedInConstructor().size(), 2 );
-    assertEquals( descriptor.getFieldsInitializedInConstructor().get( 0 ).getSimpleName(), "description" );
-    assertEquals( descriptor.getFieldsInitializedInConstructor().get( 1 ).getSimpleName(), "width" );
+    assertEquals( 2, descriptor.getFieldsInitializedInConstructor().size() );
+    assertEquals( "description", descriptor.getFieldsInitializedInConstructor().get( 0 ).getSimpleName() );
+    assertEquals( "width", descriptor.getFieldsInitializedInConstructor().get( 1 ).getSimpleName() );
 
-    assertEquals( descriptor.getFieldsInitializedInSetter().size(), 1 );
-    assertEquals( descriptor.getFieldsInitializedInSetter().get( 0 ).getSimpleName(), "height" );
+    assertEquals( 1, descriptor.getFieldsInitializedInSetter().size() );
+    assertEquals( "height", descriptor.getFieldsInitializedInSetter().get( 0 ).getSimpleName() );
   }
 }

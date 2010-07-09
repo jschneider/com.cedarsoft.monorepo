@@ -46,11 +46,7 @@ import org.junit.*;
 import java.io.File;
 import java.net.URL;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -69,7 +65,7 @@ public class FactoryCollectionsTest {
 
     parsed = Parser.parse( javaFile );
     assertNotNull( parsed );
-    assertEquals( parsed.getClassDeclarations().size(), 1 );
+    assertEquals( 1, parsed.getClassDeclarations().size() );
 
     classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.Room" );
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
@@ -81,17 +77,17 @@ public class FactoryCollectionsTest {
     DomainObjectDescriptor descriptor = new DomainObjectDescriptor( classDeclaration );
     FieldDeclaration fieldDeclaration = descriptor.findFieldDeclaration( "windows" );
     assertNotNull( fieldDeclaration );
-    assertEquals( fieldDeclaration.getType().toString(), "java.util.List<com.cedarsoft.codegen.model.test.Window>" );
+    assertEquals( "java.util.List<com.cedarsoft.codegen.model.test.Window>", fieldDeclaration.getType().toString() );
 
     ConstructorDeclaration constructorDeclaration = descriptor.findBestConstructor();
     ImmutableList<ParameterDeclaration> constructorParameters = ImmutableList.copyOf( constructorDeclaration.getParameters() );
-    assertEquals( constructorParameters.size(), 3 );
+    assertEquals( 3, constructorParameters.size() );
     ParameterDeclaration param = constructorParameters.get( 1 );
-    assertEquals( param.getSimpleName(), "windows" );
-    assertEquals( param.getType().toString(), "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>" );
+    assertEquals( "windows", param.getSimpleName() );
+    assertEquals( "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>", param.getType().toString() );
 
-    assertEquals( fieldDeclaration.getType().toString(), "java.util.List<com.cedarsoft.codegen.model.test.Window>" );
-    assertEquals( param.getType().toString(), "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>" );
+    assertEquals( "java.util.List<com.cedarsoft.codegen.model.test.Window>", fieldDeclaration.getType().toString() );
+    assertEquals( "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>", param.getType().toString() );
 
     assertTrue( TypeUtils.isAssignable( fieldDeclaration.getType(), param.getType() ) );
     assertFalse( TypeUtils.isAssignable( param.getType(), fieldDeclaration.getType() ) );
@@ -104,29 +100,29 @@ public class FactoryCollectionsTest {
 
     ConstructorCallInfo infoForField = factory.findConstructorCallInfoForField( fieldDeclaration );
     assertNotNull( infoForField );
-    assertEquals( infoForField.getIndex(), 1 );
-    assertEquals( infoForField.getParameterDeclaration().getSimpleName(), "windows" );
-    assertEquals( infoForField.getParameterDeclaration().getType().toString(), "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>" );
+    assertEquals( 1, infoForField.getIndex() );
+    assertEquals( "windows", infoForField.getParameterDeclaration().getSimpleName() );
+    assertEquals( "java.util.Collection<? extends com.cedarsoft.codegen.model.test.Window>", infoForField.getParameterDeclaration().getType().toString() );
   }
 
   @Test
   public void testFindDoorsSetter() {
     DomainObjectDescriptor descriptor = new DomainObjectDescriptor( classDeclaration );
     FieldDeclaration fieldDeclaration = descriptor.findFieldDeclaration( "doors" );
-    assertEquals( fieldDeclaration.getType().toString(), "java.util.List<com.cedarsoft.codegen.model.test.Door>" );
+    assertEquals( "java.util.List<com.cedarsoft.codegen.model.test.Door>", fieldDeclaration.getType().toString() );
 
     MethodDeclaration setter = DomainObjectDescriptor.findSetter( classDeclaration, fieldDeclaration );
-    assertEquals( setter.getSimpleName(), "setDoors" );
-    assertEquals( setter.getReturnType().toString(), "void" );
-    assertEquals( setter.getParameters().size(), 1 );
-    assertEquals( setter.getParameters().iterator().next().getType().toString(), "java.util.List<? extends com.cedarsoft.codegen.model.test.Door>" );
+    assertEquals( "setDoors", setter.getSimpleName() );
+    assertEquals( "void", setter.getReturnType().toString() );
+    assertEquals( 1, setter.getParameters().size() );
+    assertEquals( "java.util.List<? extends com.cedarsoft.codegen.model.test.Door>", setter.getParameters().iterator().next().getType().toString() );
   }
 
   @Test
   public void testIt() {
     DomainObjectDescriptor descriptor = factory.create();
     assertNotNull( descriptor );
-    assertEquals( descriptor.getFieldsToSerialize().size(), 3 );
+    assertEquals( 3, descriptor.getFieldsToSerialize().size() );
   }
 
   @Test
@@ -147,7 +143,7 @@ public class FactoryCollectionsTest {
     } catch ( Exception e ) {
     }
 
-    assertEquals( factory.getFieldInitializeInConstructorInfo( descriptor.findFieldDeclaration( "doors" ) ).getCollectionParam().toString(), "com.cedarsoft.codegen.model.test.Door" );
-    assertEquals( factory.getFieldInitializeInConstructorInfo( descriptor.findFieldDeclaration( "windows" ) ).getCollectionParam().toString(), "com.cedarsoft.codegen.model.test.Window" );
+    assertEquals( "com.cedarsoft.codegen.model.test.Door", factory.getFieldInitializeInConstructorInfo( descriptor.findFieldDeclaration( "doors" ) ).getCollectionParam().toString() );
+    assertEquals( "com.cedarsoft.codegen.model.test.Window", factory.getFieldInitializeInConstructorInfo( descriptor.findFieldDeclaration( "windows" ) ).getCollectionParam().toString() );
   }
 }

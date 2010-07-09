@@ -32,7 +32,6 @@
 package com.cedarsoft.event;
 
 import org.jetbrains.annotations.NotNull;
-import org.testng.*;
 import org.junit.*;
 
 import java.beans.PropertyChangeEvent;

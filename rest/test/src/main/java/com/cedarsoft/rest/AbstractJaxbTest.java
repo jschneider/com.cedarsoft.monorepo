@@ -35,7 +35,7 @@ import com.cedarsoft.AssertUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.testng.*;
+
 import org.junit.*;
 
 import javax.xml.bind.JAXBContext;
