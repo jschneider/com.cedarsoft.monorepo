@@ -32,6 +32,8 @@
 package com.cedarsoft;
 
 import org.custommonkey.xmlunit.XMLAssert;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 import org.xml.sax.SAXException;
 
@@ -45,6 +47,31 @@ import static org.junit.Assert.*;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlUnitTest {
+  @NotNull
+  @NonNls
+  public static final String WITH_WHITESPACES = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    "<fileType dependent=\"false\">\n" +
+    "  <id>Canon Raw</id>\n" +
+    "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
+    "</fileType>";
+  @NotNull
+  @NonNls
+  public static final String WITH_WHITESPACES_DIFFERENT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    "<fileType dependent=\"false\">\n" +
+    "  <id>Canon Raw</id>\n" +
+    "  <extension default=\"true\" delimiter=\".\">jpg</extension>\n" +
+    "</fileType>";
+  @NotNull
+  @NonNls
+  public static final String WITH_WHITESPACES_SINGLE_QUOTED = "<?xml version='1.0' encoding='UTF-8'?>\n" +
+    "<fileType dependent=\"false\">\n" +
+    "  <id>Canon Raw</id>\n" +
+    "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
+    "</fileType>";
+  @NotNull
+  @NonNls
+  public static final String WITHOUT_WHITESPACES = "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>";
+
   /**
    * <p>testIt</p>
    *
@@ -53,27 +80,11 @@ public class XmlUnitTest {
    */
   @Test
   public void testIt() throws IOException, SAXException {
-    XMLAssert.assertXMLEqual( "<?xml version='1.0' encoding='UTF-8'?>\n" +
-      "<fileType dependent=\"false\">\n" +
-      "  <id>Canon Raw</id>\n" +
-      "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-      "</fileType>",
-                              "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                "<fileType dependent=\"false\">\n" +
-                                "  <id>Canon Raw</id>\n" +
-                                "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-                                "</fileType>"
+    XMLAssert.assertXMLEqual( WITH_WHITESPACES_SINGLE_QUOTED,
+                              WITH_WHITESPACES
     );
-    AssertUtils.assertXMLEquals( "<?xml version='1.0' encoding='UTF-8'?>\n" +
-      "<fileType dependent=\"false\">\n" +
-      "  <id>Canon Raw</id>\n" +
-      "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-      "</fileType>",
-                                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                  "<fileType dependent=\"false\">\n" +
-                                  "  <id>Canon Raw</id>\n" +
-                                  "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-                                  "</fileType>"
+    AssertUtils.assertXMLEquals( WITH_WHITESPACES_SINGLE_QUOTED,
+                                 WITH_WHITESPACES
     );
   }
 
@@ -84,20 +95,12 @@ public class XmlUnitTest {
    * @throws SAXException if any.
    */
   @Test
-  public void testProblem() throws IOException, SAXException {
+  public void testWhitespaces() throws IOException, SAXException {
     AssertUtils.setIgnoreWhitespace( true );
-    XMLAssert.assertXMLEqual( "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>",
-                              "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                "<fileType dependent=\"false\">\n" +
-                                "  <id>Canon Raw</id>\n" +
-                                "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-                                "</fileType>" );
-    AssertUtils.assertXMLEquals( "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>",
-                                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                  "<fileType dependent=\"false\">\n" +
-                                  "  <id>Canon Raw</id>\n" +
-                                  "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
-                                  "</fileType>" );
+    XMLAssert.assertXMLEqual( WITHOUT_WHITESPACES,
+                              WITH_WHITESPACES );
+    AssertUtils.assertXMLEquals( WITHOUT_WHITESPACES,
+                                 WITH_WHITESPACES );
   }
 
   @Test
