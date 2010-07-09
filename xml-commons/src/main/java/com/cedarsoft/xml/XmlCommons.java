@@ -57,7 +57,6 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.String;
 
 /**
  * Common xml methods
@@ -177,7 +176,7 @@ public class XmlCommons {
    * @param bytes an array of byte.
    * @return a {@link org.w3c.dom.Document} object.
    *
-   * @throws IOException      if any.
+   * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @NotNull
@@ -191,7 +190,7 @@ public class XmlCommons {
    * @param in a {@link InputStream} object.
    * @return a {@link org.w3c.dom.Document} object.
    *
-   * @throws IOException      if any.
+   * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @NotNull
@@ -206,7 +205,7 @@ public class XmlCommons {
    * @return a {@link String} object.
    */
   @NotNull
-  public static String toString( org.w3c.dom.Document document ) {
+  public static String toString( @NotNull org.w3c.dom.Document document ) {
     StringWriter stringWriter = new StringWriter();
     out( document, stringWriter );
     return stringWriter.toString();
