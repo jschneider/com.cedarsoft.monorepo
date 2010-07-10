@@ -30,7 +30,6 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <classifier>jdk15</classifier>
       <scope>test</scope>
     </dependency>
 
@@ -503,8 +502,7 @@
       <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
-        <version>5.8</version>
-        <classifier>jdk15</classifier>
+        <version>5.12.1</version>
       </dependency>
 
       <dependency>
