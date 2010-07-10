@@ -1,0 +1,53 @@
+Search and replace (imports):
+
+
+Replaces
+-----------
+Von:
+import org.testng.annotations.*;
+Nach:
+import org.junit.*;
+
+Von:
+import static org.testng.Assert.*;
+Nach:
+import static org.junit.Assert.*;
+
+Von:
+@BeforeMethod
+Nach:
+@Before
+
+Von:
+@AfterMethod
+Nach:
+@After
+
+Von:
+protected void setUp()
+Nach:
+public void setUp()
+
+Von:
+protected void tearDown()
+Nach:
+public void tearDown()
+
+
+
+Inspections:
+--------------------
+Run "JUnit" inspections and apply quick fixes.
+
+
+
+--------------
+Suche nach assertEquals(String,String,String)
+--> Message nach vorne
+
+
+
+
+
+
+
