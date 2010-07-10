@@ -33,6 +33,7 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTimeZone;
 import org.junit.rules.*;
 import org.junit.runners.model.*;
@@ -80,5 +81,18 @@ public class DateTimeZoneRule implements MethodRule {
 
   private void after() {
     DateTimeZone.setDefault( oldTimeZone );
+  }
+
+  @NotNull
+  public DateTimeZone getZone() {
+    return zone;
+  }
+
+  @NotNull
+  public DateTimeZone getOldTimeZone() {
+    if ( oldTimeZone == null ) {
+      throw new IllegalStateException( "No old zone set" );
+    }
+    return oldTimeZone;
   }
 }
