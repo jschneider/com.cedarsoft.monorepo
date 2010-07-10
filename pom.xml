@@ -71,31 +71,29 @@
   </properties>
 
   <dependencyManagement>
-    <dependencies>
+    <!--dependencies>
       <dependency>
         <groupId>com.intellij</groupId>
         <artifactId>annotations</artifactId>
         <version>7.0.3</version>
         <scope>provided</scope>
       </dependency>
-    </dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8.1</version>      
+        <scope>test</scope>
+      </dependency>
+    </dependencies-->
   </dependencyManagement>
 
-  <dependencies>
+  <!--dependencies>
     <dependency>
       <groupId>com.intellij</groupId>
       <artifactId>annotations</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Test deps -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.1</version>      
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  </dependencies-->
 
   <build>
     <pluginManagement>
