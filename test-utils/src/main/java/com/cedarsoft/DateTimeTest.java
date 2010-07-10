@@ -35,14 +35,13 @@ import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTimeZone;
 import org.junit.*;
 
-import java.lang.Exception;
-
 /**
  * <p>DateTimeTest class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class DateTimeTest {
+@Deprecated
+public abstract class DateTimeTest {
   @NotNull
   protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
 
