@@ -58,12 +58,24 @@ public class Parser {
   private Parser() {
   }
 
+  @Deprecated
   @NotNull
-  public static Result parse( @NotNull File file ) {
-    return parse( file, null );
+  public static Result parse( @NotNull File file, @Nullable @NonNls String classpath ) {
+    return parse( classpath, Collections.singleton( file ) );
   }
 
-  public static Result parse( @NotNull File file, @Nullable @NonNls String classpath ) {
+  @NotNull
+  public static Result parse( @NotNull File... files ) {
+    return parse( null, files );
+  }
+
+  @NotNull
+  public static Result parse( @Nullable @NonNls String classpath, @NotNull File... files ) {
+    return parse( classpath, Arrays.asList( files ) );
+  }
+
+  @NotNull
+  public static Result parse( @Nullable @NonNls String classpath, @NotNull Iterable<? extends File> files ) {
     List<String> arguments = new ArrayList<String>();
 
     arguments.add( "-XclassesAsDecls" );
@@ -71,9 +83,12 @@ public class Parser {
       arguments.add( "-cp" );
       arguments.add( classpath );
     }
-    arguments.add( file.getAbsolutePath() );
 
     arguments.add( "-nocompile" );
+
+    for ( File file : files ) {
+      arguments.add( file.getAbsolutePath() );
+    }
 
     CollectingFactory factory = new CollectingFactory();
 
