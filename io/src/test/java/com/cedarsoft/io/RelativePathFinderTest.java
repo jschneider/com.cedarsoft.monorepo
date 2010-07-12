@@ -54,6 +54,13 @@ public class RelativePathFinderTest {
   }
 
   @Test
+  public void testGetRelativePathWin() {
+    assertEquals( "..\\..\\..\\a", RelativePathFinder.getRelativePath( "C:\\tmp\\a", "C:\\tmp\\other\\a\\b", "\\" ) );
+    assertEquals( "..\\..\\..\\referenced", RelativePathFinder.getRelativePath( "C:\\tmp\\referenced\\", "C:\\tmp\\356406\\a\\b", "\\" ) );
+    assertEquals( "..\\..\\..\\referenced", RelativePathFinder.getRelativePath( "C:\\tmp\\referenced", "C:\\tmp\\356406\\a\\b", "\\" ) );
+  }
+
+  @Test
   public void testGetRelativePath3() {
     assertEquals( ".", RelativePathFinder.getRelativePath( "/a", "/a", "/" ) );
     assertEquals( "..", RelativePathFinder.getRelativePath( "/a", "/a/b", "/" ) );
