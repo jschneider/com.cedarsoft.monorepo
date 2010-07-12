@@ -49,6 +49,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
@@ -64,9 +65,10 @@ public abstract class AbstractGenerator {
   public static final String OPTION_DESTINATION = "d";
   @NonNls
   public static final String OPTION_TEST_DESTINATION = "t";
+  @NonNls
+  public static final String GENERATE_METHOD_NAME = "generate";
 
-
-  protected void printError( Options options, String errorMessage ) {
+  protected void printError( @NotNull Options options, @NotNull @NonNls String errorMessage ) {
     System.out.println( errorMessage );
     printHelp( options );
   }
@@ -134,24 +136,28 @@ public abstract class AbstractGenerator {
       return;
     }
 
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination, new PrintWriter( System.out ) );
+    run( domainSourceFile, destination, testDestination, System.out );
+  }
+
+  protected void run( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination, @NotNull PrintStream logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination, new PrintWriter( logOut ) );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
 
-    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFile, tmpDestination, tmpTestDestination, new PrintWriter( System.out ) );
+    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFile, tmpDestination, tmpTestDestination, new PrintWriter( logOut ) );
 
-    System.out.println( "Generating serializer for <" + domainSourceFile.getAbsolutePath() + ">" );
-    System.out.println( "\tSerializer is created in <" + destination.getAbsolutePath() + ">" );
-    System.out.println( "\tSerializer tests are created in <" + testDestination.getAbsolutePath() + ">" );
+    logOut.println( "Generating serializer for <" + domainSourceFile.getAbsolutePath() + ">" );
+    logOut.println( "\tSerializer is created in <" + destination.getAbsolutePath() + ">" );
+    logOut.println( "\tSerializer tests are created in <" + testDestination.getAbsolutePath() + ">" );
 
     //Now start the generator
     run( tmpConfiguration );
-    System.out.println( "Generation finished!" );
+    logOut.println( "Generation finished!" );
 
     transferFiles( tmpConfiguration, configuration );
 
-    System.out.println( "Cleaning up..." );
+    logOut.println( "Cleaning up..." );
     FileUtils.deleteDirectory( tmpDestination );
     FileUtils.deleteDirectory( tmpTestDestination );
   }
@@ -165,7 +171,7 @@ public abstract class AbstractGenerator {
   }
 
   public void run( @NotNull GeneratorConfiguration configuration, @NotNull Object runner ) {
-    Reflection.method( "generate" ).withParameterTypes( GeneratorConfiguration.class ).in( runner ).invoke( configuration );
+    Reflection.method( GENERATE_METHOD_NAME ).withParameterTypes( GeneratorConfiguration.class ).in( runner ).invoke( configuration );
   }
 
   @NotNull
@@ -268,6 +274,12 @@ public abstract class AbstractGenerator {
    * The runner interface
    */
   public interface Runner {
+    /**
+     * Generates the code
+     *
+     * @param configuration the configuration
+     * @throws Exception
+     */
     void generate( @NotNull GeneratorConfiguration configuration ) throws Exception;
   }
 }
