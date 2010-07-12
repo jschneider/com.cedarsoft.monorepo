@@ -92,7 +92,40 @@ public class GeneratorConfiguration {
   }
 
   public enum CreationMode {
-    ALL,
-    TESTS_ONLY
+    ALL( true, true ),
+    NO_TESTS( true, false ),
+    TESTS_ONLY( false, true );
+
+    private final boolean createTests;
+    private final boolean create;
+
+    CreationMode( boolean create, boolean createTests ) {
+      this.create = create;
+      this.createTests = createTests;
+    }
+
+    public boolean isCreateTests() {
+      return createTests;
+    }
+
+    public boolean isCreate() {
+      return create;
+    }
+
+    public static CreationMode get( boolean create, boolean tests ) {
+      if ( create && tests ) {
+        return ALL;
+      }
+
+      if ( create && !tests ) {
+        return NO_TESTS;
+      }
+
+      if ( tests ) {
+        return TESTS_ONLY;
+      }
+
+      throw new IllegalArgumentException();
+    }
   }
 }
