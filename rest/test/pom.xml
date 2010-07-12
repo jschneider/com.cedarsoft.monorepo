@@ -48,8 +48,8 @@
 
     <!--Those duplicates is needed because the scope is not updated to compile-->
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
