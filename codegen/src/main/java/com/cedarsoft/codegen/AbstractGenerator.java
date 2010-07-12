@@ -119,8 +119,8 @@ public abstract class AbstractGenerator {
    * @throws InterruptedException
    */
   public void transferFiles( @NotNull GeneratorConfiguration tmpConfiguration, @NotNull GeneratorConfiguration configuration ) throws IOException, InterruptedException {
-    transferFiles( tmpConfiguration.getDestination(), configuration.getDestination() );
-    transferFiles( tmpConfiguration.getTestDestination(), configuration.getTestDestination() );
+    transferFiles( tmpConfiguration.getDestination(), configuration.getDestination(), configuration.getLogOut() );
+    transferFiles( tmpConfiguration.getTestDestination(), configuration.getTestDestination(), configuration.getLogOut() );
   }
 
   @NotNull
@@ -130,7 +130,7 @@ public abstract class AbstractGenerator {
 
   @NotNull
   public APTClassLoader createAptClassLoader( @NotNull ClassLoader defaultClassLoader ) throws ToolsJarNotFoundException {
-    return new APTClassLoader( defaultClassLoader, getPackagePrefixes().toArray( new String[0] ) );
+    return new APTClassLoader( defaultClassLoader, getPackagePrefixes().toArray( new String[getPackagePrefixes().size()] ) );
   }
 
   @NotNull
@@ -155,15 +155,14 @@ public abstract class AbstractGenerator {
     );
   }
 
-  private void transferFiles( @NotNull File sourceDir, @NotNull File destination ) throws IOException, InterruptedException {
-    Collection<? extends File> serializerFiles;
-    serializerFiles = FileUtils.listFiles( sourceDir, new String[]{"java"}, true );
+  protected void transferFiles( @NotNull File sourceDir, @NotNull File destination, @NotNull PrintWriter logOut ) throws IOException, InterruptedException {
+    Collection<? extends File> serializerFiles = FileUtils.listFiles( sourceDir, new String[]{"java"}, true );
     for ( File serializerFile : serializerFiles ) {
       String relativePath = calculateRelativePath( sourceDir, serializerFile );
-      System.out.println( "--> " + relativePath );
+      logOut.println( "--> " + relativePath );
 
       File targetFile = new File( destination, relativePath );
-      System.out.println( "exists: " + targetFile.exists() );
+      logOut.println( "exists: " + targetFile.exists() );
       if ( targetFile.exists() ) {
         Executer executer = new Executer( new ProcessBuilder( "meld", targetFile.getAbsolutePath(), serializerFile.getAbsolutePath() ) );
         executer.execute();
@@ -175,7 +174,7 @@ public abstract class AbstractGenerator {
 
   @NotNull
   @NonNls
-  private static String calculateRelativePath( @NotNull File dir, @NotNull File serializerFile ) throws IOException {
+  protected static String calculateRelativePath( @NotNull File dir, @NotNull File serializerFile ) throws IOException {
     return serializerFile.getCanonicalPath().substring( dir.getCanonicalPath().length() + 1 );
   }
 
