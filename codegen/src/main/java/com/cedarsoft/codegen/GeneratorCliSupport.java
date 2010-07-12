@@ -41,12 +41,13 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.util.List;
 
 /**
- * Abstract base class for generators that may be called from the CLI
+ *
  */
-public abstract class AbstractCliGenerator extends AbstractGenerator {
+public class GeneratorCliSupport {
   @NonNls
   public static final String HELP_OPTION = "h";
   @NonNls
@@ -54,8 +55,22 @@ public abstract class AbstractCliGenerator extends AbstractGenerator {
   @NonNls
   public static final String OPTION_TEST_DESTINATION = "t";
 
+  @NotNull
+  private final AbstractGenerator generator;
+  @NotNull
+  private final PrintStream logOut;
+
+  public GeneratorCliSupport( @NotNull AbstractGenerator generator ) {
+    this( generator, System.out );
+  }
+
+  public GeneratorCliSupport( @NotNull AbstractGenerator generator, PrintStream logOut ) {
+    this.generator = generator;
+    this.logOut = logOut;
+  }
+
   protected void printError( @NotNull Options options, @NotNull @NonNls String errorMessage ) {
-    System.out.println( errorMessage );
+    logOut.println( errorMessage );
     printHelp( options );
   }
 
@@ -121,6 +136,7 @@ public abstract class AbstractCliGenerator extends AbstractGenerator {
       return;
     }
 
-    run( domainSourceFile, destination, testDestination, System.out );
+    generator.run( domainSourceFile, destination, testDestination, logOut );
   }
+
 }
