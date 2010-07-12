@@ -70,6 +70,11 @@ public class Parser {
   }
 
   @NotNull
+  public static Result parse( @NotNull Iterable<? extends File> files ) {
+    return parse( null, files );
+  }
+
+  @NotNull
   public static Result parse( @Nullable @NonNls String classpath, @NotNull File... files ) {
     return parse( classpath, Arrays.asList( files ) );
   }
