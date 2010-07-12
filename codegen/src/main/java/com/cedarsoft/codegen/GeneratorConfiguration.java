@@ -125,7 +125,7 @@ public class GeneratorConfiguration {
         return TESTS_ONLY;
       }
 
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException( "Invalid creation mode" );
     }
   }
 }
