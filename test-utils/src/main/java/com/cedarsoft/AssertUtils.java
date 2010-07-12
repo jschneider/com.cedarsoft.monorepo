@@ -176,7 +176,7 @@ public class AssertUtils {
    * @throws IOException if any.
    */
   public static void assertEquals( @NotNull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
-    Assert.assertEquals( actual, toString( expectedResourceUri ) );
+    Assert.assertEquals( toString( expectedResourceUri ), actual );
   }
 
   @NotNull
