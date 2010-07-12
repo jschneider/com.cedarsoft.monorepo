@@ -31,17 +31,19 @@
 
 package com.cedarsoft.codegen;
 
+import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  *
  */
 public class GeneratorConfiguration {
   @NotNull
-  private final File domainSourceFile;
+  private final List<? extends File> domainSourceFiles;
   @NotNull
   private final File destination;
   @NotNull
@@ -51,12 +53,12 @@ public class GeneratorConfiguration {
   @NotNull
   private final PrintWriter logOut;
 
-  public GeneratorConfiguration( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) {
-    this( domainSourceFile, destination, testDestination, logOut, CreationMode.ALL );
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) {
+    this( domainSourceFiles, destination, testDestination, logOut, CreationMode.ALL );
   }
 
-  public GeneratorConfiguration( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
-    this.domainSourceFile = domainSourceFile;
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
+    this.domainSourceFiles = ImmutableList.copyOf( domainSourceFiles );
     this.destination = destination;
     this.testDestination = testDestination;
     this.creationMode = creationMode;
@@ -64,8 +66,9 @@ public class GeneratorConfiguration {
   }
 
   @NotNull
-  public File getDomainSourceFile() {
-    return domainSourceFile;
+  public List<? extends File> getDomainSourceFiles() {
+    //noinspection ReturnOfCollectionOrArrayField
+    return domainSourceFiles;
   }
 
   @NotNull

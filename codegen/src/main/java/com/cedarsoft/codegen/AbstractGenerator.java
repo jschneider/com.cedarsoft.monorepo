@@ -57,25 +57,19 @@ public abstract class AbstractGenerator {
   public static final String GENERATE_METHOD_NAME = "generate";
 
 
-  protected void run( @NotNull File domainSourceFile, @NotNull File destination, @NotNull File testDestination, @NotNull PrintStream logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFile, destination, testDestination, new PrintWriter( logOut ) );
+  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintStream logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, testDestination, new PrintWriter( logOut ) );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
 
-    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFile, tmpDestination, tmpTestDestination, new PrintWriter( logOut ) );
-
-    logOut.println( "Generating serializer for <" + domainSourceFile.getAbsolutePath() + ">" );
-    logOut.println( "\tSerializer is created in <" + destination.getAbsolutePath() + ">" );
-    logOut.println( "\tSerializer tests are created in <" + testDestination.getAbsolutePath() + ">" );
+    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFiles, tmpDestination, tmpTestDestination, new PrintWriter( logOut ) );
 
     //Now start the generator
     run( tmpConfiguration );
-    logOut.println( "Generation finished!" );
 
     transferFiles( tmpConfiguration, configuration );
 
-    logOut.println( "Cleaning up..." );
     FileUtils.deleteDirectory( tmpDestination );
     FileUtils.deleteDirectory( tmpTestDestination );
   }

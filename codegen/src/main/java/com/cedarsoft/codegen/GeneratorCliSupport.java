@@ -42,6 +42,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,13 +61,18 @@ public class GeneratorCliSupport {
   @NotNull
   private final PrintStream logOut;
 
-  public GeneratorCliSupport( @NotNull AbstractGenerator generator ) {
-    this( generator, System.out );
+  @NotNull
+  @NonNls
+  private final String commandName;
+
+  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName ) {
+    this( generator, commandName, System.out );
   }
 
-  public GeneratorCliSupport( @NotNull AbstractGenerator generator, PrintStream logOut ) {
+  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName, @NotNull @NonNls PrintStream logOut ) {
     this.generator = generator;
     this.logOut = logOut;
+    this.commandName = commandName;
   }
 
   protected void printError( @NotNull Options options, @NotNull @NonNls String errorMessage ) {
@@ -76,7 +82,7 @@ public class GeneratorCliSupport {
 
   protected void printHelp( @NotNull Options options ) {
     HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp( "gen-ser -d <serializer dest dir> -t <test dest dir> path-to-class", options );
+    formatter.printHelp( commandName + " -d <serializer dest dir> -t <test dest dir> path-to-class", options );
   }
 
   @NotNull
@@ -113,17 +119,6 @@ public class GeneratorCliSupport {
       return;
     }
 
-    List<? extends String> domainObjectNames = commandLine.getArgList();
-    if ( domainObjectNames.size() != 1 ) {
-      printError( options, "Missing class" );
-      return;
-    }
-
-    File domainSourceFile = new File( domainObjectNames.get( 0 ) );
-    if ( !domainSourceFile.isFile() ) {
-      printError( options, "No source file found at <" + domainSourceFile.getAbsolutePath() + ">" );
-      return;
-    }
     File destination = new File( commandLine.getOptionValue( OPTION_DESTINATION ) );
     if ( !destination.isDirectory() ) {
       printError( options, "Destination <" + destination.getAbsolutePath() + "> is not a directory" );
@@ -136,7 +131,23 @@ public class GeneratorCliSupport {
       return;
     }
 
-    generator.run( domainSourceFile, destination, testDestination, logOut );
+    List<? extends String> domainObjectNames = commandLine.getArgList();
+    if ( domainObjectNames.isEmpty() ) {
+      printError( options, "Missing class" );
+      return;
+    }
+
+    List<File> domainSourceFiles = new ArrayList<File>();
+    for ( String domainObjectName : domainObjectNames ) {
+      File domainSourceFile = new File( domainObjectName );
+      if ( !domainSourceFile.isFile() ) {
+        printError( options, "No source file found at <" + domainSourceFile.getAbsolutePath() + ">" );
+        return;
+      }
+      domainSourceFiles.add( domainSourceFile );
+    }
+
+    generator.run( domainSourceFiles, destination, testDestination, logOut );
   }
 
 }
