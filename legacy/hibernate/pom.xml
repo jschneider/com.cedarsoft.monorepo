@@ -17,7 +17,7 @@
     <dependency>
       <groupId>com.cedarsoft.commons.legacy</groupId>
       <artifactId>db</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
 
