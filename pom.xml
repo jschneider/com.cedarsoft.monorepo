@@ -66,7 +66,7 @@
   </distributionManagement>
 
   <properties>
-    <maven.skin.version>1.1.7</maven.skin.version>
+    <maven.skin.version>1.1.8</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
   </properties>
 
