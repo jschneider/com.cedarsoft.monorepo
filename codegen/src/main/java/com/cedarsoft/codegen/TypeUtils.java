@@ -32,8 +32,10 @@
 package com.cedarsoft.codegen;
 
 import com.sun.mirror.declaration.ClassDeclaration;
+import com.sun.mirror.declaration.Declaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
+import com.sun.mirror.declaration.Modifier;
 import com.sun.mirror.declaration.ParameterDeclaration;
 import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.mirror.type.DeclaredType;
@@ -69,6 +71,15 @@ public class TypeUtils {
 
   public static void setTypes( @NotNull Types types ) {
     TYPES.set( types );
+  }
+
+  public static boolean isStatic( @NotNull Declaration fieldDeclaration ) {
+    for ( Modifier modifier : fieldDeclaration.getModifiers() ) {
+      if ( modifier == Modifier.STATIC ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @NotNull
@@ -287,5 +298,4 @@ public class TypeUtils {
     }
     SIMPLE_TYPE_NAMES = Collections.unmodifiableSet( names );
   }
-
 }

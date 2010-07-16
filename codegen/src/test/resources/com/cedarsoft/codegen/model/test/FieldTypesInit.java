@@ -4,6 +4,7 @@ package com.cedarsoft.codegen.model.test;
  *
  */
 public class FieldTypesInit {
+  public static final String CONSTANT = "asdf";
   /**
    * the comment for field width
    */
