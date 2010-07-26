@@ -191,4 +191,14 @@ public class LinkedNode implements Node {
   public void removeStructureListener( @NotNull StructureListener structureListener ) {
     source.removeStructureListener( structureListener );
   }
+
+  /**
+   * Returns whether the given node is a linked node
+   *
+   * @param node the node
+   * @return true if the given node is a linked node, false otherwise
+   */
+  public static boolean isLinkedNode( @NotNull Node node ) {
+    return node instanceof LinkedNode;
+  }
 }

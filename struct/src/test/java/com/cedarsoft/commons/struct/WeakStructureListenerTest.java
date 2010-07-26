@@ -100,6 +100,65 @@ public class WeakStructureListenerTest {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
   }
 
+  @Test
+  public void testNotRemoving() {
+    final boolean[] addCalled = {false};
+    final boolean[] detachedCalled = {false};
+
+    assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
+    StructureListener listener = new StructureListener() {
+      @Override
+      public void childAdded( @NotNull StructureChangedEvent event ) {
+        addCalled[0] = true;
+      }
+
+      @Override
+      public void childDetached( @NotNull StructureChangedEvent event ) {
+        detachedCalled[0] = true;
+      }
+    };
+    node.addStructureListenerWeak( listener );
+    assertEquals( 1, node.getChildrenSupport().getStructureListeners().size() );
+    System.gc();
+    System.gc();
+    System.gc();
+    System.gc();
+    System.gc();
+    node.addChild( new DefaultNode( "asf" ) );
+    node.detachChild( 0 );
+    assertEquals( 1, node.getChildrenSupport().getStructureListeners().size() );
+
+    assertTrue( addCalled[0] );
+    assertTrue( detachedCalled[0] );
+  }
+
+  @Test
+  public void testAutoRemoving2() {
+    node.addChild( new DefaultNode( "asf" ) );
+
+    assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
+    WeakStructureListener weakListener = new WeakStructureListener( new StructureListener() {
+      @Override
+      public void childAdded( @NotNull StructureChangedEvent event ) {
+      }
+
+      @Override
+      public void childDetached( @NotNull StructureChangedEvent event ) {
+      }
+    } );
+    node.addStructureListener( weakListener );
+
+    assertNotNull( weakListener.getWrappedListener() );
+    assertEquals( 1, node.getChildrenSupport().getStructureListeners().size() );
+    System.gc();
+    System.gc();
+    System.gc();
+    System.gc();
+    System.gc();
+    node.detachChild( 0 );
+    assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
+  }
+
   @Before
   public void setUp() throws Exception {
     node = new DefaultNode( "node" );

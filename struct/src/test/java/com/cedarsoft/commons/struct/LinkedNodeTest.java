@@ -73,9 +73,48 @@ public class LinkedNodeTest {
     assertEquals( 2, node.getChildren().size() );
     assertEquals( "asdf/child", node.getChildren().get( 0 ).getPath().toString() );
     Node actNode = node.getChildren().get( 1 );
-    assertTrue( Nodes.isLinkedNode( actNode ) );
+    assertTrue( LinkedNode.isLinkedNode( actNode ) );
     assertEquals( "asdf/childChild", actNode.getPath().toString() );
     assertEquals( 1, actNode.getChildren().size() );
     assertEquals( "asdf/child/childChild/childChildChild", actNode.getChildren().get( 0 ).getPath().toString() );
+  }
+
+  @Test
+  public void testNo() {
+    assertFalse( LinkedNode.isLinkedNode( new DefaultNode( "asdf" ) ) );
+  }
+
+  @Test
+  public void testParent() {
+    LinkedNode linkedNode = new LinkedNode( childChild );
+    assertFalse( linkedNode.hasParent() );
+    linkedNode.setParent( new DefaultNode( "parent" ) );
+    assertTrue( linkedNode.hasParent() );
+    linkedNode.setParent( null );
+    assertFalse( linkedNode.hasParent() );
+  }
+
+  @Test
+  public void testAddChild() {
+    LinkedNode linkedNode = new LinkedNode( childChildchild );
+    node.addChild( linkedNode );
+
+    assertEquals( 0, linkedNode.getChildren().size() );
+    assertEquals( 0, childChildchild.getChildren().size() );
+
+    linkedNode.addChild( new DefaultNode( "anotherChild" ) );
+    assertEquals( 1, linkedNode.getChildren().size() );
+    assertEquals( 1, childChildchild.getChildren().size() );
+
+    childChildchild.addChild( new DefaultNode( "anotherchild2") );
+    assertEquals( 2, linkedNode.getChildren().size() );
+    assertEquals( 2, childChildchild.getChildren().size() );
+
+    linkedNode.detachChild( 1 );
+    assertEquals( 1, linkedNode.getChildren().size() );
+    assertEquals( 1, childChildchild.getChildren().size() );
+    childChildchild.detachChild( 0 );
+    assertEquals( 0, linkedNode.getChildren().size() );
+    assertEquals( 0, childChildchild.getChildren().size() );
   }
 }
