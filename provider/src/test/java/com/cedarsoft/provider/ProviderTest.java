@@ -31,10 +31,14 @@
 
 package com.cedarsoft.provider;
 
+import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
+import org.junit.rules.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import static org.junit.Assert.*;
 
@@ -63,5 +67,49 @@ public class ProviderTest {
       fail( "Where is the Exception" );
     } catch ( IOException ignore ) {
     }
+  }
+
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+
+  @Test
+  public void testINputStream() throws IOException {
+    File file = tmp.newFile( "asdf" );
+    FileUtils.writeStringToFile( file, "a" );
+
+    InputStreamFromFileProvider provider = new InputStreamFromFileProvider( file );
+    assertTrue( provider.getDescription().endsWith( "asdf" ) );
+
+    {
+      InputStream stream = provider.provide();
+      assertEquals( 'a', stream.read() );
+      assertEquals( -1, stream.read() );
+    }
+
+    {
+      InputStream stream = provider.provide();
+      assertEquals( 'a', stream.read() );
+      assertEquals( -1, stream.read() );
+    }
+  }
+
+  @Test
+  public void testContext() throws IOException {
+    AbstractContextualProvider<String, Integer, IOException> provider = new AbstractContextualProvider<String, Integer, IOException>() {
+      @NotNull
+      @Override
+      public String provide( @NotNull Integer context ) throws IOException {
+        return String.valueOf( context );
+      }
+
+      @NotNull
+      @Override
+      public String getDescription( @NotNull Integer context ) {
+        return "descr";
+      }
+    };
+
+    assertEquals( "7", provider.createProvider( 7 ).provide() );
+    assertEquals( "8", provider.createProvider( 8 ).provide() );
   }
 }

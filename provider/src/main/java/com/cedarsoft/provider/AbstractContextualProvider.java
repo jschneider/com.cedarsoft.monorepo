@@ -42,18 +42,6 @@ import org.jetbrains.annotations.NotNull;
  * @param <E> the exception that is thrown
  */
 public abstract class AbstractContextualProvider<T, C, E extends Throwable> implements ContextualProvider<T, C, E> {
-  @NotNull
-  private final ContextualProvider<T, C, E> contextualProvider;
-
-  /**
-   * <p>Constructor for AbstractContextualProvider.</p>
-   *
-   * @param contextualProvider a {@link ContextualProvider} object.
-   */
-  protected AbstractContextualProvider( @NotNull ContextualProvider<T, C, E> contextualProvider ) {
-    this.contextualProvider = contextualProvider;
-  }
-
   /**
    * <p>createProvider</p>
    *
@@ -66,13 +54,13 @@ public abstract class AbstractContextualProvider<T, C, E extends Throwable> impl
       @NotNull
       @Override
       public T provide() throws E {
-        return contextualProvider.provide( context );
+        return AbstractContextualProvider.this.provide( context );
       }
 
       @NotNull
       @Override
       public String getDescription() {
-        return contextualProvider.getDescription( context );
+        return AbstractContextualProvider.this.getDescription( context );
       }
     };
   }
