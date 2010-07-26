@@ -32,9 +32,11 @@
 package com.cedarsoft.convert;
 
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.File;
 
 import static org.junit.Assert.*;
 
@@ -43,12 +45,51 @@ import static org.junit.Assert.*;
  * Date: 13.11.2006<br>
  * Time: 17:00:54<br>
  */
-public class StringConverterTests {
+public class StringConverterTest {
+  @Rule
+  public
+  ExpectedException expectedException = ExpectedException.none();
+
   private StringConverterManager converterManager;
 
   @Before
   public void setUp() throws Exception {
     converterManager = new StringConverterManager( true );
+  }
+
+  @Test
+  public void testNoDefaults() {
+    converterManager = new StringConverterManager( false );
+
+    expectedException.expect( IllegalArgumentException.class );
+    assertNull( converterManager.serialize( "asdf" ) );
+  }
+
+  @Test
+  public void testRegister() {
+    converterManager = new StringConverterManager( false );
+    converterManager.addStringConverter( Boolean.class, new StringConverterManager.BooleanConverter() );
+
+    assertEquals( "true", converterManager.serialize( true ) );
+    assertTrue( converterManager.deserialize( Boolean.class, "true" ) );
+  }
+
+  @Test
+  public void testFile() {
+    assertEquals( "/tmp/a", converterManager.serialize( new File( "/tmp/a" ) ) );
+    assertEquals( new File( "/tmp/a" ), converterManager.deserialize( File.class, "/tmp/a" ) );
+  }
+
+  @Test
+  public void testClass() {
+    assertEquals( "java.lang.String", converterManager.serialize( String.class ) );
+    assertEquals( String.class, converterManager.deserialize( Class.class, "java.lang.String" ) );
+  }
+
+  @Test
+  public void testString() {
+    assertEquals( "asdf", converterManager.serialize( "asdf" ) );
+    assertEquals( "asdf", converterManager.deserialize( String.class, "asdf" ) );
   }
 
   @Test
