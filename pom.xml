@@ -387,6 +387,30 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <configuration>
+          <check>
+            <haltOnFailure>true</haltOnFailure>
+            <branchRate>50</branchRate>
+            <lineRate>50</lineRate>
+            <totalBranchRate>50</totalBranchRate>
+            <totalLineRate>50</totalLineRate>
+            <packageLineRate>50</packageLineRate>
+            <packageBranchRate>50</packageBranchRate>
+          </check>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>clean</goal>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
