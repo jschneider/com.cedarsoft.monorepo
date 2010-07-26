@@ -40,8 +40,6 @@ import javax.swing.WindowConstants;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Window;
-import java.lang.InterruptedException;
-import java.lang.Runnable;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -53,23 +51,15 @@ public class SwingHelper {
   private SwingHelper() {
   }
 
-  /**
-   * Prüft ob der aktuelle Thread der EventDispatchThread ist, ansonsten wird
-   * eine Exception geworfen.
-   */
   public static void assertEventThread() {
-    if ( !SwingUtilities.isEventDispatchThread() ) {
-      throw new IllegalThreadStateException( "You are not calling from EventThread" );
-    }
+    ThreadUtils.assertEventDispatchThread();
   }
 
   /**
    * Throws an exception if the current thread is the EDT.
    */
   public static void assertNotEventThread() {
-    if ( SwingUtilities.isEventDispatchThread() ) {
-      throw new IllegalThreadStateException( "You are calling from EDT" );
-    }
+    ThreadUtils.assertNotEventDispatchThread();
   }
 
   /**
@@ -78,18 +68,7 @@ public class SwingHelper {
    * @param runnable a {@link Runnable} object.
    */
   public static void invokeAndWait( @NotNull Runnable runnable ) {
-    if ( SwingUtilities.isEventDispatchThread() ) {
-      runnable.run();
-    } else {
-      try {
-        SwingUtilities.invokeAndWait( runnable );
-      }
-      catch ( InterruptedException ignore ) {
-      }
-      catch ( InvocationTargetException e ) {
-        throw new RuntimeException( e );
-      }
-    }
+    ThreadUtils.invokeInEventDispatchThread( runnable );
   }
 
   /**
@@ -102,9 +81,6 @@ public class SwingHelper {
   @Nullable
   public static JFrame rootFrame( @NotNull Component component ) {
     Window window = SwingUtilities.getWindowAncestor( component );
-    while ( SwingUtilities.getWindowAncestor( window ) != null ) {
-      window = SwingUtilities.getWindowAncestor( window );
-    }
     if ( window instanceof JFrame ) {
       return ( JFrame ) window;
     }
@@ -117,18 +93,14 @@ public class SwingHelper {
    * @return whether the current thread is the EDT
    */
   public static boolean isEventDispatchThread() {
-    return SwingUtilities.isEventDispatchThread();
+    return ThreadUtils.isEventDispatchThread();
   }
 
   /**
    * Waits until the swing thread has been finished
    */
   public static void waitForSwingThread() {
-    invokeAndWait( new Runnable() {
-      @Override
-      public void run() {
-      }
-    } );
+    ThreadUtils.waitForEventDispatchThread();
   }
 
   /**
@@ -151,9 +123,8 @@ public class SwingHelper {
    * @param contentPane the content pane
    * @return the JFrame that is shown
    *
-   * @throws InvocationTargetException
-   *                                        if any.
-   * @throws InterruptedException if any.
+   * @throws InvocationTargetException if any.
+   * @throws InterruptedException      if any.
    */
   @NotNull
   public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {
