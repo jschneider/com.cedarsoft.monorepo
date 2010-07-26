@@ -17,10 +17,10 @@
       <artifactId>jdom</artifactId>
     </dependency>
 
-    <!--<dependency>-->
-    <!--<groupId>jaxen</groupId>-->
-    <!--<artifactId>jaxen</artifactId>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
