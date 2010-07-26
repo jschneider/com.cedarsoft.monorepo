@@ -31,89 +31,53 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import org.junit.*;
+import org.junit.rules.*;
 
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
+
+import static org.junit.Assert.*;
 
 /**
- * An Null-Lock that does nothing
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @noinspection Singleton
  */
-public class NullLock implements Lock, ReadWriteLock {
-  /**
-   * Constant <code>LOCK</code>
-   */
-  @NotNull
-  public static final NullLock LOCK = new NullLock();
+public class NullLockTest {
+  private NullLock lock;
 
-  private NullLock() {
+  @Before
+  public void setUp() throws Exception {
+    lock = NullLock.LOCK;
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock readLock() {
-    return this;
+  @Test( timeout = 10 )
+  public void testTimeout() throws InterruptedException {
+    lock.tryLock( 100, TimeUnit.DAYS );
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock writeLock() {
-    return this;
+  @Test( timeout = 10 )
+  public void testIt() throws InterruptedException {
+    lock.lock();
+    lock.lock();
+    lock.unlock();
+    lock.unlock();
+    lock.lockInterruptibly();
+    lock.lockInterruptibly();
+    lock.tryLock();
+    lock.tryLock();
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lock() {
+  @Test( timeout = 10 )
+  public void testLocks() throws InterruptedException {
+    assertSame( lock, lock.readLock() );
+    assertSame( lock, lock.writeLock() );
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-  }
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void unlock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Condition newCondition() {
-    throw new NullPointerException( "Cannot create a condition for a null lock" );
+  @Test
+  public void testCondition() {
+    expectedException.expect( NullPointerException.class );
+    lock.newCondition();
   }
 }

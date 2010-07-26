@@ -35,9 +35,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
-import java.lang.IllegalThreadStateException;
-import java.lang.InterruptedException;
-import java.lang.Runnable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -63,8 +60,7 @@ public class ThreadUtils {
   /**
    * <p>assertEventDispatchThread</p>
    *
-   * @throws IllegalThreadStateException
-   *          if any.
+   * @throws IllegalThreadStateException if any.
    */
   public static void assertEventDispatchThread() throws IllegalThreadStateException {
     if ( !isEventDispatchThread() ) {
@@ -75,8 +71,7 @@ public class ThreadUtils {
   /**
    * <p>assertNotEventDispatchThread</p>
    *
-   * @throws IllegalThreadStateException
-   *          if any.
+   * @throws IllegalThreadStateException if any.
    */
   public static void assertNotEventDispatchThread() throws IllegalThreadStateException {
     if ( isEventDispatchThread() ) {
@@ -90,8 +85,7 @@ public class ThreadUtils {
    * @param callable a {@link Callable} object.
    * @return a T object.
    *
-   * @throws ExecutionException
-   *                                        if any.
+   * @throws ExecutionException   if any.
    * @throws InterruptedException if any.
    */
   @Nullable
@@ -119,8 +113,21 @@ public class ThreadUtils {
       } catch ( InterruptedException e ) {
         throw new RuntimeException( e );
       } catch ( InvocationTargetException e ) {
-        throw new RuntimeException( e );
+        Throwable targetException = e.getTargetException();
+        if ( targetException instanceof RuntimeException ) {
+          throw ( RuntimeException ) targetException;
+        }
+        //noinspection ThrowInsideCatchBlockWhichIgnoresCaughtException
+        throw new RuntimeException( targetException );
       }
     }
+  }
+
+  public static void waitForEventDispatchThread() {
+    invokeInEventDispatchThread( new Runnable() {
+      @Override
+      public void run() {
+      }
+    } );
   }
 }

@@ -31,89 +31,23 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-
 /**
- * An Null-Lock that does nothing
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @noinspection Singleton
+ * Offers a way to find out whether assertions have been enabled
  */
-public class NullLock implements Lock, ReadWriteLock {
-  /**
-   * Constant <code>LOCK</code>
-   */
-  @NotNull
-  public static final NullLock LOCK = new NullLock();
+public class Assert {
+  private static final boolean ENABLED;
 
-  private NullLock() {
+  static {
+    boolean tmp = false;
+    //noinspection ConstantConditions,AssertWithSideEffects
+    assert tmp = true;
+    ENABLED = tmp;
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock readLock() {
-    return this;
+  public static boolean assertEnabled() {
+    return ENABLED;
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock writeLock() {
-    return this;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void unlock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Condition newCondition() {
-    throw new NullPointerException( "Cannot create a condition for a null lock" );
+  private Assert() {
   }
 }

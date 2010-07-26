@@ -31,89 +31,44 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import org.junit.*;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
+import static org.junit.Assert.*;
 
 /**
- * An Null-Lock that does nothing
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @noinspection Singleton
  */
-public class NullLock implements Lock, ReadWriteLock {
-  /**
-   * Constant <code>LOCK</code>
-   */
-  @NotNull
-  public static final NullLock LOCK = new NullLock();
+public class SleepTest {
+  @Test( timeout = 110 )
+  public void testIt() {
+    long start = System.currentTimeMillis();
+    Sleep.now( 100 );
 
-  private NullLock() {
+    long time = System.currentTimeMillis() - start;
+    assertTrue( String.valueOf( time ), time > 99 );
+    assertTrue( String.valueOf( time ), time < 105 );
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock readLock() {
-    return this;
-  }
+  @Test
+  public void testInterr() throws InterruptedException {
+    final boolean[] called = {false};
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public Lock writeLock() {
-    return this;
-  }
+    Thread thread = new Thread( new Runnable() {
+      @Override
+      public void run() {
+        try {
+          Sleep.forever();
+          fail( "Where is the Exception" );
+        } catch ( RuntimeException ignore ) {
+          called[0] = true;
+        }
+      }
+    } );
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void unlock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Condition newCondition() {
-    throw new NullPointerException( "Cannot create a condition for a null lock" );
+    thread.start();
+    assertFalse( called[0] );
+    thread.interrupt();
+    thread.join();
+    assertTrue( called[0] );
   }
 }

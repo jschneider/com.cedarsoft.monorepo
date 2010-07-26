@@ -31,37 +31,16 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.Nullable;
+import org.junit.*;
 
-import java.lang.Object;
+import static org.junit.Assert.*;
 
 /**
- * <p>Equals class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class Equals {
-  private Equals() {
+public class AssertTest {
+  @Test
+  public void testIt() {
+    assertTrue( Assert.assertEnabled() );
   }
-
-  /**
-   * <p>isEqual</p>
-   *
-   * @param first  a {@link Object} object.
-   * @param second a {@link Object} object.
-   * @return a boolean.
-   */
-  public static boolean isEqual( @Nullable Object first, @Nullable Object second ) {
-    //noinspection ObjectEquality
-    if ( first == second ) {
-      return true;
-    }
-
-    if ( first != null ) {
-      return first.equals( second );
-    } else {
-      return second.equals( first );
-    }
-  }
-
 }

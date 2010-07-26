@@ -42,7 +42,7 @@ import static org.junit.Assert.*;
  */
 public class ExtendedBooleanTest {
   @Test
-  public void testTRanslation() {
+  public void testTranslation() {
     assertEquals( "Ja", ExtendedBoolean.TRUE.getDescription( Locale.GERMANY ) );
     assertEquals( "Yes", ExtendedBoolean.TRUE.getDescription( Locale.US ) );
     assertEquals( "Yes", ExtendedBoolean.TRUE.getDescription( Locale.FRANCE ) );
@@ -54,5 +54,40 @@ public class ExtendedBooleanTest {
     assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.GERMANY ) );
     assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.US ) );
     assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.FRANCE ) );
+  }
+
+  @Test
+  public void testValueOf() {
+    assertEquals( ExtendedBoolean.TRUE, ExtendedBoolean.valueOf( true ) );
+    assertEquals( ExtendedBoolean.FALSE, ExtendedBoolean.valueOf( false ) );
+  }
+
+  @Test
+  public void testTranslation2() {
+    Locale old = Locale.getDefault();
+
+    try {
+      Locale.setDefault( Locale.GERMANY );
+      assertEquals( "Ja", ExtendedBoolean.TRUE.getDescription() );
+      assertEquals( "Nein", ExtendedBoolean.FALSE.getDescription() );
+      assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription() );
+    } finally {
+      Locale.setDefault( old );
+    }
+  }
+
+  @Test
+  public void testBasic() {
+    assertTrue( ExtendedBoolean.TRUE.isTrue() );
+    assertFalse( ExtendedBoolean.TRUE.isFalse() );
+    assertFalse( ExtendedBoolean.TRUE.isUnknown() );
+
+    assertFalse( ExtendedBoolean.FALSE.isTrue() );
+    assertTrue( ExtendedBoolean.FALSE.isFalse() );
+    assertFalse( ExtendedBoolean.FALSE.isUnknown() );
+
+    assertFalse( ExtendedBoolean.UNKNOWN.isTrue() );
+    assertFalse( ExtendedBoolean.UNKNOWN.isFalse() );
+    assertTrue( ExtendedBoolean.UNKNOWN.isUnknown() );
   }
 }
