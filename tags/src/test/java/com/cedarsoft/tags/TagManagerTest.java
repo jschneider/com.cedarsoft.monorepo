@@ -34,6 +34,7 @@ package com.cedarsoft.tags;
 import com.cedarsoft.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +54,36 @@ public class TagManagerTest {
     manager = new DefaultTagManager<Object>();
   }
 
-  @After
-  public void tearDown() throws Exception {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
+  @Test
+  public void testFind() {
+    expectedException.expect( NotFoundException.class );
+    manager.findTag( "daTag" );
+  }
+
+  @Test
+  public void testRemove() {
+    manager.getTag( "new" );
+    assertNotNull( manager.findTag( "new" ) );
+    manager.removeTag( "new" );
+
+    expectedException.expect( NotFoundException.class );
+    manager.findTag( "daTag" );
+  }
+
+  @Test
+  public void testToStrign() {
+    manager.addTag( "asdf", "a" );
+    manager.addTag( "asdf", "b" );
+
+    assertEquals( "a, b", manager.getTagsAsString( "asdf" ) );
+  }
+
+  @Test
+  public void testFindReverse() {
+    assertEquals( "asdf", manager.getObject( manager.getTaggable( "asdf" ) ) );
   }
 
   @Test

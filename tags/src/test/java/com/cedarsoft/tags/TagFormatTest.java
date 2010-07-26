@@ -48,5 +48,9 @@ public class TagFormatTest {
     Tag tag2 = new Tag( "C" );
 
     assertEquals( "A, B, C", TagFormat.getSimple().formatTags( Arrays.asList( tag0, tag1, tag2 ) ) );
+
+    TagSet set = new TagSet( this );
+    set.addAll( Arrays.asList( tag0, tag1, tag2 ) );
+    assertEquals( "A, B, C", TagFormat.getSimple().format( set ) );
   }
 }
