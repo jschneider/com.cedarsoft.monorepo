@@ -32,8 +32,10 @@
 package com.cedarsoft.registry;
 
 import com.cedarsoft.StillContainedException;
+import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 import static org.junit.Assert.*;
@@ -69,5 +71,35 @@ public class DefaultRegistryTest {
     } catch ( StillContainedException ignore ) {
     }
     assertEquals( 1, registry.getStoredObjects().size() );
+  }
+
+  @Test
+  public void testConstructor() {
+    DefaultRegistry<String> registry = new DefaultRegistry<String>( Arrays.asList( "a", "b" ) );
+    assertEquals( 2, registry.getStoredObjects().size() );
+  }
+
+  @Test
+  public void testFind() {
+    DefaultRegistry<String> registry = new DefaultRegistry<String>( Arrays.asList( "a", "b" ) );
+
+    assertEquals( "b", registry.findStoredObject( new Registry.Matcher<java.lang.String>() {
+      @Override
+      public boolean matches( @NotNull String object ) {
+        return object.equals( "b" );
+      }
+    } ) );
+  }
+
+  @Test
+  public void testFind2() {
+    DefaultRegistry<String> registry = new DefaultRegistry<String>( Arrays.asList( "a", "b" ) );
+
+    assertEquals( "b", registry.findStoredObjects( new Registry.Matcher<java.lang.String>() {
+      @Override
+      public boolean matches( @NotNull String object ) {
+        return object.equals( "b" );
+      }
+    } ).iterator().next() );
   }
 }

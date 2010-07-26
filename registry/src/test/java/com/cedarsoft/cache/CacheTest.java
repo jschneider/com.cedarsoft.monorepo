@@ -32,16 +32,22 @@
 package com.cedarsoft.cache;
 
 import org.jetbrains.annotations.NotNull;
-
 import org.junit.*;
+import org.junit.rules.*;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import static org.junit.Assert.*;
 
 /**
  *
  */
 public class CacheTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
   private HashedCache<Integer, String> cache;
   private int counter;
 
@@ -60,24 +66,49 @@ public class CacheTest {
 
   @Test
   public void testRemove() {
-    Assert.assertEquals( "3", cache.get( 3 ) );
-    Assert.assertEquals( 1, cache.entrySet().size() );
+    assertEquals( "3", cache.get( 3 ) );
+    assertEquals( 1, cache.entrySet().size() );
     Iterator<Map.Entry<Integer, String>> iterator = cache.entrySet().iterator();
     Assert.assertTrue( iterator.hasNext() );
     iterator.next();
     iterator.remove();
-    Assert.assertEquals( 0, cache.entrySet().size() );
+    assertEquals( 0, cache.entrySet().size() );
+  }
+
+  @Test
+  public void testPut() {
+    expectedException.expect( UnsupportedOperationException.class );
+    cache.put( 4, "as" );
+  }
+
+  @Test
+  public void testPutAll() {
+    expectedException.expect( UnsupportedOperationException.class );
+    cache.putAll( new HashMap<Integer, String>() );
+  }
+
+  @Test
+  public void testClear() {
+    expectedException.expect( UnsupportedOperationException.class );
+    cache.clear();
   }
 
   @Test
   public void testIt() {
-    Assert.assertEquals( 0, counter );
-    Assert.assertEquals( 0, cache.size() );
-    Assert.assertEquals( "5", cache.get( 5 ) );
-    Assert.assertEquals( "4", cache.get( 4 ) );
-    Assert.assertEquals( "4", cache.get( 4 ) );
+    assertEquals( 0, counter );
+    assertEquals( 0, cache.size() );
+    assertTrue( cache.isEmpty() );
+    assertEquals( "5", cache.get( 5 ) );
+    assertEquals( "4", cache.get( 4 ) );
+    assertEquals( "4", cache.get( 4 ) );
 
-    Assert.assertEquals( 2, cache.size() );
-    Assert.assertEquals( 2, counter );
+    assertFalse( cache.isEmpty() );
+    assertTrue( cache.containsKey( 4 ) );
+    assertTrue( cache.containsValue( "4" ) );
+
+    assertEquals( 2, cache.size() );
+    assertEquals( 2, counter );
+
+    assertEquals( 2, cache.values().size() );
   }
 }
