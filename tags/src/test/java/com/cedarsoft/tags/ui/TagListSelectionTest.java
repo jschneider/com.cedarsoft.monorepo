@@ -84,10 +84,12 @@ public class TagListSelectionTest {
   @Test
   public void testBasic() {
     assertTrue( selectionModel.isSelectionEmpty() );
+    assertEquals( 0, selectionModel.getTags().size() );
     selectionModel.setSelectionInterval( 1, 1 );
     assertFalse( selectionModel.isSelectionEmpty() );
     assertNotNull( list.getSelectedValue() );
     assertEquals( "b", ( ( Tag ) list.getSelectedValue() ).getDescription() );
+    assertEquals( 1, selectionModel.getTags().size() );
   }
 
   @Test

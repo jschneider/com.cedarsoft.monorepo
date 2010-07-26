@@ -104,38 +104,21 @@ public class TagsComponent extends JPanel {
     JComponent editorComponent = ( JComponent ) tagCombo.getEditor().getEditorComponent();
 
     editorComponent.getInputMap().put( KeyStroke.getKeyStroke( "ENTER" ), ACTION_KEY_ADD_TAG );
-    editorComponent.getActionMap().put( ACTION_KEY_ADD_TAG, new AbstractAction() {
-      @Override
-      public void actionPerformed( ActionEvent e ) {
-        tagCombo.setSelectedItem( tagCombo.getEditor().getItem() );
-        if ( tagCombo.isPopupVisible() ) {
-          tagCombo.setPopupVisible( false );
-        } else {
-          addSelectedTag();
-          tagCombo.getEditor().selectAll();
-        }
-      }
-    } );
+    editorComponent.getActionMap().put( ACTION_KEY_ADD_TAG, new AddSelectedAction() );
 
     //The list with the selected tags
     tagList.setCellRenderer( new TagListCellRenderer() );
 
     tagList.getInputMap().put( KeyStroke.getKeyStroke( "DELETE" ), ACTION_REMOVE_SELECTED_TAG );
-    tagList.getActionMap().put( ACTION_REMOVE_SELECTED_TAG, new AbstractAction() {
-      @Override
-      public void actionPerformed( ActionEvent e ) {
-        removeSelectedTag();
-      }
-    } );
+    tagList.getActionMap().put( ACTION_REMOVE_SELECTED_TAG, new RemoveSelectedAction() );
 
     //The Button Actions
-    ActionListener addListener = new ActionListener() {
+    addButton.addActionListener( new ActionListener() {
       @Override
       public void actionPerformed( ActionEvent e ) {
         addSelectedTag();
       }
-    };
-    addButton.addActionListener( addListener );
+    } );
 
     removeButton.addActionListener( new ActionListener() {
       @Override
@@ -305,11 +288,11 @@ public class TagsComponent extends JPanel {
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   JComboBox tagCombo;
-  private JButton addButton;
+  JButton addButton;
   private JScrollPane scrollPane1;
   private JList tagList;
   private JPanel panel1;
-  private JButton removeButton;
+  protected JButton removeButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   /**
@@ -332,4 +315,23 @@ public class TagsComponent extends JPanel {
     return removeButton;
   }
 
+  private class AddSelectedAction extends AbstractAction {
+    @Override
+    public void actionPerformed( ActionEvent e ) {
+      tagCombo.setSelectedItem( tagCombo.getEditor().getItem() );
+      if ( tagCombo.isPopupVisible() ) {
+        tagCombo.setPopupVisible( false );
+      } else {
+        addSelectedTag();
+        tagCombo.getEditor().selectAll();
+      }
+    }
+  }
+
+  private class RemoveSelectedAction extends AbstractAction {
+    @Override
+    public void actionPerformed( ActionEvent e ) {
+      removeSelectedTag();
+    }
+  }
 }

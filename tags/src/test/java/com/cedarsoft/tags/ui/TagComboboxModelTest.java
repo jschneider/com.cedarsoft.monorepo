@@ -70,6 +70,27 @@ public class TagComboboxModelTest {
   }
 
   @Test
+  public void testNull() {
+    comboBoxModel = new TagComboBoxModel( tagManager );
+    assertTrue( comboBoxModel.isNullable() );
+  }
+
+  @Test
+  public void testSet() {
+    assertEquals( 0, comboBoxModel.getSize() );
+    tagManager.getTag( "a" );
+    assertEquals( 1, comboBoxModel.getSize() );
+
+    assertNull( comboBoxModel.getSelectedItem() );
+    comboBoxModel.setSelectedItem( null );
+    assertNull( comboBoxModel.getSelectedItem() );
+
+    comboBoxModel.setSelectedItem( "aNewTag" );
+    assertNotNull( comboBoxModel.getSelectedItem() );
+    assertEquals( 2, comboBoxModel.getSize() );
+  }
+
+  @Test
   public void testTaggable() {
     assertEquals( 0, comboBoxModel.getSize() );
     tagManager.getTag( "a" );

@@ -31,6 +31,7 @@
 
 package com.cedarsoft.tags.ui;
 
+import com.cedarsoft.SwingHelper;
 import com.cedarsoft.tags.DefaultTagManager;
 import com.cedarsoft.tags.TagChangeListener;
 import com.cedarsoft.tags.TagManager;
@@ -74,6 +75,36 @@ public class TagsComponentTest {
   @After
   public void tearDown() throws Exception {
 
+  }
+
+  @Test
+  public void testActions() {
+    assertEquals( 0, tagsComponent.getTagList().getModel().getSize() );
+    SwingHelper.invokeAndWait( new Runnable() {
+      @Override
+      public void run() {
+        tagsComponent.getTagCombo().setSelectedIndex( 0 );
+        tagsComponent.addButton.doClick();
+        assertEquals( 1, tagsComponent.getTagList().getModel().getSize() );
+
+        tagsComponent.getTagList().setSelectedIndex( 0 );
+        tagsComponent.removeButton.doClick();
+
+        assertEquals( 0, tagsComponent.getTagList().getModel().getSize() );
+      }
+    } );
+  }
+
+  @Test
+  public void testDefaultModel() {
+    tagsComponent = new TagsComponent();
+    assertEquals( 0, tagsComponent.getTagCombo().getModel().getSize() );
+
+    assertEquals( 0, tagsComponent.getModel().getTagProvider().getTags().size() );
+    tagsComponent.getModel().getTagProvider().getTag( "a" );
+    assertEquals( 1, tagsComponent.getModel().getTagProvider().getTags().size() );
+
+    assertEquals( 1, tagsComponent.getTagCombo().getModel().getSize() );
   }
 
   @Test
