@@ -59,7 +59,7 @@ public class State<T> {
   /**
    * Creates a new state
    *
-   * @param id  the id
+   * @param id the id
    */
   public State( @NotNull @NonNls String id ) {
     this.id = id;
@@ -121,9 +121,4 @@ public class State<T> {
     }
   }
 
-  private class EmptyAction<T> implements Action<T> {
-    @Override
-    public void execute( @NotNull T object, @NotNull TransitionDefinition<T> definition ) {
-    }
-  }
 }
