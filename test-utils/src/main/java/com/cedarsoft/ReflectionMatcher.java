@@ -38,7 +38,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.String;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -50,6 +49,7 @@ import java.util.Set;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type
  */
+@Deprecated
 public class ReflectionMatcher<T> implements IArgumentMatcher {
   /**
    * <p>create</p>

@@ -34,13 +34,12 @@ package com.cedarsoft;
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.IllegalAccessException;
-import java.lang.String;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -57,10 +56,9 @@ public class TestUtils {
    * Cleans up all fields within a given test
    *
    * @param test the test that is cleaned up
-   * @throws IllegalAccessException
-   *          if any.
+   * @throws IllegalAccessException if any.
    */
-  public static void cleanupFields( Object test ) throws IllegalAccessException {
+  public static void cleanupFields( @Nullable Object test ) throws IllegalAccessException {
     if ( test == null ) {
       return;
     }
