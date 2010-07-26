@@ -32,6 +32,7 @@
 package com.cedarsoft;
 
 import org.junit.*;
+import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
@@ -39,6 +40,23 @@ import static org.junit.Assert.*;
  *
  */
 public class VersionTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
+  @Test
+  public void testMatch() {
+    Version.verifyMatch( Version.valueOf( 1, 2, 3 ), Version.valueOf( 1, 2, 3 ) );
+
+    expectedException.expect( VersionMismatchException.class );
+    Version.verifyMatch( Version.valueOf( 1, 2, 3 ), Version.valueOf( 1, 2, 4 ) );
+  }
+
+  @Test
+  public void testToInt() {
+    assertEquals( 10203, new Version( 1, 2, 3 ).toInt() );
+    assertEquals( 123456, new Version( 12, 34, 56 ).toInt() );
+  }
+
   @Test
   public void testEquals() {
     assertEquals( new Version( 1, 2, 3 ), new Version( 1, 2, 3 ) );
