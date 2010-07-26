@@ -68,6 +68,7 @@ public class RendererManager {
    *
    * @param renderer a {@link Map} object.
    */
+  @Deprecated
   public void setRenderer( @NotNull Map<Class<?>, Renderer<?, Object>> renderer ) {
     registry.setElements( renderer );
   }
