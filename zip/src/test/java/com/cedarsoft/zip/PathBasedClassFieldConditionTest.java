@@ -33,28 +33,21 @@ package com.cedarsoft.zip;
 
 import org.junit.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.zip.ZipEntry;
 
 import static org.junit.Assert.*;
 
 /**
- * Platform dependen test!
+ *
  */
-@Deprecated
-public class ZipTest_ {
+public class PathBasedClassFieldConditionTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( "/tmp/asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
-  }
+  public void testIt() {
+    PathBasedClassFieldCondition condition = new PathBasedClassFieldCondition( "da/prefix" );
+    assertFalse( condition.shallExtract( new ZipEntry( "daName" ) ) );
+    assertFalse( condition.shallExtract( new ZipEntry( "da/prefix/a/path/DaClass.java" ) ) );
+    assertFalse( condition.shallExtract( new ZipEntry( "NOT/da/prefix/a/path/DaClass.class" ) ) );
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( "/tmp/asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+    assertTrue( condition.shallExtract( new ZipEntry( "da/prefix/a/path/DaClass.class" ) ) );
   }
 }

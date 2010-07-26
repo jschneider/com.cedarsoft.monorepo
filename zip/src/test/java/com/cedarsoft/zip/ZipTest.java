@@ -31,39 +31,29 @@
 
 package com.cedarsoft.zip;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import com.cedarsoft.TestUtils;
+import org.junit.*;
 
-import java.util.zip.ZipEntry;
+import java.io.File;
+import java.io.IOException;
+
+import static org.junit.Assert.*;
 
 /**
- * Condition for class files that is based on a path prefix.
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class PathBasedClassFielCondition implements ZipExtractor.Condition {
-  @NonNls
-  @NotNull
-  private static final String CLASS_SUFFIX = ".class";
-
-  @NotNull
-  @NonNls
-  private String pathPrefix;
-
-  /**
-   * Creates a new condition
-   *
-   * @param pathPrefix the path prefix that is used
-   */
-  public PathBasedClassFielCondition( @NotNull @NonNls String pathPrefix ) {
-    this.pathPrefix = pathPrefix;
+public class ZipTest {
+  @Test
+  public void testIt() throws IOException {
+    File file = new File( TestUtils.getTmpDir(), "asdf" );
+    assertFalse( file.isDirectory() );
+    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
-    return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );
+  @Test
+  public void testDirectory() throws IOException {
+    File file = new File( TestUtils.getTmpDir(), "asdf_" );
+    file.mkdirs();
+    assertTrue( file.isDirectory() );
+    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
   }
 }
