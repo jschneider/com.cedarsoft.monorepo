@@ -31,57 +31,35 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
-import org.joda.time.DateTimeZone;
+import org.easymock.EasyMock;
 import org.junit.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
- * <p>DateTimeTest class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-@Deprecated
-public abstract class DateTimeTest {
-  @NotNull
-  protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
-
-  private DateTimeZone oldTimeZone;
-
-  /**
-   * <p>setUpDateTimeZone</p>
-   *
-   * @throws Exception if any.
-   */
-  @Before
-  public void setUpDateTimeZone() throws Exception {
-    assert oldTimeZone == null;
-    oldTimeZone = DateTimeZone.getDefault();
-    DateTimeZone.setDefault( zone );
-  }
-
-  /**
-   * <p>tearDownDateTimeZone</p>
-   */
-  @After
-  public void tearDownDateTimeZone() {
-    assert oldTimeZone != null;
-    DateTimeZone.setDefault( oldTimeZone );
-    oldTimeZone = null;
-  }
-
-  public DateTimeZone getOldTimeZone() {
-    return oldTimeZone;
-  }
-
-  @NotNull
-  public DateTimeZone getZone() {
-    return zone;
-  }
-
-  /**
-   * <p>testDummy</p>
-   */
+public class PropertyChangeEventMatcherTest {
   @Test
-  public void testDummy() {
+  public void testIt() throws Exception {
+    final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
+
+    final PropertyChangeListener listener = EasyMock.createMock( PropertyChangeListener.class );
+
+
+    new EasyMockTemplate( listener ) {
+      @Override
+      protected void expectations() throws Exception {
+        listener.propertyChange( PropertyChangeEventMatcher.create( new PropertyChangeEvent( PropertyChangeEventMatcherTest.this, "message", "old", "new" ) ) );
+      }
+
+      @Override
+      protected void codeToTest() throws Exception {
+        pcs.addPropertyChangeListener( listener );
+        pcs.firePropertyChange( "message", "old", "new" );
+      }
+    }.run();
   }
 }

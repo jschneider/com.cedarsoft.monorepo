@@ -29,59 +29,31 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.matchers;
 
-import org.jetbrains.annotations.NotNull;
-import org.joda.time.DateTimeZone;
+import org.hamcrest.StringDescription;
 import org.junit.*;
 
+import java.io.File;
+
+import static org.junit.Assert.*;
+
 /**
- * <p>DateTimeTest class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-@Deprecated
-public abstract class DateTimeTest {
-  @NotNull
-  protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
-
-  private DateTimeZone oldTimeZone;
-
-  /**
-   * <p>setUpDateTimeZone</p>
-   *
-   * @throws Exception if any.
-   */
-  @Before
-  public void setUpDateTimeZone() throws Exception {
-    assert oldTimeZone == null;
-    oldTimeZone = DateTimeZone.getDefault();
-    DateTimeZone.setDefault( zone );
-  }
-
-  /**
-   * <p>tearDownDateTimeZone</p>
-   */
-  @After
-  public void tearDownDateTimeZone() {
-    assert oldTimeZone != null;
-    DateTimeZone.setDefault( oldTimeZone );
-    oldTimeZone = null;
-  }
-
-  public DateTimeZone getOldTimeZone() {
-    return oldTimeZone;
-  }
-
-  @NotNull
-  public DateTimeZone getZone() {
-    return zone;
-  }
-
-  /**
-   * <p>testDummy</p>
-   */
+public class FileNameMatcherTest {
   @Test
-  public void testDummy() {
+  public void testIt() {
+    FileNameMatcher matcher = FileNameMatcher.fileName( "asdf" );
+
+    StringDescription description = new StringDescription();
+    matcher.describeTo( description );
+    assertEquals( "File with name <asdf>", description.toString() );
+
+    assertTrue( matcher.matches( new File( "asdf" ) ) );
+    assertFalse( matcher.matches( new File( "asdf2" ) ) );
+    assertTrue( matcher.matches( new File( "/asdf" ) ) );
+    assertTrue( matcher.matches( new File( "asdf/asdf" ) ) );
+    assertFalse( matcher.matches( new File( "asdf/asdf2" ) ) );
   }
 }
