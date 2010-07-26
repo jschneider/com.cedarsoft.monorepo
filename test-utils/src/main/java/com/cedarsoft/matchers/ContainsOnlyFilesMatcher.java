@@ -77,8 +77,6 @@ public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
 
 
     for ( File file : files ) {
-      System.out.println( "file = " + file );
-
       if ( !expected.contains( file ) ) {
         return false;
       }
