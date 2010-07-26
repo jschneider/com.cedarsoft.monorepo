@@ -32,7 +32,7 @@
 package com.cedarsoft;
 
 import org.junit.*;
-import org.xml.sax.SAXException;
+import org.junit.rules.*;
 
 import java.io.IOException;
 
@@ -42,16 +42,17 @@ import static org.junit.Assert.*;
  *
  */
 public class AssertUtilsTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
   @Test
-  public void testXml() throws IOException, SAXException {
-    try {
-      AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
-      fail( "Where is the Exception" );
-    } catch ( AssertionError e ) {
-      assertEquals( e.getMessage().trim(), ( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-        "<xml2 />> but was:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-        "<xml />>" ).trim() );
-    }
+  public void testXml() throws Exception {
+    expectedException.expect( AssertionError.class );
+    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<xml2 />> but was: <<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<xml />>" );
+
+    AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
   }
 
   @Test
@@ -65,5 +66,41 @@ public class AssertUtilsTest {
       fail( "Where is the Exception" );
     } catch ( AssertionError ignore ) {
     }
+  }
+
+  @Test
+  public void testXml2() throws Exception {
+    expectedException.expect( AssertionError.class );
+    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<xml2 />> but was: <<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<xml />>" );
+
+    AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.1.xml" ), "<xml/>" );
+  }
+
+  @Test
+  public void testXml2WhiteSpaces() throws Exception {
+    AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.2.xml" ), "<xml/>", true );
+  }
+
+  @Test
+  public void testFormat() throws Exception {
+    expectedException.expect( AssertionError.class );
+    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+      "<xml2 />> but was: <This is no xml!>" );
+
+    AssertUtils.assertXMLEquals( "<xml2/>", "This is no xml!" );
+  }
+
+  @Test
+  public void testAssertOne() {
+    AssertUtils.assertOne( "a", "a", "b", "c" );
+    AssertUtils.assertOne( "a", "b", "c", "a" );
+
+    expectedException.expect( AssertionError.class );
+    expectedException.expectMessage(
+      "Expected: (is \"b\" or is \"c\")\n" +
+        "     got: \"a\"" );
+    AssertUtils.assertOne( "a", "b", "c" );
   }
 }

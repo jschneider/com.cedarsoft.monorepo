@@ -36,6 +36,7 @@ import junit.framework.AssertionFailedError;
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.hamcrest.Matcher;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +46,10 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 /**
  * <p>AssertUtils class.</p>
@@ -120,8 +124,10 @@ public class AssertUtils {
       setIgnoreWhitespace( ignoreWhiteSpace );
       XMLAssert.assertXMLEqual( err, test, control );
       setIgnoreWhitespace( false );
-    } catch ( AssertionFailedError e ) {
-      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was:<" + format( test ).trim() + '>' );
+    } catch ( SAXException e ) {
+      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was: <" + format( test ).trim() + ">" );
+    } catch ( AssertionFailedError ignore ) {
+      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was: <" + format( test ).trim() + '>' );
     }
   }
 
@@ -146,26 +152,15 @@ public class AssertUtils {
    * @param current              a {@link Object} object.
    * @param expectedAlternatives a {@link Object} object.
    */
-  public static void assertOne( @Nullable Object current, @NotNull Object... expectedAlternatives ) {
-    List<AssertionError> failed = new ArrayList<AssertionError>();
+  public static <T> void assertOne( @Nullable T current, @NotNull T... expectedAlternatives ) {
+    Collection<Matcher<? extends T>> matchers = new ArrayList<Matcher<? extends T>>();
 
-    for ( Object expectedAlternative : expectedAlternatives ) {
-      try {
-        Assert.assertEquals( current, expectedAlternative );
-        return; //Successfully
-      } catch ( AssertionError e ) {
-        failed.add( e );
-      }
+    for ( T expectedAlternative : expectedAlternatives ) {
+      matchers.add( is( expectedAlternative ) );
     }
 
-    StringBuilder message = new StringBuilder();
-
-    for ( AssertionError assertionError : failed ) {
-      message.append( assertionError.getMessage() );
-      message.append( "\n" );
-    }
-
-    throw new AssertionError( message.toString() );
+    Matcher<T> objectMatcher = anyOf( matchers );
+    assertThat( current, objectMatcher );
   }
 
   /**
