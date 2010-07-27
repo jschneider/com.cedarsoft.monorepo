@@ -147,4 +147,21 @@ public class PropertiesPath {
 
     return builder.toString();
   }
+
+  @Override
+  public boolean equals( Object o ) {
+    if ( this == o ) return true;
+    if ( !( o instanceof PropertiesPath ) ) return false;
+
+    PropertiesPath that = ( PropertiesPath ) o;
+
+    if ( !elements.equals( that.elements ) ) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return elements.hashCode();
+  }
 }

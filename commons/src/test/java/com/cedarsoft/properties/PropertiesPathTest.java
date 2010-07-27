@@ -45,4 +45,10 @@ public class PropertiesPathTest {
     assertEquals( "baseValues.profitParticipationType", new PropertiesPath( "baseValues", "profitParticipationType" ).getPresentation() );
   }
 
+  @Test
+  public void testEquals() {
+    assertEquals( new PropertiesPath( "a", "b" ), new PropertiesPath( "a", "b" ) );
+    assertEquals( new PropertiesPath( "a", "b", "c" ), new PropertiesPath( "a", "b", "c" ) );
+  }
+
 }
