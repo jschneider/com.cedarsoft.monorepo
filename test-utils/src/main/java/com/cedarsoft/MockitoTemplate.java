@@ -34,8 +34,6 @@ package com.cedarsoft;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.lang.Exception;
-
 /**
  * Simple template for mockito.
  *
