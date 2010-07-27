@@ -25,17 +25,14 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <configuration>
-          <check>
-            <haltOnFailure>false</haltOnFailure>
-          </check>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  <properties>
+    <coverage.haltOnFailure>true</coverage.haltOnFailure>
+    <coverage.lineRate>0</coverage.lineRate>
+    <coverage.branchRate>0</coverage.branchRate>
+    <coverage.packageLineRate>10</coverage.packageLineRate>
+    <coverage.packageBranchRate>10</coverage.packageBranchRate>
+    <coverage.totalLineRate>10</coverage.totalLineRate>
+    <coverage.totalBranchRate>10</coverage.totalBranchRate>
+  </properties>
+  
 </project>
