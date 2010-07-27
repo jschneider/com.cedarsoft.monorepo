@@ -34,9 +34,6 @@ package com.cedarsoft.exec;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.lang.InterruptedException;
-import java.lang.Process;
-import java.lang.ProcessBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +76,7 @@ public class Executer {
    *
    * @return a int.
    *
-   * @throws IOException            if any.
+   * @throws IOException          if any.
    * @throws InterruptedException if any.
    */
   public int execute() throws IOException, InterruptedException {
@@ -105,9 +102,12 @@ public class Executer {
 
   /**
    * <p>executeAsync</p>
+   *
+   * @return the thread
    */
-  public void executeAsync() {
-    new Thread( new Runnable() {
+  @NotNull
+  public Thread executeAsync() {
+    Thread thread = new Thread( new Runnable() {
       @Override
       public void run() {
         try {
@@ -116,7 +116,9 @@ public class Executer {
           throw new RuntimeException( e );
         }
       }
-    } ).start();
+    } );
+    thread.start();
+    return thread;
   }
 
   private void notifyExecutionFinished( int answer ) {

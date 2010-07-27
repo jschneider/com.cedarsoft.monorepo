@@ -53,7 +53,7 @@ public class JavaCommandBuilderTest {
 
   @Test
   public void testClasspath() {
-    String[] classPathElements = new String[]{"a", "b", "c"};
+    String[] classPathElements = new String[]{"a", "b", "", "c"};
     starter.setClassPathElements( classPathElements );
     assertEquals( 3, starter.getClassPathElements().size() );
 
@@ -65,7 +65,7 @@ public class JavaCommandBuilderTest {
 
   @Test
   public void testVmProperties() {
-    starter.setVmProperties( "key=value", "key2=value2" );
+    starter.setVmProperties( "key=value", "", "key2=value2" );
 
     assertEquals( 2, starter.getVmProperties().size() );
     assertEquals( "key=value", starter.getVmProperties().get( 0 ) );
@@ -77,7 +77,7 @@ public class JavaCommandBuilderTest {
 
   @Test
   public void testArguments() {
-    starter.setArguments( "a", "b", "c" );
+    starter.setArguments( "a", "b", "", "c" );
     assertEquals( 3, starter.getArguments().size() );
   }
 
