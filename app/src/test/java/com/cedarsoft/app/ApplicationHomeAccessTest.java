@@ -31,55 +31,40 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NotNull;
+import org.junit.*;
+import org.junit.rules.*;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
-import java.awt.Container;
-import java.lang.InterruptedException;
-import java.lang.reflect.InvocationTargetException;
+import java.io.IOException;
+
+import static org.junit.Assert.*;
 
 /**
- * <p>FrameUtils class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class FrameUtils {
+public class ApplicationHomeAccessTest {
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
 
-  /**
-   * Shows a frame with the given content pane
-   *
-   * @param contentPane the content pane
-   * @return the JFrame that is shown
-   *
-   * @throws InvocationTargetException
-   *                                        if any.
-   * @throws InterruptedException if any.
-   */
-  @NotNull
-  public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {
-    final JFrame frame = new JFrame();
-    frame.pack();
-    frame.setLocationRelativeTo( null );
-    frame.setDefaultCloseOperation( WindowConstants.DISPOSE_ON_CLOSE );
+  @Test
+  public void testMock() {
+    MockApplicationHomeAccess applicationHomeAccess = new MockApplicationHomeAccess();
+    assertEquals( MockApplicationHomeAccess.APP_NAME, applicationHomeAccess.getApplicationName() );
+    assertTrue( applicationHomeAccess.getApplicationHome().isDirectory() );
+  }
 
-    frame.setContentPane( contentPane );
+  @Test
+  public void testIt() throws IOException {
+    DefaultApplicationHomeAccess applicationHomeAccess = new DefaultApplicationHomeAccess( tmp.newFolder( "baseDir" ), "appName" );
+    assertEquals( "appName", applicationHomeAccess.getApplicationName() );
+    assertTrue( applicationHomeAccess.getApplicationHome().exists() );
+  }
 
-    Runnable startFrame = new Runnable() {
-      @Override
-      public void run() {
-        frame.pack();
-        frame.setSize( 800, 600 );
-        frame.setVisible( true );
-      }
-    };
-    if ( SwingUtilities.isEventDispatchThread() ) {
-      startFrame.run();
-    } else {
-      SwingUtilities.invokeAndWait( startFrame );
-    }
-    return frame;
+  @Test
+  public void testName() {
+    assertEquals( "app-sandbox", DefaultApplicationHomeAccess.getApplicationDirName( "app", true ) );
+    assertEquals( "app", DefaultApplicationHomeAccess.getApplicationDirName( "app", false ) );
+    assertEquals( "app2-sandbox", DefaultApplicationHomeAccess.getApplicationDirName( "app2", true ) );
+    assertEquals( "app2", DefaultApplicationHomeAccess.getApplicationDirName( "app2", false ) );
   }
 
 }

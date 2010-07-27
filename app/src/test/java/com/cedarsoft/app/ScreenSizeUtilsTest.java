@@ -31,33 +31,22 @@
 
 package com.cedarsoft.app;
 
-import com.cedarsoft.Version;
 import org.junit.*;
+
+import java.awt.Dimension;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class ApplicationTest {
+public class ScreenSizeUtilsTest {
   @Test
   public void testIt() {
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( "Gimp", app.getName() );
-    assertEquals( app.getVersion(), new Version( 3, 1, 6 ) );
-  }
+    Dimension screenSize = ScreenSizeUtils.getScreenSize();
+    assertNotNull( screenSize );
 
-  @Test
-  public void testEquals() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ), new Application( "Gimp", new Version( 3, 1, 6 ) ) );
-    assertEquals( "Gimp (3.1.6)", new Application( "Gimp", new Version( 3, 1, 6 ) ).toString() );
-  }
-
-  @Test
-  public void testEquals2() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode(), new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode() );
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( app, app );
-    assertFalse( app.equals( null ) );
+    assertTrue( screenSize.width > 0 );
+    assertTrue( screenSize.height > 0 );
   }
 }

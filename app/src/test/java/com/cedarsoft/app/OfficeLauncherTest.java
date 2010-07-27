@@ -31,7 +31,6 @@
 
 package com.cedarsoft.app;
 
-import com.cedarsoft.Version;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -39,25 +38,10 @@ import static org.junit.Assert.*;
 /**
  *
  */
-public class ApplicationTest {
+public class OfficeLauncherTest {
   @Test
   public void testIt() {
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( "Gimp", app.getName() );
-    assertEquals( app.getVersion(), new Version( 3, 1, 6 ) );
-  }
-
-  @Test
-  public void testEquals() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ), new Application( "Gimp", new Version( 3, 1, 6 ) ) );
-    assertEquals( "Gimp (3.1.6)", new Application( "Gimp", new Version( 3, 1, 6 ) ).toString() );
-  }
-
-  @Test
-  public void testEquals2() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode(), new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode() );
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( app, app );
-    assertFalse( app.equals( null ) );
+    assertEquals( 4, OfficeLauncher.getSpreadsheetBins().size() );
+    assertEquals( 3, OfficeLauncher.getWriterBins().size() );
   }
 }
