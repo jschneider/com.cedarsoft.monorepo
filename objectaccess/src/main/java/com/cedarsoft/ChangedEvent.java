@@ -109,4 +109,13 @@ public class ChangedEvent<T> {
   public String getRootProperty() {
     return propertiesPath.getRootProperty();
   }
+
+  @Override
+  public String toString() {
+    return "ChangedEvent{" +
+      "changedObject=" + changedObject +
+      ", propertiesPath=" + propertiesPath +
+      ", context=" + context +
+      '}';
+  }
 }

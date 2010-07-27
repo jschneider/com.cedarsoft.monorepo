@@ -37,8 +37,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.Object;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -160,7 +158,7 @@ public class ChangeListenerSupport<T> {
       @Override
       public void propertyChange( PropertyChangeEvent evt ) {
         actual[actual.length - 1] = evt.getPropertyName();
-        changed( actual );
+        changed( evt, actual );
       }
     };
   }
