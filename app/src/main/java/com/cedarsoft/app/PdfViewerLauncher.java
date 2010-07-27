@@ -44,13 +44,16 @@ import javax.swing.JOptionPane;
 public class PdfViewerLauncher {
   private static final String ERR_MSG = "Error attempting to launch pdf viewer";
 
+  private PdfViewerLauncher() {
+  }
+
   /**
    * Opens a browser
    *
    * @param file the url that is opened within the browser
    */
   public static void openFile( @NotNull @NonNls String file ) {
-    String osName = System.getProperty( "os.name" );
+    String osName = getOsName();
     try {
       if ( osName.startsWith( "Mac OS" ) ) {
         throw new UnsupportedOperationException( "Not implemented for Mac OS yet" );
@@ -77,5 +80,10 @@ public class PdfViewerLauncher {
     } catch ( Exception e ) {
       JOptionPane.showMessageDialog( null, ERR_MSG + ":\n" + e.getLocalizedMessage() );
     }
+  }
+
+  @NotNull @NonNls
+  protected static String getOsName() {
+    return System.getProperty( "os.name" );
   }
 }
