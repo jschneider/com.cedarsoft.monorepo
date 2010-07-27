@@ -69,6 +69,14 @@
   <properties>
     <maven.skin.version>1.1.8</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
+    
+    <coverage.haltOnFailure>true</coverage.haltOnFailure>
+    <coverage.lineRate>1</coverage.lineRate>
+    <coverage.branchRate>1</coverage.branchRate>
+    <coverage.packageLineRate>50</coverage.packageLineRate>
+    <coverage.packageBranchRate>50</coverage.packageBranchRate>
+    <coverage.totalLineRate>50</coverage.totalLineRate>
+    <coverage.totalBranchRate>50</coverage.totalBranchRate>
   </properties>
 
   <dependencyManagement>
@@ -399,14 +407,13 @@
         <artifactId>cobertura-maven-plugin</artifactId>
         <configuration>
           <check>
-            <haltOnFailure>true</haltOnFailure>
-            <branchRate>50</branchRate>
-            <lineRate>50</lineRate>
-            <totalBranchRate>50</totalBranchRate>
-            <totalLineRate>50</totalLineRate>
-            <packageLineRate>50</packageLineRate>
-            <packageBranchRate>50</packageBranchRate>
-
+            <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
+            <lineRate>${coverage.lineRate}</lineRate>
+            <branchRate>${coverage.branchRate}</branchRate>
+            <packageLineRate>${coverage.packageLineRate}</packageLineRate>
+            <packageBranchRate>${coverage.packageBranchRate}</packageBranchRate>
+            <totalLineRate>${coverage.totalLineRate}</totalLineRate>
+            <totalBranchRate>${coverage.totalBranchRate}</totalBranchRate>
             <regexes>
               <regex>
                 <pattern>.*Exception</pattern>
