@@ -103,7 +103,7 @@ public class CodeGenerator<T extends DecisionCallback> {
     return decisionCallback;
   }
 
-  public void addMethodDecorator( @NotNull Decorator decorator ) {
+  public void addDecorator( @NotNull Decorator decorator ) {
     this.decorators.add( decorator );
   }
 
