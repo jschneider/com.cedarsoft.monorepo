@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,17 +59,17 @@ public class GeneratorCliSupport {
   @NotNull
   private final AbstractGenerator generator;
   @NotNull
-  private final PrintStream logOut;
+  private final PrintWriter logOut;
 
   @NotNull
   @NonNls
   private final String commandName;
 
   public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName ) {
-    this( generator, commandName, System.out );
+    this( generator, commandName, new PrintWriter( System.out ) );
   }
 
-  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName, @NotNull @NonNls PrintStream logOut ) {
+  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName, @NotNull @NonNls PrintWriter logOut ) {
     this.generator = generator;
     this.logOut = logOut;
     this.commandName = commandName;
@@ -82,7 +82,7 @@ public class GeneratorCliSupport {
 
   protected void printHelp( @NotNull Options options ) {
     HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp( commandName + " -d <serializer dest dir> -t <test dest dir> path-to-class", options );
+    formatter.printHelp( logOut, HelpFormatter.DEFAULT_WIDTH, commandName + " -d <serializer dest dir> -t <test dest dir> path-to-class", null, options, 0, 0, null );
   }
 
   @NotNull
