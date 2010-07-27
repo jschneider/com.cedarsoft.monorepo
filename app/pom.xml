@@ -52,4 +52,9 @@
     </dependency>
   </dependencies>
 
+  <properties>
+    <coverage.haltOnFailure>true</coverage.haltOnFailure>
+    <coverage.lineRate>0</coverage.lineRate>
+    <coverage.branchRate>0</coverage.branchRate>
+  </properties>
 </project>
