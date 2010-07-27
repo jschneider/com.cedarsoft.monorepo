@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.NotFoundException;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import org.jetbrains.annotations.NonNls;
@@ -58,18 +59,43 @@ public class ClassRefSupport {
       throw new IllegalArgumentException( "Cannot create ref for <" + qualifiedName + ">" );
     }
 
-    JClass resolved = refs.get( qualifiedName );
-    if ( resolved != null ) {
-      return resolved;
+    try {
+      return resolve( qualifiedName );
+    } catch ( NotFoundException ignore ) {
     }
 
+    return createRef( qualifiedName );
+  }
+
+  @NotNull
+  private JClass createRef( @NotNull @NonNls String qualifiedName ) {
     JClass newRef = model.ref( qualifiedName );
-    refs.put( qualifiedName, newRef );
+    storeRef( qualifiedName, newRef );
     return newRef;
+  }
+
+  private void storeRef( @NotNull @NonNls String qualifiedName, @NotNull JClass newRef ) {
+    refs.put( qualifiedName, newRef );
+  }
+
+  @NotNull
+  private JClass resolve( @NotNull @NonNls String qualifiedName ) throws NotFoundException {
+    JClass ref = refs.get( qualifiedName );
+    if ( ref == null ) {
+      throw new NotFoundException();
+    }
+    return ref;
   }
 
   @NotNull
   public JClass ref( @NotNull Class<?> type ) {
-    return model.ref( type );
+    try {
+      return resolve( type.getName() );
+    } catch ( NotFoundException ignore ) {
+    }
+
+    JClass newRef = model.ref( type );
+    storeRef( type.getName(), newRef );
+    return newRef;
   }
 }
