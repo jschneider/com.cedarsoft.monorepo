@@ -33,9 +33,12 @@ package com.cedarsoft.codegen;
 
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
+import org.junit.rules.*;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 
 import static org.junit.Assert.*;
 
@@ -43,22 +46,59 @@ import static org.junit.Assert.*;
  *
  */
 public class GeneratorCliSupportTest {
-  @Test
-  public void testIt() throws Exception {
-    StringWriter out = new StringWriter();
-    GeneratorCliSupport support = new GeneratorCliSupport( new AbstractGenerator() {
+  private StringWriter out;
+  private GeneratorCliSupport support;
+
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+
+  @Before
+  public void setUp() throws Exception {
+    out = new StringWriter();
+    support = new GeneratorCliSupport( new AbstractGenerator() {
       @NotNull
       @Override
       protected String getRunnerClassName() {
-        throw new UnsupportedOperationException();
+        return "com.cedarsoft.codegen.GeneratorCliSupportTest$MyRunner";
       }
     }, "daCommand", new PrintWriter( out ) );
+  }
 
+  @Test
+  public void testIt() throws Exception {
     support.run( new String[0] );
     assertEquals( "Missing required options: d, t\n" +
       "usage: daCommand -d <serializer dest dir> -t <test dest dir> path-to-class\n" +
       "-d,--destination <arg>     the output directory for the created classes\n" +
       "-h,--help                  display this use message\n" +
       "-t,--test-destination <arg>the output directory for the created tests", out.toString().trim() );
+  }
+
+  @Test
+  public void testHelp() throws Exception {
+    support.run( new String[]{"-h", "-d", "asdf", "-t", "asfff"} );
+    assertEquals(
+      "usage: daCommand -d <serializer dest dir> -t <test dest dir> path-to-class\n" +
+        "-d,--destination <arg>     the output directory for the created classes\n" +
+        "-h,--help                  display this use message\n" +
+        "-t,--test-destination <arg>the output directory for the created tests", out.toString().trim() );
+  }
+
+  @Test
+  public void testDefault() throws Exception {
+    URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/Window.java" );
+    assertNotNull( resource );
+    File javaFile = new File( resource.toURI() );
+    assertTrue( javaFile.exists() );
+
+    support.run( new String[]{"-d", tmp.newFolder( "dest" ).getAbsolutePath(), "-t", tmp.newFolder( "test-dest" ).getAbsolutePath(), javaFile.getAbsolutePath()} );
+    assertEquals( "called...", out.toString().trim() );
+  }
+
+  public static class MyRunner implements AbstractGenerator.Runner {
+    @Override
+    public void generate( @NotNull GeneratorConfiguration configuration ) throws Exception {
+      configuration.getLogOut().write( "called..." );
+    }
   }
 }
