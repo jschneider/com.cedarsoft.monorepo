@@ -35,38 +35,62 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.lang.Object;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * <p>NonTransientChangeListenerSupport class.</p>
+ * <p>TransientChangeListenerSupport class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class NonTransientChangeListenerSupport<T> {
+public class TransientChangeListenerSupport<T> {
   @NotNull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
   @NotNull
   protected final T observedObject;
 
-  @NotNull
-  private final List<ChangeListener<T>> transientListeners = new ArrayList<ChangeListener<T>>();
-
   /**
-   * <p>Constructor for NonTransientChangeListenerSupport.</p>
+   * <p>Constructor for ChangeListenerSupport.</p>
    *
    * @param observedObject a T object.
    */
-  public NonTransientChangeListenerSupport( @NotNull T observedObject ) {
+  public TransientChangeListenerSupport( @NotNull T observedObject ) {
     this.observedObject = observedObject;
   }
+
+  /**
+   * <p>Getter for the field <code>transientListeners</code>.</p>
+   *
+   * @return a {@link List} object.
+   */
+  @NotNull
+  protected List<ChangeListener<T>> getTransientListeners() {
+    lock.readLock().lock();
+    try {
+      if ( transientListeners != null ) {
+        //noinspection ReturnOfCollectionOrArrayField
+        return transientListeners;
+      }
+    } finally {
+      lock.readLock().unlock();
+    }
+
+    lock.writeLock().lock();
+    try {
+      if ( transientListeners == null ) {
+        transientListeners = new ArrayList<ChangeListener<T>>();
+      }
+      //noinspection ReturnOfCollectionOrArrayField
+      return transientListeners;
+    } finally {
+      lock.writeLock().unlock();
+    }
+  }
+
+  private transient List<ChangeListener<T>> transientListeners;
 
   /**
    * <p>addChangeListener</p>
@@ -76,7 +100,7 @@ public class NonTransientChangeListenerSupport<T> {
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      transientListeners.add( listener );
+      getTransientListeners().add( listener );
     } finally {
       lock.writeLock().unlock();
     }
@@ -90,7 +114,7 @@ public class NonTransientChangeListenerSupport<T> {
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      transientListeners.remove( listener );
+      getTransientListeners().remove( listener );
     } finally {
       lock.writeLock().unlock();
     }
@@ -102,36 +126,17 @@ public class NonTransientChangeListenerSupport<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public void changed( @Nullable Object context, @NotNull String... propertiesPath ) {
+  public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
-    lock.readLock().lock();
+    lock.writeLock().lock();
     try {
-      for ( ChangeListener<T> listener : transientListeners ) {
+      List<ChangeListener<T>> listeners = getTransientListeners();
+      for ( ChangeListener<T> listener : listeners ) {
         listener.entryChanged( event );
       }
     } finally {
-      lock.readLock().unlock();
+      lock.writeLock().unlock();
     }
-  }
-
-  /**
-   * <p>createPropertyListenerDelegate</p>
-   *
-   * @param propertiesPath a {@link String} object.
-   * @return a {@link PropertyChangeListener} object.
-   */
-  @NotNull
-  public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
-    final String[] actual = new String[propertiesPath.length + 1];
-    System.arraycopy( propertiesPath, 0, actual, 0, propertiesPath.length );
-
-    return new PropertyChangeListener() {
-      @Override
-      public void propertyChange( PropertyChangeEvent evt ) {
-        actual[actual.length - 1] = evt.getPropertyName();
-        changed( actual );
-      }
-    };
   }
 }

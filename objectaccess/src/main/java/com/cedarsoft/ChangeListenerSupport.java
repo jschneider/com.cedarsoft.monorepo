@@ -55,45 +55,17 @@ public class ChangeListenerSupport<T> {
   @NotNull
   protected final T observedObject;
 
+  @NotNull
+  private final List<ChangeListener<T>> listeners = new ArrayList<ChangeListener<T>>();
+
   /**
-   * <p>Constructor for ChangeListenerSupport.</p>
+   * <p>Constructor for TransientChangeListenerSupport.</p>
    *
    * @param observedObject a T object.
    */
   public ChangeListenerSupport( @NotNull T observedObject ) {
     this.observedObject = observedObject;
   }
-
-  /**
-   * <p>Getter for the field <code>transientListeners</code>.</p>
-   *
-   * @return a {@link List} object.
-   */
-  @NotNull
-  protected List<ChangeListener<T>> getTransientListeners() {
-    lock.readLock().lock();
-    try {
-      if ( transientListeners != null ) {
-        //noinspection ReturnOfCollectionOrArrayField
-        return transientListeners;
-      }
-    } finally {
-      lock.readLock().unlock();
-    }
-
-    lock.writeLock().lock();
-    try {
-      if ( transientListeners == null ) {
-        transientListeners = new ArrayList<ChangeListener<T>>();
-      }
-      //noinspection ReturnOfCollectionOrArrayField
-      return transientListeners;
-    } finally {
-      lock.writeLock().unlock();
-    }
-  }
-
-  private transient List<ChangeListener<T>> transientListeners;
 
   /**
    * <p>addChangeListener</p>
@@ -103,7 +75,7 @@ public class ChangeListenerSupport<T> {
   public void addChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      getTransientListeners().add( listener );
+      listeners.add( listener );
     } finally {
       lock.writeLock().unlock();
     }
@@ -117,7 +89,7 @@ public class ChangeListenerSupport<T> {
   public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
-      getTransientListeners().remove( listener );
+      listeners.remove( listener );
     } finally {
       lock.writeLock().unlock();
     }
@@ -129,17 +101,16 @@ public class ChangeListenerSupport<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
+  public void changed( @Nullable Object context, @NotNull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
-    lock.writeLock().lock();
+    lock.readLock().lock();
     try {
-      List<ChangeListener<T>> listeners = getTransientListeners();
       for ( ChangeListener<T> listener : listeners ) {
         listener.entryChanged( event );
       }
     } finally {
-      lock.writeLock().unlock();
+      lock.readLock().unlock();
     }
   }
 

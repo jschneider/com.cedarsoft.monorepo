@@ -49,7 +49,7 @@ public class ClusteredChangeListenerSupport<T> {
   @NotNull
   private final ChangeListenerSupport<T> transientSupport;
   @NotNull
-  private final NonTransientChangeListenerSupport<T> nonTransientSupport;
+  private final TransientChangeListenerSupport<T> nonTransientSupport;
 
   @Nullable
   private ContextProvider contextProvider;
@@ -72,7 +72,7 @@ public class ClusteredChangeListenerSupport<T> {
   public ClusteredChangeListenerSupport( @NotNull T observerdObject, @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
     transientSupport = new ChangeListenerSupport<T>( observerdObject );
-    nonTransientSupport = new NonTransientChangeListenerSupport<T>( observerdObject );
+    nonTransientSupport = new TransientChangeListenerSupport<T>( observerdObject );
   }
 
   /**
@@ -162,7 +162,7 @@ public class ClusteredChangeListenerSupport<T> {
       @Override
       public void propertyChange( PropertyChangeEvent evt ) {
         actual[actual.length - 1] = evt.getPropertyName();
-        changed( actual );
+        changed( evt, actual );
       }
     };
   }
