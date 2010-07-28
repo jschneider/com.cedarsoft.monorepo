@@ -32,29 +32,31 @@
 package com.cedarsoft.codegen;
 
 import org.junit.*;
-import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
+public class GeneratorConfigurationTest {
   @Test
-  public void testIt() {
-    assertEquals( "string", NamingSupport.createXmlElementName( "String" ) );
-    assertEquals( "acamelcase", NamingSupport.createXmlElementName( "ACamelCase" ) );
+  public void testModes() {
+    assertTrue( GeneratorConfiguration.CreationMode.ALL.isCreate() );
+    assertTrue( GeneratorConfiguration.CreationMode.ALL.isCreateTests() );
+
+    assertTrue( GeneratorConfiguration.CreationMode.NO_TESTS.isCreate() );
+    assertFalse( GeneratorConfiguration.CreationMode.NO_TESTS.isCreateTests() );
+
+    assertFalse( GeneratorConfiguration.CreationMode.TESTS_ONLY.isCreate() );
+    assertTrue( GeneratorConfiguration.CreationMode.TESTS_ONLY.isCreateTests() );
   }
 
   @Test
-  public void testVarName() {
-    assertEquals( "simpleClassName", NamingSupport.createVarName( "SimpleClassName" ) );
-    assertEquals( "simpleClassName2", NamingSupport.createVarName( "SimpleClassName2" ) );
-
-    expectedException.expect( IllegalArgumentException.class );
-    NamingSupport.createVarName( "" );
+  public void testValueOf() {
+    assertEquals( GeneratorConfiguration.CreationMode.ALL, GeneratorConfiguration.CreationMode.get( true, true ) );
+    assertEquals( GeneratorConfiguration.CreationMode.TESTS_ONLY, GeneratorConfiguration.CreationMode.get( false, true ) );
+    assertEquals( GeneratorConfiguration.CreationMode.NO_TESTS, GeneratorConfiguration.CreationMode.get( true, false ) );
   }
+
+
 }

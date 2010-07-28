@@ -31,8 +31,10 @@
 
 package com.cedarsoft.codegen.parser;
 
+import com.cedarsoft.codegen.mock.AnnotationProcessorEnvironmentMock;
 import com.sun.mirror.declaration.ClassDeclaration;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
 import java.net.URL;
@@ -47,6 +49,9 @@ public class ParserTest {
   private File javaFile0;
   private File javaFile1;
   private File javaFile2;
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
   @Before
   public void setUp() throws Exception {
@@ -83,6 +88,8 @@ public class ParserTest {
     assertNotNull( classDeclaration );
     assertThat( classDeclaration.getSimpleName(), is( "FieldTypesInit" ) );
     assertThat( classDeclaration.getQualifiedName(), is( "com.cedarsoft.codegen.model.test.FieldTypesInit" ) );
+
+    assertSame( classDeclaration, parsed.getClassDeclaration() );
   }
 
   @Test
@@ -91,5 +98,30 @@ public class ParserTest {
     assertNotNull( parsed );
 
     assertThat( parsed.getClassDeclarations().size(), is( 3 ) );
+
+    expectedException.expect( IllegalStateException.class );
+    parsed.getClassDeclaration();
+  }
+
+  @Test
+  public void testFindShortes() {
+    Result parsed = Parser.parse( javaFile0, javaFile1, javaFile2 );
+    assertNotNull( parsed );
+
+    assertEquals( "com.cedarsoft.codegen.model.test.Door", parsed.findClassDeclarationWithShortestFQName().getQualifiedName() );
+  }
+
+  @Test
+  public void testInvalid() {
+    Result parsed = Parser.parse( javaFile0 );
+    expectedException.expect( IllegalArgumentException.class );
+    parsed.getClassDeclaration( "does.not.Exist" );
+  }
+
+  @Test
+  public void testEmpty() {
+    Result result = new Result( new AnnotationProcessorEnvironmentMock() );
+    expectedException.expect( IllegalStateException.class );
+    result.getClassDeclaration();
   }
 }

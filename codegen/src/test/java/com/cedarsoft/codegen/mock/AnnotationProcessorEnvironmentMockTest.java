@@ -29,32 +29,42 @@
  * have any questions.
  */
 
-package com.cedarsoft.codegen;
+package com.cedarsoft.codegen.mock;
 
 import org.junit.*;
-import org.junit.rules.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class NamingSupportTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
+public class AnnotationProcessorEnvironmentMockTest {
   @Test
-  public void testIt() {
-    assertEquals( "string", NamingSupport.createXmlElementName( "String" ) );
-    assertEquals( "acamelcase", NamingSupport.createXmlElementName( "ACamelCase" ) );
-  }
+  public void testStupid() throws Exception {
+    for ( Method method : AnnotationProcessorEnvironmentMock.class.getDeclaredMethods() ) {
+      if ( !Modifier.isPublic( method.getModifiers() ) ) {
+        continue;
+      }
 
-  @Test
-  public void testVarName() {
-    assertEquals( "simpleClassName", NamingSupport.createVarName( "SimpleClassName" ) );
-    assertEquals( "simpleClassName2", NamingSupport.createVarName( "SimpleClassName2" ) );
+      try {
+        Object[] params = new Object[method.getParameterTypes().length];
+        for ( int i = 0; i < params.length; i++ ) {
+          params[i] = null;
+        }
 
-    expectedException.expect( IllegalArgumentException.class );
-    NamingSupport.createVarName( "" );
+        method.invoke( new AnnotationProcessorEnvironmentMock(), params );
+        fail( "Where is the Exception for method " + method );
+      } catch ( InvocationTargetException e ) {
+        if ( !( e.getCause() instanceof UnsupportedOperationException ) ) {
+          fail( "Wrong exception for method " + method + " " + e.getCause() );
+        }
+      } catch ( IllegalArgumentException e ) {
+        System.out.println( "---> " + method );
+      }
+    }
   }
 }
