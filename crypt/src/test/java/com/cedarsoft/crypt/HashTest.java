@@ -31,10 +31,14 @@
 
 package com.cedarsoft.crypt;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -55,6 +59,12 @@ public class HashTest {
   }
 
   @Test
+  public void testString() throws Exception {
+    assertEquals( "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b", HashCalculator.calculate( Algorithm.SHA256, "asdf" ).getValueAsHex() );
+    assertEquals( "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b", HashCalculator.calculate( Algorithm.SHA256.getMessageDigest(), "asdf" ).getValueAsHex() );
+  }
+
+  @Test
   public void testSerialization() throws IOException, ClassNotFoundException {
     Hash hash = Hash.fromHex( Algorithm.SHA256, "1234" );
 
@@ -65,6 +75,9 @@ public class HashTest {
     assertEquals( deserialized, hash );
   }
 
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+  
   @Test
   public void testIt() throws NoSuchAlgorithmException, IOException {
     URL paris = getClass().getResource( "/paris.jpg" );
@@ -72,6 +85,13 @@ public class HashTest {
 
     assertEquals( "fbd5f9b6c0fd2035c490e46be0bc3ec3", HashCalculator.calculate( Algorithm.MD5, paris ).getValueAsHex() );//value read using md5sum cmd line tool
     assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, paris ).getValueAsHex() );//value read using sha1sum cmd line tool
+
+    assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, IOUtils.toByteArray( paris.openStream() ) ).getValueAsHex() );
+    assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, paris.openStream() ).getValueAsHex() );
+
+    File file = tmp.newFile( "paris.jpg" );
+    FileUtils.writeByteArrayToFile( file, IOUtils.toByteArray( paris.openStream() ) );
+    assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, file ).getValueAsHex() );
   }
 
   @Test
