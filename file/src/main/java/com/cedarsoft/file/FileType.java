@@ -35,7 +35,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -78,7 +77,9 @@ public class FileType {
    */
   public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
     this.dependentType = dependentType;
-    assert !extensions.isEmpty();
+    if ( extensions.isEmpty() ) {
+      throw new IllegalArgumentException( "Need at least one extension" );
+    }
     this.id = id;
     this.extensions.addAll( extensions );
   }
@@ -126,9 +127,6 @@ public class FileType {
   @NotNull
   @NonNls
   public Extension getDefaultExtension() {
-    if ( extensions.isEmpty() ) {
-      throw new IllegalStateException( "Cannot return a default extension for " + this );
-    }
     return extensions.get( 0 );
   }
 
