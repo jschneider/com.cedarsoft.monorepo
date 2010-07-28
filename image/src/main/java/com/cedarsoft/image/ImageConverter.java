@@ -35,8 +35,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 
 /**
  * <p>ImageConverter class.</p>
@@ -52,7 +54,7 @@ public class ImageConverter {
    * @param targetResolution   the target resolution
    * @return the dimension
    */
-  public Dimension calculateNewDimensions( @NotNull BufferedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {
+  public Dimension calculateNewDimensions( @NotNull RenderedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {
     int newWidth = original.getWidth() * targetResolution.getDpi() / originalResolution.getDpi();
     int newHeight = original.getHeight() * targetResolution.getDpi() / originalResolution.getDpi();
     return new Dimension( newWidth, newHeight );
@@ -66,7 +68,7 @@ public class ImageConverter {
    * @return a {@link BufferedImage} object.
    */
   @NotNull
-  public BufferedImage resize( @NotNull BufferedImage original, @NotNull Dimension targetDimension ) {
+  public BufferedImage resize( @NotNull Image original, @NotNull Dimension targetDimension ) {
     BufferedImage resized = new BufferedImage( targetDimension.width, targetDimension.height, BufferedImage.TYPE_INT_RGB );
     Graphics2D graphics2D = resized.createGraphics();
     graphics2D.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR );

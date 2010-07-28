@@ -31,51 +31,25 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import org.junit.*;
+import org.junit.rules.*;
 
-import java.lang.String;
+import static org.junit.Assert.*;
 
 /**
- * The format of the scanned image
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public enum ImageFormat {
-  JPEG( "jpg" );
+public class ResolutionTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
-  @NotNull
-  @NonNls
-  private final String suffix;
+  @Test
+  public void testIt() {
+    assertSame( Resolution.DPI_072, Resolution.find( 72 ) );
+    assertSame( Resolution.DPI_300, Resolution.find( 300 ) );
 
-  ImageFormat( String suffix ) {
-    this.suffix = suffix;
+    expectedException.expect( IllegalArgumentException.class );
+    Resolution.find( 301 );
   }
 
-  /**
-   * <p>Getter for the field <code>suffix</code>.</p>
-   *
-   * @return a {@link String} object.
-   */
-  @NotNull
-  @NonNls
-  public String getSuffix() {
-    return suffix;
-  }
-
-  /**
-   * <p>find</p>
-   *
-   * @param suffix a {@link String} object.
-   * @return a {@link ImageFormat} object.
-   */
-  @NotNull
-  public static ImageFormat find( String suffix ) {
-    for ( ImageFormat format : values() ) {
-      if ( format.getSuffix().equals( suffix ) ) {
-        return format;
-      }
-    }
-    throw new IllegalArgumentException( "No ImageFormat found for suffix " + suffix );
-  }
 }
