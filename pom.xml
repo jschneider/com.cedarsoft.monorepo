@@ -427,6 +427,16 @@
                 <branchRate>0</branchRate>
                 <lineRate>0</lineRate>
               </regex>
+              <regex>
+                <pattern>.*Mock.*</pattern>
+                <branchRate>0</branchRate>
+                <lineRate>0</lineRate>
+              </regex>
+              <regex>
+                <pattern>.*\$.*</pattern>
+                <branchRate>0</branchRate>
+                <lineRate>0</lineRate>
+              </regex>
             </regexes>
 
           </check>
