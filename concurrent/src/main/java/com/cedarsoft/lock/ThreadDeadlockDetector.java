@@ -37,6 +37,8 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -47,19 +49,20 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ThreadDeadlockDetector {
-  @NotNull
-  private final Timer threadCheck = new Timer( "ThreadDeadlockDetector", true );
-  @NotNull
-  private final ThreadMXBean mbean = ManagementFactory.getThreadMXBean();
-  @NotNull
-  private final Collection<Listener> listeners = new CopyOnWriteArraySet<Listener>();
-
   /**
    * The number of milliseconds between checking for deadlocks.
    * It may be expensive to check for deadlocks, and it is not
    * critical to know so quickly.
    */
-  private static final int DEFAULT_DEADLOCK_CHECK_PERIOD = 10000;
+  private static final long DEFAULT_DEADLOCK_CHECK_PERIOD = 10000;
+  @NotNull
+  private final Timer threadCheck = new Timer( "ThreadDeadlockDetector", true );
+  @NotNull
+  private final ThreadMXBean mXBean = ManagementFactory.getThreadMXBean();
+
+  private final long deadlockCheckPeriod;
+  @NotNull
+  private final Collection<Listener> listeners = new CopyOnWriteArraySet<Listener>();
 
   /**
    * <p>Constructor for ThreadDeadlockDetector.</p>
@@ -73,21 +76,30 @@ public class ThreadDeadlockDetector {
    *
    * @param deadlockCheckPeriod a int.
    */
-  public ThreadDeadlockDetector( int deadlockCheckPeriod ) {
+  public ThreadDeadlockDetector( long deadlockCheckPeriod ) {
+    this.deadlockCheckPeriod = deadlockCheckPeriod;
+  }
+
+  public void start() {
     threadCheck.schedule( new TimerTask() {
       @Override
       public void run() {
         checkForDeadlocks();
       }
-    }, 10, deadlockCheckPeriod );
+    }, this.deadlockCheckPeriod );
+  }
+
+  public void stop() {
+    threadCheck.cancel();
   }
 
   private void checkForDeadlocks() {
     long[] ids = findDeadlockedThreads();
     if ( ids != null && ids.length > 0 ) {
-      Thread[] threads = new Thread[ids.length];
-      for ( int i = 0; i < threads.length; i++ ) {
-        threads[i] = findMatchingThread( mbean.getThreadInfo( ids[i] ) );
+      Set<Thread> threads = new HashSet<Thread>();
+
+      for ( long id : ids ) {
+        threads.add( findMatchingThread( mXBean.getThreadInfo( id ) ) );
       }
       fireDeadlockDetected( threads );
     }
@@ -96,22 +108,23 @@ public class ThreadDeadlockDetector {
   private long[] findDeadlockedThreads() {
     // JDK 1.5 only supports the findMonitorDeadlockedThreads()
     // method, so you need to comment out the following three lines
-    if ( mbean.isSynchronizerUsageSupported() ) {
-      return mbean.findDeadlockedThreads();
+    if ( mXBean.isSynchronizerUsageSupported() ) {
+      return mXBean.findDeadlockedThreads();
     } else {
-      return mbean.findMonitorDeadlockedThreads();
+      return mXBean.findMonitorDeadlockedThreads();
     }
   }
 
-  private void fireDeadlockDetected( Thread[] threads ) {
-    for ( Listener l : listeners ) {
-      l.deadlockDetected( threads );
+  private void fireDeadlockDetected( @NotNull Set<? extends Thread> threads ) {
+    for ( Listener listener : listeners ) {
+      listener.deadlockDetected( threads );
     }
   }
 
-  private static Thread findMatchingThread( ThreadInfo inf ) {
+  @NotNull
+  private static Thread findMatchingThread( @NotNull ThreadInfo threadInfo ) {
     for ( Thread thread : Thread.getAllStackTraces().keySet() ) {
-      if ( thread.getId() == inf.getThreadId() ) {
+      if ( thread.getId() == threadInfo.getThreadId() ) {
         return thread;
       }
     }
@@ -121,27 +134,27 @@ public class ThreadDeadlockDetector {
   /**
    * <p>addListener</p>
    *
-   * @param l a {@link ThreadDeadlockDetector.Listener} object.
+   * @param listener a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
-  public boolean addListener( Listener l ) {
-    return listeners.add( l );
+  public boolean addListener( @NotNull Listener listener ) {
+    return listeners.add( listener );
   }
 
   /**
    * <p>removeListener</p>
    *
-   * @param l a {@link ThreadDeadlockDetector.Listener} object.
+   * @param listener a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
-  public boolean removeListener( Listener l ) {
-    return listeners.remove( l );
+  public boolean removeListener( @NotNull Listener listener ) {
+    return listeners.remove( listener );
   }
 
   /**
    * This is called whenever a problem with threads is detected.
    */
   public interface Listener {
-    void deadlockDetected( Thread[] deadlockedThreads );
+    void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads );
   }
 }

@@ -64,13 +64,17 @@ public class MultiReadWriteLock implements ReadWriteLock {
    *
    * @param locks a {@link List} object.
    */
-  public MultiReadWriteLock( @NotNull List<? extends ReadWriteLock> locks ) {
+  public MultiReadWriteLock( @NotNull Iterable<? extends ReadWriteLock> locks ) {
     List<Lock> readLocks = new ArrayList<Lock>();
     List<Lock> writeLocks = new ArrayList<Lock>();
 
     for ( ReadWriteLock lock : locks ) {
       readLocks.add( lock.readLock() );
       writeLocks.add( lock.writeLock() );
+    }
+
+    if ( readLocks.isEmpty() ) {
+      throw new IllegalArgumentException( "Need at least one lock" );
     }
 
     multiReadLock = new MultiLock( readLocks );

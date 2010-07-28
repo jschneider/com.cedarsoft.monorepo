@@ -31,39 +31,59 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import com.cedarsoft.ThreadUtils;
+import org.jetbrains.annotations.Nullable;
+import org.junit.*;
+import org.junit.rules.*;
 
-import java.io.PrintStream;
-import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import static org.junit.Assert.*;
 
 /**
- * <p>DefaultDeadlockListener class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener {
-  private final PrintStream out;
+public class MultiReadWriteLockTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
-  public DefaultDeadlockListener() {
-    this( System.err );
+  @Test
+  public void testEmpty() throws Exception {
+    expectedException.expect( IllegalArgumentException.class );
+    new MultiReadWriteLock();
   }
 
-  public DefaultDeadlockListener( @NotNull PrintStream out ) {
-    this.out = out;
-  }
+  @Test
+  public void testWriteLock() throws Exception {
+    final ReadWriteLock lock = new ReentrantReadWriteLock();
+    MultiReadWriteLock multiLock = new MultiReadWriteLock( lock );
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads ) {
-    out.println( "Deadlocked Threads:" );
-    out.println( "-------------------" );
-    for ( Thread thread : deadlockedThreads ) {
-      out.println( thread );
-      for ( StackTraceElement ste : thread.getStackTrace() ) {
-        out.println( "\t" + ste );
+    multiLock.writeLock().lock();
+
+    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+      @Override
+      @Nullable
+      public Object call() throws Exception {
+        assertFalse( lock.readLock().tryLock() );
+        assertFalse( lock.writeLock().tryLock() );
+        return null;
       }
-    }
+    } );
+
+    multiLock.writeLock().unlock();
+
+    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+      @Override
+      @Nullable
+      public Object call() throws Exception {
+        assertTrue( lock.readLock().tryLock() );
+        lock.readLock().unlock();
+        assertTrue( lock.writeLock().tryLock() );
+        lock.writeLock().unlock();
+        return null;
+      }
+    } );
   }
 }
