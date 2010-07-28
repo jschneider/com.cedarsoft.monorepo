@@ -44,6 +44,8 @@ public class CreativeCommonsLicenseTest {
     assertFalse( CreativeCommonsLicense.CC_BY.isRestrictedToNonCommercial() );
     assertTrue( CreativeCommonsLicense.CC_BY.isDerivedWorkAllowed() );
     assertTrue( CreativeCommonsLicense.CC_BY.isSharedAlikeDerivedWorkAllowed() );
+    assertTrue( CreativeCommonsLicense.CC_BY.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, CreativeCommonsLicense.CC_BY.getModificationsAllowed() );
   }
 
   @Test
@@ -51,6 +53,9 @@ public class CreativeCommonsLicenseTest {
     assertFalse( CreativeCommonsLicense.CC_BY_SA.isRestrictedToNonCommercial() );
     assertFalse( CreativeCommonsLicense.CC_BY_SA.isDerivedWorkAllowed() );
     assertTrue( CreativeCommonsLicense.CC_BY_SA.isSharedAlikeDerivedWorkAllowed() );
+
+    assertTrue( CreativeCommonsLicense.CC_BY_SA.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, CreativeCommonsLicense.CC_BY_SA.getModificationsAllowed() );
   }
 
   @Test
@@ -58,6 +63,9 @@ public class CreativeCommonsLicenseTest {
     assertFalse( CreativeCommonsLicense.CC_BY_ND.isRestrictedToNonCommercial() );
     assertFalse( CreativeCommonsLicense.CC_BY_ND.isDerivedWorkAllowed() );
     assertFalse( CreativeCommonsLicense.CC_BY_ND.isSharedAlikeDerivedWorkAllowed() );
+
+    assertTrue( CreativeCommonsLicense.CC_BY_ND.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, CreativeCommonsLicense.CC_BY_ND.getModificationsAllowed() );
   }
 
   @Test
@@ -65,6 +73,9 @@ public class CreativeCommonsLicenseTest {
     assertTrue( CreativeCommonsLicense.CC_BY_NC.isRestrictedToNonCommercial() );
     assertTrue( CreativeCommonsLicense.CC_BY_NC.isDerivedWorkAllowed() );
     assertTrue( CreativeCommonsLicense.CC_BY_NC.isSharedAlikeDerivedWorkAllowed() );
+
+    assertFalse( CreativeCommonsLicense.CC_BY_NC.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, CreativeCommonsLicense.CC_BY_NC.getModificationsAllowed() );
   }
 
   @Test
@@ -72,6 +83,9 @@ public class CreativeCommonsLicenseTest {
     assertTrue( CreativeCommonsLicense.CC_BY_NC_SA.isRestrictedToNonCommercial() );
     assertFalse( CreativeCommonsLicense.CC_BY_NC_SA.isDerivedWorkAllowed() );
     assertTrue( CreativeCommonsLicense.CC_BY_NC_SA.isSharedAlikeDerivedWorkAllowed() );
+
+    assertFalse( CreativeCommonsLicense.CC_BY_NC_SA.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, CreativeCommonsLicense.CC_BY_NC_SA.getModificationsAllowed() );
   }
 
   @Test
@@ -79,5 +93,8 @@ public class CreativeCommonsLicenseTest {
     assertTrue( CreativeCommonsLicense.CC_BY_NC_ND.isRestrictedToNonCommercial() );
     assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isDerivedWorkAllowed() );
     assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isSharedAlikeDerivedWorkAllowed() );
+    assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isUsableCommercially() );
+
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, CreativeCommonsLicense.CC_BY_NC_ND.getModificationsAllowed() );
   }
 }

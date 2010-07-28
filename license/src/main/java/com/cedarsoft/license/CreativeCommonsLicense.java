@@ -34,8 +34,6 @@ package com.cedarsoft.license;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.String;
-
 /**
  * <p>CreativeCommonsLicense class.</p>
  *
@@ -43,32 +41,32 @@ import java.lang.String;
  */
 public class CreativeCommonsLicense extends License {
   /**
-   * Constant <code>CC_BY</code>
+   * Creative Commons
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY = new CreativeCommonsLicense( "CC-BY", "CC Attribution", false, ModificationsAllowed.YES );
   /**
-   * Constant <code>CC_BY_SA</code>
+   * Share-Alike
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_SA = new CreativeCommonsLicense( "CC-BY-SA", "CC Attribution Share Alike", false, ModificationsAllowed.SHARE_ALIKE );
   /**
-   * Constant <code>CC_BY_ND</code>
+   * No-Derivative-Work
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_ND = new CreativeCommonsLicense( "CC-BY-ND", "CC Attribution No Derivates", false, ModificationsAllowed.NO );
   /**
-   * Constant <code>CC_BY_NC</code>
+   * Non-Commercial
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC = new CreativeCommonsLicense( "CC-BY-NC", "CC Attribution Non-Commercial", true, ModificationsAllowed.YES );
   /**
-   * Constant <code>CC_BY_NC_SA</code>
+   * Non-Commercial, Share-Alike
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC_SA = new CreativeCommonsLicense( "CC-BY-NC-SA", "CC Attribution Non-Commercial Share Alike", true, ModificationsAllowed.SHARE_ALIKE );
   /**
-   * Constant <code>CC_BY_NC_ND</code>
+   * Non-Commercial, No-Derivative-Work
    */
   @NotNull
   public static final CreativeCommonsLicense CC_BY_NC_ND = new CreativeCommonsLicense( "CC-BY-NC-ND", "CC Attribution Non-Commercial No Derivates", true, ModificationsAllowed.NO );
