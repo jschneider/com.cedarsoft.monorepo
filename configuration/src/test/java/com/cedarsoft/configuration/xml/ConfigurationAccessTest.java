@@ -39,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 import org.junit.rules.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -149,5 +151,26 @@ public class ConfigurationAccessTest {
     assertEquals( new Integer( 5 ), configurationAccess.resolve() );
     configuration.setProperty( "key", 2 );
     assertEquals( new Integer( 2 ), configurationAccess.resolve() );
+  }
+
+  @Test
+  public void testDoubleResolver() {
+    ConfigurationAccess<Double> configurationAccess = new ConfigurationAccess<Double>( configuration, Double.class, "key", 5.0 );
+    assertEquals( new Double( 5 ), configurationAccess.resolve() );
+    configuration.setProperty( "key", 2.0 );
+    assertEquals( new Double( 2 ), configurationAccess.resolve() );
+  }
+
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+
+  @Test
+  public void testFileResolver() throws IOException {
+    File file = tmp.newFile( "daFile" );
+
+    ConfigurationAccess<File> configurationAccess = new ConfigurationAccess<File>( configuration, File.class, "key", file );
+    assertEquals( file, configurationAccess.resolve() );
+    configuration.setProperty( "key", file.getAbsolutePath() );
+    assertEquals( file, configurationAccess.resolve() );
   }
 }

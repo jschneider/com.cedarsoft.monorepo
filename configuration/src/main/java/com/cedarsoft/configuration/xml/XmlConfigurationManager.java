@@ -63,13 +63,17 @@ public class XmlConfigurationManager {
       Runtime.getRuntime().addShutdownHook( new Thread( new Runnable() {
         @Override
         public void run() {
-          try {
-            XmlConfigurationManager.this.configuration.save();
-          } catch ( ConfigurationException e ) {
-            throw new RuntimeException( e );
-          }
+          save();
         }
       } ) );
+    }
+  }
+
+  protected void save() {
+    try {
+      this.configuration.save();
+    } catch ( ConfigurationException e ) {
+      throw new RuntimeException( e );
     }
   }
 

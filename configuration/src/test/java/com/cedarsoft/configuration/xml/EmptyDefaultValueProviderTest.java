@@ -31,48 +31,36 @@
 
 package com.cedarsoft.configuration.xml;
 
-import com.cedarsoft.configuration.DefaultValueProvider;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import org.junit.*;
+import org.junit.rules.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.*;
+
 /**
- * <p>EmptyDefaultValueProvider class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public final class EmptyDefaultValueProvider implements DefaultValueProvider {
-  /**
-   * Constant <code>INSTANCE</code>
-   */
-  @NotNull
-  public static final EmptyDefaultValueProvider INSTANCE = new EmptyDefaultValueProvider();
+public class EmptyDefaultValueProviderTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @NotNull
-  public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
-    if ( Map.class.isAssignableFrom( type ) ) {
-      return type.cast( Collections.emptyMap() );
-    }
-    if ( List.class.isAssignableFrom( type ) ) {
-      return type.cast( Collections.emptyList() );
-    }
-    if ( String.class.isAssignableFrom( type ) ) {
-      return type.cast( "" );
-    }
-    if ( Integer.class.isAssignableFrom( type ) ) {
-      return type.cast( 0 );
-    }
-    if ( Long.class.isAssignableFrom( type ) ) {
-      return type.cast( 0L );
-    }
+  @Test
+  public void testIt() {
+    EmptyDefaultValueProvider valueProvider = new EmptyDefaultValueProvider();
+    assertNotNull( valueProvider.getDefaultValue( "", String.class ) );
+    assertNotNull( valueProvider.getDefaultValue( "", List.class ) );
+    assertNotNull( valueProvider.getDefaultValue( "", Map.class ) );
+    assertNotNull( valueProvider.getDefaultValue( "", Integer.class ) );
+    assertNotNull( valueProvider.getDefaultValue( "", Long.class ) );
 
-    throw new IllegalArgumentException( "Cannot create empty default value of type " + type + " for key " + key );
+    expectedException.expect( IllegalArgumentException.class );
+    valueProvider.getDefaultValue( "asdf", MyObject.class );
   }
+
+  private static class MyObject {
+
+  }
+
 }
