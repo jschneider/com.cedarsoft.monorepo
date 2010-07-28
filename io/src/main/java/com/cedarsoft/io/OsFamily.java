@@ -31,42 +31,41 @@
 
 package com.cedarsoft.io;
 
-import com.cedarsoft.TestUtils;
-import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
-
 /**
+ * An enumerated type, which represents an OS family.
  *
+ * @author <a href="mailto:adammurdoch@apache.org">Adam Murdoch</a>
+ * @version $Revision$ $Date$
  */
-public class LinkUtilsTest {
-  @Test
-  public void testLinkTypes() {
-    assertNotNull( LinkType.HARD );
-    assertNotNull( LinkType.SYMBOLIC );
+public final class OsFamily {
+  private final String name;
+  private final OsFamily[] families;
+
+  OsFamily( final String name ) {
+    this.name = name;
+    families = new OsFamily[0];
   }
 
-  @Test
-  public void testCreation() throws IOException {
-    File target = File.createTempFile( "asdf", "linked.to" );
-    target.createNewFile();
+  OsFamily( final String name, final OsFamily[] families ) {
+    this.name = name;
+    this.families = families;
+  }
 
-    assertFalse( LinkUtils.isLink( target ) );
+  /**
+   * Returns the name of this family.
+   *
+   * @return The name of this family.
+   */
+  public String getName() {
+    return name;
+  }
 
-    File dir = TestUtils.createEmptyTmpDir();
-    File link = new File( dir, "link" );
-    assertFalse( link.exists() );
-
-    LinkUtils.createSymbolicLink( target, link );
-    assertTrue( link.exists() );
-    assertTrue( LinkUtils.isLink( link ) );
-
-    assertTrue( target.exists() );
-    LinkUtils.deleteSymbolicLink( link );
-    assertTrue( target.exists() );
-    assertFalse( link.exists() );
+  /**
+   * Returns the OS families that this family belongs to.
+   *
+   * @return an array of OSFamily objects that this family belongs to.
+   */
+  public OsFamily[] getFamilies() {
+    return families;
   }
 }

@@ -27,170 +27,292 @@
  * Please contact cedarsoft GmbH, 72810 Gomaringen, Germany,
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 
 package com.cedarsoft.io;
 
-/*
- * Copyright  2001-2005 The Apache Software Foundation
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- */
-
-
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.lang.String;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
-public class Os {
-  @NotNull
-  @NonNls
+/**
+ * Class to help determining the OS.
+ *
+ * @author <a href="mailto:stefan.bodewig@epost.de">Stefan Bodewig</a>
+ * @author <a href="mailto:umagesh@apache.org">Magesh Umasankar</a>
+ * @author <a href="mailto:peter@apache.org">Peter Donald</a>
+ */
+public final class Os {
+  /**
+   * All Windows based OSes.
+   */
+  public static final OsFamily OS_FAMILY_WINDOWS = new OsFamily( "windows" );
+
+  /**
+   * All DOS based OSes.
+   */
+  public static final OsFamily OS_FAMILY_DOS = new OsFamily( "dos" );
+
+  /**
+   * All Windows NT based OSes.
+   */
+  public static final OsFamily OS_FAMILY_WINNT = new OsFamily( "nt", new OsFamily[]{OS_FAMILY_WINDOWS} );
+
+  /**
+   * All Windows 9x based OSes.
+   */
+  public static final OsFamily OS_FAMILY_WIN9X = new OsFamily( "win9x", new OsFamily[]{OS_FAMILY_WINDOWS, OS_FAMILY_DOS} );
+
+  /**
+   * OS/2.
+   */
+  public static final OsFamily OS_FAMILY_OS2 = new OsFamily( "os/2", new OsFamily[]{OS_FAMILY_DOS} );
+
+  /**
+   * Netware.
+   */
+  public static final OsFamily OS_FAMILY_NETWARE = new OsFamily( "netware" );
+
+  /**
+   * All UNIX based OSes.
+   */
+  public static final OsFamily OS_FAMILY_UNIX = new OsFamily( "unix" );
+
+  /**
+   * All Mac based OSes.
+   */
+  public static final OsFamily OS_FAMILY_MAC = new OsFamily( "mac" );
+
+  /**
+   * OSX.
+   */
+  public static final OsFamily OS_FAMILY_OSX = new OsFamily( "osx", new OsFamily[]{OS_FAMILY_UNIX, OS_FAMILY_MAC} );
+
   private static final String OS_NAME = System.getProperty( "os.name" ).toLowerCase( Locale.US );
-  @NotNull
-  @NonNls
   private static final String OS_ARCH = System.getProperty( "os.arch" ).toLowerCase( Locale.US );
-  @NotNull
-  @NonNls
   private static final String OS_VERSION = System.getProperty( "os.version" ).toLowerCase( Locale.US );
-  @NotNull
-  @NonNls
   private static final String PATH_SEP = System.getProperty( "path.separator" );
+  private static final OsFamily OS_FAMILY;
+  private static final OsFamily[] OS_ALL_FAMILIES;
 
+  private static final OsFamily[] ALL_FAMILIES = {
+    OS_FAMILY_DOS,
+    OS_FAMILY_MAC,
+    OS_FAMILY_NETWARE,
+    OS_FAMILY_OS2,
+    OS_FAMILY_OSX,
+    OS_FAMILY_UNIX,
+    OS_FAMILY_WINDOWS,
+    OS_FAMILY_WINNT,
+    OS_FAMILY_WIN9X
+  };
+
+  static {
+    OS_FAMILY = determineOsFamily();
+    OS_ALL_FAMILIES = determineAllFamilies();
+  }
+
+  /**
+   * Private constructor to block instantiation.
+   */
   private Os() {
   }
 
   /**
-   * <p>getOsName</p>
+   * Determines if the OS on which Ant is executing matches the given OS
+   * version.
    *
-   * @return a {@link String} object.
+   * @param version The version to check.
+   * @return true if the version matches.
    */
-  @NotNull
-  public static String getOsName() {
-    return OS_NAME;
+  public static boolean isVersion( final String version ) {
+    return isOs( ( OsFamily ) null, null, null, version );
   }
 
   /**
-   * <p>getOsArch</p>
+   * Determines if the OS on which Ant is executing matches the given OS
+   * architecture.
    *
-   * @return a {@link String} object.
+   * @param arch The architecture to check.
+   * @return true if the architecture mataches.
    */
-  @NotNull
-  public static String getOsArch() {
-    return OS_ARCH;
+  public static boolean isArch( final String arch ) {
+    return isOs( ( OsFamily ) null, null, arch, null );
   }
 
   /**
-   * <p>getOsVersion</p>
+   * Determines if the OS on which Ant is executing matches the given OS
+   * family.
    *
-   * @return a {@link String} object.
+   * @param family The family to check.
+   * @return true if the family matches.
    */
-  @NotNull
-  public static String getOsVersion() {
-    return OS_VERSION;
+  public static boolean isFamily( final String family ) {
+    return isOs( family, null, null, null );
   }
 
   /**
-   * <p>getPathSep</p>
+   * Determines if the OS on which Ant is executing matches the given OS
+   * family.
    *
-   * @return a {@link String} object.
+   * @param family The family to check.
+   * @return true if the family matches.
    */
-  @NotNull
-  public static String getPathSep() {
-    return PATH_SEP;
+  public static boolean isFamily( final OsFamily family ) {
+    return isOs( family, null, null, null );
   }
 
   /**
-   * Determines if the OS on which Ant is executing matches the
-   * given OS family, name, architecture and version
+   * Determines if the OS on which Ant is executing matches the given OS name.
+   *
+   * @param name Description of Parameter
+   * @return The Name value
+   *
+   * @since 1.7
+   */
+  public static boolean isName( final String name ) {
+    return isOs( ( OsFamily ) null, name, null, null );
+  }
+
+  /**
+   * Determines if the OS on which Ant is executing matches the given OS
+   * family, name, architecture and version.
    *
    * @param family  The OS family
    * @param name    The OS name
    * @param arch    The OS architecture
    * @param version The OS version
-   * @return true if the OS matches
-   *
-   * @since 1.7
+   * @return The Os value
    */
-  public static boolean isOs( @NotNull @NonNls String family, @NotNull @NonNls String name, @NotNull @NonNls String arch, @NotNull @NonNls String version ) {
-    if ( !isFamily( family ) ) {
-      return false;
-    }
-    if ( !isOs( name ) ) {
-      return false;
-    }
-    if ( !isArch( arch ) ) {
-      return false;
-    }
-    if ( !isOsVersion( version ) ) {
-      return false;
-    }
-
-    return true;
-  }
-
-  private static boolean isOsVersion( @NotNull @NonNls String version ) {
-    return version.equals( OS_VERSION );
-  }
-
-  private static boolean isArch( @NotNull @NonNls String arch ) {
-    return arch.equals( OS_ARCH );
-  }
-
-  private static boolean isOs( @NotNull @NonNls String name ) {
-    return name.equals( OS_NAME );
+  public static boolean isOs( final String family, final String name, final String arch, final String version ) {
+    return isOs( getFamily( family ), name, arch, version );
   }
 
   /**
-   * <p>isFamily</p>
+   * Determines if the OS on which Ant is executing matches the given OS
+   * family, name, architecture and version.
    *
-   * @param family a {@link String} object.
-   * @return a boolean.
+   * @param family  The OS family
+   * @param name    The OS name
+   * @param arch    The OS architecture
+   * @param version The OS version
+   * @return The Os value
    */
-  public static boolean isFamily( @NotNull @NonNls String family ) {
-    if ( family.equals( "windows" ) ) {
-      return OS_NAME.contains( "windows" );
-    } else if ( family.equals( "os/2" ) ) {
-      return OS_NAME.contains( "os/2" );
-    } else if ( family.equals( "netware" ) ) {
-      return OS_NAME.contains( "netware" );
-    } else if ( family.equals( "dos" ) ) {
-      return PATH_SEP.equals( ";" ) && !isFamily( "netware" );
-    } else if ( family.equals( "mac" ) ) {
-      return OS_NAME.contains( "mac" );
-    } else if ( family.equals( "tandem" ) ) {
-      return OS_NAME.contains( "nonstop_kernel" );
-    } else if ( family.equals( "unix" ) ) {
-      return PATH_SEP.equals( ":" ) && !isFamily( "openvms" ) && ( !isFamily( "mac" ) || OS_NAME.endsWith( "x" ) );
-    } else if ( family.equals( "win9x" ) ) {
-      return isFamily( "windows" )
-        && ( OS_NAME.contains( "95" )
-        || OS_NAME.contains( "98" )
-        || OS_NAME.contains( "me" )
-        || OS_NAME.contains( "ce" ) );
-    } else if ( family.equals( "z/os" ) ) {
-      return OS_NAME.contains( "z/os" )
-        || OS_NAME.contains( "os/390" );
-    } else if ( family.equals( "os/400" ) ) {
-      return OS_NAME.contains( "os/400" );
-    } else if ( family.equals( "openvms" ) ) {
-      return OS_NAME.contains( "openvms" );
+  public static boolean isOs( final OsFamily family, final String name, final String arch, final String version ) {
+    if ( family != null || name != null || arch != null || version != null ) {
+      final boolean isFamily = familyMatches( family );
+      final boolean isName = nameMatches( name );
+      final boolean isArch = archMatches( arch );
+      final boolean isVersion = versionMatches( version );
+
+      return isFamily && isName && isArch && isVersion;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Locates an OsFamily by name (case-insensitive).
+   *
+   * @param name The family name to lookup.
+   * @return the OS family, or null if not found.
+   */
+  @Nullable
+  public static OsFamily getFamily( @NotNull @NonNls final String name ) {
+    for ( final OsFamily osFamily : ALL_FAMILIES ) {
+      if ( osFamily.getName().equalsIgnoreCase( name ) ) {
+        return osFamily;
+      }
     }
 
-    throw new IllegalStateException( "Don\'t know how to detect os family \"" + family + "\"" );
+    return null;
+  }
+
+  private static boolean versionMatches( @NotNull @NonNls final String version ) {
+    boolean isVersion = true;
+    if ( version != null ) {
+      isVersion = version.equalsIgnoreCase( OS_VERSION );
+    }
+    return isVersion;
+  }
+
+  private static boolean archMatches( @NotNull @NonNls final String arch ) {
+    boolean isArch = true;
+    if ( arch != null ) {
+      isArch = arch.equalsIgnoreCase( OS_ARCH );
+    }
+    return isArch;
+  }
+
+  private static boolean nameMatches( @NotNull @NonNls final String name ) {
+    boolean isName = true;
+    if ( name != null ) {
+      isName = name.equalsIgnoreCase( OS_NAME );
+    }
+    return isName;
+  }
+
+  private static boolean familyMatches( final OsFamily family ) {
+    if ( family == null ) {
+      return false;
+    }
+    for ( final OsFamily osFamily : OS_ALL_FAMILIES ) {
+      if ( family == osFamily ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static OsFamily[] determineAllFamilies() {
+    // Determine all families the current OS belongs to
+    Collection<OsFamily> allFamilies = new HashSet<OsFamily>();
+    if ( OS_FAMILY != null ) {
+      List<OsFamily> queue = new ArrayList<OsFamily>();
+      queue.add( OS_FAMILY );
+      while ( !queue.isEmpty() ) {
+        final OsFamily family = queue.remove( 0 );
+        allFamilies.add( family );
+        final OsFamily[] families = family.getFamilies();
+        for ( OsFamily parent : families ) {
+          queue.add( parent );
+        }
+      }
+    }
+    return allFamilies.toArray( new OsFamily[allFamilies.size()] );
+  }
+
+  private static OsFamily determineOsFamily() {
+    // Determine the most specific OS family
+    if ( OS_NAME.contains( "windows" ) ) {
+      if ( OS_NAME.contains( "xp" )
+        || OS_NAME.contains( "2000" )
+        || OS_NAME.contains( "nt" ) ) {
+        return OS_FAMILY_WINNT;
+      } else {
+        return OS_FAMILY_WIN9X;
+      }
+    } else if ( OS_NAME.contains( "os/2" ) ) {
+      return OS_FAMILY_OS2;
+    } else if ( OS_NAME.contains( "netware" ) ) {
+      return OS_FAMILY_NETWARE;
+    } else if ( OS_NAME.contains( "mac" ) ) {
+      if ( OS_NAME.endsWith( "x" ) ) {
+        return OS_FAMILY_OSX;
+      } else {
+        return OS_FAMILY_MAC;
+      }
+    } else if ( PATH_SEP.equals( ":" ) ) {
+      return OS_FAMILY_UNIX;
+    } else {
+      return null;
+    }
   }
 }
