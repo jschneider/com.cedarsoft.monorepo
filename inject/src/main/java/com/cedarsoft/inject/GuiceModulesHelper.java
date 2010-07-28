@@ -38,9 +38,8 @@ import com.google.inject.Module;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.AssertionError;
-import java.lang.Class;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -57,13 +56,23 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules  a {@link List} object.
-   * @param testType a {@link Class} object.
+   * @param modules   a {@link List} object.
+   * @param testTypes a {@link Class} object.
    * @return a {@link GuiceModulesHelper.Result} object.
    */
   @NotNull
-  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) {
-    return minimize( modules, Key.get( testType ) );
+  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?>... testTypes ) {
+    return minimize( modules, convertToKeys( testTypes ) );
+  }
+
+  @NotNull
+  public static Key<?>[] convertToKeys( @NotNull Class<?>... types ) {
+    Key<?>[] keys = new Key<?>[types.length];
+
+    for ( int i = 0, testTypesLength = types.length; i < testTypesLength; i++ ) {
+      keys[i] = Key.get( types[i] );
+    }
+    return keys;
   }
 
   /**
@@ -106,7 +115,7 @@ public class GuiceModulesHelper {
     for ( Module current : modules ) {
 
       try {
-        List<Module> copy = new ArrayList<Module>( modules );
+        Collection<Module> copy = new ArrayList<Module>( modules );
         copy.remove( current );
         verifyInjection( copy, keys );
 
@@ -128,6 +137,10 @@ public class GuiceModulesHelper {
   }
 
   private static void verifyInjection( @NotNull Iterable<? extends Module> modules, @NotNull Key<?>... keys ) {
+    if ( keys.length == 0 ) {
+      throw new IllegalArgumentException( "Need at least one key" );
+    }
+
     Injector injector = Guice.createInjector( modules );
 
     for ( Key<?> key : keys ) {
@@ -138,12 +151,12 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules  a {@link List} object.
-   * @param testType a {@link Class} object.
+   * @param modules   a {@link List} object.
+   * @param testTypes the {@link Class} types.
    * @throws AssertionError if any.
    */
-  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?> testType ) throws AssertionError {
-    assertMinimizeNotPossible( modules, Key.get( testType ) );
+  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?>... testTypes ) throws AssertionError {
+    assertMinimizeNotPossible( modules, convertToKeys( testTypes ) );
   }
 
   /**

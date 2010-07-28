@@ -33,7 +33,9 @@ package com.cedarsoft.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.ConfigurationException;
+import com.google.inject.Key;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -65,6 +67,48 @@ public class GuiceModulesHelperTest {
     GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
     assertEquals( 1, result.getRemoved().size() );
     assertEquals( 1, result.getTypes().size() );
+  }
+
+  @Test
+  public void testMinimization3() {
+    GuiceModulesHelper.Result result = new GuiceModulesHelper.Result( Arrays.asList( new Module1(), new Module2() ) );
+    assertSame( result, GuiceModulesHelper.minimize( result, MyObject.class ) );
+    assertEquals( 1, result.getRemoved().size() );
+    assertEquals( 1, result.getTypes().size() );
+  }
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
+  @Test
+  public void testAssertMini() throws Exception {
+    expectedException.expect( AssertionError.class );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
+  }
+
+  @Test
+  public void testAssertMini4() throws Exception {
+    expectedException.expect( AssertionError.class );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module2() ), Object.class );
+  }
+
+  @Test
+  public void testAssertMini2() throws Exception {
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class, Object.class );
+  }
+
+  @Test
+  public void testAssertMini3() throws Exception {
+    //    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class, Object.class );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), Object.class, MyObject.class );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), new Key<MyObject>() {
+    }, new Key<Object>() {
+    } );
+    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), new Key<Object>() {
+    }, new Key<MyObject>() {
+    }, new Key<Object>() {
+    } );
   }
 
   public static class Module1 extends AbstractModule {
