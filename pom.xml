@@ -205,11 +205,6 @@
         <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.cedarsoft.commons.db</groupId>
-        <artifactId>async</artifactId>
-        <version>3.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>core</artifactId>
         <version>3.0.0-SNAPSHOT</version>
