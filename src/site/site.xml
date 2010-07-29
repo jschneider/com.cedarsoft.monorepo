@@ -52,6 +52,48 @@
       <!--<item name="FAQs" href="faqs.html" />-->
     </menu>
 
+    <menu name="Modules">
+      <item name="Version" href="version/index.html"/>
+      <item name="Inject" href="inject/index.html"/>
+      <item name="Codegen" href="codegen/index.html"/>
+
+      <item name="App" href="app/index.html"/>
+      <item name="Cluster" href="cluster/index.html"/>
+      <item name="Cmd" href="cmd/index.html"/>
+      <item name="Collections" href="collections/index.html"/>
+      <item name="Commons" href="commons/index.html"/>
+      <item name="Concurrent" href="concurrent/index.html"/>
+      <item name="Configuration" href="configuration/index.html"/>
+      <item name="Crypt" href="crypt/index.html"/>
+      <item name="Exceptions" href="exceptions/index.html"/>
+      <item name="Execution" href="execution/index.html"/>
+      <item name="File" href="file/index.html"/>
+      <item name="History" href="history/index.html"/>
+      <item name="Id" href="id/index.html"/>
+      <item name="Image" href="image/index.html"/>
+      <item name="IO" href="io/index.html"/>
+      <item name="Rest" href="rest/index.html"/>
+      <item name="License" href="license/index.html"/>
+      <item name="Lookup" href="lookup/index.html"/>
+      <item name="Mail" href="mail/index.html"/>
+      <item name="ObjectAccess" href="objectaccess/index.html"/>
+      <item name="Presenter" href="presenter/index.html"/>
+      <item name="Provider" href="provider/index.html"/>
+      <item name="Renderer" href="renderer/index.html"/>
+      <item name="Registry" href="registry/index.html"/>
+      <item name="Repository" href="repository/index.html"/>
+      <item name="Spring" href="spring/index.html"/>
+      <item name="String Conversion" href="string-conversion/index.html"/>
+      <item name="Struct" href="struct/index.html"/>
+      <item name="Swing" href="swing/index.html"/>
+      <item name="Tags" href="tags/index.html"/>
+      <item name="TestUtils" href="test-utils/index.html"/>
+      <item name="Workflow" href="workflow/index.html"/>
+      <item name="XML Commons" href="xml-commons/index.html"/>
+      <item name="ZIP" href="zip/index.html"/>
+      
+    </menu>
+
     <menu ref="modules" inherit="bottom" />
     <menu ref="parent" inherit="bottom" />
     <menu ref="reports" inherit="bottom" />
