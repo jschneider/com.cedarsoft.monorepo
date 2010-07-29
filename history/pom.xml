@@ -13,6 +13,42 @@
   <name>History</name>
   <packaging>pom</packaging>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.cedarsoft.commons.history</groupId>
+        <artifactId>core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>commons</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>concurrent</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>cluster</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>objectaccess</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>test-utils</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
@@ -32,9 +68,6 @@
       <artifactId>joda-time</artifactId>
     </dependency>
   </dependencies>
-
-  <dependencyManagement>
-  </dependencyManagement>
 
   <modules>
     <module>core</module>

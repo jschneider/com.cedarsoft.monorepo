@@ -13,6 +13,26 @@
   <version>3.0.0-SNAPSHOT</version>
   <name>Struct</name>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>lookup</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>commons</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>test-utils</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
