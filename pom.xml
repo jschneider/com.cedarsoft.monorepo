@@ -67,193 +67,193 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>commons</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>license</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>test-utils</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>exceptions</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>execution</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>registry</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>renderer</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>workflow</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.rest</groupId>
         <artifactId>model</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.rest</groupId>
         <artifactId>server</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>cmd</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>collections</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>id</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>swing</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>provider</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>concurrent</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>cluster</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>codegen</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>objectaccess</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>version</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.spring</groupId>
         <artifactId>configuration-spring</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.spring</groupId>
         <artifactId>spring-extensions</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>configuration</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>crypt</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>xml-commons</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>file</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>app</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>io</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.db</groupId>
         <artifactId>async</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>core</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>ui</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>tags</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>struct</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>lookup</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>presenter</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>repository</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>com.cedarsoft.commons.swing</groupId>
         <artifactId>swing-presenter</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons.swing</groupId>
         <artifactId>actions</artifactId>
-        <version>${project.version}</version>
+        <version>3.0.0-SNAPSHOT</version>
       </dependency>
 
       <!-- Commons -->
@@ -509,7 +509,7 @@
         <artifactId>junit</artifactId>
         <version>4.8.1</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.easymock</groupId>
         <artifactId>easymockclassextension</artifactId>
