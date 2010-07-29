@@ -61,8 +61,8 @@
 
     <breadcrumbs>
       <item name="cedarsoft" href="http://www.cedarsoft.com" />
-      <!--<item href="http://www.cedarsoft.org/" name="cedarsoft Open" />-->
-      <item name="Open" />
+      <item href="http://cedarsoft.org/" name="Open" />
+      <!--item name="Open" /-->
     </breadcrumbs>
 
     <menu name="Overview">
