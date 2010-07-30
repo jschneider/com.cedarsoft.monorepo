@@ -654,6 +654,7 @@
         <configuration>
           <formats>
             <format>xml</format>
+            <format>html</format>
           </formats>
           <check>
             <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
@@ -680,14 +681,20 @@
                 <lineRate>0</lineRate>
               </regex>
             </regexes>
-
           </check>
         </configuration>
         <executions>
-          <execution>
+          <execution>            
             <goals>
               <goal>clean</goal>
               <goal>check</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>package</phase>
+            <goals>
+              <goal>cobertura</goal>
             </goals>
           </execution>
         </executions>
