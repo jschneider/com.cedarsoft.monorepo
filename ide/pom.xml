@@ -28,7 +28,6 @@
     <module>../image</module>
     <module>../inject</module>
     <module>../io</module>
-    <module>../rest</module>
     <module>../license</module>
     <module>../lookup</module>
     <module>../mail</module>
