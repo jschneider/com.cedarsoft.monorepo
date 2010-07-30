@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
-  <artifactId>ide</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <artifactId>housing</artifactId>
+  <version>0.0.0-SNAPSHOT</version>
+  <description>This is a simple container artifact. This artifact is only used for
+    building purposes. It must not be released or used as dependency.
+  </description>
   <packaging>pom</packaging>
-  <name>Commons - IDE</name>
+  <name>Commons - Housing</name>
 
   <modules>
     <module>..</module>
@@ -51,4 +53,13 @@
     <!--<module>ooorg</module>-->
     <!--<module>excel</module>-->
   </modules>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>cedarsoftSnapshotRepository</id>
+      <name>cedarsoft Snapshot Repository</name>
+      <url>http://nexus.cedarsoft.com/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
