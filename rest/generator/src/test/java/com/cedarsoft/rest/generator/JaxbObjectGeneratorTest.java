@@ -39,14 +39,15 @@ import com.cedarsoft.codegen.parser.Parser;
 import com.cedarsoft.codegen.parser.Result;
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
-import org.testng.annotations.*;
+import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
+
 
 /**
  *
@@ -55,8 +56,8 @@ public class JaxbObjectGeneratorTest {
   private DomainObjectDescriptor descriptor;
   private CodeGenerator<JaxbObjectGenerator.MyDecisionCallback> codeGenerator;
 
-  @BeforeMethod
-  protected void setUp() throws Exception {
+  @Before
+  public void setUp() throws Exception {
     Result result = Parser.parse( new File( getClass().getResource( "test/BarModel.java" ).toURI() ) );
     descriptor = new DomainObjectDescriptorFactory( result.getClassDeclaration() ).create();
     codeGenerator = new CodeGenerator<JaxbObjectGenerator.MyDecisionCallback>( new JaxbObjectGenerator.MyDecisionCallback() );
@@ -69,7 +70,7 @@ public class JaxbObjectGeneratorTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
 
-    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.Bar.txt" ) );
+    AssertUtils.assertEquals( getClass().getResource( "JaxbObjectGeneratorTest.Bar.txt" ), out.toString() );
   }
 
   @Test
@@ -84,7 +85,7 @@ public class JaxbObjectGeneratorTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
 
-    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.Foo.txt" ) );
+    AssertUtils.assertEquals( getClass().getResource( "JaxbObjectGeneratorTest.Foo.txt" ), out.toString() );
   }
 
   @Test
@@ -93,7 +94,7 @@ public class JaxbObjectGeneratorTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     codeGenerator.getModel().build( new SingleStreamCodeWriter( out ) );
 
-    AssertUtils.assertEquals( out.toString(), getClass().getResource( "JaxbObjectGeneratorTest.test.txt" ) );
+    AssertUtils.assertEquals( getClass().getResource( "JaxbObjectGeneratorTest.test.txt" ), out.toString() );
   }
 
   @Test
