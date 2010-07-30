@@ -34,6 +34,7 @@ package com.cedarsoft.rest.generator;
 import com.cedarsoft.codegen.AbstractGenerator;
 import com.cedarsoft.codegen.CodeGenerator;
 import com.cedarsoft.codegen.DecisionCallback;
+import com.cedarsoft.codegen.GeneratorCliSupport;
 import com.cedarsoft.codegen.GeneratorConfiguration;
 import com.cedarsoft.codegen.model.DomainObjectDescriptor;
 import com.cedarsoft.codegen.model.DomainObjectDescriptorFactory;
@@ -46,7 +47,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class JaxbObjectGenerator extends AbstractGenerator {
   public static void main( String[] args ) throws Exception {
-    new JaxbObjectGenerator().run( args );
+    GeneratorCliSupport cliSupport = new GeneratorCliSupport( new JaxbObjectGenerator(), "jaxbgen" );
+    cliSupport.run( args );
   }
 
   @NotNull
@@ -58,7 +60,7 @@ public class JaxbObjectGenerator extends AbstractGenerator {
   public static class MyRunner implements Runner {
     @Override
     public void generate( @NotNull GeneratorConfiguration configuration ) throws Exception {
-      Result result = Parser.parse( configuration.getDomainSourceFile() );
+      Result result = Parser.parse( configuration.getDomainSourceFiles() );
 
       CodeGenerator<MyDecisionCallback> codeGenerator = new CodeGenerator<MyDecisionCallback>( new MyDecisionCallback() );
 
