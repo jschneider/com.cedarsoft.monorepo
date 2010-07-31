@@ -249,6 +249,22 @@ public class VersionRange implements Serializable {
   }
 
   /**
+   * Formats the version range.
+   * Returns a single version, if this range only contains one version
+   *
+   * @return the formatted version
+   */
+  @NotNull
+  @NonNls
+  public String format() {
+    if ( max.equals( min ) ) {
+      return "[" + max.toString() + "]";
+    }
+
+    return toString();
+  }
+
+  /**
    * <p>from</p>
    *
    * @param min a {@link Version} object.
@@ -281,8 +297,13 @@ public class VersionRange implements Serializable {
    * @return a {@link VersionRange} object.
    */
   @NotNull
-  public VersionRange single( int major, int minor, int build ) {
-    return new VersionRange( Version.valueOf( major, minor, build ), Version.valueOf( major, minor, build ) );
+  public static VersionRange single( int major, int minor, int build ) {
+    return single( Version.valueOf( major, minor, build ) );
+  }
+
+  @NotNull
+  public static VersionRange single( @NotNull Version version ) {
+    return new VersionRange( version, version );
   }
 
   public static class Factory {

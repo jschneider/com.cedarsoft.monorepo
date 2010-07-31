@@ -33,6 +33,7 @@ package com.cedarsoft;
 
 import org.junit.*;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -49,6 +50,21 @@ public class VersionRangeTest {
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
+  }
+
+  @Test
+  public void testFormat() {
+    assertThat( VersionRange.single( 1, 0, 0 ).format(), is( "[1.0.0]" ) );
+    assertThat( VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 ).format(), is( "[1.0.0]" ) );
+    assertThat( VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ).format(), is( "[1.0.0-2.0.0]" ) );
+  }
+
+  @Test
+  public void testSingle() {
+    assertThat( VersionRange.single( 1, 0, 0 ).getMax(), is( Version.valueOf( 1, 0, 0 ) ) );
+    assertThat( VersionRange.single( 1, 1, 0 ).getMax(), is( Version.valueOf( 1, 1, 0 ) ) );
+    assertThat( VersionRange.single( Version.valueOf( 1, 0, 0 ) ).getMax(), is( Version.valueOf( 1, 0, 0 ) ) );
+    assertThat( VersionRange.single( Version.valueOf( 1, 1, 0 ) ).getMax(), is( Version.valueOf( 1, 1, 0 ) ) );
   }
 
   @Test

@@ -40,7 +40,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class VersionMismatchException extends VersionException {
   @NotNull
-  private final Version expected;
+  private final VersionRange expected;
   @NotNull
   private final Version actual;
 
@@ -51,6 +51,10 @@ public class VersionMismatchException extends VersionException {
    * @param actual   a {@link Version} object.
    */
   public VersionMismatchException( @NotNull Version expected, @NotNull Version actual ) {
+    this( expected, actual, "Version mismatch. " );
+  }
+
+  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual ) {
     this( expected, actual, "Version mismatch. " );
   }
 
@@ -65,6 +69,10 @@ public class VersionMismatchException extends VersionException {
     this( expected, actual, messagePrefix, true );
   }
 
+  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual, @NotNull String messagePrefix ) {
+    this( expected, actual, messagePrefix, true );
+  }
+
   /**
    * Creates a new exception
    *
@@ -74,7 +82,11 @@ public class VersionMismatchException extends VersionException {
    * @param appendVersionInfo whether to append the expected/actual version info to the message
    */
   public VersionMismatchException( @NotNull Version expected, @NotNull Version actual, @NotNull String messagePrefix, boolean appendVersionInfo ) {
-    super( messagePrefix, "Expected <" + expected + "> but was <" + actual + ">", appendVersionInfo );
+    this( VersionRange.single( expected ), actual, messagePrefix, appendVersionInfo );
+  }
+
+  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual, @NotNull String messagePrefix, boolean appendVersionInfo ) {
+    super( messagePrefix, "Expected " + expected.format() + " but was [" + actual + "]", appendVersionInfo );
     this.expected = expected;
     this.actual = actual;
   }
@@ -85,7 +97,7 @@ public class VersionMismatchException extends VersionException {
    * @return a {@link Version} object.
    */
   @NotNull
-  public Version getExpected() {
+  public VersionRange getExpected() {
     return expected;
   }
 
