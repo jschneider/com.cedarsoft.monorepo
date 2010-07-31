@@ -77,21 +77,22 @@ public class TestUtils {
    *
    * @return a {@link File} object.
    */
+  @Deprecated
   @NotNull
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
   }
 
   /**
-   * <p>createTmpFile</p>
-   *
    * @param prefix a {@link String} object.
    * @param suffix a {@link String} object.
    * @param in     a {@link InputStream} object.
    * @return a {@link File} object.
    *
    * @throws IOException if any.
+   * @deprecated Use org.junit.rules.TemporaryFolder instead
    */
+  @Deprecated
   @NotNull
   public static File createTmpFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @NotNull InputStream in ) throws IOException {
     File file = File.createTempFile( prefix, suffix );
@@ -107,10 +108,12 @@ public class TestUtils {
   }
 
   /**
-   * <p>createEmptyTmpDir</p>
-   *
    * @return a {@link File} object.
+   *
+   * @deprecated Use org.junit.rules.TemporaryFolder instead
+   *             <p>createEmptyTmpDir</p>
    */
+  @Deprecated
   @NotNull
   public static File createEmptyTmpDir() {
     File tmp = getTmpDir();
