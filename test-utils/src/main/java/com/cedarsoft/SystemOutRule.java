@@ -98,4 +98,20 @@ public class SystemOutRule implements MethodRule {
   public String getErrAsString() {
     return newErr.toString();
   }
+
+  @NotNull
+  public PrintStream getOldOut() {
+    if ( oldOut == null ) {
+      throw new IllegalStateException( "old out is null. Rule not activated" );
+    }
+    return oldOut;
+  }
+
+  @NotNull
+  public PrintStream getOldErr() {
+    if ( oldErr == null ) {
+      throw new IllegalStateException( "oldErr is null. Rule not activated" );
+    }
+    return oldErr;
+  }
 }
