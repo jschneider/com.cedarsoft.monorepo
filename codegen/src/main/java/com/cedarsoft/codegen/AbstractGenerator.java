@@ -43,7 +43,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
@@ -58,7 +57,7 @@ public abstract class AbstractGenerator {
 
 
   protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, testDestination,  logOut  );
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, testDestination, logOut );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
@@ -161,6 +160,11 @@ public abstract class AbstractGenerator {
         Executer executer = new Executer( new ProcessBuilder( "meld", targetFile.getAbsolutePath(), serializerFile.getAbsolutePath() ) );
         executer.execute();
       } else {
+        //Create the directory if necessary
+        File targetDir = targetFile.getParentFile();
+        if ( !targetDir.isDirectory() ) {
+          targetDir.mkdirs();
+        }
         Files.move( serializerFile, targetFile );
       }
     }
