@@ -105,49 +105,53 @@ public class GeneratorCliSupport {
   }
 
   public void run( @NotNull @NonNls String[] args ) throws Exception {
-    Options options = buildOptions();
-    CommandLine commandLine;
     try {
-      commandLine = new GnuParser().parse( options, args );
-    } catch ( MissingOptionException e ) {
-      printError( options, e.getMessage() );
-      return;
-    }
-
-    if ( commandLine.hasOption( HELP_OPTION ) ) {
-      printHelp( options );
-      return;
-    }
-
-    File destination = new File( commandLine.getOptionValue( OPTION_DESTINATION ) );
-    if ( !destination.isDirectory() ) {
-      printError( options, "Destination <" + destination.getAbsolutePath() + "> is not a directory" );
-      return;
-    }
-
-    File testDestination = new File( commandLine.getOptionValue( OPTION_TEST_DESTINATION ) );
-    if ( !testDestination.isDirectory() ) {
-      printError( options, "Test destination <" + testDestination.getAbsolutePath() + "> is not a directory" );
-      return;
-    }
-
-    List<? extends String> domainObjectNames = commandLine.getArgList();
-    if ( domainObjectNames.isEmpty() ) {
-      printError( options, "Missing class" );
-      return;
-    }
-
-    List<File> domainSourceFiles = new ArrayList<File>();
-    for ( String domainObjectName : domainObjectNames ) {
-      File domainSourceFile = new File( domainObjectName );
-      if ( !domainSourceFile.isFile() ) {
-        printError( options, "No source file found at <" + domainSourceFile.getAbsolutePath() + ">" );
+      Options options = buildOptions();
+      CommandLine commandLine;
+      try {
+        commandLine = new GnuParser().parse( options, args );
+      } catch ( MissingOptionException e ) {
+        printError( options, e.getMessage() );
         return;
       }
-      domainSourceFiles.add( domainSourceFile );
+
+      if ( commandLine.hasOption( HELP_OPTION ) ) {
+        printHelp( options );
+        return;
+      }
+
+      File destination = new File( commandLine.getOptionValue( OPTION_DESTINATION ) );
+      if ( !destination.isDirectory() ) {
+        printError( options, "Destination <" + destination.getAbsolutePath() + "> is not a directory" );
+        return;
+      }
+
+      File testDestination = new File( commandLine.getOptionValue( OPTION_TEST_DESTINATION ) );
+      if ( !testDestination.isDirectory() ) {
+        printError( options, "Test destination <" + testDestination.getAbsolutePath() + "> is not a directory" );
+        return;
+      }
+
+      List<? extends String> domainObjectNames = commandLine.getArgList();
+      if ( domainObjectNames.isEmpty() ) {
+        printError( options, "Missing class" );
+        return;
+      }
+
+      List<File> domainSourceFiles = new ArrayList<File>();
+      for ( String domainObjectName : domainObjectNames ) {
+        File domainSourceFile = new File( domainObjectName );
+        if ( !domainSourceFile.isFile() ) {
+          printError( options, "No source file found at <" + domainSourceFile.getAbsolutePath() + ">" );
+          return;
+        }
+        domainSourceFiles.add( domainSourceFile );
+      }
+
+      generator.run( domainSourceFiles, destination, testDestination, logOut );
+    } finally {
+      logOut.flush();
+      logOut.close();
     }
-
-    generator.run( domainSourceFiles, destination, testDestination, logOut );
   }
-
 }
