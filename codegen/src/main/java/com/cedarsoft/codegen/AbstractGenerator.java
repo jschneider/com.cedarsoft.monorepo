@@ -152,10 +152,8 @@ public abstract class AbstractGenerator {
     Collection<? extends File> serializerFiles = FileUtils.listFiles( sourceDir, new String[]{"java"}, true );
     for ( File serializerFile : serializerFiles ) {
       String relativePath = calculateRelativePath( sourceDir, serializerFile );
-      logOut.println( "--> " + relativePath );
 
       File targetFile = new File( destination, relativePath );
-      logOut.println( "exists: " + targetFile.exists() );
       if ( targetFile.exists() ) {
         Executer executer = new Executer( new ProcessBuilder( "meld", targetFile.getAbsolutePath(), serializerFile.getAbsolutePath() ) );
         executer.execute();
