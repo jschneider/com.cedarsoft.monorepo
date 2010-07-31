@@ -70,7 +70,7 @@ public class CodeGeneratorTest {
     assertNotNull( codeGenerator.getNewInstanceFactory() );
     assertNotNull( codeGenerator.getClassRefSupport() );
     assertNotNull( codeGenerator.getDecisionCallback() );
-    assertNotNull( codeGenerator.getMethodDecorators() );
+    assertNotNull( codeGenerator.getDecorators() );
     assertNotNull( codeGenerator.getModel() );
     assertNotNull( codeGenerator.getParseExpressionFactory() );
   }

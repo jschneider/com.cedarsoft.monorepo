@@ -108,7 +108,7 @@ public class CodeGenerator<T extends DecisionCallback> {
   }
 
   @NotNull
-  public List<? extends Decorator> getMethodDecorators() {
+  public List<? extends Decorator> getDecorators() {
     return Collections.unmodifiableList( decorators );
   }
 
