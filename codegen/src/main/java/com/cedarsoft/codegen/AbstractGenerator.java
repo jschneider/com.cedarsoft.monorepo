@@ -56,13 +56,16 @@ public abstract class AbstractGenerator {
   public static final String GENERATE_METHOD_NAME = "generate";
 
 
-  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, testDestination, logOut );
+  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
 
-    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFiles, tmpDestination, tmpTestDestination, logOut );
+    File tmpResourcesDestination = createEmptyTmpDir();
+    File tmpTestResourcesDestination = createEmptyTmpDir();
+
+    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFiles, tmpDestination, tmpResourcesDestination, tmpTestDestination, tmpTestResourcesDestination, logOut );
 
     //Now start the generator
     run( tmpConfiguration );

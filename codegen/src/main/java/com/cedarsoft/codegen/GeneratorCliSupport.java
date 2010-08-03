@@ -54,7 +54,11 @@ public class GeneratorCliSupport {
   @NonNls
   public static final String OPTION_DESTINATION = "d";
   @NonNls
+  public static final String OPTION_RESOURCES_DESTINATION = "r";
+  @NonNls
   public static final String OPTION_TEST_DESTINATION = "t";
+  @NonNls
+  public static final String OPTION_TEST_RESOURCES_DESTINATION = "s";
 
   @NotNull
   private final AbstractGenerator generator;
@@ -93,10 +97,18 @@ public class GeneratorCliSupport {
       option.setRequired( true );
       options.addOption( option );
     }
+    {
+      Option option = new Option( OPTION_RESOURCES_DESTINATION, "resources-destination", true, "the output directory for the created resources" );
+      options.addOption( option );
+    }
 
     {
       Option option = new Option( OPTION_TEST_DESTINATION, "test-destination", true, "the output directory for the created tests" );
       option.setRequired( true );
+      options.addOption( option );
+    }
+    {
+      Option option = new Option( OPTION_TEST_RESOURCES_DESTINATION, "test-resources-destination", true, "the output directory for the created test resources" );
       options.addOption( option );
     }
     options.addOption( HELP_OPTION, "help", false, "display this use message" );
@@ -126,9 +138,33 @@ public class GeneratorCliSupport {
         return;
       }
 
+      String resourceDestValue = commandLine.getOptionValue( OPTION_RESOURCES_DESTINATION );
+      File resourcesDestination;
+      if ( resourceDestValue == null ) {
+        resourcesDestination = destination;
+      }else{
+        resourcesDestination = new File( resourceDestValue );
+      }
+      if ( !resourcesDestination.isDirectory() ) {
+        printError( options, "Resources destination <" + resourcesDestination.getAbsolutePath() + "> is not a directory" );
+        return;
+      }
+
       File testDestination = new File( commandLine.getOptionValue( OPTION_TEST_DESTINATION ) );
       if ( !testDestination.isDirectory() ) {
         printError( options, "Test destination <" + testDestination.getAbsolutePath() + "> is not a directory" );
+        return;
+      }
+
+      String testResourcesDestValue = commandLine.getOptionValue( OPTION_TEST_RESOURCES_DESTINATION );
+      File testResourcesDestination;
+      if ( testResourcesDestValue == null ) {
+        testResourcesDestination = testDestination;
+      }else{
+        testResourcesDestination = new File( testResourcesDestValue );
+      }
+      if ( !testResourcesDestination.isDirectory() ) {
+        printError( options, "Test resources destination <" + testResourcesDestination.getAbsolutePath() + "> is not a directory" );
         return;
       }
 
@@ -148,7 +184,7 @@ public class GeneratorCliSupport {
         domainSourceFiles.add( domainSourceFile );
       }
 
-      generator.run( domainSourceFiles, destination, testDestination, logOut );
+      generator.run( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut );
     } finally {
       logOut.flush();
       logOut.close();

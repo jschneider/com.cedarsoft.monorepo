@@ -69,19 +69,47 @@ public class GeneratorCliSupportTest {
     support.run( new String[0] );
     assertEquals( "Missing required options: d, t\n" +
       "usage: daCommand -d <serializer dest dir> -t <test dest dir> path-to-class\n" +
-      "-d,--destination <arg>     the output directory for the created classes\n" +
-      "-h,--help                  display this use message\n" +
-      "-t,--test-destination <arg>the output directory for the created tests", out.toString().trim() );
+      "-d,--destination <arg>               the output directory for the created\n" +
+      "                                     classes\n" +
+      "-h,--help                            display this use message\n" +
+      "-r,--resources-destination <arg>     the output directory for the created\n" +
+      "                                     resources\n" +
+      "-s,--test-resources-destination <arg>the output directory for the created\n" +
+      "                                     test resources\n" +
+      "-t,--test-destination <arg>          the output directory for the created\n" +
+      "                                     tests", out.toString().trim() );
   }
 
   @Test
   public void testHelp() throws Exception {
     support.run( new String[]{"-h", "-d", "asdf", "-t", "asfff"} );
     assertEquals(
-      "usage: daCommand -d <serializer dest dir> -t <test dest dir> path-to-class\n" +
-        "-d,--destination <arg>     the output directory for the created classes\n" +
-        "-h,--help                  display this use message\n" +
-        "-t,--test-destination <arg>the output directory for the created tests", out.toString().trim() );
+        "usage: daCommand -d <serializer dest dir> -t <test dest dir> path-to-class\n" +
+        "-d,--destination <arg>               the output directory for the created\n" +
+        "                                     classes\n" +
+        "-h,--help                            display this use message\n" +
+        "-r,--resources-destination <arg>     the output directory for the created\n" +
+        "                                     resources\n" +
+        "-s,--test-resources-destination <arg>the output directory for the created\n" +
+        "                                     test resources\n" +
+        "-t,--test-destination <arg>          the output directory for the created\n" +
+        "                                     tests", out.toString().trim() );
+  }
+
+  @Test
+  public void testResDest() throws Exception {
+    URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/Window.java" );
+    assertNotNull( resource );
+    File javaFile = new File( resource.toURI() );
+    assertTrue( javaFile.exists() );
+
+    support.run( new String[]{
+      "-d", tmp.newFolder( "dest" ).getAbsolutePath(),
+      "-r", tmp.newFolder( "dest-resources" ).getAbsolutePath(),
+      "-t", tmp.newFolder( "test-dest" ).getAbsolutePath(),
+      "-s", tmp.newFolder( "test-dest-resources" ).getAbsolutePath(),
+      javaFile.getAbsolutePath()} );
+    assertEquals( "called...", out.toString().trim() );
   }
 
   @Test
@@ -99,6 +127,8 @@ public class GeneratorCliSupportTest {
     @Override
     public void generate( @NotNull GeneratorConfiguration configuration ) throws Exception {
       configuration.getLogOut().write( "called..." );
+      assertNotNull( configuration.getResourcesDestination() );
+      assertNotNull( configuration.getTestResourcesDestination() );
     }
   }
 }

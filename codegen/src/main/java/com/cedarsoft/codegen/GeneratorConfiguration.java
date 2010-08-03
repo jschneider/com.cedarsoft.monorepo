@@ -47,22 +47,28 @@ public class GeneratorConfiguration {
   @NotNull
   private final File destination;
   @NotNull
+  private final File resourcesDestination;
+  @NotNull
   private final File testDestination;
+  @NotNull
+  private final File testResourcesDestination;
   @NotNull
   private final CreationMode creationMode;
   @NotNull
   private final PrintWriter logOut;
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut ) {
-    this( domainSourceFiles, destination, testDestination, logOut, CreationMode.ALL );
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut ) {
+    this( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut, CreationMode.ALL );
   }
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File testDestination, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
     this.domainSourceFiles = ImmutableList.copyOf( domainSourceFiles );
     this.destination = destination;
     this.testDestination = testDestination;
     this.creationMode = creationMode;
     this.logOut = logOut;
+    this.resourcesDestination = resourcesDestination;
+    this.testResourcesDestination = testResourcesDestination;
   }
 
   @NotNull
@@ -84,6 +90,16 @@ public class GeneratorConfiguration {
   @NotNull
   public File getTestDestination() {
     return testDestination;
+  }
+
+  @NotNull
+  public File getResourcesDestination() {
+    return resourcesDestination;
+  }
+
+  @NotNull
+  public File getTestResourcesDestination() {
+    return testResourcesDestination;
   }
 
   @NotNull
