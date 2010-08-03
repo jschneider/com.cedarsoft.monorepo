@@ -31,6 +31,7 @@
 
 package com.cedarsoft;
 
+import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.xml.XmlCommons;
@@ -183,6 +184,17 @@ public class AssertUtils {
   @NotNull
   private static String toString( @NotNull URL expectedResourceUri ) throws IOException {
     return IOUtils.toString( expectedResourceUri.openStream() );
+  }
+
+  public static void assertFileByHashes( @NotNull File fileUnderTest, @NotNull Algorithm algorithm, @NotNull String... expectedHashesAsHex ) throws IOException {
+    Hash[] expectedHashes = new Hash[expectedHashesAsHex.length];
+
+    for ( int i = 0, expectedHashesAsHexLength = expectedHashesAsHex.length; i < expectedHashesAsHexLength; i++ ) {
+      String expectedHashAsHex = expectedHashesAsHex[i];
+      expectedHashes[i] = Hash.fromHex( algorithm, expectedHashAsHex );
+    }
+
+    assertFileByHashes( fileUnderTest, expectedHashes );
   }
 
   public static void assertFileByHashes( @NotNull File fileUnderTest, @NotNull Hash... expectedHashes ) throws IOException {

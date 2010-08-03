@@ -101,6 +101,15 @@ public class AssertUtilsFileCompareTest {
   }
 
   @Test
+  public void testOneOf4() throws IOException {
+    assertFileByHashes( fileA, Algorithm.MD5,
+                        "AA",
+                        "913aa4a45cea16f9714f109e7324159f",
+                        "BB"
+    );
+  }
+
+  @Test
   public void testOneOfFail() throws IOException {
     expectedException.expect( AssertionError.class );
     expectedException.expectMessage(
