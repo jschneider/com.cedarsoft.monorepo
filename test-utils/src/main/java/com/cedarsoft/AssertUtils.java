@@ -39,6 +39,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +51,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -183,6 +185,14 @@ public class AssertUtils {
     return IOUtils.toString( expectedResourceUri.openStream() );
   }
 
+  public static void assertFileByHashes( @NotNull File fileUnderTest, @NotNull Hash... expectedHashes ) throws IOException {
+    if ( expectedHashes.length == 0 ) {
+      throw new IllegalArgumentException( "Need at least on hash" );
+    }
+
+    assertFileByHash( guessPathFromStackTrace(), Arrays.asList( expectedHashes ), fileUnderTest );
+  }
+
   public static void assertFileByHash( @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
     String path = guessPathFromStackTrace();
     assertFileByHash( path, expected, fileUnderTest );
@@ -192,7 +202,8 @@ public class AssertUtils {
     assertFileByHash( createPath( testClass, testMethodName ), expected, fileUnderTest );
   }
 
-  @NotNull @NonNls
+  @NotNull
+  @NonNls
   public static String createPath( @NotNull Class<?> testClass, @NotNull @NonNls String testMethodName ) {
     return testClass.getName() + File.separator + testMethodName;
   }
@@ -207,12 +218,35 @@ public class AssertUtils {
     File copy = createCopyFile( path, fileUnderTest.getName() );
     FileUtils.copyFile( fileUnderTest, copy );
 
-    assertThat( "Stored questionable file under test at <" + copy.getAbsolutePath() + ">", expected, is( actual ) );
+    assertThat( createReason( copy ), expected, is( actual ) );
+  }
+
+  @NotNull
+  @NonNls
+  private static String createReason( @NotNull File copy ) {
+    return "Stored questionable file under test at <" + copy.getAbsolutePath() + ">";
+  }
+
+  public static void assertFileByHash( @NotNull @NonNls String path, @NotNull Iterable<? extends Hash> expectedHashes, @NotNull File fileUnderTest ) throws IOException {
+    Collection<Hash> actualHashes = new ArrayList<Hash>();
+
+    for ( Hash expected : expectedHashes ) {
+      Hash actual = HashCalculator.calculate( expected.getAlgorithm(), fileUnderTest );
+      actualHashes.add( actual );
+      if ( expected.equals( actual ) ) {
+        return; //everything went fine
+      }
+    }
+
+    File copy = createCopyFile( path, fileUnderTest.getName() );
+    FileUtils.copyFile( fileUnderTest, copy );
+
+    Assert.assertThat( createReason( copy ), actualHashes, CoreMatchers.<Iterable<? extends Hash>>is( expectedHashes ) );
   }
 
   @NotNull
   static File createCopyFile( @NotNull @NonNls String path, @NotNull @NonNls String name ) {
-    return new File( FAILED_FILES_DIR, path );
+    return new File( new File( FAILED_FILES_DIR, path ), name );
   }
 
   /**
