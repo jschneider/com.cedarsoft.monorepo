@@ -35,6 +35,7 @@ import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.xml.XmlCommons;
 import junit.framework.AssertionFailedError;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -188,7 +189,12 @@ public class AssertUtils {
   }
 
   public static void assertFileByHash( @NotNull Class<?> testClass, @NotNull String testMethodName, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
-    assertFileByHash( testClass.getName() + File.separator + testMethodName, expected, fileUnderTest );
+    assertFileByHash( createPath( testClass, testMethodName ), expected, fileUnderTest );
+  }
+
+  @NotNull @NonNls
+  public static String createPath( @NotNull Class<?> testClass, @NotNull @NonNls String testMethodName ) {
+    return testClass.getName() + File.separator + testMethodName;
   }
 
   public static void assertFileByHash( @NotNull @NonNls String path, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
@@ -198,8 +204,15 @@ public class AssertUtils {
       return; //everything went fine
     }
 
-    File copy = new File( FAILED_FILES_DIR, path );
+    File copy = createCopyFile( path, fileUnderTest.getName() );
+    FileUtils.copyFile( fileUnderTest, copy );
+
     assertThat( "Stored questionable file under test at <" + copy.getAbsolutePath() + ">", expected, is( actual ) );
+  }
+
+  @NotNull
+  static File createCopyFile( @NotNull @NonNls String path, @NotNull @NonNls String name ) {
+    return new File( FAILED_FILES_DIR, path );
   }
 
   /**

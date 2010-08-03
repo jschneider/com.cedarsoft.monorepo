@@ -144,6 +144,13 @@ public class AssertUtilsTest {
                         "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
                         "     got: <[MD5: aa]>" )
       );
+
+      File copiedFile = AssertUtils.createCopyFile( AssertUtils.createPath( AssertUtilsTest.class, "testFileByHash" ), "daFile" );
+      assertTrue( e.getMessage().contains( copiedFile.getAbsolutePath() ) );
+
+      assertTrue( copiedFile.getParentFile().exists() );
+      assertTrue( copiedFile.exists() );
+      assertEquals( "daContent", FileUtils.readFileToString( copiedFile ) );
     }
 
     try {
