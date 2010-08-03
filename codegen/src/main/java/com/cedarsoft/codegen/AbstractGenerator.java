@@ -37,6 +37,7 @@ import com.google.common.io.Files;
 import com.sun.tools.xjc.api.util.APTClassLoader;
 import com.sun.tools.xjc.api.util.ToolsJarNotFoundException;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.fest.reflect.core.Reflection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -116,7 +117,10 @@ public abstract class AbstractGenerator {
    */
   public void transferFiles( @NotNull GeneratorConfiguration tmpConfiguration, @NotNull GeneratorConfiguration configuration ) throws IOException, InterruptedException {
     transferFiles( tmpConfiguration.getDestination(), configuration.getDestination(), configuration.getLogOut() );
+    transferFiles( tmpConfiguration.getResourcesDestination(), configuration.getResourcesDestination(), configuration.getLogOut() );
+
     transferFiles( tmpConfiguration.getTestDestination(), configuration.getTestDestination(), configuration.getLogOut() );
+    transferFiles( tmpConfiguration.getTestResourcesDestination(), configuration.getTestResourcesDestination(), configuration.getLogOut() );
   }
 
   @NotNull
@@ -152,7 +156,7 @@ public abstract class AbstractGenerator {
   }
 
   protected void transferFiles( @NotNull File sourceDir, @NotNull File destination, @NotNull PrintWriter logOut ) throws IOException, InterruptedException {
-    Collection<? extends File> serializerFiles = FileUtils.listFiles( sourceDir, new String[]{"java"}, true );
+    Collection<? extends File> serializerFiles = FileUtils.listFiles( sourceDir, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE );
     for ( File serializerFile : serializerFiles ) {
       String relativePath = calculateRelativePath( sourceDir, serializerFile );
 
