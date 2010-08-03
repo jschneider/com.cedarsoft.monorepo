@@ -31,6 +31,8 @@
 
 package com.cedarsoft;
 
+import com.cedarsoft.crypt.Hash;
+import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.xml.XmlCommons;
 import junit.framework.AssertionFailedError;
 import org.apache.commons.io.IOUtils;
@@ -43,6 +45,7 @@ import org.jetbrains.annotations.Nullable;
 import org.junit.*;
 import org.xml.sax.SAXException;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -177,5 +180,43 @@ public class AssertUtils {
   @NotNull
   private static String toString( @NotNull URL expectedResourceUri ) throws IOException {
     return IOUtils.toString( expectedResourceUri.openStream() );
+  }
+
+  public static void assertFileByHash( @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+    String path = guessPathFromStackTrace();
+    assertFileByHash( path, expected, fileUnderTest );
+  }
+
+  public static void assertFileByHash( @NotNull Class<?> testClass, @NotNull String testMethodName, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+    assertFileByHash( testClass.getName() + File.separator + testMethodName, expected, fileUnderTest );
+  }
+
+  public static void assertFileByHash( @NotNull @NonNls String path, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+    Hash actual = HashCalculator.calculate( expected.getAlgorithm(), fileUnderTest );
+
+    if ( expected.equals( actual ) ) {
+      return; //everything went fine
+    }
+
+    File copy = new File( FAILED_FILES_DIR, path );
+    assertThat( "Stored questionable file under test at <" + copy.getAbsolutePath() + ">", expected, is( actual ) );
+  }
+
+  /**
+   * The directory where the files have been stored
+   */
+  @NotNull
+  public static final File FAILED_FILES_DIR = new File( TestUtils.getTmpDir(), "junit-failed-files" );
+
+  @NotNull
+  @NonNls
+  public static String guessPathFromStackTrace() {
+    StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+    if ( elements.length < 4 ) {
+      return "unknown";
+    }
+
+    StackTraceElement element = elements[3];
+    return element.getClassName() + File.separator + element.getMethodName();
   }
 }

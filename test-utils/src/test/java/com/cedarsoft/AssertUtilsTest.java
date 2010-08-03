@@ -31,9 +31,14 @@
 
 package com.cedarsoft;
 
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
+import com.cedarsoft.crypt.HashCalculator;
+import org.apache.commons.io.FileUtils;
 import org.junit.*;
 import org.junit.rules.*;
 
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -44,6 +49,10 @@ import static org.junit.Assert.*;
 public class AssertUtilsTest {
   @Rule
   public ExpectedException expectedException = ExpectedException.none();
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+  @Rule
+  public TestName testName = new TestName();
 
   @Test
   public void testXml() throws Exception {
@@ -102,5 +111,69 @@ public class AssertUtilsTest {
       "Expected: (is \"b\" or is \"c\")\n" +
         "     got: \"a\"" );
     AssertUtils.assertOne( "a", "b", "c" );
+  }
+
+  @Test
+  public void testTestName() {
+    assertEquals( "testTestName", testName.getMethodName() );
+  }
+
+  @Test
+  public void testFileByHash() throws Exception {
+    File file = tmp.newFile( "daFile" );
+    FileUtils.writeStringToFile( file, "daContent" );
+
+    Hash expected = HashCalculator.calculate( Algorithm.MD5, file );
+    assertEquals( "913aa4a45cea16f9714f109e7324159f", expected.getValueAsHex() );
+
+    AssertUtils.assertFileByHash( "path", expected, file );
+    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.MD5, file ), file );
+    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA256, file ), file );
+    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA1, file ), file );
+    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA512, file ), file );
+
+    try {
+      AssertUtils.assertFileByHash( AssertUtilsTest.class, testName.getMethodName(), Hash.fromHex( Algorithm.MD5, "aa" ), file );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError e ) {
+      assertTrue( e.getMessage().trim(),
+                  e.getMessage().contains( "Stored questionable file under test at <" )
+                    &&
+                    e.getMessage().contains(
+                      "com.cedarsoft.AssertUtilsTest/testFileByHash>\n" +
+                        "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
+                        "     got: <[MD5: aa]>" )
+      );
+    }
+
+    try {
+      AssertUtils.assertFileByHash( Hash.fromHex( Algorithm.MD5, "aa" ), file );
+      fail( "Where is the Exception" );
+    } catch ( AssertionError e ) {
+      assertTrue( e.getMessage().trim(),
+                  e.getMessage().contains( "Stored questionable file under test at <" )
+                    &&
+                    e.getMessage().contains(
+                      "com.cedarsoft.AssertUtilsTest/testFileByHash>\n" +
+                        "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
+                        "     got: <[MD5: aa]>" )
+      );
+    }
+  }
+
+  @Test
+  public void testGuessPath() throws Exception {
+    assertEquals( AssertUtilsTest.class.getName() + File.separator + "testGuessPath", guess() );
+    assertEquals( "com.cedarsoft.AssertUtilsTest" + File.separator + "testGuessPath", guess() );
+  }
+
+  @Test
+  public void testGuessPath2() throws Exception {
+    assertEquals( AssertUtilsTest.class.getName() + File.separator + "testGuessPath2", guess() );
+  }
+
+  //this method is necessary to simulate the call to AssertUtils.assertFileByHash
+  private String guess() {
+    return AssertUtils.guessPathFromStackTrace();
   }
 }

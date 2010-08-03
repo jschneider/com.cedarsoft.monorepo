@@ -77,7 +77,6 @@ public class TestUtils {
    *
    * @return a {@link File} object.
    */
-  @Deprecated
   @NotNull
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
