@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
@@ -339,7 +340,7 @@
         <version>1.8.5</version>
         <scope>test</scope>
       </dependency>
-      
+
     </dependencies>
   </dependencyManagement>
 
@@ -647,58 +648,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <configuration>
-          <formats>
-            <format>xml</format>
-            <format>html</format>
-          </formats>
-          <check>
-            <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
-            <lineRate>${coverage.lineRate}</lineRate>
-            <branchRate>${coverage.branchRate}</branchRate>
-            <packageLineRate>${coverage.packageLineRate}</packageLineRate>
-            <packageBranchRate>${coverage.packageBranchRate}</packageBranchRate>
-            <totalLineRate>${coverage.totalLineRate}</totalLineRate>
-            <totalBranchRate>${coverage.totalBranchRate}</totalBranchRate>
-            <regexes>
-              <regex>
-                <pattern>.*Exception</pattern>
-                <branchRate>0</branchRate>
-                <lineRate>0</lineRate>
-              </regex>
-              <regex>
-                <pattern>.*Mock.*</pattern>
-                <branchRate>0</branchRate>
-                <lineRate>0</lineRate>
-              </regex>
-              <regex>
-                <pattern>.*\$.*</pattern>
-                <branchRate>0</branchRate>
-                <lineRate>0</lineRate>
-              </regex>
-            </regexes>
-          </check>
-        </configuration>
-        <executions>
-          <execution>            
-            <goals>
-              <goal>clean</goal>
-              <goal>check</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>package</phase>
-            <goals>
-              <goal>cobertura</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
@@ -722,6 +671,70 @@
                 <phase>verify</phase>
                 <goals>
                   <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>coverage</id>
+      <activation>
+        <property>
+          <name>testCoverage</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>cobertura-maven-plugin</artifactId>
+            <configuration>
+              <formats>
+                <format>xml</format>
+                <format>html</format>
+              </formats>
+              <check>
+                <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
+                <lineRate>${coverage.lineRate}</lineRate>
+                <branchRate>${coverage.branchRate}</branchRate>
+                <packageLineRate>${coverage.packageLineRate}</packageLineRate>
+                <packageBranchRate>${coverage.packageBranchRate}</packageBranchRate>
+                <totalLineRate>${coverage.totalLineRate}</totalLineRate>
+                <totalBranchRate>${coverage.totalBranchRate}</totalBranchRate>
+                <regexes>
+                  <regex>
+                    <pattern>.*Exception</pattern>
+                    <branchRate>0</branchRate>
+                    <lineRate>0</lineRate>
+                  </regex>
+                  <regex>
+                    <pattern>.*Mock.*</pattern>
+                    <branchRate>0</branchRate>
+                    <lineRate>0</lineRate>
+                  </regex>
+                  <regex>
+                    <pattern>.*\$.*</pattern>
+                    <branchRate>0</branchRate>
+                    <lineRate>0</lineRate>
+                  </regex>
+                </regexes>
+              </check>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>clean</goal>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>report</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>cobertura</goal>
                 </goals>
               </execution>
             </executions>
@@ -851,7 +864,7 @@
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>2.5</version>
       </plugin>
-      
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
