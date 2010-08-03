@@ -37,7 +37,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.Arrays;
 
 /**
@@ -101,10 +100,7 @@ public class Hash implements Serializable {
   @Override
   @NonNls
   public String toString() {
-    return "Hash{" +
-      "algorithm=" + algorithm +
-      ", value=" + getValueAsHex() +
-      '}';
+    return "[" + algorithm + ": " + getValueAsHex() + "]";
   }
 
   /**

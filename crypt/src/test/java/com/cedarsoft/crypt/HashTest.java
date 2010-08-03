@@ -45,6 +45,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -56,6 +57,12 @@ public class HashTest {
   @Test
   public void testDigestTest() {
     assertNotSame( Algorithm.SHA256.getMessageDigest(), Algorithm.SHA256.getMessageDigest() );
+  }
+
+  @Test
+  public void testToString() {
+    assertThat( Hash.fromHex( Algorithm.MD5, "aabb" ).toString(), is( "[MD5: aabb]" ) );
+    assertThat( Hash.fromHex( Algorithm.SHA256, "aabb1111111111" ).toString(), is( "[SHA256: aabb1111111111]" ) );
   }
 
   @Test
@@ -77,7 +84,7 @@ public class HashTest {
 
   @Rule
   public TemporaryFolder tmp = new TemporaryFolder();
-  
+
   @Test
   public void testIt() throws NoSuchAlgorithmException, IOException {
     URL paris = getClass().getResource( "/paris.jpg" );
