@@ -139,9 +139,10 @@ public class AssertUtilsTest {
       assertTrue( e.getMessage().trim(),
                   e.getMessage().contains( "Stored questionable file under test at <" )
                     &&
+                    e.getMessage().contains( "com.cedarsoft.AssertUtilsTest" + File.separator + "testFileByHash/daFile" )
+                    &&
                     e.getMessage().contains(
-                      "com.cedarsoft.AssertUtilsTest/testFileByHash/daFile>\n" +
-                        "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
+                      "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
                         "     got: <[MD5: aa]>" )
       );
 
@@ -151,7 +152,7 @@ public class AssertUtilsTest {
       assertTrue( copiedFile.getParentFile().exists() );
       assertTrue( copiedFile.exists() );
       assertEquals( "daContent", FileUtils.readFileToString( copiedFile ) );
-}
+    }
 
     try {
       AssertUtils.assertFileByHash( Hash.fromHex( Algorithm.MD5, "aa" ), file );
@@ -160,9 +161,11 @@ public class AssertUtilsTest {
       assertTrue( e.getMessage().trim(),
                   e.getMessage().contains( "Stored questionable file under test at <" )
                     &&
+                    e.getMessage().contains( "com.cedarsoft.AssertUtilsTest" + File.separator + "testFileByHash" + File.separator +
+                      "daFile" )
+                    &&
                     e.getMessage().contains(
-                      "com.cedarsoft.AssertUtilsTest/testFileByHash/daFile>\n" +
-                        "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
+                      "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
                         "     got: <[MD5: aa]>" )
       );
     }
@@ -180,6 +183,7 @@ public class AssertUtilsTest {
   }
 
   //this method is necessary to simulate the call to AssertUtils.assertFileByHash
+
   private String guess() {
     return AssertUtils.guessPathFromStackTrace();
   }
