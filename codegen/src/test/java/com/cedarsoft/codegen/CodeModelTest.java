@@ -41,7 +41,9 @@ import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
+import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JVar;
+import com.sun.codemodel.fmt.JTextFile;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
 import org.junit.*;
 
@@ -67,6 +69,33 @@ public class CodeModelTest {
     out = new ByteArrayOutputStream();
     codeWriter = new SingleStreamCodeWriter( out );
     model = new JCodeModel();
+  }
+
+  @Test
+  public void testCreateResource() throws JClassAlreadyExistsException, IOException {
+    model._class( "a.b.c.Foo" );
+
+    JPackage daPackage = model._package( "a.b.c" );
+    assertFalse( daPackage.hasResourceFile( "test.xml" ) );
+
+    JTextFile testXml = new JTextFile( "test.xml" );
+    daPackage.addResourceFile( testXml );
+    assertTrue( daPackage.hasResourceFile( "test.xml" ) );
+
+    testXml.setContents( "<xml>DaXmlContent</xml>" );
+
+    model.build( codeWriter );
+    assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.test.xml-----------------------------------\n" +
+      "<xml>DaXmlContent</xml>", out.toString().trim() );
   }
 
   @Test
