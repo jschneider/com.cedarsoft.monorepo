@@ -228,6 +228,9 @@ public class AssertUtils {
     }
 
     File copy = createCopyFile( path, fileUnderTest.getName() );
+    if ( copy.exists() ) {
+      copy = new File( copy.getParentFile(), copy.getName() + "." + System.currentTimeMillis() );
+    }
     FileUtils.copyFile( fileUnderTest, copy );
 
     assertThat( createReason( copy ), expected, is( actual ) );
