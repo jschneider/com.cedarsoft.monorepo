@@ -61,18 +61,6 @@
     </dependency>
   </dependencies>
 
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>clirr-maven-plugin</artifactId>
-        <configuration>
-          <comparisonVersion>2.0.0</comparisonVersion>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-
   <repositories>
     <repository>
       <id>maven2-repository.dev.java.net</id>
