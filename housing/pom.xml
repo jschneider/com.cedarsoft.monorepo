@@ -12,7 +12,6 @@
   <name>Commons - Housing</name>
 
   <modules>
-    <module>..</module>
     <module>../app</module>
     <module>../cluster</module>
     <module>../cmd</module>
