@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -11,16 +11,6 @@
   <artifactId>zip</artifactId>
   <version>3.0.0-SNAPSHOT</version>
   <name>Zip Utils</name>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>test-utils</artifactId>
-        <version>3.0.0-SNAPSHOT</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <dependency>
