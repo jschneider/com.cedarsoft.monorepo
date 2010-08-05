@@ -33,12 +33,47 @@ package com.cedarsoft.license;
 
 import org.junit.*;
 
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 /**
  *
  */
 public class CreativeCommonsLicenseTest {
+  @Test
+  public void testUrls() throws Exception {
+    assertNotNull( CreativeCommonsLicense.CC_BY.getUrl() );
+    assertNotNull( CreativeCommonsLicense.CC_BY_NC.getUrl() );
+    assertNotNull( CreativeCommonsLicense.CC_BY_NC_ND.getUrl() );
+    assertNotNull( CreativeCommonsLicense.CC_BY_NC_SA.getUrl() );
+    assertNotNull( CreativeCommonsLicense.CC_BY_ND.getUrl() );
+    assertNotNull( CreativeCommonsLicense.CC_BY_SA.getUrl() );
+
+    //Ensure different urls
+    Set<URL> urls = new HashSet<URL>();
+    for ( CreativeCommonsLicense license : CreativeCommonsLicense.CC_LICENSES ) {
+      urls.add( license.getUrl() );
+    }
+
+    assertEquals( 6, urls.size() );
+  }
+
+  @Test
+  public void testLicenseUrlTranslated() throws Exception {
+    assertNotNull( CreativeCommonsLicense.CC_BY.getUrl( Locale.GERMAN ) );
+    assertEquals( "http://creativecommons.org/licenses/by/3.0/de", CreativeCommonsLicense.CC_BY.getUrl( Locale.GERMAN ).toString() );
+    assertEquals( "http://creativecommons.org/licenses/by-nc-nd/3.0/de", CreativeCommonsLicense.CC_BY_NC_ND.getUrl( Locale.GERMAN ).toString() );
+  }
+
+  @Test
+  public void testAll() throws Exception {
+    assertEquals( 6, CreativeCommonsLicense.CC_LICENSES.size() );
+  }
+
   @Test
   public void testCCBy() {
     assertFalse( CreativeCommonsLicense.CC_BY.isRestrictedToNonCommercial() );

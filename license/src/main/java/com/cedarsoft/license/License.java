@@ -33,8 +33,11 @@ package com.cedarsoft.license;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.String;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Represents the license of the image
@@ -65,6 +68,9 @@ public class License {
   @NonNls
   private final String name;
 
+  @Nullable
+  private final URL url;
+
   /**
    * <p>Constructor for License.</p>
    *
@@ -72,8 +78,17 @@ public class License {
    * @param name a {@link String} object.
    */
   public License( @NotNull @NonNls String id, @NotNull @NonNls String name ) {
+    this( id, name, ( URL ) null );
+  }
+
+  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @NotNull @NonNls  String url ) {
+    this( id, name, getUrl( url ) );
+  }
+
+  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @Nullable URL url ) {
     this.id = id;
     this.name = name;
+    this.url = url;
   }
 
   /**
@@ -97,9 +112,11 @@ public class License {
     return id;
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  @Nullable
+  public URL getUrl() {
+    return url;
+  }
+
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
@@ -115,5 +132,14 @@ public class License {
   @Override
   public int hashCode() {
     return id.hashCode();
+  }
+
+  @NotNull
+  static URL getUrl( @NotNull @NonNls String url ) {
+    try {
+      return new URL( url );
+    } catch ( MalformedURLException e ) {
+      throw new RuntimeException( e );
+    }
   }
 }

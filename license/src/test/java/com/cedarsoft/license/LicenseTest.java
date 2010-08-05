@@ -46,4 +46,11 @@ public class LicenseTest {
     assertFalse( License.PUBLIC_DOMAIN.equals( null ) );
     assertFalse( License.PUBLIC_DOMAIN.equals( "asdf" ) );
   }
+
+  @Test
+  public void testUrl() {
+    assertNull( License.ALL_RIGHTS_RESERVED.getUrl() );
+    assertNull( License.PUBLIC_DOMAIN.getUrl() );
+    assertNull( License.UNKNOWN.getUrl() );
+  }
 }
