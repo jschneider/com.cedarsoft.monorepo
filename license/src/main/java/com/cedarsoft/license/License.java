@@ -62,6 +62,29 @@ public class License {
   public static final License PUBLIC_DOMAIN = new License( "PUBLIC_DOMAIN", "Public Domain" );
 
   @NotNull
+  public static final License CDDL = new License( "CDDL", "Common Development and Distribution License", "http://www.opensource.org/licenses/cddl1.php" );
+  @NotNull
+  public static final License AFFERO_GPL = new License( "AFFERO GPL", "Affero GNU Public License", "http://www.opensource.org/licenses/agpl-v3.html" );
+  @NotNull
+  public static final License APACHE_20 = new License( "APACHE 2.0", "Apache License 2.0", "http://www.opensource.org/licenses/apache2.0.php" );
+  @NotNull
+  public static final License BSD_NEW = new License( "BSD NEW", "New and Simplified BSD licenses", "http://www.opensource.org/licenses/bsd-license.php" );
+  @NotNull
+  public static final License CPAL = new License( "CPAL", "Common Public Attribution License 1.0", "http://www.opensource.org/licenses/cpal_1.0" );
+  @NotNull
+  public static final License EPL = new License( "EPL", "Eclipse Public License", "http://www.opensource.org/licenses/eclipse-1.0.php" );
+  @NotNull
+  public static final License GPL_2 = new License( "GPLv2", "GNU General Public License 2.0", "http://www.opensource.org/licenses/gpl-2.0.php" );
+  @NotNull
+  public static final License GPL_3 = new License( "GPLv3", "GNU General Public License 3.0", "http://www.opensource.org/licenses/gpl-3.0.html" );
+  @NotNull
+  public static final License LGPL = new License( "LGPL", "GNU Library or \"Lesser\" General Public License", "http://www.opensource.org/licenses/lgpl-2.1.php" );
+  @NotNull
+  public static final License LGPL_3 = new License( "LGPLv3", "GNU Library or \"Lesser\" General Public License version 3.0 (LGPLv3)", "http://www.opensource.org/licenses/lgpl-3.0.html" );
+  @NotNull
+  public static final License MPL = new License( "MPL", "Mozilla Public License 1.1 (MPL)", "http://www.opensource.org/licenses/mozilla1.1.php" );
+
+  @NotNull
   @NonNls
   private final String id;
   @NotNull

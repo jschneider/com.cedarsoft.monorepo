@@ -52,5 +52,7 @@ public class LicenseTest {
     assertNull( License.ALL_RIGHTS_RESERVED.getUrl() );
     assertNull( License.PUBLIC_DOMAIN.getUrl() );
     assertNull( License.UNKNOWN.getUrl() );
+
+    assertNotNull( License.CDDL.getUrl() );
   }
 }
