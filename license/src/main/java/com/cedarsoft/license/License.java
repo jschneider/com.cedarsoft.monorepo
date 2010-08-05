@@ -108,18 +108,12 @@ public class License {
     License license = ( License ) o;
 
     if ( !id.equals( license.id ) ) return false;
-    if ( !name.equals( license.name ) ) return false;
 
     return true;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public int hashCode() {
-    int result = id.hashCode();
-    result = 31 * result + name.hashCode();
-    return result;
+    return id.hashCode();
   }
 }
