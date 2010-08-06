@@ -99,6 +99,32 @@ public class CodeModelTest {
   }
 
   @Test
+  public void testSimple() throws Exception {
+    JCodeModel codeModel = new JCodeModel();
+    JDefinedClass foo = codeModel._class( "a.b.c.Foo" ); //Creates a new class
+
+    JMethod method = foo.method( JMod.PUBLIC, Void.TYPE, "doFoo" ); //Adds a method to the class
+    method.body()._return( JExpr.lit( 42 ) ); //the return type
+
+ByteArrayOutputStream out = new ByteArrayOutputStream();
+codeModel.build( new SingleStreamCodeWriter( out ) );
+
+    assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "    public void doFoo() {\n" +
+      "        return  42;\n" +
+      "    }\n" +
+      "\n" +
+      "}\n", out.toString() );
+  }
+
+  @Test
   public void testClass() throws Exception {
     JDefinedClass daClass = model._class( "a.b.c.Foo" );
 
