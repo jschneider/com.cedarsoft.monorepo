@@ -49,7 +49,6 @@
     <module>string-conversion</module>
     <module>struct</module>
     <module>swing</module>
-    <module>tags</module>
     <module>test-utils</module>
     <module>version</module>
     <module>workflow</module>
