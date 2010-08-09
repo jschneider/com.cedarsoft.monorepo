@@ -103,6 +103,7 @@ public class ThreadDeadlockDetector {
       }
       fireDeadlockDetected( threads );
     }
+    fireCheckRun(  );
   }
 
   private long[] findDeadlockedThreads() {
@@ -112,6 +113,14 @@ public class ThreadDeadlockDetector {
       return mXBean.findDeadlockedThreads();
     } else {
       return mXBean.findMonitorDeadlockedThreads();
+    }
+  }
+
+  private void fireCheckRun() {
+    for ( Listener listener : listeners ) {
+      if ( listener instanceof DetailedListener ) {
+        ( ( DetailedListener ) listener ).checkHasBeenRun();
+      }
     }
   }
 
@@ -156,5 +165,9 @@ public class ThreadDeadlockDetector {
    */
   public interface Listener {
     void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads );
+  }
+
+  public interface DetailedListener extends Listener{
+    void checkHasBeenRun();
   }
 }

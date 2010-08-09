@@ -41,8 +41,10 @@ import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Set;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -89,8 +91,33 @@ public class ThreadDeadlockDetectorTest {
           lock2.unlock();
         }
 
-        deadlockDetector.start();
-        Sleep.now( 105 );
+
+        final Lock hasBeenRunLock = new ReentrantLock();
+        final Condition hasBeenRun = hasBeenRunLock.newCondition();
+        deadlockDetector.addListener( new ThreadDeadlockDetector.DetailedListener() {
+          @Override
+          public void checkHasBeenRun() {
+            hasBeenRunLock.lock();
+            try {
+              hasBeenRun.signalAll();
+            } finally {
+              hasBeenRunLock.unlock();
+            }
+          }
+
+          @Override
+          public void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads ) {
+          }
+        } );
+
+        hasBeenRunLock.lock();
+        try {
+          deadlockDetector.start();
+          hasBeenRun.await();
+        } finally {
+          hasBeenRunLock.unlock();
+        }
+
         deadlockDetector.stop();
 
         assertTrue( out.toString(), out.toString().contains( "Deadlocked Threads:" ) );
