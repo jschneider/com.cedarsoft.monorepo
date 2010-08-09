@@ -34,6 +34,7 @@ package com.cedarsoft.codegen;
 import com.cedarsoft.codegen.mock.ClassTypeMock;
 import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.TypesMock;
+import com.sun.codemodel.JCodeModel;
 import org.junit.*;
 
 import java.util.List;
@@ -45,9 +46,12 @@ import static org.junit.Assert.*;
  *
  */
 public class TypeUtilsTest {
+  private JCodeModel codeModel;
+
   @Before
   public void setup() {
     TypeUtils.setTypes( new TypesMock() );
+    codeModel = new JCodeModel();
   }
 
   @Test
@@ -55,6 +59,21 @@ public class TypeUtilsTest {
     assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, String.class ) ).toString() );
     assertEquals( "java.lang.String", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( Set.class, String.class ) ).toString() );
     assertEquals( "java.lang.Integer", TypeUtils.getCollectionParam( new CollectionTypeMirrorMock( List.class, Integer.class ) ).toString() );
+
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( codeModel.ref( List.class ).narrow( String.class ) ).fullName() );
+    assertEquals( "java.lang.String", TypeUtils.getCollectionParam( codeModel.ref( Set.class ).narrow( String.class ) ).fullName() );
+    assertEquals( "java.lang.Integer", TypeUtils.getCollectionParam( codeModel.ref( List.class ).narrow( Integer.class ) ).fullName() );
+  }
+
+  @Test
+  public void testIsColl() {
+    assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class, String.class ) ) );
+    assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( Set.class, String.class ) ) );
+    assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class, Integer.class ) ) );
+
+    assertTrue( TypeUtils.isCollectionType( codeModel.ref( List.class ).narrow( String.class ) ) );
+    assertTrue( TypeUtils.isCollectionType( codeModel.ref( Set.class ).narrow( String.class ) ) );
+    assertTrue( TypeUtils.isCollectionType( codeModel.ref( List.class ).narrow( Integer.class ) ) );
   }
 
   @Test
@@ -66,5 +85,14 @@ public class TypeUtilsTest {
 
     assertFalse( TypeUtils.isSimpleType( new ClassTypeMock( Object.class ) ) );
     assertFalse( TypeUtils.isSimpleType( new ClassTypeMock( List.class ) ) );
+
+
+    assertTrue( TypeUtils.isSimpleType( codeModel._ref( Integer.TYPE ) ) );
+    assertTrue( TypeUtils.isSimpleType( codeModel.ref( Integer.class ) ) );
+    assertTrue( TypeUtils.isSimpleType( codeModel.ref( String.class ) ) );
+    assertTrue( TypeUtils.isSimpleType( codeModel.ref( Character.class ) ) );
+
+    assertFalse( TypeUtils.isSimpleType( codeModel.ref( Object.class ) ) );
+    assertFalse( TypeUtils.isSimpleType( codeModel.ref( List.class ) ) );
   }
 }

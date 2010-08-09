@@ -31,6 +31,8 @@
 
 package com.cedarsoft.codegen;
 
+import com.sun.codemodel.JClass;
+import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.Declaration;
 import com.sun.mirror.declaration.FieldDeclaration;
@@ -41,6 +43,7 @@ import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.mirror.type.DeclaredType;
 import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
+import com.sun.mirror.type.WildcardType;
 import com.sun.mirror.util.Types;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -48,6 +51,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -88,14 +93,28 @@ public class TypeUtils {
   }
 
   @NotNull
-  public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) {
+  public static JClass getCollectionParam( @NotNull JClass type ) {
+    if ( !isCollectionType( type ) ) {
+      throw new IllegalArgumentException( type + " is not a collection type" );
+    }
+
+    List<JClass> params = type.getTypeParameters();
+    if ( params.size() != 1 ) {
+      throw new IllegalArgumentException( "Invalid type parameters cound for " + type );
+    }
+
+    return params.get( 0 );
+  }
+
+  @NotNull
+  public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) throws IllegalStateException {
     if ( !( type instanceof DeclaredType ) ) {
-      throw new IllegalStateException( "Invalid type: " + type );
+      throw new IllegalArgumentException( "Invalid type: " + type );
     }
 
     TypeDeclaration declaredType = ( ( DeclaredType ) type ).getDeclaration();
     if ( declaredType == null ) {
-      throw new IllegalStateException( "No declaration found for <" + type + ">" );
+      throw new IllegalArgumentException( "No declaration found for <" + type + ">" );
     }
 
     if ( isCollection( declaredType.getQualifiedName() ) ) {
@@ -108,7 +127,7 @@ public class TypeUtils {
       }
     }
 
-    throw new IllegalStateException( "Invalid type: " + type );
+    throw new IllegalArgumentException( "Invalid type: " + type );
   }
 
   @NotNull
@@ -125,9 +144,33 @@ public class TypeUtils {
     try {
       getCollectionParam( type );
       return true;
-    } catch ( IllegalStateException ignore ) {
+    } catch ( IllegalArgumentException ignore ) {
       return false;
     }
+  }
+
+  public static boolean isCollectionType( @NotNull JType type ) {
+    if ( isCollection( type.fullName() ) ) {
+      return true;
+    }
+
+    if ( type instanceof JClass ) {
+      Iterator<JClass> iterator = ( ( JClass ) type )._implements();
+
+      while ( iterator.hasNext() ) {
+        JClass implemented = iterator.next();
+
+        if ( isCollection( implemented.fullName() ) ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  public static boolean isSetType( @NotNull JType type ) {
+    throw new UnsupportedOperationException();
   }
 
   public static boolean isSetType( @NotNull TypeMirror type ) {
@@ -238,10 +281,14 @@ public class TypeUtils {
     throw new IllegalArgumentException( "No field declaration found for <" + fieldName + ">" );
   }
 
-  public static boolean isType( @NotNull TypeMirror typeMirror, @NotNull Class<?> type ) {
+  public static boolean isType( @NotNull TypeMirror typeMirror, @NotNull Class<?> expected ) {
     @NonNls
-    String typeAsName = type.getName();
+    String typeAsName = expected.getName();
     return typeMirror.toString().equals( typeAsName );
+  }
+
+  public static boolean isType( @NotNull JType type, @NotNull Class<?> expected ) {
+    return type.fullName().equals( expected.getName() );
   }
 
   private static boolean isCollection( @NotNull @NonNls String qualifiedName ) {
@@ -260,6 +307,10 @@ public class TypeUtils {
    */
   public static boolean isSimpleType( @NotNull TypeMirror type ) {
     return SIMPLE_TYPE_NAMES.contains( type.toString() );
+  }
+
+  public static boolean isSimpleType( @NotNull JType type ) {
+    return SIMPLE_TYPE_NAMES.contains( type.fullName() );
   }
 
   @NotNull
@@ -297,5 +348,9 @@ public class TypeUtils {
       names.add( supportedType.getName() );
     }
     SIMPLE_TYPE_NAMES = Collections.unmodifiableSet( names );
+  }
+
+  public static boolean isWildcardType( @NotNull TypeMirror type ) {
+    return type instanceof WildcardType;
   }
 }

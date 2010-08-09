@@ -156,7 +156,7 @@ public class CodeGenerator<T extends DecisionCallback> {
       TypeMirror collectionParamType = TypeUtils.getCollectionParam( type );
 
       JClass collectionParam;
-      if ( collectionParamType instanceof WildcardType ) {
+      if ( TypeUtils.isWildcardType( collectionParamType ) ) {
         collectionParam = ref( TypeUtils.getErasure( collectionParamType ).toString() ).wildcard();
       } else {
         collectionParam = ref( collectionParamType.toString() );

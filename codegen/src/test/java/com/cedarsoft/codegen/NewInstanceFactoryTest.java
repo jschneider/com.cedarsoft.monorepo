@@ -34,9 +34,12 @@ package com.cedarsoft.codegen;
 import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.ReferenceTypeMock;
 import com.cedarsoft.codegen.mock.TypesMock;
+import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JFormatter;
+import com.sun.codemodel.JType;
 import com.sun.mirror.type.ReferenceType;
+import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
@@ -107,11 +110,17 @@ public class NewInstanceFactoryTest {
   }
 
   private void assertFactory( @NotNull Class<?> type, @NotNull @NonNls String expected ) throws IOException {
-    ReferenceType referenceType = new ReferenceTypeMock( type );
-    assertFactory( referenceType, expected );
+    assertFactory( new ReferenceTypeMock( type ), expected );
+    assertFactory( codeModel._ref( type ), expected );
   }
 
-  private void assertFactory( @NotNull ReferenceType referenceType, @NotNull @NonNls String expected ) {
+  private void assertFactory( @NotNull TypeMirror referenceType, @NotNull @NonNls String expected ) {
+    initializeFormatter();
+    factory.create( referenceType, "daValue" ).generate( formatter );
+    assertEquals( out.toString().trim(), expected.trim() );
+  }
+
+  private void assertFactory( @NotNull JType referenceType, @NotNull @NonNls String expected ) {
     initializeFormatter();
     factory.create( referenceType, "daValue" ).generate( formatter );
     assertEquals( out.toString().trim(), expected.trim() );

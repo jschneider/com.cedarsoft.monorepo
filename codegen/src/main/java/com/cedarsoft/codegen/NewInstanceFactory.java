@@ -31,10 +31,12 @@
 
 package com.cedarsoft.codegen;
 
+import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JInvocation;
+import com.sun.codemodel.JType;
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -66,6 +68,65 @@ public class NewInstanceFactory {
   public NewInstanceFactory( @NotNull JCodeModel codeModel, @NotNull ClassRefSupport classRefSupport ) {
     this.codeModel = codeModel;
     this.classRefSupport = classRefSupport;
+  }
+
+  @NotNull
+  public JExpression create( @NotNull JType type, @NotNull @NonNls String simpleName ) {
+    if ( TypeUtils.isType( type, String.class ) ) {
+      return JExpr.lit( simpleName );
+    }
+
+    //Primitive types
+    if ( TypeUtils.isType( type, Integer.TYPE ) ) {
+      return JExpr.lit( DEFAULT_VALUE_INTEGER );
+    }
+    if ( TypeUtils.isType( type, Long.TYPE ) ) {
+      return JExpr.lit( DEFAULT_VALUE_LONG );
+    }
+    if ( TypeUtils.isType( type, Float.TYPE ) ) {
+      return JExpr.lit( DEFAULT_VALUE_FLOAT );
+    }
+    if ( TypeUtils.isType( type, Double.TYPE ) ) {
+      return JExpr.lit( DEFAULT_VALUE_DOUBLE );
+    }
+    if ( TypeUtils.isType( type, Boolean.TYPE ) ) {
+      return JExpr.lit( true );
+    }
+    if ( TypeUtils.isType( type, Character.TYPE ) ) {
+      return JExpr.lit( DEFAULT_VALUE_CHAR );
+    }
+
+
+    //Default types
+    if ( TypeUtils.isType( type, Integer.class ) ) {
+      return codeModel.ref( Integer.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_INTEGER ) );
+    }
+    if ( TypeUtils.isType( type, Double.class ) ) {
+      return codeModel.ref( Double.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_DOUBLE ) );
+    }
+    if ( TypeUtils.isType( type, Long.class ) ) {
+      return codeModel.ref( Long.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_LONG ) );
+    }
+    if ( TypeUtils.isType( type, Float.class ) ) {
+      return codeModel.ref( Float.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_FLOAT ) );
+    }
+    if ( TypeUtils.isType( type, Boolean.class ) ) {
+      return codeModel.ref( Boolean.class ).staticRef( CONSTANT_NAME_TRUE );
+    }
+
+    if ( TypeUtils.isCollectionType( type ) ) {
+      JClass collectionParamType = TypeUtils.getCollectionParam( ( JClass ) type );
+      JExpression expression = create( collectionParamType.erasure(), simpleName );
+
+      JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
+      if ( TypeUtils.isSetType( type ) ) {
+        return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
+      } else {
+        return listInvocation;
+      }
+    } else {
+      return JExpr._new( classRefSupport.ref( type.fullName() ) );
+    }
   }
 
   @NotNull
