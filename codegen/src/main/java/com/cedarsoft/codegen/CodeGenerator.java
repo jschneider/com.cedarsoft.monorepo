@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.NotFoundException;
 import com.cedarsoft.codegen.model.FieldDeclarationInfo;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
@@ -40,9 +41,9 @@ import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMod;
 import com.sun.mirror.type.TypeMirror;
-import com.sun.mirror.type.WildcardType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -153,20 +154,31 @@ public class CodeGenerator<T extends DecisionCallback> {
   @NotNull
   public JClass ref( @NotNull TypeMirror type ) {
     if ( TypeUtils.isCollectionType( type ) ) {
-      TypeMirror collectionParamType = TypeUtils.getCollectionParam( type );
+      JClass referencedCollectionParam = refCollectionParam( type );
 
-      JClass collectionParam;
-      if ( TypeUtils.isWildcardType( collectionParamType ) ) {
-        collectionParam = ref( TypeUtils.getErasure( collectionParamType ).toString() ).wildcard();
+      JClass referencedCollection = ref( TypeUtils.getErasure( type ).toString() );
+      if ( referencedCollectionParam == null ) {
+        return referencedCollection;
       } else {
-        collectionParam = ref( collectionParamType.toString() );
+        return referencedCollection.narrow( referencedCollectionParam );
       }
-
-      JClass collection = ref( TypeUtils.getErasure( type ) );
-      return collection.narrow( collectionParam );
     }
 
     return ref( TypeUtils.getErasure( type ).toString() );
+  }
+
+  @Nullable
+  private JClass refCollectionParam( @NotNull TypeMirror collectionType ) {
+    try {
+      TypeMirror collectionParamType = TypeUtils.getCollectionParam( collectionType );
+      if ( TypeUtils.isWildcardType( collectionParamType ) ) {
+        return ref( TypeUtils.getErasure( collectionParamType ).toString() ).wildcard();
+      } else {
+        return ref( collectionParamType.toString() );
+      }
+    } catch ( NotFoundException ignore ) {
+      return null;
+    }
   }
 
   public boolean isPrimitiveType( @NotNull TypeMirror type ) {

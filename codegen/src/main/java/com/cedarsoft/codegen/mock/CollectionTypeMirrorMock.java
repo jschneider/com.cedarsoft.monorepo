@@ -36,25 +36,31 @@ import com.sun.mirror.type.DeclaredType;
 import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  *
  */
 public class CollectionTypeMirrorMock extends ReferenceTypeMock implements DeclaredType {
-  @NotNull
-  private final Class<?> collectionType;
+  @Nullable
+  private final Class<?> paramType;
 
-  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType, @NotNull Class<?> type ) {
-    super( type );
-    this.collectionType = collectionType;
+  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType ) {
+    this( collectionType, null );
+  }
+
+  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType, @Nullable Class<?> type ) {
+    super( collectionType );
+    this.paramType = type;
   }
 
   @Override
   public TypeDeclaration getDeclaration() {
-    return new TypeDeclarationMock( collectionType );
+    return new TypeDeclarationMock( type );
   }
 
   @Override
@@ -64,7 +70,10 @@ public class CollectionTypeMirrorMock extends ReferenceTypeMock implements Decla
 
   @Override
   public Collection<TypeMirror> getActualTypeArguments() {
-    return Arrays.<TypeMirror>asList( new ClassTypeMock( type ) );
+    if ( paramType == null ) {
+      return Collections.emptyList();
+    }
+    return Arrays.<TypeMirror>asList( new ClassTypeMock( paramType ) );
   }
 
   @Override
@@ -74,14 +83,14 @@ public class CollectionTypeMirrorMock extends ReferenceTypeMock implements Decla
 
   @NotNull
   public Class<?> getCollectionType() {
-    return collectionType;
+    return type;
   }
 
   @Override
   public String toString() {
     return "CollectionTypeMirrorMock{" +
-      "type=" + type +
-      "collectionType=" + collectionType +
+      "collectionType=" + type +
+      "paramType=" + paramType +
       '}';
   }
 }

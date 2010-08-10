@@ -34,20 +34,32 @@ package com.cedarsoft.codegen;
 import com.sun.codemodel.JCodeModel;
 import org.junit.*;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
  *
  */
 public class ClassRefSupportTest {
+  private ClassRefSupport classRefSupport;
+
+  @Before
+  public void setUp() throws Exception {
+    classRefSupport = new ClassRefSupport( new JCodeModel() );
+  }
+
   @Test
   public void testRef() {
-    ClassRefSupport classRefSupport = new ClassRefSupport( new JCodeModel() );
-
     assertSame( classRefSupport.ref( "com.cedarsoft.Foo" ), classRefSupport.ref( "com.cedarsoft.Foo" ) );
     assertSame( classRefSupport.ref( String.class ), classRefSupport.ref( String.class ) );
     assertSame( classRefSupport.ref( FooBar.class ), classRefSupport.ref( FooBar.class ) );
     assertSame( classRefSupport.ref( FooBar.class ), classRefSupport.ref( "com.cedarsoft.codegen.ClassRefSupportTest$FooBar" ) );
+  }
+
+  @Test
+  public void testColl() throws Exception {
+    assertSame( classRefSupport.ref( List.class ), classRefSupport.ref( List.class ) );
   }
 
   private static class FooBar {

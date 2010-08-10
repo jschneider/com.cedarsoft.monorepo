@@ -53,7 +53,7 @@ import java.util.List;
  */
 public class TypeDeclarationMock implements TypeDeclaration {
   @NotNull
-  private final Class<?> type;
+  protected final Class<?> type;
 
   public TypeDeclarationMock( @NotNull Class<?> type ) {
     this.type = type;

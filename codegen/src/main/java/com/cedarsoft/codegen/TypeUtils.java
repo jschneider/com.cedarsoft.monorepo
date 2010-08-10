@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.NotFoundException;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
@@ -107,9 +108,27 @@ public class TypeUtils {
   }
 
   @NotNull
-  public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) throws IllegalStateException {
-    if ( !( type instanceof DeclaredType ) ) {
+  public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) throws NotFoundException {
+    if ( !isCollectionType( type ) ) {
       throw new IllegalArgumentException( "Invalid type: " + type );
+    }
+
+    return getFirstTypeParam( ( DeclaredType ) type );
+  }
+
+  @NotNull
+  private static TypeMirror getFirstTypeParam( @NotNull DeclaredType type ) throws NotFoundException {
+    Collection<TypeMirror> typeArguments = type.getActualTypeArguments();
+    if ( typeArguments.isEmpty() ) {
+      throw new NotFoundException( "No typeArguments found for <" + type + ">" );
+    }
+
+    return typeArguments.iterator().next();
+  }
+
+  public static boolean isCollectionType( @NotNull TypeMirror type ) {
+    if ( !( type instanceof DeclaredType ) ) {
+      return false;
     }
 
     TypeDeclaration declaredType = ( ( DeclaredType ) type ).getDeclaration();
@@ -118,35 +137,16 @@ public class TypeUtils {
     }
 
     if ( isCollection( declaredType.getQualifiedName() ) ) {
-      return getFirstTypeParam( ( DeclaredType ) type );
+      return true;
     }
 
     for ( InterfaceType interfaceType : declaredType.getSuperinterfaces() ) {
       if ( isCollection( interfaceType.getDeclaration().getQualifiedName() ) ) {
-        return getFirstTypeParam( ( DeclaredType ) type );
+        return true;
       }
     }
 
-    throw new IllegalArgumentException( "Invalid type: " + type );
-  }
-
-  @NotNull
-  private static TypeMirror getFirstTypeParam( @NotNull DeclaredType type ) {
-    Collection<TypeMirror> typeArguments = type.getActualTypeArguments();
-    if ( typeArguments.size() != 1 ) {
-      throw new IllegalStateException( "Invalid type arguments: " + typeArguments );
-    }
-
-    return typeArguments.iterator().next();
-  }
-
-  public static boolean isCollectionType( @NotNull TypeMirror type ) {
-    try {
-      getCollectionParam( type );
-      return true;
-    } catch ( IllegalArgumentException ignore ) {
-      return false;
-    }
+    return false;
   }
 
   public static boolean isCollectionType( @NotNull JType type ) {
@@ -180,7 +180,7 @@ public class TypeUtils {
 
     TypeDeclaration declaredType = ( ( DeclaredType ) type ).getDeclaration();
     if ( declaredType == null ) {
-      throw new IllegalStateException( "No declaration found for <" + type + ">" );
+      throw new IllegalArgumentException( "No declaration found for <" + type + ">" );
     }
 
     if ( isSet( declaredType.getQualifiedName() ) ) {

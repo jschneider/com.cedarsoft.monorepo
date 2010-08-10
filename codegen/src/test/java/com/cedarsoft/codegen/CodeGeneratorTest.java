@@ -31,6 +31,9 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
+import com.cedarsoft.codegen.mock.TypesMock;
+import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JExpr;
@@ -40,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -51,6 +55,8 @@ public class CodeGeneratorTest {
 
   @Before
   public void setUp() throws Exception {
+    TypeUtils.setTypes( new TypesMock() );
+
     codeGenerator = new CodeGenerator<DecisionCallback>( new DecisionCallback() {
     } );
   }
@@ -117,6 +123,15 @@ public class CodeGeneratorTest {
     assertSame( codeGenerator.ref( String.class ), codeGenerator.ref( String.class ) );
     assertSame( codeGenerator.ref( FooBar.class ), codeGenerator.ref( FooBar.class ) );
     assertSame( codeGenerator.ref( FooBar.class ), codeGenerator.ref( "com.cedarsoft.codegen.CodeGeneratorTest$FooBar" ) );
+
+    assertSame( codeGenerator.ref( List.class ), codeGenerator.ref( "java.util.List" ) );
+
+    JClass aClass = codeGenerator.ref( new CollectionTypeMirrorMock( List.class, String.class ) );
+    assertEquals( "java.util.List<java.lang.String>", aClass.fullName() );
+    assertEquals( 1, aClass.getTypeParameters().size() );
+    assertEquals( "java.lang.String", aClass.getTypeParameters().get( 0 ).fullName() );
+
+    assertSame( codeGenerator.ref( new CollectionTypeMirrorMock( List.class, String.class ) ).erasure(), codeGenerator.ref( List.class ) );
   }
 
   private static class FooBar {

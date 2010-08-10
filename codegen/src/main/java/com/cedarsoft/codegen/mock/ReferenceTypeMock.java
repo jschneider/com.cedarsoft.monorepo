@@ -49,5 +49,4 @@ public class ReferenceTypeMock extends TypeMirrorMock implements ReferenceType {
   public String toString() {
     return type.getName();
   }
-
 }

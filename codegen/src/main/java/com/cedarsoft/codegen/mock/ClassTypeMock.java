@@ -50,6 +50,6 @@ public class ClassTypeMock extends DeclaredTypeMock implements ClassType {
 
   @Override
   public ClassDeclaration getDeclaration() {
-    throw new UnsupportedOperationException();
+    return new ClassDeclarationMock( type );
   }
 }

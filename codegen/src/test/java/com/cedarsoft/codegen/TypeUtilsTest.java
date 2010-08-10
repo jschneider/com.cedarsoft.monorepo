@@ -70,10 +70,13 @@ public class TypeUtilsTest {
     assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class, String.class ) ) );
     assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( Set.class, String.class ) ) );
     assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class, Integer.class ) ) );
+    assertTrue( TypeUtils.isCollectionType( new CollectionTypeMirrorMock( List.class ) ) );
 
     assertTrue( TypeUtils.isCollectionType( codeModel.ref( List.class ).narrow( String.class ) ) );
     assertTrue( TypeUtils.isCollectionType( codeModel.ref( Set.class ).narrow( String.class ) ) );
     assertTrue( TypeUtils.isCollectionType( codeModel.ref( List.class ).narrow( Integer.class ) ) );
+
+    assertTrue( TypeUtils.isCollectionType( codeModel.ref( List.class ) ) );
   }
 
   @Test
