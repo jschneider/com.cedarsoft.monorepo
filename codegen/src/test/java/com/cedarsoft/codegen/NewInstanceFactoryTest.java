@@ -34,16 +34,22 @@ package com.cedarsoft.codegen;
 import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.ReferenceTypeMock;
 import com.cedarsoft.codegen.mock.TypesMock;
+import com.cedarsoft.codegen.model.DomainObjectDescriptor;
+import com.cedarsoft.codegen.model.DomainObjectDescriptorFactory;
+import com.cedarsoft.codegen.parser.Parser;
+import com.cedarsoft.codegen.parser.Result;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFormatter;
 import com.sun.codemodel.JType;
-import com.sun.mirror.type.ReferenceType;
+import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -107,6 +113,51 @@ public class NewInstanceFactoryTest {
     TypeUtils.setTypes( new TypesMock() );
     assertFactory( new CollectionTypeMirrorMock( List.class, String.class ), "java.util.Arrays.asList(\"daValue\")" );
     assertFactory( new CollectionTypeMirrorMock( Set.class, String.class ), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+
+    assertFactory( codeModel.ref( List.class ).narrow( String.class ), "java.util.Arrays.asList(\"daValue\")" );
+    assertFactory( codeModel.ref( Set.class ).narrow( String.class ), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+  }
+
+  @Test
+  public void testComplex() throws Exception {
+    File file = new File( getClass().getResource( "test/AClass.java" ).toURI() );
+    Result result = Parser.parse( file );
+
+    assertEquals( 1, result.getClassDeclarations().size() );
+    ClassDeclaration aClassDeclaration = result.getClassDeclaration( "com.cedarsoft.codegen.test.AClass" );
+    assertNotNull( aClassDeclaration );
+
+    DomainObjectDescriptor descriptor = new DomainObjectDescriptorFactory( aClassDeclaration ).create();
+
+    assertFactory( descriptor.findFieldDeclaration( "single" ).getType(), "\"daValue\"" );
+    assertFactory( descriptor.findFieldDeclaration( "theStrings" ).getType(), "java.util.Arrays.asList(\"daValue\")" );
+    assertFactory( descriptor.findFieldDeclaration( "wildcardStrings" ).getType(), "java.util.Arrays.asList(\"daValue\")" );
+
+    assertFactory( descriptor.findFieldDeclaration( "wildcardSet" ).getType(), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+    assertFactory( descriptor.findFieldDeclaration( "wildcardSet" ).getType(), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+
+    JExpression expression = factory.create( descriptor.findFieldDeclaration( "wildcardStrings" ).getType(), "daSimpleName" );
+    assertExpression( "java.util.Arrays.asList(\"daSimpleName\")", expression );
+  }
+
+  @Test
+  public void testOther() {
+    assertFactory( codeModel.ref( List.class ).narrow( codeModel.ref( String.class ).wildcard() ), "java.util.Arrays.asList(\"daValue\")" );
+    assertFactory( codeModel.ref( Set.class ).narrow( codeModel.ref( String.class ).wildcard() ), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+  }
+
+  @Test
+  public void testErasure() throws Exception {
+    JClass aClass = codeModel.ref( Set.class ).narrow( codeModel.ref( String.class ).wildcard() );
+    assertEquals( "java.util.Set<? extends java.lang.String>", aClass.fullName() );
+    assertEquals( "java.util.Set", aClass.erasure().fullName() );
+    assertEquals( "java.util.Set", aClass.erasure().erasure().fullName() );
+
+    JClass param = TypeUtils.getCollectionParam( aClass );
+    assertEquals( "? extends java.lang.String", param.fullName() );
+    assertEquals( "com.sun.codemodel.JTypeWildcard", param.getClass().getName() );
+    assertEquals( "? extends java.lang.String", param.erasure().fullName() );
+    assertEquals( "java.lang.String", TypeUtils.removeWildcard( param ) );
   }
 
   private void assertFactory( @NotNull Class<?> type, @NotNull @NonNls String expected ) throws IOException {
@@ -115,14 +166,20 @@ public class NewInstanceFactoryTest {
   }
 
   private void assertFactory( @NotNull TypeMirror referenceType, @NotNull @NonNls String expected ) {
-    initializeFormatter();
-    factory.create( referenceType, "daValue" ).generate( formatter );
-    assertEquals( out.toString().trim(), expected.trim() );
+    assertExpression( expected, factory.create( referenceType, "daValue" ) );
   }
 
   private void assertFactory( @NotNull JType referenceType, @NotNull @NonNls String expected ) {
+    assertExpression( expected, factory.create( referenceType, "daValue" ) );
+  }
+
+  private void assertExpression( @NotNull @NonNls String expected, @NotNull JExpression expression ) {
     initializeFormatter();
-    factory.create( referenceType, "daValue" ).generate( formatter );
-    assertEquals( out.toString().trim(), expected.trim() );
+    expression.generate( formatter );
+    assertOutput( expected );
+  }
+
+  private void assertOutput( @NotNull @NonNls String expected ) {
+    assertEquals( expected.trim(), out.toString().trim() );
   }
 }

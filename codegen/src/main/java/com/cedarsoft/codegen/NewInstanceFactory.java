@@ -72,45 +72,46 @@ public class NewInstanceFactory {
 
   @NotNull
   public JExpression create( @NotNull JType type, @NotNull @NonNls String simpleName ) {
-    if ( TypeUtils.isType( type, String.class ) ) {
+    JType erased = type.erasure();
+    if ( TypeUtils.isType( erased, String.class ) ) {
       return JExpr.lit( simpleName );
     }
 
     //Primitive types
-    if ( TypeUtils.isType( type, Integer.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Integer.TYPE ) ) {
       return JExpr.lit( DEFAULT_VALUE_INTEGER );
     }
-    if ( TypeUtils.isType( type, Long.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Long.TYPE ) ) {
       return JExpr.lit( DEFAULT_VALUE_LONG );
     }
-    if ( TypeUtils.isType( type, Float.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Float.TYPE ) ) {
       return JExpr.lit( DEFAULT_VALUE_FLOAT );
     }
-    if ( TypeUtils.isType( type, Double.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Double.TYPE ) ) {
       return JExpr.lit( DEFAULT_VALUE_DOUBLE );
     }
-    if ( TypeUtils.isType( type, Boolean.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Boolean.TYPE ) ) {
       return JExpr.lit( true );
     }
-    if ( TypeUtils.isType( type, Character.TYPE ) ) {
+    if ( TypeUtils.isType( erased, Character.TYPE ) ) {
       return JExpr.lit( DEFAULT_VALUE_CHAR );
     }
 
 
     //Default types
-    if ( TypeUtils.isType( type, Integer.class ) ) {
+    if ( TypeUtils.isType( erased, Integer.class ) ) {
       return codeModel.ref( Integer.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_INTEGER ) );
     }
-    if ( TypeUtils.isType( type, Double.class ) ) {
+    if ( TypeUtils.isType( erased, Double.class ) ) {
       return codeModel.ref( Double.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_DOUBLE ) );
     }
-    if ( TypeUtils.isType( type, Long.class ) ) {
+    if ( TypeUtils.isType( erased, Long.class ) ) {
       return codeModel.ref( Long.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_LONG ) );
     }
-    if ( TypeUtils.isType( type, Float.class ) ) {
+    if ( TypeUtils.isType( erased, Float.class ) ) {
       return codeModel.ref( Float.class ).staticInvoke( METHOD_NAME_VALUE_OF ).arg( JExpr.lit( DEFAULT_VALUE_FLOAT ) );
     }
-    if ( TypeUtils.isType( type, Boolean.class ) ) {
+    if ( TypeUtils.isType( erased, Boolean.class ) ) {
       return codeModel.ref( Boolean.class ).staticRef( CONSTANT_NAME_TRUE );
     }
 
@@ -125,7 +126,7 @@ public class NewInstanceFactory {
         return listInvocation;
       }
     } else {
-      return JExpr._new( classRefSupport.ref( type.fullName() ) );
+      return JExpr._new( classRefSupport.ref( TypeUtils.removeWildcard( type ) ) );
     }
   }
 

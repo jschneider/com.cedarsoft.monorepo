@@ -32,6 +32,7 @@
 package com.cedarsoft.codegen;
 
 import com.cedarsoft.NotFoundException;
+import com.google.common.base.Splitter;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
@@ -150,27 +151,29 @@ public class TypeUtils {
   }
 
   public static boolean isCollectionType( @NotNull JType type ) {
-    if ( isCollection( type.fullName() ) ) {
+    return implementsInterface( type, Collection.class );
+  }
+
+  public static boolean isSetType( @NotNull JType type ) {
+    return implementsInterface( type, Set.class );
+  }
+
+  private static boolean implementsInterface( @NotNull JType type, @NotNull Class<?> daClass ) {
+    JType erasure = type.erasure();
+    if ( erasure.fullName().equals( daClass.getName() ) ) {
       return true;
     }
 
-    if ( type instanceof JClass ) {
-      Iterator<JClass> iterator = ( ( JClass ) type )._implements();
+    Iterator<JClass> implementedIterator = ( ( JClass ) erasure )._implements();
+    while ( implementedIterator.hasNext() ) {
+      JClass implemented = implementedIterator.next();
 
-      while ( iterator.hasNext() ) {
-        JClass implemented = iterator.next();
-
-        if ( isCollection( implemented.fullName() ) ) {
-          return true;
-        }
+      if ( implemented.fullName().equals( daClass.getName() ) ) {
+        return true;
       }
     }
 
     return false;
-  }
-
-  public static boolean isSetType( @NotNull JType type ) {
-    throw new UnsupportedOperationException();
   }
 
   public static boolean isSetType( @NotNull TypeMirror type ) {
@@ -288,7 +291,7 @@ public class TypeUtils {
   }
 
   public static boolean isType( @NotNull JType type, @NotNull Class<?> expected ) {
-    return type.fullName().equals( expected.getName() );
+    return removeWildcard( type ).equals( expected.getName() );
   }
 
   private static boolean isCollection( @NotNull @NonNls String qualifiedName ) {
@@ -352,5 +355,28 @@ public class TypeUtils {
 
   public static boolean isWildcardType( @NotNull TypeMirror type ) {
     return type instanceof WildcardType;
+  }
+
+  @NotNull
+  @NonNls
+  public static String removeWildcard( @NotNull JType classWithWildcard ) {
+    if ( classWithWildcard != classWithWildcard.erasure() ) {
+      throw new IllegalArgumentException( "Invalid type - cannot remove wildcard. Call erasure() first: " + classWithWildcard.fullName() );
+    }
+
+    if ( classWithWildcard.fullName().contains( "?" ) ) {
+      String fullName = classWithWildcard.fullName();
+
+      Iterable<String> parts = Splitter.on( " " ).split( fullName );
+
+      String last = null;
+      for ( String part : parts ) {
+        last = part;
+      }
+      assert last != null;
+      return last;
+    }
+
+    return classWithWildcard.fullName();
   }
 }

@@ -36,6 +36,7 @@ import com.cedarsoft.codegen.mock.CollectionTypeMirrorMock;
 import com.cedarsoft.codegen.mock.TypesMock;
 import com.sun.codemodel.JCodeModel;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.util.List;
 import java.util.Set;
@@ -98,4 +99,18 @@ public class TypeUtilsTest {
     assertFalse( TypeUtils.isSimpleType( codeModel.ref( Object.class ) ) );
     assertFalse( TypeUtils.isSimpleType( codeModel.ref( List.class ) ) );
   }
+
+  @Test
+  public void testReasure() throws Exception {
+    assertEquals( "java.lang.String", TypeUtils.removeWildcard( codeModel.ref( String.class ) ) );
+    assertEquals( "java.lang.String", TypeUtils.removeWildcard( codeModel.ref( String.class ).wildcard() ) );
+
+    expectedException.expect( IllegalArgumentException.class );
+    expectedException.expectMessage( "Invalid type - cannot remove wildcard. Call erasure() first: java.util.List<? extends java.lang.String>" );
+
+    assertEquals( "java.util.List", TypeUtils.removeWildcard( codeModel.ref( List.class ).narrow( codeModel.ref( String.class ).wildcard() ) ) );
+  }
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 }
