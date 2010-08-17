@@ -132,7 +132,7 @@ public class AssertUtils {
       XMLAssert.assertXMLEqual( err, test, control );
       setIgnoreWhitespace( false );
     } catch ( SAXException e ) {
-      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was: <" + format( test ).trim() + ">" );
+      throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", format( control ).trim(), format( test ).trim() );
     } catch ( AssertionFailedError ignore ) {
       throw new ComparisonFailure( "XML comaprison failed", format( control ).trim(), format( test ).trim() );
     }

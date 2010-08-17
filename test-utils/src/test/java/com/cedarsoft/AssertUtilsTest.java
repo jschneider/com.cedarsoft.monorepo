@@ -87,10 +87,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testFormat() throws Exception {
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<xml2 />> but was: <This is no xml!>" );
-
+    expectedException.expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( "<xml2/>", "This is no xml!" );
   }
 
