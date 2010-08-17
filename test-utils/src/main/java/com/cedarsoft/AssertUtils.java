@@ -121,10 +121,10 @@ public class AssertUtils {
    */
   public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String control, @NotNull @NonNls String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
-      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was:<" + test + '>' );
+      throw new ComparisonFailure( "Empty test xml", format( control ).trim(), format( test ).trim() );
     }
     if ( control.trim().length() == 0 ) {
-      throw new AssertionError( "expected:<" + control + "> but was:<" + format( test ).trim() + '>' );
+      throw new ComparisonFailure( "Empty control xml", format( control ).trim(), format( test ).trim() );
     }
 
     try {
@@ -134,7 +134,7 @@ public class AssertUtils {
     } catch ( SAXException e ) {
       throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", format( control ).trim(), format( test ).trim() );
     } catch ( AssertionFailedError ignore ) {
-      throw new ComparisonFailure( "XML comaprison failed", format( control ).trim(), format( test ).trim() );
+      throw new ComparisonFailure( "XML comparison failed", format( control ).trim(), format( test ).trim() );
     }
   }
 
