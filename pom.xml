@@ -113,6 +113,11 @@
         <artifactId>guava-primitives</artifactId>
         <version>r03</version>
       </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava-base</artifactId>
+        <version>r03</version>
+      </dependency>
 
       <dependency>
         <groupId>commons-configuration</groupId>
