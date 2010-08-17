@@ -74,6 +74,12 @@ public class Result {
     throw new IllegalArgumentException( "No class declaration found for <" + fqName + ">" );
   }
 
+  /**
+   * Use {@link #getClassDeclaration(String)} instead
+   *
+   * @return the class declaration with the shoretest fq name
+   */
+  @Deprecated
   @NotNull
   public ClassDeclaration getClassDeclaration() {
     if ( classDeclarations.isEmpty() ) {
@@ -97,6 +103,7 @@ public class Result {
     return shortest;
   }
 
+  @Deprecated
   @NotNull
   public ClassDeclaration findClassDeclarationWithShortestFQName() {
     ClassDeclaration shortest = null;

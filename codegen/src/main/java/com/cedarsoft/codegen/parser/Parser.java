@@ -60,7 +60,7 @@ public class Parser {
 
   @Deprecated
   @NotNull
-  public static Result parse( @NotNull File file, @Nullable @NonNls String classpath ) {
+  public static Result parse( @NotNull File file, @Nullable @NonNls Classpath classpath ) {
     return parse( classpath, Collections.singleton( file ) );
   }
 
@@ -75,18 +75,18 @@ public class Parser {
   }
 
   @NotNull
-  public static Result parse( @Nullable @NonNls String classpath, @NotNull File... files ) {
+  public static Result parse( @Nullable @NonNls Classpath classpath, @NotNull File... files ) {
     return parse( classpath, Arrays.asList( files ) );
   }
 
   @NotNull
-  public static Result parse( @Nullable @NonNls String classpath, @NotNull Iterable<? extends File> files ) {
+  public static Result parse( @Nullable @NonNls Classpath classpath, @NotNull Iterable<? extends File> files ) {
     List<String> arguments = new ArrayList<String>();
 
     arguments.add( "-XclassesAsDecls" );
     if ( classpath != null ) {
       arguments.add( "-cp" );
-      arguments.add( classpath );
+      arguments.add( classpath.asClasspathStatement() );
     }
 
     arguments.add( "-nocompile" );
