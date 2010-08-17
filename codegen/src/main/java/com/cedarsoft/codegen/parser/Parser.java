@@ -58,22 +58,6 @@ public class Parser {
   private Parser() {
   }
 
-  @Deprecated
-  @NotNull
-  public static Result parse( @NotNull File file, @Nullable @NonNls Classpath classpath ) {
-    return parse( classpath, Collections.singleton( file ) );
-  }
-
-  @NotNull
-  public static Result parse( @NotNull File... files ) {
-    return parse( null, files );
-  }
-
-  @NotNull
-  public static Result parse( @NotNull Iterable<? extends File> files ) {
-    return parse( null, files );
-  }
-
   @NotNull
   public static Result parse( @Nullable @NonNls Classpath classpath, @NotNull File... files ) {
     return parse( classpath, Arrays.asList( files ) );

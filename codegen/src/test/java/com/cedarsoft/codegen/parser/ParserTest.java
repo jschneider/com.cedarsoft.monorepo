@@ -79,7 +79,7 @@ public class ParserTest {
 
   @Test
   public void testSingle() {
-    Result parsed = Parser.parse( javaFile0 );
+    Result parsed = Parser.parse( null, javaFile0 );
 
     assertNotNull( parsed );
     assertEquals( 1, parsed.getClassDeclarations().size() );
@@ -94,7 +94,7 @@ public class ParserTest {
 
   @Test
   public void testMulti() {
-    Result parsed = Parser.parse( javaFile0, javaFile1, javaFile2 );
+    Result parsed = Parser.parse( null, javaFile0, javaFile1, javaFile2 );
     assertNotNull( parsed );
 
     assertThat( parsed.getClassDeclarations().size(), is( 3 ) );
@@ -105,7 +105,7 @@ public class ParserTest {
 
   @Test
   public void testFindShortes() {
-    Result parsed = Parser.parse( javaFile0, javaFile1, javaFile2 );
+    Result parsed = Parser.parse( null, javaFile0, javaFile1, javaFile2 );
     assertNotNull( parsed );
 
     assertEquals( "com.cedarsoft.codegen.model.test.Door", parsed.findClassDeclarationWithShortestFQName().getQualifiedName() );
@@ -113,7 +113,7 @@ public class ParserTest {
 
   @Test
   public void testInvalid() {
-    Result parsed = Parser.parse( javaFile0 );
+    Result parsed = Parser.parse( null, javaFile0 );
     expectedException.expect( IllegalArgumentException.class );
     parsed.getClassDeclaration( "does.not.Exist" );
   }

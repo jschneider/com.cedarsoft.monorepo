@@ -42,7 +42,6 @@ import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.declaration.ParameterDeclaration;
 import org.junit.*;
-import org.junit.rules.*;
 
 import java.io.File;
 import java.net.URL;
@@ -64,7 +63,7 @@ public class FactoryCollectionsTest {
     File javaFile = new File( resource.toURI() );
     assertTrue( javaFile.exists() );
 
-    parsed = Parser.parse( javaFile );
+    parsed = Parser.parse( null, javaFile );
     assertNotNull( parsed );
     assertEquals( 1, parsed.getClassDeclarations().size() );
 

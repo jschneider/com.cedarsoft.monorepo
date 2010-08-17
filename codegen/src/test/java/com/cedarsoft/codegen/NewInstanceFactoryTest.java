@@ -121,7 +121,7 @@ public class NewInstanceFactoryTest {
   @Test
   public void testComplex() throws Exception {
     File file = new File( getClass().getResource( "test/AClass.java" ).toURI() );
-    Result result = Parser.parse( file );
+    Result result = Parser.parse( null, file );
 
     assertEquals( 1, result.getClassDeclarations().size() );
     ClassDeclaration aClassDeclaration = result.getClassDeclaration( "com.cedarsoft.codegen.test.AClass" );

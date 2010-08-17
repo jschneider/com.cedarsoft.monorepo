@@ -58,7 +58,7 @@ public class ParsingFieldInitTypesTest {
     File javaFile = new File( resource.toURI() );
     assertTrue( javaFile.exists() );
 
-    Result parsed = Parser.parse( javaFile );
+    Result parsed = Parser.parse( null, javaFile );
     assertNotNull( parsed );
     assertEquals( 1, parsed.getClassDeclarations().size() );
     ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.FieldTypesInit" );
