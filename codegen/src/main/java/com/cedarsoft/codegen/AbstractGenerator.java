@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.parser.Classpath;
 import com.cedarsoft.exec.Executer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
@@ -41,6 +42,7 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.fest.reflect.core.Reflection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,8 +59,8 @@ public abstract class AbstractGenerator {
   public static final String GENERATE_METHOD_NAME = "generate";
 
 
-  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
-    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut );
+  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
+    GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, classpath, logOut );
 
     File tmpDestination = createEmptyTmpDir();
     File tmpTestDestination = createEmptyTmpDir();
@@ -66,7 +68,7 @@ public abstract class AbstractGenerator {
     File tmpResourcesDestination = createEmptyTmpDir();
     File tmpTestResourcesDestination = createEmptyTmpDir();
 
-    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFiles, tmpDestination, tmpResourcesDestination, tmpTestDestination, tmpTestResourcesDestination, logOut );
+    GeneratorConfiguration tmpConfiguration = new GeneratorConfiguration( domainSourceFiles, tmpDestination, tmpResourcesDestination, tmpTestDestination, tmpTestResourcesDestination, classpath, logOut );
 
     //Now start the generator
     run( tmpConfiguration );

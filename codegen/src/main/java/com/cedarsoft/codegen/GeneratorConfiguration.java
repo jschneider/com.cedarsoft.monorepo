@@ -31,8 +31,10 @@
 
 package com.cedarsoft.codegen;
 
+import com.cedarsoft.codegen.parser.Classpath;
 import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -56,12 +58,15 @@ public class GeneratorConfiguration {
   private final CreationMode creationMode;
   @NotNull
   private final PrintWriter logOut;
+  @Nullable
+  private final Classpath classpath;
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut ) {
-    this( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut, CreationMode.ALL );
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut ) {
+    this( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, classpath, logOut, CreationMode.ALL );
   }
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
+  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
+    this.classpath = classpath;
     this.domainSourceFiles = ImmutableList.copyOf( domainSourceFiles );
     this.destination = destination;
     this.testDestination = testDestination;
@@ -69,6 +74,11 @@ public class GeneratorConfiguration {
     this.logOut = logOut;
     this.resourcesDestination = resourcesDestination;
     this.testResourcesDestination = testResourcesDestination;
+  }
+
+  @NotNull
+  public Classpath getClasspath() {
+    return classpath;
   }
 
   @NotNull

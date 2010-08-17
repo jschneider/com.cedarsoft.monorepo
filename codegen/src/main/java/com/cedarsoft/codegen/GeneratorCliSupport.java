@@ -184,7 +184,7 @@ public class GeneratorCliSupport {
         domainSourceFiles.add( domainSourceFile );
       }
 
-      generator.run( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, logOut );
+      generator.run( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, null, logOut );
     } finally {
       logOut.flush();
       logOut.close();
