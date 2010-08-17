@@ -134,7 +134,7 @@ public class AssertUtils {
     } catch ( SAXException e ) {
       throw new AssertionError( "expected:<" + format( control ).trim() + "> but was: <" + format( test ).trim() + ">" );
     } catch ( AssertionFailedError ignore ) {
-      throw new AssertionError( "expected:<" + format( control ).trim() + "> but was: <" + format( test ).trim() + '>' );
+      throw new ComparisonFailure( "XML comaprison failed", format( control ).trim(), format( test ).trim() );
     }
   }
 

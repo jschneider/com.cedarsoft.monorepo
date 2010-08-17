@@ -37,6 +37,7 @@ import com.cedarsoft.crypt.HashCalculator;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
 import org.junit.rules.*;
+import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,11 +57,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml() throws Exception {
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<xml2 />> but was: <<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<xml />>" );
-
+    expectedException.expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
   }
 
@@ -79,11 +76,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml2() throws Exception {
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage( "expected:<<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<xml2 />> but was: <<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<xml />>" );
-
+    expectedException.expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.1.xml" ), "<xml/>" );
   }
 
