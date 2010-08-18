@@ -72,7 +72,7 @@ public class OnlyReadableTest {
 
   @Test
   public void testFindField() {
-    FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( factory.getClassDeclaration(), "strings" );
+    FieldDeclaration fieldDeclaration = TypeUtils.findFieldDeclaration( factory.getClassDeclaration(), "strings" );
     assertEquals( "strings", fieldDeclaration.getSimpleName() );
     assertEquals( "java.util.List<java.lang.String>", fieldDeclaration.getType().toString() );
   }

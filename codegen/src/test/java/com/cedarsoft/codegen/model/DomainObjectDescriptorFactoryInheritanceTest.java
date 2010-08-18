@@ -44,31 +44,29 @@ import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
-import java.net.URL;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class DomainObjectDescriptorFactoryTest {
+public class DomainObjectDescriptorFactoryInheritanceTest {
   @Rule
   public ExpectedException thrown = ExpectedException.none();
 
   private DomainObjectDescriptorFactory factory;
   public static final String WINDOW_RES = "/com/cedarsoft/codegen/model/test/Window.java";
+  public static final String SUB_CLASS = "/com/cedarsoft/codegen/model/test/SubClass.java";
 
   @Before
   public void setUp() throws Exception {
-    URL resource = getClass().getResource( WINDOW_RES );
-    assertNotNull( resource );
-    File javaFile = new File( resource.toURI() );
-    assertTrue( javaFile.exists() );
-
-    Result parsed = Parser.parse( null, javaFile );
+    Result parsed = Parser.parse( null,
+                                  new File( getClass().getResource( WINDOW_RES ).toURI() ),
+                                  new File( getClass().getResource( SUB_CLASS ).toURI() )
+    );
     assertNotNull( parsed );
-    assertEquals( 1, parsed.getClassDeclarations().size() );
-    ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.Window" );
+    assertEquals( 2, parsed.getClassDeclarations().size() );
+    ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.SubClass" );
 
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
     factory = new DomainObjectDescriptorFactory( classDeclaration );
@@ -84,16 +82,19 @@ public class DomainObjectDescriptorFactoryTest {
   @Test
   public void testCreate() {
     DomainObjectDescriptor model = factory.create();
-    assertEquals( "com.cedarsoft.codegen.model.test.Window", model.getQualifiedName() );
-    assertEquals( 3, model.getFieldInfos().size() );
-    assertEquals( "width", model.getFieldInfos().get( 0 ).getSimpleName() );
-    assertEquals( "double", model.getFieldInfos().get( 0 ).getType().toString() );
+    assertEquals( "com.cedarsoft.codegen.model.test.SubClass", model.getQualifiedName() );
+    assertEquals( 4, model.getFieldInfos().size() );
+    assertEquals( "strings", model.getFieldInfos().get( 0 ).getSimpleName() );
+    assertEquals( "java.util.List<java.lang.String>", model.getFieldInfos().get( 0 ).getType().toString() );
 
-    assertEquals( "height", model.getFieldInfos().get( 1 ).getSimpleName() );
+    assertEquals( "width", model.getFieldInfos().get( 1 ).getSimpleName() );
     assertEquals( "double", model.getFieldInfos().get( 1 ).getType().toString() );
 
-    assertEquals( "description", model.getFieldInfos().get( 2 ).getSimpleName() );
-    assertEquals( "java.lang.String", model.getFieldInfos().get( 2 ).getType().toString() );
+    assertEquals( "height", model.getFieldInfos().get( 2 ).getSimpleName() );
+    assertEquals( "double", model.getFieldInfos().get( 2 ).getType().toString() );
+
+    assertEquals( "description", model.getFieldInfos().get( 3 ).getSimpleName() );
+    assertEquals( "java.lang.String", model.getFieldInfos().get( 3 ).getType().toString() );
   }
 
   @Test

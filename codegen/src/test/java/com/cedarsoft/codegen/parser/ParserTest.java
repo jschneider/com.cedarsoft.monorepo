@@ -33,10 +33,13 @@ package com.cedarsoft.codegen.parser;
 
 import com.cedarsoft.codegen.mock.AnnotationProcessorEnvironmentMock;
 import com.sun.mirror.declaration.ClassDeclaration;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -49,32 +52,20 @@ public class ParserTest {
   private File javaFile0;
   private File javaFile1;
   private File javaFile2;
+  private File javaFile3;
+  private File javaFile4;
 
   @Rule
   public ExpectedException expectedException = ExpectedException.none();
 
   @Before
   public void setUp() throws Exception {
-    {
-      URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/FieldTypesInit.java" );
-      assertNotNull( resource );
-      javaFile0 = new File( resource.toURI() );
-      assertTrue( javaFile0.exists() );
-    }
+    javaFile0 = getResourceAsFile( "/com/cedarsoft/codegen/model/test/FieldTypesInit.java" );
+    javaFile1 = getResourceAsFile( "/com/cedarsoft/codegen/model/test/Door.java" );
+    javaFile2 = getResourceAsFile( "/com/cedarsoft/codegen/model/test/Room.java" );
 
-    {
-      URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/Door.java" );
-      assertNotNull( resource );
-      javaFile1 = new File( resource.toURI() );
-      assertTrue( javaFile1.exists() );
-    }
-
-    {
-      URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/Room.java" );
-      assertNotNull( resource );
-      javaFile2 = new File( resource.toURI() );
-      assertTrue( javaFile2.exists() );
-    }
+    javaFile3 = getResourceAsFile( "/com/cedarsoft/codegen/model/test/SubClass.java" );
+    javaFile4 = getResourceAsFile( "/com/cedarsoft/codegen/model/test/Window.java" );
   }
 
   @Test
@@ -90,6 +81,14 @@ public class ParserTest {
     assertThat( classDeclaration.getQualifiedName(), is( "com.cedarsoft.codegen.model.test.FieldTypesInit" ) );
 
     assertSame( classDeclaration, parsed.getClassDeclaration() );
+  }
+
+  @Test
+  public void testSubClass() throws Exception {
+    Result parsed = Parser.parse( null, javaFile3, javaFile4 );
+    assertEquals( 2, parsed.getClassDeclarations().size() );
+
+    assertNotNull( parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.Window" ) );
   }
 
   @Test
@@ -123,5 +122,14 @@ public class ParserTest {
     Result result = new Result( new AnnotationProcessorEnvironmentMock() );
     expectedException.expect( IllegalStateException.class );
     result.getClassDeclaration();
+  }
+
+  @NotNull
+  private File getResourceAsFile( @NotNull @NonNls String path ) throws URISyntaxException {
+    URL resource = getClass().getResource( path );
+    assertNotNull( resource );
+    File file = new File( resource.toURI() );
+    assertTrue( file.exists() );
+    return file;
   }
 }

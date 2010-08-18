@@ -31,14 +31,12 @@
 
 package com.cedarsoft.codegen.model;
 
-import com.cedarsoft.codegen.NamingSupport;
 import com.cedarsoft.codegen.TypeUtils;
 import com.google.common.collect.Lists;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import com.sun.mirror.declaration.ParameterDeclaration;
 import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +52,7 @@ import java.util.List;
  */
 public class DomainObjectDescriptor {
   @NotNull
-  private final List<FieldWithInitializationInfo> fieldsToSerialize = Lists.newArrayList();
+  private final List<FieldWithInitializationInfo> fieldInfos = Lists.newArrayList();
   @NotNull
   private final ClassDeclaration classDeclaration;
 
@@ -74,12 +72,12 @@ public class DomainObjectDescriptor {
   }
 
   public void addField( @NotNull FieldWithInitializationInfo fieldToSerialize ) {
-    this.fieldsToSerialize.add( fieldToSerialize );
+    this.fieldInfos.add( fieldToSerialize );
   }
 
   @NotNull
-  public List<? extends FieldWithInitializationInfo> getFieldsToSerialize() {
-    return Collections.unmodifiableList( fieldsToSerialize );
+  public List<? extends FieldWithInitializationInfo> getFieldInfos() {
+    return Collections.unmodifiableList( fieldInfos );
   }
 
   /**
@@ -90,7 +88,7 @@ public class DomainObjectDescriptor {
   @NotNull
   public List<? extends FieldInitializedInConstructorInfo> getFieldsInitializedInConstructor() {
     List<FieldInitializedInConstructorInfo> found = new ArrayList<FieldInitializedInConstructorInfo>();
-    for ( FieldWithInitializationInfo info : fieldsToSerialize ) {
+    for ( FieldWithInitializationInfo info : fieldInfos ) {
       if ( info instanceof FieldInitializedInConstructorInfo ) {
         found.add( ( FieldInitializedInConstructorInfo ) info );
       }
@@ -104,7 +102,7 @@ public class DomainObjectDescriptor {
   @NotNull
   public List<? extends FieldInitializedInSetterInfo> getFieldsInitializedInSetter() {
     List<FieldInitializedInSetterInfo> found = new ArrayList<FieldInitializedInSetterInfo>();
-    for ( FieldWithInitializationInfo info : fieldsToSerialize ) {
+    for ( FieldWithInitializationInfo info : fieldInfos ) {
       if ( info instanceof FieldInitializedInSetterInfo ) {
         found.add( ( FieldInitializedInSetterInfo ) info );
       }
@@ -116,7 +114,7 @@ public class DomainObjectDescriptor {
   @NotNull
   public List<? extends FieldNotInitializationInfo> getFieldsNotInitialized() {
     List<FieldNotInitializationInfo> found = new ArrayList<FieldNotInitializationInfo>();
-    for ( FieldWithInitializationInfo info : fieldsToSerialize ) {
+    for ( FieldWithInitializationInfo info : fieldInfos ) {
       if ( info instanceof FieldNotInitializationInfo ) {
         found.add( ( FieldNotInitializationInfo ) info );
       }
@@ -127,137 +125,32 @@ public class DomainObjectDescriptor {
 
   @NotNull
   public ConstructorDeclaration findBestConstructor() {
-    return findBestConstructor( classDeclaration );
-  }
-
-  @NotNull
-  public static ConstructorDeclaration findBestConstructor( @NotNull ClassDeclaration classDeclaration ) {
-    ConstructorDeclaration currentlyBest = null;
-    for ( ConstructorDeclaration constructorDeclaration : classDeclaration.getConstructors() ) {
-      if ( currentlyBest == null || constructorDeclaration.getParameters().size() > currentlyBest.getParameters().size() ) {
-        currentlyBest = constructorDeclaration;
-      }
-    }
-
-    if ( currentlyBest == null ) {
-      throw new IllegalStateException( "No constructor found in " + classDeclaration.getSimpleName() );
-    }
-    return currentlyBest;
+    return TypeUtils.findBestConstructor( classDeclaration );
   }
 
   @NotNull
   public MethodDeclaration findSetter( @NotNull @NonNls String fieldName, @NotNull TypeMirror type ) {
-    return findSetter( classDeclaration, fieldName, type );
-  }
-
-  /**
-   * @param classDeclaration the class declaration
-   * @param fieldName        the simple name
-   * @param type             the type
-   * @return the method declaration for the setter
-   *
-   * @noinspection TypeMayBeWeakened
-   */
-  @NotNull
-  public static MethodDeclaration findSetter( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName, @NotNull TypeMirror type ) throws IllegalArgumentException {
-    String expectedName = NamingSupport.createSetter( fieldName );
-
-    for ( MethodDeclaration methodDeclaration : classDeclaration.getMethods() ) {
-      if ( !methodDeclaration.getSimpleName().equals( expectedName ) ) {
-        continue;
-      }
-
-      if ( methodDeclaration.getParameters().size() != 1 ) {
-        throw new IllegalArgumentException( "Expected one parameter. But was <" + methodDeclaration.getParameters() + ">" );
-      }
-
-      ParameterDeclaration parameterDeclaration = methodDeclaration.getParameters().iterator().next();
-      if ( !TypeUtils.isAssignable( type, parameterDeclaration.getType() ) ) {
-        throw new IllegalArgumentException( "Invalid parameter type for <" + expectedName + ">. Was <" + parameterDeclaration.getType() + "> but expected <" + type + ">" );
-      }
-
-      return methodDeclaration;
-    }
-
-    throw new IllegalArgumentException( "No method declaration found for <" + expectedName + ">" );
+    return TypeUtils.findSetter( classDeclaration, fieldName, type );
   }
 
   @NotNull
   public MethodDeclaration findSetter( @NotNull FieldDeclaration fieldDeclaration ) {
-    return findSetter( classDeclaration, fieldDeclaration );
-  }
-
-  @NotNull
-  public static MethodDeclaration findSetter( @NotNull ClassDeclaration classDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
-    return findSetter( classDeclaration, fieldDeclaration.getSimpleName(), fieldDeclaration.getType() );
+    return TypeUtils.findSetter( classDeclaration, fieldDeclaration );
   }
 
   @NotNull
   public MethodDeclaration findGetterForField( @NotNull FieldDeclaration fieldDeclaration ) {
-    return findGetterForField( classDeclaration, fieldDeclaration );
-  }
-
-  public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
-    return findGetterForField( classDeclaration, fieldDeclaration.getSimpleName(), fieldDeclaration.getType() );
+    return TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
   }
 
   @NotNull
   public MethodDeclaration findGetterForField( @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
-    return findGetterForField( classDeclaration, simpleName, type );
-  }
-
-  /**
-   * @param classDeclaration the class declaration
-   * @param simpleName       the simple name
-   * @param type             the type
-   * @return the getter declaration
-   *
-   * @noinspection TypeMayBeWeakened
-   */
-  public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
-    String expectedName = NamingSupport.createGetterName( simpleName );
-
-    for ( MethodDeclaration methodDeclaration : classDeclaration.getMethods() ) {
-      if ( methodDeclaration.getSimpleName().equals( expectedName ) ) {
-        TypeMirror returnType = methodDeclaration.getReturnType();
-        if ( TypeUtils.isAssignable( type, returnType ) ) {
-          return methodDeclaration;
-        } else {
-          throw new IllegalArgumentException( "Invalid return types for <" + expectedName + ">. Was <" + returnType + "> but expected <" + type + ">" );
-        }
-      }
-    }
-
-    throw new IllegalArgumentException( "No method declaration found for <" + expectedName + ">" );
+    return TypeUtils.findGetterForField( classDeclaration, simpleName, type );
   }
 
   @NotNull
   public FieldDeclaration findFieldDeclaration( @NotNull @NonNls String fieldName ) {
-    return findFieldDeclaration( classDeclaration, fieldName );
-  }
-
-  /**
-   * @param classDeclaration the class declaration
-   * @param fieldName        the field name
-   * @return the field declaration
-   *
-   * @noinspection TypeMayBeWeakened
-   */
-  @NotNull
-  public static FieldDeclaration findFieldDeclaration( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName ) {
-    for ( FieldDeclaration fieldDeclaration : classDeclaration.getFields() ) {
-      if ( fieldDeclaration.getSimpleName().equals( fieldName ) ) {
-        return fieldDeclaration;
-      }
-    }
-
-    throw new IllegalArgumentException( "No field delaration found for <" + fieldName + ">" );
-  }
-
-  public static boolean isType( @NotNull TypeMirror typeMirror, @NotNull Class<?> type ) {
-    @NonNls
-    String typeAsName = type.getName();
-    return typeMirror.toString().equals( typeAsName );
+    return TypeUtils.findFieldDeclaration( classDeclaration, fieldName );
   }
 
   private static class FieldWithInitializationInfoComparator implements Comparator<FieldInitializedInConstructorInfo>, Serializable {

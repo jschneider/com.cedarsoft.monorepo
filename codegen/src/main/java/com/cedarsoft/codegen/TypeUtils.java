@@ -36,6 +36,7 @@ import com.google.common.base.Splitter;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
+import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.Declaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
@@ -50,6 +51,7 @@ import com.sun.mirror.util.Types;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -61,6 +63,9 @@ import java.util.Set;
  * Offers utility methods related to types
  */
 public class TypeUtils {
+  @NonNls
+  public static final String JAVA_LANG_OBJECT = "java.lang.Object";
+
   private TypeUtils() {
   }
 
@@ -216,7 +221,7 @@ public class TypeUtils {
   public static MethodDeclaration findSetter( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName, @NotNull TypeMirror type ) throws IllegalArgumentException {
     String expectedName = NamingSupport.createSetter( fieldName );
 
-    for ( MethodDeclaration methodDeclaration : classDeclaration.getMethods() ) {
+    for ( MethodDeclaration methodDeclaration : findMethodsIncludingSuperClass( classDeclaration ) ) {
       if ( !methodDeclaration.getSimpleName().equals( expectedName ) ) {
         continue;
       }
@@ -251,7 +256,7 @@ public class TypeUtils {
   public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
     String expectedName = "get" + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
 
-    for ( MethodDeclaration methodDeclaration : classDeclaration.getMethods() ) {
+    for ( MethodDeclaration methodDeclaration : findMethodsIncludingSuperClass( classDeclaration ) ) {
       if ( methodDeclaration.getSimpleName().equals( expectedName ) ) {
         TypeMirror returnType = methodDeclaration.getReturnType();
         if ( isAssignable( type, returnType ) ) {
@@ -265,7 +270,6 @@ public class TypeUtils {
     throw new IllegalArgumentException( "No method declaration found for <" + expectedName + ">" );
   }
 
-
   /**
    * @param classDeclaration the class declaration
    * @param fieldName        the field name
@@ -275,13 +279,14 @@ public class TypeUtils {
    */
   @NotNull
   public static FieldDeclaration findFieldDeclaration( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName ) {
-    for ( FieldDeclaration fieldDeclaration : classDeclaration.getFields() ) {
+    for ( FieldDeclaration fieldDeclaration : TypeUtils.findFieldsIncludingSuperClasses( classDeclaration ) ) {
       if ( fieldDeclaration.getSimpleName().equals( fieldName ) ) {
         return fieldDeclaration;
       }
     }
 
     throw new IllegalArgumentException( "No field declaration found for <" + fieldName + ">" );
+
   }
 
   public static boolean isType( @NotNull TypeMirror typeMirror, @NotNull Class<?> expected ) {
@@ -378,5 +383,50 @@ public class TypeUtils {
     }
 
     return classWithWildcard.fullName();
+  }
+
+  @NotNull
+  public static ConstructorDeclaration findBestConstructor( @NotNull ClassDeclaration classDeclaration ) {
+    ConstructorDeclaration currentlyBest = null;
+    for ( ConstructorDeclaration constructorDeclaration : classDeclaration.getConstructors() ) {
+      if ( currentlyBest == null || constructorDeclaration.getParameters().size() > currentlyBest.getParameters().size() ) {
+        currentlyBest = constructorDeclaration;
+      }
+    }
+
+    if ( currentlyBest == null ) {
+      throw new IllegalStateException( "No constructor found in " + classDeclaration.getSimpleName() );
+    }
+    return currentlyBest;
+  }
+
+  @NotNull
+  public static Collection<FieldDeclaration> findFieldsIncludingSuperClasses( @NotNull ClassDeclaration classDeclaration ) {
+    Collection<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
+
+    ClassDeclaration current = classDeclaration;
+    while ( current != null && isNotObject( current ) ) {
+      fields.addAll( current.getFields() );
+      current = current.getSuperclass().getDeclaration();
+    }
+
+    return fields;
+  }
+
+  public static boolean isNotObject( @NotNull ClassDeclaration current ) {
+    return !current.getQualifiedName().equals( JAVA_LANG_OBJECT );
+  }
+
+  @NotNull
+  public static Collection<? extends MethodDeclaration> findMethodsIncludingSuperClass( @NotNull ClassDeclaration classDeclaration ) {
+    Collection<MethodDeclaration> methods = new ArrayList<MethodDeclaration>();
+
+    ClassDeclaration current = classDeclaration;
+    while ( current != null && isNotObject( current ) ) {
+      methods.addAll( current.getMethods() );
+      current = current.getSuperclass().getDeclaration();
+    }
+
+    return methods;
   }
 }

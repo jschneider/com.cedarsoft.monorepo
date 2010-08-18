@@ -36,60 +36,66 @@ import com.cedarsoft.codegen.parser.Parser;
 import com.cedarsoft.codegen.parser.Result;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
-import com.sun.mirror.declaration.MethodDeclaration;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import static org.junit.Assert.*;
 
-
 /**
- *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class ParsingFieldInitTypesTest {
+public class ExtendsTest {
+  public static final String RESOURCE1 = "/com/cedarsoft/codegen/model/test/SubClass.java";
+  public static final String RESOURCE2 = "/com/cedarsoft/codegen/model/test/Window.java";
+
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
   private DomainObjectDescriptorFactory factory;
 
   @Before
   public void setUp() throws Exception {
-    URL resource = getClass().getResource( "/com/cedarsoft/codegen/model/test/FieldTypesInit.java" );
-    assertNotNull( resource );
-    File javaFile = new File( resource.toURI() );
-    assertTrue( javaFile.exists() );
-
-    Result parsed = Parser.parse( null, javaFile );
+    Result parsed = Parser.parse( null, getResourceAsFile( RESOURCE1 ), getResourceAsFile( RESOURCE2 ) );
     assertNotNull( parsed );
-    assertEquals( 1, parsed.getClassDeclarations().size() );
-    ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.FieldTypesInit" );
+    assertEquals( 2, parsed.getClassDeclarations().size() );
+    ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.SubClass" );
 
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
     factory = new DomainObjectDescriptorFactory( classDeclaration );
   }
 
-  @Test
-  public void testFindField() {
-    FieldDeclaration fieldDeclaration = TypeUtils.findFieldDeclaration( factory.getClassDeclaration(), "width" );
-    assertEquals( "width", fieldDeclaration.getSimpleName() );
-    assertEquals( "double", fieldDeclaration.getType().toString() );
+  @NotNull
+  private File getResourceAsFile( @NotNull @NonNls String path ) throws URISyntaxException {
+    URL resource = getClass().getResource( path );
+    assertNotNull( resource );
+    File file1 = new File( resource.toURI() );
+    assertTrue( file1.exists() );
+    return file1;
   }
 
   @Test
-  public void testFindSetterInit() {
-    FieldDeclaration fieldDeclaration = TypeUtils.findFieldDeclaration( factory.getClassDeclaration(), "height" );
-    MethodDeclaration setter = TypeUtils.findSetter( factory.getClassDeclaration(), fieldDeclaration );
-    assertNotNull( setter );
-    assertEquals( "setHeight", setter.getSimpleName() );
-  }
-
-  @Test
-  public void testInitTypes() {
+  public void testBasic() {
     DomainObjectDescriptor descriptor = factory.create();
-    assertEquals( 2, descriptor.getFieldsInitializedInConstructor().size() );
+
+    assertEquals( "com.cedarsoft.codegen.model.test.SubClass", descriptor.getQualifiedName() );
+
+    assertEquals( 3, descriptor.getFieldsInitializedInConstructor().size() );
+    assertEquals( 0, descriptor.getFieldsInitializedInSetter().size() );
+    assertEquals( 1, descriptor.getFieldsNotInitialized().size() );
+
+    FieldDeclaration fieldDeclaration = descriptor.findFieldDeclaration( "strings" );
+    assertEquals( "strings", fieldDeclaration.getSimpleName() );
+    assertEquals( "java.util.List<java.lang.String>", fieldDeclaration.getType().toString() );
+
     assertEquals( "description", descriptor.getFieldsInitializedInConstructor().get( 0 ).getSimpleName() );
     assertEquals( "width", descriptor.getFieldsInitializedInConstructor().get( 1 ).getSimpleName() );
+    assertEquals( "height", descriptor.getFieldsInitializedInConstructor().get( 2 ).getSimpleName() );
 
-    assertEquals( 1, descriptor.getFieldsInitializedInSetter().size() );
-    assertEquals( "height", descriptor.getFieldsInitializedInSetter().get( 0 ).getSimpleName() );
+    assertEquals( "strings", descriptor.getFieldsNotInitialized().get( 0 ).getSimpleName() );
   }
 }

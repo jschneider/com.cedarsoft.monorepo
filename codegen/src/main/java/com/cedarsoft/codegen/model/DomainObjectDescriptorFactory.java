@@ -42,10 +42,14 @@ import com.sun.mirror.type.TypeMirror;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
+
 /**
  *
  */
 public class DomainObjectDescriptorFactory {
+  @NonNls
+  public static final String JAVA_LANG_OBJECT = "java.lang.Object";
   @NotNull
   private final ClassDeclaration classDeclaration;
 
@@ -57,7 +61,8 @@ public class DomainObjectDescriptorFactory {
   public DomainObjectDescriptor create() {
     DomainObjectDescriptor domainObjectDescriptor = new DomainObjectDescriptor( classDeclaration );
 
-    for ( FieldDeclaration fieldDeclaration : classDeclaration.getFields() ) {
+    Collection<FieldDeclaration> fields = TypeUtils.findFieldsIncludingSuperClasses( classDeclaration);
+    for ( FieldDeclaration fieldDeclaration : fields ) {
       if ( TypeUtils.isStatic( fieldDeclaration ) ) {
         continue;
       }
@@ -70,7 +75,7 @@ public class DomainObjectDescriptorFactory {
 
   @NotNull
   public FieldWithInitializationInfo getFieldWithInitializationInfo( @NotNull FieldDeclaration fieldDeclaration ) {
-    MethodDeclaration getterDeclaration = DomainObjectDescriptor.findGetterForField( classDeclaration, fieldDeclaration );
+    MethodDeclaration getterDeclaration = TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
 
     //At first look for fields that are initialized within the constructor
     try {
@@ -81,7 +86,7 @@ public class DomainObjectDescriptorFactory {
 
     //Now look for fields that have a setter
     try {
-      MethodDeclaration setter = DomainObjectDescriptor.findSetter( classDeclaration, fieldDeclaration );
+      MethodDeclaration setter = TypeUtils.findSetter( classDeclaration, fieldDeclaration );
       return new FieldInitializedInSetterInfo( fieldDeclaration, getterDeclaration, setter );
     } catch ( IllegalArgumentException ignore ) {
     }
@@ -97,7 +102,7 @@ public class DomainObjectDescriptorFactory {
 
   @NotNull
   public ConstructorCallInfo findConstructorCallInfoForField( @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) throws IllegalArgumentException {
-    ConstructorDeclaration constructorDeclaration = DomainObjectDescriptor.findBestConstructor( classDeclaration );
+    ConstructorDeclaration constructorDeclaration = TypeUtils.findBestConstructor( classDeclaration );
 
     int index = 0;
 
@@ -118,14 +123,14 @@ public class DomainObjectDescriptorFactory {
 
   @NotNull
   public FieldInitializedInConstructorInfo findFieldInitializedInConstructor( @NotNull @NonNls String simpleName ) {
-    FieldDeclaration fieldDeclaration = DomainObjectDescriptor.findFieldDeclaration( classDeclaration, simpleName );
+    FieldDeclaration fieldDeclaration = TypeUtils.findFieldDeclaration( classDeclaration, simpleName );
     return getFieldInitializeInConstructorInfo( fieldDeclaration );
   }
 
   @NotNull
   public FieldInitializedInConstructorInfo getFieldInitializeInConstructorInfo( @NotNull FieldDeclaration fieldDeclaration ) {
     ConstructorCallInfo constructorCallInfo = findConstructorCallInfoForField( fieldDeclaration );
-    MethodDeclaration getterDeclaration = DomainObjectDescriptor.findGetterForField( classDeclaration, fieldDeclaration );
+    MethodDeclaration getterDeclaration = TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
     return new FieldInitializedInConstructorInfo( fieldDeclaration, getterDeclaration, constructorCallInfo );
   }
 

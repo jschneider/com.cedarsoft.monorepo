@@ -111,7 +111,7 @@ public class FactoryCollectionsTest {
     FieldDeclaration fieldDeclaration = descriptor.findFieldDeclaration( "doors" );
     assertEquals( "java.util.List<com.cedarsoft.codegen.model.test.Door>", fieldDeclaration.getType().toString() );
 
-    MethodDeclaration setter = DomainObjectDescriptor.findSetter( classDeclaration, fieldDeclaration );
+    MethodDeclaration setter = TypeUtils.findSetter( classDeclaration, fieldDeclaration );
     assertEquals( "setDoors", setter.getSimpleName() );
     assertEquals( "void", setter.getReturnType().toString() );
     assertEquals( 1, setter.getParameters().size() );
@@ -122,7 +122,7 @@ public class FactoryCollectionsTest {
   public void testIt() {
     DomainObjectDescriptor descriptor = factory.create();
     assertNotNull( descriptor );
-    assertEquals( 3, descriptor.getFieldsToSerialize().size() );
+    assertEquals( 3, descriptor.getFieldInfos().size() );
   }
 
   @Test
