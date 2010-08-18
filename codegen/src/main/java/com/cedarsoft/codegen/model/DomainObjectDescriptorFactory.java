@@ -71,13 +71,23 @@ public class DomainObjectDescriptorFactory {
   @NotNull
   public FieldWithInitializationInfo getFieldWithInitializationInfo( @NotNull FieldDeclaration fieldDeclaration ) {
     MethodDeclaration getterDeclaration = DomainObjectDescriptor.findGetterForField( classDeclaration, fieldDeclaration );
+
+    //At first look for fields that are initialized within the constructor
     try {
       ConstructorCallInfo constructorCallInfo = findConstructorCallInfoForField( fieldDeclaration );
       return new FieldInitializedInConstructorInfo( fieldDeclaration, getterDeclaration, constructorCallInfo );
     } catch ( IllegalArgumentException ignore ) {
+    }
+
+    //Now look for fields that have a setter
+    try {
       MethodDeclaration setter = DomainObjectDescriptor.findSetter( classDeclaration, fieldDeclaration );
       return new FieldInitializedInSetterInfo( fieldDeclaration, getterDeclaration, setter );
+    } catch ( IllegalArgumentException ignore ) {
     }
+
+    //Ok, return a read only field descriptor
+    return new FieldNotInitializationInfo( fieldDeclaration, getterDeclaration );
   }
 
   @NotNull

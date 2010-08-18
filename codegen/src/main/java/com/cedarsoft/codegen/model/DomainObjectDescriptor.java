@@ -114,6 +114,18 @@ public class DomainObjectDescriptor {
   }
 
   @NotNull
+  public List<? extends FieldNotInitializationInfo> getFieldsNotInitialized() {
+    List<FieldNotInitializationInfo> found = new ArrayList<FieldNotInitializationInfo>();
+    for ( FieldWithInitializationInfo info : fieldsToSerialize ) {
+      if ( info instanceof FieldNotInitializationInfo ) {
+        found.add( ( FieldNotInitializationInfo ) info );
+      }
+    }
+
+    return found;
+  }
+
+  @NotNull
   public ConstructorDeclaration findBestConstructor() {
     return findBestConstructor( classDeclaration );
   }
