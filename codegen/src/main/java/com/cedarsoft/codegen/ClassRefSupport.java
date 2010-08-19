@@ -34,6 +34,7 @@ package com.cedarsoft.codegen;
 import com.cedarsoft.NotFoundException;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JDefinedClass;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,10 +82,16 @@ public class ClassRefSupport {
   @NotNull
   private JClass resolve( @NotNull @NonNls String qualifiedName ) throws NotFoundException {
     JClass ref = refs.get( qualifiedName );
-    if ( ref == null ) {
-      throw new NotFoundException();
+    if ( ref != null ) {
+      return ref;
     }
-    return ref;
+
+    JDefinedClass resolved = model._getClass( qualifiedName );
+    if ( resolved != null ) {
+      return resolved;
+    }
+
+    throw new NotFoundException();
   }
 
   @NotNull
