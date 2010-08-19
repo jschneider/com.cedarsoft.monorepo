@@ -44,6 +44,20 @@ public class NamingSupportTest {
   public ExpectedException expectedException = ExpectedException.none();
 
   @Test
+  public void testSingular() throws Exception {
+    assertEquals( "singular", NamingSupport.createSingular( "singulars" ) );
+    assertEquals( "string", NamingSupport.createSingular( "strings" ) );
+    assertEquals( "string", NamingSupport.createSingular( "string" ) );
+    assertEquals( "string", NamingSupport.createSingular( "string" ) );
+
+    assertEquals( "customer", NamingSupport.createSingular( "customers" ) );
+    assertEquals( "asignee", NamingSupport.createSingular( "asignees" ) );
+    assertEquals( "match", NamingSupport.createSingular( "matches" ) );
+    assertEquals( "sandwitch", NamingSupport.createSingular( "sandwitches" ) );
+    assertEquals( "box", NamingSupport.createSingular( "boxes" ) );
+  }
+
+  @Test
   public void testIt() {
     assertEquals( "string", NamingSupport.createXmlElementName( "String" ) );
     assertEquals( "acamelcase", NamingSupport.createXmlElementName( "ACamelCase" ) );

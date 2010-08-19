@@ -69,4 +69,18 @@ public class NamingSupport {
   public static String createGetterName( @NotNull @NonNls String simpleName ) {
     return "get" + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
   }
+
+  @NotNull
+  @NonNls
+  public static String createSingular( @NotNull @NonNls String plural ) {
+    if ( !plural.endsWith( "s" ) ) {
+      return plural;
+    }
+
+    if ( plural.endsWith( "ches" ) || plural.endsWith( "xes" ) ) {
+      return plural.substring( 0, plural.length() - 2 );
+    }
+
+    return plural.substring( 0, plural.length() - 1 );
+  }
 }
