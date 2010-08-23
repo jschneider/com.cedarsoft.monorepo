@@ -607,6 +607,7 @@
         <artifactId>maven-license-plugin</artifactId>
         <version>1.8.0</version>
         <configuration>
+          <strictCheck>true</strictCheck>
           <header>${license.header.url}</header>
           <failIfMissing>true</failIfMissing>
           <aggregate>true</aggregate>
