@@ -76,6 +76,8 @@
     <coverage.packageBranchRate>50</coverage.packageBranchRate>
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
+
+    <guava.version>r03</guava.version>
   </properties>
 
   <dependencyManagement>
@@ -96,27 +98,27 @@
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava-concurrent</artifactId>
-        <version>r03</version>
+        <version>${guava.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava-collections</artifactId>
-        <version>r03</version>
+        <version>${guava.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava-io</artifactId>
-        <version>r03</version>
+        <version>${guava.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava-primitives</artifactId>
-        <version>r03</version>
+        <version>${guava.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava-base</artifactId>
-        <version>r03</version>
+        <version>${guava.version}</version>
       </dependency>
 
       <dependency>
