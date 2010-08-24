@@ -119,6 +119,12 @@ public class ClassRefSupportTest {
   }
 
   @Test
+  public void testSimple() throws Exception {
+    assertEquals( "java.lang.String", classRefSupport.ref( "java.lang.String" ).fullName() );
+    assertEquals( "int", classRefSupport.ref( "int" ).fullName() );
+  }
+
+  @Test
   public void testColl() throws Exception {
     assertSame( classRefSupport.ref( List.class ), classRefSupport.ref( List.class ) );
   }

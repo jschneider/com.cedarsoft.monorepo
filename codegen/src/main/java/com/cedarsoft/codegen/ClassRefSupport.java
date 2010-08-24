@@ -66,10 +66,12 @@ public class ClassRefSupport {
 
     //Check for inner class with wrong notation
     int index = qualifiedName.lastIndexOf( '.' );
-    @NotNull @NonNls
-    String packagePart = qualifiedName.substring( 0, index );
-    if ( !packagePart.toLowerCase().equals( packagePart ) ) {
-      throw new IllegalArgumentException( "Invalid inner class <" + qualifiedName + ">. Use \"$\" sign instead." );
+    if ( index > 0 ) {
+      @NotNull @NonNls
+      String packagePart = qualifiedName.substring( 0, index );
+      if ( !packagePart.toLowerCase().equals( packagePart ) ) {
+        throw new IllegalArgumentException( "Invalid inner class <" + qualifiedName + ">. Use \"$\" sign instead." );
+      }
     }
 
     try {
