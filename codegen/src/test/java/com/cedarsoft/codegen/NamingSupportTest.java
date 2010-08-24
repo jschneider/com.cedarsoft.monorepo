@@ -48,13 +48,25 @@ public class NamingSupportTest {
     assertEquals( "singular", NamingSupport.createSingular( "singulars" ) );
     assertEquals( "string", NamingSupport.createSingular( "strings" ) );
     assertEquals( "string", NamingSupport.createSingular( "string" ) );
-    assertEquals( "string", NamingSupport.createSingular( "string" ) );
 
     assertEquals( "customer", NamingSupport.createSingular( "customers" ) );
     assertEquals( "asignee", NamingSupport.createSingular( "asignees" ) );
     assertEquals( "match", NamingSupport.createSingular( "matches" ) );
     assertEquals( "sandwitch", NamingSupport.createSingular( "sandwitches" ) );
     assertEquals( "box", NamingSupport.createSingular( "boxes" ) );
+  }
+
+  @Test
+  public void testPlural() throws Exception {
+    assertEquals( "singulars", NamingSupport.plural( "singular" ) );
+    assertEquals( "strings", NamingSupport.plural( "string" ) );
+    assertEquals( "strings", NamingSupport.plural( "strings" ) );
+
+    assertEquals( "customers", NamingSupport.plural( "customer" ) );
+    assertEquals( "asignees", NamingSupport.plural( "asignee" ) );
+    assertEquals( "matches", NamingSupport.plural( "match" ) );
+    assertEquals( "sandwitches", NamingSupport.plural( "sandwitch" ) );
+    assertEquals( "boxes", NamingSupport.plural( "box" ) );
   }
 
   @Test
