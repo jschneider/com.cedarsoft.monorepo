@@ -365,12 +365,18 @@ public class TypeUtils {
   @NotNull
   @NonNls
   public static String removeWildcard( @NotNull JType classWithWildcard ) {
+    return removeWildcard( classWithWildcard, false );
+  }
+
+  @NotNull
+  @NonNls
+  public static String removeWildcard( @NotNull JType classWithWildcard, boolean returnBinaryName ) {
     if ( classWithWildcard != classWithWildcard.erasure() ) {
       throw new IllegalArgumentException( "Invalid type - cannot remove wildcard. Call erasure() first: " + classWithWildcard.fullName() );
     }
 
     if ( classWithWildcard.fullName().contains( "?" ) ) {
-      String fullName = classWithWildcard.fullName();
+      String fullName = returnBinaryName ? classWithWildcard.binaryName() : classWithWildcard.fullName();
 
       Iterable<String> parts = Splitter.on( " " ).split( fullName );
 
@@ -382,7 +388,7 @@ public class TypeUtils {
       return last;
     }
 
-    return classWithWildcard.fullName();
+    return returnBinaryName ? classWithWildcard.binaryName() : classWithWildcard.fullName();
   }
 
   @NotNull

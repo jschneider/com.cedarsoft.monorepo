@@ -126,7 +126,7 @@ public class NewInstanceFactory {
         return listInvocation;
       }
     } else {
-      return JExpr._new( classRefSupport.ref( TypeUtils.removeWildcard( type ) ) );
+      return JExpr._new( classRefSupport.ref( TypeUtils.removeWildcard( type, true ) ) );
     }
   }
 

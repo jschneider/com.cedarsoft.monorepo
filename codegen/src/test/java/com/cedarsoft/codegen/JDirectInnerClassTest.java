@@ -101,6 +101,8 @@ public class JDirectInnerClassTest {
 
     assertEquals( "List<? extends Bar>", list.narrow( innerWithWild ).name() );
     assertEquals( "java.util.List<? extends com.cedarsoft.codegen.JDirectInnerClassTest.Bar>", list.narrow( innerWithWild ).fullName() );
+
+    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest.Bar", TypeUtils.removeWildcard( innerWithWild ) );
   }
 
   @Before

@@ -109,6 +109,12 @@ public class NewInstanceFactoryTest {
   }
 
   @Test
+  public void testInner() throws IOException {
+    JDirectInnerClass innerClass = new JDirectInnerClass( codeModel, codeModel.ref( "da.pack.Outer" ), "Inner" );
+    assertFactory( innerClass, "new da.pack.Outer.Inner()" );
+  }
+
+  @Test
   public void testList() throws IOException {
     TypeUtils.setTypes( new TypesMock() );
     assertFactory( new CollectionTypeMirrorMock( List.class, String.class ), "java.util.Arrays.asList(\"daValue\")" );
