@@ -79,6 +79,7 @@ public class JDirectInnerClass extends JClass {
     return outer.fullName() + "." + name;
   }
 
+  @Override
   public String binaryName() {
     return outer.fullName() + "$" + name;
   }
