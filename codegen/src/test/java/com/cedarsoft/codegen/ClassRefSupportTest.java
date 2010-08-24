@@ -31,6 +31,7 @@
 
 package com.cedarsoft.codegen;
 
+import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import org.junit.*;
 
@@ -55,6 +56,66 @@ public class ClassRefSupportTest {
     assertSame( classRefSupport.ref( String.class ), classRefSupport.ref( String.class ) );
     assertSame( classRefSupport.ref( FooBar.class ), classRefSupport.ref( FooBar.class ) );
     assertSame( classRefSupport.ref( FooBar.class ), classRefSupport.ref( "com.cedarsoft.codegen.ClassRefSupportTest$FooBar" ) );
+  }
+
+  @Test
+  public void testOwn() {
+    JClass outer = classRefSupport.model.ref( "org.test.DaTestClass" );
+    assertNotNull( outer );
+  }
+
+  /**
+   * This test case shows that buggy support for class ref support!!!
+   * @throws Exception
+   */
+  @Test
+  public void testInner() throws Exception {
+    JClass inner = classRefSupport.ref( "org.test.DaTestClass$Inner" );
+
+//    assertNotNull( inner.outer() );
+//    assertEquals( "org.test.DaTestClass", inner.outer().name() );
+//    assertEquals( "Inner", inner.name() );
+//
+//    assertEquals( "org.test.DaTestClass.Inner", inner.fullName() );
+  }
+
+  @Test
+  public void testInnerExisting() throws Exception {
+    JClass inner = classRefSupport.model.ref( FooBar.class );
+
+    assertNotNull( inner.outer() );
+    assertEquals( "ClassRefSupportTest", inner.outer().name() );
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest", inner.outer().fullName() );
+    assertEquals( "FooBar", inner.name() );
+
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest.FooBar", inner.fullName() );
+  }
+
+  @Test
+  public void testInnerExisting2() throws Exception {
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest$FooBar", FooBar.class.getName() );
+    assertEquals( FooBar.class, Class.forName( FooBar.class.getName() ) );
+    assertEquals( FooBar.class, Class.forName( "com.cedarsoft.codegen.ClassRefSupportTest$FooBar" ) );
+    JClass inner = classRefSupport.model.ref( FooBar.class.getName() );
+
+    assertNotNull( inner.outer() );
+    assertEquals( "ClassRefSupportTest", inner.outer().name() );
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest", inner.outer().fullName() );
+    assertEquals( "FooBar", inner.name() );
+
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest.FooBar", inner.fullName() );
+  }
+
+  @Test
+  public void testInnerExisting3() throws Exception {
+    JClass inner = classRefSupport.model.ref( "com.cedarsoft.codegen.ClassRefSupportTest$FooBar" );
+
+    assertNotNull( inner.outer() );
+    assertEquals( "ClassRefSupportTest", inner.outer().name() );
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest", inner.outer().fullName() );
+    assertEquals( "FooBar", inner.name() );
+
+    assertEquals( "com.cedarsoft.codegen.ClassRefSupportTest.FooBar", inner.fullName() );
   }
 
   @Test

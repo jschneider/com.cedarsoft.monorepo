@@ -32,6 +32,7 @@
 package com.cedarsoft.codegen;
 
 import com.cedarsoft.NotFoundException;
+import com.google.common.base.Splitter;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
@@ -39,12 +40,15 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
  *
  */
 public class ClassRefSupport {
+  @NonNls
+  public static final String JDIRECT_CLASS_NAME = "com.sun.codemodel.JDirectClass";
   @NotNull
   protected final JCodeModel model;
   @NotNull
@@ -64,8 +68,8 @@ public class ClassRefSupport {
     int index = qualifiedName.lastIndexOf( '.' );
     @NotNull @NonNls
     String packagePart = qualifiedName.substring( 0, index );
-    if (! packagePart.toLowerCase().equals( packagePart ) ) {
-      throw new IllegalArgumentException( "Invalid inner class. Use \"$\" sign instead." );
+    if ( !packagePart.toLowerCase().equals( packagePart ) ) {
+      throw new IllegalArgumentException( "Invalid inner class <" + qualifiedName + ">. Use \"$\" sign instead." );
     }
 
     try {
@@ -79,8 +83,26 @@ public class ClassRefSupport {
   @NotNull
   private JClass createRef( @NotNull @NonNls String qualifiedName ) {
     JClass newRef = model.ref( qualifiedName );
+
+    //fix it if it is a inner class
+    if ( isJDirectClass( newRef ) && isInner( qualifiedName ) ) {
+      newRef = createDirectInner( qualifiedName );
+    }
+
     storeRef( qualifiedName, newRef );
     return newRef;
+  }
+
+  @NotNull
+  private JClass createDirectInner( @NotNull @NonNls String qualifiedName ) {
+    Iterator<String> split = Splitter.on( "$" ).split( qualifiedName ).iterator();
+
+    String outerFqName = split.next();
+    String innerName = split.next();
+
+    JClass outer = model.ref( outerFqName );
+
+    return new JDirectInnerClass( model, outer, innerName );
   }
 
   private void storeRef( @NotNull @NonNls String qualifiedName, @NotNull JClass newRef ) {
@@ -112,5 +134,13 @@ public class ClassRefSupport {
     JClass newRef = model.ref( type );
     storeRef( type.getName(), newRef );
     return newRef;
+  }
+
+  private static boolean isJDirectClass( @NotNull JClass newRef ) {
+    return newRef.getClass().getName().equals( JDIRECT_CLASS_NAME );
+  }
+
+  private static boolean isInner( @NotNull @NonNls String qualifiedName ) {
+    return qualifiedName.contains( "$" );
   }
 }

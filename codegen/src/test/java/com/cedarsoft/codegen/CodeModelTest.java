@@ -32,6 +32,7 @@
 package com.cedarsoft.codegen;
 
 import com.sun.codemodel.CodeWriter;
+import com.sun.codemodel.JClass;
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
@@ -86,16 +87,16 @@ public class CodeModelTest {
 
     model.build( codeWriter );
     assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
-      "\n" +
-      "package a.b.c;\n" +
-      "\n" +
-      "\n" +
-      "public class Foo {\n" +
-      "\n" +
-      "\n" +
-      "}\n" +
-      "-----------------------------------a.b.c.test.xml-----------------------------------\n" +
-      "<xml>DaXmlContent</xml>", out.toString().trim() );
+                    "\n" +
+                    "package a.b.c;\n" +
+                    "\n" +
+                    "\n" +
+                    "public class Foo {\n" +
+                    "\n" +
+                    "\n" +
+                    "}\n" +
+                    "-----------------------------------a.b.c.test.xml-----------------------------------\n" +
+                    "<xml>DaXmlContent</xml>", out.toString().trim() );
   }
 
   @Test
@@ -106,22 +107,22 @@ public class CodeModelTest {
     JMethod method = foo.method( JMod.PUBLIC, Void.TYPE, "doFoo" ); //Adds a method to the class
     method.body()._return( JExpr.lit( 42 ) ); //the return type
 
-ByteArrayOutputStream out = new ByteArrayOutputStream();
-codeModel.build( new SingleStreamCodeWriter( out ) );
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    codeModel.build( new SingleStreamCodeWriter( out ) );
 
     assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
-      "\n" +
-      "package a.b.c;\n" +
-      "\n" +
-      "\n" +
-      "public class Foo {\n" +
-      "\n" +
-      "\n" +
-      "    public void doFoo() {\n" +
-      "        return  42;\n" +
-      "    }\n" +
-      "\n" +
-      "}\n", out.toString() );
+                    "\n" +
+                    "package a.b.c;\n" +
+                    "\n" +
+                    "\n" +
+                    "public class Foo {\n" +
+                    "\n" +
+                    "\n" +
+                    "    public void doFoo() {\n" +
+                    "        return  42;\n" +
+                    "    }\n" +
+                    "\n" +
+                    "}\n", out.toString() );
   }
 
   @Test
@@ -340,4 +341,87 @@ codeModel.build( new SingleStreamCodeWriter( out ) );
       "}" );
   }
 
+  @Test
+  public void testInner() throws Exception {
+    JDefinedClass aClass = model._class( "org.test.DaTestClass" );
+    JClass daInner = aClass._class( "Inner" );
+
+    assertEquals( "org.test.DaTestClass.Inner", daInner.fullName() );
+    assertEquals( "Inner", daInner.name() );
+
+    aClass.method( JMod.PUBLIC, daInner, "getInner" );
+    model._class( "org.test.OtherClass" ).method( JMod.PUBLIC, daInner, "getInner" );
+
+    model.build( codeWriter );
+    assertEquals( "-----------------------------------org.test.DaTestClass.java-----------------------------------\n" +
+                    "\n" +
+                    "package org.test;\n" +
+                    "\n" +
+                    "\n" +
+                    "public class DaTestClass {\n" +
+                    "\n" +
+                    "\n" +
+                    "    public DaTestClass.Inner getInner() {\n" +
+                    "    }\n" +
+                    "\n" +
+                    "    public class Inner {\n" +
+                    "\n" +
+                    "\n" +
+                    "    }\n" +
+                    "\n" +
+                    "}\n" +
+                    "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
+                    "\n" +
+                    "package org.test;\n" +
+                    "\n" +
+                    "\n" +
+                    "public class OtherClass {\n" +
+                    "\n" +
+                    "\n" +
+                    "    public org.test.DaTestClass.Inner getInner() {\n" +
+                    "    }\n" +
+                    "\n" +
+                    "}", out.toString().trim() );
+
+  }
+
+  @Test
+  public void testInnerOwn() throws Exception {
+    JDefinedClass aClass = model._class( "org.test.DaTestClass" );
+
+    JClass daInner = new JDirectInnerClass( model, aClass, "Inner" );
+
+    assertEquals( "org.test.DaTestClass.Inner", daInner.fullName() );
+    assertEquals( "Inner", daInner.name() );
+
+    aClass.method( JMod.PUBLIC, daInner, "getInner" );
+    model._class( "org.test.OtherClass" ).method( JMod.PUBLIC, daInner, "getInner" );
+
+    model.build( codeWriter );
+    assertEquals("-----------------------------------org.test.DaTestClass.java-----------------------------------\n" +
+                   "\n" +
+                   "package org.test;\n" +
+                   "\n" +
+                   "\n" +
+                   "public class DaTestClass {\n" +
+                   "\n" +
+                   "\n" +
+                   "    public DaTestClass.Inner getInner() {\n" +
+                   "    }\n" +
+                   "\n" +
+                   "}\n" +
+                   "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
+                   "\n" +
+                   "package org.test;\n" +
+                   "\n" +
+                   "\n" +
+                   "public class OtherClass {\n" +
+                   "\n" +
+                   "\n" +
+                   "    public org.test.DaTestClass.Inner getInner() {\n" +
+                   "    }\n" +
+                   "\n" +
+                   "}", out.toString().trim() );
+
+  }
 }
