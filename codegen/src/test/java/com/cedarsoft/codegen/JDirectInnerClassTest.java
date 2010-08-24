@@ -35,6 +35,8 @@ import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import org.junit.*;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -70,7 +72,35 @@ public class JDirectInnerClassTest {
     assertEquals( "Bar", inner.name() );
 
     assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest.Bar", inner.fullName() );
-    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest$Bar", ( ( JDirectInnerClass ) inner ).binaryName() );
+    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest$Bar", inner.binaryName() );
+  }
+
+  @Test
+  public void testManual() throws Exception {
+    JDirectInnerClass inner = new JDirectInnerClass( owner, owner.ref( "com.cedarsoft.codegen.JDirectInnerClassTest" ), "Bar" );
+
+    assertEquals( JDirectInnerClass.class, inner.getClass() );
+
+    assertNotNull( inner.outer() );
+    assertEquals( "JDirectInnerClassTest", inner.outer().name() );
+    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest", inner.outer().fullName() );
+    assertEquals( "Bar", inner.name() );
+
+    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest.Bar", inner.fullName() );
+    assertEquals( "com.cedarsoft.codegen.JDirectInnerClassTest$Bar", inner.binaryName() );
+  }
+
+
+  @Test
+  public void testWildcard() throws Exception {
+    JClass innerWithWild = new JDirectInnerClass( owner, owner.ref( "com.cedarsoft.codegen.JDirectInnerClassTest" ), "Bar" ).wildcard();
+    assertEquals( "? extends Bar", innerWithWild.name() );
+    assertEquals( "? extends com.cedarsoft.codegen.JDirectInnerClassTest.Bar", innerWithWild.fullName() );
+
+    JClass list = owner.ref( List.class );
+
+    assertEquals( "List<? extends Bar>", list.narrow( innerWithWild ).name() );
+    assertEquals( "java.util.List<? extends com.cedarsoft.codegen.JDirectInnerClassTest.Bar>", list.narrow( innerWithWild ).fullName() );
   }
 
   @Before
