@@ -62,6 +62,25 @@ public class CodeGeneratorTest {
   }
 
   @Test
+  public void testInnerClasses() {
+    JClass outer = codeGenerator.getModel().ref( "da.OuterClass" );
+    JClass inner = codeGenerator.getModel().ref( "da.OuterClass$Inner" );
+
+    assertEquals( "da.OuterClass", outer.fullName() );
+    assertEquals( "da", outer._package().name() );
+
+    assertEquals( "da.OuterClass$Inner", inner.fullName() );
+    assertEquals( "OuterClass$Inner", inner.name() );
+    assertEquals( "da", inner._package().name() );
+
+    try {
+      codeGenerator.ref( "da.Outer.Inner" );
+      fail( "Where is the Exception" );
+    } catch ( Exception e ) {
+    }
+  }
+
+  @Test
   public void testMethodDecorator() throws Exception {
     codeGenerator.addDecorator( new Decorator() {
       @Override
@@ -104,17 +123,17 @@ public class CodeGeneratorTest {
     model.build( new SingleStreamCodeWriter( out ) );
 
     assertEquals( "-----------------------------------da.Class.java-----------------------------------\n" +
-      "\n" +
-      "package da;\n" +
-      "\n" +
-      "import org.jetbrains.annotations.NotNull;\n" +
-      "\n" +
-      "public class Class {\n" +
-      "\n" +
-      "    @NotNull\n" +
-      "    public final static String DA_CONSTANT = \"value\";\n" +
-      "\n" +
-      "}", out.toString().trim() );
+                    "\n" +
+                    "package da;\n" +
+                    "\n" +
+                    "import org.jetbrains.annotations.NotNull;\n" +
+                    "\n" +
+                    "public class Class {\n" +
+                    "\n" +
+                    "    @NotNull\n" +
+                    "    public final static String DA_CONSTANT = \"value\";\n" +
+                    "\n" +
+                    "}", out.toString().trim() );
   }
 
   @Test

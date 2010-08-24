@@ -60,6 +60,14 @@ public class ClassRefSupport {
       throw new IllegalArgumentException( "Cannot create ref for <" + qualifiedName + ">" );
     }
 
+    //Check for inner class with wrong notation
+    int index = qualifiedName.lastIndexOf( '.' );
+    @NotNull @NonNls
+    String packagePart = qualifiedName.substring( 0, index );
+    if (! packagePart.toLowerCase().equals( packagePart ) ) {
+      throw new IllegalArgumentException( "Invalid inner class. Use \"$\" sign instead." );
+    }
+
     try {
       return resolve( qualifiedName );
     } catch ( NotFoundException ignore ) {
