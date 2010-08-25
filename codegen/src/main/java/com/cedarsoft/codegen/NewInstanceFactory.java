@@ -116,17 +116,21 @@ public class NewInstanceFactory {
     }
 
     if ( TypeUtils.isCollectionType( type ) ) {
-      JClass collectionParamType = TypeUtils.getCollectionParam( ( JClass ) type );
-      JExpression expression = create( collectionParamType.erasure(), simpleName );
-
-      JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
-      if ( TypeUtils.isSetType( type ) ) {
-        return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
-      } else {
-        return listInvocation;
-      }
+      return createCollectionInvocation( TypeUtils.getCollectionParam( ( JClass ) type ), simpleName, TypeUtils.isSetType( type ) );
     } else {
       return JExpr._new( classRefSupport.ref( TypeUtils.removeWildcard( type, true ) ) );
+    }
+  }
+
+  @NotNull
+  public JExpression createCollectionInvocation( @NotNull JType collectionParamType, @NotNull @NonNls String simpleName, boolean isSet ) {
+    JExpression expression = create( collectionParamType.erasure(), simpleName );
+
+    JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
+    if ( isSet ) {
+      return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
+    } else {
+      return listInvocation;
     }
   }
 
@@ -174,17 +178,21 @@ public class NewInstanceFactory {
     }
 
     if ( TypeUtils.isCollectionType( type ) ) {
-      TypeMirror collectionParamType = TypeUtils.getCollectionParam( type );
-      JExpression expression = create( TypeUtils.getErasure( collectionParamType ), simpleName );
-
-      JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
-      if ( TypeUtils.isSetType( type ) ) {
-        return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
-      } else {
-        return listInvocation;
-      }
+      return createCollectionInvocation( TypeUtils.getCollectionParam( type ), simpleName, TypeUtils.isSetType( type ) );
     } else {
       return JExpr._new( classRefSupport.ref( type.toString() ) );
+    }
+  }
+
+  @NotNull
+  public JExpression createCollectionInvocation( @NotNull TypeMirror collectionParamType, @NotNull @NonNls String simpleName, boolean isSet ) {
+    JExpression expression = create( TypeUtils.getErasure( collectionParamType ), simpleName );
+
+    JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
+    if ( isSet ) {
+      return JExpr._new( classRefSupport.ref( HashSet.class ) ).arg( listInvocation );
+    } else {
+      return listInvocation;
     }
   }
 }

@@ -69,6 +69,7 @@ public class NewInstanceFactoryTest {
 
   @Before
   public void setUp() throws Exception {
+    TypeUtils.setTypes( new TypesMock() );
     codeModel = new JCodeModel();
     factory = new NewInstanceFactory( codeModel, new ClassRefSupport( codeModel ) );
     initializeFormatter();
@@ -122,6 +123,24 @@ public class NewInstanceFactoryTest {
 
     assertFactory( codeModel.ref( List.class ).narrow( String.class ), "java.util.Arrays.asList(\"daValue\")" );
     assertFactory( codeModel.ref( Set.class ).narrow( String.class ), "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))" );
+  }
+
+  @Test
+  public void testList2() throws Exception {
+    assertExpression( "java.util.Arrays.asList(\"daValue\")", factory.createCollectionInvocation( codeModel.ref( String.class ), "daValue", false ) );
+    assertExpression( "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))", factory.createCollectionInvocation( codeModel.ref( String.class ), "daValue", true ) );
+
+    assertExpression( "java.util.Arrays.asList(new com.cedarsoft.Foo())", factory.createCollectionInvocation( codeModel.ref( "com.cedarsoft.Foo" ), "daValue", false ) );
+    assertExpression( "new java.util.HashSet(java.util.Arrays.asList(new com.cedarsoft.Foo()))", factory.createCollectionInvocation( codeModel.ref( "com.cedarsoft.Foo" ), "daValue", true ) );
+  }
+
+  @Test
+  public void testLis3() throws Exception {
+    assertExpression( "java.util.Arrays.asList(\"daValue\")", factory.createCollectionInvocation( new ReferenceTypeMock( String.class ), "daValue", false ) );
+    assertExpression( "new java.util.HashSet(java.util.Arrays.asList(\"daValue\"))", factory.createCollectionInvocation( new ReferenceTypeMock( String.class ), "daValue", true ) );
+
+    assertExpression( "java.util.Arrays.asList(new com.cedarsoft.codegen.NewInstanceFactoryTest.Foo())", factory.createCollectionInvocation( new ReferenceTypeMock( Foo.class ), "daValue", false ) );
+    assertExpression( "new java.util.HashSet(java.util.Arrays.asList(new com.cedarsoft.codegen.NewInstanceFactoryTest.Foo()))", factory.createCollectionInvocation( new ReferenceTypeMock( Foo.class ), "daValue", true ) );
   }
 
   @Test
@@ -187,5 +206,9 @@ public class NewInstanceFactoryTest {
 
   private void assertOutput( @NotNull @NonNls String expected ) {
     assertEquals( expected.trim(), out.toString().trim() );
+  }
+
+  public static class Foo {
+
   }
 }
