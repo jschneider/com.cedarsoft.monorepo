@@ -33,13 +33,14 @@ package com.cedarsoft;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTimeZone;
 import org.junit.rules.*;
 import org.junit.runners.model.*;
 
 /**
  * Rule that sets the TimeZone
+ *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DateTimeZoneRule implements MethodRule {
   @NotNull
