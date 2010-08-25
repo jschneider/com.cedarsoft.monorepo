@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +84,16 @@ public class MemoryCodeWriter extends CodeWriter {
   @NonNls
   public String allFilesToString() {
     List<String> sortedKeys = new ArrayList<String>( files.keySet() );
-    Collections.sort( sortedKeys );
+    Collections.sort( sortedKeys, new Comparator<String>() {
+      @Override
+      public int compare( String o1, String o2 ) {
+        if ( o1.endsWith( ".java" ) && !o2.endsWith( ".java" ) ) {
+          return -1;
+        }
+
+        return o1.compareTo( o2 );
+      }
+    } );
 
     StringBuilder large = new StringBuilder();
     for ( String key : sortedKeys ) {
