@@ -90,6 +90,9 @@ public class MemoryCodeWriter extends CodeWriter {
         if ( o1.endsWith( ".java" ) && !o2.endsWith( ".java" ) ) {
           return -1;
         }
+        if ( !o1.endsWith( ".java" ) && o2.endsWith( ".java" ) ) {
+          return 1;
+        }
 
         return o1.compareTo( o2 );
       }
