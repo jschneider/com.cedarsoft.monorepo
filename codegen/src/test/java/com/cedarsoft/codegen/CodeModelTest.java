@@ -102,9 +102,49 @@ public class CodeModelTest {
       "public class Foo {\n" +
       "\n" +
       "\n" +
-      "}\n", new String( out.getFileContent( "a.b.c", "Foo.java" ) ) );
-    assertEquals( "", new String( out.getFileContent( "a.b.c.d", "daTextFile1.txt" ) ) );
-    assertEquals( "dacontent2", new String( out.getFileContent( "a.b.c.d", "daTextFile2" ) ) );
+      "}\n", out.getFileContent( "a.b.c", "Foo.java" ) );
+    assertEquals( "", out.getFileContent( "a.b.c.d", "daTextFile1.txt" ) );
+    assertEquals( "dacontent2", out.getFileContent( "a.b.c.d", "daTextFile2" ) );
+
+    assertEquals( "-----------------------------------a.b.c.Bar.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Bar {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.d.Bar.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c.d;\n" +
+      "\n" +
+      "\n" +
+      "public class Bar {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.d.Foo.java-----------------------------------\n" +
+      "\n" +
+      "package a.b.c.d;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.d.daTextFile1.txt-----------------------------------\n" +
+      "-----------------------------------a.b.c.d.daTextFile2-----------------------------------\n" +
+      "dacontent2", out.allFilesToString() );
   }
 
   @Test

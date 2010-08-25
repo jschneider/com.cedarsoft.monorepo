@@ -8,8 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,17 +34,32 @@ public class MemoryCodeWriter extends CodeWriter {
   }
 
   @NotNull
-  public byte[] getFileContent( @NotNull @NonNls String packageName, @NotNull @NonNls String fileName ) {
+  public String getFileContent( @NotNull @NonNls String packageName, @NotNull @NonNls String fileName ) {
     String fqnName = packageName + "." + fileName;
     ByteArrayOutputStream found = files.get( fqnName );
     if ( found == null ) {
       throw new IllegalArgumentException( "No file found for <" + fqnName + ">" );
     }
 
-    return found.toByteArray();
+    return new String( found.toByteArray() );
   }
 
   @Override
   public void close() throws IOException {
+  }
+
+  @NotNull
+  @NonNls
+  public String allFilesToString() {
+    List<String> sortedKeys = new ArrayList<String>( files.keySet() );
+    Collections.sort( sortedKeys );
+
+    StringBuilder large = new StringBuilder();
+    for ( String key : sortedKeys ) {
+      large.append( "-----------------------------------" ).append( key ).append( "-----------------------------------\n" );
+      large.append( files.get( key ) );
+    }
+
+    return large.toString();
   }
 }
