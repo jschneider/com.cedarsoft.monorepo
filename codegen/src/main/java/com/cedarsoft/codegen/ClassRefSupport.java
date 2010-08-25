@@ -60,6 +60,17 @@ public class ClassRefSupport {
 
   @NotNull
   public JClass ref( @NotNull @NonNls String qualifiedName ) {
+    verifyValidRefName( qualifiedName );
+
+    try {
+      return resolve( qualifiedName );
+    } catch ( NotFoundException ignore ) {
+    }
+
+    return createRef( qualifiedName );
+  }
+
+  protected void verifyValidRefName( @NotNull @NonNls String qualifiedName ) {
     if ( qualifiedName.contains( "?" ) || qualifiedName.contains( "<" ) || qualifiedName.contains( ">" ) ) {
       throw new IllegalArgumentException( "Cannot create ref for <" + qualifiedName + ">" );
     }
@@ -73,13 +84,6 @@ public class ClassRefSupport {
         throw new IllegalArgumentException( "Invalid inner class <" + qualifiedName + ">. Use \"$\" sign instead." );
       }
     }
-
-    try {
-      return resolve( qualifiedName );
-    } catch ( NotFoundException ignore ) {
-    }
-
-    return createRef( qualifiedName );
   }
 
   @NotNull

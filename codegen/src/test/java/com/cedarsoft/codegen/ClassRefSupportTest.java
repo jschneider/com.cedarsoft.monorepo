@@ -51,6 +51,19 @@ public class ClassRefSupportTest {
   }
 
   @Test
+  public void testValid() throws Exception {
+    classRefSupport.verifyValidRefName( "com.cedarsoft.DaClass" );
+    classRefSupport.verifyValidRefName( "com.cedarsoft.DaClass$Inner" );
+
+    try {
+      classRefSupport.verifyValidRefName( "com.cedarsoft.DaClass.Inner" );
+      fail( "Where is the Exception" );
+    } catch ( IllegalArgumentException e ) {
+      assertEquals( "Invalid inner class <com.cedarsoft.DaClass.Inner>. Use \"$\" sign instead.", e.getMessage() );
+    }
+  }
+
+  @Test
   public void testRef() {
     assertSame( classRefSupport.ref( "com.cedarsoft.Foo" ), classRefSupport.ref( "com.cedarsoft.Foo" ) );
     assertSame( classRefSupport.ref( String.class ), classRefSupport.ref( String.class ) );
@@ -66,17 +79,18 @@ public class ClassRefSupportTest {
 
   /**
    * This test case shows that buggy support for class ref support!!!
+   *
    * @throws Exception
    */
   @Test
   public void testInner() throws Exception {
     JClass inner = classRefSupport.ref( "org.test.DaTestClass$Inner" );
 
-//    assertNotNull( inner.outer() );
-//    assertEquals( "org.test.DaTestClass", inner.outer().name() );
-//    assertEquals( "Inner", inner.name() );
-//
-//    assertEquals( "org.test.DaTestClass.Inner", inner.fullName() );
+    //    assertNotNull( inner.outer() );
+    //    assertEquals( "org.test.DaTestClass", inner.outer().name() );
+    //    assertEquals( "Inner", inner.name() );
+    //
+    //    assertEquals( "org.test.DaTestClass.Inner", inner.fullName() );
   }
 
   @Test
