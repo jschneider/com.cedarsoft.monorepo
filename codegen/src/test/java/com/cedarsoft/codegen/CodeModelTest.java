@@ -73,6 +73,41 @@ public class CodeModelTest {
   }
 
   @Test
+  public void testWriter() throws JClassAlreadyExistsException, IOException {
+    model._class( "a.b.c.Foo" );
+    model._class( "a.b.c.Bar" );
+    model._class( "a.b.c.d.Foo" );
+    model._class( "a.b.c.d.Bar" );
+    {
+      JTextFile rsrc = new JTextFile( "daTextFile1.txt" );
+      rsrc.setContents( "" );
+      model._package( "a.b.c.d" ).addResourceFile( rsrc );
+    }
+    {
+      JTextFile rsrc = new JTextFile( "daTextFile2" );
+      rsrc.setContents( "dacontent2" );
+      model._package( "a.b.c.d" ).addResourceFile( rsrc );
+    }
+
+
+    MemoryCodeWriter out = new MemoryCodeWriter();
+    model.build( out );
+
+    assertEquals( 6, out.getFiles().size() );
+
+    assertEquals( "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "}\n", new String( out.getFileContent( "a.b.c", "Foo.java" ) ) );
+    assertEquals( "", new String( out.getFileContent( "a.b.c.d", "daTextFile1.txt" ) ) );
+    assertEquals( "dacontent2", new String( out.getFileContent( "a.b.c.d", "daTextFile2" ) ) );
+  }
+
+  @Test
   public void testCreateResource() throws JClassAlreadyExistsException, IOException {
     model._class( "a.b.c.Foo" );
 
@@ -87,16 +122,16 @@ public class CodeModelTest {
 
     model.build( codeWriter );
     assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
-                    "\n" +
-                    "package a.b.c;\n" +
-                    "\n" +
-                    "\n" +
-                    "public class Foo {\n" +
-                    "\n" +
-                    "\n" +
-                    "}\n" +
-                    "-----------------------------------a.b.c.test.xml-----------------------------------\n" +
-                    "<xml>DaXmlContent</xml>", out.toString().trim() );
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------a.b.c.test.xml-----------------------------------\n" +
+      "<xml>DaXmlContent</xml>", out.toString().trim() );
   }
 
   @Test
@@ -111,18 +146,18 @@ public class CodeModelTest {
     codeModel.build( new SingleStreamCodeWriter( out ) );
 
     assertEquals( "-----------------------------------a.b.c.Foo.java-----------------------------------\n" +
-                    "\n" +
-                    "package a.b.c;\n" +
-                    "\n" +
-                    "\n" +
-                    "public class Foo {\n" +
-                    "\n" +
-                    "\n" +
-                    "    public void doFoo() {\n" +
-                    "        return  42;\n" +
-                    "    }\n" +
-                    "\n" +
-                    "}\n", out.toString() );
+      "\n" +
+      "package a.b.c;\n" +
+      "\n" +
+      "\n" +
+      "public class Foo {\n" +
+      "\n" +
+      "\n" +
+      "    public void doFoo() {\n" +
+      "        return  42;\n" +
+      "    }\n" +
+      "\n" +
+      "}\n", out.toString() );
   }
 
   @Test
@@ -354,34 +389,34 @@ public class CodeModelTest {
 
     model.build( codeWriter );
     assertEquals( "-----------------------------------org.test.DaTestClass.java-----------------------------------\n" +
-                    "\n" +
-                    "package org.test;\n" +
-                    "\n" +
-                    "\n" +
-                    "public class DaTestClass {\n" +
-                    "\n" +
-                    "\n" +
-                    "    public DaTestClass.Inner getInner() {\n" +
-                    "    }\n" +
-                    "\n" +
-                    "    public class Inner {\n" +
-                    "\n" +
-                    "\n" +
-                    "    }\n" +
-                    "\n" +
-                    "}\n" +
-                    "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
-                    "\n" +
-                    "package org.test;\n" +
-                    "\n" +
-                    "\n" +
-                    "public class OtherClass {\n" +
-                    "\n" +
-                    "\n" +
-                    "    public org.test.DaTestClass.Inner getInner() {\n" +
-                    "    }\n" +
-                    "\n" +
-                    "}", out.toString().trim() );
+      "\n" +
+      "package org.test;\n" +
+      "\n" +
+      "\n" +
+      "public class DaTestClass {\n" +
+      "\n" +
+      "\n" +
+      "    public DaTestClass.Inner getInner() {\n" +
+      "    }\n" +
+      "\n" +
+      "    public class Inner {\n" +
+      "\n" +
+      "\n" +
+      "    }\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
+      "\n" +
+      "package org.test;\n" +
+      "\n" +
+      "\n" +
+      "public class OtherClass {\n" +
+      "\n" +
+      "\n" +
+      "    public org.test.DaTestClass.Inner getInner() {\n" +
+      "    }\n" +
+      "\n" +
+      "}", out.toString().trim() );
 
   }
 
@@ -398,30 +433,30 @@ public class CodeModelTest {
     model._class( "org.test.OtherClass" ).method( JMod.PUBLIC, daInner, "getInner" );
 
     model.build( codeWriter );
-    assertEquals("-----------------------------------org.test.DaTestClass.java-----------------------------------\n" +
-                   "\n" +
-                   "package org.test;\n" +
-                   "\n" +
-                   "\n" +
-                   "public class DaTestClass {\n" +
-                   "\n" +
-                   "\n" +
-                   "    public DaTestClass.Inner getInner() {\n" +
-                   "    }\n" +
-                   "\n" +
-                   "}\n" +
-                   "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
-                   "\n" +
-                   "package org.test;\n" +
-                   "\n" +
-                   "\n" +
-                   "public class OtherClass {\n" +
-                   "\n" +
-                   "\n" +
-                   "    public org.test.DaTestClass.Inner getInner() {\n" +
-                   "    }\n" +
-                   "\n" +
-                   "}", out.toString().trim() );
+    assertEquals( "-----------------------------------org.test.DaTestClass.java-----------------------------------\n" +
+      "\n" +
+      "package org.test;\n" +
+      "\n" +
+      "\n" +
+      "public class DaTestClass {\n" +
+      "\n" +
+      "\n" +
+      "    public DaTestClass.Inner getInner() {\n" +
+      "    }\n" +
+      "\n" +
+      "}\n" +
+      "-----------------------------------org.test.OtherClass.java-----------------------------------\n" +
+      "\n" +
+      "package org.test;\n" +
+      "\n" +
+      "\n" +
+      "public class OtherClass {\n" +
+      "\n" +
+      "\n" +
+      "    public org.test.DaTestClass.Inner getInner() {\n" +
+      "    }\n" +
+      "\n" +
+      "}", out.toString().trim() );
 
   }
 }
