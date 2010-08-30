@@ -38,7 +38,6 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -98,8 +97,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
-   * @throws StillContainedException
-   *          if any.
+   * @throws StillContainedException if any.
    */
   public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
@@ -156,9 +154,9 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @param notFoundMessage a {@link String} object.
    * @return a T object.
    *
-   * @throws NotFoundException
-   *          if any.
+   * @throws NotFoundException if any.
    */
+  @Override
   @NotNull
   public T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException {
     T found = findStoredObject( matcher );
@@ -229,17 +227,32 @@ public class DefaultRegistry<T> implements Registry<T> {
       }
 
       storedObjects.add( object );
-    } finally {
-      lock.writeLock().unlock();
-    }
 
-    listenersLock.readLock().lock();
-    try {
-      for ( Listener<T> listener : listeners ) {
+      for ( Listener<T> listener : new ArrayList<Listener<T>>( listeners ) ) {
         listener.objectStored( object );
       }
     } finally {
-      listenersLock.readLock().unlock();
+      lock.writeLock().unlock();
+    }
+  }
+
+  @Override
+  public void remove( @NotNull T object ) throws NotFoundException {
+    remove( object, "Cannot remove: Not found <" + object + ">" );
+  }
+
+  @Override
+  public void remove( @NotNull T object, @NotNull String removeMessage ) throws NotFoundException {
+    try {
+      lock.writeLock().lock();
+      if ( !storedObjects.remove( object ) ) {
+        throw new NotFoundException( removeMessage );
+      }
+      for ( Listener<T> listener : new ArrayList<Listener<T>>( listeners ) ) {
+        listener.objectRemoved( object );
+      }
+    } finally {
+      lock.writeLock().unlock();
     }
   }
 
@@ -261,9 +274,6 @@ public class DefaultRegistry<T> implements Registry<T> {
   }
 
   @NotNull
-  protected final ReadWriteLock listenersLock = new ReentrantReadWriteLock();
-
-  @NotNull
   protected final List<Listener<T>> listeners = new ArrayList<Listener<T>>();
 
   /**
@@ -271,11 +281,11 @@ public class DefaultRegistry<T> implements Registry<T> {
    */
   @Override
   public void addListener( @NotNull Listener<T> listener ) {
-    listenersLock.writeLock().lock();
+    lock.writeLock().lock();
     try {
       this.listeners.add( listener );
     } finally {
-      listenersLock.writeLock().unlock();
+      lock.writeLock().unlock();
     }
   }
 
@@ -284,11 +294,11 @@ public class DefaultRegistry<T> implements Registry<T> {
    */
   @Override
   public void removeListener( @NotNull Listener<T> listener ) {
-    listenersLock.writeLock().lock();
+    lock.writeLock().lock();
     try {
       this.listeners.remove( listener );
     } finally {
-      listenersLock.writeLock().unlock();
+      lock.writeLock().unlock();
     }
   }
 }

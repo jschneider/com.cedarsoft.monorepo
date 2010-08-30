@@ -31,6 +31,7 @@
 
 package com.cedarsoft.registry;
 
+import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
@@ -52,6 +53,36 @@ public class DefaultRegistryTest {
     registry.store( "1" );
     registry.store( "1" );
     assertEquals( 2, registry.getStoredObjects().size() );
+  }
+
+  @Test
+  public void testRemove() throws Exception {
+    DefaultRegistry<String> registry = new DefaultRegistry<String>();
+    assertEquals( 0, registry.getStoredObjects().size() );
+
+    registry.store( "1" );
+    assertEquals( 1, registry.getStoredObjects().size() );
+    registry.remove( "1" );
+    assertEquals( 0, registry.getStoredObjects().size() );
+
+    registry.store( "1" );
+    registry.store( "2" );
+    registry.store( "3" );
+    assertEquals( 3, registry.getStoredObjects().size() );
+
+    try {
+      registry.remove( "4" );
+      fail( "Where is the Exception" );
+    } catch ( NotFoundException ignore ) {
+    }
+
+    assertEquals( 3, registry.getStoredObjects().size() );
+    registry.remove( "2" );
+    assertEquals( 2, registry.getStoredObjects().size() );
+    registry.remove( "1" );
+    assertEquals( 1, registry.getStoredObjects().size() );
+    registry.remove( "3" );
+    assertEquals( 0, registry.getStoredObjects().size() );
   }
 
   @Test

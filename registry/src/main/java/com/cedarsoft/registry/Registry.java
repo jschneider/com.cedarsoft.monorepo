@@ -32,6 +32,7 @@
 package com.cedarsoft.registry;
 
 import com.cedarsoft.Converter;
+import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -67,6 +68,18 @@ public interface Registry<T> {
   /**
    * Finds the stored objects
    *
+   * @param matcher         the matcher
+   * @param notFoundMessage the exception message that is thrown if no object could be found
+   * @return the (first) object that matches the matcher
+   *
+   * @throws NotFoundException
+   */
+  @NotNull
+  T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException;
+
+  /**
+   * Finds the stored objects
+   *
    * @param matcher the matcher
    * @return the found objects that match the matcher
    */
@@ -88,8 +101,7 @@ public interface Registry<T> {
    * Stores the object
    *
    * @param object the object that is stored
-   * @throws StillContainedException
-   *          if any.
+   * @throws StillContainedException if any.
    */
   void store( @NotNull T object ) throws StillContainedException;
 
@@ -123,6 +135,16 @@ public interface Registry<T> {
   void removeListener( @NotNull Listener<T> listener );
 
   /**
+   * Removes the object
+   *
+   * @param object the object
+   * @throws NotFoundException if the object can't be found
+   */
+  void remove( @NotNull T object ) throws NotFoundException;
+
+  void remove( @NotNull T object, @NotNull String removeMessage ) throws NotFoundException;
+
+  /**
    * The listener that is notified about changes of the registry
    *
    * @param <T> the type
@@ -134,6 +156,13 @@ public interface Registry<T> {
      * @param object the object
      */
     void objectStored( @NotNull T object );
+
+    /**
+     * The object that has been removed
+     *
+     * @param object the object that has been removed
+     */
+    void objectRemoved( @NotNull T object );
   }
 
   /**
