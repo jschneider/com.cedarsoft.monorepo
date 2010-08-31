@@ -106,6 +106,13 @@ public interface Registry<T> {
   void store( @NotNull T object ) throws StillContainedException;
 
   /**
+   * Notify that the object has been updated
+   *
+   * @param object the object that has been updated
+   */
+  void updated( @NotNull T object ) throws NotFoundException;
+
+  /**
    * Returns the (optional) comparator
    *
    * @return the used comparator or null if no comparator is available
@@ -163,6 +170,13 @@ public interface Registry<T> {
      * @param object the object that has been removed
      */
     void objectRemoved( @NotNull T object );
+
+    /**
+     * The object that has been updated
+     *
+     * @param object the object that has been updated
+     */
+    void objectUpdated( @NotNull T object );
   }
 
   /**

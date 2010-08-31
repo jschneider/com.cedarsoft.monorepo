@@ -237,6 +237,18 @@ public class DefaultRegistry<T> implements Registry<T> {
   }
 
   @Override
+  public void updated( @NotNull T object ) throws NotFoundException {
+    lock.writeLock().lock();
+    try {
+      for ( Listener<T> listener : new ArrayList<Listener<T>>( listeners ) ) {
+        listener.objectUpdated( object );
+      }
+    } finally {
+      lock.writeLock().unlock();
+    }
+  }
+
+  @Override
   public void remove( @NotNull T object ) throws NotFoundException {
     remove( object, "Cannot remove: Not found <" + object + ">" );
   }
