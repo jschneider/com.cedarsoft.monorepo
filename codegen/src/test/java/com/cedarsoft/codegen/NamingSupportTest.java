@@ -60,7 +60,8 @@ public class NamingSupportTest {
   public void testPlural() throws Exception {
     assertEquals( "singulars", NamingSupport.plural( "singular" ) );
     assertEquals( "strings", NamingSupport.plural( "string" ) );
-    assertEquals( "strings", NamingSupport.plural( "strings" ) );
+
+    assertEquals( "lenses", NamingSupport.plural( "lens" ) );
 
     assertEquals( "customers", NamingSupport.plural( "customer" ) );
     assertEquals( "asignees", NamingSupport.plural( "asignee" ) );

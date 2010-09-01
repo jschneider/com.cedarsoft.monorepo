@@ -73,11 +73,7 @@ public class NamingSupport {
   @NotNull
   @NonNls
   public static String plural( @NotNull @NonNls String singular ) {
-    if ( singular.endsWith( "s" ) ) {
-      return singular;
-    }
-
-    if ( singular.endsWith( "ch" ) || singular.endsWith( "x" ) ) {
+    if ( singular.endsWith( "s" ) || singular.endsWith( "ch" ) || singular.endsWith( "x" ) ) {
       return singular + "es";
     }
 
