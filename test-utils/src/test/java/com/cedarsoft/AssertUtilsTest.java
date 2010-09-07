@@ -59,34 +59,34 @@ public class AssertUtilsTest {
     assertEquals( "{\n" +
       "  \"id\" : \"asdfasdf\",\n" +
       "  \"unformated\" : true\n" +
-      "}", AssertUtils.formatJson( "{\"id\":\"asdfasdf\",   \"unformated\":true}" ) );
+      "}", JsonUtils.formatJson( "{\"id\":\"asdfasdf\",   \"unformated\":true}" ) );
     assertEquals( "{\n" +
       "  \"id\" : \"asdfasdf\",\n" +
       "  \"unformated\" : true\n" +
-      "}", AssertUtils.formatJson( "{\"id\":\"asdfasdf\", \"unformated\":true}" ) );
+      "}", JsonUtils.formatJson( "{\"id\":\"asdfasdf\", \"unformated\":true}" ) );
   }
 
   @Test
   public void testJsonEquals() throws Exception {
-    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":true}" );
-    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",\"unformated\":true}" );
+    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":true}" );
+    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",\"unformated\":true}" );
   }
 
   @Test
   public void testJsonNotEquals() throws Exception {
     expectedException.expect( ComparisonFailure.class );
-    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
+    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
   }
 
   @Test
   public void testJsonNotFormatable() throws Exception {
     try {
-      AssertUtils.assertJsonEquals( ( String ) null, null );
+      JsonUtils.assertJsonEquals( ( String ) null, null );
       fail( "Where is the Exception" );
     } catch ( ComparisonFailure ignore ) {
     }
     try {
-      AssertUtils.assertJsonEquals( "affase", "asdf" );
+      JsonUtils.assertJsonEquals( "affase", "asdf" );
       fail( "Where is the Exception" );
     } catch ( ComparisonFailure ignore ) {
     }

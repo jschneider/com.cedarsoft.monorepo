@@ -84,6 +84,7 @@
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-mapper-lgpl</artifactId>
+      <optional>true</optional>
     </dependency>
 
     <dependency>

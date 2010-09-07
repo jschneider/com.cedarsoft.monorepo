@@ -81,35 +81,6 @@ public class AssertUtils {
     XMLUnit.setIgnoreWhitespace( ignore );
   }
 
-  public static void assertJsonEquals( @NotNull URL control, @Nullable String test ) throws SAXException, IOException {
-    assertJsonEquals( toString( control ), test );
-  }
-
-  public static void assertJsonEquals( @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException {
-    assertJsonEquals( null, control, test );
-  }
-
-  public static void assertJsonEquals( @Nullable @NonNls String err, @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException, ComparisonFailure {
-    if ( test == null || test.trim().length() == 0 ) {
-      throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
-    }
-    if ( control == null || control.trim().length() == 0 ) {
-      throw new ComparisonFailure( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
-    }
-
-    try {
-      ObjectMapper mapper = new ObjectMapper();
-      JsonNode testTree = mapper.readTree( test );
-      JsonNode controlTree = mapper.readTree( control );
-
-      if ( !controlTree.equals( testTree ) ) {
-        throw new ComparisonFailure( "JSON comparison failed", formatJson( control ).trim(), formatJson( test ).trim() );
-      }
-    } catch ( JsonProcessingException e ) {
-      throw new ComparisonFailure( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
-    }
-  }
-
   /**
    * <p>assertXMLEqual</p>
    *
@@ -183,26 +154,6 @@ public class AssertUtils {
     }
   }
 
-  @NotNull
-  @NonNls
-  public static String formatJson( @Nullable @NonNls String unformated ) {
-    try {
-      ObjectMapper mapper = new ObjectMapper();
-      JsonNode tree = mapper.readTree( unformated );
-
-      StringWriter out = new StringWriter();
-      JsonGenerator jsonGenerator = mapper.getJsonFactory().createJsonGenerator( out );
-
-      jsonGenerator.useDefaultPrettyPrinter();
-      jsonGenerator.writeTree( tree );
-
-      return out.toString();
-    } catch ( Exception ignore ) {
-      //Do not format if it is not possible...
-      return String.valueOf( unformated );
-    }
-  }
-
   public static void assertXMLEquals( String test, String err, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEquals( err, toString( control ), test, ignoreWhiteSpace );
   }
@@ -236,7 +187,7 @@ public class AssertUtils {
   }
 
   @NotNull
-  private static String toString( @NotNull URL expectedResourceUri ) throws IOException {
+  static String toString( @NotNull URL expectedResourceUri ) throws IOException {
     return IOUtils.toString( expectedResourceUri.openStream() );
   }
 
