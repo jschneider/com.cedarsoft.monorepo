@@ -256,6 +256,12 @@
         <artifactId>zip</artifactId>
         <version>${project.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-lgpl</artifactId>
+        <version>1.6.0</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   

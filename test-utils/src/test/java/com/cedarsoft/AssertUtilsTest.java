@@ -37,7 +37,6 @@ import com.cedarsoft.crypt.HashCalculator;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
 import org.junit.rules.*;
-import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +53,44 @@ public class AssertUtilsTest {
   public TemporaryFolder tmp = new TemporaryFolder();
   @Rule
   public TestName testName = new TestName();
+
+  @Test
+  public void testJsonFormat() throws Exception {
+    assertEquals( "{\n" +
+      "  \"id\" : \"asdfasdf\",\n" +
+      "  \"unformated\" : true\n" +
+      "}", AssertUtils.formatJson( "{\"id\":\"asdfasdf\",   \"unformated\":true}" ) );
+    assertEquals( "{\n" +
+      "  \"id\" : \"asdfasdf\",\n" +
+      "  \"unformated\" : true\n" +
+      "}", AssertUtils.formatJson( "{\"id\":\"asdfasdf\", \"unformated\":true}" ) );
+  }
+
+  @Test
+  public void testJsonEquals() throws Exception {
+    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":true}" );
+    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",\"unformated\":true}" );
+  }
+
+  @Test
+  public void testJsonNotEquals() throws Exception {
+    expectedException.expect( ComparisonFailure.class );
+    AssertUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
+  }
+
+  @Test
+  public void testJsonNotFormatable() throws Exception {
+    try {
+      AssertUtils.assertJsonEquals( ( String ) null, null );
+      fail( "Where is the Exception" );
+    } catch ( ComparisonFailure ignore ) {
+    }
+    try {
+      AssertUtils.assertJsonEquals( "affase", "asdf" );
+      fail( "Where is the Exception" );
+    } catch ( ComparisonFailure ignore ) {
+    }
+  }
 
   @Test
   public void testXml() throws Exception {

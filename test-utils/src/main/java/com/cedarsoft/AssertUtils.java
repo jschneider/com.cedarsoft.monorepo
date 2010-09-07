@@ -38,6 +38,10 @@ import com.cedarsoft.xml.XmlCommons;
 import junit.framework.AssertionFailedError;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.hamcrest.CoreMatchers;
@@ -50,6 +54,7 @@ import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,6 +79,35 @@ public class AssertUtils {
    */
   public static void setIgnoreWhitespace( boolean ignore ) {
     XMLUnit.setIgnoreWhitespace( ignore );
+  }
+
+  public static void assertJsonEquals( @NotNull URL control, @Nullable String test ) throws SAXException, IOException {
+    assertJsonEquals( toString( control ), test );
+  }
+
+  public static void assertJsonEquals( @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException {
+    assertJsonEquals( null, control, test );
+  }
+
+  public static void assertJsonEquals( @Nullable @NonNls String err, @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException, ComparisonFailure {
+    if ( test == null || test.trim().length() == 0 ) {
+      throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
+    }
+    if ( control == null || control.trim().length() == 0 ) {
+      throw new ComparisonFailure( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
+    }
+
+    try {
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode testTree = mapper.readTree( test );
+      JsonNode controlTree = mapper.readTree( control );
+
+      if ( !controlTree.equals( testTree ) ) {
+        throw new ComparisonFailure( "JSON comparison failed", formatJson( control ).trim(), formatJson( test ).trim() );
+      }
+    } catch ( JsonProcessingException e ) {
+      throw new ComparisonFailure( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
+    }
   }
 
   /**
@@ -121,10 +155,10 @@ public class AssertUtils {
    */
   public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String control, @NotNull @NonNls String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
-      throw new ComparisonFailure( "Empty test xml", format( control ).trim(), format( test ).trim() );
+      throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
     if ( control.trim().length() == 0 ) {
-      throw new ComparisonFailure( "Empty control xml", format( control ).trim(), format( test ).trim() );
+      throw new ComparisonFailure( "Empty control xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
 
     try {
@@ -132,20 +166,40 @@ public class AssertUtils {
       XMLAssert.assertXMLEqual( err, test, control );
       setIgnoreWhitespace( false );
     } catch ( SAXException e ) {
-      throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", format( control ).trim(), format( test ).trim() );
+      throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", formatXml( control ).trim(), formatXml( test ).trim() );
     } catch ( AssertionFailedError ignore ) {
-      throw new ComparisonFailure( "XML comparison failed", format( control ).trim(), format( test ).trim() );
+      throw new ComparisonFailure( "XML comparison failed", formatXml( control ).trim(), formatXml( test ).trim() );
     }
   }
 
   @NotNull
   @NonNls
-  private static String format( @NotNull @NonNls String control ) {
+  private static String formatXml( @NotNull @NonNls String control ) {
     try {
       return XmlCommons.format( control );
     } catch ( Exception ignore ) {
       //Do not format if it is not possible...
       return control;
+    }
+  }
+
+  @NotNull
+  @NonNls
+  public static String formatJson( @Nullable @NonNls String unformated ) {
+    try {
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode tree = mapper.readTree( unformated );
+
+      StringWriter out = new StringWriter();
+      JsonGenerator jsonGenerator = mapper.getJsonFactory().createJsonGenerator( out );
+
+      jsonGenerator.useDefaultPrettyPrinter();
+      jsonGenerator.writeTree( tree );
+
+      return out.toString();
+    } catch ( Exception ignore ) {
+      //Do not format if it is not possible...
+      return String.valueOf( unformated );
     }
   }
 
