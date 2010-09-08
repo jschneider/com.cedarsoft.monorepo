@@ -38,5 +38,5 @@ import org.jetbrains.annotations.NotNull;
  *
  */
 public interface Decorator {
-  void decorateConstant( @NotNull CodeGenerator<?> codeGenerator, @NotNull JFieldVar constant );
+  void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant );
 }

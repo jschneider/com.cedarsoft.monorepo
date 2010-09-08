@@ -52,7 +52,7 @@ import java.util.List;
 /**
  *
  */
-public class CodeGenerator<T extends DecisionCallback> {
+public class CodeGenerator {
   @NotNull
   protected final JCodeModel model;
   @NotNull
@@ -62,16 +62,16 @@ public class CodeGenerator<T extends DecisionCallback> {
   @NotNull
   private final ClassRefSupport classRefSupport;
   @NotNull
-  private final T decisionCallback;
+  private final DecisionCallback decisionCallback;
 
   @NotNull
   private final List<Decorator> decorators = new ArrayList<Decorator>();
 
-  public CodeGenerator( @NotNull T decisionCallback ) {
+  public CodeGenerator( @NotNull DecisionCallback decisionCallback ) {
     this( new JCodeModel(), decisionCallback );
   }
 
-  protected CodeGenerator( @NotNull JCodeModel model, @NotNull T decisionCallback ) {
+  protected CodeGenerator( @NotNull JCodeModel model, @NotNull DecisionCallback decisionCallback ) {
     this.model = model;
     this.classRefSupport = new ClassRefSupport( model );
     this.parseExpressionFactory = new ParseExpressionFactory( model, classRefSupport );
@@ -100,7 +100,7 @@ public class CodeGenerator<T extends DecisionCallback> {
   }
 
   @NotNull
-  public T getDecisionCallback() {
+  public DecisionCallback getDecisionCallback() {
     return decisionCallback;
   }
 

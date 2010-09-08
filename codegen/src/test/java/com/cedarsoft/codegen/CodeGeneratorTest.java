@@ -51,13 +51,13 @@ import static org.junit.Assert.*;
  *
  */
 public class CodeGeneratorTest {
-  private CodeGenerator<DecisionCallback> codeGenerator;
+  private CodeGenerator codeGenerator;
 
   @Before
   public void setUp() throws Exception {
     TypeUtils.setTypes( new TypesMock() );
 
-    codeGenerator = new CodeGenerator<DecisionCallback>( new DecisionCallback() {
+    codeGenerator = new CodeGenerator( new DecisionCallback() {
     } );
   }
 
@@ -84,7 +84,7 @@ public class CodeGeneratorTest {
   public void testMethodDecorator() throws Exception {
     codeGenerator.addDecorator( new Decorator() {
       @Override
-      public void decorateConstant( @NotNull CodeGenerator<?> codeGenerator, @NotNull JFieldVar constant ) {
+      public void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant ) {
         throw new UnsupportedOperationException();
       }
     } );
@@ -106,7 +106,7 @@ public class CodeGeneratorTest {
 
     codeGenerator.addDecorator( new Decorator() {
       @Override
-      public void decorateConstant( @NotNull CodeGenerator<?> codeGenerator, @NotNull JFieldVar constant ) {
+      public void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant ) {
         constant.annotate( codeGenerator.ref( NotNull.class ) );
       }
     } );

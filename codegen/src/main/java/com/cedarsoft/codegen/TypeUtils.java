@@ -33,6 +33,7 @@ package com.cedarsoft.codegen;
 
 import com.cedarsoft.NotFoundException;
 import com.google.common.base.Splitter;
+import com.google.common.collect.Sets;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
@@ -434,5 +435,21 @@ public class TypeUtils {
     }
 
     return methods;
+  }
+
+  public static boolean isBooleanType( @NotNull TypeMirror type ) {
+    return TypeUtils.isType( type, Boolean.class ) || TypeUtils.isType( type, Boolean.TYPE );
+  }
+
+  @NotNull
+  private static final Set<String> NUMBER_TYPE_NAMES = Sets.newHashSet(
+    Integer.class.getName(), Integer.TYPE.getName(),
+    Double.class.getName(), Double.TYPE.getName(),
+    Float.class.getName(), Float.TYPE.getName(),
+    Long.class.getName(), Long.TYPE.getName()
+  );
+
+  public static boolean isNumberType( @NotNull TypeMirror type ) {
+    return NUMBER_TYPE_NAMES.contains( type.toString() );
   }
 }

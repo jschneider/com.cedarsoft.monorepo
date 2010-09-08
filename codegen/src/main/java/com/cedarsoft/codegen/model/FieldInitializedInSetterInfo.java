@@ -51,4 +51,11 @@ public class FieldInitializedInSetterInfo extends DefaultFieldDeclarationInfo im
   public MethodDeclaration getSetterDeclaration() {
     return setterDeclaration;
   }
+
+  @Override
+  public String toString() {
+    return "FieldInitializedInSetterInfo{" +
+      "setterDeclaration=" + setterDeclaration +
+      '}';
+  }
 }

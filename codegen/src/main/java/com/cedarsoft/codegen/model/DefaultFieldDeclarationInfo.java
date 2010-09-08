@@ -69,4 +69,12 @@ public class DefaultFieldDeclarationInfo extends DefaultFieldTypeInformation imp
   public String getSimpleName() {
     return fieldDeclaration.getSimpleName();
   }
+
+  @Override
+  public String toString() {
+    return "DefaultFieldDeclarationInfo{" +
+      "fieldDeclaration=" + fieldDeclaration +
+      ", getterDeclaration=" + getterDeclaration +
+      '}';
+  }
 }

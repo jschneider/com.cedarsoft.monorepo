@@ -72,4 +72,11 @@ public class DefaultFieldTypeInformation implements FieldTypeInformation {
   public TypeMirror getCollectionParam() {
     return TypeUtils.getCollectionParam( getType() );
   }
+
+  @Override
+  public String toString() {
+    return "DefaultFieldTypeInformation{" +
+      "typeMirror=" + typeMirror +
+      '}';
+  }
 }

@@ -52,4 +52,11 @@ public class FieldInitializedInConstructorInfo extends DefaultFieldDeclarationIn
   public ConstructorCallInfo getConstructorCallInfo() {
     return constructorCallInfo;
   }
+
+  @Override
+  public String toString() {
+    return "FieldInitializedInConstructorInfo{" +
+      "constructorCallInfo=" + constructorCallInfo +
+      '}';
+  }
 }
