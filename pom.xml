@@ -81,6 +81,7 @@
 
     <jaxb.version>2.2.1</jaxb.version>
     <jetty.version>6.1.25</jetty.version>
+    <jackson.version>1.6.0</jackson.version>
   </properties>
 
   <dependencyManagement>
@@ -347,6 +348,27 @@
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-management</artifactId>
         <version>${jetty.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-xc</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-jaxrs</artifactId>
+        <version>${jackson.version}</version>
       </dependency>
 
     </dependencies>
