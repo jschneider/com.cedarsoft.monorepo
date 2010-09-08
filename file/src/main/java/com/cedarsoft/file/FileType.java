@@ -57,31 +57,44 @@ public class FileType {
   private final String id;
   private final boolean dependentType;
 
+  @NotNull
+  @NonNls
+  private final String contentType;
+
   /**
    * <p>Constructor for FileType.</p>
    *
    * @param id            a {@link String} object.
+   * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
    * @param extensions    a {@link Extension} object.
    */
-  public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
-    this( id, dependentType, Arrays.<Extension>asList( extensions ) );
+  public FileType( @NotNull @NonNls String id, @NotNull @NonNls String contentType, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
+    this( id, contentType, dependentType, Arrays.<Extension>asList( extensions ) );
   }
 
   /**
    * <p>Constructor for FileType.</p>
    *
    * @param id            a {@link String} object.
+   * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
    * @param extensions    a {@link Collection} object.
    */
-  public FileType( @NotNull @NonNls String id, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
+  public FileType( @NotNull @NonNls String id, @NotNull @NonNls String contentType, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
+    this.contentType = contentType;
     this.dependentType = dependentType;
     if ( extensions.isEmpty() ) {
       throw new IllegalArgumentException( "Need at least one extension" );
     }
     this.id = id;
     this.extensions.addAll( extensions );
+  }
+
+  @NotNull
+  @NonNls
+  public String getContentType() {
+    return contentType;
   }
 
   /**

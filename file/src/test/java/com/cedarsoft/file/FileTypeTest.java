@@ -48,13 +48,22 @@ public class FileTypeTest {
   @Test
   public void testInva() throws Exception {
     expectedException.expect( IllegalArgumentException.class );
-    new FileType( "asdf", true );
+    new FileType( "asdf", "asdf", true );
   }
 
   @Test
   public void testFileName() throws Exception {
     File f = new File( "asdf.jpg" );
     assertEquals( "asdf", FileTypeRegistry.JPEG.getFileName( f ).getBaseName().getName() );
+  }
+
+  @Test
+  public void testContentType() throws Exception {
+    assertEquals( "image/jpeg", FileTypeRegistry.JPEG.getContentType() );
+    assertEquals( "image/xcf", FileTypeRegistry.GIMP.getContentType() );
+    assertEquals( "image/psd", FileTypeRegistry.PHOTO_SHOP.getContentType() );
+    assertEquals( "image/cr2", FileTypeRegistry.RAW_CANON.getContentType() );
+    assertEquals( "application/lightzone", FileTypeRegistry.LIGHT_ZONE.getContentType() );
   }
 
   @Test

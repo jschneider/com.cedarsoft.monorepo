@@ -53,8 +53,8 @@ public class FileTypeRegistryTest {
   public void testIt() {
     FileTypeRegistry registry = new FileTypeRegistry( false );
 
-    registry.store( new FileType( "Canon Raw", false, new Extension( ".", "cr2" ) ) );
-    registry.store( new FileType( "Photoshop", false, new Extension( ".", "psd" ) ) );
+    registry.store( new FileType( "Canon Raw", "image/cr2", false, new Extension( ".", "cr2" ) ) );
+    registry.store( new FileType( "Photoshop", "image/psd", false, new Extension( ".", "psd" ) ) );
 
     assertEquals( 2, registry.getStoredObjects().size() );
     assertEquals( 2, registry.getFileTypes().size() );
