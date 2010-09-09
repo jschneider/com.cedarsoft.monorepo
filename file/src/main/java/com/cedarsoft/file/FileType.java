@@ -260,21 +260,13 @@ public class FileType {
 
     FileType fileType = ( FileType ) o;
 
-    if ( dependentType != fileType.dependentType ) return false;
-    if ( !extensions.equals( fileType.extensions ) ) return false;
     if ( !id.equals( fileType.id ) ) return false;
 
     return true;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public int hashCode() {
-    int result = extensions.hashCode();
-    result = 31 * result + id.hashCode();
-    result = 31 * result + ( dependentType ? 1 : 0 );
-    return result;
+    return id.hashCode();
   }
 }
