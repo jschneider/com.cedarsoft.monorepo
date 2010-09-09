@@ -36,8 +36,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
-import java.lang.IllegalArgumentException;
-import java.lang.String;
 
 /**
  * A version
@@ -220,8 +218,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version the version number as string
    * @return the parsed version
    *
-   * @throws IllegalArgumentException
-   *          if any.
+   * @throws IllegalArgumentException if any.
    */
   @NotNull
   public static Version parse( @NotNull @NonNls String version ) throws IllegalArgumentException {
@@ -256,8 +253,7 @@ public class Version implements Comparable<Version>, Serializable {
    *
    * @param expected a {@link Version} object.
    * @param actual   a {@link Version} object.
-   * @throws VersionMismatchException
-   *          if any.
+   * @throws VersionMismatchException if any.
    */
   public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
     if ( !expected.equals( actual ) ) {

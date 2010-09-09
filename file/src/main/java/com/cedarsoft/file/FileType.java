@@ -250,9 +250,6 @@ public class FileType {
     return getDefaultExtension().equals( extension );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
