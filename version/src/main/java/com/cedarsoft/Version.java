@@ -317,4 +317,14 @@ public class Version implements Comparable<Version>, Serializable {
   public static Version valueOf( int major, int minor, int build ) {
     return new Version( major, minor, build );
   }
+
+  /**
+   * @param major the major
+   * @param minor the minor
+   * @param build the build
+   * @noinspection ParameterHidesMemberVariable
+   */
+  public boolean equals( int major, int minor, int build ) {
+    return this.major == major && this.minor == minor && this.build == build;
+  }
 }
