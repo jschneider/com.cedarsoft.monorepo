@@ -76,7 +76,7 @@ public class GeneratorConfiguration {
     this.testResourcesDestination = testResourcesDestination;
   }
 
-  @NotNull
+  @Nullable
   public Classpath getClasspath() {
     return classpath;
   }
