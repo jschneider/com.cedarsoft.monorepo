@@ -256,11 +256,11 @@ public class TypeUtils {
    */
   public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
     try {
-      return findGetter( classDeclaration, simpleName, type, "get" );
+      return findGetter( classDeclaration, simpleName, type, "is" );
     } catch ( IllegalArgumentException ignore ) {
     }
 
-    return findGetter( classDeclaration, simpleName, type, "is" );
+    return findGetter( classDeclaration, simpleName, type, "get" );
   }
 
   @NotNull
@@ -465,5 +465,22 @@ public class TypeUtils {
 
   public static boolean isNumberType( @NotNull TypeMirror type ) {
     return NUMBER_TYPE_NAMES.contains( type.toString() );
+  }
+
+  public static boolean isInner( @NotNull ClassDeclaration classDeclaration ) {
+    TypeDeclaration declaringType = classDeclaration.getDeclaringType();
+    if ( declaringType == null ) {
+      return false;
+    }
+
+    @NonNls
+    String declarationAsString = classDeclaration.toString();
+    @NonNls
+    String declaringTypeAsString = declaringType.toString();
+    if ( declarationAsString.equals( declaringTypeAsString ) ) {
+      return false;
+    }
+
+    return declarationAsString.startsWith( declaringTypeAsString );
   }
 }

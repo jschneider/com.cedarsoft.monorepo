@@ -47,12 +47,14 @@ import static org.junit.Assert.*;
 /**
  *
  */
-public class BoolGetterTest {
-  public static final String RESOURCE = "/com/cedarsoft/codegen/model/test/BoolGetter.java";
+public class AnotherTest {
+  public static final String RESOURCE = "/com/cedarsoft/codegen/model/test/AnotherOne.java";
 
   @Rule
   public ExpectedException thrown = ExpectedException.none();
   private DomainObjectDescriptorFactory factory;
+  private Result parsed;
+  private ClassDeclaration classDeclaration;
 
   @Before
   public void setUp() throws Exception {
@@ -61,13 +63,25 @@ public class BoolGetterTest {
     File javaFile = new File( resource.toURI() );
     assertTrue( javaFile.exists() );
 
-    Result parsed = Parser.parse( null, javaFile );
+    parsed = Parser.parse( null, javaFile );
     assertNotNull( parsed );
-    assertEquals( 1, parsed.getClassDeclarations().size() );
-    ClassDeclaration classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.BoolGetter" );
+    assertEquals( 2, parsed.getClassDeclarations().size() );
+    classDeclaration = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.AnotherOne" );
 
     TypeUtils.setTypes( parsed.getEnvironment().getTypeUtils() );
     factory = new DomainObjectDescriptorFactory( classDeclaration );
+  }
+
+  @Test
+  public void testInner() throws Exception {
+    ClassDeclaration inner = parsed.getClassDeclaration( "com.cedarsoft.codegen.model.test.AnotherOne.Version" );
+    assertNotNull( inner );
+
+    assertEquals( "com.cedarsoft.codegen.model.test.AnotherOne.Version", inner.toString() );
+    assertEquals( "com.cedarsoft.codegen.model.test.AnotherOne", inner.getDeclaringType().toString() );
+    
+    assertFalse( TypeUtils.isInner( classDeclaration ) );
+    assertTrue( TypeUtils.isInner( inner ) );
   }
 
   @Test
@@ -78,9 +92,16 @@ public class BoolGetterTest {
   }
 
   @Test
+  public void testFindMin() throws Exception {
+    assertNotNull( TypeUtils.findFieldDeclaration( factory.getClassDeclaration(), "min" ) );
+  }
+
+  @Test
   public void testModel() throws Exception {
     DomainObjectDescriptor descriptor = factory.create();
-    assertEquals( 1, descriptor.getFieldInfos().size() );
+    assertEquals( 3, descriptor.getFieldInfos().size() );
     assertEquals( "isDependent", descriptor.getFieldInfos().get( 0 ).getGetterDeclaration().getSimpleName() );
+    assertEquals( "getMin", descriptor.getFieldInfos().get( 1 ).getGetterDeclaration().getSimpleName() );
+    assertEquals( "getMax", descriptor.getFieldInfos().get( 2 ).getGetterDeclaration().getSimpleName() );
   }
 }
