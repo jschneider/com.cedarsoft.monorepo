@@ -255,8 +255,22 @@ public class TypeUtils {
    * @noinspection TypeMayBeWeakened
    */
   public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
-    String expectedName = "get" + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
+    try {
+      return findGetter( classDeclaration, simpleName, type, "get" );
+    } catch ( IllegalArgumentException ignore ) {
+    }
 
+    return findGetter( classDeclaration, simpleName, type, "is" );
+  }
+
+  @NotNull
+  private static MethodDeclaration findGetter( @NotNull ClassDeclaration classDeclaration, @NotNull String simpleName, @NotNull TypeMirror type, @NotNull String prefix ) {
+    String expectedName = prefix + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
+    return findGetter( classDeclaration, type, expectedName );
+  }
+
+  @NotNull
+  public static MethodDeclaration findGetter( @NotNull ClassDeclaration classDeclaration, @NotNull TypeMirror type, @NonNls String expectedName ) {
     for ( MethodDeclaration methodDeclaration : findMethodsIncludingSuperClass( classDeclaration ) ) {
       if ( methodDeclaration.getSimpleName().equals( expectedName ) ) {
         TypeMirror returnType = methodDeclaration.getReturnType();
