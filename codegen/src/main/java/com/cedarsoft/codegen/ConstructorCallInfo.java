@@ -64,4 +64,13 @@ public class ConstructorCallInfo {
   public ParameterDeclaration getParameterDeclaration() {
     return parameterDeclaration;
   }
+
+  @Override
+  public String toString() {
+    return "ConstructorCallInfo{" +
+      "index=" + index +
+      ", constructorDeclaration=" + constructorDeclaration +
+      ", parameterDeclaration=" + parameterDeclaration +
+      '}';
+  }
 }
