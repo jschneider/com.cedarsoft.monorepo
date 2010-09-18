@@ -77,7 +77,7 @@
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
-    <guava.version>r03</guava.version>
+    <guava.version>r06</guava.version>
 
     <jaxb.version>2.2.1</jaxb.version>
     <jetty.version>6.1.25</jetty.version>
