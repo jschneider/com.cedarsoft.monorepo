@@ -222,30 +222,25 @@ public class Version implements Comparable<Version>, Serializable {
    */
   @NotNull
   public static Version parse( @NotNull @NonNls String version ) throws IllegalArgumentException {
-    String[] parts = version.split( "\\." );
-    if ( parts.length != 3 ) {
-      throw new IllegalArgumentException( "Version <" + version + "> must contain exactly three parts delimited with '.'" );
+    int indexDot0 = version.indexOf( '.' );
+    int indexDot1 = version.indexOf( '.', indexDot0 + 2 );
+    int indexMinus = version.indexOf( '-', indexDot1 + 2 );
+
+    if ( indexDot0 == -1 || indexDot1 == -1 ) {
+      throw new IllegalArgumentException();
     }
 
-    int build;
+    int major = Integer.parseInt( version.substring( 0, indexDot0 ) );
+    int minor = Integer.parseInt( version.substring( indexDot0 + 1, indexDot1 ) );
 
-    @Nullable
-    String suffix;
-    if ( parts[2].contains( "-" ) ) {
-      int firstIndex = parts[2].indexOf( '-' );
-      String buildAsString = parts[2].substring( 0, firstIndex );
-
-      build = Integer.parseInt( buildAsString );
-      suffix = parts[2].substring( firstIndex + 1, parts[2].length() );
+    if ( indexMinus == -1 ) {
+      int build = Integer.parseInt( version.substring( indexDot1 + 1 ) );
+      return new Version( major, minor, build );
     } else {
-      build = Integer.parseInt( parts[2] );
-      suffix = null;
+      int build = Integer.parseInt( version.substring( indexDot1 + 1, indexMinus ) );
+      String suffix = version.substring( indexMinus + 1 );
+      return new Version( major, minor, build, suffix );
     }
-
-    int major = Integer.parseInt( parts[0] );
-    int minor = Integer.parseInt( parts[1] );
-
-    return new Version( major, minor, build, suffix );
   }
 
   /**
