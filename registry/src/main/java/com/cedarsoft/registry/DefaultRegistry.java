@@ -50,8 +50,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * <p>DefaultRegistry class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type that is stored within this registry
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultRegistry<T> implements Registry<T> {
   @NotNull
@@ -102,6 +102,7 @@ public class DefaultRegistry<T> implements Registry<T> {
   public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
 
+    //todo, really necessary???
     if ( comparator != null ) {
       Collection<T> set = new TreeSet<T>( comparator );
       set.addAll( storedObjects );
