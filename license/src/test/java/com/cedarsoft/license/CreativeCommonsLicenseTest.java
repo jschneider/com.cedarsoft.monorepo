@@ -46,16 +46,17 @@ import static org.junit.Assert.*;
 public class CreativeCommonsLicenseTest {
   @Test
   public void testUrls() throws Exception {
-    assertNotNull( CreativeCommonsLicense.CC_BY.getUrl() );
-    assertNotNull( CreativeCommonsLicense.CC_BY_NC.getUrl() );
-    assertNotNull( CreativeCommonsLicense.CC_BY_NC_ND.getUrl() );
-    assertNotNull( CreativeCommonsLicense.CC_BY_NC_SA.getUrl() );
-    assertNotNull( CreativeCommonsLicense.CC_BY_ND.getUrl() );
-    assertNotNull( CreativeCommonsLicense.CC_BY_SA.getUrl() );
+    assertNotNull( License.CC_BY.getUrl() );
+    assertNotNull( License.CC_BY_NC.getUrl() );
+    assertNotNull( License.CC_BY_NC_ND.getUrl() );
+    assertNotNull( License.CC_BY_NC_SA.getUrl() );
+    assertNotNull( License.CC_BY_ND.getUrl() );
+    assertNotNull( License.CC_BY_SA.getUrl() );
 
     //Ensure different urls
     Set<URL> urls = new HashSet<URL>();
-    for ( CreativeCommonsLicense license : CreativeCommonsLicense.CC_LICENSES ) {
+    for ( CreativeCommonsLicense license : License.CC_LICENSES ) {
+      assertNotNull( license );
       urls.add( license.getUrl() );
     }
 
@@ -64,72 +65,80 @@ public class CreativeCommonsLicenseTest {
 
   @Test
   public void testLicenseUrlTranslated() throws Exception {
-    assertNotNull( CreativeCommonsLicense.CC_BY.getUrl( Locale.GERMAN ) );
-    assertEquals( "http://creativecommons.org/licenses/by/3.0/de", CreativeCommonsLicense.CC_BY.getUrl( Locale.GERMAN ).toString() );
-    assertEquals( "http://creativecommons.org/licenses/by-nc-nd/3.0/de", CreativeCommonsLicense.CC_BY_NC_ND.getUrl( Locale.GERMAN ).toString() );
+    assertNotNull( License.CC_BY.getUrl( Locale.GERMAN ) );
+    assertEquals( "http://creativecommons.org/licenses/by/3.0/de", License.CC_BY.getUrl( Locale.GERMAN ).toString() );
+    assertEquals( "http://creativecommons.org/licenses/by-nc-nd/3.0/de", License.CC_BY_NC_ND.getUrl( Locale.GERMAN ).toString() );
   }
 
   @Test
   public void testAll() throws Exception {
-    assertEquals( 6, CreativeCommonsLicense.CC_LICENSES.size() );
+    assertEquals( 6, License.CC_LICENSES.size() );
   }
 
   @Test
   public void testCCBy() {
-    assertFalse( CreativeCommonsLicense.CC_BY.isRestrictedToNonCommercial() );
-    assertTrue( CreativeCommonsLicense.CC_BY.isDerivedWorkAllowed() );
-    assertTrue( CreativeCommonsLicense.CC_BY.isSharedAlikeDerivedWorkAllowed() );
-    assertTrue( CreativeCommonsLicense.CC_BY.isUsableCommercially() );
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, CreativeCommonsLicense.CC_BY.getModificationsAllowed() );
+    assertFalse( License.CC_BY.isRestrictedToNonCommercial() );
+    assertTrue( License.CC_BY.isDerivedWorkAllowed() );
+    assertTrue( License.CC_BY.isSharedAlikeDerivedWorkAllowed() );
+    assertTrue( License.CC_BY.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, License.CC_BY.getModificationsAllowed() );
   }
 
   @Test
   public void testCCSA() {
-    assertFalse( CreativeCommonsLicense.CC_BY_SA.isRestrictedToNonCommercial() );
-    assertFalse( CreativeCommonsLicense.CC_BY_SA.isDerivedWorkAllowed() );
-    assertTrue( CreativeCommonsLicense.CC_BY_SA.isSharedAlikeDerivedWorkAllowed() );
+    assertFalse( License.CC_BY_SA.isRestrictedToNonCommercial() );
+    assertFalse( License.CC_BY_SA.isDerivedWorkAllowed() );
+    assertTrue( License.CC_BY_SA.isSharedAlikeDerivedWorkAllowed() );
 
-    assertTrue( CreativeCommonsLicense.CC_BY_SA.isUsableCommercially() );
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, CreativeCommonsLicense.CC_BY_SA.getModificationsAllowed() );
+    assertTrue( License.CC_BY_SA.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, License.CC_BY_SA.getModificationsAllowed() );
   }
 
   @Test
   public void testCCND() {
-    assertFalse( CreativeCommonsLicense.CC_BY_ND.isRestrictedToNonCommercial() );
-    assertFalse( CreativeCommonsLicense.CC_BY_ND.isDerivedWorkAllowed() );
-    assertFalse( CreativeCommonsLicense.CC_BY_ND.isSharedAlikeDerivedWorkAllowed() );
+    assertFalse( License.CC_BY_ND.isRestrictedToNonCommercial() );
+    assertFalse( License.CC_BY_ND.isDerivedWorkAllowed() );
+    assertFalse( License.CC_BY_ND.isSharedAlikeDerivedWorkAllowed() );
 
-    assertTrue( CreativeCommonsLicense.CC_BY_ND.isUsableCommercially() );
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, CreativeCommonsLicense.CC_BY_ND.getModificationsAllowed() );
+    assertTrue( License.CC_BY_ND.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, License.CC_BY_ND.getModificationsAllowed() );
   }
 
   @Test
   public void testCCNC() {
-    assertTrue( CreativeCommonsLicense.CC_BY_NC.isRestrictedToNonCommercial() );
-    assertTrue( CreativeCommonsLicense.CC_BY_NC.isDerivedWorkAllowed() );
-    assertTrue( CreativeCommonsLicense.CC_BY_NC.isSharedAlikeDerivedWorkAllowed() );
+    assertTrue( License.CC_BY_NC.isRestrictedToNonCommercial() );
+    assertTrue( License.CC_BY_NC.isDerivedWorkAllowed() );
+    assertTrue( License.CC_BY_NC.isSharedAlikeDerivedWorkAllowed() );
 
-    assertFalse( CreativeCommonsLicense.CC_BY_NC.isUsableCommercially() );
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, CreativeCommonsLicense.CC_BY_NC.getModificationsAllowed() );
+    assertFalse( License.CC_BY_NC.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.YES, License.CC_BY_NC.getModificationsAllowed() );
   }
 
   @Test
   public void testCCNCSA() {
-    assertTrue( CreativeCommonsLicense.CC_BY_NC_SA.isRestrictedToNonCommercial() );
-    assertFalse( CreativeCommonsLicense.CC_BY_NC_SA.isDerivedWorkAllowed() );
-    assertTrue( CreativeCommonsLicense.CC_BY_NC_SA.isSharedAlikeDerivedWorkAllowed() );
+    assertTrue( License.CC_BY_NC_SA.isRestrictedToNonCommercial() );
+    assertFalse( License.CC_BY_NC_SA.isDerivedWorkAllowed() );
+    assertTrue( License.CC_BY_NC_SA.isSharedAlikeDerivedWorkAllowed() );
 
-    assertFalse( CreativeCommonsLicense.CC_BY_NC_SA.isUsableCommercially() );
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, CreativeCommonsLicense.CC_BY_NC_SA.getModificationsAllowed() );
+    assertFalse( License.CC_BY_NC_SA.isUsableCommercially() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, License.CC_BY_NC_SA.getModificationsAllowed() );
   }
 
   @Test
   public void testCCNCND() {
-    assertTrue( CreativeCommonsLicense.CC_BY_NC_ND.isRestrictedToNonCommercial() );
-    assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isDerivedWorkAllowed() );
-    assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isSharedAlikeDerivedWorkAllowed() );
-    assertFalse( CreativeCommonsLicense.CC_BY_NC_ND.isUsableCommercially() );
+    assertTrue( License.CC_BY_NC_ND.isRestrictedToNonCommercial() );
+    assertFalse( License.CC_BY_NC_ND.isDerivedWorkAllowed() );
+    assertFalse( License.CC_BY_NC_ND.isSharedAlikeDerivedWorkAllowed() );
+    assertFalse( License.CC_BY_NC_ND.isUsableCommercially() );
 
-    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, CreativeCommonsLicense.CC_BY_NC_ND.getModificationsAllowed() );
+    assertEquals( CreativeCommonsLicense.ModificationsAllowed.NO, License.CC_BY_NC_ND.getModificationsAllowed() );
+  }
+
+  @Test
+  public void testResolve() throws Exception {
+    assertEquals( 20, CreativeCommonsLicense.LICENSES.size() );
+    assertEquals( 6, License.CC_LICENSES.size() );
+    assertSame( License.GPL_3, License.get( License.GPL_3.getId() ) );
+    assertSame( License.CC_BY_NC_ND, CreativeCommonsLicense.get( License.CC_BY_NC_ND.getId() ) );
   }
 }

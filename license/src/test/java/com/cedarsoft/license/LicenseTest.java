@@ -55,4 +55,11 @@ public class LicenseTest {
 
     assertNotNull( License.CDDL.getUrl() );
   }
+
+  @Test
+  public void testResolve() throws Exception {
+    assertEquals( 20, License.LICENSES.size() );
+    assertSame( License.GPL_3, License.get( License.GPL_3.getId() ) );
+    assertSame( License.CC_BY_NC_ND, License.get( License.CC_BY_NC_ND.getId() ) );
+  }
 }

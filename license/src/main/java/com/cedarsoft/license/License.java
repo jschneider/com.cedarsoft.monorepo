@@ -35,14 +35,18 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.String;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents the license of the image
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @noinspection ClassReferencesSubclass
  */
 public class License {
   /**
@@ -83,6 +87,70 @@ public class License {
   public static final License LGPL_3 = new License( "LGPLv3", "GNU Library or \"Lesser\" General Public License version 3.0 (LGPLv3)", "http://www.opensource.org/licenses/lgpl-3.0.html" );
   @NotNull
   public static final License MPL = new License( "MPL", "Mozilla Public License 1.1 (MPL)", "http://www.opensource.org/licenses/mozilla1.1.php" );
+  /**
+   * Creative Commons
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY = new CreativeCommonsLicense( "CC-BY", "CC Attribution", false, CreativeCommonsLicense.ModificationsAllowed.YES, "http://creativecommons.org/licenses/by/3.0" );
+  /**
+   * Share-Alike
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY_SA = new CreativeCommonsLicense( "CC-BY-SA", "CC Attribution Share Alike", false, CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-sa/3.0" );
+  /**
+   * No-Derivative-Work
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY_ND = new CreativeCommonsLicense( "CC-BY-ND", "CC Attribution No Derivates", false, CreativeCommonsLicense.ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nd/3.0" );
+  /**
+   * Non-Commercial
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY_NC = new CreativeCommonsLicense( "CC-BY-NC", "CC Attribution Non-Commercial", true, CreativeCommonsLicense.ModificationsAllowed.YES, "http://creativecommons.org/licenses/by-nc/3.0" );
+  /**
+   * Non-Commercial, Share-Alike
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY_NC_SA = new CreativeCommonsLicense( "CC-BY-NC-SA", "CC Attribution Non-Commercial Share Alike", true, CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-nc-sa/3.0" );
+  /**
+   * Non-Commercial, No-Derivative-Work
+   */
+  @NotNull
+  public static final CreativeCommonsLicense CC_BY_NC_ND = new CreativeCommonsLicense( "CC-BY-NC-ND", "CC Attribution Non-Commercial No Derivates", true, CreativeCommonsLicense.ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nc-nd/3.0" );
+
+  @NotNull
+  public static final List<? extends CreativeCommonsLicense> CC_LICENSES = Collections.unmodifiableList( Arrays.asList(
+    CC_BY,
+    CC_BY_SA,
+    CC_BY_ND,
+    CC_BY_NC,
+    CC_BY_NC_SA,
+    CC_BY_NC_ND
+  ) );
+
+  @NotNull
+  public static final List<? extends License> LICENSES;
+
+  static {
+    List<License> list = new ArrayList<License>( Arrays.asList(
+      UNKNOWN,
+      ALL_RIGHTS_RESERVED,
+      PUBLIC_DOMAIN,
+      CDDL,
+      AFFERO_GPL,
+      APACHE_20,
+      BSD_NEW,
+      CPAL,
+      EPL,
+      GPL_2,
+      GPL_3,
+      LGPL,
+      LGPL_3,
+      MPL
+    ) );
+    list.addAll( CC_LICENSES );
+    LICENSES = Collections.unmodifiableList( list );
+  }
 
   @NotNull
   @NonNls
@@ -104,7 +172,7 @@ public class License {
     this( id, name, ( URL ) null );
   }
 
-  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @NotNull @NonNls  String url ) {
+  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @NotNull @NonNls String url ) {
     this( id, name, getUrl( url ) );
   }
 
@@ -164,5 +232,16 @@ public class License {
     } catch ( MalformedURLException e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  @NotNull
+  public static License get( @NotNull @NonNls String id ) throws IllegalArgumentException{
+    for ( License license : LICENSES ) {
+      if ( license.getId().equals( id ) ) {
+        return license;
+      }
+    }
+
+    throw new IllegalArgumentException( "No license found for id <" + id + ">" );
   }
 }

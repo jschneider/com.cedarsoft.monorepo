@@ -36,10 +36,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -48,46 +44,6 @@ import java.util.Locale;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class CreativeCommonsLicense extends License {
-  /**
-   * Creative Commons
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY = new CreativeCommonsLicense( "CC-BY", "CC Attribution", false, ModificationsAllowed.YES, "http://creativecommons.org/licenses/by/3.0" );
-  /**
-   * Share-Alike
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY_SA = new CreativeCommonsLicense( "CC-BY-SA", "CC Attribution Share Alike", false, ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-sa/3.0" );
-  /**
-   * No-Derivative-Work
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY_ND = new CreativeCommonsLicense( "CC-BY-ND", "CC Attribution No Derivates", false, ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nd/3.0" );
-  /**
-   * Non-Commercial
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY_NC = new CreativeCommonsLicense( "CC-BY-NC", "CC Attribution Non-Commercial", true, ModificationsAllowed.YES, "http://creativecommons.org/licenses/by-nc/3.0" );
-  /**
-   * Non-Commercial, Share-Alike
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY_NC_SA = new CreativeCommonsLicense( "CC-BY-NC-SA", "CC Attribution Non-Commercial Share Alike", true, ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-nc-sa/3.0" );
-  /**
-   * Non-Commercial, No-Derivative-Work
-   */
-  @NotNull
-  public static final CreativeCommonsLicense CC_BY_NC_ND = new CreativeCommonsLicense( "CC-BY-NC-ND", "CC Attribution Non-Commercial No Derivates", true, ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nc-nd/3.0" );
-
-  @NotNull
-  public static final List<? extends CreativeCommonsLicense> CC_LICENSES = Collections.unmodifiableList( new ArrayList<CreativeCommonsLicense>( Arrays.asList(
-    CC_BY,
-    CC_BY_SA,
-    CC_BY_ND,
-    CC_BY_NC,
-    CC_BY_NC_SA,
-    CC_BY_NC_ND
-  ) ) );
 
   @NotNull
   private final ModificationsAllowed modificationsAllowed;
