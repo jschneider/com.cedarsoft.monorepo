@@ -173,6 +173,17 @@ public class CreativeCommonsLicense extends License {
     }
   }
 
+  @NotNull
+  public static License get( @NotNull @NonNls String id ) {
+    for ( CreativeCommonsLicense license : CC_LICENSES ) {
+      if ( license.getId().equals( id ) ) {
+        return license;
+      }
+    }
+
+    throw new IllegalArgumentException( "No license found for id <" + id + ">" );
+  }
+
   public enum ModificationsAllowed {
     YES,
     SHARE_ALIKE,
