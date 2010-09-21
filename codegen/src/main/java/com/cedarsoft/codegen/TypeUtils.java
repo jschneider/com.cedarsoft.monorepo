@@ -140,7 +140,7 @@ public class TypeUtils {
 
     TypeDeclaration declaredType = ( ( DeclaredType ) type ).getDeclaration();
     if ( declaredType == null ) {
-      throw new IllegalArgumentException( "No declaration found for <" + type + ">" );
+      return false;
     }
 
     if ( isCollection( declaredType.getQualifiedName() ) ) {
