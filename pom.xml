@@ -508,6 +508,13 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0-beta-2</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.cedarsoft.maven</groupId>
+              <artifactId>cedarsoft-skin</artifactId>
+              <version>${maven.skin.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
