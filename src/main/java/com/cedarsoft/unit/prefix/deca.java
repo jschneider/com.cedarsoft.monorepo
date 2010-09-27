@@ -12,7 +12,6 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix( deca.FACTOR )
+@Prefix( 10 )
 public @interface deca {
-  double FACTOR = 10;
 }

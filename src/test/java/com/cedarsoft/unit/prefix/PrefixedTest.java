@@ -10,7 +10,8 @@ import static org.junit.Assert.*;
 public class PrefixedTest {
   @Test
   public void testIt() {
-    assertEquals( 0.1, Prefixed.getFactor( centi.class ), 0 );
+    assertEquals( 0.01, Prefixed.getFactor( centi.class ), 0 );
+    assertEquals( 0.1, Prefixed.getFactor( deci.class ), 0 );
     assertEquals( 1000, Prefixed.getFactor( kilo.class ), 0 );
   }
 }

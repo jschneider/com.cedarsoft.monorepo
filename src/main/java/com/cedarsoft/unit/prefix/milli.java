@@ -12,7 +12,6 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix( milli.FACTOR )
+@Prefix( 0.001 )
 public @interface milli {
-  double FACTOR = 0.001;
 }

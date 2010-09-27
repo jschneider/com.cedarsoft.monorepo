@@ -72,7 +72,7 @@ public class UnitTest {
 
   @m
   public static double large( @kilo @m double km ) {
-    return km / kilo.FACTOR;
+    return km / 1000;
   }
 
   @milli

@@ -12,7 +12,6 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix( deci.FACTOR )
+@Prefix( 0.1 )
 public @interface deci {
-  double FACTOR = 0.1;
 }
