@@ -7,11 +7,11 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Documented
 @Length
 @Inherited
-public @interface CentiMetre {
+public @interface cm {
 }

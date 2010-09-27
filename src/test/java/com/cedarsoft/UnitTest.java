@@ -1,8 +1,8 @@
 package com.cedarsoft;
 
-import com.cedarsoft.unit.CentiMetre;
 import com.cedarsoft.unit.Length;
-import com.cedarsoft.unit.Metre;
+import com.cedarsoft.unit.cm;
+import com.cedarsoft.unit.m;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
@@ -20,22 +20,22 @@ public class UnitTest {
     Unit<com.cedarsoft.quantity.Length> metreUnit = MetricSystem.METRE;
 
     {
-      @Metre
+      @m
       double metre = 7;
-      @Metre
+      @m
       double result = calcMetres( metre );
     }
 
-    @Metre
+    @m
     double result = convertToMetres( 37, MetricSystem.CENTI_METRE );
   }
 
-  @Metre
-  public static double calcMetres( @Metre double amount ) {
+  @m
+  public static double calcMetres( @m double amount ) {
     return amount;
   }
 
-  @Metre
+  @m
   public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.quantity.Length> unit ) {
     if ( unit == MetricSystem.METRE ) {
       return amount;
@@ -47,25 +47,25 @@ public class UnitTest {
     throw new UnsupportedOperationException( "Unsupported unit: " + unit );
   }
 
-  @Metre
-  public static double convertToMetres( @CentiMetre double centiMetres ) {
+  @m
+  public static double convertToMetres( @cm double centiMetres ) {
     return centiMetres / 100.0;
   }
 
   @Test
   public void testConvert() throws Exception {
-    @CentiMetre
+    @cm
     int cm = 100;
-    @Metre
+    @m
     double result = convertToMetres( cm );
     assertEquals( 1, result, 0 );
   }
 
   @Test
   public void testConvert2() throws Exception {
-    @CentiMetre
+    @cm
     int cm = 100;
-    @Metre
+    @m
     double result = convertToMetres( cm, MetricSystem.CENTI_METRE );
     assertEquals( 1, result, 0 );
   }
@@ -84,9 +84,9 @@ public class UnitTest {
     assertEquals( 1, method.getParameterAnnotations().length );
     assertEquals( 1, method.getParameterAnnotations()[0].length );
     Annotation annotation = method.getParameterAnnotations()[0][0];
-    assertEquals( "com.cedarsoft.unit.Metre", annotation.annotationType().getName() );
+    assertEquals( "com.cedarsoft.unit.m", annotation.annotationType().getName() );
 
-    Metre metre = ( Metre ) annotation;
+    m metre = ( m ) annotation;
     assertEquals( "daValue", metre.value() );
   }
 }
