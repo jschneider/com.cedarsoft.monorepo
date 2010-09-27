@@ -3,15 +3,20 @@ package com.cedarsoft;
 import com.cedarsoft.quantity.Length;
 import com.cedarsoft.quantity.SIBaseUnit;
 import com.cedarsoft.quantity.SiDerivedUnit;
+import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.Units;
 import com.cedarsoft.unit.cm;
 import com.cedarsoft.unit.kg;
 import com.cedarsoft.unit.m;
 import com.cedarsoft.unit.m2;
 import com.cedarsoft.unit.m_s;
+import com.cedarsoft.unit.mm;
+import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
 import com.cedarsoft.unit.s;
+import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
 import java.lang.annotation.Annotation;
@@ -23,20 +28,29 @@ import static org.junit.Assert.*;
  *
  */
 public class UnitTest {
-  //  @Test
-  //  public void testIt() {
-  //    Unit<com.cedarsoft.value.Length> metreUnit = MetricSystem.METRE;
-  //
-  //    {
-  //      @m
-  //      double metre = 7;
-  //      @m
-  //      double result = calcMetres( metre );
-  //    }
-  //
-  //    @m
-  //    double result = convertToMetres( 37, MetricSystem.CENTI_METRE );
-  //  }
+  @Test
+  public void testIt() {
+    Class<?> metreUnit = m.class;
+
+    {
+      @m
+      double metre = 7;
+      @m
+      double result = calcMetres( metre );
+    }
+
+    {
+      @m
+      double result = convertToMetres( 37, cm.class );
+      assertEquals( 0.37, result, 0 );
+    }
+
+    {
+      @m
+      double result = convertToMetres( 37, mm.class );
+      assertEquals( 0.037, result, 0 );
+    }
+  }
 
   @m
   public static double calcMetres( @m double amount ) {
@@ -53,17 +67,23 @@ public class UnitTest {
     return amount / time;
   }
 
-  //  @m
-  //  public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.value.Length> unit ) {
-  //    if ( unit == MetricSystem.METRE ) {
-  //      return amount;
-  //    }
-  //    if ( unit == MetricSystem.CENTI_METRE ) {
-  //      return amount / 100.0;
-  //    }
-  //
-  //    throw new UnsupportedOperationException( "Unsupported unit: " + unit );
-  //  }
+  @m
+  public static double convertToMetres( @Length double amount, @NotNull Class<? extends Annotation> unit ) {
+    if ( unit == m.class ) {
+      return amount;
+    }
+
+    if ( Prefixed.isPrefixed( unit ) ) {
+      double factor = Prefixed.getFactor( unit );
+      return amount * factor;
+    }
+
+    //    if ( unit == MetricSystem.CENTI_METRE ) {
+    //      return amount / 100.0;
+    //    }
+
+    throw new UnsupportedOperationException( "Unsupported unit: " + unit );
+  }
 
   @m
   public static double convertToMetres( @cm double centiMetres ) {
@@ -114,12 +134,22 @@ public class UnitTest {
 
   @Test
   public void testSymbol() throws Exception {
-    assertEquals( "m", m.SYMBOL );
-    assertEquals( "cm", cm.SYMBOL );
-    assertEquals( "kg", kg.SYMBOL );
-    assertEquals( "m²", m2.SYMBOL );
-    assertEquals( "m/s", m_s.SYMBOL );
-    assertEquals( "s", s.SYMBOL );
+    assertEquals( "m", Units.getSymbol( m.class ) );
+    assertEquals( "cm", Units.getSymbol( cm.class ) );
+    assertEquals( "kg", Units.getSymbol( kg.class ) );
+    assertEquals( "m²", Units.getSymbol( m2.class ) );
+    assertEquals( "m/s", Units.getSymbol( m_s.class ) );
+    assertEquals( "s", Units.getSymbol( s.class ) );
+  }
+
+  @Test
+  public void testNames() throws Exception {
+    assertEquals( "metre", Units.getName( m.class ) );
+    assertEquals( "centimetre", Units.getName( cm.class ) );
+    assertEquals( "kilogram", Units.getName( kg.class ) );
+    assertEquals( "square metre", Units.getName( m2.class ) );
+    assertEquals( "metre per second", Units.getName( m_s.class ) );
+    assertEquals( "second", Units.getName( s.class ) );
   }
 
   @Test
@@ -137,8 +167,10 @@ public class UnitTest {
     assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
     assertTrue( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
 
-    SIBaseUnit siUnitAnnotation = annotation.annotationType().getAnnotation( SIBaseUnit.class );
-    assertSame( Length.class, siUnitAnnotation.value() );
+    assertTrue( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
+    assertFalse( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
+
+    assertEquals( "m", annotation.annotationType().getAnnotation( Symbol.class ).value() );
   }
 
   @Test
@@ -156,8 +188,9 @@ public class UnitTest {
     assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
     assertFalse( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
 
-    SiDerivedUnit siDerivedUnit = annotation.annotationType().getAnnotation( SiDerivedUnit.class );
-    assertEquals( Length.class, siDerivedUnit.value() );
+    assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
+
+    assertEquals( "cm", annotation.annotationType().getAnnotation( Symbol.class ).value() );
   }
 }
 

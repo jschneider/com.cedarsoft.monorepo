@@ -9,10 +9,4 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 public @interface SiDerivedUnit {
-  /**
-   * The quantity
-   *
-   * @return the quantity
-   */
-  Class<? extends Annotation> value();
 }

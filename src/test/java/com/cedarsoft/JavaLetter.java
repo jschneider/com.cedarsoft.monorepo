@@ -14,7 +14,7 @@ public class JavaLetter {
     assertTrue( Character.isDefined( '²' ) );
     assertTrue( Character.isValidCodePoint( '²' ) );
 
-    assertTrue( Character.isJavaIdentifierPart( '²' ) );
-    assertTrue( Character.isJavaIdentifierStart( '²' ) );
+    assertFalse( Character.isJavaIdentifierPart( '²' ) );
+    assertFalse( Character.isJavaIdentifierStart( '²' ) );
   }
 }

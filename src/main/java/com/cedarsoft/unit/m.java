@@ -2,8 +2,6 @@ package com.cedarsoft.unit;
 
 import com.cedarsoft.quantity.Length;
 import com.cedarsoft.quantity.SIBaseUnit;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -21,9 +19,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SIBaseUnit( Length.class )
+@Name( "metre" )
+@SIBaseUnit
+@Symbol( "m" )
 public @interface m {
-  @NotNull
-  @NonNls
-  String SYMBOL = "m";
 }

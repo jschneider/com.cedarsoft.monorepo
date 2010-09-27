@@ -2,10 +2,7 @@ package com.cedarsoft.unit;
 
 import com.cedarsoft.quantity.Length;
 import com.cedarsoft.quantity.SiDerivedUnit;
-import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -21,14 +18,9 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SiDerivedUnit( Length.class )
+@SiDerivedUnit
+@Symbol( "cm" )
+@Name( "centimetre" )
 @centi
 public @interface cm {
-  @NotNull
-  @NonNls
-  String SYMBOL = "cm";
-
-  @NotNull
-  @NonNls
-  String NAME = "centi metre";
 }

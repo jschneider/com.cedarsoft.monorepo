@@ -2,8 +2,6 @@ package com.cedarsoft.unit;
 
 import com.cedarsoft.quantity.Area;
 import com.cedarsoft.quantity.SiDerivedUnit;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -21,13 +19,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Area
-@SiDerivedUnit( Area.class )
+@SiDerivedUnit
+@Name( "square metre" )
+@Symbol( "m²" )
 public @interface m2 {
-  @NotNull
-  @NonNls
-  String SYMBOL = "m²";
-
-  @NotNull
-  @NonNls
-  String NAME = "square metre";
 }
