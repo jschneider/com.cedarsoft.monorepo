@@ -8,5 +8,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Quantity
-public @interface Area {
+public @interface Angle {
 }
