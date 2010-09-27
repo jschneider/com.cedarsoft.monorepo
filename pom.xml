@@ -79,7 +79,6 @@
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
-    <guava.version>r06</guava.version>
 
     <jaxb.version>2.2.1</jaxb.version>
     <jetty.version>6.1.25</jetty.version>
@@ -100,31 +99,10 @@
         <version>1.6.2</version>
       </dependency>
 
-
       <dependency>
         <groupId>com.google.guava</groupId>
-        <artifactId>guava-concurrent</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava-collections</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava-io</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava-primitives</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava-base</artifactId>
-        <version>${guava.version}</version>
+        <artifactId>guava</artifactId>
+        <version>r07</version>
       </dependency>
 
       <dependency>
