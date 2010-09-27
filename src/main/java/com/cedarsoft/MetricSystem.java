@@ -1,5 +1,6 @@
 package com.cedarsoft;
 
+import com.cedarsoft.quantity.Area;
 import com.cedarsoft.quantity.Length;
 import com.cedarsoft.unit.cm;
 import com.cedarsoft.unit.m;
@@ -14,5 +15,10 @@ public class MetricSystem {
 
   @NotNull
   public static final Unit<Length> CENTI_METRE = new BaseUnit<Length>( "cm", cm.class );
+
+
+  @NotNull
+  public static final Unit<Area> SQUARE_METRE = new BaseUnit<Area>( "m²", m.class );
+
 
 }

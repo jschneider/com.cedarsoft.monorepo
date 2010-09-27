@@ -1,5 +1,8 @@
 package com.cedarsoft.unit;
 
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -7,6 +10,8 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
+ * Represents a metre
+ *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
@@ -14,5 +19,7 @@ import java.lang.annotation.RetentionPolicy;
 @Length
 @Inherited
 public @interface m {
-  String value() default "daValue";
+  @NotNull
+  @NonNls
+  String SYMBOL = "m";
 }
