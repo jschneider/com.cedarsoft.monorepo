@@ -1,5 +1,7 @@
 package com.cedarsoft.unit;
 
+import com.cedarsoft.quantity.Derived;
+import com.cedarsoft.quantity.Length;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +18,10 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Length
 @Inherited
+@Derived(
+  from = m.class,
+  factor = 100
+)
 public @interface cm {
   @NotNull
   @NonNls

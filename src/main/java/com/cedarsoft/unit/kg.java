@@ -1,5 +1,7 @@
 package com.cedarsoft.unit;
 
+import com.cedarsoft.quantity.Mass;
+import com.cedarsoft.quantity.SIUnit;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,9 +20,9 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Mass
 @Inherited
+@SIUnit( dimension = Mass.class )
 public @interface kg {
   @NotNull
   @NonNls
   String SYMBOL = "kg";
-
 }

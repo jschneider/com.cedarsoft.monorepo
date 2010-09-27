@@ -1,5 +1,6 @@
 package com.cedarsoft.unit;
 
+import com.cedarsoft.quantity.Speed;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

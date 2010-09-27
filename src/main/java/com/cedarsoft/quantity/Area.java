@@ -1,7 +1,11 @@
 package com.cedarsoft.quantity;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ *
  */
-public interface Area extends Quantity<Area> {
+@Retention( RetentionPolicy.RUNTIME )
+public @interface Area {
 }

@@ -1,13 +1,14 @@
 package com.cedarsoft;
 
-import com.cedarsoft.unit.Length;
+import com.cedarsoft.quantity.Derived;
+import com.cedarsoft.quantity.Length;
+import com.cedarsoft.quantity.SIUnit;
 import com.cedarsoft.unit.cm;
 import com.cedarsoft.unit.kg;
 import com.cedarsoft.unit.m;
 import com.cedarsoft.unit.m2;
 import com.cedarsoft.unit.m_s;
 import com.cedarsoft.unit.s;
-import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
 import java.lang.annotation.Annotation;
@@ -19,20 +20,20 @@ import static org.junit.Assert.*;
  *
  */
 public class UnitTest {
-  @Test
-  public void testIt() {
-    Unit<com.cedarsoft.quantity.Length> metreUnit = MetricSystem.METRE;
-
-    {
-      @m
-      double metre = 7;
-      @m
-      double result = calcMetres( metre );
-    }
-
-    @m
-    double result = convertToMetres( 37, MetricSystem.CENTI_METRE );
-  }
+  //  @Test
+  //  public void testIt() {
+  //    Unit<com.cedarsoft.quantity.Length> metreUnit = MetricSystem.METRE;
+  //
+  //    {
+  //      @m
+  //      double metre = 7;
+  //      @m
+  //      double result = calcMetres( metre );
+  //    }
+  //
+  //    @m
+  //    double result = convertToMetres( 37, MetricSystem.CENTI_METRE );
+  //  }
 
   @m
   public static double calcMetres( @m double amount ) {
@@ -49,17 +50,17 @@ public class UnitTest {
     return amount / time;
   }
 
-  @m
-  public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.quantity.Length> unit ) {
-    if ( unit == MetricSystem.METRE ) {
-      return amount;
-    }
-    if ( unit == MetricSystem.CENTI_METRE ) {
-      return amount / 100.0;
-    }
-
-    throw new UnsupportedOperationException( "Unsupported unit: " + unit );
-  }
+  //  @m
+  //  public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.quantity.Length> unit ) {
+  //    if ( unit == MetricSystem.METRE ) {
+  //      return amount;
+  //    }
+  //    if ( unit == MetricSystem.CENTI_METRE ) {
+  //      return amount / 100.0;
+  //    }
+  //
+  //    throw new UnsupportedOperationException( "Unsupported unit: " + unit );
+  //  }
 
   @m
   public static double convertToMetres( @cm double centiMetres ) {
@@ -76,25 +77,10 @@ public class UnitTest {
   }
 
   @Test
-  public void testConvert2() throws Exception {
-    @cm
-    int cm = 100;
-    @m
-    double result = convertToMetres( cm, MetricSystem.CENTI_METRE );
-    assertEquals( 1, result, 0 );
-  }
-
-  @Test
   public void testSpeed() throws Exception {
     @m_s
     double speed = calcSpeed( 70, 100 );
     assertEquals( 0.7, speed, 0 );
-  }
-
-  @Test
-  public void testUnits() throws Exception {
-    assertEquals( "m", MetricSystem.METRE.getSymbol() );
-    assertEquals( "cm", MetricSystem.CENTI_METRE.getSymbol() );
   }
 
   @Test
@@ -128,6 +114,32 @@ public class UnitTest {
     assertEquals( "com.cedarsoft.unit.m", annotation.annotationType().getName() );
 
     m metre = ( m ) annotation;
+
+    assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
+    assertTrue( annotation.annotationType().isAnnotationPresent( SIUnit.class ) );
+
+    SIUnit siUnitAnnotation = annotation.annotationType().getAnnotation( SIUnit.class );
+    assertSame( Length.class, siUnitAnnotation.dimension() );
+  }
+
+  @Test
+  public void testReflCm() throws Exception {
+    Method method = UnitTest.class.getMethod( "convertToMetres", Double.TYPE );
+    assertNotNull( method );
+
+    assertEquals( 1, method.getParameterAnnotations().length );
+    assertEquals( 1, method.getParameterAnnotations()[0].length );
+
+    Annotation annotation = method.getParameterAnnotations()[0][0];
+    assertEquals( "com.cedarsoft.unit.cm", annotation.annotationType().getName() );
+
+    assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
+    assertTrue( annotation.annotationType().isAnnotationPresent( Derived.class ) );
+    assertFalse( annotation.annotationType().isAnnotationPresent( SIUnit.class ) );
+
+    Derived derived = annotation.annotationType().getAnnotation( Derived.class );
+    assertEquals( 100, derived.factor(), 0 );
+    assertEquals( m.class, derived.from() );
   }
 }
 

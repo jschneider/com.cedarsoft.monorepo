@@ -1,6 +1,5 @@
 package com.cedarsoft;
 
-import com.cedarsoft.quantity.Quantity;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +8,7 @@ import java.lang.annotation.Annotation;
 /**
  *
  */
-public class BaseUnit<Q extends Quantity<Q>> implements Unit<Q> {
+public class BaseUnit {
   @NotNull
   @NonNls
   private final String symbol;
@@ -28,7 +27,6 @@ public class BaseUnit<Q extends Quantity<Q>> implements Unit<Q> {
 
   @NonNls
   @NotNull
-  @Override
   public String getSymbol() {
     return symbol;
   }
