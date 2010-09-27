@@ -1,20 +1,20 @@
 package com.cedarsoft;
 
 import com.cedarsoft.quantity.Length;
-import com.cedarsoft.unit.si.SIBaseUnit;
-import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.Units;
+import com.cedarsoft.unit.prefix.Prefixed;
+import com.cedarsoft.unit.prefix.centi;
+import com.cedarsoft.unit.prefix.kilo;
+import com.cedarsoft.unit.prefix.milli;
+import com.cedarsoft.unit.si.SIBaseUnit;
+import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.si.cm;
 import com.cedarsoft.unit.si.kg;
 import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.m2;
 import com.cedarsoft.unit.si.m_s;
 import com.cedarsoft.unit.si.mm;
-import com.cedarsoft.unit.prefix.Prefixed;
-import com.cedarsoft.unit.prefix.centi;
-import com.cedarsoft.unit.prefix.kilo;
-import com.cedarsoft.unit.prefix.milli;
 import com.cedarsoft.unit.si.s;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
@@ -77,10 +77,6 @@ public class UnitTest {
       double factor = Prefixed.getFactor( unit );
       return amount * factor;
     }
-
-    //    if ( unit == MetricSystem.CENTI_METRE ) {
-    //      return amount / 100.0;
-    //    }
 
     throw new UnsupportedOperationException( "Unsupported unit: " + unit );
   }
