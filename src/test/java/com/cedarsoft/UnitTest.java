@@ -1,21 +1,21 @@
 package com.cedarsoft;
 
 import com.cedarsoft.quantity.Length;
-import com.cedarsoft.quantity.SIBaseUnit;
-import com.cedarsoft.quantity.SiDerivedUnit;
+import com.cedarsoft.unit.si.SIBaseUnit;
+import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.Units;
-import com.cedarsoft.unit.cm;
-import com.cedarsoft.unit.kg;
-import com.cedarsoft.unit.m;
-import com.cedarsoft.unit.m2;
-import com.cedarsoft.unit.m_s;
-import com.cedarsoft.unit.mm;
+import com.cedarsoft.unit.si.cm;
+import com.cedarsoft.unit.si.kg;
+import com.cedarsoft.unit.si.m;
+import com.cedarsoft.unit.si.m2;
+import com.cedarsoft.unit.si.m_s;
+import com.cedarsoft.unit.si.mm;
 import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
-import com.cedarsoft.unit.s;
+import com.cedarsoft.unit.si.s;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 
@@ -160,7 +160,7 @@ public class UnitTest {
     assertEquals( 1, method.getParameterAnnotations().length );
     assertEquals( 1, method.getParameterAnnotations()[0].length );
     Annotation annotation = method.getParameterAnnotations()[0][0];
-    assertEquals( "com.cedarsoft.unit.m", annotation.annotationType().getName() );
+    assertEquals( "com.cedarsoft.unit.si.m", annotation.annotationType().getName() );
 
     m metre = ( m ) annotation;
 
@@ -182,7 +182,7 @@ public class UnitTest {
     assertEquals( 1, method.getParameterAnnotations()[0].length );
 
     Annotation annotation = method.getParameterAnnotations()[0][0];
-    assertEquals( "com.cedarsoft.unit.cm", annotation.annotationType().getName() );
+    assertEquals( "com.cedarsoft.unit.si.cm", annotation.annotationType().getName() );
 
     assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
     assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );

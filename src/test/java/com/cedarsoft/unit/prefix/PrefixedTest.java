@@ -1,8 +1,8 @@
 package com.cedarsoft.unit.prefix;
 
-import com.cedarsoft.unit.cm;
-import com.cedarsoft.unit.m;
-import com.cedarsoft.unit.mm;
+import com.cedarsoft.unit.si.cm;
+import com.cedarsoft.unit.si.m;
+import com.cedarsoft.unit.si.mm;
 import org.junit.*;
 import org.junit.rules.*;
 

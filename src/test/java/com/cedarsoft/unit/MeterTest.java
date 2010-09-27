@@ -1,5 +1,6 @@
 package com.cedarsoft.unit;
 
+import com.cedarsoft.unit.si.m;
 import org.junit.*;
 
 import static org.junit.Assert.*;

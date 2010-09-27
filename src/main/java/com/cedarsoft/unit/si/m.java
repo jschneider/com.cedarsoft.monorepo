@@ -1,8 +1,8 @@
-package com.cedarsoft.unit;
+package com.cedarsoft.unit.si;
 
 import com.cedarsoft.quantity.Length;
-import com.cedarsoft.quantity.SiDerivedUnit;
-import com.cedarsoft.unit.prefix.milli;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -11,6 +11,8 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
+ * Represents a metre
+ *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
@@ -18,9 +20,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SiDerivedUnit
-@Symbol( "mm" )
-@Name( "millimetre" )
-@milli
-public @interface mm {
+@Name( "metre" )
+@SIBaseUnit
+@Symbol( "m" )
+public @interface m {
 }
