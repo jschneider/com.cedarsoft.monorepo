@@ -10,7 +10,7 @@
 
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
@@ -32,6 +32,12 @@
     </dependency>
 
     <!--Test Dependencies-->
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-reflect</artifactId>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
