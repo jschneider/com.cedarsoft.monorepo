@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( giga.FACTOR )
 public @interface giga {
   double FACTOR = 100000;
 }

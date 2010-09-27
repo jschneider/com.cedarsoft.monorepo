@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( kilo.FACTOR )
 public @interface kilo {
   double FACTOR = 1000;
 }

@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( deci.FACTOR )
 public @interface centi {
   double FACTOR = 0.01;
 }

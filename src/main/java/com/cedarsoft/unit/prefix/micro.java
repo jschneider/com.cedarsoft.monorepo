@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( micro.FACTOR )
 public @interface micro {
   double FACTOR = 0.0001;
 }

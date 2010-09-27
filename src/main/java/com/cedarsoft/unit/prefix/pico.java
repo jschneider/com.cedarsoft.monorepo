@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( pico.FACTOR )
 public @interface pico {
   double FACTOR = 0.000001;
 }

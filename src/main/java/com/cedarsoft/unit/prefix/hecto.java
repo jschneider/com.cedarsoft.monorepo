@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( hecto.FACTOR )
 public @interface hecto {
   double FACTOR = 100;
 }

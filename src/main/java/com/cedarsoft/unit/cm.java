@@ -22,7 +22,6 @@ import java.lang.annotation.RetentionPolicy;
 
 @Length
 @SiDerivedUnit( Length.class )
-@Prefixed( centi.class )
 @centi
 public @interface cm {
   @NotNull

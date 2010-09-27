@@ -8,4 +8,9 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 public @interface Prefix {
+  /**
+   * Represents the factor
+   * @return the factor
+   */
+  double value();
 }

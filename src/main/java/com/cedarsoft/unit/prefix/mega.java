@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( mega.FACTOR )
 public @interface mega {
   double FACTOR = 10000;
 }

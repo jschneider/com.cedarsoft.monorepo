@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix
+@Prefix( tera.FACTOR )
 public @interface tera {
   double FACTOR = 1000000;
 }
