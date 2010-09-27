@@ -1,7 +1,7 @@
 package com.cedarsoft.unit;
 
 import com.cedarsoft.quantity.Mass;
-import com.cedarsoft.quantity.SIUnit;
+import com.cedarsoft.quantity.SIBaseUnit;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,9 +18,10 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Documented
-@Mass
 @Inherited
-@SIUnit( dimension = Mass.class )
+
+@Mass
+@SIBaseUnit( Mass.class )
 public @interface kg {
   @NotNull
   @NonNls

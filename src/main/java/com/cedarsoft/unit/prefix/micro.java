@@ -1,4 +1,4 @@
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.prefix;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -10,5 +10,9 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Documented
-public @interface Dimension {
+@Inherited
+
+@Prefix
+public @interface micro {
+  double FACTOR = 0.0001;
 }

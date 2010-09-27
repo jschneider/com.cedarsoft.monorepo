@@ -1,6 +1,6 @@
 package com.cedarsoft.unit;
 
-import com.cedarsoft.quantity.SIUnit;
+import com.cedarsoft.quantity.SIBaseUnit;
 import com.cedarsoft.quantity.Time;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -18,9 +18,10 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Documented
-@Time
 @Inherited
-@SIUnit( dimension = Time.class )
+
+@Time
+@SIBaseUnit( Time.class )
 public @interface s {
   @NotNull
   @NonNls

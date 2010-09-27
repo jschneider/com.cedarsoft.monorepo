@@ -11,6 +11,6 @@ import java.lang.annotation.RetentionPolicy;
 @Retention( RetentionPolicy.RUNTIME )
 @Documented
 @Inherited
-@Dimension
+@Quantity
 public @interface Speed {
 }

@@ -1,7 +1,7 @@
 package com.cedarsoft.unit;
 
 import com.cedarsoft.quantity.Length;
-import com.cedarsoft.quantity.SIUnit;
+import com.cedarsoft.quantity.SIBaseUnit;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SIUnit( dimension = Length.class )
+@SIBaseUnit( Length.class )
 public @interface m {
   @NotNull
   @NonNls

@@ -1,13 +1,16 @@
 package com.cedarsoft;
 
-import com.cedarsoft.quantity.Derived;
 import com.cedarsoft.quantity.Length;
-import com.cedarsoft.quantity.SIUnit;
+import com.cedarsoft.quantity.SIBaseUnit;
+import com.cedarsoft.quantity.SiDerivedUnit;
 import com.cedarsoft.unit.cm;
 import com.cedarsoft.unit.kg;
 import com.cedarsoft.unit.m;
 import com.cedarsoft.unit.m2;
 import com.cedarsoft.unit.m_s;
+import com.cedarsoft.unit.prefix.centi;
+import com.cedarsoft.unit.prefix.kilo;
+import com.cedarsoft.unit.prefix.milli;
 import com.cedarsoft.unit.s;
 import org.junit.*;
 
@@ -22,7 +25,7 @@ import static org.junit.Assert.*;
 public class UnitTest {
   //  @Test
   //  public void testIt() {
-  //    Unit<com.cedarsoft.quantity.Length> metreUnit = MetricSystem.METRE;
+  //    Unit<com.cedarsoft.value.Length> metreUnit = MetricSystem.METRE;
   //
   //    {
   //      @m
@@ -51,7 +54,7 @@ public class UnitTest {
   }
 
   //  @m
-  //  public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.quantity.Length> unit ) {
+  //  public static double convertToMetres( @Length double amount, @NotNull Unit<? extends com.cedarsoft.value.Length> unit ) {
   //    if ( unit == MetricSystem.METRE ) {
   //      return amount;
   //    }
@@ -65,6 +68,22 @@ public class UnitTest {
   @m
   public static double convertToMetres( @cm double centiMetres ) {
     return centiMetres / 100.0;
+  }
+
+  @m
+  public static double large( @kilo @m double km ) {
+    return km / kilo.FACTOR;
+  }
+
+  @milli
+  @m
+  public static double cm2mm( @centi @m double cm ) {
+    return cm / 10.0;
+  }
+
+  @cm
+  public static double m2cm( @m double cm ) {
+    return cm / 10.0;
   }
 
   @Test
@@ -116,10 +135,10 @@ public class UnitTest {
     m metre = ( m ) annotation;
 
     assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
-    assertTrue( annotation.annotationType().isAnnotationPresent( SIUnit.class ) );
+    assertTrue( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
 
-    SIUnit siUnitAnnotation = annotation.annotationType().getAnnotation( SIUnit.class );
-    assertSame( Length.class, siUnitAnnotation.dimension() );
+    SIBaseUnit siUnitAnnotation = annotation.annotationType().getAnnotation( SIBaseUnit.class );
+    assertSame( Length.class, siUnitAnnotation.value() );
   }
 
   @Test
@@ -134,12 +153,11 @@ public class UnitTest {
     assertEquals( "com.cedarsoft.unit.cm", annotation.annotationType().getName() );
 
     assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
-    assertTrue( annotation.annotationType().isAnnotationPresent( Derived.class ) );
-    assertFalse( annotation.annotationType().isAnnotationPresent( SIUnit.class ) );
+    assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
+    assertFalse( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
 
-    Derived derived = annotation.annotationType().getAnnotation( Derived.class );
-    assertEquals( 100, derived.factor(), 0 );
-    assertEquals( m.class, derived.from() );
+    SiDerivedUnit siDerivedUnit = annotation.annotationType().getAnnotation( SiDerivedUnit.class );
+    assertEquals( Length.class, siDerivedUnit.value() );
   }
 }
 
