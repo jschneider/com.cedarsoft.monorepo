@@ -7,6 +7,7 @@ import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
+import com.cedarsoft.unit.px;
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.si.cm;
@@ -136,6 +137,8 @@ public class UnitTest {
     assertEquals( "m²", Units.getSymbol( m2.class ) );
     assertEquals( "m/s", Units.getSymbol( m_s.class ) );
     assertEquals( "s", Units.getSymbol( s.class ) );
+
+    assertEquals( "px", Units.getSymbol( px.class ) );
   }
 
   @Test
