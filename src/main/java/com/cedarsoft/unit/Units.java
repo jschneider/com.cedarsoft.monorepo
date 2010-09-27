@@ -1,5 +1,7 @@
 package com.cedarsoft.unit;
 
+import com.cedarsoft.unit.other.deg;
+import com.cedarsoft.unit.si.rad;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

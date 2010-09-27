@@ -3,6 +3,7 @@ package com.cedarsoft;
 import com.cedarsoft.quantity.Length;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.Units;
+import com.cedarsoft.unit.other.deg;
 import com.cedarsoft.unit.other.px;
 import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
@@ -16,6 +17,7 @@ import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.m2;
 import com.cedarsoft.unit.si.m_s;
 import com.cedarsoft.unit.si.mm;
+import com.cedarsoft.unit.si.rad;
 import com.cedarsoft.unit.si.s;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
@@ -29,30 +31,6 @@ import static org.junit.Assert.*;
  *
  */
 public class UnitTest {
-  @Test
-  public void testIt() {
-    Class<?> metreUnit = m.class;
-
-    {
-      @m
-      double metre = 7;
-      @m
-      double result = calcMetres( metre );
-    }
-
-    {
-      @m
-      double result = convertToMetres( 37, cm.class );
-      assertEquals( 0.37, result, 0 );
-    }
-
-    {
-      @m
-      double result = convertToMetres( 37, mm.class );
-      assertEquals( 0.037, result, 0 );
-    }
-  }
-
   @m
   public static double calcMetres( @m double amount ) {
     return amount;
@@ -103,6 +81,44 @@ public class UnitTest {
     return cm / 10.0;
   }
 
+  @rad
+  public static double toRadians( @deg double angdeg ) {
+    return Math.toRadians( angdeg );
+  }
+
+  @deg
+  public static double toDegrees( @rad double angrad ) {
+    return Math.toDegrees( angrad );
+  }
+
+  ////////////////
+  // The above methods are used to show the usage of the annotations
+  ////////////////
+
+  @Test
+  public void testIt() {
+    Class<?> metreUnit = m.class;
+
+    {
+      @m
+      double metre = 7;
+      @m
+      double result = calcMetres( metre );
+    }
+
+    {
+      @m
+      double result = convertToMetres( 37, cm.class );
+      assertEquals( 0.37, result, 0 );
+    }
+
+    {
+      @m
+      double result = convertToMetres( 37, mm.class );
+      assertEquals( 0.037, result, 0 );
+    }
+  }
+
   @Test
   public void testConvert() throws Exception {
     @cm
@@ -139,6 +155,7 @@ public class UnitTest {
     assertEquals( "s", Units.getSymbol( s.class ) );
 
     assertEquals( "px", Units.getSymbol( px.class ) );
+    assertEquals( "°", Units.getSymbol( deg.class ) );
   }
 
   @Test
@@ -149,6 +166,7 @@ public class UnitTest {
     assertEquals( "square metre", Units.getName( m2.class ) );
     assertEquals( "metre per second", Units.getName( m_s.class ) );
     assertEquals( "second", Units.getName( s.class ) );
+    assertEquals( "degree", Units.getName( deg.class ) );
   }
 
   @Test
