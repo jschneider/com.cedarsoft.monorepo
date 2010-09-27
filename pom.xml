@@ -10,7 +10,7 @@
 
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.9.0-SNAPSHOT</version>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
