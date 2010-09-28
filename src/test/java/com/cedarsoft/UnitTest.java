@@ -194,7 +194,7 @@ public class UnitTest {
     assertEquals( "centimetre", Units.getName( cm.class ) );
     assertEquals( "kilogram", Units.getName( kg.class ) );
     assertEquals( "square metre", Units.getName( m2.class ) );
-    assertEquals( "metre per second", Units.getName( m_s.class ) );
+    assertEquals( "metres per second", Units.getName( m_s.class ) );
     assertEquals( "second", Units.getName( s.class ) );
     assertEquals( "degree", Units.getName( deg.class ) );
   }
@@ -232,10 +232,9 @@ public class UnitTest {
     assertEquals( "com.cedarsoft.unit.si.cm", annotation.annotationType().getName() );
 
     assertTrue( annotation.annotationType().isAnnotationPresent( Length.class ) );
-    assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
+    assertTrue( annotation.annotationType().isAnnotationPresent( centi.class ) );
+    assertFalse( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
     assertFalse( annotation.annotationType().isAnnotationPresent( SIBaseUnit.class ) );
-
-    assertTrue( annotation.annotationType().isAnnotationPresent( SiDerivedUnit.class ) );
 
     assertEquals( "cm", annotation.annotationType().getAnnotation( Symbol.class ).value() );
   }
