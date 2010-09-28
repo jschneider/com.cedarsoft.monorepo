@@ -47,17 +47,4 @@ import java.lang.annotation.RetentionPolicy;
 
 @Quantity
 public @interface Length {
-
-  class Type implements Quantity.Type<Type> {
-    @NotNull
-    public static final Type INSTANCE = new Type();
-
-    @NotNull
-    public static Type get() {
-      return INSTANCE;
-    }
-
-    private Type() {
-    }
-  }
 }
