@@ -42,8 +42,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * A square metre
- *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )

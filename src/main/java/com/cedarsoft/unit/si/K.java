@@ -43,7 +43,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a metre
  *
  * @noinspection AnnotationNamingConvention
  */

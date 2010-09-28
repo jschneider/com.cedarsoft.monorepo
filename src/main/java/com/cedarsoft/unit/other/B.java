@@ -44,7 +44,7 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a metre
+ * Represents a byte
  *
  * @noinspection AnnotationNamingConvention
  */

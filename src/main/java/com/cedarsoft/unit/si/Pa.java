@@ -31,7 +31,6 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Force;
 import com.cedarsoft.quantity.Pressure;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -44,8 +43,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a newton
- *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )

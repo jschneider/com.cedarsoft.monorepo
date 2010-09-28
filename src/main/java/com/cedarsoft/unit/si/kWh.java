@@ -43,8 +43,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a watt
- *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
