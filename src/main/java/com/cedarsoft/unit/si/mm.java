@@ -50,9 +50,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SiDerivedUnit
 @Symbol( "mm" )
 @Name( "millimetre" )
-@milli
+@milli( m.class )
 public @interface mm {
 }

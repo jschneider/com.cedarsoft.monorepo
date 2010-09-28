@@ -51,7 +51,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Speed
-@SiDerivedUnit
+@SiDerivedUnit( {m.class, s.class} )
 @Name( "metre per second" )
 @Symbol( "m/s" )
 public @interface m_s {

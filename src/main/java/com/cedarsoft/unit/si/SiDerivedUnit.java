@@ -40,4 +40,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 public @interface SiDerivedUnit {
+  Class<? extends Annotation>[] value() default {};
 }

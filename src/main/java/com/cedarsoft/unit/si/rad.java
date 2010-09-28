@@ -32,7 +32,6 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.quantity.Angle;
-import com.cedarsoft.quantity.Length;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 
@@ -53,7 +52,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Angle
 @Name( "radian" )
-@SiDerivedUnit
+@SiDerivedUnit( m.class )
 @Symbol( "rad" )
 public @interface rad {
 }

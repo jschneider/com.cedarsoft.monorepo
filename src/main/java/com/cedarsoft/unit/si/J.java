@@ -32,7 +32,6 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.quantity.Energy;
-import com.cedarsoft.quantity.Power;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
@@ -54,7 +53,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Energy
 @Name( "joule" )
-@SiDerivedUnit
+@SiDerivedUnit( {N.class, m.class} )
 @Symbol( "J" )
 @Definition( {"N*m", "kg*m²/s²", "W*s"} )
 public @interface J {

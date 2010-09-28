@@ -31,10 +31,10 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Power;
+import com.cedarsoft.quantity.LuminousFlux;
+import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
-import com.cedarsoft.unit.prefix.kilo;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -43,7 +43,7 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a watt
+ * Represents a metre
  *
  * @noinspection AnnotationNamingConvention
  */
@@ -51,9 +51,10 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Power
-@Name( "kilowatts" )
-@Symbol( "kW" )
-@kilo( W.class )
-public @interface kW {
+@LuminousFlux
+@Name( "lumen" )
+@SiDerivedUnit( {cd.class, sr.class} )
+@Symbol( "lm" )
+@Definition( "cd*sr" )
+public @interface lumen {
 }

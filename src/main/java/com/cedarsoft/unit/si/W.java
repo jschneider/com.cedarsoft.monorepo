@@ -53,7 +53,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Power
 @Name( "watt" )
-@SiDerivedUnit
+@SiDerivedUnit( {J.class, s.class} )
 @Symbol( "W" )
 @Definition( {"J/s", "N*m/s", "kg*m²/s³", "VA"} )
 public @interface W {

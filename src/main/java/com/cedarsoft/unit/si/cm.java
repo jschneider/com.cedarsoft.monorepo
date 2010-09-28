@@ -50,9 +50,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@SiDerivedUnit
 @Symbol( "cm" )
 @Name( "centimetre" )
-@centi
+@centi( m.class )
 public @interface cm {
 }

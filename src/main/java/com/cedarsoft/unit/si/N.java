@@ -53,7 +53,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Force
 @Name( "newton" )
-@SiDerivedUnit
+@SiDerivedUnit( {kg.class, m_s2.class} )
 @Symbol( "N" )
 @Definition( {"kg*m/s²"} )
 public @interface N {

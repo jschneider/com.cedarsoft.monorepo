@@ -51,7 +51,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Volume
-@SiDerivedUnit
+@SiDerivedUnit( m.class )
 @Name( "cubic metre" )
 @Symbol( "m³" )
 public @interface m3 {

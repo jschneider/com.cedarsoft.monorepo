@@ -32,7 +32,6 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.quantity.Acceleration;
-import com.cedarsoft.quantity.Speed;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 
@@ -43,8 +42,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a metre
- *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
@@ -52,7 +49,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Acceleration
-@SiDerivedUnit
+@SiDerivedUnit( {m_s.class, s.class} )
 @Name( "metre per square second" )
 @Symbol( "m/s²" )
 public @interface m_s2 {

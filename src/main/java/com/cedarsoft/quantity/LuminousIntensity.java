@@ -29,31 +29,15 @@
  * have any questions.
  */
 
-package com.cedarsoft.unit.si;
+package com.cedarsoft.quantity;
 
-import com.cedarsoft.quantity.Power;
-import com.cedarsoft.unit.Name;
-import com.cedarsoft.unit.Symbol;
-import com.cedarsoft.unit.prefix.kilo;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
 /**
- * Represents a watt
  *
- * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
-@Documented
-@Inherited
-
-@Power
-@Name( "kilowatts" )
-@Symbol( "kW" )
-@kilo( W.class )
-public @interface kW {
+@Quantity
+public @interface LuminousIntensity {
 }

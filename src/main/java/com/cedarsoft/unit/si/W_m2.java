@@ -53,7 +53,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Intensity
 @Name( "irradiance" )
-@SiDerivedUnit
+@SiDerivedUnit( {W.class, m2.class} )
 @Symbol( "E" )
 @Definition( {"W/m²"} )
 public @interface W_m2 {

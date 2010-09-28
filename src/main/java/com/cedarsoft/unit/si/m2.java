@@ -51,7 +51,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Area
-@SiDerivedUnit
+@SiDerivedUnit( m.class )
 @Name( "square metre" )
 @Symbol( "m²" )
 public @interface m2 {
