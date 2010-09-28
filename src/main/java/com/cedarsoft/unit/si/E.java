@@ -29,16 +29,32 @@
  * have any questions.
  */
 
-package com.cedarsoft.unit.other;
+package com.cedarsoft.unit.si;
 
-import java.lang.annotation.Annotation;
+import com.cedarsoft.quantity.Intensity;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ * Power incident on a surface.
+ *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
-public @interface DerivedUnit {
-  Class<? extends Annotation>[] value() default {};
+@Documented
+@Inherited
+
+@Intensity
+@Name( "irradiance" )
+@SiDerivedUnit( {W.class, m2.class} )
+@Symbol( "E" )
+@Definition( {"W/m²"} )
+public @interface E {
 }

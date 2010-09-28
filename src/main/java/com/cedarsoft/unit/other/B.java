@@ -33,6 +33,7 @@ package com.cedarsoft.unit.other;
 
 import com.cedarsoft.quantity.DataAmount;
 import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 

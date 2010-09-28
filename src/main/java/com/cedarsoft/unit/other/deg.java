@@ -32,8 +32,11 @@
 package com.cedarsoft.unit.other;
 
 import com.cedarsoft.quantity.Angle;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.si.rad;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -53,5 +56,7 @@ import java.lang.annotation.RetentionPolicy;
 @Angle
 @Name( "degree" )
 @Symbol( "°" )
+@DerivedUnit( rad.class )
+@Definition( {"1/360th of a full rotation", "π/180"} )
 public @interface deg {
 }
