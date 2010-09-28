@@ -32,6 +32,7 @@
 package com.cedarsoft.unit.other;
 
 import com.cedarsoft.quantity.Power;
+import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 
@@ -49,7 +50,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Power
-@Name( "Watt peak" )
+@Name( "watt-peak" )
 @Symbol( "Wp" )
+@Definition( {"W under given circumstances (light intensity: 1000W/m², airmass 1.5, cells temperature 25°C)"} )
 public @interface Wp {
 }

@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.unit.si;
+package com.cedarsoft.unit.other;
 
 import com.cedarsoft.quantity.Power;
 import com.cedarsoft.unit.Name;
@@ -43,8 +43,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 /**
- * Represents a watt
- *
  * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
@@ -52,9 +50,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Power
-@Name( "kilowatts" )
-@SiDerivedUnit
-@Symbol( "kW" )
-@kilo( W.class )
-public @interface kW {
+@Name( "kilowatts-peak" )
+@Symbol( "kWp" )
+@kilo( Wp.class )
+public @interface kWp {
 }
