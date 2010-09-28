@@ -53,7 +53,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Acceleration
 @SiDerivedUnit
-@Name( "square metre per second" )
-@Symbol( "m²/s" )
-public @interface m2_s {
+@Name( "metre per square second" )
+@Symbol( "m/s²" )
+public @interface m_s2 {
 }
