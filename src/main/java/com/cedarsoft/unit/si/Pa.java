@@ -29,17 +29,33 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.Force;
+import com.cedarsoft.quantity.Pressure;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
+ * Represents a newton
  *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@Pressure
+@Name( "pascal" )
+@SiDerivedUnit( {N.class, m2.class} )
+@Symbol( "Pa" )
+@Definition( {"N/m²", "kg/(m*s²)"} )
+public @interface Pa {
 }

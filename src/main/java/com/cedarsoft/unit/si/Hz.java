@@ -29,17 +29,32 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.Frequency;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
+ * Represents a metre
  *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@Frequency
+@Name( "hertz" )
+@SiDerivedUnit( {s.class} )
+@Symbol( "Hz" )
+@Definition( {"cycles per second", "1/s"} )
+public @interface Hz {
 }

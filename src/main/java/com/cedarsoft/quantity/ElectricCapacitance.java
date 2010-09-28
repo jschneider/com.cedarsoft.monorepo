@@ -41,5 +41,5 @@ import java.lang.annotation.RetentionPolicy;
 @Retention( RetentionPolicy.RUNTIME )
 @Inherited
 @Quantity
-public @interface LuminousFlux {
+public @interface ElectricCapacitance {
 }

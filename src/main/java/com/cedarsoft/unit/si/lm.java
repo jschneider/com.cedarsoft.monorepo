@@ -29,17 +29,32 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.LuminousFlux;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
+ * Represents a metre
  *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@LuminousFlux
+@Name( "lumen" )
+@SiDerivedUnit( {cd.class, sr.class} )
+@Symbol( "lm" )
+@Definition( "cd*sr" )
+public @interface lm {
 }

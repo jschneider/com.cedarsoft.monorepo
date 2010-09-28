@@ -29,17 +29,30 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.ElectricPotential;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
- *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@ElectricPotential
+@Name( "volt" )
+@SiDerivedUnit( {W.class, A.class} )
+@Symbol( "V" )
+@Definition( {"W/A", "J/A*s", "N*m/(A*s)", "J/C", "N*m/C"} )
+public @interface V {
 }

@@ -29,17 +29,30 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.ElectricCapacitance;
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
- *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@ElectricCapacitance
+@Name( "farad" )
+@SiDerivedUnit( {A.class, V.class, s.class, J.class} )
+@Symbol( "F" )
+@Definition( {"A*s/V", "J/V²"} )
+public @interface F {
 }

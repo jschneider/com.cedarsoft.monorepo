@@ -29,17 +29,29 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.si;
 
+import com.cedarsoft.quantity.Length;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.prefix.kilo;
+
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
- *
+ * @noinspection AnnotationNamingConvention
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@Length
+@Symbol( "km" )
+@Name( "kilometre" )
+@kilo( m.class )
+public @interface km {
 }

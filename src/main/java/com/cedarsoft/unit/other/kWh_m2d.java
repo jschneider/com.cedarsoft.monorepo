@@ -36,6 +36,8 @@ import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.si.SiDerivedUnit;
+import com.cedarsoft.unit.si.kWh;
+import com.cedarsoft.unit.si.s;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -52,7 +54,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Intensity
 @Name( "kWh per square meter and day" )
-@SiDerivedUnit
+@SiDerivedUnit( {kWh.class, s.class} )
 @Symbol( "kW*h/(m²*day" )
 @Definition( {"kW*h/(m²*day"} )
 public @interface kWh_m2d {

@@ -31,7 +31,6 @@
 
 package com.cedarsoft.quantity;
 
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -39,7 +38,6 @@ import java.lang.annotation.RetentionPolicy;
  *
  */
 @Retention( RetentionPolicy.RUNTIME )
-@Inherited
 @Quantity
-public @interface LuminousFlux {
+public @interface DataAmount {
 }

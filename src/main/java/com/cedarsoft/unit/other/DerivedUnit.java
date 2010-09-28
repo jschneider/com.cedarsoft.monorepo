@@ -29,17 +29,16 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.other;
 
-import java.lang.annotation.Inherited;
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Retention( RetentionPolicy.RUNTIME )
-@Inherited
-@Quantity
-public @interface LuminousFlux {
+public @interface DerivedUnit {
+  Class<? extends Annotation>[] value() default {};
 }

@@ -31,6 +31,8 @@
 
 package com.cedarsoft.unit.prefix;
 
+import com.cedarsoft.unit.Symbol;
+
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -45,6 +47,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Prefix( 1000 )
+@Symbol( "k" )
 public @interface kilo {
   /**
    * The base unit

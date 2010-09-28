@@ -29,17 +29,29 @@
  * have any questions.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.prefix;
 
+import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.prefix.Prefix;
+
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Retention( RetentionPolicy.RUNTIME )
+@Documented
 @Inherited
-@Quantity
-public @interface LuminousFlux {
+
+@Prefix( 2 ^ 10 )
+@Symbol( "Ki" )
+public @interface kibi {
+  /**
+   * The base unit
+   */
+  Class<? extends Annotation> value();
 }
