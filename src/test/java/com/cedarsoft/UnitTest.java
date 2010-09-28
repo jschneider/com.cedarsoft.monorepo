@@ -97,13 +97,12 @@ public class UnitTest {
   }
 
   @m
-  public static double large( @kilo @m double km ) {
+  public static double large( @kilo( m.class ) double km ) {
     return km / 1000;
   }
 
-  @milli
-  @m
-  public static double cm2mm( @centi @m double cm ) {
+  @milli( m.class )
+  public static double cm2mm( @centi( m.class ) double cm ) {
     return cm / 10.0;
   }
 

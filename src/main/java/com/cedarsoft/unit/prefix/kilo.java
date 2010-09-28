@@ -31,6 +31,7 @@
 
 package com.cedarsoft.unit.prefix;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -45,4 +46,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @Prefix( 1000 )
 public @interface kilo {
+  /**
+   * The base unit
+   */
+  Class<? extends Annotation> value();
 }
