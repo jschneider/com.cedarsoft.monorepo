@@ -57,6 +57,12 @@ public class AspectRatio {
   public static final AspectRatio AR_16_10 = new AspectRatio( 16, 10 );
 
   /**
+   * Used for paper (A4)...
+   */
+  @NotNull
+  public static final AspectRatio AR_SQ2_1 = new AspectRatio( Math.sqrt( 2 ), 1 );
+
+  /**
    * @noinspection PublicStaticCollectionField
    */
   @NotNull
@@ -67,23 +73,23 @@ public class AspectRatio {
    */
   public static final double BOUNDS = 0.005;
 
-  private final int widthFactor;
-  private final int heightFactor;
+  private final double widthFactor;
+  private final double heightFactor;
 
-  AspectRatio( int widthFactor, int heightFactor ) {
+  AspectRatio( double widthFactor, double heightFactor ) {
     this.widthFactor = widthFactor;
     this.heightFactor = heightFactor;
   }
 
   public double getRatio() {
-    return ( double ) widthFactor / heightFactor;
+    return widthFactor / heightFactor;
   }
 
-  public int getWidthFactor() {
+  public double getWidthFactor() {
     return widthFactor;
   }
 
-  public int getHeightFactor() {
+  public double getHeightFactor() {
     return heightFactor;
   }
 
@@ -108,9 +114,9 @@ public class AspectRatio {
 
   @Override
   public int hashCode() {
-    int result = widthFactor;
+    double result = widthFactor;
     result = 31 * result + heightFactor;
-    return result;
+    return ( int ) result;
   }
 
   /**
@@ -121,8 +127,8 @@ public class AspectRatio {
    * @return the aspect ratio
    */
   @NotNull
-  public static AspectRatio get( int width, int height ) {
-    double ratio = ( double ) width / height;
+  public static AspectRatio get( double width, double height ) {
+    double ratio = width / height;
     for ( AspectRatio aspectRatio : PRE_DEFINED ) {
       double delta = aspectRatio.getRatio() - ratio;
       if ( Math.abs( delta ) < BOUNDS ) {
