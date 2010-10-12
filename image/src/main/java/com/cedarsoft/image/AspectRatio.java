@@ -87,6 +87,12 @@ public class AspectRatio {
     return heightFactor;
   }
 
+  @NotNull
+  public AspectRatio invert() {
+    //noinspection SuspiciousNameCombination
+    return new AspectRatio( heightFactor, widthFactor );
+  }
+
   @Override
   public boolean equals( Object o ) {
     if ( this == o ) return true;
