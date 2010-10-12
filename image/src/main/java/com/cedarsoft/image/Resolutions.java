@@ -31,7 +31,6 @@
 
 package com.cedarsoft.image;
 
-import com.cedarsoft.image.Resolution;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -43,6 +42,11 @@ import java.util.List;
  * Contains common dimensions for different screens
  */
 public class Resolutions {
+  @NotNull
+  public static final Resolution A4_300 = new Resolution( 2480, 3508 );
+  @NotNull
+  public static final Resolution A4_72 = new Resolution( 595, 842 );
+
   @NotNull
   private final List<Resolution> screenResolutions = new ArrayList<Resolution>();
 
