@@ -83,7 +83,7 @@ public class ImageConverterTest {
     int newHeight = original.getHeight() * 72 / 300;
     assertEquals( 88, newHeight );
 
-    Dimension dim = new ImageConverter().calculateNewDimensions( original, Resolution.DPI_300, Resolution.DPI_072 );
+    Dimension dim = new ImageConverter().calculateNewDimensions( original, DPI.DPI_300, DPI.DPI_072 );
     assertEquals( 72, dim.width );
     assertEquals( 88, dim.height );
   }

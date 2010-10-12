@@ -50,13 +50,13 @@ public class ImageConverter {
    * Calculates the new dimension of the image
    *
    * @param original           the original image
-   * @param originalResolution the original resolution
-   * @param targetResolution   the target resolution
+   * @param originalDPI the original resolution
+   * @param targetDPI   the target resolution
    * @return the dimension
    */
-  public Dimension calculateNewDimensions( @NotNull RenderedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {
-    int newWidth = original.getWidth() * targetResolution.getDpi() / originalResolution.getDpi();
-    int newHeight = original.getHeight() * targetResolution.getDpi() / originalResolution.getDpi();
+  public Dimension calculateNewDimensions( @NotNull RenderedImage original, @NotNull DPI originalDPI, @NotNull DPI targetDPI ) {
+    int newWidth = original.getWidth() * targetDPI.getDpi() / originalDPI.getDpi();
+    int newHeight = original.getHeight() * targetDPI.getDpi() / originalDPI.getDpi();
     return new Dimension( newWidth, newHeight );
   }
 
@@ -80,12 +80,12 @@ public class ImageConverter {
    * <p>resize</p>
    *
    * @param original           a {@link BufferedImage} object.
-   * @param originalResolution a {@link Resolution} object.
-   * @param targetResolution   a {@link Resolution} object.
+   * @param originalDPI a {@link DPI} object.
+   * @param targetDPI   a {@link DPI} object.
    * @return a {@link BufferedImage} object.
    */
   @NotNull
-  public BufferedImage resize( @NotNull BufferedImage original, @NotNull Resolution originalResolution, @NotNull Resolution targetResolution ) {
-    return resize( original, calculateNewDimensions( original, originalResolution, targetResolution ) );
+  public BufferedImage resize( @NotNull BufferedImage original, @NotNull DPI originalDPI, @NotNull DPI targetDPI ) {
+    return resize( original, calculateNewDimensions( original, originalDPI, targetDPI ) );
   }
 }

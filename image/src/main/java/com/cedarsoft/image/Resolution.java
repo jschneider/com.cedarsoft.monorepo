@@ -1,18 +1,15 @@
 /**
  * Copyright (C) cedarsoft GmbH.
  *
- * Licensed under the GNU General Public License version 3 (the "License")
- * with Classpath Exception; you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
+ * Licensed under the GNU General Public License version 3 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ *         http://www.cedarsoft.org/gpl3
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
- * published by the Free Software Foundation. cedarsoft GmbH designates this
- * particular file as subject to the "Classpath" exception as provided
- * by cedarsoft GmbH in the LICENSE file that accompanied this code.
+ * published by the Free Software Foundation.
  *
  * This code is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -33,43 +30,109 @@ package com.cedarsoft.image;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.Dimension;
+
 /**
- * For each scan images in several resoltutions are stored. This enum represents the different resolutions.
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * Represents a resolution.
+ * Resolutions can be compared using the width as first criteria and the height as second.
+ * <p/>
+ * This means that 100/1 is larger than 99/Integer.MAX
  */
-public enum Resolution {
-  DPI_300( 300 ),
-  DPI_072( 72 );
-
-  private final int dpi;
-
-  Resolution( int dpi ) {
-    this.dpi = dpi;
-  }
+public class Resolution implements Comparable<Resolution> {
+  private final int width;
+  private final int height;
+  @NotNull
+  private final AspectRatio aspectRatio;
 
   /**
-   * <p>Getter for the field <code>dpi</code>.</p>
+   * Creates a new resolution based on the dimension
    *
-   * @return a int.
+   * @param dimension the dimension
    */
-  public int getDpi() {
-    return dpi;
+  public Resolution( @NotNull Dimension dimension ) {
+    this( dimension.width, dimension.height );
   }
 
   /**
-   * <p>find</p>
+   * Creates a new resolution
    *
-   * @param dpi a int.
-   * @return a {@link Resolution} object.
+   * @param width  the width
+   * @param height the height
+   */
+  public Resolution( int width, int height ) {
+    this.width = width;
+    this.height = height;
+    this.aspectRatio = AspectRatio.get( width, height );
+  }
+
+  /**
+   * Returns the aspect ratio
+   *
+   * @return the aspect ratio
    */
   @NotNull
-  public static Resolution find( int dpi ) {
-    for ( Resolution resolution : values() ) {
-      if ( resolution.getDpi() == dpi ) {
-        return resolution;
-      }
+  public AspectRatio getAspectRatio() {
+    return aspectRatio;
+  }
+
+  /**
+   * Returns the width
+   *
+   * @return the width
+   */
+  public int getWidth() {
+    return width;
+  }
+
+  /**
+   * The height
+   *
+   * @return the height
+   */
+  public int getHeight() {
+    return height;
+  }
+
+  @Override
+  public boolean equals( Object o ) {
+    if ( this == o ) return true;
+    if ( !( o instanceof Resolution ) ) return false;
+
+    Resolution that = ( Resolution ) o;
+
+    if ( height != that.height ) return false;
+    if ( width != that.width ) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = width;
+    result = 31 * result + height;
+    return result;
+  }
+
+  @Override
+  public int compareTo( Resolution o ) {
+    if ( width != o.width ) {
+      return Integer.valueOf( width ).compareTo( o.width );
     }
-    throw new IllegalArgumentException( "No resolution found for " + dpi );
+    return Integer.valueOf( height ).compareTo( o.height );
+  }
+
+  @Override
+  public String toString() {
+    return "(" + width + "/" + height + ")";
+  }
+
+  /**
+   * Converts the resolution to a dimensino
+   *
+   * @return a dimension with the same width/height
+   */
+  @NotNull
+  public Dimension toDimension() {
+    return new Dimension( width, height );
   }
 }
