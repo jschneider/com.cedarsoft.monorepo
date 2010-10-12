@@ -16,7 +16,7 @@
   <dependencies>
     <dependency>
       <groupId>com.google.guava</groupId>
-      <artifactId>guava-base</artifactId>
+      <artifactId>guava</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
