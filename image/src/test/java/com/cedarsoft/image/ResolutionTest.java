@@ -65,8 +65,8 @@ public class ResolutionTest {
     assertEquals( AspectRatio.AR_4_3, AspectRatio.get( 1024, 768 ) );
     assertEquals( AspectRatio.AR_5_4, AspectRatio.get( 1280, 1024 ) );
 
-    assertEquals( 1, AspectRatio.get( 1, 17 ).getWidthFactor() );
-    assertEquals( 17, AspectRatio.get( 1, 17 ).getHeightFactor() );
+    assertEquals( 1, AspectRatio.get( 1, 17 ).getWidthFactor(), 0 );
+    assertEquals( 17, AspectRatio.get( 1, 17 ).getHeightFactor(), 0 );
   }
 
   @Test
