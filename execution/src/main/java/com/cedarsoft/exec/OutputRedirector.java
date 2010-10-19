@@ -51,23 +51,29 @@ public class OutputRedirector implements Runnable {
    * {@link System#err}
    *
    * @param process the process
+   * @return the redirecting threads
    */
-  public static void redirect( @NotNull Process process ) {
+  public static Thread[] redirect( @NotNull Process process ) {
     PrintStream targetOut = System.out;
     PrintStream targetErr = System.err;
-    redirect( process, targetOut, targetErr );
+    return redirect( process, targetOut, targetErr );
   }
 
   /**
    * <p>redirect</p>
    *
    * @param process   a {@link Process} object.
-   * @param targetOut a {@link OutputStream} object.
-   * @param targetErr a {@link OutputStream} object.
+   * @param targetOut a {@link OutputStream} the target output stream
+   * @param targetErr a {@link OutputStream} the target input stream
+   * @return the two redirecting threads
    */
-  public static void redirect( @NotNull Process process, @NotNull OutputStream targetOut, @NotNull OutputStream targetErr ) {
-    new Thread( new OutputRedirector( process.getInputStream(), targetOut ) ).start();
-    new Thread( new OutputRedirector( process.getErrorStream(), targetErr ) ).start();
+  public static Thread[] redirect( @NotNull Process process, @NotNull OutputStream targetOut, @NotNull OutputStream targetErr ) {
+    Thread inputThread = new Thread( new OutputRedirector( process.getInputStream(), targetOut ) );
+    inputThread.start();
+    Thread outputThread = new Thread( new OutputRedirector( process.getErrorStream(), targetErr ) );
+    outputThread.start();
+
+    return new Thread[]{inputThread, outputThread};
   }
 
   private final InputStream in;
