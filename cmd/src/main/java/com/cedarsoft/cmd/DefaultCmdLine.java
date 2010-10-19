@@ -116,24 +116,34 @@ public class DefaultCmdLine extends AbstractCmdLine {
   @Override
   @NotNull
   public String read( @NotNull String message, @Nullable String defaultValue ) {
+    //First clear the input stream
+    try {
+      int available;
+      while ( ( available = getIn().available() ) > 0 ) {
+        getIn().skip( available );
+      }
+    } catch ( IOException e ) {
+      throw new RuntimeException( e );
+    }
+
     if ( defaultValue == null ) {
       out( message );
     } else {
       out( message + " [" + defaultValue + ']' );
     }
 
-    byte[] buffer = new byte[80];
-    //noinspection ResultOfMethodCallIgnored
     try {
-      getIn().read( buffer, 0, 80 );
+      byte[] buffer = new byte[500];
+      //noinspection ResultOfMethodCallIgnored
+      getIn().read( buffer, 0, buffer.length );
+      String read = new String( buffer ).trim();
+      if ( read.length() == 0 && defaultValue != null ) {
+        return defaultValue;
+      }
+      return read;
     } catch ( IOException e ) {
       throw new RuntimeException( e );
     }
-    String read = new String( buffer ).trim();
-    if ( read.length() == 0 && defaultValue != null ) {
-      return defaultValue;
-    }
-    return read;
   }
 
   /**
