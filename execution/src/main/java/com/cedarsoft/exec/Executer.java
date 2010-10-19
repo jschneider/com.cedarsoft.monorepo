@@ -81,10 +81,16 @@ public class Executer {
    */
   public int execute() throws IOException, InterruptedException {
     Process process = processBuilder.start();
-    redirectStreams( process );
+    Thread[] threads = redirectStreams( process );
     notifyExecutionStarted( process );
 
     int answer = process.waitFor();
+
+    //Wait for the redirecting threads
+    for ( Thread thread : threads ) {
+      thread.join();
+    }
+
     notifyExecutionFinished( answer );
     return answer;
   }
@@ -93,10 +99,14 @@ public class Executer {
    * <p>redirectStreams</p>
    *
    * @param process a {@link Process} object.
+   * @return the redirecting threads (or an empty array)
    */
-  protected void redirectStreams( @NotNull Process process ) {
+  @NotNull
+  protected Thread[] redirectStreams( @NotNull Process process ) {
     if ( redirectStreams ) {
-      OutputRedirector.redirect( process );
+      return OutputRedirector.redirect( process );
+    } else {
+      return new Thread[0];
     }
   }
 
