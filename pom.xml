@@ -842,7 +842,7 @@
         </configuration>
       </plugin>
 
-      <plugin>
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>clirr-maven-plugin</artifactId>
         <version>2.2.2</version>
@@ -850,7 +850,7 @@
           <minSeverity>info</minSeverity>
           <failOnError>false</failOnError>
         </configuration>
-      </plugin>
+      </plugin-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
