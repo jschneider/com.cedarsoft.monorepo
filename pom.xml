@@ -108,11 +108,6 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>collections</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>exceptions</artifactId>
         <version>${project.version}</version>
       </dependency>
