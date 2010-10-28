@@ -31,6 +31,7 @@
 
 package com.cedarsoft.zip;
 
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.junit.*;
 
 import java.util.zip.ZipEntry;
@@ -44,10 +45,10 @@ public class PathBasedClassFieldConditionTest {
   @Test
   public void testIt() {
     PathBasedClassFieldCondition condition = new PathBasedClassFieldCondition( "da/prefix" );
-    assertFalse( condition.shallExtract( new ZipEntry( "daName" ) ) );
-    assertFalse( condition.shallExtract( new ZipEntry( "da/prefix/a/path/DaClass.java" ) ) );
-    assertFalse( condition.shallExtract( new ZipEntry( "NOT/da/prefix/a/path/DaClass.class" ) ) );
+    assertFalse( condition.shallExtract( new ZipArchiveEntry( "daName" ) ) );
+    assertFalse( condition.shallExtract( new ZipArchiveEntry( "da/prefix/a/path/DaClass.java" ) ) );
+    assertFalse( condition.shallExtract( new ZipArchiveEntry( "NOT/da/prefix/a/path/DaClass.class" ) ) );
 
-    assertTrue( condition.shallExtract( new ZipEntry( "da/prefix/a/path/DaClass.class" ) ) );
+    assertTrue( condition.shallExtract( new ZipArchiveEntry( "da/prefix/a/path/DaClass.class" ) ) );
   }
 }

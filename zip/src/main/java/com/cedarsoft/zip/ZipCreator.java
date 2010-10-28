@@ -31,6 +31,9 @@
 
 package com.cedarsoft.zip;
 
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedInputStream;
@@ -82,7 +85,7 @@ public class ZipCreator {
    * @throws IOException if an io exception occures
    */
   public File zip( @NotNull File... directories ) throws IOException {
-    ZipOutputStream outStream = new ZipOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
+    ZipArchiveOutputStream outStream = new ZipArchiveOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
     try {
       for ( File directory : directories ) {
         String baseName = directory.getCanonicalPath();
@@ -102,13 +105,13 @@ public class ZipCreator {
    * @param directory the directory
    * @throws IOException if any.
    */
-  protected void addFiles( @NotNull String baseName, @NotNull ZipOutputStream outStream, @NotNull File directory ) throws IOException {
+  protected void addFiles( @NotNull String baseName, @NotNull ZipArchiveOutputStream outStream, @NotNull File directory ) throws IOException {
     byte[] data = new byte[BUFFER_SIZE];
     for ( File file : directory.listFiles() ) {
       String relativeName = getRelativePath( baseName, file );
-      ZipEntry entry = new ZipEntry( relativeName );
+      ArchiveEntry entry = new ZipArchiveEntry( relativeName );
       try {
-        outStream.putNextEntry( entry );
+        outStream.putArchiveEntry( entry );
       } catch ( ZipException ignore ) {
       }
 
@@ -135,6 +138,8 @@ public class ZipCreator {
           origin.close();
         }
       }
+
+      outStream.closeArchiveEntry();
     }
   }
 

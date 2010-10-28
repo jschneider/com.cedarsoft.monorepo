@@ -32,6 +32,7 @@
 package com.cedarsoft.zip;
 
 import com.cedarsoft.matchers.ContainsOnlyFilesMatcher;
+import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
@@ -68,7 +69,7 @@ public class ZipCreatorTest {
 
     ZipExtractor extractor = new ZipExtractor( new ZipExtractor.InvertedCondition( new ZipExtractor.Condition() {
       @Override
-      public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
+      public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
         return true;
       }
     } ) );

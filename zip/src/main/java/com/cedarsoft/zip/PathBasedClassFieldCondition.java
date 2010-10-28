@@ -31,6 +31,7 @@
 
 package com.cedarsoft.zip;
 
+import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -63,7 +64,7 @@ public class PathBasedClassFieldCondition implements ZipExtractor.Condition {
    * {@inheritDoc}
    */
   @Override
-  public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
+  public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
     return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );
   }
 }

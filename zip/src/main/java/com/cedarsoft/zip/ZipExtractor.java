@@ -31,6 +31,9 @@
 
 package com.cedarsoft.zip;
 
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -80,11 +83,11 @@ public class ZipExtractor {
       throw new IllegalArgumentException( "Invalid destination: " + destination.getCanonicalPath() );
     }
 
-    ZipInputStream zipInputStream = new ZipInputStream( inputStream );
+    ZipArchiveInputStream zipInputStream = new ZipArchiveInputStream( inputStream );
     try {
 
       byte[] buf = new byte[BUFFER_LENGTH];
-      for ( ZipEntry zipEntry = zipInputStream.getNextEntry(); zipEntry != null; zipEntry = zipInputStream.getNextEntry() ) {
+      for ( ArchiveEntry zipEntry = zipInputStream.getNextEntry(); zipEntry != null; zipEntry = zipInputStream.getNextEntry() ) {
         if ( condition != null && !condition.shallExtract( zipEntry ) ) {
           continue;
         }
@@ -136,7 +139,7 @@ public class ZipExtractor {
      * @param zipEntry the zip entry
      * @return whether the entry shall be extracted
      */
-    boolean shallExtract( @NotNull ZipEntry zipEntry );
+    boolean shallExtract( @NotNull ArchiveEntry zipEntry );
   }
 
   /**
@@ -155,7 +158,7 @@ public class ZipExtractor {
     }
 
     @Override
-    public boolean shallExtract( @NotNull ZipEntry zipEntry ) {
+    public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
       return !condition.shallExtract( zipEntry );
     }
   }
