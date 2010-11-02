@@ -33,12 +33,10 @@ package com.cedarsoft.exec;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.Process;
 
 /**
  * Redirects a stream into another
@@ -79,6 +77,11 @@ public class OutputRedirector implements Runnable {
   private final InputStream in;
   private final OutputStream out;
 
+  private transient boolean stopped;
+
+  private int waitingPeriod = 100;
+  private int bufferSize = 1024;
+
   /**
    * Redirect the given input stream to the output stream
    *
@@ -90,22 +93,61 @@ public class OutputRedirector implements Runnable {
     this.out = out;
   }
 
+  public int getBufferSize() {
+    return bufferSize;
+  }
+
+  public void setBufferSize( int bufferSize ) {
+    this.bufferSize = bufferSize;
+  }
+
+  /**
+   * The waiting period that is used to wait for the stream
+   *
+   * @return the waiting period
+   */
+  public int getWaitingPeriod() {
+    return waitingPeriod;
+  }
+
+  /**
+   * Sets the waiting period
+   *
+   * @param waitingPeriod the waiting period
+   */
+  public void setWaitingPeriod( int waitingPeriod ) {
+    this.waitingPeriod = waitingPeriod;
+  }
+
+  public boolean isStopped() {
+    return stopped;
+  }
+
+  /**
+   * Stops the redirector on the next run
+   */
+  public void stop() {
+    this.stopped = true;
+  }
+
   /**
    * {@inheritDoc}
    */
   @Override
   public void run() {
     try {
-      BufferedInputStream inputStream = null;
-      try {
-        inputStream = new BufferedInputStream( in );
-        int c;
-        while ( ( c = inputStream.read() ) > -1 ) {
-          out.write( ( char ) c );
+      byte[] buffer = new byte[bufferSize];
+
+      while ( in.available() != 0 ) {
+        int readBytes = in.read( buffer );
+        if ( readBytes == -1 ) {
+          return;
         }
-      } finally {
-        if ( inputStream != null ) {
-          inputStream.close();
+        out.write( buffer, 0, readBytes );
+
+        //Double check the while
+        if ( stopped ) {
+          return;
         }
       }
     } catch ( IOException e ) {
