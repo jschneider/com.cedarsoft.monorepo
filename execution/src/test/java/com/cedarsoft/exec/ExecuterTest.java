@@ -93,19 +93,26 @@ public class ExecuterTest {
     executer.setRedirectStreams( false );
 
     executer.addExecutionListener( new ExecutionListener() {
+      private Thread[] threads;
+
       @Override
       public void executionStarted( @NotNull Process process ) {
-        OutputRedirector.redirect( process, out, out );
+        threads = OutputRedirector.redirect( process, out, out );
       }
 
       @Override
       public void executionFinished( int answer ) {
+        for ( Thread thread : threads ) {
+          try {
+            thread.join();
+          } catch ( InterruptedException e ) {
+            throw new RuntimeException( e );
+          }
+        }
       }
     } );
 
     executer.execute();
-
     assertTrue( out.toString(), out.toString().startsWith( "java" ) );
   }
-
 }

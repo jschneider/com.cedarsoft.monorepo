@@ -137,18 +137,10 @@ public class OutputRedirector implements Runnable {
   public void run() {
     try {
       byte[] buffer = new byte[bufferSize];
-
-      while ( in.available() != 0 ) {
-        int readBytes = in.read( buffer );
-        if ( readBytes == -1 ) {
-          return;
-        }
+      
+      int readBytes;
+      while ( !stopped && ( readBytes = in.read( buffer ) ) > -1 ) {
         out.write( buffer, 0, readBytes );
-
-        //Double check the while
-        if ( stopped ) {
-          return;
-        }
       }
     } catch ( IOException e ) {
       throw new RuntimeException( e );
