@@ -32,13 +32,15 @@
 package com.cedarsoft.exec;
 
 import com.cedarsoft.MockitoTemplate;
+import com.google.common.io.ByteStreams;
 import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 import org.mockito.Matchers;
 import org.mockito.Mock;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.InputStream;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -86,7 +88,8 @@ public class ExecuterTest {
   }
 
   @Test
-  public void testOutputRedirector() throws IOException, InterruptedException {
+  public void testOutputRedirector() throws Exception {
+    final ByteArrayOutputStream errorOut = new ByteArrayOutputStream();
     final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     Executer executer = new Executer( new ProcessBuilder( "java", "-version" ) );
@@ -97,7 +100,8 @@ public class ExecuterTest {
 
       @Override
       public void executionStarted( @NotNull Process process ) {
-        threads = OutputRedirector.redirect( process, out, out );
+        threads = OutputRedirector.redirect( process, out, errorOut );
+        assertEquals( 2, threads.length );
       }
 
       @Override
@@ -113,6 +117,28 @@ public class ExecuterTest {
     } );
 
     executer.execute();
-    assertTrue( out.toString(), out.toString().startsWith( "java" ) );
+    assertEquals( "", out.toString() );
+    assertTrue( errorOut.toString(), errorOut.toString().startsWith( "java" ) );
+  }
+
+  @Test
+  public void testOutput() throws Exception {
+    Process process = new ProcessBuilder( "java", "-version" ).start();
+    assertEquals( "", new String( ByteStreams.toByteArray( process.getInputStream() ) ) );
+    assertTrue( new String( ByteStreams.toByteArray( process.getErrorStream() ) ).startsWith( "java" ) );
+  }
+
+  @Test
+  public void testStreams() throws Exception {
+    Process process = new ProcessBuilder( "java", "-version" ).start();
+    assertSame( BufferedInputStream.class, process.getInputStream().getClass() );
+    InputStream in = process.getErrorStream();
+
+    assertEquals( 0, in.available() );
+    assertEquals( 0, process.waitFor() );
+
+    assertEquals( 140, in.available() );
+    assertEquals( 106, in.read() );
+    assertEquals( 139, in.available() );
   }
 }

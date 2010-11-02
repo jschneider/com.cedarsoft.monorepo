@@ -77,8 +77,6 @@ public class OutputRedirector implements Runnable {
   private final InputStream in;
   private final OutputStream out;
 
-  private transient boolean stopped;
-
   private int waitingPeriod = 100;
   private int bufferSize = 1024;
 
@@ -119,17 +117,6 @@ public class OutputRedirector implements Runnable {
     this.waitingPeriod = waitingPeriod;
   }
 
-  public boolean isStopped() {
-    return stopped;
-  }
-
-  /**
-   * Stops the redirector on the next run
-   */
-  public void stop() {
-    this.stopped = true;
-  }
-
   /**
    * {@inheritDoc}
    */
@@ -137,9 +124,9 @@ public class OutputRedirector implements Runnable {
   public void run() {
     try {
       byte[] buffer = new byte[bufferSize];
-      
+
       int readBytes;
-      while ( !stopped && ( readBytes = in.read( buffer ) ) > -1 ) {
+      while ( !Thread.interrupted() && ( readBytes = in.read( buffer ) ) > -1 ) {
         out.write( buffer, 0, readBytes );
       }
     } catch ( IOException e ) {

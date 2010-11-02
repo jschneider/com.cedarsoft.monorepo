@@ -33,6 +33,7 @@ package com.cedarsoft.exec;
 
 import org.junit.*;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -79,12 +80,43 @@ public class OutputRedirectorTest {
     assertTrue( thread.isAlive() );
     assertEquals( "*", out.toString() );
 
-    outputRedirector.stop();
     thread.join( 100 );
     assertTrue( thread.isAlive() );
     thread.interrupt();
     thread.join( 100 );
     assertFalse( thread.isAlive() );
+  }
+
+  @Test
+  public void testStreams() throws Exception {
+    ByteArrayInputStream stream = new ByteArrayInputStream( "asdf".getBytes() );
+    assertEquals( 4, stream.available() );
+    stream.read();
+    assertEquals( 3, stream.available() );
+    stream.read();
+    assertEquals( 2, stream.available() );
+    stream.read();
+    assertEquals( 1, stream.available() );
+    stream.read();
+    assertEquals( 0, stream.available() );
+    assertEquals( 0, stream.available() );
+    assertEquals( -1, stream.read() );
+  }
+
+  @Test
+  public void testStreamsBuffered() throws Exception {
+    InputStream stream = new BufferedInputStream( new ByteArrayInputStream( "asdf".getBytes() ) );
+    assertEquals( 4, stream.available() );
+    stream.read();
+    assertEquals( 3, stream.available() );
+    stream.read();
+    assertEquals( 2, stream.available() );
+    stream.read();
+    assertEquals( 1, stream.available() );
+    stream.read();
+    assertEquals( 0, stream.available() );
+    assertEquals( 0, stream.available() );
+    assertEquals( -1, stream.read() );
   }
 
   private static class BlockingInputStream extends InputStream {
