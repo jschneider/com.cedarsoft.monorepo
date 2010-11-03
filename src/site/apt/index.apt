@@ -20,13 +20,89 @@
  cedarsoft GmbH
  -----
 
-Maven Site for your project
+Unit Annotations
 
- Congratulations! If you are looking at this page then you have successfully generated a
- template site employing the site archetype and you have run:
 
+  This project contains several annotations that represent units. Those annotations can be used as documentation.
+  But they might also be used for code analysis.
+
+
+* Usable for method parameters / return types
+
+  A method with those annotations might look like that:
+  
++-----+
+@mm
+public double pixelsToMm( @px int pixels, @dpi double resolution ) {
+  return pixels / resolution * 25.4;
+}
 +-----+
 
-mvn site
+  Every developer using this method will instantly know which unit that methods expects/returns.
+
+* Usable for variables
+
+  The annotations can also be used for local variables:
 
 +-----+
+@dpi int res = 72;
+assertEquals( 10, pixelsToMm( 28, res ), 0.2 );
++-----+
+
+* Avoids typical confusion (never miss the Mars again)
+
+  This is especially useful when there are several units in use that might be mixed up quite easily (like radiants vs degree):
+
++-----+
+public void setAngle( @rad double angle ) {
++-----+
+
+
+* Features
+
+** Backwards compatible
+
+  The usage of annotations is backwards compatible. You can annotate old methods and improve the documentation that way.
+
+** Usable with all kinds of objects
+
+  The annotations can be used with every object. No need to convert to a container object.
+
+** Performance / no loss of precision
+
+  No magic conversion involved that might result in poor performance or loss o precision. No wrapper objects are necessary.
+
+** Javadoc
+
+  The annotations will end up within the javadocs. No need to explain the expected units anymore. 
+
+** KISS
+
+  The usage of those annotation is very simple and straight forward. They help improving the documentation a lot.
+  But they don't force anybody to use them. No need to ship the annotations jar (they will simply be ignored at runtime).
+
+** Extensible
+
+  Creating your own annotations for new units is just a matter of seconds.
+  Just mail to {{{mailto:js@cedarsoft.com}js@cedarsoft.com}} for addition to the lib.
+
+** Available in Maven Central
+
+  The jar file is automatically deployed to Maven Central:
+
+  {{{http://repo2.maven.org/maven2/com/cedarsoft/unit/}http://repo2.maven.org/maven2/com/cedarsoft/unit/}}
+
+  For usage in a Maven project, add that dependency:
+
++--------------+
+<dependency>
+  <groupId>com.cedarsoft</groupId>
+  <artifactId>unit</artifactId>
+  <version>1.0-beta1-SNAPSHOT</version>
+</dependency>
++--------------+
+
+
+** Apache License V2
+
+  All files are released under the Apache 2 license.
