@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.annotation.Annotation;
 
 /**
- * @param <Q> the quantity
+ * Helper class for Units
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Units {
