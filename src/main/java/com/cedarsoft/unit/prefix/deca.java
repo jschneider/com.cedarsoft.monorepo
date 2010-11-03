@@ -48,6 +48,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface deca {
   /**
    * The base unit
+   * @return the base unit
    */
   Class<? extends Annotation> value();
 

@@ -48,6 +48,8 @@ import java.lang.annotation.RetentionPolicy;
 public @interface hecto {
   /**
    * The base unit
+   *
+   * @return the base unit
    */
   Class<? extends Annotation> value();
 }

@@ -52,6 +52,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface kibi {
   /**
    * The base unit
+   * @return the base unit
    */
   Class<? extends Annotation> value();
 }

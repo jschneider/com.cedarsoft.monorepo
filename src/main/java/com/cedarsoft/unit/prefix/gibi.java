@@ -32,7 +32,6 @@
 package com.cedarsoft.unit.prefix;
 
 import com.cedarsoft.unit.Symbol;
-import com.cedarsoft.unit.prefix.Prefix;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
@@ -47,11 +46,13 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
-@Prefix( 2^30 )
+@Prefix( 2 ^ 30 )
 @Symbol( "Gi" )
 public @interface gibi {
   /**
    * The base unit
+   *
+   * @return the base unit
    */
   Class<? extends Annotation> value();
 }
