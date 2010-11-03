@@ -32,6 +32,7 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.quantity.Length;
+import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 
@@ -54,5 +55,6 @@ import java.lang.annotation.RetentionPolicy;
 @Name( "metre" )
 @SIBaseUnit
 @Symbol( "m" )
+@Definition( {"distance travelled by light in vacuum in 1⁄299,792,458 of a second", "Obsolete: ten-millionth of the distance from the Earth's equator to the North Pole (at sea level)"} )
 public @interface m {
 }
