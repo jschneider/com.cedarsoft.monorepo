@@ -73,9 +73,11 @@
       <!--<item name="FAQs" href="faqs.html" />-->
     </menu>
 
-    <menu name="Projects">
+    <menu name="Projects">      
       <item name="Serialization" href="http://serialization.cedarsoft.org" />
-      <item name="commons" href="commons/index.html" />
+      <item name="Rest" href="rest/index.html" />
+      <item name="Unit" href="unit/index.html" />
+      <item name="Commons" href="commons/index.html" />
     </menu>
 
     <menu name="Other projects">
