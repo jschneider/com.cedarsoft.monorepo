@@ -49,13 +49,13 @@ import static org.mockito.Mockito.*;
 /**
  *
  */
-public class ExecuterTest {
+public class ExecutorTest {
   @Test
   public void testIt() throws Exception {
-    final Executer executer = new Executer( new ProcessBuilder( "java", "-version" ) );
-    assertTrue( executer.isRedirectStreams() );
-    executer.setRedirectStreams( false );
-    assertFalse( executer.isRedirectStreams() );
+    final Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
+    assertTrue( executor.isRedirectStreams() );
+    executor.setRedirectStreams( false );
+    assertFalse( executor.isRedirectStreams() );
 
     new MockitoTemplate() {
       @Mock
@@ -67,8 +67,8 @@ public class ExecuterTest {
 
       @Override
       protected void execute() throws Exception {
-        executer.addExecutionListener( listener );
-        executer.execute();
+        executor.addExecutionListener( listener );
+        executor.execute();
       }
 
       @Override
@@ -82,9 +82,9 @@ public class ExecuterTest {
 
   @Test( timeout = 800 )
   public void testAsync() throws InterruptedException {
-    Executer executer = new Executer( new ProcessBuilder( "java", "-version" ) );
-    executer.setRedirectStreams( false );
-    executer.executeAsync().join();
+    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
+    executor.setRedirectStreams( false );
+    executor.executeAsync().join();
   }
 
   @Test
@@ -92,10 +92,10 @@ public class ExecuterTest {
     final ByteArrayOutputStream errorOut = new ByteArrayOutputStream();
     final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    Executer executer = new Executer( new ProcessBuilder( "java", "-version" ) );
-    executer.setRedirectStreams( false );
+    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
+    executor.setRedirectStreams( false );
 
-    executer.addExecutionListener( new ExecutionListener() {
+    executor.addExecutionListener( new ExecutionListener() {
       private Thread[] threads;
 
       @Override
@@ -116,7 +116,7 @@ public class ExecuterTest {
       }
     } );
 
-    executer.execute();
+    executor.execute();
     assertEquals( "", out.toString() );
     assertTrue( errorOut.toString(), errorOut.toString().startsWith( "java" ) );
   }

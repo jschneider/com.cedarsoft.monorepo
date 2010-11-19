@@ -32,7 +32,7 @@
 package com.cedarsoft.codegen;
 
 import com.cedarsoft.codegen.parser.Classpath;
-import com.cedarsoft.exec.Executer;
+import com.cedarsoft.exec.Executor;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 import com.sun.tools.xjc.api.util.APTClassLoader;
@@ -164,8 +164,8 @@ public abstract class AbstractGenerator {
 
       File targetFile = new File( destination, relativePath );
       if ( targetFile.exists() ) {
-        Executer executer = new Executer( new ProcessBuilder( "meld", targetFile.getAbsolutePath(), serializerFile.getAbsolutePath() ) );
-        executer.execute();
+        Executor executor = new Executor( new ProcessBuilder( "meld", targetFile.getAbsolutePath(), serializerFile.getAbsolutePath() ) );
+        executor.execute();
       } else {
         //Create the directory if necessary
         File targetDir = targetFile.getParentFile();

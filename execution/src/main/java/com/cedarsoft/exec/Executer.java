@@ -33,149 +33,16 @@ package com.cedarsoft.exec;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Executes a process and notifies execution listeners whenever the process has finished
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * Backward compatible class. Use {@link Executor} instead.
  */
-@SuppressWarnings( {"UseOfProcessBuilder"} )
-public class Executer {
-  @NotNull
-  private final List<ExecutionListener> executionListeners = new ArrayList<ExecutionListener>();
-
-  @NotNull
-  private final ProcessBuilder processBuilder;
-  private boolean redirectStreams = true;
-
-  /**
-   * <p>Constructor for Executer.</p>
-   *
-   * @param processBuilder  a {@link ProcessBuilder} object.
-   * @param redirectStreams a boolean.
-   */
+@Deprecated
+public class Executer extends Executor {
   public Executer( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
-    this.processBuilder = processBuilder;
-    this.redirectStreams = redirectStreams;
+    super( processBuilder, redirectStreams );
   }
 
-  /**
-   * <p>Constructor for Executer.</p>
-   *
-   * @param processBuilder a {@link ProcessBuilder} object.
-   */
   public Executer( @NotNull ProcessBuilder processBuilder ) {
-    this( processBuilder, true );
-  }
-
-  /**
-   * <p>execute</p>
-   *
-   * @return a int.
-   *
-   * @throws IOException          if any.
-   * @throws InterruptedException if any.
-   */
-  public int execute() throws IOException, InterruptedException {
-    Process process = processBuilder.start();
-    Thread[] threads = redirectStreams( process );
-    notifyExecutionStarted( process );
-
-    int answer = process.waitFor();
-
-    //Wait for the redirecting threads
-    for ( Thread thread : threads ) {
-      thread.join();
-    }
-
-    notifyExecutionFinished( answer );
-    return answer;
-  }
-
-  /**
-   * <p>redirectStreams</p>
-   *
-   * @param process a {@link Process} object.
-   * @return the redirecting threads (or an empty array)
-   */
-  @NotNull
-  protected Thread[] redirectStreams( @NotNull Process process ) {
-    if ( redirectStreams ) {
-      return OutputRedirector.redirect( process );
-    } else {
-      return new Thread[0];
-    }
-  }
-
-  /**
-   * <p>executeAsync</p>
-   *
-   * @return the thread
-   */
-  @NotNull
-  public Thread executeAsync() {
-    Thread thread = new Thread( new Runnable() {
-      @Override
-      public void run() {
-        try {
-          execute();
-        } catch ( Exception e ) {
-          throw new RuntimeException( e );
-        }
-      }
-    } );
-    thread.start();
-    return thread;
-  }
-
-  private void notifyExecutionFinished( int answer ) {
-    for ( ExecutionListener executionListener : executionListeners ) {
-      executionListener.executionFinished( answer );
-    }
-  }
-
-  private void notifyExecutionStarted( @NotNull Process process ) {
-    for ( ExecutionListener executionListener : executionListeners ) {
-      executionListener.executionStarted( process );
-    }
-  }
-
-  /**
-   * <p>addExecutionListener</p>
-   *
-   * @param executionListener a {@link ExecutionListener} object.
-   */
-  public void addExecutionListener( @NotNull ExecutionListener executionListener ) {
-    this.executionListeners.add( executionListener );
-  }
-
-  /**
-   * <p>removeExecutionListener</p>
-   *
-   * @param executionListener a {@link ExecutionListener} object.
-   */
-  public void removeExecutionListener( @NotNull ExecutionListener executionListener ) {
-    this.executionListeners.remove( executionListener );
-  }
-
-  /**
-   * <p>isRedirectStreams</p>
-   *
-   * @return a boolean.
-   */
-  public boolean isRedirectStreams() {
-    return redirectStreams;
-  }
-
-  /**
-   * <p>Setter for the field <code>redirectStreams</code>.</p>
-   *
-   * @param redirectStreams a boolean.
-   */
-  public void setRedirectStreams( boolean redirectStreams ) {
-    this.redirectStreams = redirectStreams;
+    super( processBuilder );
   }
 }
