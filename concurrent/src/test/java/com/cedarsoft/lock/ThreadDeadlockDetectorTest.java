@@ -55,7 +55,7 @@ import static org.junit.Assert.*;
  */
 public class ThreadDeadlockDetectorTest {
 
-  @Test( timeout = 1000 )
+  @Test( timeout = 2000 )
   public void testBasic() throws Exception {
     final Lock lock1 = new ReentrantLock();
     final Lock lock2 = new ReentrantLock();

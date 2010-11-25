@@ -39,7 +39,7 @@ import static org.junit.Assert.*;
  *
  */
 public class SleepTest {
-  @Test( timeout = 110 )
+  @Test( timeout = 210 )
   public void testIt() {
     long start = System.currentTimeMillis();
     Sleep.now( 100 );

@@ -45,7 +45,7 @@ import static org.junit.Assert.*;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class OutputRedirectorTest {
-  @Test( timeout = 100 )
+  @Test( timeout = 1000 )
   public void testDefault() {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -56,7 +56,7 @@ public class OutputRedirectorTest {
   }
 
 
-  @Test( timeout = 100 )
+  @Test( timeout = 1000 )
   public void testThreaded() throws InterruptedException {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 

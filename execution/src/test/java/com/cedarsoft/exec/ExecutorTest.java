@@ -80,7 +80,7 @@ public class ExecutorTest {
     }.run();
   }
 
-  @Test( timeout = 800 )
+  @Test( timeout = 1800 )
   public void testAsync() throws InterruptedException {
     Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
     executor.setRedirectStreams( false );
