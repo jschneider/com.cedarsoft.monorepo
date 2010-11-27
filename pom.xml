@@ -614,7 +614,7 @@
         <configuration>
           <strictCheck>true</strictCheck>
           <header>${license.header.url}</header>
-          <failIfMissing>true</failIfMissing>
+          <failIfMissing>false</failIfMissing>
           <aggregate>true</aggregate>
           <excludes>
             <exclude>**/.idea/**</exclude>
