@@ -80,9 +80,9 @@
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
 
-    <jaxb.version>2.2.1</jaxb.version>
-    <jetty.version>6.1.25</jetty.version>
-    <jackson.version>1.6.2</jackson.version>
+    <jaxb.version>2.2.2</jaxb.version>
+    <jetty.version>6.1.26</jetty.version>
+    <jackson.version>1.6.3</jackson.version>
   </properties>
 
   <dependencyManagement>
@@ -224,7 +224,7 @@
       <dependency>
         <groupId>org.codehaus.staxmate</groupId>
         <artifactId>staxmate</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
         <exclusions>
           <exclusion>
             <groupId>stax</groupId>
@@ -235,7 +235,7 @@
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
         <artifactId>woodstox-core-asl</artifactId>
-        <version>4.0.9</version>
+        <version>4.1.0</version>
         <exclusions>
           <exclusion>
             <groupId>stax</groupId>
