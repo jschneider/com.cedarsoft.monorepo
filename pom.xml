@@ -468,6 +468,8 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <commitByProject>true</commitByProject>
             <preparationGoals>clean install</preparationGoals>
+            <localCheckout>true</localCheckout>
+            <pushChanges>false</pushChanges>
           </configuration>
         </plugin>
 
