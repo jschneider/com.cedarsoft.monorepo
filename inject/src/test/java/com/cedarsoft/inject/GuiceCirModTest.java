@@ -33,10 +33,17 @@ package com.cedarsoft.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
-import javax.inject.Inject;
+import com.google.inject.Key;
 import com.google.inject.Provides;
 import org.junit.*;
 
+import javax.inject.Inject;
+import javax.inject.Qualifier;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -48,6 +55,7 @@ public class GuiceCirModTest {
   @Test
   public void testIt() {
     MyObject myObject = Guice.createInjector( new Module1(), new Module2() ).getInstance( MyObject.class );
+    assertEquals( "", Guice.createInjector( new Module1(), new Module2() ).getInstance( String.class ) );
     assertEquals( 7, myObject.id );
 
     GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
@@ -60,17 +68,16 @@ public class GuiceCirModTest {
     }
 
     @Provides
-    public Integer providesInteger( String string ) {
+    public Integer providesInteger( @StringMarker String string ) {
       assertEquals( "magic", string );
       return 7;
     }
-
   }
 
   public static class Module2 extends AbstractModule {
     @Override
     protected void configure() {
-      bind( String.class ).toInstance( "magic" );
+      bind( String.class ).annotatedWith( StringMarker.class ).toInstance( "magic" );
     }
   }
 
@@ -81,6 +88,14 @@ public class GuiceCirModTest {
     public MyObject( Integer id ) {
       this.id = id;
     }
+  }
+
+  @Retention( RetentionPolicy.RUNTIME )
+  @Target( {ElementType.FIELD, ElementType.PARAMETER} )
+  @Documented
+  @Qualifier
+  public @interface StringMarker {
+
   }
 
 }
