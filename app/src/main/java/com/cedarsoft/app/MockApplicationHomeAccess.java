@@ -31,11 +31,11 @@
 
 package com.cedarsoft.app;
 
-import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 

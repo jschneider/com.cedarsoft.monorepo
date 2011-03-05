@@ -31,10 +31,10 @@
 
 package com.cedarsoft.cmd;
 
-import com.google.inject.Singleton;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.inject.Singleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
