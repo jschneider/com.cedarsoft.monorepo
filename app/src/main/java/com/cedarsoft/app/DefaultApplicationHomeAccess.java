@@ -31,7 +31,7 @@
 
 package com.cedarsoft.app;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NonNls;

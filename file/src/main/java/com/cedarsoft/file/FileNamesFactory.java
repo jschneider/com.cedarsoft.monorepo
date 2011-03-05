@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import org.apache.commons.io.filefilter.FileFileFilter;
 import org.jetbrains.annotations.NotNull;
 

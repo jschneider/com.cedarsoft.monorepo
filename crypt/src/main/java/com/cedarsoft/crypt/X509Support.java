@@ -31,13 +31,13 @@
 
 package com.cedarsoft.crypt;
 
-import com.google.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.crypto.Cipher;
+import javax.inject.Inject;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.URL;

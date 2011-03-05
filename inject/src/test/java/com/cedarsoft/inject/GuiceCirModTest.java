@@ -33,7 +33,7 @@ package com.cedarsoft.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import com.google.inject.Provides;
 import org.junit.*;
 

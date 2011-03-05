@@ -31,7 +31,7 @@
 
 package com.cedarsoft.configuration.xml;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
