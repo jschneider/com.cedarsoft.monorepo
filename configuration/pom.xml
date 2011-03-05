@@ -15,11 +15,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.cedarsoft</groupId>
-      <artifactId>guice-annotations</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
     </dependency>
