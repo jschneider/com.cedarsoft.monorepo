@@ -35,8 +35,9 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@Symbol( "mm" )
+@Symbol( mm.SYMBOL )
 @Name( "millimetre" )
 @milli( m.class )
 public @interface mm {
+  String SYMBOL = "mm";
 }

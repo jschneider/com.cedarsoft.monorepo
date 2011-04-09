@@ -37,7 +37,9 @@ import java.lang.annotation.RetentionPolicy;
 @ElectricPotential
 @Name( "volt" )
 @SiDerivedUnit( {W.class, A.class} )
-@Symbol( "V" )
+@Symbol( V.SYMBOL )
 @Definition( {"W/A", "J/A*s", "N*m/(A*s)", "J/C", "N*m/C"} )
 public @interface V {
+  String SYMBOL = "V";
+
 }

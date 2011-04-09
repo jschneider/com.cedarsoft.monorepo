@@ -35,8 +35,9 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Mass
-@Symbol( "g" )
+@Symbol( g.SYMBOL )
 @Name( "gram" )
 @milli( kg.class )
 public @interface g {
+  String SYMBOL = "g";
 }

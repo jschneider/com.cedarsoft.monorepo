@@ -37,7 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 @Pressure
 @Name( "pascal" )
 @SiDerivedUnit( {N.class, m2.class} )
-@Symbol( "Pa" )
+@Symbol( Pa.SYMBOL )
 @Definition( {"N/m²", "kg/(m*s²)"} )
 public @interface Pa {
+  String SYMBOL = "Pa";
 }

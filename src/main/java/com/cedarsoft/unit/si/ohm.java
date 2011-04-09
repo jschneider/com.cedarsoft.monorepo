@@ -37,7 +37,9 @@ import java.lang.annotation.RetentionPolicy;
 @ElectricResistance
 @Name( "ohm" )
 @SiDerivedUnit( {A.class, V.class} )
-@Symbol( "Ω" )
+@Symbol( ohm.SYMBOL )
 @Definition( {"V/A", "J/s*A²"} )
 public @interface ohm {
+  String SYMBOL = "Ω";
+
 }

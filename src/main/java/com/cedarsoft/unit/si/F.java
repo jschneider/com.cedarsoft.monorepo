@@ -37,7 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 @ElectricCapacitance
 @Name( "farad" )
 @SiDerivedUnit( {A.class, V.class, s.class, J.class} )
-@Symbol( "F" )
+@Symbol( F.SYMBOL )
 @Definition( {"A*s/V", "J/V²"} )
 public @interface F {
+  String SYMBOL = "F";
 }

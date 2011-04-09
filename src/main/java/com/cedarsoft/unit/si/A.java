@@ -37,6 +37,7 @@ import java.lang.annotation.RetentionPolicy;
 @ElectricCurrent
 @Name( "ampere" )
 @SIBaseUnit
-@Symbol( "A" )
+@Symbol( A.SYMBOL )
 public @interface A {
+  String SYMBOL = "A";
 }

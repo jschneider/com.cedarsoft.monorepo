@@ -37,7 +37,9 @@ import java.lang.annotation.RetentionPolicy;
 @SolidAngle
 @Name( "steradian" )
 @SiDerivedUnit( m2.class )
-@Symbol( "sr" )
+@Symbol( sr.SYMBOL )
 @Definition( "arccos(1-h/r)" )
 public @interface sr {
+  String SYMBOL = "sr";
+
 }

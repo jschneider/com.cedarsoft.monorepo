@@ -35,7 +35,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @Mass
 @SIBaseUnit
-@Symbol( "kg" )
+@Symbol( kg.SYMBOL )
 @Name( "kilogram" )
 public @interface kg {
+  String SYMBOL = "kg";
 }

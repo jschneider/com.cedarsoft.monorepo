@@ -16,6 +16,8 @@
 
 package com.cedarsoft.unit.prefix;
 
+import com.cedarsoft.unit.si.SIBaseUnit;
+
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

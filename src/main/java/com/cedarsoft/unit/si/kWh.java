@@ -36,8 +36,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @Energy
 @Name( "kilowatt-hour" )
-@Symbol( "kWh" )
+@Symbol( kWh.SYMBOL )
 @SiDerivedUnit( {W.class, s.class, J.class} )
 @Definition( {"3.6kWs", "3.6kJ"} )
 public @interface kWh {
+  String SYMBOL = "kWh";
 }

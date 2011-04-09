@@ -38,7 +38,8 @@ import java.lang.annotation.RetentionPolicy;
 @Frequency
 @Name( "hertz" )
 @SiDerivedUnit( {s.class} )
-@Symbol( "Hz" )
+@Symbol( Hz.SYMBOL )
 @Definition( {"cycles per second", "1/s"} )
 public @interface Hz {
+  String SYMBOL = "Hz";
 }

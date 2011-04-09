@@ -36,7 +36,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @Power
 @Name( "kilowatts" )
-@Symbol( "kW" )
+@Symbol( kW.SYMBOL )
 @kilo( W.class )
 public @interface kW {
+  String SYMBOL = "kW";
 }

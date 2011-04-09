@@ -36,6 +36,7 @@ import java.lang.annotation.RetentionPolicy;
 @Volume
 @SiDerivedUnit( m.class )
 @Name( "cubic metre" )
-@Symbol( "m³" )
+@Symbol( m3.SYMBOL )
 public @interface m3 {
+  String SYMBOL = "m³";
 }

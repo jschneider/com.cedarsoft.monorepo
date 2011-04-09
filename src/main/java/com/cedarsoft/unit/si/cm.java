@@ -35,8 +35,9 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@Symbol( "cm" )
+@Symbol( cm.SYMBOL )
 @Name( "centimetre" )
 @centi( m.class )
 public @interface cm {
+  String SYMBOL = "cm";
 }

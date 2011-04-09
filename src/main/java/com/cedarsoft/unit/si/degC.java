@@ -37,8 +37,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @Temperature
 @Name( "degree Celcius" )
-@Symbol( "°C" )
+@Symbol( degC.SYMBOL )
 @SiDerivedUnit( K.class )
 @Definition( "[K]-273.15" )
 public @interface degC {
+  String SYMBOL = "°C";
 }

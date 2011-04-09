@@ -36,6 +36,8 @@ import java.lang.annotation.RetentionPolicy;
 @Angle
 @Name( "radian" )
 @SiDerivedUnit( m.class )
-@Symbol( "rad" )
+@Symbol( rad.SYMBOL )
 public @interface rad {
+  String SYMBOL = "rad";
+
 }

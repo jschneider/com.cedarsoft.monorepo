@@ -37,7 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 @Illuminance
 @Name( "lux" )
 @SiDerivedUnit( {lm.class, m2.class} )
-@Symbol( "lx" )
+@Symbol( lx.SYMBOL )
 @Definition( {"lm/m²", "cd*sr/m²"} )
 public @interface lx {
+  String SYMBOL = "lx";
 }

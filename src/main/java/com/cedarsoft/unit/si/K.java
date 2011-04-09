@@ -38,6 +38,7 @@ import java.lang.annotation.RetentionPolicy;
 @Temperature
 @Name( "kelvin" )
 @SIBaseUnit
-@Symbol( "K" )
+@Symbol( K.SYMBOL )
 public @interface K {
+  String SYMBOL = "K";
 }

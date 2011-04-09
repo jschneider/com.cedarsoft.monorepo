@@ -35,7 +35,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @Time
 @SIBaseUnit
-@Symbol( "s" )
+@Symbol( s.SYMBOL )
 @Name( "second" )
 public @interface s {
+  String SYMBOL = "s";
+
 }

@@ -37,6 +37,7 @@ import java.lang.annotation.RetentionPolicy;
 @LuminousIntensity
 @Name( "candela" )
 @SIBaseUnit
-@Symbol( "cd" )
+@Symbol( cd.SYMBOL )
 public @interface cd {
+  String SYMBOL = "cd";
 }

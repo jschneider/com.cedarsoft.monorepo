@@ -37,7 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 @LuminousFlux
 @Name( "lumen" )
 @SiDerivedUnit( {cd.class, sr.class} )
-@Symbol( "lm" )
+@Symbol( lm.SYMBOL )
 @Definition( "cd*sr" )
 public @interface lm {
+  String SYMBOL = "lm";
 }

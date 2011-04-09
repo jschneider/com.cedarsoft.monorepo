@@ -37,7 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 @ElectricCharge
 @Name( "coulomb" )
 @SiDerivedUnit( {A.class, s.class} )
-@Symbol( "C" )
+@Symbol( C.SYMBOL )
 @Definition( {"A*s"} )
 public @interface C {
+  String SYMBOL = "C";
 }

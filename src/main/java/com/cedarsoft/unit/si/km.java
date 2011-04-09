@@ -35,8 +35,9 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@Symbol( "km" )
+@Symbol( km.SYMBOL )
 @Name( "kilometre" )
 @kilo( m.class )
 public @interface km {
+  String SYMBOL = "km";
 }

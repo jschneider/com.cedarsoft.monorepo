@@ -39,7 +39,8 @@ import java.lang.annotation.RetentionPolicy;
 @Energy
 @Name( "joule" )
 @SiDerivedUnit( {N.class, m.class} )
-@Symbol( "J" )
+@Symbol( J.SYMBOL )
 @Definition( {"N*m", "kg*m²/s²", "W*s"} )
 public @interface J {
+  String SYMBOL = "J";
 }

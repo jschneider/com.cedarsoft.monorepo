@@ -36,6 +36,8 @@ import java.lang.annotation.RetentionPolicy;
 @AmountOfSubstance
 @Name( "mole" )
 @SIBaseUnit
-@Symbol( "mol" )
+@Symbol( mole.SYMBOL )
 public @interface mole {
+  String SYMBOL = "mol";
+
 }

@@ -38,6 +38,7 @@ import java.lang.annotation.RetentionPolicy;
 @Area
 @SiDerivedUnit( m.class )
 @Name( "square metre" )
-@Symbol( "m²" )
+@Symbol( m2.SYMBOL )
 public @interface m2 {
+  String SYMBOL = "m²";
 }
