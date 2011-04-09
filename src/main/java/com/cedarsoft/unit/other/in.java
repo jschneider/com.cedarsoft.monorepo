@@ -23,6 +23,8 @@ import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.si.m;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -40,11 +42,27 @@ import java.lang.annotation.RetentionPolicy;
 
 @Length
 @Name( "inch" )
-@Symbol( "″" )
-@AlternativeSymbols( "in" )
+@Symbol( in.SYMBOL )
+@AlternativeSymbols( {in.ALTERNATIVE_SYMBOL, in.SYMBOL_SAFE} )
 
 @DerivedUnit( m.class )
-@Definition( {"0.0254 m"} )
+@Definition( {"0.0254 m", "12 inches = 1 foot"} )
 public @interface in {
+  /**
+   * 1 ft = FEET_RATIO in
+   */
+  int FEET_RATIO = 12;
 
+  @NotNull
+  @NonNls
+  String SYMBOL = "″";
+  /**
+   * This is a "safe" symbol - that is not correct!
+   */
+  @NotNull
+  @NonNls
+  String SYMBOL_SAFE = "\"";
+  @NotNull
+  @NonNls
+  String ALTERNATIVE_SYMBOL = "in";
 }

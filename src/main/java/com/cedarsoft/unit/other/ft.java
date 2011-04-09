@@ -23,6 +23,8 @@ import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.si.m;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -40,11 +42,32 @@ import java.lang.annotation.RetentionPolicy;
 
 @Length
 @Name( "feet" )
-@Symbol( "′" )
-@AlternativeSymbols( "ft" )
+@Symbol( ft.SYMBOL )
+@AlternativeSymbols( {ft.ALTERNATIVE_SYMBOL, ft.SYMBOL_SAFE} )
 
 @DerivedUnit( m.class )
 @Definition( {"0.3048 m"} )
 public @interface ft {
+  /**
+   * The ratio used to convert mm to feet
+   * <p/>
+   * <ul>
+   * <li>mm / MM_FEET_RATIO == ft</li>
+   * <li> 1 ft = MM_FEET_RATIO * mm</li>
+   * </ul>
+   */
+  double MM_FEET_RATIO = 304.8;
 
+  @NotNull
+  @NonNls
+  String SYMBOL = "′";
+  /**
+   * This is a "safe" symbol - that is not correct!
+   */
+  @NotNull
+  @NonNls
+  String SYMBOL_SAFE = "'";
+  @NotNull
+  @NonNls
+  String ALTERNATIVE_SYMBOL = "ft";
 }
