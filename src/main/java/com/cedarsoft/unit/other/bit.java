@@ -35,6 +35,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @DataAmount
 @Name( "bit" )
-@Symbol( "bit" )
+@Symbol( bit.SYMBOL )
 public @interface bit {
+  String SYMBOL = "bit";
+
 }

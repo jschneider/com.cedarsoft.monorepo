@@ -37,8 +37,10 @@ import java.lang.annotation.RetentionPolicy;
 
 @DotDensity
 @Name( "Dots per Inch" )
-@Symbol( "dpi" )
+@Symbol( dpi.SYMBOL )
 @Definition( "the number of individual dots that can be placed in a line within the span of 1 inch (2.54 cm)" )
 @DerivedUnit( cm.class )
 public @interface dpi {
+  String SYMBOL = "dpi";
+
 }

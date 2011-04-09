@@ -36,9 +36,11 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Length
-@Symbol( "pt" )
+@Symbol( pt.SYMBOL )
 @Name( "points" )
 @DerivedUnit( {m.class} )
 @Definition( {"72 pt = 1 inch", "=0.3527 mm"} )
 public @interface pt {
+  String SYMBOL = "pt";
+
 }

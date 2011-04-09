@@ -36,7 +36,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @DataAmount
 @Name( "gibibyte" )
-@Symbol( "GiB" )
+@Symbol( GiB.SYMBOL )
 @gibi( B.class )
 public @interface GiB {
+  String SYMBOL = "GiB";
+
 }

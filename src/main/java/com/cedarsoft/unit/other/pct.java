@@ -37,6 +37,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @Fraction
 @Name( "percentage" )
-@Symbol( "%" )
+@Symbol( pct.SYMBOL )
 public @interface pct {
+  String SYMBOL = "%";
+
 }

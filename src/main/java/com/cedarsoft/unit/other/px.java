@@ -34,6 +34,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @Length
 @Name( "pixel" )
-@Symbol( "px" )
+@Symbol( px.SYMBOL )
 public @interface px {
+  String SYMBOL = "px";
+
 }

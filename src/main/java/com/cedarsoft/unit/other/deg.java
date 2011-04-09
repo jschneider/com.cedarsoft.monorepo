@@ -38,8 +38,10 @@ import java.lang.annotation.RetentionPolicy;
 
 @Angle
 @Name( "degree" )
-@Symbol( "°" )
+@Symbol( deg.SYMBOL )
 @DerivedUnit( rad.class )
 @Definition( {"1/360th of a full rotation", "π/180"} )
 public @interface deg {
+  String SYMBOL = "°";
+
 }

@@ -16,7 +16,6 @@
 
 package com.cedarsoft.unit.other;
 
-import com.cedarsoft.quantity.DataAmount;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 
@@ -34,6 +33,8 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 
 @Name( "approximation" )
-@Symbol( "≈" )
+@Symbol( approxn.SYMBOL )
 public @interface approxn {
+  String SYMBOL = "≈";
+
 }

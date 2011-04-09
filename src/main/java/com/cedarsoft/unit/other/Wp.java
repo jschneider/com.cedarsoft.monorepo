@@ -36,7 +36,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @Power
 @Name( "watt-peak" )
-@Symbol( "Wp" )
+@Symbol( Wp.SYMBOL )
 @Definition( {"W under given circumstances (light intensity: 1000W/m², airmass 1.5, cells temperature 25°C)"} )
 public @interface Wp {
+  String SYMBOL = "Wp";
+
 }

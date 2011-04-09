@@ -36,7 +36,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @DataAmount
 @Name( "kibibyte" )
-@Symbol( "KiB" )
+@Symbol( KiB.SYMBOL )
 @kibi( B.class )
 public @interface KiB {
+  String SYMBOL = "KiB";
 }

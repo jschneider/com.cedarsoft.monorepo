@@ -39,8 +39,10 @@ import java.lang.annotation.RetentionPolicy;
 
 @DataAmount
 @Name( "byte" )
-@Symbol( "B" )
+@Symbol( B.SYMBOL )
 @DerivedUnit( bit.class )
 @Definition( "8bit" )
 public @interface B {
+  String SYMBOL = "B";
+
 }

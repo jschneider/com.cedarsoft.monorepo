@@ -20,6 +20,7 @@ import com.cedarsoft.quantity.Length;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.si.W;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -40,7 +41,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @Length
 @Name( "airmass" )
-@Symbol( "AM" )
+@Symbol( AM.SYMBOL )
 @Definition( {"optical path length through Earth's atmosphere", "relative to path length to that at the zenith at sea level"} )
 public @interface AM {
+  String SYMBOL = "AM";
+
 }
