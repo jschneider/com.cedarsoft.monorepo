@@ -82,7 +82,7 @@
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.2</jaxb.version>
     <jetty.version>6.1.26</jetty.version>
-    <jackson.version>1.7.4</jackson.version>
+    <jackson.version>1.8.0</jackson.version>
   </properties>
 
   <dependencyManagement>
