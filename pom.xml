@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>7</version>
+    <version>11</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -255,7 +255,7 @@
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-mapper-asl</artifactId>
-        <version>1.7.4</version>
+        <version>1.8.0</version>
       </dependency>
       
       <dependency>
