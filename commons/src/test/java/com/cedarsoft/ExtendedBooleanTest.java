@@ -34,6 +34,7 @@ package com.cedarsoft;
 import org.junit.*;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.junit.Assert.*;
 
@@ -41,6 +42,38 @@ import static org.junit.Assert.*;
  *
  */
 public class ExtendedBooleanTest {
+  @Before
+  public void setUp() throws Exception {
+    Locale.setDefault( Locale.US );
+    ResourceBundle.clearCache();
+  }
+
+  @Test
+  public void testResourceBundles() throws Exception {
+    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName() ).getLocale().getLanguage() );
+    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.FRENCH ).getLocale().getLanguage() );
+    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH ).getLocale().getLanguage() );
+    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ).getLocale().getLanguage() );
+    assertEquals( "de", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ).getLocale().getLanguage() );
+
+
+    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ) );
+    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ) );
+
+    assertNotSame( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ),
+                   ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH )
+    );
+
+    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ) );
+    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ) );
+    assertNotSame( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ),
+                   ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH )
+    );
+
+
+    assertEquals( "Yes", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ).getString( "TRUE" ) );
+  }
+
   @Test
   public void testTranslation() {
     assertEquals( "Ja", ExtendedBoolean.TRUE.getDescription( Locale.GERMANY ) );
