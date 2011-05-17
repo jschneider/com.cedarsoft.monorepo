@@ -32,7 +32,7 @@
 package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
@@ -43,7 +43,7 @@ public interface FieldTypeInformation {
    *
    * @return the type of the field
    */
-  @NotNull
+  @Nonnull
   TypeMirror getType();
 
   /**
@@ -52,14 +52,14 @@ public interface FieldTypeInformation {
    * @param type the type
    * @return true if the field is of the given type
    */
-  boolean isType( @NotNull Class<?> type );
+  boolean isType( @Nonnull Class<?> type );
 
   /**
    * Returns the collection parameter
    *
    * @return the collection parameter
    */
-  @NotNull
+  @Nonnull
   TypeMirror getCollectionParam();
 
   /**

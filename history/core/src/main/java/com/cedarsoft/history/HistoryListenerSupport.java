@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,7 +45,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HistoryListenerSupport<E> {
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
   /**
@@ -53,7 +53,7 @@ public class HistoryListenerSupport<E> {
    *
    * @param historyListener a {@link HistoryListener} object.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
       getListeners().add( historyListener );
@@ -67,7 +67,7 @@ public class HistoryListenerSupport<E> {
    *
    * @param historyListener a {@link HistoryListener} object.
    */
-  public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
     try {
       getListeners().remove( historyListener );
@@ -81,7 +81,7 @@ public class HistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryChanged( @NotNull E entry ) {
+  public void notifyEntryChanged( @Nonnull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
     try {
@@ -99,7 +99,7 @@ public class HistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryAdded( @NotNull E entry ) {
+  public void notifyEntryAdded( @Nonnull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
     try {
@@ -117,7 +117,7 @@ public class HistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryRemoved( @NotNull E entry ) {
+  public void notifyEntryRemoved( @Nonnull E entry ) {
     lock.writeLock().lock();
     List<HistoryListener<E>> copy;
     try {
@@ -132,7 +132,7 @@ public class HistoryListenerSupport<E> {
 
   private transient List<HistoryListener<E>> listeners;
 
-  @NotNull
+  @Nonnull
   private List<HistoryListener<E>> getListeners() {
     lock.writeLock().lock();
     try {
@@ -150,7 +150,7 @@ public class HistoryListenerSupport<E> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return Collections.unmodifiableList( getListeners() );
   }

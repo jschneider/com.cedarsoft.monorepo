@@ -31,7 +31,7 @@
 
 package com.cedarsoft.exec;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,7 +51,7 @@ public class OutputRedirector implements Runnable {
    * @param process the process
    * @return the redirecting threads
    */
-  public static Thread[] redirect( @NotNull Process process ) {
+  public static Thread[] redirect( @Nonnull Process process ) {
     PrintStream targetOut = System.out;
     PrintStream targetErr = System.err;
     return redirect( process, targetOut, targetErr );
@@ -65,7 +65,7 @@ public class OutputRedirector implements Runnable {
    * @param targetErr a {@link OutputStream} the target input stream
    * @return the two redirecting threads
    */
-  public static Thread[] redirect( @NotNull Process process, @NotNull OutputStream targetOut, @NotNull OutputStream targetErr ) {
+  public static Thread[] redirect( @Nonnull Process process, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {
     Thread inputThread = new Thread( new OutputRedirector( process.getInputStream(), targetOut ) );
     inputThread.start();
     Thread outputThread = new Thread( new OutputRedirector( process.getErrorStream(), targetErr ) );
@@ -86,7 +86,7 @@ public class OutputRedirector implements Runnable {
    * @param in  the input stream
    * @param out the output stream
    */
-  public OutputRedirector( @NotNull InputStream in, @NotNull OutputStream out ) {
+  public OutputRedirector( @Nonnull InputStream in, @Nonnull OutputStream out ) {
     this.in = in;
     this.out = out;
   }

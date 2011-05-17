@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 /**
@@ -43,7 +43,7 @@ import org.joda.time.LocalDate;
 public class DefaultHistoryEntry implements HistoryEntry {
   private Long id;
 
-  @NotNull
+  @Nonnull
   private final LocalDate verificationDate;
 
   /**
@@ -58,7 +58,7 @@ public class DefaultHistoryEntry implements HistoryEntry {
    *
    * @param verificationDate the verification date
    */
-  public DefaultHistoryEntry( @NotNull LocalDate verificationDate ) {
+  public DefaultHistoryEntry( @Nonnull LocalDate verificationDate ) {
     this.verificationDate = verificationDate;
   }
 
@@ -66,7 +66,7 @@ public class DefaultHistoryEntry implements HistoryEntry {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public LocalDate getVerificationDate() {
     return verificationDate;
   }
@@ -77,7 +77,7 @@ public class DefaultHistoryEntry implements HistoryEntry {
    * {@inheritDoc}
    */
   @Override
-  public int compareTo( @NotNull HistoryEntry o ) {
+  public int compareTo( @Nonnull HistoryEntry o ) {
     return verificationDate.compareTo( o.getVerificationDate() );
   }
 

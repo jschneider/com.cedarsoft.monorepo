@@ -32,9 +32,9 @@
 package com.cedarsoft;
 
 import com.google.common.base.Splitter;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Iterator;
 import java.util.concurrent.Callable;
@@ -45,9 +45,9 @@ import static org.junit.Assert.*;
  *
  */
 public class VersionParsingPerformance {
-  @NotNull
+  @Nonnull
   public static final Splitter DOT_SPLITTER = Splitter.on( "." );
-  @NonNls
+  @Nonnull
   public static final String VERSION = "1.2.3-suffix";
 
   public static void main( String[] args ) throws Exception {
@@ -134,7 +134,7 @@ public class VersionParsingPerformance {
 
   }
 
-  private static void run( @NotNull String description, @NotNull Callable<Version> callable ) throws Exception {
+  private static void run( @Nonnull String description, @Nonnull Callable<Version> callable ) throws Exception {
     //Warmup
     for ( int i = 0; i < 10000000; i++ ) {
       Version version = callable.call();

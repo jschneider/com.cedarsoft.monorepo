@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -78,7 +78,7 @@ public enum ExtendedBoolean {
    *
    * @return the description for the default locale
    */
-  @NotNull
+  @Nonnull
   public String getDescription() {
     return getDescription( Locale.getDefault() );
   }
@@ -89,8 +89,8 @@ public enum ExtendedBoolean {
    * @param locale the locale
    * @return the description for the locale
    */
-  @NotNull
-  public String getDescription( @NotNull Locale locale ) {
+  @Nonnull
+  public String getDescription( @Nonnull Locale locale ) {
     ResourceBundle bundle = ResourceBundle.getBundle( getClass().getName(), locale );
     return bundle.getString( name() );
   }
@@ -101,7 +101,7 @@ public enum ExtendedBoolean {
    * @param value the boolean value
    * @return {@link #TRUE} or {@link #FALSE} - depending on the given value
    */
-  @NotNull
+  @Nonnull
   public static ExtendedBoolean valueOf( boolean value ) {
     if ( value ) {
       return TRUE;

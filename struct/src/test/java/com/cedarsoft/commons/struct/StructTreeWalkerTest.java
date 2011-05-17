@@ -32,7 +32,7 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.CanceledException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class StructTreeWalkerTest {
 
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         if ( node.getName().equals( "01" ) ) {
           throw new CanceledException();
         }
@@ -88,7 +88,7 @@ public class StructTreeWalkerTest {
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         if ( node.getName().equals( "01" ) ) {
           throw new CanceledException();
         }
@@ -108,7 +108,7 @@ public class StructTreeWalkerTest {
     StructureTreeWalker walker = new DepthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         assertSame( expected.remove( 0 ), node.getName() );
         assertEquals( node.getName().length() - 1, level );
       }
@@ -123,7 +123,7 @@ public class StructTreeWalkerTest {
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         assertSame( expected.remove( 0 ), node.getName() );
         assertEquals( node.getName().length() - 1, level );
       }

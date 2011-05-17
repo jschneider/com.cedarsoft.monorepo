@@ -31,8 +31,8 @@
 
 package com.cedarsoft.event;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -50,9 +50,9 @@ import java.util.Map;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NonTransientPropertyChangeSupport {
-  @NotNull
+  @Nonnull
   private final List<PropertyChangeListener> listeners = new ArrayList<PropertyChangeListener>();
-  @NotNull
+  @Nonnull
   private final Object sourceBean;
 
   /**
@@ -60,7 +60,7 @@ public class NonTransientPropertyChangeSupport {
    *
    * @param sourceBean a {@link Object} object.
    */
-  public NonTransientPropertyChangeSupport( @NotNull @NonNls Object sourceBean ) {
+  public NonTransientPropertyChangeSupport( @Nonnull Object sourceBean ) {
     this.sourceBean = sourceBean;
   }
 
@@ -69,7 +69,7 @@ public class NonTransientPropertyChangeSupport {
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  public void removePropertyChangeListener( @NotNull PropertyChangeListener listener ) {
+  public void removePropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     listeners.remove( listener );
   }
 
@@ -79,7 +79,7 @@ public class NonTransientPropertyChangeSupport {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
+  public void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     getChild( propertyName ).removePropertyChangeListener( listener );
   }
 
@@ -88,7 +88,7 @@ public class NonTransientPropertyChangeSupport {
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  public void addPropertyChangeListener( @NotNull PropertyChangeListener listener ) {
+  public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     listeners.add( listener );
   }
 
@@ -98,7 +98,7 @@ public class NonTransientPropertyChangeSupport {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
+  public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     getChild( propertyName ).addPropertyChangeListener( listener );
   }
 
@@ -107,7 +107,7 @@ public class NonTransientPropertyChangeSupport {
    *
    * @param evt a {@link PropertyChangeEvent} object.
    */
-  public void firePropertyChange( @NotNull PropertyChangeEvent evt ) {
+  public void firePropertyChange( @Nonnull PropertyChangeEvent evt ) {
     for ( PropertyChangeListener listener : listeners ) {
       listener.propertyChange( evt );
     }
@@ -118,8 +118,8 @@ public class NonTransientPropertyChangeSupport {
     }
   }
 
-  @NotNull
-  private NonTransientPropertyChangeSupport getChild( @NotNull @NonNls String propertyName ) {
+  @Nonnull
+  private NonTransientPropertyChangeSupport getChild( @Nonnull String propertyName ) {
     NonTransientPropertyChangeSupport child = children.get( propertyName );
     if ( child == null ) {
       child = new NonTransientPropertyChangeSupport( sourceBean );
@@ -128,7 +128,7 @@ public class NonTransientPropertyChangeSupport {
     return child;
   }
 
-  @NotNull
+  @Nonnull
   private final Map<String, NonTransientPropertyChangeSupport> children = new HashMap<String, NonTransientPropertyChangeSupport>();
 
   /**
@@ -136,7 +136,7 @@ public class NonTransientPropertyChangeSupport {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends PropertyChangeListener> getPropertyChangeListeners() {
     return Collections.unmodifiableList( listeners );
   }

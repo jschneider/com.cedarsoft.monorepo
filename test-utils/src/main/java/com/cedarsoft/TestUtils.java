@@ -32,9 +32,9 @@
 package com.cedarsoft;
 
 import org.apache.commons.io.IOUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -77,7 +77,7 @@ public class TestUtils {
    *
    * @return a {@link File} object.
    */
-  @NotNull
+  @Nonnull
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
   }
@@ -92,8 +92,8 @@ public class TestUtils {
    * @deprecated Use org.junit.rules.TemporaryFolder instead
    */
   @Deprecated
-  @NotNull
-  public static File createTmpFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @NotNull InputStream in ) throws IOException {
+  @Nonnull
+  public static File createTmpFile( @Nonnull String prefix, @Nonnull String suffix, @Nonnull InputStream in ) throws IOException {
     File file = File.createTempFile( prefix, suffix );
     file.deleteOnExit();
 
@@ -113,7 +113,7 @@ public class TestUtils {
    *             <p>createEmptyTmpDir</p>
    */
   @Deprecated
-  @NotNull
+  @Nonnull
   public static File createEmptyTmpDir() {
     File tmp = getTmpDir();
     File dir = null;

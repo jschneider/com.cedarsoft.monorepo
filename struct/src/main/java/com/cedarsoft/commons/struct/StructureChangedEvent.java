@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Event that is used with {@link StructureListener}.
@@ -39,11 +39,11 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructureChangedEvent {
-  @NotNull
+  @Nonnull
   private final StructPart structPart;
-  @NotNull
+  @Nonnull
   private final StructPart parent;
-  @NotNull
+  @Nonnull
   private final Type type;
   private final int index;
 
@@ -55,7 +55,7 @@ public class StructureChangedEvent {
    * @param structPart the part that is added/removed
    * @param index      the index
    */
-  public StructureChangedEvent( @NotNull StructPart parent, @NotNull Type type, @NotNull StructPart structPart, int index ) {
+  public StructureChangedEvent( @Nonnull StructPart parent, @Nonnull Type type, @Nonnull StructPart structPart, int index ) {
     this.parent = parent;
     this.index = index;
     this.type = type;
@@ -67,7 +67,7 @@ public class StructureChangedEvent {
    *
    * @return the struct part that has been added/removed
    */
-  @NotNull
+  @Nonnull
   public StructPart getStructPart() {
     return structPart;
   }
@@ -77,7 +77,7 @@ public class StructureChangedEvent {
    *
    * @return the parent
    */
-  @NotNull
+  @Nonnull
   public StructPart getParent() {
     return parent;
   }
@@ -87,7 +87,7 @@ public class StructureChangedEvent {
    *
    * @return the type
    */
-  @NotNull
+  @Nonnull
   public Type getType() {
     return type;
   }

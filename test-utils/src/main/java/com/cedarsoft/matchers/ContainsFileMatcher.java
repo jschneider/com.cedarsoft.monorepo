@@ -39,8 +39,8 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.mockito.internal.matchers.And;
 
 import java.io.File;
@@ -53,11 +53,10 @@ import java.util.List;
  *
  */
 public class ContainsFileMatcher extends BaseMatcher<File> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String relativeFilePath;
 
-  public ContainsFileMatcher( @NotNull String relativeFilePath ) {
+  public ContainsFileMatcher( @Nonnull String relativeFilePath ) {
     this.relativeFilePath = relativeFilePath;
   }
 
@@ -78,12 +77,12 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
     description.appendValue( relativeFilePath );
   }
 
-  @NotNull
-  public static ContainsFileMatcher containsFile( @NotNull @NonNls String relativeFilePath ) {
+  @Nonnull
+  public static ContainsFileMatcher containsFile( @Nonnull String relativeFilePath ) {
     return new ContainsFileMatcher( relativeFilePath );
   }
 
-  @NotNull
+  @Nonnull
   public static Matcher<File> empty() {
     return new BaseMatcher<File>() {
       @Override
@@ -98,8 +97,8 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
     };
   }
 
-  @NotNull
-  public static Matcher<File> containsFiles( @NotNull @NonNls String... relativeFilePaths ) {
+  @Nonnull
+  public static Matcher<File> containsFiles( @Nonnull String... relativeFilePaths ) {
     List<Matcher> matchers = new ArrayList<Matcher>();
     for ( String relativeFilePath : relativeFilePaths ) {
       matchers.add( containsFile( relativeFilePath ) );
@@ -108,9 +107,8 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
     return new And( matchers );
   }
 
-  @NotNull
-  @NonNls
-  public static String toTree( @NotNull final File dir ) {
+  @Nonnull
+  public static String toTree( @Nonnull final File dir ) {
     List<File> files = Lists.newArrayList( ( Iterator<File> ) FileUtils.iterateFiles( dir, TrueFileFilter.TRUE, TrueFileFilter.TRUE ) );
 
     List<String> names = Lists.newArrayList( Lists.transform( files, new Function<File, String>() {
@@ -126,9 +124,8 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
   }
 
 
-  @NotNull
-  @NonNls
-  public static String toMessage( @NotNull final File dir ) {
+  @Nonnull
+  public static String toMessage( @Nonnull final File dir ) {
     return dir.getAbsolutePath() + ":\n" + toTree( dir );
   }
 

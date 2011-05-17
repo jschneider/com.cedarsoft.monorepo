@@ -31,9 +31,10 @@
 
 package com.cedarsoft.license;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -52,73 +53,73 @@ public class License {
   /**
    * Constant <code>UNKNOWN</code>
    */
-  @NotNull
+  @Nonnull
   public static final License UNKNOWN = new License( "UNKNOWN", "Unknown" );
   /**
    * Constant <code>ALL_RIGHTS_RESERVED</code>
    */
-  @NotNull
+  @Nonnull
   public static final License ALL_RIGHTS_RESERVED = new License( "ALL_RIGHTS_RESERVED", "All rights reserved" );
   /**
    * Constant <code>PUBLIC_DOMAIN</code>
    */
-  @NotNull
+  @Nonnull
   public static final License PUBLIC_DOMAIN = new License( "PUBLIC_DOMAIN", "Public Domain" );
 
-  @NotNull
+  @Nonnull
   public static final License CDDL = new License( "CDDL", "Common Development and Distribution License", "http://www.opensource.org/licenses/cddl1.php" );
-  @NotNull
+  @Nonnull
   public static final License AFFERO_GPL = new License( "AFFERO GPL", "Affero GNU Public License", "http://www.opensource.org/licenses/agpl-v3.html" );
-  @NotNull
+  @Nonnull
   public static final License APACHE_20 = new License( "APACHE 2.0", "Apache License 2.0", "http://www.opensource.org/licenses/apache2.0.php" );
-  @NotNull
+  @Nonnull
   public static final License BSD_NEW = new License( "BSD NEW", "New and Simplified BSD licenses", "http://www.opensource.org/licenses/bsd-license.php" );
-  @NotNull
+  @Nonnull
   public static final License CPAL = new License( "CPAL", "Common Public Attribution License 1.0", "http://www.opensource.org/licenses/cpal_1.0" );
-  @NotNull
+  @Nonnull
   public static final License EPL = new License( "EPL", "Eclipse Public License", "http://www.opensource.org/licenses/eclipse-1.0.php" );
-  @NotNull
+  @Nonnull
   public static final License GPL_2 = new License( "GPLv2", "GNU General Public License 2.0", "http://www.opensource.org/licenses/gpl-2.0.php" );
-  @NotNull
+  @Nonnull
   public static final License GPL_3 = new License( "GPLv3", "GNU General Public License 3.0", "http://www.opensource.org/licenses/gpl-3.0.html" );
-  @NotNull
+  @Nonnull
   public static final License LGPL = new License( "LGPL", "GNU Library or \"Lesser\" General Public License", "http://www.opensource.org/licenses/lgpl-2.1.php" );
-  @NotNull
+  @Nonnull
   public static final License LGPL_3 = new License( "LGPLv3", "GNU Library or \"Lesser\" General Public License version 3.0 (LGPLv3)", "http://www.opensource.org/licenses/lgpl-3.0.html" );
-  @NotNull
+  @Nonnull
   public static final License MPL = new License( "MPL", "Mozilla Public License 1.1 (MPL)", "http://www.opensource.org/licenses/mozilla1.1.php" );
   /**
    * Creative Commons
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY = new CreativeCommonsLicense( "CC-BY", "CC Attribution", false, CreativeCommonsLicense.ModificationsAllowed.YES, "http://creativecommons.org/licenses/by/3.0" );
   /**
    * Share-Alike
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY_SA = new CreativeCommonsLicense( "CC-BY-SA", "CC Attribution Share Alike", false, CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-sa/3.0" );
   /**
    * No-Derivative-Work
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY_ND = new CreativeCommonsLicense( "CC-BY-ND", "CC Attribution No Derivates", false, CreativeCommonsLicense.ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nd/3.0" );
   /**
    * Non-Commercial
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY_NC = new CreativeCommonsLicense( "CC-BY-NC", "CC Attribution Non-Commercial", true, CreativeCommonsLicense.ModificationsAllowed.YES, "http://creativecommons.org/licenses/by-nc/3.0" );
   /**
    * Non-Commercial, Share-Alike
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY_NC_SA = new CreativeCommonsLicense( "CC-BY-NC-SA", "CC Attribution Non-Commercial Share Alike", true, CreativeCommonsLicense.ModificationsAllowed.SHARE_ALIKE, "http://creativecommons.org/licenses/by-nc-sa/3.0" );
   /**
    * Non-Commercial, No-Derivative-Work
    */
-  @NotNull
+  @Nonnull
   public static final CreativeCommonsLicense CC_BY_NC_ND = new CreativeCommonsLicense( "CC-BY-NC-ND", "CC Attribution Non-Commercial No Derivates", true, CreativeCommonsLicense.ModificationsAllowed.NO, "http://creativecommons.org/licenses/by-nc-nd/3.0" );
 
-  @NotNull
+  @Nonnull
   public static final List<? extends CreativeCommonsLicense> CC_LICENSES = Collections.unmodifiableList( Arrays.asList(
     CC_BY,
     CC_BY_SA,
@@ -128,7 +129,7 @@ public class License {
     CC_BY_NC_ND
   ) );
 
-  @NotNull
+  @Nonnull
   public static final List<? extends License> LICENSES;
 
   static {
@@ -152,11 +153,9 @@ public class License {
     LICENSES = Collections.unmodifiableList( list );
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String id;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String name;
 
   @Nullable
@@ -168,15 +167,15 @@ public class License {
    * @param id   a {@link String} object.
    * @param name a {@link String} object.
    */
-  public License( @NotNull @NonNls String id, @NotNull @NonNls String name ) {
+  public License( @Nonnull String id, @Nonnull String name ) {
     this( id, name, ( URL ) null );
   }
 
-  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @NotNull @NonNls String url ) {
+  public License( @Nonnull String id, @Nonnull String name, @Nonnull String url ) {
     this( id, name, getUrl( url ) );
   }
 
-  public License( @NotNull @NonNls String id, @NotNull @NonNls String name, @Nullable URL url ) {
+  public License( @Nonnull String id, @Nonnull String name, @Nullable URL url ) {
     this.id = id;
     this.name = name;
     this.url = url;
@@ -187,7 +186,7 @@ public class License {
    *
    * @return a {@link String} object.
    */
-  @NotNull
+  @Nonnull
   public String getName() {
     return name;
   }
@@ -197,8 +196,7 @@ public class License {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getId() {
     return id;
   }
@@ -225,8 +223,8 @@ public class License {
     return id.hashCode();
   }
 
-  @NotNull
-  static URL getUrl( @NotNull @NonNls String url ) {
+  @Nonnull
+  static URL getUrl( @Nonnull String url ) {
     try {
       return new URL( url );
     } catch ( MalformedURLException e ) {
@@ -234,8 +232,8 @@ public class License {
     }
   }
 
-  @NotNull
-  public static License get( @NotNull @NonNls String id ) throws IllegalArgumentException{
+  @Nonnull
+  public static License get( @Nonnull String id ) throws IllegalArgumentException{
     for ( License license : LICENSES ) {
       if ( license.getId().equals( id ) ) {
         return license;

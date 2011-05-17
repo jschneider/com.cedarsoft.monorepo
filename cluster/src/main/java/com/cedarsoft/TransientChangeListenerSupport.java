@@ -31,9 +31,9 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +46,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TransientChangeListenerSupport<T> {
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   protected final T observedObject;
 
   /**
@@ -57,7 +57,7 @@ public class TransientChangeListenerSupport<T> {
    *
    * @param observedObject a T object.
    */
-  public TransientChangeListenerSupport( @NotNull T observedObject ) {
+  public TransientChangeListenerSupport( @Nonnull T observedObject ) {
     this.observedObject = observedObject;
   }
 
@@ -66,7 +66,7 @@ public class TransientChangeListenerSupport<T> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   protected List<ChangeListener<T>> getTransientListeners() {
     lock.readLock().lock();
     try {
@@ -97,7 +97,7 @@ public class TransientChangeListenerSupport<T> {
    *
    * @param listener a {@link ChangeListener} object.
    */
-  public void addChangeListener( @NotNull ChangeListener<T> listener ) {
+  public void addChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
       getTransientListeners().add( listener );
@@ -111,7 +111,7 @@ public class TransientChangeListenerSupport<T> {
    *
    * @param listener a {@link ChangeListener} object.
    */
-  public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
+  public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
       getTransientListeners().remove( listener );
@@ -126,7 +126,7 @@ public class TransientChangeListenerSupport<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public void changed( @Nullable Object context, @NotNull @NonNls String... propertiesPath ) {
+  public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
     lock.writeLock().lock();

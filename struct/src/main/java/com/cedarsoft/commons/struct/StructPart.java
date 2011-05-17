@@ -32,9 +32,9 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -49,8 +49,7 @@ public interface StructPart {
    *
    * @return the name
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String getName();
 
   /**
@@ -58,7 +57,7 @@ public interface StructPart {
    *
    * @return the lookup
    */
-  @NotNull
+  @Nonnull
   Lookup getLookup();
 
   /**
@@ -66,7 +65,7 @@ public interface StructPart {
    *
    * @return a list containing all children
    */
-  @NotNull
+  @Nonnull
   List<? extends StructPart> getChildren();
 
   /**
@@ -83,28 +82,28 @@ public interface StructPart {
    *
    * @param structureListener the chid listener
    */
-  void addStructureListener( @NotNull StructureListener structureListener );
+  void addStructureListener( @Nonnull StructureListener structureListener );
 
   /**
    * Adds a child listener wrapped within a weak listener
    *
    * @param structureListener the chid listener
    */
-  void addStructureListenerWeak( @NotNull StructureListener structureListener );
+  void addStructureListenerWeak( @Nonnull StructureListener structureListener );
 
   /**
    * Removes the child listener
    *
    * @param structureListener the child listener
    */
-  void removeStructureListener( @NotNull StructureListener structureListener );
+  void removeStructureListener( @Nonnull StructureListener structureListener );
 
   /**
    * Returns the path of this node
    *
    * @return the path
    */
-  @NotNull
+  @Nonnull
   Path getPath();
 
   /**
@@ -113,7 +112,7 @@ public interface StructPart {
    * @param child the possible child
    * @return true if the given node is a child, false otherwise
    */
-  boolean isChild( @NotNull StructPart child );
+  boolean isChild( @Nonnull StructPart child );
 
   /**
    * Returns true if the node has a parent
@@ -131,6 +130,6 @@ public interface StructPart {
    * @throws ChildNotFoundException
    *          if any.
    */
-  @NotNull
-  StructPart findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
+  @Nonnull
+  StructPart findChild( @Nonnull String childName ) throws ChildNotFoundException;
 }

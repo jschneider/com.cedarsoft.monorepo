@@ -36,8 +36,8 @@ import com.cedarsoft.codegen.parser.Parser;
 import com.cedarsoft.codegen.parser.Result;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -69,8 +69,8 @@ public class ExtendsTest {
     factory = new DomainObjectDescriptorFactory( classDeclaration );
   }
 
-  @NotNull
-  private File getResourceAsFile( @NotNull @NonNls String path ) throws URISyntaxException {
+  @Nonnull
+  private File getResourceAsFile( @Nonnull String path ) throws URISyntaxException {
     URL resource = getClass().getResource( path );
     assertNotNull( resource );
     File file1 = new File( resource.toURI() );

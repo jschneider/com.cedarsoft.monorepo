@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -53,13 +53,13 @@ public class LookupsTest {
     lookups.add( new DynamicLookup( VALUE ) );
     lookups.add( new InstantiatorLookup<String>( new Instantiater.Typed<String>() {
       @Override
-      @NotNull
+      @Nonnull
       public Class<? extends String> getType() {
         return String.class;
       }
 
       @Override
-      @NotNull
+      @Nonnull
       public String createInstance() throws InstantiationFailedException {
         return VALUE;
       }
@@ -94,7 +94,7 @@ public class LookupsTest {
       final String[] called = new String[1];
       lookup.bind( String.class, new LookupChangeListener<String>() {
         @Override
-        public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
+        public void lookupChanged( @Nonnull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
       } );
@@ -108,12 +108,12 @@ public class LookupsTest {
       final String[] called = new String[1];
       lookup.bind( new TypedLookupChangeListener<String>() {
         @Override
-        public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
+        public void lookupChanged( @Nonnull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
 
         @Override
-        @NotNull
+        @Nonnull
         public Class<String> getType() {
           return String.class;
         }
@@ -128,7 +128,7 @@ public class LookupsTest {
       final String[] called = new String[1];
       lookup.bindWeak( String.class, new LookupChangeListener<String>() {
         @Override
-        public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
+        public void lookupChanged( @Nonnull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
       } );
@@ -142,12 +142,12 @@ public class LookupsTest {
       final String[] called = new String[1];
       lookup.bindWeak( new TypedLookupChangeListener<String>() {
         @Override
-        public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
+        public void lookupChanged( @Nonnull LookupChangeEvent<? extends String> event ) {
           called[0] = event.getNewValue();
         }
 
         @Override
-        @NotNull
+        @Nonnull
         public Class<String> getType() {
           return String.class;
         }

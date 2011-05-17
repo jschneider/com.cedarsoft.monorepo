@@ -36,7 +36,7 @@ import com.cedarsoft.configuration.xml.ConfigurationConnector;
 import com.jgoodies.binding.beans.BeanAdapter;
 import com.jgoodies.binding.value.ValueModel;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.Class;
@@ -51,7 +51,7 @@ import java.lang.String;
  */
 @Deprecated
 public class ConfigurationConnectorFactory<T> implements FactoryBean {
-  @NotNull
+  @Nonnull
   private final ConfigurationAccess<T> configurationAccess;
   private ValueModel valueModel;
   private final ConfigurationConnector<T> connector;
@@ -65,7 +65,7 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    * @param beanAdapter          a {@link BeanAdapter} object.
    */
-  public ConfigurationConnectorFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull String propertyName, @NotNull DefaultValueProvider defaultValueProvider, @NotNull BeanAdapter<?> beanAdapter ) {
+  public ConfigurationConnectorFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull DefaultValueProvider defaultValueProvider, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
     configurationAccess = new ConfigurationAccess<T>( configuration, type, propertyName, defaultValueProvider );
     connector = new ConfigurationConnector<T>( valueModel, configurationAccess );
@@ -81,7 +81,7 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
    * @param defaultValue  a T object.
    * @param beanAdapter   a {@link BeanAdapter} object.
    */
-  public ConfigurationConnectorFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull String propertyName, @NotNull T defaultValue, @NotNull BeanAdapter<?> beanAdapter ) {
+  public ConfigurationConnectorFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull T defaultValue, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
     configurationAccess = new ConfigurationAccess<T>( configuration, type, propertyName, defaultValue );
     connector = new ConfigurationConnector<T>( valueModel, configurationAccess );
@@ -94,7 +94,7 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
    * @param configurationAccess a {@link ConfigurationAccess} object.
    * @param beanAdapter         a {@link BeanAdapter} object.
    */
-  public ConfigurationConnectorFactory( @NotNull ConfigurationAccess<T> configurationAccess, @NotNull BeanAdapter<?> beanAdapter ) {
+  public ConfigurationConnectorFactory( @Nonnull ConfigurationAccess<T> configurationAccess, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( configurationAccess.getKey() );
     this.configurationAccess = configurationAccess;
     connector = new ConfigurationConnector<T>( valueModel, this.configurationAccess );

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>ElementListener interface.</p>
@@ -44,19 +44,19 @@ public interface ElementListener<E> {
    *
    * @param element the entry that has been deleted
    */
-  void elementDeleted( @NotNull E element );
+  void elementDeleted( @Nonnull E element );
 
   /**
    * Is called when an entry has been added
    *
    * @param element the entry that has been added
    */
-  void elementAdded( @NotNull E element );
+  void elementAdded( @Nonnull E element );
 
   /**
    * Is called when an enty has been changed
    *
    * @param element the entry that has been changed
    */
-  void elementChanged( @NotNull E element );
+  void elementChanged( @Nonnull E element );
 }

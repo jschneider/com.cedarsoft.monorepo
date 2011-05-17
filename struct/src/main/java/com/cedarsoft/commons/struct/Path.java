@@ -31,14 +31,10 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.TestOnly;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
-import java.lang.Iterable;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -59,23 +55,20 @@ public class Path implements Serializable {
   /**
    * Constant <code>PATH_SEPARATOR_CHAR='/'</code>
    */
-  @NonNls
   public static final char PATH_SEPARATOR_CHAR = '/';
   /**
    * Constant <code>PATH_SEPARATOR="String.valueOf( PATH_SEPARATOR_CHAR )"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PATH_SEPARATOR = String.valueOf( PATH_SEPARATOR_CHAR );
   /**
    * Constant <code>EMPTY</code>
    */
-  @NotNull
+  @Nonnull
   public static final Path EMPTY = new Path();
 
   private final boolean absolute;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final List<String> elements = new ArrayList<String>();
 
   /**
@@ -83,7 +76,7 @@ public class Path implements Serializable {
    *
    * @param elements the elements
    */
-  public Path( @NotNull String... elements ) {
+  public Path( @Nonnull String... elements ) {
     this( Arrays.asList( elements ) );
   }
 
@@ -93,9 +86,8 @@ public class Path implements Serializable {
    * @param relative a boolean.
    * @param elements a {@link String} object.
    */
-  @TestOnly
   @Deprecated
-  public Path( boolean relative, @NotNull String... elements ) {
+  public Path( boolean relative, @Nonnull String... elements ) {
     this( Arrays.asList( elements ), relative );
   }
 
@@ -104,7 +96,7 @@ public class Path implements Serializable {
    *
    * @param elements the elements
    */
-  public Path( @NotNull Iterable<? extends String> elements ) {
+  public Path( @Nonnull Iterable<? extends String> elements ) {
     this( elements, false );
   }
 
@@ -114,7 +106,7 @@ public class Path implements Serializable {
    * @param elements a {@link Iterable} object.
    * @param absolute a boolean.
    */
-  public Path( @NotNull Iterable<? extends String> elements, boolean absolute ) {
+  public Path( @Nonnull Iterable<? extends String> elements, boolean absolute ) {
     this.absolute = absolute;
 
     for ( String element : elements ) {
@@ -135,8 +127,7 @@ public class Path implements Serializable {
    *
    * @return a list containing all path elements
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public List<? extends String> getElements() {
     return Collections.unmodifiableList( elements );
   }
@@ -144,8 +135,7 @@ public class Path implements Serializable {
   /**
    * {@inheritDoc}
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   @Override
   public String toString() {
     StringBuilder buffer = new StringBuilder();
@@ -188,7 +178,7 @@ public class Path implements Serializable {
    *
    * @return a {@link Path} object.
    */
-  @NotNull
+  @Nonnull
   public Path absolute() {
     return absolute( true );
   }
@@ -198,7 +188,7 @@ public class Path implements Serializable {
    *
    * @return a {@link Path} object.
    */
-  @NotNull
+  @Nonnull
   public Path relative() {
     return absolute( false );
   }
@@ -209,7 +199,7 @@ public class Path implements Serializable {
    * @param newAbsolute a boolean.
    * @return a {@link Path} object.
    */
-  @NotNull
+  @Nonnull
   public Path absolute( boolean newAbsolute ) {
     if ( absolute == newAbsolute ) {
       return this;
@@ -224,7 +214,7 @@ public class Path implements Serializable {
    * @param index1 a int.
    * @return a {@link Path} object.
    */
-  @NotNull
+  @Nonnull
   public Path subPath( int index0, int index1 ) {
     return new Path( elements.subList( index0, index1 ) );
   }
@@ -234,7 +224,7 @@ public class Path implements Serializable {
    *
    * @return a new path without the first element
    */
-  @NotNull
+  @Nonnull
   public Path popped() {
     if ( elements.isEmpty() ) {
       throw new ArrayIndexOutOfBoundsException( "No elements left to pop" );
@@ -248,8 +238,8 @@ public class Path implements Serializable {
    * @param parentPathRepresentation a {@link String} object.
    * @return a {@link Path} object.
    */
-  @NotNull
-  public Path withParent( @NotNull @NonNls String parentPathRepresentation ) {
+  @Nonnull
+  public Path withParent( @Nonnull String parentPathRepresentation ) {
     return createParentPath( parentPathRepresentation, this );
   }
 
@@ -259,7 +249,7 @@ public class Path implements Serializable {
    * @param childName the name of the child
    * @return the path of the child
    */
-  public Path withChild( @NotNull String childName ) {
+  public Path withChild( @Nonnull String childName ) {
     List<String> childElements = new ArrayList<String>( elements.size() + 1 );
     childElements.addAll( elements );
     childElements.add( childName );
@@ -295,8 +285,8 @@ public class Path implements Serializable {
    * @param pathRepresentation the path representation
    * @return the path
    */
-  @NotNull
-  public static Path createPath( @NonNls @NotNull String pathRepresentation ) {
+  @Nonnull
+  public static Path createPath( @Nonnull String pathRepresentation ) {
     boolean isAbsolute = false;
     if ( pathRepresentation.startsWith( PATH_SEPARATOR ) ) {
       //noinspection AssignmentToMethodParameter
@@ -331,8 +321,8 @@ public class Path implements Serializable {
    * @param node the node
    * @return the path for the given node
    */
-  @NotNull
-  public static Path buildPath( @NotNull StructPart node ) {
+  @Nonnull
+  public static Path buildPath( @Nonnull StructPart node ) {
     return buildPath( node, null );
   }
 
@@ -343,8 +333,8 @@ public class Path implements Serializable {
    * @param validator the validator
    * @return the path for the given node
    */
-  @NotNull
-  public static Path buildPath( @NotNull StructPart node, @Nullable PathValidator validator ) {
+  @Nonnull
+  public static Path buildPath( @Nonnull StructPart node, @Nullable PathValidator validator ) {
     List<String> elements = new ArrayList<String>();
 
     //add parent node
@@ -368,8 +358,8 @@ public class Path implements Serializable {
    * @param child                    the child path
    * @return the path for the parent string representation and the child
    */
-  @NotNull
-  public static Path createParentPath( @NotNull String parentPathRepresentation, @NotNull Path child ) {
+  @Nonnull
+  public static Path createParentPath( @Nonnull String parentPathRepresentation, @Nonnull Path child ) {
     if ( child.isAbsolute() ) {
       throw new IllegalArgumentException( "Cannot create parent path for absolute child path" );
     }
@@ -389,7 +379,7 @@ public class Path implements Serializable {
    * @param node the node
    * @return the level
    */
-  public static int calculateLevel( @NotNull StructPart root, @NotNull StructPart node ) {
+  public static int calculateLevel( @Nonnull StructPart root, @Nonnull StructPart node ) {
     if ( root.equals( node ) ) {
       return 0;
     }

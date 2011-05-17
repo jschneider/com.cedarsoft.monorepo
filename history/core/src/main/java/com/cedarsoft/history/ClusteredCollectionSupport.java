@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -41,9 +41,9 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredCollectionSupport<E> {
-  @NotNull
+  @Nonnull
   private final CollectionSupport<E> transientSupport;
-  @NotNull
+  @Nonnull
   private final NonTransientCollectionSupport<E> nonTransientSupport;
 
   /**
@@ -51,7 +51,7 @@ public class ClusteredCollectionSupport<E> {
    *
    * @param source a {@link ObservableCollection} object.
    */
-  public ClusteredCollectionSupport( @NotNull ObservableCollection<E> source ) {
+  public ClusteredCollectionSupport( @Nonnull ObservableCollection<E> source ) {
     transientSupport = new CollectionSupport<E>( source );
     nonTransientSupport = new NonTransientCollectionSupport<E>( source );
   }
@@ -62,7 +62,7 @@ public class ClusteredCollectionSupport<E> {
    * @param listener    a {@link ElementsListener} object.
    * @param isTransient a boolean.
    */
-  public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
+  public void addElementListener( @Nonnull ElementsListener<? super E> listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addElementListener( listener );
     } else {
@@ -75,7 +75,7 @@ public class ClusteredCollectionSupport<E> {
    *
    * @param listener a {@link ElementsListener} object.
    */
-  public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
+  public void removeElementListener( @Nonnull ElementsListener<? super E> listener ) {
     transientSupport.removeElementListener( listener );
     nonTransientSupport.removeEntryListener( listener );
   }
@@ -86,7 +86,7 @@ public class ClusteredCollectionSupport<E> {
    * @param entry a E object.
    * @param index a int.
    */
-  public void elementDeleted( @NotNull E entry, int index ) {
+  public void elementDeleted( @Nonnull E entry, int index ) {
     transientSupport.elementDeleted( entry, index );
     nonTransientSupport.elementDeleted( entry, index );
   }
@@ -97,7 +97,7 @@ public class ClusteredCollectionSupport<E> {
    * @param entry a E object.
    * @param index a int.
    */
-  public void elementChanged( @NotNull E entry, int index ) {
+  public void elementChanged( @Nonnull E entry, int index ) {
     transientSupport.elementChanged( entry, index );
     nonTransientSupport.elementChanged( entry, index );
   }
@@ -108,7 +108,7 @@ public class ClusteredCollectionSupport<E> {
    * @param entry a E object.
    * @param index a int.
    */
-  public void elementAdded( @NotNull E entry, int index ) {
+  public void elementAdded( @Nonnull E entry, int index ) {
     transientSupport.elementAdded( entry, index );
     nonTransientSupport.elementAdded( entry, index );
   }
@@ -127,7 +127,7 @@ public class ClusteredCollectionSupport<E> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return transientSupport.getListeners();
   }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.hierarchy;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.JFrame;
@@ -53,8 +53,8 @@ public class ChildDetectorManagerTest {
     manager = new ChildDetectorManager();
     manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
       @Override
-      @NotNull
-      public List<? extends String> findChildren( @NotNull String parent ) {
+      @Nonnull
+      public List<? extends String> findChildren( @Nonnull String parent ) {
         return Collections.emptyList();
       }
     } );

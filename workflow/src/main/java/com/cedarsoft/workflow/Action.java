@@ -31,7 +31,7 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * An action
@@ -45,5 +45,5 @@ public interface Action<T> {
    * @param object     the object
    * @param definition the definition of the transition
    */
-  void execute( @NotNull T object, @NotNull TransitionDefinition<T> definition );
+  void execute( @Nonnull T object, @Nonnull TransitionDefinition<T> definition );
 }

@@ -34,9 +34,9 @@ package com.cedarsoft;
 import org.apache.commons.lang.ObjectUtils;
 import org.easymock.EasyMock;
 import org.easymock.IArgumentMatcher;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -59,7 +59,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
    * @return a T object.
    */
   @Nullable
-  public static <T> T create( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
+  public static <T> T create( @Nullable T object, @Nonnull String... blacklistedFieldNames ) {
     EasyMock.reportMatcher( new ReflectionMatcher<T>( object, blacklistedFieldNames ) );
     return object;
   }
@@ -67,7 +67,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
   @Nullable
   private final T object;
 
-  @NotNull
+  @Nonnull
   private final Set<String> blacklistedFieldNames = new HashSet<String>();
 
   /**
@@ -76,7 +76,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
    * @param object                a T object.
    * @param blacklistedFieldNames a {@link String} object.
    */
-  public ReflectionMatcher( @Nullable T object, @NotNull @NonNls String... blacklistedFieldNames ) {
+  public ReflectionMatcher( @Nullable T object, @Nonnull String... blacklistedFieldNames ) {
     this.object = object;
     this.blacklistedFieldNames.addAll( Arrays.asList( blacklistedFieldNames ) );
   }
@@ -109,7 +109,7 @@ public class ReflectionMatcher<T> implements IArgumentMatcher {
     return true;
   }
 
-  private boolean compareFields( @NotNull Class<?> type, @NotNull T object, @NotNull T other ) {
+  private boolean compareFields( @Nonnull Class<?> type, @Nonnull T object, @Nonnull T other ) {
     try {
       for ( Field field : type.getDeclaredFields() ) {
         if ( blacklistedFieldNames.contains( field.getName() ) ) {

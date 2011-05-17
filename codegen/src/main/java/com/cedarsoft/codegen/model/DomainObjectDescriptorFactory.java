@@ -39,8 +39,8 @@ import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.declaration.ParameterDeclaration;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Collection;
 
@@ -48,16 +48,16 @@ import java.util.Collection;
  *
  */
 public class DomainObjectDescriptorFactory {
-  @NonNls
+  @Nonnull
   public static final String JAVA_LANG_OBJECT = "java.lang.Object";
-  @NotNull
+  @Nonnull
   private final ClassDeclaration classDeclaration;
 
-  public DomainObjectDescriptorFactory( @NotNull ClassDeclaration classDeclaration ) {
+  public DomainObjectDescriptorFactory( @Nonnull ClassDeclaration classDeclaration ) {
     this.classDeclaration = classDeclaration;
   }
 
-  @NotNull
+  @Nonnull
   public DomainObjectDescriptor create() {
     DomainObjectDescriptor domainObjectDescriptor = new DomainObjectDescriptor( classDeclaration );
 
@@ -73,8 +73,8 @@ public class DomainObjectDescriptorFactory {
     return domainObjectDescriptor;
   }
 
-  @NotNull
-  public FieldWithInitializationInfo getFieldWithInitializationInfo( @NotNull FieldDeclaration fieldDeclaration ) {
+  @Nonnull
+  public FieldWithInitializationInfo getFieldWithInitializationInfo( @Nonnull FieldDeclaration fieldDeclaration ) {
     MethodDeclaration getterDeclaration = TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
 
     //At first look for fields that are initialized within the constructor
@@ -95,13 +95,13 @@ public class DomainObjectDescriptorFactory {
     return new FieldNotInitializationInfo( fieldDeclaration, getterDeclaration );
   }
 
-  @NotNull
-  public ConstructorCallInfo findConstructorCallInfoForField( @NotNull FieldDeclaration fieldDeclaration ) throws IllegalArgumentException {
+  @Nonnull
+  public ConstructorCallInfo findConstructorCallInfoForField( @Nonnull FieldDeclaration fieldDeclaration ) throws IllegalArgumentException {
     return findConstructorCallInfoForField( fieldDeclaration.getSimpleName(), fieldDeclaration.getType() );
   }
 
-  @NotNull
-  public ConstructorCallInfo findConstructorCallInfoForField( @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) throws IllegalArgumentException {
+  @Nonnull
+  public ConstructorCallInfo findConstructorCallInfoForField( @Nonnull String simpleName, @Nonnull TypeMirror type ) throws IllegalArgumentException {
     ConstructorDeclaration constructorDeclaration = TypeUtils.findBestConstructor( classDeclaration );
 
     int index = 0;
@@ -121,20 +121,20 @@ public class DomainObjectDescriptorFactory {
     throw new IllegalArgumentException( "No parameter found that fits <" + simpleName + ">" );
   }
 
-  @NotNull
-  public FieldInitializedInConstructorInfo findFieldInitializedInConstructor( @NotNull @NonNls String simpleName ) {
+  @Nonnull
+  public FieldInitializedInConstructorInfo findFieldInitializedInConstructor( @Nonnull String simpleName ) {
     FieldDeclaration fieldDeclaration = TypeUtils.findFieldDeclaration( classDeclaration, simpleName );
     return getFieldInitializeInConstructorInfo( fieldDeclaration );
   }
 
-  @NotNull
-  public FieldInitializedInConstructorInfo getFieldInitializeInConstructorInfo( @NotNull FieldDeclaration fieldDeclaration ) {
+  @Nonnull
+  public FieldInitializedInConstructorInfo getFieldInitializeInConstructorInfo( @Nonnull FieldDeclaration fieldDeclaration ) {
     ConstructorCallInfo constructorCallInfo = findConstructorCallInfoForField( fieldDeclaration );
     MethodDeclaration getterDeclaration = TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
     return new FieldInitializedInConstructorInfo( fieldDeclaration, getterDeclaration, constructorCallInfo );
   }
 
-  @NotNull
+  @Nonnull
   public ClassDeclaration getClassDeclaration() {
     return classDeclaration;
   }

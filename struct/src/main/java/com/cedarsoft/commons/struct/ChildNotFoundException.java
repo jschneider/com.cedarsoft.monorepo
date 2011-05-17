@@ -32,7 +32,7 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.NotFoundException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p/>
@@ -50,7 +50,7 @@ public class ChildNotFoundException extends NotFoundException {
    *
    * @param path a {@link Path} object.
    */
-  public ChildNotFoundException( @NotNull Path path ) {
+  public ChildNotFoundException( @Nonnull Path path ) {
     super( "Child not found <" + path.toString() + '>' );
     this.path = path;
   }
@@ -60,7 +60,7 @@ public class ChildNotFoundException extends NotFoundException {
    *
    * @return a {@link Path} object.
    */
-  @NotNull
+  @Nonnull
   public Path getPath() {
     return path;
   }

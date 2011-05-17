@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InvalidLockStateException extends RuntimeException {
-  @NotNull
+  @Nonnull
   private final List<String> readLockingThreads = new ArrayList<String>();
 
   /**
@@ -51,7 +51,7 @@ public class InvalidLockStateException extends RuntimeException {
    *
    * @param readLockingThreads a {@link List} object.
    */
-  public InvalidLockStateException( @NotNull List<? extends Thread> readLockingThreads ) {
+  public InvalidLockStateException( @Nonnull List<? extends Thread> readLockingThreads ) {
     super( createMessage( readLockingThreads ) );
     for ( Thread readLockingThread : readLockingThreads ) {
       this.readLockingThreads.add( readLockingThread.getName() );
@@ -63,12 +63,12 @@ public class InvalidLockStateException extends RuntimeException {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getReadLockingThreads() {
     return Collections.unmodifiableList( readLockingThreads );
   }
 
-  private static String createMessage( @NotNull List<? extends Thread> readLockingThreads ) {
+  private static String createMessage( @Nonnull List<? extends Thread> readLockingThreads ) {
     StringBuilder message = new StringBuilder().append( "Cannot get write lock because there are still read locks active in: " ).append( "\n" );
     for ( Thread thread : readLockingThreads ) {
       message.append( "\t" ).append( thread.getName() );

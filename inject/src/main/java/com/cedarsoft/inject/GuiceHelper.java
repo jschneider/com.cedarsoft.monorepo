@@ -34,7 +34,7 @@ package com.cedarsoft.inject;
 import com.google.inject.Binder;
 import com.google.inject.Key;
 import com.google.inject.util.Types;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -56,8 +56,8 @@ public class GuiceHelper {
    * @param type a {@link Type} object.
    * @return a {@link ParameterizedType} object.
    */
-  @NotNull
-  public static ParameterizedType superCollectionOf( @NotNull Type type ) {
+  @Nonnull
+  public static ParameterizedType superCollectionOf( @Nonnull Type type ) {
     return Types.newParameterizedType( Collection.class, Types.subtypeOf( type ) );
   }
 
@@ -67,8 +67,8 @@ public class GuiceHelper {
    * @param type a {@link Type} object.
    * @return a {@link ParameterizedType} object.
    */
-  @NotNull
-  public static ParameterizedType superListOf( @NotNull Type type ) {
+  @Nonnull
+  public static ParameterizedType superListOf( @Nonnull Type type ) {
     return Types.newParameterizedType( List.class, Types.subtypeOf( type ) );
   }
 
@@ -79,7 +79,7 @@ public class GuiceHelper {
    * @param type   the type
    * @param <T>    a T object.
    */
-  public static <T> void bindWildcardCollectionForSet( @NotNull Binder binder, @NotNull Type type ) {
+  public static <T> void bindWildcardCollectionForSet( @Nonnull Binder binder, @Nonnull Type type ) {
     binder.bind( ( Key<Collection<? extends T>> ) Key.get( GuiceHelper.superCollectionOf( type ) ) ).to( ( Key<? extends Collection<? extends T>> ) Key.get( Types.setOf( type ) ) );
   }
 }

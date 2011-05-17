@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * The validator may be used to validate a path during creation.
@@ -46,5 +46,5 @@ public interface NodeValidator {
    * @throws ValidationFailedException
    *          if any.
    */
-  void validate( @NotNull Node actualNode ) throws ValidationFailedException;
+  void validate( @Nonnull Node actualNode ) throws ValidationFailedException;
 }

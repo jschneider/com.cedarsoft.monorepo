@@ -34,7 +34,7 @@ package com.cedarsoft.lock;
 import com.cedarsoft.MockitoTemplate;
 import com.cedarsoft.Sleep;
 import com.google.common.collect.Sets;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -68,7 +68,7 @@ public class ThreadDeadlockDetectorTest {
     new MockitoTemplate() {
       @Mock
       private ThreadDeadlockDetector.Listener listener;
-      @NotNull
+      @Nonnull
       private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
       @Override
@@ -106,7 +106,7 @@ public class ThreadDeadlockDetectorTest {
           }
 
           @Override
-          public void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads ) {
+          public void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads ) {
           }
         } );
 

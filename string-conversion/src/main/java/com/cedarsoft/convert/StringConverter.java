@@ -31,8 +31,8 @@
 
 package com.cedarsoft.convert;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * A string converter is able to convert objects to string representations and vice versa.
@@ -46,9 +46,8 @@ public interface StringConverter<T> {
    * @param object the object that is serialized
    * @return the string representation
    */
-  @NotNull
-  @NonNls
-  String createRepresentation( @NotNull T object );
+  @Nonnull
+  String createRepresentation( @Nonnull T object );
 
   /**
    * Deserializes an string
@@ -56,6 +55,6 @@ public interface StringConverter<T> {
    * @param representation the string representation
    * @return the deserialized object
    */
-  @NotNull
-  T createObject( @NonNls @NotNull String representation );
+  @Nonnull
+  T createObject( @Nonnull String representation );
 }

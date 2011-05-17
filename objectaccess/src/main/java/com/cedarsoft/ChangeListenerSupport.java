@@ -31,9 +31,9 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -49,13 +49,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @param <T> the type
  */
 public class ChangeListenerSupport<T> {
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   protected final T observedObject;
 
-  @NotNull
+  @Nonnull
   private final List<ChangeListener<T>> listeners = new ArrayList<ChangeListener<T>>();
 
   /**
@@ -63,7 +63,7 @@ public class ChangeListenerSupport<T> {
    *
    * @param observedObject a T object.
    */
-  public ChangeListenerSupport( @NotNull T observedObject ) {
+  public ChangeListenerSupport( @Nonnull T observedObject ) {
     this.observedObject = observedObject;
   }
 
@@ -72,7 +72,7 @@ public class ChangeListenerSupport<T> {
    *
    * @param listener a {@link ChangeListener} object.
    */
-  public void addChangeListener( @NotNull ChangeListener<T> listener ) {
+  public void addChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
       listeners.add( listener );
@@ -86,7 +86,7 @@ public class ChangeListenerSupport<T> {
    *
    * @param listener a {@link ChangeListener} object.
    */
-  public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
+  public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
     try {
       listeners.remove( listener );
@@ -101,7 +101,7 @@ public class ChangeListenerSupport<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public void changed( @Nullable Object context, @NotNull String... propertiesPath ) {
+  public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );
 
     lock.readLock().lock();
@@ -120,8 +120,8 @@ public class ChangeListenerSupport<T> {
    * @param propertiesPath a {@link String} object.
    * @return a {@link PropertyChangeListener} object.
    */
-  @NotNull
-  public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
+  @Nonnull
+  public PropertyChangeListener createPropertyListenerDelegate( @Nonnull String... propertiesPath ) {
     final String[] actual = new String[propertiesPath.length + 1];
     System.arraycopy( propertiesPath, 0, actual, 0, propertiesPath.length );
 

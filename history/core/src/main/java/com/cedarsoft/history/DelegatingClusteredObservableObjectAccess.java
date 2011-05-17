@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -46,7 +46,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public ReadWriteLock getLock() {
     return getDelegate().getLock();
   }
@@ -55,7 +55,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void commit( @NotNull T element ) {
+  public void commit( @Nonnull T element ) {
     getDelegate().commit( element );
   }
 
@@ -63,7 +63,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull T element ) {
+  public void remove( @Nonnull T element ) {
     getDelegate().remove( element );
   }
 
@@ -71,7 +71,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull T element ) {
+  public void add( @Nonnull T element ) {
     getDelegate().add( element );
   }
 
@@ -79,7 +79,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends T> elements ) {
+  public void setElements( @Nonnull List<? extends T> elements ) {
     getDelegate().setElements( elements );
   }
 
@@ -87,7 +87,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends T> getElements() {
     return getDelegate().getElements();
   }
@@ -96,7 +96,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
+  public void addElementListener( @Nonnull ElementsListener<? super T> listener ) {
     getDelegate().addElementListener( listener );
   }
 
@@ -104,7 +104,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super T> listener, boolean isTransient ) {
+  public void addElementListener( @Nonnull ElementsListener<? super T> listener, boolean isTransient ) {
     getDelegate().addElementListener( listener, isTransient );
   }
 
@@ -112,7 +112,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
+  public void removeElementListener( @Nonnull ElementsListener<? super T> listener ) {
     getDelegate().removeElementListener( listener );
   }
 
@@ -120,7 +120,7 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends ElementsListener<? super T>> getTransientElementListeners() {
     return getDelegate().getTransientElementListeners();
   }
@@ -130,6 +130,6 @@ public abstract class DelegatingClusteredObservableObjectAccess<T> implements Cl
    *
    * @return the delegate
    */
-  @NotNull
+  @Nonnull
   public abstract ClusteredObservableObjectAccess<T> getDelegate();
 }

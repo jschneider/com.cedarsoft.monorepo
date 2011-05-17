@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -41,9 +41,9 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredHistoryListenerSupport<E> {
-  @NotNull
+  @Nonnull
   private final HistoryListenerSupport<E> transientDelegate = new HistoryListenerSupport<E>();
-  @NotNull
+  @Nonnull
   private final NonTransientHistoryListenerSupport<E> nonTransientDelegate = new NonTransientHistoryListenerSupport<E>();
 
 
@@ -53,7 +53,7 @@ public class ClusteredHistoryListenerSupport<E> {
    * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
     if ( isTransient ) {
       transientDelegate.addHistoryListener( historyListener );
     } else {
@@ -66,7 +66,7 @@ public class ClusteredHistoryListenerSupport<E> {
    *
    * @param historyListener a {@link HistoryListener} object.
    */
-  public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     transientDelegate.removeHistoryListener( historyListener );
     nonTransientDelegate.removeHistoryListener( historyListener );
   }
@@ -76,7 +76,7 @@ public class ClusteredHistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryChanged( @NotNull E entry ) {
+  public void notifyEntryChanged( @Nonnull E entry ) {
     transientDelegate.notifyEntryChanged( entry );
     nonTransientDelegate.notifyEntryChanged( entry );
   }
@@ -86,7 +86,7 @@ public class ClusteredHistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryAdded( @NotNull E entry ) {
+  public void notifyEntryAdded( @Nonnull E entry ) {
     transientDelegate.notifyEntryAdded( entry );
     nonTransientDelegate.notifyEntryAdded( entry );
   }
@@ -96,7 +96,7 @@ public class ClusteredHistoryListenerSupport<E> {
    *
    * @param entry a E object.
    */
-  public void notifyEntryRemoved( @NotNull E entry ) {
+  public void notifyEntryRemoved( @Nonnull E entry ) {
     transientDelegate.notifyEntryRemoved( entry );
     nonTransientDelegate.notifyEntryRemoved( entry );
   }
@@ -106,7 +106,7 @@ public class ClusteredHistoryListenerSupport<E> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends HistoryListener<E>> getTransientHistoryListeners() {
     return transientDelegate.getHistoryListeners();
   }

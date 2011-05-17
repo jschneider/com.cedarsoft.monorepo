@@ -31,7 +31,7 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A workflow definition.
@@ -40,7 +40,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class WorkflowDefinition<T> {
-  @NotNull
+  @Nonnull
   private final State<T> initialState;
 
   /**
@@ -48,7 +48,7 @@ public class WorkflowDefinition<T> {
    *
    * @param initialState a {@link State} object.
    */
-  public WorkflowDefinition( @NotNull State<T> initialState ) {
+  public WorkflowDefinition( @Nonnull State<T> initialState ) {
     this.initialState = initialState;
   }
 
@@ -57,7 +57,7 @@ public class WorkflowDefinition<T> {
    *
    * @return a {@link State} object.
    */
-  @NotNull
+  @Nonnull
   public State<T> getInitialState() {
     return initialState;
   }
@@ -68,8 +68,8 @@ public class WorkflowDefinition<T> {
    * @param object a T object.
    * @return a {@link Workflow} object.
    */
-  @NotNull
-  public Workflow<T> createWorkflow( @NotNull T object ) {
+  @Nonnull
+  public Workflow<T> createWorkflow( @Nonnull T object ) {
     return new Workflow<T>( object, this );
   }
 }

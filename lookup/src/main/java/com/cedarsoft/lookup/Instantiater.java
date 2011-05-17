@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Creates an instance.
@@ -48,14 +48,14 @@ public interface Instantiater<T> {
    * @throws InstantiationFailedException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   T createInstance() throws InstantiationFailedException;
 
   /**
    * A typed instantiator.
    */
   interface Typed<T> extends Instantiater<T> {
-    @NotNull
+    @Nonnull
     Class<? extends T> getType();
   }
 }

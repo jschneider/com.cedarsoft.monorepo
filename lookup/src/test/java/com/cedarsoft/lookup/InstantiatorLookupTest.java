@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -47,7 +47,7 @@ public class InstantiatorLookupTest {
   public void setUp() throws Exception {
     Instantiater<String> instantiater = new Instantiater<String>() {
       @Override
-      @NotNull
+      @Nonnull
       public String createInstance() throws InstantiationFailedException {
         if ( called ) {
           throw new IllegalStateException();

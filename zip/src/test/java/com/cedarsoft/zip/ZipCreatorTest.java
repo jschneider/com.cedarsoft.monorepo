@@ -34,7 +34,7 @@ package com.cedarsoft.zip;
 import com.cedarsoft.matchers.ContainsOnlyFilesMatcher;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.io.FileUtils;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -69,7 +69,7 @@ public class ZipCreatorTest {
 
     ZipExtractor extractor = new ZipExtractor( new ZipExtractor.InvertedCondition( new ZipExtractor.Condition() {
       @Override
-      public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
+      public boolean shallExtract( @Nonnull ArchiveEntry zipEntry ) {
         return true;
       }
     } ) );
@@ -77,7 +77,7 @@ public class ZipCreatorTest {
     assertEquals( 0, target.listFiles().length );
   }
 
-  @NotNull
+  @Nonnull
   private File createZip() throws IOException {
     File file = tmp.newFile( "file.zip" );
     ZipCreator creator = new ZipCreator( file );

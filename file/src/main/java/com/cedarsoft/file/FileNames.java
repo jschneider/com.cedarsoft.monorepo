@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileNames {
-  @NotNull
+  @Nonnull
   private final List<FileName> fileNames = new ArrayList<FileName>();
 
   /**
@@ -51,7 +51,7 @@ public class FileNames {
    *
    * @param fileName a {@link FileName} object.
    */
-  public void add( @NotNull FileName fileName ) {
+  public void add( @Nonnull FileName fileName ) {
     if ( this.fileNames.contains( fileName ) ) {
       throw new IllegalArgumentException( "FileName still contained <" + fileName + ">" );
     }
@@ -63,7 +63,7 @@ public class FileNames {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends FileName> getFileNames() {
     return Collections.unmodifiableList( fileNames );
   }

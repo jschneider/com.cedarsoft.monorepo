@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Will be notified whenever an object will be deleted.
@@ -44,5 +44,5 @@ public interface DeletionProcessor<T> {
    *
    * @param object the object that will be deleted
    */
-  void willBeDeleted( @NotNull T object );
+  void willBeDeleted( @Nonnull T object );
 }

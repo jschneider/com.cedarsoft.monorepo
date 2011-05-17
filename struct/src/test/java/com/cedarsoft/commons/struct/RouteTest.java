@@ -32,8 +32,8 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.Collections;
@@ -98,8 +98,8 @@ public class RouteTest {
 
     Route route = Route.buildRoute( root, path, new NodeFactory() {
       @Override
-      @NotNull
-      public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) {
+      @Nonnull
+      public Node createNode( @Nonnull String name, @Nonnull Lookup context ) {
         return new DefaultNode( name );
       }
     } );

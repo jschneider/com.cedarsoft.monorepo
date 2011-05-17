@@ -34,9 +34,9 @@ package com.cedarsoft.configuration.xstream;
 import com.cedarsoft.configuration.ConfigurationManager;
 import com.cedarsoft.configuration.ConfigurationPersister;
 import com.thoughtworks.xstream.XStream;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -64,18 +64,18 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XStreamPersister implements ConfigurationPersister {
-  @NonNls
+  @Nonnull
   private static final String XML_HEADER_BEGIN = "<?xml version=\"1.0\"";
-  @NonNls
+  @Nonnull
   private static final String XML_ENCODING_BEGIN = " encoding=\"";
-  @NonNls
+  @Nonnull
   private static final String XML_ENCODING_SUFFIX = "\"";
-  @NonNls
+  @Nonnull
   private static final String XML_HEADER_SUFFIX = "?>";
 
-  @NotNull
+  @Nonnull
   private final XStream xStream;
-  @NotNull
+  @Nonnull
   private static final Charset DEFAULT_CHARSET = Charset.forName( "UTF-8" );
 
   /**
@@ -93,7 +93,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * Persists the given configuration manager
    */
   @Override
-  public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out ) throws IOException {
+  public void persist( @Nonnull ConfigurationManager configurationManager, @Nonnull Writer out ) throws IOException {
     persist( configurationManager, out, null );
   }
 
@@ -101,7 +101,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  public void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
+  public void persist( @Nonnull ConfigurationManager configurationManager, @Nonnull Writer out, @Nullable String encoding ) throws IOException {
     persist( configurationManager.getConfigurations(), out, encoding );
   }
 
@@ -111,7 +111,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * Persists the given configurations
    */
   @Override
-  public void persist( @NotNull List<?> configurations, @NotNull Writer out ) throws IOException {
+  public void persist( @Nonnull List<?> configurations, @Nonnull Writer out ) throws IOException {
     persist( configurations, out, null );
   }
 
@@ -119,7 +119,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  public void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException {
+  public void persist( @Nonnull List<?> configurations, @Nonnull Writer out, @Nullable String encoding ) throws IOException {
     out.write( createXmlHeader( encoding ) );
     out.write( "\n" );
     xStream.toXML( new Configurations( configurations ), out );
@@ -131,9 +131,8 @@ public class XStreamPersister implements ConfigurationPersister {
    * @param encoding a {@link String} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
-  protected String createXmlHeader( @Nullable @NonNls String encoding ) {
+  @Nonnull
+  protected String createXmlHeader( @Nullable String encoding ) {
     if ( encoding == null ) {
       return XML_HEADER_BEGIN + XML_HEADER_SUFFIX;
     } else {
@@ -148,9 +147,8 @@ public class XStreamPersister implements ConfigurationPersister {
    */
   @Deprecated
   @Override
-  @NotNull
-  @NonNls
-  public String persist( @NotNull ConfigurationManager manager ) throws IOException {
+  @Nonnull
+  public String persist( @Nonnull ConfigurationManager manager ) throws IOException {
     StringWriter out = new StringWriter();
     persist( manager.getConfigurations(), out );
     return out.toString();
@@ -162,8 +160,8 @@ public class XStreamPersister implements ConfigurationPersister {
    * Loads the configurations
    */
   @Override
-  @NotNull
-  public List<?> load( @NotNull @NonNls String serialized ) throws IOException {
+  @Nonnull
+  public List<?> load( @Nonnull String serialized ) throws IOException {
     StringReader reader = new StringReader( serialized );
     return load( reader );
   }
@@ -172,8 +170,8 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public List<?> load( @NotNull File file ) throws IOException {
+  @Nonnull
+  public List<?> load( @Nonnull File file ) throws IOException {
     BufferedInputStream in = new BufferedInputStream( new FileInputStream( file ) );
     try {
       return load( in, DEFAULT_CHARSET );
@@ -186,8 +184,8 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException {
+  @Nonnull
+  public List<?> load( @Nonnull BufferedInputStream in, @Nonnull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
     return load( ( Reader ) new InputStreamReader( in, charset ) );
   }
@@ -196,8 +194,8 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public List<?> load( @NotNull Reader in ) throws IOException {
+  @Nonnull
+  public List<?> load( @Nonnull Reader in ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
     BufferedReader br = new BufferedReader( in );
     String firstLine = br.readLine().trim();//xml
@@ -213,7 +211,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  public void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException {
+  public void persist( @Nonnull ConfigurationManager manager, @Nonnull File file ) throws IOException {
     OutputStream out = new BufferedOutputStream( new FileOutputStream( file ) );
     try {
       persist( manager, out, DEFAULT_CHARSET );
@@ -226,7 +224,7 @@ public class XStreamPersister implements ConfigurationPersister {
    * {@inheritDoc}
    */
   @Override
-  public void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException {
+  public void persist( @Nonnull ConfigurationManager manager, @Nonnull OutputStream out, @Nonnull Charset charset ) throws IOException {
     //noinspection IOResourceOpenedButNotSafelyClosed
     Writer writer = new OutputStreamWriter( out, charset );
     persist( manager, writer, charset.name() );
@@ -235,14 +233,14 @@ public class XStreamPersister implements ConfigurationPersister {
 
 
   private static class Configurations {
-    @NotNull
+    @Nonnull
     private final List<Object> configurations = new ArrayList<Object>();
 
-    private Configurations( @NotNull List<?> configurations ) {
+    private Configurations( @Nonnull List<?> configurations ) {
       this.configurations.addAll( configurations );
     }
 
-    @NotNull
+    @Nonnull
     public List<?> getConfigurations() {
       return Collections.unmodifiableList( configurations );
     }

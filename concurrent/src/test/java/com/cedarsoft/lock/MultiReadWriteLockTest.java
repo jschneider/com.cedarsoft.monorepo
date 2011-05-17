@@ -32,7 +32,7 @@
 package com.cedarsoft.lock;
 
 import com.cedarsoft.ThreadUtils;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import org.junit.*;
 import org.junit.rules.*;
 

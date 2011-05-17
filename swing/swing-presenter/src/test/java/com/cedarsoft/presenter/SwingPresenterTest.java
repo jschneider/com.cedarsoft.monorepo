@@ -36,7 +36,7 @@ import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.JComponent;
@@ -85,17 +85,17 @@ public class SwingPresenterTest {
     }
 
     @Override
-    @NotNull
-    protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+    @Nonnull
+    protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
       return child.getLookup().lookup( SwingPresenter.class );
     }
 
     @Override
-    protected void bind( @NotNull JPanel presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+    protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected JPanel createPresentation() {
       JPanel panel = new JPanel();
       panel.setEnabled( enablePanel );

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.configuration;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultConfigurationManager implements ConfigurationManager {
-  @NotNull
+  @Nonnull
   private final List<Object> configurations = new ArrayList<Object>();
 
   /**
@@ -57,7 +57,7 @@ public class DefaultConfigurationManager implements ConfigurationManager {
    *
    * @param initialConfigurations a {@link List} object.
    */
-  public DefaultConfigurationManager( @NotNull List<?> initialConfigurations ) {
+  public DefaultConfigurationManager( @Nonnull List<?> initialConfigurations ) {
     configurations.addAll( initialConfigurations );
   }
 
@@ -65,7 +65,7 @@ public class DefaultConfigurationManager implements ConfigurationManager {
    * {@inheritDoc}
    */
   @Override
-  public void addConfiguration( @NotNull Object configuration ) {
+  public void addConfiguration( @Nonnull Object configuration ) {
     configurations.add( configuration );
   }
 
@@ -73,7 +73,7 @@ public class DefaultConfigurationManager implements ConfigurationManager {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<?> getConfigurations() {
     return Collections.unmodifiableList( configurations );
   }
@@ -82,8 +82,8 @@ public class DefaultConfigurationManager implements ConfigurationManager {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <T> T getConfiguration( @NotNull Class<T> configurationType ) throws IllegalArgumentException {
+  @Nonnull
+  public <T> T getConfiguration( @Nonnull Class<T> configurationType ) throws IllegalArgumentException {
     for ( Object configuration : configurations ) {
       if ( configuration.getClass().equals( configurationType ) ) {
         return configurationType.cast( configuration );

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.configuration;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * Provides the default value for a configuration. Sometimes it is usefull to provide
@@ -51,6 +51,6 @@ public interface DefaultValueProvider {
    * @param <T>  a T object.
    * @return the default value
    */
-  @NotNull
-  <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type );
+  @Nonnull
+  <T> T getDefaultValue( @Nonnull String key, @Nonnull Class<T> type );
 }

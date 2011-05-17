@@ -37,8 +37,8 @@ import de.xore.util.persistence.QueryManager;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Enumeration;
 import java.util.List;
@@ -60,19 +60,19 @@ import java.util.Properties;
  *         Systems</a>
  */
 public class HibernateQueryManager extends QueryManager<Session> {
-  public HibernateQueryManager( @NotNull HibernateDatabaseConnector connector ) {
+  public HibernateQueryManager( @Nonnull HibernateDatabaseConnector connector ) {
     super( connector );
   }
 
   @Override
-  @NotNull
-  public <T> List<T> getQueryResult( @NotNull String queryString ) throws DatabaseException {
+  @Nonnull
+  public <T> List<T> getQueryResult( @Nonnull String queryString ) throws DatabaseException {
     return getQueryResult( queryString, null );
   }
 
   @Override
-  @NotNull
-  public <T> List<T> getQueryResult( @NotNull String queryString, @Nullable Properties params ) throws DatabaseException {
+  @Nonnull
+  public <T> List<T> getQueryResult( @Nonnull String queryString, @Nullable Properties params ) throws DatabaseException {
     Session session = connector.getSession();
     Transaction tx = session.beginTransaction();
 
@@ -86,14 +86,14 @@ public class HibernateQueryManager extends QueryManager<Session> {
   }
 
   @Override
-  @NotNull
-  public <T> List<T> getQueryResult( @NotNull String queryString, @NotNull String property, @NotNull String value ) throws DatabaseException {
+  @Nonnull
+  public <T> List<T> getQueryResult( @Nonnull String queryString, @Nonnull String property, @Nonnull String value ) throws DatabaseException {
     Properties properties = new Properties();
     properties.setProperty( property, value );
     return getQueryResult( queryString, properties );
   }
 
-  private static void setParams( @NotNull Query query, @Nullable Properties params ) {
+  private static void setParams( @Nonnull Query query, @Nullable Properties params ) {
     if ( params == null ) {
       return;
     }

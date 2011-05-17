@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -67,7 +67,7 @@ public class SwingHelper {
    *
    * @param runnable a {@link Runnable} object.
    */
-  public static void invokeAndWait( @NotNull Runnable runnable ) {
+  public static void invokeAndWait( @Nonnull Runnable runnable ) {
     ThreadUtils.invokeInEventDispatchThread( runnable );
   }
 
@@ -79,7 +79,7 @@ public class SwingHelper {
    *         JFrame gehört.
    */
   @Nullable
-  public static JFrame rootFrame( @NotNull Component component ) {
+  public static JFrame rootFrame( @Nonnull Component component ) {
     Window window = SwingUtilities.getWindowAncestor( component );
     if ( window instanceof JFrame ) {
       return ( JFrame ) window;
@@ -109,7 +109,7 @@ public class SwingHelper {
    *
    * @param runnable the runnable
    */
-  public static void early( @NotNull Runnable runnable ) {
+  public static void early( @Nonnull Runnable runnable ) {
     if ( SwingHelper.isEventDispatchThread() ) {
       runnable.run();
     } else {
@@ -126,8 +126,8 @@ public class SwingHelper {
    * @throws InvocationTargetException if any.
    * @throws InterruptedException      if any.
    */
-  @NotNull
-  public static JFrame showFrame( @NotNull Container contentPane ) throws InvocationTargetException, InterruptedException {
+  @Nonnull
+  public static JFrame showFrame( @Nonnull Container contentPane ) throws InvocationTargetException, InterruptedException {
     final JFrame frame = new JFrame();
     frame.pack();
     frame.setLocationRelativeTo( null );

@@ -32,7 +32,7 @@
 package com.cedarsoft;
 
 import net.sf.cglib.proxy.Enhancer;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Exception;
 import java.lang.IllegalArgumentException;
@@ -54,7 +54,7 @@ public abstract class EasyMockTemplate {
   /**
    * Mock objects managed by this template
    */
-  @NotNull
+  @Nonnull
   private final List<Object> mocks = new ArrayList<Object>();
 
   /**
@@ -64,7 +64,7 @@ public abstract class EasyMockTemplate {
    * @throws IllegalArgumentException
    *          if the list of mock objects is <code>null</code> or empty.
    */
-  protected EasyMockTemplate( @NotNull Object... mocks ) {
+  protected EasyMockTemplate( @Nonnull Object... mocks ) {
     if ( mocks.length == 0 ) {
       throw new IllegalArgumentException( "The list of mock objects should not be empty" );
     }
@@ -76,7 +76,7 @@ public abstract class EasyMockTemplate {
     }
   }
 
-  private static Object checkAndReturnMock( @NotNull Object mock ) {
+  private static Object checkAndReturnMock( @Nonnull Object mock ) {
     if ( Enhancer.isEnhanced( mock.getClass() ) ) {
       return mock;
     }

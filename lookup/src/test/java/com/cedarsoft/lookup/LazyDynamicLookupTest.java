@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.io.Serializable;
@@ -57,7 +57,7 @@ public class LazyDynamicLookupTest {
       }
 
       @Override
-      @NotNull
+      @Nonnull
       protected String createInstance() {
         if ( called ) {
           throw new IllegalStateException( "has still been called" );

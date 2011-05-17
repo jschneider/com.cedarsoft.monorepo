@@ -34,9 +34,9 @@ package com.cedarsoft.registry;
 import com.cedarsoft.Converter;
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
@@ -53,7 +53,7 @@ public interface Registry<T> {
    *
    * @return the stored objects
    */
-  @NotNull
+  @Nonnull
   List<? extends T> getStoredObjects();
 
   /**
@@ -63,7 +63,7 @@ public interface Registry<T> {
    * @return the first object that matches or null
    */
   @Nullable
-  T findStoredObject( @NotNull @NonNls Matcher<T> matcher );
+  T findStoredObject( @Nonnull Matcher<T> matcher );
 
   /**
    * Finds the stored objects
@@ -74,8 +74,8 @@ public interface Registry<T> {
    *
    * @throws NotFoundException
    */
-  @NotNull
-  T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException;
+  @Nonnull
+  T findStoredObject( @Nonnull Matcher<T> matcher, @Nonnull String notFoundMessage ) throws NotFoundException;
 
   /**
    * Finds the stored objects
@@ -83,8 +83,8 @@ public interface Registry<T> {
    * @param matcher the matcher
    * @return the found objects that match the matcher
    */
-  @NotNull
-  List<? extends T> findStoredObjects( @NotNull @NonNls Matcher<T> matcher );
+  @Nonnull
+  List<? extends T> findStoredObjects( @Nonnull Matcher<T> matcher );
 
   /**
    * Returns the stored objects
@@ -94,8 +94,8 @@ public interface Registry<T> {
    * @param <C>       the type of the target of the conversion
    * @return the matched and converted objects
    */
-  @NotNull
-  <C> List<? extends C> findStoredObjects( @NotNull @NonNls Matcher<T> matcher, @NotNull Converter<T, C> converter );
+  @Nonnull
+  <C> List<? extends C> findStoredObjects( @Nonnull Matcher<T> matcher, @Nonnull Converter<T, C> converter );
 
   /**
    * Stores the object
@@ -103,14 +103,14 @@ public interface Registry<T> {
    * @param object the object that is stored
    * @throws StillContainedException if any.
    */
-  void store( @NotNull T object ) throws StillContainedException;
+  void store( @Nonnull T object ) throws StillContainedException;
 
   /**
    * Notify that the object has been updated
    *
    * @param object the object that has been updated
    */
-  void updated( @NotNull T object ) throws NotFoundException;
+  void updated( @Nonnull T object ) throws NotFoundException;
 
   /**
    * Returns the (optional) comparator
@@ -132,14 +132,14 @@ public interface Registry<T> {
    *
    * @param listener the listener
    */
-  void addListener( @NotNull Listener<T> listener );
+  void addListener( @Nonnull Listener<T> listener );
 
   /**
    * Removes the listeners
    *
    * @param listener the listener that is removed
    */
-  void removeListener( @NotNull Listener<T> listener );
+  void removeListener( @Nonnull Listener<T> listener );
 
   /**
    * Removes the object
@@ -147,9 +147,9 @@ public interface Registry<T> {
    * @param object the object
    * @throws NotFoundException if the object can't be found
    */
-  void remove( @NotNull T object ) throws NotFoundException;
+  void remove( @Nonnull T object ) throws NotFoundException;
 
-  void remove( @NotNull T object, @NotNull String removeMessage ) throws NotFoundException;
+  void remove( @Nonnull T object, @Nonnull String removeMessage ) throws NotFoundException;
 
   /**
    * The listener that is notified about changes of the registry
@@ -162,21 +162,21 @@ public interface Registry<T> {
      *
      * @param object the object
      */
-    void objectStored( @NotNull T object );
+    void objectStored( @Nonnull T object );
 
     /**
      * The object that has been removed
      *
      * @param object the object that has been removed
      */
-    void objectRemoved( @NotNull T object );
+    void objectRemoved( @Nonnull T object );
 
     /**
      * The object that has been updated
      *
      * @param object the object that has been updated
      */
-    void objectUpdated( @NotNull T object );
+    void objectUpdated( @Nonnull T object );
   }
 
   /**
@@ -191,6 +191,6 @@ public interface Registry<T> {
      * @param object the object
      * @return true if the object matches, false otherwise
      */
-    boolean matches( @NotNull T object );
+    boolean matches( @Nonnull T object );
   }
 }

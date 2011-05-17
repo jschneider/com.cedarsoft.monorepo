@@ -31,9 +31,9 @@
 
 package com.cedarsoft.configuration;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -58,7 +58,7 @@ public interface ConfigurationPersister {
    * @param out                  the writer the configuration is written to
    * @throws IOException if any.
    */
-  void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out ) throws IOException;
+  void persist( @Nonnull ConfigurationManager configurationManager, @Nonnull Writer out ) throws IOException;
 
   /**
    * Persists the given configurations
@@ -67,7 +67,7 @@ public interface ConfigurationPersister {
    * @param out            the writer the configurations are written to
    * @throws IOException if any.
    */
-  void persist( @NotNull List<?> configurations, @NotNull Writer out ) throws IOException;
+  void persist( @Nonnull List<?> configurations, @Nonnull Writer out ) throws IOException;
 
   /**
    * Persiste the configurations of the given manager
@@ -78,9 +78,8 @@ public interface ConfigurationPersister {
    * @throws IOException if any.
    */
   @Deprecated
-  @NotNull
-  @NonNls
-  String persist( @NotNull ConfigurationManager manager ) throws IOException;
+  @Nonnull
+  String persist( @Nonnull ConfigurationManager manager ) throws IOException;
 
   /**
    * Persists the state to the given file (in UTF-8)
@@ -89,7 +88,7 @@ public interface ConfigurationPersister {
    * @param file    the file the state is persisted to
    * @throws IOException if any.
    */
-  void persist( @NotNull ConfigurationManager manager, @NotNull File file ) throws IOException;
+  void persist( @Nonnull ConfigurationManager manager, @Nonnull File file ) throws IOException;
 
   /**
    * <p>persist</p>
@@ -99,7 +98,7 @@ public interface ConfigurationPersister {
    * @param encoding             a {@link String} object.
    * @throws IOException if any.
    */
-  void persist( @NotNull ConfigurationManager configurationManager, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
+  void persist( @Nonnull ConfigurationManager configurationManager, @Nonnull Writer out, @Nullable String encoding ) throws IOException;
 
   /**
    * <p>persist</p>
@@ -109,7 +108,7 @@ public interface ConfigurationPersister {
    * @param encoding       a {@link String} object.
    * @throws IOException if any.
    */
-  void persist( @NotNull List<?> configurations, @NotNull Writer out, @Nullable @NonNls String encoding ) throws IOException;
+  void persist( @Nonnull List<?> configurations, @Nonnull Writer out, @Nullable String encoding ) throws IOException;
 
   /**
    * <p>persist</p>
@@ -119,7 +118,7 @@ public interface ConfigurationPersister {
    * @param charset a {@link Charset} object.
    * @throws IOException if any.
    */
-  void persist( @NotNull ConfigurationManager manager, @NotNull OutputStream out, @NotNull Charset charset ) throws IOException;
+  void persist( @Nonnull ConfigurationManager manager, @Nonnull OutputStream out, @Nonnull Charset charset ) throws IOException;
 
   /**
    * <p>load</p>
@@ -129,8 +128,8 @@ public interface ConfigurationPersister {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  List<?> load( @NotNull @NonNls String serialized ) throws IOException;
+  @Nonnull
+  List<?> load( @Nonnull String serialized ) throws IOException;
 
   /**
    * <p>load</p>
@@ -140,8 +139,8 @@ public interface ConfigurationPersister {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  List<?> load( @NotNull Reader in ) throws IOException;
+  @Nonnull
+  List<?> load( @Nonnull Reader in ) throws IOException;
 
   /**
    * <p>load</p>
@@ -151,8 +150,8 @@ public interface ConfigurationPersister {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  List<?> load( @NotNull File file ) throws IOException;
+  @Nonnull
+  List<?> load( @Nonnull File file ) throws IOException;
 
   /**
    * <p>load</p>
@@ -163,6 +162,6 @@ public interface ConfigurationPersister {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  List<?> load( @NotNull BufferedInputStream in, @NotNull Charset charset ) throws IOException;
+  @Nonnull
+  List<?> load( @Nonnull BufferedInputStream in, @Nonnull Charset charset ) throws IOException;
 }

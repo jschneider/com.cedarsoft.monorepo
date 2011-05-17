@@ -31,7 +31,7 @@
 
 package com.cedarsoft.registry;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Comparator;
 import java.util.List;
@@ -51,6 +51,6 @@ public interface RegistryFactory<T, R extends Registry<T>> {
    * @param comparator the comparator that must be used for the created registry
    * @return the newly created registry
    */
-  @NotNull
-  R createRegistry( @NotNull List<? extends T> objects, @NotNull Comparator<T> comparator );
+  @Nonnull
+  R createRegistry( @Nonnull List<? extends T> objects, @Nonnull Comparator<T> comparator );
 }

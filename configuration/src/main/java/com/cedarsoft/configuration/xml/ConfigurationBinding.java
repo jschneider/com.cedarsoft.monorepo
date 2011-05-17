@@ -32,7 +32,7 @@
 package com.cedarsoft.configuration.xml;
 
 import com.jgoodies.binding.value.ValueModel;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Binds a configuration to a bean.
@@ -51,7 +51,7 @@ public class ConfigurationBinding {
    * @param <T>                 a T object.
    * @return the configuration connector
    */
-  public static <T> ConfigurationConnector<T> bind( @NotNull ConfigurationAccess<T> configurationAccess, @NotNull ValueModel valueModel ) {
+  public static <T> ConfigurationConnector<T> bind( @Nonnull ConfigurationAccess<T> configurationAccess, @Nonnull ValueModel valueModel ) {
     ConfigurationConnector<T> connector = new ConfigurationConnector<T>( valueModel, configurationAccess );
     connector.readFromConfiguration();
     return connector;

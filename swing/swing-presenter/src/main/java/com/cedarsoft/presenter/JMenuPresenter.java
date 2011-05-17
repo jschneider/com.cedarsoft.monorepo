@@ -31,7 +31,7 @@
 
 package com.cedarsoft.presenter;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JMenu;
 
@@ -46,6 +46,6 @@ public interface JMenuPresenter extends JMenuItemPresenter<JMenu> {
    *
    * @return a {@link JMenu} object.
    */
-  @NotNull
+  @Nonnull
   JMenu createPresentation();
 }

@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A presenter that is able to create a presentation using a given struct.
@@ -49,6 +49,6 @@ public interface Presenter<T> {
    * @param struct the struct representing the structure for the presentation
    * @return the presentation
    */
-  @NotNull
-  T present( @NotNull StructPart struct );
+  @Nonnull
+  T present( @Nonnull StructPart struct );
 }

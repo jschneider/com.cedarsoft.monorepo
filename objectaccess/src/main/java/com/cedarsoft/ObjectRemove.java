@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Supports object removals
@@ -44,5 +44,5 @@ public interface ObjectRemove<T> {
    *
    * @param element the element that is removed
    */
-  void remove( @NotNull T element );
+  void remove( @Nonnull T element );
 }

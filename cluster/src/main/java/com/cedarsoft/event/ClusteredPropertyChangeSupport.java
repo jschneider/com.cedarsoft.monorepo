@@ -31,9 +31,9 @@
 
 package com.cedarsoft.event;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -51,11 +51,11 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredPropertyChangeSupport {
-  @NotNull
+  @Nonnull
   private final Object sourceBean;
-  @NotNull
+  @Nonnull
   private final PropertyChangeSupport transientSupport;
-  @NotNull
+  @Nonnull
   private final NonTransientPropertyChangeSupport nonTransientSupport;
 
   /**
@@ -63,7 +63,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @param sourceBean a {@link Object} object.
    */
-  public ClusteredPropertyChangeSupport( @NotNull Object sourceBean ) {
+  public ClusteredPropertyChangeSupport( @Nonnull Object sourceBean ) {
     this.sourceBean = sourceBean;
     transientSupport = new PropertyChangeSupport( sourceBean );
     nonTransientSupport = new NonTransientPropertyChangeSupport( sourceBean );
@@ -74,7 +74,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  public void removePropertyChangeListener( @NotNull PropertyChangeListener listener ) {
+  public void removePropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     transientSupport.removePropertyChangeListener( listener );
     nonTransientSupport.removePropertyChangeListener( listener );
   }
@@ -85,7 +85,7 @@ public class ClusteredPropertyChangeSupport {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  public void removePropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
+  public void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     transientSupport.removePropertyChangeListener( propertyName, listener );
     nonTransientSupport.removePropertyChangeListener( propertyName, listener );
   }
@@ -95,7 +95,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  public void addPropertyChangeListener( @NotNull PropertyChangeListener listener ) {
+  public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     addPropertyChangeListener( listener, true );
   }
 
@@ -105,7 +105,7 @@ public class ClusteredPropertyChangeSupport {
    * @param listener    a {@link PropertyChangeListener} object.
    * @param isTransient a boolean.
    */
-  public void addPropertyChangeListener( @NotNull PropertyChangeListener listener, boolean isTransient ) {
+  public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addPropertyChangeListener( listener );
     } else {
@@ -119,7 +119,7 @@ public class ClusteredPropertyChangeSupport {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener ) {
+  public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     addPropertyChangeListener( propertyName, listener, true );
   }
 
@@ -130,7 +130,7 @@ public class ClusteredPropertyChangeSupport {
    * @param listener     a {@link PropertyChangeListener} object.
    * @param isTransient  a boolean.
    */
-  public void addPropertyChangeListener( @NotNull @NonNls String propertyName, @NotNull PropertyChangeListener listener, boolean isTransient ) {
+  public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addPropertyChangeListener( propertyName, listener );
     } else {
@@ -145,7 +145,7 @@ public class ClusteredPropertyChangeSupport {
    * @param oldValue     a {@link Object} object.
    * @param newValue     a {@link Object} object.
    */
-  public void firePropertyChange( @NotNull @NonNls String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
+  public void firePropertyChange( @Nonnull String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
     if ( oldValue != null && newValue != null && oldValue.equals( newValue ) ) {
       return;
     }
@@ -157,7 +157,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @param evt a {@link PropertyChangeEvent} object.
    */
-  public void firePropertyChange( @NotNull PropertyChangeEvent evt ) {
+  public void firePropertyChange( @Nonnull PropertyChangeEvent evt ) {
     Object oldValue = evt.getOldValue();
     Object newValue = evt.getNewValue();
     if ( oldValue != null && newValue != null && oldValue.equals( newValue ) ) {
@@ -176,8 +176,8 @@ public class ClusteredPropertyChangeSupport {
    * @param newValue     the new value
    * @return the event
    */
-  @NotNull
-  protected PropertyChangeEvent createEvent( @NotNull @NonNls String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
+  @Nonnull
+  protected PropertyChangeEvent createEvent( @Nonnull String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
     return new PropertyChangeEvent( sourceBean, propertyName, oldValue, newValue );
   }
 
@@ -186,12 +186,12 @@ public class ClusteredPropertyChangeSupport {
    *
    * @return a {@link Object} object.
    */
-  @NotNull
+  @Nonnull
   public Object getSourceBean() {
     return sourceBean;
   }
 
-  @NotNull
+  @Nonnull
   PropertyChangeSupport getTransientSupport() {
     return transientSupport;
   }
@@ -201,7 +201,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends PropertyChangeListener> getNonTransientListeners() {
     return Collections.unmodifiableList( nonTransientSupport.getPropertyChangeListeners() );
   }
@@ -211,7 +211,7 @@ public class ClusteredPropertyChangeSupport {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends PropertyChangeListener> getTransientListeners() {
     return Collections.unmodifiableList( Arrays.asList( getTransientSupport().getPropertyChangeListeners() ) );
   }

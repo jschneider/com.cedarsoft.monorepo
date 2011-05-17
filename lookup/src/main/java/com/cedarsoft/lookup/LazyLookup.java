@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.util.AbstractMap;
@@ -66,7 +66,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Map<Class<?>, Object> lookups() {
     if ( this.lookups == null ) {
       Set<Map.Entry<Class<?>, Object>> entries = new HashSet<Map.Entry<Class<?>, Object>>();
@@ -77,7 +77,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
     return lookups;
   }
 
-  private void registerSuperTypes( @NotNull Class<?> clazz, @NotNull Set<Map.Entry<Class<?>, Object>> entries ) {
+  private void registerSuperTypes( @Nonnull Class<?> clazz, @Nonnull Set<Map.Entry<Class<?>, Object>> entries ) {
     Class<?> currentClass = clazz;
     //noinspection ObjectEquality
     while ( currentClass != null && currentClass != Object.class ) {
@@ -95,7 +95,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    *
    * @return an instance of {@link #getType()}
    */
-  @NotNull
+  @Nonnull
   protected abstract T createInstance();
 
   /**
@@ -112,7 +112,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    */
   @Override
   @Nullable
-  public <T> T lookup( @NotNull Class<T> type ) {
+  public <T> T lookup( @Nonnull Class<T> type ) {
     if ( type.isAssignableFrom( getType() ) ) {
       return type.cast( getValue() );
     }
@@ -137,7 +137,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
@@ -145,7 +145,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
@@ -153,7 +153,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
@@ -161,7 +161,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
@@ -169,57 +169,57 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * A special class map
    */
   private static final class LookupsMap extends AbstractMap<Class<?>, Object> {
-    @NotNull
+    @Nonnull
     private final Set<Entry<Class<?>, Object>> entries;
 
-    LookupsMap( @NotNull Set<Entry<Class<?>, Object>> entries ) {
+    LookupsMap( @Nonnull Set<Entry<Class<?>, Object>> entries ) {
       //noinspection AssignmentToCollectionOrArrayFieldFromParameter
       this.entries = entries;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Set<Entry<Class<?>, Object>> entrySet() {
       //noinspection ReturnOfCollectionOrArrayField
@@ -231,15 +231,15 @@ public abstract class LazyLookup<T> extends AbstractLookup {
    * An entry containing a lazy value.
    */
   private final class LazyEntry implements Map.Entry<Class<?>, Object> {
-    @NotNull
+    @Nonnull
     private final Class<?> aClass;
 
-    LazyEntry( @NotNull Class<?> aClass ) {
+    LazyEntry( @Nonnull Class<?> aClass ) {
       this.aClass = aClass;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public Class<?> getKey() {
       return aClass;
     }

@@ -36,8 +36,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jdom.transform.JDOMResult;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -73,9 +73,8 @@ public class XmlCommons {
    * @param xml a {@link String} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
-  public static String format( @NotNull @NonNls String xml ) {
+  @Nonnull
+  public static String format( @Nonnull String xml ) {
     if ( xml.trim().length() == 0 ) {
       return "";
     }
@@ -97,7 +96,7 @@ public class XmlCommons {
    * @param document the document
    * @throws IOException if an io exception occures
    */
-  public static void writeXml( @NotNull File file, @NotNull Document document ) throws IOException {
+  public static void writeXml( @Nonnull File file, @Nonnull Document document ) throws IOException {
     Writer writer = null;
     try {
       writer = new BufferedWriter( new FileWriter( file ) );
@@ -114,7 +113,7 @@ public class XmlCommons {
    *
    * @return a {@link DocumentBuilder} object.
    */
-  @NotNull
+  @Nonnull
   public static DocumentBuilder getDocumentBuilder() {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -131,7 +130,7 @@ public class XmlCommons {
    * @param document a {@link org.w3c.dom.Document} object.
    * @param out      a {@link OutputStream} object.
    */
-  public static void out( @NotNull org.w3c.dom.Document document, @NotNull OutputStream out ) {
+  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull OutputStream out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
@@ -145,7 +144,7 @@ public class XmlCommons {
    * @param document a {@link org.w3c.dom.Document} object.
    * @param out      a {@link Writer} object.
    */
-  public static void out( @NotNull org.w3c.dom.Document document, @NotNull Writer out ) {
+  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull Writer out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
@@ -159,8 +158,8 @@ public class XmlCommons {
    * @param document a {@link org.w3c.dom.Document} object.
    * @return a {@link Document} object.
    */
-  @NotNull
-  public static Document toJDom( @NotNull org.w3c.dom.Document document ) {
+  @Nonnull
+  public static Document toJDom( @Nonnull org.w3c.dom.Document document ) {
     try {
       JDOMResult target = new JDOMResult();
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), target );
@@ -179,8 +178,8 @@ public class XmlCommons {
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
-  @NotNull
-  public static org.w3c.dom.Document parse( @NotNull byte[] bytes ) throws IOException, SAXException {
+  @Nonnull
+  public static org.w3c.dom.Document parse( @Nonnull byte[] bytes ) throws IOException, SAXException {
     return parse( new ByteArrayInputStream( bytes ) );
   }
 
@@ -193,8 +192,8 @@ public class XmlCommons {
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
-  @NotNull
-  public static org.w3c.dom.Document parse( @NotNull InputStream in ) throws IOException, SAXException {
+  @Nonnull
+  public static org.w3c.dom.Document parse( @Nonnull InputStream in ) throws IOException, SAXException {
     return getDocumentBuilder().parse( in );
   }
 
@@ -204,8 +203,8 @@ public class XmlCommons {
    * @param document a {@link org.w3c.dom.Document} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  public static String toString( @NotNull org.w3c.dom.Document document ) {
+  @Nonnull
+  public static String toString( @Nonnull org.w3c.dom.Document document ) {
     StringWriter stringWriter = new StringWriter();
     out( document, stringWriter );
     return stringWriter.toString();

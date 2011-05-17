@@ -31,15 +31,13 @@
 
 package com.cedarsoft.app;
 
-import javax.inject.Inject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
-import java.lang.String;
 
 /**
  * Offers access to the application home.
@@ -47,15 +45,14 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
-  @NotNull
+  @Nonnull
   private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
   /**
    * Constant <code>SUFFIX_SANDBOX="-sandbox"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String SUFFIX_SANDBOX = "-sandbox";
-  @NonNls
+  @Nonnull
   private final String applicationName;
   private final File applicationHome;
 
@@ -66,7 +63,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * @throws IOException if an io exception occures
    */
   @Inject
-  public DefaultApplicationHomeAccess( @ApplicationName @NotNull @NonNls String applicationName ) throws IOException {
+  public DefaultApplicationHomeAccess( @ApplicationName @Nonnull String applicationName ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + applicationName ), applicationName );
   }
 
@@ -77,7 +74,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * @param sandbox         a boolean.
    * @throws IOException if any.
    */
-  public DefaultApplicationHomeAccess( @NotNull @NonNls String applicationName, boolean sandbox ) throws IOException {
+  public DefaultApplicationHomeAccess( @Nonnull String applicationName, boolean sandbox ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + getApplicationDirName( applicationName, sandbox ) ), applicationName );
   }
 
@@ -88,9 +85,8 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * @param sandbox         a boolean.
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
-  public static String getApplicationDirName( @NotNull @NonNls String applicationName, boolean sandbox ) {
+  @Nonnull
+  public static String getApplicationDirName( @Nonnull String applicationName, boolean sandbox ) {
     if ( sandbox ) {
       return applicationName + SUFFIX_SANDBOX;
     } else {
@@ -105,7 +101,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * @param applicationName the application name
    * @throws IOException if any.
    */
-  public DefaultApplicationHomeAccess( @NotNull File applicationHome, @NotNull @NonNls String applicationName ) throws IOException {
+  public DefaultApplicationHomeAccess( @Nonnull File applicationHome, @Nonnull String applicationName ) throws IOException {
     if ( applicationName.length() < 3 ) {
       throw new IllegalArgumentException( "application name is too short: " + applicationName );
     }
@@ -127,7 +123,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * The application name
    */
   @Override
-  @NotNull
+  @Nonnull
   public String getApplicationName() {
     return applicationName;
   }
@@ -138,7 +134,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * The application home dir
    */
   @Override
-  @NotNull
+  @Nonnull
   public File getApplicationHome() {
     return applicationHome;
   }

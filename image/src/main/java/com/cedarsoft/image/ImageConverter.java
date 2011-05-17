@@ -31,7 +31,7 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -54,7 +54,7 @@ public class ImageConverter {
    * @param targetDPI   the target resolution
    * @return the dimension
    */
-  public Dimension calculateNewDimensions( @NotNull RenderedImage original, @NotNull DPI originalDPI, @NotNull DPI targetDPI ) {
+  public Dimension calculateNewDimensions( @Nonnull RenderedImage original, @Nonnull DPI originalDPI, @Nonnull DPI targetDPI ) {
     int newWidth = original.getWidth() * targetDPI.getDpi() / originalDPI.getDpi();
     int newHeight = original.getHeight() * targetDPI.getDpi() / originalDPI.getDpi();
     return new Dimension( newWidth, newHeight );
@@ -67,8 +67,8 @@ public class ImageConverter {
    * @param targetDimension a {@link Dimension} object.
    * @return a {@link BufferedImage} object.
    */
-  @NotNull
-  public BufferedImage resize( @NotNull Image original, @NotNull Dimension targetDimension ) {
+  @Nonnull
+  public BufferedImage resize( @Nonnull Image original, @Nonnull Dimension targetDimension ) {
     BufferedImage resized = new BufferedImage( targetDimension.width, targetDimension.height, BufferedImage.TYPE_INT_RGB );
     Graphics2D graphics2D = resized.createGraphics();
     graphics2D.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR );
@@ -84,8 +84,8 @@ public class ImageConverter {
    * @param targetDPI   a {@link DPI} object.
    * @return a {@link BufferedImage} object.
    */
-  @NotNull
-  public BufferedImage resize( @NotNull BufferedImage original, @NotNull DPI originalDPI, @NotNull DPI targetDPI ) {
+  @Nonnull
+  public BufferedImage resize( @Nonnull BufferedImage original, @Nonnull DPI originalDPI, @Nonnull DPI targetDPI ) {
     return resize( original, calculateNewDimensions( original, originalDPI, targetDPI ) );
   }
 }

@@ -33,8 +33,8 @@ package com.cedarsoft.matchers;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 
@@ -42,11 +42,10 @@ import java.io.File;
  *
  */
 public class FileNameMatcher extends BaseMatcher<File> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String fileName;
 
-  public FileNameMatcher( @NotNull @NonNls String fileName ) {
+  public FileNameMatcher( @Nonnull String fileName ) {
     this.fileName = fileName;
   }
 
@@ -61,8 +60,8 @@ public class FileNameMatcher extends BaseMatcher<File> {
     description.appendText( "File with name <" + fileName + ">" );
   }
 
-  @NotNull
-  public static FileNameMatcher fileName( @NotNull @NonNls String fileName ) {
+  @Nonnull
+  public static FileNameMatcher fileName( @Nonnull String fileName ) {
     return new FileNameMatcher( fileName );
   }
 }

@@ -33,13 +33,13 @@ package com.cedarsoft.codegen.mock;
 
 import com.sun.mirror.declaration.InterfaceDeclaration;
 import com.sun.mirror.type.InterfaceType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class InterfaceTypeMock extends DeclaredTypeMock implements InterfaceType {
-  public InterfaceTypeMock( @NotNull Class<?> type ) {
+  public InterfaceTypeMock( @Nonnull Class<?> type ) {
     super( type );
   }
 

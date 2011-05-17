@@ -33,8 +33,8 @@ package com.cedarsoft.codegen;
 
 import com.cedarsoft.codegen.parser.Classpath;
 import com.google.common.collect.ImmutableList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -44,28 +44,28 @@ import java.util.List;
  *
  */
 public class GeneratorConfiguration {
-  @NotNull
+  @Nonnull
   private final List<? extends File> domainSourceFiles;
-  @NotNull
+  @Nonnull
   private final File destination;
-  @NotNull
+  @Nonnull
   private final File resourcesDestination;
-  @NotNull
+  @Nonnull
   private final File testDestination;
-  @NotNull
+  @Nonnull
   private final File testResourcesDestination;
-  @NotNull
+  @Nonnull
   private final CreationMode creationMode;
-  @NotNull
+  @Nonnull
   private final PrintWriter logOut;
   @Nullable
   private final Classpath classpath;
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut ) {
+  public GeneratorConfiguration( @Nonnull Iterable<? extends File> domainSourceFiles, @Nonnull File destination, @Nonnull File resourcesDestination, @Nonnull File testDestination, @Nonnull File testResourcesDestination, @Nullable Classpath classpath, @Nonnull PrintWriter logOut ) {
     this( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, classpath, logOut, CreationMode.ALL );
   }
 
-  public GeneratorConfiguration( @NotNull Iterable<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut, @NotNull CreationMode creationMode ) {
+  public GeneratorConfiguration( @Nonnull Iterable<? extends File> domainSourceFiles, @Nonnull File destination, @Nonnull File resourcesDestination, @Nonnull File testDestination, @Nonnull File testResourcesDestination, @Nullable Classpath classpath, @Nonnull PrintWriter logOut, @Nonnull CreationMode creationMode ) {
     this.classpath = classpath;
     this.domainSourceFiles = ImmutableList.copyOf( domainSourceFiles );
     this.destination = destination;
@@ -81,38 +81,38 @@ public class GeneratorConfiguration {
     return classpath;
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends File> getDomainSourceFiles() {
     //noinspection ReturnOfCollectionOrArrayField
     return domainSourceFiles;
   }
 
-  @NotNull
+  @Nonnull
   public CreationMode getCreationMode() {
     return creationMode;
   }
 
-  @NotNull
+  @Nonnull
   public File getDestination() {
     return destination;
   }
 
-  @NotNull
+  @Nonnull
   public File getTestDestination() {
     return testDestination;
   }
 
-  @NotNull
+  @Nonnull
   public File getResourcesDestination() {
     return resourcesDestination;
   }
 
-  @NotNull
+  @Nonnull
   public File getTestResourcesDestination() {
     return testResourcesDestination;
   }
 
-  @NotNull
+  @Nonnull
   public PrintWriter getLogOut() {
     return logOut;
   }

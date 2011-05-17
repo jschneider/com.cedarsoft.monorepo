@@ -34,8 +34,8 @@ package com.cedarsoft.presenter;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.lookup.LookupStore;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.AbstractAction;
@@ -105,7 +105,7 @@ public class JComboBoxPresenterTest {
     assertEquals( newRenderer, box.getRenderer() );
   }
 
-  private void addChild( @NotNull @NonNls String name ) {
+  private void addChild( @Nonnull String name ) {
     root.addChild( new DefaultNode( name, Lookups.createLookup( Action.class, new AbstractAction( name ) {
       @Override
       public void actionPerformed( ActionEvent e ) {

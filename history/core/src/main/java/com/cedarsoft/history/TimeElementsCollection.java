@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    * @param entry           the entry that is added
    * @param closeOldEntries whether the old entries shall be closed
    */
-  public void addEntry( @NotNull E entry, boolean closeOldEntries ) {
+  public void addEntry( @Nonnull E entry, boolean closeOldEntries ) {
     if ( closeOldEntries ) {
       for ( E currentEntry : elements ) {
         if ( currentEntry.getEnd() == null ) {
@@ -67,7 +67,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    *
    * @return the latest entry
    */
-  @NotNull
+  @Nonnull
   public E getYoungestEntry() {
     if ( elements.isEmpty() ) {
       throw new IllegalStateException( "No elements found" );
@@ -80,7 +80,7 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    *
    * @return a E object.
    */
-  @NotNull
+  @Nonnull
   public E getOldestEntry() {
     if ( elements.isEmpty() ) {
       throw new IllegalStateException( "No elements found" );
@@ -94,8 +94,8 @@ public class TimeElementsCollection<E extends TimeEntry> extends SortedClustered
    * @param date the date
    * @return the entry
    */
-  @NotNull
-  public List<? extends E> getEntries( @NotNull LocalDate date ) {
+  @Nonnull
+  public List<? extends E> getEntries( @Nonnull LocalDate date ) {
     List<E> found = new ArrayList<E>();
 
     for ( E cession : elements ) {

@@ -32,7 +32,7 @@
 package com.cedarsoft.workflow;
 
 import junit.framework.Assert;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -51,18 +51,18 @@ public class WorkflowTest {
 
     workflowDefinition.getInitialState().createTransition( new State<MyObject>( "target1" ), new Action<MyObject>() {
       @Override
-      public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
+      public void execute( @Nonnull MyObject object, @Nonnull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }
     } );
     workflowDefinition.getInitialState().createTransition( new State<MyObject>( "target2" ), new Action<MyObject>() {
       @Override
-      public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
+      public void execute( @Nonnull MyObject object, @Nonnull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "first" );
       }
     }, new Action<MyObject>() {
       @Override
-      public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
+      public void execute( @Nonnull MyObject object, @Nonnull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "2" );
       }
     } );

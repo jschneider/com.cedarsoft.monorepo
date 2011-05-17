@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 
 /**
@@ -41,7 +41,7 @@ import org.joda.time.LocalDate;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements DiscreteHistoryEntry {
-  @NotNull
+  @Nonnull
   private final LocalDate validityDate;
 
   /**
@@ -56,7 +56,7 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
    *
    * @param validityDate the validity date
    */
-  public DefaultDiscreteHistoryEntry( @NotNull LocalDate validityDate ) {
+  public DefaultDiscreteHistoryEntry( @Nonnull LocalDate validityDate ) {
     this( validityDate, new LocalDate() );
   }
 
@@ -66,7 +66,7 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
    * @param validityDate     the validity date
    * @param verificationDate the verification date
    */
-  public DefaultDiscreteHistoryEntry( @NotNull LocalDate validityDate, @NotNull LocalDate verificationDate ) {
+  public DefaultDiscreteHistoryEntry( @Nonnull LocalDate validityDate, @Nonnull LocalDate verificationDate ) {
     super( verificationDate );
     this.validityDate = validityDate;
   }
@@ -75,7 +75,7 @@ public class DefaultDiscreteHistoryEntry extends DefaultHistoryEntry implements 
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public LocalDate getValidityDate() {
     return validityDate;
   }

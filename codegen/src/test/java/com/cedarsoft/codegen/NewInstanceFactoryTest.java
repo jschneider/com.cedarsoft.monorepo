@@ -45,8 +45,8 @@ import com.sun.codemodel.JFormatter;
 import com.sun.codemodel.JType;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.io.File;
@@ -185,26 +185,26 @@ public class NewInstanceFactoryTest {
     assertEquals( "java.lang.String", TypeUtils.removeWildcard( param ) );
   }
 
-  private void assertFactory( @NotNull Class<?> type, @NotNull @NonNls String expected ) throws IOException {
+  private void assertFactory( @Nonnull Class<?> type, @Nonnull String expected ) throws IOException {
     assertFactory( new ReferenceTypeMock( type ), expected );
     assertFactory( codeModel._ref( type ), expected );
   }
 
-  private void assertFactory( @NotNull TypeMirror referenceType, @NotNull @NonNls String expected ) {
+  private void assertFactory( @Nonnull TypeMirror referenceType, @Nonnull String expected ) {
     assertExpression( expected, factory.create( referenceType, "daValue" ) );
   }
 
-  private void assertFactory( @NotNull JType referenceType, @NotNull @NonNls String expected ) {
+  private void assertFactory( @Nonnull JType referenceType, @Nonnull String expected ) {
     assertExpression( expected, factory.create( referenceType, "daValue" ) );
   }
 
-  private void assertExpression( @NotNull @NonNls String expected, @NotNull JExpression expression ) {
+  private void assertExpression( @Nonnull String expected, @Nonnull JExpression expression ) {
     initializeFormatter();
     expression.generate( formatter );
     assertOutput( expected );
   }
 
-  private void assertOutput( @NotNull @NonNls String expected ) {
+  private void assertOutput( @Nonnull String expected ) {
     assertEquals( expected.trim(), out.toString().trim() );
   }
 

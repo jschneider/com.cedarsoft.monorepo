@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -49,7 +49,7 @@ public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implem
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public JMenu createPresentation() {
     return new JMenu();
   }
@@ -58,8 +58,8 @@ public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implem
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     JMenuItemPresenter<?> menuItemPresenter = child.getLookup().lookup( JMenuItemPresenter.class );
     if ( menuItemPresenter != null ) {
       return menuItemPresenter;

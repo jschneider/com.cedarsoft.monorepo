@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -46,12 +46,12 @@ public class WeakStructureListenerTest {
   public void testAdd() {
     node.addStructureListener( new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
 
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
       }
     } );
 
@@ -62,11 +62,11 @@ public class WeakStructureListenerTest {
   public void testAddRemoveWeakListener() {
     StructureListener listener = new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
       }
     };
     node.addStructureListenerWeak( listener );
@@ -83,11 +83,11 @@ public class WeakStructureListenerTest {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
     node.addStructureListenerWeak( new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
       }
     } );
     assertEquals( 1, node.getChildrenSupport().getStructureListeners().size() );
@@ -108,12 +108,12 @@ public class WeakStructureListenerTest {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
     StructureListener listener = new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         addCalled[0] = true;
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         detachedCalled[0] = true;
       }
     };
@@ -139,11 +139,11 @@ public class WeakStructureListenerTest {
     assertEquals( 0, node.getChildrenSupport().getStructureListeners().size() );
     WeakStructureListener weakListener = new WeakStructureListener( new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
       }
     } );
     node.addStructureListener( weakListener );

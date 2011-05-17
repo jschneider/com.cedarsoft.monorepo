@@ -36,8 +36,8 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,11 +52,10 @@ import java.util.Set;
  *
  */
 public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final List<String> filePaths;
 
-  public ContainsOnlyFilesMatcher( @NotNull @NonNls String... relativeFilePaths ) {
+  public ContainsOnlyFilesMatcher( @Nonnull String... relativeFilePaths ) {
     filePaths = new ArrayList<String>( Arrays.asList( relativeFilePaths ) );
   }
 
@@ -85,8 +84,8 @@ public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
     return true;
   }
 
-  @NotNull
-  private Set<? extends File> createExepectedSet( @NotNull File baseDir ) {
+  @Nonnull
+  private Set<? extends File> createExepectedSet( @Nonnull File baseDir ) {
     Set<File> expected = new HashSet<File>();
     for ( String filePath : filePaths ) {
       expected.add( new File( baseDir, filePath ) );
@@ -99,19 +98,18 @@ public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
     description.appendText( "contains only files " + filePaths );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends String> getFilePaths() {
     return Collections.unmodifiableList( filePaths );
   }
 
-  @NotNull
-  public static Matcher<File> containsOnlyFiles( @NotNull @NonNls String... relativeFilePaths ) {
+  @Nonnull
+  public static Matcher<File> containsOnlyFiles( @Nonnull String... relativeFilePaths ) {
     return new ContainsOnlyFilesMatcher( relativeFilePaths );
   }
 
-  @NotNull
-  @NonNls
-  public static String toTree( @NotNull File dir ) {
+  @Nonnull
+  public static String toTree( @Nonnull File dir ) {
     return ContainsFileMatcher.toTree( dir );
   }
 }

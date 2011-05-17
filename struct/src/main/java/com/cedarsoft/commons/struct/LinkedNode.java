@@ -32,9 +32,9 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LinkedNode implements Node {
-  @NotNull
+  @Nonnull
   private final Node source;
   private Node parent;
 
@@ -53,7 +53,7 @@ public class LinkedNode implements Node {
    *
    * @param source a {@link Node} object.
    */
-  public LinkedNode( @NotNull Node source ) {
+  public LinkedNode( @Nonnull Node source ) {
     this.source = source;
   }
 
@@ -86,7 +86,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lookup getLookup() {
     return source.getLookup();
   }
@@ -95,8 +95,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getName() {
     return source.getName();
   }
@@ -105,7 +104,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends Node> getChildren() {
     return source.getChildren();
   }
@@ -114,7 +113,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( int index, @NotNull Node child ) {
+  public void addChild( int index, @Nonnull Node child ) {
     source.addChild( index, child );
   }
 
@@ -122,7 +121,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( @NotNull Node child ) {
+  public void addChild( @Nonnull Node child ) {
     source.addChild( child );
   }
 
@@ -130,7 +129,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void detachChild( @NotNull Node child ) {
+  public void detachChild( @Nonnull Node child ) {
     source.detachChild( child );
   }
 
@@ -146,8 +145,8 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
+  @Nonnull
+  public Node findChild( @Nonnull String childName ) throws ChildNotFoundException {
     return source.findChild( childName );
   }
 
@@ -155,7 +154,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Path getPath() {
     return Path.buildPath( this );
   }
@@ -164,7 +163,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public boolean isChild( @NotNull StructPart child ) {
+  public boolean isChild( @Nonnull StructPart child ) {
     return source.isChild( child );
   }
 
@@ -172,7 +171,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListener( @NotNull StructureListener structureListener ) {
+  public void addStructureListener( @Nonnull StructureListener structureListener ) {
     source.addStructureListener( structureListener );
   }
 
@@ -180,7 +179,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
+  public void addStructureListenerWeak( @Nonnull StructureListener structureListener ) {
     source.addStructureListenerWeak( structureListener );
   }
 
@@ -188,7 +187,7 @@ public class LinkedNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void removeStructureListener( @NotNull StructureListener structureListener ) {
+  public void removeStructureListener( @Nonnull StructureListener structureListener ) {
     source.removeStructureListener( structureListener );
   }
 
@@ -198,7 +197,7 @@ public class LinkedNode implements Node {
    * @param node the node
    * @return true if the given node is a linked node, false otherwise
    */
-  public static boolean isLinkedNode( @NotNull Node node ) {
+  public static boolean isLinkedNode( @Nonnull Node node ) {
     return node instanceof LinkedNode;
   }
 }

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.io;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.lang.String;
@@ -54,11 +54,11 @@ public class RelativePathFinder {
    * @param separator the separator
    * @return the relative path pointing to the target (from the base)
    */
-  public static String getRelativePath( @NotNull @NonNls final String target, @NotNull @NonNls final String base, @NotNull @NonNls final String separator ) {
+  public static String getRelativePath( @Nonnull final String target, @Nonnull final String base, @Nonnull final String separator ) {
     //
     // remove trailing file separator
     //
-    @NonNls
+    @Nonnull
     String canonicalBase = base;
     if ( base.charAt( base.length() - 1 ) == SLASH || base.charAt( base.length() - 1 ) == BACKSLASH ) {
       canonicalBase = base.substring( 0, base.length() - 1 );
@@ -67,7 +67,7 @@ public class RelativePathFinder {
     //
     // get canonical name of target and remove trailing separator
     //
-    @NonNls
+    @Nonnull
     String canonicalTarget = target;
 
     if ( canonicalTarget.charAt( canonicalTarget.length() - 1 ) == SLASH || canonicalTarget.charAt( canonicalTarget.length() - 1 ) == BACKSLASH ) {
@@ -86,9 +86,9 @@ public class RelativePathFinder {
       // UNC file name, if target file doesn't also start with same
       // server name, don't go there
       int endPrefix = canonicalBase.indexOf( BACKSLASH, 2 );
-      @NonNls
+      @Nonnull
       String prefix1 = canonicalBase.substring( 0, endPrefix );
-      @NonNls
+      @Nonnull
       String prefix2 = canonicalTarget.substring( 0, endPrefix );
       if ( !prefix1.equals( prefix2 ) ) {
         return canonicalTarget;
@@ -96,9 +96,9 @@ public class RelativePathFinder {
     } else {
       if ( canonicalBase.substring( 1, 3 ).equals( ":\\" ) ) {
         int endPrefix = 2;
-        @NonNls
+        @Nonnull
         String prefix1 = canonicalBase.substring( 0, endPrefix );
-        @NonNls
+        @Nonnull
         String prefix2 = canonicalTarget.substring( 0, endPrefix );
         if ( !prefix1.equals( prefix2 ) ) {
           return canonicalTarget;
@@ -176,9 +176,8 @@ public class RelativePathFinder {
    * @param pathSeparator a {@link String} object.
    * @return a {@link File} object.
    */
-  @NotNull
-  @NonNls
-  public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base, @NotNull @NonNls String pathSeparator ) {
+  @Nonnull
+  public static File getRelativePath( @Nonnull File target, @Nonnull File base, @Nonnull String pathSeparator ) {
     return new File( getRelativePath( target.getPath(), base.getPath(), pathSeparator ) );
   }
 
@@ -189,7 +188,7 @@ public class RelativePathFinder {
    * @param base   a {@link File} object.
    * @return a {@link File} object.
    */
-  public static File getRelativePath( @NotNull @NonNls File target, @NotNull @NonNls File base ) {
+  public static File getRelativePath( @Nonnull File target, @Nonnull File base ) {
     return getRelativePath( target, base, File.separator );
   }
 
@@ -200,9 +199,8 @@ public class RelativePathFinder {
    * @param basePath   a {@link String} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
-  public static String getRelativePath( @NotNull @NonNls String targetPath, @NotNull @NonNls String basePath ) {
+  @Nonnull
+  public static String getRelativePath( @Nonnull String targetPath, @Nonnull String basePath ) {
     return getRelativePath( targetPath, basePath, File.separator );
   }
 }

@@ -34,8 +34,8 @@ package com.cedarsoft.configuration.xml;
 import com.cedarsoft.configuration.DefaultValueProvider;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -107,8 +107,8 @@ public class ConfigurationAccessTest {
 
     ConfigurationAccess<List> configurationAccess = new ConfigurationAccess<List>( configuration, List.class, "asdf", new DefaultValueProvider() {
       @Override
-      @NotNull
-      public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
+      @Nonnull
+      public <T> T getDefaultValue( @Nonnull String key, @Nonnull Class<T> type ) {
         throw new UnsupportedOperationException();
       }
     } );
@@ -121,8 +121,8 @@ public class ConfigurationAccessTest {
   public void testCallback() {
     DefaultValueProvider defaultValueProvider = new DefaultValueProvider() {
       @Override
-      @NotNull
-      public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
+      @Nonnull
+      public <T> T getDefaultValue( @Nonnull String key, @Nonnull Class<T> type ) {
         return type.cast( "1234" );
       }
     };

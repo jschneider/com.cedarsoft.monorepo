@@ -31,7 +31,7 @@
 
 package com.cedarsoft.renderer;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Default implementation of {@link Renderer} that simply returns
@@ -44,8 +44,8 @@ public class DefaultRenderer implements Renderer<Object, Object> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String render( @NotNull Object object, Object context ) {
+  @Nonnull
+  public String render( @Nonnull Object object, Object context ) {
     return String.valueOf( object );
   }
 }

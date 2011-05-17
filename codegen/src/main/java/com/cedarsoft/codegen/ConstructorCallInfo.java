@@ -33,25 +33,25 @@ package com.cedarsoft.codegen;
 
 import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.ParameterDeclaration;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class ConstructorCallInfo {
-  @NotNull
+  @Nonnull
   private final ConstructorDeclaration constructorDeclaration;
   private final int index;
-  @NotNull
+  @Nonnull
   private final ParameterDeclaration parameterDeclaration;
 
-  public ConstructorCallInfo( @NotNull ConstructorDeclaration constructorDeclaration, int index, @NotNull ParameterDeclaration parameterDeclaration ) {
+  public ConstructorCallInfo( @Nonnull ConstructorDeclaration constructorDeclaration, int index, @Nonnull ParameterDeclaration parameterDeclaration ) {
     this.constructorDeclaration = constructorDeclaration;
     this.index = index;
     this.parameterDeclaration = parameterDeclaration;
   }
 
-  @NotNull
+  @Nonnull
   public ConstructorDeclaration getConstructorDeclaration() {
     return constructorDeclaration;
   }
@@ -60,7 +60,7 @@ public class ConstructorCallInfo {
     return index;
   }
 
-  @NotNull
+  @Nonnull
   public ParameterDeclaration getParameterDeclaration() {
     return parameterDeclaration;
   }

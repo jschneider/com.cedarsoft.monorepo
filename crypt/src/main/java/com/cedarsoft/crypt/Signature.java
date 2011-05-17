@@ -31,7 +31,7 @@
 
 package com.cedarsoft.crypt;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Arrays;
 
@@ -44,10 +44,10 @@ public class Signature {
   /**
    * Null signature
    */
-  @NotNull
+  @Nonnull
   public static final Signature NULL = new Signature( new byte[0] );
 
-  @NotNull
+  @Nonnull
   private final byte[] bytes;
 
   /**
@@ -55,7 +55,7 @@ public class Signature {
    *
    * @param bytes the bytes
    */
-  public Signature( @NotNull byte[] bytes ) {
+  public Signature( @Nonnull byte[] bytes ) {
     this.bytes = bytes.clone();
   }
 
@@ -64,7 +64,7 @@ public class Signature {
    *
    * @return the byte array
    */
-  @NotNull
+  @Nonnull
   public byte[] getBytes() {
     return bytes.clone();
   }

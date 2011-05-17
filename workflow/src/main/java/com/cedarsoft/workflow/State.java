@@ -31,8 +31,8 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,14 +46,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class State<T> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String id;
 
-  @NotNull
+  @Nonnull
   private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   private final List<TransitionDefinition<T>> transitionDefinitions = new ArrayList<TransitionDefinition<T>>();
 
   /**
@@ -61,7 +60,7 @@ public class State<T> {
    *
    * @param id the id
    */
-  public State( @NotNull @NonNls String id ) {
+  public State( @Nonnull String id ) {
     this.id = id;
   }
 
@@ -70,7 +69,7 @@ public class State<T> {
    *
    * @return the id
    */
-  @NotNull
+  @Nonnull
   public String getId() {
     return id;
   }
@@ -82,8 +81,8 @@ public class State<T> {
    * @param actions     the actions
    * @return the definition
    */
-  @NotNull
-  public TransitionDefinition<T> createTransition( @NotNull State<T> targetState, @NotNull List<? extends Action<T>> actions ) {
+  @Nonnull
+  public TransitionDefinition<T> createTransition( @Nonnull State<T> targetState, @Nonnull List<? extends Action<T>> actions ) {
     lock.writeLock().lock();
     try {
       TransitionDefinition<T> transitionDefinition = new TransitionDefinition<T>( this, targetState, actions );
@@ -101,8 +100,8 @@ public class State<T> {
    * @param actions     a {@link Action} object.
    * @return a {@link TransitionDefinition} object.
    */
-  @NotNull
-  public TransitionDefinition<T> createTransition( @NotNull State<T> targetState, @NotNull Action<T>... actions ) {
+  @Nonnull
+  public TransitionDefinition<T> createTransition( @Nonnull State<T> targetState, @Nonnull Action<T>... actions ) {
     return createTransition( targetState, Arrays.asList( actions ) );
   }
 
@@ -111,7 +110,7 @@ public class State<T> {
    *
    * @return the transitions
    */
-  @NotNull
+  @Nonnull
   public List<? extends TransitionDefinition<T>> getTransitions() {
     lock.readLock().lock();
     try {

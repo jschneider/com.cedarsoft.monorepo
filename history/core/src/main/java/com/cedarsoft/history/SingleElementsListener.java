@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Special element implementation that delegates the calls of {@link ElementsListener}
@@ -48,21 +48,21 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * @param <E>             the type
    * @return an ElementsListener that delegates to the given ElementListener
    */
-  @NotNull
-  public static <E> ElementsListener<E> wrap( @NotNull final ElementListener<E> elementListener ) {
+  @Nonnull
+  public static <E> ElementsListener<E> wrap( @Nonnull final ElementListener<E> elementListener ) {
     return new SingleElementsListener<E>() {
       @Override
-      public void elementDeleted( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index ) {
+      public void elementDeleted( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index ) {
         elementListener.elementDeleted( element );
       }
 
       @Override
-      public void elementAdded( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index ) {
+      public void elementAdded( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index ) {
         elementListener.elementAdded( element );
       }
 
       @Override
-      public void elementChanged( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index ) {
+      public void elementChanged( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index ) {
         elementListener.elementChanged( element );
       }
     };
@@ -75,7 +75,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * @param element the entry that has been deleted
    * @param index   a int.
    */
-  public abstract void elementDeleted( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
+  public abstract void elementDeleted( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index );
 
   /**
    * Is called when an entry has been added
@@ -84,7 +84,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * @param element the entry that has been added
    * @param index   a int.
    */
-  public abstract void elementAdded( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
+  public abstract void elementAdded( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index );
 
   /**
    * Is called when an enty has been changed
@@ -93,14 +93,14 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * @param element the entry that has been changed
    * @param index   a int.
    */
-  public abstract void elementChanged( @NotNull ObservableCollection<? extends E> source, @NotNull E element, int index );
+  public abstract void elementChanged( @Nonnull ObservableCollection<? extends E> source, @Nonnull E element, int index );
 
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event ) {
+  public void elementsDeleted( @Nonnull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );
       int index = event.getIndicies().get( i );
@@ -112,7 +112,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * {@inheritDoc}
    */
   @Override
-  public void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event ) {
+  public void elementsAdded( @Nonnull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );
       int index = event.getIndicies().get( i );
@@ -124,7 +124,7 @@ public abstract class SingleElementsListener<E> implements ElementsListener<E> {
    * {@inheritDoc}
    */
   @Override
-  public void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event ) {
+  public void elementsChanged( @Nonnull ElementsChangedEvent<? extends E> event ) {
     for ( int i = 0; i < event.getElements().size(); i++ ) {
       E e = event.getElements().get( i );
       int index = event.getIndicies().get( i );

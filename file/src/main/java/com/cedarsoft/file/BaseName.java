@@ -31,8 +31,8 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 import java.lang.String;
@@ -43,8 +43,7 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class BaseName implements Comparable<BaseName>, Serializable {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String name;
 
   /**
@@ -52,7 +51,7 @@ public class BaseName implements Comparable<BaseName>, Serializable {
    *
    * @param name the name
    */
-  public BaseName( @NonNls @NotNull String name ) {
+  public BaseName( @Nonnull String name ) {
     this.name = name;
   }
 
@@ -61,8 +60,7 @@ public class BaseName implements Comparable<BaseName>, Serializable {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getName() {
     return name;
   }

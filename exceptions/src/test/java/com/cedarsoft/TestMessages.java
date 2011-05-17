@@ -1,6 +1,6 @@
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -15,26 +15,26 @@ public enum TestMessages implements ApplicationException.Message {
 
 
   @Override
-  @NotNull
+  @Nonnull
   public String getKey() {
     return getClass().getName() + "." + name();
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getLocalizedMessage( @NotNull Object... messageArguments ) {
+  public String getLocalizedMessage( @Nonnull Object... messageArguments ) {
     return getLocalizedMessage( Locale.getDefault(), messageArguments );
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getLocalizedMessage( @NotNull Locale locale, @NotNull Object... messageArguments ) {
+  public String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
     String bundleValue = getBundleValue( locale );
     return MessageFormat.format( bundleValue, messageArguments );
   }
 
-  @NotNull
-  public String getBundleValue( @NotNull Locale locale ) {
+  @Nonnull
+  public String getBundleValue( @Nonnull Locale locale ) {
     return ResourceBundle.getBundle( ApplicationExceptionTest.BUNDLE, locale ).getString( getKey() );
   }
 }

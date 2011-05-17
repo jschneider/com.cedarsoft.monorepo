@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
@@ -48,7 +48,7 @@ public class NullLock implements Lock, ReadWriteLock {
   /**
    * Constant <code>LOCK</code>
    */
-  @NotNull
+  @Nonnull
   public static final NullLock LOCK = new NullLock();
 
   private NullLock() {
@@ -58,7 +58,7 @@ public class NullLock implements Lock, ReadWriteLock {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lock readLock() {
     return this;
   }
@@ -67,7 +67,7 @@ public class NullLock implements Lock, ReadWriteLock {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lock writeLock() {
     return this;
   }

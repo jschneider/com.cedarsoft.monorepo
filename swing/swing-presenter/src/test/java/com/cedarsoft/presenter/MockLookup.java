@@ -33,13 +33,13 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.lookup.LookupChangeSupport;
 import com.cedarsoft.lookup.MappedLookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class MockLookup extends MappedLookup {
-  @NotNull
+  @Nonnull
   public LookupChangeSupport getLookupChangeSupport() {
     return this.lcs;
   }

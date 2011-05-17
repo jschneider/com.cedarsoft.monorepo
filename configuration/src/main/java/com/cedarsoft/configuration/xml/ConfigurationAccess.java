@@ -33,9 +33,9 @@ package com.cedarsoft.configuration.xml;
 
 import com.cedarsoft.configuration.DefaultValueProvider;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.lang.IllegalArgumentException;
@@ -49,16 +49,15 @@ import java.util.NoSuchElementException;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ConfigurationAccess<T> {
-  @NotNull
+  @Nonnull
   private final Class<? extends T> type;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String key;
-  @NotNull
+  @Nonnull
   private final ConfigurationResolver<T> resolver;
-  @NotNull
+  @Nonnull
   private final DefaultValueProvider defaultValueProvider;
-  @NotNull
+  @Nonnull
   private final Configuration configuration;
 
   /**
@@ -69,11 +68,11 @@ public class ConfigurationAccess<T> {
    * @param key           a {@link String} object.
    * @param defaultValue  a T object.
    */
-  public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull final T defaultValue ) {
+  public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull final T defaultValue ) {
     this( configuration, type, key, new DefaultValueProvider() {
       @Override
-      @NotNull
-      public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
+      @Nonnull
+      public <T> T getDefaultValue( @Nonnull String key, @Nonnull Class<T> type ) {
         return type.cast( defaultValue );
       }
     } );
@@ -87,7 +86,7 @@ public class ConfigurationAccess<T> {
    * @param key                  a {@link String} object.
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    */
-  public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
+  public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider ) {
     this( configuration, type, key, defaultValueProvider, ConfigurationResolver.getResolver( type ) );
   }
 
@@ -100,7 +99,7 @@ public class ConfigurationAccess<T> {
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    * @param resolver             a {@link ConfigurationResolver} object.
    */
-  public ConfigurationAccess( @NotNull Configuration configuration, @NotNull Class<? extends T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider, @NotNull ConfigurationResolver<T> resolver ) {
+  public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider, @Nonnull ConfigurationResolver<T> resolver ) {
     this.configuration = configuration;
     this.type = type;
     this.key = key;
@@ -137,7 +136,7 @@ public class ConfigurationAccess<T> {
    * @throws IllegalArgumentException
    *          if the key is invalid
    */
-  @NotNull
+  @Nonnull
   public T resolveSafe() throws IllegalArgumentException {
     T resolved = resolve();
     if ( resolved == null ) {
@@ -151,7 +150,7 @@ public class ConfigurationAccess<T> {
    *
    * @return a {@link Class} object.
    */
-  @NotNull
+  @Nonnull
   public Class<? extends T> getType() {
     return type;
   }
@@ -161,8 +160,7 @@ public class ConfigurationAccess<T> {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getKey() {
     return key;
   }
@@ -172,7 +170,7 @@ public class ConfigurationAccess<T> {
    *
    * @param value a T object.
    */
-  public void store( @NotNull T value ) {
+  public void store( @Nonnull T value ) {
     resolver.store( configuration, key, value );
   }
 }

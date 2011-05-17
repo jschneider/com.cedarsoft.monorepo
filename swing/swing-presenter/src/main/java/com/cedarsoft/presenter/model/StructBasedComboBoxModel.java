@@ -32,8 +32,8 @@
 package com.cedarsoft.presenter.model;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.ComboBoxModel;
 
@@ -51,7 +51,7 @@ public class StructBasedComboBoxModel extends StructBasedListModel implements Co
    *
    * @param node a {@link StructPart} object.
    */
-  public StructBasedComboBoxModel( @NotNull StructPart node ) {
+  public StructBasedComboBoxModel( @Nonnull StructPart node ) {
     super( node );
   }
 

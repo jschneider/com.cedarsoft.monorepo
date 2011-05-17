@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>Abstract AbstractLookup class.</p>
@@ -43,8 +43,8 @@ public abstract class AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public final <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException {
+  @Nonnull
+  public final <T> T lookupNonNull( @Nonnull Class<T> type ) throws IllegalArgumentException {
     T value = lookup( type );
     if ( value == null ) {
       throw new IllegalArgumentException( "Nothing found for " + type.getName() );

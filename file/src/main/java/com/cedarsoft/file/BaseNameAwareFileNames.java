@@ -31,8 +31,8 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -46,7 +46,7 @@ import java.util.TreeMap;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class BaseNameAwareFileNames {
-  @NotNull
+  @Nonnull
   private final SortedMap<BaseName, FileNames> entries = new TreeMap<BaseName, FileNames>();
 
   /**
@@ -54,7 +54,7 @@ public class BaseNameAwareFileNames {
    *
    * @param fileName a {@link FileName} object.
    */
-  public void add( @NotNull FileName fileName ) {
+  public void add( @Nonnull FileName fileName ) {
     getEntry( fileName.getBaseName() ).add( fileName );
   }
 
@@ -63,7 +63,7 @@ public class BaseNameAwareFileNames {
    *
    * @return a {@link Collection} object.
    */
-  @NotNull
+  @Nonnull
   public Collection<? extends Map.Entry<BaseName, FileNames>> getEntries() {
     return Collections.unmodifiableCollection( entries.entrySet() );
   }
@@ -74,8 +74,8 @@ public class BaseNameAwareFileNames {
    * @param baseName a {@link BaseName} object.
    * @return a {@link FileNames} object.
    */
-  @NotNull
-  public FileNames getEntry( @NotNull @NonNls BaseName baseName ) {
+  @Nonnull
+  public FileNames getEntry( @Nonnull BaseName baseName ) {
     FileNames found = entries.get( baseName );
     if ( found != null ) {
       return found;

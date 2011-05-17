@@ -33,7 +33,7 @@ package com.cedarsoft.history;
 
 import com.cedarsoft.EasyMockTemplate;
 import org.easymock.classextension.EasyMock;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.List;
@@ -51,7 +51,7 @@ public class ElementsCollectionTest {
 
     List<? extends Integer> removed = collection.removeElements( new ElementVisitor<Integer>( "" ) {
       @Override
-      public boolean fits( @NotNull Integer element ) {
+      public boolean fits( @Nonnull Integer element ) {
         return true;
       }
     } );
@@ -85,7 +85,7 @@ public class ElementsCollectionTest {
 
         assertEquals( 8, collection.removeElements( new ElementVisitor<Integer>( "" ) {
           @Override
-          public boolean fits( @NotNull Integer element ) {
+          public boolean fits( @Nonnull Integer element ) {
             return true;
           }
         } ).size() );

@@ -32,7 +32,7 @@
 package com.cedarsoft.history;
 
 import ca.odell.glazedlists.GlazedLists;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.springframework.util.StopWatch;
 import org.junit.*;
 
@@ -60,7 +60,7 @@ public class GlazedPerformanceTest {
     System.out.println( "Delta: " + ( watch1.getTotalTimeMillis() - watch0.getTotalTimeMillis() ) );
   }
 
-  private static StopWatch checkPerformance( @NotNull List<String> list ) {
+  private static StopWatch checkPerformance( @Nonnull List<String> list ) {
     StopWatch stopWatch = new StopWatch();
 
     stopWatch.start( "adding to " + list.getClass().getName() );

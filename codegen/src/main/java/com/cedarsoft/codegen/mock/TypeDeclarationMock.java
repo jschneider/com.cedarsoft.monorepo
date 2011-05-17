@@ -41,7 +41,7 @@ import com.sun.mirror.declaration.TypeParameterDeclaration;
 import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.util.DeclarationVisitor;
 import com.sun.mirror.util.SourcePosition;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -52,10 +52,10 @@ import java.util.List;
  *
  */
 public class TypeDeclarationMock implements TypeDeclaration {
-  @NotNull
+  @Nonnull
   protected final Class<?> type;
 
-  public TypeDeclarationMock( @NotNull Class<?> type ) {
+  public TypeDeclarationMock( @Nonnull Class<?> type ) {
     this.type = type;
   }
 
@@ -84,8 +84,8 @@ public class TypeDeclarationMock implements TypeDeclaration {
     return types;
   }
 
-  @NotNull
-  private static Collection<? extends Class<?>> getInterfaces( @NotNull Class<?> type ) {
+  @Nonnull
+  private static Collection<? extends Class<?>> getInterfaces( @Nonnull Class<?> type ) {
     Collection<Class<?>> interfaces = new ArrayList<Class<?>>();
 
     for ( Class<?> interfaceType : type.getInterfaces() ) {

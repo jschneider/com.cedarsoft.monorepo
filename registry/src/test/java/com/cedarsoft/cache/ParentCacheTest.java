@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cache;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -108,7 +108,7 @@ public class ParentCacheTest {
     assertNull( cache.findParent( child ) );
   }
 
-  private void fill( @NotNull Object child ) {
+  private void fill( @Nonnull Object child ) {
     cache.store( child, new Object(), 0 );
   }
 }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Supports object addition
@@ -44,5 +44,5 @@ public interface ObjectAdd<T> {
    *
    * @param element the element that is added
    */
-  void add( @NotNull T element );
+  void add( @Nonnull T element );
 }

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.action;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.beans.PropertyChangeListener;
 import java.lang.String;
@@ -46,8 +46,7 @@ public interface Activatable {
   /**
    * Constant <code>PROPERTY_ACTIVE="active"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_ACTIVE = "active";
 
   /**
@@ -62,14 +61,14 @@ public interface Activatable {
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  void addPropertyChangeListener( @NotNull PropertyChangeListener listener );
+  void addPropertyChangeListener( @Nonnull PropertyChangeListener listener );
 
   /**
    * Removes a property change listener
    *
    * @param listener a {@link PropertyChangeListener} object.
    */
-  void removePropertyChangeListener( @NotNull PropertyChangeListener listener );
+  void removePropertyChangeListener( @Nonnull PropertyChangeListener listener );
 
   /**
    * Adds a pcs listener
@@ -77,7 +76,7 @@ public interface Activatable {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  void addPropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
+  void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 
   /**
    * remove the pcs listener
@@ -85,5 +84,5 @@ public interface Activatable {
    * @param propertyName a {@link String} object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
-  void removePropertyChangeListener( @NotNull String propertyName, @NotNull PropertyChangeListener listener );
+  void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 }

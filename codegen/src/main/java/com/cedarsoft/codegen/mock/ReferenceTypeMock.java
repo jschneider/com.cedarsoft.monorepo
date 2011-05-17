@@ -32,16 +32,16 @@
 package com.cedarsoft.codegen.mock;
 
 import com.sun.mirror.type.ReferenceType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class ReferenceTypeMock extends TypeMirrorMock implements ReferenceType {
-  @NotNull
+  @Nonnull
   protected final Class<?> type;
 
-  public ReferenceTypeMock( @NotNull Class<?> type ) {
+  public ReferenceTypeMock( @Nonnull Class<?> type ) {
     this.type = type;
   }
 

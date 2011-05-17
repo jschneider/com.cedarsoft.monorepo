@@ -31,7 +31,7 @@
 
 package com.cedarsoft.hierarchy;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -49,20 +49,20 @@ public interface ChildDetector<P, C> {
    * @param parent the parent
    * @return the children
    */
-  @NotNull
-  List<? extends C> findChildren( @NotNull P parent );
+  @Nonnull
+  List<? extends C> findChildren( @Nonnull P parent );
 
   /**
    * Registers a change listener that is notified when the child detector changes its children
    *
    * @param changeListener the listener
    */
-  void addChangeListener( @NotNull ChildChangeListener<P> changeListener );
+  void addChangeListener( @Nonnull ChildChangeListener<P> changeListener );
 
   /**
    * Removes the change listener
    *
    * @param changeListener the change listener that is removed
    */
-  void removeChangeListener( @NotNull ChildChangeListener<P> changeListener );
+  void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener );
 }

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.cache;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -47,12 +47,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class HashedCache<K, T> implements Cache<K, T> {
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   private final Map<K, T> store;
-  @NotNull
+  @Nonnull
   private final Factory<K, T> factory;
 
   /**
@@ -60,7 +60,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    *
    * @param factory the factory
    */
-  public HashedCache( @NotNull Factory<K, T> factory ) {
+  public HashedCache( @Nonnull Factory<K, T> factory ) {
     this.factory = factory;
     store = new HashMap<K, T>();
   }
@@ -72,7 +72,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * @param store   the store
    * @param factory the factory
    */
-  public HashedCache( @NotNull Map<K, T> store, @NotNull Factory<K, T> factory ) {
+  public HashedCache( @Nonnull Map<K, T> store, @Nonnull Factory<K, T> factory ) {
     this.factory = factory;
     //noinspection AssignmentToCollectionOrArrayFieldFromParameter
     this.store = store;
@@ -85,7 +85,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * If no value is stored, a new one is created using the registered factory
    */
   @Override
-  public T get( @NotNull Object key ) {
+  public T get( @Nonnull Object key ) {
     lock.writeLock().lock();
     try {
       T element = store.get( key );
@@ -142,7 +142,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    */
   @Override
   @Nullable
-  public T remove( @NotNull Object key ) {
+  public T remove( @Nonnull Object key ) {
     lock.writeLock().lock();
     try {
       return store.remove( key );
@@ -191,7 +191,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Returns the *LIVE* entry set. Use with care!
    */
   @Override
-  @NotNull
+  @Nonnull
   public Set<Entry<K, T>> entrySet() {
     lock.readLock().lock();
     try {
@@ -234,7 +234,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * @return a {@link Map} object.
    */
   @Deprecated
-  @NotNull
+  @Nonnull
   public Map<K, T> getInternalStore() {
     lock.readLock().lock();
     try {

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +53,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends Node> getChildren() {
     //noinspection ReturnOfCollectionOrArrayField
     return nodesUm;
@@ -63,7 +63,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( int index, @NotNull Node child ) {
+  public void addChild( int index, @Nonnull Node child ) {
     validateName( child.getName() );
 
     nodes.add( index, child );
@@ -75,7 +75,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( @NotNull Node child ) {
+  public void addChild( @Nonnull Node child ) {
     addChild( nodes.size(), child );
   }
 
@@ -83,7 +83,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void setChildren( @NotNull List<? extends Node> children ) {
+  public void setChildren( @Nonnull List<? extends Node> children ) {
     detachChildren();
     for ( Node child : children ) {
       addChild( child );
@@ -104,7 +104,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     }
   }
 
-  private void validateName( @NotNull String name ) {
+  private void validateName( @Nonnull String name ) {
     for ( Node node : nodes ) {
       if ( node.getName().equals( name ) ) {
         throw new IllegalArgumentException( "There still exists a node with the name " + name );
@@ -116,7 +116,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void detachChild( @NotNull Node child ) {
+  public void detachChild( @Nonnull Node child ) {
     int oldIndex = nodes.indexOf( child );
     if ( oldIndex < 0 ) {
       throw new IllegalArgumentException( "Invalid child. " + child );
@@ -132,7 +132,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     detachChild( index, nodes.get( index ) );
   }
 
-  private void detachChild( int index, @NotNull Node childToDetach ) {
+  private void detachChild( int index, @Nonnull Node childToDetach ) {
     nodes.remove( index );
     childToDetach.setParent( null );
     notifyChildDetached( childToDetach, index );
@@ -142,7 +142,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Node getParentNode() {
     return parentNode;
   }
@@ -151,7 +151,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void setParentNode( @NotNull Node parentNode ) {
+  public void setParentNode( @Nonnull Node parentNode ) {
     this.parentNode = parentNode;
   }
 
@@ -159,7 +159,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public boolean isChild( @NotNull StructPart child ) {
+  public boolean isChild( @Nonnull StructPart child ) {
     //noinspection SuspiciousMethodCalls
     return nodes.contains( child );
   }
@@ -170,7 +170,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListener( @NotNull StructureListener structureListener ) {
+  public void addStructureListener( @Nonnull StructureListener structureListener ) {
     structureListeners.add( structureListener );
   }
 
@@ -178,7 +178,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
+  public void addStructureListenerWeak( @Nonnull StructureListener structureListener ) {
     structureListeners.add( new WeakStructureListener( structureListener ) );
   }
 
@@ -186,7 +186,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  public void removeStructureListener( @NotNull StructureListener structureListener ) {
+  public void removeStructureListener( @Nonnull StructureListener structureListener ) {
     for ( Iterator<StructureListener> it = structureListeners.iterator(); it.hasNext(); ) {
       StructureListener listener = it.next();
       if ( listener == structureListener || listener instanceof WeakStructureListener && ( ( WeakStructureListener ) listener ).getWrappedListener() == structureListener ) {
@@ -200,7 +200,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends StructureListener> getStructureListeners() {
     return Collections.unmodifiableList( structureListeners );
   }
@@ -209,8 +209,8 @@ public class DefaultChildrenSupport implements ChildrenSupport {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public Node findChild( @NotNull String childName ) throws ChildNotFoundException {
+  @Nonnull
+  public Node findChild( @Nonnull String childName ) throws ChildNotFoundException {
     for ( Node node : nodes ) {
       if ( node.getName().equals( childName ) ) {
         return node;
@@ -219,14 +219,14 @@ public class DefaultChildrenSupport implements ChildrenSupport {
     throw new ChildNotFoundException( new Path( childName ) );
   }
 
-  private void notifyChildAdded( @NotNull Node child, int index ) {
+  private void notifyChildAdded( @Nonnull Node child, int index ) {
     StructureChangedEvent event = new StructureChangedEvent( getParentNode(), StructureChangedEvent.Type.Add, child, index );
     for ( StructureListener listener : new ArrayList<StructureListener>( structureListeners ) ) {
       listener.childAdded( event );
     }
   }
 
-  private void notifyChildDetached( @NotNull Node child, int index ) {
+  private void notifyChildDetached( @Nonnull Node child, int index ) {
     StructureChangedEvent event = new StructureChangedEvent( getParentNode(), StructureChangedEvent.Type.Remove, child, index );
     for ( StructureListener listener : new ArrayList<StructureListener>( structureListeners ) ) {
       listener.childDetached( event );

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.utils;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -52,11 +52,10 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   /**
    * Constant <code>STAGE_KEY="stage"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String STAGE_KEY = "stage";
 
-  @NonNls
+  @Nonnull
   private String actualStage;
 
   /**
@@ -64,8 +63,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getActualStage() {
     if ( actualStage == null ) {
       actualStage = System.getProperty( STAGE_KEY );
@@ -81,7 +79,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
    *
    * @param actualStage a {@link String} object.
    */
-  public void setActualStage( @NotNull @NonNls String actualStage ) {
+  public void setActualStage( @Nonnull String actualStage ) {
     this.actualStage = actualStage;
   }
 
@@ -89,12 +87,12 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
    * {@inheritDoc}
    */
   @Override
-  protected void processProperties( @NotNull ConfigurableListableBeanFactory beanFactoryToProcess, @NotNull Properties props ) throws BeansException {
+  protected void processProperties( @Nonnull ConfigurableListableBeanFactory beanFactoryToProcess, @Nonnull Properties props ) throws BeansException {
     super.processProperties( beanFactoryToProcess, filter( props ) );
   }
 
-  @NotNull
-  private Properties filter( @NotNull Properties props ) {
+  @Nonnull
+  private Properties filter( @Nonnull Properties props ) {
     String stage = getActualStage();
 
     Properties result = new Properties();

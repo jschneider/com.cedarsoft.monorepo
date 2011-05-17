@@ -31,7 +31,7 @@
 
 package com.cedarsoft.collection;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -64,13 +64,13 @@ public class ListChangeSupportTest {
 
     listChangeSupport.addListener( new ListChangeListener<String>() {
       @Override
-      public void elementAdded( int index, @NotNull String element ) {
+      public void elementAdded( int index, @Nonnull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );
       }
 
       @Override
-      public void elementRemoved( int index, @NotNull String element ) {
+      public void elementRemoved( int index, @Nonnull String element ) {
         eventIndicies.add( index );
         eventStrings.add( element );
       }

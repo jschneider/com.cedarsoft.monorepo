@@ -34,7 +34,7 @@ package com.cedarsoft.zip;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -54,7 +54,7 @@ import java.util.zip.ZipOutputStream;
 public class ZipCreator {
   static final int BUFFER_SIZE = 2048;
 
-  @NotNull
+  @Nonnull
   private final File zipFile;
 
   /**
@@ -62,7 +62,7 @@ public class ZipCreator {
    *
    * @param zipFile the zip file
    */
-  public ZipCreator( @NotNull File zipFile ) {
+  public ZipCreator( @Nonnull File zipFile ) {
     this.zipFile = zipFile;
   }
 
@@ -71,7 +71,7 @@ public class ZipCreator {
    *
    * @return the zip file
    */
-  @NotNull
+  @Nonnull
   public File getZipFile() {
     return zipFile;
   }
@@ -84,7 +84,7 @@ public class ZipCreator {
    *
    * @throws IOException if an io exception occures
    */
-  public File zip( @NotNull File... directories ) throws IOException {
+  public File zip( @Nonnull File... directories ) throws IOException {
     ZipArchiveOutputStream outStream = new ZipArchiveOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
     try {
       for ( File directory : directories ) {
@@ -105,7 +105,7 @@ public class ZipCreator {
    * @param directory the directory
    * @throws IOException if any.
    */
-  protected void addFiles( @NotNull String baseName, @NotNull ZipArchiveOutputStream outStream, @NotNull File directory ) throws IOException {
+  protected void addFiles( @Nonnull String baseName, @Nonnull ZipArchiveOutputStream outStream, @Nonnull File directory ) throws IOException {
     byte[] data = new byte[BUFFER_SIZE];
     for ( File file : directory.listFiles() ) {
       String relativeName = getRelativePath( baseName, file );
@@ -152,8 +152,8 @@ public class ZipCreator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  protected static String getRelativePath( @NotNull String baseName, @NotNull File file ) throws IOException {
+  @Nonnull
+  protected static String getRelativePath( @Nonnull String baseName, @Nonnull File file ) throws IOException {
     //noinspection NonConstantStringShouldBeStringBuffer
     String name = file.getCanonicalPath().substring( baseName.length() + 1 );
     if ( file.isDirectory() ) {

@@ -31,9 +31,9 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -61,12 +61,12 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   private List<Object> answers = new ArrayList<Object>();
   private ConsolePrinter consolePrinter = new SimpleConsolePrinter();
 
-  private void checkExpectedOut( @NotNull Object given ) {
+  private void checkExpectedOut( @Nonnull Object given ) {
     if ( expectedOut.size() <= expectedIndex ) {
       throw new IndexOutOfBoundsException( "No entries left for: " + given );
     }
 
-    @NonNls
+    @Nonnull
     String nextExpected = this.expectedOut.get( expectedIndex );
     expectedIndex++;
 
@@ -83,7 +83,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public PrintStream getOut() {
     throw new UnsupportedOperationException();
   }
@@ -92,7 +92,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
   }
@@ -101,7 +101,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public boolean readBoolean( @NotNull String message ) throws IOException {
+  public boolean readBoolean( @Nonnull String message ) throws IOException {
     messages.add( message );
     return ( Boolean ) getNextAnswer();
   }
@@ -110,8 +110,8 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message ) {
+  @Nonnull
+  public String read( @Nonnull String message ) {
     messages.add( message );
     return ( String ) getNextAnswer();
   }
@@ -123,7 +123,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getMessages() {
     return Collections.unmodifiableList( messages );
   }
@@ -144,8 +144,8 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message, @Nullable String defaultValue ) {
+  @Nonnull
+  public String read( @Nonnull String message, @Nullable String defaultValue ) {
     return read( message );
   }
 
@@ -153,7 +153,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message, int lower, int upper ) {
+  public int readInt( @Nonnull String message, int lower, int upper ) {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
@@ -162,7 +162,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message ) throws IOException {
+  public int readInt( @Nonnull String message ) throws IOException {
     messages.add( message );
     return ( Integer ) getNextAnswer();
   }
@@ -178,7 +178,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void out( @NotNull String message, @NotNull Object... objects ) {
+  public void out( @Nonnull String message, @Nonnull Object... objects ) {
     messages.add( message );
     checkExpectedOut( consolePrinter.createSuccess( message, objects ) );
   }
@@ -187,7 +187,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void out( @NotNull Process process ) {
+  public void out( @Nonnull Process process ) {
     try {
       BufferedReader defaultIn = null;
       try {
@@ -223,7 +223,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void error( @NotNull String message, @NotNull Object... objects ) {
+  public void error( @Nonnull String message, @Nonnull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createError( message, objects ) );
   }
@@ -232,7 +232,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void warning( @NotNull String message, @NotNull Object... objects ) {
+  public void warning( @Nonnull String message, @Nonnull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createWarning( message, objects ) );
   }
@@ -241,7 +241,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void success( @NotNull String message, @NotNull Object... objects ) {
+  public void success( @Nonnull String message, @Nonnull Object... objects ) {
     messages.add( message );
     checkExpectedOut( getConsolePrinter().createSuccess( message, objects ) );
   }
@@ -268,7 +268,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getExpectedOut() {
     return Collections.unmodifiableList( expectedOut );
   }
@@ -278,7 +278,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<Object> getAnswers() {
     return Collections.unmodifiableList( answers );
   }
@@ -288,7 +288,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @param answers a {@link List} object.
    */
-  public void setAnswers( @NotNull List<Object> answers ) {
+  public void setAnswers( @Nonnull List<Object> answers ) {
     this.answers.clear();
     this.answers.addAll( answers );
   }
@@ -298,7 +298,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @param answer a {@link Object} object.
    */
-  public void addAnswer( @NotNull Object answer ) {
+  public void addAnswer( @Nonnull Object answer ) {
     answers.add( answer );
   }
 
@@ -307,26 +307,26 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
    *
    * @param answer a {@link Object} object.
    */
-  public void removeAnswer( @NotNull Object answer ) {
+  public void removeAnswer( @Nonnull Object answer ) {
     answers.remove( answer );
   }
 
   private static class SimpleConsolePrinter implements ConsolePrinter {
     @Override
-    @NotNull
-    public String createError( @NotNull String message, @NotNull Object... objects ) {
+    @Nonnull
+    public String createError( @Nonnull String message, @Nonnull Object... objects ) {
       return "ERROR: " + MessageFormat.format( message, objects );
     }
 
     @Override
-    @NotNull
-    public String createWarning( @NotNull String message, @NotNull Object... objects ) {
+    @Nonnull
+    public String createWarning( @Nonnull String message, @Nonnull Object... objects ) {
       return "WARN: " + MessageFormat.format( message, objects );
     }
 
     @Override
-    @NotNull
-    public String createSuccess( @NotNull String message, @NotNull Object... objects ) {
+    @Nonnull
+    public String createSuccess( @Nonnull String message, @Nonnull Object... objects ) {
       return MessageFormat.format( message, objects );
     }
   }

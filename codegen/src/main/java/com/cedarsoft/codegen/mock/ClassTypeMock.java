@@ -33,13 +33,13 @@ package com.cedarsoft.codegen.mock;
 
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.type.ClassType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class ClassTypeMock extends DeclaredTypeMock implements ClassType {
-  public ClassTypeMock( @NotNull Class<?> type ) {
+  public ClassTypeMock( @Nonnull Class<?> type ) {
     super( type );
   }
 

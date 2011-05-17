@@ -31,7 +31,7 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,116 +42,116 @@ import java.util.List;
  * Contains common dimensions for different screens
  */
 public class Resolutions {
-  @NotNull
+  @Nonnull
   public static final Resolution A4_300 = new Resolution( 2480, 3508 );
-  @NotNull
+  @Nonnull
   public static final Resolution A4_72 = new Resolution( 595, 842 );
 
-  @NotNull
+  @Nonnull
   private final List<Resolution> screenResolutions = new ArrayList<Resolution>();
 
-  @NotNull
+  @Nonnull
   public static final Resolution FOUR_K = new Resolution( 4096, 2304 );
-  @NotNull
+  @Nonnull
   public static final Resolution _4096_2304 = FOUR_K;
-  @NotNull
+  @Nonnull
   public static final Resolution QUXGA = new Resolution( 3200, 2400 );
-  @NotNull
+  @Nonnull
   public static final Resolution _3200_2400 = QUXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution QXGA = new Resolution( 2048, 1536 );
-  @NotNull
+  @Nonnull
   public static final Resolution _2048_1536 = QXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution WUXGA = new Resolution( 1920, 1200 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1920_1200 = WUXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution HD_1080 = new Resolution( 1920, 1080 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1920_1080 = HD_1080;
-  @NotNull
+  @Nonnull
   public static final Resolution WSXGA_PLUS = new Resolution( 1680, 1050 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1680_1050 = WSXGA_PLUS;
-  @NotNull
+  @Nonnull
   public static final Resolution UXGA = new Resolution( 1600, 1200 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1600_1200 = UXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution WSXGA = new Resolution( 1440, 900 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1140_900 = WSXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution WXGA = new Resolution( 1366, 768 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1366_768 = WXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution SXGA = new Resolution( 1280, 1024 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1280_1024 = SXGA;
-  @NotNull
+  @Nonnull
   public static final Resolution SXGA_960 = new Resolution( 1280, 960 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1280_960 = SXGA_960;
-  @NotNull
+  @Nonnull
   public static final Resolution WXGA_800 = new Resolution( 1280, 800 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1280_800 = WXGA_800;
-  @NotNull
+  @Nonnull
   public static final Resolution WXGA_768 = new Resolution( 1280, 768 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1280_768 = WXGA_768;
-  @NotNull
+  @Nonnull
   public static final Resolution HD_720 = new Resolution( 1280, 720 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1280_720 = HD_720;
-  @NotNull
+  @Nonnull
   public static final Resolution XGA_PLUS = new Resolution( 1152, 864 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1152_864 = XGA_PLUS;
-  @NotNull
+  @Nonnull
   public static final Resolution XGA = new Resolution( 1024, 768 );
-  @NotNull
+  @Nonnull
   public static final Resolution _1024_768 = XGA;
-  @NotNull
+  @Nonnull
   public static final Resolution SVGA = new Resolution( 800, 600 );
-  @NotNull
+  @Nonnull
   public static final Resolution _800_600 = SVGA;
-  @NotNull
+  @Nonnull
   public static final Resolution DVD = new Resolution( 720, 576 );
-  @NotNull
+  @Nonnull
   public static final Resolution _720_576 = DVD;
-  @NotNull
+  @Nonnull
   public static final Resolution VGA = new Resolution( 640, 480 );
-  @NotNull
+  @Nonnull
   public static final Resolution _640_480 = VGA;
-  @NotNull
+  @Nonnull
   public static final Resolution HVGA = new Resolution( 480, 320 );
-  @NotNull
+  @Nonnull
   public static final Resolution _480_320 = HVGA;
-  @NotNull
+  @Nonnull
   public static final Resolution WQVGA = new Resolution( 400, 240 );
-  @NotNull
+  @Nonnull
   public static final Resolution _400_240 = WQVGA;
-  @NotNull
+  @Nonnull
   public static final Resolution QVGA = new Resolution( 320, 240 );
-  @NotNull
+  @Nonnull
   public static final Resolution _320_240 = QVGA;
-  @NotNull
+  @Nonnull
   public static final Resolution HQVGA = new Resolution( 240, 160 );
-  @NotNull
+  @Nonnull
   public static final Resolution _240_160 = HQVGA;
   /**
    * @noinspection ConstantNamingConvention
    */
-  @NotNull
+  @Nonnull
   public static final Resolution LoRES = new Resolution( 160, 160 );
-  @NotNull
+  @Nonnull
   public static final Resolution _160_160 = LoRES;
-  @NotNull
+  @Nonnull
   public static final Resolution QQVGA = new Resolution( 160, 120 );
-  @NotNull
+  @Nonnull
   public static final Resolution _160_120 = QQVGA;
 
   public Resolutions() {
@@ -189,7 +189,7 @@ public class Resolutions {
     );
   }
 
-  public Resolutions( @NotNull Iterable<? extends Resolution> screenResolutions ) {
+  public Resolutions( @Nonnull Iterable<? extends Resolution> screenResolutions ) {
     for ( Resolution resolution : screenResolutions ) {
       this.screenResolutions.add( resolution );
     }
@@ -205,7 +205,7 @@ public class Resolutions {
    * @param maxHeight the max height
    * @return the best dimension for the max width/height
    */
-  @NotNull
+  @Nonnull
   public Resolution getBest( int maxWidth, int maxHeight ) {
     for ( Resolution resolution : screenResolutions ) {
       if ( maxWidth >= resolution.getWidth() && maxHeight >= resolution.getHeight() ) {
@@ -221,7 +221,7 @@ public class Resolutions {
    *
    * @return the common dimensions
    */
-  @NotNull
+  @Nonnull
   public List<? extends Resolution> getScreenResolutions() {
     return Collections.unmodifiableList( screenResolutions );
   }

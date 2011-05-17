@@ -32,11 +32,11 @@
 package com.cedarsoft.codegen;
 
 import com.sun.codemodel.JFieldVar;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public interface Decorator {
-  void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant );
+  void decorateConstant( @Nonnull CodeGenerator codeGenerator, @Nonnull JFieldVar constant );
 }

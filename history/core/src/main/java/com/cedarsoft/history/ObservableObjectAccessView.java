@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -44,10 +44,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ObservableObjectAccessView<E> implements ClusteredObservableObjectAccess<E> {
-  @NotNull
+  @Nonnull
   private final ClusteredObservableObjectAccess<? super E> base;
 
-  @NotNull
+  @Nonnull
   private final ClusteredElementsCollection<E> view = new ClusteredElementsCollection<E>();
 
   /**
@@ -56,7 +56,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * @param base   a {@link ClusteredObservableObjectAccess} object.
    * @param bridge a {@link ObservableObjectAccessView.Bridge} object.
    */
-  public ObservableObjectAccessView( @NotNull ClusteredObservableObjectAccess<? super E> base, @NotNull final Bridge<E> bridge ) {
+  public ObservableObjectAccessView( @Nonnull ClusteredObservableObjectAccess<? super E> base, @Nonnull final Bridge<E> bridge ) {
     this.base = base;
 
     //fill with the initial values
@@ -69,7 +69,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
 
     this.base.addElementListener( new SingleElementsListener<Object>() {
       @Override
-      public void elementDeleted( @NotNull ObservableCollection<? extends Object> source, @NotNull Object element, int index ) {
+      public void elementDeleted( @Nonnull ObservableCollection<? extends Object> source, @Nonnull Object element, int index ) {
         E bridged = bridge.getBridged( element );
         if ( bridged != null ) {
           view.remove( bridged );
@@ -77,7 +77,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
       }
 
       @Override
-      public void elementAdded( @NotNull ObservableCollection<? extends Object> source, @NotNull Object element, int index ) {
+      public void elementAdded( @Nonnull ObservableCollection<? extends Object> source, @Nonnull Object element, int index ) {
         E bridged = bridge.getBridged( element );
         if ( bridged != null ) {
           view.add( bridged );
@@ -85,7 +85,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
       }
 
       @Override
-      public void elementChanged( @NotNull ObservableCollection<? extends Object> source, @NotNull Object element, int index ) {
+      public void elementChanged( @Nonnull ObservableCollection<? extends Object> source, @Nonnull Object element, int index ) {
         E bridged = bridge.getBridged( element );
         if ( bridged != null ) {
           view.commit( bridged );
@@ -98,7 +98,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void commit( @NotNull E element ) {
+  public void commit( @Nonnull E element ) {
     base.commit( element );
   }
 
@@ -106,7 +106,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull E element ) {
+  public void remove( @Nonnull E element ) {
     base.remove( element );
   }
 
@@ -114,7 +114,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull E element ) {
+  public void add( @Nonnull E element ) {
     base.add( element );
   }
 
@@ -122,7 +122,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends E> elements ) {
+  public void setElements( @Nonnull List<? extends E> elements ) {
     base.setElements( elements );
   }
 
@@ -130,7 +130,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getElements() {
     return view.getElements();
   }
@@ -139,7 +139,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
+  public void addElementListener( @Nonnull ElementsListener<? super E> listener ) {
     view.addElementListener( listener );
   }
 
@@ -147,7 +147,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
+  public void addElementListener( @Nonnull ElementsListener<? super E> listener, boolean isTransient ) {
     view.addElementListener( listener, isTransient );
   }
 
@@ -155,7 +155,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
+  public void removeElementListener( @Nonnull ElementsListener<? super E> listener ) {
     view.removeElementListener( listener );
   }
 
@@ -163,7 +163,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public ReentrantReadWriteLock getLock() {
     return view.getLock();
   }
@@ -172,7 +172,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return view.getTransientElementListeners();
   }
@@ -185,20 +185,20 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
      * @return the bridged object or null
      */
     @Nullable
-    T getBridged( @NotNull Object element );
+    T getBridged( @Nonnull Object element );
   }
 
   public static class TypeBridge<T> implements Bridge<T> {
-    @NotNull
+    @Nonnull
     private final Class<T> type;
 
-    public TypeBridge( @NotNull Class<T> type ) {
+    public TypeBridge( @Nonnull Class<T> type ) {
       this.type = type;
     }
 
     @Override
     @Nullable
-    public T getBridged( @NotNull Object element ) {
+    public T getBridged( @Nonnull Object element ) {
       if ( type.isAssignableFrom( element.getClass() ) ) {
         return type.cast( element );
       } else {

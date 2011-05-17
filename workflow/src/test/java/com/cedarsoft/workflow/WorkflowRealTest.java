@@ -31,7 +31,7 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -50,7 +50,7 @@ public class WorkflowRealTest {
     State<MyObject> audit = new State<MyObject>( "audit" );
     input.createTransition( audit, new Action<MyObject>() {
       @Override
-      public void execute( @NotNull MyObject object, @NotNull TransitionDefinition<MyObject> definition ) {
+      public void execute( @Nonnull MyObject object, @Nonnull TransitionDefinition<MyObject> definition ) {
         object.setMessage( "1" );
       }
     } );

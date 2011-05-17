@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.lang.Object;
@@ -51,7 +51,7 @@ public class LookupChangeSupport {
   private static final Object[] EMPTY_ARRAY = new Object[0];
 
   private Object[] listeners = EMPTY_ARRAY;
-  @NotNull
+  @Nonnull
   private final Lookup source;
 
   /**
@@ -59,7 +59,7 @@ public class LookupChangeSupport {
    *
    * @param source the source
    */
-  public LookupChangeSupport( @NotNull Lookup source ) {
+  public LookupChangeSupport( @Nonnull Lookup source ) {
     this.source = source;
   }
 
@@ -68,7 +68,7 @@ public class LookupChangeSupport {
    *
    * @return a {@link Object} object.
    */
-  @NotNull
+  @Nonnull
   public Object getSource() {
     return source;
   }
@@ -81,7 +81,7 @@ public class LookupChangeSupport {
    * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
-  public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListener( type, lookupChangeListener );
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( source, type, null, source.lookup( type ) ) );
   }
@@ -94,7 +94,7 @@ public class LookupChangeSupport {
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
    */
-  public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     Class<T> type = lookupChangeListener.getType();
     bind( type, lookupChangeListener );
   }
@@ -108,7 +108,7 @@ public class LookupChangeSupport {
    * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
-  public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListenerWeak( type, lookupChangeListener );
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( source, type, null, source.lookup( type ) ) );
   }
@@ -122,7 +122,7 @@ public class LookupChangeSupport {
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
    */
-  public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     Class<T> type = lookupChangeListener.getType();
     bindWeak( type, lookupChangeListener );
   }
@@ -132,7 +132,7 @@ public class LookupChangeSupport {
    *
    * @param lookupChangeListener the listener that is wrapped and added
    */
-  public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     addChangeListener( WeakLookupChangeListener.wrap( lookupChangeListener ) );
   }
 
@@ -143,7 +143,7 @@ public class LookupChangeSupport {
    * @param lookupChangeListener the listener that is wrapped and added
    * @param <T>                  a T object.
    */
-  public <T> void addChangeListenerWeak( @Nullable Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListenerWeak( @Nullable Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     addChangeListener( type, WeakLookupChangeListener.wrap( type, lookupChangeListener ) );
   }
 
@@ -152,7 +152,7 @@ public class LookupChangeSupport {
    *
    * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
-  public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     addChangeListener( null, lookupChangeListener );
   }
 
@@ -162,7 +162,7 @@ public class LookupChangeSupport {
    * @param type                 a {@link Class} object.
    * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
-  public void addChangeListener( @Nullable Class<?> type, @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nullable Class<?> type, @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     Object[] newListeners = new Object[listeners.length + 2];
     System.arraycopy( listeners, 0, newListeners, 0, listeners.length );
     newListeners[listeners.length] = type;
@@ -175,7 +175,7 @@ public class LookupChangeSupport {
    *
    * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
-  public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     removeChangeListener( null, lookupChangeListener );
   }
 
@@ -185,7 +185,7 @@ public class LookupChangeSupport {
    * @param type                 a {@link Class} object.
    * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
-  public void removeChangeListener( @Nullable Class<?> type, @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nullable Class<?> type, @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     for ( int i = 0; i < listeners.length; i += 2 ) {
       if ( listeners[i] == type ) {
         Object listener = listeners[i + 1];
@@ -207,7 +207,7 @@ public class LookupChangeSupport {
    * @param oldValue a T object.
    * @param value    a T object.
    */
-  public <T> void fireLookupChanged( @NotNull Class<? super T> type, @Nullable T oldValue, @Nullable T value ) {
+  public <T> void fireLookupChanged( @Nonnull Class<? super T> type, @Nullable T oldValue, @Nullable T value ) {
     //noinspection ObjectEquality
     if ( oldValue == value ) {
       return;
@@ -220,7 +220,7 @@ public class LookupChangeSupport {
    *
    * @param event a {@link LookupChangeEvent} object.
    */
-  public <T> void fireLookupChanged( @NotNull LookupChangeEvent<T> event ) {
+  public <T> void fireLookupChanged( @Nonnull LookupChangeEvent<T> event ) {
     if ( event.getNewValue() == event.getOldValue() ) {
       return;
     }
@@ -249,7 +249,7 @@ public class LookupChangeSupport {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<LookupChangeListener<?>> getListeners() {
     List<LookupChangeListener<?>> changeListeners = new ArrayList<LookupChangeListener<?>>();
 

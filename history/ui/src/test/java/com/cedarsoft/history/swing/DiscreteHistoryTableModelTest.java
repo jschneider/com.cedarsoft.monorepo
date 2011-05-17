@@ -38,7 +38,7 @@ import ca.odell.glazedlists.swing.EventTableModel;
 import com.cedarsoft.SwingHelper;
 import com.cedarsoft.history.ContinuousEntriesInformation;
 import com.cedarsoft.history.DefaultContinuousEntry;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 import org.junit.*;
 
@@ -108,7 +108,7 @@ public class DiscreteHistoryTableModelTest {
     }
 
     @Override
-    public Object getColumnValue( @NotNull DefaultContinuousEntry baseObject, int column ) {
+    public Object getColumnValue( @Nonnull DefaultContinuousEntry baseObject, int column ) {
       switch ( column ) {
         case 0:
           return baseObject.getBegin();

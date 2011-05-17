@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.SwingUtilities;
 import java.lang.reflect.InvocationTargetException;
@@ -89,7 +89,7 @@ public class ThreadUtils {
    * @throws InterruptedException if any.
    */
   @Nullable
-  public static <T> T inokeInOtherThread( @NotNull Callable<T> callable ) throws ExecutionException, InterruptedException {
+  public static <T> T inokeInOtherThread( @Nonnull Callable<T> callable ) throws ExecutionException, InterruptedException {
     ExecutorService executor = Executors.newSingleThreadExecutor();
     try {
       Future<T> future = executor.submit( callable );
@@ -104,7 +104,7 @@ public class ThreadUtils {
    *
    * @param runnable a {@link Runnable} object.
    */
-  public static void invokeInEventDispatchThread( @NotNull Runnable runnable ) {
+  public static void invokeInEventDispatchThread( @Nonnull Runnable runnable ) {
     if ( isEventDispatchThread() ) {
       runnable.run();
     } else {

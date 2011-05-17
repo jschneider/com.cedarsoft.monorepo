@@ -31,7 +31,7 @@
 
 package com.cedarsoft.collection;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.EventListener;
 
@@ -47,7 +47,7 @@ public interface ListChangeListener<T> extends EventListener {
    * @param index   a int.
    * @param element a T object.
    */
-  void elementAdded( int index, @NotNull T element );
+  void elementAdded( int index, @Nonnull T element );
 
   /**
    * <p>elementRemoved</p>
@@ -55,5 +55,5 @@ public interface ListChangeListener<T> extends EventListener {
    * @param index   a int.
    * @param element a T object.
    */
-  void elementRemoved( int index, @NotNull T element );
+  void elementRemoved( int index, @Nonnull T element );
 }

@@ -34,8 +34,8 @@ package com.cedarsoft.presenter.demo;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.springframework.beans.factory.FactoryBean;
 
 import javax.swing.Action;
@@ -44,13 +44,13 @@ import javax.swing.Action;
  *
  */
 public class ActionNodeFactory implements FactoryBean {
-  @NotNull
+  @Nonnull
   private final Action action;
-  @NotNull
-  @NonNls
+  @Nonnull
+  @Nonnull
   private final String name;
 
-  public ActionNodeFactory( @NotNull String name, @NotNull Action action ) {
+  public ActionNodeFactory( @Nonnull String name, @Nonnull Action action ) {
     this.name = name;
     this.action = action;
   }

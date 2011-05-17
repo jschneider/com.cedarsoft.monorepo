@@ -32,7 +32,7 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -102,11 +102,11 @@ public class LeafNodeTest {
   public void testListeners() {
     StructureListener listener = new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
       }
     };
     node.removeStructureListener( listener );

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 
 /**
@@ -44,8 +44,7 @@ public interface ContinuousEntry extends Comparable<ContinuousEntry> {
   /**
    * Constant <code>PROPERTY_BEGIN="begin"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_BEGIN = "begin";
 
   /**
@@ -53,7 +52,7 @@ public interface ContinuousEntry extends Comparable<ContinuousEntry> {
    *
    * @return the begin date of the interval this entry describes
    */
-  @NotNull
+  @Nonnull
   LocalDate getBegin();
 
   /**
@@ -63,5 +62,5 @@ public interface ContinuousEntry extends Comparable<ContinuousEntry> {
    *
    * @param begin the new begin
    */
-  void setBegin( @NotNull LocalDate begin );
+  void setBegin( @Nonnull LocalDate begin );
 }

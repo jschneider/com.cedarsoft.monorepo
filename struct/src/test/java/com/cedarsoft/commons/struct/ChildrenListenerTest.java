@@ -33,7 +33,7 @@ package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.lookup.MappedLookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -58,12 +58,12 @@ public class ChildrenListenerTest {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
 
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
     } );
@@ -91,12 +91,12 @@ public class ChildrenListenerTest {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
 
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
     } );
@@ -131,12 +131,12 @@ public class ChildrenListenerTest {
 
     support.addStructureListener( new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
     } );
@@ -168,12 +168,12 @@ public class ChildrenListenerTest {
 
     parent.addStructureListener( new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
     } );
@@ -199,12 +199,12 @@ public class ChildrenListenerTest {
     final List<StructureChangedEvent> events = new ArrayList<StructureChangedEvent>();
     support.addStructureListener( new StructureListener() {
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
 
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         events.add( event );
       }
     } );

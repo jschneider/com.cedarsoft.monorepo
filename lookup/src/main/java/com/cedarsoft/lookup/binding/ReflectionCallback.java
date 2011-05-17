@@ -33,7 +33,7 @@ package com.cedarsoft.lookup.binding;
 
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Object;
 import java.lang.reflect.InvocationTargetException;
@@ -45,9 +45,9 @@ import java.lang.reflect.Method;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ReflectionCallback<T> implements LookupChangeListener<T> {
-  @NotNull
+  @Nonnull
   private final Object object;
-  @NotNull
+  @Nonnull
   private final Method setter;
 
   /**
@@ -56,7 +56,7 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
    * @param object a {@link Object} object.
    * @param setter a {@link Method} object.
    */
-  public ReflectionCallback( @NotNull Object object, @NotNull Method setter ) {
+  public ReflectionCallback( @Nonnull Object object, @Nonnull Method setter ) {
     this.object = object;
     this.setter = setter;
   }
@@ -65,7 +65,7 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
    * {@inheritDoc}
    */
   @Override
-  public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
+  public void lookupChanged( @Nonnull LookupChangeEvent<? extends T> event ) {
     try {
       setter.invoke( object, event.getNewValue() );
     } catch ( IllegalAccessException e ) {

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.util.Collections;
@@ -57,8 +57,8 @@ public class Lookups {
    * @param instantiater a {@link Instantiater} object.
    * @return a {@link InstantiatorLookup} object.
    */
-  @NotNull
-  public static <T> InstantiatorLookup<T> instantiator( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
+  @Nonnull
+  public static <T> InstantiatorLookup<T> instantiator( @Nonnull Class<? extends T> type, @Nonnull Instantiater<T> instantiater ) {
     return new InstantiatorLookup<T>( type, instantiater );
   }
 
@@ -68,8 +68,8 @@ public class Lookups {
    * @param instantiater a {@link Instantiater.Typed} object.
    * @return a {@link InstantiatorLookup} object.
    */
-  @NotNull
-  public static <T> InstantiatorLookup<T> instantiator( @NotNull Instantiater.Typed<T> instantiater ) {
+  @Nonnull
+  public static <T> InstantiatorLookup<T> instantiator( @Nonnull Instantiater.Typed<T> instantiater ) {
     return new InstantiatorLookup<T>( instantiater );
   }
 
@@ -80,8 +80,8 @@ public class Lookups {
    * @param second a {@link Lookup} object.
    * @return a {@link MergingLookup} object.
    */
-  @NotNull
-  public static MergingLookup merge( @NotNull Lookup first, @NotNull Lookup second ) {
+  @Nonnull
+  public static MergingLookup merge( @Nonnull Lookup first, @Nonnull Lookup second ) {
     return new MergingLookup( first, second );
   }
 
@@ -91,8 +91,8 @@ public class Lookups {
    * @param wrapped the lookup that is wrapped
    * @return the lookup
    */
-  @NotNull
-  public static LookupWrapper wrap( @NotNull Lookup wrapped ) {
+  @Nonnull
+  public static LookupWrapper wrap( @Nonnull Lookup wrapped ) {
     return new LookupWrapper( wrapped );
   }
 
@@ -102,8 +102,8 @@ public class Lookups {
    * @param objects the objects
    * @return the lookup
    */
-  @NotNull
-  public static DynamicLookup dynamicLookupFromList( @NotNull List<Object> objects ) {
+  @Nonnull
+  public static DynamicLookup dynamicLookupFromList( @Nonnull List<Object> objects ) {
     return dynamicLookup( objects.toArray() );
   }
 
@@ -115,7 +115,7 @@ public class Lookups {
    * @param <T>   a T object.
    * @return the singleton lookup
    */
-  public static <T> Lookup singletonLookup( @NotNull Class<T> type, @NotNull T value ) {
+  public static <T> Lookup singletonLookup( @Nonnull Class<T> type, @Nonnull T value ) {
     return new SingletonLookup<T>( type, value );
   }
 
@@ -125,8 +125,8 @@ public class Lookups {
    * @param values a {@link Map} object.
    * @return a {@link MappedLookup} object.
    */
-  @NotNull
-  public static MappedLookup mappedLookup( @NotNull Map<Class<?>, ?> values ) {
+  @Nonnull
+  public static MappedLookup mappedLookup( @Nonnull Map<Class<?>, ?> values ) {
     return new MappedLookup( values );
   }
 
@@ -136,7 +136,7 @@ public class Lookups {
    * @param values the values
    * @return the dynamik lookup
    */
-  public static DynamicLookup dynamicLookup( @NotNull Object... values ) {
+  public static DynamicLookup dynamicLookup( @Nonnull Object... values ) {
     return new DynamicLookup( values );
   }
 
@@ -155,8 +155,8 @@ public class Lookups {
    * @param objects the objects
    * @return the lookup
    */
-  @NotNull
-  public static Lookup createLookup( @NotNull Object... objects ) {
+  @Nonnull
+  public static Lookup createLookup( @Nonnull Object... objects ) {
     MappedLookup lookup = new MappedLookup();
     for ( Object object : objects ) {
       lookup.store( ( Class<Object> ) object.getClass(), object );
@@ -167,57 +167,57 @@ public class Lookups {
   private static class EmptyLookup extends AbstractLookup {
     @Override
     @Nullable
-    public <T> T lookup( @NotNull Class<T> type ) {
+    public <T> T lookup( @Nonnull Class<T> type ) {
       return null;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public Map<Class<?>, Object> lookups() {
       return Collections.emptyMap();
     }
 
     @Override
-    public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+    public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
       lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
     }
 
     @Override
-    public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+    public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
       Class<T> type = lookupChangeListener.getType();
       lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
     }
 
     @Override
-    public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+    public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     }
 
     @Override
-    public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+    public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     }
 
     @Override
-    public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+    public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     }
 
     @Override
-    public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+    public <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     }
 
     @Override
-    public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+    public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     }
 
     @Override
-    public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+    public <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     }
 
     @Override
-    public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+    public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     }
 
     @Override
-    public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+    public <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     }
   }
 }

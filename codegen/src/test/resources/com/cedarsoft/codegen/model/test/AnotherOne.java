@@ -1,6 +1,6 @@
 package com.cedarsoft.codegen.model.test;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
@@ -8,23 +8,23 @@ import org.jetbrains.annotations.NotNull;
 public class AnotherOne {
   private final boolean dependent;
 
-  @NotNull
+  @Nonnull
   private final Version min;
-  @NotNull
+  @Nonnull
   private final Version max;
 
-  public AnotherOne( boolean dependent, @NotNull Version min, @NotNull Version max ) {
+  public AnotherOne( boolean dependent, @Nonnull Version min, @Nonnull Version max ) {
     this.dependent = dependent;
     this.min = min;
     this.max = max;
   }
 
-  @NotNull
+  @Nonnull
   public Version getMin() {
     return min;
   }
 
-  @NotNull
+  @Nonnull
   public Version getMax() {
     return max;
   }

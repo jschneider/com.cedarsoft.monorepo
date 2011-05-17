@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -67,7 +67,7 @@ public class SortedClusteredElementsCollection<E> extends ClusteredElementsColle
    * {@inheritDoc}
    */
   @Override
-  public void addElement( @NotNull E element ) {
+  public void addElement( @Nonnull E element ) {
     lock.writeLock().lock();
     int index;
     try {

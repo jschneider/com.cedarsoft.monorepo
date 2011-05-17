@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,20 +56,20 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * @param first  a {@link Lookup} object.
    * @param second a {@link Lookup} object.
    */
-  public MergingLookup( @NotNull Lookup first, @NotNull Lookup second ) {
+  public MergingLookup( @Nonnull Lookup first, @Nonnull Lookup second ) {
     this.first = first;
     this.second = second;
 
     first.addChangeListener( new LookupChangeListener<Object>() {
       @Override
-      public void lookupChanged( @NotNull LookupChangeEvent<?> event ) {
+      public void lookupChanged( @Nonnull LookupChangeEvent<?> event ) {
         lcs.fireLookupChanged( new LookupChangeEvent<Object>( MergingLookup.this, ( Class<Object> ) event.getType(), event.getOldValue(), event.getNewValue() ) );
       }
     } );
 
     second.addChangeListener( new LookupChangeListener<Object>() {
       @Override
-      public void lookupChanged( @NotNull LookupChangeEvent<?> event ) {
+      public void lookupChanged( @Nonnull LookupChangeEvent<?> event ) {
         Class<?> type = event.getType();
         if ( MergingLookup.this.first.lookup( type ) == null ) {
           lcs.fireLookupChanged( new LookupChangeEvent<Object>( MergingLookup.this, ( Class<Object> ) type, event.getOldValue(), event.getNewValue() ) );
@@ -83,7 +83,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    */
   @Override
   @Nullable
-  public <T> T lookup( @NotNull Class<T> type ) {
+  public <T> T lookup( @Nonnull Class<T> type ) {
     T firstValue = first.lookup( type );
     if ( firstValue != null ) {
       return firstValue;
@@ -95,7 +95,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Map<Class<?>, Object> lookups() {
     Map<Class<?>, Object> map = new HashMap<Class<?>, Object>();
     map.putAll( second.lookups() );
@@ -108,7 +108,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bind( type, lookupChangeListener );
   }
 
@@ -116,7 +116,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bind( lookupChangeListener );
   }
 
@@ -124,7 +124,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bindWeak( type, lookupChangeListener );
   }
 
@@ -132,7 +132,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bindWeak( lookupChangeListener );
   }
 
@@ -140,7 +140,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
@@ -148,7 +148,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListenerWeak( type, lookupChangeListener );
   }
 
@@ -156,7 +156,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListener( lookupChangeListener );
   }
 
@@ -164,7 +164,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListener( type, lookupChangeListener );
   }
 
@@ -172,7 +172,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.removeChangeListener( type, lookupChangeListener );
   }
 
@@ -180,7 +180,7 @@ public class MergingLookup extends AbstractLookup implements Lookup {
    * {@inheritDoc}
    */
   @Override
-  public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.removeChangeListener( lookupChangeListener );
   }
 }

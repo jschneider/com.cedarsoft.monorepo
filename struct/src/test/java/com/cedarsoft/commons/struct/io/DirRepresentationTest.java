@@ -39,8 +39,8 @@ import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.NodeFactory;
 import com.cedarsoft.commons.struct.Path;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.mockito.Mock;
 import org.junit.*;
 
@@ -91,8 +91,8 @@ public class DirRepresentationTest {
     DirRepresenter representer = new DirRepresenter( root, false );
     representer.parse( baseDir, new NodeFactory() {
       @Override
-      @NotNull
-      public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
+      @Nonnull
+      public Node createNode( @Nonnull String name, @Nonnull Lookup context ) throws CanceledException {
         File file = context.lookupNonNull( File.class );
         assertEquals( file.getName(), name );
 
@@ -133,8 +133,8 @@ public class DirRepresentationTest {
       DirRepresenter representer = new DirRepresenter( root, false );
       representer.parse( baseDir, new NodeFactory() {
         @Override
-        @NotNull
-        public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
+        @Nonnull
+        public Node createNode( @Nonnull String name, @Nonnull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );
           assertEquals( file.getName(), name );
 
@@ -172,8 +172,8 @@ public class DirRepresentationTest {
       DirRepresenter representer = new DirRepresenter( root, true );
       representer.parse( baseDir, new NodeFactory() {
         @Override
-        @NotNull
-        public Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException {
+        @Nonnull
+        public Node createNode( @Nonnull String name, @Nonnull Lookup context ) throws CanceledException {
           File file = context.lookupNonNull( File.class );
           assertEquals( file.getName(), name );
 

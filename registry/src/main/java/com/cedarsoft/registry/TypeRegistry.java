@@ -31,7 +31,7 @@
 
 package com.cedarsoft.registry;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.IllegalArgumentException;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ import java.util.Map;
  */
 public class TypeRegistry<T> {
   private final boolean searchSuperTypes;
-  @NotNull
+  @Nonnull
   private final Map<Class<?>, T> elements = new HashMap<Class<?>, T>();
 
   /**
@@ -72,7 +72,7 @@ public class TypeRegistry<T> {
    *
    * @param elements the elements that are added
    */
-  public void setElements( @NotNull Map<Class<?>, T> elements ) {
+  public void setElements( @Nonnull Map<Class<?>, T> elements ) {
     this.elements.clear();
     for ( Map.Entry<Class<?>, T> entry : elements.entrySet() ) {
       addElement( entry.getKey(), entry.getValue() );
@@ -96,7 +96,7 @@ public class TypeRegistry<T> {
    * @param type the type
    * @param t    the element that is stored for the given type
    */
-  public void addElement( @NotNull Class<?> type, @NotNull T t ) {
+  public void addElement( @Nonnull Class<?> type, @Nonnull T t ) {
     elements.put( type, t );
   }
 
@@ -109,8 +109,8 @@ public class TypeRegistry<T> {
    * @throws IllegalArgumentException
    *          if any.
    */
-  @NotNull
-  public T getElement( @NotNull Class<?> type ) throws IllegalArgumentException {
+  @Nonnull
+  public T getElement( @Nonnull Class<?> type ) throws IllegalArgumentException {
     {
       T element = elements.get( type );
       if ( element != null ) {

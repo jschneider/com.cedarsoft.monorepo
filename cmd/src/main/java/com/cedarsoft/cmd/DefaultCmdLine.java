@@ -31,8 +31,8 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -77,7 +77,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
   /**
    * {@inheritDoc}
    */
-  @NotNull
+  @Nonnull
   @Override
   protected ConsolePrinter getConsolePrinter() {
     return consolePrinter;
@@ -87,7 +87,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public boolean readBoolean( @NotNull String message ) throws IOException {
+  public boolean readBoolean( @Nonnull String message ) throws IOException {
     String answer = read( message + " (y/n)" );
     if ( answer.equalsIgnoreCase( "y" ) ) {
       return true;
@@ -105,8 +105,8 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message ) {
+  @Nonnull
+  public String read( @Nonnull String message ) {
     return read( message, ( String ) null );
   }
 
@@ -114,8 +114,8 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message, @Nullable String defaultValue ) {
+  @Nonnull
+  public String read( @Nonnull String message, @Nullable String defaultValue ) {
     //First clear the input stream
     try {
       int available;
@@ -151,7 +151,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
    *
    * @return a {@link InputStream} object.
    */
-  @NotNull
+  @Nonnull
   public InputStream getIn() {
     return System.in;
   }
@@ -160,7 +160,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public PrintStream getOut() {
     return System.out;
   }
@@ -169,7 +169,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message, int lower, int upper ) {
+  public int readInt( @Nonnull String message, int lower, int upper ) {
     try {
       while ( true ) {
         int value = readInt( message );
@@ -188,7 +188,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message ) throws IOException {
+  public int readInt( @Nonnull String message ) throws IOException {
     while ( true ) {
       String value = read( message );
       try {

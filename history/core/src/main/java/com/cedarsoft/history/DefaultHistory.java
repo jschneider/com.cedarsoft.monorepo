@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,20 +48,20 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   private Long id;
-  @NotNull
+  @Nonnull
   protected final List<E> entries = new ArrayList<E>();
 
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   private final ClusteredHistoryListenerSupport<E> listenerSupport = new ClusteredHistoryListenerSupport<E>();
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getEntries() {
     return Collections.unmodifiableList( entries );
   }
@@ -75,7 +75,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   protected E getEntry( int index ) throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -105,7 +105,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void addEntry( @NotNull E entry ) {
+  public void addEntry( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       this.entries.add( entry );
@@ -120,7 +120,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public boolean removeEntry( @NotNull E entry ) {
+  public boolean removeEntry( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       return entries.remove( entry );
@@ -134,7 +134,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void commitEntry( @NotNull E entry ) {
+  public void commitEntry( @Nonnull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
@@ -142,7 +142,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public E getFirstEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -175,7 +175,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public E getLatestEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -192,7 +192,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public boolean isLatestEntry( @NotNull E entry ) {
+  public boolean isLatestEntry( @Nonnull E entry ) {
     lock.readLock().lock();
     try {
       if ( entries.isEmpty() ) {
@@ -209,7 +209,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getElements() {
     return getEntries();
   }
@@ -218,7 +218,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends E> elements ) {
+  public void setElements( @Nonnull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
     lock.writeLock().lock();
@@ -241,7 +241,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull E element ) {
+  public void add( @Nonnull E element ) {
     addEntry( element );
   }
 
@@ -249,7 +249,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull E element ) {
+  public void remove( @Nonnull E element ) {
     removeEntry( element );
   }
 
@@ -257,7 +257,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
@@ -265,7 +265,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
@@ -273,7 +273,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();
   }
@@ -284,7 +284,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
@@ -293,7 +293,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
    *
    * @return a {@link ReadWriteLock} object.
    */
-  @NotNull
+  @Nonnull
   public ReadWriteLock getLock() {
     return lock;
   }

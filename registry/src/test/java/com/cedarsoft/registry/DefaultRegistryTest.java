@@ -33,7 +33,7 @@ package com.cedarsoft.registry;
 
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.Arrays;
@@ -116,7 +116,7 @@ public class DefaultRegistryTest {
 
     assertEquals( "b", registry.findStoredObject( new Registry.Matcher<java.lang.String>() {
       @Override
-      public boolean matches( @NotNull String object ) {
+      public boolean matches( @Nonnull String object ) {
         return object.equals( "b" );
       }
     } ) );
@@ -128,7 +128,7 @@ public class DefaultRegistryTest {
 
     assertEquals( "b", registry.findStoredObjects( new Registry.Matcher<java.lang.String>() {
       @Override
-      public boolean matches( @NotNull String object ) {
+      public boolean matches( @Nonnull String object ) {
         return object.equals( "b" );
       }
     } ).iterator().next() );

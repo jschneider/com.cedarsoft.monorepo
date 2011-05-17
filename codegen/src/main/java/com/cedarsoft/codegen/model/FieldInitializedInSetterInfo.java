@@ -33,21 +33,21 @@ package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class FieldInitializedInSetterInfo extends DefaultFieldDeclarationInfo implements FieldWithInitializationInfo {
-  @NotNull
+  @Nonnull
   private final MethodDeclaration setterDeclaration;
 
-  public FieldInitializedInSetterInfo( @NotNull FieldDeclaration fieldDeclaration, @NotNull MethodDeclaration getterDeclaration, @NotNull MethodDeclaration setterDeclaration ) {
+  public FieldInitializedInSetterInfo( @Nonnull FieldDeclaration fieldDeclaration, @Nonnull MethodDeclaration getterDeclaration, @Nonnull MethodDeclaration setterDeclaration ) {
     super( getterDeclaration, fieldDeclaration );
     this.setterDeclaration = setterDeclaration;
   }
 
-  @NotNull
+  @Nonnull
   public MethodDeclaration getSetterDeclaration() {
     return setterDeclaration;
   }

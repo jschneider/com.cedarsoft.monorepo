@@ -31,8 +31,8 @@
 
 package com.cedarsoft.codegen;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  *
@@ -42,15 +42,13 @@ public class NamingSupport {
 
   }
 
-  @NotNull
-  @NonNls
-  public static String createXmlElementName( @NotNull @NonNls String simpleClassName ) {
+  @Nonnull
+  public static String createXmlElementName( @Nonnull String simpleClassName ) {
     return simpleClassName.toLowerCase();
   }
 
-  @NotNull
-  @NonNls
-  public static String createVarName( @NotNull @NonNls String simpleClassName ) {
+  @Nonnull
+  public static String createVarName( @Nonnull String simpleClassName ) {
     if ( simpleClassName.length() == 0 ) {
       throw new IllegalArgumentException( "Invalid class name: Is empty" );
     }
@@ -58,21 +56,18 @@ public class NamingSupport {
     return simpleClassName.substring( 0, 1 ).toLowerCase() + simpleClassName.substring( 1 );
   }
 
-  @NotNull
-  @NonNls
-  public static String createSetter( @NotNull @NonNls String fieldName ) {
+  @Nonnull
+  public static String createSetter( @Nonnull String fieldName ) {
     return "set" + fieldName.substring( 0, 1 ).toUpperCase() + fieldName.substring( 1 );
   }
 
-  @NotNull
-  @NonNls
-  public static String createGetterName( @NotNull @NonNls String simpleName ) {
+  @Nonnull
+  public static String createGetterName( @Nonnull String simpleName ) {
     return "get" + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
   }
 
-  @NotNull
-  @NonNls
-  public static String plural( @NotNull @NonNls String singular ) {
+  @Nonnull
+  public static String plural( @Nonnull String singular ) {
     if ( singular.endsWith( "s" ) || singular.endsWith( "ch" ) || singular.endsWith( "x" ) ) {
       return singular + "es";
     }
@@ -80,9 +75,8 @@ public class NamingSupport {
     return singular + "s";
   }
 
-  @NotNull
-  @NonNls
-  public static String createSingular( @NotNull @NonNls String plural ) {
+  @Nonnull
+  public static String createSingular( @Nonnull String plural ) {
     if ( !plural.endsWith( "s" ) ) {
       return plural;
     }

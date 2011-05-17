@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter.demo;
 
 import com.cedarsoft.presenter.demo.graph.Graph2DPresenter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import y.view.Graph2D;
 import y.view.Graph2DView;
 import y.view.NavigationMode;
@@ -48,7 +48,7 @@ public class GraphDemo extends MenuDemo {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected JFrame createFrame() {
     JFrame frame = super.createFrame();
 

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>ElementsCollectionDelegatingListener class.</p>
@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ElementsCollectionDelegatingListener<T> extends SingleElementsListener<T> {
-  @NotNull
+  @Nonnull
   private final ObservableObjectAccess<T> delegate;
 
   /**
@@ -47,7 +47,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
    *
    * @param delegate a {@link ObservableObjectAccess} object.
    */
-  public ElementsCollectionDelegatingListener( @NotNull ObservableObjectAccess<T> delegate ) {
+  public ElementsCollectionDelegatingListener( @Nonnull ObservableObjectAccess<T> delegate ) {
     this.delegate = delegate;
   }
 
@@ -55,7 +55,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
    * {@inheritDoc}
    */
   @Override
-  public void elementDeleted( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
+  public void elementDeleted( @Nonnull ObservableCollection<? extends T> source, @Nonnull T element, int index ) {
     delegate.remove( element );
   }
 
@@ -63,7 +63,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
    * {@inheritDoc}
    */
   @Override
-  public void elementAdded( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
+  public void elementAdded( @Nonnull ObservableCollection<? extends T> source, @Nonnull T element, int index ) {
     delegate.add( element );
   }
 
@@ -71,7 +71,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
    * {@inheritDoc}
    */
   @Override
-  public void elementChanged( @NotNull ObservableCollection<? extends T> source, @NotNull T element, int index ) {
+  public void elementChanged( @Nonnull ObservableCollection<? extends T> source, @Nonnull T element, int index ) {
     delegate.commit( element );
   }
 }

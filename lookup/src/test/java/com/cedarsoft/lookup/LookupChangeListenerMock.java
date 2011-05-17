@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ import static org.junit.Assert.*;
 public class LookupChangeListenerMock implements LookupChangeListener<Object> {
   private List<Entry<?>> entries = new ArrayList<Entry<?>>();
 
-  public <T> void addExpected( @NotNull Class<T> type, T oldValue, T newValue ) {
+  public <T> void addExpected( @Nonnull Class<T> type, T oldValue, T newValue ) {
     entries.add( new Entry<T>( type, oldValue, newValue ) );
   }
 
@@ -55,11 +55,11 @@ public class LookupChangeListenerMock implements LookupChangeListener<Object> {
   }
 
   @Override
-  public void lookupChanged( @NotNull LookupChangeEvent<? extends Object> event ) {
+  public void lookupChanged( @Nonnull LookupChangeEvent<? extends Object> event ) {
     verify( event );
   }
 
-  private void verify( @NotNull LookupChangeEvent<? extends Object> event ) {
+  private void verify( @Nonnull LookupChangeEvent<? extends Object> event ) {
     if ( entries.isEmpty() ) {
       throw new IllegalStateException( "No entry left. " + event.getType().getName() );
     }

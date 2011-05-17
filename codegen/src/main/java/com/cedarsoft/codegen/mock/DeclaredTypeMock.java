@@ -35,7 +35,7 @@ import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.mirror.type.DeclaredType;
 import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,7 +48,7 @@ public class DeclaredTypeMock extends ReferenceTypeMock implements DeclaredType 
 
   private final List<Class<?>> actualTypeArguments = new ArrayList<Class<?>>();
 
-  public DeclaredTypeMock( @NotNull Class<?> type ) {
+  public DeclaredTypeMock( @Nonnull Class<?> type ) {
     super( type );
   }
 

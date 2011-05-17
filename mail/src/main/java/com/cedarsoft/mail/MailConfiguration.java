@@ -31,8 +31,8 @@
 
 package com.cedarsoft.mail;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -45,25 +45,19 @@ import java.lang.String;
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class MailConfiguration {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String mailFrom;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String mailHost;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String smtpUser;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String smtpPass;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String mailPersonal;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String mailSmtpAuth;
 
 
@@ -77,7 +71,7 @@ public class MailConfiguration {
    * @param smtpPass     a {@link String} object.
    * @param mailSmtpAuth a {@link String} object.
    */
-  public MailConfiguration( @NonNls @NotNull String mailHost, @NonNls @NotNull String mailFrom, @NonNls @NotNull String mailPersonal, @NonNls @NotNull String smtpUser, @NonNls @NotNull String smtpPass, @NonNls @NotNull String mailSmtpAuth ) {
+  public MailConfiguration( @Nonnull String mailHost, @Nonnull String mailFrom, @Nonnull String mailPersonal, @Nonnull String smtpUser, @Nonnull String smtpPass, @Nonnull String mailSmtpAuth ) {
     this.mailHost = mailHost;
     this.mailFrom = mailFrom;
     this.mailPersonal = mailPersonal;
@@ -91,8 +85,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getMailFrom() {
     return mailFrom;
   }
@@ -102,8 +95,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getMailHost() {
     return mailHost;
   }
@@ -113,8 +105,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getSmtpUser() {
     return smtpUser;
   }
@@ -124,8 +115,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getSmtpPass() {
     return smtpPass;
   }
@@ -135,8 +125,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getMailPersonal() {
     return mailPersonal;
   }
@@ -146,8 +135,7 @@ public class MailConfiguration {
    *
    * @return a {@link String} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public String getMailSmtpAuth() {
     return mailSmtpAuth;
   }

@@ -31,22 +31,20 @@
 
 package com.cedarsoft.id;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class NameSpaceSupport {
-  @NotNull
-  @NonNls
-  public static String createNameSpaceUriBase( @NotNull Class<?> type ) {
+  @Nonnull
+  public static String createNameSpaceUriBase( @Nonnull Class<?> type ) {
     return createNameSpaceUriBase( type.getName() );
   }
 
-  @NotNull
-  @NonNls
-  public static String createNameSpaceUriBase( @NotNull @NonNls String className ) {
+  @Nonnull
+  public static String createNameSpaceUriBase( @Nonnull String className ) {
     String[] parts = className.split( "\\." );
 
     //If we have lesser than three parts just return the type - a fallback
@@ -69,9 +67,8 @@ public class NameSpaceSupport {
     return uri.toString();
   }
 
-  @NotNull
-  @NonNls
-  public static String createNameWithSpaces( @NotNull @NonNls String camelName ) {
+  @Nonnull
+  public static String createNameWithSpaces( @Nonnull String camelName ) {
     //If it is the same, just return it
     String lowerCaseName = camelName.toLowerCase();
     if ( lowerCaseName.equals( camelName ) ) {
@@ -80,7 +77,7 @@ public class NameSpaceSupport {
 
     StringBuilder builder = new StringBuilder();
     for ( int i = 0; i < camelName.length(); i++ ) {
-      @NonNls
+      @Nonnull
       String camelPart = camelName.substring( i, i + 1 );
       String asLower = camelPart.toLowerCase();
       if ( builder.length() > 0 && !asLower.equals( camelPart ) ) {

@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.mockito.Mock;
 
@@ -71,7 +71,7 @@ public class ChangeListenerSupportTest {
 
   @Test
   public void testPropChange() throws Exception {
-    @NotNull
+    @Nonnull
     final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
     final ChangeListenerSupport<String> changeListenerSupport = new ChangeListenerSupport<String>( "asdf" );
 

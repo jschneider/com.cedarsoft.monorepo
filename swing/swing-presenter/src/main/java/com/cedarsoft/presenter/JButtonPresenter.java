@@ -31,7 +31,7 @@
 
 package com.cedarsoft.presenter;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JButton;
 
@@ -45,7 +45,7 @@ public class JButtonPresenter extends AbstractButtonPresenter<JButton> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public JButton createPresentation() {
     return new JButton();
   }

@@ -32,8 +32,8 @@
 package com.cedarsoft.history;
 
 import com.cedarsoft.WriteableObjectAccess;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -46,14 +46,12 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
   /**
    * Constant <code>PROPERTY_ENTRIES="entries"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_ENTRIES = "entries";
   /**
    * Constant <code>PROPERTY_FIRST_ENTRIES="firstEntry"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_FIRST_ENTRIES = "firstEntry";
 
   /**
@@ -61,7 +59,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @return the entries
    */
-  @NotNull
+  @Nonnull
   List<? extends E> getEntries();
 
   /**
@@ -76,14 +74,14 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @param entry the entry that is added
    */
-  void addEntry( @NotNull E entry );
+  void addEntry( @Nonnull E entry );
 
   /**
    * Commits the entry
    *
    * @param entry the entry that has been changed
    */
-  void commitEntry( @NotNull E entry );
+  void commitEntry( @Nonnull E entry );
 
   /**
    * Returns the latest entry
@@ -93,7 +91,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   E getLatestEntry() throws NoValidElementFoundException;
 
   /**
@@ -101,14 +99,14 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @param historyListener the listener that is registered
    */
-  void addHistoryListener( @NotNull HistoryListener<E> historyListener );
+  void addHistoryListener( @Nonnull HistoryListener<E> historyListener );
 
   /**
    * <p>getHistoryListeners</p>
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   List<? extends HistoryListener<E>> getHistoryListeners();
 
   /**
@@ -116,7 +114,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    *
    * @param historyListener the listener that is removed
    */
-  void removeHistoryListener( @NotNull HistoryListener<E> historyListener );
+  void removeHistoryListener( @Nonnull HistoryListener<E> historyListener );
 
   /**
    * Returns whether the given entry is the latest entry
@@ -124,7 +122,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * @param entry the entry
    * @return whether the given entry is the latest entry
    */
-  boolean isLatestEntry( @NotNull E entry );
+  boolean isLatestEntry( @Nonnull E entry );
 
   /**
    * Removes the entry
@@ -132,7 +130,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * @param entry the entry that is removed
    * @return a boolean.
    */
-  boolean removeEntry( @NotNull E entry );
+  boolean removeEntry( @Nonnull E entry );
 
   /**
    * Returns the first entry
@@ -142,7 +140,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
    * @throws NoValidElementFoundException
    *          if no entry is available within this history
    */
-  @NotNull
+  @Nonnull
   E getFirstEntry() throws NoValidElementFoundException;
 
   /**

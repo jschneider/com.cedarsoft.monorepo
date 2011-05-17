@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.util.Collections;
@@ -53,7 +53,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * @param type  a {@link Class} object.
    * @param value a T object.
    */
-  public SingletonLookup( @NotNull Class<T> type, @NotNull T value ) {
+  public SingletonLookup( @Nonnull Class<T> type, @Nonnull T value ) {
     this.singletonType = type;
     this.singleton = value;
   }
@@ -63,7 +63,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    */
   @Override
   @Nullable
-  public <T> T lookup( @NotNull Class<T> type ) {
+  public <T> T lookup( @Nonnull Class<T> type ) {
     if ( type == this.singletonType ) {
       return type.cast( singleton );
     }
@@ -74,7 +74,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Map<Class<?>, Object> lookups() {
     return Collections.<Class<?>, Object>singletonMap( ( Class<?> ) singletonType, ( Object ) singleton );
   }
@@ -84,7 +84,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    *
    * @return a T object.
    */
-  @NotNull
+  @Nonnull
   public T getSingleton() {
     return singleton;
   }
@@ -94,7 +94,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    *
    * @return a {@link Class} object.
    */
-  @NotNull
+  @Nonnull
   public Class<T> getSingletonType() {
     return singletonType;
   }
@@ -107,7 +107,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
@@ -115,7 +115,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     bind( lookupChangeListener.getType(), lookupChangeListener );
   }
 
@@ -123,7 +123,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lookupChangeListener.lookupChanged( new LookupChangeEvent<T>( this, type, null, lookup( type ) ) );
   }
 
@@ -131,7 +131,7 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     bindWeak( lookupChangeListener.getType(), lookupChangeListener );
   }
 
@@ -139,41 +139,41 @@ public class SingletonLookup<T> extends AbstractLookup {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
   }
 }

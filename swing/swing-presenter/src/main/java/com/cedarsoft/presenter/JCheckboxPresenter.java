@@ -31,7 +31,7 @@
 
 package com.cedarsoft.presenter;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JCheckBox;
 
@@ -53,7 +53,7 @@ public class JCheckboxPresenter extends AbstractButtonPresenter<JCheckBox> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected JCheckBox createPresentation() {
     return new JCheckBox();
   }

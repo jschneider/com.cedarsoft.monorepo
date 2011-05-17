@@ -32,8 +32,8 @@
 package com.cedarsoft.configuration.xml;
 
 import com.cedarsoft.configuration.DefaultValueProvider;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Collections;
 import java.util.List;
@@ -48,15 +48,15 @@ public final class EmptyDefaultValueProvider implements DefaultValueProvider {
   /**
    * Constant <code>INSTANCE</code>
    */
-  @NotNull
+  @Nonnull
   public static final EmptyDefaultValueProvider INSTANCE = new EmptyDefaultValueProvider();
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <T> T getDefaultValue( @NotNull @NonNls String key, @NotNull Class<T> type ) {
+  @Nonnull
+  public <T> T getDefaultValue( @Nonnull String key, @Nonnull Class<T> type ) {
     if ( Map.class.isAssignableFrom( type ) ) {
       return type.cast( Collections.emptyMap() );
     }

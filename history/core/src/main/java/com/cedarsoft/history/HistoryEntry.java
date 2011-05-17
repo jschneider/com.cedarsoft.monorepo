@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 
 /**
@@ -44,8 +44,7 @@ public interface HistoryEntry extends Comparable<HistoryEntry> {
   /**
    * Constant <code>PROPERTY_VERIFICATION_DATE="verificationDate"</code>
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   String PROPERTY_VERIFICATION_DATE = "verificationDate";
 
   /**
@@ -53,6 +52,6 @@ public interface HistoryEntry extends Comparable<HistoryEntry> {
    *
    * @return the point in time when the information stored within this entry, has been verified
    */
-  @NotNull
+  @Nonnull
   LocalDate getVerificationDate();
 }

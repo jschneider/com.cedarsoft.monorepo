@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * This is a special LookupChangeListener that knows the type it is listening to.
@@ -46,6 +46,6 @@ public interface TypedLookupChangeListener<T> extends LookupChangeListener<T> {
    *
    * @return the type
    */
-  @NotNull
+  @Nonnull
   Class<T> getType();
 }

@@ -33,8 +33,8 @@ package com.cedarsoft.lookup.binding;
 
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.TypedLookupChangeListener;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.Class;
 import java.lang.Object;
@@ -59,7 +59,7 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
    * @param propertyName a {@link String} object.
    * @param propertyType a {@link Class} object.
    */
-  public PropertyCallback( @NotNull Object object, @NotNull @NonNls String propertyName, @NotNull Class<T> propertyType ) {
+  public PropertyCallback( @Nonnull Object object, @Nonnull String propertyName, @Nonnull Class<T> propertyType ) {
     this.propertyType = propertyType;
     this.object = object;
     try {
@@ -73,7 +73,7 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Class<T> getType() {
     return propertyType;
   }
@@ -82,7 +82,7 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
    * {@inheritDoc}
    */
   @Override
-  public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
+  public void lookupChanged( @Nonnull LookupChangeEvent<? extends T> event ) {
     try {
       setter.invoke( object, event.getNewValue() );
     } catch ( IllegalAccessException e ) {

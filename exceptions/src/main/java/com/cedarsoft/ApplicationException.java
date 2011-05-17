@@ -1,7 +1,7 @@
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Locale;
 
@@ -9,18 +9,18 @@ import java.util.Locale;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ApplicationException extends RuntimeException {
-  @NotNull
+  @Nonnull
   private final Message message;
-  @NotNull
+  @Nonnull
   private final Object[] messageArguments;
 
-  public ApplicationException( @NotNull Message message, @NotNull Object... messageArguments ) {
+  public ApplicationException( @Nonnull Message message, @Nonnull Object... messageArguments ) {
     super( message.getKey() );
     this.message = message;
     this.messageArguments = messageArguments.clone();
   }
 
-  @NotNull
+  @Nonnull
   public Object[] getMessageArguments() {
     return messageArguments.clone();
   }
@@ -29,27 +29,24 @@ public class ApplicationException extends RuntimeException {
    * @noinspection RefusedBequest
    */
   @Override
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getLocalizedMessage() {
     return message.getLocalizedMessage( messageArguments );
   }
 
-  @NotNull
-  @NonNls
-  public String getLocalizedMessage( @NotNull Locale locale ) {
+  @Nonnull
+  public String getLocalizedMessage( @Nonnull Locale locale ) {
     return message.getLocalizedMessage( locale, messageArguments );
   }
 
   public interface Message {
-    @NotNull
-    @NonNls
+    @Nonnull
     String getKey();
 
-    @NotNull
-    String getLocalizedMessage( @NotNull Object... messageArguments );
+    @Nonnull
+    String getLocalizedMessage( @Nonnull Object... messageArguments );
 
-    @NotNull
-    String getLocalizedMessage( @NotNull Locale locale, @NotNull Object... messageArguments );
+    @Nonnull
+    String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments );
   }
 }

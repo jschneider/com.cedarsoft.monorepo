@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A lookup store is an extended lookup with write access
@@ -46,5 +46,5 @@ public interface LookupStore extends Lookup {
    * @param value the value
    * @param <T>   a T object.
    */
-  <T> void store( @NotNull Class<T> type, @NotNull T value );
+  <T> void store( @Nonnull Class<T> type, @Nonnull T value );
 }

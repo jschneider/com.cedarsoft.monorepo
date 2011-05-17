@@ -31,7 +31,7 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import java.awt.Dimension;
 import java.awt.DisplayMode;

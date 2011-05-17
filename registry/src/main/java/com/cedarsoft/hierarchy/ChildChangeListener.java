@@ -31,7 +31,7 @@
 
 package com.cedarsoft.hierarchy;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Listener that may be registered at a parent
@@ -44,5 +44,5 @@ public interface ChildChangeListener<P> {
    *
    * @param parent the parent
    */
-  void notifyChildrenChangedFor( @NotNull P parent );
+  void notifyChildrenChangedFor( @Nonnull P parent );
 }

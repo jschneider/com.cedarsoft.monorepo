@@ -31,9 +31,9 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,18 +52,17 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * Constant <code>PROPERTY_ELEMENTS="elements"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ELEMENTS = "elements";
 
   private Long id;
-  @NotNull
+  @Nonnull
   protected final List<E> elements = new ArrayList<E>();
 
-  @NotNull
+  @Nonnull
   protected final ClusteredCollectionSupport<E> collectionSupport = new ClusteredCollectionSupport<E>( this );
 
-  @NotNull
+  @Nonnull
   protected final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
   /**
@@ -77,7 +76,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param elements a {@link Collection} object.
    */
-  public ClusteredElementsCollection( @NotNull Collection<? extends E> elements ) {
+  public ClusteredElementsCollection( @Nonnull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
   }
 
@@ -85,7 +84,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public final void add( @NotNull E element ) {
+  public final void add( @Nonnull E element ) {
     addElement( element );
   }
 
@@ -95,7 +94,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @return a {@link ClusteredCollectionSupport} object.
    */
   @Deprecated
-  @NotNull
+  @Nonnull
   public ClusteredCollectionSupport<E> getCollectionSupport() {
     return collectionSupport;
   }
@@ -105,7 +104,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param element the entry that is added
    */
-  public void addElement( @NotNull E element ) {
+  public void addElement( @Nonnull E element ) {
     lock.writeLock().lock();
     int index;
     try {
@@ -121,7 +120,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public void commit( @NotNull E element ) {
+  public void commit( @Nonnull E element ) {
 
     lock.readLock().lock();
     int index;
@@ -162,7 +161,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    *
    * @param additionalElements a {@link List} object.
    */
-  public void addAll( @NotNull List<? extends E> additionalElements ) {
+  public void addAll( @Nonnull List<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
       add( element );
     }
@@ -188,7 +187,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * Returns all cessions
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getElements() {
     lock.readLock().lock();
     try {
@@ -202,7 +201,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends E> elements ) {
+  public void setElements( @Nonnull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
     lock.writeLock().lock();
@@ -225,7 +224,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public final void remove( @NotNull E element ) {
+  public final void remove( @Nonnull E element ) {
     removeEntry( element );
   }
 
@@ -235,7 +234,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param element a E object.
    * @return a boolean.
    */
-  public boolean removeEntry( @NotNull E element ) {
+  public boolean removeEntry( @Nonnull E element ) {
     lock.writeLock().lock();
     boolean removed;
     int index;
@@ -254,7 +253,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super E> listener ) {
+  public void addElementListener( @Nonnull ElementsListener<? super E> listener ) {
     addElementListener( listener, true );
   }
 
@@ -262,7 +261,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends ElementsListener<? super E>> getTransientElementListeners() {
     return collectionSupport.getTransientElementListeners();
   }
@@ -271,7 +270,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient ) {
+  public void addElementListener( @Nonnull ElementsListener<? super E> listener, boolean isTransient ) {
     collectionSupport.addElementListener( listener, isTransient );
   }
 
@@ -279,7 +278,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  public void removeElementListener( @NotNull ElementsListener<? super E> listener ) {
+  public void removeElementListener( @Nonnull ElementsListener<? super E> listener ) {
     collectionSupport.removeElementListener( listener );
   }
 
@@ -289,8 +288,8 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param visitor a {@link ElementVisitor} object.
    * @return a {@link List} object.
    */
-  @NotNull
-  public List<? extends E> findElements( @NotNull ElementVisitor<? super E> visitor ) {
+  @Nonnull
+  public List<? extends E> findElements( @Nonnull ElementVisitor<? super E> visitor ) {
     List<E> found = new ArrayList<E>();
 
     lock.readLock().lock();
@@ -316,8 +315,8 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @throws NoElementFoundException
    *          if no entry has been found
    */
-  @NotNull
-  public E findFirstElement( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
+  @Nonnull
+  public E findFirstElement( @Nonnull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     E found = findFirstElementNullable( visitor );
     if ( found == null ) {
       throw new NoElementFoundException( "No element found for " + visitor.getIdentifier() );
@@ -332,7 +331,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @return a E object.
    */
   @Nullable
-  public E findFirstElementNullable( @NotNull ElementVisitor<? super E> visitor ) {
+  public E findFirstElementNullable( @Nonnull ElementVisitor<? super E> visitor ) {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
@@ -352,7 +351,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param element a E object.
    * @return a boolean.
    */
-  public boolean contains( @NotNull E element ) {
+  public boolean contains( @Nonnull E element ) {
     lock.readLock().lock();
     try {
       return elements.contains( element );
@@ -370,7 +369,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @throws NoElementFoundException
    *          if any.
    */
-  public boolean contains( @NotNull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
+  public boolean contains( @Nonnull ElementVisitor<? super E> visitor ) throws NoElementFoundException {
     lock.readLock().lock();
     try {
       for ( E element : elements ) {
@@ -390,8 +389,8 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * @param visitor the visitor that describes the entries
    * @return a {@link List} object.
    */
-  @NotNull
-  public List<? extends E> removeElements( @NotNull ElementVisitor<? super E> visitor ) {
+  @Nonnull
+  public List<? extends E> removeElements( @Nonnull ElementVisitor<? super E> visitor ) {
     List<E> removed = new ArrayList<E>();
     lock.writeLock().lock();
     try {
@@ -438,7 +437,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public ReentrantReadWriteLock getLock() {
     return lock;
   }

@@ -33,32 +33,32 @@ package com.cedarsoft.codegen.model;
 
 import com.cedarsoft.codegen.TypeUtils;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class DefaultFieldTypeInformation implements FieldTypeInformation {
-  @NotNull
+  @Nonnull
   private final TypeMirror typeMirror;
 
-  public DefaultFieldTypeInformation( @NotNull TypeMirror typeMirror ) {
+  public DefaultFieldTypeInformation( @Nonnull TypeMirror typeMirror ) {
     this.typeMirror = typeMirror;
   }
 
-  @NotNull
+  @Nonnull
   public TypeMirror getTypeMirror() {
     return typeMirror;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public TypeMirror getType() {
     return typeMirror;
   }
 
   @Override
-  public boolean isType( @NotNull Class<?> type ) {
+  public boolean isType( @Nonnull Class<?> type ) {
     return TypeUtils.isType( getType(), type );
   }
 
@@ -68,7 +68,7 @@ public class DefaultFieldTypeInformation implements FieldTypeInformation {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public TypeMirror getCollectionParam() {
     return TypeUtils.getCollectionParam( getType() );
   }

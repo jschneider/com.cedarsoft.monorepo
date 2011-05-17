@@ -33,32 +33,31 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * Very simple implementation that is able to present a string.
  */
 public class StringPresenter extends AbstractPresenter<String> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String value;
 
-  public StringPresenter( @NotNull String value ) {
+  public StringPresenter( @Nonnull String value ) {
     this.value = value;
   }
 
   @Override
-  protected void bind( @NotNull String presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull String presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
   @Override
-  protected boolean addChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
+  protected boolean addChildPresentation( @Nonnull String presentation, @Nonnull StructPart child, int index ) {
     return false;
   }
 
   @Override
-  protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
+  protected void removeChildPresentation( @Nonnull String presentation, @Nonnull StructPart child, int index ) {
   }
 
   @Override
@@ -67,7 +66,7 @@ public class StringPresenter extends AbstractPresenter<String> {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected String createPresentation() {
     return value;
   }

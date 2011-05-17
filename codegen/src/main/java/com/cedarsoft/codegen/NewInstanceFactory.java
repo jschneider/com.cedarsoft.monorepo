@@ -38,8 +38,8 @@ import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JType;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -48,11 +48,11 @@ import java.util.HashSet;
  *
  */
 public class NewInstanceFactory {
-  @NonNls
+  @Nonnull
   public static final String METHOD_NAME_VALUE_OF = "valueOf";
-  @NonNls
+  @Nonnull
   public static final String METHOD_NAME_AS_LIST = "asList";
-  @NonNls
+  @Nonnull
   public static final String CONSTANT_NAME_TRUE = "TRUE";
   public static final int DEFAULT_VALUE_INTEGER = 42;
   public static final float DEFAULT_VALUE_FLOAT = 44.0F;
@@ -60,18 +60,18 @@ public class NewInstanceFactory {
   public static final double DEFAULT_VALUE_DOUBLE = 12.5;
   public static final char DEFAULT_VALUE_CHAR = 'c';
 
-  @NotNull
+  @Nonnull
   private final JCodeModel codeModel;
-  @NotNull
+  @Nonnull
   private final ClassRefSupport classRefSupport;
 
-  public NewInstanceFactory( @NotNull JCodeModel codeModel, @NotNull ClassRefSupport classRefSupport ) {
+  public NewInstanceFactory( @Nonnull JCodeModel codeModel, @Nonnull ClassRefSupport classRefSupport ) {
     this.codeModel = codeModel;
     this.classRefSupport = classRefSupport;
   }
 
-  @NotNull
-  public JExpression create( @NotNull JType type, @NotNull @NonNls String simpleName ) {
+  @Nonnull
+  public JExpression create( @Nonnull JType type, @Nonnull String simpleName ) {
     JType erased = type.erasure();
     if ( TypeUtils.isType( erased, String.class ) ) {
       return JExpr.lit( simpleName );
@@ -122,8 +122,8 @@ public class NewInstanceFactory {
     }
   }
 
-  @NotNull
-  public JExpression createCollectionInvocation( @NotNull JType collectionParamType, @NotNull @NonNls String simpleName, boolean isSet ) {
+  @Nonnull
+  public JExpression createCollectionInvocation( @Nonnull JType collectionParamType, @Nonnull String simpleName, boolean isSet ) {
     JExpression expression = create( collectionParamType.erasure(), simpleName );
 
     JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );
@@ -134,8 +134,8 @@ public class NewInstanceFactory {
     }
   }
 
-  @NotNull
-  public JExpression create( @NotNull TypeMirror type, @NotNull @NonNls String simpleName ) {
+  @Nonnull
+  public JExpression create( @Nonnull TypeMirror type, @Nonnull String simpleName ) {
     if ( TypeUtils.isType( type, String.class ) ) {
       return JExpr.lit( simpleName );
     }
@@ -184,8 +184,8 @@ public class NewInstanceFactory {
     }
   }
 
-  @NotNull
-  public JExpression createCollectionInvocation( @NotNull TypeMirror collectionParamType, @NotNull @NonNls String simpleName, boolean isSet ) {
+  @Nonnull
+  public JExpression createCollectionInvocation( @Nonnull TypeMirror collectionParamType, @Nonnull String simpleName, boolean isSet ) {
     JExpression expression = create( TypeUtils.getErasure( collectionParamType ), simpleName );
 
     JInvocation listInvocation = classRefSupport.ref( Arrays.class ).staticInvoke( METHOD_NAME_AS_LIST ).arg( expression );

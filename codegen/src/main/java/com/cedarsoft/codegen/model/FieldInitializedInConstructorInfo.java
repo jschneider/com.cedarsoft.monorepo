@@ -34,21 +34,21 @@ package com.cedarsoft.codegen.model;
 import com.cedarsoft.codegen.ConstructorCallInfo;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class FieldInitializedInConstructorInfo extends DefaultFieldDeclarationInfo implements FieldWithInitializationInfo {
-  @NotNull
+  @Nonnull
   private final ConstructorCallInfo constructorCallInfo;
 
-  public FieldInitializedInConstructorInfo( @NotNull FieldDeclaration fieldDeclaration, @NotNull MethodDeclaration getterDeclaration, @NotNull ConstructorCallInfo constructorCallInfo ) {
+  public FieldInitializedInConstructorInfo( @Nonnull FieldDeclaration fieldDeclaration, @Nonnull MethodDeclaration getterDeclaration, @Nonnull ConstructorCallInfo constructorCallInfo ) {
     super( getterDeclaration, fieldDeclaration );
     this.constructorCallInfo = constructorCallInfo;
   }
 
-  @NotNull
+  @Nonnull
   public ConstructorCallInfo getConstructorCallInfo() {
     return constructorCallInfo;
   }

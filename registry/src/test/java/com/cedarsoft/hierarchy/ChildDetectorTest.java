@@ -32,7 +32,7 @@
 package com.cedarsoft.hierarchy;
 
 import com.cedarsoft.MockitoTemplate;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.mockito.Mock;
 
@@ -51,9 +51,9 @@ public class ChildDetectorTest {
   @Before
   public void setUp() throws Exception {
     detector = new CachingChildDetector<Class<?>, String>() {
-      @NotNull
+      @Nonnull
       @Override
-      protected List<? extends String> createChildren( @NotNull Class<?> parent ) {
+      protected List<? extends String> createChildren( @Nonnull Class<?> parent ) {
         return Arrays.asList( parent.getPackage().getName(), parent.getName() );
       }
     };

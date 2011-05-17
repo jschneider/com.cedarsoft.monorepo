@@ -33,8 +33,8 @@ package com.cedarsoft.crypt.xml;
 
 import com.cedarsoft.crypt.X509Support;
 import javax.inject.Inject;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -65,10 +65,10 @@ import java.util.Collections;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlSignatureSupport {
-  @NotNull
+  @Nonnull
   private static final XMLSignatureFactory SIGNATURE_FACTORY = XMLSignatureFactory.getInstance( "DOM" );
 
-  @NotNull
+  @Nonnull
   private final X509Support x509Support;
 
   /**
@@ -77,7 +77,7 @@ public class XmlSignatureSupport {
    * @param x509Support a {@link X509Support} object.
    */
   @Inject
-  public XmlSignatureSupport( @NotNull X509Support x509Support ) {
+  public XmlSignatureSupport( @Nonnull X509Support x509Support ) {
     this.x509Support = x509Support;
   }
 
@@ -87,9 +87,9 @@ public class XmlSignatureSupport {
    * @param xmlDocument a {@link Document} object.
    * @return a {@link Document} object.
    */
-  public Document sign( @NotNull Document xmlDocument ) {
+  public Document sign( @Nonnull Document xmlDocument ) {
     try {
-      @NotNull @NonNls String elementName = xmlDocument.getFirstChild().getNodeName();
+      @Nonnull String elementName = xmlDocument.getFirstChild().getNodeName();
       Reference ref = SIGNATURE_FACTORY.newReference( '#' + elementName, SIGNATURE_FACTORY.newDigestMethod( DigestMethod.SHA256, null ) );
 
       Node invoice = xmlDocument.getDocumentElement();
@@ -122,7 +122,7 @@ public class XmlSignatureSupport {
    *
    * @throws Exception if any.
    */
-  public boolean hasValidSignature( @NotNull Document doc ) throws Exception {
+  public boolean hasValidSignature( @Nonnull Document doc ) throws Exception {
     NodeList nl = doc.getElementsByTagNameNS( XMLSignature.XMLNS, "Signature" );
     if ( nl.getLength() == 0 ) {
       throw new IllegalStateException( "Cannot find Signature element!" );
@@ -156,8 +156,8 @@ public class XmlSignatureSupport {
    * @param signedDocument the signed signedDocument
    * @return the root node of the original signedDocument
    */
-  @NotNull
-  public Node getOriginalNode( @NotNull Document signedDocument ) {
+  @Nonnull
+  public Node getOriginalNode( @Nonnull Document signedDocument ) {
     NodeList nl = signedDocument.getElementsByTagNameNS( XMLSignature.XMLNS, "Object" );
     if ( nl.getLength() == 0 ) {
       throw new IllegalStateException( "Cannot find Object element!" );
@@ -173,8 +173,8 @@ public class XmlSignatureSupport {
    * @param signedDocument a {@link Document} object.
    * @return a {@link Document} object.
    */
-  @NotNull
-  public Document getOriginalDocument( @NotNull Document signedDocument ) {
+  @Nonnull
+  public Document getOriginalDocument( @Nonnull Document signedDocument ) {
     try {
       Node node = getOriginalNode( signedDocument );
 

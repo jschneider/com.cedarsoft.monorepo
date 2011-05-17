@@ -31,8 +31,8 @@
 
 package de.xore.util.persistence;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.Properties;
@@ -48,7 +48,7 @@ import java.util.Properties;
 public abstract class QueryManager<T> {
   protected DatabaseConnector<T> connector;
 
-  protected QueryManager( @NotNull DatabaseConnector<T> connector ) {
+  protected QueryManager( @Nonnull DatabaseConnector<T> connector ) {
     this.connector = connector;
   }
 
@@ -73,19 +73,19 @@ public abstract class QueryManager<T> {
     connector.commit();
   }
 
-  public void save( @NotNull Object object ) {
+  public void save( @Nonnull Object object ) {
     connector.beginTransaction();
     connector.save( object );
     connector.commit(); //todo wirklich automatisch committen??
   }
 
-  public void saveOrUpdate( @NotNull Object object ) {
+  public void saveOrUpdate( @Nonnull Object object ) {
     connector.beginTransaction();
     connector.saveOrUpdate( object );
     connector.commit(); //todo wirklich automatisch committen??
   }
 
-  public void delete( @NotNull Object object ) {
+  public void delete( @Nonnull Object object ) {
     connector.beginTransaction();
     connector.delete( object );
     connector.commit();

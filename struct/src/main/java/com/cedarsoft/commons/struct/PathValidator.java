@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Validates a path
@@ -46,5 +46,5 @@ public interface PathValidator {
    * @throws ValidationFailedException
    *          if any.
    */
-  void validate( @NotNull Path path ) throws ValidationFailedException;
+  void validate( @Nonnull Path path ) throws ValidationFailedException;
 }

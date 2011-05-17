@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 
@@ -42,9 +42,9 @@ import java.lang.Class;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LookupChangeEvent<T> {
-  @NotNull
+  @Nonnull
   private final Lookup source;
-  @NotNull
+  @Nonnull
   private final Class<? super T> type;
   @Nullable
   private final T oldValue;
@@ -59,7 +59,7 @@ public class LookupChangeEvent<T> {
    * @param oldValue a T object.
    * @param newValue a T object.
    */
-  public LookupChangeEvent( @NotNull Lookup source, @NotNull Class<? super T> type, @Nullable T oldValue, @Nullable T newValue ) {
+  public LookupChangeEvent( @Nonnull Lookup source, @Nonnull Class<? super T> type, @Nullable T oldValue, @Nullable T newValue ) {
     this.source = source;
     this.type = type;
     this.oldValue = oldValue;
@@ -71,7 +71,7 @@ public class LookupChangeEvent<T> {
    *
    * @return a {@link Class} object.
    */
-  @NotNull
+  @Nonnull
   public Class<? super T> getType() {
     return type;
   }
@@ -101,7 +101,7 @@ public class LookupChangeEvent<T> {
    *
    * @return a {@link Lookup} object.
    */
-  @NotNull
+  @Nonnull
   public Lookup getSource() {
     return source;
   }

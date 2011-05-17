@@ -33,39 +33,38 @@ package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class DefaultFieldDeclarationInfo extends DefaultFieldTypeInformation implements FieldDeclarationInfo {
-  @NotNull
+  @Nonnull
   protected final FieldDeclaration fieldDeclaration;
-  @NotNull
+  @Nonnull
   protected final MethodDeclaration getterDeclaration;
 
-  public DefaultFieldDeclarationInfo( @NotNull MethodDeclaration getterDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
+  public DefaultFieldDeclarationInfo( @Nonnull MethodDeclaration getterDeclaration, @Nonnull FieldDeclaration fieldDeclaration ) {
     super( fieldDeclaration.getType() );
     this.getterDeclaration = getterDeclaration;
     this.fieldDeclaration = fieldDeclaration;
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public FieldDeclaration getFieldDeclaration() {
     return fieldDeclaration;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public MethodDeclaration getGetterDeclaration() {
     return getterDeclaration;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  @NonNls
   public String getSimpleName() {
     return fieldDeclaration.getSimpleName();
   }

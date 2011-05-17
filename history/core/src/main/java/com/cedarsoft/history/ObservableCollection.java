@@ -33,7 +33,7 @@ package com.cedarsoft.history;
 
 import com.cedarsoft.ObjectAccess;
 import com.cedarsoft.lock.Lockable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * An observable collection
@@ -47,12 +47,12 @@ public interface ObservableCollection<E> extends ObjectAccess<E>, Lockable {
    *
    * @param listener the listener
    */
-  void addElementListener( @NotNull ElementsListener<? super E> listener );
+  void addElementListener( @Nonnull ElementsListener<? super E> listener );
 
   /**
    * Removes an entry listener
    *
    * @param listener the listener
    */
-  void removeElementListener( @NotNull ElementsListener<? super E> listener );
+  void removeElementListener( @Nonnull ElementsListener<? super E> listener );
 }

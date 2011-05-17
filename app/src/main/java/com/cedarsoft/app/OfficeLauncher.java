@@ -31,8 +31,8 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,20 +46,18 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class OfficeLauncher {
-  @NonNls
+  @Nonnull
   public static final String OPEN_OFFICE_WINDOWS_2_3 = "c:\\Programme\\Openoffice.org 2.3\\program\\soffice.exe";
-  @NonNls
+  @Nonnull
   public static final String OPEN_OFFICE_WINDOWS = "c:\\Programme\\Openoffice.org 2.4\\program\\soffice.exe";
-  @NonNls
+  @Nonnull
   public static final String OPEN_OFFICE_LINUX = "/usr/bin/soffice";
-  @NonNls
+  @Nonnull
   public static final String EXCEL_WINDOWS = "c:\\Programme\\Microsoft Office\\Office\\excel.exe";
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final List<String> writerBins = new ArrayList<String>();
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final List<String> spreadsheetBins = new ArrayList<String>();
 
   private OfficeLauncher() {
@@ -76,12 +74,12 @@ public class OfficeLauncher {
     spreadsheetBins.add( EXCEL_WINDOWS );
   }
 
-  @NotNull
+  @Nonnull
   public static List<? extends String> getSpreadsheetBins() {
     return Collections.unmodifiableList( spreadsheetBins );
   }
 
-  @NotNull
+  @Nonnull
   public static List<? extends String> getWriterBins() {
     return Collections.unmodifiableList( writerBins );
   }
@@ -94,8 +92,8 @@ public class OfficeLauncher {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Process openWriter( @NotNull File file ) throws IOException {
+  @Nonnull
+  public static Process openWriter( @Nonnull File file ) throws IOException {
     return openFile( writerBins, file );
   }
 
@@ -107,13 +105,13 @@ public class OfficeLauncher {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Process openSpreadsheet( @NotNull File file ) throws IOException {
+  @Nonnull
+  public static Process openSpreadsheet( @Nonnull File file ) throws IOException {
     return openFile( spreadsheetBins, file );
   }
 
-  @NotNull
-  private static Process openFile( @NotNull @NonNls Iterable<? extends String> possibleBins, @NotNull File file ) throws IOException {
+  @Nonnull
+  private static Process openFile( @Nonnull Iterable<? extends String> possibleBins, @Nonnull File file ) throws IOException {
     for ( String possibleBin : possibleBins ) {
       if ( new File( possibleBin ).exists() ) {
         return Runtime.getRuntime().exec( new String[]{possibleBin, file.getAbsolutePath()} );

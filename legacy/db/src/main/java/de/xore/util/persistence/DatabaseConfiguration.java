@@ -31,7 +31,7 @@
 
 package de.xore.util.persistence;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ResourceBundle;
 
@@ -45,7 +45,7 @@ import java.util.ResourceBundle;
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class DatabaseConfiguration {
-  public static DatabaseConfiguration createConfiguration( @NotNull String bundlename ) {
+  public static DatabaseConfiguration createConfiguration( @Nonnull String bundlename ) {
     ResourceBundle resourceBundle = ResourceBundle.getBundle( bundlename );
     if ( resourceBundle == null ) {
       throw new DatabaseException( "ResourceBundle not found for bundlename " + bundlename );
@@ -70,28 +70,28 @@ public class DatabaseConfiguration {
     return new DatabaseConfiguration( url, user, pass, databaseType );
   }
 
-  @NotNull
+  @Nonnull
   private DatabaseType databaseTypeType = DatabaseType.MYSQL;
-  @NotNull
+  @Nonnull
   private String url = "";
-  @NotNull
+  @Nonnull
   private String user = "";
-  @NotNull
+  @Nonnull
   private String pass = "";
 
-  public DatabaseConfiguration( @NotNull String url, @NotNull String user, @NotNull String pass, @NotNull DatabaseType databaseTypeType ) {
+  public DatabaseConfiguration( @Nonnull String url, @Nonnull String user, @Nonnull String pass, @Nonnull DatabaseType databaseTypeType ) {
     this.url = url;
     this.user = user;
     this.pass = pass;
     this.databaseTypeType = databaseTypeType;
   }
 
-  @NotNull
+  @Nonnull
   public DatabaseType getDatabaseType() {
     return databaseTypeType;
   }
 
-  @NotNull
+  @Nonnull
   public String getDriverClassName() {
     return databaseTypeType.getDriverClassName();
   }
@@ -100,39 +100,39 @@ public class DatabaseConfiguration {
     return databaseTypeType != null && url != null && user != null && pass != null;
   }
 
-  public void setDatabaseType( @NotNull DatabaseType databaseTypeType ) {
+  public void setDatabaseType( @Nonnull DatabaseType databaseTypeType ) {
     this.databaseTypeType = databaseTypeType;
   }
 
-  @NotNull
+  @Nonnull
   public String getPass() {
     return pass;
   }
 
-  public void setPass( @NotNull String pass ) {
+  public void setPass( @Nonnull String pass ) {
     this.pass = pass;
   }
 
-  @NotNull
+  @Nonnull
   public String getUrl() {
     return url;
   }
 
-  public void setUrl( @NotNull String url ) {
+  public void setUrl( @Nonnull String url ) {
     this.url = url;
   }
 
-  @NotNull
+  @Nonnull
   public String getUser() {
     return user;
   }
 
-  public void setUser( @NotNull String user ) {
+  public void setUser( @Nonnull String user ) {
     this.user = user;
   }
 
   @Override
-  @NotNull
+  @Nonnull
   @Override
   public String toString() {
     return "DatabaseConfiguration{" +

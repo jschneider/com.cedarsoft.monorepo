@@ -37,8 +37,8 @@ import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFormatter;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.io.StringWriter;
@@ -75,7 +75,7 @@ public class ParseExpressionFactoryTest {
     checkForType( Boolean.TYPE, "java.lang.Boolean.parseBoolean(aCall())" );
   }
 
-  private void checkForType( @NotNull Class<?> type, @NotNull @NonNls String expected ) {
+  private void checkForType( @Nonnull Class<?> type, @Nonnull String expected ) {
     JExpression parseExpression = factory.createParseExpression( JExpr.invoke( "aCall" ), new DefaultFieldTypeInformation( new ReferenceTypeMock( type ) ) );
 
     StringWriter out = new StringWriter();

@@ -31,7 +31,7 @@
 
 package de.xore.util.persistence;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 
@@ -49,7 +49,7 @@ import java.io.Serializable;
  *         T: The session, e.g. org.hibernate.Session
  */
 public interface DatabaseConnector<T> {
-  void addAnnotadedClass( @NotNull Class<?> annClass );
+  void addAnnotadedClass( @Nonnull Class<?> annClass );
 
   void recreateDb() throws DatabaseException;
 
@@ -59,25 +59,25 @@ public interface DatabaseConnector<T> {
 
   void commit() throws DatabaseException;
 
-  void delete( @NotNull Object object ) throws DatabaseException;
+  void delete( @Nonnull Object object ) throws DatabaseException;
 
-  @NotNull
-  <T> T load( @NotNull Class<T> aClass, Serializable id ) throws DatabaseException;
+  @Nonnull
+  <T> T load( @Nonnull Class<T> aClass, Serializable id ) throws DatabaseException;
 
   void rollback() throws DatabaseException;
 
-  void save( @NotNull Object object ) throws DatabaseException;
+  void save( @Nonnull Object object ) throws DatabaseException;
 
-  @NotNull
+  @Nonnull
   T getSession() throws DatabaseException;
 
   void initSession() throws DatabaseException;
 
-  void refresh( @NotNull Object object ) throws DatabaseException;
+  void refresh( @Nonnull Object object ) throws DatabaseException;
 
-  void update( @NotNull Object object ) throws DatabaseException;
+  void update( @Nonnull Object object ) throws DatabaseException;
 
-  void saveOrUpdate( @NotNull Object object ) throws DatabaseException;
+  void saveOrUpdate( @Nonnull Object object ) throws DatabaseException;
 
   boolean isSessionActive();
 

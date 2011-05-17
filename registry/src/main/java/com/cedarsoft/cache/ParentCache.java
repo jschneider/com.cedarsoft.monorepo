@@ -31,8 +31,8 @@
 
 package com.cedarsoft.cache;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Integer;
 import java.lang.Object;
@@ -52,12 +52,12 @@ public class ParentCache {
   /**
    * The child is the key, the parent the value
    */
-  @NotNull
+  @Nonnull
   private final Map<Object, WeakReference<Object>> parents = new WeakHashMap<Object, WeakReference<Object>>();
   /**
    * Contains the inidices of the child
    */
-  @NotNull
+  @Nonnull
   private final Map<Object, Integer> indicies = new WeakHashMap<Object, Integer>();
 
 
@@ -70,7 +70,7 @@ public class ParentCache {
    * @return the parent
    */
   @Nullable
-  public <P, C> P findParent( @NotNull C child ) {
+  public <P, C> P findParent( @Nonnull C child ) {
     WeakReference<Object> reference = parents.get( child );
     if ( reference == null ) {
       return null;
@@ -79,11 +79,11 @@ public class ParentCache {
     }
   }
 
-  private void removeParent( @NotNull Object child ) {
+  private void removeParent( @Nonnull Object child ) {
     parents.remove( child );
   }
 
-  private void removeIndex( @NotNull Object child ) {
+  private void removeIndex( @Nonnull Object child ) {
     indicies.remove( child );
   }
 
@@ -92,7 +92,7 @@ public class ParentCache {
    *
    * @param child a {@link Object} object.
    */
-  public void remove( @NotNull Object child ) {
+  public void remove( @Nonnull Object child ) {
     removeParent( child );
     removeIndex( child );
   }
@@ -102,13 +102,13 @@ public class ParentCache {
    *
    * @param children a {@link List} object.
    */
-  public void removeAll( @NotNull List<? extends Object> children ) {
+  public void removeAll( @Nonnull List<? extends Object> children ) {
     for ( Object child : children ) {
       remove( child );
     }
   }
 
-  private <P, C> void storeParent( @NotNull C child, @NotNull P parent ) {
+  private <P, C> void storeParent( @Nonnull C child, @Nonnull P parent ) {
     Object oldParent = findParent( child );
     if ( oldParent != null ) {
       if ( parent == oldParent ) {
@@ -129,7 +129,7 @@ public class ParentCache {
    * @param <P>    a P object.
    * @param <C>    a C object.
    */
-  public <P, C> void store( @NotNull C child, @NotNull P parent, int index ) {
+  public <P, C> void store( @Nonnull C child, @Nonnull P parent, int index ) {
     storeParent( child, parent );
     storeIndex( child, index );
   }
@@ -141,7 +141,7 @@ public class ParentCache {
    * @param child a C object.
    * @param index a int.
    */
-  public <C> void storeIndex( @NotNull C child, int index ) {
+  public <C> void storeIndex( @Nonnull C child, int index ) {
     indicies.put( child, index );
   }
 
@@ -152,7 +152,7 @@ public class ParentCache {
    * @return a {@link Integer} object.
    */
   @Nullable
-  public <C> Integer findIndex( @NotNull C child ) {
+  public <C> Integer findIndex( @Nonnull C child ) {
     return indicies.get( child );
   }
 
@@ -163,8 +163,8 @@ public class ParentCache {
    * @param child the child
    * @return all predecessors for the given child
    */
-  @NotNull
-  public List<? extends Object> getPredecessors( @NotNull Object child ) {
+  @Nonnull
+  public List<? extends Object> getPredecessors( @Nonnull Object child ) {
     List<Object> list = new ArrayList<Object>();
 
     Object parent = findParent( child );
@@ -184,8 +184,8 @@ public class ParentCache {
    * @param child the child
    * @return a list containing the child and all its predecessors
    */
-  @NotNull
-  public List<? extends Object> getPath( @NotNull Object child ) {
+  @Nonnull
+  public List<? extends Object> getPath( @Nonnull Object child ) {
     List<Object> path = new ArrayList<Object>( getPredecessors( child ) );
     path.add( child );
     return path;
@@ -197,7 +197,7 @@ public class ParentCache {
    * @param parent   the parent
    * @param children the children
    */
-  public void store( @NotNull Object parent, @NotNull List<? extends Object> children ) {
+  public void store( @Nonnull Object parent, @Nonnull List<? extends Object> children ) {
     for ( int index = 0; index < children.size(); index++ ) {
       Object child = children.get( index );
       store( child, parent, index );

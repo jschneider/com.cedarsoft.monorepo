@@ -33,7 +33,7 @@ package com.cedarsoft.exec;
 
 import com.cedarsoft.MockitoTemplate;
 import com.google.common.io.ByteStreams;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.mockito.Matchers;
 import org.mockito.Mock;
@@ -99,7 +99,7 @@ public class ExecutorTest {
       private Thread[] threads;
 
       @Override
-      public void executionStarted( @NotNull Process process ) {
+      public void executionStarted( @Nonnull Process process ) {
         threads = OutputRedirector.redirect( process, out, errorOut );
         assertEquals( 2, threads.length );
       }

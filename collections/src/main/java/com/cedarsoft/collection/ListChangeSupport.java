@@ -31,7 +31,7 @@
 
 package com.cedarsoft.collection;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +52,7 @@ public class ListChangeSupport<T> {
    * @param element a T object.
    * @return a boolean.
    */
-  public boolean add( @NotNull List<T> backend, @NotNull T element ) {
+  public boolean add( @Nonnull List<T> backend, @Nonnull T element ) {
     int index = backend.size();
     boolean returnValue = backend.add( element );
     fireAddEvent( index, element );
@@ -65,7 +65,7 @@ public class ListChangeSupport<T> {
    * @param index   a int.
    * @param element a T object.
    */
-  public void fireAddEvent( int index, @NotNull T element ) {
+  public void fireAddEvent( int index, @Nonnull T element ) {
     if ( listeners.isEmpty() ) return;
     for ( ListChangeListener<T> listener : new ArrayList<ListChangeListener<T>>( listeners ) ) {
       listener.elementAdded( index, element );
@@ -78,7 +78,7 @@ public class ListChangeSupport<T> {
    * @param index   a int.
    * @param element a T object.
    */
-  public void fireRemoveEvent( int index, @NotNull T element ) {
+  public void fireRemoveEvent( int index, @Nonnull T element ) {
     if ( listeners.isEmpty() ) return;
     for ( ListChangeListener<T> listener : new ArrayList<ListChangeListener<T>>( listeners ) ) {
       listener.elementRemoved( index, element );
@@ -92,7 +92,7 @@ public class ListChangeSupport<T> {
    * @param element a T object.
    * @return a boolean.
    */
-  public boolean remove( @NotNull List<T> backend, @NotNull T element ) {
+  public boolean remove( @Nonnull List<T> backend, @Nonnull T element ) {
     int index = backend.indexOf( element );
     boolean returnValue = backend.remove( element );
     fireRemoveEvent( index, element );
@@ -104,7 +104,7 @@ public class ListChangeSupport<T> {
    *
    * @param listener a {@link ListChangeListener} object.
    */
-  public void addListener( @NotNull ListChangeListener<T> listener ) {
+  public void addListener( @Nonnull ListChangeListener<T> listener ) {
     listeners.add( listener );
   }
 
@@ -113,7 +113,7 @@ public class ListChangeSupport<T> {
    *
    * @param listener a {@link ListChangeListener} object.
    */
-  public void removeListener( @NotNull ListChangeListener<T> listener ) {
+  public void removeListener( @Nonnull ListChangeListener<T> listener ) {
     listeners.remove( listener );
   }
 
@@ -122,7 +122,7 @@ public class ListChangeSupport<T> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<ListChangeListener<T>> getListeners() {
     return Collections.unmodifiableList( listeners );
   }

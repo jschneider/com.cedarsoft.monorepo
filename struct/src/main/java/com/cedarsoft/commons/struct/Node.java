@@ -31,9 +31,9 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -47,15 +47,15 @@ public interface Node extends StructPart {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   List<? extends Node> getChildren();
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException;
+  @Nonnull
+  Node findChild( @Nonnull String childName ) throws ChildNotFoundException;
 
   /**
    * {@inheritDoc}
@@ -71,7 +71,7 @@ public interface Node extends StructPart {
    *
    * @param child the child
    */
-  void addChild( @NotNull Node child );
+  void addChild( @Nonnull Node child );
 
   /**
    * Adds a child at the given position
@@ -79,14 +79,14 @@ public interface Node extends StructPart {
    * @param index the index
    * @param child the child
    */
-  void addChild( int index, @NotNull Node child );
+  void addChild( int index, @Nonnull Node child );
 
   /**
    * Detaches a child
    *
    * @param child the child
    */
-  void detachChild( @NotNull Node child );
+  void detachChild( @Nonnull Node child );
 
   /**
    * Detaches a child

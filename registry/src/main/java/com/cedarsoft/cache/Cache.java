@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cache;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Map;
 
@@ -55,7 +55,7 @@ public interface Cache<K, T> extends Map<K, T> {
      * @param key the key
      * @return the object
      */
-    @NotNull
-    T create( @NotNull K key );
+    @Nonnull
+    T create( @Nonnull K key );
   }
 }

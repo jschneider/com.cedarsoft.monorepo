@@ -34,7 +34,7 @@ package com.cedarsoft.presenter;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.lang.ref.WeakReference;
@@ -70,20 +70,20 @@ public class WeakTest {
     }
 
     @Override
-    protected void bind( @NotNull String presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+    protected void bind( @Nonnull String presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
     }
 
     @Override
-    protected boolean addChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
+    protected boolean addChildPresentation( @Nonnull String presentation, @Nonnull StructPart child, int index ) {
       return true;
     }
 
     @Override
-    protected void removeChildPresentation( @NotNull String presentation, @NotNull StructPart child, int index ) {
+    protected void removeChildPresentation( @Nonnull String presentation, @Nonnull StructPart child, int index ) {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected String createPresentation() {
       return "thePresentation";
     }

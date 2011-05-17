@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.text.MessageFormat;
 
@@ -48,8 +48,8 @@ public class DefaultConsolePrinter implements ConsolePrinter {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createError( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createError( @Nonnull String message, @Nonnull Object... objects ) {
     StringBuilder sb = new StringBuilder();
     String toPrint = MessageFormat.format( message, objects );
     for ( int i = 0; i < toPrint.length(); i++ ) {
@@ -68,8 +68,8 @@ public class DefaultConsolePrinter implements ConsolePrinter {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createWarning( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createWarning( @Nonnull String message, @Nonnull Object... objects ) {
     StringBuilder sb = new StringBuilder();
     String toPrint = MessageFormat.format( message, objects );
 
@@ -86,8 +86,8 @@ public class DefaultConsolePrinter implements ConsolePrinter {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createSuccess( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createSuccess( @Nonnull String message, @Nonnull Object... objects ) {
     StringBuilder sb = new StringBuilder();
     String toPrint = MessageFormat.format( message, objects );
     sb.append( "!!!" );

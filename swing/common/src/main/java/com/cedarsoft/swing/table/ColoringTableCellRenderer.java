@@ -1,7 +1,7 @@
 package com.cedarsoft.swing.table;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -15,7 +15,7 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
   @Nullable
   private final TableCellRenderer delegate;
 
-  @NotNull
+  @Nonnull
   private final ColorProvider colorProvider;
 
   /**
@@ -23,7 +23,7 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
    *
    * @param colorProvider the color provider
    */
-  public ColoringTableCellRenderer( @NotNull ColorProvider colorProvider ) {
+  public ColoringTableCellRenderer( @Nonnull ColorProvider colorProvider ) {
     this( null, colorProvider );
   }
 
@@ -33,7 +33,7 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
    * @param delegate      the optional delegate
    * @param colorProvider the color provider
    */
-  public ColoringTableCellRenderer( @Nullable TableCellRenderer delegate, @NotNull ColorProvider colorProvider ) {
+  public ColoringTableCellRenderer( @Nullable TableCellRenderer delegate, @Nonnull ColorProvider colorProvider ) {
     this.delegate = delegate;
     this.colorProvider = colorProvider;
   }
@@ -69,8 +69,8 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
     return component;
   }
 
-  @NotNull
-  private TableCellRenderer findRendererToUse( @NotNull JTable table, int column ) {
+  @Nonnull
+  private TableCellRenderer findRendererToUse( @Nonnull JTable table, int column ) {
     if ( delegate != null ) {
       return delegate;
     } else {

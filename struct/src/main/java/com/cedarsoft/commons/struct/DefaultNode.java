@@ -33,9 +33,9 @@ package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 import java.util.List;
@@ -46,12 +46,11 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultNode implements Node {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String name;
-  @NotNull
+  @Nonnull
   private final ChildrenSupport childrenSupport;
-  @NotNull
+  @Nonnull
   private final Lookup lookup;
   @Nullable
   private Node parent;
@@ -61,7 +60,7 @@ public class DefaultNode implements Node {
    *
    * @param name a {@link String} object.
    */
-  public DefaultNode( @NonNls @NotNull String name ) {
+  public DefaultNode( @Nonnull String name ) {
     this( name, new DefaultChildrenSupport(), Lookups.emtyLookup() );
   }
 
@@ -71,7 +70,7 @@ public class DefaultNode implements Node {
    * @param name   a {@link String} object.
    * @param lookup a {@link Lookup} object.
    */
-  public DefaultNode( @NonNls @NotNull String name, @NotNull Lookup lookup ) {
+  public DefaultNode( @Nonnull String name, @Nonnull Lookup lookup ) {
     this( name, new DefaultChildrenSupport(), lookup );
   }
 
@@ -82,7 +81,7 @@ public class DefaultNode implements Node {
    * @param childrenSupport a {@link ChildrenSupport} object.
    * @param lookup          a {@link Lookup} object.
    */
-  public DefaultNode( @NonNls @NotNull String name, @NotNull ChildrenSupport childrenSupport, @NotNull Lookup lookup ) {
+  public DefaultNode( @Nonnull String name, @Nonnull ChildrenSupport childrenSupport, @Nonnull Lookup lookup ) {
     this.lookup = lookup;
     this.childrenSupport = childrenSupport;
     this.childrenSupport.setParentNode( this );
@@ -104,7 +103,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public boolean isChild( @NotNull StructPart child ) {
+  public boolean isChild( @Nonnull StructPart child ) {
     return childrenSupport.isChild( child );
   }
 
@@ -120,8 +119,8 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
+  @Nonnull
+  public Node findChild( @Nonnull String childName ) throws ChildNotFoundException {
     return childrenSupport.findChild( childName );
   }
 
@@ -129,8 +128,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getName() {
     return name;
   }
@@ -139,7 +137,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lookup getLookup() {
     return lookup;
   }
@@ -148,7 +146,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends Node> getChildren() {
     return childrenSupport.getChildren();
   }
@@ -158,7 +156,7 @@ public class DefaultNode implements Node {
    *
    * @param children a {@link List} object.
    */
-  public void setChildren( @NotNull List<? extends Node> children ) {
+  public void setChildren( @Nonnull List<? extends Node> children ) {
     childrenSupport.setChildren( children );
   }
 
@@ -166,7 +164,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( int index, @NotNull Node child ) {
+  public void addChild( int index, @Nonnull Node child ) {
     childrenSupport.addChild( index, child );
   }
 
@@ -174,7 +172,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( @NotNull Node child ) {
+  public void addChild( @Nonnull Node child ) {
     childrenSupport.addChild( child );
   }
 
@@ -182,7 +180,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void detachChild( @NotNull Node child ) {
+  public void detachChild( @Nonnull Node child ) {
     childrenSupport.detachChild( child );
   }
 
@@ -207,7 +205,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Path getPath() {
     return Path.buildPath( this );
   }
@@ -216,7 +214,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListener( @NotNull StructureListener structureListener ) {
+  public void addStructureListener( @Nonnull StructureListener structureListener ) {
     childrenSupport.addStructureListener( structureListener );
   }
 
@@ -224,7 +222,7 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
+  public void addStructureListenerWeak( @Nonnull StructureListener structureListener ) {
     childrenSupport.addStructureListenerWeak( structureListener );
   }
 
@@ -232,11 +230,11 @@ public class DefaultNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void removeStructureListener( @NotNull StructureListener structureListener ) {
+  public void removeStructureListener( @Nonnull StructureListener structureListener ) {
     childrenSupport.removeStructureListener( structureListener );
   }
 
-  @NotNull
+  @Nonnull
   ChildrenSupport getChildrenSupport() {
     return childrenSupport;
   }

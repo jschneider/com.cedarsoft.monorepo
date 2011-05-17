@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 import java.lang.Throwable;
@@ -83,7 +83,7 @@ public class VersionException extends RuntimeException {
    * @param messageSuffix the suffix (only used when appendSuffix==true)
    * @param appendSuffix  whether to append the suffix
    */
-  public VersionException( @NotNull String message, @NotNull String messageSuffix, boolean appendSuffix ) {
+  public VersionException( @Nonnull String message, @Nonnull String messageSuffix, boolean appendSuffix ) {
     super( message + ( appendSuffix ? messageSuffix : "" ) );
   }
 }

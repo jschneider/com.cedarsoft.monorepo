@@ -31,8 +31,8 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
@@ -49,7 +49,7 @@ public class WeakStructureListener implements StructureListener {
    *
    * @param wrappedListener a {@link StructureListener} object.
    */
-  public WeakStructureListener( @NotNull StructureListener wrappedListener ) {
+  public WeakStructureListener( @Nonnull StructureListener wrappedListener ) {
     listenerReference = new WeakReference<StructureListener>( wrappedListener );
   }
 
@@ -63,7 +63,7 @@ public class WeakStructureListener implements StructureListener {
     return listenerReference.get();
   }
 
-  private void removeListener( @NotNull StructPart source ) {
+  private void removeListener( @Nonnull StructPart source ) {
     source.removeStructureListener( this );
   }
 
@@ -71,7 +71,7 @@ public class WeakStructureListener implements StructureListener {
    * {@inheritDoc}
    */
   @Override
-  public void childAdded( @NotNull StructureChangedEvent event ) {
+  public void childAdded( @Nonnull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
     if ( wrappedListener == null ) {
       removeListener( event.getParent() );
@@ -84,7 +84,7 @@ public class WeakStructureListener implements StructureListener {
    * {@inheritDoc}
    */
   @Override
-  public void childDetached( @NotNull StructureChangedEvent event ) {
+  public void childDetached( @Nonnull StructureChangedEvent event ) {
     StructureListener wrappedListener = getWrappedListener();
     if ( wrappedListener == null ) {
       removeListener( event.getParent() );

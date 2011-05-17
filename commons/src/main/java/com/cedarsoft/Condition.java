@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A condition.
@@ -42,7 +42,7 @@ public interface Condition {
   /**
    * Static condition that is always false.
    */
-  @NotNull
+  @Nonnull
   Condition FALSE = new Condition() {
     @Override
     public boolean isValid() {
@@ -52,7 +52,7 @@ public interface Condition {
   /**
    * Static condition that is always true.
    */
-  @NotNull
+  @Nonnull
   Condition TRUE = new Condition() {
     @Override
     public boolean isValid() {

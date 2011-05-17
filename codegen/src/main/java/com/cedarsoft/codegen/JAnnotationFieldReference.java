@@ -37,24 +37,24 @@ import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JFormatter;
 import org.fest.reflect.core.Reflection;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class JAnnotationFieldReference extends JAnnotationValue {
-  @NonNls
+  @Nonnull
   public static final String FIELD_OWNER = "owner";
-  @NonNls
+  @Nonnull
   public static final String METHOD_ADD_VALUE = "addValue";
-  @NotNull
+  @Nonnull
   private final JFieldVar ns;
-  @NotNull
+  @Nonnull
   private final JDefinedClass owner;
 
-  public JAnnotationFieldReference( @NotNull JFieldVar ns ) {
+  public JAnnotationFieldReference( @Nonnull JFieldVar ns ) {
     this.ns = ns;
     this.owner = Reflection.field( FIELD_OWNER ).ofType( JDefinedClass.class ).in( ns ).get();
   }
@@ -66,8 +66,8 @@ public class JAnnotationFieldReference extends JAnnotationValue {
     f.p( ns.name() );
   }
 
-  @NotNull
-  public static JAnnotationUse param( @NotNull JAnnotationUse annotation, @NotNull @NonNls String key, @NotNull JFieldVar ref ) {
+  @Nonnull
+  public static JAnnotationUse param( @Nonnull JAnnotationUse annotation, @Nonnull String key, @Nonnull JFieldVar ref ) {
     Reflection.method( METHOD_ADD_VALUE ).withParameterTypes( String.class, JAnnotationValue.class )
       .in( annotation ).invoke( key, new JAnnotationFieldReference( ref ) );
     return annotation;

@@ -32,10 +32,8 @@
 package com.cedarsoft.app;
 
 import com.cedarsoft.Version;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
-import java.lang.String;
+import javax.annotation.Nonnull;
 
 /**
  * Informations about an
@@ -43,10 +41,9 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Application {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String name;
-  @NotNull
+  @Nonnull
   private final Version version;
 
   /**
@@ -55,7 +52,7 @@ public class Application {
    * @param name    a {@link String} object.
    * @param version a {@link Version} object.
    */
-  public Application( @NotNull String name, @NotNull Version version ) {
+  public Application( @Nonnull String name, @Nonnull Version version ) {
     this.name = name;
     this.version = version;
   }
@@ -65,7 +62,7 @@ public class Application {
    *
    * @return a {@link String} object.
    */
-  @NotNull
+  @Nonnull
   public String getName() {
     return name;
   }
@@ -75,7 +72,7 @@ public class Application {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public Version getVersion() {
     return version;
   }
@@ -109,7 +106,7 @@ public class Application {
   /**
    * {@inheritDoc}
    */
-  @NonNls
+  @Nonnull
   @Override
   public String toString() {
     return name + " (" + version + ')';

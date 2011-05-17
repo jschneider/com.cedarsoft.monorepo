@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.rules.*;
 import org.junit.runners.model.*;
 
@@ -43,14 +43,14 @@ import java.util.Locale;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class LocaleRule implements MethodRule {
-  @NotNull
+  @Nonnull
   protected final Locale locale;
 
   public LocaleRule() throws IllegalArgumentException {
     this( Locale.US );
   }
 
-  public LocaleRule( @NotNull Locale locale ) {
+  public LocaleRule( @Nonnull Locale locale ) {
     this.locale = locale;
   }
 
@@ -80,7 +80,7 @@ public class LocaleRule implements MethodRule {
     Locale.setDefault( oldLocale );
   }
 
-  @NotNull
+  @Nonnull
   public Locale getLocale() {
     return locale;
   }

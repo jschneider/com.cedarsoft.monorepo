@@ -41,9 +41,9 @@ import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMod;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,25 +53,25 @@ import java.util.List;
  *
  */
 public class CodeGenerator {
-  @NotNull
+  @Nonnull
   protected final JCodeModel model;
-  @NotNull
+  @Nonnull
   private final ParseExpressionFactory parseExpressionFactory;
-  @NotNull
+  @Nonnull
   private final NewInstanceFactory newInstanceFactory;
-  @NotNull
+  @Nonnull
   private final ClassRefSupport classRefSupport;
-  @NotNull
+  @Nonnull
   private final DecisionCallback decisionCallback;
 
-  @NotNull
+  @Nonnull
   private final List<Decorator> decorators = new ArrayList<Decorator>();
 
-  public CodeGenerator( @NotNull DecisionCallback decisionCallback ) {
+  public CodeGenerator( @Nonnull DecisionCallback decisionCallback ) {
     this( new JCodeModel(), decisionCallback );
   }
 
-  protected CodeGenerator( @NotNull JCodeModel model, @NotNull DecisionCallback decisionCallback ) {
+  protected CodeGenerator( @Nonnull JCodeModel model, @Nonnull DecisionCallback decisionCallback ) {
     this.model = model;
     this.classRefSupport = new ClassRefSupport( model );
     this.parseExpressionFactory = new ParseExpressionFactory( model, classRefSupport );
@@ -79,42 +79,42 @@ public class CodeGenerator {
     this.decisionCallback = decisionCallback;
   }
 
-  @NotNull
+  @Nonnull
   public ParseExpressionFactory getParseExpressionFactory() {
     return parseExpressionFactory;
   }
 
-  @NotNull
+  @Nonnull
   public NewInstanceFactory getNewInstanceFactory() {
     return newInstanceFactory;
   }
 
-  @NotNull
+  @Nonnull
   public JCodeModel getModel() {
     return model;
   }
 
-  @NotNull
+  @Nonnull
   public ClassRefSupport getClassRefSupport() {
     return classRefSupport;
   }
 
-  @NotNull
+  @Nonnull
   public DecisionCallback getDecisionCallback() {
     return decisionCallback;
   }
 
-  public void addDecorator( @NotNull Decorator decorator ) {
+  public void addDecorator( @Nonnull Decorator decorator ) {
     this.decorators.add( decorator );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends Decorator> getDecorators() {
     return Collections.unmodifiableList( decorators );
   }
 
-  @NotNull
-  public JFieldVar getOrCreateConstant( @NotNull JDefinedClass serializerClass, @NotNull Class<?> type, @NotNull @NonNls String constantName, @NotNull JExpression initExpression ) {
+  @Nonnull
+  public JFieldVar getOrCreateConstant( @Nonnull JDefinedClass serializerClass, @Nonnull Class<?> type, @Nonnull String constantName, @Nonnull JExpression initExpression ) {
     //Get the constant if it still exists
     JFieldVar fieldVar = serializerClass.fields().get( constantName );
     if ( fieldVar != null ) {
@@ -125,8 +125,8 @@ public class CodeGenerator {
     return createConstant( serializerClass, type, constantName, initExpression );
   }
 
-  @NotNull
-  public JFieldVar createConstant( @NotNull JDefinedClass serializerClass, @NotNull Class<?> type, @NotNull @NonNls String constantName, @NotNull JExpression initExpression ) {
+  @Nonnull
+  public JFieldVar createConstant( @Nonnull JDefinedClass serializerClass, @Nonnull Class<?> type, @Nonnull String constantName, @Nonnull JExpression initExpression ) {
     JFieldVar constant = serializerClass.field( JMod.FINAL | JMod.PUBLIC | JMod.STATIC, type, constantName, initExpression );
 
     for ( Decorator decorator : decorators ) {
@@ -136,23 +136,23 @@ public class CodeGenerator {
     return constant;
   }
 
-  @NotNull
-  public JClass ref( @NotNull @NonNls String qualifiedName ) {
+  @Nonnull
+  public JClass ref( @Nonnull String qualifiedName ) {
     return getClassRefSupport().ref( qualifiedName );
   }
 
-  @NotNull
-  public JClass ref( @NotNull @NonNls Class<?> type ) {
+  @Nonnull
+  public JClass ref( @Nonnull Class<?> type ) {
     return getClassRefSupport().ref( type );
   }
 
-  @NotNull
-  public JInvocation createGetterInvocation( @NotNull JExpression object, @NotNull FieldDeclarationInfo fieldInfo ) {
+  @Nonnull
+  public JInvocation createGetterInvocation( @Nonnull JExpression object, @Nonnull FieldDeclarationInfo fieldInfo ) {
     return object.invoke( fieldInfo.getGetterDeclaration().getSimpleName() );
   }
 
-  @NotNull
-  public JClass ref( @NotNull TypeMirror type ) {
+  @Nonnull
+  public JClass ref( @Nonnull TypeMirror type ) {
     if ( TypeUtils.isCollectionType( type ) ) {
       JClass referencedCollectionParam = refCollectionParam( type );
 
@@ -168,7 +168,7 @@ public class CodeGenerator {
   }
 
   @Nullable
-  private JClass refCollectionParam( @NotNull TypeMirror collectionType ) {
+  private JClass refCollectionParam( @Nonnull TypeMirror collectionType ) {
     try {
       TypeMirror collectionParamType = TypeUtils.getCollectionParam( collectionType );
       if ( TypeUtils.isWildcardType( collectionParamType ) ) {
@@ -181,7 +181,7 @@ public class CodeGenerator {
     }
   }
 
-  public boolean isPrimitiveType( @NotNull TypeMirror type ) {
+  public boolean isPrimitiveType( @Nonnull TypeMirror type ) {
     throw new UnsupportedOperationException();
   }
 }

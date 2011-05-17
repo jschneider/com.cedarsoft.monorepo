@@ -31,8 +31,8 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.swing.JOptionPane;
 
@@ -52,7 +52,7 @@ public class PdfViewerLauncher {
    *
    * @param file the url that is opened within the browser
    */
-  public static void openFile( @NotNull @NonNls String file ) {
+  public static void openFile( @Nonnull String file ) {
     String osName = getOsName();
     try {
       if ( osName.startsWith( "Mac OS" ) ) {
@@ -82,7 +82,7 @@ public class PdfViewerLauncher {
     }
   }
 
-  @NotNull @NonNls
+  @Nonnull
   protected static String getOsName() {
     return System.getProperty( "os.name" );
   }

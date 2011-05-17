@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,10 +44,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class NonTransientCollectionSupport<E> {
-  @NotNull
+  @Nonnull
   private final ObservableCollection<E> source;
 
-  @NotNull
+  @Nonnull
   private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
   private final List<ElementsListener<? super E>> listeners = new ArrayList<ElementsListener<? super E>>();
@@ -57,7 +57,7 @@ public class NonTransientCollectionSupport<E> {
    *
    * @param source a {@link ObservableCollection} object.
    */
-  public NonTransientCollectionSupport( @NotNull ObservableCollection<E> source ) {
+  public NonTransientCollectionSupport( @Nonnull ObservableCollection<E> source ) {
     this.source = source;
   }
 
@@ -66,7 +66,7 @@ public class NonTransientCollectionSupport<E> {
    *
    * @param listener a {@link ElementsListener} object.
    */
-  public void addEntryListener( @NotNull ElementsListener<? super E> listener ) {
+  public void addEntryListener( @Nonnull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();
     try {
       listeners.add( listener );
@@ -80,7 +80,7 @@ public class NonTransientCollectionSupport<E> {
    *
    * @param listener a {@link ElementsListener} object.
    */
-  public void removeEntryListener( @NotNull ElementsListener<? super E> listener ) {
+  public void removeEntryListener( @Nonnull ElementsListener<? super E> listener ) {
     lock.writeLock().lock();
     try {
       listeners.remove( listener );
@@ -95,7 +95,7 @@ public class NonTransientCollectionSupport<E> {
    * @param element a E object.
    * @param index   a int.
    */
-  public void elementDeleted( @NotNull E element, int index ) {
+  public void elementDeleted( @Nonnull E element, int index ) {
     lock.readLock().lock();
     try {
       ElementsChangedEvent<E> event = new ElementsChangedEvent<E>( source, Collections.singletonList( element ), Collections.singletonList( index ) );
@@ -113,7 +113,7 @@ public class NonTransientCollectionSupport<E> {
    * @param element a E object.
    * @param index   a int.
    */
-  public void elementChanged( @NotNull E element, int index ) {
+  public void elementChanged( @Nonnull E element, int index ) {
     lock.readLock().lock();
     try {
       ElementsChangedEvent<E> event = new ElementsChangedEvent<E>( source, Collections.singletonList( element ), Collections.singletonList( index ) );
@@ -131,7 +131,7 @@ public class NonTransientCollectionSupport<E> {
    * @param element a E object.
    * @param index   a int.
    */
-  public void elementAdded( @NotNull E element, int index ) {
+  public void elementAdded( @Nonnull E element, int index ) {
     lock.readLock().lock();
     try {
       ElementsChangedEvent<E> event = new ElementsChangedEvent<E>( source, Collections.singletonList( element ), Collections.singletonList( index ) );

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.provider;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>Abstract AbstractContextualProvider class.</p>
@@ -48,16 +48,16 @@ public abstract class AbstractContextualProvider<T, C, E extends Throwable> impl
    * @param context a C object.
    * @return a {@link Provider} object.
    */
-  @NotNull
-  public Provider<T, E> createProvider( @NotNull final C context ) {
+  @Nonnull
+  public Provider<T, E> createProvider( @Nonnull final C context ) {
     return new Provider<T, E>() {
-      @NotNull
+      @Nonnull
       @Override
       public T provide() throws E {
         return AbstractContextualProvider.this.provide( context );
       }
 
-      @NotNull
+      @Nonnull
       @Override
       public String getDescription() {
         return AbstractContextualProvider.this.getDescription( context );

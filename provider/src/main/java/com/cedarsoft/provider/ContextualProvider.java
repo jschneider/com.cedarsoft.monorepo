@@ -31,7 +31,7 @@
 
 package com.cedarsoft.provider;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -52,8 +52,8 @@ public interface ContextualProvider<T, C, E extends Throwable> {
    *
    * @throws E if any.
    */
-  @NotNull
-  T provide( @NotNull C context ) throws E;
+  @Nonnull
+  T provide( @Nonnull C context ) throws E;
 
   /**
    * <p>getDescription</p>
@@ -61,6 +61,6 @@ public interface ContextualProvider<T, C, E extends Throwable> {
    * @param context a C object.
    * @return a {@link String} object.
    */
-  @NotNull
-  String getDescription( @NotNull C context );
+  @Nonnull
+  String getDescription( @Nonnull C context );
 }

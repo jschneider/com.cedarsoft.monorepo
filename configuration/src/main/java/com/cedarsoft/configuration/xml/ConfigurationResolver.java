@@ -32,9 +32,9 @@
 package com.cedarsoft.configuration.xml;
 
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public abstract class ConfigurationResolver<T> {
    * @return the value
    */
   @Nullable
-  public abstract T resolve( @NotNull Configuration configuration, @NotNull @NonNls String key );
+  public abstract T resolve( @Nonnull Configuration configuration, @Nonnull String key );
 
   /**
    * Stores the value to the configuration
@@ -66,7 +66,7 @@ public abstract class ConfigurationResolver<T> {
    * @param key           the key
    * @param value         the value
    */
-  public abstract void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull T value );
+  public abstract void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull T value );
 
   /**
    * Returns the resolver for the given type.
@@ -75,8 +75,8 @@ public abstract class ConfigurationResolver<T> {
    * @param <T>  a T object.
    * @return the resolver for the given type
    */
-  @NotNull
-  public static <T> ConfigurationResolver<T> getResolver( @NotNull Class<? extends T> type ) {
+  @Nonnull
+  public static <T> ConfigurationResolver<T> getResolver( @Nonnull Class<? extends T> type ) {
     ConfigurationResolver<?> resolver = resolvers.get( type );
     if ( resolver == null ) {
       throw new IllegalArgumentException( "No resolver found for type: " + type );
@@ -85,7 +85,7 @@ public abstract class ConfigurationResolver<T> {
     return ( ConfigurationResolver<T> ) resolver;
   }
 
-  @NotNull
+  @Nonnull
   private static final Map<Class<?>, ConfigurationResolver<?>> resolvers = new HashMap<Class<?>, ConfigurationResolver<?>>();
 
   static {
@@ -100,7 +100,7 @@ public abstract class ConfigurationResolver<T> {
   public static class MapResolver extends ConfigurationResolver<Map<?, ?>> {
     @Override
     @Nullable
-    public Map<?, ?> resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public Map<?, ?> resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       List<String> list = configuration.getList( key );
       if ( list.isEmpty() ) {
         return null;
@@ -120,7 +120,7 @@ public abstract class ConfigurationResolver<T> {
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull Map<?, ?> value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull Map<?, ?> value ) {
       List<String> condenced = new ArrayList<String>();
       for ( Map.Entry<?, ?> entry : value.entrySet() ) {
         condenced.add( entry.getKey() + "|" + entry.getValue() );
@@ -132,7 +132,7 @@ public abstract class ConfigurationResolver<T> {
   public static class ListResolver extends ConfigurationResolver<List<?>> {
     @Override
     @Nullable
-    public List<?> resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public List<?> resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       List<?> list = configuration.getList( key );
       if ( list.isEmpty() ) {
         return null;
@@ -141,7 +141,7 @@ public abstract class ConfigurationResolver<T> {
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull List<?> value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull List<?> value ) {
       configuration.setProperty( key, value );
     }
   }
@@ -149,12 +149,12 @@ public abstract class ConfigurationResolver<T> {
   public static class StringResolver extends ConfigurationResolver<String> {
     @Override
     @Nullable
-    public String resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public String resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       return configuration.getString( key );
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull String value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull String value ) {
       configuration.setProperty( key, value );
     }
   }
@@ -162,13 +162,13 @@ public abstract class ConfigurationResolver<T> {
   public static class FileResolver extends ConfigurationResolver<File> {
     @Override
     @Nullable
-    public File resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public File resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       String path = configuration.getString( key );
       return path == null ? null : new File( path );
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull File value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull File value ) {
       configuration.setProperty( key, value.getAbsolutePath() );
     }
   }
@@ -176,12 +176,12 @@ public abstract class ConfigurationResolver<T> {
   private static class DoubleResolver extends ConfigurationResolver<Double> {
     @Override
     @Nullable
-    public Double resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public Double resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       return configuration.getDouble( key );
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull Double value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull Double value ) {
       configuration.setProperty( key, value );
     }
   }
@@ -189,12 +189,12 @@ public abstract class ConfigurationResolver<T> {
   private static class IntegerResolver extends ConfigurationResolver<Integer> {
     @Override
     @Nullable
-    public Integer resolve( @NotNull Configuration configuration, @NotNull @NonNls String key ) {
+    public Integer resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
       return configuration.getInt( key );
     }
 
     @Override
-    public void store( @NotNull Configuration configuration, @NotNull @NonNls String key, @NotNull Integer value ) {
+    public void store( @Nonnull Configuration configuration, @Nonnull String key, @Nonnull Integer value ) {
       configuration.setProperty( key, value );
     }
   }

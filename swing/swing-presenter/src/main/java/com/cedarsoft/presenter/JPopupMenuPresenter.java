@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JPopupMenu;
 
@@ -46,6 +46,6 @@ public interface JPopupMenuPresenter extends Presenter<JPopupMenu> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  JPopupMenu present( @NotNull StructPart struct );
+  @Nonnull
+  JPopupMenu present( @Nonnull StructPart struct );
 }

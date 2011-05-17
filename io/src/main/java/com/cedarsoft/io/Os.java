@@ -31,9 +31,9 @@
 
 package com.cedarsoft.io;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -225,7 +225,7 @@ public final class Os {
    * @return the OS family, or null if not found.
    */
   @Nullable
-  public static OsFamily getFamily( @NotNull @NonNls final String name ) {
+  public static OsFamily getFamily( @Nonnull final String name ) {
     for ( final OsFamily osFamily : ALL_FAMILIES ) {
       if ( osFamily.getName().equalsIgnoreCase( name ) ) {
         return osFamily;
@@ -235,7 +235,7 @@ public final class Os {
     return null;
   }
 
-  private static boolean versionMatches( @NotNull @NonNls final String version ) {
+  private static boolean versionMatches( @Nonnull final String version ) {
     boolean isVersion = true;
     if ( version != null ) {
       isVersion = version.equalsIgnoreCase( OS_VERSION );
@@ -243,7 +243,7 @@ public final class Os {
     return isVersion;
   }
 
-  private static boolean archMatches( @NotNull @NonNls final String arch ) {
+  private static boolean archMatches( @Nonnull final String arch ) {
     boolean isArch = true;
     if ( arch != null ) {
       isArch = arch.equalsIgnoreCase( OS_ARCH );
@@ -251,7 +251,7 @@ public final class Os {
     return isArch;
   }
 
-  private static boolean nameMatches( @NotNull @NonNls final String name ) {
+  private static boolean nameMatches( @Nonnull final String name ) {
     boolean isName = true;
     if ( name != null ) {
       isName = name.equalsIgnoreCase( OS_NAME );

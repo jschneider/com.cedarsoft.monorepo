@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.AbstractAction;
@@ -68,7 +68,7 @@ public class PopupMenuPresenterTest {
     root.addChild( new DefaultNode( "4", Lookups.singletonLookup( Action.class, createAction( 3 ) ) ) );
   }
 
-  @NotNull
+  @Nonnull
   private static Action createAction( int id ) {
     return new AbstractAction( String.valueOf( id ) ) {
       @Override

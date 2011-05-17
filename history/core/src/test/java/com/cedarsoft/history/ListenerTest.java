@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 import org.junit.*;
 
@@ -57,16 +57,16 @@ public class ListenerTest {
 
     history.addHistoryListener( new HistoryListener<DefaultHistoryEntry>() {
       @Override
-      public void entryAdded( @NotNull DefaultHistoryEntry entry ) {
+      public void entryAdded( @Nonnull DefaultHistoryEntry entry ) {
         adds.add( entry );
       }
 
       @Override
-      public void entryChanged( @NotNull DefaultHistoryEntry entry ) {
+      public void entryChanged( @Nonnull DefaultHistoryEntry entry ) {
       }
 
       @Override
-      public void entryRemoved( @NotNull DefaultHistoryEntry entry ) {
+      public void entryRemoved( @Nonnull DefaultHistoryEntry entry ) {
         removes.add( entry );
       }
     } );
@@ -89,16 +89,16 @@ public class ListenerTest {
 
     entriesInformation.addHistoryListener( new HistoryListener<ContinuousEntry>() {
       @Override
-      public void entryChanged( @NotNull ContinuousEntry entry ) {
+      public void entryChanged( @Nonnull ContinuousEntry entry ) {
       }
 
       @Override
-      public void entryAdded( @NotNull ContinuousEntry entry ) {
+      public void entryAdded( @Nonnull ContinuousEntry entry ) {
         adds.add( entry );
       }
 
       @Override
-      public void entryRemoved( @NotNull ContinuousEntry entry ) {
+      public void entryRemoved( @Nonnull ContinuousEntry entry ) {
         removes.add( entry );
       }
     } );
@@ -121,17 +121,17 @@ public class ListenerTest {
 
     history.addHistoryListener( new HistoryListener<DiscreteHistoryEntry>() {
       @Override
-      public void entryAdded( @NotNull DiscreteHistoryEntry entry ) {
+      public void entryAdded( @Nonnull DiscreteHistoryEntry entry ) {
         adds.add( entry );
       }
 
       @Override
-      public void entryRemoved( @NotNull DiscreteHistoryEntry entry ) {
+      public void entryRemoved( @Nonnull DiscreteHistoryEntry entry ) {
         removes.add( entry );
       }
 
       @Override
-      public void entryChanged( @NotNull DiscreteHistoryEntry entry ) {
+      public void entryChanged( @Nonnull DiscreteHistoryEntry entry ) {
       }
     } );
 

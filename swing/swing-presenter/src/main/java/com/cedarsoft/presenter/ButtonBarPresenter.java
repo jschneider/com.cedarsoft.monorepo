@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -59,7 +59,7 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
    *
    * @param orientation a {@link ButtonBarPresenter.Orientation} object.
    */
-  public ButtonBarPresenter( @NotNull Orientation orientation ) {
+  public ButtonBarPresenter( @Nonnull Orientation orientation ) {
     this.orientation = orientation;
   }
 
@@ -67,7 +67,7 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected JPanel createPresentation() {
     return new JPanel( new GridLayout( orientation.getRowCount(), orientation.getColCount(), 4, 4 ) );
   }
@@ -76,8 +76,8 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     AbstractButtonPresenter<?> presenter = child.getLookup().lookup( AbstractButtonPresenter.class );
     if ( presenter != null ) {
       return presenter;
@@ -97,7 +97,7 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
    * {@inheritDoc}
    */
   @Override
-  protected void bind( @NotNull JPanel presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
   public enum Orientation {

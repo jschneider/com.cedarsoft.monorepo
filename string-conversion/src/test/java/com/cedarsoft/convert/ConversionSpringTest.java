@@ -31,7 +31,7 @@
 
 package com.cedarsoft.convert;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -74,14 +74,14 @@ public class ConversionSpringTest {
 
   public static class AnObjectConverter implements StringConverter<StringBuilder> {
     @Override
-    @NotNull
-    public String createRepresentation( @NotNull StringBuilder object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull StringBuilder object ) {
       return object.toString();
     }
 
     @Override
-    @NotNull
-    public StringBuilder createObject( @NotNull String representation ) {
+    @Nonnull
+    public StringBuilder createObject( @Nonnull String representation ) {
       return new StringBuilder( representation );
     }
   }

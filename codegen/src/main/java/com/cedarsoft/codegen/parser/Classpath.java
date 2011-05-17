@@ -32,8 +32,8 @@
 package com.cedarsoft.codegen.parser;
 
 import com.google.common.base.Joiner;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,20 +44,19 @@ import java.util.List;
  * Represents a classpath
  */
 public class Classpath {
-  @NotNull
+  @Nonnull
   private final List<File> elements = new ArrayList<File>();
 
-  public void add( @NotNull File dir ) {
+  public void add( @Nonnull File dir ) {
     elements.add( dir );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends File> getElements() {
     return Collections.unmodifiableList( elements );
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String asClasspathStatement() {
     return Joiner.on( File.pathSeparator ).join( elements );
   }

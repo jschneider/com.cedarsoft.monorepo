@@ -31,7 +31,7 @@
 
 package com.cedarsoft.presenter;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -49,7 +49,7 @@ public class FancyButtonPresenter extends AbstractButtonPresenter<JButton> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected JButton createPresentation() {
     JButton button = new JButton();
     button.setBorder( BorderFactory.createEmptyBorder() );

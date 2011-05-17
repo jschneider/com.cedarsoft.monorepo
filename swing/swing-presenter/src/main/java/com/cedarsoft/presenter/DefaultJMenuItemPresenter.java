@@ -31,7 +31,7 @@
 
 package com.cedarsoft.presenter;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JMenuItem;
 
@@ -45,7 +45,7 @@ public class DefaultJMenuItemPresenter extends AbstractButtonPresenter<JMenuItem
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public JMenuItem createPresentation() {
     return new JMenuItem();
   }

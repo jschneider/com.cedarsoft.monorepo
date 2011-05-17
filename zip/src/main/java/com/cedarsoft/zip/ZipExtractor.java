@@ -34,8 +34,8 @@ package com.cedarsoft.zip;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,7 +78,7 @@ public class ZipExtractor {
    * @param inputStream the input stream providing the zipped content
    * @throws IOException if any.
    */
-  public void extract( @NotNull File destination, @NotNull final InputStream inputStream ) throws IOException {
+  public void extract( @Nonnull File destination, @Nonnull final InputStream inputStream ) throws IOException {
     if ( !destination.exists() || !destination.isDirectory() ) {
       throw new IllegalArgumentException( "Invalid destination: " + destination.getCanonicalPath() );
     }
@@ -139,7 +139,7 @@ public class ZipExtractor {
      * @param zipEntry the zip entry
      * @return whether the entry shall be extracted
      */
-    boolean shallExtract( @NotNull ArchiveEntry zipEntry );
+    boolean shallExtract( @Nonnull ArchiveEntry zipEntry );
   }
 
   /**
@@ -153,12 +153,12 @@ public class ZipExtractor {
      *
      * @param condition the delegate that is inverted
      */
-    public InvertedCondition( @NotNull Condition condition ) {
+    public InvertedCondition( @Nonnull Condition condition ) {
       this.condition = condition;
     }
 
     @Override
-    public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
+    public boolean shallExtract( @Nonnull ArchiveEntry zipEntry ) {
       return !condition.shallExtract( zipEntry );
     }
   }

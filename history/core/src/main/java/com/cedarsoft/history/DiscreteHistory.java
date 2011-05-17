@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
@@ -55,15 +55,15 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<E> {
-  @NotNull
+  @Nonnull
   private final ClusteredHistoryListenerSupport<E> listenerSupport = new ClusteredHistoryListenerSupport<E>();
 
   private Long id;
 
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   protected final SortedMap<LocalDate, DefaultHistory<E>> histories = new TreeMap<LocalDate, DefaultHistory<E>>();//todo make navigable
 
   /**
@@ -75,8 +75,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if no history could be found for the given date
    */
-  @NotNull
-  public List<? extends E> getEntries( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public List<? extends E> getEntries( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     return getSubHistory( date ).getEntries();
   }
 
@@ -85,7 +85,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @return the histories
    */
-  @NotNull
+  @Nonnull
   Map<LocalDate, DefaultHistory<E>> getHistories() {
     ensureListenersRegistered();
 
@@ -106,8 +106,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if no history could be found for the given date
    */
-  @NotNull
-  public E getLatestEntry( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public E getLatestEntry( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     return getSubHistory( date ).getLatestEntry();
   }
 
@@ -116,7 +116,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @return the latest entry of each subhistory
    */
-  @NotNull
+  @Nonnull
   public List<? extends E> getLatestEntries() {
     ensureListenersRegistered();
 
@@ -137,7 +137,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public boolean isLatestEntry( @NotNull E entry ) {
+  public boolean isLatestEntry( @Nonnull E entry ) {
     ensureListenersRegistered();
 
     lock.readLock().lock();
@@ -159,7 +159,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Returns all entries
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getEntries() {
     ensureListenersRegistered();
 
@@ -200,7 +200,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * Adds an entry.
    */
   @Override
-  public void addEntry( @NotNull E entry ) {
+  public void addEntry( @Nonnull E entry ) {
     getOrCreateSubHistory( entry.getValidityDate() ).addEntry( entry );
   }
 
@@ -208,7 +208,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void commitEntry( @NotNull E entry ) {
+  public void commitEntry( @Nonnull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
@@ -239,7 +239,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public boolean removeEntry( @NotNull E entry ) {
+  public boolean removeEntry( @Nonnull E entry ) {
     ensureListenersRegistered();
 
     lock.writeLock().lock();
@@ -268,7 +268,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public E getLatestEntry() throws NoValidElementFoundException {
     try {
       return getLastSubHistory().getLatestEntry();
@@ -281,7 +281,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public E getFirstEntry() throws NoValidElementFoundException {
     try {
       return getFirstSubHistory().getFirstEntry();
@@ -290,8 +290,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
     }
   }
 
-  @NotNull
-  private History<E> getOrCreateSubHistory( @NotNull LocalDate date ) {
+  @Nonnull
+  private History<E> getOrCreateSubHistory( @Nonnull LocalDate date ) {
     ensureListenersRegistered();
 
     lock.writeLock().lock();
@@ -313,22 +313,22 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @param history the history the listener is registered for
    */
-  private void registerListener( @NotNull DefaultHistory<E> history ) {
+  private void registerListener( @Nonnull DefaultHistory<E> history ) {
     lock.writeLock().lock();
     try {
       HistoryListener<E> listener = new HistoryListener<E>() {
         @Override
-        public void entryAdded( @NotNull E entry ) {
+        public void entryAdded( @Nonnull E entry ) {
           listenerSupport.notifyEntryAdded( entry );
         }
 
         @Override
-        public void entryChanged( @NotNull E entry ) {
+        public void entryChanged( @Nonnull E entry ) {
           listenerSupport.notifyEntryChanged( entry );
         }
 
         @Override
-        public void entryRemoved( @NotNull E entry ) {
+        public void entryRemoved( @Nonnull E entry ) {
           listenerSupport.notifyEntryRemoved( entry );
         }
       };
@@ -348,8 +348,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
-  public History<E> getSubHistory( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public History<E> getSubHistory( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     ensureListenersRegistered();
 
     lock.readLock().lock();
@@ -373,8 +373,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
-  public History<E> getSubHistoryBefore( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public History<E> getSubHistoryBefore( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     ensureListenersRegistered();
 
     lock.readLock().lock();
@@ -422,8 +422,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if absolutly no history could be found
    */
-  @NotNull
-  public History<E> getBestSubHistoryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public History<E> getBestSubHistoryFor( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     //Check for direct hit
     try {
       return getSubHistory( date );
@@ -440,7 +440,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   public E getMostUpToDateEntry() throws HistoryNotFoundException {
     ensureListenersRegistered();
 
@@ -472,8 +472,8 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
-  public E getBestEntryFor( @NotNull LocalDate date ) throws HistoryNotFoundException {
+  @Nonnull
+  public E getBestEntryFor( @Nonnull LocalDate date ) throws HistoryNotFoundException {
     return getBestSubHistoryFor( date ).getLatestEntry();
   }
 
@@ -485,7 +485,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   public History<E> getLastSubHistory() throws HistoryNotFoundException {
     ensureListenersRegistered();
 
@@ -508,7 +508,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @throws HistoryNotFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   public History<E> getFirstSubHistory() throws HistoryNotFoundException {
     ensureListenersRegistered();
 
@@ -527,7 +527,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getElements() {
     return getEntries();
   }
@@ -536,7 +536,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends E> elements ) {
+  public void setElements( @Nonnull List<? extends E> elements ) {
     throw new UnsupportedOperationException( "Cannot set the elements yet" ); //todo implement
   }
 
@@ -544,7 +544,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull E element ) {
+  public void add( @Nonnull E element ) {
     addEntry( element );
   }
 
@@ -552,7 +552,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull E element ) {
+  public void remove( @Nonnull E element ) {
     removeEntry( element );
   }
 
@@ -560,7 +560,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
@@ -568,7 +568,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
@@ -578,7 +578,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
@@ -586,14 +586,14 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends HistoryListener<E>> getHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();
   }
 
   private transient Map<History<E>, HistoryListener<E>> listeners;
 
-  @NotNull
+  @Nonnull
   private Map<History<E>, HistoryListener<E>> getListeners() {
     //First try with read access
     lock.readLock().lock();
@@ -628,7 +628,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
    *
    * @return a {@link ReadWriteLock} object.
    */
-  @NotNull
+  @Nonnull
   public ReadWriteLock getLock() {
     return lock;
   }

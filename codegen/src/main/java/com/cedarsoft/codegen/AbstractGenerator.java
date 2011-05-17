@@ -40,9 +40,9 @@ import com.sun.tools.xjc.api.util.ToolsJarNotFoundException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.fest.reflect.core.Reflection;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,11 +55,11 @@ import java.util.List;
  * Handles options and classloader issues
  */
 public abstract class AbstractGenerator {
-  @NonNls
+  @Nonnull
   public static final String GENERATE_METHOD_NAME = "generate";
 
 
-  protected void run( @NotNull Collection<? extends File> domainSourceFiles, @NotNull File destination, @NotNull File resourcesDestination, @NotNull File testDestination, @NotNull File testResourcesDestination, @Nullable Classpath classpath, @NotNull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
+  protected void run( @Nonnull Collection<? extends File> domainSourceFiles, @Nonnull File destination, @Nonnull File resourcesDestination, @Nonnull File testDestination, @Nonnull File testResourcesDestination, @Nullable Classpath classpath, @Nonnull PrintWriter logOut ) throws ToolsJarNotFoundException, ClassNotFoundException, IOException, InterruptedException {
     GeneratorConfiguration configuration = new GeneratorConfiguration( domainSourceFiles, destination, resourcesDestination, testDestination, testResourcesDestination, classpath, logOut );
 
     File tmpDestination = createEmptyTmpDir();
@@ -79,29 +79,29 @@ public abstract class AbstractGenerator {
     FileUtils.deleteDirectory( tmpTestDestination );
   }
 
-  public void run( @NotNull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
+  public void run( @Nonnull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
     run( configuration, createRunner() );
   }
 
-  public void run( @NotNull Class<?> runnerType, @NotNull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
+  public void run( @Nonnull Class<?> runnerType, @Nonnull GeneratorConfiguration configuration ) throws ToolsJarNotFoundException, ClassNotFoundException {
     run( configuration, createRunner( runnerType ) );
   }
 
-  public void run( @NotNull GeneratorConfiguration configuration, @NotNull Object runner ) {
+  public void run( @Nonnull GeneratorConfiguration configuration, @Nonnull Object runner ) {
     Reflection.method( GENERATE_METHOD_NAME ).withParameterTypes( GeneratorConfiguration.class ).in( runner ).invoke( configuration );
   }
 
-  @NotNull
+  @Nonnull
   public Object createRunner() throws ToolsJarNotFoundException, ClassNotFoundException {
     Class<?> runnerType = getRunnerType();
     return createRunner( runnerType );
   }
 
-  public Object createRunner( @NotNull Class<?> runnerType ) {
+  public Object createRunner( @Nonnull Class<?> runnerType ) {
     return Reflection.constructor().in( runnerType ).newInstance();
   }
 
-  @NotNull
+  @Nonnull
   public Class<?> getRunnerType() throws ToolsJarNotFoundException, ClassNotFoundException {
     ClassLoader aptClassLoader = createAptClassLoader();
     Thread.currentThread().setContextClassLoader( aptClassLoader );
@@ -117,7 +117,7 @@ public abstract class AbstractGenerator {
    * @throws IOException
    * @throws InterruptedException
    */
-  public void transferFiles( @NotNull GeneratorConfiguration tmpConfiguration, @NotNull GeneratorConfiguration configuration ) throws IOException, InterruptedException {
+  public void transferFiles( @Nonnull GeneratorConfiguration tmpConfiguration, @Nonnull GeneratorConfiguration configuration ) throws IOException, InterruptedException {
     transferFiles( tmpConfiguration.getDestination(), configuration.getDestination(), configuration.getLogOut() );
     transferFiles( tmpConfiguration.getResourcesDestination(), configuration.getResourcesDestination(), configuration.getLogOut() );
 
@@ -125,17 +125,17 @@ public abstract class AbstractGenerator {
     transferFiles( tmpConfiguration.getTestResourcesDestination(), configuration.getTestResourcesDestination(), configuration.getLogOut() );
   }
 
-  @NotNull
+  @Nonnull
   public APTClassLoader createAptClassLoader() throws ToolsJarNotFoundException {
     return createAptClassLoader( getDefaultClassLoader() );
   }
 
-  @NotNull
-  public APTClassLoader createAptClassLoader( @NotNull ClassLoader defaultClassLoader ) throws ToolsJarNotFoundException {
+  @Nonnull
+  public APTClassLoader createAptClassLoader( @Nonnull ClassLoader defaultClassLoader ) throws ToolsJarNotFoundException {
     return new APTClassLoader( defaultClassLoader, getPackagePrefixes().toArray( new String[getPackagePrefixes().size()] ) );
   }
 
-  @NotNull
+  @Nonnull
   public ClassLoader getDefaultClassLoader() {
     ClassLoader defaultClassLoader = getClass().getClassLoader();
     if ( defaultClassLoader == null ) {
@@ -144,8 +144,7 @@ public abstract class AbstractGenerator {
     return defaultClassLoader;
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   protected List<? extends String> getPackagePrefixes() {
     return ImmutableList.of(
       "com.cedarsoft.codegen.",
@@ -157,7 +156,7 @@ public abstract class AbstractGenerator {
     );
   }
 
-  protected void transferFiles( @NotNull File sourceDir, @NotNull File destination, @NotNull PrintWriter logOut ) throws IOException, InterruptedException {
+  protected void transferFiles( @Nonnull File sourceDir, @Nonnull File destination, @Nonnull PrintWriter logOut ) throws IOException, InterruptedException {
     Collection<? extends File> serializerFiles = FileUtils.listFiles( sourceDir, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE );
     for ( File serializerFile : serializerFiles ) {
       String relativePath = calculateRelativePath( sourceDir, serializerFile );
@@ -177,19 +176,17 @@ public abstract class AbstractGenerator {
     }
   }
 
-  @NotNull
-  @NonNls
-  protected static String calculateRelativePath( @NotNull File dir, @NotNull File serializerFile ) throws IOException {
+  @Nonnull
+  protected static String calculateRelativePath( @Nonnull File dir, @Nonnull File serializerFile ) throws IOException {
     return serializerFile.getCanonicalPath().substring( dir.getCanonicalPath().length() + 1 );
   }
 
-  @NotNull
+  @Nonnull
   public static File createEmptyTmpDir() {
     return Files.createTempDir();
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   protected abstract String getRunnerClassName();
 
   /**
@@ -202,6 +199,6 @@ public abstract class AbstractGenerator {
      * @param configuration the configuration
      * @throws Exception
      */
-    void generate( @NotNull GeneratorConfiguration configuration ) throws Exception;
+    void generate( @Nonnull GeneratorConfiguration configuration ) throws Exception;
   }
 }

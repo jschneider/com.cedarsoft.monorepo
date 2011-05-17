@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,9 +45,9 @@ import java.util.concurrent.locks.ReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MultiReadWriteLock implements ReadWriteLock {
-  @NotNull
+  @Nonnull
   private final MultiLock multiReadLock;
-  @NotNull
+  @Nonnull
   private final MultiLock multiWriteLock;
 
   /**
@@ -55,7 +55,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
    *
    * @param locks a {@link ReadWriteLock} object.
    */
-  public MultiReadWriteLock( @NotNull ReadWriteLock... locks ) {
+  public MultiReadWriteLock( @Nonnull ReadWriteLock... locks ) {
     this( Arrays.asList( locks ) );
   }
 
@@ -64,7 +64,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
    *
    * @param locks a {@link List} object.
    */
-  public MultiReadWriteLock( @NotNull Iterable<? extends ReadWriteLock> locks ) {
+  public MultiReadWriteLock( @Nonnull Iterable<? extends ReadWriteLock> locks ) {
     List<Lock> readLocks = new ArrayList<Lock>();
     List<Lock> writeLocks = new ArrayList<Lock>();
 
@@ -86,7 +86,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lock readLock() {
     return multiReadLock;
   }
@@ -95,7 +95,7 @@ public class MultiReadWriteLock implements ReadWriteLock {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lock writeLock() {
     return multiWriteLock;
   }

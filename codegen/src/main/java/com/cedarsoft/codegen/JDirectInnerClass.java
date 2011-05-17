@@ -37,8 +37,8 @@ import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JFormatter;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JTypeVar;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -48,12 +48,12 @@ import java.util.List;
  *
  */
 public class JDirectInnerClass extends JClass {
-  @NotNull
+  @Nonnull
   private final JClass outer;
 
   private final String name;
 
-  public JDirectInnerClass( @NotNull JCodeModel owner, @NotNull JClass outer, @NotNull @NonNls String name ) {
+  public JDirectInnerClass( @Nonnull JCodeModel owner, @Nonnull JClass outer, @Nonnull String name ) {
     super( owner );
     this.outer = outer;
     this.name = name;

@@ -38,8 +38,8 @@ import com.sun.mirror.declaration.ConstructorDeclaration;
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -51,31 +51,30 @@ import java.util.List;
  *
  */
 public class DomainObjectDescriptor {
-  @NotNull
+  @Nonnull
   private final List<FieldWithInitializationInfo> fieldInfos = Lists.newArrayList();
-  @NotNull
+  @Nonnull
   private final ClassDeclaration classDeclaration;
 
-  public DomainObjectDescriptor( @NotNull @NonNls ClassDeclaration classDeclaration ) {
+  public DomainObjectDescriptor( @Nonnull ClassDeclaration classDeclaration ) {
     this.classDeclaration = classDeclaration;
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getQualifiedName() {
     return classDeclaration.getQualifiedName();
   }
 
-  @NotNull
+  @Nonnull
   public ClassDeclaration getClassDeclaration() {
     return classDeclaration;
   }
 
-  public void addField( @NotNull FieldWithInitializationInfo fieldToSerialize ) {
+  public void addField( @Nonnull FieldWithInitializationInfo fieldToSerialize ) {
     this.fieldInfos.add( fieldToSerialize );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends FieldWithInitializationInfo> getFieldInfos() {
     return Collections.unmodifiableList( fieldInfos );
   }
@@ -85,7 +84,7 @@ public class DomainObjectDescriptor {
    *
    * @return the field infos initialized within the constructor
    */
-  @NotNull
+  @Nonnull
   public List<? extends FieldInitializedInConstructorInfo> getFieldsInitializedInConstructor() {
     List<FieldInitializedInConstructorInfo> found = new ArrayList<FieldInitializedInConstructorInfo>();
     for ( FieldWithInitializationInfo info : fieldInfos ) {
@@ -99,7 +98,7 @@ public class DomainObjectDescriptor {
     return found;
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends FieldInitializedInSetterInfo> getFieldsInitializedInSetter() {
     List<FieldInitializedInSetterInfo> found = new ArrayList<FieldInitializedInSetterInfo>();
     for ( FieldWithInitializationInfo info : fieldInfos ) {
@@ -111,7 +110,7 @@ public class DomainObjectDescriptor {
     return found;
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends FieldNotInitializationInfo> getFieldsNotInitialized() {
     List<FieldNotInitializationInfo> found = new ArrayList<FieldNotInitializationInfo>();
     for ( FieldWithInitializationInfo info : fieldInfos ) {
@@ -123,33 +122,33 @@ public class DomainObjectDescriptor {
     return found;
   }
 
-  @NotNull
+  @Nonnull
   public ConstructorDeclaration findBestConstructor() {
     return TypeUtils.findBestConstructor( classDeclaration );
   }
 
-  @NotNull
-  public MethodDeclaration findSetter( @NotNull @NonNls String fieldName, @NotNull TypeMirror type ) {
+  @Nonnull
+  public MethodDeclaration findSetter( @Nonnull String fieldName, @Nonnull TypeMirror type ) {
     return TypeUtils.findSetter( classDeclaration, fieldName, type );
   }
 
-  @NotNull
-  public MethodDeclaration findSetter( @NotNull FieldDeclaration fieldDeclaration ) {
+  @Nonnull
+  public MethodDeclaration findSetter( @Nonnull FieldDeclaration fieldDeclaration ) {
     return TypeUtils.findSetter( classDeclaration, fieldDeclaration );
   }
 
-  @NotNull
-  public MethodDeclaration findGetterForField( @NotNull FieldDeclaration fieldDeclaration ) {
+  @Nonnull
+  public MethodDeclaration findGetterForField( @Nonnull FieldDeclaration fieldDeclaration ) {
     return TypeUtils.findGetterForField( classDeclaration, fieldDeclaration );
   }
 
-  @NotNull
-  public MethodDeclaration findGetterForField( @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
+  @Nonnull
+  public MethodDeclaration findGetterForField( @Nonnull String simpleName, @Nonnull TypeMirror type ) {
     return TypeUtils.findGetterForField( classDeclaration, simpleName, type );
   }
 
-  @NotNull
-  public FieldDeclaration findFieldDeclaration( @NotNull @NonNls String fieldName ) {
+  @Nonnull
+  public FieldDeclaration findFieldDeclaration( @Nonnull String fieldName ) {
     return TypeUtils.findFieldDeclaration( classDeclaration, fieldName );
   }
 

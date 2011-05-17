@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -47,13 +47,13 @@ public interface ClusteredObservableCollection<E> extends ObservableCollection<E
    * @param listener    the listener
    * @param isTransient whether this listener is added transient or not
    */
-  void addElementListener( @NotNull ElementsListener<? super E> listener, boolean isTransient );
+  void addElementListener( @Nonnull ElementsListener<? super E> listener, boolean isTransient );
 
   /**
    * Returns the transient element listeners
    *
    * @return the transient element listeners
    */
-  @NotNull
+  @Nonnull
   List<? extends ElementsListener<? super E>> getTransientElementListeners();
 }

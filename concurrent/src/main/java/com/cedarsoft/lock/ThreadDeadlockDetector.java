@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
@@ -55,13 +55,13 @@ public class ThreadDeadlockDetector {
    * critical to know so quickly.
    */
   private static final long DEFAULT_DEADLOCK_CHECK_PERIOD = 10000;
-  @NotNull
+  @Nonnull
   private final Timer threadCheck = new Timer( "ThreadDeadlockDetector", true );
-  @NotNull
+  @Nonnull
   private final ThreadMXBean mXBean = ManagementFactory.getThreadMXBean();
 
   private final long deadlockCheckPeriod;
-  @NotNull
+  @Nonnull
   private final Collection<Listener> listeners = new CopyOnWriteArraySet<Listener>();
 
   /**
@@ -124,14 +124,14 @@ public class ThreadDeadlockDetector {
     }
   }
 
-  private void fireDeadlockDetected( @NotNull Set<? extends Thread> threads ) {
+  private void fireDeadlockDetected( @Nonnull Set<? extends Thread> threads ) {
     for ( Listener listener : listeners ) {
       listener.deadlockDetected( threads );
     }
   }
 
-  @NotNull
-  private static Thread findMatchingThread( @NotNull ThreadInfo threadInfo ) {
+  @Nonnull
+  private static Thread findMatchingThread( @Nonnull ThreadInfo threadInfo ) {
     for ( Thread thread : Thread.getAllStackTraces().keySet() ) {
       if ( thread.getId() == threadInfo.getThreadId() ) {
         return thread;
@@ -146,7 +146,7 @@ public class ThreadDeadlockDetector {
    * @param listener a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
-  public boolean addListener( @NotNull Listener listener ) {
+  public boolean addListener( @Nonnull Listener listener ) {
     return listeners.add( listener );
   }
 
@@ -156,7 +156,7 @@ public class ThreadDeadlockDetector {
    * @param listener a {@link ThreadDeadlockDetector.Listener} object.
    * @return a boolean.
    */
-  public boolean removeListener( @NotNull Listener listener ) {
+  public boolean removeListener( @Nonnull Listener listener ) {
     return listeners.remove( listener );
   }
 
@@ -164,7 +164,7 @@ public class ThreadDeadlockDetector {
    * This is called whenever a problem with threads is detected.
    */
   public interface Listener {
-    void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads );
+    void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads );
   }
 
   public interface DetailedListener extends Listener{

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.PrintStream;
 import java.util.Set;
@@ -48,7 +48,7 @@ public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener 
     this( System.err );
   }
 
-  public DefaultDeadlockListener( @NotNull PrintStream out ) {
+  public DefaultDeadlockListener( @Nonnull PrintStream out ) {
     this.out = out;
   }
 
@@ -56,7 +56,7 @@ public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener 
    * {@inheritDoc}
    */
   @Override
-  public void deadlockDetected( @NotNull Set<? extends Thread> deadlockedThreads ) {
+  public void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads ) {
     out.println( "Deadlocked Threads:" );
     out.println( "-------------------" );
     for ( Thread thread : deadlockedThreads ) {

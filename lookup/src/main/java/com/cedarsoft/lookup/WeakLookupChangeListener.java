@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.lang.ref.WeakReference;
@@ -53,7 +53,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    *
    * @param listener the listener that is wrapped
    */
-  public WeakLookupChangeListener( @NotNull LookupChangeListener<T> listener ) {
+  public WeakLookupChangeListener( @Nonnull LookupChangeListener<T> listener ) {
     this( null, listener );
   }
 
@@ -63,7 +63,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * @param typeClass the type
    * @param listener  the listener this delegates to
    */
-  public WeakLookupChangeListener( @Nullable Class<T> typeClass, @NotNull LookupChangeListener<? super T> listener ) {
+  public WeakLookupChangeListener( @Nullable Class<T> typeClass, @Nonnull LookupChangeListener<? super T> listener ) {
     this.typeClass = typeClass;
     this.listenerReference = new WeakReference<LookupChangeListener<? super T>>( listener );
   }
@@ -72,7 +72,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * {@inheritDoc}
    */
   @Override
-  public void lookupChanged( @NotNull LookupChangeEvent<? extends T> event ) {
+  public void lookupChanged( @Nonnull LookupChangeEvent<? extends T> event ) {
     LookupChangeListener<? super T> delegatingListener = getWrappedListener();
     if ( delegatingListener == null ) {
       removeListener( event.getSource() );
@@ -96,12 +96,12 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    *
    * @return a {@link Class} object.
    */
-  @NotNull
+  @Nonnull
   public Class<T> getTypeClass() {
     return typeClass;
   }
 
-  private void removeListener( @NotNull Lookup source ) {
+  private void removeListener( @Nonnull Lookup source ) {
     if ( typeClass != null ) {
       source.removeChangeListener( typeClass, this );
     }
@@ -116,7 +116,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * @param <T>      a T object.
    * @return the weak lookup change listener that wraps the given listener
    */
-  public static <T> WeakLookupChangeListener<T> wrap( @NotNull LookupChangeListener<T> listener ) {
+  public static <T> WeakLookupChangeListener<T> wrap( @Nonnull LookupChangeListener<T> listener ) {
     return wrap( null, listener );
   }
 
@@ -128,8 +128,8 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
    * @param <T>      a T object.
    * @return the weak lookup change listener that wraps the given listener
    */
-  @NotNull
-  public static <T> WeakLookupChangeListener<T> wrap( @Nullable Class<T> type, @NotNull LookupChangeListener<? super T> listener ) {
+  @Nonnull
+  public static <T> WeakLookupChangeListener<T> wrap( @Nullable Class<T> type, @Nonnull LookupChangeListener<? super T> listener ) {
     return new WeakLookupChangeListener<T>( type, listener );
   }
 

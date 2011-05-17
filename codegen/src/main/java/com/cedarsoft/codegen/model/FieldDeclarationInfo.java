@@ -33,8 +33,8 @@ package com.cedarsoft.codegen.model;
 
 import com.sun.mirror.declaration.FieldDeclaration;
 import com.sun.mirror.declaration.MethodDeclaration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * Contains informations about a field and its initialization
@@ -45,7 +45,7 @@ public interface FieldDeclarationInfo extends FieldTypeInformation, FieldInfo {
    *
    * @return the field declaration
    */
-  @NotNull
+  @Nonnull
   FieldDeclaration getFieldDeclaration();
 
   /**
@@ -53,7 +53,6 @@ public interface FieldDeclarationInfo extends FieldTypeInformation, FieldInfo {
    *
    * @return the getter
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   MethodDeclaration getGetterDeclaration();
 }

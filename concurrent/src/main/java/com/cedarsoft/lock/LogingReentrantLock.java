@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,16 +48,16 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LogingReentrantLock implements ReadWriteLock {
-  @NotNull
+  @Nonnull
   private final ReadWriteLock delegate = new ReentrantReadWriteLock();
 
-  @NotNull
+  @Nonnull
   private final List<Thread> readLockingThreads = new ArrayList<Thread>();
   private final List<Thread> writeLockingThreads = new ArrayList<Thread>();
 
-  @NotNull
+  @Nonnull
   private final LogingLock readLock = new LogingLock( delegate.readLock(), readLockingThreads );
-  @NotNull
+  @Nonnull
   private final LogingLock writeLock = new LogingLock( delegate.writeLock(), writeLockingThreads ) {
     @Override
     public void lock() {
@@ -88,7 +88,7 @@ public class LogingReentrantLock implements ReadWriteLock {
   private static class DelegatingLock implements Lock {
     private final Lock delegate;
 
-    protected DelegatingLock( @NotNull Lock delegate ) {
+    protected DelegatingLock( @Nonnull Lock delegate ) {
       this.delegate = delegate;
     }
 
@@ -124,10 +124,10 @@ public class LogingReentrantLock implements ReadWriteLock {
   }
 
   private static class LogingLock extends DelegatingLock {
-    @NotNull
+    @Nonnull
     private final List<Thread> lockingThreads;
 
-    private LogingLock( @NotNull Lock delegate, @NotNull List<Thread> lockingThreads ) {
+    private LogingLock( @Nonnull Lock delegate, @Nonnull List<Thread> lockingThreads ) {
       super( delegate );
       this.lockingThreads = lockingThreads;
     }
@@ -144,7 +144,7 @@ public class LogingReentrantLock implements ReadWriteLock {
       super.unlock();
     }
 
-    @NotNull
+    @Nonnull
     public List<? extends Thread> getLockingThreads() {
       return Collections.unmodifiableList( lockingThreads );
     }

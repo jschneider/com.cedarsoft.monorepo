@@ -35,8 +35,8 @@ import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.mirror.type.DeclaredType;
 import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,11 +49,11 @@ public class CollectionTypeMirrorMock extends ReferenceTypeMock implements Decla
   @Nullable
   private final Class<?> paramType;
 
-  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType ) {
+  public CollectionTypeMirrorMock( @Nonnull Class<?> collectionType ) {
     this( collectionType, null );
   }
 
-  public CollectionTypeMirrorMock( @NotNull Class<?> collectionType, @Nullable Class<?> type ) {
+  public CollectionTypeMirrorMock( @Nonnull Class<?> collectionType, @Nullable Class<?> type ) {
     super( collectionType );
     this.paramType = type;
   }
@@ -81,7 +81,7 @@ public class CollectionTypeMirrorMock extends ReferenceTypeMock implements Decla
     throw new UnsupportedOperationException();
   }
 
-  @NotNull
+  @Nonnull
   public Class<?> getCollectionType() {
     return type;
   }

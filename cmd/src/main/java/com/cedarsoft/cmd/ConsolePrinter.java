@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Interface that creates messages to be printed to the console.
@@ -47,8 +47,8 @@ public interface ConsolePrinter {
    * @param objects the objects
    * @return the error message
    */
-  @NotNull
-  String createError( @NotNull String message, @NotNull Object... objects );
+  @Nonnull
+  String createError( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Creates a warning
@@ -57,8 +57,8 @@ public interface ConsolePrinter {
    * @param objects the objects
    * @return the warning message
    */
-  @NotNull
-  String createWarning( @NotNull String message, @NotNull Object... objects );
+  @Nonnull
+  String createWarning( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Creates a success message
@@ -67,6 +67,6 @@ public interface ConsolePrinter {
    * @param objects the objects
    * @return the success mesage
    */
-  @NotNull
-  String createSuccess( @NotNull String message, @NotNull Object... objects );
+  @Nonnull
+  String createSuccess( @Nonnull String message, @Nonnull Object... objects );
 }

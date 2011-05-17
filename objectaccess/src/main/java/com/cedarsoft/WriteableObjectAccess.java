@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.UnsupportedOperationException;
 import java.util.List;
@@ -53,5 +53,5 @@ public interface WriteableObjectAccess<T> extends ObjectAccess<T>, ObjectAddRemo
    * @throws UnsupportedOperationException
    *          if the method is not supported
    */
-  void setElements( @NotNull List<? extends T> elements ) throws UnsupportedOperationException;
+  void setElements( @Nonnull List<? extends T> elements ) throws UnsupportedOperationException;
 }

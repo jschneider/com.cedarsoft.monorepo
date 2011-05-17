@@ -31,7 +31,7 @@
 
 package com.cedarsoft.codegen;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -56,7 +56,7 @@ public class GeneratorCliSupportTest {
   public void setUp() throws Exception {
     out = new StringWriter();
     support = new GeneratorCliSupport( new AbstractGenerator() {
-      @NotNull
+      @Nonnull
       @Override
       protected String getRunnerClassName() {
         return "com.cedarsoft.codegen.GeneratorCliSupportTest$MyRunner";
@@ -125,7 +125,7 @@ public class GeneratorCliSupportTest {
 
   public static class MyRunner implements AbstractGenerator.Runner {
     @Override
-    public void generate( @NotNull GeneratorConfiguration configuration ) throws Exception {
+    public void generate( @Nonnull GeneratorConfiguration configuration ) throws Exception {
       configuration.getLogOut().write( "called..." );
       assertNotNull( configuration.getResourcesDestination() );
       assertNotNull( configuration.getTestResourcesDestination() );

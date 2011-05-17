@@ -36,7 +36,7 @@ import com.cedarsoft.commons.struct.StructureChangedEvent;
 import com.cedarsoft.commons.struct.StructureListener;
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
@@ -52,7 +52,7 @@ import java.util.WeakHashMap;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructBasedListModel implements ListModel {
-  @NotNull
+  @Nonnull
   protected final StructPart node;
   private final List<ListDataListener> listeners = new ArrayList<ListDataListener>();
 
@@ -67,7 +67,7 @@ public class StructBasedListModel implements ListModel {
    *
    * @param node a {@link StructPart} object.
    */
-  public StructBasedListModel( @NotNull StructPart node ) {
+  public StructBasedListModel( @Nonnull StructPart node ) {
     this.node = node;
 
     //Register the lookup change listeners to all children
@@ -77,7 +77,7 @@ public class StructBasedListModel implements ListModel {
 
     structureListener = new StructureListener() {
       @Override
-      public void childAdded( @NotNull StructureChangedEvent event ) {
+      public void childAdded( @Nonnull StructureChangedEvent event ) {
         addChildLookupListener( event.getStructPart() );
 
         //Notify the listeners that an entry has been added
@@ -88,7 +88,7 @@ public class StructBasedListModel implements ListModel {
       }
 
       @Override
-      public void childDetached( @NotNull StructureChangedEvent event ) {
+      public void childDetached( @Nonnull StructureChangedEvent event ) {
         detachChildLookupListener( event.getStructPart() );
 
         //Notify the listeners that an entry has been removed
@@ -107,7 +107,7 @@ public class StructBasedListModel implements ListModel {
    *
    * @param child the child the listener is detached from
    */
-  protected void detachChildLookupListener( @NotNull StructPart child ) {
+  protected void detachChildLookupListener( @Nonnull StructPart child ) {
     StructBasedListModel.ChildLookupChangeListener listener = childListeners.remove( child );
     if ( listener == null ) {
       throw new IllegalStateException( "No listener found for " + child );
@@ -120,7 +120,7 @@ public class StructBasedListModel implements ListModel {
    *
    * @param child the child the lookup listener is registered at
    */
-  protected final void addChildLookupListener( @NotNull StructPart child ) {
+  protected final void addChildLookupListener( @Nonnull StructPart child ) {
     ChildLookupChangeListener listener = new ChildLookupChangeListener( child );
     if ( childListeners.get( child ) != null ) {
       throw new IllegalStateException( "Still added a listener for the given child " + child );
@@ -141,7 +141,7 @@ public class StructBasedListModel implements ListModel {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public StructPart getElementAt( int index ) {
     return node.getChildren().get( index );
   }
@@ -166,15 +166,15 @@ public class StructBasedListModel implements ListModel {
    * A listener that notifies all listeners that a lookup has been changed
    */
   private class ChildLookupChangeListener implements LookupChangeListener<Object> {
-    @NotNull
+    @Nonnull
     private final StructPart part;
 
-    private ChildLookupChangeListener( @NotNull StructPart part ) {
+    private ChildLookupChangeListener( @Nonnull StructPart part ) {
       this.part = part;
     }
 
     @Override
-    public void lookupChanged( @NotNull LookupChangeEvent<?> event ) {
+    public void lookupChanged( @Nonnull LookupChangeEvent<?> event ) {
       int index = node.getChildren().indexOf( part );
 
       for ( ListDataListener listener : listeners ) {

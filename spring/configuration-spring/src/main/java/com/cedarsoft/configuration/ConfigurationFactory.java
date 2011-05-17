@@ -33,8 +33,8 @@ package com.cedarsoft.configuration;
 
 import com.cedarsoft.configuration.xml.XmlConfigurationManager;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.Class;
@@ -48,7 +48,7 @@ import java.lang.Class;
  */
 @Deprecated
 public class ConfigurationFactory implements FactoryBean {
-  @NotNull
+  @Nonnull
   private final XmlConfigurationManager configurationManager;
   @Nullable
   private final Class<?> moduleType;
@@ -58,7 +58,7 @@ public class ConfigurationFactory implements FactoryBean {
    *
    * @param configurationManager a {@link XmlConfigurationManager} object.
    */
-  public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager ) {
+  public ConfigurationFactory( @Nonnull XmlConfigurationManager configurationManager ) {
     this.configurationManager = configurationManager;
     moduleType = null;
   }
@@ -69,7 +69,7 @@ public class ConfigurationFactory implements FactoryBean {
    * @param configurationManager a {@link XmlConfigurationManager} object.
    * @param moduleType           a {@link Class} object.
    */
-  public ConfigurationFactory( @NotNull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
+  public ConfigurationFactory( @Nonnull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
     this.configurationManager = configurationManager;
     this.moduleType = moduleType;
   }
@@ -78,7 +78,7 @@ public class ConfigurationFactory implements FactoryBean {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Object getObject() throws Exception {
     if ( moduleType != null ) {
       return configurationManager.getModuleConfiguration( moduleType );
@@ -91,7 +91,7 @@ public class ConfigurationFactory implements FactoryBean {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Class<Configuration> getObjectType() {
     return Configuration.class;
   }

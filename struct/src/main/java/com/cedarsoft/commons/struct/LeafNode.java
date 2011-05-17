@@ -32,9 +32,9 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 import java.util.Collections;
@@ -46,10 +46,9 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LeafNode implements Node {
-  @NotNull
+  @Nonnull
   private final Lookup lookup;
-  @NonNls
-  @NotNull
+  @Nonnull
   private final String name;
   @Nullable
   private Node parent;
@@ -60,7 +59,7 @@ public class LeafNode implements Node {
    * @param name   a {@link String} object.
    * @param lookup a {@link Lookup} object.
    */
-  public LeafNode( @NotNull String name, @NotNull Lookup lookup ) {
+  public LeafNode( @Nonnull String name, @Nonnull Lookup lookup ) {
     this.name = name;
     this.lookup = lookup;
   }
@@ -69,7 +68,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Lookup getLookup() {
     return lookup;
   }
@@ -78,8 +77,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getName() {
     return name;
   }
@@ -88,7 +86,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends Node> getChildren() {
     return Collections.emptyList();
   }
@@ -97,29 +95,29 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListener( @NotNull StructureListener structureListener ) {
+  public void addStructureListener( @Nonnull StructureListener structureListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addStructureListenerWeak( @NotNull StructureListener structureListener ) {
+  public void addStructureListenerWeak( @Nonnull StructureListener structureListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void removeStructureListener( @NotNull StructureListener structureListener ) {
+  public void removeStructureListener( @Nonnull StructureListener structureListener ) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public Node findChild( @NotNull @NonNls String childName ) throws ChildNotFoundException {
+  @Nonnull
+  public Node findChild( @Nonnull String childName ) throws ChildNotFoundException {
     throw new UnsupportedOperationException();
   }
 
@@ -127,7 +125,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( @NotNull Node child ) {
+  public void addChild( @Nonnull Node child ) {
     throw new UnsupportedOperationException();
   }
 
@@ -135,7 +133,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void addChild( int index, @NotNull Node child ) {
+  public void addChild( int index, @Nonnull Node child ) {
     throw new UnsupportedOperationException();
   }
 
@@ -143,7 +141,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public void detachChild( @NotNull Node child ) {
+  public void detachChild( @Nonnull Node child ) {
     throw new UnsupportedOperationException();
   }
 
@@ -176,7 +174,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Path getPath() {
     return Path.buildPath( this );
   }
@@ -185,7 +183,7 @@ public class LeafNode implements Node {
    * {@inheritDoc}
    */
   @Override
-  public boolean isChild( @NotNull StructPart child ) {
+  public boolean isChild( @Nonnull StructPart child ) {
     return false;
   }
 

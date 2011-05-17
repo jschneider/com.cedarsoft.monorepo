@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -47,6 +47,6 @@ public interface ObjectAccess<T> {
    *
    * @return all elements
    */
-  @NotNull
+  @Nonnull
   List<? extends T> getElements();
 }

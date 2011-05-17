@@ -32,8 +32,8 @@
 package com.cedarsoft.zip;
 
 import org.apache.commons.compress.archivers.ArchiveEntry;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.zip.ZipEntry;
 
@@ -43,12 +43,10 @@ import java.util.zip.ZipEntry;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PathBasedClassFieldCondition implements ZipExtractor.Condition {
-  @NonNls
-  @NotNull
+  @Nonnull
   private static final String CLASS_SUFFIX = ".class";
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String pathPrefix;
 
   /**
@@ -56,7 +54,7 @@ public class PathBasedClassFieldCondition implements ZipExtractor.Condition {
    *
    * @param pathPrefix the path prefix that is used
    */
-  public PathBasedClassFieldCondition( @NotNull @NonNls String pathPrefix ) {
+  public PathBasedClassFieldCondition( @Nonnull String pathPrefix ) {
     this.pathPrefix = pathPrefix;
   }
 
@@ -64,7 +62,7 @@ public class PathBasedClassFieldCondition implements ZipExtractor.Condition {
    * {@inheritDoc}
    */
   @Override
-  public boolean shallExtract( @NotNull ArchiveEntry zipEntry ) {
+  public boolean shallExtract( @Nonnull ArchiveEntry zipEntry ) {
     return zipEntry.getName().startsWith( pathPrefix ) && zipEntry.getName().endsWith( CLASS_SUFFIX );
   }
 }

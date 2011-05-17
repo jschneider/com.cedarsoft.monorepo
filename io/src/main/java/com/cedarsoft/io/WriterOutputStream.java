@@ -31,9 +31,9 @@
 
 package com.cedarsoft.io;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -47,14 +47,14 @@ public class WriterOutputStream extends OutputStream {
   private final Writer writer;
   @Nullable
   private final String encoding;
-  @NotNull
+  @Nonnull
   private final byte[] buffer = new byte[1];
 
-  public WriterOutputStream( @NotNull Writer writer ) {
+  public WriterOutputStream( @Nonnull Writer writer ) {
     this( writer, null );
   }
 
-  public WriterOutputStream( @NotNull Writer writer, @Nullable @NonNls String encoding ) {
+  public WriterOutputStream( @Nonnull Writer writer, @Nullable String encoding ) {
     this.writer = writer;
     this.encoding = encoding;
   }

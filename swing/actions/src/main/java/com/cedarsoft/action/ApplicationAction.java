@@ -31,9 +31,10 @@
 
 package com.cedarsoft.action;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
+
+import javax.annotation.Nonnull;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 
@@ -48,7 +49,7 @@ public abstract class ApplicationAction extends AbstractAction {
    *
    * @param name a {@link String} object.
    */
-  protected ApplicationAction( @NonNls @NotNull String name ) {
+  protected ApplicationAction( @Nonnull String name ) {
     super( name );
   }
 
@@ -58,7 +59,7 @@ public abstract class ApplicationAction extends AbstractAction {
    * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
    */
   @Override
-  public final void actionPerformed( @NotNull ActionEvent e ) {
+  public final void actionPerformed( @Nonnull ActionEvent e ) {
     try {
       applicationActionPerformed( e );
     } catch ( ApplicationException exception ) {
@@ -71,7 +72,7 @@ public abstract class ApplicationAction extends AbstractAction {
    *
    * @param exception a {@link ApplicationException} object.
    */
-  protected abstract void handleApplicationException( @NotNull ApplicationException exception );
+  protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
 
   /**
    * Should be overridden by subclasses.
@@ -80,5 +81,5 @@ public abstract class ApplicationAction extends AbstractAction {
    * @param e the action event
    * @throws ApplicationException if an application error occured
    */
-  public abstract void applicationActionPerformed( @NotNull ActionEvent e ) throws ApplicationException;
+  public abstract void applicationActionPerformed( @Nonnull ActionEvent e ) throws ApplicationException;
 }

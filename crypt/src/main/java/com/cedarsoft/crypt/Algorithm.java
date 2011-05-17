@@ -31,9 +31,8 @@
 
 package com.cedarsoft.crypt;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -58,8 +57,8 @@ public enum Algorithm {
    * @param algorithmString a {@link String} object.
    * @return a {@link Algorithm} object.
    */
-  @NotNull
-  public static Algorithm getAlgorithm( @NotNull @NonNls String algorithmString ) {
+  @Nonnull
+  public static Algorithm getAlgorithm( @Nonnull String algorithmString ) {
     //First search for the exact match
     try {
       return Algorithm.valueOf( algorithmString );
@@ -75,8 +74,7 @@ public enum Algorithm {
     throw new IllegalArgumentException( "No Alogirthm found for " + algorithmString );
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final List<String> alternativeNames = new ArrayList<String>();
 
   /**
@@ -85,7 +83,7 @@ public enum Algorithm {
    *
    * @param alternativeNames the alternative names
    */
-  Algorithm( @NotNull @NonNls String... alternativeNames ) {
+  Algorithm( @Nonnull String... alternativeNames ) {
     if ( alternativeNames.length == 0 ) {
       throw new IllegalArgumentException( "Need at least one algorithm name" );
     }
@@ -97,8 +95,7 @@ public enum Algorithm {
    *
    * @return the alternative names for the algorithm
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public List<? extends String> getAlternativeNames() {
     return Collections.unmodifiableList( alternativeNames );
   }
@@ -108,7 +105,7 @@ public enum Algorithm {
    *
    * @return the message digest
    */
-  @NotNull
+  @Nonnull
   public MessageDigest getMessageDigest() {
     try {
       return MessageDigest.getInstance( alternativeNames.get( 0 ) );

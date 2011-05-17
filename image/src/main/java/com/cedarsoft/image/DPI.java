@@ -31,7 +31,7 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * This enum represents typical resolutions.
@@ -63,7 +63,7 @@ public enum DPI {
    * @param dpi a int.
    * @return a {@link DPI} object.
    */
-  @NotNull
+  @Nonnull
   public static DPI find( int dpi ) {
     for ( DPI DPI : values() ) {
       if ( DPI.getDpi() == dpi ) {

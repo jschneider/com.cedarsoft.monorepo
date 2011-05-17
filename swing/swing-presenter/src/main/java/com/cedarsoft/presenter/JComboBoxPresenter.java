@@ -35,8 +35,8 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.binding.PropertyCallback;
 import com.cedarsoft.presenter.model.StructBasedComboBoxModel;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.swing.Action;
 import javax.swing.DefaultListCellRenderer;
@@ -55,22 +55,18 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
   /**
    * Constant <code>PROPERTY_ACTION="action"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ACTION = "action";
   /**
    * Constant <code>PROPERTY_RENDERER="renderer"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_RENDERER = "renderer";
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final Object KEY_ACTION_CALLBACK = JComboBoxPresenter.class.getName() + "###ActionCallback";
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final Object KEY_RENDERER_CALLBACK = JComboBoxPresenter.class.getName() + "###RendererCallback";
 
 
@@ -78,8 +74,8 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     throw new UnsupportedOperationException();
   }
 
@@ -95,7 +91,7 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
    * {@inheritDoc}
    */
   @Override
-  protected void bind( @NotNull JComboBox presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull JComboBox presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
     {
       PropertyCallback<Action> callback = new PropertyCallback<Action>( presentation, PROPERTY_ACTION, Action.class );
       lookup.bindWeak( callback );
@@ -121,7 +117,7 @@ public class JComboBoxPresenter extends SwingPresenter<JComboBox> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected JComboBox createPresentation() {
     return new JComboBox();
   }

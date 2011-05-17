@@ -36,7 +36,7 @@ import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
 import com.cedarsoft.presenter.AbstractPresenter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import y.base.Node;
 import y.view.Graph2D;
 
@@ -47,12 +47,12 @@ import javax.swing.Action;
  */
 public class NodePresenter extends AbstractPresenter<Node> {
   @Override
-  protected void bind( @NotNull final Node presentation, @NotNull final StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull final Node presentation, @Nonnull final StructPart struct, @Nonnull Lookup lookup ) {
     final Graph2D graph2D = getGraph( presentation );
 
     lookup.bind( Action.class, new LookupChangeListener<Action>() {
       @Override
-      public void lookupChanged( @NotNull LookupChangeEvent<? extends Action> event ) {
+      public void lookupChanged( @Nonnull LookupChangeEvent<? extends Action> event ) {
         Action newValue = event.getNewValue();
         if ( newValue != null ) {
           graph2D.getRealizer( presentation ).setLabelText( ( String ) newValue.getValue( Action.NAME ) );
@@ -65,7 +65,7 @@ public class NodePresenter extends AbstractPresenter<Node> {
   }
 
   @Override
-  protected boolean addChildPresentation( @NotNull Node presentation, @NotNull StructPart child, int index ) {
+  protected boolean addChildPresentation( @Nonnull Node presentation, @Nonnull StructPart child, int index ) {
     Graph2D graph2D = getGraph( presentation );
     Node childNode = getChildPresenter( child ).present( child );
     graph2D.createEdge( presentation, childNode );
@@ -78,8 +78,8 @@ public class NodePresenter extends AbstractPresenter<Node> {
     return true;
   }
 
-  @NotNull
-  protected NodePresenter getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected NodePresenter getChildPresenter( @Nonnull StructPart child ) {
     NodePresenter presenter = child.getLookup().lookup( NodePresenter.class );
     if ( presenter != null ) {
       return presenter;
@@ -88,17 +88,17 @@ public class NodePresenter extends AbstractPresenter<Node> {
   }
 
   @Override
-  protected void removeChildPresentation( @NotNull Node presentation, @NotNull StructPart child, int index ) {
+  protected void removeChildPresentation( @Nonnull Node presentation, @Nonnull StructPart child, int index ) {
     //implement later
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected Node createPresentation() {
     return getGraph().createNode();
   }
 
-  @NotNull
+  @Nonnull
   protected Graph2D getGraph( Node presentation ) {
     Graph2D graph = ( Graph2D ) presentation.getGraph();
     Graph2DPresenter.graphLocal.set( graph );
@@ -106,7 +106,7 @@ public class NodePresenter extends AbstractPresenter<Node> {
   }
 
 
-  @NotNull
+  @Nonnull
   protected Graph2D getGraph() {
     return Graph2DPresenter.graphLocal.get();
   }

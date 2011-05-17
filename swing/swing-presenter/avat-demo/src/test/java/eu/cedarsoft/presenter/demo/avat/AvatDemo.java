@@ -37,7 +37,7 @@ import com.cedarsoft.presenter.FancyButtonPresenter;
 import com.cedarsoft.presenter.JButtonPresenter;
 import com.cedarsoft.presenter.JComboBoxPresenter;
 import com.cedarsoft.presenter.Presenter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -56,11 +56,11 @@ public class AvatDemo extends AvatMenuDemo {
   }
 
   @Override
-  protected void applyPresentation( @NotNull JFrame frame ) {
+  protected void applyPresentation( @Nonnull JFrame frame ) {
     frame.add( new ButtonBarPresenter() {
       @Override
-      @NotNull
-      protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+      @Nonnull
+      protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
         //        return super.getChildPresenter( child );
         return new FancyButtonPresenter();
       }
@@ -77,8 +77,8 @@ public class AvatDemo extends AvatMenuDemo {
     JPanel buttons = new JPanel();
     buttons.add( new ButtonBarPresenter( ButtonBarPresenter.Orientation.Vertical ) {
       @Override
-      @NotNull
-      protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+      @Nonnull
+      protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
         return new JButtonPresenter();
       }
 

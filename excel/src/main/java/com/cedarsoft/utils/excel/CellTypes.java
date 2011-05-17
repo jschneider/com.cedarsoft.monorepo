@@ -32,7 +32,7 @@
 package com.cedarsoft.utils.excel;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Date;
 
@@ -41,16 +41,16 @@ import java.util.Date;
  */
 public enum CellTypes implements CellType {
   INTEGER {
-    @NotNull
+    @Nonnull
     @Override
-    public Integer getValue( @NotNull HSSFCell cell ) {
+    public Integer getValue( @Nonnull HSSFCell cell ) {
       return ( int ) cell.getNumericCellValue();
     }},
 
   STRING {
-    @NotNull
+    @Nonnull
     @Override
-    public String getValue( @NotNull HSSFCell cell ) throws NoValueFoundException {
+    public String getValue( @Nonnull HSSFCell cell ) throws NoValueFoundException {
       try {
         String value = cell.getRichStringCellValue().getString();
         if ( value == null ) {
@@ -63,9 +63,9 @@ public enum CellTypes implements CellType {
     }},
 
   BOOLEAN {
-    @NotNull
+    @Nonnull
     @Override
-    public Boolean getValue( @NotNull HSSFCell cell ) throws NoValueFoundException {
+    public Boolean getValue( @Nonnull HSSFCell cell ) throws NoValueFoundException {
       try {
         return cell.getBooleanCellValue();
       } catch ( NumberFormatException ignore ) {
@@ -97,8 +97,8 @@ public enum CellTypes implements CellType {
 
   DATE {
     @Override
-    @NotNull
-    public Date getValue( @NotNull HSSFCell cell ) throws NoValueFoundException {
+    @Nonnull
+    public Date getValue( @Nonnull HSSFCell cell ) throws NoValueFoundException {
       Date value = cell.getDateCellValue();
       if ( value == null ) {
         throw new NoValueFoundException( "No value found at: " + getCellLocationString( cell ) );
@@ -108,12 +108,12 @@ public enum CellTypes implements CellType {
 
   DOUBLE {
     @Override
-    @NotNull
-    public Double getValue( @NotNull HSSFCell cell ) throws NoValueFoundException {
+    @Nonnull
+    public Double getValue( @Nonnull HSSFCell cell ) throws NoValueFoundException {
       return cell.getNumericCellValue();
     }};
 
-  public static String getCellLocationString( @NotNull HSSFCell cell ) {
+  public static String getCellLocationString( @Nonnull HSSFCell cell ) {
     return String.valueOf( cell.getCellNum() );
   }
 }

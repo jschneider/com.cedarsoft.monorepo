@@ -33,17 +33,17 @@ package com.cedarsoft.utils.excel;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A mapping for a spread sheet column
  */
 public class SpreadSheetColumnMapping<T> {
-  @NotNull
+  @Nonnull
   private final CellType type;
   private final short index;
 
-  public SpreadSheetColumnMapping( int index, @NotNull CellType type ) {
+  public SpreadSheetColumnMapping( int index, @Nonnull CellType type ) {
     this.type = type;
     this.index = ( short ) index;
   }
@@ -52,18 +52,18 @@ public class SpreadSheetColumnMapping<T> {
     return index;
   }
 
-  @NotNull
+  @Nonnull
   public CellType getType() {
     return type;
   }
 
-  @NotNull
-  public T getValue( @NotNull HSSFCell cell ) {
+  @Nonnull
+  public T getValue( @Nonnull HSSFCell cell ) {
     return ( T ) type.getValue( cell );
   }
 
-  @NotNull
-  public T getValue( @NotNull HSSFRow row ) throws NoValueFoundException {
+  @Nonnull
+  public T getValue( @Nonnull HSSFRow row ) throws NoValueFoundException {
     HSSFCell cell = row.getCell( getIndex() );
     if ( cell == null ) {
       throw new NoValueFoundException( "No cell found at index " + getIndex() + " for row " + row.getRowNum() );

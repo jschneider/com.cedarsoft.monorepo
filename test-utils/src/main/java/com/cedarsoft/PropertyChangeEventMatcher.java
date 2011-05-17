@@ -34,7 +34,7 @@ package com.cedarsoft;
 import org.apache.commons.lang.ObjectUtils;
 import org.easymock.EasyMock;
 import org.easymock.IArgumentMatcher;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import java.beans.PropertyChangeEvent;
 

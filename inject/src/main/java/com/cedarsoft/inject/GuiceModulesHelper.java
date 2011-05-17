@@ -35,8 +35,8 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -60,13 +60,13 @@ public class GuiceModulesHelper {
    * @param testTypes a {@link Class} object.
    * @return a {@link GuiceModulesHelper.Result} object.
    */
-  @NotNull
-  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Class<?>... testTypes ) {
+  @Nonnull
+  public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Class<?>... testTypes ) {
     return minimize( modules, convertToKeys( testTypes ) );
   }
 
-  @NotNull
-  public static Key<?>[] convertToKeys( @NotNull Class<?>... types ) {
+  @Nonnull
+  public static Key<?>[] convertToKeys( @Nonnull Class<?>... types ) {
     Key<?>[] keys = new Key<?>[types.length];
 
     for ( int i = 0, testTypesLength = types.length; i < testTypesLength; i++ ) {
@@ -82,8 +82,8 @@ public class GuiceModulesHelper {
    * @param keys    a {@link Key} object.
    * @return a {@link GuiceModulesHelper.Result} object.
    */
-  @NotNull
-  public static Result minimize( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) {
+  @Nonnull
+  public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Key<?>... keys ) {
     //Verify to ensure it works with all modules
     verifyInjection( modules, keys );
 
@@ -97,8 +97,8 @@ public class GuiceModulesHelper {
    * @param testType a {@link Class} object.
    * @return a {@link GuiceModulesHelper.Result} object.
    */
-  @NotNull
-  public static Result minimize( @NotNull Result result, @NotNull Class<?> testType ) {
+  @Nonnull
+  public static Result minimize( @Nonnull Result result, @Nonnull Class<?> testType ) {
     return minimize( result, Key.get( testType ) );
   }
 
@@ -109,7 +109,7 @@ public class GuiceModulesHelper {
    * @param keys   a {@link Key} object.
    * @return a {@link GuiceModulesHelper.Result} object.
    */
-  public static Result minimize( @NotNull Result result, @NotNull Key<?>... keys ) {
+  public static Result minimize( @Nonnull Result result, @Nonnull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)
     List<Module> modules = new ArrayList<Module>( result.getTypes() );
     for ( Module current : modules ) {
@@ -136,7 +136,7 @@ public class GuiceModulesHelper {
     return result; //no minimization
   }
 
-  private static void verifyInjection( @NotNull Iterable<? extends Module> modules, @NotNull Key<?>... keys ) {
+  private static void verifyInjection( @Nonnull Iterable<? extends Module> modules, @Nonnull Key<?>... keys ) {
     if ( keys.length == 0 ) {
       throw new IllegalArgumentException( "Need at least one key" );
     }
@@ -155,7 +155,7 @@ public class GuiceModulesHelper {
    * @param testTypes the {@link Class} types.
    * @throws AssertionError if any.
    */
-  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Class<?>... testTypes ) throws AssertionError {
+  public static void assertMinimizeNotPossible( @Nonnull List<? extends Module> modules, @Nonnull Class<?>... testTypes ) throws AssertionError {
     assertMinimizeNotPossible( modules, convertToKeys( testTypes ) );
   }
 
@@ -166,7 +166,7 @@ public class GuiceModulesHelper {
    * @param keys    a {@link Key} object.
    * @throws AssertionError if any.
    */
-  public static void assertMinimizeNotPossible( @NotNull List<? extends Module> modules, @NotNull Key<?>... keys ) throws AssertionError {
+  public static void assertMinimizeNotPossible( @Nonnull List<? extends Module> modules, @Nonnull Key<?>... keys ) throws AssertionError {
     GuiceModulesHelper.Result minimal = minimize( modules, keys );
     if ( !minimal.getRemoved().isEmpty() ) {
       throw new AssertionError( "Can be minimized:\nRemove:\n" + minimal.getRemovedClassNamesAsString() + minimal.asInstantiations() );
@@ -174,13 +174,13 @@ public class GuiceModulesHelper {
   }
 
   public static class Result {
-    @NotNull
+    @Nonnull
     private final List<? extends Module> types;
 
-    @NotNull
+    @Nonnull
     private final List<Module> removed = new ArrayList<Module>();
 
-    public Result( @NotNull List<? extends Module> types ) {
+    public Result( @Nonnull List<? extends Module> types ) {
       this.types = new ArrayList<Module>( types );
     }
 
@@ -193,23 +193,22 @@ public class GuiceModulesHelper {
       types.clear();
     }
 
-    public void remove( @NotNull Module toRemove ) {
+    public void remove( @Nonnull Module toRemove ) {
       types.remove( toRemove );
       removed.add( toRemove );
     }
 
-    @NotNull
+    @Nonnull
     public List<? extends Module> getTypes() {
       return Collections.unmodifiableList( types );
     }
 
-    @NotNull
+    @Nonnull
     public List<? extends Module> getRemoved() {
       return Collections.unmodifiableList( removed );
     }
 
-    @NotNull
-    @NonNls
+    @Nonnull
     public String getRemovedClassNamesAsString() {
       StringBuilder builder = new StringBuilder();
 
@@ -222,8 +221,7 @@ public class GuiceModulesHelper {
       return builder.toString();
     }
 
-    @NotNull
-    @NonNls
+    @Nonnull
     public String asInstantiations() {
       StringBuilder builder = new StringBuilder();
 

@@ -31,9 +31,9 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 import java.security.MessageDigest;
@@ -54,8 +54,8 @@ public class PasswordUtils {
    * @param password a {@link String} object.
    * @return an array of byte.
    */
-  @NotNull
-  public static byte[] calculateMD5Hash( @NotNull @NonNls String password ) {
+  @Nonnull
+  public static byte[] calculateMD5Hash( @Nonnull String password ) {
     byte[] bytes = password.getBytes();
     try {
       MessageDigest messageDigest = MessageDigest.getInstance( "MD5" );
@@ -72,7 +72,7 @@ public class PasswordUtils {
    * @param expectedHash an array of byte.
    * @return a boolean.
    */
-  public static boolean hasExpectedHash( @NotNull @NonNls String password, @Nullable byte[] expectedHash ) {
+  public static boolean hasExpectedHash( @Nonnull String password, @Nullable byte[] expectedHash ) {
     if ( expectedHash == null ) {
       return false;
     }

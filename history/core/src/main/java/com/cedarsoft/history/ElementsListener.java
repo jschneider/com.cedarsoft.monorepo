@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Can be registered to be notified about updates.
@@ -46,19 +46,19 @@ public interface ElementsListener<E> {
    *
    * @param event a {@link ElementsChangedEvent} object.
    */
-  void elementsDeleted( @NotNull ElementsChangedEvent<? extends E> event );
+  void elementsDeleted( @Nonnull ElementsChangedEvent<? extends E> event );
 
   /**
    * The elements are added
    *
    * @param event a {@link ElementsChangedEvent} object.
    */
-  void elementsAdded( @NotNull ElementsChangedEvent<? extends E> event );
+  void elementsAdded( @Nonnull ElementsChangedEvent<? extends E> event );
 
   /**
    * Elements have been changed
    *
    * @param event a {@link ElementsChangedEvent} object.
    */
-  void elementsChanged( @NotNull ElementsChangedEvent<? extends E> event );
+  void elementsChanged( @Nonnull ElementsChangedEvent<? extends E> event );
 }

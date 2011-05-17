@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.Arrays;
@@ -116,7 +116,7 @@ public class PathFactoryTest {
     assertEquals( "0/1/2", Path.buildPath( childChild ).toString() );
     assertEquals( "0/1/2", Path.buildPath( childChild, new PathValidator() {
       @Override
-      public void validate( @NotNull Path path ) throws ValidationFailedException {
+      public void validate( @Nonnull Path path ) throws ValidationFailedException {
         assertFalse( path.isAbsolute() );
       }
     }

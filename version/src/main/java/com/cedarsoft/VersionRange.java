@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 
@@ -42,9 +42,9 @@ import java.io.Serializable;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class VersionRange implements Serializable {
-  @NotNull
+  @Nonnull
   private final Version min;
-  @NotNull
+  @Nonnull
   private final Version max;
 
   private final boolean includeLower;
@@ -56,7 +56,7 @@ public class VersionRange implements Serializable {
    * @param min a {@link Version} object.
    * @param max a {@link Version} object.
    */
-  public VersionRange( @NotNull Version min, @NotNull Version max ) {
+  public VersionRange( @Nonnull Version min, @Nonnull Version max ) {
     this( min, max, true, true );
   }
 
@@ -68,7 +68,7 @@ public class VersionRange implements Serializable {
    * @param includeLower a boolean.
    * @param includeUpper a boolean.
    */
-  public VersionRange( @NotNull Version min, @NotNull Version max, boolean includeLower, boolean includeUpper ) {
+  public VersionRange( @Nonnull Version min, @Nonnull Version max, boolean includeLower, boolean includeUpper ) {
     if ( max.smallerThan( min ) ) {
       throw new IllegalArgumentException( "Max <" + max + "> is smaller than min <" + min + ">" );
     }
@@ -84,7 +84,7 @@ public class VersionRange implements Serializable {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public Version getMin() {
     return min;
   }
@@ -94,7 +94,7 @@ public class VersionRange implements Serializable {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public Version getMax() {
     return max;
   }
@@ -123,7 +123,7 @@ public class VersionRange implements Serializable {
    * @param other the other range
    * @return true if this contains the other range completely, false otherwise
    */
-  public boolean containsCompletely( @NotNull VersionRange other ) {
+  public boolean containsCompletely( @Nonnull VersionRange other ) {
     //Verify the lower border
     final boolean lower;
     if ( includeLower ) {
@@ -150,7 +150,7 @@ public class VersionRange implements Serializable {
    * @param version a {@link Version} object.
    * @return a boolean.
    */
-  public boolean contains( @NotNull Version version ) {
+  public boolean contains( @Nonnull Version version ) {
     if ( includeLower ) {
       if ( !version.sameOrGreaterThan( min ) ) {
         return false;
@@ -174,7 +174,7 @@ public class VersionRange implements Serializable {
    * @param other a {@link VersionRange} object.
    * @return a boolean.
    */
-  public boolean overlaps( @NotNull VersionRange other ) {
+  public boolean overlaps( @Nonnull VersionRange other ) {
     boolean lower;
     if ( includeLower && other.includeUpper ) {
       lower = getMin().sameOrSmallerThan( other.getMax() );
@@ -222,8 +222,7 @@ public class VersionRange implements Serializable {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  @NonNls
+  @Nonnull
   public String toString() {
     StringBuilder builder = new StringBuilder();
 
@@ -254,8 +253,7 @@ public class VersionRange implements Serializable {
    *
    * @return the formatted version
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String format() {
     if ( max.equals( min ) ) {
       return "[" + max.toString() + "]";
@@ -270,8 +268,8 @@ public class VersionRange implements Serializable {
    * @param min a {@link Version} object.
    * @return a {@link VersionRange.Factory} object.
    */
-  @NotNull
-  public static Factory from( @NotNull Version min ) {
+  @Nonnull
+  public static Factory from( @Nonnull Version min ) {
     return new Factory( min );
   }
 
@@ -283,7 +281,7 @@ public class VersionRange implements Serializable {
    * @param build a int.
    * @return a {@link VersionRange.Factory} object.
    */
-  @NotNull
+  @Nonnull
   public static Factory from( int major, int minor, int build ) {
     return new Factory( new Version( major, minor, build ) );
   }
@@ -296,40 +294,40 @@ public class VersionRange implements Serializable {
    * @param build a int.
    * @return a {@link VersionRange} object.
    */
-  @NotNull
+  @Nonnull
   public static VersionRange single( int major, int minor, int build ) {
     return single( Version.valueOf( major, minor, build ) );
   }
 
-  @NotNull
-  public static VersionRange single( @NotNull Version version ) {
+  @Nonnull
+  public static VersionRange single( @Nonnull Version version ) {
     return new VersionRange( version, version );
   }
 
   public static class Factory {
-    @NotNull
+    @Nonnull
     private final Version min;
 
-    public Factory( @NotNull Version min ) {
+    public Factory( @Nonnull Version min ) {
       this.min = min;
     }
 
-    @NotNull
-    public VersionRange to( @NotNull Version max ) {
+    @Nonnull
+    public VersionRange to( @Nonnull Version max ) {
       return new VersionRange( min, max );
     }
 
-    @NotNull
+    @Nonnull
     public VersionRange to( int major, int minor, int build ) {
       return to( new Version( major, minor, build ) );
     }
 
-    @NotNull
+    @Nonnull
     public VersionRange to() {
       return single();
     }
 
-    @NotNull
+    @Nonnull
     public VersionRange single() {
       return new VersionRange( min, min );
     }

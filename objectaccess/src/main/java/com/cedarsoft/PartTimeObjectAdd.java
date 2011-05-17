@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Object can't always be added.
@@ -51,14 +51,14 @@ public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
    *
    * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
    */
-  void addPartTimeListener( @NotNull PartTimeListener listener );
+  void addPartTimeListener( @Nonnull PartTimeListener listener );
 
   /**
    * <p>removePartTimeListener</p>
    *
    * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
    */
-  void removePartTimeListener( @NotNull PartTimeListener listener );
+  void removePartTimeListener( @Nonnull PartTimeListener listener );
 
   interface PartTimeListener {
 

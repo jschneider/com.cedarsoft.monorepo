@@ -43,7 +43,7 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.FirebirdDialect;
 import org.hibernate.dialect.MySQLDialect;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -62,8 +62,8 @@ import java.util.List;
  *         Systems</a>
  */
 public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
-  @NotNull
-  public static Class<? extends Dialect> getDialect( @NotNull DatabaseConfiguration configuration ) {
+  @Nonnull
+  public static Class<? extends Dialect> getDialect( @Nonnull DatabaseConfiguration configuration ) {
     switch ( configuration.getDatabaseType() ) {
       case MYSQL:
         return MySQLDialect.class;
@@ -115,12 +115,12 @@ public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
     transaction.commit();
   }
 
-  public void delete( @NotNull Object object ) {
+  public void delete( @Nonnull Object object ) {
     getSession().delete( object );
   }
 
-  @NotNull
-  public <T> T load( @NotNull Class<T> aClass, Serializable id ) {
+  @Nonnull
+  public <T> T load( @Nonnull Class<T> aClass, Serializable id ) {
     return aClass.cast( getSession().load( aClass, id ) );
   }
 
@@ -130,19 +130,19 @@ public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
     }
   }
 
-  public void update( @NotNull Object object ) {
+  public void update( @Nonnull Object object ) {
     getSession().update( object );
   }
 
-  public void saveOrUpdate( @NotNull Object object ) {
+  public void saveOrUpdate( @Nonnull Object object ) {
     getSession().saveOrUpdate( object );
   }
 
-  public void save( @NotNull Object object ) {
+  public void save( @Nonnull Object object ) {
     getSession().save( object );
   }
 
-  public void saveChanges( @NotNull Object object ) {
+  public void saveChanges( @Nonnull Object object ) {
     getSession().update( object );
   }
 
@@ -159,7 +159,7 @@ public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
     }
   }
 
-  @NotNull
+  @Nonnull
   public Session getSession() {
     if ( session == null ) {
       initSession();
@@ -171,21 +171,21 @@ public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
     openSession();
   }
 
-  public void refresh( @NotNull Object object ) {
+  public void refresh( @Nonnull Object object ) {
     getSession().refresh( object );
   }
 
-  public void addAllAnnotdedClass( @NotNull List<Class<?>> persistentClasses ) {
+  public void addAllAnnotdedClass( @Nonnull List<Class<?>> persistentClasses ) {
     for ( Class<?> aClass : persistentClasses ) {
       addAnnotadedClass( aClass );
     }
   }
 
-  public void addAnnotadedClass( @NotNull Class<?> annClass ) {
+  public void addAnnotadedClass( @Nonnull Class<?> annClass ) {
     annotationConfiguration.addAnnotatedClass( annClass );
   }
 
-  @NotNull
+  @Nonnull
   public Session openSession() throws HibernateException {
     if ( sessionFactory == null ) {
       sessionFactory = annotationConfiguration.buildSessionFactory();

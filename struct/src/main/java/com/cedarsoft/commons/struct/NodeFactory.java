@@ -33,8 +33,8 @@ package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.CanceledException;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * A node factory
@@ -52,6 +52,6 @@ public interface NodeFactory {
    * @throws CanceledException
    *          if any.
    */
-  @NotNull
-  Node createNode( @NotNull @NonNls String name, @NotNull Lookup context ) throws CanceledException;
+  @Nonnull
+  Node createNode( @Nonnull String name, @Nonnull Lookup context ) throws CanceledException;
 }

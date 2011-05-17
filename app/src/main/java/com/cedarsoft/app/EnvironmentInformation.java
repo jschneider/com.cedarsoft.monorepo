@@ -31,8 +31,8 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 import java.net.InetAddress;
@@ -52,8 +52,7 @@ public class EnvironmentInformation {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static String getHostName() {
     try {
       return InetAddress.getLocalHost().getHostName();
@@ -67,8 +66,7 @@ public class EnvironmentInformation {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static String getUserName() {
     return System.getProperty( "user.name" );
   }

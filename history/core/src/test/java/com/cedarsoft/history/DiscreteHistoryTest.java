@@ -32,7 +32,7 @@
 package com.cedarsoft.history;
 
 import org.fest.reflect.core.Reflection;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 import org.junit.*;
 
@@ -145,17 +145,17 @@ public class DiscreteHistoryTest {
 
     history.addHistoryListener( new HistoryListener<DefaultDiscreteHistoryEntry>() {
       @Override
-      public void entryAdded( @NotNull DefaultDiscreteHistoryEntry entry ) {
+      public void entryAdded( @Nonnull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
       @Override
-      public void entryRemoved( @NotNull DefaultDiscreteHistoryEntry entry ) {
+      public void entryRemoved( @Nonnull DefaultDiscreteHistoryEntry entry ) {
         fail( "Argh, not unregistered" );
       }
 
       @Override
-      public void entryChanged( @NotNull DefaultDiscreteHistoryEntry entry ) {
+      public void entryChanged( @Nonnull DefaultDiscreteHistoryEntry entry ) {
       }
     } );
 

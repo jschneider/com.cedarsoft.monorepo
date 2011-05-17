@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Object;
 
@@ -41,7 +41,7 @@ import java.lang.Object;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StillContainedException extends RuntimeException {
-  @NotNull
+  @Nonnull
   private final Object object;
 
   /**
@@ -49,7 +49,7 @@ public class StillContainedException extends RuntimeException {
    *
    * @param object a {@link Object} object.
    */
-  public StillContainedException( @NotNull Object object ) {
+  public StillContainedException( @Nonnull Object object ) {
     super( "The object <" + object + "> is still contained" );
     this.object = object;
   }
@@ -59,7 +59,7 @@ public class StillContainedException extends RuntimeException {
    *
    * @return a {@link Object} object.
    */
-  @NotNull
+  @Nonnull
   public Object getObject() {
     return object;
   }

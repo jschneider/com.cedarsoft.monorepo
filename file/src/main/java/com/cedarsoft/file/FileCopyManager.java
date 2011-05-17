@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,7 +54,7 @@ public class FileCopyManager {
    *
    * @param toDelete a {@link File} object.
    */
-  public static void deleteForced( @NotNull File toDelete ) {
+  public static void deleteForced( @Nonnull File toDelete ) {
     if ( !toDelete.exists() ) {
       throw new IllegalArgumentException( "File must exist: " + toDelete.getAbsolutePath() );
     }
@@ -75,7 +75,7 @@ public class FileCopyManager {
    * @param dest a {@link File} object.
    * @throws IOException if any.
    */
-  public static void copy( @NotNull File src, @NotNull File dest ) throws IOException {
+  public static void copy( @Nonnull File src, @Nonnull File dest ) throws IOException {
     if ( src.isDirectory() ) {
       copyDirectory( src, dest );
     } else {
@@ -90,7 +90,7 @@ public class FileCopyManager {
    * @param target a {@link File} object.
    * @throws IOException if any.
    */
-  public static void copyFile( @NotNull File source, @NotNull File target ) throws IOException {
+  public static void copyFile( @Nonnull File source, @Nonnull File target ) throws IOException {
     FileChannel sourceChannel = null;
     FileChannel targetChannel = null;
     FileInputStream in = null;
@@ -124,7 +124,7 @@ public class FileCopyManager {
    * @param destDir a {@link File} object.
    * @throws IOException if any.
    */
-  public static void copyDirectory( @NotNull File srcDir, @NotNull File destDir ) throws IOException {
+  public static void copyDirectory( @Nonnull File srcDir, @Nonnull File destDir ) throws IOException {
     if ( !destDir.exists() ) {
       destDir.mkdirs();
     }

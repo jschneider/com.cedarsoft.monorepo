@@ -35,7 +35,7 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.Presenter;
 import com.cedarsoft.presenter.SwingPresenter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -46,8 +46,8 @@ import java.awt.FlowLayout;
  */
 public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
     if ( presenter != null ) {
       return presenter;
@@ -56,7 +56,7 @@ public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
   }
 
   @Override
-  protected void bind( @NotNull JPanel presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
   @Override
@@ -65,7 +65,7 @@ public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected JPanel createPresentation() {
     return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
   }

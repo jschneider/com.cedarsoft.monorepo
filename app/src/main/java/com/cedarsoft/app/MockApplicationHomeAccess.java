@@ -32,8 +32,8 @@
 package com.cedarsoft.app;
 
 import org.apache.commons.io.FileUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.inject.Singleton;
 import java.io.File;
@@ -50,17 +50,15 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
   /**
    * Constant <code>APP_NAME="mockAppHome"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String APP_NAME = "mockAppHome";
   /**
    * Constant <code>SKIP_DELETION="skipDeletion"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String SKIP_DELETION = "skipDeletion";
 
-  @NotNull
+  @Nonnull
   private final File projectHome;
 
   /**
@@ -89,7 +87,7 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public String getApplicationName() {
     return APP_NAME;
   }
@@ -98,7 +96,7 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public File getApplicationHome() {
     return projectHome;
   }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Creates an object from a string
@@ -47,8 +47,8 @@ public interface ObjectFactory<T> {
    *
    * @throws ObjectFactory.InvalidRepresentationException
    */
-  @NotNull
-  T create( @NotNull String representation ) throws InvalidRepresentationException;
+  @Nonnull
+  T create( @Nonnull String representation ) throws InvalidRepresentationException;
 
 
   class InvalidRepresentationException extends Exception {

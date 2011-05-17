@@ -36,8 +36,8 @@ import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.presenter.ButtonBarPresenter;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -97,7 +97,7 @@ public class TwoFramesDemo {
   }
 
   public static class GroupButtonAction extends AbstractAction {
-    public GroupButtonAction( @NotNull @NonNls String name ) {
+    public GroupButtonAction( @Nonnull String name ) {
       super( name );
     }
 
@@ -109,8 +109,8 @@ public class TwoFramesDemo {
   }
 
   private static class MyBasicGroupButtonPresenter implements BasicGroupButtonPresenter {
-    @NotNull
-    public JButton present( @NotNull StructPart struct ) {
+    @Nonnull
+    public JButton present( @Nonnull StructPart struct ) {
       JButton button = new JButton();
       button.setBackground( Color.orange );
       button.setForeground( Color.WHITE );

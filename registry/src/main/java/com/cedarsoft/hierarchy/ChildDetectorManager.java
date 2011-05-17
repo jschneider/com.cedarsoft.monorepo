@@ -32,7 +32,7 @@
 package com.cedarsoft.hierarchy;
 
 import com.cedarsoft.registry.TypeRegistry;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Class;
 import java.lang.IllegalArgumentException;
@@ -44,7 +44,7 @@ import java.util.Map;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ChildDetectorManager {
-  @NotNull
+  @Nonnull
   private final TypeRegistry<ChildDetector<?, ?>> registry;
 
   /**
@@ -69,7 +69,7 @@ public class ChildDetectorManager {
    * @param parentType    a {@link Class} object.
    * @param childDetector a {@link ChildDetector} object.
    */
-  public <P, C> void addChildDetector( @NotNull Class<P> parentType, @NotNull ChildDetector<P, C> childDetector ) {
+  public <P, C> void addChildDetector( @Nonnull Class<P> parentType, @Nonnull ChildDetector<P, C> childDetector ) {
     registry.addElement( parentType, childDetector );
   }
 
@@ -91,8 +91,8 @@ public class ChildDetectorManager {
    * @throws IllegalArgumentException
    *          if any.
    */
-  @NotNull
-  public <P, C> ChildDetector<P, C> getChildDetector( @NotNull Class<P> parentType ) throws IllegalArgumentException {
+  @Nonnull
+  public <P, C> ChildDetector<P, C> getChildDetector( @Nonnull Class<P> parentType ) throws IllegalArgumentException {
     return ( ChildDetector<P, C> ) registry.getElement( parentType );
   }
 }

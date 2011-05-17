@@ -36,8 +36,8 @@ import com.google.common.base.Splitter;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,19 +47,19 @@ import java.util.Map;
  *
  */
 public class ClassRefSupport {
-  @NonNls
+  @Nonnull
   public static final String JDIRECT_CLASS_NAME = "com.sun.codemodel.JDirectClass";
-  @NotNull
+  @Nonnull
   protected final JCodeModel model;
-  @NotNull
+  @Nonnull
   private final Map<String, JClass> refs = new HashMap<String, JClass>();
 
-  public ClassRefSupport( @NotNull JCodeModel model ) {
+  public ClassRefSupport( @Nonnull JCodeModel model ) {
     this.model = model;
   }
 
-  @NotNull
-  public JClass ref( @NotNull @NonNls String qualifiedName ) {
+  @Nonnull
+  public JClass ref( @Nonnull String qualifiedName ) {
     verifyValidRefName( qualifiedName );
 
     try {
@@ -70,7 +70,7 @@ public class ClassRefSupport {
     return createRef( qualifiedName );
   }
 
-  protected void verifyValidRefName( @NotNull @NonNls String qualifiedName ) {
+  protected void verifyValidRefName( @Nonnull String qualifiedName ) {
     if ( qualifiedName.contains( "?" ) || qualifiedName.contains( "<" ) || qualifiedName.contains( ">" ) ) {
       throw new IllegalArgumentException( "Cannot create ref for <" + qualifiedName + ">" );
     }
@@ -78,7 +78,7 @@ public class ClassRefSupport {
     //Check for inner class with wrong notation
     int index = qualifiedName.lastIndexOf( '.' );
     if ( index > 0 ) {
-      @NotNull @NonNls
+      @Nonnull
       String packagePart = qualifiedName.substring( 0, index );
       if ( !packagePart.toLowerCase().equals( packagePart ) ) {
         throw new IllegalArgumentException( "Invalid inner class <" + qualifiedName + ">. Use \"$\" sign instead." );
@@ -86,8 +86,8 @@ public class ClassRefSupport {
     }
   }
 
-  @NotNull
-  private JClass createRef( @NotNull @NonNls String qualifiedName ) {
+  @Nonnull
+  private JClass createRef( @Nonnull String qualifiedName ) {
     JClass newRef = model.ref( qualifiedName );
 
     //fix it if it is a inner class
@@ -99,8 +99,8 @@ public class ClassRefSupport {
     return newRef;
   }
 
-  @NotNull
-  private JClass createDirectInner( @NotNull @NonNls String qualifiedName ) {
+  @Nonnull
+  private JClass createDirectInner( @Nonnull String qualifiedName ) {
     Iterator<String> split = Splitter.on( "$" ).split( qualifiedName ).iterator();
 
     String outerFqName = split.next();
@@ -111,12 +111,12 @@ public class ClassRefSupport {
     return new JDirectInnerClass( model, outer, innerName );
   }
 
-  private void storeRef( @NotNull @NonNls String qualifiedName, @NotNull JClass newRef ) {
+  private void storeRef( @Nonnull String qualifiedName, @Nonnull JClass newRef ) {
     refs.put( qualifiedName, newRef );
   }
 
-  @NotNull
-  private JClass resolve( @NotNull @NonNls String qualifiedName ) throws NotFoundException {
+  @Nonnull
+  private JClass resolve( @Nonnull String qualifiedName ) throws NotFoundException {
     JClass ref = refs.get( qualifiedName );
     if ( ref != null ) {
       return ref;
@@ -130,8 +130,8 @@ public class ClassRefSupport {
     throw new NotFoundException();
   }
 
-  @NotNull
-  public JClass ref( @NotNull Class<?> type ) {
+  @Nonnull
+  public JClass ref( @Nonnull Class<?> type ) {
     try {
       return resolve( type.getName() );
     } catch ( NotFoundException ignore ) {
@@ -142,11 +142,11 @@ public class ClassRefSupport {
     return newRef;
   }
 
-  private static boolean isJDirectClass( @NotNull JClass newRef ) {
+  private static boolean isJDirectClass( @Nonnull JClass newRef ) {
     return newRef.getClass().getName().equals( JDIRECT_CLASS_NAME );
   }
 
-  private static boolean isInner( @NotNull @NonNls String qualifiedName ) {
+  private static boolean isInner( @Nonnull String qualifiedName ) {
     return qualifiedName.contains( "$" );
   }
 }

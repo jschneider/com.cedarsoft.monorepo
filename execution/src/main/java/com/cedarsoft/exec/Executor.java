@@ -31,7 +31,7 @@
 
 package com.cedarsoft.exec;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,10 +44,10 @@ import java.util.List;
  */
 @SuppressWarnings( {"UseOfProcessBuilder"} )
 public class Executor {
-  @NotNull
+  @Nonnull
   private final List<ExecutionListener> executionListeners = new ArrayList<ExecutionListener>();
 
-  @NotNull
+  @Nonnull
   private final ProcessBuilder processBuilder;
   private boolean redirectStreams = true;
 
@@ -57,7 +57,7 @@ public class Executor {
    * @param processBuilder  a {@link ProcessBuilder} object.
    * @param redirectStreams a boolean.
    */
-  public Executor( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
+  public Executor( @Nonnull ProcessBuilder processBuilder, boolean redirectStreams ) {
     this.processBuilder = processBuilder;
     this.redirectStreams = redirectStreams;
   }
@@ -67,7 +67,7 @@ public class Executor {
    *
    * @param processBuilder a {@link ProcessBuilder} object.
    */
-  public Executor( @NotNull ProcessBuilder processBuilder ) {
+  public Executor( @Nonnull ProcessBuilder processBuilder ) {
     this( processBuilder, true );
   }
 
@@ -101,8 +101,8 @@ public class Executor {
    * @param process a {@link Process} object.
    * @return the redirecting threads (or an empty array)
    */
-  @NotNull
-  protected Thread[] redirectStreams( @NotNull Process process ) {
+  @Nonnull
+  protected Thread[] redirectStreams( @Nonnull Process process ) {
     if ( redirectStreams ) {
       return OutputRedirector.redirect( process );
     } else {
@@ -115,7 +115,7 @@ public class Executor {
    *
    * @return the thread
    */
-  @NotNull
+  @Nonnull
   public Thread executeAsync() {
     Thread thread = new Thread( new Runnable() {
       @Override
@@ -137,7 +137,7 @@ public class Executor {
     }
   }
 
-  private void notifyExecutionStarted( @NotNull Process process ) {
+  private void notifyExecutionStarted( @Nonnull Process process ) {
     for ( ExecutionListener executionListener : executionListeners ) {
       executionListener.executionStarted( process );
     }
@@ -148,7 +148,7 @@ public class Executor {
    *
    * @param executionListener a {@link ExecutionListener} object.
    */
-  public void addExecutionListener( @NotNull ExecutionListener executionListener ) {
+  public void addExecutionListener( @Nonnull ExecutionListener executionListener ) {
     this.executionListeners.add( executionListener );
   }
 
@@ -157,7 +157,7 @@ public class Executor {
    *
    * @param executionListener a {@link ExecutionListener} object.
    */
-  public void removeExecutionListener( @NotNull ExecutionListener executionListener ) {
+  public void removeExecutionListener( @Nonnull ExecutionListener executionListener ) {
     this.executionListeners.remove( executionListener );
   }
 

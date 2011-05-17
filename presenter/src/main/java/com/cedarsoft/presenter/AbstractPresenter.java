@@ -35,7 +35,7 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.commons.struct.StructureChangedEvent;
 import com.cedarsoft.commons.struct.StructureListener;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
@@ -60,8 +60,8 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * Creates the presentation for the given struct. This method should not be overridden.
    */
   @Override
-  @NotNull
-  public T present( @NotNull StructPart struct ) {
+  @Nonnull
+  public T present( @Nonnull StructPart struct ) {
     Lookup lookup = struct.getLookup();
     T presentation = createPresentation();
 
@@ -98,7 +98,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * @param event the event
    * @return the index
    */
-  protected int calculateIndex( @NotNull StructureChangedEvent event ) {
+  protected int calculateIndex( @Nonnull StructureChangedEvent event ) {
     return event.getIndex();
   }
 
@@ -109,7 +109,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * @param struct       the struct
    * @param lookup       a {@link Lookup} object.
    */
-  protected abstract void bind( @NotNull T presentation, @NotNull StructPart struct, @NotNull Lookup lookup );
+  protected abstract void bind( @Nonnull T presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup );
 
   /**
    * Adds the child presentation to the parent presentation (if possible).
@@ -119,7 +119,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * @param index        the index
    * @return whether the child has been added or not.
    */
-  protected abstract boolean addChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index );
+  protected abstract boolean addChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index );
 
   /**
    * Removes the child presentation
@@ -128,7 +128,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * @param child        the child that has been removed
    * @param index        the index
    */
-  protected abstract void removeChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index );
+  protected abstract void removeChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index );
 
   /**
    * Create the basic presentation.
@@ -137,25 +137,25 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    *
    * @return the presentation
    */
-  @NotNull
+  @Nonnull
   protected abstract T createPresentation();
 
   /**
    * Adds/removes the child presentations if children are added/detached
    */
   private static class ChildStructureListener<T> implements StructureListener {
-    @NotNull
+    @Nonnull
     private final WeakReference<T> weakPresentationReference;
-    @NotNull
+    @Nonnull
     private final AbstractPresenter<T> presenter;
 
-    private ChildStructureListener( @NotNull WeakReference<T> weakPresentationReference, @NotNull AbstractPresenter<T> presenter ) {
+    private ChildStructureListener( @Nonnull WeakReference<T> weakPresentationReference, @Nonnull AbstractPresenter<T> presenter ) {
       this.weakPresentationReference = weakPresentationReference;
       this.presenter = presenter;
     }
 
     @Override
-    public void childAdded( @NotNull StructureChangedEvent event ) {
+    public void childAdded( @Nonnull StructureChangedEvent event ) {
       StructPart child = event.getStructPart();
       T presentation = weakPresentationReference.get();
       if ( presentation != null ) {
@@ -164,7 +164,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
     }
 
     @Override
-    public void childDetached( @NotNull StructureChangedEvent event ) {
+    public void childDetached( @Nonnull StructureChangedEvent event ) {
       StructPart child = event.getStructPart();
       T presentation = weakPresentationReference.get();
       if ( presentation != null ) {

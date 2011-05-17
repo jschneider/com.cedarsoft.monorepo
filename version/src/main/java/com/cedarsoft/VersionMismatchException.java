@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>VersionMismatchException class.</p>
@@ -39,9 +39,9 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class VersionMismatchException extends VersionException {
-  @NotNull
+  @Nonnull
   private final VersionRange expected;
-  @NotNull
+  @Nonnull
   private final Version actual;
 
   /**
@@ -50,11 +50,11 @@ public class VersionMismatchException extends VersionException {
    * @param expected a {@link Version} object.
    * @param actual   a {@link Version} object.
    */
-  public VersionMismatchException( @NotNull Version expected, @NotNull Version actual ) {
+  public VersionMismatchException( @Nonnull Version expected, @Nonnull Version actual ) {
     this( expected, actual, "Version mismatch. " );
   }
 
-  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual ) {
+  public VersionMismatchException( @Nonnull VersionRange expected, @Nonnull Version actual ) {
     this( expected, actual, "Version mismatch. " );
   }
 
@@ -65,11 +65,11 @@ public class VersionMismatchException extends VersionException {
    * @param actual        the actual version
    * @param messagePrefix the message prefix. This constructor automatically appends the version info (expected/actual) to the message
    */
-  public VersionMismatchException( @NotNull Version expected, @NotNull Version actual, @NotNull String messagePrefix ) {
+  public VersionMismatchException( @Nonnull Version expected, @Nonnull Version actual, @Nonnull String messagePrefix ) {
     this( expected, actual, messagePrefix, true );
   }
 
-  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual, @NotNull String messagePrefix ) {
+  public VersionMismatchException( @Nonnull VersionRange expected, @Nonnull Version actual, @Nonnull String messagePrefix ) {
     this( expected, actual, messagePrefix, true );
   }
 
@@ -81,11 +81,11 @@ public class VersionMismatchException extends VersionException {
    * @param messagePrefix     the message prefix
    * @param appendVersionInfo whether to append the expected/actual version info to the message
    */
-  public VersionMismatchException( @NotNull Version expected, @NotNull Version actual, @NotNull String messagePrefix, boolean appendVersionInfo ) {
+  public VersionMismatchException( @Nonnull Version expected, @Nonnull Version actual, @Nonnull String messagePrefix, boolean appendVersionInfo ) {
     this( VersionRange.single( expected ), actual, messagePrefix, appendVersionInfo );
   }
 
-  public VersionMismatchException( @NotNull VersionRange expected, @NotNull Version actual, @NotNull String messagePrefix, boolean appendVersionInfo ) {
+  public VersionMismatchException( @Nonnull VersionRange expected, @Nonnull Version actual, @Nonnull String messagePrefix, boolean appendVersionInfo ) {
     super( messagePrefix, "Expected " + expected.format() + " but was [" + actual + "]", appendVersionInfo );
     this.expected = expected;
     this.actual = actual;
@@ -96,7 +96,7 @@ public class VersionMismatchException extends VersionException {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public VersionRange getExpected() {
     return expected;
   }
@@ -106,7 +106,7 @@ public class VersionMismatchException extends VersionException {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public Version getActual() {
     return actual;
   }

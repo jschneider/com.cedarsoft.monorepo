@@ -31,7 +31,7 @@
 
 package com.cedarsoft.renderer;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.JComponent;
@@ -59,8 +59,8 @@ public class RendererManagerTest {
   public void testGenerics() {
     manager.addRenderer( JLabel.class, new Renderer<JComponent, Object>() {
       @Override
-      @NotNull
-      public String render( @NotNull JComponent obj, Object context ) {
+      @Nonnull
+      public String render( @Nonnull JComponent obj, Object context ) {
         throw new UnsupportedOperationException();
       }
     } );

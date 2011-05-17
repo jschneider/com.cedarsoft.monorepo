@@ -32,11 +32,10 @@
 package com.cedarsoft;
 
 import org.custommonkey.xmlunit.XMLAssert;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import org.junit.*;
 import org.xml.sax.SAXException;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -47,29 +46,25 @@ import static org.junit.Assert.*;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlUnitTest {
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String WITH_WHITESPACES = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
     "<fileType dependent=\"false\">\n" +
     "  <id>Canon Raw</id>\n" +
     "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
     "</fileType>";
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String WITH_WHITESPACES_DIFFERENT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
     "<fileType dependent=\"false\">\n" +
     "  <id>Canon Raw</id>\n" +
     "  <extension default=\"true\" delimiter=\".\">jpg</extension>\n" +
     "</fileType>";
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String WITH_WHITESPACES_SINGLE_QUOTED = "<?xml version='1.0' encoding='UTF-8'?>\n" +
     "<fileType dependent=\"false\">\n" +
     "  <id>Canon Raw</id>\n" +
     "  <extension default=\"true\" delimiter=\".\">cr2</extension>\n" +
     "</fileType>";
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String WITHOUT_WHITESPACES = "<?xml version='1.0' encoding='UTF-8'?><fileType dependent=\"false\"><id>Canon Raw</id><extension default=\"true\" delimiter=\".\">cr2</extension></fileType>";
 
   /**

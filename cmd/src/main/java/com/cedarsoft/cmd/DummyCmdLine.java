@@ -31,8 +31,8 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -57,7 +57,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    *
    * @param out a {@link PrintStream} object.
    */
-  public DummyCmdLine( @NotNull PrintStream out ) {
+  public DummyCmdLine( @Nonnull PrintStream out ) {
     this.out = out;
   }
 
@@ -65,7 +65,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public boolean readBoolean( @NotNull String message ) throws IOException {
+  public boolean readBoolean( @Nonnull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
@@ -73,8 +73,8 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message ) {
+  @Nonnull
+  public String read( @Nonnull String message ) {
     throw new UnsupportedOperationException();
   }
 
@@ -82,8 +82,8 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message, @Nullable String defaultValue ) {
+  @Nonnull
+  public String read( @Nonnull String message, @Nullable String defaultValue ) {
     throw new UnsupportedOperationException();
   }
 
@@ -91,7 +91,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message, int lower, int upper ) {
+  public int readInt( @Nonnull String message, int lower, int upper ) {
     throw new UnsupportedOperationException();
   }
 
@@ -99,7 +99,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  public int readInt( @NotNull String message ) throws IOException {
+  public int readInt( @Nonnull String message ) throws IOException {
     throw new UnsupportedOperationException();
   }
 
@@ -114,7 +114,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public PrintStream getOut() {
     return out;
   }
@@ -123,7 +123,7 @@ public class DummyCmdLine extends AbstractCmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected ConsolePrinter getConsolePrinter() {
     return new DefaultConsolePrinter();
   }

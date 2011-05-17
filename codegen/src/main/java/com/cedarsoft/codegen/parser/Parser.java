@@ -39,9 +39,9 @@ import com.sun.mirror.declaration.AnnotationTypeDeclaration;
 import com.sun.mirror.declaration.ClassDeclaration;
 import com.sun.mirror.declaration.TypeDeclaration;
 import com.sun.tools.apt.Main;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,13 +58,13 @@ public class Parser {
   private Parser() {
   }
 
-  @NotNull
-  public static Result parse( @Nullable @NonNls Classpath classpath, @NotNull File... files ) {
+  @Nonnull
+  public static Result parse( @Nullable Classpath classpath, @Nonnull File... files ) {
     return parse( classpath, Arrays.asList( files ) );
   }
 
-  @NotNull
-  public static Result parse( @Nullable @NonNls Classpath classpath, @NotNull Iterable<? extends File> files ) {
+  @Nonnull
+  public static Result parse( @Nullable Classpath classpath, @Nonnull Iterable<? extends File> files ) {
     List<String> arguments = new ArrayList<String>();
 
     arguments.add( "-XclassesAsDecls" );
@@ -100,7 +100,7 @@ public class Parser {
     }
 
     @Override
-    public AnnotationProcessor getProcessorFor( @NotNull final Set<AnnotationTypeDeclaration> atds, @NotNull final AnnotationProcessorEnvironment env ) {
+    public AnnotationProcessor getProcessorFor( @Nonnull final Set<AnnotationTypeDeclaration> atds, @Nonnull final AnnotationProcessorEnvironment env ) {
       if ( result != null ) {
         throw new IllegalStateException( "Has still been called!" );
       }
@@ -120,7 +120,7 @@ public class Parser {
       };
     }
 
-    @NotNull
+    @Nonnull
     public Result getResult() {
       if ( result == null ) {
         throw new IllegalStateException( "No result found!" );

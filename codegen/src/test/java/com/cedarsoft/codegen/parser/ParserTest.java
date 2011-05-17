@@ -33,8 +33,8 @@ package com.cedarsoft.codegen.parser;
 
 import com.cedarsoft.codegen.mock.AnnotationProcessorEnvironmentMock;
 import com.sun.mirror.declaration.ClassDeclaration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -124,8 +124,8 @@ public class ParserTest {
     result.getClassDeclaration();
   }
 
-  @NotNull
-  private File getResourceAsFile( @NotNull @NonNls String path ) throws URISyntaxException {
+  @Nonnull
+  private File getResourceAsFile( @Nonnull String path ) throws URISyntaxException {
     URL resource = getClass().getResource( path );
     assertNotNull( resource );
     File file = new File( resource.toURI() );

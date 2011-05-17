@@ -33,8 +33,8 @@ package com.cedarsoft.codegen;
 
 import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JPackage;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,7 +50,7 @@ import java.util.Map;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class MemoryCodeWriter extends CodeWriter {
-  @NotNull
+  @Nonnull
   private final Map<String, ByteArrayOutputStream> files = new HashMap<String, ByteArrayOutputStream>();
 
   @Override
@@ -60,13 +60,13 @@ public class MemoryCodeWriter extends CodeWriter {
     return out;
   }
 
-  @NotNull
+  @Nonnull
   public Map<String, ByteArrayOutputStream> getFiles() {
     return Collections.unmodifiableMap( files );
   }
 
-  @NotNull
-  public String getFileContent( @NotNull @NonNls String packageName, @NotNull @NonNls String fileName ) {
+  @Nonnull
+  public String getFileContent( @Nonnull String packageName, @Nonnull String fileName ) {
     String fqnName = packageName + "." + fileName;
     ByteArrayOutputStream found = files.get( fqnName );
     if ( found == null ) {
@@ -80,8 +80,7 @@ public class MemoryCodeWriter extends CodeWriter {
   public void close() throws IOException {
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String allFilesToString() {
     List<String> sortedKeys = new ArrayList<String>( files.keySet() );
     Collections.sort( sortedKeys, new Comparator<String>() {

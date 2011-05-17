@@ -33,7 +33,7 @@ package com.cedarsoft.file;
 
 import javax.inject.Inject;
 import org.apache.commons.io.filefilter.FileFileFilter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -46,7 +46,7 @@ import java.util.Arrays;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileNamesFactory {
-  @NotNull
+  @Nonnull
   private final FileTypeRegistry fileTypeRegistry;
 
   /**
@@ -55,7 +55,7 @@ public class FileNamesFactory {
    * @param fileTypeRegistry a {@link FileTypeRegistry} object.
    */
   @Inject
-  public FileNamesFactory( @NotNull FileTypeRegistry fileTypeRegistry ) {
+  public FileNamesFactory( @Nonnull FileTypeRegistry fileTypeRegistry ) {
     this.fileTypeRegistry = fileTypeRegistry;
   }
 
@@ -65,8 +65,8 @@ public class FileNamesFactory {
    * @param baseDir a {@link File} object.
    * @return a {@link FileNames} object.
    */
-  @NotNull
-  public FileNames create( @NotNull File baseDir ) {
+  @Nonnull
+  public FileNames create( @Nonnull File baseDir ) {
     File[] files = listFiles( baseDir );
     return create( files );
   }
@@ -77,8 +77,8 @@ public class FileNamesFactory {
    * @param sourceFiles an array of {@link File} objects.
    * @return a {@link FileNames} object.
    */
-  @NotNull
-  public FileNames create( @NotNull File[] sourceFiles ) {
+  @Nonnull
+  public FileNames create( @Nonnull File[] sourceFiles ) {
     return create( Arrays.asList( sourceFiles ) );
   }
 
@@ -88,7 +88,7 @@ public class FileNamesFactory {
    * @param sourceFiles a {@link Iterable} object.
    * @return a {@link FileNames} object.
    */
-  public FileNames create( @NotNull Iterable<? extends File> sourceFiles ) {
+  public FileNames create( @Nonnull Iterable<? extends File> sourceFiles ) {
     FileNames fileNames = new FileNames();
 
     for ( File file : sourceFiles ) {
@@ -105,8 +105,8 @@ public class FileNamesFactory {
    * @param baseDir a {@link File} object.
    * @return a {@link BaseNameAwareFileNames} object.
    */
-  @NotNull
-  public BaseNameAwareFileNames createBaseNameAware( @NotNull File baseDir ) {
+  @Nonnull
+  public BaseNameAwareFileNames createBaseNameAware( @Nonnull File baseDir ) {
     return createBaseNameAware( listFiles( baseDir ) );
   }
 
@@ -116,8 +116,8 @@ public class FileNamesFactory {
    * @param sourceFiles an array of {@link File} objects.
    * @return a {@link BaseNameAwareFileNames} object.
    */
-  @NotNull
-  public BaseNameAwareFileNames createBaseNameAware( @NotNull File[] sourceFiles ) {
+  @Nonnull
+  public BaseNameAwareFileNames createBaseNameAware( @Nonnull File[] sourceFiles ) {
     return createBaseNameAware( Arrays.asList( sourceFiles ) );
   }
 
@@ -127,8 +127,8 @@ public class FileNamesFactory {
    * @param sourceFiles a {@link Iterable} object.
    * @return a {@link BaseNameAwareFileNames} object.
    */
-  @NotNull
-  public BaseNameAwareFileNames createBaseNameAware( @NotNull Iterable<? extends File> sourceFiles ) {
+  @Nonnull
+  public BaseNameAwareFileNames createBaseNameAware( @Nonnull Iterable<? extends File> sourceFiles ) {
     BaseNameAwareFileNames report = new BaseNameAwareFileNames();
 
     for ( File sourceFile : sourceFiles ) {
@@ -139,8 +139,8 @@ public class FileNamesFactory {
     return report;
   }
 
-  @NotNull
-  private File[] listFiles( @NotNull File baseDir ) {
+  @Nonnull
+  private File[] listFiles( @Nonnull File baseDir ) {
     if ( !baseDir.isDirectory() ) {
       throw new IllegalArgumentException( "Invalid base dir <" + baseDir.getAbsolutePath() + '>' );
     }

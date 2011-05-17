@@ -31,8 +31,8 @@
 
 package com.cedarsoft.provider;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -51,7 +51,7 @@ public interface Provider<T, E extends Throwable> {
    *
    * @throws E if any.
    */
-  @NotNull
+  @Nonnull
   T provide() throws E;
 
   /**
@@ -59,7 +59,6 @@ public interface Provider<T, E extends Throwable> {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String getDescription();
 }

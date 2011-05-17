@@ -33,8 +33,8 @@ package com.cedarsoft.crypt;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -47,10 +47,9 @@ import java.util.Arrays;
 public class Hash implements Serializable {
   private static final long serialVersionUID = 5728176239480983210L;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final Algorithm algorithm;
-  @NotNull
+  @Nonnull
   private final byte[] value;
 
   /**
@@ -59,7 +58,7 @@ public class Hash implements Serializable {
    * @param algorithm a {@link Algorithm} object.
    * @param value     an array of byte.
    */
-  public Hash( @NotNull Algorithm algorithm, @NotNull byte[] value ) {
+  public Hash( @Nonnull Algorithm algorithm, @Nonnull byte[] value ) {
     this.algorithm = algorithm;
     this.value = value.clone();
   }
@@ -69,7 +68,7 @@ public class Hash implements Serializable {
    *
    * @return a {@link Algorithm} object.
    */
-  @NotNull
+  @Nonnull
   public Algorithm getAlgorithm() {
     return algorithm;
   }
@@ -79,7 +78,7 @@ public class Hash implements Serializable {
    *
    * @return a {@link String} object.
    */
-  @NotNull
+  @Nonnull
   public String getValueAsHex() {
     return new String( Hex.encodeHex( value ) );
   }
@@ -89,7 +88,7 @@ public class Hash implements Serializable {
    *
    * @return an array of byte.
    */
-  @NotNull
+  @Nonnull
   public byte[] getValue() {
     return value.clone();
   }
@@ -98,7 +97,7 @@ public class Hash implements Serializable {
    * {@inheritDoc}
    */
   @Override
-  @NonNls
+  @Nonnull
   public String toString() {
     return "[" + algorithm + ": " + getValueAsHex() + "]";
   }
@@ -137,8 +136,8 @@ public class Hash implements Serializable {
    * @param valueAsHex the hex value
    * @return the hash
    */
-  @NotNull
-  public static Hash fromHex( @NotNull Algorithm algorithm, @NotNull String valueAsHex ) {
+  @Nonnull
+  public static Hash fromHex( @Nonnull Algorithm algorithm, @Nonnull String valueAsHex ) {
     try {
       return new Hash( algorithm, Hex.decodeHex( valueAsHex.toCharArray() ) );
     } catch ( DecoderException e ) {

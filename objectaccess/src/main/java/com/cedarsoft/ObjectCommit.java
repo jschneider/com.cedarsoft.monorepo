@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>ObjectCommit interface.</p>
@@ -44,5 +44,5 @@ public interface ObjectCommit<T> {
    *
    * @param element the element that has been changed
    */
-  void commit( @NotNull T element );
+  void commit( @Nonnull T element );
 }

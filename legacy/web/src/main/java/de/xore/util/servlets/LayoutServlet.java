@@ -37,9 +37,9 @@ import de.xore.util.velocity.XoreVelocityFormatter;
 import org.apache.velocity.Template;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.servlet.VelocityServlet;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -66,15 +66,15 @@ import java.util.Enumeration;
  *         Systems</a>
  */
 public abstract class LayoutServlet extends VelocityServlet {
-  @NonNls
+  @Nonnull
   public static final String CONTENT_TEMPLATE_NAME = "contentTemplateName";
-  @NonNls
+  @Nonnull
   private static final String EXCEPTION = "exception";
-  @NonNls
+  @Nonnull
   private static final String SESSION_CONTEXT = "context";
-  @NonNls
+  @Nonnull
   private static final String FORMATTER = "format";
-  @NonNls
+  @Nonnull
   protected static final String REDIRECT_URL = "REDIRECT_URL";
 
   protected boolean isStringEmpty( String string ) {
@@ -82,7 +82,7 @@ public abstract class LayoutServlet extends VelocityServlet {
   }
 
   @Override
-  protected void error( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Exception cause ) throws ServletException, IOException {
+  protected void error( @Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Exception cause ) throws ServletException, IOException {
     StringBuilder html = new StringBuilder();
 
     html.append( "<html>" );
@@ -114,7 +114,7 @@ public abstract class LayoutServlet extends VelocityServlet {
   }
 
   @Override
-  protected Template handleRequest( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Context ctx ) throws Exception {
+  protected Template handleRequest( @Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Context ctx ) throws Exception {
     HttpSession session = request.getSession();
     SessionContext sessionContext = getSessionContext( session );
     refreshSessionContext( sessionContext );
@@ -143,20 +143,20 @@ public abstract class LayoutServlet extends VelocityServlet {
   }
 
   @Nullable
-  @NonNls
-  private String getRedirectUrl( @NotNull HttpServletRequest request ) {
+  @Nonnull
+  private String getRedirectUrl( @Nonnull HttpServletRequest request ) {
     if ( getRedirectUrl() != null ) {
       return getRedirectUrl();
     }
     return ( String ) request.getAttribute( REDIRECT_URL );
   }
 
-  private boolean redirectUrl( @NotNull HttpServletRequest request ) {
+  private boolean redirectUrl( @Nonnull HttpServletRequest request ) {
     return getRedirectUrl( request ) != null;
   }
 
   @Nullable
-  @NonNls
+  @Nonnull
   protected String getRedirectUrl() {
     return null;
   }
@@ -171,7 +171,7 @@ public abstract class LayoutServlet extends VelocityServlet {
    * @param request  the request
    * @param response the response
    */
-  protected abstract void postProcessingContext( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Context ctx );
+  protected abstract void postProcessingContext( @Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Context ctx );
 
   /**
    * Sicherheits-Ueberpruefungen (statisch bzw. deklarativ) koennen hier stattfinden. Wird direkt nach
@@ -180,22 +180,22 @@ public abstract class LayoutServlet extends VelocityServlet {
    * @param sessionContext thhe session context
    * @throws XoreException the exception
    */
-  public abstract void checkSecurity( @NotNull SessionContext sessionContext ) throws XoreException;
+  public abstract void checkSecurity( @Nonnull SessionContext sessionContext ) throws XoreException;
 
   /**
    * Vor dem Aufruf von handle() werden hier alle persistenten Objekte (Hibernate) aktualisiert.
    */
-  public abstract void refreshSessionContext( @NotNull SessionContext sessionContext );
+  public abstract void refreshSessionContext( @Nonnull SessionContext sessionContext );
 
   /**
    * Liefert den SessionContext zu einer bestimmten Session bzw. legt ihn neu an
    */
-  public abstract SessionContext getSessionContext( @NotNull HttpSession session );
+  public abstract SessionContext getSessionContext( @Nonnull HttpSession session );
 
   /**
    * Wird vom einzelnen Servlet ueberschrieben
    */
-  protected abstract String getContentTemplateName( @NotNull HttpServletRequest request );
+  protected abstract String getContentTemplateName( @Nonnull HttpServletRequest request );
 
   /**
    * Liefert das "Haupt-Template", welches entsprechend das von getContentTemplateName zurückgegebene Template
@@ -205,5 +205,5 @@ public abstract class LayoutServlet extends VelocityServlet {
    */
   public abstract Template getLayoutTemplate() throws Exception;
 
-  protected abstract void handle( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Context ctx, @NotNull HttpSession session, @NotNull SessionContext sessionContext ) throws Exception;
+  protected abstract void handle( @Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Context ctx, @Nonnull HttpSession session, @Nonnull SessionContext sessionContext ) throws Exception;
 }

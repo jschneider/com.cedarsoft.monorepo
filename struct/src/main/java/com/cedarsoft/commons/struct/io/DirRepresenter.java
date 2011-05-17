@@ -39,8 +39,8 @@ import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.commons.struct.StructureTreeWalker;
 import com.cedarsoft.lookup.Lookups;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -55,7 +55,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DirRepresenter {
-  @NotNull
+  @Nonnull
   private final Node root;
 
   private final boolean rootVisible;
@@ -66,7 +66,7 @@ public class DirRepresenter {
    * @param root        a {@link Node} object.
    * @param rootVisible a boolean.
    */
-  public DirRepresenter( @NotNull Node root, boolean rootVisible ) {
+  public DirRepresenter( @Nonnull Node root, boolean rootVisible ) {
     this.root = root;
     this.rootVisible = rootVisible;
   }
@@ -77,7 +77,7 @@ public class DirRepresenter {
    * @param baseDir  the base dir
    * @param callback the callback that is called for each created directory
    */
-  public void store( @NotNull final File baseDir, @Nullable final StoreCallback callback ) {
+  public void store( @Nonnull final File baseDir, @Nullable final StoreCallback callback ) {
     if ( !baseDir.isDirectory() ) {
       throw new IllegalArgumentException( "Base dir is not a directory" );
     }
@@ -85,7 +85,7 @@ public class DirRepresenter {
     StructureTreeWalker walker = new BreadthFirstStructureTreeWalker();
     walker.walk( root, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         Path path = Path.buildPath( node ); //pop the root
         if ( !rootVisible ) {
           path = path.popped();
@@ -108,7 +108,7 @@ public class DirRepresenter {
    * @param nodeFactory the node factory used to create new nodes. The context will contain the directory (File) and the parent Node
    * @param maxDepth    a int.
    */
-  public void parse( @NotNull File baseDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
+  public void parse( @Nonnull File baseDir, @Nonnull NodeFactory nodeFactory, int maxDepth ) {
     if ( !root.getChildren().isEmpty() ) {
       throw new IllegalStateException( "Root still has children!" );
     }
@@ -137,7 +137,7 @@ public class DirRepresenter {
    * @param nodeFactory a {@link NodeFactory} object.
    * @param maxDepth    a int.
    */
-  protected void parse( @NotNull Node node, @NotNull File currentDir, @NotNull NodeFactory nodeFactory, int maxDepth ) {
+  protected void parse( @Nonnull Node node, @Nonnull File currentDir, @Nonnull NodeFactory nodeFactory, int maxDepth ) {
     if ( maxDepth == 0 ) {
       return;
     }
@@ -152,8 +152,8 @@ public class DirRepresenter {
     }
   }
 
-  @NotNull
-  private static Iterable<? extends File> listDirsSorted( @NotNull File currentDir ) {
+  @Nonnull
+  private static Iterable<? extends File> listDirsSorted( @Nonnull File currentDir ) {
     List<File> subDirs = new ArrayList<File>( Arrays.asList( currentDir.listFiles( ( FileFilter ) DirectoryFileFilter.DIRECTORY ) ) );
     Collections.sort( subDirs );
     return subDirs;
@@ -166,8 +166,8 @@ public class DirRepresenter {
    * @param path    the path
    * @return the dir
    */
-  @NotNull
-  protected static File getDir( @NotNull File baseDir, @NotNull Path path ) {
+  @Nonnull
+  protected static File getDir( @Nonnull File baseDir, @Nonnull Path path ) {
     File current = baseDir;
     for ( String element : path.getElements() ) {
       current = new File( current, element );
@@ -187,6 +187,6 @@ public class DirRepresenter {
      * @param path the path
      * @param dir  the directory that has been created
      */
-    void dirCreated( @NotNull StructPart node, @NotNull Path path, @NotNull File dir );
+    void dirCreated( @Nonnull StructPart node, @Nonnull Path path, @Nonnull File dir );
   }
 }

@@ -33,8 +33,8 @@ package com.cedarsoft.cmd;
 
 import com.cedarsoft.renderer.DefaultRenderer;
 import com.cedarsoft.renderer.Renderer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,7 +53,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void warning( @NotNull String message, @NotNull Object... objects ) {
+  public void warning( @Nonnull String message, @Nonnull Object... objects ) {
     getOut().println( getConsolePrinter().createWarning( message, objects ) );
   }
 
@@ -61,7 +61,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void error( @NotNull String message, @NotNull Object... objects ) {
+  public void error( @Nonnull String message, @Nonnull Object... objects ) {
     getOut().println( getConsolePrinter().createError( message, objects ) );
   }
 
@@ -69,7 +69,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void success( @NotNull String message, @NotNull Object... objects ) {
+  public void success( @Nonnull String message, @Nonnull Object... objects ) {
     getOut().println( getConsolePrinter().createSuccess( message, objects ) );
   }
 
@@ -85,7 +85,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void out( @NotNull String message, @NotNull Object... objects ) {
+  public void out( @Nonnull String message, @Nonnull Object... objects ) {
     if ( objects.length == 0 ) {
       getOut().println( message );
     } else {
@@ -97,7 +97,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  public void out( @NotNull Process process ) {
+  public void out( @Nonnull Process process ) {
     try {
       BufferedReader defaultIn = new BufferedReader( new InputStreamReader( process.getInputStream() ) );
       try {
@@ -127,8 +127,8 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements ) {
+  @Nonnull
+  public <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements ) {
     return readSelection( message, elements, null );
   }
 
@@ -138,7 +138,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    * @param elements  a {@link List} object.
    * @param presenter a {@link Renderer} object.
    */
-  protected <T> void printPossibleElements( @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
+  protected <T> void printPossibleElements( @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
     if ( presenter == null ) {
       //noinspection AssignmentToMethodParameter
       presenter = new DefaultRenderer();
@@ -154,8 +154,8 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
+  @Nonnull
+  public <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
     out( message );
     printPossibleElements( elements, presenter );
     return elements.get( readInt( "Enter the number of the element you want to select", 0, elements.size() ) );
@@ -165,8 +165,8 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message, @NotNull List<String> elements ) {
+  @Nonnull
+  public String read( @Nonnull String message, @Nonnull List<String> elements ) {
     out( message );
     printPossibleElements( elements, null );
 
@@ -196,8 +196,8 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String read( @NotNull String message, @NotNull List<String> elements, @NotNull String preselected ) {
+  @Nonnull
+  public String read( @Nonnull String message, @Nonnull List<String> elements, @Nonnull String preselected ) {
     out( message );
     printPossibleElements( elements, null );
 
@@ -214,8 +214,8 @@ public abstract class AbstractCmdLine implements CmdLine {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory ) {
+  @Nonnull
+  public <T> T read( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @Nonnull ObjectFactory<T> objectFactory ) {
     out( message );
     printPossibleElements( elements, presenter );
 
@@ -248,7 +248,7 @@ public abstract class AbstractCmdLine implements CmdLine {
    *
    * @return a {@link PrintStream} object.
    */
-  @NotNull
+  @Nonnull
   public abstract PrintStream getOut();
 
   /**
@@ -256,6 +256,6 @@ public abstract class AbstractCmdLine implements CmdLine {
    *
    * @return a {@link ConsolePrinter} object.
    */
-  @NotNull
+  @Nonnull
   protected abstract ConsolePrinter getConsolePrinter();
 }

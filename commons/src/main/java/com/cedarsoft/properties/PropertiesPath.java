@@ -31,8 +31,8 @@
 
 package com.cedarsoft.properties;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 import java.util.ArrayList;
@@ -50,24 +50,20 @@ public class PropertiesPath {
   /**
    * Constant <code>PROPERTY_REPRESENTATION="presentation"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_REPRESENTATION = "presentation";
   /**
    * Constant <code>PROPERTY_ROOT_PROPERTY="rootProperty"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ROOT_PROPERTY = "rootProperty";
   /**
    * Constant <code>PROPERTY_ELEMENTS="elements"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ELEMENTS = "elements";
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final List<String> elements = new ArrayList<String>();
 
   /**
@@ -82,7 +78,7 @@ public class PropertiesPath {
    *
    * @param elements a {@link String} object.
    */
-  public PropertiesPath( @NotNull @NonNls String... elements ) {
+  public PropertiesPath( @Nonnull String... elements ) {
     this( Arrays.asList( elements ) );
   }
 
@@ -91,7 +87,7 @@ public class PropertiesPath {
    *
    * @param elements a {@link List} object.
    */
-  public PropertiesPath( @NotNull @NonNls List<String> elements ) {
+  public PropertiesPath( @Nonnull List<String> elements ) {
     if ( elements.isEmpty() ) {
       throw new IllegalArgumentException( "Need at least one element in path" );
     }
@@ -103,8 +99,7 @@ public class PropertiesPath {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getRootProperty() {
     return elements.get( 0 );
   }
@@ -114,7 +109,7 @@ public class PropertiesPath {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getElements() {
     return Collections.unmodifiableList( elements );
   }
@@ -132,8 +127,7 @@ public class PropertiesPath {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getPresentation() {
     StringBuilder builder = new StringBuilder();
 

@@ -32,7 +32,7 @@
 package com.cedarsoft.configuration.xml;
 
 import com.jgoodies.binding.value.ValueModel;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -49,9 +49,9 @@ import java.beans.PropertyChangeListener;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ConfigurationConnector<T> {
-  @NotNull
+  @Nonnull
   private final ValueModel subject;
-  @NotNull
+  @Nonnull
   private final ConfigurationAccess<T> configurationAccess;
 
   /**
@@ -60,7 +60,7 @@ public class ConfigurationConnector<T> {
    * @param subject             the value model of the bean
    * @param configurationAccess the configuration access
    */
-  public ConfigurationConnector( @NotNull ValueModel subject, @NotNull ConfigurationAccess<T> configurationAccess ) {
+  public ConfigurationConnector( @Nonnull ValueModel subject, @Nonnull ConfigurationAccess<T> configurationAccess ) {
     this.subject = subject;
     this.configurationAccess = configurationAccess;
     this.subject.addValueChangeListener( new SubjectChangeListener() );
@@ -71,7 +71,7 @@ public class ConfigurationConnector<T> {
    *
    * @return the value model
    */
-  @NotNull
+  @Nonnull
   public ValueModel getSubject() {
     return subject;
   }
@@ -81,7 +81,7 @@ public class ConfigurationConnector<T> {
    *
    * @return the configuration access
    */
-  @NotNull
+  @Nonnull
   public ConfigurationAccess<T> getConfigurationAccess() {
     return configurationAccess;
   }

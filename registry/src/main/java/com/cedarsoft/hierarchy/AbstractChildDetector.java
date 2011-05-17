@@ -31,7 +31,7 @@
 
 package com.cedarsoft.hierarchy;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ import java.util.List;
  * @param <P> the type of the parent
  */
 public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C> {
-  @NotNull
+  @Nonnull
   private final List<ChildChangeListener<P>> listeners = new ArrayList<ChildChangeListener<P>>();
 
   /**
@@ -52,7 +52,7 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
    *
    * @param parent the parent
    */
-  protected void notifyChildrenChangedFor( @NotNull P parent ) {
+  protected void notifyChildrenChangedFor( @Nonnull P parent ) {
     for ( ChildChangeListener<P> listener : new ArrayList<ChildChangeListener<P>>( listeners ) ) {
       listener.notifyChildrenChangedFor( parent );
     }
@@ -62,7 +62,7 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListener( @NotNull ChildChangeListener<P> changeListener ) {
+  public void addChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
     listeners.add( changeListener );
   }
 
@@ -70,7 +70,7 @@ public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C>
    * {@inheritDoc}
    */
   @Override
-  public void removeChangeListener( @NotNull ChildChangeListener<P> changeListener ) {
+  public void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
     listeners.remove( changeListener );
   }
 }

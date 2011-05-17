@@ -32,7 +32,7 @@
 package com.cedarsoft.provider;
 
 import org.apache.commons.io.FileUtils;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -50,13 +50,13 @@ public class ProviderTest {
   public void testException() {
     Provider<String, IOException> provider = new Provider<String, IOException>() {
       @Override
-      @NotNull
+      @Nonnull
       public String provide() throws IOException {
         throw new IOException( "Uuups" );
       }
 
       @Override
-      @NotNull
+      @Nonnull
       public String getDescription() {
         return "asdf";
       }
@@ -96,15 +96,15 @@ public class ProviderTest {
   @Test
   public void testContext() throws IOException {
     AbstractContextualProvider<String, Integer, IOException> provider = new AbstractContextualProvider<String, Integer, IOException>() {
-      @NotNull
+      @Nonnull
       @Override
-      public String provide( @NotNull Integer context ) throws IOException {
+      public String provide( @Nonnull Integer context ) throws IOException {
         return String.valueOf( context );
       }
 
-      @NotNull
+      @Nonnull
       @Override
-      public String getDescription( @NotNull Integer context ) {
+      public String getDescription( @Nonnull Integer context ) {
         return "descr";
       }
     };

@@ -32,13 +32,13 @@
 package com.cedarsoft.codegen.mock;
 
 import com.sun.mirror.declaration.InterfaceDeclaration;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
 public class InterfaceDeclarationMock extends TypeDeclarationMock implements InterfaceDeclaration {
-  public InterfaceDeclarationMock( @NotNull Class<?> type ) {
+  public InterfaceDeclarationMock( @Nonnull Class<?> type ) {
     super( type );
   }
 }

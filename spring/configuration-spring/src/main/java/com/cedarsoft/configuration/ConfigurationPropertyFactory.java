@@ -33,9 +33,9 @@ package com.cedarsoft.configuration;
 
 import com.cedarsoft.configuration.xml.ConfigurationAccess;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.Class;
@@ -48,7 +48,7 @@ import java.lang.String;
  */
 @Deprecated
 public class ConfigurationPropertyFactory<T> implements FactoryBean {
-  @NotNull
+  @Nonnull
   private final ConfigurationAccess<T> configurationAccess;
 
   /**
@@ -59,7 +59,7 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
    * @param key                  a {@link String} object.
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    */
-  public ConfigurationPropertyFactory( @NotNull Configuration configuration, @NotNull Class<T> type, @NotNull @NonNls String key, @NotNull DefaultValueProvider defaultValueProvider ) {
+  public ConfigurationPropertyFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider ) {
     this.configurationAccess = new ConfigurationAccess<T>( configuration, type, key, defaultValueProvider );
   }
 
@@ -76,7 +76,7 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Class<?> getObjectType() {
     return configurationAccess.getType();
   }

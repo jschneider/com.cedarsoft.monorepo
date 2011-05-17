@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 
 /**
@@ -44,8 +44,7 @@ public interface DiscreteHistoryEntry extends HistoryEntry {
   /**
    * Constant <code>PROPERTY_VALIDITY_DATE="validityDate"</code>
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   String PROPERTY_VALIDITY_DATE = "validityDate";
 
   /**
@@ -54,6 +53,6 @@ public interface DiscreteHistoryEntry extends HistoryEntry {
    *
    * @return the validity date
    */
-  @NotNull
+  @Nonnull
   LocalDate getValidityDate();
 }

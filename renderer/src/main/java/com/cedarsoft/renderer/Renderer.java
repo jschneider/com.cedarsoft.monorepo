@@ -31,8 +31,8 @@
 
 package com.cedarsoft.renderer;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Renders an object
@@ -49,6 +49,6 @@ public interface Renderer<T, C> {
    * @param context the context
    * @return the rendered string
    */
-  @NotNull
-  String render( @NotNull T object, @Nullable C context );
+  @Nonnull
+  String render( @Nonnull T object, @Nullable C context );
 }

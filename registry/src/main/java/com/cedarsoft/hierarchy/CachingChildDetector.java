@@ -33,7 +33,7 @@ package com.cedarsoft.hierarchy;
 
 import com.cedarsoft.cache.Cache;
 import com.cedarsoft.cache.HashedCache;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 import java.util.WeakHashMap;
@@ -46,11 +46,11 @@ import java.util.WeakHashMap;
  * @param <P> the type of the parent
  */
 public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
-  @NotNull
+  @Nonnull
   private final Cache<P, List<? extends C>> childrenCache = new HashedCache<P, List<? extends C>>( new WeakHashMap<P, List<? extends C>>(), new Cache.Factory<P, List<? extends C>>() {
     @Override
-    @NotNull
-    public List<? extends C> create( @NotNull P key ) {
+    @Nonnull
+    public List<? extends C> create( @Nonnull P key ) {
       return createChildren( key );
     }
   } );
@@ -61,15 +61,15 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
    * @param parent a P object.
    * @return a {@link List} object.
    */
-  @NotNull
-  protected abstract List<? extends C> createChildren( @NotNull P parent );
+  @Nonnull
+  protected abstract List<? extends C> createChildren( @Nonnull P parent );
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public final List<? extends C> findChildren( @NotNull P parent ) {
+  @Nonnull
+  public final List<? extends C> findChildren( @Nonnull P parent ) {
     return childrenCache.get( parent );
   }
 
@@ -78,7 +78,7 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
    *
    * @param parent a P object.
    */
-  public void handleModified( @NotNull P parent ) {
+  public void handleModified( @Nonnull P parent ) {
     invalidateCache( parent );
   }
 
@@ -87,7 +87,7 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
    *
    * @param parent a P object.
    */
-  public void invalidateCache( @NotNull P parent ) {
+  public void invalidateCache( @Nonnull P parent ) {
     childrenCache.remove( parent );
     notifyChildrenChangedFor( parent );
   }

@@ -35,8 +35,8 @@ import com.cedarsoft.commons.struct.ChildNotFoundException;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.Path;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * A repository is a treelike structure where informations may be saved within nodes.
@@ -61,7 +61,7 @@ public class Repository {
    *
    * @return the root node
    */
-  @NotNull
+  @Nonnull
   public Node getRootNode() {
     return rootNode;
   }
@@ -75,8 +75,8 @@ public class Repository {
    * @throws ChildNotFoundException
    *          if the path could not be resolved
    */
-  @NotNull
-  public Node findNode( @NotNull Path path ) throws ChildNotFoundException {
+  @Nonnull
+  public Node findNode( @Nonnull Path path ) throws ChildNotFoundException {
     if ( !path.isAbsolute() ) {
       throw new IllegalArgumentException( "Path must be absolute to be resolved within the repository" );
     }
@@ -98,8 +98,8 @@ public class Repository {
    * @throws ChildNotFoundException
    *          if the child could not be found
    */
-  @NotNull
-  protected Node findChild( @NotNull Node parent, @NonNls @NotNull String name ) throws ChildNotFoundException {
+  @Nonnull
+  protected Node findChild( @Nonnull Node parent, @Nonnull String name ) throws ChildNotFoundException {
     for ( Node child : parent.getChildren() ) {
       if ( child.getName().equals( name ) ) {
         return child;
@@ -114,8 +114,8 @@ public class Repository {
    * @param path the path
    * @return the node
    */
-  @NotNull
-  public Node getNode( @NotNull Path path ) {
+  @Nonnull
+  public Node getNode( @Nonnull Path path ) {
     Node current = getRootNode();
     for ( String element : path.getElements() ) {
       try {
@@ -135,7 +135,7 @@ public class Repository {
    * @param node the node
    * @return whether the given node is the root node of the the repository
    */
-  public boolean isRoot( @NotNull Node node ) {
+  public boolean isRoot( @Nonnull Node node ) {
     //noinspection ObjectEquality
     return rootNode == node;
   }
@@ -146,8 +146,8 @@ public class Repository {
    * @param node the node
    * @return the path for the node
    */
-  @NotNull
-  public Path getPath( @NotNull Node node ) {
+  @Nonnull
+  public Path getPath( @Nonnull Node node ) {
     return Path.buildPath( node ).absolute();
   }
 }

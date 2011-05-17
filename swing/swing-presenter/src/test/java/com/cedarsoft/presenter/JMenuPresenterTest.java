@@ -35,8 +35,8 @@ import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.junit.*;
 
 import javax.swing.AbstractAction;
@@ -64,7 +64,7 @@ public class JMenuPresenterTest {
     return actions.get( index );
   }
 
-  @NotNull
+  @Nonnull
   public static StructPart buildStructure( String name ) {
     Node root = new DefaultNode( name, Lookups.singletonLookup( Action.class, createAction( 99 ) ) );
     root.addChild( new DefaultNode( "1", Lookups.singletonLookup( Action.class, createAction( 0 ) ) ) );
@@ -74,7 +74,7 @@ public class JMenuPresenterTest {
     return root;
   }
 
-  @NotNull
+  @Nonnull
   public static StructPart buildStructure() {
     return buildStructure( "menu" );
   }

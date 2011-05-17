@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * <p>Converter interface.</p>
@@ -47,6 +47,6 @@ public interface Converter<T, C> {
    * @param toConvert a T object.
    * @return a C object.
    */
-  @NotNull
-  C convert( @NotNull T toConvert );
+  @Nonnull
+  C convert( @Nonnull T toConvert );
 }

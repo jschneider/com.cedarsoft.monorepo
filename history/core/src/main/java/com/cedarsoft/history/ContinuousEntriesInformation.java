@@ -32,9 +32,9 @@
 package com.cedarsoft.history;
 
 import com.cedarsoft.CommitableObjectAccess;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
@@ -56,21 +56,20 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * Constant <code>PROPERTY_ENTRIES="entries"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ENTRIES = "entries";
 
   private Long id;
 
-  @NotNull
+  @Nonnull
   private final List<E> entries = new ArrayList<E>();
 
-  @NotNull
+  @Nonnull
   private LocalDate begin;
-  @NotNull
+  @Nonnull
   private LocalDate end;
 
-  @NotNull
+  @Nonnull
   private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
 
@@ -89,7 +88,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param begin the begin of the history
    * @param end   the end of the history
    */
-  public ContinuousEntriesInformation( @NotNull LocalDate begin, @NotNull LocalDate end ) {
+  public ContinuousEntriesInformation( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     this.begin = begin;
     this.end = end;
   }
@@ -98,7 +97,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * {@inheritDoc}
    */
   @Override
-  public void commit( @NotNull E element ) {
+  public void commit( @Nonnull E element ) {
     commitEntry( element );
   }
 
@@ -106,7 +105,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends E> getElements() {
     return getEntries();
   }
@@ -115,7 +114,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends E> elements ) {
+  public void setElements( @Nonnull List<? extends E> elements ) {
     List<E> newElements = new ArrayList<E>( elements );
 
     lock.writeLock().lock();
@@ -138,7 +137,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull E element ) {
+  public void remove( @Nonnull E element ) {
     removeEntry( element );
   }
 
@@ -146,7 +145,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull E element ) {
+  public void add( @Nonnull E element ) {
     addEntry( element );
   }
 
@@ -159,7 +158,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   protected E getEntry( int index ) throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -177,7 +176,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends E> getEntries() {
     lock.readLock().lock();
     try {
@@ -223,7 +222,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param begin a {@link LocalDate} object.
    */
-  public void setBegin( @NotNull LocalDate begin ) {
+  public void setBegin( @Nonnull LocalDate begin ) {
     lock.writeLock().lock();
     try {
       this.begin = begin;
@@ -246,7 +245,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param end a {@link LocalDate} object.
    */
-  public void setEnd( @NotNull LocalDate end ) {
+  public void setEnd( @Nonnull LocalDate end ) {
     lock.writeLock().lock();
     try {
       this.end = end;
@@ -261,7 +260,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param entry a E object.
    * @return a boolean.
    */
-  public boolean removeEntry( @NotNull E entry ) {
+  public boolean removeEntry( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       return entries.remove( entry );
@@ -294,7 +293,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   public E getLatestEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -315,7 +314,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
+  @Nonnull
   public E getFirstEntry() throws NoValidElementFoundException {
     lock.readLock().lock();
     try {
@@ -334,7 +333,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param entry a E object.
    * @return a boolean.
    */
-  public boolean isLatestEntry( @NotNull E entry ) {
+  public boolean isLatestEntry( @Nonnull E entry ) {
     //noinspection ObjectEquality
     return getLatestEntry() == entry;
   }
@@ -344,7 +343,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return the begin
    */
-  @NotNull
+  @Nonnull
   public LocalDate getBegin() {
     return begin;
   }
@@ -354,7 +353,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return the end
    */
-  @NotNull
+  @Nonnull
   public LocalDate getEnd() {
     return end;
   }
@@ -364,7 +363,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param entry the entry that is added
    */
-  public void addEntry( @NotNull E entry ) {
+  public void addEntry( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       validate( entry );
@@ -384,7 +383,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param entry the entry that has been changed
    */
-  public void entryChanged( @NotNull E entry ) {
+  public void entryChanged( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       //now sort the elements
@@ -404,8 +403,8 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
-  public E findEntry( @NotNull LocalDate date ) throws NoValidElementFoundException {
+  @Nonnull
+  public E findEntry( @Nonnull LocalDate date ) throws NoValidElementFoundException {
     if ( date.isBefore( begin ) ) {
       throw new IllegalArgumentException( "Date " + date + " is before beginning of the history: " + begin );
     }
@@ -441,8 +440,8 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws NoValidElementFoundException
    *          if any.
    */
-  @NotNull
-  public E findNextEntry( @NotNull E entry ) throws NoValidElementFoundException {
+  @Nonnull
+  public E findNextEntry( @Nonnull E entry ) throws NoValidElementFoundException {
     for ( Iterator<E> it = entries.iterator(); it.hasNext(); ) {
       E actual = it.next();
       //noinspection ObjectEquality
@@ -464,8 +463,8 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param end   a {@link LocalDate} object.
    * @return a {@link List} object.
    */
-  @NotNull
-  public List<? extends E> findEntries( @NotNull LocalDate begin, @NotNull LocalDate end ) {
+  @Nonnull
+  public List<? extends E> findEntries( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     if ( end.isBefore( this.begin ) ) {
       throw new IllegalArgumentException( "End " + end + " is before beginning of the history: " + this.begin );
     }
@@ -492,7 +491,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param entry a E object.
    */
-  public void replaceEntry( @NotNull E entry ) {
+  public void replaceEntry( @Nonnull E entry ) {
     lock.writeLock().lock();
     try {
       E replaced = findEntryWithBegin( entry.getBegin() );
@@ -514,7 +513,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @return a E object.
    */
   @Nullable
-  protected E findEntryWithBegin( @NotNull LocalDate date ) {
+  protected E findEntryWithBegin( @Nonnull LocalDate date ) {
     lock.readLock().lock();
     try {
       for ( E entry : entries ) {
@@ -535,7 +534,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @throws InvalidEntryException
    *          if any.
    */
-  protected void validate( @NotNull E entry ) throws InvalidEntryException {
+  protected void validate( @Nonnull E entry ) throws InvalidEntryException {
     if ( findEntryWithBegin( entry.getBegin() ) != null ) {
       throw new InvalidEntryException( "An entry with the same begin still exists " + entry.getBegin() );
     }
@@ -555,8 +554,8 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param entry the premium information the end is returned for
    * @return the end for the premium information
    */
-  @NotNull
-  public LocalDate getEnd( @NotNull E entry ) {
+  @Nonnull
+  public LocalDate getEnd( @Nonnull E entry ) {
     lock.readLock().lock();
     try {
       for ( Iterator<E> it = entries.iterator(); it.hasNext(); ) {
@@ -581,7 +580,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param historyListener a {@link HistoryListener} object.
    */
-  public void removeHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
   }
 
@@ -590,7 +589,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param historyListener a {@link HistoryListener} object.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
   }
 
@@ -600,7 +599,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    * @param historyListener a {@link HistoryListener} object.
    * @param isTransient     a boolean.
    */
-  public void addHistoryListener( @NotNull HistoryListener<E> historyListener, boolean isTransient ) {
+  public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
     listenerSupport.addHistoryListener( historyListener, isTransient );
   }
 
@@ -613,18 +612,18 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
     return listenerSupport.getTransientHistoryListeners();
   }
 
-  @NotNull
+  @Nonnull
   private final ClusteredHistoryListenerSupport<E> listenerSupport = new ClusteredHistoryListenerSupport<E>();
 
-  private void notifyEntryRemoved( @NotNull E removed ) {
+  private void notifyEntryRemoved( @Nonnull E removed ) {
     listenerSupport.notifyEntryRemoved( removed );
   }
 
-  private void notifyEntryAdded( @NotNull E entry ) {
+  private void notifyEntryAdded( @Nonnull E entry ) {
     listenerSupport.notifyEntryAdded( entry );
   }
 
-  private void notifyEntryChanged( @NotNull E entry ) {
+  private void notifyEntryChanged( @Nonnull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
@@ -633,7 +632,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @param entry a E object.
    */
-  public void commitEntry( @NotNull E entry ) {
+  public void commitEntry( @Nonnull E entry ) {
     listenerSupport.notifyEntryChanged( entry );
   }
 
@@ -642,7 +641,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
    *
    * @return a {@link ReadWriteLock} object.
    */
-  @NotNull
+  @Nonnull
   public ReadWriteLock getLock() {
     return lock;
   }

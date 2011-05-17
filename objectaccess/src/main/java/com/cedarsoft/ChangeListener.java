@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Is notified when anything has changed.
@@ -45,5 +45,5 @@ public interface ChangeListener<T> {
    *
    * @param event the changed event
    */
-  void entryChanged( @NotNull ChangedEvent<T> event );
+  void entryChanged( @Nonnull ChangedEvent<T> event );
 }

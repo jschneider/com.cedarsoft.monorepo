@@ -35,8 +35,8 @@ import javax.inject.Inject;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * Configures configurations
@@ -44,10 +44,10 @@ import org.jetbrains.annotations.NotNull;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlConfigurationManager {
-  @NonNls
+  @Nonnull
   private static final String MODULES_KEY = "modules";
 
-  @NotNull
+  @Nonnull
   private final XMLConfiguration configuration;
 
   /**
@@ -56,7 +56,7 @@ public class XmlConfigurationManager {
    * @param configuration a {@link XMLConfiguration} object.
    */
   @Inject
-  public XmlConfigurationManager( @NotNull XMLConfiguration configuration ) {
+  public XmlConfigurationManager( @Nonnull XMLConfiguration configuration ) {
     this.configuration = configuration;
 
     if ( this.configuration.getFileName() != null ) {
@@ -83,8 +83,8 @@ public class XmlConfigurationManager {
    * @param moduleType the moduleType
    * @return the configuration for the given  moduleType
    */
-  @NotNull
-  public HierarchicalConfiguration getModuleConfiguration( @NotNull Class<?> moduleType ) {
+  @Nonnull
+  public HierarchicalConfiguration getModuleConfiguration( @Nonnull Class<?> moduleType ) {
     String moduleTypeName = moduleType.getName().replaceAll( "\\$", "." );
     HierarchicalConfiguration modulesConfiguration = getModulesConfiguration();
     try {
@@ -95,7 +95,7 @@ public class XmlConfigurationManager {
     }
   }
 
-  @NotNull
+  @Nonnull
   HierarchicalConfiguration getModulesConfiguration() {
     try {
       return configuration.configurationAt( MODULES_KEY );
@@ -110,7 +110,7 @@ public class XmlConfigurationManager {
    *
    * @return a {@link HierarchicalConfiguration} object.
    */
-  @NotNull
+  @Nonnull
   public HierarchicalConfiguration getConfiguration() {
     return configuration;
   }

@@ -37,8 +37,8 @@ import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JInvocation;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -48,21 +48,21 @@ import java.util.Set;
  *
  */
 public class ParseExpressionFactory {
-  @NonNls
+  @Nonnull
   public static final String STRING_VALUE_OF = "valueOf";
 
-  @NotNull
+  @Nonnull
   private final JCodeModel model;
-  @NotNull
+  @Nonnull
   private final ClassRefSupport classRefSupport;
 
-  public ParseExpressionFactory( @NotNull JCodeModel model, @NotNull ClassRefSupport classRefSupport ) {
+  public ParseExpressionFactory( @Nonnull JCodeModel model, @Nonnull ClassRefSupport classRefSupport ) {
     this.model = model;
     this.classRefSupport = classRefSupport;
   }
 
-  @NotNull
-  public JExpression createParseExpression( @NotNull JExpression varAsString, @NotNull FieldTypeInformation fieldInfo ) {
+  @Nonnull
+  public JExpression createParseExpression( @Nonnull JExpression varAsString, @Nonnull FieldTypeInformation fieldInfo ) {
     if ( fieldInfo.isType( Double.TYPE ) || fieldInfo.isType( Double.class ) ) {
       return model.ref( Double.class ).staticInvoke( "parseDouble" ).arg( varAsString );
     }
@@ -88,8 +88,8 @@ public class ParseExpressionFactory {
     return JExpr.invoke( "parse" + fieldType.name() ).arg( varAsString );
   }
 
-  @NotNull
-  public JExpression createToStringExpression( @NotNull JInvocation getterInvocation, @NotNull FieldTypeInformation fieldInfo ) {
+  @Nonnull
+  public JExpression createToStringExpression( @Nonnull JInvocation getterInvocation, @Nonnull FieldTypeInformation fieldInfo ) {
     JClass jClass = model.ref( String.class );
     JInvocation wrappedGetterInvocation;
     if ( fieldInfo.isType( String.class ) ) {
@@ -100,19 +100,19 @@ public class ParseExpressionFactory {
     return wrappedGetterInvocation;
   }
 
-  @NotNull
+  @Nonnull
   public static Set<? extends Class<?>> getSupportedTypes() {
     //noinspection ReturnOfCollectionOrArrayField
     return SUPPORTED_TYPES;
   }
 
-  @NotNull
+  @Nonnull
   public static Set<? extends String> getSupportedTypeNames() {
     //noinspection ReturnOfCollectionOrArrayField
     return SUPPORTED_TYPE_NAMES;
   }
 
-  @NotNull
+  @Nonnull
   public static final Set<? extends Class<?>> SUPPORTED_TYPES;
 
   static {
@@ -130,7 +130,7 @@ public class ParseExpressionFactory {
     SUPPORTED_TYPES = Collections.unmodifiableSet( types );
   }
 
-  @NotNull
+  @Nonnull
   public static final Set<? extends String> SUPPORTED_TYPE_NAMES;
 
   static {

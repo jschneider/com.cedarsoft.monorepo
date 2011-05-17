@@ -34,8 +34,8 @@ package com.cedarsoft.presenter;
 import com.cedarsoft.commons.struct.DepthFirstStructureTreeWalker;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.commons.struct.StructureTreeWalker;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -45,8 +45,7 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StructStringPresenter implements Presenter<String> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String intendSequence;
   private static final char NEWLINE_CHAR = '\n';
 
@@ -62,7 +61,7 @@ public class StructStringPresenter implements Presenter<String> {
    *
    * @param intendSequence a {@link String} object.
    */
-  public StructStringPresenter( @NotNull String intendSequence ) {
+  public StructStringPresenter( @Nonnull String intendSequence ) {
     this.intendSequence = intendSequence;
   }
 
@@ -70,14 +69,14 @@ public class StructStringPresenter implements Presenter<String> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String present( @NotNull StructPart struct ) {
+  @Nonnull
+  public String present( @Nonnull StructPart struct ) {
     final StringBuilder builder = new StringBuilder();
 
     StructureTreeWalker treeWalker = new DepthFirstStructureTreeWalker();
     treeWalker.walk( struct, new StructureTreeWalker.WalkerCallBack() {
       @Override
-      public void nodeReached( @NotNull StructPart node, int level ) {
+      public void nodeReached( @Nonnull StructPart node, int level ) {
         for ( int i = 0; i < level; i++ ) {
           builder.append( intendSequence );
         }

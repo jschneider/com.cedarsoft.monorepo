@@ -31,9 +31,9 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -46,9 +46,9 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ClusteredChangeListenerSupport<T> {
-  @NotNull
+  @Nonnull
   private final ChangeListenerSupport<T> transientSupport;
-  @NotNull
+  @Nonnull
   private final TransientChangeListenerSupport<T> nonTransientSupport;
 
   @Nullable
@@ -59,7 +59,7 @@ public class ClusteredChangeListenerSupport<T> {
    *
    * @param observerdObject a T object.
    */
-  public ClusteredChangeListenerSupport( @NotNull T observerdObject ) {
+  public ClusteredChangeListenerSupport( @Nonnull T observerdObject ) {
     this( observerdObject, null );
   }
 
@@ -69,7 +69,7 @@ public class ClusteredChangeListenerSupport<T> {
    * @param observerdObject a T object.
    * @param contextProvider a {@link ClusteredChangeListenerSupport.ContextProvider} object.
    */
-  public ClusteredChangeListenerSupport( @NotNull T observerdObject, @Nullable ContextProvider contextProvider ) {
+  public ClusteredChangeListenerSupport( @Nonnull T observerdObject, @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
     transientSupport = new ChangeListenerSupport<T>( observerdObject );
     nonTransientSupport = new TransientChangeListenerSupport<T>( observerdObject );
@@ -81,7 +81,7 @@ public class ClusteredChangeListenerSupport<T> {
    * @param listener    a {@link ChangeListener} object.
    * @param isTransient a boolean.
    */
-  public void addChangeListener( @NotNull ChangeListener<T> listener, boolean isTransient ) {
+  public void addChangeListener( @Nonnull ChangeListener<T> listener, boolean isTransient ) {
     if ( isTransient ) {
       transientSupport.addChangeListener( listener );
     } else {
@@ -94,7 +94,7 @@ public class ClusteredChangeListenerSupport<T> {
    *
    * @param listener a {@link ChangeListener} object.
    */
-  public void removeChangeListener( @NotNull ChangeListener<T> listener ) {
+  public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     transientSupport.removeChangeListener( listener );
     nonTransientSupport.removeChangeListener( listener );
   }
@@ -104,7 +104,7 @@ public class ClusteredChangeListenerSupport<T> {
    *
    * @param propertiesPath the properties path
    */
-  public void changed( @NonNls @NotNull String... propertiesPath ) {
+  public void changed( @Nonnull String... propertiesPath ) {
     ContextProvider provider = getContextProvider();
     if ( provider != null ) {
       changed( provider.getContext(), propertiesPath );
@@ -119,7 +119,7 @@ public class ClusteredChangeListenerSupport<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public void changed( @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
+  public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
       throw new IllegalArgumentException( "Empty properties path" );
     }
@@ -153,8 +153,8 @@ public class ClusteredChangeListenerSupport<T> {
    * @param propertiesPath a {@link String} object.
    * @return a {@link PropertyChangeListener} object.
    */
-  @NotNull
-  public PropertyChangeListener createPropertyListenerDelegate( @NotNull @NonNls String... propertiesPath ) {
+  @Nonnull
+  public PropertyChangeListener createPropertyListenerDelegate( @Nonnull String... propertiesPath ) {
     final String[] actual = new String[propertiesPath.length + 1];
     System.arraycopy( propertiesPath, 0, actual, 0, propertiesPath.length );
 

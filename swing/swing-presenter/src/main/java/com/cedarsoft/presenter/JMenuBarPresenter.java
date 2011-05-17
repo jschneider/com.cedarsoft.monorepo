@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JMenuBar;
 
@@ -47,7 +47,7 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public JMenuBar createPresentation() {
     return new JMenuBar();
   }
@@ -56,8 +56,8 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected JMenuPresenter getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected JMenuPresenter getChildPresenter( @Nonnull StructPart child ) {
     JMenuPresenter presenter = child.getLookup().lookup( JMenuPresenter.class );
     if ( presenter != null ) {
       return presenter;
@@ -69,7 +69,7 @@ public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
    * {@inheritDoc}
    */
   @Override
-  protected void bind( @NotNull JMenuBar presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull JMenuBar presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
   /**

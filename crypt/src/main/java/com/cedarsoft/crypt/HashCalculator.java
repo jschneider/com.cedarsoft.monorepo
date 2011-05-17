@@ -31,15 +31,13 @@
 
 package com.cedarsoft.crypt;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.String;
 import java.net.URL;
 import java.security.MessageDigest;
 
@@ -59,8 +57,8 @@ public class HashCalculator {
    * @param value     an array of byte.
    * @return a {@link Hash} object.
    */
-  @NotNull
-  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls byte[] value ) {
+  @Nonnull
+  public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull byte[] value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
 
@@ -71,8 +69,8 @@ public class HashCalculator {
    * @param value         an array of byte.
    * @return a {@link Hash} object.
    */
-  @NotNull
-  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls byte[] value ) {
+  @Nonnull
+  public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull byte[] value ) {
     messageDigest.reset();
     messageDigest.update( value );
 
@@ -88,8 +86,8 @@ public class HashCalculator {
    * @param value     a {@link String} object.
    * @return a {@link Hash} object.
    */
-  @NotNull
-  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull @NonNls String value ) {
+  @Nonnull
+  public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull String value ) {
     return calculate( algorithm.getMessageDigest(), value );
   }
 
@@ -100,8 +98,8 @@ public class HashCalculator {
    * @param value         a {@link String} object.
    * @return a {@link Hash} object.
    */
-  @NotNull
-  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull @NonNls String value ) {
+  @Nonnull
+  public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull String value ) {
     return calculate( messageDigest, value.getBytes() );
   }
 
@@ -114,8 +112,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull URL resource ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull URL resource ) throws IOException {
     return calculate( algorithm.getMessageDigest(), resource );
   }
 
@@ -128,8 +126,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull URL resource ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull URL resource ) throws IOException {
     InputStream in = resource.openStream();
     try {
       return calculate( messageDigest, in );
@@ -147,8 +145,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull File file ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull File file ) throws IOException {
     return calculate( algorithm.getMessageDigest(), file );
   }
 
@@ -161,8 +159,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull File file ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull File file ) throws IOException {
     InputStream in = new BufferedInputStream( new FileInputStream( file ) );
     try {
       return calculate( messageDigest, in );
@@ -180,8 +178,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull Algorithm algorithm, @NotNull InputStream resourceIn ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull InputStream resourceIn ) throws IOException {
     return calculate( algorithm.getMessageDigest(), resourceIn );
   }
 
@@ -194,8 +192,8 @@ public class HashCalculator {
    *
    * @throws IOException if any.
    */
-  @NotNull
-  public static Hash calculate( @NotNull MessageDigest messageDigest, @NotNull InputStream resourceIn ) throws IOException {
+  @Nonnull
+  public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull InputStream resourceIn ) throws IOException {
     messageDigest.reset();
 
     byte[] cache = new byte[255];

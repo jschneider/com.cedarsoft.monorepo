@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 
 /**
@@ -49,7 +49,7 @@ public class DateUtils {
    * @param end   the end (exclusive)
    * @return whether the given date is between the two given dates
    */
-  public static boolean isBetween( @NotNull LocalDate date, @NotNull LocalDate begin, @NotNull LocalDate end ) {
+  public static boolean isBetween( @Nonnull LocalDate date, @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     if ( begin.isAfter( date ) ) {
       return false;
     }

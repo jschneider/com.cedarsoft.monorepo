@@ -33,9 +33,9 @@ package com.cedarsoft.io;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,14 +59,14 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean isLink( @NotNull File file ) throws IOException {
+  public static boolean isLink( @Nonnull File file ) throws IOException {
     if ( !file.exists() ) {
       throw new FileNotFoundException( file.getAbsolutePath() );
     }
 
-    @NotNull @NonNls
+    @Nonnull
     String canonicalPath = file.getCanonicalPath();
-    @NotNull @NonNls
+    @Nonnull
     String absolutePath = file.getAbsolutePath();
     return !absolutePath.equals( canonicalPath );
   }
@@ -81,7 +81,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, @NotNull LinkType linkType ) throws IOException {
+  public static boolean createLink( @Nonnull File linkTarget, @Nonnull File linkFile, @Nonnull LinkType linkType ) throws IOException {
     return createLink( linkTarget, linkFile, linkType == LinkType.SYMBOLIC );
   }
 
@@ -94,7 +94,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createSymbolicLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
+  public static boolean createSymbolicLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException {
     return createLink( linkTarget, linkFile, true );
   }
 
@@ -107,7 +107,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createHardLink( @NotNull File linkTarget, @NotNull File linkFile ) throws IOException {
+  public static boolean createHardLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException {
     return createLink( linkTarget, linkFile, false );
   }
 
@@ -122,7 +122,7 @@ public class LinkUtils {
    *
    * @throws IOException if something went wrong
    */
-  public static boolean createLink( @NotNull File linkTarget, @NotNull File linkFile, boolean symbolic ) throws IOException {
+  public static boolean createLink( @Nonnull File linkTarget, @Nonnull File linkFile, boolean symbolic ) throws IOException {
     if ( linkFile.exists() ) {
       //Maybe the hard link still exists - we just don't know, so throw an exception
       if ( !symbolic ) {
@@ -166,7 +166,7 @@ public class LinkUtils {
    * @param linkFile the link file
    * @throws IOException if any.
    */
-  public static void deleteSymbolicLink( @NotNull File linkFile ) throws IOException {
+  public static void deleteSymbolicLink( @Nonnull File linkFile ) throws IOException {
     if ( !linkFile.exists() ) {
       throw new FileNotFoundException( "No such symlink: " + linkFile );
     }
@@ -209,8 +209,8 @@ public class LinkUtils {
    * @param parentDir the parent dir
    * @return the created file
    */
-  @NotNull
-  public static File createTempFile( @NotNull @NonNls String prefix, @NotNull @NonNls String suffix, @Nullable File parentDir ) {
+  @Nonnull
+  public static File createTempFile( @Nonnull String prefix, @Nonnull String suffix, @Nullable File parentDir ) {
     Random rand = new Random();
 
     String parent = parentDir == null ? System.getProperty( "java.io.tmpdir" ) : parentDir.getPath();
@@ -232,7 +232,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public boolean isSymbolicLink( @NotNull File file ) throws IOException {
+  public boolean isSymbolicLink( @Nonnull File file ) throws IOException {
     return !file.getAbsoluteFile().equals( file.getCanonicalFile() );
   }
 }

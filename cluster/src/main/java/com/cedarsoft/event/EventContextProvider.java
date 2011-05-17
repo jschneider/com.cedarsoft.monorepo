@@ -31,7 +31,7 @@
 
 package com.cedarsoft.event;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import java.lang.Object;
 

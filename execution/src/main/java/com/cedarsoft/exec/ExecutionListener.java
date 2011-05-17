@@ -31,7 +31,7 @@
 
 package com.cedarsoft.exec;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Listener that is notified about the execution of a process
@@ -45,7 +45,7 @@ public interface ExecutionListener {
    *
    * @param process the process that has been started
    */
-  void executionStarted( @NotNull Process process );
+  void executionStarted( @Nonnull Process process );
 
   /**
    * Is called whenever the execution has been finished

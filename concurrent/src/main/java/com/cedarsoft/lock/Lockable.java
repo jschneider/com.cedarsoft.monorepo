@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.concurrent.locks.ReadWriteLock;
 
@@ -46,6 +46,6 @@ public interface Lockable {
    *
    * @return the lock
    */
-  @NotNull
+  @Nonnull
   ReadWriteLock getLock();
 }

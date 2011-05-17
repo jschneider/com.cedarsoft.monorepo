@@ -33,8 +33,8 @@ package com.cedarsoft.zip;
 
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -49,7 +49,7 @@ public class ZipAssertions {
   private ZipAssertions() {
   }
 
-  public static void compare( @NotNull ZipFile expected, @NotNull ZipFile actual ) {
+  public static void compare( @Nonnull ZipFile expected, @Nonnull ZipFile actual ) {
     if ( expected == actual ) {
       return;
     }

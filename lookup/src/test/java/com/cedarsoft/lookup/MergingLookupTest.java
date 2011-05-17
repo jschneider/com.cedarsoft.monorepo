@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class MergingLookupTest {
 
     mergingLookup.addChangeListener( String.class, new LookupChangeListener<String>() {
       @Override
-      public void lookupChanged( @NotNull LookupChangeEvent<? extends String> event ) {
+      public void lookupChanged( @Nonnull LookupChangeEvent<? extends String> event ) {
         newValues.add( event.getNewValue() );
       }
     } );

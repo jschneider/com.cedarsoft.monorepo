@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -82,7 +82,7 @@ public class ObservableObjectAccessViewTest {
     final ClusteredElementsCollection<Integer> core = new ClusteredElementsCollection<Integer>();
     DelegatingClusteredObservableObjectAccess<Integer> access = new DelegatingClusteredObservableObjectAccess<Integer>() {
       @Override
-      @NotNull
+      @Nonnull
       public ClusteredObservableObjectAccess<Integer> getDelegate() {
         return core;
       }
@@ -96,17 +96,17 @@ public class ObservableObjectAccessViewTest {
 
     view.addElementListener( new SingleElementsListener<Integer>() {
       @Override
-      public void elementDeleted( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementDeleted( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         deleted.add( element );
       }
 
       @Override
-      public void elementAdded( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementAdded( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         added.add( element );
       }
 
       @Override
-      public void elementChanged( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementChanged( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         changed.add( element );
       }
     } );
@@ -129,17 +129,17 @@ public class ObservableObjectAccessViewTest {
 
     view.addElementListener( new SingleElementsListener<Integer>() {
       @Override
-      public void elementDeleted( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementDeleted( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         deleted.add( element );
       }
 
       @Override
-      public void elementAdded( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementAdded( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         added.add( element );
       }
 
       @Override
-      public void elementChanged( @NotNull ObservableCollection<? extends Integer> source, @NotNull Integer element, int index ) {
+      public void elementChanged( @Nonnull ObservableCollection<? extends Integer> source, @Nonnull Integer element, int index ) {
         changed.add( element );
       }
     } );

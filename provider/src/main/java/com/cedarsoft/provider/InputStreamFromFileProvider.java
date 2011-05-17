@@ -31,7 +31,7 @@
 
 package com.cedarsoft.provider;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -45,7 +45,7 @@ import java.io.InputStream;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InputStreamFromFileProvider implements Provider<InputStream, IOException> {
-  @NotNull
+  @Nonnull
   private final File file;
 
   /**
@@ -53,7 +53,7 @@ public class InputStreamFromFileProvider implements Provider<InputStream, IOExce
    *
    * @param file a {@link File} object.
    */
-  public InputStreamFromFileProvider( @NotNull File file ) {
+  public InputStreamFromFileProvider( @Nonnull File file ) {
     this.file = file;
   }
 
@@ -61,7 +61,7 @@ public class InputStreamFromFileProvider implements Provider<InputStream, IOExce
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public InputStream provide() throws IOException {
     return new BufferedInputStream( new FileInputStream( file ) );
   }
@@ -70,7 +70,7 @@ public class InputStreamFromFileProvider implements Provider<InputStream, IOExce
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public String getDescription() {
     return file.getAbsolutePath();
   }

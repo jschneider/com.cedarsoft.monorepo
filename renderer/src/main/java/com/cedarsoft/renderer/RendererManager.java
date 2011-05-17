@@ -32,7 +32,7 @@
 package com.cedarsoft.renderer;
 
 import com.cedarsoft.registry.TypeRegistry;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Class;
 import java.lang.IllegalArgumentException;
@@ -44,7 +44,7 @@ import java.util.Map;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class RendererManager {
-  @NotNull
+  @Nonnull
   private final TypeRegistry<Renderer<?, Object>> registry;
 
   /**
@@ -69,7 +69,7 @@ public class RendererManager {
    * @param renderer a {@link Map} object.
    */
   @Deprecated
-  public void setRenderer( @NotNull Map<Class<?>, Renderer<?, Object>> renderer ) {
+  public void setRenderer( @Nonnull Map<Class<?>, Renderer<?, Object>> renderer ) {
     registry.setElements( renderer );
   }
 
@@ -79,7 +79,7 @@ public class RendererManager {
    * @param type     a {@link Class} object.
    * @param renderer a {@link Renderer} object.
    */
-  public <T> void addRenderer( @NotNull Class<T> type, @NotNull Renderer<? super T, Object> renderer ) {
+  public <T> void addRenderer( @Nonnull Class<T> type, @Nonnull Renderer<? super T, Object> renderer ) {
     registry.addElement( type, renderer );
   }
 
@@ -92,8 +92,8 @@ public class RendererManager {
    * @throws IllegalArgumentException
    *          if any.
    */
-  @NotNull
-  public <T> Renderer<? super T, Object> getRenderer( @NotNull Class<T> type ) throws IllegalArgumentException {
+  @Nonnull
+  public <T> Renderer<? super T, Object> getRenderer( @Nonnull Class<T> type ) throws IllegalArgumentException {
     return ( Renderer<T, Object> ) registry.getElement( type );
   }
 }

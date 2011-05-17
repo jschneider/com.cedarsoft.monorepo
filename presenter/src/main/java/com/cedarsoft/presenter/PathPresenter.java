@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * This presenter creates a string representation of the path of the given node.
@@ -45,8 +45,8 @@ public class PathPresenter implements Presenter<String> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String present( @NotNull StructPart struct ) {
+  @Nonnull
+  public String present( @Nonnull StructPart struct ) {
     if ( struct instanceof Node ) {
       return ( ( Node ) struct ).getPath().toString();
     }

@@ -33,8 +33,8 @@ package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.CanceledException;
 import com.cedarsoft.lookup.Lookups;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.IllegalStateException;
 import java.util.ArrayList;
@@ -48,9 +48,9 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Route {
-  @NotNull
+  @Nonnull
   private static final Route EMPTY = new Route( Collections.<Node>emptyList() );
-  @NotNull
+  @Nonnull
   private final List<Node> nodes = new ArrayList<Node>();
 
   /**
@@ -58,7 +58,7 @@ public class Route {
    *
    * @param nodes the nodes
    */
-  public Route( @NotNull List<? extends Node> nodes ) {
+  public Route( @Nonnull List<? extends Node> nodes ) {
     this.nodes.addAll( nodes );
   }
 
@@ -68,8 +68,8 @@ public class Route {
    * @param nodes the nodes
    * @return the path
    */
-  @NotNull
-  public static Path buildRoute( @NotNull List<? extends Node> nodes ) {
+  @Nonnull
+  public static Path buildRoute( @Nonnull List<? extends Node> nodes ) {
     List<String> elements = new ArrayList<String>();
     for ( Node node : nodes ) {
       elements.add( node.getName() );
@@ -85,7 +85,7 @@ public class Route {
    * @throws IllegalStateException
    *          if the route is empty
    */
-  @NotNull
+  @Nonnull
   public Node getLastNode() throws IllegalStateException {
     if ( nodes.isEmpty() ) {
       throw new IllegalStateException( "Path has no nodes" );
@@ -98,7 +98,7 @@ public class Route {
    *
    * @return the nodes for this route
    */
-  @NotNull
+  @Nonnull
   public List<? extends Node> getNodes() {
     return Collections.unmodifiableList( nodes );
   }
@@ -117,7 +117,7 @@ public class Route {
    *
    * @return the path
    */
-  @NotNull
+  @Nonnull
   public Path getPath() {
     List<String> elements = new ArrayList<String>();
     for ( Node node : nodes ) {
@@ -159,8 +159,8 @@ public class Route {
    * @throws ChildNotFoundException
    *          if any.
    */
-  @NotNull
-  public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path ) throws ChildNotFoundException {
+  @Nonnull
+  public static Route buildRoute( @Nonnull Node rootNode, @Nonnull Path path ) throws ChildNotFoundException {
     return buildRouteInternal( rootNode, path, null );
   }
 
@@ -172,8 +172,8 @@ public class Route {
    * @param nodeFactory the node factory that creates the nodes. The context will contain the parent node
    * @return the route
    */
-  @NotNull
-  public static Route buildRoute( @NotNull Node rootNode, @NotNull Path path, @NotNull NodeFactory nodeFactory ) {
+  @Nonnull
+  public static Route buildRoute( @Nonnull Node rootNode, @Nonnull Path path, @Nonnull NodeFactory nodeFactory ) {
     return buildRouteInternal( rootNode, path, nodeFactory );
   }
 
@@ -188,8 +188,8 @@ public class Route {
    * @throws ChildNotFoundException
    *          if any.
    */
-  @NotNull
-  public static Route buildRouteInternal( @NotNull Node rootNode, @NotNull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {
+  @Nonnull
+  public static Route buildRouteInternal( @Nonnull Node rootNode, @Nonnull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {
     Iterator<? extends String> iterator = path.getElements().iterator();
     //If the path is absolute, we have to verify the root node
     if ( path.isAbsolute() ) {

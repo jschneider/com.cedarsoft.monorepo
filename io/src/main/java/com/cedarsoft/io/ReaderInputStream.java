@@ -31,9 +31,9 @@
 
 package com.cedarsoft.io;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,11 +43,10 @@ import java.io.Reader;
  * @noinspection RefusedBequest,SynchronizedMethod
  */
 public class ReaderInputStream extends InputStream {
-  @NotNull
+  @Nonnull
   private final Reader in;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String encoding;
 
   @Nullable
@@ -55,11 +54,11 @@ public class ReaderInputStream extends InputStream {
 
   private int begin;
 
-  public ReaderInputStream( @NotNull Reader in ) {
+  public ReaderInputStream( @Nonnull Reader in ) {
     this( in, null );
   }
 
-  public ReaderInputStream( @NotNull Reader in, @NonNls @Nullable String encoding ) {
+  public ReaderInputStream( @Nonnull Reader in, @Nonnull @Nullable String encoding ) {
     this.in = in;
     if ( encoding == null ) {
       this.encoding = System.getProperty( "file.encoding" );

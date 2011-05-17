@@ -31,8 +31,8 @@
 
 package com.cedarsoft.cmd;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.text.MessageFormat;
 
@@ -43,25 +43,21 @@ import java.text.MessageFormat;
  */
 public class AnsiAwareConsolePrinter implements ConsolePrinter {
   private static final char ANSI_ESCAPE = ( char ) 27;
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final String ANSI_BLUE = ANSI_ESCAPE + "[1;34m";
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final String ANSI_RED = ANSI_ESCAPE + "[1;31m";
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final String ANSI_GREEN = ANSI_ESCAPE + "[1;32m";
-  @NotNull
-  @NonNls
+  @Nonnull
   private static final String ANSI_DEFAULT = ANSI_ESCAPE + "[0m";
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createError( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createError( @Nonnull String message, @Nonnull Object... objects ) {
     return ANSI_RED + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
@@ -69,8 +65,8 @@ public class AnsiAwareConsolePrinter implements ConsolePrinter {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createWarning( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createWarning( @Nonnull String message, @Nonnull Object... objects ) {
     return ANSI_BLUE + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 
@@ -78,8 +74,8 @@ public class AnsiAwareConsolePrinter implements ConsolePrinter {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public String createSuccess( @NotNull String message, @NotNull Object... objects ) {
+  @Nonnull
+  public String createSuccess( @Nonnull String message, @Nonnull Object... objects ) {
     return ANSI_GREEN + MessageFormat.format( message, objects ) + ANSI_DEFAULT;
   }
 }

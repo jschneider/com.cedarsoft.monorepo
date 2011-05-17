@@ -31,9 +31,9 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 
@@ -43,7 +43,7 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class UnsupportedVersionException extends VersionException {
-  @NotNull
+  @Nonnull
   private final Version actual;
 
   @Nullable
@@ -54,7 +54,7 @@ public class UnsupportedVersionException extends VersionException {
    *
    * @param actual a {@link Version} object.
    */
-  public UnsupportedVersionException( @NotNull Version actual ) {
+  public UnsupportedVersionException( @Nonnull Version actual ) {
     this( actual, null );
   }
 
@@ -64,7 +64,7 @@ public class UnsupportedVersionException extends VersionException {
    * @param actual         a {@link Version} object.
    * @param supportedRange a {@link VersionRange} object.
    */
-  public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
+  public UnsupportedVersionException( @Nonnull Version actual, @Nullable VersionRange supportedRange ) {
     this( actual, supportedRange, "Unsupported version. " );
   }
 
@@ -75,7 +75,7 @@ public class UnsupportedVersionException extends VersionException {
    * @param supportedRange a {@link VersionRange} object.
    * @param messagePrefix  a {@link String} object.
    */
-  public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix ) {
+  public UnsupportedVersionException( @Nonnull Version actual, @Nullable VersionRange supportedRange, @Nonnull String messagePrefix ) {
     this( actual, supportedRange, messagePrefix, true );
   }
 
@@ -87,7 +87,7 @@ public class UnsupportedVersionException extends VersionException {
    * @param messagePrefix  a {@link String} object.
    * @param appendSuffix   a boolean.
    */
-  public UnsupportedVersionException( @NotNull Version actual, @Nullable VersionRange supportedRange, @NotNull String messagePrefix, boolean appendSuffix ) {
+  public UnsupportedVersionException( @Nonnull Version actual, @Nullable VersionRange supportedRange, @Nonnull String messagePrefix, boolean appendSuffix ) {
     super( messagePrefix, createMessageSuffix( actual, supportedRange ), appendSuffix );
     this.actual = actual;
     this.supportedRange = supportedRange;
@@ -98,7 +98,7 @@ public class UnsupportedVersionException extends VersionException {
    *
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public Version getActual() {
     return actual;
   }
@@ -113,9 +113,8 @@ public class UnsupportedVersionException extends VersionException {
     return supportedRange;
   }
 
-  @NotNull
-  @NonNls
-  private static String createMessageSuffix( @NotNull Version actual, @Nullable VersionRange supportedRange ) {
+  @Nonnull
+  private static String createMessageSuffix( @Nonnull Version actual, @Nullable VersionRange supportedRange ) {
     if ( supportedRange == null ) {
       return "Was <" + actual + ">";
     }

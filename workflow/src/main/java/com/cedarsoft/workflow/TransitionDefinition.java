@@ -31,7 +31,7 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,11 +45,11 @@ import java.util.List;
  * @param <T> the type of object that is used within the workflow
  */
 public class TransitionDefinition<T> {
-  @NotNull
+  @Nonnull
   private final State<T> source;
-  @NotNull
+  @Nonnull
   private final State<T> target;
-  @NotNull
+  @Nonnull
   private final List<Action<T>> actions = new ArrayList<Action<T>>();
 
   /**
@@ -59,7 +59,7 @@ public class TransitionDefinition<T> {
    * @param target  a {@link State} object.
    * @param actions a {@link Action} object.
    */
-  public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull Action<T>... actions ) {
+  public TransitionDefinition( @Nonnull State<T> source, @Nonnull State<T> target, @Nonnull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
   }
 
@@ -70,7 +70,7 @@ public class TransitionDefinition<T> {
    * @param target  the target
    * @param actions a {@link List} object.
    */
-  public TransitionDefinition( @NotNull State<T> source, @NotNull State<T> target, @NotNull List<? extends Action<T>> actions ) {
+  public TransitionDefinition( @Nonnull State<T> source, @Nonnull State<T> target, @Nonnull List<? extends Action<T>> actions ) {
     this.source = source;
     this.target = target;
     this.actions.addAll( actions );
@@ -81,7 +81,7 @@ public class TransitionDefinition<T> {
    *
    * @return a {@link State} object.
    */
-  @NotNull
+  @Nonnull
   public State<T> getSource() {
     return source;
   }
@@ -91,7 +91,7 @@ public class TransitionDefinition<T> {
    *
    * @return a {@link State} object.
    */
-  @NotNull
+  @Nonnull
   public State<T> getTarget() {
     return target;
   }
@@ -101,7 +101,7 @@ public class TransitionDefinition<T> {
    *
    * @return the action (if set)
    */
-  @NotNull
+  @Nonnull
   public List<? extends Action<T>> getActions() {
     return Collections.unmodifiableList( actions );
   }
@@ -112,7 +112,7 @@ public class TransitionDefinition<T> {
    * @return a {@link Action} object.
    */
   @Deprecated
-  @NotNull
+  @Nonnull
   public Action<T> getFirstAction() {
     return actions.get( 0 );
   }

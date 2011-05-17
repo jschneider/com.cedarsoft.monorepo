@@ -31,9 +31,9 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 /**
@@ -45,20 +45,17 @@ public interface TimeEntry extends Comparable<TimeEntry> {
   /**
    * Constant <code>PROPERTY_BEGIN="begin"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_BEGIN = "begin";
   /**
    * Constant <code>PROPERTY_END="end"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_END = "end";
   /**
    * Constant <code>PROPERTY_HAS_END="hasEnd"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String PROPERTY_HAS_END = "hasEnd";
 
   /**
@@ -66,7 +63,7 @@ public interface TimeEntry extends Comparable<TimeEntry> {
    *
    * @return the begin
    */
-  @NotNull
+  @Nonnull
   LocalDate getBegin();
 
   /**
@@ -97,5 +94,5 @@ public interface TimeEntry extends Comparable<TimeEntry> {
    * @param date the date
    * @return whether the entry is active at the given date
    */
-  boolean isActiveAt( @NotNull LocalDate date );
+  boolean isActiveAt( @Nonnull LocalDate date );
 }

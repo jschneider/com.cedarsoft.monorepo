@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 
@@ -48,8 +48,8 @@ public class JComponentPresenter implements Presenter<JComponent> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public JComponent present( @NotNull StructPart struct ) {
+  @Nonnull
+  public JComponent present( @Nonnull StructPart struct ) {
     JComponent component = struct.getLookup().lookup( JComponent.class );
     if ( component == null ) {
       throw new IllegalStateException( "No JComponent found in lookup" );

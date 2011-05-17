@@ -31,7 +31,7 @@
 
 package com.cedarsoft.workflow;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,15 +43,15 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Workflow<T> {
-  @NotNull
+  @Nonnull
   private final WorkflowDefinition<T> workflowDefinition;
-  @NotNull
+  @Nonnull
   private final T bean;
 
-  @NotNull
+  @Nonnull
   private State<T> currentState;
 
-  @NotNull
+  @Nonnull
   private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
   /**
@@ -60,7 +60,7 @@ public class Workflow<T> {
    * @param bean               the bean the workflow is created for
    * @param workflowDefinition the definition
    */
-  public Workflow( @NotNull T bean, @NotNull WorkflowDefinition<T> workflowDefinition ) {
+  public Workflow( @Nonnull T bean, @Nonnull WorkflowDefinition<T> workflowDefinition ) {
     this.workflowDefinition = workflowDefinition;
     this.bean = bean;
     currentState = workflowDefinition.getInitialState();
@@ -71,7 +71,7 @@ public class Workflow<T> {
    *
    * @return the bean
    */
-  @NotNull
+  @Nonnull
   public T getBean() {
     return bean;
   }
@@ -81,7 +81,7 @@ public class Workflow<T> {
    *
    * @return the workflow definition
    */
-  @NotNull
+  @Nonnull
   public WorkflowDefinition<T> getWorkflowDefinition() {
     return workflowDefinition;
   }
@@ -91,7 +91,7 @@ public class Workflow<T> {
    *
    * @return the current state
    */
-  @NotNull
+  @Nonnull
   public State<T> getCurrentState() {
     lock.readLock().lock();
     try {
@@ -106,7 +106,7 @@ public class Workflow<T> {
    *
    * @return the possible transitions
    */
-  @NotNull
+  @Nonnull
   public List<? extends Transition<T>> getPossibleTransition() {
     List<Transition<T>> list = new ArrayList<Transition<T>>();
     for ( TransitionDefinition<T> definition : getCurrentState().getTransitions() ) {
@@ -120,14 +120,14 @@ public class Workflow<T> {
    *
    * @return the currently possible transition definitions
    */
-  @NotNull
+  @Nonnull
   @Deprecated
   public List<? extends TransitionDefinition<T>> getPossibleTransitionDefinitions() {
     return getCurrentState().getTransitions();
   }
 
-  @NotNull
-  private Transition<T> createTransition( @NotNull final TransitionDefinition<T> definition ) {
+  @Nonnull
+  private Transition<T> createTransition( @Nonnull final TransitionDefinition<T> definition ) {
     return new Transition<T>() {
       @Override
       public void transit() {

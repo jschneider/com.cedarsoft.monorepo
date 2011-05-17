@@ -33,7 +33,7 @@ package com.cedarsoft.codegen;
 
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JStatement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,42 +46,42 @@ public class Expressions {
   /**
    * The expression itself
    */
-  @NotNull
+  @Nonnull
   private final JExpression expression;
-  @NotNull
+  @Nonnull
   private final List<? extends JStatement> before;
-  @NotNull
+  @Nonnull
   private final List<? extends JStatement> after;
 
-  public Expressions( @NotNull JExpression expression ) {
+  public Expressions( @Nonnull JExpression expression ) {
     this( expression, Collections.<JStatement>emptyList(), Collections.<JStatement>emptyList() );
   }
 
-  public Expressions( @NotNull JExpression expression, @NotNull JStatement before ) {
+  public Expressions( @Nonnull JExpression expression, @Nonnull JStatement before ) {
     this( expression, Collections.<JStatement>singletonList( before ), Collections.<JStatement>emptyList() );
   }
 
-  public Expressions( @NotNull JExpression expression, @NotNull JStatement before, @NotNull JStatement after ) {
+  public Expressions( @Nonnull JExpression expression, @Nonnull JStatement before, @Nonnull JStatement after ) {
     this( expression, Collections.<JStatement>singletonList( before ), Collections.<JStatement>singletonList( after ) );
   }
 
-  public Expressions( @NotNull JExpression expression, @NotNull List<? extends JStatement> before, @NotNull List<? extends JStatement> after ) {
+  public Expressions( @Nonnull JExpression expression, @Nonnull List<? extends JStatement> before, @Nonnull List<? extends JStatement> after ) {
     this.expression = expression;
     this.before = new ArrayList<JStatement>( before );
     this.after = new ArrayList<JStatement>( after );
   }
 
-  @NotNull
+  @Nonnull
   public JExpression getExpression() {
     return expression;
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends JStatement> getBefore() {
     return Collections.unmodifiableList( before );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends JStatement> getAfter() {
     return Collections.unmodifiableList( after );
   }

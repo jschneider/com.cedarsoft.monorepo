@@ -33,7 +33,7 @@ package com.cedarsoft.registry;
 
 import com.cedarsoft.hierarchy.AbstractChildDetector;
 import com.cedarsoft.hierarchy.ChildDetector;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import javax.swing.JComponent;
@@ -67,16 +67,16 @@ public class TypeRegistryTest {
   public void testInterfaces() {
     registry.addElement( String.class, new AbstractChildDetector<String, Object>() {
       @Override
-      @NotNull
-      public List<? extends Object> findChildren( @NotNull String parent ) {
+      @Nonnull
+      public List<? extends Object> findChildren( @Nonnull String parent ) {
         return Collections.singletonList( "String" );
       }
     } );
 
     registry.addElement( Integer.class, new AbstractChildDetector<Integer, Object>() {
       @Override
-      @NotNull
-      public List<? extends Object> findChildren( @NotNull Integer parent ) {
+      @Nonnull
+      public List<? extends Object> findChildren( @Nonnull Integer parent ) {
         return Collections.singletonList( "Integer" );
       }
     } );
@@ -89,8 +89,8 @@ public class TypeRegistryTest {
   public void testSuperTypes() {
     registry.addElement( Collection.class, new AbstractChildDetector<Object, Object>() {
       @Override
-      @NotNull
-      public List<? extends Object> findChildren( @NotNull Object parent ) {
+      @Nonnull
+      public List<? extends Object> findChildren( @Nonnull Object parent ) {
         return Collections.singletonList( "Collection" );
       }
     } );
@@ -104,8 +104,8 @@ public class TypeRegistryTest {
   public void testFindDefault() {
     registry.addElement( Object.class, new AbstractChildDetector<Object, Object>() {
       @Override
-      @NotNull
-      public List<? extends Object> findChildren( @NotNull Object parent ) {
+      @Nonnull
+      public List<? extends Object> findChildren( @Nonnull Object parent ) {
         throw new UnsupportedOperationException();
       }
     } );
@@ -117,8 +117,8 @@ public class TypeRegistryTest {
   public void testRegistry() {
     registry.addElement( JComponent.class, new AbstractChildDetector<String, String>() {
       @Override
-      @NotNull
-      public List<? extends String> findChildren( @NotNull String parent ) {
+      @Nonnull
+      public List<? extends String> findChildren( @Nonnull String parent ) {
         throw new UnsupportedOperationException();
       }
     } );
@@ -135,8 +135,8 @@ public class TypeRegistryTest {
 
     registry.addElement( JComponent.class, new AbstractChildDetector<String, String>() {
       @Override
-      @NotNull
-      public List<? extends String> findChildren( @NotNull String parent ) {
+      @Nonnull
+      public List<? extends String> findChildren( @Nonnull String parent ) {
         throw new UnsupportedOperationException();
       }
     } );

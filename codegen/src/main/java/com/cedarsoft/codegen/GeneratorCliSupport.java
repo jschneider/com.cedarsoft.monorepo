@@ -37,8 +37,8 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.MissingOptionException;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -49,47 +49,46 @@ import java.util.List;
  *
  */
 public class GeneratorCliSupport {
-  @NonNls
+  @Nonnull
   public static final String HELP_OPTION = "h";
-  @NonNls
+  @Nonnull
   public static final String OPTION_DESTINATION = "d";
-  @NonNls
+  @Nonnull
   public static final String OPTION_RESOURCES_DESTINATION = "r";
-  @NonNls
+  @Nonnull
   public static final String OPTION_TEST_DESTINATION = "t";
-  @NonNls
+  @Nonnull
   public static final String OPTION_TEST_RESOURCES_DESTINATION = "s";
 
-  @NotNull
+  @Nonnull
   private final AbstractGenerator generator;
-  @NotNull
+  @Nonnull
   private final PrintWriter logOut;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String commandName;
 
-  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName ) {
+  public GeneratorCliSupport( @Nonnull AbstractGenerator generator, @Nonnull String commandName ) {
     this( generator, commandName, new PrintWriter( System.out ) );
   }
 
-  public GeneratorCliSupport( @NotNull AbstractGenerator generator, @NotNull @NonNls String commandName, @NotNull @NonNls PrintWriter logOut ) {
+  public GeneratorCliSupport( @Nonnull AbstractGenerator generator, @Nonnull String commandName, @Nonnull PrintWriter logOut ) {
     this.generator = generator;
     this.logOut = logOut;
     this.commandName = commandName;
   }
 
-  protected void printError( @NotNull Options options, @NotNull @NonNls String errorMessage ) {
+  protected void printError( @Nonnull Options options, @Nonnull String errorMessage ) {
     logOut.println( errorMessage );
     printHelp( options );
   }
 
-  protected void printHelp( @NotNull Options options ) {
+  protected void printHelp( @Nonnull Options options ) {
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp( logOut, HelpFormatter.DEFAULT_WIDTH, commandName + " -d <serializer dest dir> -t <test dest dir> path-to-class", null, options, 0, 0, null );
   }
 
-  @NotNull
+  @Nonnull
   protected Options buildOptions() {
     Options options = new Options();
     {
@@ -116,7 +115,7 @@ public class GeneratorCliSupport {
     return options;
   }
 
-  public void run( @NotNull @NonNls String[] args ) throws Exception {
+  public void run( @Nonnull String[] args ) throws Exception {
     try {
       Options options = buildOptions();
       CommandLine commandLine;

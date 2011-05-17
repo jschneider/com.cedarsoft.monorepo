@@ -34,10 +34,9 @@ package com.cedarsoft.file;
 import com.cedarsoft.StillContainedException;
 import com.cedarsoft.registry.DefaultRegistry;
 import com.cedarsoft.registry.RegistryFactory;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.TestOnly;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 import java.util.Arrays;
@@ -54,42 +53,41 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * Constant <code>LIGHT_ZONE</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType LIGHT_ZONE = new FileType( "LightZone", "application/lightzone", true, new Extension( "_", "lzn.jpg" ) );
   /**
    * Constant <code>JPEG</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType JPEG = new FileType( "JPEG", "image/jpeg",false, new Extension( ".", "jpg" ), new Extension( ".", "jpeg" ) );
   /**
    * Constant <code>TIFF</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType TIFF = new FileType( "TIFF", "image/tiff",false, new Extension( ".", "tiff" ), new Extension( ".", "tiff" ) );
   /**
    * Constant <code>GIMP</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType GIMP = new FileType( "Gimp", "image/xcf",false, new Extension( ".", "xcf" ) );
   /**
    * Constant <code>PHOTO_SHOP</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType PHOTO_SHOP = new FileType( "Photoshop", "image/psd", false, new Extension( ".", "psd" ) );
   /**
    * Constant <code>RAW_CANON</code>
    */
-  @NotNull
+  @Nonnull
   public static final FileType RAW_CANON = new FileType( "Canon Raw", "image/cr2", false, new Extension( ".", "cr2" ) );
 
-  @NotNull
+  @Nonnull
   private static final List<FileType> DEFAULT = Arrays.asList( LIGHT_ZONE, JPEG, TIFF, GIMP, RAW_CANON, PHOTO_SHOP );
 
   /**
    * <p>Constructor for FileTypeRegistry.</p>
    */
   @Deprecated
-  @TestOnly
   public FileTypeRegistry() {
     this( true );
   }
@@ -100,7 +98,6 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @param registerDefaultTypes a boolean.
    */
   @Deprecated
-  @TestOnly
   public FileTypeRegistry( boolean registerDefaultTypes ) {
     if ( registerDefaultTypes ) {
       ensureDefaultTypesRegistered();
@@ -115,7 +112,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @throws StillContainedException
    *          if any.
    */
-  public FileTypeRegistry( @NotNull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {
+  public FileTypeRegistry( @Nonnull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {
     super( storedObjects, fileTypeComparator );
   }
 
@@ -124,7 +121,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    *
    * @return the file types
    */
-  @NotNull
+  @Nonnull
   public List<? extends FileType> getFileTypes() {
     return getStoredObjects();
   }
@@ -157,11 +154,11 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @param id a {@link String} object.
    * @return a {@link FileType} object.
    */
-  @NotNull
-  public FileType valueOf( @NotNull @NonNls final String id ) {
+  @Nonnull
+  public FileType valueOf( @Nonnull final String id ) {
     return findStoredObject( new Matcher<FileType>() {
       @Override
-      public boolean matches( @NotNull FileType object ) {
+      public boolean matches( @Nonnull FileType object ) {
         return object.getId().equals( id );
       }
     }, "No FileType found for <" + id + '>' );
@@ -173,11 +170,11 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @param fileName a {@link FileName} object.
    * @return a {@link FileType} object.
    */
-  @NotNull
-  public FileType get( @NotNull final FileName fileName ) {
+  @Nonnull
+  public FileType get( @Nonnull final FileName fileName ) {
     return findStoredObject( new Matcher<FileType>() {
       @Override
-      public boolean matches( @NotNull FileType object ) {
+      public boolean matches( @Nonnull FileType object ) {
         return object.matches( fileName );
       }
     }, "No FileType found for file <" + fileName + '>' );
@@ -189,11 +186,11 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @param fileName a {@link String} object.
    * @return a {@link FileType} object.
    */
-  @NotNull
-  public FileType get( @NotNull @NonNls final String fileName ) {
+  @Nonnull
+  public FileType get( @Nonnull final String fileName ) {
     return findStoredObject( new Matcher<FileType>() {
       @Override
-      public boolean matches( @NotNull FileType object ) {
+      public boolean matches( @Nonnull FileType object ) {
         return object.matches( fileName );
       }
     }, "No FileType found for file <" + fileName + '>' );
@@ -205,16 +202,16 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * @param fileName the file name to parse
    * @return the file name
    */
-  @NotNull
-  public FileName parseFileName( @NotNull @NonNls String fileName ) {
+  @Nonnull
+  public FileName parseFileName( @Nonnull String fileName ) {
     FileType type = get( fileName );
     return type.getFileName( fileName );
   }
 
   public static class Factory implements RegistryFactory<FileType, FileTypeRegistry> {
-    @NotNull
+    @Nonnull
     @Override
-    public FileTypeRegistry createRegistry( @NotNull List<? extends FileType> objects, @NotNull Comparator<FileType> comparator ) {
+    public FileTypeRegistry createRegistry( @Nonnull List<? extends FileType> objects, @Nonnull Comparator<FileType> comparator ) {
       return new FileTypeRegistry( objects, comparator );
     }
   }

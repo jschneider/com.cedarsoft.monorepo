@@ -31,8 +31,8 @@
 
 package com.cedarsoft.swing;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
@@ -58,7 +58,7 @@ public class ImageComponent extends JComponent {
    * {@inheritDoc}
    */
   @Override
-  protected void paintComponent( @NotNull Graphics g ) {
+  protected void paintComponent( @Nonnull Graphics g ) {
     super.paintComponent( g );
     if ( image != null )
       g.drawImage( image, 0, 0, this );
@@ -75,7 +75,7 @@ public class ImageComponent extends JComponent {
    *
    * @param painter the painter
    */
-  public void addPainter( @NotNull Painter painter ) {
+  public void addPainter( @Nonnull Painter painter ) {
     painters.add( painter );
   }
 
@@ -99,7 +99,7 @@ public class ImageComponent extends JComponent {
    * @param imageFile the image file
    * @throws IOException if any.
    */
-  public void setImage( @NotNull File imageFile ) throws IOException {
+  public void setImage( @Nonnull File imageFile ) throws IOException {
     setImage( ImageIO.read( imageFile ) );
   }
 
@@ -131,6 +131,6 @@ public class ImageComponent extends JComponent {
      * @param g         the context
      * @param component the component
      */
-    void paint( @NotNull Graphics g, @NotNull JComponent component );
+    void paint( @Nonnull Graphics g, @Nonnull JComponent component );
   }
 }

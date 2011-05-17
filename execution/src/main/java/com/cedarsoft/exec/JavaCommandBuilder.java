@@ -31,9 +31,9 @@
 
 package com.cedarsoft.exec;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.lang.String;
@@ -48,17 +48,15 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class JavaCommandBuilder {
-  @NonNls
-  @NotNull
+  @Nonnull
   private String javaBin = "java";
-  @NotNull
+  @Nonnull
   private final List<String> classPathElements = new ArrayList<String>();
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String mainClass;
-  @NotNull
+  @Nonnull
   private final List<String> vmProperties = new ArrayList<String>();
-  @NotNull
+  @Nonnull
   private final List<String> arguments = new ArrayList<String>();
 
   /**
@@ -66,7 +64,7 @@ public class JavaCommandBuilder {
    *
    * @param mainClass a {@link String} object.
    */
-  public JavaCommandBuilder( @NotNull @NonNls String mainClass ) {
+  public JavaCommandBuilder( @Nonnull String mainClass ) {
     this.mainClass = mainClass;
   }
 
@@ -75,7 +73,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getClassPathElements() {
     return Collections.unmodifiableList( classPathElements );
   }
@@ -85,7 +83,7 @@ public class JavaCommandBuilder {
    *
    * @param classPathElements a {@link String} object.
    */
-  public void setClassPathElements( @NotNull @NonNls String... classPathElements ) {
+  public void setClassPathElements( @Nonnull String... classPathElements ) {
     this.classPathElements.clear();
     for ( String element : classPathElements ) {
       if ( element == null || element.length() == 0 ) {
@@ -100,8 +98,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getJavaBin() {
     return javaBin;
   }
@@ -112,7 +109,7 @@ public class JavaCommandBuilder {
    * @return the classpath
    */
   @Nullable
-  @NonNls
+  @Nonnull
   public String getClassPath() {
     if ( classPathElements.isEmpty() ) {
       return null;
@@ -145,8 +142,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getMainClass() {
     return mainClass;
   }
@@ -156,7 +152,7 @@ public class JavaCommandBuilder {
    *
    * @param classPathElement a {@link String} object.
    */
-  public void addClassPathElement( @NotNull @NonNls String classPathElement ) {
+  public void addClassPathElement( @Nonnull String classPathElement ) {
     classPathElements.add( classPathElement );
   }
 
@@ -165,7 +161,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<String> getVmProperties() {
     return Collections.unmodifiableList( vmProperties );
   }
@@ -175,7 +171,7 @@ public class JavaCommandBuilder {
    *
    * @param vmProperties a {@link String} object.
    */
-  public void setVmProperties( @NonNls @NotNull String... vmProperties ) {
+  public void setVmProperties( @Nonnull String... vmProperties ) {
     this.vmProperties.clear();
     for ( String vmProperty : vmProperties ) {
       if ( vmProperty == null || vmProperty.length() == 0 ) {
@@ -190,7 +186,7 @@ public class JavaCommandBuilder {
    *
    * @param vmProeprty a {@link String} object.
    */
-  public void addVmProperty( @NotNull @NonNls String vmProeprty ) {
+  public void addVmProperty( @Nonnull String vmProeprty ) {
     vmProperties.add( vmProeprty );
   }
 
@@ -199,7 +195,7 @@ public class JavaCommandBuilder {
    *
    * @param argument a {@link String} object.
    */
-  public void addArgument( @NotNull @NonNls String argument ) {
+  public void addArgument( @Nonnull String argument ) {
     this.arguments.add( argument );
   }
 
@@ -208,7 +204,7 @@ public class JavaCommandBuilder {
    *
    * @param arguments a {@link String} object.
    */
-  public void setArguments( @NotNull @NonNls String... arguments ) {
+  public void setArguments( @Nonnull String... arguments ) {
     this.arguments.clear();
     for ( String argument : arguments ) {
       if ( argument == null || argument.length() == 0 ) {
@@ -223,8 +219,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link List} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public List<String> getArguments() {
     return Collections.unmodifiableList( arguments );
   }
@@ -234,8 +229,7 @@ public class JavaCommandBuilder {
    *
    * @return a {@link List} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public List<String> getCommandLineElements() {
     List<String> elements = new ArrayList<String>();
     elements.add( getJavaBin() );
@@ -268,8 +262,7 @@ public class JavaCommandBuilder {
    *
    * @see #getCommandLineElements()
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getCommandLine() {
     StringBuilder stringBuilder = new StringBuilder();
     for ( String element : getCommandLineElements() ) {

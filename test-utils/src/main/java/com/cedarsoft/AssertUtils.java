@@ -46,9 +46,9 @@ import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.junit.*;
 import org.xml.sax.SAXException;
 
@@ -124,7 +124,7 @@ public class AssertUtils {
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEquals( @Nullable @NonNls String err, @NotNull @NonNls String control, @NotNull @NonNls String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
       throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
@@ -143,9 +143,8 @@ public class AssertUtils {
     }
   }
 
-  @NotNull
-  @NonNls
-  private static String formatXml( @NotNull @NonNls String control ) {
+  @Nonnull
+  private static String formatXml( @Nonnull String control ) {
     try {
       return XmlCommons.format( control );
     } catch ( Exception ignore ) {
@@ -154,7 +153,7 @@ public class AssertUtils {
     }
   }
 
-  public static void assertXMLEquals( String test, String err, @NotNull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( String test, String err, @Nonnull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEquals( err, toString( control ), test, ignoreWhiteSpace );
   }
 
@@ -164,7 +163,7 @@ public class AssertUtils {
    * @param current              a {@link Object} object.
    * @param expectedAlternatives a {@link Object} object.
    */
-  public static <T> void assertOne( @Nullable T current, @NotNull T... expectedAlternatives ) {
+  public static <T> void assertOne( @Nullable T current, @Nonnull T... expectedAlternatives ) {
     Collection<Matcher<? extends T>> matchers = new ArrayList<Matcher<? extends T>>();
 
     for ( T expectedAlternative : expectedAlternatives ) {
@@ -182,16 +181,16 @@ public class AssertUtils {
    * @param actual              a {@link Object} object.
    * @throws IOException if any.
    */
-  public static void assertEquals( @NotNull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
+  public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
     Assert.assertEquals( toString( expectedResourceUri ), actual );
   }
 
-  @NotNull
-  static String toString( @NotNull URL expectedResourceUri ) throws IOException {
+  @Nonnull
+  static String toString( @Nonnull URL expectedResourceUri ) throws IOException {
     return IOUtils.toString( expectedResourceUri.openStream() );
   }
 
-  public static void assertFileByHashes( @NotNull File fileUnderTest, @NotNull Algorithm algorithm, @NotNull String... expectedHashesAsHex ) throws IOException {
+  public static void assertFileByHashes( @Nonnull File fileUnderTest, @Nonnull Algorithm algorithm, @Nonnull String... expectedHashesAsHex ) throws IOException {
     Hash[] expectedHashes = new Hash[expectedHashesAsHex.length];
 
     for ( int i = 0, expectedHashesAsHexLength = expectedHashesAsHex.length; i < expectedHashesAsHexLength; i++ ) {
@@ -202,7 +201,7 @@ public class AssertUtils {
     assertFileByHashes( fileUnderTest, expectedHashes );
   }
 
-  public static void assertFileByHashes( @NotNull File fileUnderTest, @NotNull Hash... expectedHashes ) throws IOException {
+  public static void assertFileByHashes( @Nonnull File fileUnderTest, @Nonnull Hash... expectedHashes ) throws IOException {
     if ( expectedHashes.length == 0 ) {
       throw new IllegalArgumentException( "Need at least on hash" );
     }
@@ -210,22 +209,21 @@ public class AssertUtils {
     assertFileByHash( guessPathFromStackTrace(), Arrays.asList( expectedHashes ), fileUnderTest );
   }
 
-  public static void assertFileByHash( @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+  public static void assertFileByHash( @Nonnull Hash expected, @Nonnull File fileUnderTest ) throws IOException {
     String path = guessPathFromStackTrace();
     assertFileByHash( path, expected, fileUnderTest );
   }
 
-  public static void assertFileByHash( @NotNull Class<?> testClass, @NotNull String testMethodName, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+  public static void assertFileByHash( @Nonnull Class<?> testClass, @Nonnull String testMethodName, @Nonnull Hash expected, @Nonnull File fileUnderTest ) throws IOException {
     assertFileByHash( createPath( testClass, testMethodName ), expected, fileUnderTest );
   }
 
-  @NotNull
-  @NonNls
-  public static String createPath( @NotNull Class<?> testClass, @NotNull @NonNls String testMethodName ) {
+  @Nonnull
+  public static String createPath( @Nonnull Class<?> testClass, @Nonnull String testMethodName ) {
     return testClass.getName() + File.separator + testMethodName;
   }
 
-  public static void assertFileByHash( @NotNull @NonNls String path, @NotNull Hash expected, @NotNull File fileUnderTest ) throws IOException {
+  public static void assertFileByHash( @Nonnull String path, @Nonnull Hash expected, @Nonnull File fileUnderTest ) throws IOException {
     Hash actual = HashCalculator.calculate( expected.getAlgorithm(), fileUnderTest );
 
     if ( expected.equals( actual ) ) {
@@ -241,13 +239,12 @@ public class AssertUtils {
     assertThat( createReason( copy ), expected, is( actual ) );
   }
 
-  @NotNull
-  @NonNls
-  private static String createReason( @NotNull File copy ) {
+  @Nonnull
+  private static String createReason( @Nonnull File copy ) {
     return "Stored questionable file under test at <" + copy.getAbsolutePath() + ">";
   }
 
-  public static void assertFileByHash( @NotNull @NonNls String path, @NotNull Iterable<? extends Hash> expectedHashes, @NotNull File fileUnderTest ) throws IOException {
+  public static void assertFileByHash( @Nonnull String path, @Nonnull Iterable<? extends Hash> expectedHashes, @Nonnull File fileUnderTest ) throws IOException {
     Collection<Hash> actualHashes = new ArrayList<Hash>();
 
     for ( Hash expected : expectedHashes ) {
@@ -264,19 +261,18 @@ public class AssertUtils {
     Assert.assertThat( createReason( copy ), actualHashes, CoreMatchers.<Iterable<? extends Hash>>is( expectedHashes ) );
   }
 
-  @NotNull
-  static File createCopyFile( @NotNull @NonNls String path, @NotNull @NonNls String name ) {
+  @Nonnull
+  static File createCopyFile( @Nonnull String path, @Nonnull String name ) {
     return new File( new File( FAILED_FILES_DIR, path ), name );
   }
 
   /**
    * The directory where the files have been stored
    */
-  @NotNull
+  @Nonnull
   public static final File FAILED_FILES_DIR = new File( TestUtils.getTmpDir(), "junit-failed-files" );
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public static String guessPathFromStackTrace() {
     StackTraceElement[] elements = Thread.currentThread().getStackTrace();
     if ( elements.length < 4 ) {

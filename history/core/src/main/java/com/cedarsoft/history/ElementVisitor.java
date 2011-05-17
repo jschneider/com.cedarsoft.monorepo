@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -42,8 +42,7 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class ElementVisitor<E> {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String identifier;
 
   /**
@@ -51,7 +50,7 @@ public abstract class ElementVisitor<E> {
    *
    * @param identifier a {@link String} object.
    */
-  protected ElementVisitor( @NonNls @NotNull String identifier ) {
+  protected ElementVisitor( @Nonnull String identifier ) {
     this.identifier = identifier;
   }
 
@@ -60,8 +59,7 @@ public abstract class ElementVisitor<E> {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getIdentifier() {
     return identifier;
   }
@@ -72,5 +70,5 @@ public abstract class ElementVisitor<E> {
    * @param element a E object.
    * @return a boolean.
    */
-  public abstract boolean fits( @NotNull E element );
+  public abstract boolean fits( @Nonnull E element );
 }

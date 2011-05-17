@@ -31,8 +31,8 @@
 
 package com.cedarsoft.convert;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -110,8 +110,8 @@ public class StringConverterManager {
    * @param <T>  a T object.
    * @return the converter for this type
    */
-  @NotNull
-  public <T> StringConverter<T> findConverter( @NotNull Class<? extends T> type ) {
+  @Nonnull
+  public <T> StringConverter<T> findConverter( @Nonnull Class<? extends T> type ) {
     StringConverter<?> converter = converterMap.get( type );
     if ( converter != null ) {
       //noinspection unchecked
@@ -127,8 +127,8 @@ public class StringConverterManager {
    * @param object the object that is serialized
    * @return the serialized object
    */
-  @NotNull
-  public String serialize( @NotNull Object object ) {
+  @Nonnull
+  public String serialize( @Nonnull Object object ) {
     return findConverter( object.getClass() ).createRepresentation( object );
   }
 
@@ -140,50 +140,49 @@ public class StringConverterManager {
    * @param <T>            a T object.
    * @return the deserialized object
    */
-  @NotNull
-  public <T> T deserialize( @NotNull Class<T> type, @NotNull String representation ) {
+  @Nonnull
+  public <T> T deserialize( @Nonnull Class<T> type, @Nonnull String representation ) {
     return findConverter( type ).createObject( representation );
   }
 
   public static class BooleanConverter implements StringConverter<Boolean> {
     @Override
-    @NotNull
-    @NonNls
-    public String createRepresentation( @NotNull Boolean object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull Boolean object ) {
       return object.toString();
     }
 
     @Override
-    @NotNull
-    public Boolean createObject( @NotNull @NonNls String representation ) {
+    @Nonnull
+    public Boolean createObject( @Nonnull String representation ) {
       return Boolean.parseBoolean( representation );
     }
   }
 
   public static class FileConverter implements StringConverter<File> {
     @Override
-    @NotNull
-    public String createRepresentation( @NotNull File object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull File object ) {
       return object.getAbsolutePath();
     }
 
     @Override
-    @NotNull
-    public File createObject( @NotNull String representation ) {
+    @Nonnull
+    public File createObject( @Nonnull String representation ) {
       return new File( representation );
     }
   }
 
   public static class ClassConverter implements StringConverter<Class<?>> {
     @Override
-    @NotNull
-    public String createRepresentation( @NotNull Class<?> object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull Class<?> object ) {
       return object.getName();
     }
 
     @Override
-    @NotNull
-    public Class<?> createObject( @NotNull String representation ) {
+    @Nonnull
+    public Class<?> createObject( @Nonnull String representation ) {
       try {
         return Class.forName( representation );
       } catch ( ClassNotFoundException e ) {
@@ -194,15 +193,14 @@ public class StringConverterManager {
 
   public static class RectangleConverter implements StringConverter<Rectangle> {
     @Override
-    @NotNull
-    @NonNls
-    public String createRepresentation( @NotNull Rectangle object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull Rectangle object ) {
       return object.x + ":" + object.y + ':' + object.width + ':' + object.height;
     }
 
     @Override
-    @NotNull
-    public Rectangle createObject( @NotNull String representation ) {
+    @Nonnull
+    public Rectangle createObject( @Nonnull String representation ) {
       String[] parts = representation.split( "\\:" );
       return new Rectangle( Integer.parseInt( parts[0] ), Integer.parseInt( parts[1] ), Integer.parseInt( parts[2] ), Integer.parseInt( parts[3] ) );
     }
@@ -210,15 +208,14 @@ public class StringConverterManager {
 
   public static class PointConverter implements StringConverter<Point> {
     @Override
-    @NotNull
-    @NonNls
-    public String createRepresentation( @NotNull Point object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull Point object ) {
       return object.x + ":" + object.y;
     }
 
     @Override
-    @NotNull
-    public Point createObject( @NotNull String representation ) {
+    @Nonnull
+    public Point createObject( @Nonnull String representation ) {
       String[] parts = representation.split( "\\:" );
       return new Point( Integer.parseInt( parts[0] ), Integer.parseInt( parts[1] ) );
     }
@@ -226,15 +223,14 @@ public class StringConverterManager {
 
   public static class StringStringConverter implements StringConverter<String> {
     @Override
-    @NotNull
-    @NonNls
-    public String createRepresentation( @NonNls @NotNull String object ) {
+    @Nonnull
+    public String createRepresentation( @Nonnull String object ) {
       return object;
     }
 
     @Override
-    @NotNull
-    public String createObject( @NotNull @NonNls String representation ) {
+    @Nonnull
+    public String createObject( @Nonnull String representation ) {
       return representation;
     }
   }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.joda.time.DateTimeZone;
 import org.junit.*;
 
@@ -42,7 +42,7 @@ import org.junit.*;
  */
 @Deprecated
 public abstract class DateTimeTest {
-  @NotNull
+  @Nonnull
   protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
 
   private DateTimeZone oldTimeZone;
@@ -73,7 +73,7 @@ public abstract class DateTimeTest {
     return oldTimeZone;
   }
 
-  @NotNull
+  @Nonnull
   public DateTimeZone getZone() {
     return zone;
   }

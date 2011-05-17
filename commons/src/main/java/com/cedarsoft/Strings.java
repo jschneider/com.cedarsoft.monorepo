@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.String;
 
@@ -51,8 +51,8 @@ public class Strings {
    * @param value a {@link String} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  public static String stripQuotes( @NotNull String value ) {
+  @Nonnull
+  public static String stripQuotes( @Nonnull String value ) {
     if ( value.indexOf( '\"' ) == 0 ) {
       value = value.substring( 1 );
     }
@@ -71,8 +71,8 @@ public class Strings {
    * @param maxLength the maxlength
    * @return the cut uncut
    */
-  @NotNull
-  public static String cut( @NotNull String uncut, int maxLength ) {
+  @Nonnull
+  public static String cut( @Nonnull String uncut, int maxLength ) {
     if ( uncut.length() > maxLength ) {
       return uncut.substring( 0, maxLength );
     } else {

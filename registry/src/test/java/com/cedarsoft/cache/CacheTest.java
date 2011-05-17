@@ -31,7 +31,7 @@
 
 package com.cedarsoft.cache;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -55,8 +55,8 @@ public class CacheTest {
   public void setUp() throws Exception {
     cache = new HashedCache<Integer, String>( new Cache.Factory<Integer, String>() {
       @Override
-      @NotNull
-      public String create( @NotNull Integer key ) {
+      @Nonnull
+      public String create( @Nonnull Integer key ) {
         counter++;
         return String.valueOf( key );
       }

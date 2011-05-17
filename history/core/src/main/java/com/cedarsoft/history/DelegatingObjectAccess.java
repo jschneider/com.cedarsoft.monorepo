@@ -34,8 +34,8 @@ package com.cedarsoft.history;
 import com.cedarsoft.NullLock;
 import com.cedarsoft.PartTimeObjectAdd;
 import com.cedarsoft.lock.Lockable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,37 +48,37 @@ import java.util.concurrent.locks.ReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, PartTimeObjectAdd<T> {
-  @NotNull
+  @Nonnull
   private final ElementsListener<T> delegatingListener = new ElementsListener<T>() {
     @Override
-    public void elementsDeleted( @NotNull ElementsChangedEvent<? extends T> event ) {
+    public void elementsDeleted( @Nonnull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsDeleted( event );
       }
     }
 
     @Override
-    public void elementsAdded( @NotNull ElementsChangedEvent<? extends T> event ) {
+    public void elementsAdded( @Nonnull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsAdded( event );
       }
     }
 
     @Override
-    public void elementsChanged( @NotNull ElementsChangedEvent<? extends T> event ) {
+    public void elementsChanged( @Nonnull ElementsChangedEvent<? extends T> event ) {
       for ( ElementsListener<? super T> listener : listeners ) {
         listener.elementsChanged( event );
       }
     }
   };
 
-  @NotNull
+  @Nonnull
   private final List<ElementsListener<? super T>> listeners = new ArrayList<ElementsListener<? super T>>();
 
-  @NotNull
+  @Nonnull
   private final List<DelegateListener<T>> delegateListeners = new ArrayList<DelegateListener<T>>();
 
-  @NotNull
+  @Nonnull
   private final List<PartTimeListener> partTimeListeners = new ArrayList<PartTimeListener>();
 
   /**
@@ -95,7 +95,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    *
    * @return the current delegate
    */
-  @NotNull
+  @Nonnull
   protected ObservableObjectAccess<T> getCurrentDelegateSafe() {
     if ( currentDelegate == null ) {
       throw new IllegalStateException( "No current delegate available" );
@@ -200,13 +200,13 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * Returns the lock for the current delegate
    */
   @Override
-  @NotNull
+  @Nonnull
   public ReadWriteLock getLock() {
     ObservableObjectAccess<T> delegate = getCurrentDelegateSafe();
     return getLock( delegate );
   }
 
-  @NotNull
+  @Nonnull
   private ReadWriteLock getLock( @Nullable ObservableObjectAccess<T> delegate ) {
     if ( delegate != null && delegate instanceof Lockable ) {
       return ( ( Lockable ) delegate ).getLock();
@@ -219,7 +219,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void commit( @NotNull T element ) {
+  public void commit( @Nonnull T element ) {
     getCurrentDelegateSafe().commit( element );
   }
 
@@ -227,7 +227,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends T> getElements() {
     if ( isCurrentDelegatingObjectAccessAvailable() ) {
       return getCurrentDelegateSafe().getElements();
@@ -240,7 +240,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void add( @NotNull T element ) {
+  public void add( @Nonnull T element ) {
     getCurrentDelegateSafe().add( element );
   }
 
@@ -248,7 +248,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void setElements( @NotNull List<? extends T> elements ) {
+  public void setElements( @Nonnull List<? extends T> elements ) {
     getCurrentDelegateSafe().setElements( elements );
   }
 
@@ -256,7 +256,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void remove( @NotNull T element ) {
+  public void remove( @Nonnull T element ) {
     getCurrentDelegateSafe().remove( element );
   }
 
@@ -264,7 +264,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void addElementListener( @NotNull ElementsListener<? super T> listener ) {
+  public void addElementListener( @Nonnull ElementsListener<? super T> listener ) {
     this.listeners.add( listener );
   }
 
@@ -272,7 +272,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void removeElementListener( @NotNull ElementsListener<? super T> listener ) {
+  public void removeElementListener( @Nonnull ElementsListener<? super T> listener ) {
     this.listeners.remove( listener );
   }
 
@@ -281,7 +281,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    *
    * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
    */
-  public void addDelegateListener( @NotNull DelegateListener<T> listener ) {
+  public void addDelegateListener( @Nonnull DelegateListener<T> listener ) {
     this.delegateListeners.add( listener );
   }
 
@@ -290,7 +290,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    *
    * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
    */
-  public void removeDelegateListener( @NotNull DelegateListener<T> listener ) {
+  public void removeDelegateListener( @Nonnull DelegateListener<T> listener ) {
     this.delegateListeners.remove( listener );
   }
 
@@ -306,7 +306,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void addPartTimeListener( @NotNull PartTimeListener listener ) {
+  public void addPartTimeListener( @Nonnull PartTimeListener listener ) {
     partTimeListeners.add( listener );
   }
 
@@ -314,7 +314,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
    * {@inheritDoc}
    */
   @Override
-  public void removePartTimeListener( @NotNull PartTimeListener listener ) {
+  public void removePartTimeListener( @Nonnull PartTimeListener listener ) {
     partTimeListeners.remove( listener );
   }
 

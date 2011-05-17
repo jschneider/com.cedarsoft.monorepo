@@ -31,8 +31,8 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.lang.String;
@@ -43,11 +43,9 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileName {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final BaseName baseName;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final Extension extension;
 
   /**
@@ -56,7 +54,7 @@ public class FileName {
    * @param baseName  the base name
    * @param extension the file extension
    */
-  public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String extension ) {
+  public FileName( @Nonnull String baseName, @Nonnull String extension ) {
     this( new BaseName( baseName ), new Extension( extension ) );
   }
 
@@ -66,7 +64,7 @@ public class FileName {
    * @param baseName  the base name
    * @param extension the extension
    */
-  public FileName( @NonNls @NotNull String baseName, @NotNull Extension extension ) {
+  public FileName( @Nonnull String baseName, @Nonnull Extension extension ) {
     this( new BaseName( baseName ), extension );
   }
 
@@ -77,7 +75,7 @@ public class FileName {
    * @param delimiter a {@link String} object.
    * @param extension a {@link String} object.
    */
-  public FileName( @NonNls @NotNull String baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
+  public FileName( @Nonnull String baseName, @Nonnull String delimiter, @Nonnull String extension ) {
     this( new BaseName( baseName ), new Extension( delimiter, extension ) );
   }
 
@@ -88,7 +86,7 @@ public class FileName {
    * @param delimiter the delimiter
    * @param extension the extension
    */
-  public FileName( @NonNls @NotNull BaseName baseName, @NonNls @NotNull String delimiter, @NonNls @NotNull String extension ) {
+  public FileName( @Nonnull BaseName baseName, @Nonnull String delimiter, @Nonnull String extension ) {
     this( baseName, new Extension( delimiter, extension ) );
   }
 
@@ -98,7 +96,7 @@ public class FileName {
    * @param baseName  the base name
    * @param extension the extension
    */
-  public FileName( @NonNls @NotNull BaseName baseName, @NotNull Extension extension ) {
+  public FileName( @Nonnull BaseName baseName, @Nonnull Extension extension ) {
     this.baseName = baseName;
     this.extension = extension;
   }
@@ -108,7 +106,7 @@ public class FileName {
    *
    * @return a {@link BaseName} object.
    */
-  @NotNull
+  @Nonnull
   public BaseName getBaseName() {
     return baseName;
   }
@@ -118,8 +116,7 @@ public class FileName {
    *
    * @return a {@link Extension} object.
    */
-  @NonNls
-  @NotNull
+  @Nonnull
   public Extension getExtension() {
     return extension;
   }
@@ -129,8 +126,7 @@ public class FileName {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getName() {
     return baseName + extension.getCombined();
   }
@@ -175,8 +171,8 @@ public class FileName {
    * @param baseDir the base dir
    * @return the file represented
    */
-  @NotNull
-  public File getFile( @NotNull File baseDir ) {
+  @Nonnull
+  public File getFile( @Nonnull File baseDir ) {
     assert baseDir.isDirectory();
     return new File( baseDir, getName() );
   }

@@ -34,9 +34,9 @@ package com.cedarsoft.registry;
 import com.cedarsoft.Converter;
 import com.cedarsoft.NotFoundException;
 import com.cedarsoft.StillContainedException;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,10 +54,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DefaultRegistry<T> implements Registry<T> {
-  @NotNull
-  @NonNls
+  @Nonnull
   protected final List<T> storedObjects = new ArrayList<T>();
-  @NotNull
+  @Nonnull
   protected final ReadWriteLock lock = new ReentrantReadWriteLock();
 
   /**
@@ -79,7 +78,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the stored objects
    */
-  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects ) {
+  public DefaultRegistry( @Nonnull Collection<? extends T> storedObjects ) {
     this( storedObjects, null );
   }
 
@@ -99,7 +98,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @param comparator    the (optional) comparator
    * @throws StillContainedException if any.
    */
-  public DefaultRegistry( @NotNull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
+  public DefaultRegistry( @Nonnull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
 
     //todo, really necessary???
@@ -118,7 +117,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public List<? extends T> getStoredObjects() {
     lock.readLock().lock();
     try {
@@ -133,7 +132,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    */
   @Override
   @Nullable
-  public T findStoredObject( @NotNull @NonNls Matcher<T> matcher ) {
+  public T findStoredObject( @Nonnull Matcher<T> matcher ) {
     lock.readLock().lock();
     try {
       for ( T object : storedObjects ) {
@@ -158,8 +157,8 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @throws NotFoundException if any.
    */
   @Override
-  @NotNull
-  public T findStoredObject( @NotNull @NonNls Matcher<T> matcher, @NotNull @NonNls String notFoundMessage ) throws NotFoundException {
+  @Nonnull
+  public T findStoredObject( @Nonnull Matcher<T> matcher, @Nonnull String notFoundMessage ) throws NotFoundException {
     T found = findStoredObject( matcher );
     if ( found == null ) {
       throw new NotFoundException( notFoundMessage );
@@ -172,8 +171,8 @@ public class DefaultRegistry<T> implements Registry<T> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public List<? extends T> findStoredObjects( @NotNull @NonNls Matcher<T> matcher ) {
+  @Nonnull
+  public List<? extends T> findStoredObjects( @Nonnull Matcher<T> matcher ) {
     lock.readLock().lock();
     try {
       List<T> found = new ArrayList<T>();
@@ -193,8 +192,8 @@ public class DefaultRegistry<T> implements Registry<T> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  public <C> List<? extends C> findStoredObjects( @NotNull @NonNls Matcher<T> matcher, @NotNull Converter<T, C> converter ) {
+  @Nonnull
+  public <C> List<? extends C> findStoredObjects( @Nonnull Matcher<T> matcher, @Nonnull Converter<T, C> converter ) {
     lock.readLock().lock();
     try {
       List<C> found = new ArrayList<C>();
@@ -216,7 +215,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * Stores the object within the registry
    */
   @Override
-  public void store( @NotNull T object ) throws StillContainedException {
+  public void store( @Nonnull T object ) throws StillContainedException {
     lock.writeLock().lock();
     try {
       if ( comparator != null ) {
@@ -238,7 +237,7 @@ public class DefaultRegistry<T> implements Registry<T> {
   }
 
   @Override
-  public void updated( @NotNull T object ) throws NotFoundException {
+  public void updated( @Nonnull T object ) throws NotFoundException {
     lock.writeLock().lock();
     try {
       for ( Listener<T> listener : new ArrayList<Listener<T>>( listeners ) ) {
@@ -250,12 +249,12 @@ public class DefaultRegistry<T> implements Registry<T> {
   }
 
   @Override
-  public void remove( @NotNull T object ) throws NotFoundException {
+  public void remove( @Nonnull T object ) throws NotFoundException {
     remove( object, "Cannot remove: Not found <" + object + ">" );
   }
 
   @Override
-  public void remove( @NotNull T object, @NotNull String removeMessage ) throws NotFoundException {
+  public void remove( @Nonnull T object, @Nonnull String removeMessage ) throws NotFoundException {
     try {
       lock.writeLock().lock();
       if ( !storedObjects.remove( object ) ) {
@@ -286,14 +285,14 @@ public class DefaultRegistry<T> implements Registry<T> {
     return comparator != null;
   }
 
-  @NotNull
+  @Nonnull
   protected final List<Listener<T>> listeners = new ArrayList<Listener<T>>();
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addListener( @NotNull Listener<T> listener ) {
+  public void addListener( @Nonnull Listener<T> listener ) {
     lock.writeLock().lock();
     try {
       this.listeners.add( listener );
@@ -306,7 +305,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * {@inheritDoc}
    */
   @Override
-  public void removeListener( @NotNull Listener<T> listener ) {
+  public void removeListener( @Nonnull Listener<T> listener ) {
     lock.writeLock().lock();
     try {
       this.listeners.remove( listener );

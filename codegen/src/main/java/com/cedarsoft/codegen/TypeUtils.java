@@ -49,8 +49,8 @@ import com.sun.mirror.type.InterfaceType;
 import com.sun.mirror.type.TypeMirror;
 import com.sun.mirror.type.WildcardType;
 import com.sun.mirror.util.Types;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,16 +64,16 @@ import java.util.Set;
  * Offers utility methods related to types
  */
 public class TypeUtils {
-  @NonNls
+  @Nonnull
   public static final String JAVA_LANG_OBJECT = "java.lang.Object";
 
   private TypeUtils() {
   }
 
-  @NotNull
+  @Nonnull
   private static final ThreadLocal<Types> TYPES = new ThreadLocal<Types>();
 
-  @NotNull
+  @Nonnull
   public static Types getTypes() {
     Types resolved = TYPES.get();
     if ( resolved == null ) {
@@ -82,11 +82,11 @@ public class TypeUtils {
     return resolved;
   }
 
-  public static void setTypes( @NotNull Types types ) {
+  public static void setTypes( @Nonnull Types types ) {
     TYPES.set( types );
   }
 
-  public static boolean isStatic( @NotNull Declaration fieldDeclaration ) {
+  public static boolean isStatic( @Nonnull Declaration fieldDeclaration ) {
     for ( Modifier modifier : fieldDeclaration.getModifiers() ) {
       if ( modifier == Modifier.STATIC ) {
         return true;
@@ -95,13 +95,13 @@ public class TypeUtils {
     return false;
   }
 
-  @NotNull
-  public static TypeMirror getErasure( @NotNull TypeMirror type ) {
+  @Nonnull
+  public static TypeMirror getErasure( @Nonnull TypeMirror type ) {
     return getTypes().getErasure( type );
   }
 
-  @NotNull
-  public static JClass getCollectionParam( @NotNull JClass type ) {
+  @Nonnull
+  public static JClass getCollectionParam( @Nonnull JClass type ) {
     if ( !isCollectionType( type ) ) {
       throw new IllegalArgumentException( type + " is not a collection type" );
     }
@@ -114,8 +114,8 @@ public class TypeUtils {
     return params.get( 0 );
   }
 
-  @NotNull
-  public static TypeMirror getCollectionParam( @NotNull TypeMirror type ) throws NotFoundException {
+  @Nonnull
+  public static TypeMirror getCollectionParam( @Nonnull TypeMirror type ) throws NotFoundException {
     if ( !isCollectionType( type ) ) {
       throw new IllegalArgumentException( "Invalid type: " + type );
     }
@@ -123,8 +123,8 @@ public class TypeUtils {
     return getFirstTypeParam( ( DeclaredType ) type );
   }
 
-  @NotNull
-  private static TypeMirror getFirstTypeParam( @NotNull DeclaredType type ) throws NotFoundException {
+  @Nonnull
+  private static TypeMirror getFirstTypeParam( @Nonnull DeclaredType type ) throws NotFoundException {
     Collection<TypeMirror> typeArguments = type.getActualTypeArguments();
     if ( typeArguments.isEmpty() ) {
       throw new NotFoundException( "No typeArguments found for <" + type + ">" );
@@ -133,7 +133,7 @@ public class TypeUtils {
     return typeArguments.iterator().next();
   }
 
-  public static boolean isCollectionType( @NotNull TypeMirror type ) {
+  public static boolean isCollectionType( @Nonnull TypeMirror type ) {
     if ( !( type instanceof DeclaredType ) ) {
       return false;
     }
@@ -156,15 +156,15 @@ public class TypeUtils {
     return false;
   }
 
-  public static boolean isCollectionType( @NotNull JType type ) {
+  public static boolean isCollectionType( @Nonnull JType type ) {
     return implementsInterface( type, Collection.class );
   }
 
-  public static boolean isSetType( @NotNull JType type ) {
+  public static boolean isSetType( @Nonnull JType type ) {
     return implementsInterface( type, Set.class );
   }
 
-  private static boolean implementsInterface( @NotNull JType type, @NotNull Class<?> daClass ) {
+  private static boolean implementsInterface( @Nonnull JType type, @Nonnull Class<?> daClass ) {
     JType erasure = type.erasure();
     if ( erasure.fullName().equals( daClass.getName() ) ) {
       return true;
@@ -182,7 +182,7 @@ public class TypeUtils {
     return false;
   }
 
-  public static boolean isSetType( @NotNull TypeMirror type ) {
+  public static boolean isSetType( @Nonnull TypeMirror type ) {
     if ( !( type instanceof DeclaredType ) ) {
       return false;
     }
@@ -209,17 +209,17 @@ public class TypeUtils {
     return getTypes().isAssignable( t1, t2 );
   }
 
-  public static boolean mightBeConstructorCallFor( @NotNull TypeMirror parameterType, @NotNull TypeMirror fieldType ) {
+  public static boolean mightBeConstructorCallFor( @Nonnull TypeMirror parameterType, @Nonnull TypeMirror fieldType ) {
     return isAssignable( parameterType, fieldType ) || isAssignable( fieldType, parameterType );
   }
 
-  @NotNull
-  public static MethodDeclaration findSetter( @NotNull ClassDeclaration classDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
+  @Nonnull
+  public static MethodDeclaration findSetter( @Nonnull ClassDeclaration classDeclaration, @Nonnull FieldDeclaration fieldDeclaration ) {
     return findSetter( classDeclaration, fieldDeclaration.getSimpleName(), fieldDeclaration.getType() );
   }
 
-  @NotNull
-  public static MethodDeclaration findSetter( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName, @NotNull TypeMirror type ) throws IllegalArgumentException {
+  @Nonnull
+  public static MethodDeclaration findSetter( @Nonnull ClassDeclaration classDeclaration, @Nonnull String fieldName, @Nonnull TypeMirror type ) throws IllegalArgumentException {
     String expectedName = NamingSupport.createSetter( fieldName );
 
     for ( MethodDeclaration methodDeclaration : findMethodsIncludingSuperClass( classDeclaration ) ) {
@@ -242,7 +242,7 @@ public class TypeUtils {
     throw new IllegalArgumentException( "No method declaration found for <" + expectedName + ">" );
   }
 
-  public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull FieldDeclaration fieldDeclaration ) {
+  public static MethodDeclaration findGetterForField( @Nonnull ClassDeclaration classDeclaration, @Nonnull FieldDeclaration fieldDeclaration ) {
     return findGetterForField( classDeclaration, fieldDeclaration.getSimpleName(), fieldDeclaration.getType() );
   }
 
@@ -254,7 +254,7 @@ public class TypeUtils {
    *
    * @noinspection TypeMayBeWeakened
    */
-  public static MethodDeclaration findGetterForField( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String simpleName, @NotNull TypeMirror type ) {
+  public static MethodDeclaration findGetterForField( @Nonnull ClassDeclaration classDeclaration, @Nonnull String simpleName, @Nonnull TypeMirror type ) {
     try {
       return findGetter( classDeclaration, simpleName, type, "is" );
     } catch ( IllegalArgumentException ignore ) {
@@ -263,14 +263,14 @@ public class TypeUtils {
     return findGetter( classDeclaration, simpleName, type, "get" );
   }
 
-  @NotNull
-  private static MethodDeclaration findGetter( @NotNull ClassDeclaration classDeclaration, @NotNull String simpleName, @NotNull TypeMirror type, @NotNull String prefix ) {
+  @Nonnull
+  private static MethodDeclaration findGetter( @Nonnull ClassDeclaration classDeclaration, @Nonnull String simpleName, @Nonnull TypeMirror type, @Nonnull String prefix ) {
     String expectedName = prefix + simpleName.substring( 0, 1 ).toUpperCase() + simpleName.substring( 1 );
     return findGetter( classDeclaration, type, expectedName );
   }
 
-  @NotNull
-  public static MethodDeclaration findGetter( @NotNull ClassDeclaration classDeclaration, @NotNull TypeMirror type, @NonNls String expectedName ) {
+  @Nonnull
+  public static MethodDeclaration findGetter( @Nonnull ClassDeclaration classDeclaration, @Nonnull TypeMirror type, @Nonnull String expectedName ) {
     for ( MethodDeclaration methodDeclaration : findMethodsIncludingSuperClass( classDeclaration ) ) {
       if ( methodDeclaration.getSimpleName().equals( expectedName ) ) {
         TypeMirror returnType = methodDeclaration.getReturnType();
@@ -292,8 +292,8 @@ public class TypeUtils {
    *
    * @noinspection TypeMayBeWeakened
    */
-  @NotNull
-  public static FieldDeclaration findFieldDeclaration( @NotNull ClassDeclaration classDeclaration, @NotNull @NonNls String fieldName ) {
+  @Nonnull
+  public static FieldDeclaration findFieldDeclaration( @Nonnull ClassDeclaration classDeclaration, @Nonnull String fieldName ) {
     for ( FieldDeclaration fieldDeclaration : TypeUtils.findFieldsIncludingSuperClasses( classDeclaration ) ) {
       if ( fieldDeclaration.getSimpleName().equals( fieldName ) ) {
         return fieldDeclaration;
@@ -304,21 +304,21 @@ public class TypeUtils {
 
   }
 
-  public static boolean isType( @NotNull TypeMirror typeMirror, @NotNull Class<?> expected ) {
-    @NonNls
+  public static boolean isType( @Nonnull TypeMirror typeMirror, @Nonnull Class<?> expected ) {
+    @Nonnull
     String typeAsName = expected.getName();
     return typeMirror.toString().equals( typeAsName );
   }
 
-  public static boolean isType( @NotNull JType type, @NotNull Class<?> expected ) {
+  public static boolean isType( @Nonnull JType type, @Nonnull Class<?> expected ) {
     return removeWildcard( type ).equals( expected.getName() );
   }
 
-  private static boolean isCollection( @NotNull @NonNls String qualifiedName ) {
+  private static boolean isCollection( @Nonnull String qualifiedName ) {
     return qualifiedName.equals( Collection.class.getName() );
   }
 
-  private static boolean isSet( @NotNull @NonNls String qualifiedName ) {
+  private static boolean isSet( @Nonnull String qualifiedName ) {
     return qualifiedName.equals( Set.class.getName() );
   }
 
@@ -328,15 +328,15 @@ public class TypeUtils {
    * @param type the type
    * @return true if the given type is a simple type, false otherwise
    */
-  public static boolean isSimpleType( @NotNull TypeMirror type ) {
+  public static boolean isSimpleType( @Nonnull TypeMirror type ) {
     return SIMPLE_TYPE_NAMES.contains( type.toString() );
   }
 
-  public static boolean isSimpleType( @NotNull JType type ) {
+  public static boolean isSimpleType( @Nonnull JType type ) {
     return SIMPLE_TYPE_NAMES.contains( type.fullName() );
   }
 
-  @NotNull
+  @Nonnull
   private static final Set<? extends Class<?>> SIMPLE_TYPES;
 
   static {
@@ -362,7 +362,7 @@ public class TypeUtils {
     SIMPLE_TYPES = Collections.unmodifiableSet( types );
   }
 
-  @NotNull
+  @Nonnull
   private static final Set<? extends String> SIMPLE_TYPE_NAMES;
 
   static {
@@ -373,19 +373,17 @@ public class TypeUtils {
     SIMPLE_TYPE_NAMES = Collections.unmodifiableSet( names );
   }
 
-  public static boolean isWildcardType( @NotNull TypeMirror type ) {
+  public static boolean isWildcardType( @Nonnull TypeMirror type ) {
     return type instanceof WildcardType;
   }
 
-  @NotNull
-  @NonNls
-  public static String removeWildcard( @NotNull JType classWithWildcard ) {
+  @Nonnull
+  public static String removeWildcard( @Nonnull JType classWithWildcard ) {
     return removeWildcard( classWithWildcard, false );
   }
 
-  @NotNull
-  @NonNls
-  public static String removeWildcard( @NotNull JType classWithWildcard, boolean returnBinaryName ) {
+  @Nonnull
+  public static String removeWildcard( @Nonnull JType classWithWildcard, boolean returnBinaryName ) {
     if ( classWithWildcard != classWithWildcard.erasure() ) {
       throw new IllegalArgumentException( "Invalid type - cannot remove wildcard. Call erasure() first: " + classWithWildcard.fullName() );
     }
@@ -406,8 +404,8 @@ public class TypeUtils {
     return returnBinaryName ? classWithWildcard.binaryName() : classWithWildcard.fullName();
   }
 
-  @NotNull
-  public static ConstructorDeclaration findBestConstructor( @NotNull ClassDeclaration classDeclaration ) {
+  @Nonnull
+  public static ConstructorDeclaration findBestConstructor( @Nonnull ClassDeclaration classDeclaration ) {
     ConstructorDeclaration currentlyBest = null;
     for ( ConstructorDeclaration constructorDeclaration : classDeclaration.getConstructors() ) {
       if ( currentlyBest == null || constructorDeclaration.getParameters().size() > currentlyBest.getParameters().size() ) {
@@ -421,8 +419,8 @@ public class TypeUtils {
     return currentlyBest;
   }
 
-  @NotNull
-  public static Collection<FieldDeclaration> findFieldsIncludingSuperClasses( @NotNull ClassDeclaration classDeclaration ) {
+  @Nonnull
+  public static Collection<FieldDeclaration> findFieldsIncludingSuperClasses( @Nonnull ClassDeclaration classDeclaration ) {
     Collection<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
 
     ClassDeclaration current = classDeclaration;
@@ -434,12 +432,12 @@ public class TypeUtils {
     return fields;
   }
 
-  public static boolean isNotObject( @NotNull ClassDeclaration current ) {
+  public static boolean isNotObject( @Nonnull ClassDeclaration current ) {
     return !current.getQualifiedName().equals( JAVA_LANG_OBJECT );
   }
 
-  @NotNull
-  public static Collection<? extends MethodDeclaration> findMethodsIncludingSuperClass( @NotNull ClassDeclaration classDeclaration ) {
+  @Nonnull
+  public static Collection<? extends MethodDeclaration> findMethodsIncludingSuperClass( @Nonnull ClassDeclaration classDeclaration ) {
     Collection<MethodDeclaration> methods = new ArrayList<MethodDeclaration>();
 
     ClassDeclaration current = classDeclaration;
@@ -451,11 +449,11 @@ public class TypeUtils {
     return methods;
   }
 
-  public static boolean isBooleanType( @NotNull TypeMirror type ) {
+  public static boolean isBooleanType( @Nonnull TypeMirror type ) {
     return TypeUtils.isType( type, Boolean.class ) || TypeUtils.isType( type, Boolean.TYPE );
   }
 
-  @NotNull
+  @Nonnull
   private static final Set<String> NUMBER_TYPE_NAMES = Sets.newHashSet(
     Integer.class.getName(), Integer.TYPE.getName(),
     Double.class.getName(), Double.TYPE.getName(),
@@ -463,19 +461,19 @@ public class TypeUtils {
     Long.class.getName(), Long.TYPE.getName()
   );
 
-  public static boolean isNumberType( @NotNull TypeMirror type ) {
+  public static boolean isNumberType( @Nonnull TypeMirror type ) {
     return NUMBER_TYPE_NAMES.contains( type.toString() );
   }
 
-  public static boolean isInner( @NotNull ClassDeclaration classDeclaration ) {
+  public static boolean isInner( @Nonnull ClassDeclaration classDeclaration ) {
     TypeDeclaration declaringType = classDeclaration.getDeclaringType();
     if ( declaringType == null ) {
       return false;
     }
 
-    @NonNls
+    @Nonnull
     String declarationAsString = classDeclaration.toString();
-    @NonNls
+    @Nonnull
     String declaringTypeAsString = declaringType.toString();
     if ( declarationAsString.equals( declaringTypeAsString ) ) {
       return false;

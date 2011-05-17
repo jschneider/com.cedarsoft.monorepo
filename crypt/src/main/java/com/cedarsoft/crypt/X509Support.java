@@ -32,10 +32,10 @@
 package com.cedarsoft.crypt;
 
 import org.apache.commons.io.IOUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+
+import javax.annotation.Nullable;
 import javax.crypto.Cipher;
 import javax.inject.Inject;
 import java.io.DataInputStream;
@@ -55,17 +55,14 @@ import java.security.spec.PKCS8EncodedKeySpec;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class X509Support {
-  @NonNls
-  @NotNull
+  @Nonnull
   private static final String RSA = "RSA";
-  @NonNls
-  @NotNull
+  @Nonnull
   private static final String SHA_256_WITH_RSA = "SHA256withRSA";
-  @NonNls
-  @NotNull
+  @Nonnull
   private static final String X_509_CERTIFICATE_TYPE = "X.509";
 
-  @NotNull
+  @Nonnull
   private final X509Certificate certificate;
   @Nullable
   private final RSAPrivateKey privateKey;
@@ -78,7 +75,7 @@ public class X509Support {
    * @throws GeneralSecurityException
    *                             if any.
    */
-  public X509Support( @NotNull URL certificate ) throws IOException, GeneralSecurityException {
+  public X509Support( @Nonnull URL certificate ) throws IOException, GeneralSecurityException {
     this( certificate, null );
   }
 
@@ -92,7 +89,7 @@ public class X509Support {
    *                             if any.
    */
   @Inject
-  public X509Support( @CertificateUrl @NotNull URL certificate, @PrivateKeyUrl @Nullable URL privateKey ) throws IOException, GeneralSecurityException {
+  public X509Support( @CertificateUrl @Nonnull URL certificate, @PrivateKeyUrl @Nullable URL privateKey ) throws IOException, GeneralSecurityException {
     this( readCertificate( certificate ), readPrivateKey( privateKey ) );
   }
 
@@ -101,7 +98,7 @@ public class X509Support {
    *
    * @param certificate the certificate
    */
-  public X509Support( @NotNull X509Certificate certificate ) {
+  public X509Support( @Nonnull X509Certificate certificate ) {
     this( certificate, null );
   }
 
@@ -111,7 +108,7 @@ public class X509Support {
    * @param certificate the certificate
    * @param privateKey  the (optional) private key
    */
-  public X509Support( @NotNull X509Certificate certificate, @Nullable RSAPrivateKey privateKey ) {
+  public X509Support( @Nonnull X509Certificate certificate, @Nullable RSAPrivateKey privateKey ) {
     this.certificate = certificate;
     this.privateKey = privateKey;
   }
@@ -134,8 +131,8 @@ public class X509Support {
    * @throws GeneralSecurityException
    *          if any.
    */
-  @NotNull
-  public byte[] cipher( @NotNull byte[] plainText ) throws GeneralSecurityException {
+  @Nonnull
+  public byte[] cipher( @Nonnull byte[] plainText ) throws GeneralSecurityException {
     Cipher cipher = Cipher.getInstance( RSA );
     cipher.init( Cipher.ENCRYPT_MODE, getPrivateKey() );
     return cipher.doFinal( plainText );
@@ -150,8 +147,8 @@ public class X509Support {
    * @throws GeneralSecurityException
    *          if any.
    */
-  @NotNull
-  public byte[] decipher( @NotNull byte[] bytes ) throws GeneralSecurityException {
+  @Nonnull
+  public byte[] decipher( @Nonnull byte[] bytes ) throws GeneralSecurityException {
     Cipher cipher = Cipher.getInstance( RSA );
     cipher.init( Cipher.DECRYPT_MODE, certificate );
     return cipher.doFinal( bytes );
@@ -166,8 +163,8 @@ public class X509Support {
    * @throws GeneralSecurityException
    *          if any.
    */
-  @NotNull
-  public com.cedarsoft.crypt.Signature sign( @NotNull byte[] plainText ) throws GeneralSecurityException {
+  @Nonnull
+  public com.cedarsoft.crypt.Signature sign( @Nonnull byte[] plainText ) throws GeneralSecurityException {
     Signature signature = Signature.getInstance( SHA_256_WITH_RSA );
     signature.initSign( getPrivateKey() );
 
@@ -185,7 +182,7 @@ public class X509Support {
    * @throws GeneralSecurityException
    *          if any.
    */
-  public boolean verifySignature( @NotNull byte[] plainText, @NotNull com.cedarsoft.crypt.Signature signature ) throws GeneralSecurityException {
+  public boolean verifySignature( @Nonnull byte[] plainText, @Nonnull com.cedarsoft.crypt.Signature signature ) throws GeneralSecurityException {
     Signature sign = Signature.getInstance( SHA_256_WITH_RSA );
     sign.initVerify( certificate );
     sign.update( plainText );
@@ -197,7 +194,7 @@ public class X509Support {
    *
    * @return the certificate
    */
-  @NotNull
+  @Nonnull
   public X509Certificate getCertificate() {
     return certificate;
   }
@@ -207,7 +204,7 @@ public class X509Support {
    *
    * @return the private key
    */
-  @NotNull
+  @Nonnull
   public RSAPrivateKey getPrivateKey() {
     if ( privateKey == null ) {
       throw new IllegalStateException( "Private key not avaible" );
@@ -255,8 +252,8 @@ public class X509Support {
    * @throws GeneralSecurityException
    *                             if any.
    */
-  @NotNull
-  public static X509Certificate readCertificate( @NotNull URL certificateUrl ) throws IOException, GeneralSecurityException {
+  @Nonnull
+  public static X509Certificate readCertificate( @Nonnull URL certificateUrl ) throws IOException, GeneralSecurityException {
     //Read the cert
     DataInputStream in = new DataInputStream( certificateUrl.openStream() );
     try {

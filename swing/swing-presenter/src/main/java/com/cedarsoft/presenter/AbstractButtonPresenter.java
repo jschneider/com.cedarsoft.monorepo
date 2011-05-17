@@ -34,8 +34,8 @@ package com.cedarsoft.presenter;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.binding.PropertyCallback;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.swing.AbstractButton;
 import javax.swing.Action;
@@ -50,22 +50,20 @@ public abstract class AbstractButtonPresenter<T extends AbstractButton> extends 
   /**
    * Constant <code>PROPERTY_ACTION="action"</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final String PROPERTY_ACTION = "action";
 
   /**
    * Constant <code>KEY_ACTION_LISTENER</code>
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public static final Object KEY_ACTION_LISTENER = "actionListener";
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void bind( @NotNull T presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull T presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
     Action action = lookup.lookup( Action.class );
     if ( action == null ) {
       throw new IllegalStateException( "Can not create button: No Action found" );
@@ -79,8 +77,8 @@ public abstract class AbstractButtonPresenter<T extends AbstractButton> extends 
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     throw new UnsupportedOperationException();
   }
 }

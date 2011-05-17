@@ -32,8 +32,8 @@
 package com.cedarsoft.cmd;
 
 import com.cedarsoft.renderer.Renderer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,7 +52,7 @@ public interface CmdLine {
    *
    * @throws IOException if any.
    */
-  boolean readBoolean( @NotNull String message ) throws IOException;
+  boolean readBoolean( @Nonnull String message ) throws IOException;
 
   /**
    * Prints an error on the console
@@ -60,7 +60,7 @@ public interface CmdLine {
    * @param message the error message
    * @param objects the objects
    */
-  void error( @NotNull String message, @NotNull Object... objects );
+  void error( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Prints a warning
@@ -68,7 +68,7 @@ public interface CmdLine {
    * @param message the message
    * @param objects the objects
    */
-  void warning( @NotNull String message, @NotNull Object... objects );
+  void warning( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Prints a success message
@@ -76,7 +76,7 @@ public interface CmdLine {
    * @param message the message
    * @param objects the objects
    */
-  void success( @NotNull String message, @NotNull Object... objects );
+  void success( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Reads a string form the console
@@ -84,8 +84,8 @@ public interface CmdLine {
    * @param message the mssage
    * @return the string
    */
-  @NotNull
-  String read( @NotNull String message );
+  @Nonnull
+  String read( @Nonnull String message );
 
   /**
    * Reads a string from the console. The user may optinally select the given default value
@@ -94,8 +94,8 @@ public interface CmdLine {
    * @param defaultValue the default value
    * @return the string
    */
-  @NotNull
-  String read( @NotNull String message, @Nullable String defaultValue );
+  @Nonnull
+  String read( @Nonnull String message, @Nullable String defaultValue );
 
   /**
    * Reads a string
@@ -104,8 +104,8 @@ public interface CmdLine {
    * @param elements the elements that may be selected
    * @return the entered value (a free value or one of the elements)
    */
-  @NotNull
-  String read( @NotNull String message, @NotNull List<String> elements );
+  @Nonnull
+  String read( @Nonnull String message, @Nonnull List<String> elements );
 
   /**
    * Reads an int from the console
@@ -115,7 +115,7 @@ public interface CmdLine {
    * @param upper   the upper bounds
    * @return the read int
    */
-  int readInt( @NotNull String message, int lower, int upper );
+  int readInt( @Nonnull String message, int lower, int upper );
 
   /**
    * Reads an int from the console
@@ -125,7 +125,7 @@ public interface CmdLine {
    *
    * @throws IOException if any.
    */
-  int readInt( @NotNull String message ) throws IOException;
+  int readInt( @Nonnull String message ) throws IOException;
 
   /**
    * Select an element from the list
@@ -136,8 +136,8 @@ public interface CmdLine {
    * @param <T>       a T object.
    * @return the selected element
    */
-  @NotNull
-  <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter );
+  @Nonnull
+  <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter );
 
   /**
    * Selects an element
@@ -147,8 +147,8 @@ public interface CmdLine {
    * @param <T>      a T object.
    * @return the selected element
    */
-  @NotNull
-  <T> T readSelection( @NotNull String message, @NotNull List<? extends T> elements );
+  @Nonnull
+  <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements );
 
   /**
    * Pauses the script
@@ -168,14 +168,14 @@ public interface CmdLine {
    * @param message the message
    * @param objects the objects
    */
-  void out( @NotNull String message, @NotNull Object... objects );
+  void out( @Nonnull String message, @Nonnull Object... objects );
 
   /**
    * Redirect the output of the given process
    *
    * @param process the process the output for is redirected
    */
-  void out( @NotNull Process process );
+  void out( @Nonnull Process process );
 
   /**
    * Reads a string from the console
@@ -187,8 +187,8 @@ public interface CmdLine {
    * @param <T>           a T object.
    * @return the string that has been entered manually or the object that has been selected (String or T)
    */
-  @NotNull
-  <T> T read( @NotNull String message, @NotNull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @NotNull ObjectFactory<T> objectFactory );
+  @Nonnull
+  <T> T read( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @Nonnull ObjectFactory<T> objectFactory );
 
   /**
    * Reads a string from the console
@@ -198,6 +198,6 @@ public interface CmdLine {
    * @param preselected the preselected string
    * @return the read string from the console (one of the elements, the preselected value or a newly entered value)
    */
-  @NotNull
-  String read( @NotNull String message, @NotNull List<String> elements, @NotNull String preselected );
+  @Nonnull
+  String read( @Nonnull String message, @Nonnull List<String> elements, @Nonnull String preselected );
 }

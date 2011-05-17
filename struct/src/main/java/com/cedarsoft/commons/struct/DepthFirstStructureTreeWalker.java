@@ -32,7 +32,7 @@
 package com.cedarsoft.commons.struct;
 
 import com.cedarsoft.CanceledException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Stack;
 
@@ -48,7 +48,7 @@ public class DepthFirstStructureTreeWalker implements StructureTreeWalker {
    * {@inheritDoc}
    */
   @Override
-  public void walk( @NotNull StructPart root, @NotNull WalkerCallBack walkerCallBack ) {
+  public void walk( @Nonnull StructPart root, @Nonnull WalkerCallBack walkerCallBack ) {
     queue.add( root );
 
     while ( !queue.isEmpty() ) {

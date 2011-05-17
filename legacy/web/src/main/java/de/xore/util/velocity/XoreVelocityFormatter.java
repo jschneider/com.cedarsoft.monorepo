@@ -34,7 +34,7 @@ package de.xore.util.velocity;
 import de.xore.util.SessionContext;
 import org.apache.velocity.app.tools.VelocityFormatter;
 import org.apache.velocity.context.Context;
-import org.jetbrains.annotations.NonNls;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,7 +60,7 @@ import java.util.Calendar;
 public class XoreVelocityFormatter extends VelocityFormatter {
   private HttpServletResponse response;
   private SessionContext sessionContext;
-  @NonNls
+  @Nonnull
   private SimpleDateFormat monthYearFormatter = new SimpleDateFormat( "MMMM yyyy" );
 
   public XoreVelocityFormatter( Context ctx, HttpServletRequest request, HttpServletResponse response, SessionContext sessionContext ) {

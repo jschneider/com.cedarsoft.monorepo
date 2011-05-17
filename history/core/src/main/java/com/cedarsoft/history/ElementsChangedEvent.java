@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,19 +42,19 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ElementsChangedEvent<T> {
-  @NotNull
+  @Nonnull
   private final ObservableCollection<T> source;
 
   /**
    * Contains the changed elements
    */
-  @NotNull
+  @Nonnull
   private final List<? extends T> elements;
 
   /**
    * Contains the indicies
    */
-  @NotNull
+  @Nonnull
   private final List<? extends Integer> indicies;
 
   /**
@@ -65,7 +65,7 @@ public class ElementsChangedEvent<T> {
    * @param lowestIndex  a int.
    * @param highestIndex a int.
    */
-  public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, int lowestIndex, int highestIndex ) {
+  public ElementsChangedEvent( @Nonnull ObservableCollection<T> source, @Nonnull List<? extends T> elements, int lowestIndex, int highestIndex ) {
     this( source, elements, createIndicies( lowestIndex, highestIndex ) );
   }
 
@@ -76,7 +76,7 @@ public class ElementsChangedEvent<T> {
    * @param elements a {@link List} object.
    * @param indicies a {@link List} object.
    */
-  public ElementsChangedEvent( @NotNull ObservableCollection<T> source, @NotNull List<? extends T> elements, @NotNull List<? extends Integer> indicies ) {
+  public ElementsChangedEvent( @Nonnull ObservableCollection<T> source, @Nonnull List<? extends T> elements, @Nonnull List<? extends Integer> indicies ) {
     this.source = source;
 
     if ( elements.size() != indicies.size() ) {
@@ -94,7 +94,7 @@ public class ElementsChangedEvent<T> {
    *
    * @return a {@link ObservableCollection} object.
    */
-  @NotNull
+  @Nonnull
   public ObservableCollection<T> getSource() {
     return source;
   }
@@ -104,7 +104,7 @@ public class ElementsChangedEvent<T> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends T> getElements() {
     //noinspection ReturnOfCollectionOrArrayField
     return elements;
@@ -115,7 +115,7 @@ public class ElementsChangedEvent<T> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends Integer> getIndicies() {
     //noinspection ReturnOfCollectionOrArrayField
     return indicies;
@@ -128,7 +128,7 @@ public class ElementsChangedEvent<T> {
    * @param upper the upper border (inclusive)
    * @return a list of indicies
    */
-  @NotNull
+  @Nonnull
   public static List<Integer> createIndicies( int lower, int upper ) {
     List<Integer> indicies = new ArrayList<Integer>();
 

@@ -32,9 +32,9 @@
 package com.cedarsoft;
 
 import com.cedarsoft.properties.PropertiesPath;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Object;
 import java.lang.String;
@@ -45,9 +45,9 @@ import java.lang.String;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ChangedEvent<T> {
-  @NotNull
+  @Nonnull
   private final T changedObject;
-  @NotNull
+  @Nonnull
   private final PropertiesPath propertiesPath;
   @Nullable
   private final Object context;
@@ -59,7 +59,7 @@ public class ChangedEvent<T> {
    * @param context        a {@link Object} object.
    * @param propertiesPath a {@link String} object.
    */
-  public ChangedEvent( @NotNull T changedObject, @Nullable Object context, @NonNls @NotNull String... propertiesPath ) {
+  public ChangedEvent( @Nonnull T changedObject, @Nullable Object context, @Nonnull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
       throw new IllegalArgumentException( "Empty properties path" );
     }
@@ -73,7 +73,7 @@ public class ChangedEvent<T> {
    *
    * @return a {@link PropertiesPath} object.
    */
-  @NotNull
+  @Nonnull
   public PropertiesPath getPropertiesPath() {
     return propertiesPath;
   }
@@ -93,7 +93,7 @@ public class ChangedEvent<T> {
    *
    * @return the changed object
    */
-  @NotNull
+  @Nonnull
   public T getChangedObject() {
     return changedObject;
   }
@@ -104,8 +104,7 @@ public class ChangedEvent<T> {
    * @return a {@link String} object.
    */
   @Deprecated
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getRootProperty() {
     return propertiesPath.getRootProperty();
   }

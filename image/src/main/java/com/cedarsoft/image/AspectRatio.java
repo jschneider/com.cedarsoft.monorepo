@@ -31,7 +31,7 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -41,31 +41,31 @@ import java.util.List;
  * Represents an aspect ratio
  */
 public class AspectRatio {
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_1_1 = new AspectRatio( 1, 1 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_3_2 = new AspectRatio( 3, 2 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_4_3 = new AspectRatio( 4, 3 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_5_3 = new AspectRatio( 5, 3 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_5_4 = new AspectRatio( 5, 4 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_16_9 = new AspectRatio( 16, 9 );
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_16_10 = new AspectRatio( 16, 10 );
 
   /**
    * Used for paper (A4)...
    */
-  @NotNull
+  @Nonnull
   public static final AspectRatio AR_SQ2_1 = new AspectRatio( Math.sqrt( 2 ), 1 );
 
   /**
    * @noinspection PublicStaticCollectionField
    */
-  @NotNull
+  @Nonnull
   public static final List<? extends AspectRatio> PRE_DEFINED = Collections.unmodifiableList( Arrays.asList( AR_1_1, AR_3_2, AR_4_3, AR_5_3, AR_5_4, AR_16_9, AR_16_10 ) );
 
   /**
@@ -93,7 +93,7 @@ public class AspectRatio {
     return heightFactor;
   }
 
-  @NotNull
+  @Nonnull
   public AspectRatio invert() {
     //noinspection SuspiciousNameCombination
     return new AspectRatio( heightFactor, widthFactor );
@@ -126,7 +126,7 @@ public class AspectRatio {
    * @param height the height
    * @return the aspect ratio
    */
-  @NotNull
+  @Nonnull
   public static AspectRatio get( double width, double height ) {
     double ratio = width / height;
     for ( AspectRatio aspectRatio : PRE_DEFINED ) {

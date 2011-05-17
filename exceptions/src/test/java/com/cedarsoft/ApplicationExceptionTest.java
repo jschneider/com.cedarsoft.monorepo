@@ -1,8 +1,9 @@
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
+
 import org.junit.*;
 
+import javax.annotation.Nonnull;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -12,7 +13,7 @@ import static org.fest.assertions.Assertions.assertThat;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ApplicationExceptionTest {
-  @NonNls
+  @Nonnull
   public static final String BUNDLE = "com.cedarsoft.testmessages";
 
   @Test

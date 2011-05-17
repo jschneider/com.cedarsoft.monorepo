@@ -39,7 +39,7 @@ import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
@@ -84,7 +84,7 @@ public class CodeGeneratorTest {
   public void testMethodDecorator() throws Exception {
     codeGenerator.addDecorator( new Decorator() {
       @Override
-      public void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant ) {
+      public void decorateConstant( @Nonnull CodeGenerator codeGenerator, @Nonnull JFieldVar constant ) {
         throw new UnsupportedOperationException();
       }
     } );
@@ -106,8 +106,8 @@ public class CodeGeneratorTest {
 
     codeGenerator.addDecorator( new Decorator() {
       @Override
-      public void decorateConstant( @NotNull CodeGenerator codeGenerator, @NotNull JFieldVar constant ) {
-        constant.annotate( codeGenerator.ref( NotNull.class ) );
+      public void decorateConstant( @Nonnull CodeGenerator codeGenerator, @Nonnull JFieldVar constant ) {
+        constant.annotate( codeGenerator.ref( Nonnull.class ) );
       }
     } );
 
@@ -126,11 +126,11 @@ public class CodeGeneratorTest {
                     "\n" +
                     "package da;\n" +
                     "\n" +
-                    "import org.jetbrains.annotations.NotNull;\n" +
+                    "import javax.annotation.Nonnull;\n" +
                     "\n" +
                     "public class Class {\n" +
                     "\n" +
-                    "    @NotNull\n" +
+                    "    @Nonnull\n" +
                     "    public final static String DA_CONSTANT = \"value\";\n" +
                     "\n" +
                     "}", out.toString().trim() );

@@ -32,7 +32,7 @@
 package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 
@@ -46,7 +46,7 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    * {@inheritDoc}
    */
   @Override
-  protected void removeChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
+  protected void removeChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index ) {
     presentation.remove( index );
     presentation.validate();
   }
@@ -55,7 +55,7 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    * {@inheritDoc}
    */
   @Override
-  protected boolean addChildPresentation( @NotNull T presentation, @NotNull StructPart child, int index ) {
+  protected boolean addChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index ) {
     Presenter<? extends JComponent> childPresenter = getChildPresenter( child );
     return addChild( presentation, index, childPresenter.present( child ) );
   }
@@ -68,7 +68,7 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    * @param childPresentation a {@link JComponent} object.
    * @return a boolean.
    */
-  protected boolean addChild( @NotNull T presentation, int index, @NotNull JComponent childPresentation ) {
+  protected boolean addChild( @Nonnull T presentation, int index, @Nonnull JComponent childPresentation ) {
     presentation.add( childPresentation, index );
     presentation.validate();
     return true;
@@ -80,6 +80,6 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    * @param child a {@link StructPart} object.
    * @return a {@link Presenter} object.
    */
-  @NotNull
-  protected abstract Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child );
+  @Nonnull
+  protected abstract Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child );
 }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.app;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.io.File;
 
@@ -46,7 +46,7 @@ public interface ApplicationHomeAccess {
    *
    * @return the application name
    */
-  @NotNull
+  @Nonnull
   String getApplicationName();
 
   /**
@@ -54,6 +54,6 @@ public interface ApplicationHomeAccess {
    *
    * @return the application home dir
    */
-  @NotNull
+  @Nonnull
   File getApplicationHome();
 }

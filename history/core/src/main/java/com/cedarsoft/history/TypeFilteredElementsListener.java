@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Class;
 
@@ -44,9 +44,9 @@ import java.lang.Class;
  */
 @Deprecated
 public class TypeFilteredElementsListener<D, T extends D> implements ElementListener<D> {
-  @NotNull
+  @Nonnull
   private final ElementListener<T> delegate;
-  @NotNull
+  @Nonnull
   private final Class<T> type;
 
   /**
@@ -55,7 +55,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
    * @param type     a {@link Class} object.
    * @param delegate a {@link ElementListener} object.
    */
-  public TypeFilteredElementsListener( @NotNull Class<T> type, @NotNull ElementListener<T> delegate ) {
+  public TypeFilteredElementsListener( @Nonnull Class<T> type, @Nonnull ElementListener<T> delegate ) {
     this.delegate = delegate;
     this.type = type;
   }
@@ -64,7 +64,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
    * {@inheritDoc}
    */
   @Override
-  public void elementDeleted( @NotNull D element ) {
+  public void elementDeleted( @Nonnull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementDeleted( type.cast( element ) );
     }
@@ -74,7 +74,7 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
    * {@inheritDoc}
    */
   @Override
-  public void elementAdded( @NotNull D element ) {
+  public void elementAdded( @Nonnull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementAdded( type.cast( element ) );
     }
@@ -84,13 +84,13 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
    * {@inheritDoc}
    */
   @Override
-  public void elementChanged( @NotNull D element ) {
+  public void elementChanged( @Nonnull D element ) {
     if ( isValidType( element ) ) {
       delegate.elementChanged( type.cast( element ) );
     }
   }
 
-  private boolean isValidType( @NotNull D element ) {
+  private boolean isValidType( @Nonnull D element ) {
     return type.isAssignableFrom( element.getClass() );
   }
 }

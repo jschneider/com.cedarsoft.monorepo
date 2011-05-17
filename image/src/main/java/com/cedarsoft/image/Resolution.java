@@ -31,7 +31,7 @@
 
 package com.cedarsoft.image;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.awt.Dimension;
 
@@ -44,7 +44,7 @@ import java.awt.Dimension;
 public class Resolution implements Comparable<Resolution> {
   private final int width;
   private final int height;
-  @NotNull
+  @Nonnull
   private final AspectRatio aspectRatio;
 
   /**
@@ -52,7 +52,7 @@ public class Resolution implements Comparable<Resolution> {
    *
    * @param dimension the dimension
    */
-  public Resolution( @NotNull Dimension dimension ) {
+  public Resolution( @Nonnull Dimension dimension ) {
     this( dimension.width, dimension.height );
   }
 
@@ -73,7 +73,7 @@ public class Resolution implements Comparable<Resolution> {
    *
    * @return the aspect ratio
    */
-  @NotNull
+  @Nonnull
   public AspectRatio getAspectRatio() {
     return aspectRatio;
   }
@@ -134,7 +134,7 @@ public class Resolution implements Comparable<Resolution> {
    *
    * @return a dimension with the same width/height
    */
-  @NotNull
+  @Nonnull
   public Dimension toDimension() {
     return new Dimension( width, height );
   }

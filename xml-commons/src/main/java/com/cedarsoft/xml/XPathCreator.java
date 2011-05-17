@@ -34,7 +34,7 @@ package com.cedarsoft.xml;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Parent;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -53,8 +53,8 @@ public class XPathCreator {
    * @param element the element
    * @return the path
    */
-  @NotNull
-  public static String createAbsolutePath( @NotNull Element element ) {
+  @Nonnull
+  public static String createAbsolutePath( @Nonnull Element element ) {
     StringBuilder builder = new StringBuilder();
     builder.append( element.getName() );
 
@@ -93,7 +93,7 @@ public class XPathCreator {
    * @param child  the child
    * @return the index
    */
-  private static int calculateIndex( @NotNull Element parent, @NotNull Element child ) {
+  private static int calculateIndex( @Nonnull Element parent, @Nonnull Element child ) {
     if ( child.getParent() != parent ) {
       throw new IllegalArgumentException( "Wrong parent. Expected " + parent + " but was: " + child.getParent() );
     }

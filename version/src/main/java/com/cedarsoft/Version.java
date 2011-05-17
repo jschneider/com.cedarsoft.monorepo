@@ -31,9 +31,9 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.Serializable;
 
@@ -52,7 +52,7 @@ public class Version implements Comparable<Version>, Serializable {
   protected final int minor;
   protected final int build;
   @Nullable
-  @NonNls
+  @Nonnull
   protected final String suffix;
 
 
@@ -98,7 +98,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @return the suffix or null if no suffix has been set
    */
   @Nullable
-  @NonNls
+  @Nonnull
   public String getSuffix() {
     return suffix;
   }
@@ -135,8 +135,7 @@ public class Version implements Comparable<Version>, Serializable {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String format() {
     return toString();
   }
@@ -220,8 +219,8 @@ public class Version implements Comparable<Version>, Serializable {
    *
    * @throws IllegalArgumentException if any.
    */
-  @NotNull
-  public static Version parse( @NotNull @NonNls String version ) throws IllegalArgumentException {
+  @Nonnull
+  public static Version parse( @Nonnull String version ) throws IllegalArgumentException {
     int indexDot0 = version.indexOf( '.' );
     int indexDot1 = version.indexOf( '.', indexDot0 + 2 );
     int indexMinus = version.indexOf( '-', indexDot1 + 2 );
@@ -250,7 +249,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param actual   a {@link Version} object.
    * @throws VersionMismatchException if any.
    */
-  public static void verifyMatch( @NotNull Version expected, @NotNull Version actual ) throws VersionMismatchException {
+  public static void verifyMatch( @Nonnull Version expected, @Nonnull Version actual ) throws VersionMismatchException {
     if ( !expected.equals( actual ) ) {
       throw new VersionMismatchException( expected, actual );
     }
@@ -262,7 +261,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version a {@link Version} object.
    * @return a boolean.
    */
-  public boolean sameOrSmallerThan( @NotNull Version version ) {
+  public boolean sameOrSmallerThan( @Nonnull Version version ) {
     return this.compareTo( version ) <= 0;
   }
 
@@ -272,7 +271,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version a {@link Version} object.
    * @return a boolean.
    */
-  public boolean smallerThan( @NotNull Version version ) {
+  public boolean smallerThan( @Nonnull Version version ) {
     return this.compareTo( version ) < 0;
   }
 
@@ -282,7 +281,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version a {@link Version} object.
    * @return a boolean.
    */
-  public boolean sameOrGreaterThan( @NotNull Version version ) {
+  public boolean sameOrGreaterThan( @Nonnull Version version ) {
     return this.compareTo( version ) >= 0;
   }
 
@@ -292,7 +291,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param version a {@link Version} object.
    * @return a boolean.
    */
-  public boolean greaterThan( @NotNull Version version ) {
+  public boolean greaterThan( @Nonnull Version version ) {
     return this.compareTo( version ) > 0;
   }
 
@@ -304,7 +303,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param build a int.
    * @return a {@link Version} object.
    */
-  @NotNull
+  @Nonnull
   public static Version valueOf( int major, int minor, int build ) {
     return new Version( major, minor, build );
   }

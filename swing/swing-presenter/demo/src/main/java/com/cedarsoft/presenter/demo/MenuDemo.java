@@ -39,7 +39,7 @@ import com.cedarsoft.presenter.AbstractButtonPresenter;
 import com.cedarsoft.presenter.JMenuBarPresenter;
 import com.cedarsoft.presenter.JMenuPresenter;
 import com.cedarsoft.presenter.demo.graph.NodePresenter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import y.view.Graph2D;
 
 import javax.swing.AbstractAction;
@@ -82,7 +82,7 @@ public class MenuDemo {
     recentlyOpenedFilesNode.addChild( new DefaultNode( "file2", Lookups.singletonLookup( Action.class, new RecentFileAction( "file2" ) ) ) );
     recentlyOpenedFilesNode.addChild( new DefaultNode( "file3", Lookups.dynamicLookup( new RecentFileAction( "file3" ), new NodePresenter() {
       @Override
-      @NotNull
+      @Nonnull
       protected y.base.Node createPresentation() {
         y.base.Node node = super.createPresentation();
         ( ( Graph2D ) node.getGraph() ).getRealizer( node ).setFillColor( Color.CYAN );
@@ -135,7 +135,7 @@ public class MenuDemo {
     frame.setVisible( true );
   }
 
-  @NotNull
+  @Nonnull
   protected JFrame createFrame() {
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -160,7 +160,7 @@ public class MenuDemo {
 
   static class MySpecialEditMenuPresenter extends AbstractButtonPresenter<JMenu> implements JMenuPresenter {
     @Override
-    @NotNull
+    @Nonnull
     public JMenu createPresentation() {
       JMenu theMenu = new JMenu();
       theMenu.add( new JMenuItem( "manually added" ) );

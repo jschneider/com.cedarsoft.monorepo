@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.Class;
 
@@ -41,7 +41,7 @@ import java.lang.Class;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class InstantiatorLookup<T> extends LazyLookup<T> {
-  @NotNull
+  @Nonnull
   private final Instantiater<T> instantiater;
 
   private Class<? extends T> type;
@@ -52,7 +52,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
    * @param type         a {@link Class} object.
    * @param instantiater a {@link Instantiater} object.
    */
-  public InstantiatorLookup( @NotNull Class<? extends T> type, @NotNull Instantiater<T> instantiater ) {
+  public InstantiatorLookup( @Nonnull Class<? extends T> type, @Nonnull Instantiater<T> instantiater ) {
     this.type = type;
     this.instantiater = instantiater;
   }
@@ -62,7 +62,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
    *
    * @param instantiater a {@link Instantiater.Typed} object.
    */
-  public InstantiatorLookup( @NotNull Instantiater.Typed<T> instantiater ) {
+  public InstantiatorLookup( @Nonnull Instantiater.Typed<T> instantiater ) {
     this.instantiater = instantiater;
   }
 
@@ -70,7 +70,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected T createInstance() {
     try {
       return instantiater.createInstance();

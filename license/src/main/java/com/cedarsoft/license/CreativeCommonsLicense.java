@@ -31,9 +31,8 @@
 
 package com.cedarsoft.license;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
@@ -45,7 +44,7 @@ import java.util.Locale;
  */
 public class CreativeCommonsLicense extends License {
 
-  @NotNull
+  @Nonnull
   private final ModificationsAllowed modificationsAllowed;
 
   private final boolean restrictedToNonCommercial;
@@ -60,7 +59,7 @@ public class CreativeCommonsLicense extends License {
    * @param modificationsAllowed      a {@link CreativeCommonsLicense.ModificationsAllowed} object.
    * @param url                       the url
    */
-  CreativeCommonsLicense( @NotNull @NonNls String id, @NotNull @NonNls String name, boolean restrictedToNonCommercial, @NotNull ModificationsAllowed modificationsAllowed, @NotNull String url ) {
+  CreativeCommonsLicense( @Nonnull String id, @Nonnull String name, boolean restrictedToNonCommercial, @Nonnull ModificationsAllowed modificationsAllowed, @Nonnull String url ) {
     super( id, name, url );
     this.restrictedToNonCommercial = restrictedToNonCommercial;
     this.modificationsAllowed = modificationsAllowed;
@@ -80,7 +79,7 @@ public class CreativeCommonsLicense extends License {
    *
    * @return a {@link CreativeCommonsLicense.ModificationsAllowed} object.
    */
-  @NotNull
+  @Nonnull
   public ModificationsAllowed getModificationsAllowed() {
     return modificationsAllowed;
   }
@@ -118,8 +117,8 @@ public class CreativeCommonsLicense extends License {
    * @param locale the locale
    * @return the URL for the locale
    */
-  @NotNull
-  public URL getUrl( @NotNull Locale locale ) {
+  @Nonnull
+  public URL getUrl( @Nonnull Locale locale ) {
     URL urlBase = getUrl();
     assert urlBase != null;
     try {
@@ -129,8 +128,8 @@ public class CreativeCommonsLicense extends License {
     }
   }
 
-  @NotNull
-  public static License get( @NotNull @NonNls String id ) {
+  @Nonnull
+  public static License get( @Nonnull String id ) {
     for ( CreativeCommonsLicense license : CC_LICENSES ) {
       if ( license.getId().equals( id ) ) {
         return license;

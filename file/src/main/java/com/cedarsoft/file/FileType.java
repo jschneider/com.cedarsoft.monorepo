@@ -31,8 +31,8 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,17 +48,14 @@ import java.util.List;
  */
 public class FileType {
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final List<Extension> extensions = new ArrayList<Extension>();
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String id;
   private final boolean dependentType;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String contentType;
 
   /**
@@ -69,7 +66,7 @@ public class FileType {
    * @param dependentType a boolean.
    * @param extensions    a {@link Extension} object.
    */
-  public FileType( @NotNull @NonNls String id, @NotNull @NonNls String contentType, boolean dependentType, @NotNull @NonNls Extension... extensions ) {
+  public FileType( @Nonnull String id, @Nonnull String contentType, boolean dependentType, @Nonnull Extension... extensions ) {
     this( id, contentType, dependentType, Arrays.<Extension>asList( extensions ) );
   }
 
@@ -81,7 +78,7 @@ public class FileType {
    * @param dependentType a boolean.
    * @param extensions    a {@link Collection} object.
    */
-  public FileType( @NotNull @NonNls String id, @NotNull @NonNls String contentType, boolean dependentType, @NotNull @NonNls Collection<? extends Extension> extensions ) {
+  public FileType( @Nonnull String id, @Nonnull String contentType, boolean dependentType, @Nonnull Collection<? extends Extension> extensions ) {
     this.contentType = contentType;
     this.dependentType = dependentType;
     if ( extensions.isEmpty() ) {
@@ -91,8 +88,7 @@ public class FileType {
     this.extensions.addAll( extensions );
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getContentType() {
     return contentType;
   }
@@ -102,7 +98,7 @@ public class FileType {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends Extension> getExtensions() {
     return Collections.unmodifiableList( extensions );
   }
@@ -113,8 +109,8 @@ public class FileType {
    * @param fileName a {@link String} object.
    * @return a boolean.
    */
-  public boolean matches( @NotNull @NonNls String fileName ) {
-    for ( @NotNull @NonNls Extension ex : extensions ) {
+  public boolean matches( @Nonnull String fileName ) {
+    for ( @Nonnull Extension ex : extensions ) {
       if ( fileName.toLowerCase().endsWith( ex.getCombined() ) ) {
         return true;
       }
@@ -128,7 +124,7 @@ public class FileType {
    * @param fileName a {@link FileName} object.
    * @return a boolean.
    */
-  public boolean matches( @NotNull @NonNls FileName fileName ) {
+  public boolean matches( @Nonnull FileName fileName ) {
     return matches( fileName.getName() );
   }
 
@@ -137,8 +133,7 @@ public class FileType {
    *
    * @return a {@link Extension} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public Extension getDefaultExtension() {
     return extensions.get( 0 );
   }
@@ -148,7 +143,7 @@ public class FileType {
    *
    * @return a {@link String} object.
    */
-  @NotNull
+  @Nonnull
   public String getId() {
     return id;
   }
@@ -169,8 +164,8 @@ public class FileType {
    * @param file a {@link File} object.
    * @return a {@link FileName} object.
    */
-  @NotNull
-  public FileName getFileName( @NonNls @NotNull File file ) {
+  @Nonnull
+  public FileName getFileName( @Nonnull File file ) {
     return getFileName( file.getName() );
   }
 
@@ -180,13 +175,13 @@ public class FileType {
    * @param fileName a {@link String} object.
    * @return a {@link FileName} object.
    */
-  @NotNull
-  public FileName getFileName( @NonNls @NotNull String fileName ) {
-    @NonNls
+  @Nonnull
+  public FileName getFileName( @Nonnull String fileName ) {
+    @Nonnull
     String bestBase = null;
     Extension bestExtension = null;
 
-    for ( @NonNls Extension extension : extensions ) {
+    for ( @Nonnull Extension extension : extensions ) {
       int index = fileName.toLowerCase().indexOf( extension.getCombined() );
       if ( index < 0 ) {
         continue;
@@ -212,9 +207,8 @@ public class FileType {
    * @param fileName a {@link String} object.
    * @return a {@link Extension} object.
    */
-  @NotNull
-  @NonNls
-  public Extension getExtension( @NonNls @NotNull String fileName ) {
+  @Nonnull
+  public Extension getExtension( @Nonnull String fileName ) {
     return getFileName( fileName ).getExtension();
   }
 
@@ -224,9 +218,8 @@ public class FileType {
    * @param fileName a {@link String} object.
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
-  public String getBaseName( @NonNls @NotNull String fileName ) {
+  @Nonnull
+  public String getBaseName( @Nonnull String fileName ) {
     return getFileName( fileName ).getBaseName().getName();
   }
 
@@ -246,7 +239,7 @@ public class FileType {
    * @param extension a {@link Extension} object.
    * @return a boolean.
    */
-  public boolean isDefaultExtension( @NotNull Extension extension ) {
+  public boolean isDefaultExtension( @Nonnull Extension extension ) {
     return getDefaultExtension().equals( extension );
   }
 

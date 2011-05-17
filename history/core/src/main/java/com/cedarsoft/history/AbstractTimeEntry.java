@@ -31,8 +31,8 @@
 
 package com.cedarsoft.history;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 /**
@@ -42,7 +42,7 @@ import org.joda.time.LocalDate;
  */
 public abstract class AbstractTimeEntry implements TimeEntry {
   private Long id;
-  @NotNull
+  @Nonnull
   protected LocalDate begin;
   @Nullable
   protected LocalDate end;
@@ -59,7 +59,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
    *
    * @param begin a {@link LocalDate} object.
    */
-  protected AbstractTimeEntry( @NotNull LocalDate begin ) {
+  protected AbstractTimeEntry( @Nonnull LocalDate begin ) {
     this.begin = begin;
   }
 
@@ -67,7 +67,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public LocalDate getBegin() {
     return begin;
   }
@@ -77,7 +77,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
    *
    * @param begin a {@link LocalDate} object.
    */
-  public void setBegin( @NotNull LocalDate begin ) {
+  public void setBegin( @Nonnull LocalDate begin ) {
     this.begin = begin;
   }
 
@@ -110,7 +110,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
    * {@inheritDoc}
    */
   @Override
-  public boolean isActiveAt( @NotNull LocalDate date ) {
+  public boolean isActiveAt( @Nonnull LocalDate date ) {
     if ( !getBegin().isBefore( date ) ) {
       return false;
     }

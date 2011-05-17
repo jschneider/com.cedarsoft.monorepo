@@ -31,18 +31,18 @@
 
 package com.cedarsoft.exec;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Backward compatible class. Use {@link Executor} instead.
  */
 @Deprecated
 public class Executer extends Executor {
-  public Executer( @NotNull ProcessBuilder processBuilder, boolean redirectStreams ) {
+  public Executer( @Nonnull ProcessBuilder processBuilder, boolean redirectStreams ) {
     super( processBuilder, redirectStreams );
   }
 
-  public Executer( @NotNull ProcessBuilder processBuilder ) {
+  public Executer( @Nonnull ProcessBuilder processBuilder ) {
     super( processBuilder );
   }
 }

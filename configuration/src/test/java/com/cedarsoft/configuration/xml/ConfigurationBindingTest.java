@@ -35,8 +35,8 @@ import com.jgoodies.binding.beans.BeanAdapter;
 import com.jgoodies.binding.value.ValueModel;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.beans.PropertyChangeListener;
@@ -140,41 +140,40 @@ public class ConfigurationBindingTest {
 
   public static class MyBean {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
-    @NotNull
-    @NonNls
+    @Nonnull
     private String value = "";
     private final List<String> values = new ArrayList<String>();
 
-    @NotNull
+    @Nonnull
     public List<String> getValues() {
       return Collections.unmodifiableList( values );
     }
 
-    public void setValues( @NotNull List<String> values ) {
+    public void setValues( @Nonnull List<String> values ) {
       List<String> old = new ArrayList<String>( values );
       this.values.clear();
       this.values.addAll( values );
       pcs.firePropertyChange( "values", old, Collections.unmodifiableList( this.values ) );
     }
 
-    public void addValue( @NotNull String otherValue ) {
+    public void addValue( @Nonnull String otherValue ) {
       List<String> old = new ArrayList<String>( values );
       this.values.add( otherValue );
       pcs.firePropertyChange( "values", old, Collections.unmodifiableList( this.values ) );
     }
 
-    public void removeValue( @NotNull String otherValue ) {
+    public void removeValue( @Nonnull String otherValue ) {
       List<String> old = new ArrayList<String>( values );
       this.values.remove( otherValue );
       pcs.firePropertyChange( "values", old, Collections.unmodifiableList( this.values ) );
     }
 
-    @NotNull
+    @Nonnull
     public String getValue() {
       return value;
     }
 
-    public void setValue( @NotNull String value ) {
+    public void setValue( @Nonnull String value ) {
       pcs.firePropertyChange( "value", this.value, this.value = value );
     }
 

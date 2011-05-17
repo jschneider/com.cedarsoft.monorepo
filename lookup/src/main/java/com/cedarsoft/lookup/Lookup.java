@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.Class;
 import java.lang.IllegalArgumentException;
@@ -53,7 +53,7 @@ public interface Lookup {
    * @return the lookup object or null if nothing has been found
    */
   @Nullable
-  <T> T lookup( @NotNull Class<T> type );
+  <T> T lookup( @Nonnull Class<T> type );
 
   /**
    * Lookks up a given object
@@ -65,8 +65,8 @@ public interface Lookup {
    * @throws IllegalArgumentException
    *          if no object has been found
    */
-  @NotNull
-  <T> T lookupNonNull( @NotNull Class<T> type ) throws IllegalArgumentException;
+  @Nonnull
+  <T> T lookupNonNull( @Nonnull Class<T> type ) throws IllegalArgumentException;
 
   /**
    * Returns a  map containing the available lookup objects.
@@ -78,7 +78,7 @@ public interface Lookup {
    * @throws UnsupportedOperationException
    *          if this method is not supported
    */
-  @NotNull
+  @Nonnull
   Map<Class<?>, Object> lookups();
 
   /**
@@ -89,7 +89,7 @@ public interface Lookup {
    * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
-  <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
+  <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
    * Binds the given lookup change listener with the key retrieved from {@link TypedLookupChangeListener#getType()}.
@@ -99,7 +99,7 @@ public interface Lookup {
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
    */
-  <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener );
+  <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener );
 
   /**
    * Binds the given lookup change listener that is wrapped within a {@link WeakLookupChangeListener}.
@@ -110,7 +110,7 @@ public interface Lookup {
    * @param type                 a {@link Class} object.
    * @param <T>                  a T object.
    */
-  <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
+  <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
    * Binds the given lookup change listener (that is wrapped within a {@link WeakLookupChangeListener})
@@ -121,14 +121,14 @@ public interface Lookup {
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
    */
-  <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener );
+  <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener );
 
   /**
    * Adds a lookup change listener
    *
    * @param lookupChangeListener the lookup change listener
    */
-  void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener );
+  void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener );
 
   /**
    * Add a lookup change listener for a given type
@@ -137,14 +137,14 @@ public interface Lookup {
    * @param lookupChangeListener the listener
    * @param <T>                  a T object.
    */
-  <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
+  <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
    * Adds a lookup change listener that is wrapped within a {@link WeakLookupChangeListener}
    *
    * @param lookupChangeListener the lookup change listener
    */
-  void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener );
+  void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener );
 
   /**
    * Add a lookup change listener that is wrapped within a {@link WeakLookupChangeListener} for a given type
@@ -153,14 +153,14 @@ public interface Lookup {
    * @param lookupChangeListener the listener
    * @param <T>                  a T object.
    */
-  <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
+  <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
    * Remove a lookup change listener
    *
    * @param lookupChangeListener the listener that is removed from *all* types
    */
-  void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener );
+  void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener );
 
   /**
    * Remove a lookup change listener from the given type
@@ -169,5 +169,5 @@ public interface Lookup {
    * @param lookupChangeListener the listener
    * @param <T>                  a T object.
    */
-  <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener );
+  <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 }

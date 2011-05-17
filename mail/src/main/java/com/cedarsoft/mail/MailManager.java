@@ -33,8 +33,8 @@ package com.cedarsoft.mail;
 
 import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -53,11 +53,11 @@ import java.util.Properties;
  *         Systems</a>
  */
 public class MailManager {
-  @NotNull
+  @Nonnull
   private static final Category CAT = Logger.getLogger( MailManager.class );
-  @NonNls
+  @Nonnull
   private static final String MAIL_HOST = "mail.host";
-  @NonNls
+  @Nonnull
   private static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
 
 
@@ -70,7 +70,7 @@ public class MailManager {
    *
    * @param mailConfiguration a {@link MailConfiguration} object.
    */
-  public MailManager( @NotNull MailConfiguration mailConfiguration ) {
+  public MailManager( @Nonnull MailConfiguration mailConfiguration ) {
     this.configuration = mailConfiguration;
     session = getSession();
   }
@@ -80,7 +80,7 @@ public class MailManager {
    *
    * @return the session
    */
-  @NotNull
+  @Nonnull
   protected final Session getSession() {
     return Session.getInstance( getProperties(), getAuthenticator() );
   }
@@ -90,7 +90,7 @@ public class MailManager {
    *
    * @return a {@link Authenticator} object.
    */
-  @NotNull
+  @Nonnull
   public Authenticator getAuthenticator() {
     return new Authenticator() {
       @Override
@@ -105,7 +105,7 @@ public class MailManager {
    *
    * @return a new mime message
    */
-  @NotNull
+  @Nonnull
   public MimeMessage createMessage() {
     MimeMessage message = new MimeMessage( session );
     try {
@@ -124,11 +124,11 @@ public class MailManager {
    *
    * @param message a {@link Message} object.
    */
-  public static void sendMail( @NotNull Message message ) {
+  public static void sendMail( @Nonnull Message message ) {
     new Thread( new MailWorker( message ) ).start();
   }
 
-  @NotNull
+  @Nonnull
   private Properties getProperties() {
     Properties properties = new Properties();
     properties.setProperty( MAIL_HOST, configuration.getMailHost() );
@@ -142,7 +142,7 @@ public class MailManager {
   private static class MailWorker implements Runnable {
     private Message message;
 
-    protected MailWorker( @NotNull Message message ) {
+    protected MailWorker( @Nonnull Message message ) {
       this.message = message;
     }
 

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.configuration;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -48,21 +48,21 @@ public interface ConfigurationManager {
    * @param <T>               a T object.
    * @return the configuration
    */
-  @NotNull
-  <T> T getConfiguration( @NotNull Class<T> configurationType );
+  @Nonnull
+  <T> T getConfiguration( @Nonnull Class<T> configurationType );
 
   /**
    * Adds a configuration
    *
    * @param configuration the configuration
    */
-  void addConfiguration( @NotNull Object configuration );
+  void addConfiguration( @Nonnull Object configuration );
 
   /**
    * Returns all configurations
    *
    * @return the configurations
    */
-  @NotNull
+  @Nonnull
   List<?> getConfigurations();
 }

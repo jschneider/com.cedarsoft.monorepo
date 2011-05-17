@@ -33,7 +33,7 @@ package com.cedarsoft.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
@@ -48,7 +48,7 @@ public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> imple
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   protected JPopupMenu createPresentation() {
     return new JPopupMenu();
   }
@@ -57,8 +57,8 @@ public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> imple
    * {@inheritDoc}
    */
   @Override
-  @NotNull
-  protected Presenter<? extends JComponent> getChildPresenter( @NotNull StructPart child ) {
+  @Nonnull
+  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
     DefaultJMenuItemPresenter presenter = child.getLookup().lookup( DefaultJMenuItemPresenter.class );
     if ( presenter != null ) {
       return presenter;
@@ -80,7 +80,7 @@ public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> imple
    * {@inheritDoc}
    */
   @Override
-  protected void bind( @NotNull JPopupMenu presentation, @NotNull StructPart struct, @NotNull Lookup lookup ) {
+  protected void bind( @Nonnull JPopupMenu presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
   /**

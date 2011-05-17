@@ -31,8 +31,8 @@
 
 package com.cedarsoft.file;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.String;
 
@@ -45,19 +45,17 @@ public class Extension {
   /**
    * Constant <code>DEFAULT_DELIMITER="."</code>
    */
-  @NonNls
+  @Nonnull
   public static final String DEFAULT_DELIMITER = ".";
   /**
    * Constant <code>NONE</code>
    */
-  @NotNull
+  @Nonnull
   public static final Extension NONE = new Extension( "", "" );
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String delimiter;
-  @NotNull
-  @NonNls
+  @Nonnull
   private final String extension;
 
   /**
@@ -65,7 +63,7 @@ public class Extension {
    *
    * @param extension a {@link String} object.
    */
-  public Extension( @NotNull @NonNls String extension ) {
+  public Extension( @Nonnull String extension ) {
     this( DEFAULT_DELIMITER, extension );
   }
 
@@ -75,7 +73,7 @@ public class Extension {
    * @param delimiter a {@link String} object.
    * @param extension a {@link String} object.
    */
-  public Extension( @NonNls @NotNull String delimiter, @NotNull @NonNls String extension ) {
+  public Extension( @Nonnull String delimiter, @Nonnull String extension ) {
     this.delimiter = delimiter;
     this.extension = extension;
   }
@@ -85,8 +83,7 @@ public class Extension {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getDelimiter() {
     return delimiter;
   }
@@ -96,8 +93,7 @@ public class Extension {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getExtension() {
     return extension;
   }
@@ -107,8 +103,7 @@ public class Extension {
    *
    * @return a {@link String} object.
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getCombined() {
     return delimiter + extension;
   }

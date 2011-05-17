@@ -33,8 +33,8 @@ package com.cedarsoft.codegen.parser;
 
 import com.sun.mirror.apt.AnnotationProcessorEnvironment;
 import com.sun.mirror.declaration.ClassDeclaration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,27 +44,27 @@ import java.util.List;
  *
  */
 public class Result {
-  @NotNull
+  @Nonnull
   private final List<ClassDeclaration> classDeclarations = new ArrayList<ClassDeclaration>();
 
-  @NotNull
+  @Nonnull
   private final AnnotationProcessorEnvironment environment;
 
-  public Result( @NotNull AnnotationProcessorEnvironment environment ) {
+  public Result( @Nonnull AnnotationProcessorEnvironment environment ) {
     this.environment = environment;
   }
 
-  public void addClassDeclaration( @NotNull ClassDeclaration classDeclaration ) {
+  public void addClassDeclaration( @Nonnull ClassDeclaration classDeclaration ) {
     this.classDeclarations.add( classDeclaration );
   }
 
-  @NotNull
+  @Nonnull
   public List<? extends ClassDeclaration> getClassDeclarations() {
     return Collections.unmodifiableList( classDeclarations );
   }
 
-  @NotNull
-  public ClassDeclaration getClassDeclaration( @NotNull @NonNls String fqName ) {
+  @Nonnull
+  public ClassDeclaration getClassDeclaration( @Nonnull String fqName ) {
     for ( ClassDeclaration classDeclaration : classDeclarations ) {
       if ( classDeclaration.getQualifiedName().equals( fqName ) ) {
         return classDeclaration;
@@ -80,7 +80,7 @@ public class Result {
    * @return the class declaration with the shoretest fq name
    */
   @Deprecated
-  @NotNull
+  @Nonnull
   public ClassDeclaration getClassDeclaration() {
     if ( classDeclarations.isEmpty() ) {
       throw new IllegalStateException( "No class declaration found" );
@@ -104,7 +104,7 @@ public class Result {
   }
 
   @Deprecated
-  @NotNull
+  @Nonnull
   public ClassDeclaration findClassDeclarationWithShortestFQName() {
     ClassDeclaration shortest = null;
     for ( ClassDeclaration classDeclaration : classDeclarations ) {
@@ -120,7 +120,7 @@ public class Result {
     return shortest;
   }
 
-  @NotNull
+  @Nonnull
   public AnnotationProcessorEnvironment getEnvironment() {
     return environment;
   }

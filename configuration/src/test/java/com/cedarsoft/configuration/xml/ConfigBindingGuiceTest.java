@@ -40,8 +40,8 @@ import com.google.inject.Scopes;
 import com.jgoodies.binding.beans.BeanAdapter;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.beans.PropertyChangeListener;
@@ -68,7 +68,7 @@ public class ConfigBindingGuiceTest {
           Configuration configuration;
 
           @Override
-          @NotNull
+          @Nonnull
           public MyBean get() {
             MyBean myBean = new MyBean();
             BeanAdapter<MyBean> beanAdapter = new BeanAdapter<MyBean>( myBean, true );
@@ -89,8 +89,7 @@ public class ConfigBindingGuiceTest {
   }
 
   public static class MyBean {
-    @NotNull
-    @NonNls
+    @Nonnull
     static final String PROPERTY_VALUE = "value";
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport( this );

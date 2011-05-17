@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.junit.rules.*;
 import org.junit.runners.model.*;
 
@@ -43,13 +43,11 @@ import java.io.PrintStream;
  *
  */
 public class SystemOutRule implements MethodRule {
-  @NotNull
-  @NonNls
+  @Nonnull
   private final ByteArrayOutputStream newOut = new ByteArrayOutputStream();
   private PrintStream oldOut;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   private final ByteArrayOutputStream newErr = new ByteArrayOutputStream();
   private PrintStream oldErr;
 
@@ -87,19 +85,17 @@ public class SystemOutRule implements MethodRule {
     oldOut = null;
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getOutAsString() {
     return newOut.toString();
   }
 
-  @NotNull
-  @NonNls
+  @Nonnull
   public String getErrAsString() {
     return newErr.toString();
   }
 
-  @NotNull
+  @Nonnull
   public PrintStream getOldOut() {
     if ( oldOut == null ) {
       throw new IllegalStateException( "old out is null. Rule not activated" );
@@ -107,7 +103,7 @@ public class SystemOutRule implements MethodRule {
     return oldOut;
   }
 
-  @NotNull
+  @Nonnull
   public PrintStream getOldErr() {
     if ( oldErr == null ) {
       throw new IllegalStateException( "oldErr is null. Rule not activated" );

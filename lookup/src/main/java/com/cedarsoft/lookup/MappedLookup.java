@@ -31,8 +31,8 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    *
    * @param entries a {@link Map} object.
    */
-  public MappedLookup( @NotNull Map<Class<?>, ?> entries ) {
+  public MappedLookup( @Nonnull Map<Class<?>, ?> entries ) {
     this.store.putAll( entries );
   }
 
@@ -66,7 +66,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void store( @NotNull Class<T> type, @NotNull T value ) {
+  public <T> void store( @Nonnull Class<T> type, @Nonnull T value ) {
     T oldValue = type.cast( store.put( type, value ) );
     lcs.fireLookupChanged( type, oldValue, value );
   }
@@ -75,7 +75,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  @NotNull
+  @Nonnull
   public Map<Class<?>, Object> lookups() {
     return Collections.unmodifiableMap( store );
   }
@@ -85,7 +85,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    */
   @Override
   @Nullable
-  public <T> T lookup( @NotNull Class<T> type ) {
+  public <T> T lookup( @Nonnull Class<T> type ) {
     return type.cast( store.get( type ) );
   }
 
@@ -93,7 +93,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bind( type, lookupChangeListener );
   }
 
@@ -101,7 +101,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bind( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bind( lookupChangeListener );
   }
 
@@ -109,7 +109,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.bindWeak( type, lookupChangeListener );
   }
 
@@ -117,7 +117,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void bindWeak( @NotNull TypedLookupChangeListener<T> lookupChangeListener ) {
+  public <T> void bindWeak( @Nonnull TypedLookupChangeListener<T> lookupChangeListener ) {
     lcs.bindWeak( lookupChangeListener );
   }
 
@@ -125,7 +125,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
@@ -133,7 +133,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListenerWeak( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListenerWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListenerWeak( type, lookupChangeListener );
   }
 
@@ -142,7 +142,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    *
    * @param lookupChangeListener a {@link LookupChangeListener} object.
    */
-  public void addLookupChangeListenerWeak( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addLookupChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListenerWeak( lookupChangeListener );
   }
 
@@ -150,7 +150,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public void addChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void addChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.addChangeListener( lookupChangeListener );
   }
 
@@ -158,7 +158,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void addChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.addChangeListener( type, lookupChangeListener );
   }
 
@@ -166,7 +166,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public void removeChangeListener( @NotNull LookupChangeListener<?> lookupChangeListener ) {
+  public void removeChangeListener( @Nonnull LookupChangeListener<?> lookupChangeListener ) {
     lcs.removeChangeListener( lookupChangeListener );
   }
 
@@ -174,7 +174,7 @@ public class MappedLookup extends AbstractLookup implements LookupStore {
    * {@inheritDoc}
    */
   @Override
-  public <T> void removeChangeListener( @NotNull Class<T> type, @NotNull LookupChangeListener<? super T> lookupChangeListener ) {
+  public <T> void removeChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener ) {
     lcs.removeChangeListener( type, lookupChangeListener );
   }
 }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lookup;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.EventListener;
 
@@ -47,5 +47,5 @@ public interface LookupChangeListener<T> extends EventListener {
    *
    * @param event describes the change of the lookup
    */
-  void lookupChanged( @NotNull LookupChangeEvent<? extends T> event );
+  void lookupChanged( @Nonnull LookupChangeEvent<? extends T> event );
 }

@@ -35,9 +35,9 @@ import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.junit.*;
 import org.xml.sax.SAXException;
 
@@ -52,15 +52,15 @@ public class JsonUtils {
   private JsonUtils() {
   }
 
-  public static void assertJsonEquals( @NotNull URL control, @Nullable String test ) throws SAXException, IOException {
+  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test ) throws SAXException, IOException {
     assertJsonEquals( AssertUtils.toString( control ), test );
   }
 
-  public static void assertJsonEquals( @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException {
+  public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
     assertJsonEquals( null, control, test );
   }
 
-  public static void assertJsonEquals( @Nullable @NonNls String err, @Nullable @NonNls String control, @Nullable @NonNls String test ) throws IOException, ComparisonFailure {
+  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, ComparisonFailure {
     if ( test == null || test.trim().length() == 0 ) {
       throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
@@ -81,9 +81,8 @@ public class JsonUtils {
     }
   }
 
-  @NotNull
-  @NonNls
-  public static String formatJson( @Nullable @NonNls String unformated ) {
+  @Nonnull
+  public static String formatJson( @Nullable String unformated ) {
     try {
       ObjectMapper mapper = new ObjectMapper();
       JsonNode tree = mapper.readTree( unformated );

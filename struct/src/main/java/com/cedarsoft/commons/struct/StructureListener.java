@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A listener that is notified whenever the structure has been changed
@@ -44,13 +44,13 @@ public interface StructureListener {
    *
    * @param event the event
    */
-  void childAdded( @NotNull StructureChangedEvent event );
+  void childAdded( @Nonnull StructureChangedEvent event );
 
   /**
    * Is called when a child has been detached
    *
    * @param event the evetn
    */
-  void childDetached( @NotNull StructureChangedEvent event );
+  void childDetached( @Nonnull StructureChangedEvent event );
 
 }

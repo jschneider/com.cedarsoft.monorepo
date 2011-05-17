@@ -31,7 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +48,7 @@ import java.util.concurrent.locks.Lock;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MultiLock implements Lock {
-  @NotNull
+  @Nonnull
   private final List<Lock> locks = new ArrayList<Lock>();
 
   /**
@@ -56,7 +56,7 @@ public class MultiLock implements Lock {
    *
    * @param locks a {@link Lock} object.
    */
-  public MultiLock( @NotNull Lock... locks ) {
+  public MultiLock( @Nonnull Lock... locks ) {
     this( Arrays.asList( locks ) );
   }
 
@@ -65,7 +65,7 @@ public class MultiLock implements Lock {
    *
    * @param locks a {@link Collection} object.
    */
-  public MultiLock( @NotNull Collection<? extends Lock> locks ) {
+  public MultiLock( @Nonnull Collection<? extends Lock> locks ) {
     this.locks.addAll( locks );
   }
 

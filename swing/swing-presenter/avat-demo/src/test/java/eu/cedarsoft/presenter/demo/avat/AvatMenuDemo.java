@@ -36,8 +36,8 @@ import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.lookup.Lookups;
 import com.cedarsoft.presenter.JMenuBarPresenter;
 import com.cedarsoft.presenter.StructStringPresenter;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -84,16 +84,16 @@ public class AvatMenuDemo {
     System.out.println( new StructStringPresenter().present( rootNode ) );
   }
 
-  private static Action createAction( @NotNull Mask mask ) {
+  private static Action createAction( @Nonnull Mask mask ) {
     return new CommandAction( mask.getText(), mask.getCommand() );
   }
 
-  private static Action createAction( @NotNull SubGroup subGroup ) {
+  private static Action createAction( @Nonnull SubGroup subGroup ) {
     return new CommandAction( subGroup.getText(), subGroup.getCommand() );
   }
 
-  @NotNull
-  private static Action createAction( @NotNull Group group ) {
+  @Nonnull
+  private static Action createAction( @Nonnull Group group ) {
     CommandAction action = new CommandAction( group.getCommand() );
     attachIcon( action, group.getIcon() );
     return action;
@@ -115,11 +115,11 @@ public class AvatMenuDemo {
     frame.setVisible( true );
   }
 
-  protected void applyPresentation( @NotNull JFrame frame ) {
+  protected void applyPresentation( @Nonnull JFrame frame ) {
     frame.setJMenuBar( new JMenuBarPresenter().present( rootNode ) );
   }
 
-  @NotNull
+  @Nonnull
   protected JFrame createFrame() {
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -131,15 +131,15 @@ public class AvatMenuDemo {
   }
 
   public static final class CommandAction extends AbstractAction {
-    @NotNull
-    @NonNls
+    @Nonnull
+    @Nonnull
     private final String command;
 
-    public CommandAction( @NotNull @NonNls String command ) {
+    public CommandAction( @Nonnull String command ) {
       this( command, command );
     }
 
-    public CommandAction( @NotNull String text, @NotNull @NonNls String command ) {
+    public CommandAction( @Nonnull String text, @Nonnull String command ) {
       super( text );
       this.command = command;
     }

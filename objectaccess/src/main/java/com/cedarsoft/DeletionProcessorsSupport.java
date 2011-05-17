@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class DeletionProcessorsSupport<T> {
-  @NotNull
+  @Nonnull
   private final List<DeletionProcessor<T>> deletionProcessors = new ArrayList<DeletionProcessor<T>>();
 
   /**
@@ -51,7 +51,7 @@ public class DeletionProcessorsSupport<T> {
    *
    * @param deletionProcessors the processors
    */
-  public void setDeletionProcessors( @NotNull List<? extends DeletionProcessor<T>> deletionProcessors ) {
+  public void setDeletionProcessors( @Nonnull List<? extends DeletionProcessor<T>> deletionProcessors ) {
     this.deletionProcessors.clear();
     this.deletionProcessors.addAll( deletionProcessors );
   }
@@ -61,7 +61,7 @@ public class DeletionProcessorsSupport<T> {
    *
    * @return a {@link List} object.
    */
-  @NotNull
+  @Nonnull
   public List<? extends DeletionProcessor<T>> getDeletionProcessors() {
     return Collections.unmodifiableList( deletionProcessors );
   }
@@ -71,7 +71,7 @@ public class DeletionProcessorsSupport<T> {
    *
    * @param processor a {@link DeletionProcessor} object.
    */
-  public void addDeletionProcessor( @NotNull DeletionProcessor<T> processor ) {
+  public void addDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
     this.deletionProcessors.add( processor );
   }
 
@@ -80,7 +80,7 @@ public class DeletionProcessorsSupport<T> {
    *
    * @param processor a {@link DeletionProcessor} object.
    */
-  public void removeDeletionProcessor( @NotNull DeletionProcessor<T> processor ) {
+  public void removeDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
     this.deletionProcessors.remove( processor );
   }
 
@@ -89,7 +89,7 @@ public class DeletionProcessorsSupport<T> {
    *
    * @param object the object that will be deleted
    */
-  public void notifyWillBeDeleted( @NotNull T object ) {
+  public void notifyWillBeDeleted( @Nonnull T object ) {
     for ( DeletionProcessor<T> processor : deletionProcessors ) {
       processor.willBeDeleted( object );
     }

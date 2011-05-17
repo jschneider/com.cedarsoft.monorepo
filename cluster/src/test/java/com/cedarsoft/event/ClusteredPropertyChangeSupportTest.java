@@ -31,7 +31,7 @@
 
 package com.cedarsoft.event;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.beans.PropertyChangeEvent;
@@ -83,7 +83,7 @@ public class ClusteredPropertyChangeSupportTest {
 
   @Test
   public void testWIthPropName() {
-    @NotNull
+    @Nonnull
     final List<PropertyChangeEvent> events = new ArrayList<PropertyChangeEvent>();
 
     PropertyChangeListener listener = new PropertyChangeListener() {

@@ -1,6 +1,6 @@
 package com.cedarsoft.swing.tree;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TreeModelEvent;
@@ -11,7 +11,7 @@ import javax.swing.tree.TreeModel;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractTreeModel implements TreeModel {
-  @NotNull
+  @Nonnull
   private final EventListenerList listenerList = new EventListenerList();
 
   /**
@@ -156,7 +156,7 @@ public abstract class AbstractTreeModel implements TreeModel {
    *
    * @param previousRoot the previous root
    */
-  protected void fireRootNodeChanged( @NotNull Object previousRoot ) {
+  protected void fireRootNodeChanged( @Nonnull Object previousRoot ) {
     // Guaranteed to return a non-null array
     Object[] listeners = listenerList.getListenerList();
     TreeModelEvent e = null;
@@ -179,7 +179,7 @@ public abstract class AbstractTreeModel implements TreeModel {
    *
    * @param previousRoot the previous  root
    */
-  protected void fireRootTreeStructureChanged( @NotNull Object previousRoot ) {
+  protected void fireRootTreeStructureChanged( @Nonnull Object previousRoot ) {
     // Guaranteed to return a non-null array
     Object[] listeners = listenerList.getListenerList();
     TreeModelEvent e = null;

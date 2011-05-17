@@ -31,8 +31,8 @@
 
 package com.cedarsoft;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 import org.joda.time.DateTimeZone;
 import org.junit.rules.*;
 import org.junit.runners.model.*;
@@ -43,18 +43,18 @@ import org.junit.runners.model.*;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DateTimeZoneRule implements MethodRule {
-  @NotNull
+  @Nonnull
   protected final DateTimeZone zone;
 
   public DateTimeZoneRule() throws IllegalArgumentException {
     this( "America/New_York" );
   }
 
-  public DateTimeZoneRule( @NotNull @NonNls String zoneId ) throws IllegalArgumentException {
+  public DateTimeZoneRule( @Nonnull String zoneId ) throws IllegalArgumentException {
     this( DateTimeZone.forID( zoneId ) );
   }
 
-  public DateTimeZoneRule( @NotNull DateTimeZone zone ) {
+  public DateTimeZoneRule( @Nonnull DateTimeZone zone ) {
     this.zone = zone;
   }
 
@@ -84,12 +84,12 @@ public class DateTimeZoneRule implements MethodRule {
     DateTimeZone.setDefault( oldTimeZone );
   }
 
-  @NotNull
+  @Nonnull
   public DateTimeZone getZone() {
     return zone;
   }
 
-  @NotNull
+  @Nonnull
   public DateTimeZone getOldTimeZone() {
     if ( oldTimeZone == null ) {
       throw new IllegalStateException( "No old zone set" );
