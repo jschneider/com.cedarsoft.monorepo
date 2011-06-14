@@ -51,6 +51,7 @@ public class FileTypeRegistryTest {
   }
 
   @Test
+  @Ignore
   public void testParseCase() throws Exception {
     FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
 

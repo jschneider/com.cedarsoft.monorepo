@@ -26,6 +26,7 @@ public class FileNamesFactoryTest {
     baseDir = folder.newFolder( "myFolder" );
   }
 
+  @Ignore
   @Test
   public void testBaseNameAware() throws Exception {
     File f1 = new File( baseDir, "A.JPG" );
@@ -71,6 +72,7 @@ public class FileNamesFactoryTest {
     }
   }
 
+  @Ignore
   @Test
   public void testMixedCase() throws Exception {
     {
@@ -94,6 +96,7 @@ public class FileNamesFactoryTest {
     }
   }
 
+  @Ignore
   @Test
   public void testUpperCase() throws Exception {
     {
