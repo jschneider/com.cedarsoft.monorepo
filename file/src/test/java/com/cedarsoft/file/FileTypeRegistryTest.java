@@ -31,6 +31,7 @@
 
 package com.cedarsoft.file;
 
+import com.cedarsoft.NotFoundException;
 import org.junit.*;
 
 import java.util.Collections;
@@ -47,6 +48,27 @@ public class FileTypeRegistryTest {
     FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
 
     assertEquals( fileTypeRegistry.parseFileName( "asdf.jpg" ), new FileName( "asdf", ".", "jpg" ) );
+  }
+
+  @Test
+  public void testParseCase() throws Exception {
+    FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
+
+    assertEquals( fileTypeRegistry.parseFileName( "asdf.jpg" ), new FileName( "asdf", ".", "jpg" ) );
+    assertEquals( fileTypeRegistry.parseFileName( "asdf.JPG" ), new FileName( "asdf", ".", "JPG" ) );
+    assertEquals( fileTypeRegistry.parseFileName( "ASDF.JPG" ), new FileName( "ASDF", ".", "JPG" ) );
+  }
+
+  @Test
+  public void testParseEnd() throws Exception {
+    FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
+
+    try {
+      fileTypeRegistry.parseFileName( "ASDF.JPGSS" );
+      fail( "Where is the Exception" );
+    } catch ( NotFoundException e ) {
+      assertEquals( "No FileType found for file <ASDF.JPGSS>", e.getMessage() );
+    }
   }
 
   @Test

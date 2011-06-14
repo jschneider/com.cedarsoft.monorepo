@@ -33,6 +33,7 @@ package com.cedarsoft.file;
 
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -176,10 +177,9 @@ public class FileType {
    * @return a {@link FileName} object.
    */
   @Nonnull
-  public FileName getFileName( @Nonnull String fileName ) {
-    @Nonnull
-    String bestBase = null;
-    Extension bestExtension = null;
+  public FileName getFileName( @Nonnull String fileName ) throws IllegalArgumentException {//$NON-NLS-1$
+    @Nullable String bestBase = null;
+    @Nullable Extension bestExtension = null;
 
     for ( @Nonnull Extension extension : extensions ) {
       int index = fileName.toLowerCase().indexOf( extension.getCombined() );
