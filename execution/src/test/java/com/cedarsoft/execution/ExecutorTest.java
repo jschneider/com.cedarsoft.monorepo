@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.exec;
+package com.cedarsoft.execution;
 
 import com.cedarsoft.test.utils.MockitoTemplate;
 import com.google.common.io.ByteStreams;

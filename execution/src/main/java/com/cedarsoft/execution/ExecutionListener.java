@@ -29,20 +29,28 @@
  * have any questions.
  */
 
-package com.cedarsoft.exec;
+package com.cedarsoft.execution;
 
 import javax.annotation.Nonnull;
 
 /**
- * Backward compatible class. Use {@link Executor} instead.
+ * Listener that is notified about the execution of a process
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-@Deprecated
-public class Executer extends Executor {
-  public Executer( @Nonnull ProcessBuilder processBuilder, boolean redirectStreams ) {
-    super( processBuilder, redirectStreams );
-  }
+public interface ExecutionListener {
 
-  public Executer( @Nonnull ProcessBuilder processBuilder ) {
-    super( processBuilder );
-  }
+  /**
+   * Is notified whenever the process has been started
+   *
+   * @param process the process that has been started
+   */
+  void executionStarted( @Nonnull Process process );
+
+  /**
+   * Is called whenever the execution has been finished
+   *
+   * @param answer the answer
+   */
+  void executionFinished( int answer );
 }
