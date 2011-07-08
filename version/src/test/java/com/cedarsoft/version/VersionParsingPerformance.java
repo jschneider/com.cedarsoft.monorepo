@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.version;
 
 import com.google.common.base.Splitter;
 
