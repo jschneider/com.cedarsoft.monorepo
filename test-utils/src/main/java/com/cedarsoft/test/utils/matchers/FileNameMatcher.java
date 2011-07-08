@@ -29,31 +29,39 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils.matchers;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.junit.*;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+
+import javax.annotation.Nonnull;
 
 import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
-  @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+public class FileNameMatcher extends BaseMatcher<File> {
+  @Nonnull
+  private final String fileName;
+
+  public FileNameMatcher( @Nonnull String fileName ) {
+    this.fileName = fileName;
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  @Override
+  public boolean matches( Object o ) {
+    File file = ( File ) o;
+    return file.getPath().endsWith( fileName );
+  }
+
+  @Override
+  public void describeTo( Description description ) {
+    description.appendText( "File with name <" + fileName + ">" );
+  }
+
+  @Nonnull
+  public static FileNameMatcher fileName( @Nonnull String fileName ) {
+    return new FileNameMatcher( fileName );
   }
 }

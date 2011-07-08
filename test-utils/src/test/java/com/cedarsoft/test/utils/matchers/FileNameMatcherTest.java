@@ -29,31 +29,31 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils.matchers;
 
-import com.cedarsoft.test.utils.TestUtils;
+import org.hamcrest.StringDescription;
 import org.junit.*;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class FileNameMatcherTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
-  }
+  public void testIt() {
+    FileNameMatcher matcher = FileNameMatcher.fileName( "asdf" );
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+    StringDescription description = new StringDescription();
+    matcher.describeTo( description );
+    assertEquals( "File with name <asdf>", description.toString() );
+
+    assertTrue( matcher.matches( new File( "asdf" ) ) );
+    assertFalse( matcher.matches( new File( "asdf2" ) ) );
+    assertTrue( matcher.matches( new File( "/asdf" ) ) );
+    assertTrue( matcher.matches( new File( "asdf/asdf" ) ) );
+    assertFalse( matcher.matches( new File( "asdf/asdf2" ) ) );
   }
 }

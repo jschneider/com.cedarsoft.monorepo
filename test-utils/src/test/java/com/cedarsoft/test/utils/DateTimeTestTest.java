@@ -29,31 +29,26 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
+import org.joda.time.DateTimeZone;
 import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class DateTimeTestTest extends DateTimeTest{
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testDefault() {
+    assertNotNull( this.getOldTimeZone() );
+    assertEquals( DateTimeZone.forID( "America/New_York" ), DateTimeZone.getDefault() );
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  @Override
+  public void tearDownDateTimeZone() {
+    super.tearDownDateTimeZone();
+    assertNull( this.getOldTimeZone() );
   }
 }

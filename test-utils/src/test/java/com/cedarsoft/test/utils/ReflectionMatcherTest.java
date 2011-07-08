@@ -29,31 +29,48 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
 import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class ReflectionMatcherTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testIt() {
+    MyClass object = new MyClass( 7, 42, "asdf" );
+    ReflectionMatcher<MyClass> matcher = new ReflectionMatcher<MyClass>( object, "message" );
+
+    StringBuffer buffer = new StringBuffer();
+    matcher.appendTo( buffer );
+    assertEquals( "Object did not fit: Expected <MyClass{message='asdf', value=7, other=42}>", buffer.toString() );
+
+    assertTrue( matcher.matches( new MyClass( 7, 42, "other" ) ) );
+    assertFalse( matcher.matches( new MyClass( 7, 43, "other" ) ) );
+    assertFalse( matcher.matches( new MyClass( 8, 42, "other" ) ) );
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  private static class MyClass {
+    private final String message;
+    private final int value;
+    private final int other;
+
+    private MyClass( int value, int other, String message ) {
+      this.value = value;
+      this.other = other;
+      this.message = message;
+    }
+
+    @Override
+    public String toString() {
+      return "MyClass{" +
+        "message='" + message + '\'' +
+        ", value=" + value +
+        ", other=" + other +
+        '}';
+    }
   }
 }

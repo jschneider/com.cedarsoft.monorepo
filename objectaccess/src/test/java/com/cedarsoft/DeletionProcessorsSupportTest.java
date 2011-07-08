@@ -31,6 +31,7 @@
 
 package com.cedarsoft;
 
+import com.cedarsoft.test.utils.MockitoTemplate;
 import org.junit.*;
 import org.mockito.Mock;
 

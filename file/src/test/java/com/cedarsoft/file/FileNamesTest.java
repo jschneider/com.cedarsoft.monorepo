@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import com.cedarsoft.TestUtils;
+import com.cedarsoft.test.utils.TestUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
 

@@ -29,31 +29,37 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
+import org.easymock.EasyMock;
 import org.junit.*;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 /**
+ *
  */
-public class ZipTest {
+public class PropertyChangeEventMatcherTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
-  }
+  public void testIt() throws Exception {
+    final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+    final PropertyChangeListener listener = EasyMock.createMock( PropertyChangeListener.class );
+
+
+    new EasyMockTemplate( listener ) {
+      @Override
+      protected void expectations() throws Exception {
+        listener.propertyChange( PropertyChangeEventMatcher.create( new PropertyChangeEvent( PropertyChangeEventMatcherTest.this, "message", "old", "new" ) ) );
+      }
+
+      @Override
+      protected void codeToTest() throws Exception {
+        pcs.addPropertyChangeListener( listener );
+        pcs.firePropertyChange( "message", "old", "new" );
+      }
+    }.run();
   }
 }

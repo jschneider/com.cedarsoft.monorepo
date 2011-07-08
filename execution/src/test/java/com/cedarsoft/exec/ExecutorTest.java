@@ -31,7 +31,7 @@
 
 package com.cedarsoft.exec;
 
-import com.cedarsoft.MockitoTemplate;
+import com.cedarsoft.test.utils.MockitoTemplate;
 import com.google.common.io.ByteStreams;
 import javax.annotation.Nonnull;
 import org.junit.*;

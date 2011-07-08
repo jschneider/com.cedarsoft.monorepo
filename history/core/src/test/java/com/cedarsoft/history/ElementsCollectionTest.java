@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.EasyMockTemplate;
+import com.cedarsoft.test.utils.EasyMockTemplate;
 import org.easymock.classextension.EasyMock;
 import javax.annotation.Nonnull;
 import org.junit.*;

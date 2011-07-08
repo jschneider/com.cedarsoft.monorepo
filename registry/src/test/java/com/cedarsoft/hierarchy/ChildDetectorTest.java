@@ -31,8 +31,9 @@
 
 package com.cedarsoft.hierarchy;
 
-import com.cedarsoft.MockitoTemplate;
+import com.cedarsoft.test.utils.MockitoTemplate;
 import javax.annotation.Nonnull;
+
 import org.junit.*;
 import org.mockito.Mock;
 

@@ -31,8 +31,7 @@
 
 package com.cedarsoft.lock;
 
-import com.cedarsoft.MockitoTemplate;
-import com.cedarsoft.Sleep;
+import com.cedarsoft.test.utils.MockitoTemplate;
 import com.google.common.collect.Sets;
 import javax.annotation.Nonnull;
 import org.junit.*;

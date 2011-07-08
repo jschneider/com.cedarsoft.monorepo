@@ -29,31 +29,40 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
+import org.easymock.EasyMock;
 import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class EasyMockTemplateTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testIt() throws Exception {
+    final Action action = EasyMock.createMock( Action.class );
+
+    final boolean[] called = {false};
+
+    new EasyMockTemplate( action ) {
+      @Override
+      protected void expectations() {
+        action.action();
+        called[0] = true;
+      }
+
+      @Override
+      protected void codeToTest() {
+        action.action();
+      }
+    }.run();
+
+    assertTrue( called[0] );
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  public interface Action {
+    void action();
   }
 }

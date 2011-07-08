@@ -31,7 +31,7 @@
 
 package com.cedarsoft.zip;
 
-import com.cedarsoft.matchers.ContainsOnlyFilesMatcher;
+import com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.io.FileUtils;
 import javax.annotation.Nonnull;
@@ -40,9 +40,8 @@ import org.junit.rules.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.zip.ZipEntry;
 
-import static com.cedarsoft.matchers.ContainsOnlyFilesMatcher.containsOnlyFiles;
+import static com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher.containsOnlyFiles;
 import static org.junit.Assert.*;
 
 /**
@@ -60,7 +59,7 @@ public class ZipCreatorTest {
     extractor.extract( target, FileUtils.openInputStream( createZip() ) );
 
     assertEquals( 2, target.listFiles().length );
-    assertThat( ContainsOnlyFilesMatcher.toTree( target ), target, containsOnlyFiles( "file1", "subDir/file2" ) );
+    assertThat( ContainsOnlyFilesMatcher.toTree(target), target, containsOnlyFiles( "file1", "subDir/file2" ) );
   }
 
   @Test

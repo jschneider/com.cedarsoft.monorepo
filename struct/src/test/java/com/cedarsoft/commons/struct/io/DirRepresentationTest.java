@@ -32,8 +32,8 @@
 package com.cedarsoft.commons.struct.io;
 
 import com.cedarsoft.CanceledException;
-import com.cedarsoft.MockitoTemplate;
-import com.cedarsoft.TestUtils;
+import com.cedarsoft.test.utils.MockitoTemplate;
+import com.cedarsoft.test.utils.TestUtils;
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.NodeFactory;

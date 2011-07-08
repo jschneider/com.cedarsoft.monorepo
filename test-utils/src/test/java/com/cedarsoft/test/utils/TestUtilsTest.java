@@ -29,31 +29,54 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
+import org.apache.commons.io.FileUtils;
 import org.junit.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class TestUtilsTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testCleanup() throws IllegalAccessException {
+    MyClass object = new MyClass();
+    assertNotNull( object.message );
+    assertNotNull( object.finalMessage );
+    TestUtils.cleanupFields( object );
+    assertNull( object.message );
+    assertNotNull( object.finalMessage );
   }
 
   @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testCleanupNull() throws IllegalAccessException {
+    TestUtils.cleanupFields( null );
+  }
+
+  private static class MyClass {
+    private String message = "asdf";
+    private final String finalMessage = "asdf";
+  }
+
+  @Test
+  public void testDir() throws IllegalAccessException {
+    File created = TestUtils.createEmptyTmpDir();
+    assertTrue( created.isDirectory() );
+    assertEquals( 0, created.listFiles().length );
+
+    assertEquals( created.getParentFile(), TestUtils.getTmpDir() );
+  }
+
+  @Test
+  public void testTmpFileCreation() throws IllegalAccessException, IOException {
+    File created = TestUtils.createTmpFile( "prefix", "suffix", new ByteArrayInputStream( "content".getBytes() ) );
+    assertTrue( created.isFile() );
+    assertEquals( "content", FileUtils.readFileToString( created ) );
   }
 }

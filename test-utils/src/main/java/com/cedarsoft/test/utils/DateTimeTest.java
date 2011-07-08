@@ -29,31 +29,59 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
+import javax.annotation.Nonnull;
+import org.joda.time.DateTimeZone;
 import org.junit.*;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
-
 /**
+ * <p>DateTimeTest class.</p>
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class ZipTest {
-  @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+@Deprecated
+public abstract class DateTimeTest {
+  @Nonnull
+  protected final DateTimeZone zone = DateTimeZone.forID( "America/New_York" );
+
+  private DateTimeZone oldTimeZone;
+
+  /**
+   * <p>setUpDateTimeZone</p>
+   *
+   * @throws Exception if any.
+   */
+  @Before
+  public void setUpDateTimeZone() throws Exception {
+    assert oldTimeZone == null;
+    oldTimeZone = DateTimeZone.getDefault();
+    DateTimeZone.setDefault( zone );
   }
 
+  /**
+   * <p>tearDownDateTimeZone</p>
+   */
+  @After
+  public void tearDownDateTimeZone() {
+    assert oldTimeZone != null;
+    DateTimeZone.setDefault( oldTimeZone );
+    oldTimeZone = null;
+  }
+
+  public DateTimeZone getOldTimeZone() {
+    return oldTimeZone;
+  }
+
+  @Nonnull
+  public DateTimeZone getZone() {
+    return zone;
+  }
+
+  /**
+   * <p>testDummy</p>
+   */
   @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testDummy() {
   }
 }

@@ -29,31 +29,63 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.junit.*;
+import javax.annotation.Nonnull;
+import org.junit.rules.*;
+import org.junit.runners.model.*;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import java.util.Locale;
 
 /**
+ * Rule that sets the TimeZone
+ *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class ZipTest {
-  @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+public class LocaleRule implements MethodRule {
+  @Nonnull
+  protected final Locale locale;
+
+  public LocaleRule() throws IllegalArgumentException {
+    this( Locale.US );
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  public LocaleRule( @Nonnull Locale locale ) {
+    this.locale = locale;
+  }
+
+  private Locale oldLocale;
+
+  @Override
+  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
+    return new Statement() {
+      @Override
+      public void evaluate() throws Throwable {
+        before();
+        try {
+          base.evaluate();
+        } finally {
+          after();
+        }
+      }
+    };
+  }
+
+  private void before() {
+    oldLocale = Locale.getDefault();
+    Locale.setDefault( locale );
+  }
+
+  private void after() {
+    Locale.setDefault( oldLocale );
+  }
+
+  @Nonnull
+  public Locale getLocale() {
+    return locale;
+  }
+
+  public Locale getOldLocale() {
+    return oldLocale;
   }
 }

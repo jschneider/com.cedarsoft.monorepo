@@ -29,31 +29,42 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
 import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 /**
+ *
  */
-public class ZipTest {
+public class SystemOutRuleTest {
+  @Rule
+  public SystemOutRule rule = new SystemOutRule();
+
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testIt() {
+    System.out.println( "Hey" );
+    System.out.println( "2" );
+    assertEquals( "Hey\n2\n", rule.getOutAsString() );
+    System.out.println( "3" );
+    assertEquals( "Hey\n2\n3\n", rule.getOutAsString() );
   }
 
   @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  public void testOut2() {
+    System.out.println( "2" );
+    assertEquals( "2\n", rule.getOutAsString() );
+    System.out.println( "3" );
+    assertEquals( "2\n3\n", rule.getOutAsString() );
+  }
+
+  @Test
+  public void testErr() {
+    System.err.println( "Hey" );
+    System.err.println( "2" );
+    assertEquals( "Hey\n2\n", rule.getErrAsString() );
+    System.err.println( "3" );
+    assertEquals( "Hey\n2\n3\n", rule.getErrAsString() );
   }
 }

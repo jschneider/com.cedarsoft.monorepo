@@ -32,6 +32,8 @@
 package com.cedarsoft;
 
 import javax.annotation.Nonnull;
+
+import com.cedarsoft.test.utils.MockitoTemplate;
 import org.junit.*;
 import org.mockito.Mock;
 

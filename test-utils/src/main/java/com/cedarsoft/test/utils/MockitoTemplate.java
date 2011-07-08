@@ -29,31 +29,55 @@
  * have any questions.
  */
 
-package com.cedarsoft.zip;
+package com.cedarsoft.test.utils;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 /**
+ * Simple template for mockito.
+ *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class ZipTest {
-  @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
-    assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+public abstract class MockitoTemplate {
+
+  /**
+   * Stub the mocks
+   *
+   * @throws Exception if any.
+   */
+  protected abstract void stub() throws Exception;
+
+  /**
+   * Execute the test code / assertions
+   *
+   * @throws Exception if any.
+   */
+  protected abstract void execute() throws Exception;
+
+  /**
+   * Finally verify the mocks using {@link Mockito#verify(Object)}
+   *
+   * @throws Exception if any.
+   */
+  protected abstract void verifyMocks() throws Exception;
+
+  /**
+   * Runs the tests
+   *
+   * @throws Exception if any.
+   */
+  public void run() throws Exception {
+    initMocks();
+    stub();
+    execute();
+    verifyMocks();
   }
 
-  @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
-    file.mkdirs();
-    assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+  /**
+   * <p>initMocks</p>
+   */
+  protected void initMocks() {
+    MockitoAnnotations.initMocks( this );
   }
 }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.registry;
 
-import com.cedarsoft.EasyMockTemplate;
+import com.cedarsoft.test.utils.EasyMockTemplate;
 import com.cedarsoft.StillContainedException;
 import org.easymock.classextension.EasyMock;
 import org.junit.*;
