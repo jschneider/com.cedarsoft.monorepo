@@ -32,7 +32,7 @@
 package com.cedarsoft.registry;
 
 import com.cedarsoft.test.utils.EasyMockTemplate;
-import com.cedarsoft.StillContainedException;
+import com.cedarsoft.exceptions.StillContainedException;
 import org.easymock.classextension.EasyMock;
 import org.junit.*;
 

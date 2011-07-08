@@ -29,48 +29,38 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.exceptions;
 
-import java.lang.String;
-import java.lang.Throwable;
+import javax.annotation.Nonnull;
+
+import java.lang.Object;
 
 /**
- * <p>NotFoundException class.</p>
+ * <p>StillContainedException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class NotFoundException extends RuntimeException {
+public class StillContainedException extends RuntimeException {
+  @Nonnull
+  private final Object object;
+
   /**
-   * <p>Constructor for NotFoundException.</p>
+   * <p>Constructor for StillContainedException.</p>
+   *
+   * @param object a {@link Object} object.
    */
-  public NotFoundException() {
+  public StillContainedException( @Nonnull Object object ) {
+    super( "The object <" + object + "> is still contained" );
+    this.object = object;
   }
 
   /**
-   * <p>Constructor for NotFoundException.</p>
+   * <p>Getter for the field <code>object</code>.</p>
    *
-   * @param message a {@link String} object.
+   * @return a {@link Object} object.
    */
-  public NotFoundException( String message ) {
-    super( message );
-  }
-
-  /**
-   * <p>Constructor for NotFoundException.</p>
-   *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
-   */
-  public NotFoundException( String message, Throwable cause ) {
-    super( message, cause );
-  }
-
-  /**
-   * <p>Constructor for NotFoundException.</p>
-   *
-   * @param cause a {@link Throwable} object.
-   */
-  public NotFoundException( Throwable cause ) {
-    super( cause );
+  @Nonnull
+  public Object getObject() {
+    return object;
   }
 }

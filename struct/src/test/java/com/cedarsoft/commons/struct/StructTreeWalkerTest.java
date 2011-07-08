@@ -31,8 +31,9 @@
 
 package com.cedarsoft.commons.struct;
 
-import com.cedarsoft.CanceledException;
+import com.cedarsoft.exceptions.CanceledException;
 import javax.annotation.Nonnull;
+
 import org.junit.*;
 
 import java.util.ArrayList;

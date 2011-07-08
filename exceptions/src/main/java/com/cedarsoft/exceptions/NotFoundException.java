@@ -29,12 +29,48 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.exceptions;
+
+import java.lang.String;
+import java.lang.Throwable;
 
 /**
- * <p>CanceledException class.</p>
+ * <p>NotFoundException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class CanceledException extends RuntimeException {
+public class NotFoundException extends RuntimeException {
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   */
+  public NotFoundException() {
+  }
+
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param message a {@link String} object.
+   */
+  public NotFoundException( String message ) {
+    super( message );
+  }
+
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param message a {@link String} object.
+   * @param cause   a {@link Throwable} object.
+   */
+  public NotFoundException( String message, Throwable cause ) {
+    super( message, cause );
+  }
+
+  /**
+   * <p>Constructor for NotFoundException.</p>
+   *
+   * @param cause a {@link Throwable} object.
+   */
+  public NotFoundException( Throwable cause ) {
+    super( cause );
+  }
 }

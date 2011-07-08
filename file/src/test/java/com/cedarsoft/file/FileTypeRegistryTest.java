@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.exceptions.NotFoundException;
 import org.junit.*;
 
 import java.util.Collections;

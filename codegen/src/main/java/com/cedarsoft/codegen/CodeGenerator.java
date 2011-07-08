@@ -31,7 +31,7 @@
 
 package com.cedarsoft.codegen;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.exceptions.NotFoundException;
 import com.cedarsoft.codegen.model.FieldDeclarationInfo;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;

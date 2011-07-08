@@ -29,22 +29,12 @@
  * have any questions.
  */
 
-package com.cedarsoft;
-
-import org.junit.*;
-
-import static org.junit.Assert.*;
+package com.cedarsoft.exceptions;
 
 /**
+ * <p>CanceledException class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class ExceptionsTest {
-  @Test
-  public void testMessages() {
-    assertEquals( "The object <daObject> is still contained", new StillContainedException( "daObject" ).getMessage() );
-    assertEquals( "not found", new NotFoundException( "not found" ).getMessage() );
-    assertEquals( "not found", new NotFoundException( "not found", new RuntimeException( "asdf" ) ).getMessage() );
-    assertNull( new CanceledException().getMessage() );
-  }
-
+public class CanceledException extends RuntimeException {
 }

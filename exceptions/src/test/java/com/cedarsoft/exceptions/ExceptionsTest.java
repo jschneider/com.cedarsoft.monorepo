@@ -29,38 +29,22 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.exceptions;
 
-import javax.annotation.Nonnull;
+import org.junit.*;
 
-import java.lang.Object;
+import static org.junit.Assert.*;
 
 /**
- * <p>StillContainedException class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class StillContainedException extends RuntimeException {
-  @Nonnull
-  private final Object object;
-
-  /**
-   * <p>Constructor for StillContainedException.</p>
-   *
-   * @param object a {@link Object} object.
-   */
-  public StillContainedException( @Nonnull Object object ) {
-    super( "The object <" + object + "> is still contained" );
-    this.object = object;
+public class ExceptionsTest {
+  @Test
+  public void testMessages() {
+    assertEquals( "The object <daObject> is still contained", new StillContainedException( "daObject" ).getMessage() );
+    assertEquals( "not found", new NotFoundException( "not found" ).getMessage() );
+    assertEquals( "not found", new NotFoundException( "not found", new RuntimeException( "asdf" ) ).getMessage() );
+    assertNull( new CanceledException().getMessage() );
   }
 
-  /**
-   * <p>Getter for the field <code>object</code>.</p>
-   *
-   * @return a {@link Object} object.
-   */
-  @Nonnull
-  public Object getObject() {
-    return object;
-  }
 }

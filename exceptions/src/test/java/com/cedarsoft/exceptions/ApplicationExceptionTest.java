@@ -1,4 +1,4 @@
-package com.cedarsoft;
+package com.cedarsoft.exceptions;
 
 
 import org.junit.*;
@@ -14,7 +14,7 @@ import static org.fest.assertions.Assertions.assertThat;
  */
 public class ApplicationExceptionTest {
   @Nonnull
-  public static final String BUNDLE = "com.cedarsoft.testmessages";
+  public static final String BUNDLE = "com.cedarsoft.exceptions.testmessages";
 
   @Test
   public void testSetup() throws Exception {
@@ -26,19 +26,19 @@ public class ApplicationExceptionTest {
     Locale.setDefault( Locale.ENGLISH );
 
     assertThat( new ApplicationException( TestMessages.ERROR_1, "a" ).getLocalizedMessage() ).isEqualTo( "The Value 1 en: <a>" );
-    assertThat( new ApplicationException( TestMessages.ERROR_1, "b" ).getMessage() ).isEqualTo( "com.cedarsoft.TestMessages.ERROR_1" );
+    assertThat( new ApplicationException( TestMessages.ERROR_1, "b" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_1" );
     assertThat( new ApplicationException( TestMessages.ERROR_2, "c" ).getLocalizedMessage() ).isEqualTo( "The Value 2 en: <c>" );
-    assertThat( new ApplicationException( TestMessages.ERROR_2, "d" ).getMessage() ).isEqualTo( "com.cedarsoft.TestMessages.ERROR_2" );
+    assertThat( new ApplicationException( TestMessages.ERROR_2, "d" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_2" );
   }
 
   @Test
   public void testLocales() throws Exception {
     assertThat( new ApplicationException( TestMessages.ERROR_1, "asdf" ).getLocalizedMessage( Locale.ENGLISH ) ).isEqualTo( "The Value 1 en: <asdf>" );
     assertThat( new ApplicationException( TestMessages.ERROR_1, "asdf" ).getLocalizedMessage( Locale.GERMAN ) ).isEqualTo( "The Value 1 de: <asdf>" );
-    assertThat( new ApplicationException( TestMessages.ERROR_1, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.TestMessages.ERROR_1" );
+    assertThat( new ApplicationException( TestMessages.ERROR_1, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_1" );
     assertThat( new ApplicationException( TestMessages.ERROR_2, "asdf" ).getLocalizedMessage( Locale.ENGLISH ) ).isEqualTo( "The Value 2 en: <asdf>" );
     assertThat( new ApplicationException( TestMessages.ERROR_2, "asdf" ).getLocalizedMessage( Locale.GERMAN ) ).isEqualTo( "The Value 2 de: <asdf>" );
-    assertThat( new ApplicationException( TestMessages.ERROR_2, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.TestMessages.ERROR_2" );
+    assertThat( new ApplicationException( TestMessages.ERROR_2, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_2" );
   }
 
 }

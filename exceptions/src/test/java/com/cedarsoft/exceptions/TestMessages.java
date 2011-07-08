@@ -1,4 +1,4 @@
-package com.cedarsoft;
+package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
 

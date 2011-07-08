@@ -31,7 +31,7 @@
 
 package com.cedarsoft.codegen;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.exceptions.NotFoundException;
 import com.google.common.base.Splitter;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
