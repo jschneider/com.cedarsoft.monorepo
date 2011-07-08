@@ -29,22 +29,35 @@
  * have any questions.
  */
 
-package com.cedarsoft.cache;
+package com.cedarsoft.registry.hierarchy;
 
 import javax.annotation.Nonnull;
 import org.junit.*;
 
+import javax.swing.JFrame;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
- * Stores the parent of children in a weak map
+ * <p/>
+ * Date: Apr 23, 2007<br>
+ * Time: 1:06:08 PM<br>
  */
-public class ParentCacheTest {
-  private ParentCache cache;
+public class ChildDetectorManagerTest {
+  private ChildDetectorManager manager;
 
   @Before
   public void setUp() throws Exception {
-    cache = new ParentCache();
+    manager = new ChildDetectorManager();
+    manager.addChildDetector( String.class, new AbstractChildDetector<String, String>() {
+      @Override
+      @Nonnull
+      public List<? extends String> findChildren( @Nonnull String parent ) {
+        return Collections.emptyList();
+      }
+    } );
   }
 
   @After
@@ -53,62 +66,12 @@ public class ParentCacheTest {
   }
 
   @Test
-  public void testIndex() {
-    cache.storeIndex( "c", 1 );
-    assertEquals( new Integer( 1 ), cache.findIndex( "c" ) );
-
-    cache.storeIndex( "c", 1 );
-    cache.storeIndex( "c", 2 );
-    assertEquals( new Integer( 2 ), cache.findIndex( "c" ) );
-
-    cache.remove( "c" );
-    assertNull( cache.findIndex( "c" ) );
-    cache.storeIndex( "c", 3 );
-    assertEquals( new Integer( 3 ), cache.findIndex( "c" ) );
-  }
-
-  @Test
-  public void testRemove() {
-    String child = "child";
-    cache.store( child, "parent", 0 );
-    assertSame( "parent", cache.findParent( child ) );
-
-    cache.remove( child );
-    assertNull( cache.findParent( child ) );
-  }
-
-  @Test
-  public void testOverwrite() {
-    String child = "child";
-    cache.store( child, "parent", 0 );
-    cache.store( child, "parent", 0 );
+  public void testIt() {
+    assertNotNull( manager.getChildDetector( String.class ) );
     try {
-      cache.store( child, "parent2", 0 );
+      manager.getChildDetector( JFrame.class );
       fail( "Where is the Exception" );
     } catch ( Exception ignore ) {
     }
-  }
-
-  @Test
-  public void testSimple() {
-    String child = "asdf";
-    assertNull( cache.findParent( child ) );
-    String parent = "parent";
-    cache.store( child, parent, 0 );
-    assertSame( parent, cache.findParent( child ) );
-  }
-
-  @Test
-  public void testWeak() {
-    Object child = new Object();
-    assertNull( cache.findParent( child ) );
-    fill( child );
-    assertNotNull( cache.findParent( child ) );
-    System.gc();
-    assertNull( cache.findParent( child ) );
-  }
-
-  private void fill( @Nonnull Object child ) {
-    cache.store( child, new Object(), 0 );
   }
 }

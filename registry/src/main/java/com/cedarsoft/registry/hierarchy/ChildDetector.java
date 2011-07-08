@@ -29,66 +29,40 @@
  * have any questions.
  */
 
-package com.cedarsoft.hierarchy;
+package com.cedarsoft.registry.hierarchy;
 
-import com.cedarsoft.cache.Cache;
-import com.cedarsoft.cache.HashedCache;
 import javax.annotation.Nonnull;
 
 import java.util.List;
-import java.util.WeakHashMap;
 
 /**
- * Special implementation of a child detector that always returns the same list for a given parent.
+ * Implementations detect all children of an element that shall be added to the recursion
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <C> the type of the children
  * @param <P> the type of the parent
  */
-public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
-  @Nonnull
-  private final Cache<P, List<? extends C>> childrenCache = new HashedCache<P, List<? extends C>>( new WeakHashMap<P, List<? extends C>>(), new Cache.Factory<P, List<? extends C>>() {
-    @Override
-    @Nonnull
-    public List<? extends C> create( @Nonnull P key ) {
-      return createChildren( key );
-    }
-  } );
-
+public interface ChildDetector<P, C> {
   /**
-   * <p>createChildren</p>
+   * Finds the children for the given parent
    *
-   * @param parent a P object.
-   * @return a {@link List} object.
+   * @param parent the parent
+   * @return the children
    */
   @Nonnull
-  protected abstract List<? extends C> createChildren( @Nonnull P parent );
+  List<? extends C> findChildren( @Nonnull P parent );
 
   /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public final List<? extends C> findChildren( @Nonnull P parent ) {
-    return childrenCache.get( parent );
-  }
-
-  /**
-   * <p>handleModified</p>
+   * Registers a change listener that is notified when the child detector changes its children
    *
-   * @param parent a P object.
+   * @param changeListener the listener
    */
-  public void handleModified( @Nonnull P parent ) {
-    invalidateCache( parent );
-  }
+  void addChangeListener( @Nonnull ChildChangeListener<P> changeListener );
 
   /**
-   * <p>invalidateCache</p>
+   * Removes the change listener
    *
-   * @param parent a P object.
+   * @param changeListener the change listener that is removed
    */
-  public void invalidateCache( @Nonnull P parent ) {
-    childrenCache.remove( parent );
-    notifyChildrenChangedFor( parent );
-  }
+  void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener );
 }

@@ -29,40 +29,48 @@
  * have any questions.
  */
 
-package com.cedarsoft.hierarchy;
+package com.cedarsoft.registry.hierarchy;
 
 import javax.annotation.Nonnull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementations detect all children of an element that shall be added to the recursion
+ * Abstract base class for child detectors
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <C> the type of the children
  * @param <P> the type of the parent
  */
-public interface ChildDetector<P, C> {
+public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C> {
+  @Nonnull
+  private final List<ChildChangeListener<P>> listeners = new ArrayList<ChildChangeListener<P>>();
+
   /**
-   * Finds the children for the given parent
+   * Notifies the listeners that the children have been changed for the given parent
    *
    * @param parent the parent
-   * @return the children
    */
-  @Nonnull
-  List<? extends C> findChildren( @Nonnull P parent );
+  protected void notifyChildrenChangedFor( @Nonnull P parent ) {
+    for ( ChildChangeListener<P> listener : new ArrayList<ChildChangeListener<P>>( listeners ) ) {
+      listener.notifyChildrenChangedFor( parent );
+    }
+  }
 
   /**
-   * Registers a change listener that is notified when the child detector changes its children
-   *
-   * @param changeListener the listener
+   * {@inheritDoc}
    */
-  void addChangeListener( @Nonnull ChildChangeListener<P> changeListener );
+  @Override
+  public void addChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
+    listeners.add( changeListener );
+  }
 
   /**
-   * Removes the change listener
-   *
-   * @param changeListener the change listener that is removed
+   * {@inheritDoc}
    */
-  void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener );
+  @Override
+  public void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
+    listeners.remove( changeListener );
+  }
 }

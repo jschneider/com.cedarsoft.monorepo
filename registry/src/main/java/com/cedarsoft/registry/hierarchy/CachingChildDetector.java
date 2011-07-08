@@ -29,33 +29,66 @@
  * have any questions.
  */
 
-package com.cedarsoft.cache;
+package com.cedarsoft.registry.hierarchy;
 
+import com.cedarsoft.registry.cache.Cache;
+import com.cedarsoft.registry.cache.HashedCache;
 import javax.annotation.Nonnull;
 
-import java.util.Map;
+import java.util.List;
+import java.util.WeakHashMap;
 
 /**
- * A mapped cache.
- * If there is no entry for a given key, the entry is automatically created using a factory.
+ * Special implementation of a child detector that always returns the same list for a given parent.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <K> the key
- * @param <T> the type that is stored within the cache
+ * @param <C> the type of the children
+ * @param <P> the type of the parent
  */
-public interface Cache<K, T> extends Map<K, T> {
+public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P, C> {
+  @Nonnull
+  private final Cache<P, List<? extends C>> childrenCache = new HashedCache<P, List<? extends C>>( new WeakHashMap<P, List<? extends C>>(), new Cache.Factory<P, List<? extends C>>() {
+    @Override
+    @Nonnull
+    public List<? extends C> create( @Nonnull P key ) {
+      return createChildren( key );
+    }
+  } );
 
   /**
-   * A factory that is used to fill the cache
+   * <p>createChildren</p>
+   *
+   * @param parent a P object.
+   * @return a {@link List} object.
    */
-  interface Factory<K, T> {
-    /**
-     * Create the object for the given key
-     *
-     * @param key the key
-     * @return the object
-     */
-    @Nonnull
-    T create( @Nonnull K key );
+  @Nonnull
+  protected abstract List<? extends C> createChildren( @Nonnull P parent );
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  public final List<? extends C> findChildren( @Nonnull P parent ) {
+    return childrenCache.get( parent );
+  }
+
+  /**
+   * <p>handleModified</p>
+   *
+   * @param parent a P object.
+   */
+  public void handleModified( @Nonnull P parent ) {
+    invalidateCache( parent );
+  }
+
+  /**
+   * <p>invalidateCache</p>
+   *
+   * @param parent a P object.
+   */
+  public void invalidateCache( @Nonnull P parent ) {
+    childrenCache.remove( parent );
+    notifyChildrenChangedFor( parent );
   }
 }

@@ -29,48 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft.hierarchy;
+package com.cedarsoft.registry.hierarchy;
 
 import javax.annotation.Nonnull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Abstract base class for child detectors
+ * Listener that may be registered at a parent
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <C> the type of the children
- * @param <P> the type of the parent
  */
-public abstract class AbstractChildDetector<P, C> implements ChildDetector<P, C> {
-  @Nonnull
-  private final List<ChildChangeListener<P>> listeners = new ArrayList<ChildChangeListener<P>>();
-
+public interface ChildChangeListener<P> {
   /**
-   * Notifies the listeners that the children have been changed for the given parent
+   * Is called when the parent has changed
    *
    * @param parent the parent
    */
-  protected void notifyChildrenChangedFor( @Nonnull P parent ) {
-    for ( ChildChangeListener<P> listener : new ArrayList<ChildChangeListener<P>>( listeners ) ) {
-      listener.notifyChildrenChangedFor( parent );
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void addChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
-    listeners.add( changeListener );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void removeChangeListener( @Nonnull ChildChangeListener<P> changeListener ) {
-    listeners.remove( changeListener );
-  }
+  void notifyChildrenChangedFor( @Nonnull P parent );
 }

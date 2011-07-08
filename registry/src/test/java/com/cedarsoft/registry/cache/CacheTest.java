@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.cache;
+package com.cedarsoft.registry.cache;
 
 import javax.annotation.Nonnull;
 import org.junit.*;

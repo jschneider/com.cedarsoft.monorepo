@@ -29,20 +29,33 @@
  * have any questions.
  */
 
-package com.cedarsoft.hierarchy;
+package com.cedarsoft.registry.cache;
 
 import javax.annotation.Nonnull;
 
+import java.util.Map;
+
 /**
- * Listener that may be registered at a parent
+ * A mapped cache.
+ * If there is no entry for a given key, the entry is automatically created using a factory.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <K> the key
+ * @param <T> the type that is stored within the cache
  */
-public interface ChildChangeListener<P> {
+public interface Cache<K, T> extends Map<K, T> {
+
   /**
-   * Is called when the parent has changed
-   *
-   * @param parent the parent
+   * A factory that is used to fill the cache
    */
-  void notifyChildrenChangedFor( @Nonnull P parent );
+  interface Factory<K, T> {
+    /**
+     * Create the object for the given key
+     *
+     * @param key the key
+     * @return the object
+     */
+    @Nonnull
+    T create( @Nonnull K key );
+  }
 }

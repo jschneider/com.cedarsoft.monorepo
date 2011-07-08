@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.hierarchy;
+package com.cedarsoft.registry.hierarchy;
 
 import com.cedarsoft.registry.TypeRegistry;
 import javax.annotation.Nonnull;

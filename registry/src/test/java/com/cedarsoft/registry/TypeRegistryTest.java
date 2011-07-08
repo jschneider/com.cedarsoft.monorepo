@@ -31,8 +31,8 @@
 
 package com.cedarsoft.registry;
 
-import com.cedarsoft.hierarchy.AbstractChildDetector;
-import com.cedarsoft.hierarchy.ChildDetector;
+import com.cedarsoft.registry.hierarchy.AbstractChildDetector;
+import com.cedarsoft.registry.hierarchy.ChildDetector;
 import javax.annotation.Nonnull;
 import org.junit.*;
 
