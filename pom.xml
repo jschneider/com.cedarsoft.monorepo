@@ -46,7 +46,7 @@
     <module>registry</module>
     <module>repository</module>
     <module>spring</module>
-    <module>string-conversion</module>
+    <!--<module>string-conversion</module>-->
     <module>struct</module>
     <module>swing</module>
     <module>test-utils</module>
