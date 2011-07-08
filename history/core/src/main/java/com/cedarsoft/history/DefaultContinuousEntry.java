@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.event.ClusteredPropertyChangeSupport;
+import com.cedarsoft.cluster.event.ClusteredPropertyChangeSupport;
 
 import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;

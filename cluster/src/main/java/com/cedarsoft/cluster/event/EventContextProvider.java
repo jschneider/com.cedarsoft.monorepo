@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.event;
+package com.cedarsoft.cluster.event;
 
 import javax.annotation.Nullable;
 
