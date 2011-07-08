@@ -31,7 +31,7 @@
 
 package com.cedarsoft;
 
-import com.cedarsoft.properties.PropertiesPath;
+import com.cedarsoft.commons.properties.PropertiesPath;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

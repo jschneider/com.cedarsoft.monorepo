@@ -29,77 +29,82 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import org.junit.*;
-import org.junit.rules.*;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class ThreadUtilsTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
+public class SwingHelperTest {
   @Test
-  public void testIt() {
-    ThreadUtils.assertNotEventDispatchThread();
+  public void testThreads() {
+    SwingHelper.assertNotEventThread();
 
-    expectedException.expect( IllegalThreadStateException.class );
-    expectedException.expectMessage( "Is EDT" );
-
-    ThreadUtils.invokeInEventDispatchThread( new Runnable() {
+    SwingHelper.invokeAndWait( new Runnable() {
       @Override
       public void run() {
-        ThreadUtils.assertNotEventDispatchThread();
+        SwingHelper.assertEventThread();
+        assertTrue( SwingHelper.isEventDispatchThread() );
+        SwingHelper.waitForSwingThread();
       }
     } );
+
+    assertFalse( SwingHelper.isEventDispatchThread() );
   }
 
   @Test
-  public void testEdt() {
-    expectedException.expect( IllegalThreadStateException.class );
-    expectedException.expectMessage( "Not in EDT" );
-
-    ThreadUtils.assertEventDispatchThread();
-  }
-
-  @Test
-  public void testInvoke() {
+  public void testEarly() {
     final boolean[] called = {false};
 
-    ThreadUtils.invokeInEventDispatchThread( new Runnable() {
+    SwingHelper.early( new Runnable() {
       @Override
       public void run() {
-        called[0] = true;
-        assertTrue( ThreadUtils.isEventDispatchThread() );
-        ThreadUtils.assertEventDispatchThread();
+        SwingHelper.early( new Runnable() {
+          @Override
+          public void run() {
+            called[0] = true;
+          }
+        } );
       }
     } );
 
-    ThreadUtils.waitForEventDispatchThread();
+    SwingHelper.waitForSwingThread();
     assertTrue( called[0] );
   }
 
   @Test
-  public void testOther() throws ExecutionException, InterruptedException {
+  public void testPane() throws InvocationTargetException, InterruptedException {
+    final JPanel panel = new JPanel();
+    final JButton button = new JButton( "asdf" );
+    panel.add( button );
+
+    final JFrame frame = SwingHelper.showFrame( panel );
+
     final boolean[] called = {false};
 
-    assertEquals( "asdf", ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+    SwingHelper.early( new Runnable() {
       @Override
-      public Object call() throws Exception {
-        called[0] = true;
-        assertFalse( ThreadUtils.isEventDispatchThread() );
-        ThreadUtils.assertNotEventDispatchThread();
-        return "asdf";
-      }
-    } ) );
+      public void run() {
+        assertTrue( frame.isVisible() );
 
+        assertSame( frame, SwingHelper.rootFrame( panel ) );
+        assertSame( frame, SwingHelper.rootFrame( button ) );
+
+        frame.dispose();
+        assertFalse( frame.isVisible() );
+        called[0] = true;
+      }
+    } );
+
+    SwingHelper.waitForSwingThread();
     assertTrue( called[0] );
   }
 }

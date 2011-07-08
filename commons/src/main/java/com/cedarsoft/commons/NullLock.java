@@ -29,41 +29,91 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import javax.annotation.Nonnull;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+
 /**
- * A condition.
+ * An Null-Lock that does nothing
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @noinspection Singleton
  */
-public interface Condition {
+public class NullLock implements Lock, ReadWriteLock {
   /**
-   * Static condition that is always false.
+   * Constant <code>LOCK</code>
    */
   @Nonnull
-  Condition FALSE = new Condition() {
-    @Override
-    public boolean isValid() {
-      return false;
-    }
-  };
-  /**
-   * Static condition that is always true.
-   */
-  @Nonnull
-  Condition TRUE = new Condition() {
-    @Override
-    public boolean isValid() {
-      return true;
-    }
-  };
+  public static final NullLock LOCK = new NullLock();
+
+  private NullLock() {
+  }
 
   /**
-   * <p>isValid</p>
-   *
-   * @return a boolean.
+   * {@inheritDoc}
    */
-  boolean isValid();
+  @Override
+  @Nonnull
+  public Lock readLock() {
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  public Lock writeLock() {
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void lock() {
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void lockInterruptibly() throws InterruptedException {
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean tryLock() {
+    return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
+    return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void unlock() {
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Condition newCondition() {
+    throw new NullPointerException( "Cannot create a condition for a null lock" );
+  }
 }

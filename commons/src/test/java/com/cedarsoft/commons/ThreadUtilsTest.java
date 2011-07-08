@@ -29,46 +29,77 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import org.junit.*;
+import org.junit.rules.*;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class SleepTest {
-  @Test( timeout = 210 )
-  public void testIt() {
-    long start = System.currentTimeMillis();
-    Sleep.now( 100 );
+public class ThreadUtilsTest {
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
-    long time = System.currentTimeMillis() - start;
-    assertTrue( String.valueOf( time ), time > 99 );
-    assertTrue( String.valueOf( time ), time < 105 );
+  @Test
+  public void testIt() {
+    ThreadUtils.assertNotEventDispatchThread();
+
+    expectedException.expect( IllegalThreadStateException.class );
+    expectedException.expectMessage( "Is EDT" );
+
+    ThreadUtils.invokeInEventDispatchThread( new Runnable() {
+      @Override
+      public void run() {
+        ThreadUtils.assertNotEventDispatchThread();
+      }
+    } );
   }
 
   @Test
-  public void testInterr() throws InterruptedException {
+  public void testEdt() {
+    expectedException.expect( IllegalThreadStateException.class );
+    expectedException.expectMessage( "Not in EDT" );
+
+    ThreadUtils.assertEventDispatchThread();
+  }
+
+  @Test
+  public void testInvoke() {
     final boolean[] called = {false};
 
-    Thread thread = new Thread( new Runnable() {
+    ThreadUtils.invokeInEventDispatchThread( new Runnable() {
       @Override
       public void run() {
-        try {
-          Sleep.forever();
-          fail( "Where is the Exception" );
-        } catch ( RuntimeException ignore ) {
-          called[0] = true;
-        }
+        called[0] = true;
+        assertTrue( ThreadUtils.isEventDispatchThread() );
+        ThreadUtils.assertEventDispatchThread();
       }
     } );
 
-    thread.start();
-    assertFalse( called[0] );
-    thread.interrupt();
-    thread.join();
+    ThreadUtils.waitForEventDispatchThread();
+    assertTrue( called[0] );
+  }
+
+  @Test
+  public void testOther() throws ExecutionException, InterruptedException {
+    final boolean[] called = {false};
+
+    assertEquals( "asdf", ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+      @Override
+      public Object call() throws Exception {
+        called[0] = true;
+        assertFalse( ThreadUtils.isEventDispatchThread() );
+        ThreadUtils.assertNotEventDispatchThread();
+        return "asdf";
+      }
+    } ) );
+
     assertTrue( called[0] );
   }
 }

@@ -35,7 +35,7 @@ import ca.odell.glazedlists.GlazedLists;
 import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
-import com.cedarsoft.SwingHelper;
+import com.cedarsoft.commons.SwingHelper;
 import com.cedarsoft.history.ContinuousEntriesInformation;
 import com.cedarsoft.history.DefaultContinuousEntry;
 import javax.annotation.Nonnull;
@@ -85,7 +85,7 @@ public class DiscreteHistoryTableModelTest {
 
     JPanel contentPane = new JPanel( new BorderLayout() );
     contentPane.add( new JScrollPane( table ) );
-    SwingHelper.showFrame( contentPane );
+    SwingHelper.showFrame(contentPane);
     Thread.sleep( 100000 );
   }
 

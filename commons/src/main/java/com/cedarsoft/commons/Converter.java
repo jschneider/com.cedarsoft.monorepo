@@ -29,84 +29,24 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import javax.annotation.Nonnull;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 /**
- * An extended type of Boolean that has a third option: {@link #UNKNOWN}.
+ * <p>Converter interface.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type that is converted
+ * @param <C> the target type this converts to
  */
-public enum ExtendedBoolean {
-  UNKNOWN(),
-  TRUE(),
-  FALSE();
-
+public interface Converter<T, C> {
   /**
-   * <p>isTrue</p>
+   * <p>convert</p>
    *
-   * @return a boolean.
-   */
-  public boolean isTrue() {
-    return this == TRUE;
-  }
-
-  /**
-   * <p>isFalse</p>
-   *
-   * @return a boolean.
-   */
-  public boolean isFalse() {
-    return this == FALSE;
-  }
-
-  /**
-   * <p>isUnknown</p>
-   *
-   * @return a boolean.
-   */
-  public boolean isUnknown() {
-    return this == UNKNOWN;
-  }
-
-  /**
-   * Returns the description for the default locale
-   *
-   * @return the description for the default locale
+   * @param toConvert a T object.
+   * @return a C object.
    */
   @Nonnull
-  public String getDescription() {
-    return getDescription( Locale.getDefault() );
-  }
-
-  /**
-   * Returns the description for the given locale
-   *
-   * @param locale the locale
-   * @return the description for the locale
-   */
-  @Nonnull
-  public String getDescription( @Nonnull Locale locale ) {
-    ResourceBundle bundle = ResourceBundle.getBundle( getClass().getName(), locale );
-    return bundle.getString( name() );
-  }
-
-  /**
-   * Returns the ExtendedBoolean for a boolean
-   *
-   * @param value the boolean value
-   * @return {@link #TRUE} or {@link #FALSE} - depending on the given value
-   */
-  @Nonnull
-  public static ExtendedBoolean valueOf( boolean value ) {
-    if ( value ) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
-  }
+  C convert( @Nonnull T toConvert );
 }

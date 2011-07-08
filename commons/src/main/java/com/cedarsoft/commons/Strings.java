@@ -29,91 +29,69 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
+import java.lang.String;
 
 /**
- * An Null-Lock that does nothing
+ * Utility method for string operations
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @noinspection Singleton
  */
-public class NullLock implements Lock, ReadWriteLock {
+public class Strings {
+  private Strings() {
+  }
+
   /**
-   * Constant <code>LOCK</code>
+   * <p>stripQuotes</p>
+   *
+   * @param value a {@link String} object.
+   * @return a {@link String} object.
    */
   @Nonnull
-  public static final NullLock LOCK = new NullLock();
+  public static String stripQuotes( @Nonnull String value ) {
+    if ( value.indexOf( '\"' ) == 0 ) {
+      value = value.substring( 1 );
+    }
 
-  private NullLock() {
+    if ( value.endsWith( "\"" ) ) {
+      value = value.substring( 0, value.length() - 1 );
+    }
+
+    return value;
   }
 
   /**
-   * {@inheritDoc}
+   * Cuts the uncut to the given maxlength
+   *
+   * @param uncut     the uncut
+   * @param maxLength the maxlength
+   * @return the cut uncut
    */
-  @Override
   @Nonnull
-  public Lock readLock() {
-    return this;
+  public static String cut( @Nonnull String uncut, int maxLength ) {
+    if ( uncut.length() > maxLength ) {
+      return uncut.substring( 0, maxLength );
+    } else {
+      return uncut;
+    }
   }
 
   /**
-   * {@inheritDoc}
+   * Cuts the given uncut
+   *
+   * @param uncut     the uncut
+   * @param maxLength the maxlength
+   * @return the cut uncut or null if the given uncut has been null
    */
-  @Override
-  @Nonnull
-  public Lock writeLock() {
-    return this;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean tryLock( long time, TimeUnit unit ) throws InterruptedException {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void unlock() {
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Condition newCondition() {
-    throw new NullPointerException( "Cannot create a condition for a null lock" );
+  @Nullable
+  public static String cutNull( @Nullable String uncut, int maxLength ) {
+    if ( uncut == null ) {
+      return null;
+    }
+    return cut( uncut, maxLength );
   }
 }

@@ -31,8 +31,9 @@
 
 package com.cedarsoft.lock;
 
-import com.cedarsoft.ThreadUtils;
+import com.cedarsoft.commons.ThreadUtils;
 import javax.annotation.Nullable;
+
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -74,16 +75,16 @@ public class MultiReadWriteLockTest {
 
     multiLock.writeLock().unlock();
 
-    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
       @Override
       @Nullable
       public Object call() throws Exception {
-        assertTrue( lock.readLock().tryLock() );
+        assertTrue(lock.readLock().tryLock());
         lock.readLock().unlock();
-        assertTrue( lock.writeLock().tryLock() );
+        assertTrue(lock.writeLock().tryLock());
         lock.writeLock().unlock();
         return null;
       }
-    } );
+    });
   }
 }

@@ -29,69 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.junit.*;
 
-import java.lang.String;
+import static org.junit.Assert.*;
 
 /**
- * Utility method for string operations
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class Strings {
-  private Strings() {
+public class ConditionTest {
+  @Test
+  public void testConstants() {
+    assertFalse( Condition.FALSE.isValid() );
+    assertTrue( Condition.TRUE.isValid() );
   }
 
-  /**
-   * <p>stripQuotes</p>
-   *
-   * @param value a {@link String} object.
-   * @return a {@link String} object.
-   */
-  @Nonnull
-  public static String stripQuotes( @Nonnull String value ) {
-    if ( value.indexOf( '\"' ) == 0 ) {
-      value = value.substring( 1 );
-    }
-
-    if ( value.endsWith( "\"" ) ) {
-      value = value.substring( 0, value.length() - 1 );
-    }
-
-    return value;
-  }
-
-  /**
-   * Cuts the uncut to the given maxlength
-   *
-   * @param uncut     the uncut
-   * @param maxLength the maxlength
-   * @return the cut uncut
-   */
-  @Nonnull
-  public static String cut( @Nonnull String uncut, int maxLength ) {
-    if ( uncut.length() > maxLength ) {
-      return uncut.substring( 0, maxLength );
-    } else {
-      return uncut;
-    }
-  }
-
-  /**
-   * Cuts the given uncut
-   *
-   * @param uncut     the uncut
-   * @param maxLength the maxlength
-   * @return the cut uncut or null if the given uncut has been null
-   */
-  @Nullable
-  public static String cutNull( @Nullable String uncut, int maxLength ) {
-    if ( uncut == null ) {
-      return null;
-    }
-    return cut( uncut, maxLength );
-  }
 }

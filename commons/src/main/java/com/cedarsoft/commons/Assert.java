@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 /**
  * Offers a way to find out whether assertions have been enabled

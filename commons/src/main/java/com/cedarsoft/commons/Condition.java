@@ -29,18 +29,41 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
 
 /**
+ * A condition.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class AssertTest {
-  @Test
-  public void testIt() {
-    assertTrue( Assert.assertEnabled() );
-  }
+public interface Condition {
+  /**
+   * Static condition that is always false.
+   */
+  @Nonnull
+  Condition FALSE = new Condition() {
+    @Override
+    public boolean isValid() {
+      return false;
+    }
+  };
+  /**
+   * Static condition that is always true.
+   */
+  @Nonnull
+  Condition TRUE = new Condition() {
+    @Override
+    public boolean isValid() {
+      return true;
+    }
+  };
+
+  /**
+   * <p>isValid</p>
+   *
+   * @return a boolean.
+   */
+  boolean isValid();
 }

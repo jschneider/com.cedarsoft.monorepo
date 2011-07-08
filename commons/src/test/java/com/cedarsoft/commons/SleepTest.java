@@ -29,82 +29,46 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import org.junit.*;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class SwingHelperTest {
-  @Test
-  public void testThreads() {
-    SwingHelper.assertNotEventThread();
+public class SleepTest {
+  @Test( timeout = 210 )
+  public void testIt() {
+    long start = System.currentTimeMillis();
+    Sleep.now( 100 );
 
-    SwingHelper.invokeAndWait( new Runnable() {
-      @Override
-      public void run() {
-        SwingHelper.assertEventThread();
-        assertTrue( SwingHelper.isEventDispatchThread() );
-        SwingHelper.waitForSwingThread();
-      }
-    } );
-
-    assertFalse( SwingHelper.isEventDispatchThread() );
+    long time = System.currentTimeMillis() - start;
+    assertTrue( String.valueOf( time ), time > 99 );
+    assertTrue( String.valueOf( time ), time < 105 );
   }
 
   @Test
-  public void testEarly() {
+  public void testInterr() throws InterruptedException {
     final boolean[] called = {false};
 
-    SwingHelper.early( new Runnable() {
+    Thread thread = new Thread( new Runnable() {
       @Override
       public void run() {
-        SwingHelper.early( new Runnable() {
-          @Override
-          public void run() {
-            called[0] = true;
-          }
-        } );
+        try {
+          Sleep.forever();
+          fail( "Where is the Exception" );
+        } catch ( RuntimeException ignore ) {
+          called[0] = true;
+        }
       }
     } );
 
-    SwingHelper.waitForSwingThread();
-    assertTrue( called[0] );
-  }
-
-  @Test
-  public void testPane() throws InvocationTargetException, InterruptedException {
-    final JPanel panel = new JPanel();
-    final JButton button = new JButton( "asdf" );
-    panel.add( button );
-
-    final JFrame frame = SwingHelper.showFrame( panel );
-
-    final boolean[] called = {false};
-
-    SwingHelper.early( new Runnable() {
-      @Override
-      public void run() {
-        assertTrue( frame.isVisible() );
-
-        assertSame( frame, SwingHelper.rootFrame( panel ) );
-        assertSame( frame, SwingHelper.rootFrame( button ) );
-
-        frame.dispose();
-        assertFalse( frame.isVisible() );
-        called[0] = true;
-      }
-    } );
-
-    SwingHelper.waitForSwingThread();
+    thread.start();
+    assertFalse( called[0] );
+    thread.interrupt();
+    thread.join();
     assertTrue( called[0] );
   }
 }

@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.NullLock;
+import com.cedarsoft.commons.NullLock;
 import com.cedarsoft.PartTimeObjectAdd;
 import com.cedarsoft.lock.Lockable;
 import javax.annotation.Nonnull;

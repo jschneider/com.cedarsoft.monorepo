@@ -31,8 +31,9 @@
 
 package com.cedarsoft.lock;
 
-import com.cedarsoft.ThreadUtils;
+import com.cedarsoft.commons.ThreadUtils;
 import javax.annotation.Nullable;
+
 import org.junit.*;
 
 import java.util.concurrent.Callable;
@@ -66,15 +67,15 @@ public class MultiLockTest {
   public void testBasic() throws ExecutionException, InterruptedException {
     multiLock.lock();
 
-    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
       @Override
       @Nullable
       public Object call() throws Exception {
-        assertFalse( lock0.tryLock() );
-        assertFalse( lock1.tryLock() );
+        assertFalse(lock0.tryLock());
+        assertFalse(lock1.tryLock());
         return null;
       }
-    } );
+    });
 
     multiLock.unlock();
   }

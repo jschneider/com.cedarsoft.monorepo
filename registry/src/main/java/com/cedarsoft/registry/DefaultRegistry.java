@@ -31,7 +31,7 @@
 
 package com.cedarsoft.registry;
 
-import com.cedarsoft.Converter;
+import com.cedarsoft.commons.Converter;
 import com.cedarsoft.exceptions.NotFoundException;
 import com.cedarsoft.exceptions.StillContainedException;
 

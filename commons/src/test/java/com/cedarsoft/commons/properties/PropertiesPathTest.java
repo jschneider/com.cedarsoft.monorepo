@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.properties;
+package com.cedarsoft.commons.properties;
 
 import org.junit.*;
 

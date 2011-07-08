@@ -29,20 +29,55 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.commons;
 
 import org.junit.*;
+import org.junit.rules.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class ConditionTest {
-  @Test
-  public void testConstants() {
-    assertFalse( Condition.FALSE.isValid() );
-    assertTrue( Condition.TRUE.isValid() );
+public class NullLockTest {
+  private NullLock lock;
+
+  @Before
+  public void setUp() throws Exception {
+    lock = NullLock.LOCK;
   }
 
+  @Test( timeout = 10 )
+  public void testTimeout() throws InterruptedException {
+    lock.tryLock( 100, TimeUnit.DAYS );
+  }
+
+  @Test( timeout = 10 )
+  public void testIt() throws InterruptedException {
+    lock.lock();
+    lock.lock();
+    lock.unlock();
+    lock.unlock();
+    lock.lockInterruptibly();
+    lock.lockInterruptibly();
+    lock.tryLock();
+    lock.tryLock();
+  }
+
+  @Test( timeout = 10 )
+  public void testLocks() throws InterruptedException {
+    assertSame( lock, lock.readLock() );
+    assertSame( lock, lock.writeLock() );
+  }
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
+  @Test
+  public void testCondition() {
+    expectedException.expect( NullPointerException.class );
+    lock.newCondition();
+  }
 }
