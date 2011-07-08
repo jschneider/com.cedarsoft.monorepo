@@ -29,13 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
+
+import javax.annotation.Nonnull;
 
 /**
- * Object access that offers a commit method
+ * Supports object addition
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <T> the type
  */
-public interface CommitableObjectAccess<T> extends WriteableObjectAccess<T>, ObjectCommit<T> {
+public interface ObjectAdd<T> {
+  /**
+   * Adds an element
+   *
+   * @param element the element that is added
+   */
+  void add( @Nonnull T element );
 }

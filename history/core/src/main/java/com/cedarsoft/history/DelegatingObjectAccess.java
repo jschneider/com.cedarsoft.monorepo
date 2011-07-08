@@ -32,8 +32,9 @@
 package com.cedarsoft.history;
 
 import com.cedarsoft.commons.NullLock;
-import com.cedarsoft.PartTimeObjectAdd;
+import com.cedarsoft.objectaccess.PartTimeObjectAdd;
 import com.cedarsoft.lock.Lockable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

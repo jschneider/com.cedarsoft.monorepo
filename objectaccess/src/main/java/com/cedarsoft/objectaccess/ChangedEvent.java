@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import com.cedarsoft.commons.properties.PropertiesPath;
 

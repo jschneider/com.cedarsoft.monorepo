@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.WriteableObjectAccess;
+import com.cedarsoft.objectaccess.WriteableObjectAccess;
 
 import javax.annotation.Nonnull;
 

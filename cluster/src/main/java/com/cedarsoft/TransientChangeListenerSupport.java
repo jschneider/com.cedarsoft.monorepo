@@ -32,6 +32,9 @@
 package com.cedarsoft;
 
 
+import com.cedarsoft.objectaccess.ChangeListener;
+import com.cedarsoft.objectaccess.ChangedEvent;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -95,7 +98,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener a {@link ChangeListener} object.
+   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
    */
   public void addChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -109,7 +112,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link ChangeListener} object.
+   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
    */
   public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();

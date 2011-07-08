@@ -29,20 +29,47 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
 /**
- * Will be notified whenever an object will be deleted.
+ * Object can't always be added.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public interface DeletionProcessor<T> {
+public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
   /**
-   * Is called whenever the object will be deleted
+   * Returns true if objects can be added
    *
-   * @param object the object that will be deleted
+   * @return true if objects can be added, false otherwise
    */
-  void willBeDeleted( @Nonnull T object );
+  boolean canAdd();
+
+  /**
+   * <p>addPartTimeListener</p>
+   *
+   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
+   */
+  void addPartTimeListener( @Nonnull PartTimeListener listener );
+
+  /**
+   * <p>removePartTimeListener</p>
+   *
+   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
+   */
+  void removePartTimeListener( @Nonnull PartTimeListener listener );
+
+  interface PartTimeListener {
+
+    /**
+     * Is called when "add" isn't available anymore
+     */
+    void addNotAvailable();
+
+    /**
+     * Is called when add is available
+     */
+    void addAvailable();
+  }
 }

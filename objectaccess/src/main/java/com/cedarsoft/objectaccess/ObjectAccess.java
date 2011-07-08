@@ -29,20 +29,24 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
+import java.util.List;
+
 /**
- * Supports object removals
+ * Implementing classes offer access to a list of elements
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
-public interface ObjectRemove<T> {
+public interface ObjectAccess<T> {
   /**
-   * Removes an element
+   * Returns all elements
    *
-   * @param element the element that is removed
+   * @return all elements
    */
-  void remove( @Nonnull T element );
+  @Nonnull
+  List<? extends T> getElements();
 }

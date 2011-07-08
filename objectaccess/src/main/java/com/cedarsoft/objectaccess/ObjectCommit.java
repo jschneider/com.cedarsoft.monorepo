@@ -29,24 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
-import java.util.List;
-
 /**
- * Implementing classes offer access to a list of elements
+ * <p>ObjectCommit interface.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <T> the type
  */
-public interface ObjectAccess<T> {
+public interface ObjectCommit<T> {
   /**
-   * Returns all elements
+   * Commit changes
    *
-   * @return all elements
+   * @param element the element that has been changed
    */
-  @Nonnull
-  List<? extends T> getElements();
+  void commit( @Nonnull T element );
 }

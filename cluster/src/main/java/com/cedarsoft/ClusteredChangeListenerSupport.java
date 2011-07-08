@@ -32,6 +32,9 @@
 package com.cedarsoft;
 
 
+import com.cedarsoft.objectaccess.ChangeListener;
+import com.cedarsoft.objectaccess.ChangeListenerSupport;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -78,7 +81,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener    a {@link ChangeListener} object.
+   * @param listener    a {@link com.cedarsoft.objectaccess.ChangeListener} object.
    * @param isTransient a boolean.
    */
   public void addChangeListener( @Nonnull ChangeListener<T> listener, boolean isTransient ) {
@@ -92,7 +95,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link ChangeListener} object.
+   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
    */
   public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     transientSupport.removeChangeListener( listener );

@@ -29,20 +29,21 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
 /**
- * Supports object addition
+ * Is notified when anything has changed.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
-public interface ObjectAdd<T> {
+public interface ChangeListener<T> {
   /**
-   * Adds an element
+   * Is called when an entry has been changed
    *
-   * @param element the element that is added
+   * @param event the changed event
    */
-  void add( @Nonnull T element );
+  void entryChanged( @Nonnull ChangedEvent<T> event );
 }

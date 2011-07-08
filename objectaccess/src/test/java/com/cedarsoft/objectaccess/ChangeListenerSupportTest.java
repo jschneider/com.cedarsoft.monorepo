@@ -29,26 +29,29 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
+
+import javax.annotation.Nonnull;
 
 import com.cedarsoft.test.utils.MockitoTemplate;
 import org.junit.*;
 import org.mockito.Mock;
 
-import static org.junit.Assert.*;
+import java.beans.PropertyChangeSupport;
+
 import static org.mockito.Mockito.*;
 
 /**
  *
  */
-public class DeletionProcessorsSupportTest {
+public class ChangeListenerSupportTest {
   @Test
   public void testIt() throws Exception {
-    final DeletionProcessorsSupport<String> support = new DeletionProcessorsSupport<String>();
+    final ChangeListenerSupport<String> changeListenerSupport = new ChangeListenerSupport<String>( "asdf" );
 
     new MockitoTemplate() {
       @Mock
-      private DeletionProcessor<String> processor;
+      private ChangeListener<String> listener;
 
       @Override
       protected void stub() throws Exception {
@@ -56,21 +59,44 @@ public class DeletionProcessorsSupportTest {
 
       @Override
       protected void execute() throws Exception {
-        support.addDeletionProcessor( processor );
-        assertEquals( 1, support.getDeletionProcessors().size() );
-        support.notifyWillBeDeleted( "daObject" );
-        support.removeDeletionProcessor( processor );
-        support.notifyWillBeDeleted( "daObject2" );
-        support.addDeletionProcessor( processor );
-        support.notifyWillBeDeleted( "daObject3" );
+        changeListenerSupport.addChangeListener( listener );
+        changeListenerSupport.changed( "context", "the", "property", "path" );
       }
 
       @Override
       protected void verifyMocks() throws Exception {
-        verify( processor ).willBeDeleted( "daObject" );
-        verify( processor ).willBeDeleted( "daObject3" );
+        verify( listener ).entryChanged( refEq( new ChangedEvent<String>( "asdf", "context", "the", "property", "path" ) ) );
+        verifyNoMoreInteractions( listener );
       }
     }.run();
   }
 
+  @Test
+  public void testPropChange() throws Exception {
+    @Nonnull
+    final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
+    final ChangeListenerSupport<String> changeListenerSupport = new ChangeListenerSupport<String>( "asdf" );
+
+    new MockitoTemplate() {
+      @Mock
+      private ChangeListener<String> listener;
+
+      @Override
+      protected void stub() throws Exception {
+      }
+
+      @Override
+      protected void execute() throws Exception {
+        changeListenerSupport.addChangeListener( listener );
+        pcs.addPropertyChangeListener( changeListenerSupport.createPropertyListenerDelegate( "a", "b" ) );
+        pcs.firePropertyChange( "daProp", "old", "new" );
+      }
+
+      @Override
+      protected void verifyMocks() throws Exception {
+        verify( listener ).entryChanged( refEq( new ChangedEvent<String>( "asdf", null, "a", "b", "daProp" ), "context" ) );
+        verifyNoMoreInteractions( listener );
+      }
+    }.run();
+  }
 }

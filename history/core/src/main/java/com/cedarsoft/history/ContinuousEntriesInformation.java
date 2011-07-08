@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.CommitableObjectAccess;
+import com.cedarsoft.objectaccess.CommitableObjectAccess;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

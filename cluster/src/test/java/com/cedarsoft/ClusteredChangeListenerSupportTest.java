@@ -33,6 +33,8 @@ package com.cedarsoft;
 
 import javax.annotation.Nonnull;
 
+import com.cedarsoft.objectaccess.ChangeListener;
+import com.cedarsoft.objectaccess.ChangedEvent;
 import com.cedarsoft.test.utils.MockitoTemplate;
 import org.junit.*;
 import org.mockito.Mock;

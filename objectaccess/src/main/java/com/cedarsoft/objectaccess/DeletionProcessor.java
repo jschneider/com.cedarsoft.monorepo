@@ -29,69 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
- * Support for deletion processors.
+ * Will be notified whenever an object will be deleted.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class DeletionProcessorsSupport<T> {
-  @Nonnull
-  private final List<DeletionProcessor<T>> deletionProcessors = new ArrayList<DeletionProcessor<T>>();
-
+public interface DeletionProcessor<T> {
   /**
-   * Sets the deletion processors
-   *
-   * @param deletionProcessors the processors
-   */
-  public void setDeletionProcessors( @Nonnull List<? extends DeletionProcessor<T>> deletionProcessors ) {
-    this.deletionProcessors.clear();
-    this.deletionProcessors.addAll( deletionProcessors );
-  }
-
-  /**
-   * <p>Getter for the field <code>deletionProcessors</code>.</p>
-   *
-   * @return a {@link List} object.
-   */
-  @Nonnull
-  public List<? extends DeletionProcessor<T>> getDeletionProcessors() {
-    return Collections.unmodifiableList( deletionProcessors );
-  }
-
-  /**
-   * <p>addDeletionProcessor</p>
-   *
-   * @param processor a {@link DeletionProcessor} object.
-   */
-  public void addDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
-    this.deletionProcessors.add( processor );
-  }
-
-  /**
-   * <p>removeDeletionProcessor</p>
-   *
-   * @param processor a {@link DeletionProcessor} object.
-   */
-  public void removeDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
-    this.deletionProcessors.remove( processor );
-  }
-
-  /**
-   * Notifes all registered processors that the given object will be deleted
+   * Is called whenever the object will be deleted
    *
    * @param object the object that will be deleted
    */
-  public void notifyWillBeDeleted( @Nonnull T object ) {
-    for ( DeletionProcessor<T> processor : deletionProcessors ) {
-      processor.willBeDeleted( object );
-    }
-  }
+  void willBeDeleted( @Nonnull T object );
 }

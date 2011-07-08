@@ -31,8 +31,9 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.ObjectAccess;
+import com.cedarsoft.objectaccess.ObjectAccess;
 import com.cedarsoft.lock.Lockable;
+
 import javax.annotation.Nonnull;
 
 /**

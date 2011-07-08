@@ -29,20 +29,20 @@
  * have any questions.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.objectaccess;
 
 import javax.annotation.Nonnull;
 
 /**
- * <p>ObjectCommit interface.</p>
+ * Supports object removals
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public interface ObjectCommit<T> {
+public interface ObjectRemove<T> {
   /**
-   * Commit changes
+   * Removes an element
    *
-   * @param element the element that has been changed
+   * @param element the element that is removed
    */
-  void commit( @Nonnull T element );
+  void remove( @Nonnull T element );
 }

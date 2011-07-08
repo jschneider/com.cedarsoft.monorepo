@@ -29,47 +29,13 @@
  * have any questions.
  */
 
-package com.cedarsoft;
-
-import javax.annotation.Nonnull;
+package com.cedarsoft.objectaccess;
 
 /**
- * Object can't always be added.
+ * Object access that offers a commit method
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @param <T> the type
  */
-public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
-  /**
-   * Returns true if objects can be added
-   *
-   * @return true if objects can be added, false otherwise
-   */
-  boolean canAdd();
-
-  /**
-   * <p>addPartTimeListener</p>
-   *
-   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
-   */
-  void addPartTimeListener( @Nonnull PartTimeListener listener );
-
-  /**
-   * <p>removePartTimeListener</p>
-   *
-   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
-   */
-  void removePartTimeListener( @Nonnull PartTimeListener listener );
-
-  interface PartTimeListener {
-
-    /**
-     * Is called when "add" isn't available anymore
-     */
-    void addNotAvailable();
-
-    /**
-     * Is called when add is available
-     */
-    void addAvailable();
-  }
+public interface CommitableObjectAccess<T> extends WriteableObjectAccess<T>, ObjectCommit<T> {
 }
