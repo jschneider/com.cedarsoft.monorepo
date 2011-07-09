@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.utils;
+package com.cedarsoft.spring.extensions;
 
 
 import javax.annotation.Nonnull;
