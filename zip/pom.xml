@@ -12,6 +12,8 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Zip Utils</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
     <dependency>
       <groupId>commons-io</groupId>

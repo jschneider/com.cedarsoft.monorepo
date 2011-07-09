@@ -12,6 +12,8 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Exceptions</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
   </dependencies>
 

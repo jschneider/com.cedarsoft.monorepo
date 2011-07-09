@@ -12,6 +12,7 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Crypt</name>
 
+  <packaging>bundle</packaging>
 
   <dependencies>
     <dependency>

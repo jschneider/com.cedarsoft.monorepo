@@ -13,6 +13,8 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Struct</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>

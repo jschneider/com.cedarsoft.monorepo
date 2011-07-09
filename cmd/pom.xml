@@ -13,6 +13,8 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Command line</name>
 
+  <packaging>bundle</packaging>
+
   <description>Utils for access to the command line.</description>
 
   <dependencies>

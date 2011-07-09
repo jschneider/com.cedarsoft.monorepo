@@ -12,6 +12,8 @@
   <artifactId>actions</artifactId>
   <name>Actions</name>
 
+  <packaging>bundle</packaging>
+  
   <dependencies>
   </dependencies>
 </project>

@@ -11,6 +11,8 @@
   <artifactId>spring-extensions</artifactId>
   <name>Spring Extensions</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>

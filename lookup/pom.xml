@@ -13,6 +13,8 @@
   <version>5.0.0-SNAPSHOT</version>
   <name>Lookups</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
   </dependencies>
 </project>

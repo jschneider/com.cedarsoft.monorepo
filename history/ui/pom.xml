@@ -11,6 +11,8 @@
   <artifactId>ui</artifactId>
   <name>History Ui</name>
 
+  <packaging>bundle</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons.history</groupId>
