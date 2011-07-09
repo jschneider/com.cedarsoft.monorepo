@@ -29,41 +29,54 @@
  * have any questions.
  */
 
-package com.cedarsoft.lock;
+package com.cedarsoft.concurrent;
 
-import javax.annotation.Nonnull;
+import com.cedarsoft.commons.ThreadUtils;
+import javax.annotation.Nullable;
 
-import java.io.PrintStream;
-import java.util.Set;
+import org.junit.*;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import static org.junit.Assert.*;
 
 /**
- * <p>DefaultDeadlockListener class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener {
-  private final PrintStream out;
+public class MultiLockTest {
+  private Lock lock0;
+  private Lock lock1;
+  private MultiLock multiLock;
 
-  public DefaultDeadlockListener() {
-    this( System.err );
+  @Before
+  public void setUp() throws Exception {
+    lock0 = new ReentrantLock();
+    lock1 = new ReentrantLock();
+    multiLock = new MultiLock( lock0, lock1 );
   }
 
-  public DefaultDeadlockListener( @Nonnull PrintStream out ) {
-    this.out = out;
+  @After
+  public void tearDown() throws Exception {
+
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads ) {
-    out.println( "Deadlocked Threads:" );
-    out.println( "-------------------" );
-    for ( Thread thread : deadlockedThreads ) {
-      out.println( thread );
-      for ( StackTraceElement ste : thread.getStackTrace() ) {
-        out.println( "\t" + ste );
+  @Test
+  public void testBasic() throws ExecutionException, InterruptedException {
+    multiLock.lock();
+
+    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
+      @Override
+      @Nullable
+      public Object call() throws Exception {
+        assertFalse(lock0.tryLock());
+        assertFalse(lock1.tryLock());
+        return null;
       }
-    }
+    });
+
+    multiLock.unlock();
   }
 }

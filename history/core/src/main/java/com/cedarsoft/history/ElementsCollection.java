@@ -31,7 +31,7 @@
 
 package com.cedarsoft.history;
 
-import com.cedarsoft.lock.Lockable;
+import com.cedarsoft.concurrent.Lockable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

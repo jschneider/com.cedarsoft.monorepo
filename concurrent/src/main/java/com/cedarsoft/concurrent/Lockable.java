@@ -29,50 +29,23 @@
  * have any questions.
  */
 
-package com.cedarsoft.lock;
+package com.cedarsoft.concurrent;
 
 import javax.annotation.Nonnull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.concurrent.locks.ReadWriteLock;
 
 /**
- * <p>InvalidLockStateException class.</p>
+ * Implementations provide a lock
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class InvalidLockStateException extends RuntimeException {
-  @Nonnull
-  private final List<String> readLockingThreads = new ArrayList<String>();
-
+public interface Lockable {
   /**
-   * <p>Constructor for InvalidLockStateException.</p>
+   * Returns the lock
    *
-   * @param readLockingThreads a {@link List} object.
-   */
-  public InvalidLockStateException( @Nonnull List<? extends Thread> readLockingThreads ) {
-    super( createMessage( readLockingThreads ) );
-    for ( Thread readLockingThread : readLockingThreads ) {
-      this.readLockingThreads.add( readLockingThread.getName() );
-    }
-  }
-
-  /**
-   * <p>Getter for the field <code>readLockingThreads</code>.</p>
-   *
-   * @return a {@link List} object.
+   * @return the lock
    */
   @Nonnull
-  public List<String> getReadLockingThreads() {
-    return Collections.unmodifiableList( readLockingThreads );
-  }
-
-  private static String createMessage( @Nonnull List<? extends Thread> readLockingThreads ) {
-    StringBuilder message = new StringBuilder().append( "Cannot get write lock because there are still read locks active in: " ).append( "\n" );
-    for ( Thread thread : readLockingThreads ) {
-      message.append( "\t" ).append( thread.getName() );
-    }
-    return message.toString();
-  }
+  ReadWriteLock getLock();
 }

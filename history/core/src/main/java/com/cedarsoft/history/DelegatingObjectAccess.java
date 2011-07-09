@@ -32,8 +32,8 @@
 package com.cedarsoft.history;
 
 import com.cedarsoft.commons.NullLock;
+import com.cedarsoft.concurrent.Lockable;
 import com.cedarsoft.objectaccess.PartTimeObjectAdd;
-import com.cedarsoft.lock.Lockable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -210,7 +210,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   @Nonnull
   private ReadWriteLock getLock( @Nullable ObservableObjectAccess<T> delegate ) {
     if ( delegate != null && delegate instanceof Lockable ) {
-      return ( ( Lockable ) delegate ).getLock();
+      return ( (Lockable) delegate ).getLock();
     } else {
       return NullLock.LOCK;
     }

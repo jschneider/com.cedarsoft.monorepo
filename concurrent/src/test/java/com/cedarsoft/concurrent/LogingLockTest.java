@@ -29,62 +29,24 @@
  * have any questions.
  */
 
-package com.cedarsoft.lock;
-
-import com.cedarsoft.commons.ThreadUtils;
-import javax.annotation.Nullable;
+package com.cedarsoft.concurrent;
 
 import org.junit.*;
 import org.junit.rules.*;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import static org.junit.Assert.*;
-
 /**
  *
  */
-public class MultiReadWriteLockTest {
+public class LogingLockTest {
   @Rule
-  public ExpectedException expectedException = ExpectedException.none();
+  public ExpectedException thrown = ExpectedException.none();
 
   @Test
-  public void testEmpty() throws Exception {
-    expectedException.expect( IllegalArgumentException.class );
-    new MultiReadWriteLock();
-  }
+  public void testIt() {
+    LogingReentrantLock lock = new LogingReentrantLock();
+    lock.readLock().lock();
 
-  @Test
-  public void testWriteLock() throws Exception {
-    final ReadWriteLock lock = new ReentrantReadWriteLock();
-    MultiReadWriteLock multiLock = new MultiReadWriteLock( lock );
-
-    multiLock.writeLock().lock();
-
-    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
-      @Override
-      @Nullable
-      public Object call() throws Exception {
-        assertFalse( lock.readLock().tryLock() );
-        assertFalse( lock.writeLock().tryLock() );
-        return null;
-      }
-    } );
-
-    multiLock.writeLock().unlock();
-
-    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
-      @Override
-      @Nullable
-      public Object call() throws Exception {
-        assertTrue(lock.readLock().tryLock());
-        lock.readLock().unlock();
-        assertTrue(lock.writeLock().tryLock());
-        lock.writeLock().unlock();
-        return null;
-      }
-    });
+    thrown.expect( InvalidLockStateException.class );
+    lock.writeLock().lock();
   }
 }

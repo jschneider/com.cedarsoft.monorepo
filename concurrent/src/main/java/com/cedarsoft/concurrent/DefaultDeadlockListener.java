@@ -29,23 +29,41 @@
  * have any questions.
  */
 
-package com.cedarsoft.lock;
+package com.cedarsoft.concurrent;
 
 import javax.annotation.Nonnull;
 
-import java.util.concurrent.locks.ReadWriteLock;
+import java.io.PrintStream;
+import java.util.Set;
 
 /**
- * Implementations provide a lock
+ * <p>DefaultDeadlockListener class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public interface Lockable {
+public class DefaultDeadlockListener implements ThreadDeadlockDetector.Listener {
+  private final PrintStream out;
+
+  public DefaultDeadlockListener() {
+    this( System.err );
+  }
+
+  public DefaultDeadlockListener( @Nonnull PrintStream out ) {
+    this.out = out;
+  }
+
   /**
-   * Returns the lock
-   *
-   * @return the lock
+   * {@inheritDoc}
    */
-  @Nonnull
-  ReadWriteLock getLock();
+  @Override
+  public void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads ) {
+    out.println( "Deadlocked Threads:" );
+    out.println( "-------------------" );
+    for ( Thread thread : deadlockedThreads ) {
+      out.println( thread );
+      for ( StackTraceElement ste : thread.getStackTrace() ) {
+        out.println( "\t" + ste );
+      }
+    }
+  }
 }

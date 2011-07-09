@@ -29,31 +29,50 @@
  * have any questions.
  */
 
-package com.cedarsoft.history;
-
-import com.cedarsoft.concurrent.Lockable;
-import com.cedarsoft.objectaccess.ObjectAccess;
+package com.cedarsoft.concurrent;
 
 import javax.annotation.Nonnull;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
- * An observable collection
+ * <p>InvalidLockStateException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- * @param <E> the element type
  */
-public interface ObservableCollection<E> extends ObjectAccess<E>, Lockable {
-  /**
-   * Adds an entry listener
-   *
-   * @param listener the listener
-   */
-  void addElementListener( @Nonnull ElementsListener<? super E> listener );
+public class InvalidLockStateException extends RuntimeException {
+  @Nonnull
+  private final List<String> readLockingThreads = new ArrayList<String>();
 
   /**
-   * Removes an entry listener
+   * <p>Constructor for InvalidLockStateException.</p>
    *
-   * @param listener the listener
+   * @param readLockingThreads a {@link List} object.
    */
-  void removeElementListener( @Nonnull ElementsListener<? super E> listener );
+  public InvalidLockStateException( @Nonnull List<? extends Thread> readLockingThreads ) {
+    super( createMessage( readLockingThreads ) );
+    for ( Thread readLockingThread : readLockingThreads ) {
+      this.readLockingThreads.add( readLockingThread.getName() );
+    }
+  }
+
+  /**
+   * <p>Getter for the field <code>readLockingThreads</code>.</p>
+   *
+   * @return a {@link List} object.
+   */
+  @Nonnull
+  public List<String> getReadLockingThreads() {
+    return Collections.unmodifiableList( readLockingThreads );
+  }
+
+  private static String createMessage( @Nonnull List<? extends Thread> readLockingThreads ) {
+    StringBuilder message = new StringBuilder().append( "Cannot get write lock because there are still read locks active in: " ).append( "\n" );
+    for ( Thread thread : readLockingThreads ) {
+      message.append( "\t" ).append( thread.getName() );
+    }
+    return message.toString();
+  }
 }

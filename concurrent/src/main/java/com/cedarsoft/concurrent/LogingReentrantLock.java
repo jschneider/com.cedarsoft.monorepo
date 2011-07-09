@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.lock;
+package com.cedarsoft.concurrent;
 
 import javax.annotation.Nonnull;
 
