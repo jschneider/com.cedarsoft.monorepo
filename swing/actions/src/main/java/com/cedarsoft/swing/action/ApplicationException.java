@@ -29,57 +29,15 @@
  * have any questions.
  */
 
-package com.cedarsoft.action;
-
-
-import javax.annotation.Nonnull;
-
-import javax.annotation.Nonnull;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
+package com.cedarsoft.swing.action;
 
 /**
- * Base class for application actions.
+ * This is an exception that is excepted to be thrown during application actions.
+ * This exceptions is shown to the user who is responsible to fix the issues.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public abstract class ApplicationAction extends AbstractAction {
-  /**
-   * <p>Constructor for ApplicationAction.</p>
-   *
-   * @param name a {@link String} object.
-   */
-  protected ApplicationAction( @Nonnull String name ) {
-    super( name );
-  }
+public class ApplicationException extends Exception {
 
-  /**
-   * {@inheritDoc}
-   * <p/>
-   * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
-   */
-  @Override
-  public final void actionPerformed( @Nonnull ActionEvent e ) {
-    try {
-      applicationActionPerformed( e );
-    } catch ( ApplicationException exception ) {
-      handleApplicationException( exception );
-    }
-  }
 
-  /**
-   * <p>handleApplicationException</p>
-   *
-   * @param exception a {@link ApplicationException} object.
-   */
-  protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
-
-  /**
-   * Should be overridden by subclasses.
-   * Implementations may throw an ApplicationException if an expected exception occurred
-   *
-   * @param e the action event
-   * @throws ApplicationException if an application error occured
-   */
-  public abstract void applicationActionPerformed( @Nonnull ActionEvent e ) throws ApplicationException;
 }

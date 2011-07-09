@@ -29,15 +29,60 @@
  * have any questions.
  */
 
-package com.cedarsoft.action;
+package com.cedarsoft.swing.action;
+
+
+import javax.annotation.Nonnull;
+
+import java.beans.PropertyChangeListener;
+import java.lang.String;
 
 /**
- * This is an exception that is excepted to be thrown during application actions.
- * This exceptions is shown to the user who is responsible to fix the issues.
+ * Interface for activatable classes.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class ApplicationException extends Exception {
+public interface Activatable {
+  /**
+   * Constant <code>PROPERTY_ACTIVE="active"</code>
+   */
+  @Nonnull
+  String PROPERTY_ACTIVE = "active";
 
+  /**
+   * Whether the action is active
+   *
+   * @return whether the action is active
+   */
+  boolean isActive();
 
+  /**
+   * Adds a property change listener
+   *
+   * @param listener a {@link PropertyChangeListener} object.
+   */
+  void addPropertyChangeListener( @Nonnull PropertyChangeListener listener );
+
+  /**
+   * Removes a property change listener
+   *
+   * @param listener a {@link PropertyChangeListener} object.
+   */
+  void removePropertyChangeListener( @Nonnull PropertyChangeListener listener );
+
+  /**
+   * Adds a pcs listener
+   *
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
+   */
+  void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
+
+  /**
+   * remove the pcs listener
+   *
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
+   */
+  void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 }

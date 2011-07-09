@@ -29,60 +29,56 @@
  * have any questions.
  */
 
-package com.cedarsoft.action;
+package com.cedarsoft.swing.action;
 
 
 import javax.annotation.Nonnull;
 
-import java.beans.PropertyChangeListener;
-import java.lang.String;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
 
 /**
- * Interface for activatable classes.
+ * Base class for application actions.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public interface Activatable {
+public abstract class ApplicationAction extends AbstractAction {
   /**
-   * Constant <code>PROPERTY_ACTIVE="active"</code>
+   * <p>Constructor for ApplicationAction.</p>
+   *
+   * @param name a {@link String} object.
    */
-  @Nonnull
-  String PROPERTY_ACTIVE = "active";
+  protected ApplicationAction( @Nonnull String name ) {
+    super( name );
+  }
 
   /**
-   * Whether the action is active
-   *
-   * @return whether the action is active
+   * {@inheritDoc}
+   * <p/>
+   * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
    */
-  boolean isActive();
+  @Override
+  public final void actionPerformed( @Nonnull ActionEvent e ) {
+    try {
+      applicationActionPerformed( e );
+    } catch ( ApplicationException exception ) {
+      handleApplicationException( exception );
+    }
+  }
 
   /**
-   * Adds a property change listener
+   * <p>handleApplicationException</p>
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param exception a {@link ApplicationException} object.
    */
-  void addPropertyChangeListener( @Nonnull PropertyChangeListener listener );
+  protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
 
   /**
-   * Removes a property change listener
+   * Should be overridden by subclasses.
+   * Implementations may throw an ApplicationException if an expected exception occurred
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param e the action event
+   * @throws ApplicationException if an application error occured
    */
-  void removePropertyChangeListener( @Nonnull PropertyChangeListener listener );
-
-  /**
-   * Adds a pcs listener
-   *
-   * @param propertyName a {@link String} object.
-   * @param listener     a {@link PropertyChangeListener} object.
-   */
-  void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
-
-  /**
-   * remove the pcs listener
-   *
-   * @param propertyName a {@link String} object.
-   * @param listener     a {@link PropertyChangeListener} object.
-   */
-  void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
+  public abstract void applicationActionPerformed( @Nonnull ActionEvent e ) throws ApplicationException;
 }
