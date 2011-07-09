@@ -1,4 +1,4 @@
-package com.cedarsoft.swing.tree;
+package com.cedarsoft.swing.common.tree;
 
 import javax.annotation.Nonnull;
 

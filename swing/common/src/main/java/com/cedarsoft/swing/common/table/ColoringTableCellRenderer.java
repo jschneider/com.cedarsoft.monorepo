@@ -1,4 +1,4 @@
-package com.cedarsoft.swing.table;
+package com.cedarsoft.swing.common.table;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

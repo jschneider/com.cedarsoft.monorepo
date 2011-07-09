@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing;
+package com.cedarsoft.swing.common;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
