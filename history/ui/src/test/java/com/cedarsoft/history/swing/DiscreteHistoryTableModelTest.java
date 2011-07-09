@@ -36,9 +36,10 @@ import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
 import com.cedarsoft.commons.SwingHelper;
-import com.cedarsoft.history.ContinuousEntriesInformation;
-import com.cedarsoft.history.DefaultContinuousEntry;
+import com.cedarsoft.history.core.ContinuousEntriesInformation;
+import com.cedarsoft.history.core.DefaultContinuousEntry;
 import javax.annotation.Nonnull;
+
 import org.joda.time.LocalDate;
 import org.junit.*;
 
