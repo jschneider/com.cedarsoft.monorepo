@@ -52,7 +52,6 @@ public class Version implements Comparable<Version>, Serializable {
   protected final int minor;
   protected final int build;
   @Nullable
-  @Nonnull
   protected final String suffix;
 
 
@@ -98,7 +97,6 @@ public class Version implements Comparable<Version>, Serializable {
    * @return the suffix or null if no suffix has been set
    */
   @Nullable
-  @Nonnull
   public String getSuffix() {
     return suffix;
   }
