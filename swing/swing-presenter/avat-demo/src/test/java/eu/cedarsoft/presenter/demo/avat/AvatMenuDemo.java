@@ -29,13 +29,13 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo.avat;
+package com.cedarsoft.swing.presenter.demo.avat;
 
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.lookup.Lookups;
-import com.cedarsoft.presenter.JMenuBarPresenter;
 import com.cedarsoft.presenter.StructStringPresenter;
+import com.cedarsoft.swing.presenter.JMenuBarPresenter;
 
 import javax.annotation.Nonnull;
 

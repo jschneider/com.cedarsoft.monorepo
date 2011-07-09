@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo.avat;
+package com.cedarsoft.swing.presenter.demo.avat;
 
 import java.util.ArrayList;
 import java.util.List;

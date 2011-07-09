@@ -29,14 +29,15 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo.avat;
+package com.cedarsoft.swing.presenter.demo.avat;
 
 import com.cedarsoft.commons.struct.StructPart;
-import com.cedarsoft.presenter.ButtonBarPresenter;
-import com.cedarsoft.presenter.FancyButtonPresenter;
-import com.cedarsoft.presenter.JButtonPresenter;
-import com.cedarsoft.presenter.JComboBoxPresenter;
 import com.cedarsoft.presenter.Presenter;
+import com.cedarsoft.swing.presenter.ButtonBarPresenter;
+import com.cedarsoft.swing.presenter.FancyButtonPresenter;
+import com.cedarsoft.swing.presenter.JButtonPresenter;
+import com.cedarsoft.swing.presenter.JComboBoxPresenter;
+
 import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;

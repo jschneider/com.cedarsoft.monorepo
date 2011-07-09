@@ -29,44 +29,67 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.swing.presenter.SwingPresenter;
+
 import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import javax.swing.JPopupMenu;
 
 /**
+ * Presents a JPopupMenu
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
+public class DefaultJPopupMenuPresenter extends SwingPresenter<JPopupMenu> implements JPopupMenuPresenter {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  protected JPopupMenu createPresentation() {
+    return new JPopupMenu();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nonnull
   protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
-    BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
+    DefaultJMenuItemPresenter presenter = child.getLookup().lookup( DefaultJMenuItemPresenter.class );
     if ( presenter != null ) {
       return presenter;
     }
-    return new DefaultBasicButtonPresenter();
+
+    DefaultJMenuItemPresenter menuItemPresenter = child.getLookup().lookup( DefaultJMenuItemPresenter.class );
+    if ( menuItemPresenter != null ) {
+      return menuItemPresenter;
+    }
+
+    if ( child.getChildren().isEmpty() ) {
+      return new DefaultJMenuItemPresenter();
+    } else {
+      return new DefaultJMenuPresenter();
+    }
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
+  protected void bind( @Nonnull JPopupMenu presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;
-  }
-
-  @Override
-  @Nonnull
-  protected JPanel createPresentation() {
-    return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
   }
 }

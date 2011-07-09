@@ -29,44 +29,60 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.presenter.AbstractPresenter;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.swing.presenter.SwingPresenter;
+
 import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 
 /**
+ * Base class for swing presenters.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
+public abstract class SwingPresenter<T extends JComponent> extends AbstractPresenter<T> {
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  @Nonnull
-  protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
-    BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
-    if ( presenter != null ) {
-      return presenter;
-    }
-    return new DefaultBasicButtonPresenter();
+  protected void removeChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index ) {
+    presentation.remove( index );
+    presentation.validate();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
+  protected boolean addChildPresentation( @Nonnull T presentation, @Nonnull StructPart child, int index ) {
+    Presenter<? extends JComponent> childPresenter = getChildPresenter( child );
+    return addChild( presentation, index, childPresenter.present( child ) );
   }
 
-  @Override
-  protected boolean shallAddChildren() {
+  /**
+   * <p>addChild</p>
+   *
+   * @param presentation      a T object.
+   * @param index             a int.
+   * @param childPresentation a {@link JComponent} object.
+   * @return a boolean.
+   */
+  protected boolean addChild( @Nonnull T presentation, int index, @Nonnull JComponent childPresentation ) {
+    presentation.add( childPresentation, index );
+    presentation.validate();
     return true;
   }
 
-  @Override
+  /**
+   * <p>getChildPresenter</p>
+   *
+   * @param child a {@link StructPart} object.
+   * @return a {@link com.cedarsoft.presenter.Presenter} object.
+   */
   @Nonnull
-  protected JPanel createPresentation() {
-    return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
-  }
+  protected abstract Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child );
 }

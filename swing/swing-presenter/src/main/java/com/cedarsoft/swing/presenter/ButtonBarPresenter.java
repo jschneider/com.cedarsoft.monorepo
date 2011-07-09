@@ -29,44 +29,96 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.swing.presenter.SwingPresenter;
+
 import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 /**
+ * <p>ButtonBarPresenter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
+public class ButtonBarPresenter extends SwingPresenter<JPanel> {
+  private final Orientation orientation;
+
+  /**
+   * <p>Constructor for ButtonBarPresenter.</p>
+   */
+  public ButtonBarPresenter() {
+    this( Orientation.Horizontal );
+  }
+
+  /**
+   * <p>Constructor for ButtonBarPresenter.</p>
+   *
+   * @param orientation a {@link ButtonBarPresenter.Orientation} object.
+   */
+  public ButtonBarPresenter( @Nonnull Orientation orientation ) {
+    this.orientation = orientation;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  protected JPanel createPresentation() {
+    return new JPanel( new GridLayout( orientation.getRowCount(), orientation.getColCount(), 4, 4 ) );
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nonnull
   protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
-    BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
+    AbstractButtonPresenter<?> presenter = child.getLookup().lookup( AbstractButtonPresenter.class );
     if ( presenter != null ) {
       return presenter;
     }
-    return new DefaultBasicButtonPresenter();
+    return new JButtonPresenter();
   }
 
-  @Override
-  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
-  }
-
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  @Nonnull
-  protected JPanel createPresentation() {
-    return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
+  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
+  }
+
+  public enum Orientation {
+    Vertical( 0, 1 ), Horizontal( 1, 0 ),;
+    private final int rowCount;
+    private final int colCount;
+
+
+    Orientation( int rowCount, int colCount ) {
+      this.rowCount = rowCount;
+      this.colCount = colCount;
+    }
+
+    public int getRowCount() {
+      return rowCount;
+    }
+
+    public int getColCount() {
+      return colCount;
+    }
   }
 }

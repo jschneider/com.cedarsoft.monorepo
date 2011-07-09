@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
 import com.cedarsoft.presenter.Presenter;
 

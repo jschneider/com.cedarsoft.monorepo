@@ -29,44 +29,57 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
+import com.cedarsoft.lookup.binding.PropertyCallback;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.swing.presenter.SwingPresenter;
+
 import javax.annotation.Nonnull;
 
+import javax.swing.AbstractButton;
+import javax.swing.Action;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 
 /**
+ * Abstract base class for presenters that create AbstractButtons that are associated with Actions.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
+public abstract class AbstractButtonPresenter<T extends AbstractButton> extends SwingPresenter<T> {
+  /**
+   * Constant <code>PROPERTY_ACTION="action"</code>
+   */
+  @Nonnull
+  public static final String PROPERTY_ACTION = "action";
+
+  /**
+   * Constant <code>KEY_ACTION_LISTENER</code>
+   */
+  @Nonnull
+  public static final Object KEY_ACTION_LISTENER = "actionListener";
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected void bind( @Nonnull T presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
+    Action action = lookup.lookup( Action.class );
+    if ( action == null ) {
+      throw new IllegalStateException( "Can not create button: No Action found" );
+    }
+    PropertyCallback<Action> callback = new PropertyCallback<Action>( presentation, PROPERTY_ACTION, Action.class );
+    presentation.putClientProperty( KEY_ACTION_LISTENER, callback );//Ensure the weak instance is not lost
+    lookup.bindWeak( callback );
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nonnull
   protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
-    BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
-    if ( presenter != null ) {
-      return presenter;
-    }
-    return new DefaultBasicButtonPresenter();
-  }
-
-  @Override
-  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
-  }
-
-  @Override
-  protected boolean shallAddChildren() {
-    return true;
-  }
-
-  @Override
-  @Nonnull
-  protected JPanel createPresentation() {
-    return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
+    throw new UnsupportedOperationException();
   }
 }

@@ -29,44 +29,46 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter.model;
 
-import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.swing.presenter.JMenuBarPresenter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.cedarsoft.commons.struct.StructPart;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import javax.swing.JFrame;
+import javax.swing.ComboBoxModel;
 
 /**
+ * A combo box model based on a node.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class SpringDemo {
-  private Node rootNode;
+public class StructBasedComboBoxModel extends StructBasedListModel implements ComboBoxModel {
+  @Nullable
+  private StructPart selected;
 
-  public static void main( String[] args ) {
-    new SpringDemo().run();
+  /**
+   * <p>Constructor for StructBasedComboBoxModel.</p>
+   *
+   * @param node a {@link StructPart} object.
+   */
+  public StructBasedComboBoxModel( @Nonnull StructPart node ) {
+    super( node );
   }
 
-  public SpringDemo() {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext( "SpringDemo.spr.xml", SpringDemo.class );
-    rootNode = ( Node ) applicationContext.getBean( "menuNode" );
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setSelectedItem( @Nullable Object anItem ) {
+    selected = ( StructPart ) anItem;
   }
 
-  private void run() {
-    JMenuBarPresenter presenter = new JMenuBarPresenter();
-
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-    frame.setJMenuBar( presenter.present( rootNode ) );
-
-    frame.pack();
-    frame.setSize( 800, 600 );
-    frame.setLocationRelativeTo( null );
-
-
-    frame.setVisible( true );
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nullable
+  public Object getSelectedItem() {
+    return selected;
   }
-
 }

@@ -29,13 +29,14 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo.graph;
+package com.cedarsoft.swing.presenter.demo.graph;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.lookup.LookupChangeEvent;
 import com.cedarsoft.lookup.LookupChangeListener;
 import com.cedarsoft.presenter.AbstractPresenter;
+
 import javax.annotation.Nonnull;
 import y.base.Node;
 import y.view.Graph2D;

@@ -29,9 +29,9 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
-import com.cedarsoft.presenter.demo.graph.Graph2DPresenter;
+import com.cedarsoft.swing.presenter.demo.graph.Graph2DPresenter;
 import javax.annotation.Nonnull;
 import y.view.Graph2D;
 import y.view.Graph2DView;

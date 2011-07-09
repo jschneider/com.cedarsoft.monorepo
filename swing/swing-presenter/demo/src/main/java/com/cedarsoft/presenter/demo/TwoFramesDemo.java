@@ -29,13 +29,13 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookups;
-import com.cedarsoft.presenter.ButtonBarPresenter;
+import com.cedarsoft.swing.presenter.ButtonBarPresenter;
 
 import javax.annotation.Nonnull;
 

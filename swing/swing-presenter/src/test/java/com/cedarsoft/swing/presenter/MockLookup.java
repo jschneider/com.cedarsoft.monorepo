@@ -29,44 +29,18 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
-import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.swing.presenter.JMenuBarPresenter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import javax.swing.JFrame;
+import com.cedarsoft.lookup.LookupChangeSupport;
+import com.cedarsoft.lookup.MappedLookup;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
-public class SpringDemo {
-  private Node rootNode;
-
-  public static void main( String[] args ) {
-    new SpringDemo().run();
+public class MockLookup extends MappedLookup {
+  @Nonnull
+  public LookupChangeSupport getLookupChangeSupport() {
+    return this.lcs;
   }
-
-  public SpringDemo() {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext( "SpringDemo.spr.xml", SpringDemo.class );
-    rootNode = ( Node ) applicationContext.getBean( "menuNode" );
-  }
-
-  private void run() {
-    JMenuBarPresenter presenter = new JMenuBarPresenter();
-
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-    frame.setJMenuBar( presenter.present( rootNode ) );
-
-    frame.pack();
-    frame.setSize( 800, 600 );
-    frame.setLocationRelativeTo( null );
-
-
-    frame.setVisible( true );
-  }
-
 }

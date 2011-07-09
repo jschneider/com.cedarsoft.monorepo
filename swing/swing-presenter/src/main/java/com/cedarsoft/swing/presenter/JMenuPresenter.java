@@ -29,44 +29,23 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
-import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.swing.presenter.JMenuBarPresenter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import javax.annotation.Nonnull;
 
-import javax.swing.JFrame;
+import javax.swing.JMenu;
 
 /**
+ * <p>JMenuPresenter interface.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class SpringDemo {
-  private Node rootNode;
-
-  public static void main( String[] args ) {
-    new SpringDemo().run();
-  }
-
-  public SpringDemo() {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext( "SpringDemo.spr.xml", SpringDemo.class );
-    rootNode = ( Node ) applicationContext.getBean( "menuNode" );
-  }
-
-  private void run() {
-    JMenuBarPresenter presenter = new JMenuBarPresenter();
-
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-    frame.setJMenuBar( presenter.present( rootNode ) );
-
-    frame.pack();
-    frame.setSize( 800, 600 );
-    frame.setLocationRelativeTo( null );
-
-
-    frame.setVisible( true );
-  }
-
+public interface JMenuPresenter extends JMenuItemPresenter<JMenu> {
+  /**
+   * <p>createPresentation</p>
+   *
+   * @return a {@link JMenu} object.
+   */
+  @Nonnull
+  JMenu createPresentation();
 }

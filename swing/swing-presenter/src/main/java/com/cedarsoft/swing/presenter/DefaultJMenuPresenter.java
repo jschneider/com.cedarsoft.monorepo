@@ -29,44 +29,67 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
 import com.cedarsoft.commons.struct.StructPart;
-import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.swing.presenter.SwingPresenter;
+
 import javax.annotation.Nonnull;
 
+import javax.swing.Action;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import javax.swing.JMenu;
 
 /**
+ * Creates a JMenu.
+ * Looks for {@link JMenuItemPresenter} for each of its children.
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class BasicGroupButtonBarPresenter extends SwingPresenter<JPanel> {
+public class DefaultJMenuPresenter extends AbstractButtonPresenter<JMenu> implements JMenuPresenter {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  public JMenu createPresentation() {
+    return new JMenu();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Nonnull
   protected Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child ) {
-    BasicGroupButtonPresenter presenter = child.getLookup().lookup( BasicGroupButtonPresenter.class );
-    if ( presenter != null ) {
-      return presenter;
+    JMenuItemPresenter<?> menuItemPresenter = child.getLookup().lookup( JMenuItemPresenter.class );
+    if ( menuItemPresenter != null ) {
+      return menuItemPresenter;
     }
-    return new DefaultBasicButtonPresenter();
+
+    //If the child contains children --> submenu
+    if ( !child.getChildren().isEmpty() ) {
+      return new DefaultJMenuPresenter();
+    }
+
+    //If the child contains an action
+    if ( child.getLookup().lookup( Action.class ) != null ) {
+      return new DefaultJMenuItemPresenter();
+    }
+
+    //If the child contains a component, just add that component
+    if ( child.getLookup().lookup( JComponent.class ) != null ) {
+      return new JComponentPresenter();
+    }
+
+    throw new IllegalStateException( "No suiteable child presenter found" );
   }
 
-  @Override
-  protected void bind( @Nonnull JPanel presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
-  }
-
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected boolean shallAddChildren() {
     return true;
-  }
-
-  @Override
-  @Nonnull
-  protected JPanel createPresentation() {
-    return new JPanel( new FlowLayout( FlowLayout.RIGHT, 0, 0 ) );
   }
 }

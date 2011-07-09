@@ -29,44 +29,37 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
-import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.swing.presenter.JMenuBarPresenter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.cedarsoft.commons.struct.DefaultNode;
+import com.cedarsoft.lookup.Lookups;
+import org.junit.*;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
 
 /**
- *
+ * <p/>
+ * Date: Jun 5, 2007<br>
+ * Time: 3:24:18 PM<br>
  */
-public class SpringDemo {
-  private Node rootNode;
+public class FancyButtonTest {
+  @Test
+  public void testIt() {
+  }
 
   public static void main( String[] args ) {
-    new SpringDemo().run();
-  }
-
-  public SpringDemo() {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext( "SpringDemo.spr.xml", SpringDemo.class );
-    rootNode = ( Node ) applicationContext.getBean( "menuNode" );
-  }
-
-  private void run() {
-    JMenuBarPresenter presenter = new JMenuBarPresenter();
-
+    FancyButtonPresenter presenter = new FancyButtonPresenter();
     JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-    frame.setJMenuBar( presenter.present( rootNode ) );
-
+    frame.getContentPane().add( presenter.present( new DefaultNode( "asdf", Lookups.singletonLookup( Action.class, new AbstractAction( "asdf" ) {
+      @Override
+      public void actionPerformed( ActionEvent e ) {
+      }
+    } ) ) ) );
     frame.pack();
-    frame.setSize( 800, 600 );
-    frame.setLocationRelativeTo( null );
-
-
     frame.setVisible( true );
   }
-
 }
+

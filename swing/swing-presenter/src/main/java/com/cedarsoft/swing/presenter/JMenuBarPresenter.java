@@ -29,44 +29,54 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.presenter.demo;
+package com.cedarsoft.swing.presenter;
 
-import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.swing.presenter.JMenuBarPresenter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.cedarsoft.commons.struct.StructPart;
+import com.cedarsoft.lookup.Lookup;
+import javax.annotation.Nonnull;
 
-import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 
 /**
+ * <p>JMenuBarPresenter class.</p>
  *
+ * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class SpringDemo {
-  private Node rootNode;
-
-  public static void main( String[] args ) {
-    new SpringDemo().run();
+public class JMenuBarPresenter extends SwingPresenter<JMenuBar> {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  public JMenuBar createPresentation() {
+    return new JMenuBar();
   }
 
-  public SpringDemo() {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext( "SpringDemo.spr.xml", SpringDemo.class );
-    rootNode = ( Node ) applicationContext.getBean( "menuNode" );
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @Nonnull
+  protected JMenuPresenter getChildPresenter( @Nonnull StructPart child ) {
+    JMenuPresenter presenter = child.getLookup().lookup( JMenuPresenter.class );
+    if ( presenter != null ) {
+      return presenter;
+    }
+    return new DefaultJMenuPresenter();
   }
 
-  private void run() {
-    JMenuBarPresenter presenter = new JMenuBarPresenter();
-
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-    frame.setJMenuBar( presenter.present( rootNode ) );
-
-    frame.pack();
-    frame.setSize( 800, 600 );
-    frame.setLocationRelativeTo( null );
-
-
-    frame.setVisible( true );
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected void bind( @Nonnull JMenuBar presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup ) {
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected boolean shallAddChildren() {
+    return true;
+  }
 }
