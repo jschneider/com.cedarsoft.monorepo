@@ -369,7 +369,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
-          <version>1.0.1-SNAPSHOT</version>
+          <version>1.0.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
