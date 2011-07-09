@@ -14,7 +14,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>configuration-spring</module>
+    <!--<module>configuration-spring</module>-->
     <module>spring-extensions</module>
   </modules>
 
