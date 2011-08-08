@@ -3,7 +3,6 @@ package com.cedarsoft.exceptions;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -13,24 +12,33 @@ import java.util.ResourceBundle;
 public class TestMessages {
   @Nonnull
   private static final String BUNDLE_NAME = "com.cedarsoft.exceptions.testmessages"; //$NON-NLS-1$
-  @Nonnull
-  private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle( BUNDLE_NAME );
 
-  private TestMessages() {
+  @Nonnull
+  public String getString( @Nonnull String key ) {
+    return getString( key, Locale.getDefault() );
   }
 
   @Nonnull
-  public static String getString( @Nonnull String key ) {
-    return RESOURCE_BUNDLE.getString( key );
+  public String getString( @Nonnull String key, @Nonnull Locale locale ) {
+    return ResourceBundle.getBundle( BUNDLE_NAME, locale ).getString( key );
   }
 
   @Nonnull
-  public static String get( @Nonnull Enum<?> enumValue ) {
-    return get( enumValue, null );
+  public String get( @Nonnull Enum<?> enumValue ) {
+    return get( enumValue, Locale.getDefault() );
   }
 
   @Nonnull
-  public static String get( @Nonnull Enum<?> enumValue, @Nullable String category ) {
+  public String get( @Nonnull Enum<?> enumValue, @Nonnull Locale locale ) {
+    return get( enumValue, null, locale );
+  }
+
+  @Nonnull
+  public String get( @Nonnull Enum<?> enumValue, @Nullable String category ) {
+    return get( enumValue, category, Locale.getDefault() );
+  }
+
+  public String get( @Nonnull Enum<?> enumValue, @Nullable String category, @Nonnull Locale locale ) {
     String baseKey = enumValue.name();
 
     String key;
@@ -40,6 +48,6 @@ public class TestMessages {
       key = baseKey + "." + category;
     }
 
-    return getString( key );
+    return getString( key, locale );
   }
 }

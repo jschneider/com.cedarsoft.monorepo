@@ -5,14 +5,16 @@ import java.text.MessageFormat;
 import java.util.Locale;
 
 /**
-* @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
-*/
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ */
 public enum TestExceptionDetails implements ApplicationException.Details {
   ERROR_1( 701 ),
   ERROR_2( 702 );
 
   @Nonnull
   private final ErrorCode errorCode;
+  @Nonnull
+  private final TestMessages messages = new TestMessages();
 
   TestExceptionDetails( int errorCode ) {
     this( new ErrorCode( TestException.PREFIX, errorCode ) );
@@ -25,25 +27,25 @@ public enum TestExceptionDetails implements ApplicationException.Details {
   @Nonnull
   @Override
   public String getLocalizedMessage( @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( TestMessages.get( this ), messageArguments );
+    return MessageFormat.format( messages.get( this ), messageArguments );
   }
 
   @Nonnull
   @Override
   public String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( TestMessages.get( this ), messageArguments ); //todo locale!
+    return MessageFormat.format( messages.get( this, locale ), messageArguments );
   }
 
   @Nonnull
   @Override
   public String getTitle( @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( TestMessages.get( this, "title" ), messageArguments );
+    return MessageFormat.format( messages.get( this, "title" ), messageArguments );
   }
 
   @Nonnull
   @Override
   public String getTitle( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( TestMessages.get( this, "title" ), messageArguments ); //todo locale
+    return MessageFormat.format( messages.get( this, "title", locale ), messageArguments );
   }
 
   @Nonnull

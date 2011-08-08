@@ -36,10 +36,10 @@ public class ApplicationExceptionTest {
   public void testLocales() throws Exception {
     assertThat( new TestException( TestExceptionDetails.ERROR_1, "asdf" ).getLocalizedMessage( Locale.ENGLISH ) ).isEqualTo( "The Value 1 en: <asdf>" );
     assertThat( new TestException( TestExceptionDetails.ERROR_1, "asdf" ).getLocalizedMessage( Locale.GERMAN ) ).isEqualTo( "The Value 1 de: <asdf>" );
-    assertThat( new TestException( TestExceptionDetails.ERROR_1, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_1" );
+    assertThat( new TestException( TestExceptionDetails.ERROR_1, "asdf" ).getMessage() ).isEqualTo( "TD-701" );
     assertThat( new TestException( TestExceptionDetails.ERROR_2, "asdf" ).getLocalizedMessage( Locale.ENGLISH ) ).isEqualTo( "The Value 2 en: <asdf>" );
     assertThat( new TestException( TestExceptionDetails.ERROR_2, "asdf" ).getLocalizedMessage( Locale.GERMAN ) ).isEqualTo( "The Value 2 de: <asdf>" );
-    assertThat( new TestException( TestExceptionDetails.ERROR_2, "asdf" ).getMessage() ).isEqualTo( "com.cedarsoft.exceptions.TestMessages.ERROR_2" );
+    assertThat( new TestException( TestExceptionDetails.ERROR_2, "asdf" ).getMessage() ).isEqualTo( "TD-702" );
   }
 
 }
