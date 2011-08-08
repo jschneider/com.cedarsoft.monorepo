@@ -15,6 +15,11 @@
   <packaging>bundle</packaging>
 
   <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 </project>
