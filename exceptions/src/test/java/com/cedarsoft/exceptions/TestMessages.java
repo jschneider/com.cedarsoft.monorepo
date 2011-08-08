@@ -1,40 +1,45 @@
 package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
-* @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
-*/
-public enum TestMessages implements ApplicationException.Message {
-  ERROR_1,
-  ERROR_2;
-
-
-  @Override
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ */
+public class TestMessages {
   @Nonnull
-  public String getKey() {
-    return getClass().getName() + "." + name();
+  private static final String BUNDLE_NAME = "com.cedarsoft.exceptions.testmessages"; //$NON-NLS-1$
+  @Nonnull
+  private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle( BUNDLE_NAME );
+
+  private TestMessages() {
   }
 
   @Nonnull
-  @Override
-  public String getLocalizedMessage( @Nonnull Object... messageArguments ) {
-    return getLocalizedMessage( Locale.getDefault(), messageArguments );
+  public static String getString( @Nonnull String key ) {
+    return RESOURCE_BUNDLE.getString( key );
   }
 
   @Nonnull
-  @Override
-  public String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
-    String bundleValue = getBundleValue( locale );
-    return MessageFormat.format( bundleValue, messageArguments );
+  public static String get( @Nonnull Enum<?> enumValue ) {
+    return get( enumValue, null );
   }
 
   @Nonnull
-  public String getBundleValue( @Nonnull Locale locale ) {
-    return ResourceBundle.getBundle( ApplicationExceptionTest.BUNDLE, locale ).getString( getKey() );
+  public static String get( @Nonnull Enum<?> enumValue, @Nullable String category ) {
+    String baseKey = enumValue.name();
+
+    String key;
+    if ( category == null ) {
+      key = baseKey;
+    } else {
+      key = baseKey + "." + category;
+    }
+
+    return getString( key );
   }
 }
