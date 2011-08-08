@@ -1,6 +1,7 @@
 package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.text.MessageFormat;
 import java.util.Locale;
 
@@ -10,11 +11,12 @@ import java.util.Locale;
 public enum TestExceptionDetails implements ApplicationException.Details {
   ERROR_1( 701 ),
   ERROR_2( 702 );
+  public static final String CATEGORY_TITLE = "title";
 
   @Nonnull
   private final ErrorCode errorCode;
   @Nonnull
-  private final TestMessages messages = new TestMessages();
+  private final Messages messages = new Messages( "com.cedarsoft.exceptions.testmessages" );
 
   TestExceptionDetails( int errorCode ) {
     this( new ErrorCode( TestException.PREFIX, errorCode ) );
@@ -26,26 +28,26 @@ public enum TestExceptionDetails implements ApplicationException.Details {
 
   @Nonnull
   @Override
-  public String getLocalizedMessage( @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( messages.get( this ), messageArguments );
+  public String getLocalizedMessage( @Nullable Object... messageArguments ) {
+    return messages.get( this, Locale.getDefault(), messageArguments );
   }
 
   @Nonnull
   @Override
-  public String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( messages.get( this, locale ), messageArguments );
+  public String getLocalizedMessage( @Nonnull Locale locale, @Nullable Object... messageArguments ) {
+    return messages.get( this, locale, messageArguments );
   }
 
   @Nonnull
   @Override
-  public String getTitle( @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( messages.get( this, "title" ), messageArguments );
+  public String getTitle( @Nullable Object... messageArguments ) {
+    return messages.get( this, CATEGORY_TITLE, Locale.getDefault(), messageArguments );
   }
 
   @Nonnull
   @Override
-  public String getTitle( @Nonnull Locale locale, @Nonnull Object... messageArguments ) {
-    return MessageFormat.format( messages.get( this, "title", locale ), messageArguments );
+  public String getTitle( @Nonnull Locale locale, @Nullable Object... messageArguments ) {
+    return messages.get( this, CATEGORY_TITLE, locale, messageArguments );
   }
 
   @Nonnull
