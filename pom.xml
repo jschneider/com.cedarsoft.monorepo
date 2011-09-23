@@ -10,6 +10,7 @@
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
   <version>1.0-beta3-SNAPSHOT</version>
+  <packaging>bundle</packaging>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
