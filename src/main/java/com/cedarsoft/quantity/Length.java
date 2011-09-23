@@ -16,7 +16,7 @@
 
 package com.cedarsoft.quantity;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

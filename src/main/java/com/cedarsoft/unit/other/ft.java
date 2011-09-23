@@ -23,8 +23,8 @@ import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.si.m;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -58,16 +58,13 @@ public @interface ft {
    */
   double MM_FEET_RATIO = 304.8;
 
-  @NotNull
-  @NonNls
+  @Nonnull
   String SYMBOL = "′";
   /**
    * This is a "safe" symbol - that is not correct!
    */
-  @NotNull
-  @NonNls
+  @Nonnull
   String SYMBOL_SAFE = "'";
-  @NotNull
-  @NonNls
+  @Nonnull
   String ALTERNATIVE_SYMBOL = "ft";
 }

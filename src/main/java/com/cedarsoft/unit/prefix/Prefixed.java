@@ -16,8 +16,8 @@
 
 package com.cedarsoft.unit.prefix;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -30,7 +30,7 @@ public class Prefixed {
   }
 
 
-  public static double getFactor( @NotNull Class<? extends Annotation> unit ) {
+  public static double getFactor( @Nonnull Class<? extends Annotation> unit ) {
     Prefix prefixAnnotation = getPrefixAnnotation( unit );
     if ( prefixAnnotation == null ) {
       throw new IllegalArgumentException( unit.getName() + " is not annotated with " + Prefix.class.getName() );
@@ -39,13 +39,13 @@ public class Prefixed {
     return prefixAnnotation.value();
   }
 
-  public static boolean isPrefixed( @NotNull Class<? extends Annotation> unit ) {
+  public static boolean isPrefixed( @Nonnull Class<? extends Annotation> unit ) {
     Prefix prefixAnnotation = getPrefixAnnotation( unit );
     return prefixAnnotation != null;
   }
 
   @Nullable
-  public static Prefix getPrefixAnnotation( @NotNull AnnotatedElement unit ) {
+  public static Prefix getPrefixAnnotation( @Nonnull AnnotatedElement unit ) {
     {
       Prefix prefix = unit.getAnnotation( Prefix.class );
       if ( prefix != null ) {

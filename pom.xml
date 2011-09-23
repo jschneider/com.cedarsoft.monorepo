@@ -22,11 +22,9 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
     </dependency>
-
-    <!--NotNull Annotations-->
     <dependency>
-      <groupId>com.intellij</groupId>
-      <artifactId>annotations</artifactId>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
       <scope>provided</scope>
     </dependency>
 

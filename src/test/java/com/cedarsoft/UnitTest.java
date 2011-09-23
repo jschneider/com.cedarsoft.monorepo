@@ -35,7 +35,7 @@ import com.cedarsoft.unit.si.m_s;
 import com.cedarsoft.unit.si.mm;
 import com.cedarsoft.unit.si.rad;
 import com.cedarsoft.unit.si.s;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.junit.*;
 
 import java.lang.annotation.Annotation;
@@ -63,7 +63,7 @@ public class UnitTest {
   }
 
   @m
-  public static double convertToMetres( @Length double amount, @NotNull Class<? extends Annotation> unit ) {
+  public static double convertToMetres( @Length double amount, @Nonnull Class<? extends Annotation> unit ) {
     if ( unit == m.class ) {
       return amount;
     }

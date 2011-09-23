@@ -18,8 +18,8 @@ package com.cedarsoft.unit;
 
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -35,9 +35,8 @@ public class Units {
   private Units() {
   }
 
-  @NotNull
-  @NonNls
-  public static String getSymbol( @NotNull Class<? extends Annotation> unitType ) {
+  @Nonnull
+  public static String getSymbol( @Nonnull Class<? extends Annotation> unitType ) {
     Symbol symbol = unitType.getAnnotation( Symbol.class );
     if ( symbol == null ) {
       throw new IllegalArgumentException( "Missing annotation " + Symbol.class.getName() + " for " + unitType );
@@ -46,9 +45,8 @@ public class Units {
     return symbol.value();
   }
 
-  @NotNull
-  @NonNls
-  public static String getName( @NotNull Class<? extends Annotation> unitType ) {
+  @Nonnull
+  public static String getName( @Nonnull Class<? extends Annotation> unitType ) {
     Name name = unitType.getAnnotation( Name.class );
     if ( name == null ) {
       throw new IllegalArgumentException( "Missing annotation " + Name.class.getName() + " for " + unitType );
@@ -57,16 +55,16 @@ public class Units {
     return name.value();
   }
 
-  public static boolean isSiBaseUnit( @NotNull Class<? extends Annotation> unitType ) {
+  public static boolean isSiBaseUnit( @Nonnull Class<? extends Annotation> unitType ) {
     return unitType.getAnnotation( SIBaseUnit.class ) != null;
   }
 
-  public static boolean isDerivedSiUnit( @NotNull Class<? extends Annotation> unitType ) {
+  public static boolean isDerivedSiUnit( @Nonnull Class<? extends Annotation> unitType ) {
     return unitType.getAnnotation( SiDerivedUnit.class ) != null;
   }
 
-  @NotNull
-  public static List<? extends Class<? extends Annotation>> getDerivedFrom( @NotNull Class<? extends Annotation> unitType ) {
+  @Nonnull
+  public static List<? extends Class<? extends Annotation>> getDerivedFrom( @Nonnull Class<? extends Annotation> unitType ) {
     SiDerivedUnit derived = unitType.getAnnotation( SiDerivedUnit.class );
     if ( derived == null ) {
       throw new IllegalArgumentException( "Not derived. " + unitType );
@@ -75,8 +73,8 @@ public class Units {
     return new ArrayList<Class<? extends Annotation>>( Arrays.asList( derived.value() ) );
   }
 
-  @NotNull
-  public static List<? extends String> getDefinitions( @NotNull Class<? extends Annotation> unitType ) {
+  @Nonnull
+  public static List<? extends String> getDefinitions( @Nonnull Class<? extends Annotation> unitType ) {
     Definition definition = unitType.getAnnotation( Definition.class );
     if ( definition == null ) {
       throw new IllegalArgumentException( "No definition found for " + unitType );

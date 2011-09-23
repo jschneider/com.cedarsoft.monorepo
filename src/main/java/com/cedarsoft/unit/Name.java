@@ -16,9 +16,8 @@
 
 package com.cedarsoft.unit;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -36,5 +35,5 @@ public @interface Name {
    *
    * @return the name
    */
-  @NotNull @NonNls String value();
+  @Nonnull String value();
 }
