@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.quantity;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
+ * Used to mark quantities (as length, frequency...)
  *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Retention( RetentionPolicy.RUNTIME )
-@Quantity
-public @interface LuminousIntensity {
+@Documented
+public @interface Quantity {
+  interface Type<Q extends Type<Q>> {
+  }
 }

@@ -16,10 +16,11 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Pressure;
+import com.cedarsoft.unit.quantity.Pressure;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Pressure;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

@@ -16,9 +16,10 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Angle;
+import com.cedarsoft.unit.quantity.Angle;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Angle;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

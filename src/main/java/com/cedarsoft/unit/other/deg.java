@@ -16,11 +16,12 @@
 
 package com.cedarsoft.unit.other;
 
-import com.cedarsoft.quantity.Angle;
+import com.cedarsoft.unit.quantity.Angle;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Angle;
 import com.cedarsoft.unit.si.rad;
 
 import java.lang.annotation.Documented;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.quantity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -24,5 +24,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Quantity
-public @interface Area {
+public @interface LuminousIntensity {
 }

@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.quantity;
+package com.cedarsoft.unit.quantity;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,9 +24,7 @@ import java.lang.annotation.RetentionPolicy;
  *
  */
 @Retention( RetentionPolicy.RUNTIME )
-@Documented
 @Inherited
-
 @Quantity
-public @interface Frequency {
+public @interface ElectricCharge {
 }

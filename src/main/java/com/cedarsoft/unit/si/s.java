@@ -16,9 +16,10 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Time;
+import com.cedarsoft.unit.quantity.Time;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Time;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

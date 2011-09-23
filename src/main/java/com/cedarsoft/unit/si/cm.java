@@ -16,10 +16,11 @@
 
 package com.cedarsoft.unit.si;
 
-import com.cedarsoft.quantity.Length;
+import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.prefix.centi;
+import com.cedarsoft.unit.quantity.Length;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

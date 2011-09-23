@@ -16,11 +16,12 @@
 
 package com.cedarsoft.unit.other;
 
-import com.cedarsoft.quantity.DotDensity;
+import com.cedarsoft.unit.quantity.DotDensity;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.DerivedUnit;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.DotDensity;
 import com.cedarsoft.unit.si.cm;
 
 import java.lang.annotation.Documented;

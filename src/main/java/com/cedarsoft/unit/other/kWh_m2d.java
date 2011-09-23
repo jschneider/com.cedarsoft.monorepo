@@ -16,10 +16,11 @@
 
 package com.cedarsoft.unit.other;
 
-import com.cedarsoft.quantity.Intensity;
+import com.cedarsoft.unit.quantity.Intensity;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Intensity;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.si.kWh;
 import com.cedarsoft.unit.si.s;

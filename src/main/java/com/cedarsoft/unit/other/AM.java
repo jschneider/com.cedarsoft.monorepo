@@ -16,10 +16,11 @@
 
 package com.cedarsoft.unit.other;
 
-import com.cedarsoft.quantity.Length;
+import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.si.W;
 
 import java.lang.annotation.Documented;
