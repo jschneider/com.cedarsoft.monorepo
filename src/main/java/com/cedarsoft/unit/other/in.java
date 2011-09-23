@@ -53,6 +53,11 @@ public @interface in {
    */
   int FEET_RATIO = 12;
 
+  /**
+   * Conversion to cm: n * MM_RATIO
+   */
+  double MM_RATIO = 25.4;
+  
   @NotNull
   @NonNls
   String SYMBOL = "″";
