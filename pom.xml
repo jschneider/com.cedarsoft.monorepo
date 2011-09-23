@@ -9,7 +9,7 @@
 
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
-  <version>1.0-beta3-SNAPSHOT</version>
+  <version>1.0-beta3</version>
   <packaging>bundle</packaging>
 
   <scm>
