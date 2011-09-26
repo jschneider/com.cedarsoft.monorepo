@@ -4,13 +4,13 @@
   <parent>
     <artifactId>commons</artifactId>
     <groupId>com.cedarsoft</groupId>
-    <version>5.0.1</version>
+    <version>5.0.2-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>objectaccess</artifactId>
-  <version>5.0.1</version>
+  <version>5.0.2-SNAPSHOT</version>
   <name>Object Access</name>
 
   <packaging>bundle</packaging>
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>commons</artifactId>
-      <version>5.0.1</version>
+      <version>5.0.2-SNAPSHOT</version>
     </dependency>
     
     <dependency>
