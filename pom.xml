@@ -61,7 +61,7 @@
     <site>
       <id>cedarsoftWeb</id>
       <name>cedarsoft Web</name>
-      <url>scp://cedarsoft.org/var/customers/webs/jschneider/cedarsoft.org</url>
+      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org</url>
     </site>
   </distributionManagement>
 
