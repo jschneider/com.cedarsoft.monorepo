@@ -79,7 +79,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * Constant <code>RAW_CANON</code>
    */
   @Nonnull
-  public static final FileType RAW_CANON = new FileType( "Canon Raw", "image/cr2", false, new Extension( ".", "cr2" ) );
+  public static final FileType RAW_CANON = new FileType( "CanonRaw", "image/cr2", false, new Extension( ".", "cr2" ) );
 
   @Nonnull
   private static final List<FileType> DEFAULT = Arrays.asList( LIGHT_ZONE, JPEG, TIFF, GIMP, RAW_CANON, PHOTO_SHOP );
