@@ -4,12 +4,12 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>5.0.2</version>
+    <version>5.0.3-SNAPSHOT</version>
   </parent>
 
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>mail</artifactId>
-  <version>5.0.2</version>
+  <version>5.0.3-SNAPSHOT</version>
   <name>Mail</name>
 
   <packaging>bundle</packaging>
