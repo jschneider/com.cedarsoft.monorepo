@@ -31,10 +31,12 @@
 
 package com.cedarsoft.registry;
 
-import com.cedarsoft.test.utils.EasyMockTemplate;
 import com.cedarsoft.exceptions.StillContainedException;
+import com.cedarsoft.test.utils.MockitoTemplate;
 import org.easymock.classextension.EasyMock;
 import org.junit.*;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -101,18 +103,24 @@ public class RegistryTest {
 
   @Test
   public void testListener() throws Exception {
-    final DefaultRegistry.Listener<String> listener = EasyMock.createMock( DefaultRegistry.Listener.class );
+    new MockitoTemplate() {
+      @Mock
+      private DefaultRegistry.Listener<String> listener;
 
-    new EasyMockTemplate( listener ) {
       @Override
-      protected void expectations() throws Exception {
-        listener.objectStored( "asdf" );
+      protected void stub() throws Exception {
       }
 
       @Override
-      protected void codeToTest() throws Exception {
+      protected void execute() throws Exception {
         registry.addListener( listener );
         registry.store( "asdf" );
+      }
+
+      @Override
+      protected void verifyMocks() throws Exception {
+        Mockito.verify( listener ).objectStored( "asdf" );
+        Mockito.verifyNoMoreInteractions( listener );
       }
     }.run();
   }

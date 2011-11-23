@@ -3,14 +3,14 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>13</version>
+    <version>20</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft</groupId>
   <artifactId>commons</artifactId>
   <packaging>pom</packaging>
-  <version>5.0.1-SNAPSHOT</version>
+  <version>5.0.3-SNAPSHOT</version>
   <name>cedarsoft Commons</name>
 
   <scm>
@@ -129,11 +129,6 @@
       <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>core</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons.history</groupId>
-        <artifactId>ui</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

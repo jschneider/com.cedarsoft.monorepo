@@ -4,7 +4,9 @@ import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -67,8 +69,13 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "a.jpg" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "a.cr2" );
+      Set<String> names = new HashSet<String>( );
+      for ( FileName fileName : fileNames.getFileNames( ) ) {
+        names.add( fileName.getName( ) );
+      }
+
+      assertThat( names ).contains( "a.jpg" );
+      assertThat( names ).contains( "a.cr2" );
     }
   }
 
