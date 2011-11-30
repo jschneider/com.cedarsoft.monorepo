@@ -4,13 +4,13 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>5.0.5</version>
+    <version>5.0.6-SNAPSHOT</version>
   </parent>
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>cmd</artifactId>
-  <version>5.0.5</version>
+  <version>5.0.6-SNAPSHOT</version>
   <name>Command line</name>
 
   <packaging>bundle</packaging>
