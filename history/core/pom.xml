@@ -40,6 +40,10 @@
       <groupId>org.easytesting</groupId>
       <artifactId>fest-reflect</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-util</artifactId>
+    </dependency>
 
   </dependencies>
 
