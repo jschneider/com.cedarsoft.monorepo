@@ -89,13 +89,15 @@ public class ContainsFileMatcherTest {
       Files.touch( new File( dir, "b" ) );
     }
 
-    assertThat( ContainsFileMatcher.toTree( tmp.getRoot() ), ContainsFileMatcher.toTree( tmp.getRoot() ), is(
-      "dir/a\n" +
-        "dir/b\n" +
-        "dir/c\n" +
-        "dir2/a\n" +
-        "dir2/b\n" +
-        "dir2/c" ) );
+
+    String tree = ContainsFileMatcher.toTree(tmp.getRoot());
+
+    assertTrue(tree.contains("dir" + File.separator + "a"));
+    assertTrue(tree.contains("dir" + File.separator + "b"));
+    assertTrue(tree.contains("dir" + File.separator + "c"));
+    assertTrue(tree.contains("dir2" + File.separator + "a"));
+    assertTrue(tree.contains("dir2" + File.separator + "b"));
+    assertTrue(tree.contains("dir2" + File.separator + "c"));
   }
 
   @Rule

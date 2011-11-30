@@ -41,8 +41,6 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 import javax.annotation.Nonnull;
-import org.mockito.internal.matchers.And;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,12 +97,12 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
 
   @Nonnull
   public static Matcher<File> containsFiles( @Nonnull String... relativeFilePaths ) {
-    List<Matcher> matchers = new ArrayList<Matcher>();
+    List<Matcher<?>> matchers = new ArrayList<Matcher<?>>();
     for ( String relativeFilePath : relativeFilePaths ) {
       matchers.add( containsFile( relativeFilePath ) );
     }
 
-    return new And( matchers );
+    return new AndMatcher( matchers );
   }
 
   @Nonnull
