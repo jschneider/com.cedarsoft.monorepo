@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.unit.utils;
 
 import org.junit.*;
 

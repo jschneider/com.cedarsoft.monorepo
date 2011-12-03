@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.unit;
+package com.cedarsoft.unit.utils;
 
+import com.cedarsoft.unit.Definition;
+import com.cedarsoft.unit.Name;
+import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 

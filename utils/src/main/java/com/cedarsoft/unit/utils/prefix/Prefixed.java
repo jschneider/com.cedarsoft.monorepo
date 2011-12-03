@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.unit.prefix;
+package com.cedarsoft.unit.utils.prefix;
+
+import com.cedarsoft.unit.prefix.Prefix;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

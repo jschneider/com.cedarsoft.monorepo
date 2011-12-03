@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.unit;
+package com.cedarsoft.unit.utils;
 
 import com.cedarsoft.unit.other.AM;
 import com.cedarsoft.unit.si.A;
@@ -50,19 +50,19 @@ public class UnitsTest {
 
   @Test
   public void testSiBase() throws Exception {
-    assertTrue( Units.isSiBaseUnit( m.class ) );
-    assertTrue( Units.isSiBaseUnit( A.class ) );
-    assertFalse( Units.isSiBaseUnit( degC.class ) );
-    assertFalse( Units.isSiBaseUnit( C.class ) );
+    Assert.assertTrue( Units.isSiBaseUnit( m.class ) );
+    Assert.assertTrue( Units.isSiBaseUnit( A.class ) );
+    Assert.assertFalse( Units.isSiBaseUnit( degC.class ) );
+    Assert.assertFalse( Units.isSiBaseUnit( C.class ) );
   }
 
   @Test
   public void testDerived() throws Exception {
-    assertFalse( Units.isDerivedSiUnit( m.class ) );
-    assertFalse( Units.isDerivedSiUnit( A.class ) );
+    Assert.assertFalse( Units.isDerivedSiUnit( m.class ) );
+    Assert.assertFalse( Units.isDerivedSiUnit( A.class ) );
 
-    assertTrue( Units.isDerivedSiUnit( degC.class ) );
-    assertTrue( Units.isDerivedSiUnit( C.class ) );
+    Assert.assertTrue( Units.isDerivedSiUnit( degC.class ) );
+    Assert.assertTrue( Units.isDerivedSiUnit( C.class ) );
   }
 
   @Test
@@ -75,11 +75,11 @@ public class UnitsTest {
   public void testDerivedFrom() throws Exception {
     try {
       Units.getDerivedFrom( m.class );
-      fail( "Where is the Exception" );
+      Assert.fail( "Where is the Exception" );
     } catch ( IllegalArgumentException ignore ) {
     }
 
     assertEquals( 1, Units.getDerivedFrom( degC.class ).size() );
-    assertSame( K.class, Units.getDerivedFrom( degC.class ).get( 0 ) );
+    Assert.assertSame( K.class, Units.getDerivedFrom( degC.class ).get( 0 ) );
   }
 }

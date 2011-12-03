@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package com.cedarsoft.unit.prefix;
+package com.cedarsoft.unit.utils.prefix;
 
+import com.cedarsoft.unit.prefix.centi;
+import com.cedarsoft.unit.prefix.deci;
+import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.si.cm;
 import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.mm;
@@ -49,15 +52,15 @@ public class PrefixedTest {
 
   @Test
   public void testIsPrefixed() throws Exception {
-    assertTrue( Prefixed.isPrefixed( cm.class ) );
-    assertTrue( Prefixed.isPrefixed( mm.class ) );
-    assertFalse( Prefixed.isPrefixed( m.class ) );
+    Assert.assertTrue( Prefixed.isPrefixed( cm.class ) );
+    Assert.assertTrue( Prefixed.isPrefixed( mm.class ) );
+    Assert.assertFalse( Prefixed.isPrefixed( m.class ) );
   }
 
   @Test
   public void testPrefix() throws Exception {
-    assertNotNull( Prefixed.getPrefixAnnotation( cm.class ) );
-    assertNotNull( Prefixed.getPrefixAnnotation( mm.class ) );
-    assertNull( Prefixed.getPrefixAnnotation( m.class ) );
+    Assert.assertNotNull( Prefixed.getPrefixAnnotation( cm.class ) );
+    Assert.assertNotNull( Prefixed.getPrefixAnnotation( mm.class ) );
+    Assert.assertNull( Prefixed.getPrefixAnnotation( m.class ) );
   }
 }

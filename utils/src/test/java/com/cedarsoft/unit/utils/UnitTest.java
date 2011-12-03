@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.unit.utils;
 
 import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.Symbol;
-import com.cedarsoft.unit.Units;
 import com.cedarsoft.unit.other.deg;
 import com.cedarsoft.unit.other.px;
-import com.cedarsoft.unit.prefix.Prefixed;
+import com.cedarsoft.unit.utils.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
@@ -36,6 +35,7 @@ import com.cedarsoft.unit.si.mm;
 import com.cedarsoft.unit.si.rad;
 import com.cedarsoft.unit.si.s;
 import javax.annotation.Nonnull;
+
 import org.junit.*;
 
 import java.lang.annotation.Annotation;

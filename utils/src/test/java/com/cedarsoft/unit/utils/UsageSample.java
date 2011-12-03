@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cedarsoft;
+package com.cedarsoft.unit.utils;
 
 import com.cedarsoft.unit.other.dpi;
 import com.cedarsoft.unit.other.px;
