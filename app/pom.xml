@@ -3,13 +3,13 @@
   <parent>
     <artifactId>commons</artifactId>
     <groupId>com.cedarsoft</groupId>
-    <version>5.0.6-SNAPSHOT</version>
+    <version>5.0.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>app</artifactId>
-  <version>5.0.6-SNAPSHOT</version>
+  <version>5.0.6</version>
   <name>Application</name>
 
   <packaging>bundle</packaging>
