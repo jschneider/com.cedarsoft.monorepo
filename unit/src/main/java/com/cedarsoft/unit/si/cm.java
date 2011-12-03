@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.si;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
@@ -35,6 +36,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Length
 @Symbol( cm.SYMBOL )
 @Name( "centimetre" )

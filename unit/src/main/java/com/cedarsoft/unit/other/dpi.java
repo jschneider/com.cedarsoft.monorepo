@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.DotDensity;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.DerivedUnit;
@@ -36,6 +37,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @DotDensity
 @Name( "Dots per Inch" )
 @Symbol( dpi.SYMBOL )

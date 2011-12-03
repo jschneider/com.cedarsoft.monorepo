@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.si;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Illuminance;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -35,6 +36,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Illuminance
 @Name( "lux" )
 @SiDerivedUnit( {lm.class, m2.class} )

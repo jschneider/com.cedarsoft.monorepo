@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Intensity;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -38,6 +39,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Intensity
 @Name( "kWh per square meter and day" )
 @SiDerivedUnit( {kWh.class, s.class} )

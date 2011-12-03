@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.AlternativeSymbols;
 import com.cedarsoft.unit.Definition;
@@ -41,11 +42,11 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Length
 @Name( "feet" )
 @Symbol( ft.SYMBOL )
 @AlternativeSymbols( {ft.ALTERNATIVE_SYMBOL, ft.SYMBOL_SAFE} )
-
 @DerivedUnit( m.class )
 @Definition( {"0.3048 m"} )
 public @interface ft {

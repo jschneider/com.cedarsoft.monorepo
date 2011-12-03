@@ -19,6 +19,7 @@ package com.cedarsoft.unit.utils;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 
@@ -52,6 +53,11 @@ public class Units {
     }
 
     return symbol.value();
+  }
+
+  public static boolean isUnit( @Nonnull Class<? extends Annotation> unitType ) {
+    Unit unit = unitType.getAnnotation( Unit.class );
+    return unit != null;
   }
 
   /**

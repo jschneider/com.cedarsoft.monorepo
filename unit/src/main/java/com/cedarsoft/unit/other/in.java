@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.AlternativeSymbols;
 import com.cedarsoft.unit.Definition;
@@ -45,7 +46,7 @@ import java.lang.annotation.RetentionPolicy;
 @Name( "inch" )
 @Symbol( in.SYMBOL )
 @AlternativeSymbols( {in.ALTERNATIVE_SYMBOL, in.SYMBOL_SAFE} )
-
+@Unit
 @DerivedUnit( m.class )
 @Definition( {"0.0254 m", "12 inches = 1 foot"} )
 public @interface in {

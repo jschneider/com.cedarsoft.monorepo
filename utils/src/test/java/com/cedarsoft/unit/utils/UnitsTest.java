@@ -16,7 +16,9 @@
 
 package com.cedarsoft.unit.utils;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.other.AM;
+import com.cedarsoft.unit.prefix.hecto;
 import com.cedarsoft.unit.si.A;
 import com.cedarsoft.unit.si.C;
 import com.cedarsoft.unit.si.K;
@@ -34,6 +36,13 @@ import static org.junit.Assert.*;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UnitsTest {
+  @Test
+  public void testIsUnit() throws Exception {
+    assertTrue( Units.isUnit( m.class ) );
+    assertTrue( Units.isUnit( m2.class ) );
+    assertFalse( Units.isUnit( hecto.class ) );
+  }
+
   @Test
   public void testSymbol() {
     assertEquals( "m", Units.getSymbol( m.class ) );

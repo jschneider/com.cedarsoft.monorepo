@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.si;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Energy;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -37,6 +38,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Energy
 @Name( "joule" )
 @SiDerivedUnit( {N.class, m.class} )

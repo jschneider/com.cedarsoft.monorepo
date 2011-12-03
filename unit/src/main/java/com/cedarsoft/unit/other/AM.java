@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -40,6 +41,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Length
 @Name( "airmass" )
 @Symbol( AM.SYMBOL )

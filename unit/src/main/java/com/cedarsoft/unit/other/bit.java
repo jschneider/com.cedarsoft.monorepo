@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.DataAmount;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
@@ -34,6 +35,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @DataAmount
 @Name( "bit" )
 @Symbol( bit.SYMBOL )

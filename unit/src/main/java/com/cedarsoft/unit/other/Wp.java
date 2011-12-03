@@ -16,6 +16,7 @@
 
 package com.cedarsoft.unit.other;
 
+import com.cedarsoft.unit.Unit;
 import com.cedarsoft.unit.quantity.Power;
 import com.cedarsoft.unit.Definition;
 import com.cedarsoft.unit.Name;
@@ -35,6 +36,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Inherited
 
+@Unit
 @Power
 @Name( "watt-peak" )
 @Symbol( Wp.SYMBOL )
