@@ -59,7 +59,7 @@
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.unit</developerConnection>
+    <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.unit</developerConnection>
   </scm>
 
   <mailingLists>
