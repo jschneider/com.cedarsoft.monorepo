@@ -18,13 +18,6 @@
     <dependency>
       <groupId>org.jdom</groupId>
       <artifactId>jdom</artifactId>
-
-      <exclusions>
-        <exclusion>
-          <groupId>jaxen</groupId>
-          <artifactId>jaxen</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
