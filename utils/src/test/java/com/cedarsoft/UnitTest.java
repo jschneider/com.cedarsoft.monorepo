@@ -25,7 +25,6 @@ import com.cedarsoft.unit.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
-import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.si.cm;
