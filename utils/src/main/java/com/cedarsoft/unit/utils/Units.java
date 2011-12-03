@@ -38,6 +38,12 @@ public class Units {
   private Units() {
   }
 
+  /**
+   * Returns the symbol for the given unit type
+   *
+   * @param unitType the unit type
+   * @return the symbol
+   */
   @Nonnull
   public static String getSymbol( @Nonnull Class<? extends Annotation> unitType ) {
     Symbol symbol = unitType.getAnnotation( Symbol.class );
@@ -48,6 +54,12 @@ public class Units {
     return symbol.value();
   }
 
+  /**
+   * Returns the name
+   *
+   * @param unitType the unit type
+   * @return the name
+   */
   @Nonnull
   public static String getName( @Nonnull Class<? extends Annotation> unitType ) {
     Name name = unitType.getAnnotation( Name.class );
@@ -58,10 +70,22 @@ public class Units {
     return name.value();
   }
 
+  /**
+   * Whether the given unit type is a SI unit
+   *
+   * @param unitType the unit type
+   * @return true if this is a si base unit, false otherwise
+   */
   public static boolean isSiBaseUnit( @Nonnull Class<? extends Annotation> unitType ) {
     return unitType.getAnnotation( SIBaseUnit.class ) != null;
   }
 
+  /**
+   * Whether it is a derivced si unit
+   *
+   * @param unitType the unit type
+   * @return true if the given unit type is a derived si unit
+   */
   public static boolean isDerivedSiUnit( @Nonnull Class<? extends Annotation> unitType ) {
     return unitType.getAnnotation( SiDerivedUnit.class ) != null;
   }
