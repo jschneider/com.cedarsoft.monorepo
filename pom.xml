@@ -9,7 +9,7 @@
 
   <groupId>com.cedarsoft.unit</groupId>
   <artifactId>parent</artifactId>
-  <version>1.0-beta4-SNAPSHOT</version>
+  <version>1.0-beta4</version>
   <name>Unit - Parent</name>
   <description>Unit - Parent module</description>
   <packaging>pom</packaging>
