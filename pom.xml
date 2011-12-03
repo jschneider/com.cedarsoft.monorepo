@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>22</version>
+    <version>23</version>
   </parent>
 
   <groupId>com.cedarsoft.unit</groupId>
@@ -36,7 +36,7 @@
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
-      <version>5.0.6</version>
+      <version>5.0.7</version>
       <scope>test</scope>
     </dependency>
     <dependency>
