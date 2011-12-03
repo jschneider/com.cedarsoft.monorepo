@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>open</artifactId>
+    <version>22</version>
+  </parent>
+
+  <groupId>com.cedarsoft.unit</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0-beta4-SNAPSHOT</version>
+  <name>Unit - Parent</name>
+  <description>Unit - Parent module</description>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>unit</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
+    <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.unit</developerConnection>
+  </scm>
+
+  <mailingLists>
+    <mailingList>
+      <name>Mail Support</name>
+      <post>info@cedarsoft.com</post>
+    </mailingList>
+  </mailingLists>
+
+  <licenses>
+    <license>
+      <name>Apache License Version 2.0</name>
+      <url>http://www.cedarsoft.org/apache2</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+</project>
