@@ -281,6 +281,12 @@
             <groupId>maven-plugins</groupId>
             <artifactId>maven-findbugs-plugin</artifactId>
           </exclusion>
+
+          <!--XOM has a dep to com.ibm.icu:icu4j:jar:2.6.1 which has been created with 1.7...-->
+          <exclusion>
+            <groupId>xom</groupId>
+            <artifactId>xom</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
 
