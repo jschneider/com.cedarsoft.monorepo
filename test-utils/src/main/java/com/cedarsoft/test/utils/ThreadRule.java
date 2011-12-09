@@ -16,18 +16,22 @@ import org.junit.runners.model.*;
 
 
 public class ThreadRule implements TestRule {
+
+  public static final String STACK_TRACE_ELEMENT_SEPARATOR = "\n\tat ";
+
   @Override
-  public Statement apply(final Statement base, Description description) {
+  public Statement apply( final Statement base, Description description ) {
     return new Statement() {
       @Override
       public void evaluate() throws Throwable {
         before();
         try {
           base.evaluate();
+        } catch ( Throwable t ) {
+          afterFailing();
+          throw t;
         }
-        finally {
-          after();
-        }
+        after();
       }
     };
   }
@@ -35,8 +39,8 @@ public class ThreadRule implements TestRule {
   private Collection<Thread> initialThreads;
 
   private void before() {
-    if (initialThreads != null) {
-      throw new IllegalStateException("???");
+    if ( initialThreads != null ) {
+      throw new IllegalStateException( "???" );
     }
 
     initialThreads = Thread.getAllStackTraces().keySet();
@@ -44,44 +48,68 @@ public class ThreadRule implements TestRule {
 
   @Nonnull
   public Collection<? extends Thread> getInitialThreads() {
-    if (initialThreads == null) {
-      throw new IllegalStateException("not initialized yet");
+    if ( initialThreads == null ) {
+      throw new IllegalStateException( "not initialized yet" );
     }
-    return Collections.unmodifiableCollection(initialThreads);
+    return Collections.unmodifiableCollection( initialThreads );
+  }
+
+  private void afterFailing() {
+    Set<? extends Thread> remainingThreads = getRemainingThreads();
+    if ( !remainingThreads.isEmpty() ) {
+      System.err.print( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
+    }
   }
 
   private void after() {
-    Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
-
-    Set<Thread> remainingThreads = new HashSet<Thread>(threadsNow);
-    remainingThreads.removeAll(initialThreads);
-
-    for (Iterator<Thread> iterator = remainingThreads.iterator(); iterator.hasNext();) {
-      Thread remainingThread = iterator.next();
-      if (!remainingThread.isAlive()) {
-        iterator.remove();
-      }
-    }
-
-    if (!remainingThreads.isEmpty()) {
-      throw new IllegalStateException("Some threads have been left:\n" + buildMessage(remainingThreads));
+    Set<? extends Thread> remainingThreads = getRemainingThreads();
+    if ( !remainingThreads.isEmpty() ) {
+      throw new IllegalStateException( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
     }
   }
 
   @Nonnull
-  private String buildMessage(@Nonnull Set<Thread> remainingThreads) {
+  private Set<? extends Thread> getRemainingThreads() {
+    Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
+
+    Set<Thread> remainingThreads = new HashSet<Thread>( threadsNow );
+    remainingThreads.removeAll( initialThreads );
+
+    for ( Iterator<Thread> iterator = remainingThreads.iterator(); iterator.hasNext(); ) {
+      Thread remainingThread = iterator.next();
+      if ( !remainingThread.isAlive() ) {
+        iterator.remove();
+      }
+
+      //Give the thread a very(!) short time to die off
+      try {
+        Thread.sleep( 10 );
+      } catch ( InterruptedException ignore ) {
+      }
+
+      //Second try
+      if ( !remainingThread.isAlive() ) {
+        iterator.remove();
+      }
+    }
+    return remainingThreads;
+  }
+
+  @Nonnull
+  private String buildMessage( @Nonnull Set<? extends Thread> remainingThreads ) {
     StringBuilder builder = new StringBuilder();
 
-    for (Thread remainingThread : remainingThreads) {
-      builder.append("---------------");
-      builder.append("\n");
-      builder.append(remainingThread);
-      builder.append("\n");
-      builder.append("---------------");
-      builder.append("\n");
-      builder.append(Joiner.on("\n").join(remainingThread.getStackTrace()));
-      builder.append("\n");
+    builder.append( "// Remaining Threads:" ).append( "\n" );
+    builder.append( "-----------------------" ).append( "\n" );
+    for ( Thread remainingThread : remainingThreads ) {
+      builder.append( "---" );
+      builder.append( "\n" );
+      builder.append( remainingThread );
+      builder.append( STACK_TRACE_ELEMENT_SEPARATOR );
+      builder.append( Joiner.on( STACK_TRACE_ELEMENT_SEPARATOR ).join( remainingThread.getStackTrace() ) );
+      builder.append( "\n" );
     }
+    builder.append( "-----------------------" ).append( "\n" );
 
     return builder.toString();
   }
