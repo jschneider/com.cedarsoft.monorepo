@@ -960,7 +960,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.0-beta-2</version>
+        <version>3.0</version>
         <configuration>
           <locales>en</locales>
           <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
@@ -992,7 +992,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.4</version>
+        <version>2.5.1</version>
       </plugin>
 
       <plugin>
