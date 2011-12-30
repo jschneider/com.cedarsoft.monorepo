@@ -1,5 +1,6 @@
 package com.cedarsoft.test.utils;
 
+import org.junit.*;
 import org.junit.rules.*;
 import org.junit.runner.*;
 import org.junit.runners.model.*;
