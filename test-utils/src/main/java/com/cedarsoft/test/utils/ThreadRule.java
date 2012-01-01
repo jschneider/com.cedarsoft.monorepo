@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.junit.rules.*;
 import org.junit.runner.*;
@@ -18,6 +19,17 @@ import org.junit.runners.model.*;
 public class ThreadRule implements TestRule {
 
   public static final String STACK_TRACE_ELEMENT_SEPARATOR = "\n\tat ";
+
+  @Nullable
+  private final ThreadMatcher ignoredThreadMatcher;
+
+  public ThreadRule() {
+    this( new DefaultThreadMatcher() );
+  }
+
+  public ThreadRule( @Nullable ThreadMatcher ignoredThreadMatcher ) {
+    this.ignoredThreadMatcher = ignoredThreadMatcher;
+  }
 
   @Override
   public Statement apply( final Statement base, Description description ) {
@@ -79,6 +91,13 @@ public class ThreadRule implements TestRule {
       Thread remainingThread = iterator.next();
       if ( !remainingThread.isAlive() ) {
         iterator.remove();
+        continue;
+      }
+
+      //Ignore the threads
+      if ( this.ignoredThreadMatcher != null && ignoredThreadMatcher.shallIgnore( remainingThread ) ) {
+        iterator.remove();
+        continue;
       }
 
       //Give the thread a very(!) short time to die off
@@ -112,5 +131,20 @@ public class ThreadRule implements TestRule {
     builder.append( "-----------------------" ).append( "\n" );
 
     return builder.toString();
+  }
+
+  public interface ThreadMatcher {
+    boolean shallIgnore( @Nonnull Thread remainingThread );
+  }
+
+  /**
+   * Default implementation that ignore several known threads.
+   */
+  public static class DefaultThreadMatcher implements ThreadMatcher {
+    @Override
+    public boolean shallIgnore( @Nonnull Thread remainingThread ) {
+      return remainingThread.getThreadGroup().getName().equals( "system" ) &&
+        remainingThread.getName().equals( "Keep-Alive-Timer" );
+    }
   }
 }
