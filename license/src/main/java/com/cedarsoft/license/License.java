@@ -223,6 +223,11 @@ public class License {
     return id.hashCode();
   }
 
+  @Override
+  public String toString() {
+    return name + " (" + id + ")";
+  }
+
   @Nonnull
   static URL getUrl( @Nonnull String url ) {
     try {
