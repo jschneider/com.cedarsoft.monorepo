@@ -59,6 +59,14 @@ public class Resolutions {
   @Nonnull
   public static final Resolution _3200_2400 = QUXGA;
   @Nonnull
+  public static final Resolution WQXGA = new Resolution( 2560, 1600 );
+  @Nonnull
+  public static final Resolution _2560_1600 = WQXGA;
+  @Nonnull
+  public static final Resolution WQHD = new Resolution( 2560, 1440 );
+  @Nonnull
+  public static final Resolution _2560_1440 = WQHD;
+  @Nonnull
   public static final Resolution QXGA = new Resolution( 2048, 1536 );
   @Nonnull
   public static final Resolution _2048_1536 = QXGA;
@@ -118,6 +126,10 @@ public class Resolutions {
   public static final Resolution SVGA = new Resolution( 800, 600 );
   @Nonnull
   public static final Resolution _800_600 = SVGA;
+  @Nonnull
+  public static final Resolution WVGA = new Resolution( 800, 480 );
+  @Nonnull
+  public static final Resolution _800_480 = XGA;
   @Nonnull
   public static final Resolution DVD = new Resolution( 720, 576 );
   @Nonnull
