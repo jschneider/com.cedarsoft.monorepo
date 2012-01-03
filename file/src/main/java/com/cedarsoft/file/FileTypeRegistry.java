@@ -64,7 +64,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * Constant <code>TIFF</code>
    */
   @Nonnull
-  public static final FileType TIFF = new FileType( "TIFF", "image/tiff",false, new Extension( ".", "tiff" ), new Extension( ".", "tiff" ) );
+  public static final FileType TIFF = new FileType( "TIFF", "image/tiff",false, new Extension( ".", "tif" ), new Extension( ".", "tiff" ) );
   /**
    * Constant <code>GIMP</code>
    */
