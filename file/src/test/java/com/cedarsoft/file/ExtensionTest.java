@@ -31,6 +31,7 @@
 
 package com.cedarsoft.file;
 
+import org.fest.assertions.Assertions;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -57,4 +58,11 @@ public class ExtensionTest {
     assertEquals( ".txt", new Extension( "txt" ).getCombined() );
   }
 
+  @Test
+  public void testCaseInsensitive() throws Exception {
+    Assertions.assertThat( new Extension( ".", "jpg" ).createCaseSensitiveExtension( "asdf.jpg" ).getCombined() ).isEqualTo( ".jpg" );
+    Assertions.assertThat( new Extension( ".", "jpg" ).createCaseSensitiveExtension( "asdf.Jpg" ).getCombined() ).isEqualTo( ".Jpg" );
+    Assertions.assertThat( new Extension( ".", "jpg" ).createCaseSensitiveExtension( "asdf.Jpg" ).getDelimiter() ).isEqualTo( "." );
+    Assertions.assertThat( new Extension( ".", "jpg" ).createCaseSensitiveExtension( "asdf.Jpg" ).getExtension() ).isEqualTo( "Jpg" );
+  }
 }

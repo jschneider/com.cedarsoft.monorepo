@@ -35,9 +35,11 @@ package com.cedarsoft.file;
 import javax.annotation.Nonnull;
 
 import java.lang.String;
+import java.util.Locale;
 
 /**
- * An extension of a file
+ * An extension of a file.
+ * The case does *not* matter(!)
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
@@ -75,7 +77,7 @@ public class Extension {
    */
   public Extension( @Nonnull String delimiter, @Nonnull String extension ) {
     this.delimiter = delimiter;
-    this.extension = extension;
+    this.extension = extension; //We only accept lower case extensions
   }
 
   /**
@@ -108,6 +110,12 @@ public class Extension {
     return delimiter + extension;
   }
 
+  @Nonnull
+  public Extension createCaseSensitiveExtension( @Nonnull String fileName ) {
+    int extensionIndex = fileName.toLowerCase( Locale.US ).lastIndexOf( getExtension().toLowerCase( Locale.US ) );
+    return new Extension( getDelimiter(), fileName.substring( extensionIndex ) );
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -127,7 +135,7 @@ public class Extension {
     Extension extension1 = ( Extension ) o;
 
     if ( !delimiter.equals( extension1.delimiter ) ) return false;
-    if ( !extension.equals( extension1.extension ) ) return false;
+    if ( !extension.equalsIgnoreCase( extension1.extension ) ) return false;
 
     return true;
   }
@@ -138,7 +146,7 @@ public class Extension {
   @Override
   public int hashCode() {
     int result = delimiter.hashCode();
-    result = 31 * result + extension.hashCode();
+    result = 31 * result + extension.toLowerCase( Locale.US ).hashCode();
     return result;
   }
 }
