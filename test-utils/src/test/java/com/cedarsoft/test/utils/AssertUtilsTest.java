@@ -59,14 +59,16 @@ public class AssertUtilsTest {
 
   @Test
   public void testJsonFormat() throws Exception {
-    assertEquals( "{\n" +
-      "  \"id\" : \"asdfasdf\",\n" +
-      "  \"unformated\" : true\n" +
-      "}", JsonUtils.formatJson( "{\"id\":\"asdfasdf\",   \"unformated\":true}" ) );
-    assertEquals( "{\n" +
-      "  \"id\" : \"asdfasdf\",\n" +
-      "  \"unformated\" : true\n" +
-      "}", JsonUtils.formatJson( "{\"id\":\"asdfasdf\", \"unformated\":true}" ) );
+    String separator = System.getProperty("line.separator");
+
+    assertEquals("{" + separator +
+                   "  \"id\" : \"asdfasdf\"," + separator +
+                   "  \"unformated\" : true" + separator +
+                   "}", JsonUtils.formatJson("{\"id\":\"asdfasdf\",   \"unformated\":true}"));
+    assertEquals("{" + separator +
+                   "  \"id\" : \"asdfasdf\"," + separator +
+                   "  \"unformated\" : true" + separator +
+                   "}", JsonUtils.formatJson("{\"id\":\"asdfasdf\", \"unformated\":true}"));
   }
 
   @Test
@@ -128,7 +130,7 @@ public class AssertUtilsTest {
   @Test
   public void testXml2WComments() throws Exception {
     try {
-      AssertUtils.assertXMLEquals( "err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream( "AssertUtilsTest.2.xml" ))), "<xml><!--comment2--></xml>", true, false );
+      AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml"))), "<xml><!--comment2--></xml>", true, false);
       fail("Where is the Exception");
     } catch (ComparisonFailure e) {
       Assertions.assertThat(e.getMessage()).startsWith("XML comparison failed expected");
