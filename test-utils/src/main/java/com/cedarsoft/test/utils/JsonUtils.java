@@ -31,6 +31,8 @@
 
 package com.cedarsoft.test.utils;
 
+import com.google.common.base.Charsets;
+import java.nio.charset.Charset;
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
@@ -53,7 +55,11 @@ public class JsonUtils {
   }
 
   public static void assertJsonEquals( @Nonnull URL control, @Nullable String test ) throws SAXException, IOException {
-    assertJsonEquals( AssertUtils.toString( control ), test );
+    assertJsonEquals(control, test, Charsets.UTF_8);
+  }
+  
+  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test , @Nonnull Charset charset) throws SAXException, IOException {
+    assertJsonEquals( AssertUtils.toString( control, charset), test );
   }
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {

@@ -35,6 +35,9 @@ import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.xml.XmlCommons;
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteStreams;
+import java.nio.charset.Charset;
 import junit.framework.AssertionFailedError;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -89,11 +92,15 @@ public class AssertUtils {
    * @throws IOException  if any.
    */
   public static void assertXMLEquals( String control, String test ) throws SAXException, IOException {
-    assertXMLEquals( control, test, true );
+    assertXMLEquals(control, test, true);
   }
 
   public static void assertXMLEquals( URL control, String test ) throws SAXException, IOException {
-    assertXMLEquals( toString( control ), test );
+    assertXMLEquals(control, test, Charsets.UTF_8);
+  }
+
+  public static void assertXMLEquals( URL control, String test, @Nonnull Charset charset ) throws SAXException, IOException {
+    assertXMLEquals( toString( control, charset), test );
   }
 
   /**
@@ -110,7 +117,11 @@ public class AssertUtils {
   }
 
   public static void assertXMLEquals( URL control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( toString( control ), test, ignoreWhiteSpace );
+    assertXMLEquals(control, test, ignoreWhiteSpace, Charsets.UTF_8);
+  }
+
+  public static void assertXMLEquals( URL control, String test, boolean ignoreWhiteSpace, @Nonnull Charset charset ) throws SAXException, IOException {
+    assertXMLEquals( toString( control, charset), test, ignoreWhiteSpace );
   }
 
   /**
@@ -157,8 +168,12 @@ public class AssertUtils {
     }
   }
 
-  public static void assertXMLEquals( String test, String err, @Nonnull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( err, toString( control ), test, ignoreWhiteSpace );
+  public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals(test, err, control, ignoreWhiteSpace, Charsets.UTF_8);
+  }
+  
+  public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace , @Nonnull Charset charset) throws SAXException, IOException {
+    assertXMLEquals( err, toString( control, charset), test, ignoreWhiteSpace );
   }
 
   /**
@@ -181,17 +196,21 @@ public class AssertUtils {
   /**
    * <p>assertEquals</p>
    *
-   * @param expectedResourceUri a {@link java.net.URL} object.
+   * @param expectedResourceUri a {@link URL} object.
    * @param actual              a {@link Object} object.
    * @throws IOException if any.
    */
   public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
-    Assert.assertEquals( toString( expectedResourceUri ), actual );
+    assertEquals(expectedResourceUri, actual, Charsets.UTF_8);
+  }
+  
+  public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual,@Nonnull Charset charset ) throws IOException {
+    Assert.assertEquals( toString( expectedResourceUri, charset), actual );
   }
 
   @Nonnull
-  static String toString( @Nonnull URL expectedResourceUri ) throws IOException {
-    return IOUtils.toString( expectedResourceUri.openStream() );
+  static String toString(@Nonnull URL expectedResourceUri, @Nonnull Charset charset) throws IOException {
+    return new String(ByteStreams.toByteArray(expectedResourceUri.openStream()), charset);
   }
 
   public static void assertFileByHashes( @Nonnull File fileUnderTest, @Nonnull Algorithm algorithm, @Nonnull String... expectedHashesAsHex ) throws IOException {
