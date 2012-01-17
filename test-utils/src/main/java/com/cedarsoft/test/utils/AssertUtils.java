@@ -113,7 +113,7 @@ public class AssertUtils {
    * @throws IOException  if any.
    */
   public static void assertXMLEquals( String control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals( null, control, test, ignoreWhiteSpace );
+    assertXMLEquals( control, test, ignoreWhiteSpace, true );
   }
 
   public static void assertXMLEquals( URL control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
@@ -134,11 +134,17 @@ public class AssertUtils {
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
+  @Deprecated
   public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals(err, control, test, ignoreWhiteSpace, true);
+    assertXMLEquals( control, test, ignoreWhiteSpace, true);
   }
 
+  @Deprecated
   public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments ) throws SAXException, IOException {
+    assertXMLEquals(control,  test, ignoreWhiteSpace,  ignoreComments);
+  }
+
+  public static void assertXMLEquals(@Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments) throws IOException {
     if ( test.trim().length() == 0 ) {
       throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
@@ -168,10 +174,12 @@ public class AssertUtils {
     }
   }
 
+  @Deprecated
   public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
     assertXMLEquals(test, err, control, ignoreWhiteSpace, Charsets.UTF_8);
   }
-  
+
+  @Deprecated
   public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace , @Nonnull Charset charset) throws SAXException, IOException {
     assertXMLEquals( err, toString( control, charset), test, ignoreWhiteSpace );
   }
