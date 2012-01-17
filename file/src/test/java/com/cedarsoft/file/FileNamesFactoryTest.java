@@ -1,6 +1,9 @@
 package com.cedarsoft.file;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import java.util.List;
+import javax.annotation.Nonnull;
 import org.fest.assertions.Condition;
 import org.junit.*;
 import org.junit.rules.*;
@@ -45,12 +48,7 @@ public class FileNamesFactoryTest {
     List<? extends FileName> fileNames = entry.getValue().getFileNames();
     assertThat(fileNames).hasSize(2);
 
-    Condition<String> condition = new Condition<String>() {
-      @Override
-      public boolean matches(String value) {
-        return value.equals("A.JPG") || value.equals("A.cr2");
-      }
-    };
+    Condition<String> condition = new MyStringCondition("A.JPG","A.cr2");
     assertThat( fileNames.get(0).getName() ).satisfies(condition);
     assertThat( fileNames.get(1).getName() ).satisfies(condition);
 
@@ -106,8 +104,8 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "A.cr2" );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
     }
   }
 
@@ -129,8 +127,26 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "A.CR2" );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
+    }
+  }
+
+  private static class MyStringCondition extends Condition<String> {
+    @Nonnull 
+    private final Set<String> possibleStrings ;
+
+    private MyStringCondition(@Nonnull String... possibleStrings) {
+      this(ImmutableSet.copyOf(possibleStrings));
+    }
+    
+    private MyStringCondition(@Nonnull Set<? extends String> possibleStrings) {
+      this.possibleStrings = new HashSet<String>(possibleStrings);
+    }
+
+    @Override
+    public boolean matches(String value) {
+      return possibleStrings.contains(value);
     }
   }
 }
