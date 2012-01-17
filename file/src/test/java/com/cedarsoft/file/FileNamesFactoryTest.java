@@ -1,5 +1,7 @@
 package com.cedarsoft.file;
 
+import java.util.List;
+import org.fest.assertions.Condition;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -40,11 +42,19 @@ public class FileNamesFactoryTest {
     assertThat( baseNameAware.getEntries() ).hasSize( 1 );
     Map.Entry<BaseName, FileNames> entry = baseNameAware.getEntries().iterator().next();
     assertThat( entry.getKey().getName() ).isEqualTo( "A" );
-    assertThat( entry.getValue().getFileNames() ).hasSize( 2 );
-    assertThat( entry.getValue().getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-    assertThat( entry.getValue().getFileNames().get( 1 ).getName() ).isEqualTo( "A.cr2" );
+    List<? extends FileName> fileNames = entry.getValue().getFileNames();
+    assertThat(fileNames).hasSize(2);
 
-    for ( FileName fileName : entry.getValue().getFileNames() ) {
+    Condition<String> condition = new Condition<String>() {
+      @Override
+      public boolean matches(String value) {
+        return value.equals("A.JPG") || value.equals("A.cr2");
+      }
+    };
+    assertThat( fileNames.get(0).getName() ).satisfies(condition);
+    assertThat( fileNames.get(1).getName() ).satisfies(condition);
+
+    for ( FileName fileName : fileNames) {
       File f = new File( baseDir, fileName.getName() );
       assertThat( f ).exists();
     }
