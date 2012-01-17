@@ -41,16 +41,23 @@ import static org.junit.Assert.*;
  *
  */
 public class RelativePathFinderTest {
+  private String s;
+
+  @Before
+  public void setUp() throws Exception {
+    s = File.separator;
+  }
+
   @Test
   public void testBug() {
-    assertEquals( "../../../../../../repository/10/6d775ae5eda36d969c9ab21068a32803b2ebe96b2ad581ab4e84fe0cc9d34b/data.CR2", RelativePathFinder.getRelativePath( "/media/tamar/data/fotos/collustra/repository/10/6d775ae5eda36d969c9ab21068a32803b2ebe96b2ad581ab4e84fe0cc9d34b/data.CR2", "/media/tamar/data/fotos/collustra/links/by-date/UTC/2009/05/20", "/" ) );
+    assertEquals( ".."+ s +".."+ s +".."+ s +".."+ s +".."+ s +".."+ s +"repository"+ s +"10"+ s +"6d775ae5eda36d969c9ab21068a32803b2ebe96b2ad581ab4e84fe0cc9d34b"+ s +"data.CR2", RelativePathFinder.getRelativePath( ""+ s +"media"+ s +"tamar"+ s +"data"+ s +"fotos"+ s +"collustra"+ s +"repository"+ s +"10"+ s +"6d775ae5eda36d969c9ab21068a32803b2ebe96b2ad581ab4e84fe0cc9d34b"+ s +"data.CR2", ""+ s +"media"+ s +"tamar"+ s +"data"+ s +"fotos"+ s +"collustra"+ s +"links"+ s +"by-date"+ s +"UTC"+ s +"2009"+ s +"05"+ s +"20", ""+ s +"" ) );
   }
 
   @Test
   public void testGetRelativePath() {
-    assertEquals( "../../../a", RelativePathFinder.getRelativePath( "/tmp/a", "/tmp/other/a/b", "/" ) );
-    assertEquals( "../../../referenced", RelativePathFinder.getRelativePath( "/tmp/referenced/", "/tmp/356406/a/b", "/" ) );
-    assertEquals( "../../../referenced", RelativePathFinder.getRelativePath( "/tmp/referenced", "/tmp/356406/a/b", "/" ) );
+    assertEquals( ".."+ s +".."+ s +".."+ s +"a", RelativePathFinder.getRelativePath( ""+ s +"tmp"+ s +"a", ""+ s +"tmp"+ s +"other"+ s +"a"+ s +"b", ""+ s +"" ) );
+    assertEquals( ".."+ s +".."+ s +".."+ s +"referenced", RelativePathFinder.getRelativePath( ""+ s +"tmp"+ s +"referenced"+ s +"", ""+ s +"tmp"+ s +"356406"+ s +"a"+ s +"b", ""+ s +"" ) );
+    assertEquals( ".."+ s +".."+ s +".."+ s +"referenced", RelativePathFinder.getRelativePath( ""+ s +"tmp"+ s +"referenced", ""+ s +"tmp"+ s +"356406"+ s +"a"+ s +"b", ""+ s +"" ) );
   }
 
   @Test
@@ -62,33 +69,33 @@ public class RelativePathFinderTest {
 
   @Test
   public void testGetRelativePath3() {
-    assertEquals( ".", RelativePathFinder.getRelativePath( "/a", "/a", "/" ) );
-    assertEquals( "..", RelativePathFinder.getRelativePath( "/a", "/a/b", "/" ) );
-    assertEquals( "../..", RelativePathFinder.getRelativePath( "/a", "/a/b/c", "/" ) );
-    assertEquals( "../../..", RelativePathFinder.getRelativePath( "/a", "/a/b/c/d", "/" ) );
+    assertEquals( ".", RelativePathFinder.getRelativePath( ""+ s +"a", ""+ s +"a", ""+ s +"" ) );
+    assertEquals( "..", RelativePathFinder.getRelativePath( ""+ s +"a", ""+ s +"a"+ s +"b", ""+ s +"" ) );
+    assertEquals( ".."+ s +"..", RelativePathFinder.getRelativePath( ""+ s +"a", ""+ s +"a"+ s +"b"+ s +"c", ""+ s +"" ) );
+    assertEquals( ".."+ s +".."+ s +"..", RelativePathFinder.getRelativePath( ""+ s +"a", ""+ s +"a"+ s +"b"+ s +"c"+ s +"d", ""+ s +"" ) );
 
 
-    assertEquals( "../../../a", RelativePathFinder.getRelativePath( "/a", "/other/a/b", "/" ) );
+    assertEquals( ".."+ s +".."+ s +".."+ s +"a", RelativePathFinder.getRelativePath( ""+ s +"a", ""+ s +"other"+ s +"a"+ s +"b", ""+ s +"" ) );
   }
 
   @Test
   public void testGetRelativePath2() {
-    assertEquals( "../../b/c", RelativePathFinder.getRelativePath( "/a/b/c", "/a/x/y/", "/" ) );
-    assertEquals( "../../b", RelativePathFinder.getRelativePath( "/a/b/", "/a/x/y/", "/" ) );
-    assertEquals( "../..", RelativePathFinder.getRelativePath( "/a/", "/a/x/y/", "/" ) );
+    assertEquals( ".."+ s +".."+ s +"b"+ s +"c", RelativePathFinder.getRelativePath( ""+ s +"a"+ s +"b"+ s +"c", ""+ s +"a"+ s +"x"+ s +"y"+ s +"", ""+ s +"" ) );
+    assertEquals( ".."+ s +".."+ s +"b", RelativePathFinder.getRelativePath( ""+ s +"a"+ s +"b"+ s +"", ""+ s +"a"+ s +"x"+ s +"y"+ s +"", ""+ s +"" ) );
+    assertEquals( ".."+ s +"..", RelativePathFinder.getRelativePath( ""+ s +"a"+ s +"", ""+ s +"a"+ s +"x"+ s +"y"+ s +"", ""+ s +"" ) );
   }
 
   @Test
   public void testDirectParent() {
-    assertEquals( "stuff/xyz.dat", RelativePathFinder.getRelativePath( "/var/data/stuff/xyz.dat", "/var/data/", "/" ) );
-    assertEquals( "stuff/xyz.dat", RelativePathFinder.getRelativePath( "/var/data/stuff/xyz.dat/", "/var/data/", "/" ) );
-    assertEquals( "stuff/xyz.dat", RelativePathFinder.getRelativePath( "/var/data/stuff/xyz.dat/", "/var/data", "/" ) );
-    assertEquals( "stuff/xyz.dat", RelativePathFinder.getRelativePath( "/var/data/stuff/xyz.dat", "/var/data", "/" ) );
+    assertEquals( "stuff"+ s +"xyz.dat", RelativePathFinder.getRelativePath( ""+ s +"var"+ s +"data"+ s +"stuff"+ s +"xyz.dat", ""+ s +"var"+ s +"data"+ s +"", ""+ s +"" ) );
+    assertEquals( "stuff"+ s +"xyz.dat", RelativePathFinder.getRelativePath( ""+ s +"var"+ s +"data"+ s +"stuff"+ s +"xyz.dat"+ s +"", ""+ s +"var"+ s +"data"+ s +"", ""+ s +"" ) );
+    assertEquals( "stuff"+ s +"xyz.dat", RelativePathFinder.getRelativePath( ""+ s +"var"+ s +"data"+ s +"stuff"+ s +"xyz.dat"+ s +"", ""+ s +"var"+ s +"data", ""+ s +"" ) );
+    assertEquals( "stuff"+ s +"xyz.dat", RelativePathFinder.getRelativePath( ""+ s +"var"+ s +"data"+ s +"stuff"+ s +"xyz.dat", ""+ s +"var"+ s +"data", ""+ s +"" ) );
   }
 
   @Test
   public void testFile() {
-    assertEquals( "stuff/xyz.dat", RelativePathFinder.getRelativePath( new File( "/var/data/stuff/xyz.dat" ), new File( "/var/data/" ), "/" ).getPath() );
-    assertEquals( "../../b/c", RelativePathFinder.getRelativePath( new File( "/a/b/c" ), new File( "/a/x/y/" ), "/" ).getPath() );
+    assertEquals( "stuff"+ s +"xyz.dat", RelativePathFinder.getRelativePath( new File( ""+ s +"var"+ s +"data"+ s +"stuff"+ s +"xyz.dat" ), new File( ""+ s +"var"+ s +"data"+ s +"" ), ""+ s +"" ).getPath() );
+    assertEquals( ".."+ s +".."+ s +"b"+ s +"c", RelativePathFinder.getRelativePath( new File( ""+ s +"a"+ s +"b"+ s +"c" ), new File( ""+ s +"a"+ s +"x"+ s +"y"+ s +"" ), ""+ s +"" ).getPath() );
   }
 }
