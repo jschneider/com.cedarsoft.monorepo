@@ -149,7 +149,7 @@ public class AssertUtils {
     try {
       setIgnoreWhitespace( ignoreWhiteSpace );
       setIgnoreComments(ignoreComments);
-      XMLAssert.assertXMLEqual( err, test, control );
+      XMLAssert.assertXMLEqual( control, test );
       setIgnoreWhitespace( false );
     } catch ( SAXException e ) {
       throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", formatXml( control ).trim(), formatXml( test ).trim() );
