@@ -34,6 +34,7 @@ package com.cedarsoft.test.utils;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import org.apache.commons.io.FileUtils;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -57,80 +58,81 @@ public class AssertUtilsFileCompareTest {
 
   @Before
   public void setUp() throws Exception {
-    fileA = tmp.newFile( "a" );
-    FileUtils.writeStringToFile( fileA, "daContent" );
+    fileA = tmp.newFile("a");
+    FileUtils.writeStringToFile(fileA, "daContent");
 
-    fileB = tmp.newFile( "b" );
-    FileUtils.writeStringToFile( fileB, "daContentB" );
+    fileB = tmp.newFile("b");
+    FileUtils.writeStringToFile(fileB, "daContentB");
   }
 
   @Test
   public void testCopyFile() {
     File dir = AssertUtils.FAILED_FILES_DIR;
-    assertEquals( new File( dir, "daPath" + File.separator + "daName" ), AssertUtils.createCopyFile( "daPath", "daName" ) );
-    assertEquals( new File( dir, "daPath2" + File.separator + "other" + File.separator + "daName2" ), AssertUtils.createCopyFile( "daPath2" + File.separator + "other", "daName2" ) );
+    assertEquals(new File(dir, "daPath" + File.separator + "daName"), AssertUtils.createCopyFile("daPath", "daName"));
+    assertEquals(new File(dir, "daPath2" + File.separator + "other" + File.separator + "daName2"), AssertUtils.createCopyFile("daPath2" + File.separator + "other", "daName2"));
   }
 
   @Test
   public void testBasic() throws IOException {
-    assertFileByHash( Hash.fromHex( Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f" ), fileA );
+    assertFileByHash(Hash.fromHex(Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f"), fileA);
   }
 
   @Test
   public void testInvalid() throws IOException {
-    expectedException.expect( IllegalArgumentException.class );
-    assertFileByHashes( fileA );
+    expectedException.expect(IllegalArgumentException.class);
+    assertFileByHashes(fileA);
   }
 
   @Test
   public void testOneOf() throws IOException {
-    assertFileByHashes( fileA,
-                        Hash.fromHex( Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f" ),
-                        Hash.fromHex( Algorithm.MD5, "AA" ),
-                        Hash.fromHex( Algorithm.MD5, "BB" )
+    assertFileByHashes(fileA,
+                       Hash.fromHex(Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f"),
+                       Hash.fromHex(Algorithm.MD5, "AA"),
+                       Hash.fromHex(Algorithm.MD5, "BB")
     );
   }
 
   @Test
   public void testOneOf2() throws IOException {
-    assertFileByHashes( fileA,
-                        Hash.fromHex( Algorithm.MD5, "AA" ),
-                        Hash.fromHex( Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f" ),
-                        Hash.fromHex( Algorithm.MD5, "BB" )
+    assertFileByHashes(fileA,
+                       Hash.fromHex(Algorithm.MD5, "AA"),
+                       Hash.fromHex(Algorithm.MD5, "913aa4a45cea16f9714f109e7324159f"),
+                       Hash.fromHex(Algorithm.MD5, "BB")
     );
   }
 
   @Test
   public void testOneOf4() throws IOException {
-    assertFileByHashes( fileA, Algorithm.MD5,
-                        "AA",
-                        "913aa4a45cea16f9714f109e7324159f",
-                        "BB"
+    assertFileByHashes(fileA, Algorithm.MD5,
+                       "AA",
+                       "913aa4a45cea16f9714f109e7324159f",
+                       "BB"
     );
   }
 
   @Test
-  public void testOneOfFail() throws IOException {
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage(
-      "Stored questionable file under test at </tmp/junit-failed-files/com.cedarsoft.test.utils.AssertUtilsFileCompareTest/testOneOfFail/a>\n" +
-        "Expected: is <[[MD5: aa], [MD5: cc], [MD5: bb]]>\n" +
-        "     got: <[[MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f]]>\n" );
-
-    assertFileByHashes( fileA,
-                        Hash.fromHex( Algorithm.MD5, "AA" ),
-                        Hash.fromHex( Algorithm.MD5, "CC" ),
-                        Hash.fromHex( Algorithm.MD5, "BB" )
-    );
+  public void testOneOfFail() throws Exception {
+    try {
+      assertFileByHashes(fileA,
+                         Hash.fromHex(Algorithm.MD5, "AA"),
+                         Hash.fromHex(Algorithm.MD5, "CC"),
+                         Hash.fromHex(Algorithm.MD5, "BB")
+      );
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
+      Assertions.assertThat(e.getMessage()).contains("Expected: is <[[MD5: aa], [MD5: cc], [MD5: bb]]>\n" +
+                                                       "     got: <[[MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f]]>\n");
+    }
   }
 
   @Test
   public void testFail() throws Exception {
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage( "Stored questionable file under test at </tmp/junit-failed-files/com.cedarsoft.test.utils.AssertUtilsFileCompareTest/testFail/a>\n" +
-      "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-      "     got: <[MD5: aa]>\n" );
-
-    assertFileByHash( Hash.fromHex( Algorithm.MD5, "AA" ), fileA );
+    try {
+      assertFileByHash(Hash.fromHex(Algorithm.MD5, "AA"), fileA);
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
+      Assertions.assertThat(e.getMessage()).contains("Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
+                                                       "     got: <[MD5: aa]>\n");
+    }
   }
 }
