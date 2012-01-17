@@ -145,10 +145,10 @@ public class AssertUtils {
   }
 
   public static void assertXMLEquals(@Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments) throws IOException {
-    if ( test.trim().length() == 0 ) {
+    if (test.trim().isEmpty()) {
       throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
-    if ( control.trim().length() == 0 ) {
+    if (control.trim().isEmpty()) {
       throw new ComparisonFailure( "Empty control xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
 
