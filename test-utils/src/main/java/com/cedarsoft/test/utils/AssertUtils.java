@@ -76,6 +76,10 @@ public class AssertUtils {
     XMLUnit.setIgnoreWhitespace( ignore );
   }
 
+  public static void setIgnoreComments( boolean ignore ) {
+    XMLUnit.setIgnoreComments(ignore);
+  }
+
   /**
    * <p>assertXMLEqual</p>
    *
@@ -120,6 +124,10 @@ public class AssertUtils {
    * @throws IOException  if any.
    */
   public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+    assertXMLEquals(err, control, test, ignoreWhiteSpace, true);
+  }
+
+  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments ) throws SAXException, IOException {
     if ( test.trim().length() == 0 ) {
       throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
     }
@@ -129,6 +137,7 @@ public class AssertUtils {
 
     try {
       setIgnoreWhitespace( ignoreWhiteSpace );
+      setIgnoreComments(ignoreComments);
       XMLAssert.assertXMLEqual( err, test, control );
       setIgnoreWhitespace( false );
     } catch ( SAXException e ) {

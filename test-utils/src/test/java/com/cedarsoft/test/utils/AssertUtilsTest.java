@@ -34,12 +34,15 @@ package com.cedarsoft.test.utils;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
+import com.google.common.io.ByteStreams;
 import org.apache.commons.io.FileUtils;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
 import java.io.IOException;
+import org.xml.sax.SAXException;
 
 import static org.junit.Assert.*;
 
@@ -68,13 +71,13 @@ public class AssertUtilsTest {
 
   @Test
   public void testJsonEquals() throws Exception {
-    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":true}" );
-    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",\"unformated\":true}" );
+    JsonUtils.assertJsonEquals("{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":true}");
+    JsonUtils.assertJsonEquals("{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",\"unformated\":true}");
   }
 
   @Test
   public void testJsonNotEquals() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
+    expectedException.expect(ComparisonFailure.class);
     JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
   }
 
@@ -100,9 +103,9 @@ public class AssertUtilsTest {
 
   @Test
   public void testAssertWithResource() throws IOException {
-    AssertUtils.assertEquals( getClass().getResource( "equals.txt" ), "the content of the file...\n" +
+    AssertUtils.assertEquals(getClass().getResource("equals.txt"), "the content of the file...\n" +
       "second line!\n" +
-      "third line!" );
+      "third line!");
 
     try {
       AssertUtils.assertEquals( getClass().getResource( "equals.txt" ), "other!" );
@@ -113,13 +116,25 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml2() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
+    expectedException.expect(ComparisonFailure.class);
     AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.1.xml" ), "<xml/>" );
   }
 
   @Test
   public void testXml2WhiteSpaces() throws Exception {
     AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.2.xml" ), "<xml/>", true );
+  }
+
+  @Test
+  public void testXml2WComments() throws Exception {
+    try {
+      AssertUtils.assertXMLEquals( "err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream( "AssertUtilsTest.2.xml" ))), "<xml><!--comment2--></xml>", true, false );
+      fail("Where is the Exception");
+    } catch (ComparisonFailure e) {
+      Assertions.assertThat(e.getMessage()).startsWith("XML comparison failed expected");
+    }
+
+    AssertUtils.assertXMLEquals( "err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream( "AssertUtilsTest.2.xml" ))), "<xml><!--comment2--></xml>", true, true );
   }
 
   @Test
