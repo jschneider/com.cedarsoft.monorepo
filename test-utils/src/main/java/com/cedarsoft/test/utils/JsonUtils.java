@@ -63,10 +63,6 @@ public class JsonUtils {
   }
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
-    assertJsonEquals( null, control, test );
-  }
-
-  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, ComparisonFailure {
     if ( test == null || test.trim().length() == 0 ) {
       throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
@@ -85,6 +81,11 @@ public class JsonUtils {
     } catch ( JsonProcessingException e ) {
       throw new ComparisonFailure( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
     }
+  }
+
+  @Deprecated
+  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, ComparisonFailure {
+    assertJsonEquals(control, test);
   }
 
   @Nonnull
