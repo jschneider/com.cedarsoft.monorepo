@@ -49,12 +49,12 @@ public class NullLockTest {
     lock = NullLock.LOCK;
   }
 
-  @Test( timeout = 10 )
+  @Test( timeout = 100 )
   public void testTimeout() throws InterruptedException {
     lock.tryLock( 100, TimeUnit.DAYS );
   }
 
-  @Test( timeout = 10 )
+  @Test( timeout = 100 )
   public void testIt() throws InterruptedException {
     lock.lock();
     lock.lock();
@@ -66,7 +66,7 @@ public class NullLockTest {
     lock.tryLock();
   }
 
-  @Test( timeout = 10 )
+  @Test( timeout = 100 )
   public void testLocks() throws InterruptedException {
     assertSame( lock, lock.readLock() );
     assertSame( lock, lock.writeLock() );
