@@ -31,22 +31,21 @@
 
 package com.cedarsoft.xml;
 
-import org.jdom.Document;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
-import org.jdom.transform.JDOMResult;
-
-import javax.annotation.Nonnull;
 import org.xml.sax.SAXException;
 
+import javax.annotation.Nonnull;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -75,36 +74,25 @@ public class XmlCommons {
    */
   @Nonnull
   public static String format( @Nonnull String xml ) {
-    if ( xml.trim().length() == 0 ) {
+    if (xml.trim().isEmpty()) {
       return "";
     }
 
     try {
-      Document doc = new SAXBuilder().build( new StringReader( xml ) );
-      Format format = Format.getPrettyFormat();
-      format.setLineSeparator( "\n" );
-      return new XMLOutputter( format ).outputString( doc );
-    } catch ( Exception e ) {
-      throw new RuntimeException( e );
-    }
-  }
+      Source xmlInput = new StreamSource(new StringReader(xml));
+      StringWriter stringWriter = new StringWriter();
 
-  /**
-   * Write the document to the given file
-   *
-   * @param file     the file
-   * @param document the document
-   * @throws IOException if an io exception occures
-   */
-  public static void writeXml( @Nonnull File file, @Nonnull Document document ) throws IOException {
-    Writer writer = null;
-    try {
-      writer = new BufferedWriter( new FileWriter( file ) );
-      new XMLOutputter( Format.getPrettyFormat() ).output( document, writer );
-    } finally {
-      if ( writer != null ) {
-        writer.close();
-      }
+      TransformerFactory transformerFactory = TransformerFactory.newInstance();
+      transformerFactory.setAttribute("indent-number", 2);
+
+      Transformer transformer = transformerFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.transform(xmlInput, new StreamResult(stringWriter));
+      return stringWriter.toString();
+    } catch (TransformerConfigurationException e) {
+      throw new RuntimeException(e);
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -147,23 +135,6 @@ public class XmlCommons {
   public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull Writer out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
-    } catch ( TransformerException e ) {
-      throw new RuntimeException( e );
-    }
-  }
-
-  /**
-   * <p>toJDom</p>
-   *
-   * @param document a {@link org.w3c.dom.Document} object.
-   * @return a {@link Document} object.
-   */
-  @Nonnull
-  public static Document toJDom( @Nonnull org.w3c.dom.Document document ) {
-    try {
-      JDOMResult target = new JDOMResult();
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), target );
-      return target.getDocument();
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }

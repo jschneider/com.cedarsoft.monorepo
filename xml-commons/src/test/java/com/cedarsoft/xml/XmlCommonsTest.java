@@ -54,29 +54,26 @@ import static org.junit.Assert.*;
 public class XmlCommonsTest {
   @Rule
   public TemporaryFolder tmp = new TemporaryFolder();
+  private String n;
+
+  @Before
+  public void setUp() throws Exception {
+    n = System.getProperty("line.separator");
+  }
 
   @Test
   public void testFormat() {
-    assertEquals( "", XmlCommons.format( "" ) );
+    assertEquals("", XmlCommons.format(""));
     assertEquals(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-        "<xml />\n\n"
-      , XmlCommons.format( "<xml/>" ) );
-  }
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n+
+        "<xml/>"+n, XmlCommons.format("<xml/>"));
 
-
-  @Test
-  public void testOutput() throws IOException {
-    File file = tmp.newFile( "out.xml" );
-
-    Document doc = new Document();
-    doc.setRootElement( new Element( "daRoot" ) );
-
-    XmlCommons.writeXml( file, doc );
-
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<daRoot />"
-      , XmlCommons.format( FileUtils.readFileToString( file ) ).trim() );
+    assertEquals(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+        "<xml>" + n +
+        "  <a/>" + n +
+        "  <b>asdf</b>" + n +
+        "</xml>" + n, XmlCommons.format("<xml><a/><b>asdf</b></xml>"));
   }
 
   @Test
@@ -94,10 +91,10 @@ public class XmlCommonsTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<daRoot>\n" +
-      "  <daChild />\n" +
-      "</daRoot>"
+    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+                    "<daRoot>" + n +
+                    "  <daChild/>" + n +
+                    "</daRoot>"
       , XmlCommons.format( out.toString() ).trim() );
   }
 
@@ -116,10 +113,10 @@ public class XmlCommonsTest {
     StringWriter out = new StringWriter();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<daRoot>\n" +
-      "  <daChild />\n" +
-      "</daRoot>"
+    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+                    "<daRoot>" + n +
+                    "  <daChild/>" + n +
+                    "</daRoot>"
       , XmlCommons.format( out.toString() ).trim() );
   }
 
