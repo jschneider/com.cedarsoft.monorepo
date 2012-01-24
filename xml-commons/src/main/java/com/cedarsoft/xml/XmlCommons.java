@@ -31,6 +31,7 @@
 
 package com.cedarsoft.xml;
 
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.annotation.Nonnull;
@@ -115,10 +116,10 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @param out      a {@link OutputStream} object.
    */
-  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull OutputStream out ) {
+  public static void out( @Nonnull Document document, @Nonnull OutputStream out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
@@ -129,10 +130,10 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @param out      a {@link Writer} object.
    */
-  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull Writer out ) {
+  public static void out( @Nonnull Document document, @Nonnull Writer out ) {
     try {
       TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
@@ -144,13 +145,13 @@ public class XmlCommons {
    * <p>parse</p>
    *
    * @param bytes an array of byte.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @return a {@link Document} object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Nonnull
-  public static org.w3c.dom.Document parse( @Nonnull byte[] bytes ) throws IOException, SAXException {
+  public static Document parse( @Nonnull byte[] bytes ) throws IOException, SAXException {
     return parse( new ByteArrayInputStream( bytes ) );
   }
 
@@ -158,24 +159,24 @@ public class XmlCommons {
    * <p>parse</p>
    *
    * @param in a {@link InputStream} object.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @return a {@link Document} object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Nonnull
-  public static org.w3c.dom.Document parse( @Nonnull InputStream in ) throws IOException, SAXException {
+  public static Document parse( @Nonnull InputStream in ) throws IOException, SAXException {
     return getDocumentBuilder().parse( in );
   }
 
   /**
    * <p>toString</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @return a {@link String} object.
    */
   @Nonnull
-  public static String toString( @Nonnull org.w3c.dom.Document document ) {
+  public static String toString( @Nonnull Document document ) {
     StringWriter stringWriter = new StringWriter();
     out( document, stringWriter );
     return stringWriter.toString();
