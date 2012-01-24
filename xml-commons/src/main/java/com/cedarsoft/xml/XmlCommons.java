@@ -83,10 +83,7 @@ public class XmlCommons {
       Source xmlInput = new StreamSource(new StringReader(xml));
       StringWriter stringWriter = new StringWriter();
 
-      TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      transformerFactory.setAttribute("indent-number", 2);
-
-      Transformer transformer = transformerFactory.newTransformer();
+      Transformer transformer = createTransformer();
       transformer.setOutputProperty(OutputKeys.INDENT, "yes");
       transformer.transform(xmlInput, new StreamResult(stringWriter));
       return stringWriter.toString();
@@ -121,10 +118,22 @@ public class XmlCommons {
    */
   public static void out( @Nonnull Document document, @Nonnull OutputStream out ) {
     try {
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
+      createTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  @Nonnull
+  public static Transformer createTransformer() throws TransformerConfigurationException {
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    transformerFactory.setAttribute( "indent-number", 2 );
+
+    Transformer transformer = transformerFactory.newTransformer();
+    transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
+    transformer.setOutputProperty( OutputKeys.STANDALONE, "no" );
+
+    return transformer;
   }
 
   /**
@@ -135,7 +144,7 @@ public class XmlCommons {
    */
   public static void out( @Nonnull Document document, @Nonnull Writer out ) {
     try {
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
+      createTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }
