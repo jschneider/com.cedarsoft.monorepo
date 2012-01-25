@@ -83,9 +83,7 @@ public class XmlCommons {
       Source xmlInput = new StreamSource(new StringReader(xml));
       StringWriter stringWriter = new StringWriter();
 
-      Transformer transformer = createTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      transformer.transform(xmlInput, new StreamResult(stringWriter));
+      createTransformer().transform( xmlInput, new StreamResult( stringWriter ) );
       return stringWriter.toString();
     } catch (TransformerConfigurationException e) {
       throw new RuntimeException(e);
@@ -124,18 +122,6 @@ public class XmlCommons {
     }
   }
 
-  @Nonnull
-  public static Transformer createTransformer() throws TransformerConfigurationException {
-    TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    transformerFactory.setAttribute( "indent-number", 2 );
-
-    Transformer transformer = transformerFactory.newTransformer();
-    transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
-    transformer.setOutputProperty( OutputKeys.STANDALONE, "no" );
-
-    return transformer;
-  }
-
   /**
    * <p>out</p>
    *
@@ -148,6 +134,18 @@ public class XmlCommons {
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  @Nonnull
+  public static Transformer createTransformer() throws TransformerConfigurationException {
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    transformerFactory.setAttribute( "indent-number", 2 ); //Used in some XML implementations
+
+    Transformer transformer = transformerFactory.newTransformer();
+    transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
+    transformer.setOutputProperty( "{http://xml.apache.org/xslt}indent-amount", "2" ); //Used for XALAN(?)
+
+    return transformer;
   }
 
   /**

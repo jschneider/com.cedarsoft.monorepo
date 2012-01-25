@@ -15,16 +15,5 @@
   <packaging>bundle</packaging>
 
   <dependencies>
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>jaxen</groupId>
-      <artifactId>jaxen</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 </project>

@@ -31,21 +31,23 @@
 
 package com.cedarsoft.xml;
 
-import org.apache.commons.io.FileUtils;
-import org.jdom.Document;
-import org.jdom.Element;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl;
+import com.sun.org.apache.xerces.internal.dom.DOMConfigurationImpl;
 import org.junit.*;
 import org.junit.rules.*;
-import org.xml.sax.SAXException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.StringWriter;
 
+import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -58,51 +60,86 @@ public class XmlCommonsTest {
 
   @Before
   public void setUp() throws Exception {
-    n = System.getProperty("line.separator");
+    n = System.getProperty( "line.separator" );
   }
 
   @Test
   public void testFormat() {
-    assertEquals("", XmlCommons.format(""));
+    assertEquals( "", XmlCommons.format( "" ) );
     assertEquals(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n+
-        "<xml/>"+n, XmlCommons.format("<xml/>"));
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+        "<xml/>" + n, XmlCommons.format( "<xml/>" ) );
 
     assertEquals(
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
         "<xml>" + n +
         "  <a/>" + n +
         "  <b>asdf</b>" + n +
-        "</xml>" + n, XmlCommons.format("<xml><a/><b>asdf</b></xml>"));
+        "</xml>" + n, XmlCommons.format( "<xml><a/><b>asdf</b></xml>" ) );
   }
 
   @Test
-  public void testOut() throws Exception {
+  public void testOutDom() throws Exception {
+    Document doc = XmlCommons.getDocumentBuilder().newDocument();
+
+    Element root = doc.createElement( "root" );
+    doc.appendChild( root );
+    root.appendChild( doc.createElement( "child" ) );
+    Element child = doc.createElement( "child" );
+    root.appendChild( child );
+    child.appendChild( doc.createElement( "another" ) );
+
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+
+    Transformer transformer = XmlCommons.createTransformer();
+
+    assertThat( transformer ).isInstanceOf( TransformerImpl.class );
+    transformer.transform( new DOMSource( doc ), new StreamResult( out ) );
+
+    assertThat( out.toString() ).isEqualTo( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
+                                              "<root>" + n +
+                                              "  <child/>" + n +
+                                              "  <child>" + n +
+                                              "    <another/>" + n +
+                                              "  </child>" + n +
+                                              "</root>" + n
+    );
+  }
+
+  @Test
+  public void testOutStream() throws Exception {
     XMLOutputFactory factory = XMLOutputFactory.newFactory();
 
-    org.w3c.dom.Document doc = XmlCommons.getDocumentBuilder().newDocument();
+    Document doc = XmlCommons.getDocumentBuilder().newDocument();
     XMLStreamWriter writer = factory.createXMLStreamWriter( new DOMResult( doc ) );
 
     writer.writeStartElement( "daRoot" );
     writer.writeStartElement( "daChild" );
     writer.writeEndElement();
     writer.writeEndElement();
+    writer.close();
+
+    assertThat( doc.getXmlEncoding() ).isEqualTo( null );
+    assertThat( doc.getXmlStandalone() ).isEqualTo( false );
+    assertThat( doc.getXmlVersion() ).isEqualTo( "1.0" );
+    assertThat( doc.getDomConfig() ).isInstanceOf( DOMConfigurationImpl.class );
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
                     "<daRoot>" + n +
                     "  <daChild/>" + n +
                     "</daRoot>"
-      , XmlCommons.format( out.toString() ).trim() );
+      , out.toString().trim() );
   }
 
   @Test
   public void testOutWriter() throws Exception {
     XMLOutputFactory factory = XMLOutputFactory.newFactory();
 
-    org.w3c.dom.Document doc = XmlCommons.getDocumentBuilder().newDocument();
+    Document doc = XmlCommons.getDocumentBuilder().newDocument();
     XMLStreamWriter writer = factory.createXMLStreamWriter( new DOMResult( doc ) );
 
     writer.writeStartElement( "daRoot" );
@@ -113,16 +150,16 @@ public class XmlCommonsTest {
     StringWriter out = new StringWriter();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + n +
+    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
                     "<daRoot>" + n +
                     "  <daChild/>" + n +
                     "</daRoot>"
-      , XmlCommons.format( out.toString() ).trim() );
+      , out.toString().trim() );
   }
 
   @Test
-  public void testParse() throws IOException, SAXException {
-    org.w3c.dom.Document document = XmlCommons.parse( "<xml/>".getBytes() );
+  public void testParse() throws Exception {
+    Document document = XmlCommons.parse( "<xml/>".getBytes() );
     assertEquals( "xml", document.getDocumentElement().getNodeName() );
   }
 }
