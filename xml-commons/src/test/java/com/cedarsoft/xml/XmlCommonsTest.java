@@ -31,8 +31,6 @@
 
 package com.cedarsoft.xml;
 
-import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl;
-import com.sun.org.apache.xerces.internal.dom.DOMConfigurationImpl;
 import org.junit.*;
 import org.junit.rules.*;
 import org.w3c.dom.Document;
@@ -94,7 +92,6 @@ public class XmlCommonsTest {
 
     Transformer transformer = XmlCommons.createTransformer();
 
-    assertThat( transformer ).isInstanceOf( TransformerImpl.class );
     transformer.transform( new DOMSource( doc ), new StreamResult( out ) );
 
     assertThat( out.toString() ).isEqualTo( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
@@ -123,7 +120,6 @@ public class XmlCommonsTest {
     assertThat( doc.getXmlEncoding() ).isEqualTo( null );
     assertThat( doc.getXmlStandalone() ).isEqualTo( false );
     assertThat( doc.getXmlVersion() ).isEqualTo( "1.0" );
-    assertThat( doc.getDomConfig() ).isInstanceOf( DOMConfigurationImpl.class );
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     XmlCommons.out( doc, out );
