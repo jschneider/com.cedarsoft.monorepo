@@ -303,7 +303,7 @@
         <version>4.2.0</version>
         <exclusions>
           <exclusion>
-            <groupId>stax</groupId>
+            <groupId>javax.xml.stream</groupId>
             <artifactId>stax-api</artifactId>
           </exclusion>
         </exclusions>
