@@ -68,7 +68,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  
+
+    <required.maven.version>3.0.2</required.maven.version>
+
     <maven.skin.version>1.1.8</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
@@ -87,7 +89,7 @@
   </properties>
 
   <prerequisites>
-    <maven>3.0.2</maven>
+    <maven>${required.maven.version}</maven>
   </prerequisites>
 
   <dependencyManagement>
@@ -690,7 +692,7 @@
                   <version>1.6.0</version>
                 </requireJavaVersion>
                 <requireMavenVersion>
-                  <version>3.0-RC1</version>
+                  <version>${required.maven.version}</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
