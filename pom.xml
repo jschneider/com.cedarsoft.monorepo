@@ -86,6 +86,10 @@
     <jackson.version>1.9.4</jackson.version>
   </properties>
 
+  <prerequisites>
+    <maven>3.0.2</maven>
+  </prerequisites>
+
   <dependencyManagement>
     <dependencies>
       <!--Nullable / Nonnull Annotations-->
