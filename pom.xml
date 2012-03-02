@@ -402,7 +402,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
-          <version>1.0.2</version>
+          <version>1.0.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
