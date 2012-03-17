@@ -831,7 +831,7 @@
       </activation>
       <build>
         <plugins>
-          <plugin>
+          <!--plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>cobertura-maven-plugin</artifactId>
             <configuration>
@@ -881,7 +881,7 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
+          </plugin-->
         </plugins>
       </build>
     </profile>
@@ -991,11 +991,11 @@
         </configuration>
       </plugin>
 
-      <plugin>
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
         <version>2.5.1</version>
-      </plugin>
+      </plugin-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
