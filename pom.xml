@@ -747,13 +747,6 @@
             <ufraw>XML_STYLE</ufraw>
           </mapping>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
