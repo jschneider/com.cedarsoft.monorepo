@@ -32,6 +32,7 @@
 package com.cedarsoft.crypt;
 
 import org.apache.commons.codec.binary.Base64;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 
 import javax.crypto.Cipher;
@@ -67,8 +68,7 @@ public class CertTest {
   public void testSign() throws Exception {
     X509Support support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
 
-    assertFalse( support.verifySignature( PLAINTEXT.getBytes(), new Signature( SCRAMBLED.getBytes() ) ) );
-    assertFalse( support.verifySignature( PLAINTEXT.getBytes(), new Signature( PLAINTEXT.getBytes() ) ) );
+    assertFalse( support.verifySignature( PLAINTEXT.getBytes(), new Signature( SCRAMBLED.substring( 0, 128 ).getBytes() ) ) );
 
     Signature signature = support.sign( PLAINTEXT.getBytes() );
     assertNotNull( signature );
