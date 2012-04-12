@@ -131,7 +131,6 @@ public class ExecutorTest {
   @Test
   public void testStreams() throws Exception {
     Process process = new ProcessBuilder( "java", "-version" ).start();
-    assertSame( BufferedInputStream.class, process.getInputStream().getClass() );
     InputStream in = process.getErrorStream();
 
     assertEquals( 0, in.available() );
