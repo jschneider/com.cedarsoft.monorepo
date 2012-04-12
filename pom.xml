@@ -22,7 +22,6 @@
     <module>app</module>
     <module>cluster</module>
     <module>cmd</module>
-    <module>codegen</module>
     <module>collections</module>
     <module>commons</module>
     <module>concurrent</module>
