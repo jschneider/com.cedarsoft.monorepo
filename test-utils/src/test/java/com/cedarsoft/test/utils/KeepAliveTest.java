@@ -26,8 +26,6 @@ public class KeepAliveTest {
     try {
       HttpClient client = HttpClient.New( new URL( "http://www.google.de" ) );
       assertThat( client ).isNotNull();
-      assertThat( client.isKeepingAlive() ).isFalse();
-      assertThat( client.isCachedConnection() ).isFalse();
     } catch ( ConnectException e ) {
       assertThat( e ).hasMessage( "Connection refused" );
     }
