@@ -144,7 +144,11 @@ public class ThreadRule implements TestRule {
     @Override
     public boolean shallIgnore( @Nonnull Thread remainingThread ) {
       return remainingThread.getThreadGroup().getName().equals( "system" ) &&
-        remainingThread.getName().equals( "Keep-Alive-Timer" );
+        remainingThread.getName().equals( "Keep-Alive-Timer" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "system" ) &&
+          remainingThread.getName().equals( "process reaper" )
+        ;
     }
   }
 }
