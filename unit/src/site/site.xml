@@ -45,7 +45,7 @@
     <breadcrumbs>
       <item name="cedarsoft" href="http://www.cedarsoft.com" />
       <item href="../" name="Open" />
-      <item name="Unit" />
+      <item href="." name="Unit" />
     </breadcrumbs>
 
 
