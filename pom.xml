@@ -57,11 +57,11 @@
       <artifactId>fest-assert</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-util</artifactId>
-      <scope>test</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.easytesting</groupId>-->
+      <!--<artifactId>fest-util</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
   </dependencies>
 
   <scm>
