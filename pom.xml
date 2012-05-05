@@ -19,6 +19,14 @@
     <module>utils</module>
   </modules>
 
+  <distributionManagement>
+    <site>
+      <id>cedarsoftWeb</id>
+      <name>cedarsoft Web</name>
+      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org/unit/parent</url>
+    </site>
+  </distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
