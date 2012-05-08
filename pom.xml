@@ -657,7 +657,6 @@
         </executions>
 
         <configuration>
-          <!--<outputDirectory>${project.build.directory}/generated-sources/license/META-INF</outputDirectory>-->
           <thirdPartyFilename>META-INF/license/THIRD-PARTY.txt</thirdPartyFilename>
         </configuration>
       </plugin>
