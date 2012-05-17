@@ -46,10 +46,12 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum Algorithm {
-  MD5( "MD5" ),
-  SHA1( "SHA-1", "SHA1" ),
-  SHA256( "SHA-256", "SHA256" ),
-  SHA512( "SHA-512", "SHA512" ),;
+  MD5( 128, "MD5" ),
+  SHA1( 128, "SHA-1", "SHA1" ),
+  SHA256( 256, "SHA-256", "SHA256" ),
+  SHA512( 512, "SHA-512", "SHA512" ),;
+
+  private final int expectedLength;
 
   /**
    * <p>getAlgorithm</p>
@@ -81,9 +83,11 @@ public enum Algorithm {
    * Creates a new algorithm.
    * The first alternative name will be used to get the MessageDigest
    *
+   * @param expectedLength
    * @param alternativeNames the alternative names
    */
-  Algorithm( @Nonnull String... alternativeNames ) {
+  Algorithm( int expectedLength, @Nonnull String... alternativeNames ) {
+    this.expectedLength = expectedLength;
     if ( alternativeNames.length == 0 ) {
       throw new IllegalArgumentException( "Need at least one algorithm name" );
     }
@@ -112,5 +116,9 @@ public enum Algorithm {
     } catch ( NoSuchAlgorithmException e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  public int getExpectedLength() {
+    return expectedLength;
   }
 }
