@@ -148,6 +148,9 @@ public class ThreadRule implements TestRule {
         ||
         remainingThread.getThreadGroup().getName().equals( "system" ) &&
           remainingThread.getName().equals( "process reaper" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "system" ) &&
+          remainingThread.getName().equals( "Keep-Alive-SocketCleaner" )
         ;
     }
   }
