@@ -37,6 +37,7 @@ import com.cedarsoft.exceptions.StillContainedException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.ThreadSafe;
 
 import java.util.Comparator;
 import java.util.List;
@@ -47,6 +48,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type this registry stores
  */
+@ThreadSafe
 public interface Registry<T> {
   /**
    * Returns the stored objects
