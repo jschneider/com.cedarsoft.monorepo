@@ -32,8 +32,10 @@
 package com.cedarsoft.execution;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +51,20 @@ public class Executor {
 
   @Nonnull
   private final ProcessBuilder processBuilder;
-  private boolean redirectStreams = true;
+  @Nonnull
+  private OutputStream targetOut;
+  @Nonnull
+  private OutputStream targetErr;
+
+  /**
+   * <p>Constructor for Executor.</p>
+   *
+   * @param processBuilder a {@link ProcessBuilder} object.
+   */
+  @Deprecated
+  public Executor( @Nonnull ProcessBuilder processBuilder ) {
+    this( processBuilder, System.out, System.err );
+  }
 
   /**
    * <p>Constructor for Executor.</p>
@@ -57,18 +72,15 @@ public class Executor {
    * @param processBuilder  a {@link ProcessBuilder} object.
    * @param redirectStreams a boolean.
    */
+  @Deprecated
   public Executor( @Nonnull ProcessBuilder processBuilder, boolean redirectStreams ) {
-    this.processBuilder = processBuilder;
-    this.redirectStreams = redirectStreams;
+    this( processBuilder, System.out, System.err );
   }
 
-  /**
-   * <p>Constructor for Executor.</p>
-   *
-   * @param processBuilder a {@link ProcessBuilder} object.
-   */
-  public Executor( @Nonnull ProcessBuilder processBuilder ) {
-    this( processBuilder, true );
+  public Executor( @Nonnull ProcessBuilder processBuilder, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {
+    this.processBuilder = processBuilder;
+    this.targetOut = targetOut;
+    this.targetErr = targetErr;
   }
 
   /**
@@ -103,11 +115,7 @@ public class Executor {
    */
   @Nonnull
   protected Thread[] redirectStreams( @Nonnull Process process ) {
-    if ( redirectStreams ) {
-      return OutputRedirector.redirect( process );
-    } else {
-      return new Thread[0];
-    }
+    return OutputRedirector.redirect( process, targetOut, targetErr );
   }
 
   /**
@@ -166,16 +174,18 @@ public class Executor {
    *
    * @return a boolean.
    */
+  @Deprecated
   public boolean isRedirectStreams() {
-    return redirectStreams;
+    return true;
   }
 
-  /**
-   * <p>Setter for the field <code>redirectStreams</code>.</p>
-   *
-   * @param redirectStreams a boolean.
-   */
-  public void setRedirectStreams( boolean redirectStreams ) {
-    this.redirectStreams = redirectStreams;
+  @Nonnull
+  public OutputStream getTargetOut() {
+    return targetOut;
+  }
+
+  @Nonnull
+  public OutputStream getTargetErr() {
+    return targetErr;
   }
 }

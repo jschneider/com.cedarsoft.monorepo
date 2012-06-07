@@ -33,7 +33,9 @@ package com.cedarsoft.execution;
 
 import com.cedarsoft.test.utils.MockitoTemplate;
 import com.google.common.io.ByteStreams;
+
 import javax.annotation.Nonnull;
+
 import org.junit.*;
 import org.mockito.Matchers;
 import org.mockito.Mock;
@@ -50,12 +52,20 @@ import static org.mockito.Mockito.*;
  *
  */
 public class ExecutorTest {
+
+  private ByteArrayOutputStream targetOut;
+  private ByteArrayOutputStream targetErr;
+
+  @Before
+  public void setUp() throws Exception {
+    targetOut = new ByteArrayOutputStream();
+    targetErr = new ByteArrayOutputStream();
+
+  }
+
   @Test
   public void testIt() throws Exception {
-    final Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
-    assertTrue( executor.isRedirectStreams() );
-    executor.setRedirectStreams( false );
-    assertFalse( executor.isRedirectStreams() );
+    final Executor executor = new Executor( new ProcessBuilder( "java", "-version" ), targetOut, targetErr );
 
     new MockitoTemplate() {
       @Mock
@@ -82,8 +92,7 @@ public class ExecutorTest {
 
   @Test( timeout = 1800 )
   public void testAsync() throws InterruptedException {
-    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
-    executor.setRedirectStreams( false );
+    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ), targetOut, targetErr );
     executor.executeAsync().join();
   }
 
@@ -92,32 +101,10 @@ public class ExecutorTest {
     final ByteArrayOutputStream errorOut = new ByteArrayOutputStream();
     final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ) );
-    executor.setRedirectStreams( false );
-
-    executor.addExecutionListener( new ExecutionListener() {
-      private Thread[] threads;
-
-      @Override
-      public void executionStarted( @Nonnull Process process ) {
-        threads = OutputRedirector.redirect( process, out, errorOut );
-        assertEquals( 2, threads.length );
-      }
-
-      @Override
-      public void executionFinished( int answer ) {
-        for ( Thread thread : threads ) {
-          try {
-            thread.join();
-          } catch ( InterruptedException e ) {
-            throw new RuntimeException( e );
-          }
-        }
-      }
-    } );
-
+    Executor executor = new Executor( new ProcessBuilder( "java", "-version" ), out, errorOut );
     executor.execute();
     assertEquals( "", out.toString() );
+
     assertTrue( errorOut.toString(), errorOut.toString().startsWith( "java" ) );
   }
 
