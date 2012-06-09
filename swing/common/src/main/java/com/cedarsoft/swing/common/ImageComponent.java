@@ -50,18 +50,21 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageComponent extends JComponent {
+  @Nonnull
   private final List<Painter> painters = new ArrayList<Painter>();
+
+  @Nullable
   private Image image;
+
+  @Nullable
   private Dimension imageSize;
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected void paintComponent( @Nonnull Graphics g ) {
     super.paintComponent( g );
-    if ( image != null )
+    if ( image != null ) {
       g.drawImage( image, 0, 0, this );
+    }
 
     if ( !painters.isEmpty() ) {
       for ( Painter painter : painters ) {
@@ -71,7 +74,7 @@ public class ImageComponent extends JComponent {
   }
 
   /**
-   * Adds a custom paointer
+   * Adds a custom painter
    *
    * @param painter the painter
    */
@@ -79,10 +82,8 @@ public class ImageComponent extends JComponent {
     painters.add( painter );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
+  @Nonnull
   public Dimension getPreferredSize() {
     if ( isPreferredSizeSet() ) {
       return super.getPreferredSize();
