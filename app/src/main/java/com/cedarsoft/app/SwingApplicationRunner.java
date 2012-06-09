@@ -1,5 +1,6 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.annotations.NonBlocking;
 import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 
@@ -26,6 +27,8 @@ public class SwingApplicationRunner {
     application.prepare();
   }
 
+  @NonUiThread
+  @NonBlocking
   public void boot() {
     SwingUtilities.invokeLater( new Runnable() {
       @Override
