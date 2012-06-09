@@ -50,7 +50,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageComponent extends JComponent {
-  private List<Painter> painters = new ArrayList<Painter>();
+  private final List<Painter> painters = new ArrayList<Painter>();
   private Image image;
   private Dimension imageSize;
 
