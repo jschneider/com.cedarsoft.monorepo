@@ -151,6 +151,12 @@ public class ThreadRule implements TestRule {
         ||
         remainingThread.getThreadGroup().getName().equals( "system" ) &&
           remainingThread.getName().equals( "Keep-Alive-SocketCleaner" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "system" ) &&
+          remainingThread.getName().equals( "Java2D Disposer" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "system" ) &&
+          remainingThread.getName().equals( "AWT-XAWT" )
         ;
     }
   }
