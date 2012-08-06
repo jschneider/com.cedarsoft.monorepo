@@ -43,7 +43,7 @@
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.open</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.open</developerConnection>
-    <url>http://git.cedarsoft.com/</url>
+    <url>http://git.cedarsoft.com/com.cedarsoft.open/</url>
   </scm>
 
   <distributionManagement>
