@@ -47,17 +47,17 @@
   </scm>
 
   <distributionManagement>
-    <repository>
-      <id>cedarsoftRepository</id>
-      <name>cedarsoft Repository</name>
-      <url>http://nexus.cedarsoft.com/content/repositories/releases/</url>
-    </repository>
-
     <snapshotRepository>
-      <id>cedarsoftSnapshotRepository</id>
-      <name>cedarsoft Snapshot Repository</name>
-      <url>http://nexus.cedarsoft.com/content/repositories/snapshots/</url>
+      <id>sonatype-nexus-snapshots</id>
+      <name>OSS Sonatype Snapshot</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </snapshotRepository>
+
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>OSS Sonatype Release</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
 
     <site>
       <id>cedarsoftWeb</id>
