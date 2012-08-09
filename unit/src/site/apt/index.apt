@@ -98,7 +98,7 @@ public void setAngle( @rad double angle ) {
 <dependency>
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
-  <version>1.0-beta1-SNAPSHOT</version>
+  <version>1.0</version>
 </dependency>
 +--------------+
 
