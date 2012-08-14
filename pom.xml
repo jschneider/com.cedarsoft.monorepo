@@ -87,7 +87,7 @@
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
     <guice.version>3.0</guice.version>
-    <jaxb.version>2.2.5</jaxb.version>
+    <jaxb.version>2.1.9</jaxb.version>
     <jetty.version>6.1.26</jetty.version>
     <jackson.version>1.9.9</jackson.version>
   </properties>
