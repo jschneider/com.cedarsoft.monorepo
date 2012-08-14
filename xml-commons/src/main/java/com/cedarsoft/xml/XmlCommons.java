@@ -139,11 +139,17 @@ public class XmlCommons {
   @Nonnull
   public static Transformer createTransformer() throws TransformerConfigurationException {
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    transformerFactory.setAttribute( "indent-number", 2 ); //Used in some XML implementations
+    try {
+      transformerFactory.setAttribute( "indent-number", 2 ); //Used in some XML implementations
+    } catch ( IllegalArgumentException ignore ) {
+    }
 
     Transformer transformer = transformerFactory.newTransformer();
     transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
-    transformer.setOutputProperty( "{http://xml.apache.org/xslt}indent-amount", "2" ); //Used for XALAN(?)
+    try {
+      transformer.setOutputProperty( "{http://xml.apache.org/xslt}indent-amount", "2" ); //Used for XALAN(?)
+    } catch ( IllegalArgumentException ignore ) {
+    }
 
     return transformer;
   }
