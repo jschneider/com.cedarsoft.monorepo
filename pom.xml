@@ -10,12 +10,13 @@
   <groupId>com.cedarsoft</groupId>
   <artifactId>commons</artifactId>
   <packaging>pom</packaging>
-  <version>5.1.3-SNAPSHOT</version>
+  <version>5.1.3</version>
   <name>cedarsoft Commons</name>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.commons</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.commons</developerConnection>
+    <tag>commons-5.1.3</tag>
   </scm>
 
   <modules>
