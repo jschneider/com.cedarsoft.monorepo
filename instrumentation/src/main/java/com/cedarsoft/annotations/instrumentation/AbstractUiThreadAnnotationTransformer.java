@@ -57,18 +57,6 @@ public abstract class AbstractUiThreadAnnotationTransformer implements ClassFile
   }
 
   private void wrap( @Nonnull CtClass clas, @Nonnull CtMethod methodOld ) throws CannotCompileException, NotFoundException {
-    //    CtMethod mbody = new CtMethod( method, ctClass, null );
-    //    mbody.setBody( "throw new RuntimeException();" );
-    //    method.setWrappedBody( mbody, null );
-
-    //  rename old method to synthetic name, then duplicate the
-    //  method with original name for use as interceptor
-    String methodName = methodOld.getName();
-
-    String newNameForOldMethod = methodName + "$impl";
-    methodOld.setName( newNameForOldMethod );
-    CtMethod methodNew = CtNewMethod.copy( methodOld, methodName, clas, null );
-
     StringBuilder body = new StringBuilder();
 
     body.append( "{" );
@@ -79,18 +67,9 @@ public abstract class AbstractUiThreadAnnotationTransformer implements ClassFile
       body.append( "return " );
     }
 
-    body.append( newNameForOldMethod ).append( "($$);\n" );
     body.append( "}" );
 
-    System.out.println( "Interceptor method body:" );
-    System.out.println( body.toString() );
-
-    //  replace the body of the interceptor method with generated
-    //  code block and add it to class
-    methodNew.setBody( body.toString() );
-    clas.addMethod( methodNew );
-
-    //  print the generated code block just to show what was done
+    methodOld.insertBefore( body.toString() );
   }
 
   @Nonnull
