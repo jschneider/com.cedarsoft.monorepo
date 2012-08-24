@@ -30,9 +30,6 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
 
   private static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
     for ( Object annotation : method.getAnnotations() ) {
-      System.out.println( "Annotation: " + annotation );
-      System.out.println( "Annotation: " + annotation.getClass().getName() );
-
       if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
         return true;
       }
@@ -43,9 +40,6 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
 
   @Override
   public byte[] transform( ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer ) throws IllegalClassFormatException {
-    System.out.println( "---------------------" );
-    System.out.println( "UiThreadAnnotationTransformer.transform: " + classBeingRedefined.getName() );
-
     try {
       final CtClass ctClass = UiThreadAnnotationTransformer.getCtClass( loader, classBeingRedefined.getName() );
       ctClass.toBytecode();
