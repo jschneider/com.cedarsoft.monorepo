@@ -72,24 +72,24 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
     }
   }
 
-  private static void insertUiThreadVerification( @Nonnull CtMethod methodOld ) throws CannotCompileException {
+  private static void insertUiThreadVerification( @Nonnull CtMethod method ) throws CannotCompileException {
     StringBuilder body = new StringBuilder();
 
     body.append( "{" );
     body.append( appendUiThreadVerificationCode() );
     body.append( "}" );
 
-    methodOld.insertBefore( body.toString() );
+    method.insertBefore( body.toString() );
   }
 
-  private static void insertNonUiThreadVerification( @Nonnull CtMethod methodOld ) throws CannotCompileException {
+  private static void insertNonUiThreadVerification( @Nonnull CtMethod method ) throws CannotCompileException {
     StringBuilder body = new StringBuilder();
 
     body.append( "{" );
     body.append( appendNonUiThreadVerificationCode() );
     body.append( "}" );
 
-    methodOld.insertBefore( body.toString() );
+    method.insertBefore( body.toString() );
   }
 
   @Nonnull
