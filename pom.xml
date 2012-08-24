@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>31</version>
+    <version>35</version>
   </parent>
 
   <groupId>com.cedarsoft.annotations</groupId>
@@ -19,13 +19,31 @@
     <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
   </scm>
 
-
   <modules>
     <module>annotations</module>
+    <module>instrumentation</module>
+    <module>verification</module>
   </modules>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.8.0.GA</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.cedarsoft</groupId>
+        <artifactId>annotations</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.annotations</groupId>
+        <artifactId>verification</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>test-utils</artifactId>
