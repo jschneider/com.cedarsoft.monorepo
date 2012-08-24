@@ -61,12 +61,6 @@ public abstract class AbstractUiThreadAnnotationTransformer implements ClassFile
 
     body.append( "{" );
     body.append( appendVerificationCode() );
-    body.append( "\n" );
-
-    if ( !methodOld.getReturnType().equals( CtClass.voidType ) ) {
-      body.append( "return " );
-    }
-
     body.append( "}" );
 
     methodOld.insertBefore( body.toString() );
