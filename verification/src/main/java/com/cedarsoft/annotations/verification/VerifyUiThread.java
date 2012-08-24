@@ -39,19 +39,23 @@ public class VerifyUiThread {
   public static void verifyUiThreadAsserted() {
     assert verifyUiThread();
   }
-
   public static boolean verifyUiThread() {
-    if ( isSwtUiThread() ) {
-      return true;
-    }
-    if ( isFxUiThread() ) {
-      return true;
-    }
-    if ( isSwingUiThread() ) {
+    if ( isSwtUiThread() || isFxUiThread() || isSwingUiThread() ) {
       return true;
     }
 
     throw new IllegalStateException( "Called from illegal thread. Must be called from UI thread" );
+  }
+
+  public static void verifyNonUiThreadAsserted() {
+    assert verifyNonUiThread();
+  }
+
+  public static boolean verifyNonUiThread() {
+    if ( isSwtUiThread() || isFxUiThread() || isSwingUiThread() ) {
+      throw new IllegalStateException( "Called from illegal thread. Must *not* be called from UI thread" );
+    }
+    return true;
   }
 
   private static boolean isSwingUiThread() {
