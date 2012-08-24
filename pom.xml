@@ -7,28 +7,21 @@
     <version>31</version>
   </parent>
 
-  <groupId>com.cedarsoft</groupId>
-  <artifactId>annotations</artifactId>
+  <groupId>com.cedarsoft.annotations</groupId>
+  <artifactId>parend</artifactId>
   <version>1.1-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.annotations</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
   </scm>
 
-  <dependencies>
-    <!--Test Dependencies-->
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>test-utils</artifactId>
-      <version>5.1.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+
+  <modules>
+    <module>annotations</module>
+  </modules>
 
   <mailingLists>
     <mailingList>
