@@ -41,26 +41,12 @@ public class VerifyUiThread {
   }
 
   public static boolean verifyUiThread() {
-    try {
-      if ( isSwtUiThread() ) {
-        return true;
-      }
-    } catch ( IllegalAccessException e ) {
-      throw new RuntimeException( e ); //TODO remove exception(?)
-    } catch ( InvocationTargetException e ) {
-      throw new RuntimeException( e ); //TODO remove exception(?)
+    if ( isSwtUiThread() ) {
+      return true;
     }
-
-    try {
-      if ( isFxUiThread() ) {
-        return true;
-      }
-    } catch ( IllegalAccessException e ) {
-      throw new RuntimeException( e ); //TODO remove exception(?)
-    } catch ( InvocationTargetException e ) {
-      throw new RuntimeException( e ); //TODO remove exception(?)
+    if ( isFxUiThread() ) {
+      return true;
     }
-
     if ( isSwingUiThread() ) {
       return true;
     }
@@ -72,11 +58,23 @@ public class VerifyUiThread {
     return SwingUtilities.isEventDispatchThread();
   }
 
-  private static boolean isFxUiThread() throws IllegalAccessException, InvocationTargetException {
-    return FX_IS_FX_APPLICATION_THREAD_METHOD != null && FX_IS_FX_APPLICATION_THREAD_METHOD.invoke( null ) == Boolean.TRUE;
+  private static boolean isFxUiThread() {
+    try {
+      return FX_IS_FX_APPLICATION_THREAD_METHOD != null && FX_IS_FX_APPLICATION_THREAD_METHOD.invoke( null ) == Boolean.TRUE;
+    } catch ( IllegalAccessException e ) {
+      throw new RuntimeException( e ); //TODO remove exception(?)
+    } catch ( InvocationTargetException e ) {
+      throw new RuntimeException( e ); //TODO remove exception(?)
+    }
   }
 
-  private static boolean isSwtUiThread() throws IllegalAccessException, InvocationTargetException {
-    return SWT_GET_CURRENT_METHOD != null && SWT_GET_CURRENT_METHOD.invoke( null ) != null;
+  private static boolean isSwtUiThread() {
+    try {
+      return SWT_GET_CURRENT_METHOD != null && SWT_GET_CURRENT_METHOD.invoke( null ) != null;
+    } catch ( IllegalAccessException e ) {
+      throw new RuntimeException( e ); //TODO remove exception(?)
+    } catch ( InvocationTargetException e ) {
+      throw new RuntimeException( e ); //TODO remove exception(?)
+    }
   }
 }
