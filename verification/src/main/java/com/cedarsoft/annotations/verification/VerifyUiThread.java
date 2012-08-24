@@ -61,11 +61,15 @@ public class VerifyUiThread {
       throw new RuntimeException( e ); //TODO remove exception(?)
     }
 
-    if ( SwingUtilities.isEventDispatchThread() ) {
+    if ( isSwingUiThread() ) {
       return true;
     }
 
     throw new IllegalStateException( "Called from illegal thread. Must be called from UI thread" );
+  }
+
+  private static boolean isSwingUiThread() {
+    return SwingUtilities.isEventDispatchThread();
   }
 
   private static boolean isFxUiThread() throws IllegalAccessException, InvocationTargetException {
