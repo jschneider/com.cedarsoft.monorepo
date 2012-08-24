@@ -39,6 +39,7 @@ public class VerifyUiThread {
   public static void verifyUiThreadAsserted() {
     assert verifyUiThread();
   }
+
   public static boolean verifyUiThread() {
     if ( isSwtUiThread() || isFxUiThread() || isSwingUiThread() ) {
       return true;
