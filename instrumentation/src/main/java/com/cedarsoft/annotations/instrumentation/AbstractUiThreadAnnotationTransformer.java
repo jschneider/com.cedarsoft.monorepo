@@ -5,8 +5,6 @@ import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;
-import javassist.CtNewMethod;
-import javassist.CtPrimitiveType;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
 
@@ -47,16 +45,14 @@ public abstract class AbstractUiThreadAnnotationTransformer implements ClassFile
 
   private void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException {
     for ( CtMethod method : ctClass.getMethods() ) {
-      if ( !isAnnotated( method, UiThread.class ) ) {
-        continue;
+      if ( isAnnotated( method, UiThread.class ) ) {
+        ctClass.defrost();
+        insertUiThreadVerification( method );
       }
-
-      ctClass.defrost();
-      wrap( ctClass, method );
     }
   }
 
-  private void wrap( @Nonnull CtClass clas, @Nonnull CtMethod methodOld ) throws CannotCompileException, NotFoundException {
+  private void insertUiThreadVerification( @Nonnull CtMethod methodOld ) throws CannotCompileException, NotFoundException {
     StringBuilder body = new StringBuilder();
 
     body.append( "{" );
