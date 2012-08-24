@@ -42,7 +42,7 @@ public class VerifyUiThread {
 
   public static boolean verifyUiThread() {
     try {
-      if ( SWT_GET_CURRENT_METHOD != null && SWT_GET_CURRENT_METHOD.invoke( null, null ) != null ) {
+      if ( isSwtUiThread() ) {
         return true;
       }
     } catch ( IllegalAccessException e ) {
@@ -52,7 +52,7 @@ public class VerifyUiThread {
     }
 
     try {
-      if ( FX_IS_FX_APPLICATION_THREAD_METHOD != null && FX_IS_FX_APPLICATION_THREAD_METHOD.invoke( null, null ) == Boolean.TRUE ) {
+      if ( isFxUiThread() ) {
         return true;
       }
     } catch ( IllegalAccessException e ) {
@@ -66,5 +66,13 @@ public class VerifyUiThread {
     }
 
     throw new IllegalStateException( "Called from illegal thread. Must be called from UI thread" );
+  }
+
+  private static boolean isFxUiThread() throws IllegalAccessException, InvocationTargetException {
+    return FX_IS_FX_APPLICATION_THREAD_METHOD != null && FX_IS_FX_APPLICATION_THREAD_METHOD.invoke( null ) == Boolean.TRUE;
+  }
+
+  private static boolean isSwtUiThread() throws IllegalAccessException, InvocationTargetException {
+    return SWT_GET_CURRENT_METHOD != null && SWT_GET_CURRENT_METHOD.invoke( null ) != null;
   }
 }
