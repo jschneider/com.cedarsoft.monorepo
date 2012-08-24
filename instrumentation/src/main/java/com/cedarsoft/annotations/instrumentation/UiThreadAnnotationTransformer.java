@@ -58,7 +58,7 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
     }
   }
 
-  private static void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException {
+  private static void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException {
     for ( CtMethod method : ctClass.getMethods() ) {
       boolean uiThread = isAnnotated( method, UiThread.class );
       boolean nonUiThread = isAnnotated( method, NonUiThread.class );
