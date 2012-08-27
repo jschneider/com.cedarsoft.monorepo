@@ -42,6 +42,11 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
   public byte[] transform( ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer ) throws IllegalClassFormatException {
     try {
       final CtClass ctClass = UiThreadAnnotationTransformer.getCtClass( loader, classBeingRedefined.getName() );
+
+      if (ctClass.isInterface()) {
+        return classfileBuffer;
+      }
+
       ctClass.toBytecode();
 
       transformClass( ctClass );
