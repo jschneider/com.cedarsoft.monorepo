@@ -8,11 +8,13 @@ import javassist.CtClass;
 import javassist.CtMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
+import javassist.bytecode.AccessFlag;
 
 import javax.annotation.Nonnull;
 import java.lang.annotation.Annotation;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
+import java.lang.reflect.Modifier;
 import java.security.ProtectionDomain;
 
 /**
@@ -56,6 +58,10 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
 
   private static void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException {
     for ( CtMethod method : ctClass.getMethods() ) {
+      if (method.isEmpty()) {
+        continue;
+      }
+
       boolean uiThread = isAnnotated( method, UiThread.class );
       boolean nonUiThread = isAnnotated( method, NonUiThread.class );
 
