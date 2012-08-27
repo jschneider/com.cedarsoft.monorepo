@@ -40,10 +40,10 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
 
   @Nonnull
   private static CtClass getCtClass( @Nonnull final ClassLoader loader, @Nonnull String className ) throws NotFoundException {
-    final ClassPool pool = ClassPool.getDefault();
-    pool.appendClassPath(new LoaderClassPath( loader ));
+    final ClassPool pool = new ClassPool(true);
+    pool.appendClassPath(new LoaderClassPath(loader));
 
-    return pool.get( className );
+    return pool.get(className);
   }
 
   private static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
