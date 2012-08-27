@@ -19,25 +19,6 @@ import java.security.ProtectionDomain;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UiThreadAnnotationTransformer implements ClassFileTransformer {
-  @Nonnull
-  private static CtClass getCtClass( @Nonnull final ClassLoader loader, @Nonnull String className ) throws NotFoundException {
-    final ClassPool pool = ClassPool.getDefault();
-    final LoaderClassPath lcp = new LoaderClassPath( loader );
-    pool.appendClassPath( lcp );
-
-    return pool.get( className );
-  }
-
-  private static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
-    for ( Object annotation : method.getAvailableAnnotations() ) {
-      if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   @Override
   public byte[] transform( ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer ) throws IllegalClassFormatException {
     try {
@@ -55,6 +36,25 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
     } catch ( Exception e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  @Nonnull
+  private static CtClass getCtClass( @Nonnull final ClassLoader loader, @Nonnull String className ) throws NotFoundException {
+    final ClassPool pool = ClassPool.getDefault();
+    final LoaderClassPath lcp = new LoaderClassPath( loader );
+    pool.appendClassPath( lcp );
+
+    return pool.get( className );
+  }
+
+  private static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
+    for ( Object annotation : method.getAvailableAnnotations() ) {
+      if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   private static void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException {
