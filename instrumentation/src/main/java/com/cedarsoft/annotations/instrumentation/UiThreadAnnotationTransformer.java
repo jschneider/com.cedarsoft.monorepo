@@ -28,8 +28,6 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
         return classfileBuffer;
       }
 
-      ctClass.toBytecode();
-
       transformClass( ctClass );
       return ctClass.toBytecode();
 
