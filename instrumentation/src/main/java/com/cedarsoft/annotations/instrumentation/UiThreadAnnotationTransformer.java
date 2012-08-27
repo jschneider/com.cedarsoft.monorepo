@@ -29,7 +29,7 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
   }
 
   private static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
-    for ( Object annotation : method.getAnnotations() ) {
+    for ( Object annotation : method.getAvailableAnnotations() ) {
       if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
         return true;
       }
