@@ -9,14 +9,14 @@
 
   <groupId>com.cedarsoft.annotations</groupId>
   <artifactId>parent</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.2-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.annotations</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
-    <tag>parent-1.2.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <modules>
