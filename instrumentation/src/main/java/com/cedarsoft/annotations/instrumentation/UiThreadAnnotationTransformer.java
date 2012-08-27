@@ -64,11 +64,9 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
       }
 
       if ( uiThread ) {
-        ctClass.defrost();
         insertUiThreadVerification( method );
       }
       if ( nonUiThread ) {
-        ctClass.defrost();
         insertNonUiThreadVerification( method );
       }
     }
