@@ -7,9 +7,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
+
+import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
+import javassist.CtField;
 import javassist.CtMethod;
+import javassist.bytecode.DuplicateMemberException;
 
 import javax.annotation.Nonnull;
 
@@ -26,6 +30,13 @@ public class JavassistTest {
     CtClass ctClass = pool.get("com.cedarsoft.annotations.instrumentation.MyTestClass");
     assertThat(ctClass).isNotNull();
 
+    try {
+      ctClass.addField(CtField.make("static final boolean $assertionsDisabled = !" + ctClass.getName() + ".class.desiredAssertionStatus();", ctClass));
+      System.out.println("--> no duplicate");
+    } catch (DuplicateMemberException ignore) {
+      System.out.println("--> Duplicate");
+    }
+
     CtMethod[] methods = ctClass.getMethods();
     assertThat(methods).hasSize(13);
 
@@ -36,12 +47,11 @@ public class JavassistTest {
 
     StringBuilder builder = new StringBuilder();
     builder
-      .append("if (")
-      .append(method.getDeclaringClass().getName())
-      .append(".class.desiredAssertionStatus()")
-      .append("){")
+      .append("if ( !$assertionsDisabled )")
+      .append("{")
       .append("throw new AssertionError((Object)\"Hey, it worked\");")
       .append("}")
+    .append("else{System.out.println(123);}")
     ;
 
     method.insertBefore(builder.toString());

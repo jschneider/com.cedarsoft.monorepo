@@ -12,6 +12,7 @@ public class MyTestClass {
     assert x.length() > 5 : "hey";
     System.out.println("after assert");
 
+
     boolean desiredAssertionStatus = getClass().desiredAssertionStatus();
   }
 
