@@ -5,16 +5,16 @@ import com.cedarsoft.annotations.UiThread;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
+import javassist.CtField;
 import javassist.CtMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
-import javassist.bytecode.AccessFlag;
+import javassist.bytecode.DuplicateMemberException;
 
 import javax.annotation.Nonnull;
 import java.lang.annotation.Annotation;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
-import java.lang.reflect.Modifier;
 import java.security.ProtectionDomain;
 
 /**
@@ -70,41 +70,49 @@ public class UiThreadAnnotationTransformer implements ClassFileTransformer {
       }
 
       if ( uiThread ) {
-        insertUiThreadVerification( method );
+        insertAssertedVerificationCode(method, getUiThreadVerificationCode());
       }
       if ( nonUiThread ) {
-        insertNonUiThreadVerification( method );
+        insertAssertedVerificationCode(method, getNonUiThreadVerificationCode());
       }
     }
   }
 
-  private static void insertUiThreadVerification( @Nonnull CtMethod method ) throws CannotCompileException {
+  private static void insertAssertedVerificationCode(@Nonnull CtMethod method, @Nonnull String verificationCode) throws CannotCompileException {
+    ensureAssertField(method.getDeclaringClass());
+
     StringBuilder body = new StringBuilder();
 
-    body.append( "{" );
-    body.append( appendUiThreadVerificationCode() );
-    body.append( "}" );
+    body.append("if( !" + ASSERTION_DISABLED_FIELD_NAME + " ){");
+    body.append(verificationCode);
+    body.append("}");
 
-    method.insertBefore( body.toString() );
-  }
-
-  private static void insertNonUiThreadVerification( @Nonnull CtMethod method ) throws CannotCompileException {
-    StringBuilder body = new StringBuilder();
-
-    body.append( "{" );
-    body.append( appendNonUiThreadVerificationCode() );
-    body.append( "}" );
-
-    method.insertBefore( body.toString() );
+    method.insertBefore(body.toString());
   }
 
   @Nonnull
-  private static String appendUiThreadVerificationCode() {
-    return "com.cedarsoft.annotations.verification.VerifyUiThread.verifyUiThreadAsserted();";
+  private static String getUiThreadVerificationCode() {
+    return "com.cedarsoft.annotations.verification.VerifyUiThread.verifyUiThread();";
   }
 
   @Nonnull
-  private static String appendNonUiThreadVerificationCode() {
-    return "com.cedarsoft.annotations.verification.VerifyUiThread.verifyNonUiThreadAsserted();";
+  private static String getNonUiThreadVerificationCode() {
+    return "com.cedarsoft.annotations.verification.VerifyUiThread.verifyNonUiThread();";
+  }
+
+  @Nonnull
+  public static final String ASSERTION_DISABLED_FIELD_NAME = "$assertionsDisabled";
+
+  /**
+   * Ensures that the assert field for the class exists
+   *
+   * @param ctClass the class
+   */
+  private static void ensureAssertField(@Nonnull CtClass ctClass) throws CannotCompileException {
+    try {
+      CtField assertionsDisabledField = CtField.make("static final boolean " + ASSERTION_DISABLED_FIELD_NAME + " = !" + ctClass.getName() + ".class.desiredAssertionStatus();", ctClass);
+      ctClass.addField(assertionsDisabledField);
+    } catch (DuplicateMemberException ignore) {
+    }
   }
 }
