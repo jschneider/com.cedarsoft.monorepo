@@ -143,7 +143,7 @@ public class Version implements Comparable<Version>, Serializable {
    */
   @Override
   public String toString() {
-    if ( suffix != null && suffix.length() > 0 ) {
+    if ( suffix != null && !suffix.isEmpty() ) {
       return major + "." + minor + '.' + build + '-' + suffix;
     } else {
       return major + "." + minor + '.' + build;
