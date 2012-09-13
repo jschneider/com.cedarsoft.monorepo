@@ -224,7 +224,7 @@ public class Version implements Comparable<Version>, Serializable {
     int indexMinus = version.indexOf( '-', indexDot1 + 2 );
 
     if ( indexDot0 == -1 || indexDot1 == -1 ) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException( "Cannot parse <" + version + ">" );
     }
 
     int major = Integer.parseInt( version.substring( 0, indexDot0 ) );
