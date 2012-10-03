@@ -89,7 +89,7 @@
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
     <jetty.version>6.1.26</jetty.version>
-    <jackson.version>1.9.9</jackson.version>
+    <jackson.version>1.9.10</jackson.version>
   </properties>
 
   <prerequisites>
@@ -144,7 +144,7 @@
       <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
-        <version>1.6</version>
+        <version>1.7</version>
       </dependency>
       <dependency>
         <groupId>commons-logging</groupId>
@@ -170,12 +170,12 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.0</version>
+        <version>1.7.1</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.0</version>
+        <version>1.7.1</version>
       </dependency>
 
       <dependency>
