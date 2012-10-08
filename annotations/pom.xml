@@ -11,6 +11,12 @@
   <artifactId>annotations</artifactId>
 
   <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <!--Test Dependencies-->
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
