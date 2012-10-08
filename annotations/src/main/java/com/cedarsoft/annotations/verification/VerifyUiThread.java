@@ -21,6 +21,9 @@ public class VerifyUiThread {
     strategy =new DelegatingUiThreadVerificationStrategy(delegates);
   }
 
+  private VerifyUiThread() {
+  }
+
   @Nonnull
   public static UiThreadVerificationStrategy getStrategy() {
     return strategy;
@@ -34,6 +37,7 @@ public class VerifyUiThread {
     assert verifyUiThread();
   }
 
+  /** @noinspection MethodNamesDifferingOnlyByCase*/
   public static boolean verifyUiThread() {
     if (isUiThread()) {
       return true;
