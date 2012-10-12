@@ -22,7 +22,7 @@
   <modules>
     <module>annotations</module>
     <module>instrumentation</module>
-    <!--<module>verification</module>-->
+    <module>instrumentation-test</module>
   </modules>
 
   <dependencyManagement>
@@ -36,6 +36,11 @@
       <dependency>
         <groupId>com.cedarsoft</groupId>
         <artifactId>annotations</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.annotations</groupId>
+        <artifactId>instrumentation</artifactId>
         <version>${project.version}</version>
       </dependency>
 
