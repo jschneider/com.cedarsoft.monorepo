@@ -25,6 +25,14 @@
     <module>instrumentation-test</module>
   </modules>
 
+  <distributionManagement>
+    <site>
+      <id>cedarsoftWeb</id>
+      <name>cedarsoft Web</name>
+      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org/annotations</url>
+    </site>
+  </distributionManagement>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
