@@ -35,13 +35,7 @@
  cedarsoft GmbH
  -----
 
-Maven Site for your project
+Common Annotations
 
- Congratulations! If you are looking at this page then you have successfully generated a
- template site employing the site archetype and you have run:
+ This project contains several annotations that are commonly used within several projects.
 
-+-----+
-
-mvn site
-
-+-----+
