@@ -10,6 +10,9 @@
 
   <artifactId>instrumentation-test</artifactId>
 
+  <name>Instrumentation Test</name>
+  <description>Test module for annotations based instrumentation</description>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>

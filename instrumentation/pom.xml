@@ -9,6 +9,9 @@
 
   <artifactId>instrumentation</artifactId>
 
+  <name>Annotations Instrumentation</name>
+  <description>Instrumentation support for Annotations</description>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>

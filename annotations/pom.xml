@@ -10,6 +10,9 @@
   <groupId>com.cedarsoft</groupId>
   <artifactId>annotations</artifactId>
 
+  <name>Annotations</name>
+  <description>Annotations</description>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
