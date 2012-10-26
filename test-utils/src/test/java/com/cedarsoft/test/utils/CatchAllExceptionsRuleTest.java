@@ -2,7 +2,7 @@ package com.cedarsoft.test.utils;
 
 import org.junit.*;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 
 /**
