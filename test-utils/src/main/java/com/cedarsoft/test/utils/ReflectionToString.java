@@ -12,7 +12,7 @@ public class ReflectionToString {
   }
 
   @Nonnull
-  public String toString( @Nullable Object object ) {
+  public static String toString( @Nullable Object object ) {
     if ( object == null ) {
       return "<null>";
     }
