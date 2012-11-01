@@ -78,11 +78,6 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>codegen</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>collections</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -199,11 +194,6 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>spring</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>string-conversion</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
