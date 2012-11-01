@@ -18,18 +18,23 @@ public class ReflectionToString {
     }
 
     StringBuilder builder = new StringBuilder();
-    builder.append( object.getClass().getName() ).append( "{" );
+    builder.append( object.getClass().getName() ).append( " {\n" );
 
     Class<?> daClass = object.getClass();
-    for ( Field field : daClass.getDeclaredFields() ) {
-      field.setAccessible( true );
+    while ( daClass != null ) {
+      for ( Field field : daClass.getDeclaredFields() ) {
+        field.setAccessible( true );
 
-      builder.append( field.getName() ).append( ": " );
-      try {
-        builder.append( field.get( object ) );
-      } catch ( IllegalAccessException e ) {
-        builder.append( "<failed due to " ).append( e.getMessage() ).append( ">" );
+        builder.append( "\t" );
+        builder.append( field.getName() ).append( ": " );
+        try {
+          builder.append( field.get( object ) );
+        } catch ( IllegalAccessException e ) {
+          builder.append( "<failed due to " ).append( e.getMessage() ).append( ">" );
+        }
+        builder.append( "\n" );
       }
+      daClass = daClass.getSuperclass();
     }
 
     builder.append( "}" );
