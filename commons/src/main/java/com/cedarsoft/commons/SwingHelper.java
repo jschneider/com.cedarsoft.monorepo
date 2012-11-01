@@ -129,11 +129,11 @@ public class SwingHelper {
   @Nonnull
   public static JFrame showFrame( @Nonnull Container contentPane ) throws InvocationTargetException, InterruptedException {
     final JFrame frame = new JFrame();
+    frame.setContentPane( contentPane );
+
     frame.pack();
     frame.setLocationRelativeTo( null );
     frame.setDefaultCloseOperation( WindowConstants.DISPOSE_ON_CLOSE );
-
-    frame.setContentPane( contentPane );
 
     Runnable startFrame = new Runnable() {
       @Override
