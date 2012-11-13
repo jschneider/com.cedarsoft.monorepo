@@ -89,7 +89,7 @@
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
     <jetty.version>6.1.26</jetty.version>
-    <jackson.version>1.9.10</jackson.version>
+    <jackson.version>1.9.11</jackson.version>
   </properties>
 
   <prerequisites>
@@ -632,7 +632,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-scr-plugin</artifactId>
-          <version>1.8.0</version>
+          <version>1.8.1</version>
         </plugin>
 
         <plugin>
