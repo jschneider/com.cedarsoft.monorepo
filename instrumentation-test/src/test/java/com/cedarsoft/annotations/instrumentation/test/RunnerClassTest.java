@@ -43,4 +43,25 @@ public class RunnerClassTest {
       Assertions.assertThat( e ).hasMessage( "Called from illegal thread. Must be called from UI thread" );
     }
   }
+
+  @Test
+  public void testNull() throws Exception {
+    RunnerClass runnerClass = new RunnerClass();
+
+    try {
+      runnerClass.nonNullMethod();
+      fail("Where is the Exception");
+    } catch ( Exception e ) {
+      Assertions.assertThat( e ).isInstanceOf( IllegalArgumentException.class );
+      Assertions.assertThat( e ).hasMessage( "Called from illegal thread. Must be called from UI thread" );
+    }
+  }
+
+  @Test
+  public void testNonNull() throws Exception {
+    RunnerClass runnerClass = new RunnerClass();
+
+    String nullValue = runnerClass.nullMethod();
+    assertThat( nullValue ).isNull();
+  }
 }

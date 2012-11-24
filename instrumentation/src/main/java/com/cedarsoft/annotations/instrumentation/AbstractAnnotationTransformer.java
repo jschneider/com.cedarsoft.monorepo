@@ -1,7 +1,5 @@
 package com.cedarsoft.annotations.instrumentation;
 
-import com.cedarsoft.annotations.NonUiThread;
-import com.cedarsoft.annotations.UiThread;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -44,13 +42,7 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
   protected abstract void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException ;
 
   protected static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
-    for ( Object annotation : method.getAvailableAnnotations() ) {
-      if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
-        return true;
-      }
-    }
-
-    return false;
+    return method.hasAnnotation(annotationType);
   }
 
   @Nonnull
@@ -61,16 +53,29 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
     return pool.get(className);
   }
 
-  protected static void insertAssertedVerificationCode(@Nonnull CtMethod method, @Nonnull String verificationCode) throws CannotCompileException {
-    ensureAssertField(method.getDeclaringClass());
+  protected static void insertAssertedVerificationCodeBefore( @Nonnull CtMethod method, @Nonnull String verificationCode ) throws CannotCompileException {
+    ensureAssertField( method.getDeclaringClass() );
+    method.insertBefore( wrapInAssertion( verificationCode ) );
+  }
 
+  protected static void insertAssertedVerificationCodeAfter( @Nonnull CtMethod method, @Nonnull String verificationCode ) throws CannotCompileException {
+    ensureAssertField(method.getDeclaringClass());
+    method.insertAfter( wrapInAssertion( verificationCode ) );
+  }
+
+  /**
+   * Wraps the given code into an assertion statement
+   * @param code the assertion code
+   * @return the assert statement
+   */
+  @Nonnull
+  protected static String wrapInAssertion( @Nonnull String code ) {
     StringBuilder body = new StringBuilder();
 
-    body.append("if( !" + ASSERTION_DISABLED_FIELD_NAME + " ){");
-    body.append(verificationCode);
+    body.append( "if( !" + ASSERTION_DISABLED_FIELD_NAME + " ){" );
+    body.append(code);
     body.append("}");
-
-    method.insertBefore(body.toString());
+    return body.toString();
   }
 
   /**

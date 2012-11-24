@@ -37,10 +37,10 @@ public class UiThreadAnnotationTransformer extends AbstractAnnotationTransformer
       }
 
       if ( uiThread ) {
-        insertAssertedVerificationCode( method, getUiThreadVerificationCode() );
+        insertAssertedVerificationCodeBefore( method, getUiThreadVerificationCode() );
       }
       if ( nonUiThread ) {
-        insertAssertedVerificationCode( method, getNonUiThreadVerificationCode() );
+        insertAssertedVerificationCodeBefore( method, getNonUiThreadVerificationCode() );
       }
     }
   }
