@@ -121,7 +121,7 @@ public class AssertUtilsFileCompareTest {
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
       Assertions.assertThat(e.getMessage()).contains("Expected: is <[[MD5: aa], [MD5: cc], [MD5: bb]]>\n" +
-                                                       "     got: <[[MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f]]>\n");
+                                                       "     but: was <[[MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f]]>");
     }
   }
 
@@ -132,7 +132,7 @@ public class AssertUtilsFileCompareTest {
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
       Assertions.assertThat(e.getMessage()).contains("Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                                                       "     got: <[MD5: aa]>\n");
+                                                       "     but: was <[MD5: aa]>");
     }
   }
 }

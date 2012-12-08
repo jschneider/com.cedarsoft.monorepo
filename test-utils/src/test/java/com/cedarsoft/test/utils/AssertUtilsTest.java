@@ -79,7 +79,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testJsonNotEquals() throws Exception {
-    expectedException.expect(ComparisonFailure.class);
+    expectedException.handleAssertionErrors().expect( ComparisonFailure.class );
     JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
   }
 
@@ -99,7 +99,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
+    expectedException.handleAssertionErrors().expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
   }
 
@@ -118,7 +118,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml2() throws Exception {
-    expectedException.expect(ComparisonFailure.class);
+    expectedException.handleAssertionErrors().expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.1.xml" ), "<xml/>" );
   }
 
@@ -141,7 +141,7 @@ public class AssertUtilsTest {
 
   @Test
   public void testFormat() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
+    expectedException.handleAssertionErrors().expect( ComparisonFailure.class );
     AssertUtils.assertXMLEquals( "<xml2/>", "This is no xml!" );
   }
 
@@ -151,9 +151,10 @@ public class AssertUtilsTest {
     AssertUtils.assertOne( "a", "b", "c", "a" );
 
     expectedException.expect( AssertionError.class );
+    expectedException.handleAssertionErrors();
     expectedException.expectMessage(
       "Expected: (is \"b\" or is \"c\")\n" +
-        "     got: \"a\"" );
+        "     but: was \"a\"" );
     AssertUtils.assertOne( "a", "b", "c" );
   }
 
@@ -187,7 +188,7 @@ public class AssertUtilsTest {
                    &&
                    e.getMessage().contains(
                      "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                       "     got: <[MD5: aa]>")
+                       "     but: was <[MD5: aa]>")
       );
 
       File copiedFile = AssertUtils.createCopyFile(AssertUtils.createPath(AssertUtilsTest.class, "testFileByHash"), "daFile");
@@ -210,7 +211,7 @@ public class AssertUtilsTest {
                     &&
                     e.getMessage().contains(
                       "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                        "     got: <[MD5: aa]>" )
+                        "     but: was <[MD5: aa]>" )
       );
     }
   }

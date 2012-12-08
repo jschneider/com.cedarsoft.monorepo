@@ -82,13 +82,13 @@ public class GuiceModulesHelperTest {
 
   @Test
   public void testAssertMini() throws Exception {
-    expectedException.expect( AssertionError.class );
+    expectedException.handleAssertionErrors().expect( AssertionError.class );
     GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
   }
 
   @Test
   public void testAssertMini4() throws Exception {
-    expectedException.expect( AssertionError.class );
+    expectedException.handleAssertionErrors().expect( AssertionError.class );
     GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module2() ), Object.class );
   }
 
