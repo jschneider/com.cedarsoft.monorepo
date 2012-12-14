@@ -418,7 +418,7 @@
               <file>**/HelpMojo.java</file>
             </skippedFiles>
             <prohibitedPackages>
-              <package>internal</package>
+              <package>.internal.</package>
             </prohibitedPackages>
           </configuration>
         </plugin>
