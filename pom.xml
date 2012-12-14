@@ -412,7 +412,15 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
-          <version>1.0.3</version>
+          <version>1.0.4</version>
+          <configuration>
+            <skippedFiles>
+              <file>**/HelpMojo.java</file>
+            </skippedFiles>
+            <prohibitedPackages>
+              <package>internal</package>
+            </prohibitedPackages>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
