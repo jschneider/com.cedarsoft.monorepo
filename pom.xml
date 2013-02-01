@@ -89,7 +89,7 @@
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
     <jetty.version>9.0.0.M5</jetty.version>
-    <jackson.version>1.9.11</jackson.version>
+    <jackson.version>1.9.12</jackson.version>
   </properties>
 
   <prerequisites>
@@ -240,7 +240,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.3</version>
+        <version>1.4.4</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
