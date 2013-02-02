@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

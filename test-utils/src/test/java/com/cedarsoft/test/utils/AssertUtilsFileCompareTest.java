@@ -34,7 +34,7 @@ package com.cedarsoft.test.utils;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import org.apache.commons.io.FileUtils;
-import org.fest.assertions.api.Assertions;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 import org.junit.rules.*;
 

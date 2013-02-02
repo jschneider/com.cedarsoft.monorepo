@@ -32,7 +32,7 @@
 package com.cedarsoft.crypt;
 
 import org.apache.commons.codec.binary.Base64;
-import org.fest.assertions.api.Assertions;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 
 import javax.crypto.Cipher;

@@ -36,7 +36,7 @@ import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.google.common.io.ByteStreams;
 import org.apache.commons.io.FileUtils;
-import org.fest.assertions.api.Assertions;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 import org.junit.rules.*;
 
