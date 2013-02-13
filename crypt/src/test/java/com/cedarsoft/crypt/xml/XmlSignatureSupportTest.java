@@ -104,20 +104,22 @@ public class XmlSignatureSupportTest {
     assertEquals( NEW_UNSINGED, new String( out.toByteArray() ) );
   }
 
-  public static final String NEW_UNSINGED = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><invoice xmlns=\"http://www.company.com/accounting\">\n" +
-    "  <items>\n" +
-    "    <item>\n" +
-    "      <desc>Applied Cryptography</desc>\n" +
-    "      <type>book</type>\n" +
-    "      <unitprice>44.50</unitprice>\n" +
-    "      <quantity>1</quantity>\n" +
-    "    </item>\n" +
-    "  </items>\n" +
-    "  <creditcard>\n" +
-    "    <number>123456789</number>\n" +
-    "    <expiry>10/20/2009</expiry>\n" +
-    "    <lastname>John</lastname>\n" +
-    "    <firstname>Smith</firstname>\n" +
-    "  </creditcard>\n" +
+  public static final String LINE_SEPARATOR = System.getProperty("line.separator");
+
+  public static final String NEW_UNSINGED = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><invoice xmlns=\"http://www.company.com/accounting\">" + LINE_SEPARATOR +
+    "  <items>" + LINE_SEPARATOR +
+    "    <item>" + LINE_SEPARATOR +
+    "      <desc>Applied Cryptography</desc>" + LINE_SEPARATOR +
+    "      <type>book</type>" + LINE_SEPARATOR +
+    "      <unitprice>44.50</unitprice>" + LINE_SEPARATOR +
+    "      <quantity>1</quantity>" + LINE_SEPARATOR +
+    "    </item>" + LINE_SEPARATOR +
+    "  </items>" + LINE_SEPARATOR +
+    "  <creditcard>" + LINE_SEPARATOR +
+    "    <number>123456789</number>" + LINE_SEPARATOR +
+    "    <expiry>10/20/2009</expiry>" + LINE_SEPARATOR +
+    "    <lastname>John</lastname>" + LINE_SEPARATOR +
+    "    <firstname>Smith</firstname>" + LINE_SEPARATOR +
+    "  </creditcard>" + LINE_SEPARATOR +
     "</invoice>";
 }
