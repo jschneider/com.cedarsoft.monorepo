@@ -45,7 +45,7 @@
     <module>renderer</module>
     <module>registry</module>
     <module>repository</module>
-    <module>spring</module>
+    <!--<module>spring</module>-->
     <!--<module>string-conversion</module>-->
     <module>struct</module>
     <module>swing</module>
