@@ -32,6 +32,7 @@
 package com.cedarsoft.file;
 
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,10 +52,13 @@ public class FileCopyTest {
   private File tmp;
   private File myFile;
 
+  @Rule
+  public TemporaryFolder tmpFolderRule = new TemporaryFolder();
+
 
   @Before
   public void setUp() throws Exception {
-    tmp = new File( "/tmp/fileCopyTestTemp" );
+    tmp = tmpFolderRule.newFolder();
     tmp.mkdir();
     myFile = new File( tmp, "test.txt" );
 
@@ -65,7 +69,7 @@ public class FileCopyTest {
 
   @Test
   public void testCopySimple() throws IOException {
-    File dst = new File( "/tmp/fileCopyTestTempTarget" );
+    File dst = tmpFolderRule.newFolder();
     FileCopyManager.copy( tmp, dst );
     assertTrue( dst.exists() );
     assertEquals( 1, dst.list().length );
