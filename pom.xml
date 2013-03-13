@@ -65,8 +65,8 @@
   </dependencies>
 
   <scm>
-    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.unit</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.unit</developerConnection>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.unit.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.unit.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
