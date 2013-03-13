@@ -14,8 +14,8 @@
   <name>cedarsoft Commons</name>
 
   <scm>
-    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.commons</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.commons</developerConnection>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.commons.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.commons.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
