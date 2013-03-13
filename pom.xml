@@ -557,6 +557,7 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <localCheckout>true</localCheckout>
             <pushChanges>false</pushChanges>
+            <tagNameFormat>{project.version}</tagNameFormat>
           </configuration>
         </plugin>
 
