@@ -13,6 +13,12 @@
   <name>Annotations</name>
   <description>Annotations</description>
 
+  <scm>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.annotations.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.annotations.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
