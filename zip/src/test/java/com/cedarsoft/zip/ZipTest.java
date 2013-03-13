@@ -31,7 +31,7 @@
 
 package com.cedarsoft.zip;
 
-import com.cedarsoft.TestUtils;
+import com.cedarsoft.test.utils.TestUtils;
 import org.junit.*;
 
 import java.io.File;
@@ -46,7 +46,7 @@ public class ZipTest {
   public void testIt() throws IOException {
     File file = new File( TestUtils.getTmpDir(), "asdf" );
     assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( "/tmp", file ) );
+    assertEquals( "asdf", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
   }
 
   @Test
@@ -54,6 +54,6 @@ public class ZipTest {
     File file = new File( TestUtils.getTmpDir(), "asdf_" );
     file.mkdirs();
     assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( "/tmp", file ) );
+    assertEquals( "asdf_/", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
   }
 }

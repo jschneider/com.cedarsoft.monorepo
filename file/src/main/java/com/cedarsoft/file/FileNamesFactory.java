@@ -145,8 +145,7 @@ public class FileNamesFactory {
       throw new IllegalArgumentException( "Invalid base dir <" + baseDir.getAbsolutePath() + '>' );
     }
 
-    File[] files = baseDir.listFiles( ( FileFilter ) FileFileFilter.FILE );
-    return files;
+    return baseDir.listFiles( ( FileFilter ) FileFileFilter.FILE );
   }
 
 }

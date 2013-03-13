@@ -41,6 +41,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * <p>FileType class.</p>
@@ -112,7 +113,7 @@ public class FileType {
    */
   public boolean matches( @Nonnull String fileName ) {
     for ( @Nonnull Extension ex : extensions ) {
-      if ( fileName.toLowerCase().endsWith( ex.getCombined() ) ) {
+      if ( fileName.toLowerCase( Locale.US ).endsWith( ex.getCombined() ) ) {
         return true;
       }
     }
@@ -190,7 +191,7 @@ public class FileType {
       String base = fileName.substring( 0, index );
       if ( bestBase == null || base.length() < bestBase.length() ) {
         bestBase = base;
-        bestExtension = extension;
+        bestExtension = extension.createCaseSensitiveExtension( fileName );
       }
     }
 

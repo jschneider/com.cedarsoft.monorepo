@@ -3,25 +3,17 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.1.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>xml-commons</artifactId>
-  <version>4.0.2-SNAPSHOT</version>
+  <version>5.1.6</version>
   <name>XML Commons</name>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-    </dependency>
+  <packaging>bundle</packaging>
 
-    <dependency>
-      <groupId>jaxen</groupId>
-      <artifactId>jaxen</artifactId>
-      <scope>test</scope>
-    </dependency>
+  <dependencies>
   </dependencies>
 </project>

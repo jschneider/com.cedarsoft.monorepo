@@ -113,14 +113,14 @@ public class FileTypeTest {
     assertEquals( "jpg", FileTypeRegistry.JPEG.getExtension( "asdf.jpg" ).getExtension() );
     assertEquals( "jpg", FileTypeRegistry.JPEG.getExtension( "asdf_.jpg" ).getExtension() );
     assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "asdf_.jpeg" ).getExtension() );
-    assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getExtension() );
-    assertEquals( "jpeg", FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getExtension() );
+    assertEquals( "JPEG", FileTypeRegistry.JPEG.getExtension( "asdf_.JPEG" ).getExtension() );
+    assertEquals( "JPEG", FileTypeRegistry.JPEG.getExtension( "Asdf_.JPEG" ).getExtension() );
     assertEquals( 2, FileTypeRegistry.JPEG.getExtensions().size() );
     assertEquals( ".jpg", FileTypeRegistry.JPEG.getDefaultExtension().getCombined() );
 
     assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf_lzn.jpg" ).getExtension() );
     assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__lzn.jpg" ).getExtension() );
-    assertEquals( "lzn.jpg", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getExtension() );
+    assertEquals( "LZN.JPG", FileTypeRegistry.LIGHT_ZONE.getExtension( "asdf__LZN.JPG" ).getExtension() );
 
     assertEquals( 1, FileTypeRegistry.LIGHT_ZONE.getExtensions().size() );
   }

@@ -31,8 +31,8 @@
 
 package com.cedarsoft.zip;
 
-import junit.framework.Assert;
-import junit.framework.AssertionFailedError;
+import org.junit.*;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -72,7 +72,7 @@ public class ZipAssertions {
       if ( testedActualEntries.contains( actualEntry.getName() ) ) {
         continue;
       }
-      throw new AssertionFailedError( "Uups. Unexpected element in actual: " + actualEntry.getName() );
+      throw new AssertionError( "Uups. Unexpected element in actual: " + actualEntry.getName() );
     }
     Assert.assertEquals( expected.size(), actual.size() );
   }
@@ -82,10 +82,10 @@ public class ZipAssertions {
       return;
     }
     if ( expectedEntry == null ) {
-      throw new AssertionFailedError( "ExpectedEntry is null for " + actualEntry.getName() );
+      throw new AssertionError( "ExpectedEntry is null for " + actualEntry.getName() );
     }
     if ( actualEntry == null ) {
-      throw new AssertionFailedError( "ActualEntry is null for " + expectedEntry.getName() );
+      throw new AssertionError( "ActualEntry is null for " + expectedEntry.getName() );
     }
 
     Assert.assertEquals( expectedEntry.getName(), actualEntry.getName() );

@@ -29,11 +29,12 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo.graph;
+package com.cedarsoft.swing.presenter.demo.graph;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.AbstractPresenter;
+
 import javax.annotation.Nonnull;
 import y.base.Node;
 import y.layout.tree.TreeLayouter;

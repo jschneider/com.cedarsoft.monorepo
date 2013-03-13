@@ -31,7 +31,8 @@
 
 package com.cedarsoft.commons.struct;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.exceptions.NotFoundException;
+
 import javax.annotation.Nonnull;
 
 /**

@@ -1,10 +1,17 @@
 package com.cedarsoft.file;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import javax.annotation.Nonnull;
+import org.fest.assertions.Condition;
 import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -26,7 +33,6 @@ public class FileNamesFactoryTest {
     baseDir = folder.newFolder( "myFolder" );
   }
 
-  @Ignore
   @Test
   public void testBaseNameAware() throws Exception {
     File f1 = new File( baseDir, "A.JPG" );
@@ -39,11 +45,14 @@ public class FileNamesFactoryTest {
     assertThat( baseNameAware.getEntries() ).hasSize( 1 );
     Map.Entry<BaseName, FileNames> entry = baseNameAware.getEntries().iterator().next();
     assertThat( entry.getKey().getName() ).isEqualTo( "A" );
-    assertThat( entry.getValue().getFileNames() ).hasSize( 2 );
-    assertThat( entry.getValue().getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-    assertThat( entry.getValue().getFileNames().get( 1 ).getName() ).isEqualTo( "A.cr2" );
+    List<? extends FileName> fileNames = entry.getValue().getFileNames();
+    assertThat(fileNames).hasSize(2);
 
-    for ( FileName fileName : entry.getValue().getFileNames() ) {
+    Condition<String> condition = new MyStringCondition("A.JPG","A.cr2");
+    assertThat( fileNames.get(0).getName() ).satisfies(condition);
+    assertThat( fileNames.get(1).getName() ).satisfies(condition);
+
+    for ( FileName fileName : fileNames) {
       File f = new File( baseDir, fileName.getName() );
       assertThat( f ).exists();
     }
@@ -67,12 +76,16 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "a.jpg" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "a.cr2" );
+      Set<String> names = new HashSet<String>( );
+      for ( FileName fileName : fileNames.getFileNames( ) ) {
+        names.add( fileName.getName( ) );
+      }
+
+      assertThat( names ).contains( "a.jpg" );
+      assertThat( names ).contains( "a.cr2" );
     }
   }
 
-  @Ignore
   @Test
   public void testMixedCase() throws Exception {
     {
@@ -91,12 +104,11 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "A.cr2" );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
     }
   }
 
-  @Ignore
   @Test
   public void testUpperCase() throws Exception {
     {
@@ -115,8 +127,26 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).isEqualTo( "A.JPG" );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).isEqualTo( "A.CR2" );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
+    }
+  }
+
+  private static class MyStringCondition extends Condition<String> {
+    @Nonnull 
+    private final Set<String> possibleStrings ;
+
+    private MyStringCondition(@Nonnull String... possibleStrings) {
+      this(ImmutableSet.copyOf(possibleStrings));
+    }
+    
+    private MyStringCondition(@Nonnull Set<? extends String> possibleStrings) {
+      this.possibleStrings = new HashSet<String>(possibleStrings);
+    }
+
+    @Override
+    public boolean matches(String value) {
+      return possibleStrings.contains(value);
     }
   }
 }

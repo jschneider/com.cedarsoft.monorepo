@@ -34,6 +34,7 @@ package com.cedarsoft.image;
 import javax.annotation.Nonnull;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 
 /**
  * Represents a resolution.
@@ -41,7 +42,9 @@ import java.awt.Dimension;
  * <p/>
  * This means that 100/1 is larger than 99/Integer.MAX
  */
-public class Resolution implements Comparable<Resolution> {
+public class Resolution implements Comparable<Resolution>, Serializable {
+  private static final long serialVersionUID = -8344104794069328642L;
+
   private final int width;
   private final int height;
   @Nonnull

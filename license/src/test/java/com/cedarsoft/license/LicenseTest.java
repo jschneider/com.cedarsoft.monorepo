@@ -31,6 +31,7 @@
 
 package com.cedarsoft.license;
 
+import org.fest.assertions.Assertions;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -61,5 +62,10 @@ public class LicenseTest {
     assertEquals( 20, License.LICENSES.size() );
     assertSame( License.GPL_3, License.get( License.GPL_3.getId() ) );
     assertSame( License.CC_BY_NC_ND, License.get( License.CC_BY_NC_ND.getId() ) );
+  }
+
+  @Test
+  public void testToString() throws Exception {
+    Assertions.assertThat( License.APACHE_20.toString() ).isEqualTo( "Apache License 2.0 (APACHE 2.0)" );
   }
 }

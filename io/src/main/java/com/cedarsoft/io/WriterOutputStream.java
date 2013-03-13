@@ -44,6 +44,7 @@ import java.io.Writer;
  * @noinspection RefusedBequest
  */
 public class WriterOutputStream extends OutputStream {
+  @Nonnull
   private final Writer writer;
   @Nullable
   private final String encoding;

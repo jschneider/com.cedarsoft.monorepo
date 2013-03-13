@@ -31,7 +31,7 @@
 
 package com.cedarsoft.configuration.xml;
 
-import com.cedarsoft.AssertUtils;
+import com.cedarsoft.test.utils.AssertUtils;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.configuration.tree.ConfigurationNode;
@@ -69,18 +69,18 @@ public class XmlConfigurationManagerTest {
     manager.getModuleConfiguration( String.class ).setProperty( "daStringKey", "daStringValue" );
     manager.save();
 
-    AssertUtils.assertXMLEquals( "<configuration>\n" +
-      "  <daKey>daValue</daKey>\n" +
-      "  <modules>\n" +
-      "    <java>\n" +
-      "      <lang>\n" +
-      "        <String>\n" +
-      "          <daStringKey>daStringValue</daStringKey>\n" +
-      "        </String>\n" +
-      "      </lang>\n" +
-      "    </java>\n" +
-      "  </modules>\n" +
-      "</configuration>", FileUtils.readFileToString( file ) );
+    AssertUtils.assertXMLEquals("<configuration>\n" +
+                                  "  <daKey>daValue</daKey>\n" +
+                                  "  <modules>\n" +
+                                  "    <java>\n" +
+                                  "      <lang>\n" +
+                                  "        <String>\n" +
+                                  "          <daStringKey>daStringValue</daStringKey>\n" +
+                                  "        </String>\n" +
+                                  "      </lang>\n" +
+                                  "    </java>\n" +
+                                  "  </modules>\n" +
+                                  "</configuration>", FileUtils.readFileToString(file));
   }
 
 

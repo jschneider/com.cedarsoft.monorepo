@@ -29,12 +29,12 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
 import com.cedarsoft.commons.struct.StructPart;
 import com.cedarsoft.lookup.Lookup;
 import com.cedarsoft.presenter.Presenter;
-import com.cedarsoft.presenter.SwingPresenter;
+import com.cedarsoft.swing.presenter.SwingPresenter;
 import javax.annotation.Nonnull;
 
 import javax.swing.JComponent;

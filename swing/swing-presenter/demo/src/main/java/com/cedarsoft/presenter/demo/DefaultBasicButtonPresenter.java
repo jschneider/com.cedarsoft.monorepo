@@ -29,9 +29,9 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
-import com.cedarsoft.presenter.AbstractButtonPresenter;
+import com.cedarsoft.swing.presenter.AbstractButtonPresenter;
 import javax.annotation.Nonnull;
 
 import javax.swing.JButton;

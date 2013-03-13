@@ -56,11 +56,11 @@ import java.security.spec.PKCS8EncodedKeySpec;
  */
 public class X509Support {
   @Nonnull
-  private static final String RSA = "RSA";
+  public static final String RSA = "RSA";
   @Nonnull
-  private static final String SHA_256_WITH_RSA = "SHA256withRSA";
+  public static final String SHA_256_WITH_RSA = "SHA256withRSA";
   @Nonnull
-  private static final String X_509_CERTIFICATE_TYPE = "X.509";
+  public static final String X_509_CERTIFICATE_TYPE = "X.509";
 
   @Nonnull
   private final X509Certificate certificate;

@@ -3,13 +3,13 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.1.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>history</artifactId>
-  <version>4.0.2-SNAPSHOT</version>
+  <version>5.1.6</version>
   <name>History</name>
   <packaging>pom</packaging>
 
@@ -35,7 +35,6 @@
 
   <modules>
     <module>core</module>
-    <module>ui</module>
   </modules>
 
   <properties>

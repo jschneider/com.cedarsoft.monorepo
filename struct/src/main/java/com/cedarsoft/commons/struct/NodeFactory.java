@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons.struct;
 
-import com.cedarsoft.CanceledException;
+import com.cedarsoft.exceptions.CanceledException;
 import com.cedarsoft.lookup.Lookup;
 
 import javax.annotation.Nonnull;

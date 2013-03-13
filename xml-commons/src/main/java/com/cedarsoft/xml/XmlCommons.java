@@ -31,22 +31,22 @@
 
 package com.cedarsoft.xml;
 
-import org.jdom.Document;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
-import org.jdom.transform.JDOMResult;
-
-import javax.annotation.Nonnull;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.annotation.Nonnull;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -75,36 +75,20 @@ public class XmlCommons {
    */
   @Nonnull
   public static String format( @Nonnull String xml ) {
-    if ( xml.trim().length() == 0 ) {
+    if (xml.trim().isEmpty()) {
       return "";
     }
 
     try {
-      Document doc = new SAXBuilder().build( new StringReader( xml ) );
-      Format format = Format.getPrettyFormat();
-      format.setLineSeparator( "\n" );
-      return new XMLOutputter( format ).outputString( doc );
-    } catch ( Exception e ) {
-      throw new RuntimeException( e );
-    }
-  }
+      Source xmlInput = new StreamSource(new StringReader(xml));
+      StringWriter stringWriter = new StringWriter();
 
-  /**
-   * Write the document to the given file
-   *
-   * @param file     the file
-   * @param document the document
-   * @throws IOException if an io exception occures
-   */
-  public static void writeXml( @Nonnull File file, @Nonnull Document document ) throws IOException {
-    Writer writer = null;
-    try {
-      writer = new BufferedWriter( new FileWriter( file ) );
-      new XMLOutputter( Format.getPrettyFormat() ).output( document, writer );
-    } finally {
-      if ( writer != null ) {
-        writer.close();
-      }
+      createTransformer().transform( xmlInput, new StreamResult( stringWriter ) );
+      return stringWriter.toString();
+    } catch (TransformerConfigurationException e) {
+      throw new RuntimeException(e);
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -127,12 +111,12 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @param out      a {@link OutputStream} object.
    */
-  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull OutputStream out ) {
+  public static void out( @Nonnull Document document, @Nonnull OutputStream out ) {
     try {
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
+      createTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }
@@ -141,45 +125,46 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @param out      a {@link Writer} object.
    */
-  public static void out( @Nonnull org.w3c.dom.Document document, @Nonnull Writer out ) {
+  public static void out( @Nonnull Document document, @Nonnull Writer out ) {
     try {
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
+      createTransformer().transform( new DOMSource( document ), new StreamResult( out ) );
     } catch ( TransformerException e ) {
       throw new RuntimeException( e );
     }
   }
 
-  /**
-   * <p>toJDom</p>
-   *
-   * @param document a {@link org.w3c.dom.Document} object.
-   * @return a {@link Document} object.
-   */
   @Nonnull
-  public static Document toJDom( @Nonnull org.w3c.dom.Document document ) {
+  public static Transformer createTransformer() throws TransformerConfigurationException {
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
     try {
-      JDOMResult target = new JDOMResult();
-      TransformerFactory.newInstance().newTransformer().transform( new DOMSource( document ), target );
-      return target.getDocument();
-    } catch ( TransformerException e ) {
-      throw new RuntimeException( e );
+      transformerFactory.setAttribute( "indent-number", 2 ); //Used in some XML implementations
+    } catch ( IllegalArgumentException ignore ) {
     }
+
+    Transformer transformer = transformerFactory.newTransformer();
+    transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
+    try {
+      transformer.setOutputProperty( "{http://xml.apache.org/xslt}indent-amount", "2" ); //Used for XALAN(?)
+    } catch ( IllegalArgumentException ignore ) {
+    }
+
+    return transformer;
   }
 
   /**
    * <p>parse</p>
    *
    * @param bytes an array of byte.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @return a {@link Document} object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Nonnull
-  public static org.w3c.dom.Document parse( @Nonnull byte[] bytes ) throws IOException, SAXException {
+  public static Document parse( @Nonnull byte[] bytes ) throws IOException, SAXException {
     return parse( new ByteArrayInputStream( bytes ) );
   }
 
@@ -187,24 +172,24 @@ public class XmlCommons {
    * <p>parse</p>
    *
    * @param in a {@link InputStream} object.
-   * @return a {@link org.w3c.dom.Document} object.
+   * @return a {@link Document} object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
    */
   @Nonnull
-  public static org.w3c.dom.Document parse( @Nonnull InputStream in ) throws IOException, SAXException {
+  public static Document parse( @Nonnull InputStream in ) throws IOException, SAXException {
     return getDocumentBuilder().parse( in );
   }
 
   /**
    * <p>toString</p>
    *
-   * @param document a {@link org.w3c.dom.Document} object.
+   * @param document a {@link Document} object.
    * @return a {@link String} object.
    */
   @Nonnull
-  public static String toString( @Nonnull org.w3c.dom.Document document ) {
+  public static String toString( @Nonnull Document document ) {
     StringWriter stringWriter = new StringWriter();
     out( document, stringWriter );
     return stringWriter.toString();

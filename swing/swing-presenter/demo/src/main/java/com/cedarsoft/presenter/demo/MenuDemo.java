@@ -29,16 +29,16 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
 import com.cedarsoft.commons.struct.DefaultNode;
 import com.cedarsoft.commons.struct.Node;
 import com.cedarsoft.lookup.DynamicLookup;
 import com.cedarsoft.lookup.Lookups;
-import com.cedarsoft.presenter.AbstractButtonPresenter;
-import com.cedarsoft.presenter.JMenuBarPresenter;
-import com.cedarsoft.presenter.JMenuPresenter;
-import com.cedarsoft.presenter.demo.graph.NodePresenter;
+import com.cedarsoft.swing.presenter.AbstractButtonPresenter;
+import com.cedarsoft.swing.presenter.JMenuBarPresenter;
+import com.cedarsoft.swing.presenter.JMenuPresenter;
+import com.cedarsoft.swing.presenter.demo.graph.NodePresenter;
 import javax.annotation.Nonnull;
 import y.view.Graph2D;
 

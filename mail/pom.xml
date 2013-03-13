@@ -4,20 +4,21 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.1.6</version>
   </parent>
 
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>mail</artifactId>
-  <version>4.0.2-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <version>5.1.6</version>
   <name>Mail</name>
+
+  <packaging>bundle</packaging>
 
   <dependencies>
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
-      <version>1.4.1</version>
+      <version>1.4.5</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

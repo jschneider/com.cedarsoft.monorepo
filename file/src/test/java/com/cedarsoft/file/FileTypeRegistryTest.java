@@ -31,7 +31,8 @@
 
 package com.cedarsoft.file;
 
-import com.cedarsoft.NotFoundException;
+import com.cedarsoft.exceptions.NotFoundException;
+import org.fest.assertions.Assertions;
 import org.junit.*;
 
 import java.util.Collections;
@@ -44,6 +45,14 @@ import static org.junit.Assert.*;
  */
 public class FileTypeRegistryTest {
   @Test
+  public void testIds() throws Exception {
+    FileTypeRegistry registry = new FileTypeRegistry( true );
+    for ( FileType fileType : registry.getFileTypes() ) {
+      Assertions.assertThat( fileType.getId() ).doesNotContain( " " );
+    }
+  }
+
+  @Test
   public void testParse() {
     FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
 
@@ -51,7 +60,6 @@ public class FileTypeRegistryTest {
   }
 
   @Test
-  @Ignore
   public void testParseCase() throws Exception {
     FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
 

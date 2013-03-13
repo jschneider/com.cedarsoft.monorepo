@@ -3,14 +3,16 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>commons</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.1.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>zip</artifactId>
-  <version>4.0.2-SNAPSHOT</version>
+  <version>5.1.6</version>
   <name>Zip Utils</name>
+
+  <packaging>bundle</packaging>
 
   <dependencies>
     <dependency>
@@ -21,7 +23,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-compress</artifactId>
-      <version>1.1</version>
+      <version>1.4</version>
     </dependency>
 
     <dependency>

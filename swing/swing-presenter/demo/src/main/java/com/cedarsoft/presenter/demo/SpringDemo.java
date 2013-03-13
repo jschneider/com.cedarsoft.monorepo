@@ -29,10 +29,10 @@
  * have any questions.
  */
 
-package com.cedarsoft.presenter.demo;
+package com.cedarsoft.swing.presenter.demo;
 
 import com.cedarsoft.commons.struct.Node;
-import com.cedarsoft.presenter.JMenuBarPresenter;
+import com.cedarsoft.swing.presenter.JMenuBarPresenter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

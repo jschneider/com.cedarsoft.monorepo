@@ -46,7 +46,7 @@
             <bean class="com.cedarsoft.lookup.SingletonLookup">
               <constructor-arg value="javax.swing.Action" />
               <constructor-arg>
-                <bean class="com.cedarsoft.presenter.demo.MenuDemo$FileAction" />
+                <bean class="com.cedarsoft.swing.presenter.demo.MenuDemo$FileAction" />
               </constructor-arg>
             </bean>
           </constructor-arg>
@@ -54,24 +54,24 @@
 
           <property name="children">
             <list>
-              <bean class="com.cedarsoft.presenter.demo.ActionNodeFactory">
+              <bean class="com.cedarsoft.swing.presenter.demo.ActionNodeFactory">
                 <constructor-arg value="open" />
                 <constructor-arg>
-                  <bean class="com.cedarsoft.presenter.demo.MenuDemo$OpenAction" />
+                  <bean class="com.cedarsoft.swing.presenter.demo.MenuDemo$OpenAction" />
                 </constructor-arg>
               </bean>
 
-              <bean class="com.cedarsoft.presenter.demo.ActionNodeFactory">
+              <bean class="com.cedarsoft.swing.presenter.demo.ActionNodeFactory">
                 <constructor-arg value="close" />
                 <constructor-arg>
-                  <bean class="com.cedarsoft.presenter.demo.MenuDemo$CloseAction" />
+                  <bean class="com.cedarsoft.swing.presenter.demo.MenuDemo$CloseAction" />
                 </constructor-arg>
               </bean>
 
-              <bean class="com.cedarsoft.presenter.demo.ActionNodeFactory">
+              <bean class="com.cedarsoft.swing.presenter.demo.ActionNodeFactory">
                 <constructor-arg value="counter" />
                 <constructor-arg>
-                  <bean class="com.cedarsoft.presenter.demo.MenuDemo$CounterAction" />
+                  <bean class="com.cedarsoft.swing.presenter.demo.MenuDemo$CounterAction" />
                 </constructor-arg>
               </bean>
             </list>

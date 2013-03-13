@@ -33,6 +33,7 @@ package com.cedarsoft.image;
 
 import javax.annotation.Nonnull;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ import java.util.List;
 /**
  * Represents an aspect ratio
  */
-public class AspectRatio {
+public class AspectRatio implements Serializable {
   @Nonnull
   public static final AspectRatio AR_1_1 = new AspectRatio( 1, 1 );
   @Nonnull
@@ -72,6 +73,8 @@ public class AspectRatio {
    * The bounds used when finding the aspect ratio for a width/height
    */
   public static final double BOUNDS = 0.005;
+
+  private static final long serialVersionUID = -1083087626635613019L;
 
   private final double widthFactor;
   private final double heightFactor;

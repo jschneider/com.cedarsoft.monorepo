@@ -31,9 +31,9 @@
 
 package com.cedarsoft.registry;
 
-import com.cedarsoft.Converter;
-import com.cedarsoft.NotFoundException;
-import com.cedarsoft.StillContainedException;
+import com.cedarsoft.commons.Converter;
+import com.cedarsoft.exceptions.NotFoundException;
+import com.cedarsoft.exceptions.StillContainedException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

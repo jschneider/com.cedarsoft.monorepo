@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft.commons</groupId>
     <artifactId>swing</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.1.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,8 @@
   <artifactId>actions</artifactId>
   <name>Actions</name>
 
+  <packaging>bundle</packaging>
+  
   <dependencies>
   </dependencies>
 </project>
