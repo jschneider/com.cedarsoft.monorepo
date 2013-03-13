@@ -1,6 +1,5 @@
 package com.cedarsoft.test.utils;
 
-import javafx.application.Platform;
 import org.junit.*;
 
 import static org.fest.assertions.Fail.fail;
@@ -13,10 +12,10 @@ public class ThreadRuleTest {
   @Rule
   public ThreadRule threadRule = new ThreadRule();
 
-  @Test
-  public void testFx() throws Exception {
-    Platform.isFxApplicationThread();
-  }
+  //@Test
+  //public void testFx() throws Exception {
+  //  javafx.application.Platform.isFxApplicationThread();
+  //}
 
   @Test
   public void testThreadRule() throws Exception {
