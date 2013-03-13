@@ -157,6 +157,12 @@ public class ThreadRule implements TestRule {
         ||
         remainingThread.getThreadGroup().getName().equals( "system" ) &&
           remainingThread.getName().equals( "AWT-XAWT" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "main" ) &&
+          remainingThread.getName().equals( "AWT-Shutdown" )
+        ||
+        remainingThread.getThreadGroup().getName().equals( "main" ) &&
+          remainingThread.getName().equals( "AWT-Windows" )
         ;
     }
   }
