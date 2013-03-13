@@ -429,6 +429,7 @@
             </prohibitedPackages>
             <packagePartsToSkip>
               <skip>common</skip>
+              <skip>commons</skip>
             </packagePartsToSkip>
           </configuration>
         </plugin>
