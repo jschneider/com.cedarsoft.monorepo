@@ -191,7 +191,7 @@ public class AssertUtils {
    * @param expectedAlternatives a {@link Object} object.
    */
   public static <T> void assertOne( @Nullable T current, @Nonnull T... expectedAlternatives ) {
-    Collection<Matcher<? super T>> matchers = new ArrayList<>();
+    Collection<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
 
     for ( T expectedAlternative : expectedAlternatives ) {
       matchers.add( is( expectedAlternative ) );
