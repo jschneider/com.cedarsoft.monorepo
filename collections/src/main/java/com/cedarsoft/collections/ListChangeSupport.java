@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.collection;
+package com.cedarsoft.collections;
 
 import javax.annotation.Nonnull;
 

@@ -3,21 +3,25 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>43</version>
+    <version>47</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft</groupId>
   <artifactId>commons</artifactId>
   <packaging>pom</packaging>
-  <version>5.1.6</version>
+  <version>5.1.7</version>
   <name>cedarsoft Commons</name>
 
   <scm>
     <connection>scm:git:git://github.com/jschneider/com.cedarsoft.commons.git</connection>
     <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.commons.git</developerConnection>
-    <tag>5.1.6</tag>
+    <tag>5.1.7</tag>
   </scm>
+
+  <properties>
+    <java.version>1.6</java.version>
+  </properties>
 
   <modules>
     <module>app</module>
@@ -45,7 +49,7 @@
     <module>renderer</module>
     <module>registry</module>
     <module>repository</module>
-    <module>spring</module>
+    <!--<module>spring</module>-->
     <!--<module>string-conversion</module>-->
     <module>struct</module>
     <module>swing</module>
@@ -189,11 +193,6 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>repository</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>spring</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

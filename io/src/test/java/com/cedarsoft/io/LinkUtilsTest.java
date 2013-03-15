@@ -51,22 +51,26 @@ public class LinkUtilsTest {
 
   @Test
   public void testCreation() throws IOException {
-    File target = File.createTempFile( "asdf", "linked.to" );
+    if (Os.isFamily(Os.OS_FAMILY_WINDOWS)) {
+      return;
+    }
+
+    File target = File.createTempFile("asdf", "linked.to");
     target.createNewFile();
 
-    assertFalse( LinkUtils.isLink( target ) );
+    assertFalse(LinkUtils.isLink(target));
 
     File dir = TestUtils.createEmptyTmpDir();
-    File link = new File( dir, "link" );
-    assertFalse( link.exists() );
+    File link = new File(dir, "link");
+    assertFalse(link.exists());
 
-    LinkUtils.createSymbolicLink( target, link );
-    assertTrue( link.exists() );
-    assertTrue( LinkUtils.isLink( link ) );
+    LinkUtils.createSymbolicLink(target, link);
+    assertTrue(link.exists());
+    assertTrue(LinkUtils.isLink(link));
 
-    assertTrue( target.exists() );
-    LinkUtils.deleteSymbolicLink( link );
-    assertTrue( target.exists() );
-    assertFalse( link.exists() );
+    assertTrue(target.exists());
+    LinkUtils.deleteSymbolicLink(link);
+    assertTrue(target.exists());
+    assertFalse(link.exists());
   }
 }

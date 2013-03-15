@@ -29,56 +29,31 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.action;
-
+package com.cedarsoft.collections;
 
 import javax.annotation.Nonnull;
 
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
+import java.util.EventListener;
 
 /**
- * Base class for application actions.
+ * Is notified whenever a list changes its content.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public abstract class ApplicationAction extends AbstractAction {
+public interface ListChangeListener<T> extends EventListener {
   /**
-   * <p>Constructor for ApplicationAction.</p>
+   * <p>elementAdded</p>
    *
-   * @param name a {@link String} object.
+   * @param index   a int.
+   * @param element a T object.
    */
-  protected ApplicationAction( @Nonnull String name ) {
-    super( name );
-  }
+  void elementAdded( int index, @Nonnull T element );
 
   /**
-   * {@inheritDoc}
-   * <p/>
-   * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
-   */
-  @Override
-  public final void actionPerformed( @Nonnull ActionEvent e ) {
-    try {
-      applicationActionPerformed( e );
-    } catch ( ApplicationException exception ) {
-      handleApplicationException( exception );
-    }
-  }
-
-  /**
-   * <p>handleApplicationException</p>
+   * <p>elementRemoved</p>
    *
-   * @param exception a {@link ApplicationException} object.
+   * @param index   a int.
+   * @param element a T object.
    */
-  protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
-
-  /**
-   * Should be overridden by subclasses.
-   * Implementations may throw an ApplicationException if an expected exception occurred
-   *
-   * @param e the action event
-   * @throws ApplicationException if an application error occured
-   */
-  public abstract void applicationActionPerformed( @Nonnull ActionEvent e ) throws ApplicationException;
+  void elementRemoved( int index, @Nonnull T element );
 }

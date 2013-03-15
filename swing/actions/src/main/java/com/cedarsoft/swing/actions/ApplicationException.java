@@ -29,31 +29,15 @@
  * have any questions.
  */
 
-package com.cedarsoft.collection;
-
-import javax.annotation.Nonnull;
-
-import java.util.EventListener;
+package com.cedarsoft.swing.actions;
 
 /**
- * Is notified whenever a list changes its content.
+ * This is an exception that is excepted to be thrown during application actions.
+ * This exceptions is shown to the user who is responsible to fix the issues.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public interface ListChangeListener<T> extends EventListener {
-  /**
-   * <p>elementAdded</p>
-   *
-   * @param index   a int.
-   * @param element a T object.
-   */
-  void elementAdded( int index, @Nonnull T element );
+public class ApplicationException extends Exception {
 
-  /**
-   * <p>elementRemoved</p>
-   *
-   * @param index   a int.
-   * @param element a T object.
-   */
-  void elementRemoved( int index, @Nonnull T element );
+
 }
