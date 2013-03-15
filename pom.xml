@@ -559,6 +559,8 @@
             <localCheckout>true</localCheckout>
             <pushChanges>false</pushChanges>
             <tagNameFormat>@{project.version}</tagNameFormat>
+            <!--We do not want to deploy the page. This just creates problems...-->
+            <goals>deploy</goals>
           </configuration>
         </plugin>
 
