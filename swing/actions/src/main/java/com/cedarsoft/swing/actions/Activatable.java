@@ -29,56 +29,60 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.action;
+package com.cedarsoft.swing.actions;
 
 
 import javax.annotation.Nonnull;
 
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
+import java.lang.String;
 
 /**
- * Base class for application actions.
+ * Interface for activatable classes.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public abstract class ApplicationAction extends AbstractAction {
+public interface Activatable {
   /**
-   * <p>Constructor for ApplicationAction.</p>
-   *
-   * @param name a {@link String} object.
+   * Constant <code>PROPERTY_ACTIVE="active"</code>
    */
-  protected ApplicationAction( @Nonnull String name ) {
-    super( name );
-  }
+  @Nonnull
+  String PROPERTY_ACTIVE = "active";
 
   /**
-   * {@inheritDoc}
-   * <p/>
-   * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
+   * Whether the action is active
+   *
+   * @return whether the action is active
    */
-  @Override
-  public final void actionPerformed( @Nonnull ActionEvent e ) {
-    try {
-      applicationActionPerformed( e );
-    } catch ( ApplicationException exception ) {
-      handleApplicationException( exception );
-    }
-  }
+  boolean isActive();
 
   /**
-   * <p>handleApplicationException</p>
+   * Adds a property change listener
    *
-   * @param exception a {@link ApplicationException} object.
+   * @param listener a {@link PropertyChangeListener} object.
    */
-  protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
+  void addPropertyChangeListener( @Nonnull PropertyChangeListener listener );
 
   /**
-   * Should be overridden by subclasses.
-   * Implementations may throw an ApplicationException if an expected exception occurred
+   * Removes a property change listener
    *
-   * @param e the action event
-   * @throws ApplicationException if an application error occured
+   * @param listener a {@link PropertyChangeListener} object.
    */
-  public abstract void applicationActionPerformed( @Nonnull ActionEvent e ) throws ApplicationException;
+  void removePropertyChangeListener( @Nonnull PropertyChangeListener listener );
+
+  /**
+   * Adds a pcs listener
+   *
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
+   */
+  void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
+
+  /**
+   * remove the pcs listener
+   *
+   * @param propertyName a {@link String} object.
+   * @param listener     a {@link PropertyChangeListener} object.
+   */
+  void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 }

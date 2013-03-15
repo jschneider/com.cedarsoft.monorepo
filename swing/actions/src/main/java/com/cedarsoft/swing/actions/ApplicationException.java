@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.swing.action;
+package com.cedarsoft.swing.actions;
 
 /**
  * This is an exception that is excepted to be thrown during application actions.
