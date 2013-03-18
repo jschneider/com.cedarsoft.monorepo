@@ -44,6 +44,7 @@ public class RunnerClassTest {
     }
   }
 
+  @Ignore
   @Test
   public void testNull() throws Exception {
     RunnerClass runnerClass = new RunnerClass();
@@ -57,6 +58,7 @@ public class RunnerClassTest {
     }
   }
 
+  @Ignore
   @Test
   public void testNonNull() throws Exception {
     RunnerClass runnerClass = new RunnerClass();
