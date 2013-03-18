@@ -17,10 +17,10 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.unit.Unit;
+import com.cedarsoft.unit.exponential.Squared;
 import com.cedarsoft.unit.quantity.Area;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
-import com.cedarsoft.unit.quantity.Area;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -42,6 +42,8 @@ import java.lang.annotation.RetentionPolicy;
 @SiDerivedUnit( m.class )
 @Name( "square metre" )
 @Symbol( m2.SYMBOL )
+
+@Squared(m.class)
 public @interface m2 {
   String SYMBOL = "m²";
 }
