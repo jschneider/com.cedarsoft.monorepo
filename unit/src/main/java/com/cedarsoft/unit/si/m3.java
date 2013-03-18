@@ -17,6 +17,7 @@
 package com.cedarsoft.unit.si;
 
 import com.cedarsoft.unit.Unit;
+import com.cedarsoft.unit.exponential.Cubic;
 import com.cedarsoft.unit.quantity.Volume;
 import com.cedarsoft.unit.Name;
 import com.cedarsoft.unit.Symbol;
@@ -40,6 +41,7 @@ import java.lang.annotation.RetentionPolicy;
 @SiDerivedUnit( m.class )
 @Name( "cubic metre" )
 @Symbol( m3.SYMBOL )
+@Cubic(m.class)
 public @interface m3 {
   String SYMBOL = "m³";
 }
