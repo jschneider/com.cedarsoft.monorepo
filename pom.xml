@@ -16,6 +16,10 @@
 
   <packaging>pom</packaging>
 
+  <properties>
+    <java.version>1.6</java.version>
+  </properties>
+
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.annotations</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
@@ -58,7 +62,7 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>test-utils</artifactId>
-        <version>5.1.7</version>
+        <version>5.1.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
