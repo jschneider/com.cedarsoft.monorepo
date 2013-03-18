@@ -56,7 +56,7 @@
           <configuration>
             <classTransformers>
               <classTransformer>com.cedarsoft.annotations.instrumentation.UiThreadAnnotationTransformer</classTransformer>
-              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>
+              <!--<classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>-->
             </classTransformers>
           </configuration>
 
