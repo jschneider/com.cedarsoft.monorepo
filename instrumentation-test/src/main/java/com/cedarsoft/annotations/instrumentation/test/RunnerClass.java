@@ -21,12 +21,12 @@ public class RunnerClass {
   }
 
   @Nonnull
-  public String nonNullMethod(@Nonnull String param) {
+  public String nonNullMethod() {
     return null;
   }
 
   @Nullable
-  public String nullMethod() {
+  public String nullMethod(@Nonnull String param, @Nullable String param2) {
     return null;
   }
 }
