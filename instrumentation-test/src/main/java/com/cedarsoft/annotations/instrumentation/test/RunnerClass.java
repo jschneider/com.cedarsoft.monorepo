@@ -21,7 +21,7 @@ public class RunnerClass {
   }
 
   @Nonnull
-  public String nonNullMethod() {
+  public String nonNullMethod(@Nonnull String param) {
     return null;
   }
 
