@@ -81,7 +81,7 @@ public class ThreadRule implements TestRule {
   }
 
   @Nonnull
-  private Set<? extends Thread> getRemainingThreads() {
+  public Set<? extends Thread> getRemainingThreads() {
     Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
 
     Set<Thread> remainingThreads = new HashSet<Thread>( threadsNow );
