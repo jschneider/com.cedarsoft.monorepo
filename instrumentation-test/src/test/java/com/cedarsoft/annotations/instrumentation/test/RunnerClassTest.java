@@ -44,26 +44,39 @@ public class RunnerClassTest {
     }
   }
 
-  @Ignore
   @Test
-  public void testNull() throws Exception {
+  public void testNullMethodReturnValue() throws Exception {
     RunnerClass runnerClass = new RunnerClass();
 
     try {
       runnerClass.nonNullMethod();
-      fail("Where is the Exception");
+      fail( "Where is the Exception" );
     } catch ( Exception e ) {
-      Assertions.assertThat( e ).isInstanceOf( IllegalArgumentException.class );
-      Assertions.assertThat( e ).hasMessage( "Called from illegal thread. Must be called from UI thread" );
+      Assertions.assertThat( e ).isInstanceOf( java.lang.IllegalStateException.class );
+      Assertions.assertThat( e ).hasMessage( "Return value must not be null for method annotated with @Nonnull" );
     }
   }
 
-  @Ignore
+  @Test
+  public void testNullMethodParam1() throws Exception {
+    RunnerClass runnerClass = new RunnerClass();
+
+    runnerClass.nullMethod( "asdf", null ); //second param may be null
+
+    try {
+      runnerClass.nullMethod( null, "asdf" );
+      fail("Where is the Exception");
+    } catch ( Exception e ) {
+      Assertions.assertThat( e ).isInstanceOf( IllegalArgumentException.class );
+      Assertions.assertThat( e ).hasMessage( "Parameter 1 must not be null" );
+    }
+  }
+
   @Test
   public void testNonNull() throws Exception {
     RunnerClass runnerClass = new RunnerClass();
 
-    String nullValue = runnerClass.nullMethod();
+    String nullValue = runnerClass.nullMethod("asdf", "asdf");
     assertThat( nullValue ).isNull();
   }
 }

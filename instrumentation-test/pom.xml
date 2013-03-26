@@ -50,12 +50,12 @@
         <plugin>
           <groupId>com.cedarsoft.maven</groupId>
           <artifactId>instrumentation-plugin</artifactId>
-          <version>0.6.1</version>
+          <version>0.6.2-SNAPSHOT</version>
 
           <configuration>
             <classTransformers>
               <classTransformer>com.cedarsoft.annotations.instrumentation.UiThreadAnnotationTransformer</classTransformer>
-              <!--<classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>-->
+              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>
             </classTransformers>
           </configuration>
 

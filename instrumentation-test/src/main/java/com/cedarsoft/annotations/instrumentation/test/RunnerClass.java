@@ -26,7 +26,7 @@ public class RunnerClass {
   }
 
   @Nullable
-  public String nullMethod() {
+  public String nullMethod(@Nonnull String param, @Nullable String param2) {
     return null;
   }
 }

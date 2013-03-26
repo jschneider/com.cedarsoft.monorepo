@@ -7,6 +7,7 @@ import javassist.CtField;
 import javassist.CtMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
+import javassist.bytecode.BadBytecode;
 import javassist.bytecode.DuplicateMemberException;
 
 import javax.annotation.Nonnull;
@@ -39,7 +40,7 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
   @Nonnull
   public static final String ASSERTION_DISABLED_FIELD_NAME = "$assertionsDisabled";
 
-  protected abstract void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException ;
+  protected abstract void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException, BadBytecode;
 
   protected static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
     return method.hasAnnotation(annotationType);
