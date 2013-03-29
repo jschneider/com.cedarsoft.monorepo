@@ -1,5 +1,7 @@
 package com.cedarsoft.annotations.instrumentation;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteStreams;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.CtMethod;
@@ -8,12 +10,42 @@ import javassist.bytecode.BadBytecode;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.MessageFormat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer {
+  @Nonnull
+  public static final String NON_NULL_RETURN_VALUE;
+  @Nonnull
+  public static final String NON_NULL_PARAM;
+
+  static {
+    try {
+      {
+        InputStream resourceAsStream = NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullReturnValue.txt" );
+        try {
+          NON_NULL_RETURN_VALUE = new String( ByteStreams.toByteArray( resourceAsStream ), Charsets.UTF_8 );
+        } finally {
+          resourceAsStream.close();
+        }
+      }
+      {
+        InputStream resourceAsStream = NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullParam.txt" );
+        try {
+          NON_NULL_PARAM = new String( ByteStreams.toByteArray( resourceAsStream ), Charsets.UTF_8 );
+        } finally {
+          resourceAsStream.close();
+        }
+      }
+    } catch ( IOException e ) {
+      throw new RuntimeException( e );
+    }
+  }
+
   @Override
   protected void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException, BadBytecode {
     for ( CtMethod method : ctClass.getMethods() ) {
@@ -30,7 +62,7 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
       }
 
       if ( nonNullAnnotation ) {
-        insertAssertedVerificationCodeAfter( method, "{com.cedarsoft.annotations.verification.VerifyNonNull.verifyNonNullReturnValue($_);}" );
+        insertAssertedVerificationCodeAfter( method, NON_NULL_RETURN_VALUE );
       }
 
 
@@ -40,8 +72,7 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
         if ( hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
           int parameterNumber = i + 1;
           method.insertBefore( "System.out.println(\"$" + parameterNumber + "\"+$" + parameterNumber + ");" );
-
-          insertAssertedVerificationCodeBefore( method, "{com.cedarsoft.annotations.verification.VerifyNonNull.verifyNonNullParameter($"+parameterNumber+", "+parameterNumber+");}" );
+          insertAssertedVerificationCodeBefore( method, MessageFormat.format( NON_NULL_PARAM, parameterNumber ) );
         }
       }
     }

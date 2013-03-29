@@ -1,0 +1,4 @@
+if ( ${0} != null ) {
+  return true;
+}
+throw new IllegalArgumentException( "Parameter " + {0} + " must not be null" );
