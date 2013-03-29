@@ -652,7 +652,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-scr-plugin</artifactId>
-          <version>1.10.0</version>
+          <version>1.11.0</version>
         </plugin>
 
         <plugin>
