@@ -41,9 +41,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.open</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.com/git/com.cedarsoft.open</developerConnection>
-    <url>http://git.cedarsoft.com/com.cedarsoft.open/</url>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.open.git</connection>
+    <developerConnection>scm:git:git@github.com:jschneider/com.cedarsoft.open.git</developerConnection>
+    <url>https://github.com/jschneider/com.cedarsoft.open</url>
     <tag>HEAD</tag>
   </scm>
 
