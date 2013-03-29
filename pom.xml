@@ -41,6 +41,7 @@
     <module>inject</module>
     <module>io</module>
     <module>license</module>
+    <module>lang</module>
     <module>lookup</module>
     <module>mail</module>
     <module>objectaccess</module>
@@ -68,6 +69,11 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>lang</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
