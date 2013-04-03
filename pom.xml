@@ -131,7 +131,6 @@
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
         <version>2.0.1</version>
-        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>javax.inject</groupId>
@@ -145,11 +144,11 @@
         <version>2.0.0.20130123-133441</version>
         <scope>provided</scope>
       </dependency>
+
       <dependency>
         <groupId>org.apache.felix</groupId>
         <artifactId>org.apache.felix.scr.annotations</artifactId>
         <version>1.9.0</version>
-        <scope>provided</scope>
       </dependency>
 
       <dependency>
@@ -681,6 +680,19 @@
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-scr-plugin</artifactId>
           <version>1.11.0</version>
+
+          <executions>
+            <execution>
+              <id>generate-scr-scrdescriptor</id>
+              <goals>
+                <goal>scr</goal>
+              </goals>
+            </execution>
+          </executions>
+
+          <configuration>
+            <finalName>${project.artifactId}.ds.xml</finalName>
+          </configuration>
         </plugin>
 
         <plugin>
@@ -843,28 +855,15 @@
     <profile>
       <id>scr</id>
       <activation>
-        <file>
-          <exists>src/main/java</exists>
-        </file>
+        <property>
+          <name>scr</name>
+        </property>
       </activation>
       <build>
         <plugins>
           <plugin>
             <groupId>org.apache.felix</groupId>
             <artifactId>maven-scr-plugin</artifactId>
-
-            <executions>
-              <execution>
-                <id>generate-scr-scrdescriptor</id>
-                <goals>
-                  <goal>scr</goal>
-                </goals>
-              </execution>
-            </executions>
-
-            <configuration>
-              <finalName>${project.artifactId}.ds.xml</finalName>
-            </configuration>
           </plugin>
         </plugins>
       </build>
