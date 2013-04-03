@@ -680,6 +680,19 @@
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-scr-plugin</artifactId>
           <version>1.11.0</version>
+
+          <executions>
+            <execution>
+              <id>generate-scr-scrdescriptor</id>
+              <goals>
+                <goal>scr</goal>
+              </goals>
+            </execution>
+          </executions>
+
+          <configuration>
+            <finalName>${project.artifactId}.ds.xml</finalName>
+          </configuration>
         </plugin>
 
         <plugin>
@@ -842,28 +855,15 @@
     <profile>
       <id>scr</id>
       <activation>
-        <file>
-          <exists>src/main/java</exists>
-        </file>
+        <property>
+          <name>scr</name>
+        </property>
       </activation>
       <build>
         <plugins>
           <plugin>
             <groupId>org.apache.felix</groupId>
             <artifactId>maven-scr-plugin</artifactId>
-
-            <executions>
-              <execution>
-                <id>generate-scr-scrdescriptor</id>
-                <goals>
-                  <goal>scr</goal>
-                </goals>
-              </execution>
-            </executions>
-
-            <configuration>
-              <finalName>${project.artifactId}.ds.xml</finalName>
-            </configuration>
           </plugin>
         </plugins>
       </build>
