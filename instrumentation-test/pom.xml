@@ -96,11 +96,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>com.cedarsoft.maven</groupId>
-        <artifactId>instrumentation-plugin</artifactId>
-      </plugin>
     </plugins>
   </build>
 
