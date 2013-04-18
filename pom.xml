@@ -69,7 +69,13 @@
 
   <repositories>
     <repository>
-      <id>sonatype-nexus-snapshots</id>
+      <id>oss-sonatype-releases</id>
+      <name>OSS Sonatype Releases</name>
+      <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+
+    <repository>
+      <id>oss-sonatype-snapshots</id>
       <name>OSS Sonatype Snapshot</name>
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
       <snapshots>
@@ -468,7 +474,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.0</version>
+          <version>3.1</version>
           <configuration>
             <source>${java.version}</source>
             <target>${java.version}</target>
