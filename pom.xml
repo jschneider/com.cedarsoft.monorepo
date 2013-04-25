@@ -450,6 +450,16 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>com.atlassian.maven.plugins</groupId>
+          <artifactId>maven-jgitflow-plugin</artifactId>
+          <version>1.0-alpha6</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <pushChanges>false</pushChanges>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
           <version>2.0.0</version>
@@ -584,6 +594,7 @@
           <version>2.7</version>
         </plugin>
         <plugin>
+          <!--Deprecated! Do use maven-jgitflow-plugin instead-->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
           <version>2.3.2</version>
@@ -711,6 +722,11 @@
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <groupId>com.atlassian.maven.plugins</groupId>
+        <artifactId>maven-jgitflow-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>license-maven-plugin</artifactId>
