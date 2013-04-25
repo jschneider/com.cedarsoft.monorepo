@@ -473,6 +473,8 @@
             <packagePartsToSkip>
               <skip>common</skip>
               <skip>commons</skip>
+              <skip>test</skip>
+              <skip>tests</skip>
             </packagePartsToSkip>
           </configuration>
         </plugin>
