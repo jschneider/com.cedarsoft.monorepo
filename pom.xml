@@ -452,7 +452,7 @@
         <plugin>
           <groupId>com.atlassian.maven.plugins</groupId>
           <artifactId>maven-jgitflow-plugin</artifactId>
-          <version>1.0-alpha6</version>
+          <version>1.0-alpha7</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <pushChanges>false</pushChanges>
