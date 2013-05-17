@@ -63,10 +63,10 @@ public class JsonUtils {
   }
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
-    if ( test == null || test.trim().length() == 0 ) {
+    if ( test == null || test.trim().isEmpty() ) {
       throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
-    if ( control == null || control.trim().length() == 0 ) {
+    if ( control == null || control.trim().isEmpty() ) {
       throw new ComparisonFailure( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
 
