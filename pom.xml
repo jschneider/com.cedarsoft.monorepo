@@ -473,6 +473,7 @@
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <pushChanges>false</pushChanges>
+            <enableFeatureVersions>true</enableFeatureVersions>
           </configuration>
         </plugin>
 
