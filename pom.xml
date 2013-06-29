@@ -474,6 +474,7 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <pushChanges>false</pushChanges>
             <enableFeatureVersions>true</enableFeatureVersions>
+            <enableSshPass>true</enableSshPass>
           </configuration>
         </plugin>
 
