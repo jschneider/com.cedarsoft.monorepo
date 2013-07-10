@@ -122,7 +122,7 @@
 
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
-    <jetty.version>9.0.3.v20130506</jetty.version>
+    <jetty.version>9.0.4.v20130625</jetty.version>
     <jackson.version>2.2.2</jackson.version>
     <old.jackson.version>1.9.12</old.jackson.version>
   </properties>
