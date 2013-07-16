@@ -124,7 +124,7 @@
     <jaxb.version>2.2.6</jaxb.version>
     <jetty.version>9.0.4.v20130625</jetty.version>
     <jackson.version>2.2.2</jackson.version>
-    <old.jackson.version>1.9.12</old.jackson.version>
+    <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
   <prerequisites>
