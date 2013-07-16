@@ -936,6 +936,8 @@
         <configuration>
           <noticeTemplate>${license.header.url}</noticeTemplate>
           <fileName>LICENSE</fileName>
+          <generateChildNotices>false</generateChildNotices>
+          <includeChildDependencies>false</includeChildDependencies>
         </configuration>
 
         <executions>
