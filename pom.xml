@@ -801,6 +801,7 @@
           </execution>
         </executions>
         <configuration>
+          <useDefaultManifestFile>true</useDefaultManifestFile>
           <archive>
             <manifest>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
