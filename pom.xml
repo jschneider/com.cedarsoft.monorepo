@@ -19,6 +19,11 @@
     <tag>HEAD</tag>
   </scm>
 
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/jschneider/com.cedarsoft.commons/issues</url>
+  </issueManagement>
+
   <properties>
     <java.version>1.6</java.version>
   </properties>
