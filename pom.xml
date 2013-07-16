@@ -501,7 +501,7 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <pushChanges>false</pushChanges>
             <enableFeatureVersions>true</enableFeatureVersions>
-            <enableSshPass>true</enableSshPass>
+            <enableSshAgent>true</enableSshAgent>
           </configuration>
         </plugin>
 
