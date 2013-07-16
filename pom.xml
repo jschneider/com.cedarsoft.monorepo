@@ -929,7 +929,7 @@
             <goals>
               <goal>generate</goal>
             </goals>
-            <phase>process-resources</phase>
+            <phase>generate-resources</phase>
           </execution>
         </executions>
 
