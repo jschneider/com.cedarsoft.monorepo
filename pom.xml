@@ -23,6 +23,19 @@
     <url>http://cedarsoft.com</url>
   </organization>
 
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/jschneider/com.cedarsoft.open/issues</url>
+  </issueManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>Mail-Support</name>
+      <post>support@cedarsoft.com</post>
+    </mailingList>
+  </mailingLists>
+
+
   <developers>
     <developer>
       <id>Johannes Schneider &lt;js@cedarsoft.com&gt;</id>
