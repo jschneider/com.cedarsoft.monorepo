@@ -502,6 +502,8 @@
             <pushChanges>false</pushChanges>
             <enableFeatureVersions>true</enableFeatureVersions>
             <enableSshAgent>true</enableSshAgent>
+            <!--TODO remove as soon as the plugin is released-->
+            <allowSnapshots>true</allowSnapshots>
           </configuration>
         </plugin>
 
