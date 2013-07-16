@@ -739,6 +739,12 @@
           <version>1.5</version>
         </plugin>
 
+        <plugin>
+          <groupId>org.jasig.maven</groupId>
+          <artifactId>maven-notice-plugin</artifactId>
+          <version>1.0.4</version>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -893,6 +899,26 @@
             <ufraw>XML_STYLE</ufraw>
           </mapping>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jasig.maven</groupId>
+        <artifactId>maven-notice-plugin</artifactId>
+        <configuration>
+          <noticeTemplate>${license.header.url}</noticeTemplate>
+          <fileName>LICENSE</fileName>
+        </configuration>
+
+        <executions>
+          <execution>
+            <id>create-notice</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <phase>process-resources</phase>
+          </execution>
+        </executions>
+
       </plugin>
 
       <plugin>
