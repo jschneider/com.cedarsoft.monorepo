@@ -131,6 +131,7 @@
     <maven>${required.maven.version}</maven>
   </prerequisites>
 
+
   <dependencyManagement>
     <dependencies>
       <!--Nullable / Nonnull Annotations-->
@@ -456,6 +457,17 @@
   </dependencyManagement>
 
   <build>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>LICENSE</include>
+        </includes>
+        <targetPath>META-INF/license</targetPath>
+      </resource>
+    </resources>
+
     <extensions>
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
