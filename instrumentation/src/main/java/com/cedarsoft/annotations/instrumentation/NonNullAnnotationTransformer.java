@@ -71,11 +71,7 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
       for ( int i = 0, parameterAnnotationsLength = parameterAnnotations.length; i < parameterAnnotationsLength; i++ ) {
         if ( hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
           int parameterNumber = i + 1;
-          method.insertBefore( "System.out.println(\"$" + parameterNumber + "\"+$" + parameterNumber + ");" );
           String format = MessageFormat.format( NON_NULL_PARAM, parameterNumber );
-          System.out.println( "------------" );
-          System.out.println( format );
-          System.out.println( "------------" );
           insertAssertedVerificationCodeBefore( method, format );
         }
       }
