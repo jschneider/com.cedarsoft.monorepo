@@ -500,14 +500,12 @@
         <plugin>
           <groupId>com.atlassian.maven.plugins</groupId>
           <artifactId>maven-jgitflow-plugin</artifactId>
-          <version>1.0-alpha9-SNAPSHOT</version>
+          <version>1.0-alpha9</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
-            <pushChanges>false</pushChanges>
             <enableFeatureVersions>true</enableFeatureVersions>
             <enableSshAgent>true</enableSshAgent>
-            <!--TODO remove as soon as the plugin is released-->
-            <allowSnapshots>true</allowSnapshots>
+            <localOnly>true</localOnly>
           </configuration>
         </plugin>
 
