@@ -120,7 +120,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <required.maven.version>3.0.2</required.maven.version>
+    <required.maven.version>3.1.0</required.maven.version>
 
     <maven.skin.version>1.1.8</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
@@ -181,7 +181,7 @@
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>14.0.1</version>
+        <version>15.0</version>
       </dependency>
 
       <dependency>
@@ -638,7 +638,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.4</version>
+          <version>2.5</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
