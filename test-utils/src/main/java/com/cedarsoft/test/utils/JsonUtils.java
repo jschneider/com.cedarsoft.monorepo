@@ -31,12 +31,12 @@
 
 package com.cedarsoft.test.utils;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import java.nio.charset.Charset;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -63,10 +63,10 @@ public class JsonUtils {
   }
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
-    if ( test == null || test.trim().length() == 0 ) {
+    if ( test == null || test.trim().isEmpty() ) {
       throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
-    if ( control == null || control.trim().length() == 0 ) {
+    if ( control == null || control.trim().isEmpty() ) {
       throw new ComparisonFailure( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
 

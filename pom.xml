@@ -3,21 +3,26 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>47</version>
+    <version>57</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cedarsoft</groupId>
   <artifactId>commons</artifactId>
   <packaging>pom</packaging>
-  <version>5.1.7</version>
+  <version>6.0.1</version>
   <name>cedarsoft Commons</name>
 
   <scm>
     <connection>scm:git:git://github.com/jschneider/com.cedarsoft.commons.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.commons.git</developerConnection>
-    <tag>5.1.7</tag>
+    <developerConnection>scm:git:git@github.com:jschneider/com.cedarsoft.commons.git</developerConnection>
+    <url>https://github.com/jschneider/com.cedarsoft.commons</url>
+    <tag>HEAD</tag>
   </scm>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/jschneider/com.cedarsoft.commons/issues</url>
+  </issueManagement>
 
   <properties>
     <java.version>1.6</java.version>
@@ -41,6 +46,7 @@
     <module>inject</module>
     <module>io</module>
     <module>license</module>
+    <module>lang</module>
     <module>lookup</module>
     <module>mail</module>
     <module>objectaccess</module>
@@ -68,6 +74,11 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>lang</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -232,11 +243,21 @@
       </dependency>
 
       <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>jackson-mapper-asl</artifactId>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
         <version>${jackson.version}</version>
       </dependency>
-      
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>com.jgoodies</groupId>
         <artifactId>binding</artifactId>
