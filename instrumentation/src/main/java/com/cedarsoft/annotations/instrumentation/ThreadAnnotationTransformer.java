@@ -46,7 +46,6 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
       //Look for each annotation - are they thread related?
       List<String> threadDescriptions = new ArrayList<String>();
 
-      //for (Object annotation : method.getAnnotations()) {
       for (Object annotation : method.getAnnotations()) {
         Class<? extends Annotation> annotationType = ((Annotation) annotation).annotationType();
 
