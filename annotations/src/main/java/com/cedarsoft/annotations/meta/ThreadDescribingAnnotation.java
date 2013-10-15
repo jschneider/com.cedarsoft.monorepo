@@ -1,4 +1,4 @@
-package com.cedarsoft.annotations;
+package com.cedarsoft.annotations.meta;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -6,14 +6,19 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
+import javax.annotation.Nonnull;
 
 /**
+ * Used to mark annotations that describe threads
+ *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
-@Retention( RetentionPolicy.RUNTIME )
-@Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.CONSTRUCTOR} )
-@ThreadDescribingAnnotation("ui-thread")
-public @interface UiThread {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface ThreadDescribingAnnotation {
+  /**
+   * A thread description
+   */
+  @Nonnull String value();
 }
