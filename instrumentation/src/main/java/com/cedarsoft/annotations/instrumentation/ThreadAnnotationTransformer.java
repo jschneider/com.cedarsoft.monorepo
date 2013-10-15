@@ -46,11 +46,11 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
       //Look for each annotation - are they thread related?
       List<String> threadDescriptions = new ArrayList<String>();
 
-      //for (Object annotation : method.getAnnotations()) {
       for (Object annotation : method.getAnnotations()) {
         Class<? extends Annotation> annotationType = ((Annotation) annotation).annotationType();
 
-        @Nullable ThreadDescribingAnnotation threadDescribingAnnotation = annotationType.getAnnotation(ThreadDescribingAnnotation.class);
+        //Now find the annotation of the annotation
+        @Nullable ThreadDescribingAnnotation threadDescribingAnnotation = AnnotationUtils.findAnnotation( annotationType, ThreadDescribingAnnotation.class );
         if (threadDescribingAnnotation == null) {
           continue;
         }
@@ -66,5 +66,4 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
       insertAssertedVerificationCodeAfter(method, getThreadVerificationCode(threadDescriptions));
     }
   }
-
 }
