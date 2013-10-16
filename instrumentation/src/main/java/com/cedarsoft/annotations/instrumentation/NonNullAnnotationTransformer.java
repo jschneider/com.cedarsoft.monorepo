@@ -62,7 +62,7 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
         throw new IllegalStateException( "Must not have both annotations in " + ctClass.getName() + "#" + method.getName() + ": " + Nonnull.class.getName() + " and " + Nullable.class.getName() );
       }
 
-      if ( nonNullAnnotation ) {
+      if ( nonNullAnnotation && !method.getReturnType().isPrimitive() ) {
         insertAssertedVerificationCodeAfter( method, NON_NULL_RETURN_VALUE );
       }
 
@@ -71,6 +71,11 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
       Object[][] parameterAnnotations = method.getParameterAnnotations();
       for ( int i = 0, parameterAnnotationsLength = parameterAnnotations.length; i < parameterAnnotationsLength; i++ ) {
         if ( AnnotationUtils.hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
+          //Skip primitive parameters
+          if ( method.getParameterTypes()[i].isPrimitive() ) {
+            continue;
+          }
+
           int parameterNumber = i + 1;
           String format = MessageFormat.format( NON_NULL_PARAM, parameterNumber );
           insertAssertedVerificationCodeBefore( method, format );
