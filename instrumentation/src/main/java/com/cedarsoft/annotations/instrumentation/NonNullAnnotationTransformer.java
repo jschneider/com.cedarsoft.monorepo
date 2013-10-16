@@ -1,18 +1,19 @@
 package com.cedarsoft.annotations.instrumentation;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.MessageFormat;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
+
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.CtMethod;
 import javassist.NotFoundException;
-import javassist.bytecode.BadBytecode;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.MessageFormat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -47,7 +48,7 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
   }
 
   @Override
-  protected void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException, BadBytecode {
+  protected void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException {
     for ( CtMethod method : ctClass.getMethods() ) {
       if ( method.isEmpty() ) {
         continue;
