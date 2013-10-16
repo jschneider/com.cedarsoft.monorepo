@@ -11,7 +11,9 @@ import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
 
 import javassist.CannotCompileException;
+import javassist.CtBehavior;
 import javassist.CtClass;
+import javassist.CtConstructor;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 
@@ -66,20 +68,29 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
         insertAssertedVerificationCodeAfter( method, NON_NULL_RETURN_VALUE );
       }
 
-
       //Now let's check for the parameters
-      Object[][] parameterAnnotations = method.getParameterAnnotations();
-      for ( int i = 0, parameterAnnotationsLength = parameterAnnotations.length; i < parameterAnnotationsLength; i++ ) {
-        if ( AnnotationUtils.hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
-          //Skip primitive parameters
-          if ( method.getParameterTypes()[i].isPrimitive() ) {
-            continue;
-          }
+      transformParameters( method );
+    }
 
-          int parameterNumber = i + 1;
-          String format = MessageFormat.format( NON_NULL_PARAM, parameterNumber );
-          insertAssertedVerificationCodeBefore( method, format );
+
+    //Transform the parameters for the constructors
+    for ( CtConstructor constructor : ctClass.getConstructors() ) {
+      transformParameters( constructor );
+    }
+  }
+
+  private static void transformParameters( @Nonnull CtBehavior method ) throws ClassNotFoundException, NotFoundException, CannotCompileException {
+    Object[][] parameterAnnotations = method.getParameterAnnotations();
+    for ( int i = 0, parameterAnnotationsLength = parameterAnnotations.length; i < parameterAnnotationsLength; i++ ) {
+      if ( AnnotationUtils.hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
+        //Skip primitive parameters
+        if ( method.getParameterTypes()[i].isPrimitive() ) {
+          continue;
         }
+
+        int parameterNumber = i + 1;
+        String format = MessageFormat.format( NON_NULL_PARAM, parameterNumber );
+        insertAssertedVerificationCodeBefore( method, format );
       }
     }
   }

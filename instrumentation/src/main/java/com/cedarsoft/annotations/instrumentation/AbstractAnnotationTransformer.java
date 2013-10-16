@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 
 import javassist.CannotCompileException;
 import javassist.ClassPool;
+import javassist.CtBehavior;
 import javassist.CtClass;
 import javassist.CtField;
 import javassist.CtMethod;
@@ -54,7 +55,7 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
     return pool.get(className);
   }
 
-  protected static void insertAssertedVerificationCodeBefore( @Nonnull CtMethod method, @Nonnull String verificationCode ) throws CannotCompileException {
+  protected static void insertAssertedVerificationCodeBefore( @Nonnull CtBehavior method, @Nonnull String verificationCode ) throws CannotCompileException {
     ensureAssertField( method.getDeclaringClass() );
     method.insertBefore( wrapInAssertion( verificationCode ) );
   }
