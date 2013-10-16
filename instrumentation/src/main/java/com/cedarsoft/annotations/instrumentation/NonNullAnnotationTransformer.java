@@ -69,25 +69,12 @@ public class NonNullAnnotationTransformer extends AbstractAnnotationTransformer 
       //Now let's check for the parameters
       Object[][] parameterAnnotations = method.getParameterAnnotations();
       for ( int i = 0, parameterAnnotationsLength = parameterAnnotations.length; i < parameterAnnotationsLength; i++ ) {
-        if ( hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
+        if ( AnnotationUtils.hasAnnotation( parameterAnnotations[i], Nonnull.class ) ) {
           int parameterNumber = i + 1;
-          method.insertBefore( "System.out.println(\"$" + parameterNumber + "\"+$" + parameterNumber + ");" );
           String format = MessageFormat.format( NON_NULL_PARAM, parameterNumber );
-          System.out.println( "------------" );
-          System.out.println( format );
-          System.out.println( "------------" );
           insertAssertedVerificationCodeBefore( method, format );
         }
       }
     }
-  }
-
-  private static boolean hasAnnotation( @Nonnull Object[] annotations, @Nonnull Class<?> annotationType ) {
-    for ( Object annotation : annotations ) {
-      if ( annotationType.isAssignableFrom( annotation.getClass() ) ) {
-        return true;
-      }
-    }
-    return false;
   }
 }

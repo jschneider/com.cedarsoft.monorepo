@@ -4,12 +4,12 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>47</version>
+    <version>57</version>
   </parent>
 
   <groupId>com.cedarsoft.annotations</groupId>
   <artifactId>parent</artifactId>
-  <version>2.1.0</version>
+  <version>2.2.0</version>
 
   <name>Annotations Parent</name>
   <description>Parent for the annotations project</description>
@@ -23,7 +23,7 @@
   <scm>
     <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.annotations</connection>
     <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
-    <tag>2.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <modules>
@@ -45,7 +45,7 @@
       <dependency>
         <groupId>org.javassist</groupId>
         <artifactId>javassist</artifactId>
-        <version>3.17.1-GA</version>
+        <version>3.18.1-GA</version>
       </dependency>
 
       <dependency>

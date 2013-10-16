@@ -1,4 +1,4 @@
-package com.cedarsoft.annotations;
+package com.cedarsoft.annotations.instrumentation.test;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -12,8 +12,8 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
-@Retention( RetentionPolicy.RUNTIME )
+@Retention(RetentionPolicy.RUNTIME)
 @Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.CONSTRUCTOR} )
-@ThreadDescribingAnnotation("non-ui-thread")
-public @interface NonUiThread {
+@ThreadDescribingAnnotation("my-custom-thread")
+public @interface CustomThreadAnnotation {
 }
