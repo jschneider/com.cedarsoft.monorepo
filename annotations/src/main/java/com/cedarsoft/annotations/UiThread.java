@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 
 /**
@@ -14,6 +16,8 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 @Documented
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.CONSTRUCTOR} )
-@ThreadDescribingAnnotation("ui-thread")
+@ThreadDescribingAnnotation(UiThread.THREAD_DESCRIPTOR)
 public @interface UiThread {
+  @Nonnull
+  String THREAD_DESCRIPTOR = "ui-thread";
 }

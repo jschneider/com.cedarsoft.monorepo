@@ -14,6 +14,7 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 @Documented
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.CONSTRUCTOR} )
-@ThreadDescribingAnnotation("non-ui-thread")
+@ThreadDescribingAnnotation(NonUiThread.THREAD_DESCRIPTOR)
 public @interface NonUiThread {
+  String THREAD_DESCRIPTOR = "non-ui-thread";
 }
