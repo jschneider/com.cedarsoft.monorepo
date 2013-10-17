@@ -75,14 +75,21 @@
 
     <menu name="Projects">      
       <item name="Serialization" href="http://serialization.cedarsoft.org" />
-      <item name="Rest" href="rest/index.html" />
+      <item name="Annotations" href="annotations/index.html" />
+
       <item name="Unit" href="unit/index.html" />
       <item name="Commons" href="commons/index.html" />
+
+      <item name="Rest" href="rest/index.html" />
+    </menu>
+
+    <menu name="Maven Plugins">
+      <item name="OSGi Validator" href="osgi-validator-maven-plugin/index.html" />
+      <item name="Instrumentation Plugin" href="instrumentation-plugin/index.html" />
     </menu>
 
     <menu name="Other projects">
       <item name="devTools" href="http://devtools.cedarsoft.org" />
-      <item name="wicket" href="wicket/index.html" />
     </menu>
 
     <menu ref="modules" inherit="bottom" />
