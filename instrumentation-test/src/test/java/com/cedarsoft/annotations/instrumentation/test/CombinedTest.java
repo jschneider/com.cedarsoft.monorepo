@@ -15,7 +15,7 @@ public class CombinedTest {
       new Combined().doIt();
       fail("Where is the Exception");
     } catch (Exception e) {
-      assertThat(e).hasMessage("Return value must not be null for method annotated with @Nonnull]");
+      assertThat(e).hasMessage("Return value must not be null for method annotated with @Nonnull");
     }
   }
 }
