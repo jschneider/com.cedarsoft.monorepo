@@ -3,22 +3,10 @@ package com.cedarsoft.annotations.instrumentation.test;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.Fail.fail;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.swing.SwingUtilities;
-
 import org.fest.assertions.Assertions;
-import org.fest.assertions.Fail;
 import org.junit.*;
 
-import com.cedarsoft.annotations.verification.DelegatingThreadVerificationStrategy;
-import com.cedarsoft.annotations.verification.ThreadVerificationStrategy;
-import com.cedarsoft.annotations.verification.VerifyThread;
 import com.cedarsoft.test.utils.CatchAllExceptionsRule;
-import com.google.common.collect.ImmutableList;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -26,37 +14,6 @@ import com.google.common.collect.ImmutableList;
 public class RunnerClassTest {
   @Rule
   public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
-
-  @Test
-  public void testUiThread() throws Exception {
-    SwingUtilities.invokeAndWait( new Runnable() {
-      @Override
-      public void run() {
-        RunnerClass runnerClass = new RunnerClass();
-        runnerClass.methodOnlyFromUi();
-
-        try {
-          runnerClass.methodOnlyFromNonUi();
-          Fail.fail( "Where is the Exception" );
-        } catch ( Exception e ) {
-          Assertions.assertThat( e ).hasMessage( "Called from illegal thread. Must *not* be called from UI thread" );
-        }
-      }
-    } );
-  }
-
-  @Test
-  public void testNonUiThread() throws Exception {
-    RunnerClass runnerClass = new RunnerClass();
-    runnerClass.methodOnlyFromNonUi();
-
-    try {
-      runnerClass.methodOnlyFromUi();
-      Fail.fail( "Where is the Exception" );
-    } catch ( Exception e ) {
-      Assertions.assertThat( e ).hasMessage( "Called from illegal thread. Must be called from UI thread" );
-    }
-  }
 
   @Test
   public void testNullMethodReturnValue() throws Exception {

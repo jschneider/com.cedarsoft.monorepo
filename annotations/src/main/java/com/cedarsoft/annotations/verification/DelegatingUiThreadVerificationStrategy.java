@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public class DelegatingUiThreadVerificationStrategy implements UiThreadVerificationStrategy {
   @Nonnull
   private final List<? extends UiThreadVerificationStrategy> delegates;

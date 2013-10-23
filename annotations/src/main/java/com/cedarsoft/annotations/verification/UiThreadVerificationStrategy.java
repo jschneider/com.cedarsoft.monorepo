@@ -3,6 +3,7 @@ package com.cedarsoft.annotations.verification;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public interface UiThreadVerificationStrategy {
   /**
    * Returns true if the current thread is the ui thread

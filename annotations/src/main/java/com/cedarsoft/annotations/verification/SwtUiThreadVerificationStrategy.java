@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public class SwtUiThreadVerificationStrategy implements UiThreadVerificationStrategy {
   @Nullable
   private static Method detectSwtGetCurrentMethod() {
