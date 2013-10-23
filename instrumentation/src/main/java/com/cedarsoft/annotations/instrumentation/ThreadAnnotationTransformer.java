@@ -63,7 +63,7 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
         continue;
       }
 
-      insertAssertedVerificationCodeAfter(method, getThreadVerificationCode(threadDescriptions));
+      insertAssertedVerificationCodeBefore(method, getThreadVerificationCode(threadDescriptions));
     }
   }
 }
