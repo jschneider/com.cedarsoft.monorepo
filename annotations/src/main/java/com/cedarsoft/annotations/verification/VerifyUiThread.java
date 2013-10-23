@@ -1,14 +1,14 @@
 package com.cedarsoft.annotations.verification;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public class VerifyUiThread {
   @Nonnull
   private static UiThreadVerificationStrategy strategy;
