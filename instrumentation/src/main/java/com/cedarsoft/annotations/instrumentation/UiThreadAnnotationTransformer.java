@@ -1,16 +1,18 @@
 package com.cedarsoft.annotations.instrumentation;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
+
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.CtMethod;
 
-import javax.annotation.Nonnull;
-
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public class UiThreadAnnotationTransformer extends AbstractAnnotationTransformer {
   @Nonnull
   private static String getUiThreadVerificationCode() {
