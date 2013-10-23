@@ -16,7 +16,7 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 @Documented
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD} )
-@ThreadDescribingAnnotation(Blocking.THREAD_DESCRIPTOR)
+@ThreadDescribingAnnotation(NonBlocking.THREAD_DESCRIPTOR)
 public @interface NonBlocking {
   @Nonnull
   String THREAD_DESCRIPTOR = "non-blocking";
