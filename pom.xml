@@ -775,6 +775,19 @@
 
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>Attach Site Descriptor</id>
+            <goals>
+              <goal>attach-descriptor</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <groupId>com.atlassian.maven.plugins</groupId>
         <artifactId>maven-jgitflow-plugin</artifactId>
       </plugin>
