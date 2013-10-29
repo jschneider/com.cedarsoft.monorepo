@@ -11,9 +11,11 @@ import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtBehavior;
 import javassist.CtClass;
+import javassist.CtField;
 import javassist.CtMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
+import javassist.bytecode.DuplicateMemberException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -36,6 +38,9 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
     }
   }
 
+  @Nonnull
+  public static final String ASSERTION_DISABLED_FIELD_NAME = "$assertionsDisabled";
+
   protected abstract void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException;
 
   protected static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
@@ -51,22 +56,37 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
   }
 
   protected static void insertAssertedVerificationCodeBefore( @Nonnull CtBehavior method, @Nonnull String verificationCode ) throws CannotCompileException {
-    method.insertBefore( wrapInAssertion( method.getDeclaringClass(), verificationCode ) );
+    method.insertBefore( wrapInAssertion(method.getDeclaringClass(), verificationCode ) );
   }
 
   protected static void insertAssertedVerificationCodeAfter( @Nonnull CtMethod method, @Nonnull String verificationCode ) throws CannotCompileException {
-    method.insertAfter( wrapInAssertion( method.getDeclaringClass(), verificationCode ) );
+    method.insertAfter(wrapInAssertion(method.getDeclaringClass(), verificationCode));
   }
 
   /**
    * Wraps the given code into an assertion statement
    *
-   * @param declaringClass the declaring class
+   * @param ctClass the class the assertion status is queried for
    * @param code the assertion code
    * @return the assert statement
    */
   @Nonnull
-  protected static String wrapInAssertion(@Nonnull CtClass declaringClass, @Nonnull String code) {
-    return "if( " + declaringClass.getName() + ".class.desiredAssertionStatus() ){" + code + "}";
+  protected static String wrapInAssertion(@Nonnull CtClass ctClass, @Nonnull String code) throws CannotCompileException {
+    ensureAssertField(ctClass);
+
+    return "if( !" + ASSERTION_DISABLED_FIELD_NAME + " ){" + code + "}";
+  }
+
+  /**
+   * Ensures that the assert field for the class exists
+   *
+   * @param ctClass the class
+   */
+  protected static void ensureAssertField( @Nonnull CtClass ctClass ) throws CannotCompileException {
+    try {
+      CtField assertionsDisabledField = CtField.make("static final boolean " + ASSERTION_DISABLED_FIELD_NAME + " = !" + ctClass.getName() + ".class.desiredAssertionStatus();", ctClass);
+      ctClass.addField(assertionsDisabledField);
+    } catch (DuplicateMemberException ignore) {
+    }
   }
 }
