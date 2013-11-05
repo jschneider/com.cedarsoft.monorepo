@@ -122,7 +122,7 @@
 
     <required.maven.version>3.1.0</required.maven.version>
 
-    <maven.skin.version>1.1.8</maven.skin.version>
+    <maven.skin.version>1.1.9-SNAPSHOT</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
     <coverage.haltOnFailure>false</coverage.haltOnFailure>
