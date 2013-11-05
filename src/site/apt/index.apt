@@ -39,3 +39,8 @@ Common Annotations
 
  This project contains several annotations that are commonly used within several projects.
 
+
+
+ In combination with the com.cedarsoft:instrumentation-plugin it is possible to instrument
+ the source code and inject checks.
+
