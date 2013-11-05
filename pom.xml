@@ -1171,7 +1171,7 @@
         <reportSets>
           <reportSet>
             <reports>
-              <report>github-report</report>
+              <!--<report>github-report</report>-->
             </reports>
           </reportSet>
         </reportSets>
