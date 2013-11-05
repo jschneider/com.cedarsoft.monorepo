@@ -38,14 +38,14 @@
 
   <bannerLeft>
     <name>${project} ${project.toString()}</name>
-    <src>open.jpg</src>
+    <src>open.png</src>
     <href>index.html</href>
   </bannerLeft>
 
 
   <bannerRight>
     <name>cedarsoft</name>
-    <src>images/cedarsoft.jpg</src>
+    <src>logo_transparent.png</src>
     <href>http://www.cedarsoft.com/</href>
   </bannerRight>
 
