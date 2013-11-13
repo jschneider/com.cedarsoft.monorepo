@@ -9,7 +9,7 @@
 
   <artifactId>instrumentation-test2</artifactId>
 
-  <name>Instrumentation Test Module 2</name>
+  <name>Instrumentation Tests 2</name>
   <description>Test module for annotations based instrumentation</description>
 
   <dependencies>
