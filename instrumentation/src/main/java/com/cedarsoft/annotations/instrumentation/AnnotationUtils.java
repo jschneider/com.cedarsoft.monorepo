@@ -13,6 +13,12 @@ public class AnnotationUtils {
   private AnnotationUtils() {
   }
 
+  /**
+   * Returns whether the given annotations contains the searched annotation
+   * @param annotations a array of annotations
+   * @param annotationType the annotation type
+   * @return true if an annotation of the given type is contained, false otherwise
+   */
   public static boolean hasAnnotation( @Nonnull Object[] annotations, @Nonnull Class<? extends Annotation> annotationType ) {
     for ( Object annotation : annotations ) {
       if ( isOfType( ( Annotation ) annotation, annotationType ) ) {
@@ -22,15 +28,28 @@ public class AnnotationUtils {
     return false;
   }
 
+  /**
+   * Returns whether the given annotation is of the queried type
+   * @param annotation the annotation
+   * @param expectedAnnotationType the expected annotation type
+   * @return true if the annotation is of the given type, false otherwise
+   */
   public static boolean isOfType( @Nonnull Annotation annotation, @Nonnull Class<? extends Annotation> expectedAnnotationType ) {
     //if ( annotation.annotationType().getName().equals( expectedAnnotationType.getName() ) ) {
     return annotation.annotationType().equals( expectedAnnotationType );
   }
 
 
+  /**
+   * Returns the (first) annotation of the given type, or null
+   *
+   * @param annotations the annotations
+   * @param annotationType the annotation type
+   * @return the annotation - if found - or null
+   */
   @Nullable
-  public static <T extends Annotation> T findAnnotation( @Nonnull Class<?> type, @Nonnull Class<T> annotationType ) {
-    for ( Annotation annotation : type.getAnnotations() ) {
+  public static <T extends Annotation> T findAnnotation( @Nonnull Annotation[] annotations, @Nonnull Class<T> annotationType ) {
+    for ( Annotation annotation : annotations ) {
       if ( isOfType( annotation, annotationType ) ) {
         return annotationType.cast( annotation );
         //return ( T ) annotation;

@@ -50,7 +50,7 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
         Class<? extends Annotation> annotationType = ((Annotation) annotation).annotationType();
 
         //Now find the annotation of the annotation
-        @Nullable ThreadDescribingAnnotation threadDescribingAnnotation = AnnotationUtils.findAnnotation( annotationType, ThreadDescribingAnnotation.class );
+        @Nullable ThreadDescribingAnnotation threadDescribingAnnotation = AnnotationUtils.findAnnotation( annotationType.getAnnotations(), ThreadDescribingAnnotation.class );
         if (threadDescribingAnnotation == null) {
           continue;
         }

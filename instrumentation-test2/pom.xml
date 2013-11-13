@@ -7,9 +7,9 @@
     <version>3.0.0</version>
   </parent>
 
-  <artifactId>instrumentation-test</artifactId>
+  <artifactId>instrumentation-test2</artifactId>
 
-  <name>Instrumentation Tests</name>
+  <name>Instrumentation Tests 2</name>
   <description>Test module for annotations based instrumentation</description>
 
   <dependencies>
@@ -17,6 +17,10 @@
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
     </dependency>
 
     <dependency>
@@ -54,7 +58,8 @@
 
           <configuration>
             <classTransformers>
-              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>
+              <!--<classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>-->
+              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullGuavaAnnotationTransformer</classTransformer>
               <classTransformer>com.cedarsoft.annotations.instrumentation.ThreadAnnotationTransformer</classTransformer>
               <classTransformer>com.cedarsoft.annotations.instrumentation.NonBlockingAnnotationTransformer</classTransformer>
             </classTransformers>
