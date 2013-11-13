@@ -42,14 +42,14 @@ public class AnnotationUtils {
 
   /**
    * Returns the (first) annotation of the given type, or null
-   * @param type the type
+   *
+   * @param annotations
    * @param annotationType the annotation type
-   * @param <T> the annotation type
    * @return the annotation - if found - or null
    */
   @Nullable
-  public static <T extends Annotation> T findAnnotation( @Nonnull Class<?> type, @Nonnull Class<T> annotationType ) {
-    for ( Annotation annotation : type.getAnnotations() ) {
+  public static <T extends Annotation> T findAnnotation( @Nonnull Annotation[] annotations, @Nonnull Class<T> annotationType ) {
+    for ( Annotation annotation : annotations ) {
       if ( isOfType( annotation, annotationType ) ) {
         return annotationType.cast( annotation );
         //return ( T ) annotation;
