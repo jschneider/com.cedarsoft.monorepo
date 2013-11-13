@@ -31,7 +31,7 @@ public class AnnotationUtils {
   /**
    * Returns whether the given annotation is of the queried type
    * @param annotation the annotation
-   * @param expectedAnnotationType the exprected annotation type
+   * @param expectedAnnotationType the expected annotation type
    * @return true if the annotation is of the given type, false otherwise
    */
   public static boolean isOfType( @Nonnull Annotation annotation, @Nonnull Class<? extends Annotation> expectedAnnotationType ) {
@@ -43,7 +43,7 @@ public class AnnotationUtils {
   /**
    * Returns the (first) annotation of the given type, or null
    *
-   * @param annotations
+   * @param annotations the annotations
    * @param annotationType the annotation type
    * @return the annotation - if found - or null
    */
