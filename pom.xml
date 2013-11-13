@@ -30,6 +30,7 @@
     <module>annotations</module>
     <module>instrumentation</module>
     <module>instrumentation-test</module>
+    <module>instrumentation-test2</module>
   </modules>
 
   <distributionManagement>

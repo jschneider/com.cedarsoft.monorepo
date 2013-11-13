@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.cedarsoft.annotations</groupId>
+    <artifactId>parent</artifactId>
+    <version>2.3.3-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>instrumentation-test2</artifactId>
+
+  <name>Instrumentation Test Module 2</name>
+  <description>Test module for annotations based instrumentation</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+
+    <!--Test Dependencies-->
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-reflect</artifactId>
+      <version>1.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.cedarsoft.maven</groupId>
+          <artifactId>instrumentation-plugin</artifactId>
+          <version>0.7.2</version>
+
+          <configuration>
+            <classTransformers>
+              <!--<classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>-->
+              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullGuavaAnnotationTransformer</classTransformer>
+              <classTransformer>com.cedarsoft.annotations.instrumentation.ThreadAnnotationTransformer</classTransformer>
+              <classTransformer>com.cedarsoft.annotations.instrumentation.NonBlockingAnnotationTransformer</classTransformer>
+            </classTransformers>
+          </configuration>
+
+          <dependencies>
+            <dependency>
+              <groupId>com.cedarsoft.annotations</groupId>
+              <artifactId>instrumentation</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            <!--<dependency>-->
+              <!--<groupId>com.google.code.findbugs</groupId>-->
+              <!--<artifactId>jsr305</artifactId>-->
+              <!--<version>2.0.1</version>-->
+              <!--<scope>compile</scope>-->
+            <!--</dependency>-->
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+
+    <plugins>
+      <plugin>
+        <groupId>com.cedarsoft.maven</groupId>
+        <artifactId>instrumentation-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>instrument-classes</id>
+            <goals>
+              <goal>instrument</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>instrument-test-classes</id>
+            <goals>
+              <goal>instrument-tests</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
