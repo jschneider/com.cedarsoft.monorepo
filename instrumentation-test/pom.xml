@@ -50,7 +50,7 @@
         <plugin>
           <groupId>com.cedarsoft.maven</groupId>
           <artifactId>instrumentation-plugin</artifactId>
-          <version>0.7.2</version>
+          <version>0.7.3-SNAPSHOT</version>
 
           <configuration>
             <classTransformers>
