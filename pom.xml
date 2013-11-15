@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>58</version>
+  <version>59</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -135,8 +135,8 @@
 
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
-    <jetty.version>9.1.0.RC1</jetty.version>
-    <jackson.version>2.2.3</jackson.version>
+    <jetty.version>9.1.0.RC2</jetty.version>
+    <jackson.version>2.3.0</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -498,9 +498,22 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.4.8</version>
+          <extensions>true</extensions>
+          <configuration>
+            <!-- The Base URL of Nexus instance where we want to stage -->
+            <nexusUrl>https://oss.sonatype.org</nexusUrl>
+            <!-- The server "id" element from settings to use authentication from -->
+            <serverId>sonatype-nexus-staging</serverId>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>com.atlassian.maven.plugins</groupId>
           <artifactId>maven-jgitflow-plugin</artifactId>
-          <version>1.0-alpha22</version>
+          <version>1.0-alpha24</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <enableFeatureVersions>true</enableFeatureVersions>
@@ -774,6 +787,11 @@
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
