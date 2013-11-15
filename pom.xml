@@ -135,8 +135,8 @@
 
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
-    <jetty.version>9.1.0.RC1</jetty.version>
-    <jackson.version>2.2.3</jackson.version>
+    <jetty.version>9.1.0.RC2</jetty.version>
+    <jackson.version>2.3.0</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -500,7 +500,7 @@
         <plugin>
           <groupId>com.atlassian.maven.plugins</groupId>
           <artifactId>maven-jgitflow-plugin</artifactId>
-          <version>1.0-alpha22</version>
+          <version>1.0-alpha26</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <enableFeatureVersions>true</enableFeatureVersions>
