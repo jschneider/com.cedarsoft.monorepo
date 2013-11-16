@@ -117,6 +117,8 @@
   <properties>
     <java.version>1.6</java.version>
 
+    <maven-site-plugin.skip>false</maven-site-plugin.skip>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -684,6 +686,10 @@
               <version>${maven.skin.version}</version>
             </dependency>
           </dependencies>
+          <configuration>
+            <!--If set to true, the site generation is skipped-->
+            <skip>${maven-site-plugin.skip}</skip>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
