@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>59</version>
+  <version>60</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -117,6 +117,8 @@
   <properties>
     <java.version>1.6</java.version>
 
+    <maven-site-plugin.skip>false</maven-site-plugin.skip>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -135,7 +137,7 @@
 
     <guice.version>3.0</guice.version>
     <jaxb.version>2.2.6</jaxb.version>
-    <jetty.version>9.1.0.RC2</jetty.version>
+    <jetty.version>9.1.0.v20131115</jetty.version>
     <jackson.version>2.3.0</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
@@ -500,7 +502,7 @@
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.4.8</version>
+          <version>1.5.1</version>
           <extensions>true</extensions>
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
@@ -646,7 +648,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>clirr-maven-plugin</artifactId>
-          <version>2.6</version>
+          <version>2.6.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -684,11 +686,15 @@
               <version>${maven.skin.version}</version>
             </dependency>
           </dependencies>
+          <configuration>
+            <!--If set to true, the site generation is skipped-->
+            <skip>${maven-site-plugin.skip}</skip>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.10</version>
+          <version>2.11</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
