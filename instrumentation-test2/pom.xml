@@ -12,6 +12,11 @@
   <name>Instrumentation Tests 2</name>
   <description>Test module for annotations based instrumentation</description>
 
+  <properties>
+    <!--Skip site generation-->
+    <maven-site-plugin.skip>true</maven-site-plugin.skip>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
@@ -46,7 +51,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
 
   <build>
     <pluginManagement>
