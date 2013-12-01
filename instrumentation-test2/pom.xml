@@ -61,12 +61,7 @@
           <version>0.7.3-SNAPSHOT</version>
 
           <configuration>
-            <classTransformers>
-              <!--<classTransformer>com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer</classTransformer>-->
-              <classTransformer>com.cedarsoft.annotations.instrumentation.NonNullGuavaAnnotationTransformer</classTransformer>
-              <classTransformer>com.cedarsoft.annotations.instrumentation.ThreadAnnotationTransformer</classTransformer>
-              <classTransformer>com.cedarsoft.annotations.instrumentation.NonBlockingAnnotationTransformer</classTransformer>
-            </classTransformers>
+            <useGuava>true</useGuava>
           </configuration>
 
           <dependencies>
@@ -75,12 +70,6 @@
               <artifactId>instrumentation</artifactId>
               <version>${project.version}</version>
             </dependency>
-            <!--<dependency>-->
-              <!--<groupId>com.google.code.findbugs</groupId>-->
-              <!--<artifactId>jsr305</artifactId>-->
-              <!--<version>2.0.1</version>-->
-              <!--<scope>compile</scope>-->
-            <!--</dependency>-->
           </dependencies>
         </plugin>
       </plugins>
