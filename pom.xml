@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>60</version>
+  <version>61</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -135,10 +135,10 @@
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
-    <guice.version>3.0</guice.version>
-    <jaxb.version>2.2.6</jaxb.version>
-    <jetty.version>9.1.0.v20131115</jetty.version>
-    <jackson.version>2.3.0</jackson.version>
+    <guice.version>4.0-beta4</guice.version>
+    <jaxb.version>2.2.8-b01</jaxb.version>
+    <jetty.version>9.1.3.v20140225</jetty.version>
+    <jackson.version>2.3.2</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -153,7 +153,7 @@
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3</version>
       </dependency>
       <dependency>
         <groupId>javax.inject</groupId>
@@ -171,7 +171,7 @@
       <dependency>
         <groupId>org.apache.felix</groupId>
         <artifactId>org.apache.felix.scr.annotations</artifactId>
-        <version>1.9.6</version>
+        <version>1.9.8</version>
       </dependency>
 
       <dependency>
@@ -183,7 +183,7 @@
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>15.0</version>
+        <version>17.0</version>
       </dependency>
 
       <dependency>
@@ -194,7 +194,7 @@
       <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
-        <version>1.8</version>
+        <version>1.9</version>
       </dependency>
       <dependency>
         <groupId>commons-logging</groupId>
@@ -220,12 +220,12 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.5</version>
+        <version>1.7.7</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.5</version>
+        <version>1.7.7</version>
       </dependency>
 
       <dependency>
@@ -290,7 +290,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.5</version>
+        <version>1.4.7</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
@@ -316,7 +316,7 @@
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
         <artifactId>woodstox-core-asl</artifactId>
-        <version>4.2.0</version>
+        <version>4.3.0</version>
         <exclusions>
           <exclusion>
             <groupId>javax.xml.stream</groupId>
@@ -327,7 +327,7 @@
       <dependency>
         <groupId>jaxen</groupId>
         <artifactId>jaxen</artifactId>
-        <version>1.1.4</version>
+        <version>1.1.6</version>
         <!--
         This is necessary since those plugins are not found within maven central anymore(?)
         http://jira.codehaus.org/browse/JAXEN-217
@@ -360,7 +360,7 @@
       <dependency>
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
-        <version>2.3.1</version>
+        <version>2.3.2</version>
       </dependency>
 
       <dependency>
@@ -502,7 +502,7 @@
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.5.1</version>
+          <version>1.6.1</version>
           <extensions>true</extensions>
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
@@ -572,12 +572,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.16</version>
+          <version>2.17</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.16</version>
+          <version>2.17</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -607,7 +607,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-plugin</artifactId>
-          <version>1.8.1</version>
+          <version>1.9</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -617,7 +617,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
-          <version>2.9</version>
+          <version>2.10</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -627,7 +627,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
-          <version>1.2.1</version>
+          <version>1.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -664,7 +664,7 @@
           <!--Deprecated! Do use maven-jgitflow-plugin instead-->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.4.2</version>
+          <version>2.5</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <localCheckout>true</localCheckout>
@@ -694,7 +694,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.11</version>
+          <version>2.12.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -704,7 +704,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jxr-plugin</artifactId>
-          <version>2.3</version>
+          <version>2.4</version>
           <configuration>
             <aggregate>true</aggregate>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
@@ -729,7 +729,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.4</version>
+          <version>1.5</version>
 
           <configuration>
             <useAgent>true</useAgent>
@@ -767,7 +767,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-scr-plugin</artifactId>
-          <version>1.15.0</version>
+          <version>1.16.0</version>
 
           <executions>
             <execution>
@@ -786,7 +786,23 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>1.5</version>
+          <version>1.6</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-maven</artifactId>
+          <version>0.33</version>
+          <configuration>
+            <targetClasses>
+              <param>com.cedarsoft.*</param>
+            </targetClasses>
+
+            <targetTests>
+              <param>com.cedarsoft.*</param>
+            </targetTests>
+
+          </configuration>
         </plugin>
 
       </plugins>
@@ -920,7 +936,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
+        <version>2.4</version>
         <dependencies>
           <dependency>
             <groupId>com.cedarsoft.maven</groupId>
@@ -931,9 +947,9 @@
       </plugin>
 
       <plugin>
-        <groupId>com.mycila.maven-license-plugin</groupId>
+        <groupId>com.mycila</groupId>
         <artifactId>maven-license-plugin</artifactId>
-        <version>1.10.b1</version>
+        <version>2.5</version>
         <configuration>
           <strictCheck>true</strictCheck>
           <header>${license.header.url}</header>
@@ -1119,7 +1135,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.1</version>
         <configuration>
           <linkXRef>true</linkXRef>
           <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
@@ -1150,7 +1166,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0-beta-2</version>
+        <version>2.0</version>
       </plugin>
 
       <plugin>
@@ -1210,7 +1226,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.16</version>
+        <version>2.17</version>
       </plugin>
 
       <plugin>
