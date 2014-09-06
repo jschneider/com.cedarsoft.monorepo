@@ -320,7 +320,7 @@
         <version>4.4.0</version>
         <exclusions>
           <exclusion>
-            <groupId>stax</groupId>
+            <groupId>javax.xml.stream</groupId>
             <artifactId>stax-api</artifactId>
           </exclusion>
         </exclusions>
