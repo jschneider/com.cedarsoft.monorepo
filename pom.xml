@@ -954,6 +954,7 @@
             <exclude>**/*.cr2</exclude>
             <exclude>**/*.xcf</exclude>
             <exclude>**/pom.xml</exclude>
+            <exclude>**/LICENSE</exclude>
           </excludes>
 
           <mapping>
