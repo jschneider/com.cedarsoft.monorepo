@@ -502,7 +502,7 @@
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.1</version>
+          <version>1.6.3</version>
           <extensions>true</extensions>
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
@@ -627,7 +627,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
-          <version>1.3</version>
+          <version>1.3.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -786,13 +786,13 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>1.6</version>
+          <version>1.7</version>
         </plugin>
 
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>0.33</version>
+          <version>1.0.0</version>
           <configuration>
             <targetClasses>
               <param>com.cedarsoft.*</param>
