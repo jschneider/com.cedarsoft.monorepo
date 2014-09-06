@@ -514,9 +514,10 @@
         </plugin>
 
         <plugin>
-          <groupId>com.atlassian.maven.plugins</groupId>
-          <artifactId>maven-jgitflow-plugin</artifactId>
-          <version>1.0-alpha24</version>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>1.0-m4.3</version>
+
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <enableFeatureVersions>true</enableFeatureVersions>
@@ -829,8 +830,8 @@
       </plugin>
 
       <plugin>
-        <groupId>com.atlassian.maven.plugins</groupId>
-        <artifactId>maven-jgitflow-plugin</artifactId>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
       </plugin>
 
       <plugin>
