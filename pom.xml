@@ -834,24 +834,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>add-third-party</goal>
-            </goals>
-          </execution>
-        </executions>
-
-        <configuration>
-          <thirdPartyFilename>META-INF/license/THIRD-PARTY.txt</thirdPartyFilename>
-        </configuration>
-      </plugin>
-
-
-      <plugin>
         <groupId>com.cedarsoft</groupId>
         <artifactId>osgi-validator-maven-plugin</artifactId>
         <executions>
@@ -978,6 +960,23 @@
             <fx>JAVADOC_STYLE</fx>
             <ufraw>XML_STYLE</ufraw>
           </mapping>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>add-third-party</goal>
+            </goals>
+          </execution>
+        </executions>
+
+        <configuration>
+          <thirdPartyFilename>META-INF/license/THIRD-PARTY.txt</thirdPartyFilename>
         </configuration>
       </plugin>
 
