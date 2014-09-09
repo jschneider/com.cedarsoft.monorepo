@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>62</version>
+  <version>63</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -505,6 +505,16 @@
           <artifactId>nexus-staging-maven-plugin</artifactId>
           <version>1.6.3</version>
           <extensions>true</extensions>
+
+          <!--Workaround for https://issues.sonatype.org/browse/NEXUS-6836-->
+          <dependencies>
+            <dependency>
+              <groupId>com.thoughtworks.xstream</groupId>
+              <artifactId>xstream</artifactId>
+              <version>1.4.7</version>
+            </dependency>
+          </dependencies>
+
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
             <nexusUrl>https://oss.sonatype.org</nexusUrl>
