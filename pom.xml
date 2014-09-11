@@ -1126,6 +1126,13 @@
           <links>
             <link>http://java.sun.com/javase/6/docs/api/</link>
           </links>
+          <tags>
+            <tag>
+              <!--ignore the noinspection-->
+              <name>noinspection</name>
+              <placement>X</placement>
+            </tag>
+          </tags>
         </configuration>
         <reportSets>
           <reportSet>
