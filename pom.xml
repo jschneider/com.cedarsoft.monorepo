@@ -652,6 +652,12 @@
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
+            <tags>
+              <tag>
+                <name>noinspection</name>
+                <placement>X</placement>
+              </tag>
+            </tags>
           </configuration>
           <dependencies>
             <dependency>
@@ -1128,7 +1134,6 @@
           </links>
           <tags>
             <tag>
-              <!--ignore the noinspection-->
               <name>noinspection</name>
               <placement>X</placement>
             </tag>
