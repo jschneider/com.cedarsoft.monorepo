@@ -136,7 +136,7 @@
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
-    <guice.version>4.0-beta4</guice.version>
+    <guice.version>4.0-beta5</guice.version>
     <jaxb.version>2.2.10-b140310.1920</jaxb.version>
     <jetty.version>9.2.2.v20140723</jetty.version>
     <jackson.version>2.4.2</jackson.version>
@@ -317,7 +317,7 @@
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
         <artifactId>woodstox-core-asl</artifactId>
-        <version>4.4.0</version>
+        <version>4.4.1</version>
         <exclusions>
           <exclusion>
             <groupId>javax.xml.stream</groupId>
