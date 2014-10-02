@@ -9,7 +9,7 @@
 
   <groupId>com.cedarsoft.annotations</groupId>
   <artifactId>parent</artifactId>
-  <version>3.0.2-SNAPSHOT</version>
+  <version>3.0.1</version>
 
   <name>Annotations Parent</name>
   <description>Parent for the annotations project</description>
