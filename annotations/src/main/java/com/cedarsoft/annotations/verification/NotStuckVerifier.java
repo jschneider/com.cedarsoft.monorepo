@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 /**
  * This verifier may be used to verify that a thread is not stuck.
- * This is useful in combination with the {@link #com.cedarsoft.annotations.NonBlocking} annotation.
+ * This is useful in combination with the com.cedarsoft.annotations.NonBlocking annotation.
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
