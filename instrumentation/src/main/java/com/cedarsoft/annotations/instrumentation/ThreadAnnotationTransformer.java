@@ -38,7 +38,7 @@ public class ThreadAnnotationTransformer extends AbstractAnnotationTransformer {
 
   @Override
   protected void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException {
-    for ( CtMethod method : ctClass.getMethods() ) {
+    for ( CtMethod method : ctClass.getDeclaredMethods() ) {
       if ( method.isEmpty() ) {
         continue;
       }

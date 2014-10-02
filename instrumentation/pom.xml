@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft.annotations</groupId>
     <artifactId>parent</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
   </parent>
 
   <artifactId>instrumentation</artifactId>
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-reflect</artifactId>
-      <version>1.4</version>
+      <version>1.4.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>

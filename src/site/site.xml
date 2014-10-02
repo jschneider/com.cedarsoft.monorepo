@@ -22,14 +22,14 @@
 
     <menu name="Overview">
       <item name="Introduction" href="index.html" />
-      <!--<item name="Usage" href="usage.html" />-->
+      <item name="Usage" href="usage.html" />
       <!--<item name="Downloads" href="downloads.html" />-->
       <!--<item name="Integration" href="integration.html" />-->
-      <!--<item name="FAQs" href="faq.html" />-->
+      <item name="FAQs" href="faq.html" />
     </menu>
 
-    <menu ref="parentProject"/>
-    <menu ref="reports" inherit="bottom" />
+    <!--<menu ref="reports" />-->
+    <!--<menu ref="modules"  />-->
   </body>
 
   <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />

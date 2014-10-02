@@ -19,6 +19,7 @@ import javax.annotation.Nonnull;
 public @interface ThreadDescribingAnnotation {
   /**
    * A thread description
+   * @return the thread description
    */
   @Nonnull String value();
 }

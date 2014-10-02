@@ -16,7 +16,7 @@ public class ObjectWithNullTest {
       new ObjectWithNull( null );
       fail( "Where is the Exception" );
     } catch ( NullPointerException e ) {
-      assertThat( e ).hasMessage( "Parameter 0 must not be null" );
+      assertThat( e ).hasMessage( "Parameter 1 must not be null" );
     }
   }
 
