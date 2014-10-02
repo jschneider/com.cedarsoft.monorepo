@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>63</version>
+  <version>64</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -136,7 +136,7 @@
     <coverage.totalLineRate>50</coverage.totalLineRate>
     <coverage.totalBranchRate>50</coverage.totalBranchRate>
 
-    <guice.version>4.0-beta4</guice.version>
+    <guice.version>4.0-beta5</guice.version>
     <jaxb.version>2.2.10-b140310.1920</jaxb.version>
     <jetty.version>9.2.2.v20140723</jetty.version>
     <jackson.version>2.4.2</jackson.version>
@@ -317,7 +317,7 @@
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
         <artifactId>woodstox-core-asl</artifactId>
-        <version>4.4.0</version>
+        <version>4.4.1</version>
         <exclusions>
           <exclusion>
             <groupId>javax.xml.stream</groupId>
@@ -501,9 +501,13 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <!--
+          After: jgitflow:release-finish
+          call: mvn nexus-staging:release
+          -->
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.3</version>
+          <version>1.6.4</version>
           <extensions>true</extensions>
 
           <!--Workaround for https://issues.sonatype.org/browse/NEXUS-6836-->
@@ -558,7 +562,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>2.5</version>
+          <version>2.6</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -614,12 +618,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.8</version>
+          <version>2.9</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-plugin</artifactId>
-          <version>1.9.1</version>
+          <version>1.9.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -629,7 +633,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
-          <version>2.10</version>
+          <version>2.11</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -644,10 +648,16 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.9.1</version>
+          <version>2.10</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
+            <tags>
+              <tag>
+                <name>noinspection</name>
+                <placement>X</placement>
+              </tag>
+            </tags>
           </configuration>
           <dependencies>
             <dependency>
@@ -676,7 +686,7 @@
           <!--Deprecated! Do use maven-jgitflow-plugin instead-->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.5</version>
+          <version>2.5.1</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <localCheckout>true</localCheckout>
@@ -706,7 +716,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.12.1</version>
+          <version>2.13</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -804,7 +814,7 @@
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.0.0</version>
+          <version>1.1.0</version>
           <configuration>
             <targetClasses>
               <param>com.cedarsoft.*</param>
@@ -1115,13 +1125,19 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
+        <version>2.10</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
           <links>
             <link>http://java.sun.com/javase/6/docs/api/</link>
           </links>
+          <tags>
+            <tag>
+              <name>noinspection</name>
+              <placement>X</placement>
+            </tag>
+          </tags>
         </configuration>
         <reportSets>
           <reportSet>
@@ -1193,19 +1209,19 @@
         </configuration>
       </plugin>
 
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>clirr-maven-plugin</artifactId>
-        <configuration>
-          <minSeverity>info</minSeverity>
-          <failOnError>false</failOnError>
-        </configuration>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.codehaus.mojo</groupId>-->
+        <!--<artifactId>clirr-maven-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<minSeverity>info</minSeverity>-->
+          <!--<failOnError>false</failOnError>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
-        <version>2.2</version>
+        <version>2.3</version>
         <configuration>
           <type>range</type>
           <range>90</range>
@@ -1216,7 +1232,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
-        <version>2.9</version>
+        <version>2.11</version>
         <configuration>
           <onlyMilestoneIssues>false</onlyMilestoneIssues>
           <onlyCurrentVersion>false</onlyCurrentVersion>
