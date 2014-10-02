@@ -31,7 +31,6 @@
     <module>instrumentation</module>
     <module>instrumentation-test</module>
     <module>instrumentation-test2</module>
-    <module>instrumentation-test3</module>
   </modules>
 
   <distributionManagement>
