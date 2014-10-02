@@ -58,7 +58,7 @@
         <plugin>
           <groupId>com.cedarsoft.maven</groupId>
           <artifactId>instrumentation-plugin</artifactId>
-          <version>0.7.3-SNAPSHOT</version>
+          <version>1.0.1-SNAPSHOT</version>
 
           <configuration>
             <useGuava>true</useGuava>

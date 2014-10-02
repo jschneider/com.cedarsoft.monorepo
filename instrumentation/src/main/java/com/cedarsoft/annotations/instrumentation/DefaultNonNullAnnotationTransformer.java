@@ -46,7 +46,7 @@ public class DefaultNonNullAnnotationTransformer extends AbstractAnnotationTrans
 
   @Override
   protected void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException {
-    for ( CtMethod method : ctClass.getMethods() ) {
+    for ( CtMethod method : ctClass.getDeclaredMethods() ) {
       if ( method.isEmpty() ) {
         continue;
       }
