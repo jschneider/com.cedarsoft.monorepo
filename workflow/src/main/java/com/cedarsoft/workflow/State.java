@@ -96,9 +96,9 @@ public class State<T> {
   /**
    * <p>createTransition</p>
    *
-   * @param targetState a {@link State} object.
-   * @param actions     a {@link Action} object.
-   * @return a {@link TransitionDefinition} object.
+   * @param targetState a State object.
+   * @param actions     a Action object.
+   * @return a TransitionDefinition object.
    */
   @Nonnull
   public TransitionDefinition<T> createTransition( @Nonnull State<T> targetState, @Nonnull Action<T>... actions ) {

@@ -45,7 +45,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * A history is an ordered collection of several {@link DefaultContinuousEntry}s.
+ * A history is an ordered collection of several DefaultContinuousEntrys.
  * Each entries covers a given interval.
  * <p>
  *
@@ -174,7 +174,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Getter for the field <code>entries</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends E> getEntries() {
@@ -220,7 +220,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Setter for the field <code>begin</code>.</p>
    *
-   * @param begin a {@link LocalDate} object.
+   * @param begin a LocalDate object.
    */
   public void setBegin( @Nonnull LocalDate begin ) {
     lock.writeLock().lock();
@@ -243,7 +243,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Setter for the field <code>end</code>.</p>
    *
-   * @param end a {@link LocalDate} object.
+   * @param end a LocalDate object.
    */
   public void setEnd( @Nonnull LocalDate end ) {
     lock.writeLock().lock();
@@ -459,9 +459,9 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>findEntries</p>
    *
-   * @param begin a {@link LocalDate} object.
-   * @param end   a {@link LocalDate} object.
-   * @return a {@link List} object.
+   * @param begin a LocalDate object.
+   * @param end   a LocalDate object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends E> findEntries( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
@@ -509,7 +509,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>findEntryWithBegin</p>
    *
-   * @param date a {@link LocalDate} object.
+   * @param date a LocalDate object.
    * @return a E object.
    */
   @Nullable
@@ -578,7 +578,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>removeHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    */
   public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.removeHistoryListener( historyListener );
@@ -587,7 +587,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    */
   public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     listenerSupport.addHistoryListener( historyListener, true );
@@ -596,7 +596,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -606,7 +606,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>getTransientHistoryListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   public List<? extends HistoryListener<E>> getTransientHistoryListeners() {
     return listenerSupport.getTransientHistoryListeners();
@@ -639,7 +639,7 @@ public class ContinuousEntriesInformation<E extends ContinuousEntry> implements 
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link ReadWriteLock} object.
+   * @return a ReadWriteLock object.
    */
   @Nonnull
   public ReadWriteLock getLock() {

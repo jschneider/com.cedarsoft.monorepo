@@ -69,7 +69,7 @@ public abstract class ApplicationAction extends AbstractAction {
   /**
    * <p>handleApplicationException</p>
    *
-   * @param exception a {@link ApplicationException} object.
+   * @param exception a ApplicationException object.
    */
   protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
 

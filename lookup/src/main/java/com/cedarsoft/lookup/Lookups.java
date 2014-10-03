@@ -53,9 +53,9 @@ public class Lookups {
   /**
    * <p>instantiator</p>
    *
-   * @param type         a {@link Class} object.
-   * @param instantiater a {@link Instantiater} object.
-   * @return a {@link InstantiatorLookup} object.
+   * @param type         a Class object.
+   * @param instantiater a Instantiater object.
+   * @return a InstantiatorLookup object.
    */
   @Nonnull
   public static <T> InstantiatorLookup<T> instantiator( @Nonnull Class<? extends T> type, @Nonnull Instantiater<T> instantiater ) {
@@ -66,7 +66,7 @@ public class Lookups {
    * <p>instantiator</p>
    *
    * @param instantiater a {@link Instantiater.Typed} object.
-   * @return a {@link InstantiatorLookup} object.
+   * @return a InstantiatorLookup object.
    */
   @Nonnull
   public static <T> InstantiatorLookup<T> instantiator( @Nonnull Instantiater.Typed<T> instantiater ) {
@@ -76,9 +76,9 @@ public class Lookups {
   /**
    * <p>merge</p>
    *
-   * @param first  a {@link Lookup} object.
-   * @param second a {@link Lookup} object.
-   * @return a {@link MergingLookup} object.
+   * @param first  a Lookup object.
+   * @param second a Lookup object.
+   * @return a MergingLookup object.
    */
   @Nonnull
   public static MergingLookup merge( @Nonnull Lookup first, @Nonnull Lookup second ) {
@@ -122,8 +122,8 @@ public class Lookups {
   /**
    * <p>mappedLookup</p>
    *
-   * @param values a {@link Map} object.
-   * @return a {@link MappedLookup} object.
+   * @param values a Map object.
+   * @return a MappedLookup object.
    */
   @Nonnull
   public static MappedLookup mappedLookup( @Nonnull Map<Class<?>, ?> values ) {

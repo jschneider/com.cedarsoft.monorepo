@@ -69,7 +69,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
   /**
    * <p>Constructor for DefaultContinuousEntry.</p>
    *
-   * @param begin a {@link LocalDate} object.
+   * @param begin a LocalDate object.
    */
   public DefaultContinuousEntry( @Nonnull LocalDate begin ) {
     this.begin = begin;
@@ -113,7 +113,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
   /**
    * <p>removePropertyChangeListener</p>
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   public void removePropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -128,7 +128,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>removePropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   public void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -142,7 +142,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -156,7 +156,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener    a {@link PropertyChangeListener} object.
+   * @param listener    a PropertyChangeListener object.
    * @param isTransient a boolean.
    */
   public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener, boolean isTransient ) {
@@ -172,7 +172,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     lock.writeLock().lock();
@@ -187,7 +187,7 @@ public class DefaultContinuousEntry implements ContinuousEntry {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    * @param isTransient  a boolean.
    */
   public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener, boolean isTransient ) {

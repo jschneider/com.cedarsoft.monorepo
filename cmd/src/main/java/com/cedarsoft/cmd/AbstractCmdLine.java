@@ -135,8 +135,8 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>printPossibleElements</p>
    *
-   * @param elements  a {@link List} object.
-   * @param presenter a {@link Renderer} object.
+   * @param elements  a List object.
+   * @param presenter a Renderer object.
    */
   protected <T> void printPossibleElements( @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
     if ( presenter == null ) {
@@ -246,7 +246,7 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>getOut</p>
    *
-   * @return a {@link PrintStream} object.
+   * @return a PrintStream object.
    */
   @Nonnull
   public abstract PrintStream getOut();
@@ -254,7 +254,7 @@ public abstract class AbstractCmdLine implements CmdLine {
   /**
    * <p>getConsolePrinter</p>
    *
-   * @return a {@link ConsolePrinter} object.
+   * @return a ConsolePrinter object.
    */
   @Nonnull
   protected abstract ConsolePrinter getConsolePrinter();

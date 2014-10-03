@@ -39,7 +39,7 @@ import java.lang.IllegalArgumentException;
 import java.util.Map;
 
 /**
- * Manages {@link Renderer}
+ * Manages Renderer
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
@@ -66,7 +66,7 @@ public class RendererManager {
   /**
    * <p>setRenderer</p>
    *
-   * @param renderer a {@link Map} object.
+   * @param renderer a Map object.
    */
   @Deprecated
   public void setRenderer( @Nonnull Map<Class<?>, Renderer<?, Object>> renderer ) {
@@ -76,8 +76,8 @@ public class RendererManager {
   /**
    * <p>addRenderer</p>
    *
-   * @param type     a {@link Class} object.
-   * @param renderer a {@link Renderer} object.
+   * @param type     a Class object.
+   * @param renderer a Renderer object.
    */
   public <T> void addRenderer( @Nonnull Class<T> type, @Nonnull Renderer<? super T, Object> renderer ) {
     registry.addElement( type, renderer );
@@ -86,8 +86,8 @@ public class RendererManager {
   /**
    * <p>getRenderer</p>
    *
-   * @param type a {@link Class} object.
-   * @return a {@link Renderer} object.
+   * @param type a Class object.
+   * @return a Renderer object.
    *
    * @throws IllegalArgumentException
    *          if any.

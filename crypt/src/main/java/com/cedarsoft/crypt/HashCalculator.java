@@ -53,9 +53,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link Algorithm} object.
+   * @param algorithm a Algorithm object.
    * @param value     an array of byte.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    */
   @Nonnull
   public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull byte[] value ) {
@@ -65,9 +65,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link MessageDigest} object.
+   * @param messageDigest a MessageDigest object.
    * @param value         an array of byte.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    */
   @Nonnull
   public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull byte[] value ) {
@@ -82,9 +82,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link Algorithm} object.
+   * @param algorithm a Algorithm object.
    * @param value     a String object.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    */
   @Nonnull
   public static Hash calculate( @Nonnull Algorithm algorithm, @Nonnull String value ) {
@@ -94,9 +94,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link MessageDigest} object.
+   * @param messageDigest a MessageDigest object.
    * @param value         a String object.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    */
   @Nonnull
   public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull String value ) {
@@ -106,9 +106,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link Algorithm} object.
-   * @param resource  a {@link URL} object.
-   * @return a {@link Hash} object.
+   * @param algorithm a Algorithm object.
+   * @param resource  a URL object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */
@@ -120,9 +120,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link MessageDigest} object.
-   * @param resource      a {@link URL} object.
-   * @return a {@link Hash} object.
+   * @param messageDigest a MessageDigest object.
+   * @param resource      a URL object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */
@@ -139,9 +139,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm a {@link Algorithm} object.
+   * @param algorithm a Algorithm object.
    * @param file      a File object.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */
@@ -153,9 +153,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link MessageDigest} object.
+   * @param messageDigest a MessageDigest object.
    * @param file          a File object.
-   * @return a {@link Hash} object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */
@@ -172,9 +172,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param algorithm  a {@link Algorithm} object.
-   * @param resourceIn a {@link InputStream} object.
-   * @return a {@link Hash} object.
+   * @param algorithm  a Algorithm object.
+   * @param resourceIn a InputStream object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */
@@ -186,9 +186,9 @@ public class HashCalculator {
   /**
    * <p>calculate</p>
    *
-   * @param messageDigest a {@link MessageDigest} object.
-   * @param resourceIn    a {@link InputStream} object.
-   * @return a {@link Hash} object.
+   * @param messageDigest a MessageDigest object.
+   * @param resourceIn    a InputStream object.
+   * @return a Hash object.
    *
    * @throws IOException if any.
    */

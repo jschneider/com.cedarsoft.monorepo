@@ -187,8 +187,8 @@ public class AssertUtils {
   /**
    * <p>assertOne</p>
    *
-   * @param current              a {@link Object} object.
-   * @param expectedAlternatives a {@link Object} object.
+   * @param current              a Object object.
+   * @param expectedAlternatives a Object object.
    */
   public static <T> void assertOne( @Nullable T current, @Nonnull T... expectedAlternatives ) {
     Collection<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
@@ -204,8 +204,8 @@ public class AssertUtils {
   /**
    * <p>assertEquals</p>
    *
-   * @param expectedResourceUri a {@link URL} object.
-   * @param actual              a {@link Object} object.
+   * @param expectedResourceUri a URL object.
+   * @param actual              a Object object.
    * @throws IOException if any.
    */
   public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual ) throws IOException {

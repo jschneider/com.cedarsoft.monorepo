@@ -61,7 +61,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>Constructor for ClusteredPropertyChangeSupport.</p>
    *
-   * @param sourceBean a {@link Object} object.
+   * @param sourceBean a Object object.
    */
   public ClusteredPropertyChangeSupport( @Nonnull Object sourceBean ) {
     this.sourceBean = sourceBean;
@@ -72,7 +72,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>removePropertyChangeListener</p>
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   public void removePropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     transientSupport.removePropertyChangeListener( listener );
@@ -83,7 +83,7 @@ public class ClusteredPropertyChangeSupport {
    * <p>removePropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   public void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     transientSupport.removePropertyChangeListener( propertyName, listener );
@@ -93,7 +93,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener ) {
     addPropertyChangeListener( listener, true );
@@ -102,7 +102,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param listener    a {@link PropertyChangeListener} object.
+   * @param listener    a PropertyChangeListener object.
    * @param isTransient a boolean.
    */
   public void addPropertyChangeListener( @Nonnull PropertyChangeListener listener, boolean isTransient ) {
@@ -117,7 +117,7 @@ public class ClusteredPropertyChangeSupport {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
     addPropertyChangeListener( propertyName, listener, true );
@@ -127,7 +127,7 @@ public class ClusteredPropertyChangeSupport {
    * <p>addPropertyChangeListener</p>
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    * @param isTransient  a boolean.
    */
   public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener, boolean isTransient ) {
@@ -142,8 +142,8 @@ public class ClusteredPropertyChangeSupport {
    * <p>firePropertyChange</p>
    *
    * @param propertyName a String object.
-   * @param oldValue     a {@link Object} object.
-   * @param newValue     a {@link Object} object.
+   * @param oldValue     a Object object.
+   * @param newValue     a Object object.
    */
   public void firePropertyChange( @Nonnull String propertyName, @Nullable Object oldValue, @Nullable Object newValue ) {
     if ( oldValue != null && newValue != null && oldValue.equals( newValue ) ) {
@@ -155,7 +155,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>firePropertyChange</p>
    *
-   * @param evt a {@link PropertyChangeEvent} object.
+   * @param evt a PropertyChangeEvent object.
    */
   public void firePropertyChange( @Nonnull PropertyChangeEvent evt ) {
     Object oldValue = evt.getOldValue();
@@ -184,7 +184,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>Getter for the field <code>sourceBean</code>.</p>
    *
-   * @return a {@link Object} object.
+   * @return a Object object.
    */
   @Nonnull
   public Object getSourceBean() {
@@ -199,7 +199,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>getNonTransientListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends PropertyChangeListener> getNonTransientListeners() {
@@ -209,7 +209,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>getTransientListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends PropertyChangeListener> getTransientListeners() {

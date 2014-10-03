@@ -180,10 +180,10 @@ public class Route {
   /**
    * <p>buildRouteInternal</p>
    *
-   * @param rootNode    a {@link Node} object.
-   * @param path        a {@link Path} object.
-   * @param nodeFactory a {@link NodeFactory} object.
-   * @return a {@link Route} object.
+   * @param rootNode    a Node object.
+   * @param path        a Path object.
+   * @param nodeFactory a NodeFactory object.
+   * @return a Route object.
    *
    * @throws ChildNotFoundException
    *          if any.

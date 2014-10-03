@@ -53,8 +53,8 @@ public class MergingLookup extends AbstractLookup implements Lookup {
   /**
    * <p>Constructor for MergingLookup.</p>
    *
-   * @param first  a {@link Lookup} object.
-   * @param second a {@link Lookup} object.
+   * @param first  a Lookup object.
+   * @param second a Lookup object.
    */
   public MergingLookup( @Nonnull Lookup first, @Nonnull Lookup second ) {
     this.first = first;

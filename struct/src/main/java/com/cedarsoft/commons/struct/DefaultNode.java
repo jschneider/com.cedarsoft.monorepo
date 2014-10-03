@@ -68,7 +68,7 @@ public class DefaultNode implements Node {
    * <p>Constructor for DefaultNode.</p>
    *
    * @param name   a String object.
-   * @param lookup a {@link Lookup} object.
+   * @param lookup a Lookup object.
    */
   public DefaultNode( @Nonnull String name, @Nonnull Lookup lookup ) {
     this( name, new DefaultChildrenSupport(), lookup );
@@ -78,8 +78,8 @@ public class DefaultNode implements Node {
    * <p>Constructor for DefaultNode.</p>
    *
    * @param name            a String object.
-   * @param childrenSupport a {@link ChildrenSupport} object.
-   * @param lookup          a {@link Lookup} object.
+   * @param childrenSupport a ChildrenSupport object.
+   * @param lookup          a Lookup object.
    */
   public DefaultNode( @Nonnull String name, @Nonnull ChildrenSupport childrenSupport, @Nonnull Lookup lookup ) {
     this.lookup = lookup;
@@ -154,7 +154,7 @@ public class DefaultNode implements Node {
   /**
    * <p>setChildren</p>
    *
-   * @param children a {@link List} object.
+   * @param children a List object.
    */
   public void setChildren( @Nonnull List<? extends Node> children ) {
     childrenSupport.setChildren( children );

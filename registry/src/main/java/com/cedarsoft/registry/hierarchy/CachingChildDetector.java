@@ -59,7 +59,7 @@ public abstract class CachingChildDetector<P, C> extends AbstractChildDetector<P
    * <p>createChildren</p>
    *
    * @param parent a P object.
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   protected abstract List<? extends C> createChildren( @Nonnull P parent );

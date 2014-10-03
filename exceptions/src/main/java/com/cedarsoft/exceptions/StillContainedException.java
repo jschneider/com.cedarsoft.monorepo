@@ -47,7 +47,7 @@ public class StillContainedException extends RuntimeException {
   /**
    * <p>Constructor for StillContainedException.</p>
    *
-   * @param object a {@link Object} object.
+   * @param object a Object object.
    */
   public StillContainedException( @Nonnull Object object ) {
     super( "The object <" + object + "> is still contained" );
@@ -57,7 +57,7 @@ public class StillContainedException extends RuntimeException {
   /**
    * <p>Getter for the field <code>object</code>.</p>
    *
-   * @return a {@link Object} object.
+   * @return a Object object.
    */
   @Nonnull
   public Object getObject() {

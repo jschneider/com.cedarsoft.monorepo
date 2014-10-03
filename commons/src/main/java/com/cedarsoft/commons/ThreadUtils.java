@@ -82,7 +82,7 @@ public class ThreadUtils {
   /**
    * <p>inokeInOtherThread</p>
    *
-   * @param callable a {@link Callable} object.
+   * @param callable a Callable object.
    * @return a T object.
    *
    * @throws ExecutionException   if any.
@@ -102,7 +102,7 @@ public class ThreadUtils {
   /**
    * Invokes the runnable within the EDT
    *
-   * @param runnable a {@link Runnable} object.
+   * @param runnable a Runnable object.
    */
   public static void invokeInEventDispatchThread( @Nonnull Runnable runnable ) {
     if ( isEventDispatchThread() ) {

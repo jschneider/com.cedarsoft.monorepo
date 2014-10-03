@@ -67,7 +67,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>Getter for the field <code>transientListeners</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   protected List<ChangeListener<T>> getTransientListeners() {
@@ -126,7 +126,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context        a {@link Object} object.
+   * @param context        a Object object.
    * @param propertiesPath a String object.
    */
   public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {

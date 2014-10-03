@@ -59,14 +59,14 @@ public interface Activatable {
   /**
    * Adds a property change listener
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   void addPropertyChangeListener( @Nonnull PropertyChangeListener listener );
 
   /**
    * Removes a property change listener
    *
-   * @param listener a {@link PropertyChangeListener} object.
+   * @param listener a PropertyChangeListener object.
    */
   void removePropertyChangeListener( @Nonnull PropertyChangeListener listener );
 
@@ -74,7 +74,7 @@ public interface Activatable {
    * Adds a pcs listener
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 
@@ -82,7 +82,7 @@ public interface Activatable {
    * remove the pcs listener
    *
    * @param propertyName a String object.
-   * @param listener     a {@link PropertyChangeListener} object.
+   * @param listener     a PropertyChangeListener object.
    */
   void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener );
 }

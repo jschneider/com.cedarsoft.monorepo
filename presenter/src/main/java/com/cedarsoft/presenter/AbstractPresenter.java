@@ -42,7 +42,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * An abstract implementation of {@link Presenter}.
+ * An abstract implementation of Presenter.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type of the presentation that is created
@@ -107,7 +107,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    *
    * @param presentation the presentation
    * @param struct       the struct
-   * @param lookup       a {@link Lookup} object.
+   * @param lookup       a Lookup object.
    */
   protected abstract void bind( @Nonnull T presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup );
 

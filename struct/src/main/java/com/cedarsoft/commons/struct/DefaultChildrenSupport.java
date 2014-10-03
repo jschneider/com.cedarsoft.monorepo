@@ -39,7 +39,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Default implementation of {@link ChildrenSupport}
+ * Default implementation of ChildrenSupport
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

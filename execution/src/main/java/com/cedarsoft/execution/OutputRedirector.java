@@ -61,8 +61,8 @@ public class OutputRedirector implements Runnable {
    * <p>redirect</p>
    *
    * @param process   a Process object.
-   * @param targetOut a {@link OutputStream} the target output stream
-   * @param targetErr a {@link OutputStream} the target input stream
+   * @param targetOut a OutputStream the target output stream
+   * @param targetErr a OutputStream the target input stream
    * @return the two redirecting threads
    */
   public static Thread[] redirect( @Nonnull Process process, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {

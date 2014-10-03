@@ -54,7 +54,7 @@ public class MultiLock implements Lock {
   /**
    * <p>Constructor for MultiLock.</p>
    *
-   * @param locks a {@link Lock} object.
+   * @param locks a Lock object.
    */
   public MultiLock( @Nonnull Lock... locks ) {
     this( Arrays.asList( locks ) );
@@ -63,7 +63,7 @@ public class MultiLock implements Lock {
   /**
    * <p>Constructor for MultiLock.</p>
    *
-   * @param locks a {@link Collection} object.
+   * @param locks a Collection object.
    */
   public MultiLock( @Nonnull Collection<? extends Lock> locks ) {
     this.locks.addAll( locks );

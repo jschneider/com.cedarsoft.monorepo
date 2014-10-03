@@ -95,7 +95,7 @@ public class XmlCommons {
   /**
    * <p>getDocumentBuilder</p>
    *
-   * @return a {@link DocumentBuilder} object.
+   * @return a DocumentBuilder object.
    */
   @Nonnull
   public static DocumentBuilder getDocumentBuilder() {
@@ -111,8 +111,8 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link Document} object.
-   * @param out      a {@link OutputStream} object.
+   * @param document a Document object.
+   * @param out      a OutputStream object.
    */
   public static void out( @Nonnull Document document, @Nonnull OutputStream out ) {
     try {
@@ -125,8 +125,8 @@ public class XmlCommons {
   /**
    * <p>out</p>
    *
-   * @param document a {@link Document} object.
-   * @param out      a {@link Writer} object.
+   * @param document a Document object.
+   * @param out      a Writer object.
    */
   public static void out( @Nonnull Document document, @Nonnull Writer out ) {
     try {
@@ -158,7 +158,7 @@ public class XmlCommons {
    * <p>parse</p>
    *
    * @param bytes an array of byte.
-   * @return a {@link Document} object.
+   * @return a Document object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
@@ -171,8 +171,8 @@ public class XmlCommons {
   /**
    * <p>parse</p>
    *
-   * @param in a {@link InputStream} object.
-   * @return a {@link Document} object.
+   * @param in a InputStream object.
+   * @return a Document object.
    *
    * @throws IOException  if any.
    * @throws SAXException if any.
@@ -185,7 +185,7 @@ public class XmlCommons {
   /**
    * <p>toString</p>
    *
-   * @param document a {@link Document} object.
+   * @param document a Document object.
    * @return a String object.
    */
   @Nonnull

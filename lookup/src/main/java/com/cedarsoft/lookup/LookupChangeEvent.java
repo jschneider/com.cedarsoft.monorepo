@@ -54,8 +54,8 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Constructor for LookupChangeEvent.</p>
    *
-   * @param source   a {@link Lookup} object.
-   * @param type     a {@link Class} object.
+   * @param source   a Lookup object.
+   * @param type     a Class object.
    * @param oldValue a T object.
    * @param newValue a T object.
    */
@@ -69,7 +69,7 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Getter for the field <code>type</code>.</p>
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   @Nonnull
   public Class<? super T> getType() {
@@ -99,7 +99,7 @@ public class LookupChangeEvent<T> {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link Lookup} object.
+   * @return a Lookup object.
    */
   @Nonnull
   public Lookup getSource() {

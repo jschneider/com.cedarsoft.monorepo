@@ -52,7 +52,7 @@ public class FileNamesFactory {
   /**
    * <p>Constructor for FileNamesFactory.</p>
    *
-   * @param fileTypeRegistry a {@link FileTypeRegistry} object.
+   * @param fileTypeRegistry a FileTypeRegistry object.
    */
   @Inject
   public FileNamesFactory( @Nonnull FileTypeRegistry fileTypeRegistry ) {
@@ -63,7 +63,7 @@ public class FileNamesFactory {
    * <p>create</p>
    *
    * @param baseDir a File object.
-   * @return a {@link FileNames} object.
+   * @return a FileNames object.
    */
   @Nonnull
   public FileNames create( @Nonnull File baseDir ) {
@@ -75,7 +75,7 @@ public class FileNamesFactory {
    * <p>create</p>
    *
    * @param sourceFiles an array of File objects.
-   * @return a {@link FileNames} object.
+   * @return a FileNames object.
    */
   @Nonnull
   public FileNames create( @Nonnull File[] sourceFiles ) {
@@ -85,8 +85,8 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param sourceFiles a {@link Iterable} object.
-   * @return a {@link FileNames} object.
+   * @param sourceFiles a Iterable object.
+   * @return a FileNames object.
    */
   public FileNames create( @Nonnull Iterable<? extends File> sourceFiles ) {
     FileNames fileNames = new FileNames();
@@ -103,7 +103,7 @@ public class FileNamesFactory {
    * <p>createBaseNameAware</p>
    *
    * @param baseDir a File object.
-   * @return a {@link BaseNameAwareFileNames} object.
+   * @return a BaseNameAwareFileNames object.
    */
   @Nonnull
   public BaseNameAwareFileNames createBaseNameAware( @Nonnull File baseDir ) {
@@ -114,7 +114,7 @@ public class FileNamesFactory {
    * <p>createBaseNameAware</p>
    *
    * @param sourceFiles an array of File objects.
-   * @return a {@link BaseNameAwareFileNames} object.
+   * @return a BaseNameAwareFileNames object.
    */
   @Nonnull
   public BaseNameAwareFileNames createBaseNameAware( @Nonnull File[] sourceFiles ) {
@@ -124,8 +124,8 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param sourceFiles a {@link Iterable} object.
-   * @return a {@link BaseNameAwareFileNames} object.
+   * @param sourceFiles a Iterable object.
+   * @return a BaseNameAwareFileNames object.
    */
   @Nonnull
   public BaseNameAwareFileNames createBaseNameAware( @Nonnull Iterable<? extends File> sourceFiles ) {

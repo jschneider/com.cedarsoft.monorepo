@@ -20,7 +20,7 @@ public abstract class ApplicationException extends RuntimeException {
   /**
    * Creates a new ApplicationException
    *
-   * @param details          the details (an enum that implements {@link Details}
+   * @param details          the details (an enum that implements Details
    * @param messageArguments the (optional) message arguments
    * @param <T>              the details type
    */

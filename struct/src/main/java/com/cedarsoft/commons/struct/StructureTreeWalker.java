@@ -49,7 +49,7 @@ public interface StructureTreeWalker {
   void walk( @Nonnull StructPart root, @Nonnull WalkerCallBack walkerCallBack );
 
   /**
-   * A callback that can be used to traverse a structure using {@link StructureTreeWalker}.
+   * A callback that can be used to traverse a structure using StructureTreeWalker.
    */
   interface WalkerCallBack {
     /**

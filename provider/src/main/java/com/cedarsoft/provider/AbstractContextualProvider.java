@@ -46,7 +46,7 @@ public abstract class AbstractContextualProvider<T, C, E extends Throwable> impl
    * <p>createProvider</p>
    *
    * @param context a C object.
-   * @return a {@link Provider} object.
+   * @return a Provider object.
    */
   @Nonnull
   public Provider<T, E> createProvider( @Nonnull final C context ) {

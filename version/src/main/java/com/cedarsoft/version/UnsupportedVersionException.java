@@ -52,7 +52,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual a {@link Version} object.
+   * @param actual a Version object.
    */
   public UnsupportedVersionException( @Nonnull Version actual ) {
     this( actual, null );
@@ -61,8 +61,8 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link Version} object.
-   * @param supportedRange a {@link VersionRange} object.
+   * @param actual         a Version object.
+   * @param supportedRange a VersionRange object.
    */
   public UnsupportedVersionException( @Nonnull Version actual, @Nullable VersionRange supportedRange ) {
     this( actual, supportedRange, "Unsupported version. " );
@@ -71,8 +71,8 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link Version} object.
-   * @param supportedRange a {@link VersionRange} object.
+   * @param actual         a Version object.
+   * @param supportedRange a VersionRange object.
    * @param messagePrefix  a String object.
    */
   public UnsupportedVersionException( @Nonnull Version actual, @Nullable VersionRange supportedRange, @Nonnull String messagePrefix ) {
@@ -82,8 +82,8 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Constructor for UnsupportedVersionException.</p>
    *
-   * @param actual         a {@link Version} object.
-   * @param supportedRange a {@link VersionRange} object.
+   * @param actual         a Version object.
+   * @param supportedRange a VersionRange object.
    * @param messagePrefix  a String object.
    * @param appendSuffix   a boolean.
    */
@@ -96,7 +96,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Getter for the field <code>actual</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public Version getActual() {
@@ -106,7 +106,7 @@ public class UnsupportedVersionException extends VersionException {
   /**
    * <p>Getter for the field <code>supportedRange</code>.</p>
    *
-   * @return a {@link VersionRange} object.
+   * @return a VersionRange object.
    */
   @Nullable
   public VersionRange getSupportedRange() {

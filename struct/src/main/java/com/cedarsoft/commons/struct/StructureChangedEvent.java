@@ -34,7 +34,7 @@ package com.cedarsoft.commons.struct;
 import javax.annotation.Nonnull;
 
 /**
- * Event that is used with {@link StructureListener}.
+ * Event that is used with StructureListener.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

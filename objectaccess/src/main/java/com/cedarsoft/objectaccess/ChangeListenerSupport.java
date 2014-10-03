@@ -70,7 +70,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener a {@link ChangeListener} object.
+   * @param listener a ChangeListener object.
    */
   public void addChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -84,7 +84,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link ChangeListener} object.
+   * @param listener a ChangeListener object.
    */
   public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -98,7 +98,7 @@ public class ChangeListenerSupport<T> {
   /**
    * <p>changed</p>
    *
-   * @param context        a {@link Object} object.
+   * @param context        a Object object.
    * @param propertiesPath a String object.
    */
   public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
@@ -118,7 +118,7 @@ public class ChangeListenerSupport<T> {
    * <p>createPropertyListenerDelegate</p>
    *
    * @param propertiesPath a String object.
-   * @return a {@link PropertyChangeListener} object.
+   * @return a PropertyChangeListener object.
    */
   @Nonnull
   public PropertyChangeListener createPropertyListenerDelegate( @Nonnull String... propertiesPath ) {

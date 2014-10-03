@@ -104,7 +104,7 @@ public interface History<E extends HistoryEntry> extends WriteableObjectAccess<E
   /**
    * <p>getHistoryListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   List<? extends HistoryListener<E>> getHistoryListeners();

@@ -107,7 +107,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>Getter for the field <code>currentDelegate</code>.</p>
    *
-   * @return a {@link ObservableObjectAccess} object.
+   * @return a ObservableObjectAccess object.
    */
   @Nullable
   public ObservableObjectAccess<T> getCurrentDelegate() {

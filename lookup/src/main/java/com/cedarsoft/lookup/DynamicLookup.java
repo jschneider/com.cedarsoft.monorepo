@@ -114,7 +114,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValue</p>
    *
-   * @param value a {@link Object} object.
+   * @param value a Object object.
    * @return a boolean.
    */
   public final boolean removeValue( @Nonnull Object value ) {
@@ -176,7 +176,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>addValues</p>
    *
-   * @param objects a {@link Object} object.
+   * @param objects a Object object.
    * @return a boolean.
    */
   public final boolean addValues( @Nonnull Object... objects ) {
@@ -193,7 +193,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>addValues</p>
    *
-   * @param lookup a {@link Lookup} object.
+   * @param lookup a Lookup object.
    * @return a boolean.
    */
   public final boolean addValues( @Nonnull Lookup lookup ) {
@@ -208,7 +208,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValues</p>
    *
-   * @param lookup a {@link Lookup} object.
+   * @param lookup a Lookup object.
    * @return a boolean.
    */
   public final boolean removeValues( @Nonnull Lookup lookup ) {
@@ -223,7 +223,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>removeValues</p>
    *
-   * @param objects a {@link Object} object.
+   * @param objects a Object object.
    * @return a boolean.
    */
   public final boolean removeValues( @Nonnull Object... objects ) {
@@ -336,7 +336,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
   /**
    * <p>getLookupChangeListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends LookupChangeListener<?>> getLookupChangeListeners() {

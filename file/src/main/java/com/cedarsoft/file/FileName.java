@@ -104,7 +104,7 @@ public class FileName {
   /**
    * <p>Getter for the field <code>baseName</code>.</p>
    *
-   * @return a {@link BaseName} object.
+   * @return a BaseName object.
    */
   @Nonnull
   public BaseName getBaseName() {
@@ -114,7 +114,7 @@ public class FileName {
   /**
    * <p>Getter for the field <code>extension</code>.</p>
    *
-   * @return a {@link Extension} object.
+   * @return a Extension object.
    */
   @Nonnull
   public Extension getExtension() {

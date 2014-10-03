@@ -58,7 +58,7 @@ import java.util.Collections;
 
 /**
  * Easy support for xml signatures.
- * Be carefull! The {@link DocumentBuilderFactory} has to be namespace aware
+ * Be carefull! The DocumentBuilderFactory has to be namespace aware
  * ({@link DocumentBuilderFactory#setNamespaceAware(boolean)}).
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
@@ -73,7 +73,7 @@ public class XmlSignatureSupport {
   /**
    * <p>Constructor for XmlSignatureSupport.</p>
    *
-   * @param x509Support a {@link X509Support} object.
+   * @param x509Support a X509Support object.
    */
   @Inject
   public XmlSignatureSupport( @Nonnull X509Support x509Support ) {
@@ -83,8 +83,8 @@ public class XmlSignatureSupport {
   /**
    * <p>sign</p>
    *
-   * @param xmlDocument a {@link Document} object.
-   * @return a {@link Document} object.
+   * @param xmlDocument a Document object.
+   * @return a Document object.
    */
   public Document sign( @Nonnull Document xmlDocument ) {
     try {
@@ -116,7 +116,7 @@ public class XmlSignatureSupport {
   /**
    * <p>hasValidSignature</p>
    *
-   * @param doc a {@link Document} object.
+   * @param doc a Document object.
    * @return a boolean.
    *
    * @throws Exception if any.
@@ -169,8 +169,8 @@ public class XmlSignatureSupport {
   /**
    * <p>getOriginalDocument</p>
    *
-   * @param signedDocument a {@link Document} object.
-   * @return a {@link Document} object.
+   * @param signedDocument a Document object.
+   * @return a Document object.
    */
   @Nonnull
   public Document getOriginalDocument( @Nonnull Document signedDocument ) {

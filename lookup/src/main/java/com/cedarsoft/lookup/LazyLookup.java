@@ -101,7 +101,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
   /**
    * The type the instance.
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   public abstract Class<? extends T> getType();
 

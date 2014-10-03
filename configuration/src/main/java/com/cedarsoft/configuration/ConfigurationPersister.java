@@ -93,8 +93,8 @@ public interface ConfigurationPersister {
   /**
    * <p>persist</p>
    *
-   * @param configurationManager a {@link ConfigurationManager} object.
-   * @param out                  a {@link Writer} object.
+   * @param configurationManager a ConfigurationManager object.
+   * @param out                  a Writer object.
    * @param encoding             a String object.
    * @throws IOException if any.
    */
@@ -103,8 +103,8 @@ public interface ConfigurationPersister {
   /**
    * <p>persist</p>
    *
-   * @param configurations a {@link List} object.
-   * @param out            a {@link Writer} object.
+   * @param configurations a List object.
+   * @param out            a Writer object.
    * @param encoding       a String object.
    * @throws IOException if any.
    */
@@ -113,9 +113,9 @@ public interface ConfigurationPersister {
   /**
    * <p>persist</p>
    *
-   * @param manager a {@link ConfigurationManager} object.
-   * @param out     a {@link OutputStream} object.
-   * @param charset a {@link Charset} object.
+   * @param manager a ConfigurationManager object.
+   * @param out     a OutputStream object.
+   * @param charset a Charset object.
    * @throws IOException if any.
    */
   void persist( @Nonnull ConfigurationManager manager, @Nonnull OutputStream out, @Nonnull Charset charset ) throws IOException;
@@ -124,7 +124,7 @@ public interface ConfigurationPersister {
    * <p>load</p>
    *
    * @param serialized a String object.
-   * @return a {@link List} object.
+   * @return a List object.
    *
    * @throws IOException if any.
    */
@@ -134,8 +134,8 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param in a {@link Reader} object.
-   * @return a {@link List} object.
+   * @param in a Reader object.
+   * @return a List object.
    *
    * @throws IOException if any.
    */
@@ -146,7 +146,7 @@ public interface ConfigurationPersister {
    * <p>load</p>
    *
    * @param file a File object.
-   * @return a {@link List} object.
+   * @return a List object.
    *
    * @throws IOException if any.
    */
@@ -156,9 +156,9 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param in      a {@link BufferedInputStream} object.
-   * @param charset a {@link Charset} object.
-   * @return a {@link List} object.
+   * @param in      a BufferedInputStream object.
+   * @param charset a Charset object.
+   * @return a List object.
    *
    * @throws IOException if any.
    */

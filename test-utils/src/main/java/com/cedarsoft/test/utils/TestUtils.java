@@ -85,7 +85,7 @@ public class TestUtils {
   /**
    * @param prefix a String object.
    * @param suffix a String object.
-   * @param in     a {@link InputStream} object.
+   * @param in     a InputStream object.
    * @return a File object.
    *
    * @throws IOException if any.

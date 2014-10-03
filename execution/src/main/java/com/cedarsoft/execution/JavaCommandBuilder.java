@@ -71,7 +71,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>classPathElements</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getClassPathElements() {
@@ -159,7 +159,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>vmProperties</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getVmProperties() {
@@ -217,7 +217,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>arguments</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getArguments() {
@@ -227,7 +227,7 @@ public class JavaCommandBuilder {
   /**
    * <p>getCommandLineElements</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getCommandLineElements() {

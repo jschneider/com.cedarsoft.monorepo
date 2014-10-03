@@ -63,7 +63,7 @@ public class DirRepresenter {
   /**
    * <p>Constructor for DirRepresenter.</p>
    *
-   * @param root        a {@link Node} object.
+   * @param root        a Node object.
    * @param rootVisible a boolean.
    */
   public DirRepresenter( @Nonnull Node root, boolean rootVisible ) {
@@ -132,9 +132,9 @@ public class DirRepresenter {
   /**
    * <p>parse</p>
    *
-   * @param node        a {@link Node} object.
+   * @param node        a Node object.
    * @param currentDir  a File object.
-   * @param nodeFactory a {@link NodeFactory} object.
+   * @param nodeFactory a NodeFactory object.
    * @param maxDepth    a int.
    */
   protected void parse( @Nonnull Node node, @Nonnull File currentDir, @Nonnull NodeFactory nodeFactory, int maxDepth ) {

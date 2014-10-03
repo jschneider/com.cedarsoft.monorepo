@@ -53,7 +53,7 @@ public class XmlConfigurationManager {
   /**
    * <p>Constructor for XmlConfigurationManager.</p>
    *
-   * @param configuration a {@link XMLConfiguration} object.
+   * @param configuration a XMLConfiguration object.
    */
   @Inject
   public XmlConfigurationManager( @Nonnull XMLConfiguration configuration ) {
@@ -108,7 +108,7 @@ public class XmlConfigurationManager {
   /**
    * <p>Getter for the field <code>configuration</code>.</p>
    *
-   * @return a {@link HierarchicalConfiguration} object.
+   * @return a HierarchicalConfiguration object.
    */
   @Nonnull
   public HierarchicalConfiguration getConfiguration() {

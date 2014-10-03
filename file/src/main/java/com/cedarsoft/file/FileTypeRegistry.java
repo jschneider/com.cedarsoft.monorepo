@@ -107,8 +107,8 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>Constructor for FileTypeRegistry.</p>
    *
-   * @param storedObjects      a {@link Collection} object.
-   * @param fileTypeComparator a {@link Comparator} object.
+   * @param storedObjects      a Collection object.
+   * @param fileTypeComparator a Comparator object.
    * @throws StillContainedException
    *          if any.
    */
@@ -152,7 +152,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * <p>valueOf</p>
    *
    * @param id a String object.
-   * @return a {@link FileType} object.
+   * @return a FileType object.
    */
   @Nonnull
   public FileType valueOf( @Nonnull final String id ) {
@@ -167,8 +167,8 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>get</p>
    *
-   * @param fileName a {@link FileName} object.
-   * @return a {@link FileType} object.
+   * @param fileName a FileName object.
+   * @return a FileType object.
    */
   @Nonnull
   public FileType get( @Nonnull final FileName fileName ) {
@@ -184,7 +184,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    * <p>get</p>
    *
    * @param fileName a String object.
-   * @return a {@link FileType} object.
+   * @return a FileType object.
    */
   @Nonnull
   public FileType get( @Nonnull final String fileName ) {

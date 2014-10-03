@@ -55,9 +55,9 @@ public class PropertyCallback<T> implements TypedLookupChangeListener<T> {
   /**
    * <p>Constructor for PropertyCallback.</p>
    *
-   * @param object       a {@link Object} object.
+   * @param object       a Object object.
    * @param propertyName a String object.
-   * @param propertyType a {@link Class} object.
+   * @param propertyType a Class object.
    */
   public PropertyCallback( @Nonnull Object object, @Nonnull String propertyName, @Nonnull Class<T> propertyType ) {
     this.propertyType = propertyType;

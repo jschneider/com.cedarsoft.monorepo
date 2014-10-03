@@ -65,7 +65,7 @@ public class SwingHelper {
   /**
    * <p>invokeAndWait</p>
    *
-   * @param runnable a {@link Runnable} object.
+   * @param runnable a Runnable object.
    */
   public static void invokeAndWait( @Nonnull Runnable runnable ) {
     ThreadUtils.invokeInEventDispatchThread( runnable );
@@ -74,7 +74,7 @@ public class SwingHelper {
   /**
    * Liefert das Rootfenster (JFrame) für eine Komponente.
    *
-   * @param component a {@link Component} object.
+   * @param component a Component object.
    * @return das Rootfenster zu einer Komponente oder null falls die Komponente nicht zu einem
    *         JFrame gehört.
    */

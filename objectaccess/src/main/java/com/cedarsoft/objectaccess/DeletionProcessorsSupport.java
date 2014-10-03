@@ -59,7 +59,7 @@ public class DeletionProcessorsSupport<T> {
   /**
    * <p>Getter for the field <code>deletionProcessors</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends DeletionProcessor<T>> getDeletionProcessors() {
@@ -69,7 +69,7 @@ public class DeletionProcessorsSupport<T> {
   /**
    * <p>addDeletionProcessor</p>
    *
-   * @param processor a {@link DeletionProcessor} object.
+   * @param processor a DeletionProcessor object.
    */
   public void addDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
     this.deletionProcessors.add( processor );
@@ -78,7 +78,7 @@ public class DeletionProcessorsSupport<T> {
   /**
    * <p>removeDeletionProcessor</p>
    *
-   * @param processor a {@link DeletionProcessor} object.
+   * @param processor a DeletionProcessor object.
    */
   public void removeDeletionProcessor( @Nonnull DeletionProcessor<T> processor ) {
     this.deletionProcessors.remove( processor );

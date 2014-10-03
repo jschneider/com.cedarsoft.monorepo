@@ -46,7 +46,7 @@ public class WorkflowDefinition<T> {
   /**
    * <p>Constructor for WorkflowDefinition.</p>
    *
-   * @param initialState a {@link State} object.
+   * @param initialState a State object.
    */
   public WorkflowDefinition( @Nonnull State<T> initialState ) {
     this.initialState = initialState;
@@ -55,7 +55,7 @@ public class WorkflowDefinition<T> {
   /**
    * <p>Getter for the field <code>initialState</code>.</p>
    *
-   * @return a {@link State} object.
+   * @return a State object.
    */
   @Nonnull
   public State<T> getInitialState() {
@@ -66,7 +66,7 @@ public class WorkflowDefinition<T> {
    * <p>createWorkflow</p>
    *
    * @param object a T object.
-   * @return a {@link Workflow} object.
+   * @return a Workflow object.
    */
   @Nonnull
   public Workflow<T> createWorkflow( @Nonnull T object ) {

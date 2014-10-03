@@ -90,7 +90,7 @@ public class ParentCache {
   /**
    * <p>remove</p>
    *
-   * @param child a {@link Object} object.
+   * @param child a Object object.
    */
   public void remove( @Nonnull Object child ) {
     removeParent( child );
@@ -100,7 +100,7 @@ public class ParentCache {
   /**
    * <p>removeAll</p>
    *
-   * @param children a {@link List} object.
+   * @param children a List object.
    */
   public void removeAll( @Nonnull List<? extends Object> children ) {
     for ( Object child : children ) {
@@ -149,7 +149,7 @@ public class ParentCache {
    * <p>findIndex</p>
    *
    * @param child a C object.
-   * @return a {@link Integer} object.
+   * @return a Integer object.
    */
   @Nullable
   public <C> Integer findIndex( @Nonnull C child ) {

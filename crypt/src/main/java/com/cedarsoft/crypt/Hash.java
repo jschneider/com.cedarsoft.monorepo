@@ -55,7 +55,7 @@ public class Hash implements Serializable {
   /**
    * <p>Constructor for Hash.</p>
    *
-   * @param algorithm a {@link Algorithm} object.
+   * @param algorithm a Algorithm object.
    * @param value     an array of byte.
    */
   public Hash( @Nonnull Algorithm algorithm, @Nonnull byte[] value ) {
@@ -66,7 +66,7 @@ public class Hash implements Serializable {
   /**
    * <p>Getter for the field <code>algorithm</code>.</p>
    *
-   * @return a {@link Algorithm} object.
+   * @return a Algorithm object.
    */
   @Nonnull
   public Algorithm getAlgorithm() {

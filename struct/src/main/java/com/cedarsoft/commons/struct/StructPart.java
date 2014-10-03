@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * A struct part is a read only view. For adding/removing children a {@link Node} is needed.
+ * A struct part is a read only view. For adding/removing children a Node is needed.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

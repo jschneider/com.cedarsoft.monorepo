@@ -243,8 +243,8 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>verifyMatch</p>
    *
-   * @param expected a {@link Version} object.
-   * @param actual   a {@link Version} object.
+   * @param expected a Version object.
+   * @param actual   a Version object.
    * @throws VersionMismatchException if any.
    */
   public static void verifyMatch( @Nonnull Version expected, @Nonnull Version actual ) throws VersionMismatchException {
@@ -256,7 +256,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>sameOrSmallerThan</p>
    *
-   * @param version a {@link Version} object.
+   * @param version a Version object.
    * @return a boolean.
    */
   public boolean sameOrSmallerThan( @Nonnull Version version ) {
@@ -266,7 +266,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>smallerThan</p>
    *
-   * @param version a {@link Version} object.
+   * @param version a Version object.
    * @return a boolean.
    */
   public boolean smallerThan( @Nonnull Version version ) {
@@ -276,7 +276,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>sameOrGreaterThan</p>
    *
-   * @param version a {@link Version} object.
+   * @param version a Version object.
    * @return a boolean.
    */
   public boolean sameOrGreaterThan( @Nonnull Version version ) {
@@ -286,7 +286,7 @@ public class Version implements Comparable<Version>, Serializable {
   /**
    * <p>greaterThan</p>
    *
-   * @param version a {@link Version} object.
+   * @param version a Version object.
    * @return a boolean.
    */
   public boolean greaterThan( @Nonnull Version version ) {
@@ -299,7 +299,7 @@ public class Version implements Comparable<Version>, Serializable {
    * @param major a int.
    * @param minor a int.
    * @param build a int.
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public static Version valueOf( int major, int minor, int build ) {
