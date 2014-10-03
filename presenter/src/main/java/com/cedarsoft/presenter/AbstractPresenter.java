@@ -55,8 +55,6 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
   private Set<StructureListener> structureListeners = new HashSet<StructureListener>();
 
   /**
-   * {@inheritDoc}
-   * <p>
    * Creates the presentation for the given struct. This method should not be overridden.
    */
   @Override
