@@ -658,6 +658,7 @@
                 <placement>X</placement>
               </tag>
             </tags>
+            <quiet>true</quiet>
           </configuration>
           <dependencies>
             <dependency>
@@ -1139,6 +1140,7 @@
             </tag>
           </tags>
           <detectOfflineLinks>false</detectOfflineLinks>
+          <quiet>true</quiet>
         </configuration>
         <reportSets>
           <reportSet>
