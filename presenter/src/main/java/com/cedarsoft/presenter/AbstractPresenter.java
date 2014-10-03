@@ -52,7 +52,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * Holds the references of the structure listeners.
    */
   @SuppressWarnings( {"MismatchedQueryAndUpdateOfCollection"} )
-  private Set<StructureListener> structureListeners = new HashSet<StructureListener>();
+  private final Set<StructureListener> structureListeners = new HashSet<StructureListener>();
 
   /**
    * Creates the presentation for the given struct. This method should not be overridden.
