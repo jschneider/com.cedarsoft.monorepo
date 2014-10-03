@@ -53,7 +53,7 @@ public class NonTransientHistoryListenerSupport<E> {
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    */
   public void addHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();
@@ -67,7 +67,7 @@ public class NonTransientHistoryListenerSupport<E> {
   /**
    * <p>removeHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    */
   public void removeHistoryListener( @Nonnull HistoryListener<E> historyListener ) {
     lock.writeLock().lock();

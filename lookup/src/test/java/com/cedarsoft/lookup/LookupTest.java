@@ -40,7 +40,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 06.10.2006<br>
  * Time: 16:48:38<br>
  *

@@ -49,7 +49,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: Jul 20, 2007<br>
  * Time: 11:53:12 PM<br>
  */

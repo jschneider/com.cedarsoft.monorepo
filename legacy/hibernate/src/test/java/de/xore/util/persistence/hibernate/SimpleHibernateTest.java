@@ -37,7 +37,7 @@ import junit.framework.TestCase;
 import org.hibernate.Session;
 
 /**
- * <p/>
+ * <p>
  * Date: 21.06.2006<br>
  * Time: 22:07:43<br>
  *

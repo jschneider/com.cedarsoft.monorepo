@@ -33,7 +33,7 @@ package com.cedarsoft.id;
 
 /**
  * Helper class that offers support for id number generation
- * <p/>
+ * <p>
  * Date: 09.10.2006<br>
  * Time: 13:44:33<br>
  *

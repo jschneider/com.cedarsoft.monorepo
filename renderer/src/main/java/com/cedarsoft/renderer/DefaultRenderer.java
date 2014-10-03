@@ -34,8 +34,8 @@ package com.cedarsoft.renderer;
 import javax.annotation.Nonnull;
 
 /**
- * Default implementation of {@link Renderer} that simply returns
- * {@link String#valueOf(Object)}.
+ * Default implementation of Renderer that simply returns
+ * String#valueOf(Object).
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

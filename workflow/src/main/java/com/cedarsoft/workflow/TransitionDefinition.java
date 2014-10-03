@@ -55,9 +55,9 @@ public class TransitionDefinition<T> {
   /**
    * <p>Constructor for TransitionDefinition.</p>
    *
-   * @param source  a {@link State} object.
-   * @param target  a {@link State} object.
-   * @param actions a {@link Action} object.
+   * @param source  a State object.
+   * @param target  a State object.
+   * @param actions a Action object.
    */
   public TransitionDefinition( @Nonnull State<T> source, @Nonnull State<T> target, @Nonnull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
@@ -68,7 +68,7 @@ public class TransitionDefinition<T> {
    *
    * @param source  the source
    * @param target  the target
-   * @param actions a {@link List} object.
+   * @param actions a List object.
    */
   public TransitionDefinition( @Nonnull State<T> source, @Nonnull State<T> target, @Nonnull List<? extends Action<T>> actions ) {
     this.source = source;
@@ -79,7 +79,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>Getter for the field <code>source</code>.</p>
    *
-   * @return a {@link State} object.
+   * @return a State object.
    */
   @Nonnull
   public State<T> getSource() {
@@ -89,7 +89,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>Getter for the field <code>target</code>.</p>
    *
-   * @return a {@link State} object.
+   * @return a State object.
    */
   @Nonnull
   public State<T> getTarget() {
@@ -109,7 +109,7 @@ public class TransitionDefinition<T> {
   /**
    * <p>getFirstAction</p>
    *
-   * @return a {@link Action} object.
+   * @return a Action object.
    */
   @Deprecated
   @Nonnull

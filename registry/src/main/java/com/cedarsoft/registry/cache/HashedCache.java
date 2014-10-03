@@ -80,7 +80,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns the value for the given key.
    * If no value is stored, a new one is created using the registered factory
    */
@@ -187,7 +187,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns the *LIVE* entry set. Use with care!
    */
   @Override
@@ -231,7 +231,7 @@ public class HashedCache<K, T> implements Cache<K, T> {
    * Returns the internal store.
    * USE WITH CARE!
    *
-   * @return a {@link Map} object.
+   * @return a Map object.
    */
   @Deprecated
   @Nonnull

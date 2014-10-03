@@ -49,7 +49,7 @@ public class NotFoundException extends RuntimeException {
   /**
    * <p>Constructor for NotFoundException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public NotFoundException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class NotFoundException extends RuntimeException {
   /**
    * <p>Constructor for NotFoundException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public NotFoundException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class NotFoundException extends RuntimeException {
   /**
    * <p>Constructor for NotFoundException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public NotFoundException( Throwable cause ) {
     super( cause );

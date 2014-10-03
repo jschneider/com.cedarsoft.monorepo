@@ -94,7 +94,7 @@ public class WeakLookupChangeListener<T> implements LookupChangeListener<T> {
   /**
    * <p>Getter for the field <code>typeClass</code>.</p>
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   @Nonnull
   public Class<T> getTypeClass() {

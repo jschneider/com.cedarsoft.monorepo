@@ -35,8 +35,8 @@ import javax.annotation.Nonnull;
 
 /**
  * This is a special LookupChangeListener that knows the type it is listening to.
- * This interface may be used to bind the listener to the {@link Lookup}
- * more easily using the method {@link Lookup#bind(TypedLookupChangeListener)}
+ * This interface may be used to bind the listener to the Lookup
+ * more easily using the method Lookup#bind(TypedLookupChangeListener)
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

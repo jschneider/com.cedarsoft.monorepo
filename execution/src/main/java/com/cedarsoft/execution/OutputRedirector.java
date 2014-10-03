@@ -45,8 +45,8 @@ import java.io.PrintStream;
  */
 public class OutputRedirector implements Runnable {
   /**
-   * Redirects the output of the given process to {@link System#out} and
-   * {@link System#err}
+   * Redirects the output of the given process to System#out and
+   * System#err
    *
    * @param process the process
    * @return the redirecting threads
@@ -60,9 +60,9 @@ public class OutputRedirector implements Runnable {
   /**
    * <p>redirect</p>
    *
-   * @param process   a {@link Process} object.
-   * @param targetOut a {@link OutputStream} the target output stream
-   * @param targetErr a {@link OutputStream} the target input stream
+   * @param process   a Process object.
+   * @param targetOut a OutputStream the target output stream
+   * @param targetErr a OutputStream the target input stream
    * @return the two redirecting threads
    */
   public static Thread[] redirect( @Nonnull Process process, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {

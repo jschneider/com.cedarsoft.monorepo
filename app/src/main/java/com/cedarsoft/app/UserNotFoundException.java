@@ -49,7 +49,7 @@ public class UserNotFoundException extends AuthenticationException {
   /**
    * <p>Constructor for UserNotFoundException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public UserNotFoundException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class UserNotFoundException extends AuthenticationException {
   /**
    * <p>Constructor for UserNotFoundException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public UserNotFoundException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class UserNotFoundException extends AuthenticationException {
   /**
    * <p>Constructor for UserNotFoundException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public UserNotFoundException( Throwable cause ) {
     super( cause );

@@ -143,7 +143,7 @@ public class ThreadDeadlockDetector {
   /**
    * <p>addListener</p>
    *
-   * @param listener a {@link ThreadDeadlockDetector.Listener} object.
+   * @param listener a ThreadDeadlockDetector.Listener object.
    * @return a boolean.
    */
   public boolean addListener( @Nonnull Listener listener ) {
@@ -153,7 +153,7 @@ public class ThreadDeadlockDetector {
   /**
    * <p>removeListener</p>
    *
-   * @param listener a {@link ThreadDeadlockDetector.Listener} object.
+   * @param listener a ThreadDeadlockDetector.Listener object.
    * @return a boolean.
    */
   public boolean removeListener( @Nonnull Listener listener ) {

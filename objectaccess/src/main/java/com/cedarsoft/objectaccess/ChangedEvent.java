@@ -56,8 +56,8 @@ public class ChangedEvent<T> {
    * <p>Constructor for ChangedEvent.</p>
    *
    * @param changedObject  a T object.
-   * @param context        a {@link Object} object.
-   * @param propertiesPath a {@link String} object.
+   * @param context        a Object object.
+   * @param propertiesPath a String object.
    */
   public ChangedEvent( @Nonnull T changedObject, @Nullable Object context, @Nonnull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
@@ -71,7 +71,7 @@ public class ChangedEvent<T> {
   /**
    * <p>Getter for the field <code>propertiesPath</code>.</p>
    *
-   * @return a {@link PropertiesPath} object.
+   * @return a PropertiesPath object.
    */
   @Nonnull
   public PropertiesPath getPropertiesPath() {
@@ -101,7 +101,7 @@ public class ChangedEvent<T> {
   /**
    * <p>getRootProperty</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Deprecated
   @Nonnull

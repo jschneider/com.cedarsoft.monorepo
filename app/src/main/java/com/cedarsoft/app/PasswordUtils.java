@@ -51,7 +51,7 @@ public class PasswordUtils {
   /**
    * <p>calculateMD5Hash</p>
    *
-   * @param password a {@link String} object.
+   * @param password a String object.
    * @return an array of byte.
    */
   @Nonnull
@@ -68,7 +68,7 @@ public class PasswordUtils {
   /**
    * <p>hasExpectedHash</p>
    *
-   * @param password     a {@link String} object.
+   * @param password     a String object.
    * @param expectedHash an array of byte.
    * @return a boolean.
    */

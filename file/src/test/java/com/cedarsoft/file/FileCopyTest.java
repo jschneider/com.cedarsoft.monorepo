@@ -41,7 +41,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 25.08.2006<br>
  * Time: 17:07:01<br>
  *

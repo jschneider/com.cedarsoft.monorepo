@@ -46,7 +46,7 @@ import java.lang.ref.WeakReference;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: Jun 1, 2007<br>
  * Time: 3:55:27 PM<br>
  */

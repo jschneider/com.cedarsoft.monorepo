@@ -110,7 +110,7 @@ public interface ChildrenSupport {
   void addStructureListener( @Nonnull StructureListener structureListener );
 
   /**
-   * Adds a structure listener (wrapped within a {@link WeakStructureListener})
+   * Adds a structure listener (wrapped within a WeakStructureListener)
    *
    * @param structureListener the listener
    */
@@ -128,9 +128,6 @@ public interface ChildrenSupport {
    *
    * @param childName the name of the child
    * @return the child
-   *
-   * @throws ChildNotFoundException
-   *          if no child with that name is found
    */
   @Nonnull
   Node findChild( @Nonnull String childName ) throws ChildNotFoundException;
@@ -150,7 +147,7 @@ public interface ChildrenSupport {
   /**
    * <p>getStructureListeners</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   List<? extends StructureListener> getStructureListeners();

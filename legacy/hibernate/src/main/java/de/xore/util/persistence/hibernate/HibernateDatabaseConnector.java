@@ -55,7 +55,7 @@ import java.util.List;
 /**
  * Diese Klasse dient dazu, die Verbindungen zu der Datenbank entsprechend zu kapseln. Es sollte moeglichst wenig
  * Hibernate-Spezifisches Zeugs in den Klassen zu finden sein.
- * <p/>
+ * <p>
  * <p> Date: 19.04.2005<br> Time: 22:34:09<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

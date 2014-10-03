@@ -49,7 +49,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * For several dates a hole history of values is stored.
  * This can be used to store a hole history of entries related to a given date.
- * <p/>
+ * <p>
  * Be careful: Listeners that have ben registered to a sub history aren't notified of entries changes!
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
@@ -155,7 +155,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all entries
    */
   @Override
@@ -178,7 +178,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Removes all entries
    */
   @Override
@@ -196,7 +196,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Adds an entry.
    */
   @Override
@@ -466,7 +466,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getBestEntryFor</p>
    *
-   * @param date a {@link LocalDate} object.
+   * @param date a LocalDate object.
    * @return a E object.
    *
    * @throws HistoryNotFoundException
@@ -480,7 +480,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getLastSubHistory</p>
    *
-   * @return a {@link History} object.
+   * @return a History object.
    *
    * @throws HistoryNotFoundException
    *          if any.
@@ -503,7 +503,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>getFirstSubHistory</p>
    *
-   * @return a {@link History} object.
+   * @return a History object.
    *
    * @throws HistoryNotFoundException
    *          if any.
@@ -575,7 +575,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -626,7 +626,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link ReadWriteLock} object.
+   * @return a ReadWriteLock object.
    */
   @Nonnull
   public ReadWriteLock getLock() {

@@ -36,7 +36,7 @@ import javax.annotation.Nonnull;
 import java.text.MessageFormat;
 
 /**
- * <p/>
+ * <p>
  * Date: 25.08.2006<br>
  * Time: 00:59:19<br>
  *

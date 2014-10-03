@@ -44,7 +44,7 @@ public interface EventContextProvider {
   /**
    * <p>getContext</p>
    *
-   * @return a {@link Object} object.
+   * @return a Object object.
    */
   @Nullable
   Object getContext();

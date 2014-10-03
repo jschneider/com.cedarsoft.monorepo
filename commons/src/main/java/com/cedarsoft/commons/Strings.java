@@ -48,8 +48,8 @@ public class Strings {
   /**
    * <p>stripQuotes</p>
    *
-   * @param value a {@link String} object.
-   * @return a {@link String} object.
+   * @param value a String object.
+   * @return a String object.
    */
   @Nonnull
   public static String stripQuotes( @Nonnull String value ) {

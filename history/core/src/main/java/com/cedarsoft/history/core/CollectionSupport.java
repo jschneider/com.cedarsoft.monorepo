@@ -53,7 +53,7 @@ public class CollectionSupport<E> {
   /**
    * <p>Constructor for CollectionSupport.</p>
    *
-   * @param source a {@link ObservableCollection} object.
+   * @param source a ObservableCollection object.
    */
   public CollectionSupport( @Nonnull ObservableCollection<E> source ) {
     this.source = source;
@@ -62,7 +62,7 @@ public class CollectionSupport<E> {
   /**
    * <p>Getter for the field <code>listeners</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   protected List<ElementsListener<? super E>> getListeners() {
@@ -83,7 +83,7 @@ public class CollectionSupport<E> {
   /**
    * <p>addElementListener</p>
    *
-   * @param listener a {@link ElementsListener} object.
+   * @param listener a ElementsListener object.
    */
   public void addElementListener( @Nonnull ElementsListener<? super E> listener ) {
     writeLock.lock();
@@ -97,7 +97,7 @@ public class CollectionSupport<E> {
   /**
    * <p>removeElementListener</p>
    *
-   * @param listener a {@link ElementsListener} object.
+   * @param listener a ElementsListener object.
    */
   public void removeElementListener( @Nonnull ElementsListener<? super E> listener ) {
     writeLock.lock();

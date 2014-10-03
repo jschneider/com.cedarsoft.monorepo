@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This manager manages several {@link StringConverter}s and offers several convinience methods
+ * This manager manages several StringConverters and offers several convinience methods
  * to serialize/deserialization
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)

@@ -171,10 +171,10 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param target        a {@link File} object.
-   * @param base          a {@link File} object.
-   * @param pathSeparator a {@link String} object.
-   * @return a {@link File} object.
+   * @param target        a File object.
+   * @param base          a File object.
+   * @param pathSeparator a String object.
+   * @return a File object.
    */
   @Nonnull
   public static File getRelativePath( @Nonnull File target, @Nonnull File base, @Nonnull String pathSeparator ) {
@@ -184,9 +184,9 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param target a {@link File} object.
-   * @param base   a {@link File} object.
-   * @return a {@link File} object.
+   * @param target a File object.
+   * @param base   a File object.
+   * @return a File object.
    */
   public static File getRelativePath( @Nonnull File target, @Nonnull File base ) {
     return getRelativePath( target, base, File.separator );
@@ -195,9 +195,9 @@ public class RelativePathFinder {
   /**
    * <p>getRelativePath</p>
    *
-   * @param targetPath a {@link String} object.
-   * @param basePath   a {@link String} object.
-   * @return a {@link String} object.
+   * @param targetPath a String object.
+   * @param basePath   a String object.
+   * @return a String object.
    */
   @Nonnull
   public static String getRelativePath( @Nonnull String targetPath, @Nonnull String basePath ) {

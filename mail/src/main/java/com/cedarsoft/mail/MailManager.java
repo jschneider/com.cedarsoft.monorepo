@@ -46,7 +46,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- * <p/>
+ * <p>
  * Date: 05.05.2004<br> Time: 20:59:09<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
@@ -68,7 +68,7 @@ public class MailManager {
   /**
    * <p>Constructor for MailManager.</p>
    *
-   * @param mailConfiguration a {@link MailConfiguration} object.
+   * @param mailConfiguration a MailConfiguration object.
    */
   public MailManager( @Nonnull MailConfiguration mailConfiguration ) {
     this.configuration = mailConfiguration;
@@ -88,7 +88,7 @@ public class MailManager {
   /**
    * <p>getAuthenticator</p>
    *
-   * @return a {@link Authenticator} object.
+   * @return a Authenticator object.
    */
   @Nonnull
   public Authenticator getAuthenticator() {
@@ -122,7 +122,7 @@ public class MailManager {
   /**
    * <p>sendMail</p>
    *
-   * @param message a {@link Message} object.
+   * @param message a Message object.
    */
   public static void sendMail( @Nonnull Message message ) {
     new Thread( new MailWorker( message ) ).start();

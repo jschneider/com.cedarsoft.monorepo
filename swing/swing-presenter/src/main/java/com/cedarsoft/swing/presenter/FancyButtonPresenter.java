@@ -38,7 +38,7 @@ import javax.swing.JButton;
 import java.awt.Insets;
 
 /**
- * <p/>
+ * <p>
  * Date: Jun 5, 2007<br>
  * Time: 3:22:10 PM<br>
  *

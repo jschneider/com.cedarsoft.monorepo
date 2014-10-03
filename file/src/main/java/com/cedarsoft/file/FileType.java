@@ -63,10 +63,10 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link String} object.
+   * @param id            a String object.
    * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
-   * @param extensions    a {@link Extension} object.
+   * @param extensions    a Extension object.
    */
   public FileType( @Nonnull String id, @Nonnull String contentType, boolean dependentType, @Nonnull Extension... extensions ) {
     this( id, contentType, dependentType, Arrays.<Extension>asList( extensions ) );
@@ -75,10 +75,10 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link String} object.
+   * @param id            a String object.
    * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
-   * @param extensions    a {@link Collection} object.
+   * @param extensions    a Collection object.
    */
   public FileType( @Nonnull String id, @Nonnull String contentType, boolean dependentType, @Nonnull Collection<? extends Extension> extensions ) {
     this.contentType = contentType;
@@ -98,7 +98,7 @@ public class FileType {
   /**
    * <p>Getter for the field <code>extensions</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends Extension> getExtensions() {
@@ -108,7 +108,7 @@ public class FileType {
   /**
    * <p>matches</p>
    *
-   * @param fileName a {@link String} object.
+   * @param fileName a String object.
    * @return a boolean.
    */
   public boolean matches( @Nonnull String fileName ) {
@@ -123,7 +123,7 @@ public class FileType {
   /**
    * <p>matches</p>
    *
-   * @param fileName a {@link FileName} object.
+   * @param fileName a FileName object.
    * @return a boolean.
    */
   public boolean matches( @Nonnull FileName fileName ) {
@@ -133,7 +133,7 @@ public class FileType {
   /**
    * <p>getDefaultExtension</p>
    *
-   * @return a {@link Extension} object.
+   * @return a Extension object.
    */
   @Nonnull
   public Extension getDefaultExtension() {
@@ -143,7 +143,7 @@ public class FileType {
   /**
    * <p>Getter for the field <code>id</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getId() {
@@ -163,8 +163,8 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param file a {@link File} object.
-   * @return a {@link FileName} object.
+   * @param file a File object.
+   * @return a FileName object.
    */
   @Nonnull
   public FileName getFileName( @Nonnull File file ) {
@@ -174,8 +174,8 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param fileName a {@link String} object.
-   * @return a {@link FileName} object.
+   * @param fileName a String object.
+   * @return a FileName object.
    */
   @Nonnull
   public FileName getFileName( @Nonnull String fileName ) throws IllegalArgumentException {//$NON-NLS-1$
@@ -205,8 +205,8 @@ public class FileType {
   /**
    * <p>getExtension</p>
    *
-   * @param fileName a {@link String} object.
-   * @return a {@link Extension} object.
+   * @param fileName a String object.
+   * @return a Extension object.
    */
   @Nonnull
   public Extension getExtension( @Nonnull String fileName ) {
@@ -216,8 +216,8 @@ public class FileType {
   /**
    * <p>getBaseName</p>
    *
-   * @param fileName a {@link String} object.
-   * @return a {@link String} object.
+   * @param fileName a String object.
+   * @return a String object.
    */
   @Nonnull
   public String getBaseName( @Nonnull String fileName ) {
@@ -237,7 +237,7 @@ public class FileType {
   /**
    * <p>isDefaultExtension</p>
    *
-   * @param extension a {@link Extension} object.
+   * @param extension a Extension object.
    * @return a boolean.
    */
   public boolean isDefaultExtension( @Nonnull Extension extension ) {

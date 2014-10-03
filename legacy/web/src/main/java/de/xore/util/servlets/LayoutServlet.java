@@ -59,7 +59,7 @@ import java.util.Enumeration;
  */
 
 /**
- * <p/>
+ * <p>
  * Date: 20.12.2003<br> Time: 16:55:59<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
@@ -164,7 +164,7 @@ public abstract class LayoutServlet extends VelocityServlet {
   /**
    * Nach Ablauf von handle() wird diese Methode durchgefuehrt. Dient z.B. zum Einhaengen von Standard-Werten in den
    * Context
-   * <p/>
+   * <p>
    * Z.B. einhaengen des SessioNContext
    *
    * @param ctx      the context

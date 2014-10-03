@@ -48,7 +48,7 @@ import java.util.List;
 
 /**
  * Command Line implementation that is based on strings.
- * <p/>
+ * <p>
  * Date: 25.09.2006<br>
  * Time: 19:43:04<br>
  *
@@ -121,7 +121,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>messages</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getMessages() {
@@ -131,7 +131,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>getNextAnswer</p>
    *
-   * @return a {@link Object} object.
+   * @return a Object object.
    */
   protected Object getNextAnswer() {
     if ( answers.isEmpty() ) {
@@ -257,7 +257,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>addExpectedOut</p>
    *
-   * @param expected a {@link String} object.
+   * @param expected a String object.
    */
   public void addExpectedOut( @Nullable String expected ) {
     expectedOut.add( expected );
@@ -266,7 +266,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>expectedOut</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getExpectedOut() {
@@ -276,7 +276,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Getter for the field <code>answers</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<Object> getAnswers() {
@@ -286,7 +286,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>Setter for the field <code>answers</code>.</p>
    *
-   * @param answers a {@link List} object.
+   * @param answers a List object.
    */
   public void setAnswers( @Nonnull List<Object> answers ) {
     this.answers.clear();
@@ -296,7 +296,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>addAnswer</p>
    *
-   * @param answer a {@link Object} object.
+   * @param answer a Object object.
    */
   public void addAnswer( @Nonnull Object answer ) {
     answers.add( answer );
@@ -305,7 +305,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>removeAnswer</p>
    *
-   * @param answer a {@link Object} object.
+   * @param answer a Object object.
    */
   public void removeAnswer( @Nonnull Object answer ) {
     answers.remove( answer );

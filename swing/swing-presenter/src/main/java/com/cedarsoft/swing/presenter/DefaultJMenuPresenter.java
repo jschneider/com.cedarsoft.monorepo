@@ -42,7 +42,7 @@ import javax.swing.JMenu;
 
 /**
  * Creates a JMenu.
- * Looks for {@link JMenuItemPresenter} for each of its children.
+ * Looks for JMenuItemPresenter for each of its children.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

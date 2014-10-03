@@ -38,7 +38,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 /**
- * <p/>
+ * <p>
  * Date: Apr 27, 2007<br>
  * Time: 4:16:45 PM<br>
  */

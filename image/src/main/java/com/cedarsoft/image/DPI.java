@@ -61,7 +61,7 @@ public enum DPI {
    * <p>find</p>
    *
    * @param dpi a int.
-   * @return a {@link DPI} object.
+   * @return a DPI object.
    */
   @Nonnull
   public static DPI find( int dpi ) {

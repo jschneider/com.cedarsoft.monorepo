@@ -49,7 +49,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: Jul 20, 2007<br>
  * Time: 11:28:04 PM<br>
  */

@@ -76,7 +76,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>Constructor for ElementsCollection.</p>
    *
-   * @param elements a {@link Collection} object.
+   * @param elements a Collection object.
    */
   public ElementsCollection( @Nonnull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
@@ -160,7 +160,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>addAll</p>
    *
-   * @param additionalElements a {@link Iterable} object.
+   * @param additionalElements a Iterable object.
    */
   public void addAll( @Nonnull Iterable<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
@@ -184,7 +184,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all cessions
    */
   @Override
@@ -200,7 +200,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Sets the elements
    */
   @Override
@@ -272,8 +272,8 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>findElements</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
-   * @return a {@link List} object.
+   * @param visitor a ElementVisitor object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends E> findElements( @Nonnull ElementVisitor<? super E> visitor ) {
@@ -314,7 +314,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>findFirstElementNullable</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
+   * @param visitor a ElementVisitor object.
    * @return a E object.
    */
   @Nullable
@@ -350,7 +350,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
   /**
    * <p>contains</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
+   * @param visitor a ElementVisitor object.
    * @return a boolean.
    *
    * @throws NoElementFoundException

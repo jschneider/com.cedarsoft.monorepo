@@ -54,7 +54,7 @@ public class LinkUtils {
   /**
    * Returns whether the given file is a link
    *
-   * @param file a {@link File} object.
+   * @param file a File object.
    * @return whether the given file is a sym link
    *
    * @throws IOException if any.

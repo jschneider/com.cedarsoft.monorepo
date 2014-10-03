@@ -36,7 +36,7 @@ import com.cedarsoft.exceptions.NotFoundException;
 import javax.annotation.Nonnull;
 
 /**
- * <p/>
+ * <p>
  * Date: 12.10.2006<br>
  * Time: 21:05:19<br>
  *
@@ -49,7 +49,7 @@ public class ChildNotFoundException extends NotFoundException {
   /**
    * <p>Constructor for ChildNotFoundException.</p>
    *
-   * @param path a {@link Path} object.
+   * @param path a Path object.
    */
   public ChildNotFoundException( @Nonnull Path path ) {
     super( "Child not found <" + path.toString() + '>' );
@@ -59,7 +59,7 @@ public class ChildNotFoundException extends NotFoundException {
   /**
    * <p>Getter for the field <code>path</code>.</p>
    *
-   * @return a {@link Path} object.
+   * @return a Path object.
    */
   @Nonnull
   public Path getPath() {

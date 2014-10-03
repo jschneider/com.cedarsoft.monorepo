@@ -59,7 +59,7 @@ public class ButtonBarPresenter extends SwingPresenter<JPanel> {
   /**
    * <p>Constructor for ButtonBarPresenter.</p>
    *
-   * @param orientation a {@link ButtonBarPresenter.Orientation} object.
+   * @param orientation a ButtonBarPresenter.Orientation object.
    */
   public ButtonBarPresenter( @Nonnull Orientation orientation ) {
     this.orientation = orientation;

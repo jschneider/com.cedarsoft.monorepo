@@ -45,7 +45,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 12.10.2006<br>
  * Time: 16:25:26<br>
  *

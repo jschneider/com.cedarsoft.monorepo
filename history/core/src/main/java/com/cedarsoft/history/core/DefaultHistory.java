@@ -281,7 +281,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   /**
    * <p>addHistoryListener</p>
    *
-   * @param historyListener a {@link HistoryListener} object.
+   * @param historyListener a HistoryListener object.
    * @param isTransient     a boolean.
    */
   public void addHistoryListener( @Nonnull HistoryListener<E> historyListener, boolean isTransient ) {
@@ -291,7 +291,7 @@ public class DefaultHistory<E extends HistoryEntry> implements History<E> {
   /**
    * <p>Getter for the field <code>lock</code>.</p>
    *
-   * @return a {@link ReadWriteLock} object.
+   * @return a ReadWriteLock object.
    */
   @Nonnull
   public ReadWriteLock getLock() {

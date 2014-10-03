@@ -48,9 +48,6 @@ public interface NodeFactory {
    * @param name    the name
    * @param context the context
    * @return the node
-   *
-   * @throws CanceledException
-   *          if any.
    */
   @Nonnull
   Node createNode( @Nonnull String name, @Nonnull Lookup context ) throws CanceledException;

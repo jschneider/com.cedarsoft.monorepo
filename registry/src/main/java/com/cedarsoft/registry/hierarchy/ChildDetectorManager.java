@@ -39,7 +39,7 @@ import java.lang.IllegalArgumentException;
 import java.util.Map;
 
 /**
- * Manages {@link ChildDetector}s
+ * Manages ChildDetectors
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
@@ -66,8 +66,8 @@ public class ChildDetectorManager {
   /**
    * <p>addChildDetector</p>
    *
-   * @param parentType    a {@link Class} object.
-   * @param childDetector a {@link ChildDetector} object.
+   * @param parentType    a Class object.
+   * @param childDetector a ChildDetector object.
    */
   public <P, C> void addChildDetector( @Nonnull Class<P> parentType, @Nonnull ChildDetector<P, C> childDetector ) {
     registry.addElement( parentType, childDetector );
@@ -76,7 +76,7 @@ public class ChildDetectorManager {
   /**
    * <p>setChildDetectors</p>
    *
-   * @param childDetectors a {@link Map} object.
+   * @param childDetectors a Map object.
    */
   public void setChildDetectors( Map<Class<?>, ChildDetector<?, ?>> childDetectors ) {
     registry.setElements( childDetectors );
@@ -85,8 +85,8 @@ public class ChildDetectorManager {
   /**
    * <p>getChildDetector</p>
    *
-   * @param parentType a {@link Class} object.
-   * @return a {@link ChildDetector} object.
+   * @param parentType a Class object.
+   * @return a ChildDetector object.
    *
    * @throws IllegalArgumentException
    *          if any.

@@ -70,7 +70,7 @@ public interface Lookup {
 
   /**
    * Returns a  map containing the available lookup objects.
-   * This method can throw an {@link UnsupportedOperationException} if the map is not available.
+   * This method can throw an UnsupportedOperationException if the map is not available.
    * If no exception is thrown the map must contain every possible lookup object.
    *
    * @return a  map containing the available lookup objects.
@@ -83,18 +83,18 @@ public interface Lookup {
 
   /**
    * Binds the given lookup change listener. Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
-   * @param type                 a {@link Class} object.
+   * @param type                 a Class object.
    * @param <T>                  a T object.
    */
   <T> void bind( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
-   * Binds the given lookup change listener with the key retrieved from {@link TypedLookupChangeListener#getType()}.
+   * Binds the given lookup change listener with the key retrieved from TypedLookupChangeListener#getType().
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
@@ -102,21 +102,21 @@ public interface Lookup {
   <T> void bind( @Nonnull TypedLookupChangeListener<T> lookupChangeListener );
 
   /**
-   * Binds the given lookup change listener that is wrapped within a {@link WeakLookupChangeListener}.
+   * Binds the given lookup change listener that is wrapped within a WeakLookupChangeListener.
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
-   * @param type                 a {@link Class} object.
+   * @param type                 a Class object.
    * @param <T>                  a T object.
    */
   <T> void bindWeak( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
-   * Binds the given lookup change listener (that is wrapped within a {@link WeakLookupChangeListener})
-   * with the key retrieved from {@link TypedLookupChangeListener#getType()}.
+   * Binds the given lookup change listener (that is wrapped within a WeakLookupChangeListener)
+   * with the key retrieved from TypedLookupChangeListener#getType().
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
@@ -140,14 +140,14 @@ public interface Lookup {
   <T> void addChangeListener( @Nonnull Class<T> type, @Nonnull LookupChangeListener<? super T> lookupChangeListener );
 
   /**
-   * Adds a lookup change listener that is wrapped within a {@link WeakLookupChangeListener}
+   * Adds a lookup change listener that is wrapped within a WeakLookupChangeListener
    *
    * @param lookupChangeListener the lookup change listener
    */
   void addChangeListenerWeak( @Nonnull LookupChangeListener<?> lookupChangeListener );
 
   /**
-   * Add a lookup change listener that is wrapped within a {@link WeakLookupChangeListener} for a given type
+   * Add a lookup change listener that is wrapped within a WeakLookupChangeListener for a given type
    *
    * @param type                 the type
    * @param lookupChangeListener the listener

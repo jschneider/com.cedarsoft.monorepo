@@ -56,9 +56,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules   a {@link List} object.
-   * @param testTypes a {@link Class} object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @param modules   a List object.
+   * @param testTypes a Class object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Class<?>... testTypes ) {
@@ -78,9 +78,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param modules a {@link List} object.
-   * @param keys    a {@link Key} object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @param modules a List object.
+   * @param keys    a Key object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Key<?>... keys ) {
@@ -93,9 +93,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result   a {@link GuiceModulesHelper.Result} object.
-   * @param testType a {@link Class} object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @param result   a GuiceModulesHelper.Result object.
+   * @param testType a Class object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull Result result, @Nonnull Class<?> testType ) {
@@ -105,9 +105,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result a {@link GuiceModulesHelper.Result} object.
-   * @param keys   a {@link Key} object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @param result a GuiceModulesHelper.Result object.
+   * @param keys   a Key object.
+   * @return a GuiceModulesHelper.Result object.
    */
   public static Result minimize( @Nonnull Result result, @Nonnull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)
@@ -151,8 +151,8 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules   a {@link List} object.
-   * @param testTypes the {@link Class} types.
+   * @param modules   a List object.
+   * @param testTypes the Class types.
    * @throws AssertionError if any.
    */
   public static void assertMinimizeNotPossible( @Nonnull List<? extends Module> modules, @Nonnull Class<?>... testTypes ) throws AssertionError {
@@ -162,8 +162,8 @@ public class GuiceModulesHelper {
   /**
    * <p>assertMinimizeNotPossible</p>
    *
-   * @param modules a {@link List} object.
-   * @param keys    a {@link Key} object.
+   * @param modules a List object.
+   * @param keys    a Key object.
    * @throws AssertionError if any.
    */
   public static void assertMinimizeNotPossible( @Nonnull List<? extends Module> modules, @Nonnull Key<?>... keys ) throws AssertionError {

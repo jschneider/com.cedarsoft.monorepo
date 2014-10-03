@@ -58,7 +58,7 @@ public interface ContinuousEntry extends Comparable<ContinuousEntry> {
   /**
    * Sets the *new* begin for the entry
    * Use this method with care! Instead try to use the methods of
-   * {@link ContinuousEntriesInformation}
+   * ContinuousEntriesInformation
    *
    * @param begin the new begin
    */

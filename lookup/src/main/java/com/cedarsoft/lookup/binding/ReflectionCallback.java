@@ -53,8 +53,8 @@ public class ReflectionCallback<T> implements LookupChangeListener<T> {
   /**
    * <p>Constructor for ReflectionCallback.</p>
    *
-   * @param object a {@link Object} object.
-   * @param setter a {@link Method} object.
+   * @param object a Object object.
+   * @param setter a Method object.
    */
   public ReflectionCallback( @Nonnull Object object, @Nonnull Method setter ) {
     this.object = object;

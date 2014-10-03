@@ -76,7 +76,7 @@ public class PropertiesPath {
   /**
    * <p>Constructor for PropertiesPath.</p>
    *
-   * @param elements a {@link String} object.
+   * @param elements a String object.
    */
   public PropertiesPath( @Nonnull String... elements ) {
     this( Arrays.asList( elements ) );
@@ -85,7 +85,7 @@ public class PropertiesPath {
   /**
    * <p>Constructor for PropertiesPath.</p>
    *
-   * @param elements a {@link List} object.
+   * @param elements a List object.
    */
   public PropertiesPath( @Nonnull List<String> elements ) {
     if ( elements.isEmpty() ) {
@@ -97,7 +97,7 @@ public class PropertiesPath {
   /**
    * <p>getRootProperty</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getRootProperty() {
@@ -107,7 +107,7 @@ public class PropertiesPath {
   /**
    * <p>Getter for the field <code>elements</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getElements() {
@@ -125,7 +125,7 @@ public class PropertiesPath {
   /**
    * <p>getPresentation</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getPresentation() {

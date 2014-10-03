@@ -63,9 +63,9 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration a {@link Configuration} object.
-   * @param type          a {@link Class} object.
-   * @param key           a {@link String} object.
+   * @param configuration a Configuration object.
+   * @param type          a Class object.
+   * @param key           a String object.
    * @param defaultValue  a T object.
    */
   public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull final T defaultValue ) {
@@ -81,10 +81,10 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration        a {@link Configuration} object.
-   * @param type                 a {@link Class} object.
-   * @param key                  a {@link String} object.
-   * @param defaultValueProvider a {@link DefaultValueProvider} object.
+   * @param configuration        a Configuration object.
+   * @param type                 a Class object.
+   * @param key                  a String object.
+   * @param defaultValueProvider a DefaultValueProvider object.
    */
   public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider ) {
     this( configuration, type, key, defaultValueProvider, ConfigurationResolver.getResolver( type ) );
@@ -93,11 +93,11 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Constructor for ConfigurationAccess.</p>
    *
-   * @param configuration        a {@link Configuration} object.
-   * @param type                 a {@link Class} object.
-   * @param key                  a {@link String} object.
-   * @param defaultValueProvider a {@link DefaultValueProvider} object.
-   * @param resolver             a {@link ConfigurationResolver} object.
+   * @param configuration        a Configuration object.
+   * @param type                 a Class object.
+   * @param key                  a String object.
+   * @param defaultValueProvider a DefaultValueProvider object.
+   * @param resolver             a ConfigurationResolver object.
    */
   public ConfigurationAccess( @Nonnull Configuration configuration, @Nonnull Class<? extends T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider, @Nonnull ConfigurationResolver<T> resolver ) {
     this.configuration = configuration;
@@ -148,7 +148,7 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Getter for the field <code>type</code>.</p>
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   @Nonnull
   public Class<? extends T> getType() {
@@ -158,7 +158,7 @@ public class ConfigurationAccess<T> {
   /**
    * <p>Getter for the field <code>key</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getKey() {
