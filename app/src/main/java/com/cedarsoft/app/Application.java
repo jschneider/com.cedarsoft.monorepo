@@ -49,8 +49,8 @@ public class Application {
   /**
    * <p>Constructor for Application.</p>
    *
-   * @param name    a {@link String} object.
-   * @param version a {@link Version} object.
+   * @param name    a String object.
+   * @param version a Version object.
    */
   public Application( @Nonnull String name, @Nonnull Version version ) {
     this.name = name;
@@ -60,7 +60,7 @@ public class Application {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getName() {
@@ -70,7 +70,7 @@ public class Application {
   /**
    * <p>Getter for the field <code>version</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public Version getVersion() {
