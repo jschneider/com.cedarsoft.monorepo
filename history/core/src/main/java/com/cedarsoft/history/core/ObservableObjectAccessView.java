@@ -54,7 +54,7 @@ public class ObservableObjectAccessView<E> implements ClusteredObservableObjectA
    * <p>Constructor for ObservableObjectAccessView.</p>
    *
    * @param base   a ClusteredObservableObjectAccess object.
-   * @param bridge a {@link ObservableObjectAccessView.Bridge} object.
+   * @param bridge a ObservableObjectAccessView.Bridge object.
    */
   public ObservableObjectAccessView( @Nonnull ClusteredObservableObjectAccess<? super E> base, @Nonnull final Bridge<E> bridge ) {
     this.base = base;

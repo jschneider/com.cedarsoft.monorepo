@@ -65,7 +65,7 @@ public class Lookups {
   /**
    * <p>instantiator</p>
    *
-   * @param instantiater a {@link Instantiater.Typed} object.
+   * @param instantiater a Instantiater.Typed object.
    * @return a InstantiatorLookup object.
    */
   @Nonnull

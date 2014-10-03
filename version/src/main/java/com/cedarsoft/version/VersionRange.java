@@ -266,7 +266,7 @@ public class VersionRange implements Serializable {
    * <p>from</p>
    *
    * @param min a Version object.
-   * @return a {@link VersionRange.Factory} object.
+   * @return a VersionRange.Factory object.
    */
   @Nonnull
   public static Factory from( @Nonnull Version min ) {
@@ -279,7 +279,7 @@ public class VersionRange implements Serializable {
    * @param major a int.
    * @param minor a int.
    * @param build a int.
-   * @return a {@link VersionRange.Factory} object.
+   * @return a VersionRange.Factory object.
    */
   @Nonnull
   public static Factory from( int major, int minor, int build ) {

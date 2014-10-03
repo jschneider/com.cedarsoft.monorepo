@@ -81,7 +81,7 @@ public abstract class SwingPresenter<T extends JComponent> extends AbstractPrese
    * <p>getChildPresenter</p>
    *
    * @param child a StructPart object.
-   * @return a {@link com.cedarsoft.presenter.Presenter} object.
+   * @return a com.cedarsoft.presenter.Presenter object.
    */
   @Nonnull
   protected abstract Presenter<? extends JComponent> getChildPresenter( @Nonnull StructPart child );

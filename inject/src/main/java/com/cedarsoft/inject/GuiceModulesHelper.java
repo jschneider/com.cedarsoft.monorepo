@@ -58,7 +58,7 @@ public class GuiceModulesHelper {
    *
    * @param modules   a List object.
    * @param testTypes a Class object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Class<?>... testTypes ) {
@@ -80,7 +80,7 @@ public class GuiceModulesHelper {
    *
    * @param modules a List object.
    * @param keys    a Key object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull List<? extends Module> modules, @Nonnull Key<?>... keys ) {
@@ -93,9 +93,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result   a {@link GuiceModulesHelper.Result} object.
+   * @param result   a GuiceModulesHelper.Result object.
    * @param testType a Class object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @return a GuiceModulesHelper.Result object.
    */
   @Nonnull
   public static Result minimize( @Nonnull Result result, @Nonnull Class<?> testType ) {
@@ -105,9 +105,9 @@ public class GuiceModulesHelper {
   /**
    * <p>minimize</p>
    *
-   * @param result a {@link GuiceModulesHelper.Result} object.
+   * @param result a GuiceModulesHelper.Result object.
    * @param keys   a Key object.
-   * @return a {@link GuiceModulesHelper.Result} object.
+   * @return a GuiceModulesHelper.Result object.
    */
   public static Result minimize( @Nonnull Result result, @Nonnull Key<?>... keys ) {
     //Iterate over all types (copy because the result is updated)

@@ -65,7 +65,7 @@ public class ZipExtractor {
   /**
    * <p>Constructor for ZipExtractor.</p>
    *
-   * @param condition a {@link ZipExtractor.Condition} object.
+   * @param condition a ZipExtractor.Condition object.
    */
   public ZipExtractor( @Nullable Condition condition ) {
     this.condition = condition;

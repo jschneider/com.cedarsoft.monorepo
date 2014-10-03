@@ -70,7 +70,7 @@ public class ClusteredChangeListenerSupport<T> {
    * <p>Constructor for ClusteredChangeListenerSupport.</p>
    *
    * @param observerdObject a T object.
-   * @param contextProvider a {@link ClusteredChangeListenerSupport.ContextProvider} object.
+   * @param contextProvider a ClusteredChangeListenerSupport.ContextProvider object.
    */
   public ClusteredChangeListenerSupport( @Nonnull T observerdObject, @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;
@@ -81,7 +81,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener    a {@link com.cedarsoft.objectaccess.ChangeListener} object.
+   * @param listener    a com.cedarsoft.objectaccess.ChangeListener object.
    * @param isTransient a boolean.
    */
   public void addChangeListener( @Nonnull ChangeListener<T> listener, boolean isTransient ) {
@@ -95,7 +95,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
+   * @param listener a com.cedarsoft.objectaccess.ChangeListener object.
    */
   public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     transientSupport.removeChangeListener( listener );
@@ -134,7 +134,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>Getter for the field <code>contextProvider</code>.</p>
    *
-   * @return a {@link ClusteredChangeListenerSupport.ContextProvider} object.
+   * @return a ClusteredChangeListenerSupport.ContextProvider object.
    */
   @Nullable
   public ContextProvider getContextProvider() {
@@ -144,7 +144,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>Setter for the field <code>contextProvider</code>.</p>
    *
-   * @param contextProvider a {@link ClusteredChangeListenerSupport.ContextProvider} object.
+   * @param contextProvider a ClusteredChangeListenerSupport.ContextProvider object.
    */
   public void setContextProvider( @Nullable ContextProvider contextProvider ) {
     this.contextProvider = contextProvider;

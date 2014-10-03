@@ -49,14 +49,14 @@ public interface PartTimeObjectAdd<T> extends ObjectAdd<T> {
   /**
    * <p>addPartTimeListener</p>
    *
-   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
+   * @param listener a PartTimeObjectAdd.PartTimeListener object.
    */
   void addPartTimeListener( @Nonnull PartTimeListener listener );
 
   /**
    * <p>removePartTimeListener</p>
    *
-   * @param listener a {@link PartTimeObjectAdd.PartTimeListener} object.
+   * @param listener a PartTimeObjectAdd.PartTimeListener object.
    */
   void removePartTimeListener( @Nonnull PartTimeListener listener );
 

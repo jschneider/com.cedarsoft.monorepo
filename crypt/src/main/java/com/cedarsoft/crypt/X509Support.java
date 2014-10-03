@@ -158,7 +158,7 @@ public class X509Support {
    * <p>sign</p>
    *
    * @param plainText an array of byte.
-   * @return a {@link com.cedarsoft.crypt.Signature} object.
+   * @return a com.cedarsoft.crypt.Signature object.
    *
    * @throws GeneralSecurityException
    *          if any.
@@ -176,7 +176,7 @@ public class X509Support {
    * <p>verifySignature</p>
    *
    * @param plainText an array of byte.
-   * @param signature a {@link com.cedarsoft.crypt.Signature} object.
+   * @param signature a com.cedarsoft.crypt.Signature object.
    * @return a boolean.
    *
    * @throws GeneralSecurityException

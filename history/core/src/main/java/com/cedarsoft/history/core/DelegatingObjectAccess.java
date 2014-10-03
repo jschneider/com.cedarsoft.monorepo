@@ -280,7 +280,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>addDelegateListener</p>
    *
-   * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
+   * @param listener a DelegatingObjectAccess.DelegateListener object.
    */
   public void addDelegateListener( @Nonnull DelegateListener<T> listener ) {
     this.delegateListeners.add( listener );
@@ -289,7 +289,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
   /**
    * <p>removeDelegateListener</p>
    *
-   * @param listener a {@link DelegatingObjectAccess.DelegateListener} object.
+   * @param listener a DelegatingObjectAccess.DelegateListener object.
    */
   public void removeDelegateListener( @Nonnull DelegateListener<T> listener ) {
     this.delegateListeners.remove( listener );
