@@ -46,7 +46,7 @@ import java.util.RandomAccess;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 07.10.2006<br>
  * Time: 17:57:45<br>
  *

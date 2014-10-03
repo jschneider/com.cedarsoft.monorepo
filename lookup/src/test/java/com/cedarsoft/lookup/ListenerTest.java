@@ -34,7 +34,7 @@ package com.cedarsoft.lookup;
 import org.junit.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 06.10.2006<br>
  * Time: 16:55:30<br>
  *

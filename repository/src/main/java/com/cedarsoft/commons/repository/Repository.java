@@ -40,7 +40,7 @@ import javax.annotation.Nonnull;
 
 /**
  * A repository is a treelike structure where informations may be saved within nodes.
- * <p/>
+ * <p>
  * The repository stores Nodes within an absolute structure.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)

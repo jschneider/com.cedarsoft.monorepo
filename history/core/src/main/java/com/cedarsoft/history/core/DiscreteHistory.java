@@ -49,7 +49,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * For several dates a hole history of values is stored.
  * This can be used to store a hole history of entries related to a given date.
- * <p/>
+ * <p>
  * Be careful: Listeners that have ben registered to a sub history aren't notified of entries changes!
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
@@ -155,7 +155,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all entries
    */
   @Override
@@ -178,7 +178,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Removes all entries
    */
   @Override
@@ -196,7 +196,7 @@ public class DiscreteHistory<E extends DiscreteHistoryEntry> implements History<
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Adds an entry.
    */
   @Override

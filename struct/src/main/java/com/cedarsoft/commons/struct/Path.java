@@ -43,9 +43,9 @@ import java.util.List;
 /**
  * Represents a path of several nodes.
  * A path is a string representation.
- * <p/>
+ * <p>
  * If you want to get a "list" of nodes try {@link Route} instead.
- * <p/>
+ * <p>
  * A path is *immutable*
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)

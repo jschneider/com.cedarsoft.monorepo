@@ -41,7 +41,7 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 
 /**
- * <p/>
+ * <p>
  * Date: Jun 5, 2007<br>
  * Time: 3:24:18 PM<br>
  */

@@ -33,7 +33,7 @@ package de.xore.util.persistence;
 
 /**
  * Is thrown, if an exception occured while accessing the database.
- * <p/>
+ * <p>
  * Date: 21.06.2006<br>
  * Time: 23:07:32<br>
  *

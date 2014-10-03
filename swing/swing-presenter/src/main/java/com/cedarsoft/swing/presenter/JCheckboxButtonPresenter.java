@@ -36,7 +36,7 @@ import javax.annotation.Nonnull;
 import javax.swing.JCheckBox;
 
 /**
- * <p/>
+ * <p>
  * Date: Jun 1, 2007<br>
  * Time: 4:19:22 PM<br>
  *

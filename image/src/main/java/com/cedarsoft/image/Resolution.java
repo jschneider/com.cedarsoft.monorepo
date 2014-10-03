@@ -39,7 +39,7 @@ import java.io.Serializable;
 /**
  * Represents a resolution.
  * Resolutions can be compared using the width as first criteria and the height as second.
- * <p/>
+ * <p>
  * This means that 100/1 is larger than 99/Integer.MAX
  */
 public class Resolution implements Comparable<Resolution>, Serializable {

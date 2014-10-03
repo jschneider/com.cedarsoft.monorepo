@@ -89,7 +89,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Persists the given configuration manager
    */
   @Override
@@ -107,7 +107,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Persists the given configurations
    */
   @Override
@@ -142,7 +142,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Persists the configurations for the given manager into a string
    */
   @Deprecated
@@ -156,7 +156,7 @@ public class XStreamPersister implements ConfigurationPersister {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Loads the configurations
    */
   @Override

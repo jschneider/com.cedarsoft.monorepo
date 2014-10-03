@@ -54,7 +54,7 @@ public abstract class ApplicationAction extends AbstractAction {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
    */
   @Override

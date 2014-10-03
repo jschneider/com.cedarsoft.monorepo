@@ -197,7 +197,7 @@ public class DelegatingObjectAccess<T> implements ObservableObjectAccess<T>, Par
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns the lock for the current delegate
    */
   @Override

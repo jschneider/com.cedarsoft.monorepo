@@ -119,7 +119,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * The application name
    */
   @Override
@@ -130,7 +130,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * The application home dir
    */
   @Override

@@ -59,7 +59,7 @@ public interface Node extends StructPart {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns the parent (if it has one)
    */
   @Override

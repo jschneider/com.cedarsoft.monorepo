@@ -40,7 +40,7 @@ import java.lang.reflect.Method;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: Jun 1, 2007<br>
  * Time: 1:30:20 PM<br>
  */

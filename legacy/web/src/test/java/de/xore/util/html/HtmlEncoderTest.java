@@ -34,7 +34,7 @@ package de.xore.util.html;
 import junit.framework.TestCase;
 
 /**
- * <p/>
+ * <p>
  * Date: 15.09.2006<br>
  * Time: 22:08:53<br>
  *

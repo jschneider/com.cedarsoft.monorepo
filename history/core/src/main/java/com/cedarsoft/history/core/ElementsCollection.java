@@ -184,7 +184,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all cessions
    */
   @Override
@@ -200,7 +200,7 @@ public class ElementsCollection<E> implements ObservableObjectAccess<E>, Lockabl
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Sets the elements
    */
   @Override

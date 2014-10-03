@@ -38,7 +38,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * <p/>
+ * <p>
  * Date: 24.06.2006<br>
  * Time: 14:17:47<br>
  *

@@ -46,7 +46,7 @@ package de.xore.util;
  */
 
 /**
- * <p/>
+ * <p>
  * Date: 08.04.2004<br> Time: 17:59:38<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

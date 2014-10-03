@@ -40,10 +40,10 @@ import java.beans.PropertyChangeListener;
 /**
  * You don't have to use this class directly. Instead use
  * {@link ConfigurationBinding#bind(ConfigurationAccess,ValueModel)
- * <p/>
+ * <p>
  * Connects a value model to a configuration access.
  * For each property of a bean one ConfigurationConnector is needed.
- * <p/>
+ * <p>
  * T: The type of the property
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)

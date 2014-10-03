@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
 
 
 /**
- * <p/>
+ * <p>
  * Date: May 25, 2007<br>
  * Time: 3:27:15 PM<br>
  */

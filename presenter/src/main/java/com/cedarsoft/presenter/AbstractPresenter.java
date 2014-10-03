@@ -56,7 +56,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Creates the presentation for the given struct. This method should not be overridden.
    */
   @Override

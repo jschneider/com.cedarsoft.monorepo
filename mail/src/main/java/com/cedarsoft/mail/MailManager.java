@@ -46,7 +46,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- * <p/>
+ * <p>
  * Date: 05.05.2004<br> Time: 20:59:09<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

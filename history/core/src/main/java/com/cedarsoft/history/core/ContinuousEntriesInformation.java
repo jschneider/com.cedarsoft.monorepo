@@ -47,7 +47,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * A history is an ordered collection of several {@link DefaultContinuousEntry}s.
  * Each entries covers a given interval.
- * <p/>
+ * <p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <E> the type of the entries

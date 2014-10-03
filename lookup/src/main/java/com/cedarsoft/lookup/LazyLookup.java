@@ -107,7 +107,7 @@ public abstract class LazyLookup<T> extends AbstractLookup {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * This lookup calls {@link #getValue()} when the parameter fits the type ({@link #getType()}).
    */
   @Override

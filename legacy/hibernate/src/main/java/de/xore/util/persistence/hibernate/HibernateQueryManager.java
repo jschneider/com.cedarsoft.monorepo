@@ -53,7 +53,7 @@ import java.util.Properties;
  */
 
 /**
- * <p/>
+ * <p>
  * Date: 21.01.2004<br> Time: 00:27:29<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

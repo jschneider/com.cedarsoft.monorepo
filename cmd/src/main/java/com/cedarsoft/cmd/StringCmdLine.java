@@ -48,7 +48,7 @@ import java.util.List;
 
 /**
  * Command Line implementation that is based on strings.
- * <p/>
+ * <p>
  * Date: 25.09.2006<br>
  * Time: 19:43:04<br>
  *

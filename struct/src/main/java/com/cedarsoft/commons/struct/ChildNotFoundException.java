@@ -36,7 +36,7 @@ import com.cedarsoft.exceptions.NotFoundException;
 import javax.annotation.Nonnull;
 
 /**
- * <p/>
+ * <p>
  * Date: 12.10.2006<br>
  * Time: 21:05:19<br>
  *

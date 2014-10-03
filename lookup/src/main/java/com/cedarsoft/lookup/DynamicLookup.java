@@ -74,7 +74,7 @@ public class DynamicLookup extends AbstractLookup implements LookupStore {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * The type is ignored
    */
   @Override

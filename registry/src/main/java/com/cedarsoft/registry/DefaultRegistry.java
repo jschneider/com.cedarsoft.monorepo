@@ -211,7 +211,7 @@ public class DefaultRegistry<T> implements Registry<T> {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Stores the object within the registry
    */
   @Override

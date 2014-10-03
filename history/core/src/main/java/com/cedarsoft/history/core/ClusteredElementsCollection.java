@@ -183,7 +183,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all cessions
    */
   @Override

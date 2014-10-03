@@ -92,7 +92,7 @@ public class DefaultChildrenSupport implements ChildrenSupport {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Detaches all children
    */
   @Override
