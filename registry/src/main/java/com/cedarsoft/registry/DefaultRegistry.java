@@ -240,8 +240,8 @@ public class DefaultRegistry<T> implements Registry<T> {
 
   @Override
   public void remove( @Nonnull T object, @Nonnull String removeMessage ) throws NotFoundException {
+    lock.writeLock().lock();
     try {
-      lock.writeLock().lock();
       if ( !storedObjects.remove( object ) ) {
         throw new NotFoundException( removeMessage );
       }
