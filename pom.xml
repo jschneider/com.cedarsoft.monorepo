@@ -68,6 +68,18 @@
     </dependencies>
   </dependencyManagement>
 
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.cedarsoft.maven</groupId>
+          <artifactId>instrumentation-plugin</artifactId>
+          <version>1.0.3-SNAPSHOT</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
   <mailingLists>
     <mailingList>
       <name>Mail Support</name>
