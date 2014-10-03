@@ -88,7 +88,7 @@ public class SwingHelper {
   }
 
   /**
-   * Calls {@link SwingUtilities#isEventDispatchThread()}
+   * Calls SwingUtilities#isEventDispatchThread()
    *
    * @return whether the current thread is the EDT
    */

@@ -82,8 +82,7 @@ public class Route {
    *
    * @return the last node
    *
-   * @throws IllegalStateException
-   *          if the route is empty
+   * @throws IllegalStateException if the route is empty
    */
   @Nonnull
   public Node getLastNode() throws IllegalStateException {
@@ -155,9 +154,6 @@ public class Route {
    * @param rootNode the root node
    * @param path     the path
    * @return the route
-   *
-   * @throws ChildNotFoundException
-   *          if any.
    */
   @Nonnull
   public static Route buildRoute( @Nonnull Node rootNode, @Nonnull Path path ) throws ChildNotFoundException {
@@ -184,9 +180,6 @@ public class Route {
    * @param path        a Path object.
    * @param nodeFactory a NodeFactory object.
    * @return a Route object.
-   *
-   * @throws ChildNotFoundException
-   *          if any.
    */
   @Nonnull
   public static Route buildRouteInternal( @Nonnull Node rootNode, @Nonnull Path path, @Nullable NodeFactory nodeFactory ) throws ChildNotFoundException {

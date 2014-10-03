@@ -59,7 +59,7 @@ import java.util.Collections;
 /**
  * Easy support for xml signatures.
  * Be carefull! The DocumentBuilderFactory has to be namespace aware
- * ({@link DocumentBuilderFactory#setNamespaceAware(boolean)}).
+ * (DocumentBuilderFactory#setNamespaceAware(boolean)).
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

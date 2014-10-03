@@ -128,9 +128,6 @@ public interface ChildrenSupport {
    *
    * @param childName the name of the child
    * @return the child
-   *
-   * @throws ChildNotFoundException
-   *          if no child with that name is found
    */
   @Nonnull
   Node findChild( @Nonnull String childName ) throws ChildNotFoundException;

@@ -45,8 +45,8 @@ import java.io.PrintStream;
  */
 public class OutputRedirector implements Runnable {
   /**
-   * Redirects the output of the given process to {@link System#out} and
-   * {@link System#err}
+   * Redirects the output of the given process to System#out and
+   * System#err
    *
    * @param process the process
    * @return the redirecting threads

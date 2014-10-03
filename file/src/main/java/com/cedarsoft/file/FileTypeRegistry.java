@@ -109,7 +109,6 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
    *
    * @param storedObjects      a Collection object.
    * @param fileTypeComparator a Comparator object.
-   * @throws StillContainedException
    *          if any.
    */
   public FileTypeRegistry( @Nonnull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {

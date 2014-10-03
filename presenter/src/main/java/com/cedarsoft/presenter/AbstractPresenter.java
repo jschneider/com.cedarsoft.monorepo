@@ -93,7 +93,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
   protected abstract boolean shallAddChildren();
 
   /**
-   * The default implementation returns {@link StructureChangedEvent#getIndex()}
+   * The default implementation returns StructureChangedEvent#getIndex()
    *
    * @param event the event
    * @return the index
@@ -132,7 +132,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
 
   /**
    * Create the basic presentation.
-   * Do not wire anything up here. Use the {@link #bind(Object, StructPart, Lookup)}
+   * Do not wire anything up here. Use the {@link #bind(T, StructPart, Lookup)}
    * method instead.
    *
    * @return the presentation

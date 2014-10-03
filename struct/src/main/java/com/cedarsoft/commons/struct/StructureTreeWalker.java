@@ -53,11 +53,12 @@ public interface StructureTreeWalker {
    */
   interface WalkerCallBack {
     /**
-     * Is called for each node that is reached
+     * Is called for each node that is reached.
+     * Throws a CanceledException if the current node and its children should be skipped
      *
      * @param node  the node that is reached
      * @param level the level of the node (0 for the root node, 1 for the direct children of the root)
-     * @throws CanceledException if the current node and its children should be skipped
+     *
      */
     void nodeReached( @Nonnull StructPart node, int level ) throws CanceledException;
   }

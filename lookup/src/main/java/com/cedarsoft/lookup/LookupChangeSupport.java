@@ -75,7 +75,7 @@ public class LookupChangeSupport {
 
   /**
    * Binds the given lookup change listener. Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param type                 a Class object.
@@ -87,9 +87,9 @@ public class LookupChangeSupport {
   }
 
   /**
-   * Binds the given lookup change listener with the key retrieved from {@link TypedLookupChangeListener#getType()}.
+   * Binds the given lookup change listener with the key retrieved from TypedLookupChangeListener#getType().
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.
@@ -102,7 +102,7 @@ public class LookupChangeSupport {
   /**
    * Binds the given lookup change listener that is wrapped within a WeakLookupChangeListener.
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param type                 a Class object.
@@ -115,9 +115,9 @@ public class LookupChangeSupport {
 
   /**
    * Binds the given lookup change listener (that is wrapped within a WeakLookupChangeListener)
-   * with the key retrieved from {@link TypedLookupChangeListener#getType()}.
+   * with the key retrieved from TypedLookupChangeListener#getType().
    * Adds the given listener and calls
-   * {@link LookupChangeListener#lookupChanged(LookupChangeEvent)} for the first time.
+   * LookupChangeListener#lookupChanged(LookupChangeEvent) for the first time.
    *
    * @param lookupChangeListener the listener that is added
    * @param <T>                  a T object.

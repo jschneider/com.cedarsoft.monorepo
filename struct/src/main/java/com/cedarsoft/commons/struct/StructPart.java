@@ -127,8 +127,6 @@ public interface StructPart {
    * @param childName the childName of the children
    * @return the child with the given childName
    *
-   * @throws ChildNotFoundException
-   *          if any.
    */
   @Nonnull
   StructPart findChild( @Nonnull String childName ) throws ChildNotFoundException;
