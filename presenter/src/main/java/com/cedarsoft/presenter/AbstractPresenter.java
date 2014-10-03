@@ -130,7 +130,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
 
   /**
    * Create the basic presentation.
-   * Do not wire anything up here. Use the {@link #bind(T, StructPart, Lookup)}
+   * Do not wire anything up here. Use the #bind(T, StructPart, Lookup)
    * method instead.
    *
    * @return the presentation
