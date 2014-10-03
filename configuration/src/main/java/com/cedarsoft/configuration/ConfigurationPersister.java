@@ -95,7 +95,7 @@ public interface ConfigurationPersister {
    *
    * @param configurationManager a {@link ConfigurationManager} object.
    * @param out                  a {@link Writer} object.
-   * @param encoding             a {@link String} object.
+   * @param encoding             a String object.
    * @throws IOException if any.
    */
   void persist( @Nonnull ConfigurationManager configurationManager, @Nonnull Writer out, @Nullable String encoding ) throws IOException;
@@ -105,7 +105,7 @@ public interface ConfigurationPersister {
    *
    * @param configurations a {@link List} object.
    * @param out            a {@link Writer} object.
-   * @param encoding       a {@link String} object.
+   * @param encoding       a String object.
    * @throws IOException if any.
    */
   void persist( @Nonnull List<?> configurations, @Nonnull Writer out, @Nullable String encoding ) throws IOException;
@@ -123,7 +123,7 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param serialized a {@link String} object.
+   * @param serialized a String object.
    * @return a {@link List} object.
    *
    * @throws IOException if any.
@@ -145,7 +145,7 @@ public interface ConfigurationPersister {
   /**
    * <p>load</p>
    *
-   * @param file a {@link File} object.
+   * @param file a File object.
    * @return a {@link List} object.
    *
    * @throws IOException if any.

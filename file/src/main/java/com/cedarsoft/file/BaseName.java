@@ -58,7 +58,7 @@ public class BaseName implements Comparable<BaseName>, Serializable {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getName() {

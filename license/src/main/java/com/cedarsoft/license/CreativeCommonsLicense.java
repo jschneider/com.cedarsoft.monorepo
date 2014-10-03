@@ -53,8 +53,8 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Constructor for CreativeCommonsLicense.</p>
    *
-   * @param id                        a {@link String} object.
-   * @param name                      a {@link String} object.
+   * @param id                        a String object.
+   * @param name                      a String object.
    * @param restrictedToNonCommercial a boolean.
    * @param modificationsAllowed      a {@link CreativeCommonsLicense.ModificationsAllowed} object.
    * @param url                       the url

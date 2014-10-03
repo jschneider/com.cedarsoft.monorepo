@@ -151,7 +151,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    * <p>findStoredObject</p>
    *
    * @param matcher         a Matcher object.
-   * @param notFoundMessage a {@link String} object.
+   * @param notFoundMessage a String object.
    * @return a T object.
    *
    * @throws NotFoundException if any.

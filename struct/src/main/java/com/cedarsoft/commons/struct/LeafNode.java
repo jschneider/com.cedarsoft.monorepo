@@ -56,7 +56,7 @@ public class LeafNode implements Node {
   /**
    * <p>Constructor for LeafNode.</p>
    *
-   * @param name   a {@link String} object.
+   * @param name   a String object.
    * @param lookup a {@link Lookup} object.
    */
   public LeafNode( @Nonnull String name, @Nonnull Lookup lookup ) {

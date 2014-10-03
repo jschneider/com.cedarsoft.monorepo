@@ -56,7 +56,7 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
    *
    * @param configuration        a {@link Configuration} object.
    * @param type                 a {@link Class} object.
-   * @param key                  a {@link String} object.
+   * @param key                  a String object.
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    */
   public ConfigurationPropertyFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider ) {

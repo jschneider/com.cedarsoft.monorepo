@@ -48,7 +48,7 @@ public abstract class ElementVisitor<E> {
   /**
    * <p>Constructor for ElementVisitor.</p>
    *
-   * @param identifier a {@link String} object.
+   * @param identifier a String object.
    */
   protected ElementVisitor( @Nonnull String identifier ) {
     this.identifier = identifier;
@@ -57,7 +57,7 @@ public abstract class ElementVisitor<E> {
   /**
    * <p>Getter for the field <code>identifier</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getIdentifier() {

@@ -151,7 +151,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>valueOf</p>
    *
-   * @param id a {@link String} object.
+   * @param id a String object.
    * @return a {@link FileType} object.
    */
   @Nonnull
@@ -183,7 +183,7 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
   /**
    * <p>get</p>
    *
-   * @param fileName a {@link String} object.
+   * @param fileName a String object.
    * @return a {@link FileType} object.
    */
   @Nonnull

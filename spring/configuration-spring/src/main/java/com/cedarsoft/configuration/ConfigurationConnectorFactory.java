@@ -61,7 +61,7 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
    *
    * @param configuration        a {@link Configuration} object.
    * @param type                 a {@link Class} object.
-   * @param propertyName         a {@link String} object.
+   * @param propertyName         a String object.
    * @param defaultValueProvider a {@link DefaultValueProvider} object.
    * @param beanAdapter          a {@link BeanAdapter} object.
    */
@@ -77,7 +77,7 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
    *
    * @param configuration a {@link Configuration} object.
    * @param type          a {@link Class} object.
-   * @param propertyName  a {@link String} object.
+   * @param propertyName  a String object.
    * @param defaultValue  a T object.
    * @param beanAdapter   a {@link BeanAdapter} object.
    */

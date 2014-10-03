@@ -98,7 +98,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>addChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
+   * @param listener a com.cedarsoft.objectaccess.ChangeListener object.
    */
   public void addChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -112,7 +112,7 @@ public class TransientChangeListenerSupport<T> {
   /**
    * <p>removeChangeListener</p>
    *
-   * @param listener a {@link com.cedarsoft.objectaccess.ChangeListener} object.
+   * @param listener a com.cedarsoft.objectaccess.ChangeListener object.
    */
   public void removeChangeListener( @Nonnull ChangeListener<T> listener ) {
     lock.writeLock().lock();
@@ -127,7 +127,7 @@ public class TransientChangeListenerSupport<T> {
    * <p>changed</p>
    *
    * @param context        a {@link Object} object.
-   * @param propertiesPath a {@link String} object.
+   * @param propertiesPath a String object.
    */
   public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
     ChangedEvent<T> event = new ChangedEvent<T>( observedObject, context, propertiesPath );

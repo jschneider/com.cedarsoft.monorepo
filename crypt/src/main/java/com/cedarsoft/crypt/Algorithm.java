@@ -56,7 +56,7 @@ public enum Algorithm {
   /**
    * <p>getAlgorithm</p>
    *
-   * @param algorithmString a {@link String} object.
+   * @param algorithmString a String object.
    * @return a {@link Algorithm} object.
    */
   @Nonnull

@@ -86,8 +86,8 @@ public class AssertUtils {
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param control a {@link String} object.
-   * @param test    a {@link String} object.
+   * @param control a String object.
+   * @param test    a String object.
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
@@ -106,8 +106,8 @@ public class AssertUtils {
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param control          a {@link String} object.
-   * @param test             a {@link String} object.
+   * @param control          a String object.
+   * @param test             a String object.
    * @param ignoreWhiteSpace a boolean.
    * @throws SAXException if any.
    * @throws IOException  if any.
@@ -127,9 +127,9 @@ public class AssertUtils {
   /**
    * <p>assertXMLEqual</p>
    *
-   * @param err              a {@link String} object.
-   * @param control          a {@link String} object.
-   * @param test             a {@link String} object.
+   * @param err              a String object.
+   * @param control          a String object.
+   * @param test             a String object.
    * @param ignoreWhiteSpace a boolean.
    * @throws SAXException if any.
    * @throws IOException  if any.

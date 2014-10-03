@@ -70,8 +70,8 @@ public class XmlCommons {
   /**
    * <p>format</p>
    *
-   * @param xml a {@link String} object.
-   * @return a {@link String} object.
+   * @param xml a String object.
+   * @return a String object.
    */
   @Nonnull
   public static String format( @Nonnull String xml ) {
@@ -186,7 +186,7 @@ public class XmlCommons {
    * <p>toString</p>
    *
    * @param document a {@link Document} object.
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public static String toString( @Nonnull Document document ) {

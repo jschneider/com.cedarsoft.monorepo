@@ -63,7 +63,7 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link String} object.
+   * @param id            a String object.
    * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
    * @param extensions    a {@link Extension} object.
@@ -75,7 +75,7 @@ public class FileType {
   /**
    * <p>Constructor for FileType.</p>
    *
-   * @param id            a {@link String} object.
+   * @param id            a String object.
    * @param contentType   the content type (eg. image/jpeg)
    * @param dependentType a boolean.
    * @param extensions    a {@link Collection} object.
@@ -108,7 +108,7 @@ public class FileType {
   /**
    * <p>matches</p>
    *
-   * @param fileName a {@link String} object.
+   * @param fileName a String object.
    * @return a boolean.
    */
   public boolean matches( @Nonnull String fileName ) {
@@ -143,7 +143,7 @@ public class FileType {
   /**
    * <p>Getter for the field <code>id</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getId() {
@@ -163,7 +163,7 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param file a {@link File} object.
+   * @param file a File object.
    * @return a {@link FileName} object.
    */
   @Nonnull
@@ -174,7 +174,7 @@ public class FileType {
   /**
    * <p>getFileName</p>
    *
-   * @param fileName a {@link String} object.
+   * @param fileName a String object.
    * @return a {@link FileName} object.
    */
   @Nonnull
@@ -205,7 +205,7 @@ public class FileType {
   /**
    * <p>getExtension</p>
    *
-   * @param fileName a {@link String} object.
+   * @param fileName a String object.
    * @return a {@link Extension} object.
    */
   @Nonnull
@@ -216,8 +216,8 @@ public class FileType {
   /**
    * <p>getBaseName</p>
    *
-   * @param fileName a {@link String} object.
-   * @return a {@link String} object.
+   * @param fileName a String object.
+   * @return a String object.
    */
   @Nonnull
   public String getBaseName( @Nonnull String fileName ) {

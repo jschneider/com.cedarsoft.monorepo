@@ -128,8 +128,8 @@ public class XStreamPersister implements ConfigurationPersister {
   /**
    * <p>createXmlHeader</p>
    *
-   * @param encoding a {@link String} object.
-   * @return a {@link String} object.
+   * @param encoding a String object.
+   * @return a String object.
    */
   @Nonnull
   protected String createXmlHeader( @Nullable String encoding ) {

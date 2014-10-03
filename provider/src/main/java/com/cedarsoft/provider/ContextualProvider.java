@@ -59,7 +59,7 @@ public interface ContextualProvider<T, C, E extends Throwable> {
    * <p>getDescription</p>
    *
    * @param context a C object.
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   String getDescription( @Nonnull C context );

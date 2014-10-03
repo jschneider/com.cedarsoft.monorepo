@@ -70,7 +70,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   /**
    * <p>Constructor for DefaultApplicationHomeAccess.</p>
    *
-   * @param applicationName a {@link String} object.
+   * @param applicationName a String object.
    * @param sandbox         a boolean.
    * @throws IOException if any.
    */
@@ -81,9 +81,9 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   /**
    * <p>getApplicationDirName</p>
    *
-   * @param applicationName a {@link String} object.
+   * @param applicationName a String object.
    * @param sandbox         a boolean.
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public static String getApplicationDirName( @Nonnull String applicationName, boolean sandbox ) {

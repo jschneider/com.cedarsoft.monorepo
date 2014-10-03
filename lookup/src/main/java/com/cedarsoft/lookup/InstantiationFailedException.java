@@ -49,7 +49,7 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public InstantiationFailedException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public InstantiationFailedException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class InstantiationFailedException extends Exception {
   /**
    * <p>Constructor for InstantiationFailedException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public InstantiationFailedException( Throwable cause ) {
     super( cause );

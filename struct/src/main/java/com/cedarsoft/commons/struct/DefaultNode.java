@@ -58,7 +58,7 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name a {@link String} object.
+   * @param name a String object.
    */
   public DefaultNode( @Nonnull String name ) {
     this( name, new DefaultChildrenSupport(), Lookups.emtyLookup() );
@@ -67,7 +67,7 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name   a {@link String} object.
+   * @param name   a String object.
    * @param lookup a {@link Lookup} object.
    */
   public DefaultNode( @Nonnull String name, @Nonnull Lookup lookup ) {
@@ -77,7 +77,7 @@ public class DefaultNode implements Node {
   /**
    * <p>Constructor for DefaultNode.</p>
    *
-   * @param name            a {@link String} object.
+   * @param name            a String object.
    * @param childrenSupport a {@link ChildrenSupport} object.
    * @param lookup          a {@link Lookup} object.
    */

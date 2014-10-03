@@ -51,7 +51,7 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public VersionException( String message ) {
     super( message );
@@ -60,8 +60,8 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public VersionException( String message, Throwable cause ) {
     super( message, cause );
@@ -70,7 +70,7 @@ public class VersionException extends RuntimeException {
   /**
    * <p>Constructor for VersionException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public VersionException( Throwable cause ) {
     super( cause );

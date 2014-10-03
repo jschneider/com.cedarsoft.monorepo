@@ -57,7 +57,7 @@ public interface Provider<T, E extends Throwable> {
   /**
    * <p>getDescription</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   String getDescription();

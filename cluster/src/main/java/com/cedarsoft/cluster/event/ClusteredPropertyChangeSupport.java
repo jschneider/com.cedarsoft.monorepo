@@ -82,7 +82,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>removePropertyChangeListener</p>
    *
-   * @param propertyName a {@link String} object.
+   * @param propertyName a String object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
   public void removePropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
@@ -116,7 +116,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param propertyName a {@link String} object.
+   * @param propertyName a String object.
    * @param listener     a {@link PropertyChangeListener} object.
    */
   public void addPropertyChangeListener( @Nonnull String propertyName, @Nonnull PropertyChangeListener listener ) {
@@ -126,7 +126,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>addPropertyChangeListener</p>
    *
-   * @param propertyName a {@link String} object.
+   * @param propertyName a String object.
    * @param listener     a {@link PropertyChangeListener} object.
    * @param isTransient  a boolean.
    */
@@ -141,7 +141,7 @@ public class ClusteredPropertyChangeSupport {
   /**
    * <p>firePropertyChange</p>
    *
-   * @param propertyName a {@link String} object.
+   * @param propertyName a String object.
    * @param oldValue     a {@link Object} object.
    * @param newValue     a {@link Object} object.
    */

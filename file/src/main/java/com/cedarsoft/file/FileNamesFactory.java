@@ -62,7 +62,7 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param baseDir a {@link File} object.
+   * @param baseDir a File object.
    * @return a {@link FileNames} object.
    */
   @Nonnull
@@ -74,7 +74,7 @@ public class FileNamesFactory {
   /**
    * <p>create</p>
    *
-   * @param sourceFiles an array of {@link File} objects.
+   * @param sourceFiles an array of File objects.
    * @return a {@link FileNames} object.
    */
   @Nonnull
@@ -102,7 +102,7 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param baseDir a {@link File} object.
+   * @param baseDir a File object.
    * @return a {@link BaseNameAwareFileNames} object.
    */
   @Nonnull
@@ -113,7 +113,7 @@ public class FileNamesFactory {
   /**
    * <p>createBaseNameAware</p>
    *
-   * @param sourceFiles an array of {@link File} objects.
+   * @param sourceFiles an array of File objects.
    * @return a {@link BaseNameAwareFileNames} object.
    */
   @Nonnull

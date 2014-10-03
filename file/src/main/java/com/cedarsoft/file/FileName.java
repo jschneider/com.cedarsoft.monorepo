@@ -71,9 +71,9 @@ public class FileName {
   /**
    * <p>Constructor for FileName.</p>
    *
-   * @param baseName  a {@link String} object.
-   * @param delimiter a {@link String} object.
-   * @param extension a {@link String} object.
+   * @param baseName  a String object.
+   * @param delimiter a String object.
+   * @param extension a String object.
    */
   public FileName( @Nonnull String baseName, @Nonnull String delimiter, @Nonnull String extension ) {
     this( new BaseName( baseName ), new Extension( delimiter, extension ) );
@@ -124,7 +124,7 @@ public class FileName {
   /**
    * <p>getName</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getName() {

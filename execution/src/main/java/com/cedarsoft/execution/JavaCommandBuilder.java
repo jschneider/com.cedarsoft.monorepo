@@ -62,7 +62,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Constructor for JavaCommandBuilder.</p>
    *
-   * @param mainClass a {@link String} object.
+   * @param mainClass a String object.
    */
   public JavaCommandBuilder( @Nonnull String mainClass ) {
     this.mainClass = mainClass;
@@ -81,7 +81,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>classPathElements</code>.</p>
    *
-   * @param classPathElements a {@link String} object.
+   * @param classPathElements a String object.
    */
   public void setClassPathElements( @Nonnull String... classPathElements ) {
     this.classPathElements.clear();
@@ -96,7 +96,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>javaBin</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getJavaBin() {
@@ -140,7 +140,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Getter for the field <code>mainClass</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getMainClass() {
@@ -150,7 +150,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addClassPathElement</p>
    *
-   * @param classPathElement a {@link String} object.
+   * @param classPathElement a String object.
    */
   public void addClassPathElement( @Nonnull String classPathElement ) {
     classPathElements.add( classPathElement );
@@ -169,7 +169,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>vmProperties</code>.</p>
    *
-   * @param vmProperties a {@link String} object.
+   * @param vmProperties a String object.
    */
   public void setVmProperties( @Nonnull String... vmProperties ) {
     this.vmProperties.clear();
@@ -184,7 +184,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addVmProperty</p>
    *
-   * @param vmProeprty a {@link String} object.
+   * @param vmProeprty a String object.
    */
   public void addVmProperty( @Nonnull String vmProeprty ) {
     vmProperties.add( vmProeprty );
@@ -193,7 +193,7 @@ public class JavaCommandBuilder {
   /**
    * <p>addArgument</p>
    *
-   * @param argument a {@link String} object.
+   * @param argument a String object.
    */
   public void addArgument( @Nonnull String argument ) {
     this.arguments.add( argument );
@@ -202,7 +202,7 @@ public class JavaCommandBuilder {
   /**
    * <p>Setter for the field <code>arguments</code>.</p>
    *
-   * @param arguments a {@link String} object.
+   * @param arguments a String object.
    */
   public void setArguments( @Nonnull String... arguments ) {
     this.arguments.clear();

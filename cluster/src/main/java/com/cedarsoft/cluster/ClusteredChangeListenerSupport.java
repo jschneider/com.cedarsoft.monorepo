@@ -120,7 +120,7 @@ public class ClusteredChangeListenerSupport<T> {
    * <p>changed</p>
    *
    * @param context        a {@link Object} object.
-   * @param propertiesPath a {@link String} object.
+   * @param propertiesPath a String object.
    */
   public void changed( @Nullable Object context, @Nonnull String... propertiesPath ) {
     if ( propertiesPath.length == 0 ) {
@@ -153,7 +153,7 @@ public class ClusteredChangeListenerSupport<T> {
   /**
    * <p>createPropertyListenerDelegate</p>
    *
-   * @param propertiesPath a {@link String} object.
+   * @param propertiesPath a String object.
    * @return a {@link PropertyChangeListener} object.
    */
   @Nonnull

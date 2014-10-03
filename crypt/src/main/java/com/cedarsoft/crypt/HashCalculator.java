@@ -83,7 +83,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link Algorithm} object.
-   * @param value     a {@link String} object.
+   * @param value     a String object.
    * @return a {@link Hash} object.
    */
   @Nonnull
@@ -95,7 +95,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link MessageDigest} object.
-   * @param value         a {@link String} object.
+   * @param value         a String object.
    * @return a {@link Hash} object.
    */
   @Nonnull
@@ -140,7 +140,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param algorithm a {@link Algorithm} object.
-   * @param file      a {@link File} object.
+   * @param file      a File object.
    * @return a {@link Hash} object.
    *
    * @throws IOException if any.
@@ -154,7 +154,7 @@ public class HashCalculator {
    * <p>calculate</p>
    *
    * @param messageDigest a {@link MessageDigest} object.
-   * @param file          a {@link File} object.
+   * @param file          a File object.
    * @return a {@link Hash} object.
    *
    * @throws IOException if any.

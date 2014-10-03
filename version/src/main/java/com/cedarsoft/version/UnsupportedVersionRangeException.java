@@ -72,7 +72,7 @@ public class UnsupportedVersionRangeException extends VersionException {
    *
    * @param actual         a {@link VersionRange} object.
    * @param supportedRange a {@link VersionRange} object.
-   * @param messagePrefix  a {@link String} object.
+   * @param messagePrefix  a String object.
    */
   public UnsupportedVersionRangeException( @Nonnull VersionRange actual, @Nullable VersionRange supportedRange, @Nonnull String messagePrefix ) {
     this( actual, supportedRange, messagePrefix, true );
@@ -83,7 +83,7 @@ public class UnsupportedVersionRangeException extends VersionException {
    *
    * @param actual         a {@link VersionRange} object.
    * @param supportedRange a {@link VersionRange} object.
-   * @param message        a {@link String} object.
+   * @param message        a String object.
    * @param appendSuffix   a boolean.
    */
   public UnsupportedVersionRangeException( @Nonnull VersionRange actual, @Nullable VersionRange supportedRange, @Nonnull String message, boolean appendSuffix ) {

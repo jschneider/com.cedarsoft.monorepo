@@ -84,7 +84,7 @@ public class Path implements Serializable {
    * <p>Constructor for Path.</p>
    *
    * @param relative a boolean.
-   * @param elements a {@link String} object.
+   * @param elements a String object.
    */
   @Deprecated
   public Path( boolean relative, @Nonnull String... elements ) {
@@ -235,7 +235,7 @@ public class Path implements Serializable {
   /**
    * <p>withParent</p>
    *
-   * @param parentPathRepresentation a {@link String} object.
+   * @param parentPathRepresentation a String object.
    * @return a {@link Path} object.
    */
   @Nonnull

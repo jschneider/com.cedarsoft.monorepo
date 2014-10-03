@@ -64,12 +64,12 @@ public class MailConfiguration {
   /**
    * <p>Constructor for MailConfiguration.</p>
    *
-   * @param mailHost     a {@link String} object.
-   * @param mailFrom     a {@link String} object.
-   * @param mailPersonal a {@link String} object.
-   * @param smtpUser     a {@link String} object.
-   * @param smtpPass     a {@link String} object.
-   * @param mailSmtpAuth a {@link String} object.
+   * @param mailHost     a String object.
+   * @param mailFrom     a String object.
+   * @param mailPersonal a String object.
+   * @param smtpUser     a String object.
+   * @param smtpPass     a String object.
+   * @param mailSmtpAuth a String object.
    */
   public MailConfiguration( @Nonnull String mailHost, @Nonnull String mailFrom, @Nonnull String mailPersonal, @Nonnull String smtpUser, @Nonnull String smtpPass, @Nonnull String mailSmtpAuth ) {
     this.mailHost = mailHost;
@@ -83,7 +83,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailFrom</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getMailFrom() {
@@ -93,7 +93,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailHost</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getMailHost() {
@@ -103,7 +103,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>smtpUser</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getSmtpUser() {
@@ -113,7 +113,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>smtpPass</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getSmtpPass() {
@@ -123,7 +123,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailPersonal</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getMailPersonal() {
@@ -133,7 +133,7 @@ public class MailConfiguration {
   /**
    * <p>Getter for the field <code>mailSmtpAuth</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getMailSmtpAuth() {

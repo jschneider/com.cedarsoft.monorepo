@@ -257,7 +257,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
   /**
    * <p>addExpectedOut</p>
    *
-   * @param expected a {@link String} object.
+   * @param expected a String object.
    */
   public void addExpectedOut( @Nullable String expected ) {
     expectedOut.add( expected );

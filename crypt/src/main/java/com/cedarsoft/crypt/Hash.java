@@ -76,7 +76,7 @@ public class Hash implements Serializable {
   /**
    * <p>getValueAsHex</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getValueAsHex() {

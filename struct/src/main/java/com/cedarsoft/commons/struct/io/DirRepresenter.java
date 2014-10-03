@@ -133,7 +133,7 @@ public class DirRepresenter {
    * <p>parse</p>
    *
    * @param node        a {@link Node} object.
-   * @param currentDir  a {@link File} object.
+   * @param currentDir  a File object.
    * @param nodeFactory a {@link NodeFactory} object.
    * @param maxDepth    a int.
    */

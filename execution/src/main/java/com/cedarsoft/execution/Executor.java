@@ -110,7 +110,7 @@ public class Executor {
   /**
    * <p>redirectStreams</p>
    *
-   * @param process a {@link Process} object.
+   * @param process a Process object.
    * @return the redirecting threads (or an empty array)
    */
   @Nonnull
