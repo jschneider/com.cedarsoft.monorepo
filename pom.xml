@@ -660,6 +660,7 @@
             </tags>
             <detectOfflineLinks>false</detectOfflineLinks>
             <quiet>true</quiet>
+            <failOnError>false</failOnError>
           </configuration>
           <dependencies>
             <dependency>
@@ -1142,6 +1143,7 @@
           </tags>
           <detectOfflineLinks>false</detectOfflineLinks>
           <quiet>true</quiet>
+          <failOnError>false</failOnError>
         </configuration>
         <reportSets>
           <reportSet>
