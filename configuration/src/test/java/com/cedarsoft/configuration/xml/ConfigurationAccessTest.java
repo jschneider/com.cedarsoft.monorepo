@@ -100,10 +100,10 @@ public class ConfigurationAccessTest {
 
   @Test
   public void testList() {
-    assertEquals( 0, ( ( List<String> ) configuration.getList( "asdf" ) ).size() );
+    assertEquals( 0, ( configuration.getList( "asdf" ) ).size() );
 
     configuration.addProperty( "asdf", Arrays.asList( "a", "b", "c" ) );
-    assertEquals( 3, ( ( List<String> ) configuration.getList( "asdf" ) ).size() );
+    assertEquals( 3, ( configuration.getList( "asdf" ) ).size() );
 
     ConfigurationAccess<List> configurationAccess = new ConfigurationAccess<List>( configuration, List.class, "asdf", new DefaultValueProvider() {
       @Override

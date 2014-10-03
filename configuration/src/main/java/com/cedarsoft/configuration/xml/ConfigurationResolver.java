@@ -101,14 +101,15 @@ public abstract class ConfigurationResolver<T> {
     @Override
     @Nullable
     public Map<?, ?> resolve( @Nonnull Configuration configuration, @Nonnull String key ) {
-      List<String> list = configuration.getList( key );
+      //this is a list of Strings
+      List<Object> list = configuration.getList( key );
       if ( list.isEmpty() ) {
         return null;
       }
 
       Map<String, String> values = new HashMap<String, String>();
-      for ( String raw : list ) {
-        String[] parts = raw.split( "\\|" );
+      for ( Object raw : list ) {
+        String[] parts = ( ( String ) raw ).split( "\\|" );
         if ( parts.length != 2 ) {
           throw new IllegalStateException( "Invalid Entry: \"" + raw + '\"' );
         }
