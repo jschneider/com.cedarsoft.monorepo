@@ -41,7 +41,7 @@ import java.io.File;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: 13.11.2006<br>
  * Time: 17:00:54<br>
  */

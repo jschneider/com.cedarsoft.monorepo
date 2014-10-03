@@ -48,7 +48,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>add</p>
    *
-   * @param backend a {@link List} object.
+   * @param backend a List object.
    * @param element a T object.
    * @return a boolean.
    */
@@ -88,7 +88,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>remove</p>
    *
-   * @param backend a {@link List} object.
+   * @param backend a List object.
    * @param element a T object.
    * @return a boolean.
    */
@@ -102,7 +102,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>addListener</p>
    *
-   * @param listener a {@link ListChangeListener} object.
+   * @param listener a ListChangeListener object.
    */
   public void addListener( @Nonnull ListChangeListener<T> listener ) {
     listeners.add( listener );
@@ -111,7 +111,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>removeListener</p>
    *
-   * @param listener a {@link ListChangeListener} object.
+   * @param listener a ListChangeListener object.
    */
   public void removeListener( @Nonnull ListChangeListener<T> listener ) {
     listeners.remove( listener );
@@ -120,7 +120,7 @@ public class ListChangeSupport<T> {
   /**
    * <p>Getter for the field <code>listeners</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<ListChangeListener<T>> getListeners() {

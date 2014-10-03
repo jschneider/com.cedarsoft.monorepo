@@ -57,7 +57,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
   /**
    * <p>Constructor for AbstractTimeEntry.</p>
    *
-   * @param begin a {@link LocalDate} object.
+   * @param begin a LocalDate object.
    */
   protected AbstractTimeEntry( @Nonnull LocalDate begin ) {
     this.begin = begin;
@@ -75,7 +75,7 @@ public abstract class AbstractTimeEntry implements TimeEntry {
   /**
    * <p>Setter for the field <code>begin</code>.</p>
    *
-   * @param begin a {@link LocalDate} object.
+   * @param begin a LocalDate object.
    */
   public void setBegin( @Nonnull LocalDate begin ) {
     this.begin = begin;

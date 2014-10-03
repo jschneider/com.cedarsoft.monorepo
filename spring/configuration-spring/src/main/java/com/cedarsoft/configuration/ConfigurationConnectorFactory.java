@@ -43,7 +43,7 @@ import java.lang.Class;
 import java.lang.String;
 
 /**
- * <p/>
+ * <p>
  * Date: Jul 5, 2007<br>
  * Time: 1:30:53 PM<br>
  *
@@ -59,11 +59,11 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationConnectorFactory.</p>
    *
-   * @param configuration        a {@link Configuration} object.
-   * @param type                 a {@link Class} object.
-   * @param propertyName         a {@link String} object.
-   * @param defaultValueProvider a {@link DefaultValueProvider} object.
-   * @param beanAdapter          a {@link BeanAdapter} object.
+   * @param configuration        a Configuration object.
+   * @param type                 a Class object.
+   * @param propertyName         a String object.
+   * @param defaultValueProvider a DefaultValueProvider object.
+   * @param beanAdapter          a BeanAdapter object.
    */
   public ConfigurationConnectorFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull DefaultValueProvider defaultValueProvider, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
@@ -75,11 +75,11 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationConnectorFactory.</p>
    *
-   * @param configuration a {@link Configuration} object.
-   * @param type          a {@link Class} object.
-   * @param propertyName  a {@link String} object.
+   * @param configuration a Configuration object.
+   * @param type          a Class object.
+   * @param propertyName  a String object.
    * @param defaultValue  a T object.
-   * @param beanAdapter   a {@link BeanAdapter} object.
+   * @param beanAdapter   a BeanAdapter object.
    */
   public ConfigurationConnectorFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull T defaultValue, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( propertyName );
@@ -91,8 +91,8 @@ public class ConfigurationConnectorFactory<T> implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationConnectorFactory.</p>
    *
-   * @param configurationAccess a {@link ConfigurationAccess} object.
-   * @param beanAdapter         a {@link BeanAdapter} object.
+   * @param configurationAccess a ConfigurationAccess object.
+   * @param beanAdapter         a BeanAdapter object.
    */
   public ConfigurationConnectorFactory( @Nonnull ConfigurationAccess<T> configurationAccess, @Nonnull BeanAdapter<?> beanAdapter ) {
     valueModel = beanAdapter.getValueModel( configurationAccess.getKey() );

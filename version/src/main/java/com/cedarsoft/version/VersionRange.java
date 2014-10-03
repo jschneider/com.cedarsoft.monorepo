@@ -53,8 +53,8 @@ public class VersionRange implements Serializable {
   /**
    * <p>Constructor for VersionRange.</p>
    *
-   * @param min a {@link Version} object.
-   * @param max a {@link Version} object.
+   * @param min a Version object.
+   * @param max a Version object.
    */
   public VersionRange( @Nonnull Version min, @Nonnull Version max ) {
     this( min, max, true, true );
@@ -63,8 +63,8 @@ public class VersionRange implements Serializable {
   /**
    * <p>Constructor for VersionRange.</p>
    *
-   * @param min          a {@link Version} object.
-   * @param max          a {@link Version} object.
+   * @param min          a Version object.
+   * @param max          a Version object.
    * @param includeLower a boolean.
    * @param includeUpper a boolean.
    */
@@ -82,7 +82,7 @@ public class VersionRange implements Serializable {
   /**
    * <p>Getter for the field <code>min</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public Version getMin() {
@@ -92,7 +92,7 @@ public class VersionRange implements Serializable {
   /**
    * <p>Getter for the field <code>max</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public Version getMax() {
@@ -147,7 +147,7 @@ public class VersionRange implements Serializable {
   /**
    * <p>contains</p>
    *
-   * @param version a {@link Version} object.
+   * @param version a Version object.
    * @return a boolean.
    */
   public boolean contains( @Nonnull Version version ) {
@@ -171,7 +171,7 @@ public class VersionRange implements Serializable {
   /**
    * <p>overlaps</p>
    *
-   * @param other a {@link VersionRange} object.
+   * @param other a VersionRange object.
    * @return a boolean.
    */
   public boolean overlaps( @Nonnull VersionRange other ) {
@@ -265,8 +265,8 @@ public class VersionRange implements Serializable {
   /**
    * <p>from</p>
    *
-   * @param min a {@link Version} object.
-   * @return a {@link VersionRange.Factory} object.
+   * @param min a Version object.
+   * @return a VersionRange.Factory object.
    */
   @Nonnull
   public static Factory from( @Nonnull Version min ) {
@@ -279,7 +279,7 @@ public class VersionRange implements Serializable {
    * @param major a int.
    * @param minor a int.
    * @param build a int.
-   * @return a {@link VersionRange.Factory} object.
+   * @return a VersionRange.Factory object.
    */
   @Nonnull
   public static Factory from( int major, int minor, int build ) {
@@ -292,7 +292,7 @@ public class VersionRange implements Serializable {
    * @param major a int.
    * @param minor a int.
    * @param build a int.
-   * @return a {@link VersionRange} object.
+   * @return a VersionRange object.
    */
   @Nonnull
   public static VersionRange single( int major, int minor, int build ) {

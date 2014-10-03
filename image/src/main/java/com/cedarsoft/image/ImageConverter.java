@@ -63,9 +63,9 @@ public class ImageConverter {
   /**
    * Resizes the image to the given size
    *
-   * @param original        a {@link BufferedImage} object.
-   * @param targetDimension a {@link Dimension} object.
-   * @return a {@link BufferedImage} object.
+   * @param original        a BufferedImage object.
+   * @param targetDimension a Dimension object.
+   * @return a BufferedImage object.
    */
   @Nonnull
   public BufferedImage resize( @Nonnull Image original, @Nonnull Dimension targetDimension ) {
@@ -79,10 +79,10 @@ public class ImageConverter {
   /**
    * <p>resize</p>
    *
-   * @param original           a {@link BufferedImage} object.
-   * @param originalDPI a {@link DPI} object.
-   * @param targetDPI   a {@link DPI} object.
-   * @return a {@link BufferedImage} object.
+   * @param original           a BufferedImage object.
+   * @param originalDPI a DPI object.
+   * @param targetDPI   a DPI object.
+   * @return a BufferedImage object.
    */
   @Nonnull
   public BufferedImage resize( @Nonnull BufferedImage original, @Nonnull DPI originalDPI, @Nonnull DPI targetDPI ) {

@@ -40,7 +40,7 @@ import org.springframework.beans.factory.FactoryBean;
 import java.lang.Class;
 
 /**
- * <p/>
+ * <p>
  * Date: Jul 1, 2007<br>
  * Time: 6:39:21 PM<br>
  *
@@ -56,7 +56,7 @@ public class ConfigurationFactory implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationFactory.</p>
    *
-   * @param configurationManager a {@link XmlConfigurationManager} object.
+   * @param configurationManager a XmlConfigurationManager object.
    */
   public ConfigurationFactory( @Nonnull XmlConfigurationManager configurationManager ) {
     this.configurationManager = configurationManager;
@@ -66,8 +66,8 @@ public class ConfigurationFactory implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationFactory.</p>
    *
-   * @param configurationManager a {@link XmlConfigurationManager} object.
-   * @param moduleType           a {@link Class} object.
+   * @param configurationManager a XmlConfigurationManager object.
+   * @param moduleType           a Class object.
    */
   public ConfigurationFactory( @Nonnull XmlConfigurationManager configurationManager, @Nullable Class<?> moduleType ) {
     this.configurationManager = configurationManager;

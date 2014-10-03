@@ -40,7 +40,7 @@ import java.awt.image.BufferedImage;
 import static org.junit.Assert.*;
 
 /**
- * <p/>
+ * <p>
  * Date: Mar 16, 2007<br>
  * Time: 1:35:11 PM<br>
  */

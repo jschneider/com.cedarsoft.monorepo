@@ -43,9 +43,9 @@ import java.util.List;
 /**
  * Represents a path of several nodes.
  * A path is a string representation.
- * <p/>
- * If you want to get a "list" of nodes try {@link Route} instead.
- * <p/>
+ * <p>
+ * If you want to get a "list" of nodes try Route instead.
+ * <p>
  * A path is *immutable*
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
@@ -84,7 +84,7 @@ public class Path implements Serializable {
    * <p>Constructor for Path.</p>
    *
    * @param relative a boolean.
-   * @param elements a {@link String} object.
+   * @param elements a String object.
    */
   @Deprecated
   public Path( boolean relative, @Nonnull String... elements ) {
@@ -103,7 +103,7 @@ public class Path implements Serializable {
   /**
    * <p>Constructor for Path.</p>
    *
-   * @param elements a {@link Iterable} object.
+   * @param elements a Iterable object.
    * @param absolute a boolean.
    */
   public Path( @Nonnull Iterable<? extends String> elements, boolean absolute ) {
@@ -176,7 +176,7 @@ public class Path implements Serializable {
   /**
    * <p>absolute</p>
    *
-   * @return a {@link Path} object.
+   * @return a Path object.
    */
   @Nonnull
   public Path absolute() {
@@ -186,7 +186,7 @@ public class Path implements Serializable {
   /**
    * <p>relative</p>
    *
-   * @return a {@link Path} object.
+   * @return a Path object.
    */
   @Nonnull
   public Path relative() {
@@ -197,7 +197,7 @@ public class Path implements Serializable {
    * <p>absolute</p>
    *
    * @param newAbsolute a boolean.
-   * @return a {@link Path} object.
+   * @return a Path object.
    */
   @Nonnull
   public Path absolute( boolean newAbsolute ) {
@@ -212,7 +212,7 @@ public class Path implements Serializable {
    *
    * @param index0 a int.
    * @param index1 a int.
-   * @return a {@link Path} object.
+   * @return a Path object.
    */
   @Nonnull
   public Path subPath( int index0, int index1 ) {
@@ -235,8 +235,8 @@ public class Path implements Serializable {
   /**
    * <p>withParent</p>
    *
-   * @param parentPathRepresentation a {@link String} object.
-   * @return a {@link Path} object.
+   * @param parentPathRepresentation a String object.
+   * @return a Path object.
    */
   @Nonnull
   public Path withParent( @Nonnull String parentPathRepresentation ) {

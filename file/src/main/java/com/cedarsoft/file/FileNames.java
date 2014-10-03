@@ -49,7 +49,7 @@ public class FileNames {
   /**
    * <p>add</p>
    *
-   * @param fileName a {@link FileName} object.
+   * @param fileName a FileName object.
    */
   public void add( @Nonnull FileName fileName ) {
     if ( this.fileNames.contains( fileName ) ) {
@@ -61,7 +61,7 @@ public class FileNames {
   /**
    * <p>Getter for the field <code>fileNames</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends FileName> getFileNames() {

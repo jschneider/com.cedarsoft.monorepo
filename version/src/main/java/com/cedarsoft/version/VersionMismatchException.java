@@ -47,8 +47,8 @@ public class VersionMismatchException extends VersionException {
   /**
    * <p>Constructor for VersionMismatchException.</p>
    *
-   * @param expected a {@link Version} object.
-   * @param actual   a {@link Version} object.
+   * @param expected a Version object.
+   * @param actual   a Version object.
    */
   public VersionMismatchException( @Nonnull Version expected, @Nonnull Version actual ) {
     this( expected, actual, "Version mismatch. " );
@@ -94,7 +94,7 @@ public class VersionMismatchException extends VersionException {
   /**
    * <p>Getter for the field <code>expected</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public VersionRange getExpected() {
@@ -104,7 +104,7 @@ public class VersionMismatchException extends VersionException {
   /**
    * <p>Getter for the field <code>actual</code>.</p>
    *
-   * @return a {@link Version} object.
+   * @return a Version object.
    */
   @Nonnull
   public Version getActual() {

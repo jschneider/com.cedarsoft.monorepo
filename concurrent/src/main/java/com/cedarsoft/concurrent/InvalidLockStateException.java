@@ -49,7 +49,7 @@ public class InvalidLockStateException extends RuntimeException {
   /**
    * <p>Constructor for InvalidLockStateException.</p>
    *
-   * @param readLockingThreads a {@link List} object.
+   * @param readLockingThreads a List object.
    */
   public InvalidLockStateException( @Nonnull List<? extends Thread> readLockingThreads ) {
     super( createMessage( readLockingThreads ) );
@@ -61,7 +61,7 @@ public class InvalidLockStateException extends RuntimeException {
   /**
    * <p>Getter for the field <code>readLockingThreads</code>.</p>
    *
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<String> getReadLockingThreads() {

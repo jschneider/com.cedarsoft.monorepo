@@ -37,7 +37,7 @@ import javax.annotation.Nonnull;
 /**
  * A presenter that is able to create a presentation using a given struct.
  * The presentation is updated according to changes within the struct.
- * <p/>
+ * <p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type of the presentation this presenter creates.

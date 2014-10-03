@@ -44,21 +44,21 @@ public interface ElementsListener<E> {
   /**
    * Is notified when the elements have been deleted
    *
-   * @param event a {@link ElementsChangedEvent} object.
+   * @param event a ElementsChangedEvent object.
    */
   void elementsDeleted( @Nonnull ElementsChangedEvent<? extends E> event );
 
   /**
    * The elements are added
    *
-   * @param event a {@link ElementsChangedEvent} object.
+   * @param event a ElementsChangedEvent object.
    */
   void elementsAdded( @Nonnull ElementsChangedEvent<? extends E> event );
 
   /**
    * Elements have been changed
    *
-   * @param event a {@link ElementsChangedEvent} object.
+   * @param event a ElementsChangedEvent object.
    */
   void elementsChanged( @Nonnull ElementsChangedEvent<? extends E> event );
 }

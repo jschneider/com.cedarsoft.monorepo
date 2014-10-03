@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * A node extends the interface {@link StructPart} with read/write support.
+ * A node extends the interface StructPart with read/write support.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
@@ -59,7 +59,7 @@ public interface Node extends StructPart {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns the parent (if it has one)
    */
   @Override

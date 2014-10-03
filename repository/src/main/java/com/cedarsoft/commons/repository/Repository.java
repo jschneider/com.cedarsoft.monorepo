@@ -40,7 +40,7 @@ import javax.annotation.Nonnull;
 
 /**
  * A repository is a treelike structure where informations may be saved within nodes.
- * <p/>
+ * <p>
  * The repository stores Nodes within an absolute structure.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
@@ -71,9 +71,6 @@ public class Repository {
    *
    * @param path the path (must be absolute)
    * @return the node
-   *
-   * @throws ChildNotFoundException
-   *          if the path could not be resolved
    */
   @Nonnull
   public Node findNode( @Nonnull Path path ) throws ChildNotFoundException {
@@ -94,9 +91,6 @@ public class Repository {
    * @param parent the parent node
    * @param name   the name
    * @return the found node
-   *
-   * @throws ChildNotFoundException
-   *          if the child could not be found
    */
   @Nonnull
   protected Node findChild( @Nonnull Node parent, @Nonnull String name ) throws ChildNotFoundException {

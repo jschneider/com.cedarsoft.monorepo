@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 /**
- * An entry for the {@link TimeElementsCollection}
+ * An entry for the TimeElementsCollection
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */

@@ -44,7 +44,7 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public InvalidEntryException( String message ) {
     super( message );
@@ -53,8 +53,8 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public InvalidEntryException( String message, Throwable cause ) {
     super( message, cause );
@@ -63,7 +63,7 @@ public class InvalidEntryException extends RuntimeException {
   /**
    * <p>Constructor for InvalidEntryException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public InvalidEntryException( Throwable cause ) {
     super( cause );

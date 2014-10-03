@@ -49,7 +49,7 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public HistoryNotFoundException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public HistoryNotFoundException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class HistoryNotFoundException extends RuntimeException {
   /**
    * <p>Constructor for HistoryNotFoundException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public HistoryNotFoundException( Throwable cause ) {
     super( cause );

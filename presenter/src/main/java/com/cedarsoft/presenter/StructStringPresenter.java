@@ -59,15 +59,12 @@ public class StructStringPresenter implements Presenter<String> {
   /**
    * <p>Constructor for StructStringPresenter.</p>
    *
-   * @param intendSequence a {@link String} object.
+   * @param intendSequence a String object.
    */
   public StructStringPresenter( @Nonnull String intendSequence ) {
     this.intendSequence = intendSequence;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nonnull
   public String present( @Nonnull StructPart struct ) {

@@ -46,7 +46,7 @@ public abstract class ApplicationAction extends AbstractAction {
   /**
    * <p>Constructor for ApplicationAction.</p>
    *
-   * @param name a {@link String} object.
+   * @param name a String object.
    */
   protected ApplicationAction( @Nonnull String name ) {
     super( name );
@@ -54,7 +54,7 @@ public abstract class ApplicationAction extends AbstractAction {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Default implementation that delegates to {@link #applicationActionPerformed(ActionEvent)}.
    */
   @Override
@@ -69,7 +69,7 @@ public abstract class ApplicationAction extends AbstractAction {
   /**
    * <p>handleApplicationException</p>
    *
-   * @param exception a {@link ApplicationException} object.
+   * @param exception a ApplicationException object.
    */
   protected abstract void handleApplicationException( @Nonnull ApplicationException exception );
 

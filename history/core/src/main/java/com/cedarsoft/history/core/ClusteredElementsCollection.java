@@ -74,7 +74,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>Constructor for ClusteredElementsCollection.</p>
    *
-   * @param elements a {@link Collection} object.
+   * @param elements a Collection object.
    */
   public ClusteredElementsCollection( @Nonnull Collection<? extends E> elements ) {
     this.elements.addAll( elements );
@@ -91,7 +91,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>Getter for the field <code>collectionSupport</code>.</p>
    *
-   * @return a {@link ClusteredCollectionSupport} object.
+   * @return a ClusteredCollectionSupport object.
    */
   @Deprecated
   @Nonnull
@@ -159,7 +159,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>addAll</p>
    *
-   * @param additionalElements a {@link List} object.
+   * @param additionalElements a List object.
    */
   public void addAll( @Nonnull List<? extends E> additionalElements ) {
     for ( E element : additionalElements ) {
@@ -183,7 +183,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns all cessions
    */
   @Override
@@ -285,8 +285,8 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>findElements</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
-   * @return a {@link List} object.
+   * @param visitor a ElementVisitor object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends E> findElements( @Nonnull ElementVisitor<? super E> visitor ) {
@@ -327,7 +327,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>findFirstElementNullable</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
+   * @param visitor a ElementVisitor object.
    * @return a E object.
    */
   @Nullable
@@ -363,7 +363,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
   /**
    * <p>contains</p>
    *
-   * @param visitor a {@link ElementVisitor} object.
+   * @param visitor a ElementVisitor object.
    * @return a boolean.
    *
    * @throws NoElementFoundException
@@ -387,7 +387,7 @@ public class ClusteredElementsCollection<E> implements ClusteredObservableObject
    * Removes the entries
    *
    * @param visitor the visitor that describes the entries
-   * @return a {@link List} object.
+   * @return a List object.
    */
   @Nonnull
   public List<? extends E> removeElements( @Nonnull ElementVisitor<? super E> visitor ) {

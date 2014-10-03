@@ -61,7 +61,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   /**
    * <p>Getter for the field <code>actualStage</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getActualStage() {
@@ -77,7 +77,7 @@ public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConf
   /**
    * <p>Setter for the field <code>actualStage</code>.</p>
    *
-   * @param actualStage a {@link String} object.
+   * @param actualStage a String object.
    */
   public void setActualStage( @Nonnull String actualStage ) {
     this.actualStage = actualStage;

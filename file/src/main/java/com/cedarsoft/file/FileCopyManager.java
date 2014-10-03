@@ -52,7 +52,7 @@ public class FileCopyManager {
   /**
    * <p>deleteForced</p>
    *
-   * @param toDelete a {@link File} object.
+   * @param toDelete a File object.
    */
   public static void deleteForced( @Nonnull File toDelete ) {
     if ( !toDelete.exists() ) {
@@ -71,8 +71,8 @@ public class FileCopyManager {
   /**
    * <p>copy</p>
    *
-   * @param src  a {@link File} object.
-   * @param dest a {@link File} object.
+   * @param src  a File object.
+   * @param dest a File object.
    * @throws IOException if any.
    */
   public static void copy( @Nonnull File src, @Nonnull File dest ) throws IOException {
@@ -86,8 +86,8 @@ public class FileCopyManager {
   /**
    * <p>copyFile</p>
    *
-   * @param source a {@link File} object.
-   * @param target a {@link File} object.
+   * @param source a File object.
+   * @param target a File object.
    * @throws IOException if any.
    */
   public static void copyFile( @Nonnull File source, @Nonnull File target ) throws IOException {
@@ -120,8 +120,8 @@ public class FileCopyManager {
   /**
    * <p>copyDirectory</p>
    *
-   * @param srcDir  a {@link File} object.
-   * @param destDir a {@link File} object.
+   * @param srcDir  a File object.
+   * @param destDir a File object.
    * @throws IOException if any.
    */
   public static void copyDirectory( @Nonnull File srcDir, @Nonnull File destDir ) throws IOException {

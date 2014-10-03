@@ -56,7 +56,7 @@ public abstract class MockitoTemplate {
   protected abstract void execute() throws Exception;
 
   /**
-   * Finally verify the mocks using {@link Mockito#verify(Object)}
+   * Finally verify the mocks using Mockito#verify(Object)
    *
    * @throws Exception if any.
    */

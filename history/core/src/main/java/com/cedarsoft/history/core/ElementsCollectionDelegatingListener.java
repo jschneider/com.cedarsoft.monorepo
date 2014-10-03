@@ -45,7 +45,7 @@ public class ElementsCollectionDelegatingListener<T> extends SingleElementsListe
   /**
    * <p>Constructor for ElementsCollectionDelegatingListener.</p>
    *
-   * @param delegate a {@link ObservableObjectAccess} object.
+   * @param delegate a ObservableObjectAccess object.
    */
   public ElementsCollectionDelegatingListener( @Nonnull ObservableObjectAccess<T> delegate ) {
     this.delegate = delegate;

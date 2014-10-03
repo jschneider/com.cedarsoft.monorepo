@@ -43,7 +43,7 @@ public class MemoryLeakVerifier<T> {
    * first pass. This method performs a full garbage collection and then validates that the weak reference
    * now has been cleared. If it hasn't then the thread will sleep for 50 milliseconds and then retry up to
    * 10 more times. If after this the object still has not been collected then the assertion will fail.
-   * <p/>
+   * <p>
    * Based upon the method described in: http://www.javaworld.com/javaworld/javatips/jw-javatip130.html
    */
   public void assertGarbageCollected() {

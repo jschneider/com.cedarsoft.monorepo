@@ -87,8 +87,8 @@ public class OfficeLauncher {
   /**
    * <p>openWriter</p>
    *
-   * @param file a {@link File} object.
-   * @return a {@link Process} object.
+   * @param file a File object.
+   * @return a Process object.
    *
    * @throws IOException if any.
    */
@@ -100,8 +100,8 @@ public class OfficeLauncher {
   /**
    * <p>openSpreadsheet</p>
    *
-   * @param file a {@link File} object.
-   * @return a {@link Process} object.
+   * @param file a File object.
+   * @return a Process object.
    *
    * @throws IOException if any.
    */

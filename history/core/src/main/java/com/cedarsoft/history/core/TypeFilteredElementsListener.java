@@ -52,8 +52,8 @@ public class TypeFilteredElementsListener<D, T extends D> implements ElementList
   /**
    * <p>Constructor for TypeFilteredElementsListener.</p>
    *
-   * @param type     a {@link Class} object.
-   * @param delegate a {@link ElementListener} object.
+   * @param type     a Class object.
+   * @param delegate a ElementListener object.
    */
   public TypeFilteredElementsListener( @Nonnull Class<T> type, @Nonnull ElementListener<T> delegate ) {
     this.delegate = delegate;

@@ -75,7 +75,7 @@ public class TestUtils {
   /**
    * <p>getTmpDir</p>
    *
-   * @return a {@link File} object.
+   * @return a File object.
    */
   @Nonnull
   public static File getTmpDir() {
@@ -83,10 +83,10 @@ public class TestUtils {
   }
 
   /**
-   * @param prefix a {@link String} object.
-   * @param suffix a {@link String} object.
-   * @param in     a {@link InputStream} object.
-   * @return a {@link File} object.
+   * @param prefix a String object.
+   * @param suffix a String object.
+   * @param in     a InputStream object.
+   * @return a File object.
    *
    * @throws IOException if any.
    * @deprecated Use org.junit.rules.TemporaryFolder instead
@@ -107,7 +107,7 @@ public class TestUtils {
   }
 
   /**
-   * @return a {@link File} object.
+   * @return a File object.
    *
    * @deprecated Use org.junit.rules.TemporaryFolder instead
    *             <p>createEmptyTmpDir</p>

@@ -48,7 +48,7 @@ import java.security.MessageDigest;
  */
 
 /**
- * <p/>
+ * <p>
  * Date: 05.05.2004<br> Time: 21:22:47<br>
  *
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

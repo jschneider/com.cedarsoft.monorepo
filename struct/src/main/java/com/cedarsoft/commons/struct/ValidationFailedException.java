@@ -49,7 +49,7 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public ValidationFailedException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public ValidationFailedException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class ValidationFailedException extends RuntimeException {
   /**
    * <p>Constructor for ValidationFailedException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public ValidationFailedException( Throwable cause ) {
     super( cause );

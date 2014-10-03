@@ -54,10 +54,10 @@ public class ConfigurationPropertyFactory<T> implements FactoryBean {
   /**
    * <p>Constructor for ConfigurationPropertyFactory.</p>
    *
-   * @param configuration        a {@link Configuration} object.
-   * @param type                 a {@link Class} object.
-   * @param key                  a {@link String} object.
-   * @param defaultValueProvider a {@link DefaultValueProvider} object.
+   * @param configuration        a Configuration object.
+   * @param type                 a Class object.
+   * @param key                  a String object.
+   * @param defaultValueProvider a DefaultValueProvider object.
    */
   public ConfigurationPropertyFactory( @Nonnull Configuration configuration, @Nonnull Class<T> type, @Nonnull String key, @Nonnull DefaultValueProvider defaultValueProvider ) {
     this.configurationAccess = new ConfigurationAccess<T>( configuration, type, key, defaultValueProvider );

@@ -59,7 +59,7 @@ public class Executor {
   /**
    * <p>Constructor for Executor.</p>
    *
-   * @param processBuilder a {@link ProcessBuilder} object.
+   * @param processBuilder a ProcessBuilder object.
    */
   @Deprecated
   public Executor( @Nonnull ProcessBuilder processBuilder ) {
@@ -69,7 +69,7 @@ public class Executor {
   /**
    * <p>Constructor for Executor.</p>
    *
-   * @param processBuilder  a {@link ProcessBuilder} object.
+   * @param processBuilder  a ProcessBuilder object.
    * @param redirectStreams a boolean.
    */
   @Deprecated
@@ -110,7 +110,7 @@ public class Executor {
   /**
    * <p>redirectStreams</p>
    *
-   * @param process a {@link Process} object.
+   * @param process a Process object.
    * @return the redirecting threads (or an empty array)
    */
   @Nonnull
@@ -154,7 +154,7 @@ public class Executor {
   /**
    * <p>addExecutionListener</p>
    *
-   * @param executionListener a {@link ExecutionListener} object.
+   * @param executionListener a ExecutionListener object.
    */
   public void addExecutionListener( @Nonnull ExecutionListener executionListener ) {
     this.executionListeners.add( executionListener );
@@ -163,7 +163,7 @@ public class Executor {
   /**
    * <p>removeExecutionListener</p>
    *
-   * @param executionListener a {@link ExecutionListener} object.
+   * @param executionListener a ExecutionListener object.
    */
   public void removeExecutionListener( @Nonnull ExecutionListener executionListener ) {
     this.executionListeners.remove( executionListener );

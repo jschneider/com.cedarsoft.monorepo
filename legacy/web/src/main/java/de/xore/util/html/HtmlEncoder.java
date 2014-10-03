@@ -32,7 +32,7 @@
 package de.xore.util.html;
 
 /**
- * <p/>
+ * <p>
  * Date: 17.06.2006<br>
  * Time: 14:16:23<br>
  *

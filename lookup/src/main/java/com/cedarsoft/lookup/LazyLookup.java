@@ -101,13 +101,13 @@ public abstract class LazyLookup<T> extends AbstractLookup {
   /**
    * The type the instance.
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   public abstract Class<? extends T> getType();
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * This lookup calls {@link #getValue()} when the parameter fits the type ({@link #getType()}).
    */
   @Override

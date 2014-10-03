@@ -47,7 +47,7 @@ public class WeakStructureListener implements StructureListener {
   /**
    * <p>Constructor for WeakStructureListener.</p>
    *
-   * @param wrappedListener a {@link StructureListener} object.
+   * @param wrappedListener a StructureListener object.
    */
   public WeakStructureListener( @Nonnull StructureListener wrappedListener ) {
     listenerReference = new WeakReference<StructureListener>( wrappedListener );
@@ -56,7 +56,7 @@ public class WeakStructureListener implements StructureListener {
   /**
    * <p>getWrappedListener</p>
    *
-   * @return a {@link StructureListener} object.
+   * @return a StructureListener object.
    */
   @Nullable
   public StructureListener getWrappedListener() {

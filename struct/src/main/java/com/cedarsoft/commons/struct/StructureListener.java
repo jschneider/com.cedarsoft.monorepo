@@ -49,7 +49,7 @@ public interface StructureListener {
   /**
    * Is called when a child has been detached
    *
-   * @param event the evetn
+   * @param event the event
    */
   void childDetached( @Nonnull StructureChangedEvent event );
 

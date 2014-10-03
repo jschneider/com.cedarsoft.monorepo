@@ -34,7 +34,7 @@ package com.cedarsoft.execution;
 import javax.annotation.Nonnull;
 
 /**
- * Backward compatible class. Use {@link Executor} instead.
+ * Backward compatible class. Use Executor instead.
  */
 @Deprecated
 public class Executer extends Executor {

@@ -183,7 +183,7 @@ public interface CmdLine {
    * @param message       the message
    * @param elements      the elements (the user may select one of them)
    * @param presenter     the presenter
-   * @param objectFactory a {@link ObjectFactory} object.
+   * @param objectFactory a ObjectFactory object.
    * @param <T>           a T object.
    * @return the string that has been entered manually or the object that has been selected (String or T)
    */

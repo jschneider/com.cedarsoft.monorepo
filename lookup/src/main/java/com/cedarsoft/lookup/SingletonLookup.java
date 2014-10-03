@@ -50,7 +50,7 @@ public class SingletonLookup<T> extends AbstractLookup {
   /**
    * <p>Constructor for SingletonLookup.</p>
    *
-   * @param type  a {@link Class} object.
+   * @param type  a Class object.
    * @param value a T object.
    */
   public SingletonLookup( @Nonnull Class<T> type, @Nonnull T value ) {
@@ -92,7 +92,7 @@ public class SingletonLookup<T> extends AbstractLookup {
   /**
    * <p>Getter for the field <code>singletonType</code>.</p>
    *
-   * @return a {@link Class} object.
+   * @return a Class object.
    */
   @Nonnull
   public Class<T> getSingletonType() {

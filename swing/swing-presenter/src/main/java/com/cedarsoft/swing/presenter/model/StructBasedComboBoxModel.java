@@ -49,7 +49,7 @@ public class StructBasedComboBoxModel extends StructBasedListModel implements Co
   /**
    * <p>Constructor for StructBasedComboBoxModel.</p>
    *
-   * @param node a {@link StructPart} object.
+   * @param node a StructPart object.
    */
   public StructBasedComboBoxModel( @Nonnull StructPart node ) {
     super( node );

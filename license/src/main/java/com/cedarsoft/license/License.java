@@ -164,8 +164,8 @@ public class License {
   /**
    * <p>Constructor for License.</p>
    *
-   * @param id   a {@link String} object.
-   * @param name a {@link String} object.
+   * @param id   a String object.
+   * @param name a String object.
    */
   public License( @Nonnull String id, @Nonnull String name ) {
     this( id, name, ( URL ) null );
@@ -184,7 +184,7 @@ public class License {
   /**
    * <p>Getter for the field <code>name</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getName() {
@@ -194,7 +194,7 @@ public class License {
   /**
    * <p>Getter for the field <code>id</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getId() {

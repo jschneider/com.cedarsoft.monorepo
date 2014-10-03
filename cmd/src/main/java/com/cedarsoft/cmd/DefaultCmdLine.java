@@ -149,7 +149,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
   /**
    * <p>getIn</p>
    *
-   * @return a {@link InputStream} object.
+   * @return a InputStream object.
    */
   @Nonnull
   public InputStream getIn() {

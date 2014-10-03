@@ -37,7 +37,7 @@ import java.util.ResourceBundle;
 
 /**
  * Configuration for a specific database
- * <p/>
+ * <p>
  * Date: 18.05.2005<br>
  * Time: 23:43:33<br>
  *

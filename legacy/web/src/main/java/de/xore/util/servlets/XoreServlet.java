@@ -53,8 +53,8 @@
 //
 ///**
 // * Dieses Servlet stellt einene einfachen Weg dar, um eine HibernateQuery dazustellen.
-// * <p/>
-// * <p/>
+// * <p>
+// * <p>
 // * Date: 23.12.2003<br> Time: 20:00:58<br>
 // *
 // * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore

@@ -55,7 +55,7 @@ public class DefaultConfigurationManager implements ConfigurationManager {
   /**
    * <p>Constructor for DefaultConfigurationManager.</p>
    *
-   * @param initialConfigurations a {@link List} object.
+   * @param initialConfigurations a List object.
    */
   public DefaultConfigurationManager( @Nonnull List<?> initialConfigurations ) {
     configurations.addAll( initialConfigurations );

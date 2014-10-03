@@ -42,7 +42,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * An abstract implementation of {@link Presenter}.
+ * An abstract implementation of Presenter.
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type of the presentation that is created
@@ -52,11 +52,9 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    * Holds the references of the structure listeners.
    */
   @SuppressWarnings( {"MismatchedQueryAndUpdateOfCollection"} )
-  private Set<StructureListener> structureListeners = new HashSet<StructureListener>();
+  private final Set<StructureListener> structureListeners = new HashSet<StructureListener>();
 
   /**
-   * {@inheritDoc}
-   * <p/>
    * Creates the presentation for the given struct. This method should not be overridden.
    */
   @Override
@@ -93,7 +91,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
   protected abstract boolean shallAddChildren();
 
   /**
-   * The default implementation returns {@link StructureChangedEvent#getIndex()}
+   * The default implementation returns StructureChangedEvent#getIndex()
    *
    * @param event the event
    * @return the index
@@ -107,7 +105,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
    *
    * @param presentation the presentation
    * @param struct       the struct
-   * @param lookup       a {@link Lookup} object.
+   * @param lookup       a Lookup object.
    */
   protected abstract void bind( @Nonnull T presentation, @Nonnull StructPart struct, @Nonnull Lookup lookup );
 
@@ -132,7 +130,7 @@ public abstract class AbstractPresenter<T> implements Presenter<T> {
 
   /**
    * Create the basic presentation.
-   * Do not wire anything up here. Use the {@link #bind(Object, StructPart, Lookup)}
+   * Do not wire anything up here. Use the #bind(T, StructPart, Lookup)
    * method instead.
    *
    * @return the presentation

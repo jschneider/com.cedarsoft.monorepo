@@ -51,7 +51,7 @@ public class InputStreamFromFileProvider implements Provider<InputStream, IOExce
   /**
    * <p>Constructor for InputStreamFromFileProvider.</p>
    *
-   * @param file a {@link File} object.
+   * @param file a File object.
    */
   public InputStreamFromFileProvider( @Nonnull File file ) {
     this.file = file;

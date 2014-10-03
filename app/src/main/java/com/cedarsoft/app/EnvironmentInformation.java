@@ -50,7 +50,7 @@ public class EnvironmentInformation {
   /**
    * Returns the host name
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public static String getHostName() {
@@ -64,7 +64,7 @@ public class EnvironmentInformation {
   /**
    * Returns the current user name
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public static String getUserName() {

@@ -63,7 +63,7 @@ public class Extension {
   /**
    * <p>Constructor for Extension.</p>
    *
-   * @param extension a {@link String} object.
+   * @param extension a String object.
    */
   public Extension( @Nonnull String extension ) {
     this( DEFAULT_DELIMITER, extension );
@@ -72,8 +72,8 @@ public class Extension {
   /**
    * <p>Constructor for Extension.</p>
    *
-   * @param delimiter a {@link String} object.
-   * @param extension a {@link String} object.
+   * @param delimiter a String object.
+   * @param extension a String object.
    */
   public Extension( @Nonnull String delimiter, @Nonnull String extension ) {
     this.delimiter = delimiter;
@@ -83,7 +83,7 @@ public class Extension {
   /**
    * <p>Getter for the field <code>delimiter</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getDelimiter() {
@@ -93,7 +93,7 @@ public class Extension {
   /**
    * <p>Getter for the field <code>extension</code>.</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getExtension() {
@@ -103,7 +103,7 @@ public class Extension {
   /**
    * <p>getCombined</p>
    *
-   * @return a {@link String} object.
+   * @return a String object.
    */
   @Nonnull
   public String getCombined() {

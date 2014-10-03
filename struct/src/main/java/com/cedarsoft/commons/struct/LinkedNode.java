@@ -51,7 +51,7 @@ public class LinkedNode implements Node {
   /**
    * <p>Constructor for LinkedNode.</p>
    *
-   * @param source a {@link Node} object.
+   * @param source a Node object.
    */
   public LinkedNode( @Nonnull Node source ) {
     this.source = source;

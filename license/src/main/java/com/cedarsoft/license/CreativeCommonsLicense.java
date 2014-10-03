@@ -53,10 +53,10 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Constructor for CreativeCommonsLicense.</p>
    *
-   * @param id                        a {@link String} object.
-   * @param name                      a {@link String} object.
+   * @param id                        a String object.
+   * @param name                      a String object.
    * @param restrictedToNonCommercial a boolean.
-   * @param modificationsAllowed      a {@link CreativeCommonsLicense.ModificationsAllowed} object.
+   * @param modificationsAllowed      a CreativeCommonsLicense.ModificationsAllowed object.
    * @param url                       the url
    */
   CreativeCommonsLicense( @Nonnull String id, @Nonnull String name, boolean restrictedToNonCommercial, @Nonnull ModificationsAllowed modificationsAllowed, @Nonnull String url ) {
@@ -77,7 +77,7 @@ public class CreativeCommonsLicense extends License {
   /**
    * <p>Getter for the field <code>modificationsAllowed</code>.</p>
    *
-   * @return a {@link CreativeCommonsLicense.ModificationsAllowed} object.
+   * @return a CreativeCommonsLicense.ModificationsAllowed object.
    */
   @Nonnull
   public ModificationsAllowed getModificationsAllowed() {

@@ -35,7 +35,7 @@ import com.cedarsoft.configuration.xml.XmlConfigurationManager;
 import org.apache.commons.configuration.XMLConfiguration;
 
 /**
- * <p/>
+ * <p>
  * Date: Jul 9, 2007<br>
  * Time: 11:05:40 PM<br>
  */

@@ -49,8 +49,8 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
   /**
    * <p>Constructor for InstantiatorLookup.</p>
    *
-   * @param type         a {@link Class} object.
-   * @param instantiater a {@link Instantiater} object.
+   * @param type         a Class object.
+   * @param instantiater a Instantiater object.
    */
   public InstantiatorLookup( @Nonnull Class<? extends T> type, @Nonnull Instantiater<T> instantiater ) {
     this.type = type;
@@ -60,7 +60,7 @@ public class InstantiatorLookup<T> extends LazyLookup<T> {
   /**
    * <p>Constructor for InstantiatorLookup.</p>
    *
-   * @param instantiater a {@link Instantiater.Typed} object.
+   * @param instantiater a Instantiater.Typed object.
    */
   public InstantiatorLookup( @Nonnull Instantiater.Typed<T> instantiater ) {
     this.instantiater = instantiater;

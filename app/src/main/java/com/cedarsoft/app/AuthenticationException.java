@@ -49,7 +49,7 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param message a {@link String} object.
+   * @param message a String object.
    */
   public AuthenticationException( String message ) {
     super( message );
@@ -58,8 +58,8 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param message a {@link String} object.
-   * @param cause   a {@link Throwable} object.
+   * @param message a String object.
+   * @param cause   a Throwable object.
    */
   public AuthenticationException( String message, Throwable cause ) {
     super( message, cause );
@@ -68,7 +68,7 @@ public class AuthenticationException extends Exception {
   /**
    * <p>Constructor for AuthenticationException.</p>
    *
-   * @param cause a {@link Throwable} object.
+   * @param cause a Throwable object.
    */
   public AuthenticationException( Throwable cause ) {
     super( cause );
