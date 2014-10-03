@@ -33,8 +33,6 @@ package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
 
-import java.lang.Object;
-
 /**
  * <p>StillContainedException class.</p>
  *
