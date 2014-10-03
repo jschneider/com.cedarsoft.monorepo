@@ -96,7 +96,7 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
-   * @throws StillContainedException if any.
+   * @throws com.cedarsoft.exceptions.StillContainedException if there is still an entry.
    */
   public DefaultRegistry( @Nonnull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
@@ -113,9 +113,6 @@ public class DefaultRegistry<T> implements Registry<T> {
     this.storedObjects.addAll( storedObjects );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nonnull
   public List<? extends T> getStoredObjects() {
@@ -127,9 +124,6 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nullable
   public T findStoredObject( @Nonnull Matcher<T> matcher ) {
@@ -167,9 +161,6 @@ public class DefaultRegistry<T> implements Registry<T> {
     return found;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nonnull
   public List<? extends T> findStoredObjects( @Nonnull Matcher<T> matcher ) {
@@ -188,9 +179,6 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nonnull
   public <C> List<? extends C> findStoredObjects( @Nonnull Matcher<T> matcher, @Nonnull Converter<T, C> converter ) {
@@ -268,18 +256,12 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nullable
   public Comparator<T> getComparator() {
     return comparator;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public boolean containsOnlyUniqueElements() {
     return comparator != null;
@@ -288,9 +270,6 @@ public class DefaultRegistry<T> implements Registry<T> {
   @Nonnull
   protected final List<Listener<T>> listeners = new ArrayList<Listener<T>>();
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void addListener( @Nonnull Listener<T> listener ) {
     lock.writeLock().lock();
@@ -301,9 +280,6 @@ public class DefaultRegistry<T> implements Registry<T> {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void removeListener( @Nonnull Listener<T> listener ) {
     lock.writeLock().lock();
