@@ -1138,6 +1138,7 @@
               <placement>X</placement>
             </tag>
           </tags>
+          <detectOfflineLinks>false</detectOfflineLinks>
         </configuration>
         <reportSets>
           <reportSet>
