@@ -73,8 +73,6 @@ public interface Registry<T> {
    * @param matcher         the matcher
    * @param notFoundMessage the exception message that is thrown if no object could be found
    * @return the (first) object that matches the matcher
-   *
-   * @throws NotFoundException
    */
   @Nonnull
   T findStoredObject( @Nonnull Matcher<T> matcher, @Nonnull String notFoundMessage ) throws NotFoundException;
@@ -103,7 +101,6 @@ public interface Registry<T> {
    * Stores the object
    *
    * @param object the object that is stored
-   * @throws StillContainedException if any.
    */
   void store( @Nonnull T object ) throws StillContainedException;
 
@@ -147,7 +144,6 @@ public interface Registry<T> {
    * Removes the object
    *
    * @param object the object
-   * @throws NotFoundException if the object can't be found
    */
   void remove( @Nonnull T object ) throws NotFoundException;
 

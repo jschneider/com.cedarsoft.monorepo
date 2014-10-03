@@ -96,7 +96,6 @@ public class DefaultRegistry<T> implements Registry<T> {
    *
    * @param storedObjects the initially stored objects
    * @param comparator    the (optional) comparator
-   * @throws com.cedarsoft.exceptions.StillContainedException if there is still an entry.
    */
   public DefaultRegistry( @Nonnull Collection<? extends T> storedObjects, @Nullable Comparator<T> comparator ) throws StillContainedException {
     this.comparator = comparator;
@@ -147,8 +146,6 @@ public class DefaultRegistry<T> implements Registry<T> {
    * @param matcher         a Matcher object.
    * @param notFoundMessage a String object.
    * @return a T object.
-   *
-   * @throws NotFoundException if any.
    */
   @Override
   @Nonnull
