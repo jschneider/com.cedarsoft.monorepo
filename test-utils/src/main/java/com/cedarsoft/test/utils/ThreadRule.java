@@ -143,29 +143,37 @@ public class ThreadRule implements TestRule {
   public static class DefaultThreadMatcher implements ThreadMatcher {
     @Override
     public boolean shallIgnore( @Nonnull Thread remainingThread ) {
-      return remainingThread.getThreadGroup().getName().equals( "system" ) &&
-        remainingThread.getName().equals( "Keep-Alive-Timer" )
+      @Nullable ThreadGroup threadGroup = remainingThread.getThreadGroup();
+      if ( threadGroup == null ) {
+        //this means the thread has died
+        return true;
+      }
+      String threadGroupName = threadGroup.getName();
+      String threadName = remainingThread.getName();
+
+      return threadGroupName.equals( "system" ) &&
+        threadName.equals( "Keep-Alive-Timer" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "system" ) &&
-          remainingThread.getName().equals( "process reaper" )
+        threadGroupName.equals( "system" ) &&
+          threadName.equals( "process reaper" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "system" ) &&
-          remainingThread.getName().equals( "Keep-Alive-SocketCleaner" )
+        threadGroupName.equals( "system" ) &&
+          threadName.equals( "Keep-Alive-SocketCleaner" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "system" ) &&
-          remainingThread.getName().equals( "Java2D Disposer" )
+        threadGroupName.equals( "system" ) &&
+          threadName.equals( "Java2D Disposer" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "system" ) &&
-          remainingThread.getName().equals( "AWT-XAWT" )
+        threadGroupName.equals( "system" ) &&
+          threadName.equals( "AWT-XAWT" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "main" ) &&
-          remainingThread.getName().equals( "AWT-Shutdown" )
+        threadGroupName.equals( "main" ) &&
+          threadName.equals( "AWT-Shutdown" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "main" ) &&
-          remainingThread.getName().equals( "AWT-Windows" )
+        threadGroupName.equals( "main" ) &&
+          threadName.equals( "AWT-Windows" )
         ||
-        remainingThread.getThreadGroup().getName().equals( "main" ) &&
-          remainingThread.getName().startsWith( "QuantumRenderer" )
+        threadGroupName.equals( "main" ) &&
+          threadName.startsWith( "QuantumRenderer" )
         ;
     }
   }
