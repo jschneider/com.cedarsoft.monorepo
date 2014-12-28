@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>65</version>
+  <version>66</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -139,7 +139,7 @@
     <guice.version>4.0-beta5</guice.version>
     <jaxb.version>2.2.10-b140310.1920</jaxb.version>
     <jetty.version>9.2.2.v20140723</jetty.version>
-    <jackson.version>2.4.2</jackson.version>
+    <jackson.version>2.4.4</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -178,7 +178,7 @@
       <dependency>
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
-        <version>2.4</version>
+        <version>2.6</version>
       </dependency>
 
       <dependency>
@@ -195,7 +195,7 @@
       <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
-        <version>1.9</version>
+        <version>1.10</version>
       </dependency>
       <dependency>
         <groupId>commons-logging</groupId>
@@ -374,6 +374,28 @@
         <artifactId>fest-assert</artifactId>
         <version>1.4</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>1.6.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-guava</artifactId>
+        <version>1.2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-neo4j</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-swing</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+
       <dependency>
         <groupId>org.easytesting</groupId>
         <artifactId>fest-assert-core</artifactId>
@@ -388,7 +410,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.11</version>
+        <version>4.12</version>
       </dependency>
       <dependency>
         <groupId>org.easymock</groupId>
@@ -399,13 +421,13 @@
       <dependency>
         <groupId>org.easymock</groupId>
         <artifactId>easymock</artifactId>
-        <version>3.2</version>
+        <version>3.3</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>1.9.5</version>
+        <version>1.10.8</version>
         <scope>test</scope>
       </dependency>
 
@@ -507,7 +529,7 @@
           -->
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.4</version>
+          <version>1.6.5</version>
           <extensions>true</extensions>
 
           <!--Workaround for https://issues.sonatype.org/browse/NEXUS-6836-->
@@ -562,12 +584,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>2.6</version>
+          <version>2.6.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.1</version>
+          <version>3.2</version>
           <configuration>
             <source>${java.version}</source>
             <target>${java.version}</target>
@@ -580,7 +602,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>2.6</version>
+          <version>2.7</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
@@ -593,7 +615,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.17</version>
+          <version>2.18</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -603,17 +625,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>2.4</version>
+          <version>2.5</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>2.3</version>
+          <version>2.4</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.4.1</version>
+          <version>2.5.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -648,7 +670,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.10</version>
+          <version>2.10.1</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
@@ -660,7 +682,6 @@
             </tags>
             <detectOfflineLinks>false</detectOfflineLinks>
             <quiet>true</quiet>
-            <failOnError>false</failOnError>
           </configuration>
           <dependencies>
             <dependency>
@@ -729,7 +750,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jxr-plugin</artifactId>
-          <version>2.4</version>
+          <version>2.5</version>
           <configuration>
             <aggregate>true</aggregate>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
@@ -817,7 +838,7 @@
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.1.0</version>
+          <version>1.1.2</version>
           <configuration>
             <targetClasses>
               <param>com.cedarsoft.*</param>
@@ -1128,7 +1149,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10</version>
+        <version>2.10.1</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
@@ -1143,7 +1164,6 @@
           </tags>
           <detectOfflineLinks>false</detectOfflineLinks>
           <quiet>true</quiet>
-          <failOnError>false</failOnError>
         </configuration>
         <reportSets>
           <reportSet>
@@ -1170,7 +1190,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.2</version>
+        <version>3.3</version>
         <configuration>
           <linkXRef>true</linkXRef>
           <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
@@ -1261,7 +1281,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.17</version>
+        <version>2.18</version>
       </plugin>
 
       <plugin>
