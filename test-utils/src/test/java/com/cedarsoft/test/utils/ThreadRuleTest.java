@@ -2,7 +2,7 @@ package com.cedarsoft.test.utils;
 
 import org.junit.*;
 
-import static org.fest.assertions.Fail.fail;
+import static org.assertj.core.api.Fail.fail;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
