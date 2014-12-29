@@ -49,8 +49,8 @@ public class FileNamesFactoryTest {
     assertThat(fileNames).hasSize(2);
 
     Condition<String> condition = new MyStringCondition("A.JPG","A.cr2");
-    assertThat( fileNames.get(0).getName() ).satisfies(condition);
-    assertThat( fileNames.get(1).getName() ).satisfies(condition);
+    assertThat( fileNames.get(0).getName() ).is( condition );
+    assertThat( fileNames.get(1).getName() ).is( condition );
 
     for ( FileName fileName : fileNames) {
       File f = new File( baseDir, fileName.getName() );
@@ -104,8 +104,8 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.cr2" ) );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).is( new MyStringCondition( "A.JPG", "A.cr2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).is( new MyStringCondition( "A.JPG", "A.cr2" ) );
     }
   }
 
@@ -127,8 +127,8 @@ public class FileNamesFactoryTest {
       assertThat( fileNames ).isNotNull();
       assertThat( fileNames.getFileNames() ).hasSize( 2 );
 
-      assertThat( fileNames.getFileNames().get( 0 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
-      assertThat( fileNames.getFileNames().get( 1 ).getName() ).satisfies( new MyStringCondition( "A.JPG", "A.CR2" ) );
+      assertThat( fileNames.getFileNames().get( 0 ).getName() ).is( new MyStringCondition( "A.JPG", "A.CR2" ) );
+      assertThat( fileNames.getFileNames().get( 1 ).getName() ).is( new MyStringCondition( "A.JPG", "A.CR2" ) );
     }
   }
 
