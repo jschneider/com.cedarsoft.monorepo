@@ -54,7 +54,7 @@ import static org.junit.Assert.*;
  */
 public class ThreadDeadlockDetectorTest {
 
-  @Test( timeout = 2000 )
+  @Test( timeout = 5000 )
   public void testBasic() throws Exception {
     final Lock lock1 = new ReentrantLock();
     final Lock lock2 = new ReentrantLock();
@@ -120,8 +120,8 @@ public class ThreadDeadlockDetectorTest {
         deadlockDetector.stop();
 
         assertTrue( out.toString(), out.toString().contains( "Deadlocked Threads:" ) );
-        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread1,5,main]" ) );
-        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread2,5,main]" ) );
+        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread1,5" ) );
+        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread2,5" ) );
         assertTrue( out.toString(), out.toString().contains( "sun.misc.Unsafe.park(Native Method)" ) );
       }
 

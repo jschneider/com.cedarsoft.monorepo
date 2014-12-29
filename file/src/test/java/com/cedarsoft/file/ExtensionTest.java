@@ -31,7 +31,7 @@
 
 package com.cedarsoft.file;
 
-import org.fest.assertions.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.*;
 
 import static org.junit.Assert.*;

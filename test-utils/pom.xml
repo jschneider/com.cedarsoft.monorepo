@@ -4,13 +4,13 @@
   <parent>
     <artifactId>commons</artifactId>
     <groupId>com.cedarsoft</groupId>
-    <version>6.0.2</version>
+    <version>6.1.0</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>test-utils</artifactId>
-  <version>6.0.2</version>
+  <version>6.1.0</version>
   <name>Test Utils</name>
 
   <packaging>bundle</packaging>
@@ -55,11 +55,6 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-assert</artifactId>
     </dependency>
 
     <dependency>

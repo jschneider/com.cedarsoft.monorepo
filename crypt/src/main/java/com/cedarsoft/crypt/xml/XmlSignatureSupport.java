@@ -57,12 +57,15 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.Collections;
 
 /**
+ * DO NOT USE ANYMORE: Look at https://www.cs.auckland.ac.nz/~pgut001/pubs/xmlsec.txt for reasons
+ *
  * Easy support for xml signatures.
  * Be carefull! The DocumentBuilderFactory has to be namespace aware
  * (DocumentBuilderFactory#setNamespaceAware(boolean)).
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@Deprecated
 public class XmlSignatureSupport {
   @Nonnull
   private static final XMLSignatureFactory SIGNATURE_FACTORY = XMLSignatureFactory.getInstance( "DOM" );
