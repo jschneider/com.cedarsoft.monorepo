@@ -32,7 +32,7 @@
 package com.cedarsoft.file;
 
 import com.cedarsoft.exceptions.NotFoundException;
-import org.fest.assertions.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.*;
 
 import java.util.Collections;
