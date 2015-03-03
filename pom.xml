@@ -128,14 +128,6 @@
     <maven.skin.version>1.1.9</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
-    <coverage.haltOnFailure>false</coverage.haltOnFailure>
-    <coverage.lineRate>1</coverage.lineRate>
-    <coverage.branchRate>1</coverage.branchRate>
-    <coverage.packageLineRate>50</coverage.packageLineRate>
-    <coverage.packageBranchRate>50</coverage.packageBranchRate>
-    <coverage.totalLineRate>50</coverage.totalLineRate>
-    <coverage.totalBranchRate>50</coverage.totalBranchRate>
-
     <guice.version>4.0-beta5</guice.version>
     <jaxb.version>2.2.11</jaxb.version>
     <jetty.version>9.3.0.M1</jetty.version>
@@ -160,19 +152,6 @@
         <groupId>javax.inject</groupId>
         <artifactId>javax.inject</artifactId>
         <version>1</version>
-      </dependency>
-
-      <dependency>
-        <groupId>biz.aQute</groupId>
-        <artifactId>bndlib</artifactId>
-        <version>2.0.0.20130123-133441</version>
-        <scope>provided</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>org.apache.felix.scr.annotations</artifactId>
-        <version>1.9.10</version>
       </dependency>
 
       <dependency>
@@ -522,15 +501,6 @@
           <version>1.6.5</version>
           <extensions>true</extensions>
 
-          <!--Workaround for https://issues.sonatype.org/browse/NEXUS-6836-->
-          <dependencies>
-            <dependency>
-              <groupId>com.thoughtworks.xstream</groupId>
-              <artifactId>xstream</artifactId>
-              <version>1.4.7</version>
-            </dependency>
-          </dependencies>
-
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
             <nexusUrl>https://oss.sonatype.org</nexusUrl>
@@ -801,25 +771,6 @@
         </plugin>
 
         <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-scr-plugin</artifactId>
-          <version>1.20.0</version>
-
-          <executions>
-            <execution>
-              <id>generate-scr-scrdescriptor</id>
-              <goals>
-                <goal>scr</goal>
-              </goals>
-            </execution>
-          </executions>
-
-          <configuration>
-            <finalName>${project.artifactId}.ds.xml</finalName>
-          </configuration>
-        </plugin>
-
-        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
           <version>1.7</version>
@@ -1026,23 +977,6 @@
 
   <profiles>
     <profile>
-      <id>scr</id>
-      <activation>
-        <property>
-          <name>scr</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>maven-scr-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
       <id>release-sign-artifacts</id>
       <activation>
         <property>
@@ -1065,70 +999,6 @@
               </execution>
             </executions>
           </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>coverage</id>
-      <activation>
-        <property>
-          <name>testCoverage</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <!--plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>cobertura-maven-plugin</artifactId>
-            <configuration>
-              <formats>
-                <format>xml</format>
-                <format>html</format>
-              </formats>
-              <check>
-                <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
-                <lineRate>${coverage.lineRate}</lineRate>
-                <branchRate>${coverage.branchRate}</branchRate>
-                <packageLineRate>${coverage.packageLineRate}</packageLineRate>
-                <packageBranchRate>${coverage.packageBranchRate}</packageBranchRate>
-                <totalLineRate>${coverage.totalLineRate}</totalLineRate>
-                <totalBranchRate>${coverage.totalBranchRate}</totalBranchRate>
-                <regexes>
-                  <regex>
-                    <pattern>.*Exception</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                  <regex>
-                    <pattern>.*Mock.*</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                  <regex>
-                    <pattern>.*\$.*</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                </regexes>
-              </check>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>clean</goal>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>report</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>cobertura</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin-->
         </plugins>
       </build>
     </profile>
