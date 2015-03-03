@@ -992,23 +992,6 @@
 
   <profiles>
     <profile>
-      <id>scr</id>
-      <activation>
-        <property>
-          <name>scr</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>maven-scr-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
       <id>release-sign-artifacts</id>
       <activation>
         <property>
