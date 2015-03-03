@@ -128,14 +128,6 @@
     <maven.skin.version>1.1.9</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
-    <coverage.haltOnFailure>false</coverage.haltOnFailure>
-    <coverage.lineRate>1</coverage.lineRate>
-    <coverage.branchRate>1</coverage.branchRate>
-    <coverage.packageLineRate>50</coverage.packageLineRate>
-    <coverage.packageBranchRate>50</coverage.packageBranchRate>
-    <coverage.totalLineRate>50</coverage.totalLineRate>
-    <coverage.totalBranchRate>50</coverage.totalBranchRate>
-
     <guice.version>4.0-beta5</guice.version>
     <jaxb.version>2.2.11</jaxb.version>
     <jetty.version>9.3.0.M1</jetty.version>
