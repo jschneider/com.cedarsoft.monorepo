@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>66</version>
+  <version>67</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -128,18 +128,10 @@
     <maven.skin.version>1.1.9</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
-    <coverage.haltOnFailure>false</coverage.haltOnFailure>
-    <coverage.lineRate>1</coverage.lineRate>
-    <coverage.branchRate>1</coverage.branchRate>
-    <coverage.packageLineRate>50</coverage.packageLineRate>
-    <coverage.packageBranchRate>50</coverage.packageBranchRate>
-    <coverage.totalLineRate>50</coverage.totalLineRate>
-    <coverage.totalBranchRate>50</coverage.totalBranchRate>
-
     <guice.version>4.0-beta5</guice.version>
-    <jaxb.version>2.2.10-b140310.1920</jaxb.version>
-    <jetty.version>9.2.2.v20140723</jetty.version>
-    <jackson.version>2.4.4</jackson.version>
+    <jaxb.version>2.2.11</jaxb.version>
+    <jetty.version>9.3.0.M1</jetty.version>
+    <jackson.version>2.5.1</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -163,22 +155,9 @@
       </dependency>
 
       <dependency>
-        <groupId>biz.aQute</groupId>
-        <artifactId>bndlib</artifactId>
-        <version>2.0.0.20130123-133441</version>
-        <scope>provided</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>org.apache.felix.scr.annotations</artifactId>
-        <version>1.9.8</version>
-      </dependency>
-
-      <dependency>
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
-        <version>2.6</version>
+        <version>2.7</version>
       </dependency>
 
       <dependency>
@@ -221,12 +200,12 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.7</version>
+        <version>1.7.10</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.7</version>
+        <version>1.7.10</version>
       </dependency>
 
       <dependency>
@@ -263,7 +242,7 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring</artifactId>
-        <version>2.5.6.SEC03</version>
+        <version>3.0.0.M3</version>
       </dependency>
 
       <dependency>
@@ -291,7 +270,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.7</version>
+        <version>1.4.8</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
@@ -355,7 +334,7 @@
       <dependency>
         <groupId>net.java.dev.glazedlists</groupId>
         <artifactId>glazedlists_java15</artifactId>
-        <version>1.9.0</version>
+        <version>1.9.1</version>
       </dependency>
 
       <dependency>
@@ -369,21 +348,16 @@
         <artifactId>fest-reflect</artifactId>
         <version>1.4.1</version>
       </dependency>
-      <dependency>
-        <groupId>org.easytesting</groupId>
-        <artifactId>fest-assert</artifactId>
-        <version>1.4</version>
-      </dependency>
 
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>1.6.1</version>
+        <version>1.7.1</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-guava</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.1</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
@@ -393,18 +367,13 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-swing</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
       </dependency>
 
       <dependency>
-        <groupId>org.easytesting</groupId>
-        <artifactId>fest-assert-core</artifactId>
-        <version>2.0M10</version>
-      </dependency>
-      <dependency>
         <groupId>xmlunit</groupId>
         <artifactId>xmlunit</artifactId>
-        <version>1.5</version>
+        <version>1.6</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -421,13 +390,13 @@
       <dependency>
         <groupId>org.easymock</groupId>
         <artifactId>easymock</artifactId>
-        <version>3.3</version>
+        <version>3.3.1</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>1.10.8</version>
+        <version>2.0.5-beta</version>
         <scope>test</scope>
       </dependency>
 
@@ -532,15 +501,6 @@
           <version>1.6.5</version>
           <extensions>true</extensions>
 
-          <!--Workaround for https://issues.sonatype.org/browse/NEXUS-6836-->
-          <dependencies>
-            <dependency>
-              <groupId>com.thoughtworks.xstream</groupId>
-              <artifactId>xstream</artifactId>
-              <version>1.4.7</version>
-            </dependency>
-          </dependencies>
-
           <configuration>
             <!-- The Base URL of Nexus instance where we want to stage -->
             <nexusUrl>https://oss.sonatype.org</nexusUrl>
@@ -610,12 +570,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.17</version>
+          <version>2.18.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.18</version>
+          <version>2.18.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -625,7 +585,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>2.5</version>
+          <version>2.6</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -635,12 +595,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>2.5.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.9</version>
+          <version>2.10</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -740,12 +700,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.13</version>
+          <version>2.14</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.7</version>
+          <version>2.8</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -775,25 +735,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.5</version>
+          <version>1.6</version>
 
           <configuration>
             <useAgent>true</useAgent>
             <keyname>7B42FE9D</keyname>
           </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>cobertura-maven-plugin</artifactId>
-          <version>2.6</version>
-          <dependencies>
-            <dependency>
-              <groupId>asm</groupId>
-              <artifactId>asm-tree</artifactId>
-              <version>3.2</version>
-            </dependency>
-          </dependencies>
         </plugin>
 
         <plugin>
@@ -811,34 +758,15 @@
         </plugin>
 
         <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-scr-plugin</artifactId>
-          <version>1.20.0</version>
-
-          <executions>
-            <execution>
-              <id>generate-scr-scrdescriptor</id>
-              <goals>
-                <goal>scr</goal>
-              </goals>
-            </execution>
-          </executions>
-
-          <configuration>
-            <finalName>${project.artifactId}.ds.xml</finalName>
-          </configuration>
-        </plugin>
-
-        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>1.7</version>
+          <version>1.8</version>
         </plugin>
 
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.1.2</version>
+          <version>1.1.4</version>
           <configuration>
             <targetClasses>
               <param>com.cedarsoft.*</param>
@@ -939,7 +867,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.3.1</version>
+        <version>1.4</version>
         <executions>
           <execution>
             <id>enforce-plugin-versions</id>
@@ -977,7 +905,7 @@
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
-        <version>2.6</version>
+        <version>2.9</version>
         <configuration>
           <strictCheck>true</strictCheck>
           <header>${license.header.url}</header>
@@ -1036,23 +964,6 @@
 
   <profiles>
     <profile>
-      <id>scr</id>
-      <activation>
-        <property>
-          <name>scr</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>maven-scr-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
       <id>release-sign-artifacts</id>
       <activation>
         <property>
@@ -1075,70 +986,6 @@
               </execution>
             </executions>
           </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>coverage</id>
-      <activation>
-        <property>
-          <name>testCoverage</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <!--plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>cobertura-maven-plugin</artifactId>
-            <configuration>
-              <formats>
-                <format>xml</format>
-                <format>html</format>
-              </formats>
-              <check>
-                <haltOnFailure>${coverage.haltOnFailure}</haltOnFailure>
-                <lineRate>${coverage.lineRate}</lineRate>
-                <branchRate>${coverage.branchRate}</branchRate>
-                <packageLineRate>${coverage.packageLineRate}</packageLineRate>
-                <packageBranchRate>${coverage.packageBranchRate}</packageBranchRate>
-                <totalLineRate>${coverage.totalLineRate}</totalLineRate>
-                <totalBranchRate>${coverage.totalBranchRate}</totalBranchRate>
-                <regexes>
-                  <regex>
-                    <pattern>.*Exception</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                  <regex>
-                    <pattern>.*Mock.*</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                  <regex>
-                    <pattern>.*\$.*</pattern>
-                    <branchRate>0</branchRate>
-                    <lineRate>0</lineRate>
-                  </regex>
-                </regexes>
-              </check>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>clean</goal>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>report</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>cobertura</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin-->
         </plugins>
       </build>
     </profile>
@@ -1190,7 +1037,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.4</version>
         <configuration>
           <linkXRef>true</linkXRef>
           <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
@@ -1272,16 +1119,10 @@
         </reportSets>
       </plugin>
 
-      <!--plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.5.1</version>
-      </plugin-->
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.18</version>
+        <version>2.18.1</version>
       </plugin>
 
       <plugin>
