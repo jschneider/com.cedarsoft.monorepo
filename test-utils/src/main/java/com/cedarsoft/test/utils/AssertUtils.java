@@ -263,7 +263,7 @@ public class AssertUtils {
 
     File copy = createCopyFile( path, fileUnderTest.getName() );
     if ( copy.exists() ) {
-      FileUtils.moveFile( copy, new File( copy.getParentFile(), copy.getName() + "." + System.currentTimeMillis() ) );
+      FileUtils.moveFile( copy, new File( copy.getParentFile(), copy.getName() + "." + System.nanoTime() ) );
     }
     FileUtils.copyFile( fileUnderTest, copy );
 

@@ -100,6 +100,24 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
   public File getApplicationHome() {
     return projectHome;
   }
+
+  @Nonnull
+  @Override
+  public File getConfigHome() {
+    return new File( projectHome, "config" );
+  }
+
+  @Nonnull
+  @Override
+  public File getDataHome() {
+    return new File( projectHome, "data" );
+  }
+
+  @Nonnull
+  @Override
+  public File getCacheHome() {
+    return new File( projectHome, "cache" );
+  }
 }
 
 
