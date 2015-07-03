@@ -44,6 +44,7 @@ import java.io.IOException;
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@Deprecated
 public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @Nonnull
   private static final Log LOG = LogFactory.getLog( DefaultApplicationHomeAccess.class );
@@ -137,5 +138,23 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   @Nonnull
   public File getApplicationHome() {
     return applicationHome;
+  }
+
+  @Nonnull
+  @Override
+  public File getConfigHome() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Nonnull
+  @Override
+  public File getDataHome() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Nonnull
+  @Override
+  public File getCacheHome() {
+    throw new UnsupportedOperationException();
   }
 }
