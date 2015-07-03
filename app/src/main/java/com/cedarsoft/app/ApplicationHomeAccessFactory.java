@@ -1,5 +1,6 @@
 package com.cedarsoft.app;
 
+import com.cedarsoft.app.xdg.WindowsUtil;
 import com.cedarsoft.app.xdg.XdgUtil;
 
 import javax.annotation.Nonnull;
@@ -29,7 +30,9 @@ public class ApplicationHomeAccessFactory {
 
   @Nonnull
   private static ApplicationHomeAccess createWindowsHomeAccess( @Nonnull String applicationName ) {
-    throw new UnsupportedOperationException( "Not yet implemented" );
+    File appData = new File( WindowsUtil.getAppData(), applicationName );
+    File localAppData = new File( WindowsUtil.getLocalAppData(), applicationName );
+    return new StaticApplicationHomeAccess( applicationName, appData, appData, localAppData );
   }
 
   @Nonnull
