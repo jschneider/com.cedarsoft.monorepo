@@ -40,6 +40,8 @@ public class XdgUtil {
    * If $XDG_CONFIG_HOME is either not set or empty, a default equal to $HOME/.config should be used.
    */
   public static final String XDG_CONFIG_HOME = "XDG_CONFIG_HOME";
+  @Nonnull
+  public static final File XDG_CONFIG_HOME_DEFAULT = new File( HOME_DIR, ".config" );
 
   /**
    * <p>
@@ -95,6 +97,15 @@ public class XdgUtil {
   public static File getDataHome() {
     String value = System.getenv().get( XDG_DATA_HOME );
     return getDir( value, XDG_DATA_HOME_DEFAULT );
+  }
+
+  /**
+   * Returns the config home dir
+   */
+  @Nonnull
+  public static File getConfigHome() {
+    String value = System.getenv().get( XDG_CONFIG_HOME );
+    return getDir( value, XDG_CONFIG_HOME_DEFAULT );
   }
 
   /**

@@ -17,6 +17,7 @@ public class XdgUtilDemo {
       return;
     }
 
+    System.err.println( "Config Home: " + XdgUtil.getConfigHome().getAbsolutePath() );
     System.err.println( "Cache Home: " + XdgUtil.getCacheHome().getAbsolutePath() );
     System.err.println( "Data Home: " + XdgUtil.getDataHome().getAbsolutePath() );
   }
