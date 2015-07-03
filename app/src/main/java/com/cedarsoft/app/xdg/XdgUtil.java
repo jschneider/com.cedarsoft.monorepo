@@ -11,6 +11,9 @@ public class XdgUtil {
   @Nonnull
   private static final File HOME_DIR = getHomeDir();
 
+  private XdgUtil() {
+  }
+
   @Nonnull
   private static File getHomeDir() {
     String userHomeAsString = System.getProperty( "user.home" );
