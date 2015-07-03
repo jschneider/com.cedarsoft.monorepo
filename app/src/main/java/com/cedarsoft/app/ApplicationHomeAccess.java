@@ -54,6 +54,21 @@ public interface ApplicationHomeAccess {
    *
    * @return the application home dir
    */
+  @Deprecated
   @Nonnull
   File getApplicationHome();
+
+
+  /**
+   * Returns the directory that should be used for the configuration
+   */
+  @Nonnull
+  File getConfigHome();
+
+  /**
+   * Returns the directory that should be used for the configuration
+   */
+  @Nonnull
+  File getDataHome();
+
 }
