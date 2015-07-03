@@ -31,12 +31,39 @@ public class ApplicationHomeAccessFactory {
   @Nonnull
   private static ApplicationHomeAccess createWindowsHomeAccess( @Nonnull String applicationName ) {
     File appData = new File( WindowsUtil.getAppData(), applicationName );
+    createDirIfNecessary( appData );
     File localAppData = new File( WindowsUtil.getLocalAppData(), applicationName );
+    createDirIfNecessary( localAppData );
     return new StaticApplicationHomeAccess( applicationName, appData, appData, localAppData );
   }
 
   @Nonnull
   private static ApplicationHomeAccess createLinuxHomeAccess( @Nonnull String applicationName ) {
-    return new StaticApplicationHomeAccess( applicationName, new File( XdgUtil.getConfigHome(), applicationName ), new File( XdgUtil.getDataHome(), applicationName ), new File( XdgUtil.getCacheHome(), applicationName ) );
+    File configHome = new File( XdgUtil.getConfigHome(), applicationName );
+    createDirIfNecessary( configHome );
+    File dataHome = new File( XdgUtil.getDataHome(), applicationName );
+    createDirIfNecessary( dataHome );
+    File cacheHome = new File( XdgUtil.getCacheHome(), applicationName );
+    createDirIfNecessary( cacheHome );
+
+    return new StaticApplicationHomeAccess( applicationName, configHome, dataHome, cacheHome );
+  }
+
+  private static void createDirIfNecessary( @Nonnull File dir ) {
+    if ( dir.isDirectory() ) {
+      return;
+    }
+
+    if ( dir.isFile() ) {
+      throw new IllegalStateException( dir.getAbsolutePath() + " is a file" );
+    }
+
+    if ( dir.exists() ) {
+      throw new IllegalStateException( dir.getAbsolutePath() + " still exists but is not a dir" );
+    }
+
+    if ( !dir.mkdir() ) {
+      throw new IllegalStateException( "Could not create directory <" + dir.getAbsolutePath() + ">" );
+    }
   }
 }
