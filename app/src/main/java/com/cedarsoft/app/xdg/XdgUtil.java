@@ -51,11 +51,11 @@ public class XdgUtil {
    * The preference-ordered set of base directories to search for data files in addition to
    * the $XDG_DATA_HOME base directory.
    * The directories in $XDG_DATA_DIRS should be separated with a colon ':'.
-   * </p>
-   * <p/>
+   * 
+   * 
    * <p>
    * If $XDG_DATA_DIRS is either not set or empty, a value equal to /usr/local/share/:/usr/share/ should be used.
-   * </p>
+   * 
    */
   public static final String XDG_DATA_DIRS = "XDG_DATA_DIRS";
 
@@ -65,17 +65,17 @@ public class XdgUtil {
    * The preference-ordered set of base directories to search for configuration
    * files in addition to the $XDG_CONFIG_HOME base directory.
    * The directories in $XDG_CONFIG_DIRS should be seperated with a colon ':'.
-   * </p>
-   * <p/>
+   * 
+   * 
    * <p>
    * If $XDG_CONFIG_DIRS is either not set or empty, a value equal to /etc/xdg should be used.
-   * </p>
+   * 
    * <p>
    * The order of base directories denotes their importance; the first directory listed is the most important.
    * When the same information is defined in multiple places the information defined relative to the more important base directory takes precedent.
    * The base directory defined by $XDG_DATA_HOME is considered more important than any of the base directories defined by $XDG_DATA_DIRS.
    * The base directory defined by $XDG_CONFIG_HOME is considered more important than any of the base directories defined by $XDG_CONFIG_DIRS.
-   * </p>
+   * 
    */
   public static final String XDG_CONFIG_DIRS = "XDG_CONFIG_DIRS";
   /**
