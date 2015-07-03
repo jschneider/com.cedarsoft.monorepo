@@ -151,4 +151,10 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
   public File getDataHome() {
     throw new UnsupportedOperationException();
   }
+
+  @Nonnull
+  @Override
+  public File getCacheHome() {
+    throw new UnsupportedOperationException();
+  }
 }

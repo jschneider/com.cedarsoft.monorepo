@@ -66,9 +66,15 @@ public interface ApplicationHomeAccess {
   File getConfigHome();
 
   /**
-   * Returns the directory that should be used for the configuration
+   * Returns the directory that should be used for the user specific data
    */
   @Nonnull
   File getDataHome();
+
+  /**
+   * Returns the directory that should be used for caches
+   */
+  @Nonnull
+  File getCacheHome();
 
 }
