@@ -1,10 +1,9 @@
 package com.cedarsoft.test.utils.matchers;
 
+import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.mockito.ArgumentMatcher;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-class AndMatcher extends ArgumentMatcher implements Serializable {
+class AndMatcher<T> extends BaseMatcher<T> {
   private final List<Matcher<?>> matchers;
 
   public AndMatcher(List<? extends Matcher<?>> matchers) {
@@ -30,14 +29,14 @@ class AndMatcher extends ArgumentMatcher implements Serializable {
   }
 
   @Override
-  public void describeTo(Description description) {
-    description.appendText("and(");
-    for (Iterator<Matcher<?>> it = matchers.iterator(); it.hasNext(); ) {
-      it.next().describeTo(description);
-      if (it.hasNext()) {
-        description.appendText(", ");
+  public void describeTo( Description description ) {
+    description.appendText( "and(" );
+    for ( Iterator<Matcher<?>> it = matchers.iterator(); it.hasNext(); ) {
+      it.next().describeTo( description );
+      if ( it.hasNext() ) {
+        description.appendText( ", " );
       }
     }
-    description.appendText(")");
+    description.appendText( ")" );
   }
 }
