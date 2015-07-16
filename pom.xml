@@ -130,7 +130,7 @@
 
     <guice.version>4.0</guice.version>
     <jaxb.version>2.2.11</jaxb.version>
-    <jetty.version>9.3.0.RC1</jetty.version>
+    <jetty.version>9.3.1.v20150714</jetty.version>
     <jackson.version>2.5.1</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
@@ -340,7 +340,7 @@
       <dependency>
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
-        <version>2.3.2</version>
+        <version>2.3.3</version>
       </dependency>
 
       <dependency>
@@ -396,7 +396,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>2.0.22-beta</version>
+        <version>2.0.28-beta</version>
         <scope>test</scope>
       </dependency>
 
@@ -1037,7 +1037,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
+        <version>3.5</version>
         <configuration>
           <linkXRef>true</linkXRef>
           <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
