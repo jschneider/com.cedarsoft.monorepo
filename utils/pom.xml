@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft.unit</groupId>
     <artifactId>parent</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
   </parent>
 
   <artifactId>utils</artifactId>
@@ -16,12 +16,6 @@
       <groupId>com.cedarsoft</groupId>
       <artifactId>unit</artifactId>
       <version>${project.version}</version>
-    </dependency>
-
-    <!--Guava-->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
     </dependency>
 
   </dependencies>
