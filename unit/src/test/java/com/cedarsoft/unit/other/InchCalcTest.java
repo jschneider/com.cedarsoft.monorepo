@@ -1,9 +1,10 @@
 package com.cedarsoft.unit.other;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.cedarsoft.unit.si.mm;
 import org.junit.*;
 
-import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
