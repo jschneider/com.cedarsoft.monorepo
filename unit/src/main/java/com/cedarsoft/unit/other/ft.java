@@ -52,7 +52,6 @@ import java.lang.annotation.RetentionPolicy;
 public @interface ft {
   /**
    * The ratio used to convert mm to feet
-   * <p/>
    * <ul>
    * <li>mm / MM_FEET_RATIO == ft</li>
    * <li> 1 ft = MM_FEET_RATIO * mm</li>
