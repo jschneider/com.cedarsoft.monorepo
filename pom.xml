@@ -1034,17 +1034,17 @@
         </configuration>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.5</version>
-        <configuration>
-          <linkXRef>true</linkXRef>
-          <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-          <minimumTokens>100</minimumTokens>
-          <targetJdk>1.6</targetJdk>
-        </configuration>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-pmd-plugin</artifactId>-->
+        <!--<version>3.5</version>-->
+        <!--<configuration>-->
+          <!--<linkXRef>true</linkXRef>-->
+          <!--<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>-->
+          <!--<minimumTokens>100</minimumTokens>-->
+          <!--<targetJdk>1.6</targetJdk>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
 
       <!--<plugin>-->
         <!--<groupId>org.apache.maven.plugins</groupId>-->
