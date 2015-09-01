@@ -47,18 +47,11 @@ public class JavaTimeZoneRule implements MethodRule {
 
   private void before() {
     oldTimeZone = TimeZone.getDefault().toZoneId();
-
-    Reflection.field("defaultTimeZone")
-      .ofType(TimeZone.class)
-      .in(TimeZone.class)
-      .set(TimeZone.getTimeZone(zone));
+    TimeZone.setDefault(TimeZone.getTimeZone(zone));
   }
 
   private void after() {
-    Reflection.field("defaultTimeZone")
-      .ofType(TimeZone.class)
-      .in(TimeZone.class)
-      .set(TimeZone.getTimeZone(oldTimeZone));
+    TimeZone.setDefault(TimeZone.getTimeZone(oldTimeZone));
   }
 
   @Nonnull
