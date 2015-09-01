@@ -633,7 +633,6 @@
           <version>2.10.3</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
-            <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
             <tags>
               <tag>
                 <name>noinspection</name>
@@ -715,7 +714,6 @@
             <aggregate>true</aggregate>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
             <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-            <stylesheet>xref/cedarsoft.css</stylesheet>
           </configuration>
           <dependencies>
             <dependency>
@@ -999,7 +997,6 @@
         <version>2.10.1</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
-          <stylesheetfile>javadoc/cedarsoft.css</stylesheetfile>
           <links>
             <link>http://java.sun.com/javase/6/docs/api/</link>
           </links>
@@ -1030,7 +1027,6 @@
           <aggregate>true</aggregate>
           <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
           <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-          <stylesheet>xref/cedarsoft.css</stylesheet>
         </configuration>
       </plugin>
 
