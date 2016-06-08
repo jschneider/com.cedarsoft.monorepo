@@ -31,10 +31,11 @@
 
 package com.cedarsoft.version;
 
+import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.junit.Assert.*;
+
 import org.junit.*;
 import org.junit.rules.*;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -42,6 +43,14 @@ import static org.junit.Assert.*;
 public class VersionTest {
   @Rule
   public ExpectedException expectedException = ExpectedException.none();
+
+  @Test
+  public void parseLongNumber() throws Exception {
+    Version version = Version.parse("0.0.110");
+    assertThat(version.getMajor()).isEqualTo(0);
+    assertThat(version.getMinor()).isEqualTo(0);
+    assertThat(version.getBuild()).isEqualTo(110);
+  }
 
   @Test
   public void testMatch() {
