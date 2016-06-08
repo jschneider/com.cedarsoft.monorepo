@@ -117,9 +117,6 @@ public class OutputRedirector implements Runnable {
     this.waitingPeriod = waitingPeriod;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void run() {
     try {

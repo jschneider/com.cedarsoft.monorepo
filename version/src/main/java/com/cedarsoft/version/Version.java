@@ -43,11 +43,6 @@ import java.io.Serializable;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class Version implements Comparable<Version>, Serializable {
-  /**
-   * Constant <code>MAX=99</code>
-   */
-  protected static final int MAX = 99;
-
   protected final int major;
   protected final int minor;
   protected final int build;
@@ -80,13 +75,13 @@ public class Version implements Comparable<Version>, Serializable {
     this.minor = minor;
     this.suffix = suffix;
 
-    if ( major > MAX || major < 0 ) {
+    if ( major < 0 ) {
       throw new IllegalArgumentException( "Invalid major <" + major + ">" );
     }
-    if ( minor > MAX || minor < 0 ) {
+    if ( minor < 0 ) {
       throw new IllegalArgumentException( "Invalid minor <" + minor + ">" );
     }
-    if ( build > MAX || build < 0 ) {
+    if ( build < 0 ) {
       throw new IllegalArgumentException( "Invalid build <" + build + ">" );
     }
   }
