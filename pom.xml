@@ -537,7 +537,10 @@
             <encoding>${project.build.sourceEncoding}</encoding>
             <showWarnings>true</showWarnings>
             <showDeprecation>true</showDeprecation>
-            <compilerArgument>-Xlint:all</compilerArgument>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+              <arg>-Xlint:-serial</arg>
+            </compilerArgs>
           </configuration>
         </plugin>
         <plugin>
