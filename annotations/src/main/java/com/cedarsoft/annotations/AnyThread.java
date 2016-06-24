@@ -22,5 +22,5 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 @ThreadDescribingAnnotation(AnyThread.THREAD_DESCRIPTOR)
 public @interface AnyThread {
   @Nonnull
-  String THREAD_DESCRIPTOR = "ui-thread";
+  String THREAD_DESCRIPTOR = "any-thread";
 }
