@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>64</version>
+    <version>72</version>
   </parent>
 
   <groupId>com.cedarsoft.annotations</groupId>
