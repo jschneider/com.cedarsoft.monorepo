@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <groupId>com.cedarsoft</groupId>
   <artifactId>open</artifactId>
-  <version>73-SNAPSHOT</version>
+  <version>0</version>
   <name>cedarsoft Open</name>
   <description>cedarsoft Open Projects</description>
   <url>http://www.cedarsoft.org</url>
@@ -492,6 +492,17 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <!--sets the project version depending on the git tag-->
+          <groupId>fr.brouillard.oss</groupId>
+          <artifactId>jgitver-maven-plugin</artifactId>
+          <version>0.1.1</version>
+          <extensions>true</extensions>
+          <configuration>
+            <nonQualifierBranches>master,develop</nonQualifierBranches>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <!--
           After: jgitflow:release-finish
           call: mvn nexus-staging:release
@@ -764,6 +775,11 @@
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <groupId>fr.brouillard.oss</groupId>
+        <artifactId>jgitver-maven-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
