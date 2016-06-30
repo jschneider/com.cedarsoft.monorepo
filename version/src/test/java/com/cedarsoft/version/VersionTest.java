@@ -31,7 +31,7 @@
 
 package com.cedarsoft.version;
 
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 import org.junit.*;
