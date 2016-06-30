@@ -13,7 +13,7 @@
   <version>0</version>
   <name>Repository</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

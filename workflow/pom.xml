@@ -13,7 +13,7 @@
   <version>0</version>
   <name>Workflow</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

@@ -12,7 +12,7 @@
   <artifactId>common</artifactId>
   <name>Common Swing stuff</name>
 
-  <packaging>bundle</packaging>
+
   
   <dependencies>
     <dependency>

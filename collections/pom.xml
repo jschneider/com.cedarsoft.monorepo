@@ -12,8 +12,6 @@
   <version>0</version>
   <name>Collections</name>
 
-  <packaging>bundle</packaging>
-
   <dependencies>
   </dependencies>
 </project>

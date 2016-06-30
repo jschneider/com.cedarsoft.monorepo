@@ -13,7 +13,7 @@
   <version>0</version>
   <name>Renderer</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

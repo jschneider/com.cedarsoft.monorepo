@@ -11,7 +11,7 @@
   <artifactId>swing-presenter</artifactId>
   <name>Swing Presenter</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

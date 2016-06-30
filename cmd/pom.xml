@@ -13,8 +13,6 @@
   <version>0</version>
   <name>Command line</name>
 
-  <packaging>bundle</packaging>
-
   <description>Utils for access to the command line.</description>
 
   <dependencies>

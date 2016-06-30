@@ -12,8 +12,6 @@
   <version>0</version>
   <name>Application</name>
 
-  <packaging>bundle</packaging>
-
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>

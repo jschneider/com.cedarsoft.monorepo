@@ -13,8 +13,6 @@
   <version>0</version>
   <name>Cluster</name>
 
-  <packaging>bundle</packaging>
-
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>

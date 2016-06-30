@@ -13,7 +13,7 @@
   <version>0</version>
   <name>Test Utils</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

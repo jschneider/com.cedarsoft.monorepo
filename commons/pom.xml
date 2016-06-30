@@ -12,7 +12,7 @@
   <version>0</version>
   <name>Commons</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

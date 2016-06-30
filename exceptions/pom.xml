@@ -12,7 +12,7 @@
   <version>0</version>
   <name>Exceptions</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

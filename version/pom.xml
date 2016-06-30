@@ -13,7 +13,7 @@
   <version>0</version>
   <name>Version</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>

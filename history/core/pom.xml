@@ -11,7 +11,7 @@
   <artifactId>core</artifactId>
   <name>History Core</name>
 
-  <packaging>bundle</packaging>
+
 
   <dependencies>
     <dependency>
