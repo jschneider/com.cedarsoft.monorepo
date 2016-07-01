@@ -3,13 +3,13 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>69</version>
+    <version>75.0.0</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <artifactId>commons</artifactId>
   <packaging>pom</packaging>
-  <version>7.2.1-SNAPSHOT</version>
+  <version>0</version>
   <name>cedarsoft Commons</name>
 
   <scm>
