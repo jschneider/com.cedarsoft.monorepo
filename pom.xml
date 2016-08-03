@@ -495,7 +495,7 @@
           <!--sets the project version depending on the git tag-->
           <groupId>fr.brouillard.oss</groupId>
           <artifactId>jgitver-maven-plugin</artifactId>
-          <version>0.2.0-alpha2</version>
+          <version>0.3.0-alpha3</version>
           <extensions>true</extensions>
           <configuration>
             <nonQualifierBranches>master,develop</nonQualifierBranches>
