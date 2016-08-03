@@ -492,17 +492,6 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <!--sets the project version depending on the git tag-->
-          <groupId>fr.brouillard.oss</groupId>
-          <artifactId>jgitver-maven-plugin</artifactId>
-          <version>0.3.0-alpha3</version>
-          <extensions>true</extensions>
-          <configuration>
-            <nonQualifierBranches>master,develop</nonQualifierBranches>
-          </configuration>
-        </plugin>
-
-        <plugin>
           <!--
           After: jgitflow:release-finish
           call: mvn nexus-staging:release
@@ -775,11 +764,6 @@
     </pluginManagement>
 
     <plugins>
-      <plugin>
-        <groupId>fr.brouillard.oss</groupId>
-        <artifactId>jgitver-maven-plugin</artifactId>
-      </plugin>
-
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
