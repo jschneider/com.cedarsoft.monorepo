@@ -1,0 +1,9 @@
+<configuration>
+  <mavenLike>true</mavenLike>
+  <!--<autoIncrementPatch>true/false</autoIncrementPatch>-->
+  <!--<useCommitDistance>true/false</useCommitDistance>-->
+  <!--<useDirty>true/false</useDirty>-->
+  <!--<useGitCommitId>true/false</useGitCommitId>-->
+  <gitCommitIdLength>8</gitCommitIdLength>
+  <nonQualifierBranches>master,develop</nonQualifierBranches> <!-- comma separated, example "master,integration" -->
+</configuration>
