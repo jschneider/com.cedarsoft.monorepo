@@ -1,4 +1,10 @@
 <configuration>
   <mavenLike>true</mavenLike>
   <nonQualifierBranches>master,develop</nonQualifierBranches> <!-- comma separated, example "master,integration" -->
+  
+  <exclusions>
+    <exclusion>.repository</exclusion>
+    <exclusion>target</exclusion>
+   </exclusions>
+              
 </configuration>
