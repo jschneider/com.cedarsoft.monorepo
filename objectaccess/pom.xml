@@ -17,7 +17,6 @@
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>commons</artifactId>
-      <version>0</version>
     </dependency>
     
     <dependency>
