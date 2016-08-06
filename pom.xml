@@ -4,12 +4,12 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>70</version>
+    <version>75.2.0</version>
   </parent>
 
   <groupId>com.cedarsoft.unit</groupId>
   <artifactId>parent</artifactId>
-  <version>1.4-SNAPSHOT</version>
+  <version>0</version>
   <name>Unit - Parent</name>
   <description>Unit - Parent module</description>
   <packaging>pom</packaging>
