@@ -50,7 +50,7 @@ public class LinkUtilsTest {
   }
 
   @Test
-  public void testCreation() throws IOException {
+  public void testCreation() throws Exception {
     if (Os.isFamily(Os.OS_FAMILY_WINDOWS)) {
       return;
     }

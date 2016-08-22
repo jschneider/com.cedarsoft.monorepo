@@ -36,7 +36,6 @@ import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -81,7 +80,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createLink( @Nonnull File linkTarget, @Nonnull File linkFile, @Nonnull LinkType linkType ) throws IOException {
+  public static boolean createLink( @Nonnull File linkTarget, @Nonnull File linkFile, @Nonnull LinkType linkType ) throws IOException, AlreadyExistsWithOtherTargetException {
     return createLink( linkTarget, linkFile, linkType == LinkType.SYMBOLIC );
   }
 
@@ -94,7 +93,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createSymbolicLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException {
+  public static boolean createSymbolicLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException, AlreadyExistsWithOtherTargetException {
     return createLink( linkTarget, linkFile, true );
   }
 
@@ -107,7 +106,7 @@ public class LinkUtils {
    *
    * @throws IOException if any.
    */
-  public static boolean createHardLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException {
+  public static boolean createHardLink( @Nonnull File linkTarget, @Nonnull File linkFile ) throws IOException, AlreadyExistsWithOtherTargetException {
     return createLink( linkTarget, linkFile, false );
   }
 
@@ -122,7 +121,7 @@ public class LinkUtils {
    *
    * @throws IOException if something went wrong
    */
-  public static boolean createLink( @Nonnull File linkTarget, @Nonnull File linkFile, boolean symbolic ) throws IOException {
+  public static boolean createLink(@Nonnull File linkTarget, @Nonnull File linkFile, boolean symbolic) throws IOException, AlreadyExistsWithOtherTargetException {
     if ( linkFile.exists() ) {
       //Maybe the hard link still exists - we just don't know, so throw an exception
       if ( !symbolic ) {
@@ -134,7 +133,7 @@ public class LinkUtils {
         return false;
       } else {
         //Other target
-        throw new IOException( "A link still exists at <" + linkFile.getAbsolutePath() + "> but with different target: <" + linkTarget.getCanonicalPath() + "> exected <" + linkFile.getCanonicalPath() + ">" );
+        throw new AlreadyExistsWithOtherTargetException(linkTarget, linkFile);
       }
     }
 
@@ -234,5 +233,11 @@ public class LinkUtils {
    */
   public boolean isSymbolicLink( @Nonnull File file ) throws IOException {
     return !file.getAbsoluteFile().equals( file.getCanonicalFile() );
+  }
+
+  public static class AlreadyExistsWithOtherTargetException extends Exception {
+    public AlreadyExistsWithOtherTargetException(@Nonnull File linkTarget, @Nonnull File linkFile) throws IOException {
+      throw new IOException("A link still exists at <" + linkFile.getAbsolutePath() + "> but with different target: <" + linkTarget.getCanonicalPath() + "> exected <" + linkFile.getCanonicalPath() + ">");
+    }
   }
 }
