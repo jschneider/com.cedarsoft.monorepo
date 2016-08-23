@@ -237,7 +237,7 @@ public class LinkUtils {
 
   public static class AlreadyExistsWithOtherTargetException extends Exception {
     public AlreadyExistsWithOtherTargetException(@Nonnull File linkTarget, @Nonnull File linkFile) throws IOException {
-      throw new IOException("A link still exists at <" + linkFile.getAbsolutePath() + "> but with different target: <" + linkTarget.getCanonicalPath() + "> exected <" + linkFile.getCanonicalPath() + ">");
+      super("A link still exists at <" + linkFile.getAbsolutePath() + "> but with different target: <" + linkTarget.getCanonicalPath() + "> exected <" + linkFile.getCanonicalPath() + ">");
     }
   }
 }
