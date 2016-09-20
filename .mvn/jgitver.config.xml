@@ -1,9 +1,31 @@
 <configuration>
   <mavenLike>true</mavenLike>
-  <nonQualifierBranches>master,develop</nonQualifierBranches> <!-- comma separated, example "master,integration" -->
 
   <exclusions>
     <exclusion>.repository</exclusion>
     <exclusion>target</exclusion>
   </exclusions>
+
+  <branchPolicies>
+    <branchPolicy>
+      <pattern>develop</pattern>
+      <transformations>
+          <transformation>IGNORE</transformation>
+      </transformations>
+    </branchPolicy>
+
+    <branchPolicy>
+      <pattern>master</pattern>
+      <transformations>
+          <transformation>IGNORE</transformation>
+      </transformations>
+    </branchPolicy>
+
+    <branchPolicy>
+      <pattern>(release.*)</pattern>
+      <transformations>
+          <transformation>IGNORE</transformation>
+      </transformations>
+    </branchPolicy>
+  </branchPolicies>
 </configuration>
