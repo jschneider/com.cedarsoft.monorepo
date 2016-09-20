@@ -22,7 +22,13 @@
     </branchPolicy>
 
     <branchPolicy>
-      <pattern>(release.*)</pattern>
+      <pattern>(release/.*)</pattern>
+      <transformations>
+          <transformation>IGNORE</transformation>
+      </transformations>
+    </branchPolicy>
+    <branchPolicy>
+      <pattern>(hotfix/.*)</pattern>
       <transformations>
           <transformation>IGNORE</transformation>
       </transformations>
