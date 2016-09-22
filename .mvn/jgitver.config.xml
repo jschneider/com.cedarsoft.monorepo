@@ -8,14 +8,14 @@
 
   <branchPolicies>
     <branchPolicy>
-      <pattern>develop</pattern>
+      <pattern>(develop)</pattern>
       <transformations>
           <transformation>IGNORE</transformation>
       </transformations>
     </branchPolicy>
 
     <branchPolicy>
-      <pattern>master</pattern>
+      <pattern>(master)</pattern>
       <transformations>
           <transformation>IGNORE</transformation>
       </transformations>
