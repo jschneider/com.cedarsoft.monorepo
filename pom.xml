@@ -816,8 +816,8 @@
           </execution>
         </executions>
         <configuration>
-          <useDefaultManifestFile>true</useDefaultManifestFile>
           <archive>
+            <!--<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>-->
             <manifest>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
