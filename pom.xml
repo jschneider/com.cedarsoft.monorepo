@@ -130,8 +130,8 @@
 
     <guice.version>4.1.0</guice.version>
     <jaxb.version>2.2.11</jaxb.version>
-    <jetty.version>9.4.0.RC0</jetty.version>
-    <jackson.version>2.8.3</jackson.version>
+    <jetty.version>9.4.0.v20161208</jetty.version>
+    <jackson.version>2.8.5</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
   </properties>
 
@@ -158,20 +158,20 @@
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <version>1.16.10</version>
+        <version>1.16.12</version>
         <scope>provided</scope>
       </dependency>
 
       <dependency>
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
-        <version>2.9.4</version>
+        <version>2.9.7</version>
       </dependency>
 
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>19.0</version>
+        <version>20.0</version>
       </dependency>
 
       <dependency>
@@ -208,12 +208,12 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.21</version>
+        <version>1.7.22</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.21</version>
+        <version>1.7.22</version>
       </dependency>
 
       <dependency>
@@ -360,12 +360,12 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>3.5.2</version>
+        <version>3.6.1</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-guava</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
@@ -375,7 +375,7 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-swing</artifactId>
-        <version>3.4.0</version>
+        <version>3.5.0</version>
       </dependency>
 
       <dependency>
@@ -404,7 +404,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>2.2.1</version>
+        <version>2.5.4</version>
         <scope>test</scope>
       </dependency>
 
@@ -536,7 +536,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.5.1</version>
+          <version>3.6.0</version>
           <configuration>
             <source>${java.version}</source>
             <target>${java.version}</target>
@@ -552,7 +552,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.0.2</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
@@ -585,12 +585,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.6</version>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.10</version>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -605,7 +605,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
-          <version>2.12</version>
+          <version>2.12.1</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -673,7 +673,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.5.1</version>
+          <version>3.6</version>
           <dependencies>
             <dependency>
               <groupId>com.cedarsoft.maven</groupId>
@@ -747,13 +747,13 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>1.9</version>
+          <version>1.10</version>
         </plugin>
 
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.1.10</version>
+          <version>1.1.11</version>
           <configuration>
             <targetClasses>
               <param>com.cedarsoft.*</param>
@@ -965,146 +965,6 @@
       </build>
     </profile>
   </profiles>
-
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
-        <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
-          <links>
-            <link>http://java.sun.com/javase/6/docs/api/</link>
-          </links>
-          <tags>
-            <tag>
-              <name>noinspection</name>
-              <placement>X</placement>
-            </tag>
-          </tags>
-          <detectOfflineLinks>false</detectOfflineLinks>
-          <quiet>true</quiet>
-        </configuration>
-        <reportSets>
-          <reportSet>
-            <id>aggregate</id>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <aggregate>true</aggregate>
-          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-          <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-        </configuration>
-      </plugin>
-
-      <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-pmd-plugin</artifactId>-->
-        <!--<version>3.5</version>-->
-        <!--<configuration>-->
-          <!--<linkXRef>true</linkXRef>-->
-          <!--<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>-->
-          <!--<minimumTokens>100</minimumTokens>-->
-          <!--<targetJdk>1.6</targetJdk>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
-
-      <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-        <!--<version>2.5</version>-->
-        <!--<configuration>-->
-          <!--<configLocation>http://www.cedarsoft.org/checkstyle/cedarsoft.xml</configLocation>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <aggregate>true</aggregate>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <locales>en</locales>
-          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-          <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-        </configuration>
-      </plugin>
-
-      <!--<plugin>-->
-        <!--<groupId>org.codehaus.mojo</groupId>-->
-        <!--<artifactId>clirr-maven-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<minSeverity>info</minSeverity>-->
-          <!--<failOnError>false</failOnError>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changelog-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <type>range</type>
-          <range>90</range>
-          <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-        <version>2.12</version>
-        <configuration>
-          <onlyMilestoneIssues>false</onlyMilestoneIssues>
-          <onlyCurrentVersion>false</onlyCurrentVersion>
-        </configuration>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <!--<report>github-report</report>-->
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.19.1</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
-      </plugin>
-    </plugins>
-  </reporting>
 
 </project>
 
