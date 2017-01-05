@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>75.2.0</version>
+    <version>75.3.3</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -267,7 +267,7 @@
       <dependency>
         <groupId>com.cedarsoft</groupId>
         <artifactId>annotations</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.1</version>
       </dependency>
 
       <dependency>
