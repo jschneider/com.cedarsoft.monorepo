@@ -493,7 +493,7 @@
       <plugins>
         <plugin>
           <!--
-          After: jgitflow:release-finish
+          After: mvn clean install -DperformRelease
           call: mvn nexus-staging:release
           -->
           <groupId>org.sonatype.plugins</groupId>
@@ -506,19 +506,6 @@
             <nexusUrl>https://oss.sonatype.org</nexusUrl>
             <!-- The server "id" element from settings to use authentication from -->
             <serverId>sonatype-nexus-staging</serverId>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>external.atlassian.jgitflow</groupId>
-          <artifactId>jgitflow-maven-plugin</artifactId>
-          <version>1.0-m5.1</version>
-
-          <configuration>
-            <autoVersionSubmodules>true</autoVersionSubmodules>
-            <enableFeatureVersions>true</enableFeatureVersions>
-            <enableSshAgent>true</enableSshAgent>
-            <localOnly>true</localOnly>
           </configuration>
         </plugin>
 
