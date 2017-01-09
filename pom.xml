@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft</groupId>
     <artifactId>open</artifactId>
-    <version>75.2.0</version>
+    <version>75.3.3</version>
   </parent>
 
   <groupId>com.cedarsoft.unit</groupId>
