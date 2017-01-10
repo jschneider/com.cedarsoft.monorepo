@@ -98,15 +98,17 @@ public class ThreadRule implements TestRule {
         continue;
       }
 
-      //Give the thread a very(!) short time to die off
-      try {
-        Thread.sleep( 10 );
-      } catch ( InterruptedException ignore ) {
-      }
+      //Wait for a little bit, sometimes the threads die off
+      for (int i = 0; i < 10; i++) {
+        try {
+          Thread.sleep(10);
+        } catch (InterruptedException ignore) {
+        }
 
-      //Second try
-      if ( !remainingThread.isAlive() ) {
-        iterator.remove();
+        //Second try
+        if (!remainingThread.isAlive()) {
+          iterator.remove();
+        }
       }
     }
     return remainingThreads;
