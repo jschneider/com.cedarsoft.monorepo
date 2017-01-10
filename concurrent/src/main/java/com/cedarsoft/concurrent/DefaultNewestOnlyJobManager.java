@@ -4,6 +4,7 @@ import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 
 import javax.annotation.Nonnull;
+import javax.annotation.PostConstruct;
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.BlockingDeque;
@@ -22,6 +23,9 @@ import java.util.logging.Logger;
 public class DefaultNewestOnlyJobManager implements NewestOnlyJobsManager {
   private static final Logger LOG = Logger.getLogger(DefaultNewestOnlyJobManager.class.getName());
 
+  @Nonnull
+  private final ExecutorService executorService;
+  private final int workerCount;
   /**
    * The max amount of jobs that are held
    */
@@ -42,18 +46,25 @@ public class DefaultNewestOnlyJobManager implements NewestOnlyJobsManager {
   }
 
   public DefaultNewestOnlyJobManager(@Nonnull ExecutorService executorService, int workerCount, int maxJobsCount) {
+    this.executorService = executorService;
+    this.workerCount = workerCount;
     this.maxJobsCount = maxJobsCount;
+    this.jobs = new LinkedBlockingDeque<>(maxJobsCount);
 
     if (workerCount < 1) {
       throw new IllegalArgumentException("Need at least one worker but was <" + workerCount + ">");
     }
+  }
 
+  /**
+   * Starts the workers
+   */
+  @PostConstruct
+  public void startWorkers() {
     //Start the worker threads
     for (int i = 0; i < workerCount; i++) {
       executorService.execute(new Worker());
     }
-
-    jobs = new LinkedBlockingDeque<>(maxJobsCount);
   }
 
   /**
