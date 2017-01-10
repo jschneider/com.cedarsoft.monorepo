@@ -1,19 +1,17 @@
 package com.cedarsoft.test.utils;
 
 import com.google.common.base.Joiner;
+import org.junit.rules.*;
+import org.junit.runner.*;
+import org.junit.runners.model.*;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.junit.rules.*;
-import org.junit.runner.*;
-import org.junit.runners.model.*;
 
 
 public class ThreadRule implements TestRule {
@@ -151,7 +149,7 @@ public class ThreadRule implements TestRule {
       String threadGroupName = threadGroup.getName();
       String threadName = remainingThread.getName();
 
-      return threadGroupName.equals( "system" ) &&
+      if (threadGroupName.equals("system") &&
         threadName.equals( "Keep-Alive-Timer" )
         ||
         threadGroupName.equals( "system" ) &&
@@ -174,7 +172,20 @@ public class ThreadRule implements TestRule {
         ||
         threadGroupName.equals( "main" ) &&
           threadName.startsWith( "QuantumRenderer" )
-        ;
+        ) {
+        return true;
+      }
+
+      //Special check for awaitility - this lib leaves one thread open for about 100ms
+      for (StackTraceElement stackTraceElement : remainingThread.getStackTrace()) {
+        if (stackTraceElement.getClassName().equals("org.awaitility.core.ConditionAwaiter$1")) {
+          if (stackTraceElement.getMethodName().equals("run")) {
+            return true;
+          }
+        }
+      }
+
+      return false;
     }
   }
 }
