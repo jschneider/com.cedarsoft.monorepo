@@ -78,4 +78,27 @@ public class DefaultNewestOnlyJobManagerTest {
     jobManager.startWorkers();
     await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
   }
+
+  @Test
+  public void reproduceDeadLock() throws Exception {
+    AtomicBoolean executed = new AtomicBoolean();
+
+    DefaultNewestOnlyJobManager jobManager = new DefaultNewestOnlyJobManager(executorService, 1);
+    jobManager.startWorkers();
+
+    jobManager.scheduleJob(new NewestOnlyJobsManager.Job() {
+      @Nonnull
+      @Override
+      public Object getKey() {
+        return "asf";
+      }
+
+      @Override
+      public void execute() {
+        executed.set(true);
+      }
+    });
+
+    await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
+  }
 }
