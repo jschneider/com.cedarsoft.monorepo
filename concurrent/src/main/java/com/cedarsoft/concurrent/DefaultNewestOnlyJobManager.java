@@ -5,14 +5,11 @@ import com.cedarsoft.annotations.UiThread;
 
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
-import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,13 +28,9 @@ public class DefaultNewestOnlyJobManager implements NewestOnlyJobsManager {
    */
   private final int maxJobsCount;
 
-  @Nonnull
-  private final ReadWriteLock lock = new ReentrantReadWriteLock();
-
   /**
    * Contains the tile identifiers that shall be calculated
    */
-  @GuardedBy("lock")
   @Nonnull
   private final BlockingDeque<Job> jobs;
 
@@ -74,49 +67,33 @@ public class DefaultNewestOnlyJobManager implements NewestOnlyJobsManager {
   @UiThread
   @NonUiThread
   public void scheduleJob(@Nonnull Job job) {
-    lock.writeLock().lock();
-    try {
-      if (LOG.isLoggable(Level.FINE)) {
-        LOG.fine("schedule job for key <" + job.getKey() + ">. Old size <" + jobs.size() + ">");
-      }
-      //Remove old jobs with the same key
-      clearJobs(job.getKey());
-
-      //Schedule for calculation
-      while (!jobs.offerFirst(job)) {
-        //Cleanup if necessary
-        ensureMaxJobsSize();
-      }
-    } finally {
-      lock.writeLock().unlock();
+    if (LOG.isLoggable(Level.FINE)) {
+      LOG.fine("schedule job for key <" + job.getKey() + ">. Old size <" + jobs.size() + ">");
     }
+    //Remove old jobs with the same key
+    clearJobs(job.getKey());
 
+    //Schedule for calculation
+    while (!jobs.offerFirst(job)) {
+      //Cleanup if necessary
+      ensureMaxJobsSize();
+    }
   }
 
   @Override
   public void clearJobs(@Nonnull Object key) {
-    lock.writeLock().lock();
-    try {
-      jobs.removeIf(job -> job.getKey().equals(key));
-    } finally {
-      lock.writeLock().unlock();
-    }
+    jobs.removeIf(job -> job.getKey().equals(key));
   }
 
   /**
    * Deletes old jobs to ensure the max job count is respected
    */
   private void ensureMaxJobsSize() {
-    lock.writeLock().lock();
-    try {
-      if (LOG.isLoggable(Level.FINE)) {
-        LOG.fine("Cleaning up old jobs <" + jobs.size() + ">");
-      }
-      while (jobs.size() >= maxJobsCount) {
-        jobs.pollLast();
-      }
-    } finally {
-      lock.writeLock().unlock();
+    if (LOG.isLoggable(Level.FINE)) {
+      LOG.fine("Cleaning up old jobs <" + jobs.size() + ">");
+    }
+    while (jobs.size() >= maxJobsCount) {
+      jobs.pollLast();
     }
   }
 
@@ -125,15 +102,10 @@ public class DefaultNewestOnlyJobManager implements NewestOnlyJobsManager {
    */
   @Nonnull
   private Job getNextJob() throws InterruptedException {
-    lock.writeLock().lock();
-    try {
-      Job job = jobs.takeFirst();
-      //Clean up all other jobs with the given key to avoid duplicate actions
-      clearJobs(job.getKey());
-      return job;
-    } finally {
-      lock.writeLock().unlock();
-    }
+    Job job = jobs.takeFirst();
+    //Clean up all other jobs with the given key to avoid duplicate actions
+    clearJobs(job.getKey());
+    return job;
   }
 
   /**
