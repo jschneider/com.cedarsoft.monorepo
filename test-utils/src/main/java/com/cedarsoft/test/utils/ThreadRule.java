@@ -170,6 +170,9 @@ public class ThreadRule implements TestRule {
           threadName.equals( "AWT-Shutdown" )
         ||
         threadGroupName.equals( "main" ) &&
+          threadName.equals( "AWT-EventQueue-0" )
+        ||
+        threadGroupName.equals( "main" ) &&
           threadName.equals( "AWT-Windows" )
         ||
         threadGroupName.equals( "main" ) &&
