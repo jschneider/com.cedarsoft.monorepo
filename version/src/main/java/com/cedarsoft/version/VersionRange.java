@@ -33,7 +33,7 @@ package com.cedarsoft.version;
 
 
 import javax.annotation.Nonnull;
-
+import javax.annotation.Nullable;
 import java.io.Serializable;
 
 /**
@@ -302,6 +302,33 @@ public class VersionRange implements Serializable {
   @Nonnull
   public static VersionRange single( @Nonnull Version version ) {
     return new VersionRange( version, version );
+  }
+
+  /**
+   * Creates a new version range from the given versions that spans all given versions.
+   * Looks for the smallest and largest version and uses these to create a new version range.
+   */
+  @Nonnull
+  public static VersionRange fromVersions(@Nonnull Iterable<? extends Version> versions) {
+    @Nullable Version smalles = null;
+    @Nullable Version largest = null;
+
+    for (Version version : versions) {
+      if (smalles == null || smalles.greaterThan(version)) {
+        smalles = version;
+      }
+
+      if (largest == null || largest.smallerThan(version)) {
+        largest = version;
+      }
+    }
+
+    //noinspection ConstantConditions
+    if (smalles == null || largest == null) {
+      throw new IllegalArgumentException("Need at least one version");
+    }
+
+    return new VersionRange(smalles, largest);
   }
 
   public static class Factory {

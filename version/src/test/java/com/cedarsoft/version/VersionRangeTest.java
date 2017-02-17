@@ -31,8 +31,10 @@
 
 package com.cedarsoft.version;
 
+import com.google.common.collect.ImmutableList;
 import org.junit.*;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
@@ -40,6 +42,21 @@ import static org.junit.Assert.*;
  *
  */
 public class VersionRangeTest {
+  @Test
+  public void fromList() throws Exception {
+    assertThat(VersionRange.fromVersions(ImmutableList.of(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0)))).isEqualTo(VersionRange.from(1, 0, 0).to(2, 0, 0));
+
+    try {
+      VersionRange.fromVersions(ImmutableList.of());
+      fail("Where is the Exception");
+    } catch (IllegalArgumentException e) {
+    }
+
+    assertThat(VersionRange.fromVersions(ImmutableList.of(Version.valueOf(1, 0, 0)))).isEqualTo(VersionRange.from(1, 0, 0).to(1, 0, 0));
+    assertThat(VersionRange.fromVersions(ImmutableList.of(Version.valueOf(2, 0, 0), Version.valueOf(1, 0, 0)))).isEqualTo(VersionRange.from(1, 0, 0).to(2, 0, 0));
+    assertThat(VersionRange.fromVersions(ImmutableList.of(Version.valueOf(1, 5, 0), Version.valueOf(2, 0, 0), Version.valueOf(1, 0, 0)))).isEqualTo(VersionRange.from(1, 0, 0).to(2, 0, 0));
+  }
+
   @Test
   public void testConstructor() {
     VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
@@ -54,17 +71,17 @@ public class VersionRangeTest {
 
   @Test
   public void testFormat() {
-    assertThat( VersionRange.single( 1, 0, 0 ).format(), is( "[1.0.0]" ) );
-    assertThat( VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 ).format(), is( "[1.0.0]" ) );
-    assertThat( VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ).format(), is( "[1.0.0-2.0.0]" ) );
+    Assert.assertThat(VersionRange.single(1, 0, 0).format(), is("[1.0.0]"));
+    Assert.assertThat(VersionRange.from(1, 0, 0).to(1, 0, 0).format(), is("[1.0.0]"));
+    Assert.assertThat(VersionRange.from(1, 0, 0).to(2, 0, 0).format(), is("[1.0.0-2.0.0]"));
   }
 
   @Test
   public void testSingle() {
-    assertThat( VersionRange.single( 1, 0, 0 ).getMax(), is( Version.valueOf( 1, 0, 0 ) ) );
-    assertThat( VersionRange.single( 1, 1, 0 ).getMax(), is( Version.valueOf( 1, 1, 0 ) ) );
-    assertThat( VersionRange.single( Version.valueOf( 1, 0, 0 ) ).getMax(), is( Version.valueOf( 1, 0, 0 ) ) );
-    assertThat( VersionRange.single( Version.valueOf( 1, 1, 0 ) ).getMax(), is( Version.valueOf( 1, 1, 0 ) ) );
+    Assert.assertThat(VersionRange.single(1, 0, 0).getMax(), is(Version.valueOf(1, 0, 0)));
+    Assert.assertThat(VersionRange.single(1, 1, 0).getMax(), is(Version.valueOf(1, 1, 0)));
+    Assert.assertThat(VersionRange.single(Version.valueOf(1, 0, 0)).getMax(), is(Version.valueOf(1, 0, 0)));
+    Assert.assertThat(VersionRange.single(Version.valueOf(1, 1, 0)).getMax(), is(Version.valueOf(1, 1, 0)));
   }
 
   @Test
