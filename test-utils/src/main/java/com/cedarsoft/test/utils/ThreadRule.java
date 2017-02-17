@@ -50,6 +50,7 @@ public class ThreadRule implements TestRule {
 
   private void before() {
     if ( initialThreads != null ) {
+      System.out.println("--> " + "???");
       throw new IllegalStateException( "???" );
     }
 
@@ -59,6 +60,7 @@ public class ThreadRule implements TestRule {
   @Nonnull
   public Collection<? extends Thread> getInitialThreads() {
     if ( initialThreads == null ) {
+      System.out.println("not initialized yet");
       throw new IllegalStateException( "not initialized yet" );
     }
     return Collections.unmodifiableCollection( initialThreads );
@@ -74,6 +76,7 @@ public class ThreadRule implements TestRule {
   private void after() {
     Set<? extends Thread> remainingThreads = getRemainingThreads();
     if ( !remainingThreads.isEmpty() ) {
+      System.out.println("--> " + "Some threads have been left:\n" + buildMessage(remainingThreads));
       throw new IllegalStateException( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
     }
   }

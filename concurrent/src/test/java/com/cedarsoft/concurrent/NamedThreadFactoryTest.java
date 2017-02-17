@@ -12,12 +12,13 @@ public class NamedThreadFactoryTest {
   @Rule
   public ThreadRule threadRule = new ThreadRule();
 
-  @Test(timeout = 100)
+  @Test(timeout = 1000)
   public void simple() throws Exception {
     NamedThreadFactory factory = new NamedThreadFactory("daName");
 
     Thread thread = factory.newThread(() -> {
     });
+    thread.start();
 
     assertThat(thread.getName()).isEqualTo("daName-1");
     thread.join();
