@@ -62,7 +62,7 @@ public class ApplicationHomeAccessFactory {
       throw new IllegalStateException( dir.getAbsolutePath() + " still exists but is not a dir" );
     }
 
-    if ( !dir.mkdir() ) {
+    if ( !dir.mkdirs() ) {
       throw new IllegalStateException( "Could not create directory <" + dir.getAbsolutePath() + ">" );
     }
   }
