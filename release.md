@@ -32,8 +32,7 @@ mvn validate
 
 Publish the code to the repository first
 ````
-git push origin -u 
-git push origin --tags 
+git push origin -u --follow-tags
 ````
 
 Make the release
@@ -47,12 +46,15 @@ mvn nexus-staging:release
 ````
 
 
-Merge changes to master
+Merge changes to master and develop
 
 ````
 git checkout master
 git pull
 git merge release/75.3.0 --ff
+git push origin
+git checkout develop
+git merge master --ff
 git push origin
 ````
 
