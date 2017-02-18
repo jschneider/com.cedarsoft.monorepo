@@ -516,6 +516,21 @@
         </plugin>
 
         <plugin>
+          <groupId>ru.concerteza.buildnumber</groupId>
+          <artifactId>maven-jgit-buildnumber-plugin</artifactId>
+          <version>1.2.9</version>
+          <executions>
+            <execution>
+              <id>git-buildnumber</id>
+              <goals>
+                <goal>extract-buildnumber</goal>
+              </goals>
+              <phase>prepare-package</phase>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.0.0</version>
@@ -788,6 +803,11 @@
       </plugin>
 
       <plugin>
+        <groupId>ru.concerteza.buildnumber</groupId>
+        <artifactId>maven-jgit-buildnumber-plugin</artifactId>
+      </plugin>
+
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <executions>
@@ -804,6 +824,13 @@
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
             </manifest>
+
+            <manifestEntries>
+              <X-Git-Branch>${git.branch}</X-Git-Branch>
+              <X-Git-Tag>${git.tag}</X-Git-Tag>
+              <X-Git-Revision>${git.revision}</X-Git-Revision>
+              <X-Git-Build-Number>${git.buildnumber}</X-Git-Build-Number>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
