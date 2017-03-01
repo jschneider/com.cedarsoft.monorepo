@@ -19,8 +19,9 @@ before_install:
 install: /bin/true
 
 script: |
-  mvn test \
+  mvn clean install \
     --batch-mode \
+    -e
 #    --settings .travis-settings.xml
 
 jdk:
