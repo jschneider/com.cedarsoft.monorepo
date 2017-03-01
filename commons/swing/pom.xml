@@ -9,7 +9,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>swing</artifactId>
-  <version>0</version>
   <name>Swing</name>
   <packaging>pom</packaging>
 

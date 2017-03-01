@@ -10,7 +10,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>renderer</artifactId>
-  <version>0</version>
   <name>Renderer</name>
 
 
