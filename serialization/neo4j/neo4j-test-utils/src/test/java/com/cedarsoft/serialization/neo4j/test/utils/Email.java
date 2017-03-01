@@ -1,5 +1,6 @@
 package com.cedarsoft.serialization.neo4j.test.utils;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import javax.annotation.Nonnull;
@@ -52,7 +53,7 @@ public class Email {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper( this )
+    return MoreObjects.toStringHelper(this)
       .addValue( mail )
       .toString();
   }
