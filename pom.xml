@@ -11,6 +11,11 @@
   <url>http://www.cedarsoft.org</url>
   <inceptionYear>2007</inceptionYear>
 
+  <modules>
+    <module>commons</module>
+    <module>serialization</module>
+  </modules>
+
   <licenses>
     <license>
       <name>GPLv3 with Classpath Exception</name>
