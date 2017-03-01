@@ -96,9 +96,4 @@
     </dependency>
   </dependencies>
 
-  <properties>
-    <currentStableVersion>7.0.0</currentStableVersion>
-    <currentDevelopmentVersion>7.1.0-SNAPSHOT</currentDevelopmentVersion>
-  </properties>
-
 </project>

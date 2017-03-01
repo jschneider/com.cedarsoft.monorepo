@@ -121,6 +121,11 @@
   </pluginRepositories>
 
   <properties>
+    <!--The currently released version-->
+    <currentStableVersion>7.0.0</currentStableVersion>
+    <!--The current development version-->
+    <currentDevelopmentVersion>8.0.0-SNAPSHOT</currentDevelopmentVersion>
+
     <java.version>1.8</java.version>
 
     <maven-site-plugin.skip>false</maven-site-plugin.skip>
