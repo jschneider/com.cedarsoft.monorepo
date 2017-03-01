@@ -1,0 +1,91 @@
+~~
+~~ Copyright (C) cedarsoft GmbH.
+~~
+~~ Licensed under the GNU General Public License version 3 (the "License")
+~~ with Classpath Exception; you may not use this file except in compliance
+~~ with the License. You may obtain a copy of the License at
+~~
+~~         http://www.cedarsoft.org/gpl3ce
+~~         (GPL 3 with Classpath Exception)
+~~
+~~ This code is free software; you can redistribute it and/or modify it
+~~ under the terms of the GNU General Public License version 3 only, as
+~~ published by the Free Software Foundation. cedarsoft GmbH designates this
+~~ particular file as subject to the "Classpath" exception as provided
+~~ by cedarsoft GmbH in the LICENSE file that accompanied this code.
+~~
+~~ This code is distributed in the hope that it will be useful, but WITHOUT
+~~ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+~~ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+~~ version 3 for more details (a copy is included in the LICENSE file that
+~~ accompanied this code).
+~~
+~~ You should have received a copy of the GNU General Public License version
+~~ 3 along with this work; if not, write to the Free Software Foundation,
+~~ Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+~~
+~~ Please contact cedarsoft GmbH, 72810 Gomaringen, Germany,
+~~ or visit www.cedarsoft.com if you need additional information or
+~~ have any questions.
+~~
+
+Versioning
+
+  When objects are serialized to persistent locations, it is necessary to handle changes to the classes correctly.
+  This fact is often ignored, because it is not very easy to handle it correctly while the consequences hit you late.
+
+* How to store version information
+
+  Versioning of file formats is an easy task. Each file has exactly one format. That version should be stored in the beginning of
+  the file. So the parser gets a hint as early as possible.
+
+  There is no technical reason not to store the format version. Just do it.
+
+* Format versions in XML files
+
+  The format version is encoded within a custom namespace declaration. The first part (without the version) of the
+  namespace can fully be customized.
+
+  A serialized xml containing the format version might look like that:
+  
++----------------------------------------
+<?xml version="1.0"?>
+<car xmlns="http://www.cedarsoft.com/test/car/1.0.1">
+...
++----------------------------------------
+
+* Alternative storage of format version in XML files
+
+  cedarsoft Serialization can be extended easily. Therefore the format version can be stored in every thinkable way.
+  It might be added as attribute or tag to an xml document. 
+
+* The importance of versioning
+
+** Sometimes versioning is not (very) important
+
+  Serialization is used in the Web applications. Objects are stored within the session and that session may be serialized
+  and transferred to other hosts.
+  In that scenario versioning is not too important. If classes are refactored the sessions are simply deleted.
+
+  The same is true for applications build around messaging. When a new application version is released often both
+  sides are updated. So changes in the serialization don't matter.
+
+** Sometimes versioning is very! important
+
+  But when you can't delete all serialized data when classes are changed. When you want to be able to read old data with
+  newer versions of your application, versioning matters.
+
+** Versioning done wrong reveals (too) late
+
+  Many errors appear very early. And the earlier they appear the earlier they can be fixed. That's why we use compilers.
+  Versioning of file formats is one of that things that you don't miss until it is too late.
+
+  Problems will occur the first time when a refactored version of your application is used. But then it is too late
+  to solve the problem consequently. The old version of your application has been rolled out and used frequently.
+  The files containing the old serialized data still exist.
+
+** Versioning is a necessary aspect of serialization
+
+  Every serialization process has to thing about versioning in the first place!
+  cedarsoft Serialization helps to handle that issue well.
+

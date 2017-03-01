@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ball xmlns="http://test/ball/1.1.0" id="77">
+  <daElement>
+    <name1>a</name1>
+    <name2>a</name2>
+  </daElement>
+  <daElement>
+    <name1>b</name1>
+    <name2>b</name2>
+  </daElement>
+</ball>

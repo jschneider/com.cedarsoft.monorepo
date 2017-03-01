@@ -1,0 +1,22 @@
+{
+  "id" : "Max Mustermann",
+  "emails" : [
+    "test@test.de", "other@test.de"
+  ],
+  "roles" : [
+    {
+      "id" : 1,
+      "description" : "Nobody"
+    },
+    {
+      "id" : 0,
+      "description" : "Admin"
+    }
+  ],
+  "userDetails" : {
+    "registrationDate" : 2351351,
+    "id" : 36351531153,
+    "passwordHash" : "3638363137333638"
+  },
+  "singleEmail" : "single"
+}
