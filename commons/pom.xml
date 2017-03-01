@@ -11,13 +11,6 @@
   <packaging>pom</packaging>
   <name>cedarsoft Commons</name>
 
-  <scm>
-    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.commons.git</connection>
-    <developerConnection>scm:git:git@github.com:jschneider/com.cedarsoft.commons.git</developerConnection>
-    <url>https://github.com/jschneider/com.cedarsoft.commons</url>
-    <tag>HEAD</tag>
-  </scm>
-
   <issueManagement>
     <system>GitHub</system>
     <url>https://github.com/jschneider/com.cedarsoft.commons/issues</url>

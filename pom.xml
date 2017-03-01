@@ -31,7 +31,7 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/jschneider/com.cedarsoft.open/issues</url>
+    <url>https://github.com/jschneider/com.cedarsoft.monorepo/issues</url>
   </issueManagement>
 
   <mailingLists>
@@ -60,9 +60,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.open.git</connection>
-    <developerConnection>scm:git:git@github.com:jschneider/com.cedarsoft.open.git</developerConnection>
-    <url>https://github.com/jschneider/com.cedarsoft.open</url>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.monorepo.git</connection>
+    <developerConnection>scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git</developerConnection>
+    <url>https://github.com/jschneider/com.cedarsoft.monorepo</url>
     <tag>HEAD</tag>
   </scm>
 
