@@ -12,7 +12,6 @@
   <name>cedarsoft Commons</name>
 
   <properties>
-    <java.version>1.8</java.version>
   </properties>
 
   <modules>
