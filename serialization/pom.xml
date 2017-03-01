@@ -99,7 +99,6 @@
   <properties>
     <currentStableVersion>7.0.0</currentStableVersion>
     <currentDevelopmentVersion>7.1.0-SNAPSHOT</currentDevelopmentVersion>
-    <neo4j.version>3.1.0</neo4j.version>
   </properties>
 
 </project>

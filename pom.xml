@@ -133,6 +133,7 @@
     <maven.skin.version>2.0.0</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
 
+    <neo4j.version>3.1.0</neo4j.version>
     <guice.version>4.1.0</guice.version>
     <jaxb.version>2.3.0-b170127.1453</jaxb.version>
     <jetty.version>9.4.1.v20170120</jetty.version>
