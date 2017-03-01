@@ -3,28 +3,17 @@
 
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>open</artifactId>
-    <version>72</version>
+    <artifactId>monorepo</artifactId>
+    <version>0</version>
   </parent>
 
   <groupId>com.cedarsoft.annotations</groupId>
   <artifactId>parent</artifactId>
-  <version>3.2.0-SNAPSHOT</version>
 
   <name>Annotations Parent</name>
   <description>Parent for the annotations project</description>
 
   <packaging>pom</packaging>
-
-  <properties>
-    <java.version>1.6</java.version>
-  </properties>
-
-  <scm>
-    <connection>scm:git:git://git.cedarsoft.com/com.cedarsoft.annotations</connection>
-    <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.cedarsoft.annotations</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
 
   <modules>
     <module>annotations</module>
@@ -47,23 +36,6 @@
         <groupId>org.javassist</groupId>
         <artifactId>javassist</artifactId>
         <version>3.18.2-GA</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.cedarsoft</groupId>
-        <artifactId>annotations</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.annotations</groupId>
-        <artifactId>instrumentation</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>test-utils</artifactId>
-        <version>6.0.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

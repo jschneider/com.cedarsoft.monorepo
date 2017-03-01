@@ -1,9 +1,9 @@
 package com.cedarsoft.annotations.instrumentation.test;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
-import org.fest.assertions.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.*;
 
 import com.cedarsoft.test.utils.CatchAllExceptionsRule;
@@ -23,7 +23,7 @@ public class RunnerClassTest {
       runnerClass.nonNullMethod();
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
-      Assertions.assertThat( e ).isInstanceOf( java.lang.IllegalStateException.class );
+      Assertions.assertThat(e ).isInstanceOf(java.lang.IllegalStateException.class );
       Assertions.assertThat( e ).hasMessage( "Return value must not be null for method annotated with @Nonnull" );
     }
   }

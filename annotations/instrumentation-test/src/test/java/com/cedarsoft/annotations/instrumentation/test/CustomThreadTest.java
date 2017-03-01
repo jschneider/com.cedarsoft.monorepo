@@ -5,15 +5,16 @@ import com.cedarsoft.annotations.verification.ThreadVerificationStrategy;
 import com.cedarsoft.annotations.verification.VerifyThread;
 import com.cedarsoft.test.utils.CatchAllExceptionsRule;
 import com.google.common.collect.ImmutableList;
-import org.fest.assertions.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
+
+import org.assertj.core.api.Assertions;
 import org.junit.*;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import static org.fest.assertions.Fail.fail;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -47,7 +48,7 @@ public class CustomThreadTest {
       runnerClass.methodCustomThread();
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
-      Assertions.assertThat( e ).hasMessage( "Invalid thread access from <main>" );
+      Assertions.assertThat(e ).hasMessage("Invalid thread access from <main>" );
     }
   }
 

@@ -1,24 +1,21 @@
 package com.cedarsoft.annotations.instrumentation;
 
-import static org.fest.assertions.Assertions.assertThat;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtField;
+import javassist.CtMethod;
+import javassist.bytecode.DuplicateMemberException;
+import org.fest.reflect.core.Reflection;
+import org.junit.*;
 
+import javax.annotation.Nonnull;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtField;
-import javassist.CtMethod;
-import javassist.bytecode.DuplicateMemberException;
-
-import javax.annotation.Nonnull;
-
-import org.fest.reflect.core.Reflection;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
