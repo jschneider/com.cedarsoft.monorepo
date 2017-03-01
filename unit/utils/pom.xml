@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.cedarsoft.unit</groupId>
     <artifactId>parent</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>0</version>
   </parent>
 
   <artifactId>utils</artifactId>
@@ -15,7 +15,6 @@
     <dependency>
       <groupId>com.cedarsoft</groupId>
       <artifactId>unit</artifactId>
-      <version>${project.version}</version>
     </dependency>
 
   </dependencies>

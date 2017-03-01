@@ -3,13 +3,12 @@
 
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>open</artifactId>
-    <version>75.3.3</version>
+    <artifactId>monorepo</artifactId>
+    <version>0</version>
   </parent>
 
   <groupId>com.cedarsoft.unit</groupId>
   <artifactId>parent</artifactId>
-  <version>1.4.1-SNAPSHOT</version>
   <name>Unit - Parent</name>
   <description>Unit - Parent module</description>
   <packaging>pom</packaging>
@@ -46,19 +45,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <scm>
-    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.unit.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.unit.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
-  <mailingLists>
-    <mailingList>
-      <name>Mail Support</name>
-      <post>info@cedarsoft.com</post>
-    </mailingList>
-  </mailingLists>
 
   <licenses>
     <license>
