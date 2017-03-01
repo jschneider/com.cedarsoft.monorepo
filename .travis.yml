@@ -13,3 +13,6 @@ before_script:
 
 jdk:
 - oraclejdk8
+
+notifications:
+  email: false
