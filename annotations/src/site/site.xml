@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
+  <bannerLeft>
+    <name>${project.name}</name>
+    <src>annotations.png</src>
+    <href>index.html</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>cedarsoft</name>
+    <src>images/open.png</src>
+    <href>http://www.cedarsoft.com/</href>
+  </bannerRight>
+
+  <body>
+    <breadcrumbs>
+      <item name="cedarsoft" href="http://www.cedarsoft.com" />
+      <item name="Open" href="../" />
+      <item name="annotations" href="." />
+    </breadcrumbs>
+
+    <menu name="Overview">
+      <item name="Introduction" href="index.html" />
+      <item name="Usage" href="usage.html" />
+      <!--<item name="Downloads" href="downloads.html" />-->
+      <!--<item name="Integration" href="integration.html" />-->
+      <item name="FAQs" href="faq.html" />
+    </menu>
+
+    <!--<menu ref="reports" />-->
+    <!--<menu ref="modules"  />-->
+  </body>
+
+  <publishDate position="bottom" format="yyyy-MM-dd HH:mm" />
+  <skin>
+    <groupId>com.cedarsoft.maven</groupId>
+    <artifactId>cedarsoft-skin</artifactId>
+    <version>${maven.skin.version}</version>
+  </skin>
+  <poweredBy>
+    <logo name="cedarsoft" href="http://www.cedarsoft.com" img="http://www.cedarsoft.com/objects/poweredby.png" />
+  </poweredBy>
+</project>
