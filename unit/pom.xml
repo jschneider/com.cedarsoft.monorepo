@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>open</artifactId>
+    <version>75.3.3</version>
+  </parent>
+
+  <groupId>com.cedarsoft.unit</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.4.1-SNAPSHOT</version>
+  <name>Unit - Parent</name>
+  <description>Unit - Parent module</description>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>unit</module>
+    <module>utils</module>
+  </modules>
+
+  <distributionManagement>
+    <site>
+      <id>cedarsoftWeb</id>
+      <name>cedarsoft Web</name>
+      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org/unit/parent</url>
+    </site>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--Test Dependencies-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <scm>
+    <connection>scm:git:git://github.com/jschneider/com.cedarsoft.unit.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:jschneider/com.cedarsoft.unit.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <mailingLists>
+    <mailingList>
+      <name>Mail Support</name>
+      <post>info@cedarsoft.com</post>
+    </mailingList>
+  </mailingLists>
+
+  <licenses>
+    <license>
+      <name>Apache License Version 2.0</name>
+      <url>http://www.cedarsoft.org/apache2</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+</project>
