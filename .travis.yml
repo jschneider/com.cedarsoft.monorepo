@@ -1,11 +1,3 @@
-# use http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
-
-# cache local Maven repo: http://docs.travis-ci.com/user/caching/
-cache:
-  directories:
-  - $HOME/.m2/repository
-
 language: java
 
 before_install:
@@ -14,10 +6,5 @@ before_install:
   - export M2_HOME=$PWD/apache-maven-3.3.9
   - export PATH=$M2_HOME/bin:$PATH
 
-script: mvn clean install --batch-mode -e
-
 jdk:
-  - oraclejdk8
-
-matrix:
-  fast_finish: true
+- oraclejdk8
