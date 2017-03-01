@@ -1,0 +1,118 @@
+#*
+ * Copyright (C) cedarsoft GmbH.
+ *
+ * Licensed under the GNU General Public License version 3 (the "License")
+ * with Classpath Exception; you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ *         http://www.cedarsoft.org/gpl3ce
+ *         (GPL 3 with Classpath Exception)
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 3 only, as
+ * published by the Free Software Foundation. cedarsoft GmbH designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by cedarsoft GmbH in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 3 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 3 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact cedarsoft GmbH, 72810 Gomaringen, Germany,
+ * or visit www.cedarsoft.com if you need additional information or
+ * have any questions.
+ *#
+
+Best Practices
+
+  This page contains some best practices.
+
+%{toc|fromDepth=1}
+
+* Common
+
+  This are best practicies for *all* kind of serialization frameworks.
+
+** Every XML file should have a namespace!
+
+  Every XML file should have a namespace declaration. A XML file without a namespace is like
+  a class without a package...
+
+  It is not possible to be sure about the context without a namespace declaration.
+
+** Use the generator...
+
+  Why doing the work manually when the {{{./generator.html}generator}} can do the work. So let the generator create the test stups for you.
+
+* Serializing strategy
+
+  At first it seems to be the simplest solution to just create a single serializer class that does all the work.
+  We could create methods for each type that is referenced to avoid code duplication.
+
+  But this approach has several disadvantages and is <<not>> the recommended solution.
+
+** Best practice for improved testability and reusability
+
+  For improved testability and reusability it is suggested to create one serializer for each object. Those
+  serializers can be (re)used as delegates.
+
+  To allow delegation of serialization, the interface {{{./xref/com/cedarsoft/serialization/PluggableSerializer.html}<com.cedarsoft.serialization.PluggableSerializer>}}
+  has been introduced. All abstract base classes implement this interface - so no additional work has to be done.
+
+** Where to begin?
+
+  Because the serializers of the "bigger" objects delegate parts of the serialization to other serializers it is suggested to start
+  the implementation beginning with the serializers for the "smaller" (value) objects.
+
+  Therefore your project is always compilable and all tests run successfully during the complete development process.
+
+* Versions / Version ranges
+
+** What version (range) should I start with?
+
+  The version range for the <<released>> serializers should be <1.0.0-1.0.0>. So you could start implementing the serializers using that range.
+  But sometimes - especially for complex serializers, the format has to be changed during the development. Therefore it is useful to begin
+  development with a lower version range (e.g. <0.9.0-0.9.0>).
+  That allows you to convert your test data automatically - which may be a huge time saver sometimes.
+  Before releasing just remove the old (pre 1.0.0) code and change the version range to <1.0.0-1.0.0>.
+
+  So basically you have two choices. Start with <1.0.0-1.0.0> for simple serializers - saves you a little work before the release.
+  And start with <0.9.0-0.9.0> for complex serializers - this offers you the often needed flexibility during development.
+
+* Tests
+
+** Use the generator...
+
+  Why doing the work manually when the {{{./generator.html}generator}} can do the work. So let the generator create the test stups for you.
+
+** Which base class should the tests extend from?
+
+  At first you should support the implementation of your serializer with a roundtrip test (<AbstractSerializerTest2>).
+  Those tests are easier to write but do not provide enough flexibility to cover all corner edges.
+  For (very) simple serializers this test might be enough.
+
+  If you have finished implementing your serializer you really should create a version test for that serializer. At that moment the version range
+  of your serializer does just cover one version.
+  But it is very easy to forget creating that test before refactoring a serializer. Therefore it is strongly recommended to create
+  a version test in time.
+
+** What is the <Abstract(Xml)VersionTest2> for?
+
+  In an evolving world change happens. And sooner or later your business objects may change. And therefore the serializers have to be changed.
+  And some of those changes will require changes to the serialized format.
+
+  At that point your serializer will probably be able to deserialize different format versions. To ensure that the old format can still
+  be deserialized some tests are necessary.
+
+  A test extending <Abstract(Xml)VersionTest2> should be created for each serializer. For each new format version one or more entries should
+  be added to that test.
+
+** Verify the mappings
+  --> assert
+
