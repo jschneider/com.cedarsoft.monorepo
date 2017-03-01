@@ -34,12 +34,10 @@
     <dependency>
       <groupId>org.perf4j</groupId>
       <artifactId>perf4j</artifactId>
-      <version>0.9.16</version>
     </dependency>
     <dependency>
       <groupId>com.ecyrd.speed4j</groupId>
       <artifactId>speed4j</artifactId>
-      <version>0.18</version>
     </dependency>
 
     <dependency>
@@ -75,14 +73,12 @@
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-shell</artifactId>
-      <version>${neo4j.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-io</artifactId>
-      <version>${neo4j.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
