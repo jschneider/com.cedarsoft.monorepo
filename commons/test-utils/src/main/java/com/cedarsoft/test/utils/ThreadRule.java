@@ -115,7 +115,7 @@ public class ThreadRule implements TestRule {
         //Second try
         if (!remainingThread.isAlive()) {
           iterator.remove();
-          continue;
+          break;
         }
       }
     }
