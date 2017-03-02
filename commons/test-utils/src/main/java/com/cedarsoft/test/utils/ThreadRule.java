@@ -34,14 +34,18 @@ public class ThreadRule implements TestRule {
     return new Statement() {
       @Override
       public void evaluate() throws Throwable {
-        before();
         try {
-          base.evaluate();
-        } catch ( Throwable t ) {
-          afterFailing();
-          throw t;
+          before();
+          try {
+            base.evaluate();
+          } catch (Throwable t) {
+            afterFailing();
+            throw t;
+          }
+          after();
+        } catch (Throwable throwable) {
+          throw new AssertionError("Thread rule failed with <" + throwable.getMessage() + "> " + Joiner.on("\n").join(throwable.getStackTrace()), throwable);
         }
-        after();
       }
     };
   }
