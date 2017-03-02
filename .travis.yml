@@ -16,3 +16,6 @@ jdk:
 
 notifications:
   email: false
+
+script:
+  mvn test -B -T 4
