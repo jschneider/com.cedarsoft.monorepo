@@ -9,7 +9,6 @@
 
   <artifactId>utils</artifactId>
   <name>Unit Utils</name>
-  <packaging>bundle</packaging>
 
   <dependencies>
     <dependency>

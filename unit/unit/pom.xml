@@ -10,7 +10,6 @@
   <groupId>com.cedarsoft</groupId>
   <artifactId>unit</artifactId>
   <name>Unit</name>
-  <packaging>bundle</packaging>
 
   <dependencies>
   </dependencies>
