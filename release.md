@@ -7,7 +7,7 @@ git checkout -b release/75.3.0
 
 #### Check project state
 ````
-mvn clean install -DperformRelease
+mvn clean install
 mvn javadoc:javadoc -Dquiet
 ````
 
