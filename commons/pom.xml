@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>monorepo</artifactId>
+    <version>0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>commons</artifactId>
+  <packaging>pom</packaging>
+  <name>cedarsoft Commons</name>
+
+  <properties>
+  </properties>
+
+  <modules>
+    <module>app</module>
+    <module>cluster</module>
+    <module>cmd</module>
+    <module>collections</module>
+    <module>commons</module>
+    <module>concurrent</module>
+    <module>configuration</module>
+    <module>crypt</module>
+    <module>exceptions</module>
+    <module>execution</module>
+    <module>file</module>
+    <module>history</module>
+    <module>id</module>
+    <module>image</module>
+    <module>inject</module>
+    <module>io</module>
+    <module>license</module>
+    <module>lang</module>
+    <module>lookup</module>
+    <module>mail</module>
+    <module>objectaccess</module>
+    <module>presenter</module>
+    <module>provider</module>
+    <module>renderer</module>
+    <module>registry</module>
+    <module>repository</module>
+    <!--<module>spring</module>-->
+    <!--<module>string-conversion</module>-->
+    <module>struct</module>
+    <module>swing</module>
+    <module>test-utils</module>
+    <module>version</module>
+    <module>workflow</module>
+    <module>xml-commons</module>
+    <module>zip</module>
+    <!--<module>legacy</module>-->
+    <!--<module>ooorg</module>-->
+    <!--<module>excel</module>-->
+  </modules>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+    </dependency>
+
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymockclassextension</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.cedarsoft.maven</groupId>
+        <artifactId>instrumentation-plugin</artifactId>
+        <version>1.1</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

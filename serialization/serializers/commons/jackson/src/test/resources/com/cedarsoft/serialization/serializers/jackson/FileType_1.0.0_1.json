@@ -1,0 +1,15 @@
+{
+  "id" : "id",
+  "dependentType" : true,
+  "contentType" : "contentType",
+  "extensions" : [
+    {
+      "delimiter" : ".",
+      "extension" : "jpg"
+    },
+    {
+      "delimiter" : ".",
+      "extension" : "ccx"
+    }
+  ]
+}

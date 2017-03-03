@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.cedarsoft.unit</groupId>
+    <artifactId>parent</artifactId>
+    <version>0</version>
+  </parent>
+
+  <groupId>com.cedarsoft</groupId>
+  <artifactId>unit</artifactId>
+  <name>Unit</name>
+
+  <dependencies>
+  </dependencies>
+
+  <distributionManagement>
+    <site>
+      <id>cedarsoftWeb</id>
+      <name>cedarsoft Web</name>
+      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org/unit</url>
+    </site>
+  </distributionManagement>
+
+</project>
