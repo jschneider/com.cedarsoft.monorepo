@@ -3,6 +3,15 @@ com.cedarsoft.open
 
 Contains most OpenSource projects created by [cedarsoft GmbH][cedarsoft]
 
+
+### Projects contained in this repository
+#### 
+* [cedarsoft Annotatinos](annotations/README.md)
+* [cedarsoft Unit](unit/README.md)
+* [cedarsoft Serialization](serialization/README.md)
+* [cedarsoft commons](commons/README.md)
+
+
 Documentation and projects available at [cedarsoft.org]
 
 [cedarsoft]: http://www.cedarsoft.com
