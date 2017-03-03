@@ -1,7 +1,6 @@
-com.cedarsoft.open
+com.cedarsoft.monorepo
 ==================
-
-Contains most OpenSource projects created by [cedarsoft GmbH][cedarsoft]
+One big repository containing most OpenSource projects created by [cedarsoft GmbH][cedarsoft]
 
 
 ### Projects contained in this repository
