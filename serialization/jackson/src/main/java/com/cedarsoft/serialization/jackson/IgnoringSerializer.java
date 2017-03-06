@@ -40,6 +40,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.io.IOException;
 
@@ -60,7 +61,7 @@ public class IgnoringSerializer extends AbstractJacksonSerializer<Void> {
     throw new UnsupportedOperationException();
   }
 
-  @Nonnull
+  @Nullable
   @Override
   public Void deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     JsonToken inToken = deserializeFrom.nextToken();
