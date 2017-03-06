@@ -64,7 +64,7 @@ public class DefaultApplicationHomeAccess implements ApplicationHomeAccess {
    * @throws IOException if an io exception occures
    */
   @Inject
-  public DefaultApplicationHomeAccess( @ApplicationName @Nonnull String applicationName ) throws IOException {
+  public DefaultApplicationHomeAccess( @Application @ApplicationName @Nonnull String applicationName ) throws IOException {
     this( new File( new File( System.getProperty( "user.home" ) ), '.' + applicationName ), applicationName );
   }
 
