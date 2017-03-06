@@ -31,8 +31,7 @@
 
 package com.cedarsoft.app;
 
-import javax.annotation.Nullable;
-
+import javax.annotation.Nonnull;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
@@ -55,7 +54,7 @@ public class ScreenSizeUtils {
    *
    * @throws HeadlessException if any.
    */
-  @Nullable
+  @Nonnull
   public static Dimension getScreenSize() throws HeadlessException {
     GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice[] screenDevices = graphicsEnvironment.getScreenDevices();
