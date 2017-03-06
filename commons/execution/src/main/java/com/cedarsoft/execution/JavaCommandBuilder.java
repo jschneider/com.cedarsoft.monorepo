@@ -109,7 +109,6 @@ public class JavaCommandBuilder {
    * @return the classpath
    */
   @Nullable
-  @Nonnull
   public String getClassPath() {
     if ( classPathElements.isEmpty() ) {
       return null;
