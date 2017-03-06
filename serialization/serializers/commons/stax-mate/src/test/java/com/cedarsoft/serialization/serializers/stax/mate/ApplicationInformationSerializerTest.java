@@ -29,35 +29,33 @@
  * have any questions.
  */
 
-package com.cedarsoft.app;
+package com.cedarsoft.serialization.serializers.stax.mate;
 
+import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.version.Version;
-import org.junit.*;
+import com.cedarsoft.app.ApplicationInformation;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import org.junit.experimental.theories.*;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
 
 /**
  *
  */
-public class ApplicationTest {
-  @Test
-  public void testIt() {
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( "Gimp", app.getName() );
-    assertEquals( app.getVersion(), new Version( 3, 1, 6 ) );
+public class ApplicationInformationSerializerTest extends AbstractXmlSerializerTest2<ApplicationInformation> {
+  @Nonnull
+  @Override
+  protected StreamSerializer<ApplicationInformation> getSerializer() {
+    return new ApplicationSerializer( new VersionSerializer() );
   }
 
-  @Test
-  public void testEquals() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ), new Application( "Gimp", new Version( 3, 1, 6 ) ) );
-    assertEquals( "Gimp (3.1.6)", new Application( "Gimp", new Version( 3, 1, 6 ) ).toString() );
-  }
+  @DataPoint
+  public static final Entry<?> entry1 = create(
+    new ApplicationInformation("gimp", new Version(1, 2, 3 ) ),
+    "<application >\n" +
+      "  <name>gimp</name>\n" +
+      "  <version>1.2.3</version>\n" +
+      "</application>" );
 
-  @Test
-  public void testEquals2() {
-    assertEquals( new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode(), new Application( "Gimp", new Version( 3, 1, 6 ) ).hashCode() );
-    Application app = new Application( "Gimp", new Version( 3, 1, 6 ) );
-    assertEquals( app, app );
-    assertFalse( app.equals( null ) );
-  }
 }

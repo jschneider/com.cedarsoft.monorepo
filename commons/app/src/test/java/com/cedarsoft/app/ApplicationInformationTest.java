@@ -29,33 +29,35 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.serializers.stax.mate;
+package com.cedarsoft.app;
 
-import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.app.Application;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
+import org.junit.*;
 
-import javax.annotation.Nonnull;
+import static org.junit.Assert.*;
 
 /**
  *
  */
-public class ApplicationSerializerTest extends AbstractXmlSerializerTest2<Application> {
-  @Nonnull
-  @Override
-  protected StreamSerializer<Application> getSerializer() {
-    return new ApplicationSerializer( new VersionSerializer() );
+public class ApplicationInformationTest {
+  @Test
+  public void testIt() {
+    ApplicationInformation app = new ApplicationInformation("Gimp", new Version(3, 1, 6 ) );
+    assertEquals( "Gimp", app.getName() );
+    assertEquals( app.getVersion(), new Version( 3, 1, 6 ) );
   }
 
-  @DataPoint
-  public static final Entry<?> entry1 = create(
-    new Application( "gimp", new Version( 1, 2, 3 ) ),
-    "<application >\n" +
-      "  <name>gimp</name>\n" +
-      "  <version>1.2.3</version>\n" +
-      "</application>" );
+  @Test
+  public void testEquals() {
+    assertEquals(new ApplicationInformation("Gimp", new Version(3, 1, 6 ) ), new ApplicationInformation("Gimp", new Version(3, 1, 6 ) ) );
+    assertEquals( "Gimp (3.1.6)", new ApplicationInformation("Gimp", new Version(3, 1, 6 ) ).toString() );
+  }
 
+  @Test
+  public void testEquals2() {
+    assertEquals(new ApplicationInformation("Gimp", new Version(3, 1, 6 ) ).hashCode(), new ApplicationInformation("Gimp", new Version(3, 1, 6 ) ).hashCode() );
+    ApplicationInformation app = new ApplicationInformation("Gimp", new Version(3, 1, 6 ) );
+    assertEquals( app, app );
+    assertFalse( app.equals( null ) );
+  }
 }

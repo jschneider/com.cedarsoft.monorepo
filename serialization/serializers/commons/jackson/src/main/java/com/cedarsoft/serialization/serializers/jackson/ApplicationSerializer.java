@@ -35,7 +35,7 @@ import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.app.Application;
+import com.cedarsoft.app.ApplicationInformation;
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -47,7 +47,7 @@ import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class ApplicationSerializer extends AbstractJacksonSerializer<Application> {
+public class ApplicationSerializer extends AbstractJacksonSerializer<ApplicationInformation> {
 
   public static final String PROPERTY_NAME = "name";
 
@@ -65,7 +65,7 @@ public class ApplicationSerializer extends AbstractJacksonSerializer<Application
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Application object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull ApplicationInformation object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
     //name
     serializeTo.writeStringField( PROPERTY_NAME, object.getName() );
@@ -75,7 +75,7 @@ public class ApplicationSerializer extends AbstractJacksonSerializer<Application
 
   @Nonnull
   @Override
-  public Application deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws VersionException, IOException, JsonProcessingException {
+  public ApplicationInformation deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws VersionException, IOException, JsonProcessingException {
     //name
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( deserializeFrom );
     parserWrapper.nextToken();
@@ -92,7 +92,7 @@ public class ApplicationSerializer extends AbstractJacksonSerializer<Application
     //Finally closing element
     parserWrapper.nextToken( JsonToken.END_OBJECT );
     //Constructing the deserialized object
-    return new Application( name, version );
+    return new ApplicationInformation(name, version );
   }
 
 }

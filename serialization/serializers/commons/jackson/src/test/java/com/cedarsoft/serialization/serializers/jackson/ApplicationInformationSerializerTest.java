@@ -33,19 +33,19 @@ package com.cedarsoft.serialization.serializers.jackson;
 
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.app.Application;
+import com.cedarsoft.app.ApplicationInformation;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import org.junit.experimental.theories.*;
 
-public class ApplicationSerializerTest extends AbstractJsonSerializerTest2<Application> {
+public class ApplicationInformationSerializerTest extends AbstractJsonSerializerTest2<ApplicationInformation> {
 
   @DataPoint
-  public static final Entry<? extends Application> ENTRY1 = ApplicationSerializerTest.create(
-    new Application( "name", Version.valueOf( 1, 2, 3 ) ), ApplicationSerializerTest.class.getResource( "Application_1.0.0_1.json" ) );
+  public static final Entry<? extends ApplicationInformation> ENTRY1 = ApplicationInformationSerializerTest.create(
+    new ApplicationInformation("name", Version.valueOf(1, 2, 3 ) ), ApplicationInformationSerializerTest.class.getResource("Application_1.0.0_1.json" ) );
 
   @Override
-  protected StreamSerializer<Application> getSerializer() throws Exception {
+  protected StreamSerializer<ApplicationInformation> getSerializer() throws Exception {
     return new ApplicationSerializer( new VersionSerializer() );
   }
 

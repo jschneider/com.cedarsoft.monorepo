@@ -29,86 +29,31 @@
  * have any questions.
  */
 
-package com.cedarsoft.app;
+package com.cedarsoft.serialization.serializers.jackson;
 
 import com.cedarsoft.version.Version;
+import com.cedarsoft.app.ApplicationInformation;
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import org.junit.*;
+import org.junit.experimental.theories.*;
 
 import javax.annotation.Nonnull;
 
-/**
- * Informations about an
- *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
- */
-public class Application {
-  @Nonnull
-  private final String name;
-  @Nonnull
-  private final Version version;
+public class ApplicationInformationSerializerVersionTest extends AbstractJsonVersionTest2<ApplicationInformation> {
+  @DataPoint
+  public static final VersionEntry ENTRY1 = ApplicationInformationSerializerVersionTest.create(Version.valueOf(1, 0, 0 ), ApplicationInformationSerializerVersionTest.class.getResource("Application_1.0.0_1.json" ) );
 
-  /**
-   * <p>Constructor for Application.</p>
-   *
-   * @param name    a String object.
-   * @param version a Version object.
-   */
-  public Application( @Nonnull String name, @Nonnull Version version ) {
-    this.name = name;
-    this.version = version;
-  }
-
-  /**
-   * <p>Getter for the field <code>name</code>.</p>
-   *
-   * @return a String object.
-   */
-  @Nonnull
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * <p>Getter for the field <code>version</code>.</p>
-   *
-   * @return a Version object.
-   */
-  @Nonnull
-  public Version getVersion() {
-    return version;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( !( o instanceof Application ) ) return false;
-
-    Application that = ( Application ) o;
-
-    if ( !name.equals( that.name ) ) return false;
-    if ( !version.equals( that.version ) ) return false;
-
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int hashCode() {
-    int result = name.hashCode();
-    result = 31 * result + version.hashCode();
-    return result;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
   @Nonnull
   @Override
-  public String toString() {
-    return name + " (" + version + ')';
+  protected ApplicationSerializer getSerializer() throws Exception {
+    return new ApplicationSerializer( new VersionSerializer() );
   }
+
+  @Override
+  protected void verifyDeserialized(@Nonnull ApplicationInformation deserialized, @Nonnull Version version ) throws Exception {
+    Assert.assertEquals( "name", deserialized.getName() );
+    Assert.assertEquals( "1.2.3", deserialized.getVersion().toString() );
+  }
+
 }
