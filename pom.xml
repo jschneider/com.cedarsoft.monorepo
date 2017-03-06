@@ -689,6 +689,11 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>exception-handling</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>execution</artifactId>
         <version>${monorepo.dep.management.version}</version>
       </dependency>
