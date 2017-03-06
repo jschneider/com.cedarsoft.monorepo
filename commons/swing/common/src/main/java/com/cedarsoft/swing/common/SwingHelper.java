@@ -3,12 +3,21 @@ package com.cedarsoft.swing.common;
 import com.cedarsoft.annotations.AnyThread;
 import com.cedarsoft.annotations.NonBlocking;
 import com.cedarsoft.annotations.NonUiThread;
+import com.cedarsoft.annotations.UiThread;
+import com.cedarsoft.swing.common.components.CJideButton;
+import com.jidesoft.swing.ButtonStyle;
+import org.assertj.core.util.Lists;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.swing.Action;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
@@ -16,7 +25,11 @@ import java.awt.GraphicsEnvironment;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.image.VolatileImage;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * Swing related methods
@@ -142,4 +155,76 @@ public class SwingHelper {
     }.execute();
   }
 
+
+  /**
+   * Returns the focused frame.
+   * Falls back to the main frame if no frame has the focus.
+   */
+  @UiThread
+  @Nullable
+  public static JFrame getFrameSafe() {
+    try {
+      return getFocusedFrame();
+    } catch (IllegalStateException ignore) {
+      return null;
+    }
+  }
+
+  /**
+   * Returns the focused frame.
+   */
+  @UiThread
+  @Nonnull
+  public static JFrame getFocusedFrame() throws IllegalStateException {
+    return getFrame(frame -> frame.hasFocus() || frame.getFocusOwner() != null)
+      .orElseThrow(new Supplier<RuntimeException>() {
+                     @Override
+                     public RuntimeException get() {
+                       throw new IllegalStateException("No frame found");
+                     }
+                   }
+      );
+  }
+
+  /**
+   * Returns (any) frame for the given filter.
+   *
+   * @throws IllegalStateException if {@link Frame#getFrames()} returns an empty list, i.e. if the application has not created any frames.
+   */
+  @UiThread
+  @Nonnull
+  public static Optional<JFrame> getFrame(@Nonnull Predicate<JFrame> filter) throws IllegalStateException {
+    List<Frame> frames = Lists.newArrayList(Frame.getFrames());
+    if (frames.isEmpty()) {
+      throw new IllegalStateException("No frame found");
+    }
+
+    return frames
+      .stream()
+      .filter(frame -> frame instanceof JFrame)
+      .map(frame -> (JFrame) frame)
+      .filter(filter)
+      .findAny();
+  }
+
+  @UiThread
+  @Nullable
+  public static Component findRoot(@Nullable Component parent) {
+    if (parent == null) {
+      return null;
+    }
+    return SwingUtilities.getWindowAncestor(parent);
+  }
+
+  /**
+   * Creates a hyperlink
+   */
+  @Nonnull
+  public static CJideButton createHyperLink(@Nonnull Action clickAction) {
+    CJideButton link = new CJideButton(clickAction);
+    link.setButtonStyle(ButtonStyle.HYPERLINK_STYLE);
+    link.setForeground(new Color(26, 24, 195));
+    link.setBorder(null);
+    return link;
+  }
 }

@@ -24,6 +24,7 @@
     <module>configuration</module>
     <module>crypt</module>
     <module>exceptions</module>
+    <module>exception-handling</module>
     <module>execution</module>
     <module>file</module>
     <module>history</module>

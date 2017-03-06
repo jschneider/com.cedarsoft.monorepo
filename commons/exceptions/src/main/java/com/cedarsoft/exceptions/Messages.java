@@ -25,7 +25,7 @@ public class Messages {
   }
 
   @Nonnull
-  public String getString( @Nonnull String key, @Nonnull Locale locale, @Nullable Object... messageArguments ) {
+  public String get(@Nonnull String key, @Nonnull Locale locale, @Nullable Object... messageArguments) {
     ResourceBundle bundle = ResourceBundle.getBundle( getBundleName(), locale );
 
     if ( messageArguments == null || messageArguments.length == 0 ) {
@@ -51,6 +51,6 @@ public class Messages {
       key = baseKey + "." + category;
     }
 
-    return getString( key, locale, messageArguments );
+    return get(key, locale, messageArguments);
   }
 }
