@@ -1,35 +1,41 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
   <parent>
-    <groupId>com.cedarsoft.commons</groupId>
-    <artifactId>swing</artifactId>
+    <artifactId>commons</artifactId>
+    <groupId>com.cedarsoft</groupId>
     <version>0</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cedarsoft.commons.swing</groupId>
-  <artifactId>common</artifactId>
-  <name>Common Swing stuff</name>
-
+  <groupId>com.cedarsoft.commons</groupId>
+  <artifactId>exception-handling</artifactId>
+  <name>Exception Handling</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>exceptions</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons.swing</groupId>
+      <artifactId>common</artifactId>
     </dependency>
     <dependency>
       <groupId>com.miglayout</groupId>
       <artifactId>miglayout-swing</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>version</artifactId>
+    </dependency>
 
     <dependency>
-      <groupId>com.intellij</groupId>
-      <artifactId>annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.jidesoft</groupId>
-      <artifactId>jide-oss</artifactId>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
@@ -37,17 +43,20 @@
     </dependency>
 
     <dependency>
-      <groupId>com.cedarsoft</groupId>
+      <groupId>net.java.balloontip</groupId>
+      <artifactId>balloontip</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.intellij</groupId>
       <artifactId>annotations</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.cedarsoft</groupId>
-      <artifactId>unit</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
+
 </project>

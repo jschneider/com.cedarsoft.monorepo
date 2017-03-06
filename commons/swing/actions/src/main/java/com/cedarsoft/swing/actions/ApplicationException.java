@@ -37,6 +37,7 @@ package com.cedarsoft.swing.actions;
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@Deprecated
 public class ApplicationException extends Exception {
 
 

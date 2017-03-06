@@ -18,10 +18,10 @@ public class MessagesTest {
 
     assertThat( messages.getBundleName() ).isEqualTo( ApplicationExceptionTest.BUNDLE );
 
-    assertThat( messages.getString( "ERROR_1", Locale.GERMAN ) ).isEqualTo( "The Value 1 de: <{0}>" );
-    assertThat( messages.getString( "ERROR_1", Locale.ENGLISH ) ).isEqualTo( "The Value 1 en: <{0}>" );
+    assertThat( messages.get("ERROR_1", Locale.GERMAN ) ).isEqualTo("The Value 1 de: <{0}>" );
+    assertThat( messages.get("ERROR_1", Locale.ENGLISH ) ).isEqualTo("The Value 1 en: <{0}>" );
 
-    assertThat( messages.getString( "ERROR_1", Locale.FRENCH ) ).isEqualTo( "The Value 1 default: <{0}>" );
+    assertThat( messages.get("ERROR_1", Locale.FRENCH ) ).isEqualTo("The Value 1 default: <{0}>" );
   }
 
   @Rule
