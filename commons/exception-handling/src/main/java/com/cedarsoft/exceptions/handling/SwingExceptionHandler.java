@@ -37,7 +37,6 @@ public class SwingExceptionHandler extends ExceptionHandler {
   @Nonnull
   private final ExceptionReporter exceptionReporter;
 
-  @Inject
   public SwingExceptionHandler(@Nonnull NotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter) {
     this.notificationService = notificationService;
     this.applicationVersion = applicationVersion;
