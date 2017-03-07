@@ -5,8 +5,8 @@ import com.cedarsoft.annotations.NonBlocking;
 import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.swing.common.components.CJideButton;
+import com.google.common.collect.Lists;
 import com.jidesoft.swing.ButtonStyle;
-import org.assertj.core.util.Lists;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
