@@ -6,6 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -16,6 +17,8 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
 
   @Nonnull
   private final ColorProvider colorProvider;
+  @Nullable
+  private final FontProvider fontProvider;
 
   /**
    * Creates a new coloring table cell renderer
@@ -32,9 +35,14 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
    * @param delegate      the optional delegate
    * @param colorProvider the color provider
    */
-  public ColoringTableCellRenderer( @Nullable TableCellRenderer delegate, @Nonnull ColorProvider colorProvider ) {
+  public ColoringTableCellRenderer(@Nullable TableCellRenderer delegate, @Nonnull ColorProvider colorProvider) {
+    this(delegate, colorProvider, null);
+  }
+
+  public ColoringTableCellRenderer(@Nullable TableCellRenderer delegate, @Nonnull ColorProvider colorProvider, @Nullable FontProvider fontProvider) {
     this.delegate = delegate;
     this.colorProvider = colorProvider;
+    this.fontProvider = fontProvider;
   }
 
   @Override
@@ -65,6 +73,11 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
       }
     }
 
+    if (fontProvider != null) {
+      @Nullable Font font = fontProvider.getFont(table, value, isSelected, hasFocus, row, column);
+      component.setFont(font);
+    }
+
     return component;
   }
 
@@ -83,5 +96,10 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
 
     @Nullable
     Color getForeground(@Nonnull JTable table, @Nullable Object value, boolean isSelected, boolean hasFocus, int row, int column);
+  }
+
+  public interface FontProvider {
+    @Nullable
+    Font getFont(@Nonnull JTable table, @Nullable Object value, boolean isSelected, boolean hasFocus, int row, int column);
   }
 }
