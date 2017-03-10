@@ -2,7 +2,6 @@ package com.cedarsoft.swing.common.table;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Color;
@@ -44,7 +43,7 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
 
     Component component = rendererToUse.getTableCellRendererComponent( table, value, isSelected, hasFocus, row, column );
 
-    Color background = colorProvider.getBackground( isSelected );
+    Color background = colorProvider.getBackground(table, value, isSelected, hasFocus, row, column);
     if ( background != null ) {
       component.setBackground( background );
     } else {
@@ -55,7 +54,7 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
       }
     }
 
-    Color foreground = colorProvider.getForeground( isSelected );
+    Color foreground = colorProvider.getForeground(table, value, isSelected, hasFocus, row, column);
     if ( foreground != null ) {
       component.setForeground( foreground );
     } else {
@@ -80,9 +79,9 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
 
   public interface ColorProvider {
     @Nullable
-    Color getBackground( boolean selected );
+    Color getBackground(@Nonnull JTable table, @Nullable Object value, boolean isSelected, boolean hasFocus, int row, int column);
 
     @Nullable
-    Color getForeground( boolean selected );
+    Color getForeground(@Nonnull JTable table, @Nullable Object value, boolean isSelected, boolean hasFocus, int row, int column);
   }
 }
