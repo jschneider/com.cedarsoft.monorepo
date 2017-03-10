@@ -48,9 +48,9 @@ public class ColoringTableCellRenderer implements TableCellRenderer {
       component.setBackground( background );
     } else {
       if ( isSelected ) {
-        component.setForeground( table.getSelectionBackground() );
+        component.setBackground( table.getSelectionBackground() );
       } else {
-        component.setForeground( table.getBackground() );
+        component.setBackground( table.getBackground() );
       }
     }
 
