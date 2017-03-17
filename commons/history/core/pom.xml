@@ -21,7 +21,7 @@
 
     <dependency>
       <groupId>net.java.dev.glazedlists</groupId>
-      <artifactId>glazedlists_java15</artifactId>
+      <artifactId>glazedlists_java16</artifactId>
     </dependency>
 
     <dependency>
