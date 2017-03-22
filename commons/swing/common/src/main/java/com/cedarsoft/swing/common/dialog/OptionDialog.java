@@ -2,9 +2,9 @@ package com.cedarsoft.swing.common.dialog;
 
 import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.swing.common.Borders;
-import com.cedarsoft.swing.common.UiScaler;
 import com.cedarsoft.swing.common.Messages;
 import com.cedarsoft.swing.common.SwingHelper;
+import com.cedarsoft.swing.common.UiScaler;
 import com.cedarsoft.swing.common.components.CButton;
 import com.cedarsoft.unit.other.px;
 import com.jidesoft.dialog.BannerPanel;
@@ -17,11 +17,15 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.Component;
@@ -133,6 +137,35 @@ public class OptionDialog extends StandardDialog {
   @UiThread
   public static ResultType showMessageDialog(@Nullable Component parentComponent, @Nonnull Object message, @Nullable String title, @Nonnull ButtonFactory buttonFactory, @Nonnull MessageType messageType, @Nullable ImageIcon icon) {
     return showOptionDialog(parentComponent, message, title, buttonFactory, messageType, icon);
+  }
+
+  @Nullable
+  public static Integer showRadioDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull String... options) {
+    JPanel radioPanel = new JPanel(new MigLayout("wrap 1"));
+    radioPanel.add(new JLabel(message), "gapbottom unrelated");
+
+    ButtonGroup buttonGroup = new ButtonGroup();
+    for (int i = 0; i < options.length; i++) {
+      String option = options[i];
+      JRadioButton radioButton = new JRadioButton(option);
+      radioButton.setActionCommand(String.valueOf(i));
+
+      radioPanel.add(radioButton);
+      buttonGroup.add(radioButton);
+    }
+
+    ResultType resultType = showMessageDialog(parentComponent, radioPanel, title, messageType);
+
+    if (resultType != ResultType.RESULT_OK) {
+      return null;
+    }
+
+    @Nullable ButtonModel selection = buttonGroup.getSelection();
+    if (selection == null) {
+      return null;
+    }
+
+    return Integer.parseInt(selection.getActionCommand());
   }
 
   @Nonnull
