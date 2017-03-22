@@ -6,12 +6,16 @@ import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.swing.common.components.CJideButton;
 import com.google.common.collect.Lists;
+import com.jidesoft.popup.JidePopup;
 import com.jidesoft.swing.ButtonStyle;
+import com.jidesoft.utils.PortingUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.Action;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.awt.AlphaComposite;
@@ -22,8 +26,11 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
+import java.awt.event.KeyEvent;
 import java.awt.image.VolatileImage;
 import java.util.List;
 import java.util.Optional;
@@ -226,5 +233,68 @@ public class SwingHelper {
     link.setForeground(new Color(26, 24, 195));
     link.setBorder(null);
     return link;
+  }
+
+  /**
+   * Creates a popup with the given esc action
+   */
+  @Nonnull
+  @UiThread
+  public static JidePopup createPopup(@Nonnull Action escAction) {
+    return createPopup(escAction, null);
+  }
+
+  @Nonnull
+  @UiThread
+  public static JidePopup createPopup(@Nonnull Action escAction, @Nullable PopupHiddenCallback callback) {
+    JidePopup popup = new JidePopup() {
+      @Override
+      public void hidePopupImmediately(boolean cancelled) {
+        super.hidePopupImmediately(cancelled);
+
+        if (callback != null) {
+          callback.popupHidden(this, cancelled);
+        }
+      }
+    };
+
+    popup.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE");
+    popup.getRootPane().getActionMap().put("ESCAPE", escAction);
+    return popup;
+  }
+
+  @UiThread
+  public static void showPopupOver(@Nonnull JidePopup popup, @Nonnull JComponent owner) {
+    Point locationOnScreen = owner.getLocationOnScreen();
+    popup.setOwner(owner);
+    showPopupOnScreen(popup, locationOnScreen.x, locationOnScreen.y);
+  }
+
+  /**
+   * Shows the popup on the screen
+   *
+   * @param popup      the popup
+   * @param preferredX the preferred top x location
+   * @param preferredY the preferred top y location
+   */
+  @UiThread
+  public static void showPopupOnScreen(@Nonnull JidePopup popup, int preferredX, int preferredY) {
+    Rectangle popupRect = new Rectangle(new Point(preferredX, preferredY), popup.getPreferredSize());
+    Rectangle screenBounds = PortingUtils.getContainingScreenBounds(popupRect, true);
+
+    if (popupRect.getMaxX() > screenBounds.getMaxX()) {
+      popupRect.x = (int) (screenBounds.getMaxX() - popupRect.getWidth());
+    }
+
+    if (popupRect.getMaxY() > screenBounds.getMaxY()) {
+      popupRect.y = (int) (screenBounds.getMaxY() - popupRect.getHeight());
+    }
+
+    popup.showPopup(popupRect.x, popupRect.y, null);
+  }
+
+  @FunctionalInterface
+  public interface PopupHiddenCallback {
+    void popupHidden(@Nonnull JidePopup popup, boolean cancelled);
   }
 }
