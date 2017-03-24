@@ -28,6 +28,10 @@ public class Borders {
   public static final Border DEFAULT_10_PX = BorderFactory.createEmptyBorder(TEN, TEN, TEN, TEN);
   @Nonnull
   public static final Border DEFAULT_5_PX = BorderFactory.createEmptyBorder(FIVE, FIVE, FIVE, FIVE);
+  @Nonnull
+  public static final Border LEFT_5_PX = BorderFactory.createEmptyBorder(0, FIVE, 0, 0);
+  @Nonnull
+  public static final Border LEFT_10_PX = BorderFactory.createEmptyBorder(0, FIVE, 0, 0);
 
   @Nonnull
   public static final Border TOP_2_PX = BorderFactory.createEmptyBorder(TWO, 0, 0, 0);
