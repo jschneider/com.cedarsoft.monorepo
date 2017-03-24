@@ -25,7 +25,7 @@ git tag 75.3.0 -m "tagging for release"
 
 Expects a **none** snapshot version:
 ````
-mvn validate
+mvn validate -N
 ````
 
 #### Create the release
@@ -54,6 +54,7 @@ git pull
 git merge release/75.3.0 --ff
 git push origin
 git checkout develop
+git pull
 git merge master --ff
 git push origin
 ````
