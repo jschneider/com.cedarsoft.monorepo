@@ -1,11 +1,7 @@
 package com.cedarsoft.swing.common.dialog;
 
-import net.miginfocom.swing.MigLayout;
 import org.junit.*;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
@@ -35,7 +31,7 @@ public class OptionDialogDemo {
 
   @Test
   public void radio() throws Exception {
-    Integer result = OptionDialog.showRadioDialog(null, "What do you want?", "daTitle", OptionDialog.MessageType.ERROR_MESSAGE, "A", "B", "C");
+    Integer result = OptionDialog.showRadioDialog(null, "What do you want?", "daTitle", OptionDialog.MessageType.ERROR_MESSAGE, 1, "A", "B", "C");
     System.out.println("result = " + result);
   }
 }

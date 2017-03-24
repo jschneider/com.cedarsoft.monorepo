@@ -140,7 +140,7 @@ public class OptionDialog extends StandardDialog {
   }
 
   @Nullable
-  public static Integer showRadioDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull String... options) {
+  public static Integer showRadioDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, int preselectedIndex, @Nonnull String... options) {
     JPanel radioPanel = new JPanel(new MigLayout("wrap 1"));
     radioPanel.add(new JLabel(message), "gapbottom unrelated");
 
@@ -149,6 +149,10 @@ public class OptionDialog extends StandardDialog {
       String option = options[i];
       JRadioButton radioButton = new JRadioButton(option);
       radioButton.setActionCommand(String.valueOf(i));
+
+      if (i == preselectedIndex) {
+        radioButton.setSelected(true);
+      }
 
       radioPanel.add(radioButton);
       buttonGroup.add(radioButton);
