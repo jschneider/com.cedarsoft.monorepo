@@ -15,7 +15,7 @@ mvn javadoc:javadoc -Dquiet
 
 Expects a -SNAPSHOT version
 ````
-mvn validate
+mvn validate -N
 ````
 
 Create tag for release
