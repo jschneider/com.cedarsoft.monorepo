@@ -914,6 +914,12 @@
         </plugin>
 
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>1.4</version>
+        </plugin>
+
+        <plugin>
           <groupId>ru.concerteza.buildnumber</groupId>
           <artifactId>maven-jgit-buildnumber-plugin</artifactId>
           <version>1.2.9</version>
