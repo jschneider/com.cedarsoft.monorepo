@@ -45,8 +45,9 @@ public class Borders {
     , BorderFactory.createEmptyBorder(FIVE, FIVE, FIVE, FIVE)
   );
 
+  @Deprecated
   @Nonnull
-  public static final Border EMPTY_5_PX = BorderFactory.createEmptyBorder(FIVE, FIVE, FIVE, FIVE);
+  public static final Border EMPTY_5_PX = DEFAULT_5_PX;
 
 
   private Borders() {
