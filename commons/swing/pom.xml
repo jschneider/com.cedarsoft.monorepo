@@ -16,6 +16,7 @@
     <module>swing-presenter</module>
     <module>actions</module>
     <module>common</module>
+    <module>jgoodies</module>
   </modules>
 
   <properties>
