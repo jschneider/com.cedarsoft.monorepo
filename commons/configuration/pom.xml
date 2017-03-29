@@ -22,7 +22,7 @@
 
     <dependency>
       <groupId>com.jgoodies</groupId>
-      <artifactId>binding</artifactId>
+      <artifactId>jgoodies-binding</artifactId>
     </dependency>
 
     <dependency>
@@ -55,4 +55,4 @@
 
   </dependencies>
 </project>
-    
+
