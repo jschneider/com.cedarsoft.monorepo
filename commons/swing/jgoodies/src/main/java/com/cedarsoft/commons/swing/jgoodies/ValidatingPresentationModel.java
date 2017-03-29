@@ -1,4 +1,4 @@
-package com.cedarsoft.autoresultat.model.editor.com.cedarsoft.commons.swing.jgoodies;
+package com.cedarsoft.commons.swing.jgoodies;
 
 import com.cedarsoft.annotations.UiThread;
 import com.jgoodies.binding.PresentationModel;
