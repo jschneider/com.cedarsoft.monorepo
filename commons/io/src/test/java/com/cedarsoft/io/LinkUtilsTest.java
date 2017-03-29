@@ -32,6 +32,7 @@
 package com.cedarsoft.io;
 
 import com.cedarsoft.test.utils.TestUtils;
+import org.apache.commons.lang.SystemUtils;
 import org.junit.*;
 
 import java.io.File;
@@ -51,7 +52,7 @@ public class LinkUtilsTest {
 
   @Test
   public void testCreation() throws Exception {
-    if (Os.isFamily(Os.OS_FAMILY_WINDOWS)) {
+    if (SystemUtils.IS_OS_WINDOWS) {
       return;
     }
 

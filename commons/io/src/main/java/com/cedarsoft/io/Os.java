@@ -49,6 +49,7 @@ import java.util.Set;
  * @author <a href="mailto:umagesh@apache.org">Magesh Umasankar</a>
  * @author <a href="mailto:peter@apache.org">Peter Donald</a>
  */
+@Deprecated
 public final class Os {
   /**
    * All Windows based OSes.
