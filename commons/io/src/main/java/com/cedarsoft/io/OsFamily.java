@@ -37,6 +37,7 @@ package com.cedarsoft.io;
  * @author <a href="mailto:adammurdoch@apache.org">Adam Murdoch</a>
  * @version $Revision$ $Date$
  */
+@Deprecated
 public final class OsFamily {
   private final String name;
   private final OsFamily[] families;
