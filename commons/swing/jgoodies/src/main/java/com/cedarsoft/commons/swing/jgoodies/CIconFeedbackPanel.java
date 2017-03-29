@@ -393,7 +393,8 @@ public final class CIconFeedbackPanel extends JLayeredPane {
       || component instanceof JComboBox
       || component instanceof JCheckBox
       || component instanceof AbstractButton
-      || component instanceof JSpinner;
+      || component instanceof JSpinner
+      || component.getClass().getName().contains("Picker");
   }
 
   private void addFeedbackComponent(
