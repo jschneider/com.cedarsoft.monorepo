@@ -158,7 +158,7 @@ public class OptionDialog extends StandardDialog {
       buttonGroup.add(radioButton);
     }
 
-    ResultType resultType = showMessageDialog(parentComponent, radioPanel, title, messageType);
+    ResultType resultType = showMessageDialog(parentComponent, radioPanel, title, OptionType.OK_CANCEL_OPTION, messageType);
 
     if (resultType != ResultType.RESULT_OK) {
       return null;
