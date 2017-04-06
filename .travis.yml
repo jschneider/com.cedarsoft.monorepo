@@ -18,4 +18,4 @@ notifications:
   email: false
 
 script:
-  mvn deploy -B -T 4
+  mvn deploy --batch-mode --errors --show-version -U
