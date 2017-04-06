@@ -20,7 +20,6 @@ notifications:
 
 install:
   - mvn dependency:resolve
-  - mvn dependency:resolve-plugins
   - mvn validate -N
 
 script:
