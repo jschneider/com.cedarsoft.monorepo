@@ -19,7 +19,7 @@ notifications:
   email: false
 
 install:
-  - true #install not necessary for maven projects
+  - mvn dependency:resolve
 
 script:
   - git describe
