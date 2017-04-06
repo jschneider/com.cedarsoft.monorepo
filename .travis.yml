@@ -6,6 +6,9 @@ before_install:
   - export M2_HOME=$PWD/apache-maven-3.3.9
   - export PATH=$M2_HOME/bin:$PATH
 
+before_install:
+  "git clone -b travis `git config --get remote.origin.url` target/travis"
+
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -17,8 +20,7 @@ jdk:
 notifications:
   email: false
 
-script:
-  mvn deploy --batch-mode --errors --show-version -U
+script: "[ ${TRAVIS_PULL_REQUEST} = 'false' ] && mvn clean deploy --settings target/travis/settings.xml -B -U --show-version || mvn clean verify --settings target/travis/settings.xml -B -U --show-version"
 
 env:
   global:
