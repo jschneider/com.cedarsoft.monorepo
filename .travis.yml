@@ -19,7 +19,8 @@ notifications:
   email: false
 
 install:
-  - mvn dependency:resolve > /dev/null
+  - mvn dependency:resolve
+  - mvn dependency:resolve-plugins
   - mvn validate -N
 
 script:
