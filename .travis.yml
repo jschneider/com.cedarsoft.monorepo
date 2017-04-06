@@ -18,4 +18,4 @@ notifications:
   email: false
 
 script:
-  mvn test -B -T 4
+  mvn deploy -B -T 4
