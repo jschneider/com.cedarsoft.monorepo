@@ -11,6 +11,7 @@ import com.jgoodies.binding.list.SelectionInList;
 import com.jgoodies.binding.value.ValueModel;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import java.awt.event.ItemEvent;
@@ -27,8 +28,18 @@ public class ComponentFactory {
 
   @Nonnull
   public static <T> JComboBox<T> createComboBox(@Nonnull SelectionInList<? extends T> selectionInList) {
+    return createComboBox(selectionInList, null);
+  }
+
+  @Nonnull
+  public static <T> JComboBox<T> createComboBox(@Nonnull SelectionInList<? extends T> selectionInList, @Nullable String nullText) {
     JComboBox<T> comboBox = new JComboBox<>();
-    Bindings.bind(comboBox, selectionInList);
+    if (nullText != null) {
+      Bindings.bind(comboBox, selectionInList, nullText);
+    }
+    else {
+      Bindings.bind(comboBox, selectionInList);
+    }
     return comboBox;
   }
 
