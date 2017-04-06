@@ -7,7 +7,7 @@ before_install:
   - export PATH=$M2_HOME/bin:$PATH
   - "git clone -b travis `git config --get remote.origin.url` target/travis"
   - file target/travis/settings.xml
-  - echo target/travis/settings.xml
+  - cat target/travis/settings.xml
 
 before_script:
   - "export DISPLAY=:99.0"
