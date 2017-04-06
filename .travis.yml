@@ -19,7 +19,8 @@ notifications:
   email: false
 
 install:
-  - mvn dependency:resolve
+  - mvn dependency:resolve > /dev/null
+  - mvn validate -N
 
 script:
   - git describe
