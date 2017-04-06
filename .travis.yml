@@ -24,12 +24,7 @@ install:
 
 script:
   - git describe
-  - echo "Hello"
-  - echo "Hello- asdf"
-  - echo "TRAVIS_PULL_REQUEST- ${TRAVIS_PULL_REQUEST}"
-  - echo "TRAVIS_PULL_REQUEST_BRANCH- ${TRAVIS_PULL_REQUEST_BRANCH}"
-  - echo "TRAVIS_BRANCH- ${TRAVIS_BRANCH}"
-  - echo "CI_DEPLOY_USERNAME- ${CI_DEPLOY_USERNAME}"
+  - echo "Building branch <${TRAVIS_BRANCH}>"
   - "[ ${TRAVIS_BRANCH} = 'develop' ] && mvn clean deploy --settings target/travis/settings.xml -B -U --show-version || mvn clean verify --settings target/travis/settings.xml -B -U --show-version"
 
 env:
