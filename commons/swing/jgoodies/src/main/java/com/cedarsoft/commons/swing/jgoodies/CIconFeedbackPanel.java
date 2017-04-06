@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
@@ -390,6 +391,7 @@ public final class CIconFeedbackPanel extends JLayeredPane {
       || component instanceof JComboBox
       || component instanceof JLabel
       || component instanceof JRadioButton
+      || component instanceof JList
       || component instanceof JComboBox
       || component instanceof JCheckBox
       || component instanceof AbstractButton
