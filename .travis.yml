@@ -8,6 +8,10 @@ before_install:
   - "git clone -b travis `git config --get remote.origin.url` target/travis"
   - file target/travis/settings.xml
   - cat target/travis/settings.xml
+  - file /home/travis/build/jschneider/com.cedarsoft.monorepo/target/travis/settings.xml
+  - cat /home/travis/build/jschneider/com.cedarsoft.monorepo/target/travis/settings.xml
+  - echo $HOME
+  - pwd
 
 before_script:
   - "export DISPLAY=:99.0"
