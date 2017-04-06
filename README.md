@@ -22,6 +22,13 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.0.2-SNAPSHOT (currently in development)
+* JGoodies related classes: 
+    * IconFeedbackPanel
+    * ComponentFactory
+* delete Os* classes
+ 
+ 
 ## 8.0.1 (2017-03-24)
 * Using logback for logging
 * Version number in dependency management can be overridden in a property: monorepo.dep.management.version
