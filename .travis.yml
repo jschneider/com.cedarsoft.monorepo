@@ -38,7 +38,7 @@ env:
     secure: "WF/2vLmXftm1PtlUzZFCfMscJkmAPZbrK3ML22sX2Clw3ocWzFJaNg6J8LJ0h5f0RXjpwuWXJIeR6BnRwMr+UGW1N2QZHR228+PLt7X/NK8mHpHU7ANaEWy9nUFtYJRHX2Q9/XM3F15a75uUEWmIH1/i5/Y51Sf31pb6GJWNHnQlMrQZHFBwYlr5TxiSQ1jYUsmNZtlsc/BJFsQGJb2t38YlOxM90NVPTwbLSCseQVREAQsqiwrtG1i3ecyHP2FsULXo74Xy+YqMbiltQfoIwIUC4phFsqnM8bzenFi5G5HQK4osI/nb/qx0vL8JMtDn5FzPryzzYbDvBZVzXScCQIPKnwCNMvRTA2EfTmitUvcQ0Wo7kWSVkD0oGuhufM0P6a7a7XHGS3lktkKhvqutw0WnyOAfVEDKk1flekGdViwqponByUkbulOO7GVvI2xdMn2u+7JAM1k3KcTeP+yEeWZXkIzvB5PqkcIuc2IjIZAq8zW1K2TaXo8liZLHlLB/fR+MRazx7tYbgIV9z/DcvGHZSsm6f1SX8O9xiArGOITxoh7gGiJrw938q5e2O3vYSAyAc9JKN8rX7yld+BFUY4d0n0X4XW3aKPEq3WqOfHS/9N6WIrOYTwyiS8bpwcQZHdrH1DNjQ5T7x8V0Y+2jME5G6UVmRi97ettiER5V0rE="
 
 before_cache:
-  - rm -rf $HOME/.m2/repositor/com/cedarsoft/monorepo
+  - rm -rf $HOME/.m2/repositor/com/cedarsoft
 cache:
   directories:
   - $HOME/.m2
