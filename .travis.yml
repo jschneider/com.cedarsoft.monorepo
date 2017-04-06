@@ -6,6 +6,8 @@ before_install:
   - export M2_HOME=$PWD/apache-maven-3.3.9
   - export PATH=$M2_HOME/bin:$PATH
   - "git clone -b travis `git config --get remote.origin.url` target/travis"
+  - file target/travis/settings.xml
+  - echo target/travis/settings.xml
 
 before_script:
   - "export DISPLAY=:99.0"
