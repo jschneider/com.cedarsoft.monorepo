@@ -21,8 +21,7 @@ notifications:
   email: false
 
 install:
-  - mvn dependency:resolve
-  - mvn validate -N
+  - true
 
 script:
   - git describe
