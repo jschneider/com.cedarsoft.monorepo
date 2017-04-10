@@ -15,12 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -114,7 +111,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
             dialogOpen.set(true);
             InternalExceptionDialog internalExceptionDialog = new InternalExceptionDialog(SwingHelper.getFrameSafe(), original, new ExceptionReporter() {
               @Override
-              public void report(@Nonnull Version applicationVersion, @Nonnull Throwable throwable) {
+              public void report(@Nonnull Throwable throwable) {
                 ReportingExceptionsDialog reportingExceptionsDialog = new ReportingExceptionsDialog(SwingHelper.getFrameSafe());
                 reportingExceptionsDialog.setVisibleNonBlocking();
 
@@ -122,7 +119,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
                   @Override
                   @Nullable
                   protected Void doInBackground() throws Exception {
-                    exceptionReporter.report(applicationVersion, throwable);
+                    exceptionReporter.report(throwable);
                     return null;
                   }
 

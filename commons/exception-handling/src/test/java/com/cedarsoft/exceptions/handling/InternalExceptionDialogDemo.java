@@ -31,7 +31,7 @@ public class InternalExceptionDialogDemo {
     SwingUtilities.invokeAndWait(() -> {
       InternalExceptionDialog dialog = new InternalExceptionDialog(null, new RuntimeException(new IllegalArgumentException("Uups")), new ExceptionReporter() {
         @Override
-        public void report(@Nonnull Version applicationVersion, @Nonnull Throwable throwable) {
+        public void report(@Nonnull Throwable throwable) {
           System.err.println("Reporting exception");
         }
       }, Version.valueOf(1, 2, 3));

@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import com.cedarsoft.annotations.AnyThread;
 import com.cedarsoft.exceptions.ApplicationException;
 import com.cedarsoft.exceptions.NotificationException;
-import com.cedarsoft.version.Version;
 
 /**
  * Silently handles exceptions
@@ -72,6 +71,6 @@ public class SilentExceptionHandler extends ExceptionHandler {
   }
 
   private void reportException(@Nonnull Throwable throwable) {
-    exceptionReporter.report(Version.valueOf(0, 0, 0), throwable);
+    exceptionReporter.report(throwable);
   }
 }

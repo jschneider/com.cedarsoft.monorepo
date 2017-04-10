@@ -18,5 +18,5 @@ public interface ExceptionReporter {
    * Reports the exception
    */
   @UiThread
-  void report(@Nonnull Version applicationVersion, @Nonnull Throwable throwable);
+  void report(@Nonnull Throwable throwable);
 }

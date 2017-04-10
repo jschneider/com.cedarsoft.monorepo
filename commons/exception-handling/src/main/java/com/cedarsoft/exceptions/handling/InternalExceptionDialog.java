@@ -108,7 +108,7 @@ public class InternalExceptionDialog extends AbstractDialog {
         public void actionPerformed(ActionEvent e) {
           //disable button, ensure can only report once
           setEnabled(false);
-          exceptionReporter.report(applicationVersion, throwable);
+          exceptionReporter.report(throwable);
         }
       });
     }
