@@ -1,5 +1,29 @@
 package com.cedarsoft.swing.common.dialog;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.ComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.ListCellRenderer;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.swing.common.Borders;
 import com.cedarsoft.swing.common.Messages;
@@ -11,27 +35,8 @@ import com.jidesoft.dialog.BannerPanel;
 import com.jidesoft.dialog.ButtonPanel;
 import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.StyledLabel;
-import net.miginfocom.swing.MigLayout;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
+import net.miginfocom.swing.MigLayout;
 
 /**
  * Replaces JOptionPane
@@ -170,6 +175,35 @@ public class OptionDialog extends StandardDialog {
     }
 
     return Integer.parseInt(selection.getActionCommand());
+  }
+
+  @Nullable
+  public static <T> T showComboBoxDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull ComboBoxModel<T> model) {
+    return showComboBoxDialog(parentComponent, message, title, messageType, model, null, null);
+  }
+
+  @Nullable
+  public static <T> T showComboBoxDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull ComboBoxModel<T> model, @Nullable Integer preselectedIndex, @Nullable ListCellRenderer<? super T> renderer) {
+    JPanel panel = new JPanel(new MigLayout("wrap 1"));
+    panel.add(new JLabel(message), "gapbottom unrelated");
+
+    JComboBox<T> comboBox = new JComboBox<>(model);
+    panel.add(comboBox);
+
+    if (preselectedIndex != null) {
+      comboBox.setSelectedIndex(preselectedIndex);
+    }
+    if (renderer != null) {
+      comboBox.setRenderer(renderer);
+    }
+
+    ResultType resultType = showMessageDialog(parentComponent, panel, title, OptionType.OK_CANCEL_OPTION, messageType);
+
+    if (resultType != ResultType.RESULT_OK) {
+      return null;
+    }
+
+    return (T) comboBox.getSelectedItem();
   }
 
   @Nonnull
