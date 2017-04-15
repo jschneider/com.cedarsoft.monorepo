@@ -184,18 +184,23 @@ public class OptionDialog extends StandardDialog {
 
   @Nullable
   public static <T> T showComboBoxDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull ComboBoxModel<T> model, @Nullable Integer preselectedIndex, @Nullable ListCellRenderer<? super T> renderer) {
-    JPanel panel = new JPanel(new MigLayout("wrap 1"));
-    panel.add(new JLabel(message), "gapbottom unrelated");
-
     JComboBox<T> comboBox = new JComboBox<>(model);
-    panel.add(comboBox);
-
     if (preselectedIndex != null) {
       comboBox.setSelectedIndex(preselectedIndex);
     }
     if (renderer != null) {
       comboBox.setRenderer(renderer);
     }
+
+    return showComboBoxDialog(parentComponent, message, title, messageType, comboBox);
+  }
+
+  @Nullable
+  public static <T> T showComboBoxDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull JComboBox<T> comboBox) {
+    JPanel panel = new JPanel(new MigLayout("wrap 1"));
+    panel.add(new JLabel(message), "gapbottom unrelated");
+
+    panel.add(comboBox);
 
     ResultType resultType = showMessageDialog(parentComponent, panel, title, OptionType.OK_CANCEL_OPTION, messageType);
 
