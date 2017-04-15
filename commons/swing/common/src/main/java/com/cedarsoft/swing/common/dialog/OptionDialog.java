@@ -146,7 +146,7 @@ public class OptionDialog extends StandardDialog {
 
   @Nullable
   public static Integer showRadioDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, int preselectedIndex, @Nonnull String... options) {
-    JPanel radioPanel = new JPanel(new MigLayout("wrap 1"));
+    JPanel radioPanel = new JPanel(new MigLayout("insets 0, wrap 1"));
     radioPanel.add(new JLabel(message), "gapbottom unrelated");
 
     ButtonGroup buttonGroup = new ButtonGroup();
@@ -197,7 +197,7 @@ public class OptionDialog extends StandardDialog {
 
   @Nullable
   public static <T> T showComboBoxDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nonnull JComboBox<T> comboBox) {
-    JPanel panel = new JPanel(new MigLayout("wrap 1"));
+    JPanel panel = new JPanel(new MigLayout("insets 0, fillx"));
     panel.add(new JLabel(message), "gapbottom unrelated");
 
     panel.add(comboBox);
