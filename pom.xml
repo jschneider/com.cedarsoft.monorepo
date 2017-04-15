@@ -945,6 +945,11 @@
         <version>${monorepo.dep.management.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.cedarsoft.serialization.commons-serializers</groupId>
+        <artifactId>jackson</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.cedarsoft.serialization</groupId>
         <artifactId>neo4j</artifactId>
         <version>${monorepo.dep.management.version}</version>
