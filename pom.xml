@@ -367,6 +367,11 @@
         <version>${jooby.version}</version>
         <classifier>tests</classifier>
       </dependency>
+      <dependency>
+        <groupId>org.jooby</groupId>
+        <artifactId>jooby-livereload</artifactId>
+        <version>${jooby.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>io.reactivex.rxjava2</groupId>
