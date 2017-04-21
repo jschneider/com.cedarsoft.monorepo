@@ -979,6 +979,12 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.jooby</groupId>
+          <artifactId>jooby-maven-plugin</artifactId>
+          <version>${jooby.version}</version>
+        </plugin>
+
+        <plugin>
           <!--
           After: mvn clean install -DperformRelease
           call: mvn nexus-staging:release
