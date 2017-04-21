@@ -27,12 +27,10 @@
     <dependency>
       <groupId>com.cedarsoft</groupId>
       <artifactId>unit</artifactId>
-      <version>1.4.0</version>
     </dependency>
     <dependency>
       <groupId>com.cedarsoft</groupId>
       <artifactId>annotations</artifactId>
-      <version>3.1.1</version>
     </dependency>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
