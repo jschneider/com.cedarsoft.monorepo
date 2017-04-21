@@ -16,6 +16,7 @@
     <module>commons</module>
     <module>serialization</module>
     <module>unit</module>
+    <module>tiles</module>
   </modules>
 
   <licenses>
