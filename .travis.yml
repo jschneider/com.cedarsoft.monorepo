@@ -22,7 +22,7 @@ install:
   - true
 
 script:
-  - git describe
+  - git describe || git rev-parse HEAD
   - echo "Building branch <${TRAVIS_BRANCH}>"
   - "[ ${TRAVIS_BRANCH} = 'develop' ] && mvn clean deploy --settings target/travis/settings.xml -B -U --show-version || mvn clean verify --settings target/travis/settings.xml -B -U --show-version"
 
