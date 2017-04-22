@@ -14,6 +14,7 @@
 
   <modules>
     <module>osgi-validator-plugin</module>
+    <module>instrumentation-maven-plugin</module>
   </modules>
 
   <dependencyManagement>
@@ -41,6 +42,24 @@
         <version>3.0.24</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-container-default</artifactId>
+        <version>1.5.5</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-interactivity-api</artifactId>
+        <version>1.0-alpha-6</version>
+      </dependency>
+
       <!--Test Dependencies-->
       <dependency>
         <groupId>org.apache.maven.plugin-testing</groupId>
@@ -51,5 +70,17 @@
 
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>3.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>
