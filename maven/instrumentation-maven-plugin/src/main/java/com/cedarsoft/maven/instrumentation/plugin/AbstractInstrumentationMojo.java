@@ -1,23 +1,5 @@
 package com.cedarsoft.maven.instrumentation.plugin;
 
-import com.cedarsoft.annotations.NonBlocking;
-import com.cedarsoft.annotations.instrumentation.NonBlockingAnnotationTransformer;
-import com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer;
-import com.cedarsoft.annotations.instrumentation.NonNullGuavaAnnotationTransformer;
-import com.cedarsoft.annotations.instrumentation.ThreadAnnotationTransformer;
-import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
-import com.cedarsoft.maven.instrumentation.plugin.util.ClassFile;
-import com.cedarsoft.maven.instrumentation.plugin.util.ClassFileLocator;
-import com.google.common.base.Preconditions;
-import com.google.common.io.Files;
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
@@ -29,6 +11,26 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
+
+import com.cedarsoft.annotations.NonBlocking;
+import com.cedarsoft.annotations.instrumentation.NonBlockingAnnotationTransformer;
+import com.cedarsoft.annotations.instrumentation.NonNullAnnotationTransformer;
+import com.cedarsoft.annotations.instrumentation.NonNullGuavaAnnotationTransformer;
+import com.cedarsoft.annotations.instrumentation.ThreadAnnotationTransformer;
+import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
+import com.cedarsoft.maven.instrumentation.plugin.util.ClassFile;
+import com.cedarsoft.maven.instrumentation.plugin.util.ClassFileLocator;
+import com.google.common.base.Preconditions;
+import com.google.common.io.Files;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -200,7 +202,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
       lastInstrumentationDate = getLastInstrumentationDate();
       getLog().debug("last instrumentation date: " + lastInstrumentationDate);
     } catch (NoLastInstrumentationDateFoundException ignore) {
-      getLog().info("Instrumenting all files");
+      getLog().info("Instrumenting all (" + classFiles.size() + ") files");
       //No instrumentation has yet happened, therefore return the complete list
       return classFiles;
     }
