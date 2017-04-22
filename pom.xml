@@ -17,6 +17,7 @@
     <module>serialization</module>
     <module>unit</module>
     <module>photos</module>
+    <module>maven</module>
   </modules>
 
   <licenses>
