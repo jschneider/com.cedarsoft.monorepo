@@ -99,14 +99,4 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.cedarsoft.maven</groupId>
-        <artifactId>instrumentation-plugin</artifactId>
-        <version>1.1</version>
-      </plugin>
-    </plugins>
-  </build>
-
 </project>

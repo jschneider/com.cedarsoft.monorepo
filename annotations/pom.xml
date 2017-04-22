@@ -22,41 +22,4 @@
     <module>instrumentation-test2</module>
   </modules>
 
-  <distributionManagement>
-    <site>
-      <id>cedarsoftWeb</id>
-      <name>cedarsoft Web</name>
-      <url>scpexe://cedarsoft.org/var/www/cedarsoft.org/annotations</url>
-    </site>
-  </distributionManagement>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.javassist</groupId>
-        <artifactId>javassist</artifactId>
-        <version>3.21.0-GA</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>com.cedarsoft.maven</groupId>
-          <artifactId>instrumentation-plugin</artifactId>
-          <version>1.1</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-
-  <mailingLists>
-    <mailingList>
-      <name>Mail Support</name>
-      <post>info@cedarsoft.com</post>
-    </mailingList>
-  </mailingLists>
-
 </project>
