@@ -13,6 +13,7 @@
 
   <modules>
     <module>annotations</module>
+    <module>business</module>
     <module>commons</module>
     <module>serialization</module>
     <module>unit</module>
