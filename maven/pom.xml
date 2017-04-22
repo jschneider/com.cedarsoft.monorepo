@@ -13,7 +13,7 @@
   <name>cedarsoft Maven related projects</name>
 
   <modules>
-    <module>osgi-validator-plugin</module>
+    <module>osgi-validator-maven-plugin</module>
     <module>instrumentation-maven-plugin</module>
   </modules>
 
