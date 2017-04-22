@@ -1,0 +1,27 @@
+File Name                       : img_2483.jpg
+Camera Model Name               : Canon EOS 7D
+Date/Time Original              : 2009:10:24 14:01:46
+Shooting Mode                   : Shutter speed priority AE
+Shutter Speed                   : 1/800
+Aperture                        : 2.8
+Metering Mode                   : Evaluative
+Exposure Compensation           : 0
+ISO                             : 125
+Lens                            : 70.0 - 200.0 mm
+Focal Length                    : 70.0 mm
+Image Size                      : 5184x3456
+Quality                         : Fine
+Flash                           : Off, Did not fire
+White Balance                   : Auto
+Focus Mode                      : AI Servo AF
+Contrast                        : Normal
+Sharpness                       : 3
+Saturation                      : Normal
+Color Tone                      : Normal
+Color Space                     : sRGB
+Long Exposure Noise Reduction   : Off
+File Size                       : 5.0 MB
+File Number                     : 100-2483
+Drive Mode                      : Continuous Shooting
+Owner Name                      : 
+Serial Number                   : 0230101649

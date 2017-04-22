@@ -16,6 +16,7 @@
     <module>commons</module>
     <module>serialization</module>
     <module>unit</module>
+    <module>photos</module>
   </modules>
 
   <licenses>
@@ -231,6 +232,12 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-math3</artifactId>
         <version>3.6.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.im4java</groupId>
+        <artifactId>im4java</artifactId>
+        <version>1.4.0</version>
       </dependency>
 
       <dependency>

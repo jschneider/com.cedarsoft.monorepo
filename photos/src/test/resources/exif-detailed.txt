@@ -1,0 +1,344 @@
+-	ExifToolVersion	10.10
+-	FileName	img_2483.jpg
+-	Directory	.
+-	FileSize	5.0 MB
+-	FileModifyDate	2010:01:25 19:47:48+01:00
+-	FileAccessDate	2016:08:21 19:57:33+02:00
+-	FileInodeChangeDate	2016:08:21 19:57:31+02:00
+-	FilePermissions	rwxrwxr-x
+-	FileType	JPEG
+-	FileTypeExtension	jpg
+-	MIMEType	image/jpeg
+-	ExifByteOrder	Little-endian (Intel, II)
+271	Make	Canon
+272	Model	Canon EOS 7D
+274	Orientation	Rotate 270 CW
+282	XResolution	72
+283	YResolution	72
+296	ResolutionUnit	inches
+306	ModifyDate	2009:10:24 14:01:46
+315	Artist	Johannes Schneider
+531	YCbCrPositioning	Co-sited
+33432	Copyright	cedarsoft GmbH
+33434	ExposureTime	1/800
+33437	FNumber	2.8
+34850	ExposureProgram	Shutter speed priority AE
+34855	ISO	125
+36864	ExifVersion	0221
+36867	DateTimeOriginal	2009:10:24 14:01:46
+36868	CreateDate	2009:10:24 14:01:46
+37121	ComponentsConfiguration	Y, Cb, Cr, -
+37377	ShutterSpeedValue	1/790
+37378	ApertureValue	2.8
+37380	ExposureCompensation	0
+37383	MeteringMode	Multi-segment
+37385	Flash	Off, Did not fire
+37386	FocalLength	70.0 mm
+1	MacroMode	Normal
+2	SelfTimer	Off
+3	Quality	Fine
+4	CanonFlashMode	Off
+5	ContinuousDrive	Continuous, High
+7	FocusMode	AI Servo AF
+9	RecordMode	JPEG
+10	CanonImageSize	Large
+11	EasyMode	Manual
+12	DigitalZoom	None
+13	Contrast	Normal
+14	Saturation	Normal
+16	CameraISO	Auto
+17	MeteringMode	Evaluative
+18	FocusRange	Not Known
+20	CanonExposureMode	Shutter speed priority AE
+22	LensType	Canon EF 70-200mm f/2.8L IS
+23	MaxFocalLength	200 mm
+24	MinFocalLength	70 mm
+25	FocalUnits	1/mm
+26	MaxAperture	2.8
+27	MinAperture	32
+28	FlashActivity	0
+29	FlashBits	(none)
+36	ZoomSourceWidth	0
+37	ZoomTargetWidth	0
+41	ManualFlashOutput	n/a
+42	ColorTone	Normal
+1	FocalLength	70 mm
+1	AutoISO	100
+2	BaseISO	130
+3	MeasuredEV	12.38
+4	TargetAperture	2.8
+5	TargetExposureTime	1/813
+6	ExposureCompensation	0
+7	WhiteBalance	Auto
+8	SlowShutter	None
+9	SequenceNumber	0
+10	OpticalZoomCode	n/a
+12	CameraTemperature	22 C
+13	FlashGuideNumber	0
+15	FlashExposureComp	0
+16	AutoExposureBracketing	Off
+17	AEBBracketValue	0
+18	ControlMode	Camera Local Control
+21	FNumber	2.8
+22	ExposureTime	1/813
+23	MeasuredEV2	12.75
+24	BulbDuration	0
+26	CameraType	EOS High-end
+28	NDFilter	n/a
+6	CanonImageType	Canon EOS 7D
+7	CanonFirmwareVersion	Firmware Version 1.0.9
+9	OwnerName	
+12	SerialNumber	0230101649
+3	FNumber	2.8
+4	ExposureTime	1/790
+6	ISO	130
+7	HighlightTonePriority	Off
+8	MeasuredEV2	12.75
+9	MeasuredEV	12.375
+21	FlashMeteringMode	Off
+25	CameraTemperature	22 C
+30	FocalLength	70 mm
+53	CameraOrientation	Rotate 270 CW
+84	FocusDistanceUpper	6.52 m
+86	FocusDistanceLower	5.83 m
+119	WhiteBalance	Auto
+123	ColorTemperature	5200
+201	HighISONoiseReduction	Standard
+274	LensType	Canon EF 70-200mm f/2.8L IS
+276	MinFocalLength	70 mm
+278	MaxFocalLength	200 mm
+428	FirmwareVersion	1.0.9
+491	FileIndex	2483
+503	DirectoryIndex	100
+0	ContrastStandard	0
+4	SharpnessStandard	3
+8	SaturationStandard	0
+12	ColorToneStandard	0
+24	ContrastPortrait	0
+28	SharpnessPortrait	2
+32	SaturationPortrait	0
+36	ColorTonePortrait	0
+48	ContrastLandscape	0
+52	SharpnessLandscape	4
+56	SaturationLandscape	0
+60	ColorToneLandscape	0
+72	ContrastNeutral	0
+76	SharpnessNeutral	0
+80	SaturationNeutral	0
+84	ColorToneNeutral	0
+96	ContrastFaithful	0
+100	SharpnessFaithful	0
+104	SaturationFaithful	0
+108	ColorToneFaithful	0
+120	ContrastMonochrome	0
+124	SharpnessMonochrome	3
+136	FilterEffectMonochrome	None
+140	ToningEffectMonochrome	None
+144	ContrastUserDef1	0
+148	SharpnessUserDef1	3
+152	SaturationUserDef1	0
+156	ColorToneUserDef1	0
+160	FilterEffectUserDef1	None
+164	ToningEffectUserDef1	None
+168	ContrastUserDef2	0
+172	SharpnessUserDef2	3
+176	SaturationUserDef2	0
+180	ColorToneUserDef2	0
+184	FilterEffectUserDef2	None
+188	ToningEffectUserDef2	None
+192	ContrastUserDef3	0
+196	SharpnessUserDef3	3
+200	SaturationUserDef3	0
+204	ColorToneUserDef3	0
+208	FilterEffectUserDef3	None
+212	ToningEffectUserDef3	None
+216	UserDef1PictureStyle	Standard
+218	UserDef2PictureStyle	Standard
+220	UserDef3PictureStyle	Standard
+16	CanonModelID	EOS 7D
+19	ThumbnailImageValidArea	0 159 7 112
+21	SerialNumberFormat	Format 2
+1	AFAreaMode	Auto
+2	NumAFPoints	19
+3	ValidAFPoints	19
+4	CanonImageWidth	5184
+5	CanonImageHeight	3456
+6	AFImageWidth	5184
+7	AFImageHeight	3456
+8	AFAreaWidths	222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222
+9	AFAreaHeights	266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266
+10	AFAreaXPositions	-1373 -881 -881 -881 -393 -393 -393 0 0 0 0 0 393 393 393 881 881 881 1373
+11	AFAreaYPositions	0 393 0 -393 393 0 -393 743 393 0 -393 -743 393 0 -393 393 0 -393 0
+12	AFPointsInFocus	9
+13	AFPointsSelected	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+131	OriginalDecisionDataOffset	0
+3	BracketMode	Off
+4	BracketValue	0
+5	BracketShotNumber	0
+7	RawJpgSize	Large
+8	LongExposureNoiseReduction2	Off
+9	WBBracketMode	Off
+12	WBBracketValueAB	0
+13	WBBracketValueGM	0
+19	LiveViewShooting	Off
+20	FocusDistanceUpper	6.52 m
+21	FocusDistanceLower	5.83 m
+25	FlashExposureLock	Off
+149	LensModel	EF70-200mm f/2.8L IS USM
+150	InternalSerialNumber	S0027533
+151	DustRemovalData	(Binary data 1024 bytes, use -b option to extract)
+0	CropLeftMargin	0
+1	CropRightMargin	0
+2	CropTopMargin	0
+3	CropBottomMargin	0
+257	ExposureLevelIncrements	1/3 Stop
+258	ISOSpeedIncrements	1/3 Stop
+259	ISOExpansion	Off
+260	AEBAutoCancel	On
+261	AEBSequence	0,-,+
+264	SafetyShift	Disable
+271	FlashSyncSpeedAv	Auto
+513	LongExposureNoiseReduction	Off
+514	HighISONoiseReduction	Standard
+515	HighlightTonePriority	Disable
+1282	AIServoTrackingSensitivity	Standard
+1284	AIServoTrackingMethod	Main focus point priority
+1283	AIServoImagePriority	1: AF, 2: Tracking
+1285	LensDriveNoAF	Focus search on
+1287	AFMicroadjustment	Disable; 2; 10; 2; 0
+1298	SelectAFAreaSelectMode	Enable; Flags 0x1f
+1299	ManualAFPointSelectPattern	Stops at AF area edges
+1296	VFDisplayIllumination	Auto
+1300	DisplayAllAFPoints	Enable
+1301	FocusDisplayAIServoAndMF	Enable
+1294	AFAssistBeam	Emits
+1302	OrientationLinkedAFPoint	Select different AF points
+1551	MirrorLockup	Disable
+1804	CustomControls	0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 1 0 222 222 222 222
+1798	DialDirectionTvAv	Normal
+2063	AddOriginalDecisionData	Off
+2062	AddAspectRatioInfo	Off
+0	AspectRatio	3:2
+1	CroppedImageWidth	5184
+2	CroppedImageHeight	3456
+3	CroppedImageLeft	0
+4	CroppedImageTop	0
+1	ToneCurve	Standard
+2	Sharpness	3
+3	SharpnessFrequency	n/a
+4	SensorRedLevel	0
+5	SensorBlueLevel	0
+6	WhiteBalanceRed	0
+7	WhiteBalanceBlue	0
+9	ColorTemperature	5200
+10	PictureStyle	Standard
+11	DigitalGain	0
+12	WBShiftAB	0
+13	WBShiftGM	0
+1	MeasuredRGGB	579 1024 1024 938
+180	ColorSpace	sRGB
+208	VRDOffset	0
+1	SensorWidth	5360
+2	SensorHeight	3516
+5	SensorLeftBorder	168
+6	SensorTopBorder	56
+7	SensorRightBorder	5351
+8	SensorBottomBorder	3511
+9	BlackMaskLeftBorder	0
+10	BlackMaskTopBorder	0
+11	BlackMaskRightBorder	0
+12	BlackMaskBottomBorder	0
+0	ColorDataVersion	7 (500D/550D/7D/1DmkIV)
+0	WB_RGGBLevelsAsShot	2110 1024 1024 1638
+4	ColorTempAsShot	4799
+5	WB_RGGBLevelsAuto	2110 1024 1024 1638
+9	ColorTempAuto	4799
+10	WB_RGGBLevelsMeasured	2083 1028 1019 1655
+14	ColorTempMeasured	4709
+20	WB_RGGBLevelsDaylight	2171 1024 1024 1520
+24	ColorTempDaylight	5200
+25	WB_RGGBLevelsShade	2521 1024 1024 1283
+29	ColorTempShade	7000
+30	WB_RGGBLevelsCloudy	2341 1024 1024 1393
+34	ColorTempCloudy	6000
+35	WB_RGGBLevelsTungsten	1526 1024 1024 2289
+39	ColorTempTungsten	3200
+40	WB_RGGBLevelsFluorescent	1917 1024 1024 2162
+44	ColorTempFluorescent	3769
+45	WB_RGGBLevelsKelvin	2171 1024 1024 1520
+49	ColorTempKelvin	5200
+50	WB_RGGBLevelsFlash	2394 1024 1024 1385
+54	ColorTempFlash	6155
+231	AverageBlackLevel	2047 2047 2047 2047
+640	RawMeasuredRGGB	23409 41974 41939 38398
+715	PerChannelBlackLevel	2047 2047 2048 2047
+720	SpecularWhiteLevel	12749
+721	LinearityUpperMargin	10400
+16400	CustomPictureStyleFileName	
+1	AFMicroAdjMode	Disable
+2	AFMicroAdjValue	0
+0	VignettingCorrVersion	0
+2	PeripheralLighting	Off
+4	ChromaticAberrationCorr	Off
+5	ChromaticAberrationCorr	Off
+6	PeripheralLightingValue	33
+11	OriginalImageWidth	5184
+12	OriginalImageHeight	3456
+5	PeripheralLightingSetting	Off
+1	PeripheralIlluminationCorr	Off
+2	AutoLightingOptimizer	Standard
+37510	UserComment	
+37520	SubSecTime	76
+37521	SubSecTimeOriginal	76
+37522	SubSecTimeDigitized	76
+40960	FlashpixVersion	0100
+40961	ColorSpace	sRGB
+40962	ExifImageWidth	5184
+40963	ExifImageHeight	3456
+1	InteropIndex	R98 - DCF basic file (sRGB)
+2	InteropVersion	0100
+41486	FocalPlaneXResolution	5715.545755
+41487	FocalPlaneYResolution	5808.403361
+41488	FocalPlaneResolutionUnit	inches
+41985	CustomRendered	Normal
+41986	ExposureMode	Auto
+41987	WhiteBalance	Auto
+41990	SceneCaptureType	Standard
+0	GPSVersionID	2.2.0.0
+259	Compression	JPEG (old-style)
+282	XResolution	72
+283	YResolution	72
+296	ResolutionUnit	inches
+513	ThumbnailOffset	11000
+514	ThumbnailLength	13607
+-	ImageWidth	5184
+-	ImageHeight	3456
+-	EncodingProcess	Baseline DCT, Huffman coding
+-	BitsPerSample	8
+-	ColorComponents	3
+-	YCbCrSubSampling	YCbCr4:2:2 (2 1)
+-	Aperture	2.8
+-	DriveMode	Continuous Shooting
+-	FileNumber	100-2483
+-	ISO	130
+-	ImageSize	5184x3456
+-	Lens	70.0 - 200.0 mm
+-	LensID	Canon EF 70-200mm f/2.8L IS
+-	Megapixels	17.9
+-	ScaleFactor35efl	1.6
+-	ShootingMode	Shutter speed priority AE
+-	ShutterSpeed	1/800
+-	SubSecCreateDate	2009:10:24 14:01:46.76
+-	SubSecDateTimeOriginal	2009:10:24 14:01:46.76
+-	SubSecModifyDate	2009:10:24 14:01:46.76
+-	ThumbnailImage	(Binary data 13607 bytes, use -b option to extract)
+-	WB_RGGBLevels	2110 1024 1024 1638
+-	BlueBalance	1.599609
+-	CircleOfConfusion	0.019 mm
+-	DOF	0.83 m (5.79 - 6.62 m)
+-	FOV	18.6 deg
+-	FocalLength35efl	70.0 mm (35 mm equivalent: 109.9 mm)
+-	HyperfocalDistance	91.46 m
+-	Lens35efl	70.0 - 200.0 mm (35 mm equivalent: 109.9 - 314.1 mm)
+-	LightValue	12.3
+-	RedBalance	2.060547

@@ -1,0 +1,344 @@
+ExifTool Version Number         : 10.10
+File Name                       : img_2483.jpg
+Directory                       : .
+File Size                       : 5.0 MB
+File Modification Date/Time     : 2010:01:25 19:47:48+01:00
+File Access Date/Time           : 2016:08:21 19:57:33+02:00
+File Inode Change Date/Time     : 2016:08:21 19:57:31+02:00
+File Permissions                : rwxrwxr-x
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+Exif Byte Order                 : Little-endian (Intel, II)
+Make                            : Canon
+Camera Model Name               : Canon EOS 7D
+Orientation                     : Rotate 270 CW
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Modify Date                     : 2009:10:24 14:01:46
+Artist                          : Johannes Schneider
+Y Cb Cr Positioning             : Co-sited
+Copyright                       : cedarsoft GmbH
+Exposure Time                   : 1/800
+F Number                        : 2.8
+Exposure Program                : Shutter speed priority AE
+ISO                             : 125
+Exif Version                    : 0221
+Date/Time Original              : 2009:10:24 14:01:46
+Create Date                     : 2009:10:24 14:01:46
+Components Configuration        : Y, Cb, Cr, -
+Shutter Speed Value             : 1/790
+Aperture Value                  : 2.8
+Exposure Compensation           : 0
+Metering Mode                   : Multi-segment
+Flash                           : Off, Did not fire
+Focal Length                    : 70.0 mm
+Macro Mode                      : Normal
+Self Timer                      : Off
+Quality                         : Fine
+Canon Flash Mode                : Off
+Continuous Drive                : Continuous, High
+Focus Mode                      : AI Servo AF
+Record Mode                     : JPEG
+Canon Image Size                : Large
+Easy Mode                       : Manual
+Digital Zoom                    : None
+Contrast                        : Normal
+Saturation                      : Normal
+Camera ISO                      : Auto
+Metering Mode                   : Evaluative
+Focus Range                     : Not Known
+Canon Exposure Mode             : Shutter speed priority AE
+Lens Type                       : Canon EF 70-200mm f/2.8L IS
+Max Focal Length                : 200 mm
+Min Focal Length                : 70 mm
+Focal Units                     : 1/mm
+Max Aperture                    : 2.8
+Min Aperture                    : 32
+Flash Activity                  : 0
+Flash Bits                      : (none)
+Zoom Source Width               : 0
+Zoom Target Width               : 0
+Manual Flash Output             : n/a
+Color Tone                      : Normal
+Focal Length                    : 70 mm
+Auto ISO                        : 100
+Base ISO                        : 130
+Measured EV                     : 12.38
+Target Aperture                 : 2.8
+Target Exposure Time            : 1/813
+Exposure Compensation           : 0
+White Balance                   : Auto
+Slow Shutter                    : None
+Shot Number In Continuous Burst : 0
+Optical Zoom Code               : n/a
+Camera Temperature              : 22 C
+Flash Guide Number              : 0
+Flash Exposure Compensation     : 0
+Auto Exposure Bracketing        : Off
+AEB Bracket Value               : 0
+Control Mode                    : Camera Local Control
+F Number                        : 2.8
+Exposure Time                   : 1/813
+Measured EV 2                   : 12.75
+Bulb Duration                   : 0
+Camera Type                     : EOS High-end
+ND Filter                       : n/a
+Canon Image Type                : Canon EOS 7D
+Canon Firmware Version          : Firmware Version 1.0.9
+Owner Name                      : 
+Serial Number                   : 0230101649
+F Number                        : 2.8
+Exposure Time                   : 1/790
+ISO                             : 130
+Highlight Tone Priority         : Off
+Measured EV 2                   : 12.75
+Measured EV                     : 12.375
+Flash Metering Mode             : Off
+Camera Temperature              : 22 C
+Focal Length                    : 70 mm
+Camera Orientation              : Rotate 270 CW
+Focus Distance Upper            : 6.52 m
+Focus Distance Lower            : 5.83 m
+White Balance                   : Auto
+Color Temperature               : 5200
+High ISO Noise Reduction        : Standard
+Lens Type                       : Canon EF 70-200mm f/2.8L IS
+Min Focal Length                : 70 mm
+Max Focal Length                : 200 mm
+Firmware Version                : 1.0.9
+File Index                      : 2483
+Directory Index                 : 100
+Contrast Standard               : 0
+Sharpness Standard              : 3
+Saturation Standard             : 0
+Color Tone Standard             : 0
+Contrast Portrait               : 0
+Sharpness Portrait              : 2
+Saturation Portrait             : 0
+Color Tone Portrait             : 0
+Contrast Landscape              : 0
+Sharpness Landscape             : 4
+Saturation Landscape            : 0
+Color Tone Landscape            : 0
+Contrast Neutral                : 0
+Sharpness Neutral               : 0
+Saturation Neutral              : 0
+Color Tone Neutral              : 0
+Contrast Faithful               : 0
+Sharpness Faithful              : 0
+Saturation Faithful             : 0
+Color Tone Faithful             : 0
+Contrast Monochrome             : 0
+Sharpness Monochrome            : 3
+Filter Effect Monochrome        : None
+Toning Effect Monochrome        : None
+Contrast User Def 1             : 0
+Sharpness User Def 1            : 3
+Saturation User Def 1           : 0
+Color Tone User Def 1           : 0
+Filter Effect User Def 1        : None
+Toning Effect User Def 1        : None
+Contrast User Def 2             : 0
+Sharpness User Def 2            : 3
+Saturation User Def 2           : 0
+Color Tone User Def 2           : 0
+Filter Effect User Def 2        : None
+Toning Effect User Def 2        : None
+Contrast User Def 3             : 0
+Sharpness User Def 3            : 3
+Saturation User Def 3           : 0
+Color Tone User Def 3           : 0
+Filter Effect User Def 3        : None
+Toning Effect User Def 3        : None
+User Def 1 Picture Style        : Standard
+User Def 2 Picture Style        : Standard
+User Def 3 Picture Style        : Standard
+Canon Model ID                  : EOS 7D
+Thumbnail Image Valid Area      : 0 159 7 112
+Serial Number Format            : Format 2
+AF Area Mode                    : Auto
+Num AF Points                   : 19
+Valid AF Points                 : 19
+Canon Image Width               : 5184
+Canon Image Height              : 3456
+AF Image Width                  : 5184
+AF Image Height                 : 3456
+AF Area Widths                  : 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222 222
+AF Area Heights                 : 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266 266
+AF Area X Positions             : -1373 -881 -881 -881 -393 -393 -393 0 0 0 0 0 393 393 393 881 881 881 1373
+AF Area Y Positions             : 0 393 0 -393 393 0 -393 743 393 0 -393 -743 393 0 -393 393 0 -393 0
+AF Points In Focus              : 9
+AF Points Selected              : 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+Original Decision Data Offset   : 0
+Bracket Mode                    : Off
+Bracket Value                   : 0
+Bracket Shot Number             : 0
+Raw Jpg Size                    : Large
+Long Exposure Noise Reduction 2 : Off
+WB Bracket Mode                 : Off
+WB Bracket Value AB             : 0
+WB Bracket Value GM             : 0
+Live View Shooting              : Off
+Focus Distance Upper            : 6.52 m
+Focus Distance Lower            : 5.83 m
+Flash Exposure Lock             : Off
+Lens Model                      : EF70-200mm f/2.8L IS USM
+Internal Serial Number          : S0027533
+Dust Removal Data               : (Binary data 1024 bytes, use -b option to extract)
+Crop Left Margin                : 0
+Crop Right Margin               : 0
+Crop Top Margin                 : 0
+Crop Bottom Margin              : 0
+Exposure Level Increments       : 1/3 Stop
+ISO Speed Increments            : 1/3 Stop
+ISO Expansion                   : Off
+AEB Auto Cancel                 : On
+AEB Sequence                    : 0,-,+
+Safety Shift                    : Disable
+Flash Sync Speed Av             : Auto
+Long Exposure Noise Reduction   : Off
+High ISO Noise Reduction        : Standard
+Highlight Tone Priority         : Disable
+AI Servo Tracking Sensitivity   : Standard
+AI Servo Tracking Method        : Main focus point priority
+AI Servo Image Priority         : 1: AF, 2: Tracking
+Lens Drive No AF                : Focus search on
+AF Microadjustment              : Disable; 2; 10; 2; 0
+Select AF Area Select Mode      : Enable; Flags 0x1f
+Manual AF Point Select Pattern  : Stops at AF area edges
+VF Display Illumination         : Auto
+Display All AF Points           : Enable
+Focus Display AI Servo And MF   : Enable
+AF Assist Beam                  : Emits
+Orientation Linked AF Point     : Select different AF points
+Mirror Lockup                   : Disable
+Custom Controls                 : 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 1 0 222 222 222 222
+Dial Direction Tv Av            : Normal
+Add Original Decision Data      : Off
+Add Aspect Ratio Info           : Off
+Aspect Ratio                    : 3:2
+Cropped Image Width             : 5184
+Cropped Image Height            : 3456
+Cropped Image Left              : 0
+Cropped Image Top               : 0
+Tone Curve                      : Standard
+Sharpness                       : 3
+Sharpness Frequency             : n/a
+Sensor Red Level                : 0
+Sensor Blue Level               : 0
+White Balance Red               : 0
+White Balance Blue              : 0
+Color Temperature               : 5200
+Picture Style                   : Standard
+Digital Gain                    : 0
+WB Shift AB                     : 0
+WB Shift GM                     : 0
+Measured RGGB                   : 579 1024 1024 938
+Color Space                     : sRGB
+VRD Offset                      : 0
+Sensor Width                    : 5360
+Sensor Height                   : 3516
+Sensor Left Border              : 168
+Sensor Top Border               : 56
+Sensor Right Border             : 5351
+Sensor Bottom Border            : 3511
+Black Mask Left Border          : 0
+Black Mask Top Border           : 0
+Black Mask Right Border         : 0
+Black Mask Bottom Border        : 0
+Color Data Version              : 7 (500D/550D/7D/1DmkIV)
+WB RGGB Levels As Shot          : 2110 1024 1024 1638
+Color Temp As Shot              : 4799
+WB RGGB Levels Auto             : 2110 1024 1024 1638
+Color Temp Auto                 : 4799
+WB RGGB Levels Measured         : 2083 1028 1019 1655
+Color Temp Measured             : 4709
+WB RGGB Levels Daylight         : 2171 1024 1024 1520
+Color Temp Daylight             : 5200
+WB RGGB Levels Shade            : 2521 1024 1024 1283
+Color Temp Shade                : 7000
+WB RGGB Levels Cloudy           : 2341 1024 1024 1393
+Color Temp Cloudy               : 6000
+WB RGGB Levels Tungsten         : 1526 1024 1024 2289
+Color Temp Tungsten             : 3200
+WB RGGB Levels Fluorescent      : 1917 1024 1024 2162
+Color Temp Fluorescent          : 3769
+WB RGGB Levels Kelvin           : 2171 1024 1024 1520
+Color Temp Kelvin               : 5200
+WB RGGB Levels Flash            : 2394 1024 1024 1385
+Color Temp Flash                : 6155
+Average Black Level             : 2047 2047 2047 2047
+Raw Measured RGGB               : 23409 41974 41939 38398
+Per Channel Black Level         : 2047 2047 2048 2047
+Specular White Level            : 12749
+Linearity Upper Margin          : 10400
+Custom Picture Style File Name  : 
+AF Micro Adj Mode               : Disable
+AF Micro Adj Value              : 0
+Vignetting Corr Version         : 0
+Peripheral Lighting             : Off
+Chromatic Aberration Corr       : Off
+Chromatic Aberration Corr       : Off
+Peripheral Lighting Value       : 33
+Original Image Width            : 5184
+Original Image Height           : 3456
+Peripheral Lighting Setting     : Off
+Peripheral Illumination Corr    : Off
+Auto Lighting Optimizer         : Standard
+User Comment                    : 
+Sub Sec Time                    : 76
+Sub Sec Time Original           : 76
+Sub Sec Time Digitized          : 76
+Flashpix Version                : 0100
+Color Space                     : sRGB
+Exif Image Width                : 5184
+Exif Image Height               : 3456
+Interoperability Index          : R98 - DCF basic file (sRGB)
+Interoperability Version        : 0100
+Focal Plane X Resolution        : 5715.545755
+Focal Plane Y Resolution        : 5808.403361
+Focal Plane Resolution Unit     : inches
+Custom Rendered                 : Normal
+Exposure Mode                   : Auto
+White Balance                   : Auto
+Scene Capture Type              : Standard
+GPS Version ID                  : 2.2.0.0
+Compression                     : JPEG (old-style)
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Thumbnail Offset                : 11000
+Thumbnail Length                : 13607
+Image Width                     : 5184
+Image Height                    : 3456
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:2 (2 1)
+Aperture                        : 2.8
+Drive Mode                      : Continuous Shooting
+File Number                     : 100-2483
+ISO                             : 130
+Image Size                      : 5184x3456
+Lens                            : 70.0 - 200.0 mm
+Lens ID                         : Canon EF 70-200mm f/2.8L IS
+Megapixels                      : 17.9
+Scale Factor To 35 mm Equivalent: 1.6
+Shooting Mode                   : Shutter speed priority AE
+Shutter Speed                   : 1/800
+Create Date                     : 2009:10:24 14:01:46.76
+Date/Time Original              : 2009:10:24 14:01:46.76
+Modify Date                     : 2009:10:24 14:01:46.76
+Thumbnail Image                 : (Binary data 13607 bytes, use -b option to extract)
+WB RGGB Levels                  : 2110 1024 1024 1638
+Blue Balance                    : 1.599609
+Circle Of Confusion             : 0.019 mm
+Depth Of Field                  : 0.83 m (5.79 - 6.62 m)
+Field Of View                   : 18.6 deg
+Focal Length                    : 70.0 mm (35 mm equivalent: 109.9 mm)
+Hyperfocal Distance             : 91.46 m
+Lens                            : 70.0 - 200.0 mm (35 mm equivalent: 109.9 - 314.1 mm)
+Light Value                     : 12.3
+Red Balance                     : 2.060547
