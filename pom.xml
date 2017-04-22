@@ -732,7 +732,7 @@
       <dependency>
         <groupId>org.javassist</groupId>
         <artifactId>javassist</artifactId>
-        <version>3.18.2-GA</version>
+        <version>3.21.0-GA</version>
       </dependency>
 
       <!--Dependency Managment for sub projects-->
@@ -1003,6 +1003,22 @@
 
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>com.cedarsoft</groupId>
+          <artifactId>instrumentation-maven-plugin</artifactId>
+          <version>${project.version}</version>
+
+          <executions>
+            <execution>
+              <id>instrument-classes</id>
+              <goals>
+                <goal>instrument</goal>
+              </goals>
+            </execution>
+          </executions>
+
+        </plugin>
+
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
