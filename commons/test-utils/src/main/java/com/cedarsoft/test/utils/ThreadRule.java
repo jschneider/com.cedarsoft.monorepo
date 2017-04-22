@@ -171,17 +171,7 @@ public class ThreadRule implements TestRule {
         threadGroupName.equals( "system" ) &&
           threadName.equals( "Java2D Disposer" )
         ||
-        threadGroupName.equals( "system" ) &&
-          threadName.equals( "AWT-XAWT" )
-        ||
-        threadGroupName.equals( "main" ) &&
-          threadName.equals( "AWT-Shutdown" )
-        ||
-        threadGroupName.equals( "main" ) &&
-          threadName.equals( "AWT-EventQueue-0" )
-        ||
-        threadGroupName.equals( "main" ) &&
-          threadName.equals( "AWT-Windows" )
+          threadName.startsWith( "AWT-" )
         ||
         threadGroupName.equals( "main" ) &&
           threadName.startsWith( "QuantumRenderer" )
