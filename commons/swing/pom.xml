@@ -17,6 +17,7 @@
     <module>actions</module>
     <module>common</module>
     <module>jgoodies</module>
+    <module>components</module>
   </modules>
 
   <properties>
