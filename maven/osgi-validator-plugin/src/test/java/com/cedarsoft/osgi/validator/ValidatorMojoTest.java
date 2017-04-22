@@ -1,6 +1,6 @@
 package com.cedarsoft.osgi.validator;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.File;
 
@@ -11,11 +11,13 @@ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.apache.maven.plugin.testing.stubs.MavenProjectStub;
 import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.LoggerManager;
+import org.junit.*;
 
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Ignore
 public class ValidatorMojoTest extends AbstractMojoTestCase {
   @Override
   protected void setUp() throws Exception {
