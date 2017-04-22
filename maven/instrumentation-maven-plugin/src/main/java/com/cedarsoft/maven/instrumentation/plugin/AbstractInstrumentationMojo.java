@@ -205,7 +205,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
       return classFiles;
     }
 
-    List<ClassFile> unInstrumented = new ArrayList<ClassFile>();
+    List<ClassFile> unInstrumented = new ArrayList<>();
 
     for (ClassFile classFile : classFiles) {
       long modificationDate = classFile.getClassFile().lastModified();
@@ -250,7 +250,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
   @Nonnull
   private ClassLoader createClassLoader() throws MojoExecutionException {
-    List<URL> urls = new ArrayList<URL>();
+    List<URL> urls = new ArrayList<>();
     for (String classpathElement : getClasspathElements()) {
       File file = new File(classpathElement);
       if (file.equals(getOutputDirectory())) {
@@ -272,7 +272,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
   @Nonnull
   private Collection<ClassFileTransformer> getAgents() throws MojoExecutionException {
-    final Collection<ClassFileTransformer> transformers = new ArrayList<ClassFileTransformer>();
+    final Collection<ClassFileTransformer> transformers = new ArrayList<>();
 
     //First add the convenience transformers
     transformers.addAll( createConvenienceTransformers() );
@@ -290,7 +290,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   @Nonnull
   protected Collection<? extends ClassFileTransformer> createConvenienceTransformers(){
     try {
-      final Collection<ClassFileTransformer> transformers = new ArrayList<ClassFileTransformer>();
+      final Collection<ClassFileTransformer> transformers = new ArrayList<>();
 
       if ( isAddNullChecks() ) {
         if ( isUseGuava() ) {
