@@ -998,6 +998,21 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>com.cedarsoft</groupId>
+          <artifactId>osgi-validator-maven-plugin</artifactId>
+          <version>${project.version}</version>
+
+          <executions>
+            <execution>
+              <phase>verify</phase>
+              <goals>
+                <goal>validate</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
           <groupId>org.jooby</groupId>
           <artifactId>jooby-maven-plugin</artifactId>
           <version>${jooby.version}</version>

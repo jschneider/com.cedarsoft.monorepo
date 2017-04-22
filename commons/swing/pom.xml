@@ -24,4 +24,13 @@
     <coverage.haltOnFailure>false</coverage.haltOnFailure>
   </properties>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.cedarsoft</groupId>
+        <artifactId>osgi-validator-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
