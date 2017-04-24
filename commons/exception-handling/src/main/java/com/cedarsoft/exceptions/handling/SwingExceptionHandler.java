@@ -141,7 +141,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
                 }.execute();
               }
             }, applicationVersion);
-            internalExceptionDialog.setVisibleNonBlocking();
+            internalExceptionDialog.setVisible(true);
           } finally {
             dialogOpen.set(false);
           }
