@@ -41,12 +41,14 @@ import org.junit.*;
  */
 public class PaymentTest {
   @Test
+  @SuppressWarnings("SelfComparison")
   public void testComparable() {
     Payment payment0 = new DefaultPayment( new Money( 15 ), new LocalDate( 2007, 5, 3 ) );
     Payment payment2 = new DefaultPayment( new Money( 35 ), new LocalDate( 2007, 5, 4 ) );
 
     assertTrue( payment0.compareTo( payment2 ) < 0 );
     assertTrue( payment2.compareTo( payment0 ) > 0 );
+    //noinspection EqualsWithItself
     assertSame( 0, payment0.compareTo( payment0 ) );
   }
 

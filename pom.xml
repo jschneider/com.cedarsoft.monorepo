@@ -1117,7 +1117,57 @@
               <arg>-Xlint:all</arg>
               <arg>-Xlint:-serial</arg>
             </compilerArgs>
+
+            <compilerId>javac-with-errorprone</compilerId>
+            <forceJavacCompilerUse>true</forceJavacCompilerUse>
+            <!--This is correct! See https://issues.apache.org/jira/browse/MCOMPILER-209-->
+            <useIncrementalCompilation>false</useIncrementalCompilation>
           </configuration>
+
+          <executions>
+            <execution>
+              <id>compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <configuration>
+                <showWarnings>true</showWarnings>
+                <showDeprecation>true</showDeprecation>
+                <compilerArgs>
+                  <arg>-Xlint:all</arg>
+                  <arg>-Xlint:-serial</arg>
+                  <arg>-Xlint:-unchecked</arg>
+                </compilerArgs>
+              </configuration>
+            </execution>
+            <execution>
+              <id>test-compile</id>
+              <goals>
+                <goal>testCompile</goal>
+              </goals>
+              <configuration>
+                <showWarnings>false</showWarnings>
+                <showDeprecation>false</showDeprecation>
+                <compilerArgs>
+                  <arg>-Xlint:none</arg>
+                </compilerArgs>
+              </configuration>
+            </execution>
+          </executions>
+
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-compiler-javac-errorprone</artifactId>
+              <version>2.8</version>
+            </dependency>
+            <dependency>
+              <groupId>com.google.errorprone</groupId>
+              <artifactId>error_prone_core</artifactId>
+              <version>2.0.11</version>
+            </dependency>
+          </dependencies>
+
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
