@@ -137,7 +137,7 @@ public abstract class ApplicationException extends RuntimeException {
      * @return the localized message
      */
     @Nonnull
-    String getLocalizedMessage( @Nullable Object... messageArguments );
+    String getLocalizedMessage( @Nonnull Object... messageArguments );
 
     /**
      * Returns the localized message (without the error code)
@@ -147,7 +147,7 @@ public abstract class ApplicationException extends RuntimeException {
      * @return the localized message
      */
     @Nonnull
-    String getLocalizedMessage( @Nonnull Locale locale, @Nullable Object... messageArguments );
+    String getLocalizedMessage( @Nonnull Locale locale, @Nonnull Object... messageArguments );
 
     /**
      * Returns the title
@@ -156,7 +156,7 @@ public abstract class ApplicationException extends RuntimeException {
      * @return the title
      */
     @Nonnull
-    String getTitle( @Nullable Object... messageArguments );
+    String getTitle( @Nonnull Object... messageArguments );
 
     /**
      * Returns the title
@@ -166,7 +166,7 @@ public abstract class ApplicationException extends RuntimeException {
      * @return the title
      */
     @Nonnull
-    String getTitle( @Nonnull Locale locale, @Nullable Object... messageArguments );
+    String getTitle( @Nonnull Locale locale, @Nonnull Object... messageArguments );
 
     /**
      * Returns the error code
