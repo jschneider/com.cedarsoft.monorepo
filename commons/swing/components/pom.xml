@@ -10,6 +10,7 @@
 
   <groupId>com.cedarsoft.commons.swing</groupId>
   <artifactId>components</artifactId>
+  <name>commons.swing.Components</name>
 
   <description>Contains several Swing Components</description>
 
