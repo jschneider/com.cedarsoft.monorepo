@@ -576,7 +576,7 @@
       <dependency>
         <groupId>org.mapdb</groupId>
         <artifactId>mapdb</artifactId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
       </dependency>
 
       <dependency>
@@ -978,6 +978,27 @@
       <dependency>
         <groupId>com.cedarsoft.serialization</groupId>
         <artifactId>neo4j</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>contact</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>locations</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>financial</artifactId>
         <version>${monorepo.dep.management.version}</version>
       </dependency>
 
