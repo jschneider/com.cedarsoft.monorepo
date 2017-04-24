@@ -149,7 +149,7 @@
     <neo4j.version>3.1.0</neo4j.version>
     <guice.version>4.1.0</guice.version>
     <jaxb.version>2.3.0-b170127.1453</jaxb.version>
-    <jetty.version>9.4.1.v20170120</jetty.version>
+    <jetty.version>9.4.4.v20170414</jetty.version>
     <jackson.version>2.8.6</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
     <jooby.version>1.1.0</jooby.version>
@@ -576,7 +576,7 @@
       <dependency>
         <groupId>org.mapdb</groupId>
         <artifactId>mapdb</artifactId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
       </dependency>
 
       <dependency>
@@ -978,6 +978,27 @@
       <dependency>
         <groupId>com.cedarsoft.serialization</groupId>
         <artifactId>neo4j</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>contact</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>locations</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.business</groupId>
+        <artifactId>financial</artifactId>
         <version>${monorepo.dep.management.version}</version>
       </dependency>
 

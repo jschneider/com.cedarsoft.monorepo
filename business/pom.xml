@@ -13,43 +13,6 @@
   <packaging>pom</packaging>
   <name>cedarsoft - Business</name>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- Internal-->
-      <dependency>
-        <groupId>com.cedarsoft.business</groupId>
-        <artifactId>contact</artifactId>
-        <version>${project.version</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.business</groupId>
-        <artifactId>locations</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.business</groupId>
-        <artifactId>db</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.business</groupId>
-        <artifactId>dependencies</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.business</groupId>
-        <artifactId>financial</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <!--<dependency>-->
-      <!--<groupId>com.cedarsoft.business</groupId>-->
-      <!--<artifactId>timetable</artifactId>-->
-      <!--<version>${pom.version}</version>-->
-      <!--</dependency>-->
-
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
