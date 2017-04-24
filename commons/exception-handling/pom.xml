@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>exception-handling</artifactId>
-  <name>Exception Handling</name>
+  <name>commons.Exception Handling</name>
 
   <dependencies>
     <dependency>

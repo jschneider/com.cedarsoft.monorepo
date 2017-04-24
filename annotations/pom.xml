@@ -10,7 +10,7 @@
   <groupId>com.cedarsoft.annotations</groupId>
   <artifactId>parent</artifactId>
 
-  <name>Annotations Parent</name>
+  <name>annotations.Parent</name>
   <description>Parent for the annotations project</description>
 
   <packaging>pom</packaging>

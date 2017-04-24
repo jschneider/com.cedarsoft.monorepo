@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>history</artifactId>
-  <name>History</name>
+  <name>commons.History</name>
   <packaging>pom</packaging>
 
   <dependencies>

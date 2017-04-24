@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization</groupId>
   <artifactId>test</artifactId>
-  <name>Serialization Tests</name>
+  <name>serialization.Tests</name>
   <packaging>pom</packaging>
 
   <modules>

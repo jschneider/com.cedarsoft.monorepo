@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization</groupId>
   <artifactId>neo4j-parent</artifactId>
-  <name>Neo4J Parent</name>
+  <name>serialization.Neo4J Parent</name>
 
   <modules>
     <module>neo4j</module>

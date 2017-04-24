@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.test</groupId>
   <artifactId>performance</artifactId>
-  <name>Performance Tests</name>
+  <name>serialization.Performance Tests</name>
 
   <properties>
     <java.version>1.7</java.version>

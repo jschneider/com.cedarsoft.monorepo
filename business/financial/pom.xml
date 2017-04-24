@@ -10,7 +10,7 @@
   <groupId>com.cedarsoft.business</groupId>
   <artifactId>financial</artifactId>
   <packaging>jar</packaging>
-  <name>Financial Calculations</name>
+  <name>business.Financial Calculations</name>
 
   <dependencies>
     <dependency>

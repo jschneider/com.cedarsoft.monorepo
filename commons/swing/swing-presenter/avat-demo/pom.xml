@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons.swing-presenter</groupId>
   <artifactId>avat-demo</artifactId>
-  <name>Swing Presenter Avat Demo</name>
+  <name>commons.swing.Presenter Avat Demo</name>
   <version>1.0-SAPSHOT</version>
 
   <dependencies>

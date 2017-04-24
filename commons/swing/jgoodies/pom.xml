@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons.swing</groupId>
   <artifactId>jgoodies</artifactId>
-  <name>JGoodies related stuff</name>
+  <name>commons.swing.JGoodies related stuff</name>
 
 
   <dependencies>

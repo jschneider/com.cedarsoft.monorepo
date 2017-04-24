@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons.swing</groupId>
   <artifactId>swing-presenter</artifactId>
-  <name>Swing Presenter</name>
+  <name>commons.swing.Presenter</name>
 
 
 

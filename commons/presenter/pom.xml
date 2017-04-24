@@ -10,10 +10,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>presenter</artifactId>
-  <name>Presenter</name>
+  <name>commons.Presenter</name>
 
 
- 
+
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>

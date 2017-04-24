@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>workflow</artifactId>
-  <name>Workflow</name>
+  <name>commons.Workflow</name>
 
 
 

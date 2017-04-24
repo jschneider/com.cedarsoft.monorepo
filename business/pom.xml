@@ -11,7 +11,7 @@
   <artifactId>business</artifactId>
 
   <packaging>pom</packaging>
-  <name>cedarsoft - Business</name>
+  <name>Business</name>
 
   <dependencies>
     <dependency>

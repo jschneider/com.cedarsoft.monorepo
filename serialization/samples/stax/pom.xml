@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.samples</groupId>
   <artifactId>stax</artifactId>
-  <name>Stax Sample</name>
+  <name>serialization.stax.Samples</name>
 
   <packaging>bundle</packaging>
 

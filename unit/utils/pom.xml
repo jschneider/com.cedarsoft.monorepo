@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>utils</artifactId>
-  <name>Unit Utils</name>
+  <name>unit.Utils</name>
 
   <dependencies>
     <dependency>

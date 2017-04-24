@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>cluster</artifactId>
-  <name>Cluster</name>
+  <name>commons.Cluster</name>
 
   <dependencies>
     <dependency>

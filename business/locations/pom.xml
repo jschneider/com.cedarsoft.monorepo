@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.business</groupId>
   <artifactId>locations</artifactId>
-  <name>Country and City support</name>
+  <name>business.Country and City support</name>
 
   <dependencies>
     <dependency>

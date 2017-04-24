@@ -6,7 +6,7 @@
   <groupId>com.cedarsoft</groupId>
   <artifactId>monorepo</artifactId>
   <version>0</version>
-  <name>cedarsoft Open</name>
+  <name>Mono Repo</name>
   <description>cedarsoft Open Source projects</description>
   <url>http://www.cedarsoft.org</url>
   <inceptionYear>2007</inceptionYear>

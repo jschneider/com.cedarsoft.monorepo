@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.samples</groupId>
   <artifactId>demo1</artifactId>
-  <name>Demo 1</name>
+  <name>serialization.Demo 1</name>
 
   <dependencies>
     <dependency>

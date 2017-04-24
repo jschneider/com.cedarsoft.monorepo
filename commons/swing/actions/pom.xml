@@ -10,8 +10,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons.swing</groupId>
   <artifactId>actions</artifactId>
-  <name>Actions</name>
-  
+  <name>commons.Actions</name>
+
   <dependencies>
   </dependencies>
 </project>

@@ -10,14 +10,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>objectaccess</artifactId>
-  <name>Object Access</name>
+  <name>commons.Object Access</name>
 
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>commons</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>

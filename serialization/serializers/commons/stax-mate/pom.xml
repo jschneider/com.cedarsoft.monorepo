@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.commons-serializers</groupId>
   <artifactId>stax-mate</artifactId>
-  <name>cedarsoft Commons Serializers - Stax-Mate</name>
+  <name>serialization.serializers.Stax-Mate</name>
 
   <packaging>bundle</packaging>
 

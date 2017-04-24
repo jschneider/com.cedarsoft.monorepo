@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>ooorg</artifactId>
-  <name>OpenOffice Integration</name>
+  <name>commons.OpenOffice Integration</name>
 
   <properties>
     <openoffice.version>2.3.1</openoffice.version>

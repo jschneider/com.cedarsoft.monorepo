@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.test</groupId>
   <artifactId>xalan-bug</artifactId>
-  <name>Reproducing Xalan Bug</name>
+  <name>serialization.Reproducing Xalan Bug</name>
 
   <dependencies>
     <dependency>

@@ -9,7 +9,7 @@
 
   <artifactId>instrumentation</artifactId>
 
-  <name>Instrumentation</name>
+  <name>annotations.Instrumentation</name>
   <description>Instrumentation support for Annotations</description>
 
   <dependencies>

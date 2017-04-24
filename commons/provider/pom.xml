@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.commons</groupId>
   <artifactId>provider</artifactId>
-  <name>Provider</name>
+  <name>commons.Provider</name>
 
 
 

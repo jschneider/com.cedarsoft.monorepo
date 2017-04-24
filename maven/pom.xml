@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>maven</artifactId>
   <packaging>pom</packaging>
-  <name>cedarsoft Maven related projects</name>
+  <name>Maven related projects</name>
 
   <modules>
     <module>osgi-validator-maven-plugin</module>

@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.samples</groupId>
   <artifactId>evolution</artifactId>
-  <name>Demo: Evolution</name>
+  <name>serialization.Demo: Evolution</name>
 
   <dependencies>
     <dependency>

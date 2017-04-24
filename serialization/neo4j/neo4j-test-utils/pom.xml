@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cedarsoft.serialization.neo4j</groupId>
   <artifactId>test-utils</artifactId>
-  <name>Neo4J Test Utils</name>
+  <name>serialization.neo4j.Test Utils</name>
 
   <dependencies>
     <dependency>
