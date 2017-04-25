@@ -108,7 +108,7 @@ public class UserDetails {
     return "UserDetails{" +
       "registrationDate=" + registrationDate +
       ", lastLogin=" + lastLogin +
-      ", passwordHash=" + passwordHash +
+      ", passwordHash=" + Arrays.toString(passwordHash) +
       '}';
   }
 }
