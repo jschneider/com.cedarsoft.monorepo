@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -233,7 +234,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
     if (!dateFile.exists()) {
       throw new NoLastInstrumentationDateFoundException();
     }
-    return Long.parseLong(new String(Files.toByteArray(dateFile)));
+    return Long.parseLong(new String(Files.toByteArray(dateFile), StandardCharsets.UTF_8));
   }
 
   /**

@@ -31,20 +31,21 @@
 
 package com.cedarsoft.test.utils;
 
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.*;
+import org.junit.*;
+import org.junit.rules.*;
+
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.google.common.io.ByteStreams;
-import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.Assertions;
-import org.junit.*;
-import org.junit.rules.*;
-
-import java.io.File;
-import java.io.IOException;
-import org.xml.sax.SAXException;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -130,13 +131,13 @@ public class AssertUtilsTest {
   @Test
   public void testXml2WComments() throws Exception {
     try {
-      AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml"))), "<xml><!--comment2--></xml>", true, false);
+      AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, false);
       fail("Where is the Exception");
     } catch (ComparisonFailure e) {
       Assertions.assertThat(e.getMessage()).startsWith("XML comparison failed expected");
     }
 
-    AssertUtils.assertXMLEquals( "err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream( "AssertUtilsTest.2.xml" ))), "<xml><!--comment2--></xml>", true, true );
+    AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
   }
 
   @Test

@@ -31,11 +31,14 @@
 
 package com.cedarsoft.crypt.xml;
 
-import com.cedarsoft.crypt.X509Support;
-import org.junit.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.security.PrivateKey;
+import java.util.Collections;
+import java.util.Iterator;
 
 import javax.xml.crypto.XMLStructure;
 import javax.xml.crypto.dom.DOMStructure;
@@ -55,13 +58,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.security.PrivateKey;
-import java.util.Collections;
-import java.util.Iterator;
 
-import static org.junit.Assert.*;
+import org.junit.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.cedarsoft.crypt.X509Support;
 
 
 /**
@@ -112,7 +115,7 @@ public class XmlSignTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     TransformerFactory.newInstance().newTransformer().transform( new DOMSource( doc ), new StreamResult( out ) );
 
-    assertEquals( SIGNED, new String( out.toByteArray() ) );
+    assertEquals(SIGNED, new String(out.toByteArray(), StandardCharsets.UTF_8));
   }
 
   @Test

@@ -31,13 +31,12 @@
 
 package com.cedarsoft.crypt;
 
-import org.apache.commons.codec.binary.Base64;
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.crypto.Cipher;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
 import java.security.cert.CertificateFactory;
@@ -45,7 +44,10 @@ import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 
-import static org.junit.Assert.*;
+import javax.crypto.Cipher;
+
+import org.apache.commons.codec.binary.Base64;
+import org.junit.*;
 
 /**
  * <p>
@@ -59,8 +61,8 @@ public class CertTest {
   @Test
   public void testSupport() throws IOException, GeneralSecurityException {
     X509Support support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
-    assertEquals( SCRAMBLED, new String( Base64.encodeBase64( support.cipher( PLAINTEXT.getBytes() ) ) ) );
-    assertEquals( PLAINTEXT, new String( support.decipher( Base64.decodeBase64( SCRAMBLED.getBytes() ) ) ) );
+    assertEquals(SCRAMBLED, new String(Base64.encodeBase64(support.cipher(PLAINTEXT.getBytes())), StandardCharsets.UTF_8));
+    assertEquals(PLAINTEXT, new String(support.decipher(Base64.decodeBase64(SCRAMBLED.getBytes())), StandardCharsets.UTF_8));
   }
 
   @Test
@@ -93,7 +95,7 @@ public class CertTest {
     cipher.init( Cipher.DECRYPT_MODE, cert );
 
     byte[] clear = cipher.doFinal( Base64.decodeBase64( SCRAMBLED.getBytes() ) );
-    assertEquals( PLAINTEXT, new String( clear ) );
+    assertEquals(PLAINTEXT, new String(clear, StandardCharsets.UTF_8));
   }
 
   @Test
@@ -114,7 +116,7 @@ public class CertTest {
     cipher.init( Cipher.ENCRYPT_MODE, privKey );
 
     byte[] bytes = cipher.doFinal( PLAINTEXT.getBytes() );
-    assertEquals( SCRAMBLED, new String( Base64.encodeBase64( bytes ) ) );
+    assertEquals(SCRAMBLED, new String(Base64.encodeBase64(bytes), StandardCharsets.UTF_8));
   }
 }
 

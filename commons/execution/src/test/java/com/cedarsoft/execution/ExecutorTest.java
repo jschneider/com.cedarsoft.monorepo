@@ -31,21 +31,19 @@
 
 package com.cedarsoft.execution;
 
-import com.cedarsoft.test.utils.MockitoTemplate;
-import com.google.common.io.ByteStreams;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-import javax.annotation.Nonnull;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.*;
 import org.mockito.Matchers;
 import org.mockito.Mock;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import com.cedarsoft.test.utils.MockitoTemplate;
+import com.google.common.io.ByteStreams;
 
 
 /**
@@ -111,8 +109,8 @@ public class ExecutorTest {
   @Test
   public void testOutput() throws Exception {
     Process process = new ProcessBuilder( "java", "-version" ).start();
-    assertEquals( "", new String( ByteStreams.toByteArray( process.getInputStream() ) ) );
-    assertTrue( new String( ByteStreams.toByteArray( process.getErrorStream() ) ).startsWith( "java" ) );
+    assertEquals("", new String(ByteStreams.toByteArray(process.getInputStream()), StandardCharsets.UTF_8));
+    assertTrue( new String( ByteStreams.toByteArray( process.getErrorStream() ), StandardCharsets.UTF_8 ).startsWith( "java" ) );
   }
 
   @Test

@@ -31,19 +31,22 @@
 
 package com.cedarsoft.crypt.xml;
 
-import com.cedarsoft.crypt.X509Support;
-import org.junit.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 
-import static org.junit.Assert.*;
+import org.junit.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+import com.cedarsoft.crypt.X509Support;
 
 /**
  *
@@ -74,7 +77,7 @@ public class XmlSignatureSupportTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     TransformerFactory.newInstance().newTransformer().transform( new DOMSource( signedDocument ), new StreamResult( out ) );
 
-    assertEquals( XmlSignTest.SIGNED, new String( out.toByteArray() ) );
+    assertEquals(XmlSignTest.SIGNED, new String(out.toByteArray(), StandardCharsets.UTF_8));
     assertEquals( XmlSignTest.SIGNED, out.toString() );
   }
 
@@ -101,7 +104,7 @@ public class XmlSignatureSupportTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     TransformerFactory.newInstance().newTransformer().transform( new DOMSource( original ), new StreamResult( out ) );
 
-    assertEquals( NEW_UNSINGED, new String( out.toByteArray() ) );
+    assertEquals(NEW_UNSINGED, new String(out.toByteArray(), StandardCharsets.UTF_8));
   }
 
   public static final String LINE_SEPARATOR = System.getProperty("line.separator");

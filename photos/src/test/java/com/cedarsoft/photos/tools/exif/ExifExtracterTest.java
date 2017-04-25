@@ -28,15 +28,17 @@
 
 package com.cedarsoft.photos.tools.exif;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.annotation.Nonnull;
+
+import org.junit.*;
+import org.junit.rules.*;
 
 /**
  *
@@ -67,7 +69,7 @@ public class ExifExtracterTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     extractor.extractDetailed(source, out);
 
-    String content = new String(out.toByteArray());
+    String content = new String(out.toByteArray(), StandardCharsets.UTF_8);
 
     assertThat(content).contains("272\tModel\tCanon EOS 7D");
   }

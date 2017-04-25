@@ -41,6 +41,8 @@ import org.junit.*;
 import org.junit.experimental.theories.*;
 
 import javax.annotation.Nonnull;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class RoomSerializerJsonTest extends AbstractSerializerTest2<Room> {
 
   @Override
   protected void verifySerialized( @Nonnull Entry<Room> entry, @Nonnull byte[] serialized ) throws Exception {
-    JsonUtils.assertJsonEquals( new String( entry.getExpected(), Charsets.UTF_8 ), new String( serialized ) );
+    JsonUtils.assertJsonEquals(new String(entry.getExpected(), StandardCharsets.UTF_8 ), new String(serialized ) );
   }
 
   @DataPoint

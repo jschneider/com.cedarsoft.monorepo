@@ -31,26 +31,29 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.serialization.SerializationException;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionMismatchException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.xml.XmlCommons;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
 import org.apache.commons.io.Charsets;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.junit.*;
 import org.junit.rules.*;
 
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.SerializationException;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionMismatchException;
+import com.cedarsoft.version.VersionRange;
+import com.cedarsoft.xml.XmlCommons;
 
 /**
  *
@@ -85,7 +88,7 @@ public class StaxMateSerializerTest extends AbstractXmlSerializerTest<String> {
   @Override
   protected void verifySerialized( @Nonnull byte[] serialized ) throws Exception {
     super.verifySerialized( serialized );
-    assertTrue( XmlCommons.format( new String( serialized, Charsets.UTF_8 ) ), new String( serialized ).contains( "xmlns=\"http://www.lang.java/String/1.5.3\"" ) );
+    assertTrue(XmlCommons.format(new String(serialized, Charsets.UTF_8)), new String(serialized, StandardCharsets.UTF_8).contains("xmlns=\"http://www.lang.java/String/1.5.3\""));
   }
 
   @Nonnull

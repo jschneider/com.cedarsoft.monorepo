@@ -31,20 +31,23 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.Charsets;
+import org.junit.*;
+import org.junit.experimental.theories.*;
+
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.xml.XmlCommons;
-import org.apache.commons.io.Charsets;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -65,7 +68,7 @@ public class FileNameSerializerTest extends AbstractXmlSerializerTest2<FileName>
   @Override
   protected void verifySerialized( @Nonnull Entry<FileName> entry, @Nonnull byte[] serialized ) throws Exception {
     super.verifySerialized( entry, serialized );
-    assertTrue( XmlCommons.format( new String( serialized, Charsets.UTF_8 ) ), new String( serialized ).contains( "xmlns=\"http://www.cedarsoft.com/file/fileName/" + getSerializer().getFormatVersion() + "\"" ) );
+    assertTrue(XmlCommons.format(new String(serialized, Charsets.UTF_8)), new String(serialized, StandardCharsets.UTF_8).contains("xmlns=\"http://www.cedarsoft.com/file/fileName/" + getSerializer().getFormatVersion() + "\""));
   }
 
   @Test
