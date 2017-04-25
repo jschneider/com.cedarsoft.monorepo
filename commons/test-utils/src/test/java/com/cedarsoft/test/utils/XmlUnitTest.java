@@ -31,14 +31,14 @@
 
 package com.cedarsoft.test.utils;
 
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.assertj.core.api.*;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.junit.*;
 import org.xml.sax.SAXException;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * <p>XmlUnitTest class.</p>
@@ -100,20 +100,26 @@ public class XmlUnitTest {
 
   @Test
   public void testEmpty() throws IOException, SAXException {
+    boolean failed = false;
+
     try {
       AssertUtils.assertXMLEquals( "", "<xml/>" );
-      fail( "Where is the Exception" );
-    } catch ( AssertionError e ) {
+      failed = true;
+    } catch (AssertionError ignore) {
     }
+    Assertions.assertThat(failed).isFalse();
     try {
       AssertUtils.assertXMLEquals( "", "" );
-      fail( "Where is the Exception" );
-    } catch ( AssertionError e ) {
+      failed = true;
+    } catch (AssertionError ignore) {
     }
+    Assertions.assertThat(failed).isFalse();
     try {
       AssertUtils.assertXMLEquals( "<xml/>", "" );
-      fail( "Where is the Exception" );
-    } catch ( AssertionError e ) {
+      failed = true;
+    } catch (AssertionError ignore) {
     }
+
+    Assertions.assertThat(failed).isFalse();
   }
 }

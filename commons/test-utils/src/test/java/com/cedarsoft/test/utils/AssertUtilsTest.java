@@ -112,9 +112,11 @@ public class AssertUtilsTest {
 
     try {
       AssertUtils.assertEquals( getClass().getResource( "equals.txt" ), "other!" );
-      fail( "Where is the Exception" );
     } catch ( AssertionError ignore ) {
+      return;
     }
+
+    fail( "Where is the Exception" );
   }
 
   @Test
