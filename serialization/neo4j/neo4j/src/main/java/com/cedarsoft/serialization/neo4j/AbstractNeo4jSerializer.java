@@ -110,9 +110,9 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
     }
   }
 
-  public <T> void serializeWithRelationships( @Nonnull Iterable<? extends T> objects, @Nonnull Class<T> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion ) throws IOException {
+  public <A> void serializeWithRelationships(@Nonnull Iterable<? extends A> objects, @Nonnull Class<A> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion ) throws IOException {
     int index = 0;
-    for ( T object : objects ) {
+    for ( A object : objects ) {
       serializeWithRelationship(object, type, node, relationshipType, formatVersion, index);
       index++;
     }
@@ -126,17 +126,17 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
    * @param node             the (current) node that is the start for the relationship
    * @param relationshipType the type of the relationship
    * @param formatVersion    the format version
-   * @param <T>              the type
+   * @param <A>              the type
    * @throws IOException if there is an io problem
    */
-  public <T> void serializeWithRelationship(@Nonnull T object, @Nonnull Class<T> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion) throws IOException {
+  public <A> void serializeWithRelationship(@Nonnull A object, @Nonnull Class<A> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion) throws IOException {
     serializeWithRelationship(object, type, node, relationshipType, formatVersion, null);
   }
 
   /**
    * Serializes with relationship. Adds an optional index
    */
-  protected <T> void serializeWithRelationship(@Nonnull T object, @Nonnull Class<T> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion, @Nullable Integer index) throws IOException {
+  protected <A> void serializeWithRelationship(@Nonnull A object, @Nonnull Class<A> type, @Nonnull Node node, @Nonnull RelationshipType relationshipType, @Nonnull Version formatVersion, @Nullable Integer index) throws IOException {
     Node targetNode = node.getGraphDatabase().createNode();
     Relationship relationship = node.createRelationshipTo(targetNode, relationshipType);
 
@@ -149,20 +149,20 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
   }
 
   @Nonnull
-  public <T> T deserializeWithRelationship( @Nonnull Class<T> type, @Nonnull RelationshipType relationshipType, @Nonnull Node node, @Nonnull Version formatVersion ) throws IOException {
+  public <A> A deserializeWithRelationship(@Nonnull Class<A> type, @Nonnull RelationshipType relationshipType, @Nonnull Node node, @Nonnull Version formatVersion ) throws IOException {
     @Nullable Relationship relationship = node.getSingleRelationship( relationshipType, Direction.OUTGOING );
     assert relationship != null;
     return deserialize( type, formatVersion, relationship.getEndNode() );
   }
 
   @Nonnull
-  public <T> List<? extends T> deserializeWithRelationships( @Nonnull Class<T> type, @Nonnull RelationshipType relationshipType, @Nonnull Node node, @Nonnull Version formatVersion ) throws IOException {
-    List<T> deserializedList = new ArrayList<>();
-    Map<T, Integer> indices = new HashMap<>();
+  public <A> List<? extends A> deserializeWithRelationships(@Nonnull Class<A> type, @Nonnull RelationshipType relationshipType, @Nonnull Node node, @Nonnull Version formatVersion ) throws IOException {
+    List<A> deserializedList = new ArrayList<>();
+    Map<A, Integer> indices = new HashMap<>();
 
     for ( Relationship relationship : node.getRelationships( relationshipType, Direction.OUTGOING ) ) {
       Node endNode = relationship.getEndNode();
-      T deserialized = deserialize(type, formatVersion, endNode);
+      A deserialized = deserialize(type, formatVersion, endNode);
       deserializedList.add(deserialized);
 
       @Nullable Integer index = (Integer) relationship.getProperty(PROPERTY_ORDER_INDEX);
@@ -172,9 +172,9 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
     }
 
     if (deserializedList.size() > 1 && !indices.isEmpty()) {
-      Collections.sort(deserializedList, new Comparator<T>() {
+      Collections.sort(deserializedList, new Comparator<A>() {
         @Override
-        public int compare(T o1, T o2) {
+        public int compare(A o1, A o2) {
           @Nullable Integer index1 = indices.get(o1);
           @Nullable Integer index2 = indices.get(o2);
 

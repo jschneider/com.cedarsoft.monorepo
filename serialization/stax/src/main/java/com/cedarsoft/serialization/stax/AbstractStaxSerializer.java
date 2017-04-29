@@ -38,14 +38,12 @@ import com.cedarsoft.serialization.AbstractXmlSerializer;
 import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.reflect.Constructor;
 
 /**
  * Abstract base class for serializer using stax.
@@ -107,22 +105,22 @@ public abstract class AbstractStaxSerializer<T> extends AbstractStaxBasedSeriali
    * @throws XMLStreamException if there is an xml problem
    * @throws IOException if there is an io problem
    */
-  protected <T> void serializeCollection( @Nonnull Iterable<? extends T> objects, @Nonnull Class<T> type, @Nonnull String elementName, @Nonnull XMLStreamWriter serializeTo, @Nonnull Version formatVersion ) throws XMLStreamException, IOException {
-    AbstractXmlSerializer<? super T, XMLStreamWriter, XMLStreamReader, XMLStreamException> serializer = getSerializer( type );
+  protected <CT> void serializeCollection(@Nonnull Iterable<? extends CT> objects, @Nonnull Class<CT> type, @Nonnull String elementName, @Nonnull XMLStreamWriter serializeTo, @Nonnull Version formatVersion ) throws XMLStreamException, IOException {
+    AbstractXmlSerializer<? super CT, XMLStreamWriter, XMLStreamReader, XMLStreamException> serializer = getSerializer(type );
     Version resolvedVersion = getDelegatesMappings().resolveVersion( type, formatVersion );
 
-    for ( T object : objects ) {
+    for ( CT object : objects ) {
       serializeTo.writeStartElement( elementName );
       serializer.serialize( serializeTo, object, resolvedVersion );
       serializeTo.writeEndElement();
     }
   }
 
-  protected <T> void serializeCollection( @Nonnull Iterable<? extends T> objects, @Nonnull Class<T> type, @Nonnull XMLStreamWriter serializeTo, @Nonnull Version formatVersion ) throws XMLStreamException, IOException {
-    AbstractXmlSerializer<? super T, XMLStreamWriter, XMLStreamReader, XMLStreamException> serializer = getSerializer( type );
+  protected <CT> void serializeCollection(@Nonnull Iterable<? extends CT> objects, @Nonnull Class<CT> type, @Nonnull XMLStreamWriter serializeTo, @Nonnull Version formatVersion ) throws XMLStreamException, IOException {
+    AbstractXmlSerializer<? super CT, XMLStreamWriter, XMLStreamReader, XMLStreamException> serializer = getSerializer(type );
     Version resolvedVersion = getDelegatesMappings().resolveVersion( type, formatVersion );
 
-    for ( T object : objects ) {
+    for ( CT object : objects ) {
       serializeTo.writeStartElement( serializer.getDefaultElementName() );
       serializer.serialize( serializeTo, object, resolvedVersion );
       serializeTo.writeEndElement();
