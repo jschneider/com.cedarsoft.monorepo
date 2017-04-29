@@ -45,7 +45,7 @@ public class LookupChangeListenerMock implements LookupChangeListener<Object> {
   private List<Entry<?>> entries = new ArrayList<Entry<?>>();
 
   public <T> void addExpected( @Nonnull Class<T> type, T oldValue, T newValue ) {
-    entries.add( new Entry<T>( type, oldValue, newValue ) );
+    entries.add(new Entry<T>(type, oldValue, newValue));
   }
 
   public void verify() {
@@ -75,7 +75,7 @@ public class LookupChangeListenerMock implements LookupChangeListener<Object> {
 
   }
 
-  private class Entry<T> {
+  private static class Entry<T> {
     private final Class<T> type;
     private final T oldValue;
     private final T newValue;
