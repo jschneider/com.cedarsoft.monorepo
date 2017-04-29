@@ -90,7 +90,7 @@ public class XmlSignTest {
     Reference ref = fac.newReference( "#invoice", fac.newDigestMethod( DigestMethod.SHA256, null ) );
 
     // Step 3
-    Document xmlDocument = dbf.newDocumentBuilder().parse( new ByteArrayInputStream( UNSIGNED.getBytes() ) );
+    Document xmlDocument = dbf.newDocumentBuilder().parse( new ByteArrayInputStream( UNSIGNED.getBytes(StandardCharsets.UTF_8) ) );
     Node invoice = xmlDocument.getDocumentElement();
     XMLStructure content = new DOMStructure( invoice );
     XMLObject xmlObject = fac.newXMLObject( Collections.singletonList( content ), "invoice", null, null );
@@ -126,7 +126,7 @@ public class XmlSignTest {
     // Step 2
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     dbf.setNamespaceAware( true );
-    Document doc = dbf.newDocumentBuilder().parse( new ByteArrayInputStream( SIGNED.getBytes() ) );
+    Document doc = dbf.newDocumentBuilder().parse( new ByteArrayInputStream( SIGNED.getBytes(StandardCharsets.UTF_8) ) );
 
     // Step 3
     NodeList nl = doc.getElementsByTagNameNS( XMLSignature.XMLNS, "Signature" );

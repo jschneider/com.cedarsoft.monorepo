@@ -70,7 +70,7 @@ public class XmlSignatureSupportTest {
   public void testSign() throws Exception {
     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     builderFactory.setNamespaceAware( true );
-    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.UNSIGNED.getBytes() ) );
+    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.UNSIGNED.getBytes(StandardCharsets.UTF_8) ) );
 
     Document signedDocument = signatureSupport.sign( doc );
 
@@ -85,7 +85,7 @@ public class XmlSignatureSupportTest {
   public void testVerify() throws Exception {
     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     builderFactory.setNamespaceAware( true );
-    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.SIGNED.getBytes() ) );
+    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.SIGNED.getBytes(StandardCharsets.UTF_8) ) );
     assertTrue( signatureSupport.hasValidSignature( doc ) );
   }
 
@@ -94,7 +94,7 @@ public class XmlSignatureSupportTest {
     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     builderFactory.setNamespaceAware( true );
 
-    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.SIGNED.getBytes() ) );
+    Document doc = builderFactory.newDocumentBuilder().parse( new ByteArrayInputStream( XmlSignTest.SIGNED.getBytes(StandardCharsets.UTF_8) ) );
 
     Node originalNode = signatureSupport.getOriginalNode( doc );
     assertNotNull( originalNode );

@@ -39,6 +39,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 /**
@@ -100,7 +101,7 @@ public class HashCalculator {
    */
   @Nonnull
   public static Hash calculate( @Nonnull MessageDigest messageDigest, @Nonnull String value ) {
-    return calculate( messageDigest, value.getBytes() );
+    return calculate( messageDigest, value.getBytes(StandardCharsets.UTF_8) );
   }
 
   /**

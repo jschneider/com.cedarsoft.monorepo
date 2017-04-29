@@ -33,6 +33,8 @@ package com.cedarsoft.crypt;
 
 import org.junit.*;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 
 /**
@@ -41,11 +43,11 @@ import static org.junit.Assert.*;
 public class SignatureTest {
   @Test
   public void testIt() {
-    assertEquals( new Signature( "asdf".getBytes() ), new Signature( "asdf".getBytes() ) );
-    assertEquals( new Signature( "asdf2".getBytes() ), new Signature( "asdf2".getBytes() ) );
-    assertFalse( new Signature( "asdf2".getBytes() ).equals( new Signature( "asdfNOOOOOOOOOOOOOO".getBytes() ) ) );
-    assertFalse( new Signature( "asdf2".getBytes() ).equals( null ) );
-    assertFalse( new Signature( "asdf2".getBytes() ).equals( "asdf" ) );
+    assertEquals(new Signature( "asdf".getBytes(StandardCharsets.UTF_8) ), new Signature("asdf".getBytes(StandardCharsets.UTF_8) ) );
+    assertEquals( new Signature( "asdf2".getBytes(StandardCharsets.UTF_8) ), new Signature( "asdf2".getBytes(StandardCharsets.UTF_8) ) );
+    assertFalse( new Signature( "asdf2".getBytes(StandardCharsets.UTF_8) ).equals( new Signature( "asdfNOOOOOOOOOOOOOO".getBytes(StandardCharsets.UTF_8) ) ) );
+    assertFalse( new Signature( "asdf2".getBytes(StandardCharsets.UTF_8) ).equals( null ) );
+    assertFalse( new Signature( "asdf2".getBytes(StandardCharsets.UTF_8) ).equals( "asdf" ) );
   }
 
 }

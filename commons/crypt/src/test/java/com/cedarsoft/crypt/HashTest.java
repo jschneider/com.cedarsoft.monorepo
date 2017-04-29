@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -103,7 +104,7 @@ public class HashTest {
 
   @Test
   public void testRound() {
-    Hash hash = new Hash( Algorithm.SHA256, "asdf".getBytes() );
+    Hash hash = new Hash( Algorithm.SHA256, "asdf".getBytes(StandardCharsets.UTF_8) );
 
     assertEquals( "61736466", hash.getValueAsHex() );
     assertEquals( Hash.fromHex( hash.getAlgorithm(), hash.getValueAsHex() ), hash );

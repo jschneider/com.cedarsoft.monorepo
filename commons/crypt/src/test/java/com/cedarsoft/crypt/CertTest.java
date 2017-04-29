@@ -61,23 +61,23 @@ public class CertTest {
   @Test
   public void testSupport() throws IOException, GeneralSecurityException {
     X509Support support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
-    assertEquals(SCRAMBLED, new String(Base64.encodeBase64(support.cipher(PLAINTEXT.getBytes())), StandardCharsets.UTF_8));
-    assertEquals(PLAINTEXT, new String(support.decipher(Base64.decodeBase64(SCRAMBLED.getBytes())), StandardCharsets.UTF_8));
+    assertEquals(SCRAMBLED, new String(Base64.encodeBase64(support.cipher(PLAINTEXT.getBytes(StandardCharsets.UTF_8))), StandardCharsets.UTF_8));
+    assertEquals(PLAINTEXT, new String(support.decipher(Base64.decodeBase64(SCRAMBLED.getBytes(StandardCharsets.UTF_8))), StandardCharsets.UTF_8));
   }
 
   @Test
   public void testSign() throws Exception {
     X509Support support = new X509Support( getClass().getResource( "/test.crt" ), getClass().getResource( "/test.der" ) );
 
-    assertFalse( support.verifySignature( PLAINTEXT.getBytes(), new Signature( SCRAMBLED.substring( 0, 128 ).getBytes() ) ) );
+    assertFalse( support.verifySignature( PLAINTEXT.getBytes(StandardCharsets.UTF_8), new Signature( SCRAMBLED.substring( 0, 128 ).getBytes(StandardCharsets.UTF_8) ) ) );
 
-    Signature signature = support.sign( PLAINTEXT.getBytes() );
+    Signature signature = support.sign( PLAINTEXT.getBytes(StandardCharsets.UTF_8) );
     assertNotNull( signature );
-    assertTrue( support.verifySignature( PLAINTEXT.getBytes(), signature ) );
+    assertTrue( support.verifySignature( PLAINTEXT.getBytes(StandardCharsets.UTF_8), signature ) );
 
 
     X509Support support2 = new X509Support( getClass().getResource( "/test.crt" ) );
-    assertTrue( support2.verifySignature( PLAINTEXT.getBytes(), signature ) );
+    assertTrue( support2.verifySignature( PLAINTEXT.getBytes(StandardCharsets.UTF_8), signature ) );
   }
 
   @Test
@@ -94,7 +94,7 @@ public class CertTest {
     Cipher cipher = Cipher.getInstance( "RSA" );
     cipher.init( Cipher.DECRYPT_MODE, cert );
 
-    byte[] clear = cipher.doFinal( Base64.decodeBase64( SCRAMBLED.getBytes() ) );
+    byte[] clear = cipher.doFinal( Base64.decodeBase64( SCRAMBLED.getBytes(StandardCharsets.UTF_8) ) );
     assertEquals(PLAINTEXT, new String(clear, StandardCharsets.UTF_8));
   }
 
@@ -115,7 +115,7 @@ public class CertTest {
     Cipher cipher = Cipher.getInstance( "RSA" );
     cipher.init( Cipher.ENCRYPT_MODE, privKey );
 
-    byte[] bytes = cipher.doFinal( PLAINTEXT.getBytes() );
+    byte[] bytes = cipher.doFinal( PLAINTEXT.getBytes(StandardCharsets.UTF_8) );
     assertEquals(SCRAMBLED, new String(Base64.encodeBase64(bytes), StandardCharsets.UTF_8));
   }
 }

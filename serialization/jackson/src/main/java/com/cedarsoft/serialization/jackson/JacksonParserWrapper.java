@@ -165,8 +165,9 @@ public class JacksonParserWrapper {
     return getParser().readValueAs( valueType );
   }
 
+  @SuppressWarnings("TypeParameterUnusedInFormals")
   public <A> A readValueAs(TypeReference<?> valueTypeRef ) throws IOException, JsonProcessingException {
-    return getParser().<A>readValueAs(valueTypeRef );
+    return getParser().readValueAs(valueTypeRef );
   }
 
   @Nonnull

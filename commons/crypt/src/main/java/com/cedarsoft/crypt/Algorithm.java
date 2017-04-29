@@ -77,7 +77,7 @@ public enum Algorithm {
   }
 
   @Nonnull
-  private final List<String> alternativeNames;
+  private final ImmutableList<String> alternativeNames;
 
   /**
    * Creates a new algorithm.
