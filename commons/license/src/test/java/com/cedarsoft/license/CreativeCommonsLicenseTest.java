@@ -33,6 +33,7 @@ package com.cedarsoft.license;
 
 import org.junit.*;
 
+import javax.annotation.Nullable;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Locale;
@@ -54,10 +55,13 @@ public class CreativeCommonsLicenseTest {
     assertNotNull( License.CC_BY_SA.getUrl() );
 
     //Ensure different urls
-    Set<URL> urls = new HashSet<URL>();
+    Set<String> urls = new HashSet<>();
     for ( CreativeCommonsLicense license : License.CC_LICENSES ) {
       assertNotNull( license );
-      urls.add( license.getUrl() );
+      @Nullable URL url = license.getUrl();
+      if (url != null) {
+        urls.add(url.toString() );
+      }
     }
 
     assertEquals( 6, urls.size() );
