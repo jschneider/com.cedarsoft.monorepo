@@ -87,13 +87,4 @@ public class StaxMateSupport {
 
     StaxSupport.clear();
   }
-
-  public static void enableJson() {
-    clear();
-    StaxSupport.enableJson();
-  }
-
-  public static boolean isJsonEnabled() {
-    return StaxSupport.isJsonEnabled();
-  }
 }

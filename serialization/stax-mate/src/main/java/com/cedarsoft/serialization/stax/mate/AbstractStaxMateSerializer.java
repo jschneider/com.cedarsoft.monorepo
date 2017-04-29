@@ -66,9 +66,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractStaxBasedSer
     try {
       SMOutputFactory factory = StaxMateSupport.getSmOutputFactory();
       SMOutputDocument doc = factory.createOutputDocument( out );
-      if (! StaxMateSupport.isJsonEnabled() ) {
-        doc.setIndentation( INDENT_STR, 1, 2 );
-      }
+      doc.setIndentation( INDENT_STR, 1, 2 );
 
       String nameSpaceUri = getNameSpace();
       SMNamespace nameSpace = doc.getNamespace( nameSpaceUri );

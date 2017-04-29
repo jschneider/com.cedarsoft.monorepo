@@ -118,18 +118,4 @@ public class StaxSupport {
     StaxSupport.XML_INPUT_FACTORY.remove();
     StaxSupport.XML_OUTPUT_FACTORY.remove();
   }
-
-  public static void enableJson() {
-    try {
-      XML_INPUT_FACTORY.set( ( XMLInputFactory ) Class.forName("org.codehaus.jettison.badgerfish.BadgerFishXMLInputFactory").getDeclaredConstructor().newInstance());
-      XML_OUTPUT_FACTORY.set( ( XMLOutputFactory ) Class.forName("org.codehaus.jettison.badgerfish.BadgerFishXMLOutputFactory").getDeclaredConstructor().newInstance());
-    } catch ( Exception e ) {
-      throw new SerializationException( e, SerializationException.Details.XML_EXCEPTION, e.getMessage() );
-    }
-  }
-
-  public static boolean isJsonEnabled() {
-    XMLInputFactory factory = XML_INPUT_FACTORY.get();
-    return factory.getClass().getName().equals( "org.codehaus.jettison.badgerfish.BadgerFishXMLInputFactory" );
-  }
 }

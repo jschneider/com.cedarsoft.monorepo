@@ -109,18 +109,6 @@ public class StaxMateSerializerTest extends AbstractXmlSerializerTest<String> {
   }
 
   @Test
-  public void testJson() throws Exception {
-    try {
-      StaxMateSupport.enableJson();
-      ByteArrayOutputStream out = new ByteArrayOutputStream();
-      getSerializer().serialize( "daObject", out );
-      assertEquals( "{\"aString\":{\"@xmlns\":{\"$\":\"http:\\/\\/www.lang.java\\/String\\/1.5.3\"},\"$\":\"daObject\"}}", out.toString() );
-    } finally {
-      StaxMateSupport.clear();
-    }
-  }
-
-  @Test
   public void testNoVersion() throws IOException {
     expectedException.expect( VersionException.class );
     getSerializer().deserialize( new ByteArrayInputStream( "<aString>asdf</aString>".getBytes() ) );
