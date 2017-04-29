@@ -80,21 +80,21 @@ public abstract class AbstractSerializer<T, S, D, E extends Throwable, O, I> imp
   }
 
   @Nonnull
-  public <T> DelegatesMappings<S, D, E, O, I>.FluentFactory<T> add( @Nonnull PluggableSerializer<? super T, S, D, E, O, I> pluggableSerializer ) {
+  public <DT> DelegatesMappings<S, D, E, O, I>.FluentFactory<DT> add(@Nonnull PluggableSerializer<? super DT, S, D, E, O, I> pluggableSerializer ) {
     return delegatesMappings.add( pluggableSerializer );
   }
 
-  public <T> void serialize( @Nonnull T object, @Nonnull Class<T> type, @Nonnull S deserializeTo, @Nonnull Version formatVersion ) throws E, IOException {
+  public <DT> void serialize(@Nonnull DT object, @Nonnull Class<DT> type, @Nonnull S deserializeTo, @Nonnull Version formatVersion ) throws E, IOException {
     delegatesMappings.serialize( object, type, deserializeTo, formatVersion );
   }
 
   @Nonnull
-  public <T> PluggableSerializer<? super T, S, D, E, O, I> getSerializer( @Nonnull Class<T> type ) {
+  public <DT> PluggableSerializer<? super DT, S, D, E, O, I> getSerializer(@Nonnull Class<DT> type ) {
     return delegatesMappings.getSerializer( type );
   }
 
   @Nonnull
-  public <T> T deserialize( @Nonnull Class<T> type, @Nonnull Version formatVersion, @Nonnull D deserializeFrom ) throws E, IOException {
+  public <DT> DT deserialize(@Nonnull Class<DT> type, @Nonnull Version formatVersion, @Nonnull D deserializeFrom ) throws E, IOException {
     return delegatesMappings.deserialize( type, formatVersion, deserializeFrom );
   }
 
