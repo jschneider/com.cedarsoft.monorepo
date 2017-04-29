@@ -47,6 +47,7 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -115,7 +116,7 @@ public class DelegatesTest {
     assertEquals( roomSerializer.deserialize( new ByteArrayInputStream( out.toByteArray() ) ), hall );
 
     //Deserialize an old one!
-    assertEquals( roomSerializer.deserialize( new ByteArrayInputStream( ( "<room xmlns=\"room/1.0.0\">\n" +
+    assertEquals(roomSerializer.deserialize( new ByteArrayInputStream( ( "<room xmlns=\"room/1.0.0\">\n" +
       "  <description>hall</description>\n" +
       "  <doors>\n" +
       "    <door>\n" +
@@ -129,7 +130,7 @@ public class DelegatesTest {
       "      <description>window1</description>\n" +
       "    </window>\n" +
       "  </windows>\n" +
-      "</room>" ).getBytes() ) ), hall );
+      "</room>" ).getBytes(StandardCharsets.UTF_8) ) ), hall );
   }
 
   private static class MyRoomSerializer extends AbstractStaxMateSerializer<Room> {
