@@ -394,11 +394,11 @@ public abstract class AbstractStaxBasedSerializer<T, S> extends AbstractXmlSeria
    * @param enumType        the enum type
    * @param propertyName    the property name
    * @param deserializeFrom the object to deserialize from
-   * @param <T>             the type
+   * @param <E>             the type
    * @return the deserialized enum
    */
   @Nonnull
-  public <T extends Enum<T>> T deserializeEnum( @Nonnull Class<T> enumType, @Nonnull String propertyName, @Nonnull XMLStreamReader deserializeFrom ) {
+  public <E extends Enum<E>> E deserializeEnum(@Nonnull Class<E> enumType, @Nonnull String propertyName, @Nonnull XMLStreamReader deserializeFrom ) {
     String enumValue = deserializeFrom.getAttributeValue( null, propertyName );
     return Enum.valueOf( enumType, enumValue );
   }

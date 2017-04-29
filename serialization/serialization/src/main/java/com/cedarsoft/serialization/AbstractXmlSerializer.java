@@ -74,8 +74,8 @@ public abstract class AbstractXmlSerializer<T, S, D, E extends Throwable> extend
 
   @Nonnull
   @Override
-  public <T> AbstractXmlSerializer<? super T, S, D, E> getSerializer( @Nonnull Class<T> type ) {
-    return ( AbstractXmlSerializer<? super T, S, D, E> ) super.getSerializer( type );
+  public <ST> AbstractXmlSerializer<? super ST, S, D, E> getSerializer(@Nonnull Class<ST> type ) {
+    return ( AbstractXmlSerializer<? super ST, S, D, E> ) super.getSerializer(type );
   }
 
 }
