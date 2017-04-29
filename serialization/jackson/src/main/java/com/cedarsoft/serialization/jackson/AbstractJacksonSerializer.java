@@ -237,12 +237,12 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   protected void beforeTypeAndVersion( @Nonnull JacksonParserWrapper wrapper ) throws IOException, JsonProcessingException, SerializationException {
   }
 
-  protected <T> void serializeArray( @Nonnull Iterable<? extends T> elements, @Nonnull Class<T> type, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws IOException {
+  protected <A> void serializeArray(@Nonnull Iterable<? extends A> elements, @Nonnull Class<A> type, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws IOException {
     serializeArray( elements, type, null, serializeTo, formatVersion );
   }
 
-  protected <T> void serializeArray( @Nonnull Iterable<? extends T> elements, @Nonnull Class<T> type, @Nullable String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws IOException {
-    JacksonSerializer<? super T> serializer = getSerializer( type );
+  protected <A> void serializeArray(@Nonnull Iterable<? extends A> elements, @Nonnull Class<A> type, @Nullable String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws IOException {
+    JacksonSerializer<? super A> serializer = getSerializer(type );
     Version delegateVersion = delegatesMappings.getVersionMappings().resolveVersion( type, formatVersion );
 
     if ( propertyName == null ) {
@@ -250,7 +250,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
     } else {
       serializeTo.writeArrayFieldStart( propertyName );
     }
-    for ( T element : elements ) {
+    for ( A element : elements ) {
       if ( serializer.isObjectType() ) {
         serializeTo.writeStartObject();
       }
@@ -265,18 +265,18 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   }
 
   @Nonnull
-  protected <T> List<? extends T> deserializeArray(@Nonnull Class<T> type, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws IOException {
+  protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws IOException {
     return deserializeArray(type, deserializeFrom, formatVersion);
   }
 
   @Deprecated
   @Nonnull
-  protected <T> List<? extends T> deserializeArray(@Nonnull Class<T> type, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException {
+  protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException {
     return deserializeArray(type, null, deserializeFrom, formatVersion );
   }
 
   @Nonnull
-  protected <T> List<? extends T> deserializeArray(@Nonnull Class<T> type, @Nullable String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws IOException {
+  protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nullable String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws IOException {
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper(deserializeFrom);
     if (propertyName == null) {
       parserWrapper.verifyCurrentToken(JsonToken.START_ARRAY);
@@ -292,7 +292,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
       parserWrapper.nextToken();
     }
 
-    List<T> deserialized = new ArrayList<T>();
+    List<A> deserialized = new ArrayList<A>();
     while (deserializeFrom.nextToken() != JsonToken.END_ARRAY) {
       deserialized.add(deserialize(type, formatVersion, deserializeFrom));
     }
@@ -300,7 +300,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   }
 
   @Deprecated
-  protected <T> List<? extends T> deserializeArray(@Nonnull Class<T> type, @Nullable String propertyName, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+  protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nullable String propertyName, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
     return deserializeArray(type, propertyName, formatVersion, deserializeFrom);
   }
 
@@ -308,7 +308,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
    * Serializes the object if it is *not* null.
    * If the object is null nothing will be written.
    */
-  public <T> void serializeIfNotNull(@Nullable T object, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion) throws JsonProcessingException, IOException {
+  public <A> void serializeIfNotNull(@Nullable A object, @Nonnull Class<A> type, @Nonnull String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion) throws JsonProcessingException, IOException {
     if (object == null) {
       return;
     }
@@ -319,7 +319,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   /**
    * Serializes the object. Writes "null" if the object is null
    */
-  public <T> void serialize( @Nullable T object, @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws JsonProcessingException, IOException {
+  public <A> void serialize(@Nullable A object, @Nonnull Class<A> type, @Nonnull String propertyName, @Nonnull JsonGenerator serializeTo, @Nonnull Version formatVersion ) throws JsonProcessingException, IOException {
     serializeTo.writeFieldName( propertyName );
 
     //Fast exit if the value is null
@@ -328,7 +328,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
       return;
     }
 
-    JacksonSerializer<? super T> serializer = getSerializer( type );
+    JacksonSerializer<? super A> serializer = getSerializer(type );
     Version delegateVersion = delegatesMappings.getVersionMappings().resolveVersion( type, formatVersion );
     if ( serializer.isObjectType() ) {
       serializeTo.writeStartObject();
@@ -342,7 +342,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   }
 
   @Nullable
-  protected <T> T deserializeNullable( @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom ) throws IOException, JsonProcessingException {
+  protected <A> A deserializeNullable(@Nonnull Class<A> type, @Nonnull String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom ) throws IOException, JsonProcessingException {
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( deserializeFrom );
     parserWrapper.nextFieldValue( propertyName );
 
@@ -354,7 +354,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
   }
 
   @Nonnull
-  protected <T> T deserialize( @Nonnull Class<T> type, @Nonnull String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom ) throws IOException, JsonProcessingException {
+  protected <A> A deserialize(@Nonnull Class<A> type, @Nonnull String propertyName, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom ) throws IOException, JsonProcessingException {
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( deserializeFrom );
     parserWrapper.nextToken();
     parserWrapper.verifyCurrentToken( JsonToken.FIELD_NAME );
@@ -371,7 +371,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
    * Supports null values
    */
   @Nullable
-  public <T> T deserializeNullable(@Nonnull Class<T> type, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws JsonProcessingException, IOException {
+  public <A> A deserializeNullable(@Nonnull Class<A> type, @Nonnull Version formatVersion, @Nonnull JsonParser deserializeFrom) throws JsonProcessingException, IOException {
     if (deserializeFrom.getCurrentToken() == JsonToken.VALUE_NULL) {
       return null;
     }
@@ -380,8 +380,8 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
 
   @Nonnull
   @Override
-  public <T> JacksonSerializer<? super T> getSerializer( @Nonnull Class<T> type ) {
-    return ( JacksonSerializer<? super T> ) super.getSerializer( type );
+  public <A> JacksonSerializer<? super A> getSerializer(@Nonnull Class<A> type ) {
+    return ( JacksonSerializer<? super A> ) super.getSerializer(type );
   }
 
   @Override
@@ -399,26 +399,26 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
    * @param enumClass    the enum class
    * @param propertyName the property name
    * @param parser       the parser
-   * @param <T>          the type
+   * @param <A>          the type
    * @return the deserialized enum
    *
    * @throws IOException
    */
   @Nonnull
-  public <T extends Enum<T>> T deserializeEnum( @Nonnull Class<T> enumClass, @Nonnull String propertyName, @Nonnull JsonParser parser ) throws IOException {
+  public <A extends Enum<A>> A deserializeEnum(@Nonnull Class<A> enumClass, @Nonnull String propertyName, @Nonnull JsonParser parser ) throws IOException {
     JacksonParserWrapper wrapper = new JacksonParserWrapper( parser );
     wrapper.nextFieldValue( propertyName );
     return Enum.valueOf( enumClass, parser.getText() );
   }
 
   @Nonnull
-  public <T extends Enum<T>> T deserializeEnum( @Nonnull Class<T> enumClass, @Nonnull JsonParser parser ) throws IOException {
+  public <A extends Enum<A>> A deserializeEnum(@Nonnull Class<A> enumClass, @Nonnull JsonParser parser ) throws IOException {
     return Enum.valueOf( enumClass, parser.getText() );
   }
 
   @Deprecated
   @Nonnull
-  public <T extends Enum<T>> T deserializeEnum( @Nonnull Class<T> enumClass, @Nonnull String propertyName, @Nonnull JacksonParserWrapper parser ) throws IOException {
+  public <A extends Enum<A>> A deserializeEnum(@Nonnull Class<A> enumClass, @Nonnull String propertyName, @Nonnull JacksonParserWrapper parser ) throws IOException {
     parser.nextFieldValue( propertyName );
     return Enum.valueOf( enumClass, parser.getText() );
   }
