@@ -51,7 +51,6 @@ import java.io.OutputStream;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.List;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -162,12 +161,12 @@ public class JacksonParserWrapper {
     return getParser().getValueAsBoolean( defaultValue );
   }
 
-  public <T> T readValueAs( Class<T> valueType ) throws IOException, JsonProcessingException {
+  public <A> A readValueAs(Class<A> valueType ) throws IOException, JsonProcessingException {
     return getParser().readValueAs( valueType );
   }
 
-  public <T> T readValueAs( TypeReference<?> valueTypeRef ) throws IOException, JsonProcessingException {
-    return getParser().<T>readValueAs( valueTypeRef );
+  public <A> A readValueAs(TypeReference<?> valueTypeRef ) throws IOException, JsonProcessingException {
+    return getParser().<A>readValueAs(valueTypeRef );
   }
 
   @Nonnull
