@@ -70,7 +70,7 @@ public class MergingLookupTest {
     assertTrue( mergingLookup.lookups().containsKey( String.class ) );
     assertTrue( mergingLookup.lookups().containsKey( CharSequence.class ) );
     assertTrue( mergingLookup.lookups().containsKey( Integer.class ) );
-    assertEquals( new Integer( 1 ), mergingLookup.lookups().get( Integer.class ) );
+    assertEquals(1, mergingLookup.lookups().get(Integer.class ) );
   }
 
   @Test
