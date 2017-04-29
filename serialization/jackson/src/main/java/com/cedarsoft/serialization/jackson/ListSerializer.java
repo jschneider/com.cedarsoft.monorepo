@@ -39,9 +39,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 
-import javax.annotation.Nullable;
-
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -116,9 +115,9 @@ public class ListSerializer extends AbstractJacksonSerializer<List<? extends Obj
         return false;
       case VALUE_NULL:
         return null;
+      default:
+        return deserializeFrom.getText();
     }
-
-    return deserializeFrom.getText();
   }
 
   @Override
