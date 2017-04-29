@@ -101,8 +101,8 @@ public class IgnoringSerializer extends AbstractJacksonSerializer<Void> {
         return JsonToken.END_OBJECT;
       case START_ARRAY:
         return JsonToken.END_ARRAY;
+      default:
+        throw new SerializationException(SerializationException.Details.INVALID_STATE, "No end token found for <" + inToken + ">");
     }
-
-    throw new SerializationException( SerializationException.Details.INVALID_STATE, "No end token found for <" + inToken + ">" );
   }
 }
