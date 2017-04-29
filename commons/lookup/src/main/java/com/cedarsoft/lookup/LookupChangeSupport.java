@@ -189,7 +189,7 @@ public class LookupChangeSupport {
     for ( int i = 0; i < listeners.length; i += 2 ) {
       if ( listeners[i] == type ) {
         Object listener = listeners[i + 1];
-        if ( listener == lookupChangeListener || listener instanceof WeakLookupChangeListener && ( ( WeakLookupChangeListener<?> ) listener ).getWrappedListener() == lookupChangeListener ) {
+        if ((listener == lookupChangeListener) || ((listener instanceof WeakLookupChangeListener) && (((WeakLookupChangeListener<?>) listener).getWrappedListener() == lookupChangeListener))) {
           Object[] newListeners = new Object[listeners.length - 2];
           System.arraycopy( listeners, 0, newListeners, 0, i );
           System.arraycopy( listeners, i + 2, newListeners, i, listeners.length - ( i + 2 ) );
