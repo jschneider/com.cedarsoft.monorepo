@@ -32,11 +32,11 @@
 package com.cedarsoft.crypt;
 
 
+import com.google.common.collect.ImmutableList;
+
 import javax.annotation.Nonnull;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -77,7 +77,7 @@ public enum Algorithm {
   }
 
   @Nonnull
-  private final List<String> alternativeNames = new ArrayList<String>();
+  private final List<String> alternativeNames;
 
   /**
    * Creates a new algorithm.
@@ -91,7 +91,7 @@ public enum Algorithm {
     if ( alternativeNames.length == 0 ) {
       throw new IllegalArgumentException( "Need at least one algorithm name" );
     }
-    this.alternativeNames.addAll( Arrays.asList( alternativeNames ) );
+    this.alternativeNames = ImmutableList.copyOf(alternativeNames);
   }
 
   /**
