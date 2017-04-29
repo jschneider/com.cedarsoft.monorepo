@@ -1,10 +1,12 @@
 package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Immutable
 public class ErrorCode {
   private static final char SEPARATOR = '-';
   /**

@@ -2,6 +2,7 @@ package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Immutable
 public class Messages {
   @Nonnull
   private final String bundleName;

@@ -31,10 +31,13 @@
 
 package com.cedarsoft.exceptions;
 
+import javax.annotation.concurrent.Immutable;
+
 /**
  * <p>CanceledException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@Immutable
 public class CanceledException extends RuntimeException {
 }

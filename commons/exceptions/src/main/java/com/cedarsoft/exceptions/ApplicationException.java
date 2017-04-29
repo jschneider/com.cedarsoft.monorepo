@@ -3,6 +3,7 @@ package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
 import java.util.Locale;
 
@@ -11,6 +12,7 @@ import java.util.Locale;
  * @noinspection AbstractClassWithoutAbstractMethods
  */
 @SuppressWarnings( {"AbstractClassExtendsConcreteClass", "AbstractClassWithoutAbstractMethods"} )
+@Immutable
 public abstract class ApplicationException extends RuntimeException {
   @Nonnull
   private final Details details;
