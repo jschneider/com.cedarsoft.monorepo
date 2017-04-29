@@ -40,6 +40,7 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Helper class for stax
@@ -120,8 +121,8 @@ public class StaxSupport {
 
   public static void enableJson() {
     try {
-      XML_INPUT_FACTORY.set( ( XMLInputFactory ) Class.forName( "org.codehaus.jettison.badgerfish.BadgerFishXMLInputFactory" ).newInstance() );
-      XML_OUTPUT_FACTORY.set( ( XMLOutputFactory ) Class.forName( "org.codehaus.jettison.badgerfish.BadgerFishXMLOutputFactory" ).newInstance() );
+      XML_INPUT_FACTORY.set( ( XMLInputFactory ) Class.forName("org.codehaus.jettison.badgerfish.BadgerFishXMLInputFactory").getDeclaredConstructor().newInstance());
+      XML_OUTPUT_FACTORY.set( ( XMLOutputFactory ) Class.forName("org.codehaus.jettison.badgerfish.BadgerFishXMLOutputFactory").getDeclaredConstructor().newInstance());
     } catch ( Exception e ) {
       throw new SerializationException( e, SerializationException.Details.XML_EXCEPTION, e.getMessage() );
     }
