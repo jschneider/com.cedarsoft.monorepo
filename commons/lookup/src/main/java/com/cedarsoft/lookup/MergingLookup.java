@@ -45,10 +45,10 @@ import java.util.Map;
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class MergingLookup extends AbstractLookup implements Lookup {
-  private LookupChangeSupport lcs = new LookupChangeSupport( this );
+  private final LookupChangeSupport lcs = new LookupChangeSupport(this );
 
-  private Lookup first;
-  private Lookup second;
+  private final Lookup first;
+  private final Lookup second;
 
   /**
    * <p>Constructor for MergingLookup.</p>
