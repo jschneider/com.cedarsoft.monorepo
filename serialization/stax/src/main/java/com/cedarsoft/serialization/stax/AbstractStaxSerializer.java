@@ -35,6 +35,7 @@ import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.serialization.AbstractXmlSerializer;
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -85,27 +86,10 @@ public abstract class AbstractStaxSerializer<T> extends AbstractStaxBasedSeriali
     }
   }
 
-  @Nullable
-  private static final Constructor<?> INDENTING_WRITER_CONSTRUCTOR = getIndentingConstructor();
-
-  @Nullable
-  private static Constructor<?> getIndentingConstructor() {
-    try {
-      Class<?> indentingType = Class.forName("com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter");
-      return indentingType.getConstructor(XMLStreamWriter.class);
-    } catch (Exception ignore) {
-      return null;
-    }
-  }
-
   @Nonnull
   protected static XMLStreamWriter wrapWithIndent(@Nonnull XMLStreamWriter xmlStreamWriter) {
-    if (INDENTING_WRITER_CONSTRUCTOR == null) {
-      return xmlStreamWriter;
-    }
-
     try {
-      return (XMLStreamWriter) INDENTING_WRITER_CONSTRUCTOR.newInstance(xmlStreamWriter);
+      return new IndentingXMLStreamWriter(xmlStreamWriter);
     } catch (Exception ignore) {
       //We could not instantiate the writer
       return xmlStreamWriter;
