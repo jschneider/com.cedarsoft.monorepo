@@ -44,6 +44,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -146,7 +147,7 @@ public class XmlCommonsTest {
 
   @Test
   public void testParse() throws Exception {
-    Document document = XmlCommons.parse( "<xml/>".getBytes() );
+    Document document = XmlCommons.parse( "<xml/>".getBytes(StandardCharsets.UTF_8) );
     assertEquals( "xml", document.getDocumentElement().getNodeName() );
   }
 }
