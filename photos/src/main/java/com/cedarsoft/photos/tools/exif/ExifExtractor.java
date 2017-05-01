@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class ExifExtractor {
     exifTool.run(null, out, args.toArray(new String[args.size()]));
 
     if (out.toByteArray().length > 0) {
-      throw new IOException("Conversion failed due to " + new String(out.toByteArray()));
+      throw new IOException("Conversion failed due to " + new String(out.toByteArray(), StandardCharsets.UTF_8));
     }
   }
 

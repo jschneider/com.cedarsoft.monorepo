@@ -38,6 +38,7 @@ import javax.inject.Singleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * The default command line
@@ -136,7 +137,7 @@ public class DefaultCmdLine extends AbstractCmdLine {
       byte[] buffer = new byte[500];
       //noinspection ResultOfMethodCallIgnored
       getIn().read( buffer, 0, buffer.length );
-      String read = new String( buffer ).trim();
+      String read = new String(buffer, StandardCharsets.UTF_8 ).trim();
       if ( read.length() == 0 && defaultValue != null ) {
         return defaultValue;
       }
