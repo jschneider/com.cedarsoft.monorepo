@@ -1,10 +1,10 @@
 package com.cedarsoft.exceptions;
 
 
+import com.google.errorprone.annotations.Immutable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
-
 import java.util.Locale;
 
 /**
@@ -12,7 +12,6 @@ import java.util.Locale;
  * @noinspection AbstractClassWithoutAbstractMethods
  */
 @SuppressWarnings( {"AbstractClassExtendsConcreteClass", "AbstractClassWithoutAbstractMethods"} )
-@Immutable
 public abstract class ApplicationException extends RuntimeException {
   @Nonnull
   private final Details details;
@@ -129,8 +128,9 @@ public abstract class ApplicationException extends RuntimeException {
   }
 
   /**
-   *
+   * The details for the application exception
    */
+  @Immutable
   public interface Details {
     /**
      * Returns the localized message (without the error code)

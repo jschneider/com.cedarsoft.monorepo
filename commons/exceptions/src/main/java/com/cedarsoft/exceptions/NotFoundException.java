@@ -31,16 +31,11 @@
 
 package com.cedarsoft.exceptions;
 
-import javax.annotation.concurrent.Immutable;
-import java.lang.String;
-import java.lang.Throwable;
-
 /**
  * <p>NotFoundException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-@Immutable
 public class NotFoundException extends RuntimeException {
   /**
    * <p>Constructor for NotFoundException.</p>

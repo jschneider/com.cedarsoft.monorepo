@@ -2,6 +2,7 @@ package com.cedarsoft.exceptions.handling;
 
 import com.cedarsoft.exceptions.ApplicationException;
 import com.cedarsoft.exceptions.ErrorCode;
+import com.google.errorprone.annotations.Immutable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -18,7 +19,8 @@ public class MyTestException extends ApplicationException {
   /**
    * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
    */
-  public static enum TestExceptionDetails implements Details {
+  @Immutable
+  public enum TestExceptionDetails implements Details {
     ERROR_1(701),
     ERROR_2(702);
     public static final String CATEGORY_TITLE = "title";

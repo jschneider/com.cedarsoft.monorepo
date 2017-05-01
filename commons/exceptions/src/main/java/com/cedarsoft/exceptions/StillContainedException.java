@@ -32,14 +32,12 @@
 package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
 
 /**
  * <p>StillContainedException class.</p>
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-@Immutable
 public class StillContainedException extends RuntimeException {
   @Nonnull
   private final Object object;

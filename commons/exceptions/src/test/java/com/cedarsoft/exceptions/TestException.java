@@ -1,5 +1,7 @@
 package com.cedarsoft.exceptions;
 
+import com.google.errorprone.annotations.Immutable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Locale;
@@ -18,6 +20,7 @@ public class TestException extends ApplicationException {
   /**
    * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
    */
+  @Immutable
   public enum TestExceptionDetails implements Details {
     ERROR_1( 701 ),
     ERROR_2( 702 );

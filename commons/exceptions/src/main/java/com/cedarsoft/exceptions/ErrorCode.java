@@ -1,7 +1,8 @@
 package com.cedarsoft.exceptions;
 
+import com.google.errorprone.annotations.Immutable;
+
 import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -99,6 +100,7 @@ public class ErrorCode {
    * The prefix is used to structure the error codes.
    * The ids are unique within a prefix.
    */
+  @Immutable
   public static class Prefix {
     @Nonnull
     private final String prefix;

@@ -36,7 +36,7 @@ import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
+import com.google.errorprone.annotations.Immutable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -66,7 +66,7 @@ public class ExifInfo {
   public static final ExifInfo UNKNOWN = new ExifInfo();
 
   @Nonnull
-  private final Map<String, Entry> entries;
+  private final ImmutableMap<String, Entry> entries;
   @Nonnull
   public static final String UNIT_MM = "mm";
 
@@ -372,15 +372,16 @@ public class ExifInfo {
   //    return findEntry( "CircleOfConfusion" );
   //  }
 
+  @Immutable
   public static class Entry {
     private final int id;
     @Nonnull
     private final String key;
 
     @Nullable
-    private final Object value;
+    private final String value;
 
-    private Entry(int id, @Nonnull String key, @Nullable Object value) {
+    private Entry(int id, @Nonnull String key, @Nullable String value) {
       this.id = id;
       this.key = key;
       this.value = value;
@@ -396,12 +397,12 @@ public class ExifInfo {
     }
 
     @Nullable
-    public Object getValue() {
+    public String getValue() {
       return value;
     }
 
     @Nonnull
-    public Object getValueNonNull() {
+    public String getValueNonNull() {
       if (value == null) {
         throw new IllegalStateException("No value available for <" + id + ">");
       }

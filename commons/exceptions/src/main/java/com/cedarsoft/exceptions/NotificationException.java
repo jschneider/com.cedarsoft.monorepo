@@ -2,14 +2,12 @@ package com.cedarsoft.exceptions;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
 
 /**
  * Non-fatal exception. Is shown to the user as notification balloon.
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Immutable
 public class NotificationException extends RuntimeException {
   @Nonnull
   private final String title;
