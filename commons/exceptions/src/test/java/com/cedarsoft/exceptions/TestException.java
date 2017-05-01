@@ -18,7 +18,7 @@ public class TestException extends ApplicationException {
   /**
    * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
    */
-  public static enum TestExceptionDetails implements Details {
+  public enum TestExceptionDetails implements Details {
     ERROR_1( 701 ),
     ERROR_2( 702 );
     public static final String CATEGORY_TITLE = "title";
