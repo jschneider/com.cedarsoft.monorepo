@@ -40,6 +40,7 @@ import org.junit.runner.*;
 
 import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -59,7 +60,7 @@ public class IgnoringSerializerTest {
   @Theory
   public void testIt( @Nonnull String json ) throws Exception {
     JsonFactory jsonFactory = JacksonSupport.getJsonFactory();
-    JsonParser parser = jsonFactory.createParser( new ByteArrayInputStream( json.getBytes() ) );
+    JsonParser parser = jsonFactory.createParser( new ByteArrayInputStream( json.getBytes(StandardCharsets.UTF_8) ) );
 
     Void result = serializer.deserialize( parser, Version.valueOf( 1, 0, 0 ) ); //we use the override stuff to avoid version/type check
     assertThat( result ).isNull();
@@ -67,7 +68,7 @@ public class IgnoringSerializerTest {
     JsonToken nextToken = parser.nextToken();
     assertThat( nextToken ).isNull();
   }
-  
+
   @DataPoints
   public static String[] testIt() throws Exception {
     return new String[]{

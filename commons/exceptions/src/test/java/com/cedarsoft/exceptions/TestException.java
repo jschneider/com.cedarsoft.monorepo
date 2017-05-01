@@ -25,6 +25,7 @@ public class TestException extends ApplicationException {
 
     @Nonnull
     private final ErrorCode errorCode;
+
     @Nonnull
     private final Messages messages = new Messages( "com.cedarsoft.exceptions.testmessages" );
 

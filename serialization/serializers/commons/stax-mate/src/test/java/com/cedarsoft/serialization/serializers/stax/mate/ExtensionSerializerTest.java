@@ -41,6 +41,7 @@ import org.junit.experimental.theories.*;
 import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -80,6 +81,6 @@ public class ExtensionSerializerTest extends AbstractXmlSerializerTest2<Extensio
   }
 
   private Extension deserialize( String xml ) throws IOException {
-    return new ExtensionSerializer().deserialize( new ByteArrayInputStream( xml.getBytes() ) );
+    return new ExtensionSerializer().deserialize( new ByteArrayInputStream( xml.getBytes(StandardCharsets.UTF_8) ) );
   }
 }

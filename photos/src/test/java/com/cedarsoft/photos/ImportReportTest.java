@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.junit.*;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,8 +30,8 @@ public class ImportReportTest {
   @Test
   public void builder() throws Exception {
     ImportReport importReport = ImportReport.builder()
-      .imported(new Hash(Algorithm.SHA256, "asdf".getBytes()))
-      .existing(new Hash(Algorithm.SHA256, "2".getBytes()))
+      .imported(new Hash(Algorithm.SHA256, "asdf".getBytes(StandardCharsets.UTF_8)))
+      .existing(new Hash(Algorithm.SHA256, "2".getBytes(StandardCharsets.UTF_8)))
       .createdLink(new File("asdf"))
       .build();
 

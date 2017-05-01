@@ -38,6 +38,7 @@ import org.simpleframework.xml.core.Persister;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -61,7 +62,7 @@ public class SimpleXmlTest {
   public void testDeserialize() throws Exception {
     Serializer serializer = new Persister();
 
-    FileType read = serializer.read( FileType.class, new ByteArrayInputStream( XmlParserPerformance.CONTENT_SAMPLE_XSTREAM.getBytes() ) );
+    FileType read = serializer.read( FileType.class, new ByteArrayInputStream( XmlParserPerformance.CONTENT_SAMPLE_XSTREAM.getBytes(StandardCharsets.UTF_8) ) );
     assertNotNull( read.getExtension() );
   }
 }

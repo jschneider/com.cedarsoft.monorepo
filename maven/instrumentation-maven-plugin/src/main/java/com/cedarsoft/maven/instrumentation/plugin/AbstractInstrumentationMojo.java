@@ -244,7 +244,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
    */
   private void storeInstrumentationDate(long date) throws IOException {
     File dateFile = getLastInstrumentationDateFile();
-    Files.write(Long.toString(date).getBytes(), dateFile);
+    Files.write(Long.toString(date).getBytes(StandardCharsets.UTF_8), dateFile);
     getLog().debug("Stored last instrumentation date to <" + dateFile.getAbsolutePath() + ">: " + date);
   }
 

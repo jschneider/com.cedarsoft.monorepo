@@ -40,6 +40,7 @@ import org.junit.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -64,7 +65,7 @@ public class FileBasedSerializedObjectsAccessTest {
     assertEquals( 0, access.getIds().size() );
     {
       OutputStream out = access.openOut( "id" );
-      IOUtils.write( "asdf".getBytes(), out );
+      IOUtils.write("asdf".getBytes(StandardCharsets.UTF_8), out );
       out.close();
     }
 
@@ -86,7 +87,7 @@ public class FileBasedSerializedObjectsAccessTest {
     assertEquals( 0, access.getIds().size() );
     {
       OutputStream out = access.openOut( "id" );
-      IOUtils.write( "asdf".getBytes(), out );
+      IOUtils.write( "asdf".getBytes(StandardCharsets.UTF_8), out );
       out.close();
     }
 

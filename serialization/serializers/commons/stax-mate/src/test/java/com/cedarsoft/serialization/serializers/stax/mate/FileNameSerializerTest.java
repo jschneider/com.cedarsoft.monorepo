@@ -99,6 +99,6 @@ public class FileNameSerializerTest extends AbstractXmlSerializerTest2<FileName>
 
   private FileName deserialize( String xml ) throws IOException {
     FileNameSerializer serializer = new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
-    return serializer.deserialize( new ByteArrayInputStream( xml.getBytes() ) );
+    return serializer.deserialize( new ByteArrayInputStream( xml.getBytes(StandardCharsets.UTF_8) ) );
   }
 }

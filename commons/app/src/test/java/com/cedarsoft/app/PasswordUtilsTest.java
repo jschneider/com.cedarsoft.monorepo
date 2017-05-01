@@ -36,6 +36,8 @@ import org.apache.commons.codec.binary.Hex;
 import org.junit.*;
 import org.junit.rules.*;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 
 /**
@@ -59,10 +61,10 @@ public class PasswordUtilsTest {
 
   @Test
   public void testEx() throws InvalidPasswordException {
-    PasswordUtils.validatePasswordHash( "a".getBytes(), "a".getBytes() );
+    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "a".getBytes() );
 
     expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(), "b".getBytes() );
+    PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "b".getBytes() );
   }
 
   @Test
@@ -74,12 +76,12 @@ public class PasswordUtilsTest {
   @Test
   public void testEx3() throws InvalidPasswordException {
     expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(), "ab".getBytes() );
+    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "ab".getBytes() );
   }
 
   @Test
   public void testEx4() throws InvalidPasswordException {
     expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(), null );
+    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), null );
   }
 }

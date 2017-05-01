@@ -43,6 +43,7 @@ import org.junit.*;
 import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -71,7 +72,7 @@ public class NullSerializerTest {
 
   @Test
   public void testStep() throws Exception {
-    JsonParser parser = JacksonSupport.getJsonFactory().createParser( new ByteArrayInputStream( "null".getBytes() ) );
+    JsonParser parser = JacksonSupport.getJsonFactory().createParser( new ByteArrayInputStream( "null".getBytes(StandardCharsets.UTF_8) ) );
     assertNull( getSerializer().deserialize( parser ) );
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( parser );
     if ( parserWrapper.nextToken() != null ) {

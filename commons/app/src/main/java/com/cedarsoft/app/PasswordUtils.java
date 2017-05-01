@@ -36,6 +36,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import java.lang.String;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -56,7 +57,7 @@ public class PasswordUtils {
    */
   @Nonnull
   public static byte[] calculateMD5Hash( @Nonnull String password ) {
-    byte[] bytes = password.getBytes();
+    byte[] bytes = password.getBytes(StandardCharsets.UTF_8);
     try {
       MessageDigest messageDigest = MessageDigest.getInstance( "MD5" );
       return messageDigest.digest( bytes );

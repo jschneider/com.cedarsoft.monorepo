@@ -36,6 +36,7 @@ import org.junit.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
@@ -65,13 +66,13 @@ public class WithoutTypeTest {
       "}";
 
     try {
-      serializer.deserialize( new ByteArrayInputStream( withoutType.getBytes() ) );
+      serializer.deserialize( new ByteArrayInputStream( withoutType.getBytes(StandardCharsets.UTF_8) ) );
       fail( "Where is the Exception" );
     } catch ( JsonParseException e ) {
       assertThat( e.getMessage() ).startsWith( "Invalid field. Expected <@type> but was <description>" );
     }
 
-    Foo foo = serializer.deserialize( new ByteArrayInputStream( withoutType.getBytes() ), serializer.getFormatVersion() );
+    Foo foo = serializer.deserialize( new ByteArrayInputStream( withoutType.getBytes(StandardCharsets.UTF_8) ), serializer.getFormatVersion() );
     assertThat( foo.getDescription() ).isEqualTo( "descri" );
     assertThat( foo.getDirection() ).isEqualTo( Direction.NORTH );
   }
@@ -86,7 +87,7 @@ public class WithoutTypeTest {
 
     JsonUtils.assertJsonEquals( "\"asdf@test.de\"", out.toString() );
 
-    Email mail = serializer.deserialize( new ByteArrayInputStream( "\"asdf@test.de\"".getBytes() ), serializer.getFormatVersion() );
+    Email mail = serializer.deserialize( new ByteArrayInputStream( "\"asdf@test.de\"".getBytes(StandardCharsets.UTF_8) ), serializer.getFormatVersion() );
     assertThat( mail.getMail() ).isEqualTo( "asdf@test.de" );
   }
 }

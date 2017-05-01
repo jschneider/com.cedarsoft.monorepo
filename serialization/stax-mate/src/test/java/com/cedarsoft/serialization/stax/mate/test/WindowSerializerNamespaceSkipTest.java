@@ -45,6 +45,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -69,7 +70,7 @@ public class WindowSerializerNamespaceSkipTest {
                                                                                 "  <description>the window</description>\n" +
                                                                                 "  <other xmlns=\"asdf\"/>" +
                                                                                 "  <other xmlns=\"asdf2\"/>" +
-                                                                                "</window>" ).getBytes() ) );
+                                                                                "</window>" ).getBytes(StandardCharsets.UTF_8) ) );
 
     assertEquals( "the window", deserialized.getDescription() );
     assertEquals( 444.4, deserialized.getHeight(), 0.0 );

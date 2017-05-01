@@ -40,6 +40,7 @@ import org.junit.rules.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
 import static org.junit.Assert.*;
@@ -85,13 +86,13 @@ public class DaBallSerializerTest {
   public void testInvalidNamespaceVersion() throws IOException {
     expectedException.expect( VersionMismatchException.class );
     expectedException.expectMessage( "Version mismatch. Expected [1.0.0-1.1.0] but was [1.1.1]" );
-    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/ball/1.1.1\" id=\"77\"/>".getBytes() ) );
+    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/ball/1.1.1\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8) ) );
   }
 
   @Test
   public void testInvalidNamespace() throws IOException {
     expectedException.expect( SerializationException.class );
     expectedException.expectMessage( "[INVALID_NAME_SPACE] Invalid name space. Expected <http://test/ball/1.1.0> but was <http://test/wrong/1.1.0>." );
-    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/wrong/1.1.0\" id=\"77\"/>".getBytes() ) );
+    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/wrong/1.1.0\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8) ) );
   }
 }
