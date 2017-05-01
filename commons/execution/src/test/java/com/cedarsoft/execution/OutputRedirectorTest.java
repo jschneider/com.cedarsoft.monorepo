@@ -38,6 +38,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -49,7 +50,7 @@ public class OutputRedirectorTest {
   public void testDefault() {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    OutputRedirector outputRedirector = new OutputRedirector( new ByteArrayInputStream( "asdf".getBytes() ), out );
+    OutputRedirector outputRedirector = new OutputRedirector(new ByteArrayInputStream( "asdf".getBytes(StandardCharsets.UTF_8) ), out );
     outputRedirector.run();
 
     assertEquals( "asdf", out.toString() );
@@ -60,7 +61,7 @@ public class OutputRedirectorTest {
   public void testThreaded() throws InterruptedException {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    OutputRedirector outputRedirector = new OutputRedirector( new ByteArrayInputStream( "asdf".getBytes() ), out );
+    OutputRedirector outputRedirector = new OutputRedirector( new ByteArrayInputStream( "asdf".getBytes(StandardCharsets.UTF_8) ), out );
     Thread thread = new Thread( outputRedirector );
     thread.start();
 
@@ -89,7 +90,7 @@ public class OutputRedirectorTest {
 
   @Test
   public void testStreams() throws Exception {
-    ByteArrayInputStream stream = new ByteArrayInputStream( "asdf".getBytes() );
+    ByteArrayInputStream stream = new ByteArrayInputStream( "asdf".getBytes(StandardCharsets.UTF_8) );
     assertEquals( 4, stream.available() );
     stream.read();
     assertEquals( 3, stream.available() );
@@ -105,7 +106,7 @@ public class OutputRedirectorTest {
 
   @Test
   public void testStreamsBuffered() throws Exception {
-    InputStream stream = new BufferedInputStream( new ByteArrayInputStream( "asdf".getBytes() ) );
+    InputStream stream = new BufferedInputStream( new ByteArrayInputStream( "asdf".getBytes(StandardCharsets.UTF_8) ) );
     assertEquals( 4, stream.available() );
     stream.read();
     assertEquals( 3, stream.available() );

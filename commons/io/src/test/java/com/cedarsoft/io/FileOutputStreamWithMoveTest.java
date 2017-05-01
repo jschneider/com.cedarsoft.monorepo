@@ -4,6 +4,7 @@ import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +23,7 @@ public class FileOutputStreamWithMoveTest {
     FileOutputStreamWithMove out = new FileOutputStreamWithMove(targetOut);
     assertThat(targetOut).doesNotExist();
 
-    out.write("asdf".getBytes());
+    out.write("asdf".getBytes(StandardCharsets.UTF_8));
     assertThat(targetOut).doesNotExist();
 
     out.close();

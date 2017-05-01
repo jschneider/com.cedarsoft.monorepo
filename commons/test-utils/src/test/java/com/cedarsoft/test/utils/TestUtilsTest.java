@@ -37,6 +37,7 @@ import org.junit.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
@@ -75,7 +76,7 @@ public class TestUtilsTest {
 
   @Test
   public void testTmpFileCreation() throws IllegalAccessException, IOException {
-    File created = TestUtils.createTmpFile( "prefix", "suffix", new ByteArrayInputStream( "content".getBytes() ) );
+    File created = TestUtils.createTmpFile( "prefix", "suffix", new ByteArrayInputStream( "content".getBytes(StandardCharsets.UTF_8) ) );
     assertTrue( created.isFile() );
     assertEquals( "content", FileUtils.readFileToString( created ) );
   }

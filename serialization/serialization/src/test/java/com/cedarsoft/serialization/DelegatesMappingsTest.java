@@ -71,13 +71,13 @@ public class DelegatesMappingsTest {
     assertThat( wrapper ).isEqualTo( Integer.class );
 
     assertThat( primitiveType.isPrimitive() ).isTrue();
-    Object cast = wrapper.cast( new Integer( 7 ) );
+    Object cast = wrapper.cast(7);
 
     assertThat( cast ).isNotNull();
-    assertThat( cast ).isEqualTo( new Integer( 7 ) );
+    assertThat( cast ).isEqualTo(7);
 
     try {
-      primitiveType.cast( new Integer( 7 ) );
+      primitiveType.cast(7);
       fail("Where is the Exception");
     } catch ( ClassCastException ignore ) {
     }

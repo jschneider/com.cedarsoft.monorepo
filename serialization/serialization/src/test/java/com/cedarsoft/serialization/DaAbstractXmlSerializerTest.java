@@ -41,6 +41,7 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
@@ -99,7 +100,7 @@ public class DaAbstractXmlSerializerTest {
 
     @Override
     public void serialize( @Nonnull String object, @Nonnull OutputStream out ) throws IOException {
-      out.write( object.getBytes() );
+      out.write( object.getBytes(StandardCharsets.UTF_8) );
     }
 
     @Nonnull
