@@ -31,22 +31,6 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import static org.junit.Assert.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-
-import org.apache.commons.io.Charsets;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
-import org.junit.rules.*;
-
 import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
 import com.cedarsoft.version.Version;
@@ -54,6 +38,19 @@ import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionMismatchException;
 import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.xml.XmlCommons;
+import org.apache.commons.io.Charsets;
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.*;
+import org.junit.rules.*;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -111,13 +108,13 @@ public class StaxMateSerializerTest extends AbstractXmlSerializerTest<String> {
   @Test
   public void testNoVersion() throws IOException {
     expectedException.expect( VersionException.class );
-    getSerializer().deserialize( new ByteArrayInputStream( "<aString>asdf</aString>".getBytes() ) );
+    getSerializer().deserialize(new ByteArrayInputStream("<aString>asdf</aString>".getBytes(StandardCharsets.UTF_8)));
   }
 
   @Test
   public void testWrongVersion() throws IOException {
     expectedException.expect( VersionMismatchException.class );
-    getSerializer().deserialize( new ByteArrayInputStream( "<aString xmlns=\"http://www.lang.java/String/0.9.9\">asdf</aString>".getBytes() ) );
+    getSerializer().deserialize(new ByteArrayInputStream("<aString xmlns=\"http://www.lang.java/String/0.9.9\">asdf</aString>".getBytes(StandardCharsets.UTF_8)));
   }
 
   @Test
@@ -125,6 +122,6 @@ public class StaxMateSerializerTest extends AbstractXmlSerializerTest<String> {
     expectedException.expect( SerializationException.class );
     expectedException.expectMessage( "[INVALID_NAME_SPACE] Invalid name space. Expected <http://www.lang.java/String/1.5.3> but was <http://www.lang.invalid.java/String/1.5.3>." );
 
-    getSerializer().deserialize( new ByteArrayInputStream( "<aString xmlns=\"http://www.lang.invalid.java/String/1.5.3\">asdf</aString>".getBytes() ) );
+    getSerializer().deserialize(new ByteArrayInputStream("<aString xmlns=\"http://www.lang.invalid.java/String/1.5.3\">asdf</aString>".getBytes(StandardCharsets.UTF_8)));
   }
 }
