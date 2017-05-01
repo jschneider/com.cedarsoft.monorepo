@@ -29,11 +29,14 @@
 package com.cedarsoft.photos.tools.exif;
 
 
+import com.google.errorprone.annotations.Immutable;
+
 import javax.annotation.Nonnull;
 
 /**
  * Camera information - represents the data for one camera
  */
+@Immutable
 public class CameraInfo {
   @Nonnull
   public static final CameraInfo UNKNOWN_INFO = new CameraInfo("UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKWNON");

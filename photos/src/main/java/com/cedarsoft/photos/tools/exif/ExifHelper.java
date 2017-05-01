@@ -2,6 +2,7 @@ package com.cedarsoft.photos.tools.exif;
 
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.photos.ImageStorage;
+import com.google.errorprone.annotations.Immutable;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import java.util.Optional;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Immutable
 public class ExifHelper {
   @Nonnull
   public static final String EXIF_FILE_NAME = "exif";

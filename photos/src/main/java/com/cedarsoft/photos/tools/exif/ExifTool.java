@@ -29,6 +29,7 @@
 package com.cedarsoft.photos.tools.exif;
 
 import com.cedarsoft.photos.tools.AbstractCommandLineTool;
+import com.google.errorprone.annotations.Immutable;
 
 import javax.annotation.Nonnull;
 import java.io.File;
@@ -38,6 +39,7 @@ import java.io.IOException;
  * Wrapper for exiftool
  */
 //TODO add SequenceNumber
+@Immutable
 public class ExifTool extends AbstractCommandLineTool {
 
   public ExifTool(@Nonnull File bin) {

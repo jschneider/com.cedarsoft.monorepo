@@ -1,5 +1,7 @@
 package com.cedarsoft.photos.tools.exif;
 
+import com.google.errorprone.annotations.Immutable;
+
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import java.io.BufferedInputStream;
@@ -16,6 +18,7 @@ import java.util.List;
 /**
  * Extracts the exif information
  */
+@Immutable
 public class ExifExtractor {
   @Nonnull
   private final ExifTool exifTool;

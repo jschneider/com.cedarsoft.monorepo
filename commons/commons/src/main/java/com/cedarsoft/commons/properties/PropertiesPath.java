@@ -32,11 +32,10 @@
 package com.cedarsoft.commons.properties;
 
 
-import javax.annotation.Nonnull;
+import com.google.common.collect.ImmutableList;
+import com.google.errorprone.annotations.Immutable;
 
-import java.lang.String;
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +45,7 @@ import java.util.List;
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@Immutable
 public class PropertiesPath {
   /**
    * Constant <code>PROPERTY_REPRESENTATION="presentation"</code>
@@ -64,13 +64,14 @@ public class PropertiesPath {
   public static final String PROPERTY_ELEMENTS = "elements";
 
   @Nonnull
-  private final List<String> elements = new ArrayList<String>();
+  private final ImmutableList<String> elements;
 
   /**
    * Hibernate
    */
   @Deprecated
   protected PropertiesPath() {
+    this(ImmutableList.of());
   }
 
   /**
@@ -79,7 +80,7 @@ public class PropertiesPath {
    * @param elements a String object.
    */
   public PropertiesPath( @Nonnull String... elements ) {
-    this( Arrays.asList( elements ) );
+    this(ImmutableList.copyOf(elements));
   }
 
   /**
@@ -91,7 +92,7 @@ public class PropertiesPath {
     if ( elements.isEmpty() ) {
       throw new IllegalArgumentException( "Need at least one element in path" );
     }
-    this.elements.addAll( elements );
+    this.elements = ImmutableList.copyOf(elements);
   }
 
   /**
