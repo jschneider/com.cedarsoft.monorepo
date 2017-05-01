@@ -1,6 +1,7 @@
 package com.cedarsoft.photos.tools;
 
 import com.cedarsoft.execution.OutputRedirector;
+import com.google.errorprone.annotations.Immutable;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
@@ -18,7 +19,9 @@ import java.util.List;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Immutable
 public abstract class AbstractCommandLineTool {
+  @SuppressWarnings("Immutable")
   @Nonnull
   private final File bin;
 

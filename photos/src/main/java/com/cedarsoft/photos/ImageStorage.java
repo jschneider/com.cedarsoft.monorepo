@@ -3,6 +3,7 @@ package com.cedarsoft.photos;
 import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
+import com.google.errorprone.annotations.Immutable;
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nonnull;
@@ -12,14 +13,17 @@ import java.io.IOException;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Immutable
 public class ImageStorage {
   @Nonnull
   public static final Algorithm ALGORITHM = Algorithm.SHA256;
 
   @Nonnull
   public static final String DATA_FILE_NAME = "data";
+  @SuppressWarnings("Immutable")
   @Nonnull
   private final File baseDir;
+  @SuppressWarnings("Immutable")
   @Nonnull
   private final File deletedBaseDir;
 
