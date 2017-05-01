@@ -34,13 +34,11 @@ package com.cedarsoft.cmd;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.lang.Object;
-import java.lang.String;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -191,7 +189,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
     try {
       BufferedReader defaultIn = null;
       try {
-        defaultIn = new BufferedReader( new InputStreamReader( process.getInputStream() ) );
+        defaultIn = new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8));
         String line;
         while ( ( line = defaultIn.readLine() ) != null ) {
           out( line );
@@ -204,7 +202,7 @@ public class StringCmdLine extends AbstractCmdLine implements CmdLine {
 
       BufferedReader errorIn = null;
       try {
-        errorIn = new BufferedReader( new InputStreamReader( process.getErrorStream() ) );
+        errorIn = new BufferedReader(new InputStreamReader(process.getErrorStream(), StandardCharsets.UTF_8));
         String line;
         while ( ( line = errorIn.readLine() ) != null ) {
           error( line );
