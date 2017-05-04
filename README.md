@@ -27,7 +27,23 @@ Documentation and projects available at [cedarsoft.org]
     * IconFeedbackPanel
     * ComponentFactory
 * delete Os* classes
- 
+* OptionDialog
+  * improve radio dialog
+  * add combo box version
+* Serialization
+  * Jackson
+    * add UUID Serializer
+  * Stax
+    * Remove JSON support (use Jackson instead)
+    
+* New sub projects
+  * Photos
+  * OSGI validator maven plugin
+  * Instrumentation maven plugin
+  * Business
+* Use error prone compiler
+  * Use @Immutable class from error prone compiler
+  
  
 ## 8.0.1 (2017-03-24)
 * Using logback for logging
