@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -46,6 +47,34 @@ public class ImportReport {
   public List<? extends File> getCreatedLinks() {
     //noinspection ReturnOfCollectionOrArrayField
     return createdLinks;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    ImportReport that = (ImportReport) obj;
+    return Objects.equals(importedHashes, that.importedHashes) &&
+      Objects.equals(alreadyExisting, that.alreadyExisting) &&
+      Objects.equals(createdLinks, that.createdLinks);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(importedHashes, alreadyExisting, createdLinks);
+  }
+
+  @Override
+  public String toString() {
+    return "ImportReport{" +
+      "importedHashes=" + importedHashes +
+      ", alreadyExisting=" + alreadyExisting +
+      ", createdLinks=" + createdLinks +
+      '}';
   }
 
   @Nonnull

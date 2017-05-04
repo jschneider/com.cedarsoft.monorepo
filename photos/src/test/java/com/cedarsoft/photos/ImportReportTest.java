@@ -41,6 +41,6 @@ public class ImportReportTest {
     assertThat(importReport.getCreatedLinks()).hasSize(1);
     assertThat(importReport.getCreatedLinks()).isInstanceOf(ImmutableList.class);
 
-    assertThat(importReport.toString()).isEqualTo("ImportReport(importedHashes=[[SHA256: 61736466]], alreadyExisting=[[SHA256: 32]], createdLinks=[asdf])");
+    assertThat(importReport.toString()).isEqualTo("ImportReport{importedHashes=[[SHA256: 61736466]], alreadyExisting=[[SHA256: 32]], createdLinks=[asdf]}");
   }
 }
