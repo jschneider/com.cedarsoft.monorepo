@@ -84,11 +84,11 @@ public class ImportReport {
 
   public static final class Builder {
     @Nonnull
-    private List<Hash> importedHashes = new ArrayList<>();
+    private final List<Hash> importedHashes = new ArrayList<>();
     @Nonnull
-    private List<Hash> alreadyExisting = new ArrayList<>();
+    private final List<Hash> alreadyExisting = new ArrayList<>();
     @Nonnull
-    private List<File> createdLinks = new ArrayList<>();
+    private final List<File> createdLinks = new ArrayList<>();
 
     private Builder() {
     }
