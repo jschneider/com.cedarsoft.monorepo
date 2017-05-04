@@ -34,7 +34,6 @@ package com.cedarsoft.version;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.Serializable;
 
 /**
@@ -121,6 +120,26 @@ public class Version implements Comparable<Version>, Serializable {
    */
   public int getMinor() {
     return minor;
+  }
+
+  @Nonnull
+  public Version withMajor(int major) {
+    return new Version(major, minor, build, suffix);
+  }
+
+  @Nonnull
+  public Version withMinor(int minor) {
+    return new Version(major, minor, build, suffix);
+  }
+
+  @Nonnull
+  public Version withBuild(int build) {
+    return new Version(major, minor, build, suffix);
+  }
+
+  @Nonnull
+  public Version withSuffix(@Nullable String suffix) {
+    return new Version(major, minor, build, suffix);
   }
 
   /**

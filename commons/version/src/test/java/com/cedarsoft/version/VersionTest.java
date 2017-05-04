@@ -103,4 +103,9 @@ public class VersionTest {
     assertFalse( new Version( 1, 2, 3 ).sameOrSmallerThan( new Version( 0, 2, 4 ) ) );
   }
 
+  @Test
+  public void withMethods() throws Exception {
+    Version version = Version.valueOf(1, 2, 3);
+    assertThat(version.withSuffix("daSuffix").getSuffix()).isEqualTo("daSuffix");
+  }
 }
