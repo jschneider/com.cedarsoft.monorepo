@@ -39,13 +39,8 @@ public class FileOutputStreamWithMove extends FilterOutputStream {
       return;
     }
     //Only move the file if it exists
-    try {
-      if (tmpFile.exists()) {
-        Files.move(tmpFile.toPath(), file.toPath());
-      }
-    } catch (IOException e) {
-      //Do not throw the io exception to avoid "Self-suppression not permitted"
-      Thread.currentThread().getUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
+    if (tmpFile.exists()) {
+      Files.move(tmpFile.toPath(), file.toPath());
     }
     closed = true;
   }
