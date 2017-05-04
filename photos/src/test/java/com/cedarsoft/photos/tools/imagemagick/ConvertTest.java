@@ -8,7 +8,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URL;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -31,7 +31,8 @@ public class ConvertTest {
 
   @Test
   public void basic() throws Exception {
-    File thumbFile = tmp.newFile("thumb.jpg");
+    File thumbFile = new File(tmp.newFolder(), "thumb.jpg");
+
     convert.createThumbnail(imageFile, thumbFile, new Resolution(800, 800), "jpg");
     assertThat(thumbFile).exists();
   }
