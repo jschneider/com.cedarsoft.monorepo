@@ -59,7 +59,7 @@ public class ExifInfoTest {
 
   @Test
   public void testDate() throws IOException {
-    ZonedDateTime captureTime = exifInfo.getCaptureTime(ZoneId.systemDefault());
+    ZonedDateTime captureTime = exifInfo.getCaptureTime(ZoneId.of("Europe/Berlin"));
     assertThat(captureTime).isEqualTo(ZonedDateTime.of(2009, 10, 24, 14, 01, 46, 0, ZoneId.of("Europe/Berlin")));
   }
 

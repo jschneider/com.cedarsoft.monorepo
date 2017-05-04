@@ -2,6 +2,7 @@ package com.cedarsoft.photos.di;
 
 import com.cedarsoft.photos.ImageStorage;
 import com.cedarsoft.photos.LinkByDateCreator;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import com.cedarsoft.photos.tools.exif.ExifExtractor;
 import com.cedarsoft.photos.tools.exif.ExifTool;
 import com.cedarsoft.photos.tools.imagemagick.Identify;
@@ -26,7 +27,7 @@ public class StorageModule extends AbstractModule {
   @Singleton
   @Provides
   @Nonnull
-  public ExifTool provideExifTool() {
+  public ExifTool provideExifTool() throws CmdLineToolNotAvailableException {
     File bin = new File("/usr/bin/exiftool");
     if (!bin.exists()) {
       throw new IllegalStateException("No exiftool installed.");
@@ -37,7 +38,7 @@ public class StorageModule extends AbstractModule {
   @Singleton
   @Provides
   @Nonnull
-  public Identify providesIdentify() {
+  public Identify providesIdentify() throws CmdLineToolNotAvailableException {
     File bin = new File("/usr/bin/identify");
     if (!bin.exists()) {
       throw new IllegalStateException("No identify installed.");

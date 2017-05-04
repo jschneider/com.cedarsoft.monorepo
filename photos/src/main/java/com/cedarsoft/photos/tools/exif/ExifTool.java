@@ -29,6 +29,7 @@
 package com.cedarsoft.photos.tools.exif;
 
 import com.cedarsoft.photos.tools.AbstractCommandLineTool;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import com.google.errorprone.annotations.Immutable;
 
 import javax.annotation.Nonnull;
@@ -42,11 +43,11 @@ import java.io.IOException;
 @Immutable
 public class ExifTool extends AbstractCommandLineTool {
 
-  public ExifTool(@Nonnull File bin) {
+  public ExifTool(@Nonnull File bin) throws CmdLineToolNotAvailableException {
     super(bin);
   }
 
-  public ExifTool(@Nonnull String bin) {
+  public ExifTool(@Nonnull String bin) throws CmdLineToolNotAvailableException {
     this(new File(bin));
   }
 

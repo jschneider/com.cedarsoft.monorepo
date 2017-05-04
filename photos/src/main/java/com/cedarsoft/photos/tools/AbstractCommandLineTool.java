@@ -25,9 +25,9 @@ public abstract class AbstractCommandLineTool {
   @Nonnull
   private final File bin;
 
-  protected AbstractCommandLineTool(@Nonnull File bin) {
+  protected AbstractCommandLineTool(@Nonnull File bin) throws CmdLineToolNotAvailableException {
     if (!bin.exists()) {
-      throw new IllegalArgumentException("bin does not exist " + bin.getAbsolutePath());
+      throw new CmdLineToolNotAvailableException("binary not found " + bin.getAbsolutePath());
     }
     this.bin = bin;
   }
