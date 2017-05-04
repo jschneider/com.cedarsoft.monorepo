@@ -3,14 +3,13 @@ package com.cedarsoft.photos;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.google.common.collect.ImmutableList;
-import lombok.extern.java.Log;
 import org.junit.*;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
