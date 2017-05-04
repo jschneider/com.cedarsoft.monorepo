@@ -37,6 +37,7 @@ import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
 
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -58,7 +59,7 @@ public class ExifExtracterTest {
   }
 
   @Nonnull
-  public static ExifExtractor create() {
+  public static ExifExtractor create() throws CmdLineToolNotAvailableException {
     return new ExifExtractor(ExifToolTest.createExifTool());
   }
 

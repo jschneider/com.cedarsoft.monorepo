@@ -1,6 +1,7 @@
 package com.cedarsoft.photos.tools.imagemagick;
 
 import com.cedarsoft.image.Resolution;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import org.junit.*;
 
 import javax.annotation.Nonnull;
@@ -26,10 +27,10 @@ public class IdentifyDemo {
   }
 
   @Nonnull
-  public static Identify createIdentify() {
+  public static Identify createIdentify() throws CmdLineToolNotAvailableException {
     File bin = new File("/usr/bin/identify");
     if (!bin.exists()) {
-      throw new AssertionError("Imagemagick not installed. Could not find identify");
+      throw new AssumptionViolatedException("Imagemagick not installed. Could not find identify");
     }
     return new Identify(bin);
   }

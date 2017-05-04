@@ -1,6 +1,7 @@
 package com.cedarsoft.photos.tools.imagemagick;
 
 import com.cedarsoft.photos.tools.AbstractCommandLineTool;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import com.google.common.base.Splitter;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Identify extends AbstractCommandLineTool {
-  public Identify(@Nonnull File bin) {
+  public Identify(@Nonnull File bin) throws CmdLineToolNotAvailableException {
     super(bin);
   }
 

@@ -28,16 +28,19 @@
 
 package com.cedarsoft.photos.tools.exif;
 
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import org.apache.commons.io.IOUtils;
 import org.junit.*;
 import org.junit.rules.*;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
@@ -48,9 +51,18 @@ public class ExifToolTest {
   @Rule
   public TemporaryFolder tmp = new TemporaryFolder();
 
+  private ExifTool exifTool;
+
+  @Before
+  public void setUp() throws Exception {
+    exifTool = createExifTool();
+  }
+
   @Test
   public void testClearRotation() throws IOException {
-    ExifTool exifTool = createExifTool();
+    if (exifTool == null) {
+      return;
+    }
 
     File file = tmp.newFile("ExifToolTest_testClearRotation.jpg");
 
@@ -74,10 +86,10 @@ public class ExifToolTest {
   }
 
   @Nonnull
-  public static ExifTool createExifTool() {
+  public static ExifTool createExifTool() throws CmdLineToolNotAvailableException {
     File bin = new File("/usr/bin/exiftool");
     if (!bin.exists()) {
-      throw new AssertionError("No exiftool installed.");
+      throw new AssumptionViolatedException("No exiftool installed.");
     }
     return new ExifTool(bin);
   }
