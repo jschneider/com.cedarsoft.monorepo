@@ -42,7 +42,7 @@ import javax.annotation.Nonnull;
 public interface InterestCalculationSystem {
   /**
    * A simple system that just calculates a plain interest rate.
-   * <p/>
+   * <p>
    * This system only works with the intervalInYears - the intervalInDays is ignored
    */
   @Nonnull
