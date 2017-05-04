@@ -22,7 +22,7 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.0.2-SNAPSHOT (currently in development)
+## 8.0.2 (2017-05-04)
 * JGoodies related classes: 
     * IconFeedbackPanel
     * ComponentFactory
