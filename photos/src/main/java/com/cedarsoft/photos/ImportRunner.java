@@ -24,16 +24,16 @@ public class ImportRunner {
 
     Importer importer = injector.getInstance(Importer.class);
 
-    ImportReport.ImportReportBuilder importReportBuilder = ImportReport.builder();
+    ImportReport.Builder importReportBuilder = ImportReport.builder();
 
     importer.importDirectory(new File("/media/mule/data/media/photos/import/todo/found-somewhere"), new Importer.Listener() {
       @Override
       public void skipped(@Nonnull Hash hash, @Nonnull File fileToImport, @Nonnull File targetFile) {
-        importReportBuilder.existing(hash);
+        importReportBuilder.withAlreadyExisting(hash);
 
         try {
           File linkPath = linkByDateCreator.createLink(targetFile, hash);
-          importReportBuilder.createdLink(linkPath);
+          importReportBuilder.withCreatedLink(linkPath);
         } catch (Exception e) {
           e.printStackTrace();
           failedLinks.add(targetFile);
@@ -42,12 +42,12 @@ public class ImportRunner {
 
       @Override
       public void imported(@Nonnull Hash hash, @Nonnull File fileToImport, @Nonnull File targetFile) {
-        importReportBuilder.imported(hash);
+        importReportBuilder.withImportedHash(hash);
 
         System.out.println("Imported " + fileToImport + " --> " + targetFile.getParentFile().getParentFile().getName() + "/" + targetFile.getParentFile().getName());
         try {
           File link = linkByDateCreator.createLink(targetFile, hash);
-          importReportBuilder.createdLink(link);
+          importReportBuilder.withCreatedLink(link);
           System.out.println("\t" + link.getAbsolutePath());
         } catch (Exception e) {
           e.printStackTrace();
@@ -71,17 +71,17 @@ public class ImportRunner {
     System.out.println("##########  RESULT  ############");
     System.out.println("################################");
     System.out.println("################################");
-    System.out.println("Imported:       " + importReport.importedHashes().size());
-    System.out.println("Skipped:        " + importReport.alreadyExisting().size());
+    System.out.println("Imported:       " + importReport.getImportedHashes().size());
+    System.out.println("Skipped:        " + importReport.getAlreadyExisting().size());
     System.out.println();
     System.out.println(" Imported Hashes: ");
-    for (Hash hash : importReport.importedHashes()) {
+    for (Hash hash : importReport.getImportedHashes()) {
       System.out.println("\t\t" + hash.getValueAsHex());
     }
     System.out.println();
     System.out.println();
     System.out.println("Created links: ");
-    for (File link : importReport.createdLinks()) {
+    for (File link : importReport.getCreatedLinks()) {
       System.out.println("\t" + link.getAbsolutePath());
     }
   }
