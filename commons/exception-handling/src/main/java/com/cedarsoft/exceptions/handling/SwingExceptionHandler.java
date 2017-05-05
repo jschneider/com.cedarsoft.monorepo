@@ -10,6 +10,7 @@ import com.cedarsoft.exceptions.handling.notification.NotificationService;
 import com.cedarsoft.swing.common.SwingHelper;
 import com.cedarsoft.swing.common.dialog.OptionDialog;
 import com.cedarsoft.version.Version;
+import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,8 @@ import javax.annotation.Nullable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -34,10 +37,18 @@ public class SwingExceptionHandler extends ExceptionHandler {
   @Nonnull
   private final ExceptionReporter exceptionReporter;
 
+  @Nonnull
+  private final Map<Class<? extends Throwable>, ExceptionTypeHandler> exceptionTypeHandlers;
+
   public SwingExceptionHandler(@Nonnull NotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter) {
+    this(notificationService, applicationVersion, exceptionReporter, new HashMap<>());
+  }
+
+  public SwingExceptionHandler(@Nonnull NotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter, @Nonnull Map<Class<? extends Throwable>, ExceptionTypeHandler> exceptionTypeHandlers) {
     this.notificationService = notificationService;
     this.applicationVersion = applicationVersion;
     this.exceptionReporter = exceptionReporter;
+    this.exceptionTypeHandlers = ImmutableMap.copyOf(exceptionTypeHandlers);
   }
 
   @Nonnull
@@ -48,6 +59,11 @@ public class SwingExceptionHandler extends ExceptionHandler {
     //Avoid multiple dialogs
     if (dialogOpen.get()) {
       return;
+    }
+
+    @Nullable ExceptionTypeHandler exceptionTypeHandler = exceptionTypeHandlers.get(throwable.getClass());
+    if (exceptionTypeHandler != null) {
+      exceptionTypeHandler.handle(thread, throwable, original);
     }
 
     if (throwable instanceof ApplicationException) {
@@ -68,11 +84,11 @@ public class SwingExceptionHandler extends ExceptionHandler {
     handleInternalError(throwable, original);
   }
 
-  private void handleNotificationException(@Nonnull NotificationException throwable, @Nonnull Throwable original) {
+  public void handleNotificationException(@Nonnull NotificationException throwable, @Nonnull Throwable original) {
     SwingUtilities.invokeLater(() -> notificationService.showNotification(new Notification(throwable.getTitle(), throwable.getMessage(), notification -> handleInternalError(original, original))));
   }
 
-  private void handleIoException(@Nonnull IOException throwable, @Nonnull Throwable original) {
+  public void handleIoException(@Nonnull IOException throwable, @Nonnull Throwable original) {
     String title = Messages.get("io.exception.title", throwable.getMessage());
     String errorMessage = Messages.get("io.exception.description", throwable.getMessage());
 
@@ -85,7 +101,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
    * @param throwable the (purged) exception
    * @param original  the original exception
    */
-  private void handleInternalError(@Nonnull Throwable throwable, @Nonnull final Throwable original) {
+  public void handleInternalError(@Nonnull Throwable throwable, @Nonnull final Throwable original) {
     String throwableMessage = throwable.getMessage();
     if (throwableMessage == null) {
       throwableMessage = "";
@@ -157,7 +173,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
    * Shows the application exception dialog
    */
   @AnyThread
-  private void showApplicationExceptionDialog(@Nonnull ApplicationException applicationException) {
+  public void showApplicationExceptionDialog(@Nonnull ApplicationException applicationException) {
     SwingUtilities.invokeLater(() -> {
       if (dialogOpen.get()) {
         return;
@@ -171,5 +187,14 @@ public class SwingExceptionHandler extends ExceptionHandler {
         dialogOpen.set(false);
       }
     });
+  }
+
+  /**
+   * Implementing classes support an exception
+   */
+  @FunctionalInterface
+  public interface ExceptionTypeHandler {
+
+    void handle(@Nonnull Thread thread, @Nonnull Throwable throwable, @Nonnull Throwable original);
   }
 }
