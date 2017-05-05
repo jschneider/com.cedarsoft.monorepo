@@ -63,7 +63,7 @@ public class SwingExceptionHandler extends ExceptionHandler {
 
     @Nullable ExceptionTypeHandler exceptionTypeHandler = exceptionTypeHandlers.get(throwable.getClass());
     if (exceptionTypeHandler != null) {
-      exceptionTypeHandler.handle(thread, throwable, original);
+      exceptionTypeHandler.handle(this, thread, throwable, original);
     }
 
     if (throwable instanceof ApplicationException) {
@@ -194,7 +194,6 @@ public class SwingExceptionHandler extends ExceptionHandler {
    */
   @FunctionalInterface
   public interface ExceptionTypeHandler {
-
-    void handle(@Nonnull Thread thread, @Nonnull Throwable throwable, @Nonnull Throwable original);
+    void handle(@Nonnull SwingExceptionHandler swingExceptionHandler, @Nonnull Thread thread, @Nonnull Throwable throwable, @Nonnull Throwable original);
   }
 }
