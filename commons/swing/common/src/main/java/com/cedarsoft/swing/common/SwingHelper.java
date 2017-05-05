@@ -173,8 +173,32 @@ public class SwingHelper {
     try {
       return getFocusedFrame();
     } catch (IllegalStateException ignore) {
-      return null;
     }
+
+    try {
+      //If there is just a single frame, return that
+      return getSingleFrame();
+    } catch (IllegalStateException ignore) {
+    }
+
+    return null;
+  }
+
+  /**
+   * Returns the frame if there is just one
+   */
+  @Nullable
+  public static JFrame getSingleFrame() {
+    List<Frame> frames = Lists.newArrayList(Frame.getFrames());
+    if (frames.isEmpty()) {
+      throw new IllegalStateException("No frame found");
+    }
+
+    if (frames.size() > 1) {
+      throw new IllegalStateException("More than one frame found");
+    }
+
+    return (JFrame) frames.get(0);
   }
 
   /**
