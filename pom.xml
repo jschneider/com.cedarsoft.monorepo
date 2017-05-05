@@ -1035,7 +1035,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>instrumentation-maven-plugin</artifactId>
-          <version>${project.version}</version>
+          <version>${monorepo.dep.management.version}</version>
 
           <executions>
             <execution>
@@ -1051,7 +1051,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>osgi-validator-maven-plugin</artifactId>
-          <version>${project.version}</version>
+          <version>${monorepo.dep.management.version}</version>
 
           <executions>
             <execution>
@@ -1312,7 +1312,7 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <localCheckout>true</localCheckout>
             <pushChanges>false</pushChanges>
-            <tagNameFormat>@{project.version}</tagNameFormat>
+            <tagNameFormat>@{monorepo.dep.management.version}</tagNameFormat>
             <!--We do not want to deploy the page. This just creates problems...-->
             <goals>deploy</goals>
           </configuration>
