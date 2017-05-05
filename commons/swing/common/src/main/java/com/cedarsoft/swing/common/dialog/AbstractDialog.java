@@ -226,5 +226,11 @@ public abstract class AbstractDialog extends StandardDialog {
     ImageIcon ERROR = new ImageIcon(IconUtils.getResource("com/cedarsoft/swing/common/dialog/error.png"));
     @Nonnull
     ImageIcon QUESTION = new ImageIcon(IconUtils.getResource("com/cedarsoft/swing/common/dialog/question.png"));
+
+    /**
+     * Busy icon that can be used to mark a button as busy
+     */
+    @Nonnull
+    ImageIcon BUSY = new ImageIcon(IconUtils.getResource("com/cedarsoft/swing/common/dialog/busy.gif"));
   }
 }
