@@ -34,7 +34,6 @@ package com.cedarsoft.app;
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nonnull;
-
 import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
@@ -81,6 +80,10 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
     }
 
     assert projectHome.exists();
+
+    getConfigHome().mkdir();
+    getDataHome().mkdir();
+    getCacheHome().mkdir();
   }
 
   /**
@@ -103,19 +106,19 @@ public class MockApplicationHomeAccess implements ApplicationHomeAccess {
 
   @Nonnull
   @Override
-  public File getConfigHome() {
+  public final File getConfigHome() {
     return new File( projectHome, "config" );
   }
 
   @Nonnull
   @Override
-  public File getDataHome() {
+  public final File getDataHome() {
     return new File( projectHome, "data" );
   }
 
   @Nonnull
   @Override
-  public File getCacheHome() {
+  public final File getCacheHome() {
     return new File( projectHome, "cache" );
   }
 }
