@@ -40,6 +40,11 @@ public class FileOutputStreamWithMove extends FilterOutputStream {
     }
     //Only move the file if it exists
     if (tmpFile.exists()) {
+      //delete the original file first - overwrite mode
+      if (file.exists()) {
+        file.delete();
+      }
+
       Files.move(tmpFile.toPath(), file.toPath());
     }
     closed = true;
