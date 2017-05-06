@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -53,7 +54,11 @@ public class NotificationService {
       return;
     }
 
-    JComponent mainFrameComponent = (JComponent) SwingHelper.getFocusedFrame().getContentPane();
+    @Nullable JFrame frame = SwingHelper.getFrameSafe();
+    if (frame == null) {
+      throw new IllegalArgumentException("No frame found");
+    }
+    JComponent mainFrameComponent = (JComponent) frame.getContentPane();
 
     BalloonTip balloonTip = new CustomBalloonTip(mainFrameComponent, new JPanel(), new Rectangle(10, 10), STYLE, new BottomRightPositioner(mainFrameComponent), BalloonTip.getDefaultCloseButton()) {
       @Override
