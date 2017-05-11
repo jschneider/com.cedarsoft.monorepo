@@ -22,7 +22,16 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.0.2 (2017-05-04)
+## 8.1.1 (2017-05-04)
+* Use project version for plugins
+* Swing
+  * SwingHelper: Return only existing frame if no frame is focused
+  * Add busy icon to AbstractDialog
+  * Exception Handler: Add support for TypeHandlers
+* Update dependencies to latest version
+  * add dep for XZ compression 
+
+## 8.1.0 (2017-05-04)
 * JGoodies related classes: 
     * IconFeedbackPanel
     * ComponentFactory
