@@ -120,7 +120,7 @@ public abstract class AbstractJsonSerializerTest2<T> extends AbstractSerializerT
     }
 
     ( ( ContainerNode<?> ) tree ).removeAll();
-    ( ( ObjectNode ) tree ).putAll( newProps );
+    ( ( ObjectNode ) tree ).setAll( newProps );
 
     return tree.toString();
   }
