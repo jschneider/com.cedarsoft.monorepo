@@ -94,7 +94,7 @@ public class JacksonParserWrapper {
     String currentName = parser.getCurrentName();
 
     if ( !fieldName.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + fieldName + "> but was <" + currentName + ">", parser.getCurrentLocation() );
+      throw new JsonParseException(parser, "Invalid field. Expected <" + fieldName + "> but was <" + currentName + ">", parser.getCurrentLocation());
     }
   }
 
@@ -106,7 +106,7 @@ public class JacksonParserWrapper {
   public void verifyCurrentToken( @Nonnull JsonToken expected ) throws JsonParseException {
     JsonToken current = parser.getCurrentToken();
     if ( current != expected ) {
-      throw new JsonParseException( "Invalid token. Expected <" + expected + "> but got <" + current + ">", parser.getCurrentLocation() );
+      throw new JsonParseException(parser, "Invalid token. Expected <" + expected + "> but got <" + current + ">", parser.getCurrentLocation());
     }
   }
 
@@ -118,14 +118,14 @@ public class JacksonParserWrapper {
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( parser );
 
     if ( parserWrapper.getCurrentToken() != JsonToken.END_OBJECT ) {
-      throw new JsonParseException( "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parser, "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation());
     }
   }
 
   public void ensureParserClosed() throws IOException {
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( parser );
     if ( parserWrapper.nextToken() != null ) {
-      throw new JsonParseException( "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parser, "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation());
     }
 
     parserWrapper.close();

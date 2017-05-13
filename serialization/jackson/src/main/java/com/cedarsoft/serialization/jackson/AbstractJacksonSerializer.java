@@ -148,7 +148,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
 
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( parser );
     if ( parserWrapper.nextToken() != null ) {
-      throw new JsonParseException( "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parser, "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation());
     }
 
     parserWrapper.close();
@@ -184,7 +184,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
 
     if ( isObjectType() ) {
       if ( parserWrapper.getCurrentToken() != JsonToken.END_OBJECT ) {
-        throw new JsonParseException( "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation() );
+        throw new JsonParseException(parser, "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation());
       }
     }
 
@@ -269,7 +269,6 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
     return deserializeArray(type, deserializeFrom, formatVersion);
   }
 
-  @Deprecated
   @Nonnull
   protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException {
     return deserializeArray(type, null, deserializeFrom, formatVersion );
@@ -287,7 +286,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
       String currentName = parserWrapper.getCurrentName();
 
       if (!propertyName.equals(currentName)) {
-        throw new JsonParseException("Invalid field. Expected <" + propertyName + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
+        throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + propertyName + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
       }
       parserWrapper.nextToken();
     }
@@ -361,7 +360,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
     String currentName = parserWrapper.getCurrentName();
 
     if ( !propertyName.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + propertyName + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + propertyName + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
     }
     parserWrapper.nextToken();
     return deserialize( type, formatVersion, deserializeFrom );
