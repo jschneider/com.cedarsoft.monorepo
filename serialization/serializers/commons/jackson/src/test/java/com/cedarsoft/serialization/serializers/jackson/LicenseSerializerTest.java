@@ -52,6 +52,7 @@ public class LicenseSerializerTest extends AbstractJsonSerializerTest2<License> 
   public static final Entry<? extends License> ENTRY_CC = LicenseSerializerTest.create(
     License.CC_BY_NC_SA, LicenseSerializerTest.class.getResource( "License_1.0.0_CC.json" ) );
 
+  @Nonnull
   @Override
   protected StreamSerializer<License> getSerializer() throws Exception {
     return new LicenseSerializer();

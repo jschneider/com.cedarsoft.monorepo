@@ -37,6 +37,8 @@ import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import org.junit.experimental.theories.*;
 
+import javax.annotation.Nonnull;
+
 public class VersionRangeSerializerTest
   extends AbstractJsonSerializerTest2<VersionRange> {
 
@@ -44,6 +46,7 @@ public class VersionRangeSerializerTest
   public static final Entry<? extends VersionRange> ENTRY1 = VersionRangeSerializerTest.create(
     VersionRange.from( 1, 0, 0 ).to( 1, 9, 17 ), VersionRangeSerializerTest.class.getResource( "VersionRange_1.0.0_1.json" ) );
 
+  @Nonnull
   @Override
   protected StreamSerializer<VersionRange> getSerializer() throws Exception {
     return new VersionRangeSerializer();

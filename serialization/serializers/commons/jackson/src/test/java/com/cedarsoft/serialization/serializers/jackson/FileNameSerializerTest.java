@@ -37,11 +37,14 @@ import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import org.junit.experimental.theories.*;
 
+import javax.annotation.Nonnull;
+
 public class FileNameSerializerTest extends AbstractJsonSerializerTest2<FileName> {
 
   @DataPoint
   public static final Entry<? extends FileName> ENTRY1 = FileNameSerializerTest.create( new FileName( "baseName", ".", "extension" ), FileNameSerializerTest.class.getResource( "FileName_1.0.0_1.json" ) );
 
+  @Nonnull
   @Override
   protected StreamSerializer<FileName> getSerializer() throws Exception {
     return new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
