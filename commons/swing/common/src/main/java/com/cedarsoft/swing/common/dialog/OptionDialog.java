@@ -208,7 +208,9 @@ public class OptionDialog extends StandardDialog {
       return null;
     }
 
-    return (T) comboBox.getSelectedItem();
+    @SuppressWarnings("unchecked")
+    T selectedItem = (T) comboBox.getSelectedItem();
+    return selectedItem;
   }
 
   @Nonnull
