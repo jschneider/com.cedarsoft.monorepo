@@ -34,17 +34,16 @@ package com.cedarsoft.zip;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-import javax.annotation.Nonnull;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Helper class that creates zip files
@@ -104,7 +103,11 @@ public class ZipCreator {
    */
   protected void addFiles( @Nonnull String baseName, @Nonnull ZipArchiveOutputStream outStream, @Nonnull File directory ) throws IOException {
     byte[] data = new byte[BUFFER_SIZE];
-    for ( File file : directory.listFiles() ) {
+    @Nullable File[] files = directory.listFiles();
+    if (files == null) {
+      throw new IOException("could not list <" + directory.getAbsolutePath() + ">");
+    }
+    for (File file : files) {
       String relativeName = getRelativePath( baseName, file );
       ArchiveEntry entry = new ZipArchiveEntry( relativeName );
       try {
