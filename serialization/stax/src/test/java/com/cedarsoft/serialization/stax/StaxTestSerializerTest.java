@@ -31,22 +31,18 @@
 
 package com.cedarsoft.serialization.stax;
 
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-import org.junit.*;
 
 import javax.annotation.Nonnull;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import static org.junit.Assert.*;
 
 /**
  *

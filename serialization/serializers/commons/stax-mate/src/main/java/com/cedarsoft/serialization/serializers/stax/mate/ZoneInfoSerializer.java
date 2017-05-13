@@ -31,12 +31,10 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.Serializer;
-
-import org.apache.commons.codec.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTimeZone;
 
@@ -58,7 +56,7 @@ public class ZoneInfoSerializer implements Serializer<DateTimeZone,OutputStream,
   @Nonnull
   @Override
   public DateTimeZone deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
-    return DateTimeZone.forID( IOUtils.toString( in ) );
+    return DateTimeZone.forID(IOUtils.toString(in, StandardCharsets.UTF_8));
   }
 
   @Nonnull
