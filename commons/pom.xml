@@ -16,7 +16,6 @@
 
   <modules>
     <module>app</module>
-    <module>collections</module>
     <module>commons</module>
     <module>concurrent</module>
     <module>configuration</module>
