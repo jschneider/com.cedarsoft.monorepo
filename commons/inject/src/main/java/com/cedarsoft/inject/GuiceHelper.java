@@ -34,8 +34,8 @@ package com.cedarsoft.inject;
 import com.google.inject.Binder;
 import com.google.inject.Key;
 import com.google.inject.util.Types;
-import javax.annotation.Nonnull;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
@@ -80,6 +80,10 @@ public class GuiceHelper {
    * @param <T>    a T object.
    */
   public static <T> void bindWildcardCollectionForSet( @Nonnull Binder binder, @Nonnull Type type ) {
-    binder.bind( ( Key<Collection<? extends T>> ) Key.get( GuiceHelper.superCollectionOf( type ) ) ).to( ( Key<? extends Collection<? extends T>> ) Key.get( Types.setOf( type ) ) );
+    @SuppressWarnings("unchecked")
+    Key<Collection<? extends T>> key = (Key<Collection<? extends T>>) Key.get(GuiceHelper.superCollectionOf(type));
+    @SuppressWarnings("unchecked")
+    Key<? extends Collection<? extends T>> targetKey = (Key<? extends Collection<? extends T>>) Key.get(Types.setOf(type));
+    binder.bind(key).to(targetKey);
   }
 }

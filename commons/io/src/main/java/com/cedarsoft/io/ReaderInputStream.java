@@ -91,7 +91,8 @@ public class ReaderInputStream extends InputStream {
     }
 
     if ( result < -1 ) {
-      result += 256;
+      //noinspection AssignmentReplaceableWithOperatorAssignment
+      result = (byte) (result + 256);
     }
 
     return result;
