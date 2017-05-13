@@ -45,6 +45,7 @@ import org.junit.*;
 import javax.annotation.Nonnull;
 import java.awt.Color;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,8 +76,8 @@ public class CarSerializerTest extends AbstractXmlSerializerMultiTest<Car> {
   @Override
   protected List<? extends String> getExpectedSerialized() throws Exception {
     return Arrays.asList(
-      IOUtils.toString( getClass().getResourceAsStream( "car1.xml" ) ),
-      IOUtils.toString( getClass().getResourceAsStream( "car2.xml" ) )
+      IOUtils.toString(getClass().getResourceAsStream( "car1.xml" ), StandardCharsets.UTF_8 ),
+      IOUtils.toString( getClass().getResourceAsStream( "car2.xml" ), StandardCharsets.UTF_8 )
     );
   }
 
