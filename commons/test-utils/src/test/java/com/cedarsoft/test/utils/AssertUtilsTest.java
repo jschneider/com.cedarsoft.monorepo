@@ -31,21 +31,20 @@
 
 package com.cedarsoft.test.utils;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
+import com.cedarsoft.crypt.HashCalculator;
+import com.google.common.io.ByteStreams;
 import org.apache.commons.io.FileUtils;
 import org.assertj.core.api.*;
 import org.junit.*;
 import org.junit.rules.*;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
-import com.google.common.io.ByteStreams;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -168,7 +167,7 @@ public class AssertUtilsTest {
   @Test
   public void testFileByHash() throws Exception {
     File file = tmp.newFile( "daFile" );
-    FileUtils.writeStringToFile( file, "daContent" );
+    FileUtils.writeStringToFile(file, "daContent", StandardCharsets.UTF_8);
 
     Hash expected = HashCalculator.calculate( Algorithm.MD5, file );
     assertEquals( "913aa4a45cea16f9714f109e7324159f", expected.getValueAsHex() );
@@ -198,7 +197,7 @@ public class AssertUtilsTest {
 
       assertTrue(copiedFile.getParentFile().exists());
       assertTrue(copiedFile.exists());
-      assertEquals("daContent", FileUtils.readFileToString(copiedFile));
+      assertEquals("daContent", FileUtils.readFileToString(copiedFile, StandardCharsets.UTF_8));
     }
 
     try {
