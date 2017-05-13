@@ -39,7 +39,6 @@
     <module>presenter</module>
     <module>provider</module>
     <module>repository</module>
-    <module>struct</module>
     <module>swing</module>
     <module>test-utils</module>
     <module>version</module>
