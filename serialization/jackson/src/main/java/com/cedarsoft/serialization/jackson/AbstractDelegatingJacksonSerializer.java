@@ -31,12 +31,12 @@
 
 package com.cedarsoft.serialization.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.serialization.SerializingStrategy;
 import com.cedarsoft.serialization.SerializingStrategySupport;
 import com.cedarsoft.serialization.VersionMapping;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -84,13 +84,13 @@ public abstract class AbstractDelegatingJacksonSerializer<T> extends AbstractJac
     String currentName = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_SUB_TYPE.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_SUB_TYPE + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_SUB_TYPE + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     String type = deserializeFrom.getText();
 
     if ( type == null ) {
-      throw new JsonParseException( "Attribute" + PROPERTY_SUB_TYPE + " not found. Cannot find strategy.", deserializeFrom.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Attribute" + PROPERTY_SUB_TYPE + " not found. Cannot find strategy.", deserializeFrom.getCurrentLocation());
     }
 
     SerializingStrategy<? extends T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream> strategy = serializingStrategySupport.findStrategy( type );
