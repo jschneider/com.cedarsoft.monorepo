@@ -70,7 +70,7 @@ public abstract class AbstractJsonSerializerTest2<T> extends AbstractSerializerT
   protected abstract StreamSerializer<T> getSerializer() throws Exception;
 
   protected void verify( @Nonnull byte[] current, @Nonnull byte[] expectedJson ) throws Exception {
-    String expectedAsString = new String( expectedJson, Charsets.UTF_8 );
+    String expectedAsString = new String( expectedJson, StandardCharsets.UTF_8 );
     if ( addTypeInformation() ) {
       try {
         expectedAsString = addTypeInformation( expectedJson );
@@ -79,7 +79,7 @@ public abstract class AbstractJsonSerializerTest2<T> extends AbstractSerializerT
       }
     }
 
-    JsonUtils.assertJsonEquals(expectedAsString, new String(current, Charsets.UTF_8));
+    JsonUtils.assertJsonEquals(expectedAsString, new String(current, StandardCharsets.UTF_8));
   }
 
   @Nonnull
@@ -107,7 +107,7 @@ public abstract class AbstractJsonSerializerTest2<T> extends AbstractSerializerT
   @Nonnull
 
   public static String addTypeInformation( @Nonnull String type, @Nonnull Version version, @Nonnull byte[] xmlBytes ) throws Exception {
-    JsonNode tree = new ObjectMapper().readTree( new String( xmlBytes, Charsets.UTF_8 ) );
+    JsonNode tree = new ObjectMapper().readTree( new String( xmlBytes, StandardCharsets.UTF_8 ) );
 
     Map<String, JsonNode> newProps = new LinkedHashMap<String, JsonNode>();
     newProps.put( "@type", new TextNode( type ) );
