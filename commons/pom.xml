@@ -36,8 +36,6 @@
     <module>lookup</module>
     <module>mail</module>
     <module>objectaccess</module>
-    <module>presenter</module>
-    <module>provider</module>
     <module>swing</module>
     <module>test-utils</module>
     <module>version</module>
