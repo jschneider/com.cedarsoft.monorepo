@@ -139,34 +139,6 @@ public class FileTypeTest {
   }
 
   @Test
-  public void testExtension() {
-    FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
-
-    assertSame( fileTypeRegistry.get( new FileName( "asdf", ".", "jpg" ) ), FileTypeRegistry.JPEG );
-    assertSame( fileTypeRegistry.get( new FileName( "asdf", ".", "cr2" ) ), FileTypeRegistry.RAW_CANON );
-
-    assertSame( fileTypeRegistry.get( "asdf.jpg" ), FileTypeRegistry.JPEG );
-    assertSame( fileTypeRegistry.get( "asdf.cr2" ), FileTypeRegistry.RAW_CANON );
-    assertSame( fileTypeRegistry.get( "asdf_lzn.jpg" ), FileTypeRegistry.LIGHT_ZONE );
-  }
-
-  @Test
-  public void testLightZone() {
-    FileTypeRegistry fileTypeRegistry = new FileTypeRegistry();
-
-    assertEquals( FileTypeRegistry.LIGHT_ZONE, fileTypeRegistry.get( "asdf_lzn.jpg" ) );
-    assertEquals( "asdf", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getBaseName().getName() );
-    assertEquals( "_", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getDelimiter() );
-    assertEquals( "lzn.jpg", fileTypeRegistry.get( "asdf_lzn.jpg" ).getFileName( "asdf_lzn.jpg" ).getExtension().getExtension() );
-
-    assertEquals( "asdf", new FileName( "asdf", "_", "lzn.jpg" ).getBaseName().getName() );
-    assertEquals( "_", new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getDelimiter() );
-    assertEquals( "lzn.jpg", new FileName( "asdf", "_", "lzn.jpg" ).getExtension().getExtension() );
-
-    assertTrue( FileTypeRegistry.LIGHT_ZONE.matches( "my_lzn.jpg" ) );
-  }
-
-  @Test
   public void testDependentFiles() {
     assertFalse( FileTypeRegistry.GIMP.isDependentType() );
     assertFalse( FileTypeRegistry.JPEG.isDependentType() );

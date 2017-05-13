@@ -31,17 +31,8 @@
 
 package com.cedarsoft.file;
 
-import com.cedarsoft.exceptions.StillContainedException;
-import com.cedarsoft.registry.DefaultRegistry;
-import com.cedarsoft.registry.RegistryFactory;
-
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import java.lang.String;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -49,7 +40,7 @@ import java.util.List;
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
-public class FileTypeRegistry extends DefaultRegistry<FileType> {
+public class FileTypeRegistry {
   /**
    * Constant <code>LIGHT_ZONE</code>
    */
@@ -83,135 +74,4 @@ public class FileTypeRegistry extends DefaultRegistry<FileType> {
 
   @Nonnull
   private static final List<FileType> DEFAULT = Arrays.asList( LIGHT_ZONE, JPEG, TIFF, GIMP, RAW_CANON, PHOTO_SHOP );
-
-  /**
-   * <p>Constructor for FileTypeRegistry.</p>
-   */
-  @Deprecated
-  public FileTypeRegistry() {
-    this( true );
-  }
-
-  /**
-   * <p>Constructor for FileTypeRegistry.</p>
-   *
-   * @param registerDefaultTypes a boolean.
-   */
-  @Deprecated
-  public FileTypeRegistry( boolean registerDefaultTypes ) {
-    if ( registerDefaultTypes ) {
-      ensureDefaultTypesRegistered();
-    }
-  }
-
-  /**
-   * <p>Constructor for FileTypeRegistry.</p>
-   *
-   * @param storedObjects      a Collection object.
-   * @param fileTypeComparator a Comparator object.
-   *          if any.
-   */
-  public FileTypeRegistry( @Nonnull Collection<? extends FileType> storedObjects, @Nullable Comparator<FileType> fileTypeComparator ) throws StillContainedException {
-    super( storedObjects, fileTypeComparator );
-  }
-
-  /**
-   * Returns the file types
-   *
-   * @return the file types
-   */
-  @Nonnull
-  public List<? extends FileType> getFileTypes() {
-    return getStoredObjects();
-  }
-
-  /**
-   * Ensures that the default types are registered
-   */
-  public final void ensureDefaultTypesRegistered() {
-    lock.writeLock().lock();
-    try {
-      if ( !getStoredObjects().isEmpty() ) {
-        return;
-      }
-
-      //Register the default types
-      for ( FileType fileType : DEFAULT ) {
-        try {
-          store( fileType );
-        } catch ( StillContainedException ignore ) {
-        }
-      }
-    } finally {
-      lock.writeLock().unlock();
-    }
-  }
-
-  /**
-   * <p>valueOf</p>
-   *
-   * @param id a String object.
-   * @return a FileType object.
-   */
-  @Nonnull
-  public FileType valueOf( @Nonnull final String id ) {
-    return findStoredObject( new Matcher<FileType>() {
-      @Override
-      public boolean matches( @Nonnull FileType object ) {
-        return object.getId().equals( id );
-      }
-    }, "No FileType found for <" + id + '>' );
-  }
-
-  /**
-   * <p>get</p>
-   *
-   * @param fileName a FileName object.
-   * @return a FileType object.
-   */
-  @Nonnull
-  public FileType get( @Nonnull final FileName fileName ) {
-    return findStoredObject( new Matcher<FileType>() {
-      @Override
-      public boolean matches( @Nonnull FileType object ) {
-        return object.matches( fileName );
-      }
-    }, "No FileType found for file <" + fileName + '>' );
-  }
-
-  /**
-   * <p>get</p>
-   *
-   * @param fileName a String object.
-   * @return a FileType object.
-   */
-  @Nonnull
-  public FileType get( @Nonnull final String fileName ) {
-    return findStoredObject( new Matcher<FileType>() {
-      @Override
-      public boolean matches( @Nonnull FileType object ) {
-        return object.matches( fileName );
-      }
-    }, "No FileType found for file <" + fileName + '>' );
-  }
-
-  /**
-   * Parses a file name
-   *
-   * @param fileName the file name to parse
-   * @return the file name
-   */
-  @Nonnull
-  public FileName parseFileName( @Nonnull String fileName ) {
-    FileType type = get( fileName );
-    return type.getFileName( fileName );
-  }
-
-  public static class Factory implements RegistryFactory<FileType, FileTypeRegistry> {
-    @Nonnull
-    @Override
-    public FileTypeRegistry createRegistry( @Nonnull List<? extends FileType> objects, @Nonnull Comparator<FileType> comparator ) {
-      return new FileTypeRegistry( objects, comparator );
-    }
-  }
 }

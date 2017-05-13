@@ -34,17 +34,17 @@ package com.cedarsoft.zip;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-import javax.annotation.Nonnull;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.zip.ZipEntry;
+import java.io.InputStream;
 import java.util.zip.ZipException;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Helper class that creates zip files
@@ -85,14 +85,11 @@ public class ZipCreator {
    * @throws IOException if an io exception occures
    */
   public File zip( @Nonnull File... directories ) throws IOException {
-    ZipArchiveOutputStream outStream = new ZipArchiveOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
-    try {
-      for ( File directory : directories ) {
+    try (ZipArchiveOutputStream outStream = new ZipArchiveOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)))) {
+      for (File directory : directories) {
         String baseName = directory.getCanonicalPath();
-        addFiles( baseName, outStream, directory );
+        addFiles(baseName, outStream, directory);
       }
-    } finally {
-      outStream.close();
     }
     return zipFile;
   }
@@ -106,8 +103,12 @@ public class ZipCreator {
    * @throws IOException if any.
    */
   protected void addFiles( @Nonnull String baseName, @Nonnull ZipArchiveOutputStream outStream, @Nonnull File directory ) throws IOException {
+    @Nullable File[] files = directory.listFiles();
+    if (files == null) {
+      throw new IOException("could not list <" + directory.getAbsolutePath() + ">");
+    }
     byte[] data = new byte[BUFFER_SIZE];
-    for ( File file : directory.listFiles() ) {
+    for (File file : files) {
       String relativeName = getRelativePath( baseName, file );
       ArchiveEntry entry = new ZipArchiveEntry( relativeName );
       try {
@@ -121,21 +122,10 @@ public class ZipCreator {
         continue;
       }
 
-      FileInputStream fileInputStream = null;
-      BufferedInputStream origin = null;
-      try {
-        fileInputStream = new FileInputStream( file );
-        origin = new BufferedInputStream( fileInputStream, BUFFER_SIZE );
+      try (InputStream origin = new BufferedInputStream(new FileInputStream(file), BUFFER_SIZE)) {
         int count;
-        while ( ( count = origin.read( data, 0, BUFFER_SIZE ) ) != -1 ) {
-          outStream.write( data, 0, count );
-        }
-      } finally {
-        if ( fileInputStream != null ) {
-          fileInputStream.close();
-        }
-        if ( origin != null ) {
-          origin.close();
+        while ((count = origin.read(data, 0, BUFFER_SIZE)) != -1) {
+          outStream.write(data, 0, count);
         }
       }
 

@@ -31,9 +31,6 @@
   </dependencies>
 
   <modules>
-    <module>contact</module>
-    <module>locations</module>
-    <module>dependencies</module>
     <module>financial</module>
   </modules>
 </project>

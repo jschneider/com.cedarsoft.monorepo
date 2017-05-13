@@ -35,7 +35,6 @@ import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
 import javax.annotation.Nonnull;
-
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -61,9 +60,10 @@ public class MailManager {
   private static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
 
 
-  private Session session;
-
-  private MailConfiguration configuration;
+  @Nonnull
+  private final Session session;
+  @Nonnull
+  private final MailConfiguration configuration;
 
   /**
    * <p>Constructor for MailManager.</p>
@@ -140,7 +140,7 @@ public class MailManager {
    * The mail worker
    */
   private static class MailWorker implements Runnable {
-    private Message message;
+    private final Message message;
 
     protected MailWorker( @Nonnull Message message ) {
       this.message = message;
