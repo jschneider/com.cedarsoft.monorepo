@@ -81,7 +81,8 @@ public class YearMonth implements Comparable<YearMonth> {
     return new LocalDate( year, month, 1 );
   }
 
-  public int compareTo( YearMonth o ) {
+  @Override
+  public int compareTo(@Nonnull YearMonth o ) {
     return getYear() * 1000 - o.getYear() * 1000 + getMonth() - o.getMonth();
   }
 

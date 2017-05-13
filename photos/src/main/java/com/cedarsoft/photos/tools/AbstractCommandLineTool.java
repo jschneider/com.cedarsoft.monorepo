@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,7 +63,7 @@ public abstract class AbstractCommandLineTool {
         outputRedirectingThread.join();
       }
       if (result != 0) {
-        throw new IOException("Conversion failed due to: " + IOUtils.toString(process.getErrorStream()));
+        throw new IOException("Conversion failed due to: " + IOUtils.toString(process.getErrorStream(), Charset.defaultCharset()));
       }
     } catch (InterruptedException e) {
       throw new RuntimeException(e);

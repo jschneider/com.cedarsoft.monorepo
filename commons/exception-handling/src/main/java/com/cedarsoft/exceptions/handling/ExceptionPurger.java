@@ -20,7 +20,7 @@ public class ExceptionPurger {
    * These exceptions are ignored. No dialog is shown for them.
    */
   @Nonnull
-  protected static final Set<Class<? extends Throwable>> IGNORED = ImmutableSet.of(CanceledException.class);
+  protected static final ImmutableSet<Class<? extends Throwable>> IGNORED = ImmutableSet.of(CanceledException.class);
   /**
    * These exceptions are purged: They are not reported themselves. Instead the cause is shown in the dialog
    */
