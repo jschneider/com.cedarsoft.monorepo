@@ -49,6 +49,16 @@ public class ApplicationHomeAccessFactory {
     return new StaticApplicationHomeAccess( applicationName, configHome, dataHome, cacheHome );
   }
 
+  /**
+   * Creates a app home access within the temp dir
+   */
+  @Nonnull
+  public static ApplicationHomeAccess createTemporaryHomeAccess() {
+    File dir = new File(new File(System.getProperty("java.io.tmpdir")), "." + System.currentTimeMillis());
+    dir.mkdir();
+    return new StaticApplicationHomeAccess("mockDir", new File(dir, "config"), new File(dir, "data"), new File(dir, "cache"));
+  }
+
   private static void createDirIfNecessary( @Nonnull File dir ) {
     if ( dir.isDirectory() ) {
       return;
