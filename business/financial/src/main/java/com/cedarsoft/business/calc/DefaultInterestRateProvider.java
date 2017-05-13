@@ -44,10 +44,12 @@ public class DefaultInterestRateProvider implements InterestRateProvider {
     this.interestRate = interestRate;
   }
 
-  public double getRate( @Nonnull LocalDate date ) {
+  @Override
+  public double getRate(@Nonnull LocalDate date ) {
     return interestRate;
   }
 
+  @Override
   @Nonnull
   public ValidityPeriod getValidityPeriod() {
     return ValidityPeriod.CONSTANT;

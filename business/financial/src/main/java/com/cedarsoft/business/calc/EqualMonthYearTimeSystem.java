@@ -44,22 +44,26 @@ public abstract class EqualMonthYearTimeSystem implements TimeSystem {
    */
   public static final int MONTHS_PER_YEAR = 12;
 
-  public double calculateDays( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+  @Override
+  public double calculateDays(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     org.joda.time.Period period = calculateRealPeriode( begin, end );
     return period.getYears() * getDaysPerYear() + period.getMonths() * getDaysPerMonth() + Math.min( getDaysPerMonth(), period.getDays() );
   }
 
-  public int calculateFullYears( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+  @Override
+  public int calculateFullYears(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     return calculatePeriod( begin, end ).getYears();
   }
 
-  public double calculateYears( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+  @Override
+  public double calculateYears(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     Period period = calculatePeriod( begin, end );
 
     double months = period.getMonths() + period.getDays() / getDaysPerMonth();
     return period.getYears() + months / MONTHS_PER_YEAR;
   }
 
+  @Override
   @Nonnull
   public Period calculatePeriod( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
     org.joda.time.Period period = calculateRealPeriode( begin, end );

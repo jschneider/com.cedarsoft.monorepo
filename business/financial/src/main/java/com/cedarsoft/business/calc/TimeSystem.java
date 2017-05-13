@@ -49,17 +49,20 @@ public interface TimeSystem {
    */
   @Nonnull
   TimeSystem CALENDAR_BASED = new TimeSystem() {
-    public int calculateFullYears( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+    @Override
+    public int calculateFullYears(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
       return calculatePeriod( begin, end ).getYears();
     }
 
+    @Override
     @Nonnull
     public Period calculatePeriod( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
       org.joda.time.Period period = new org.joda.time.Period( begin, end, PeriodType.yearMonthDay() );
       return new Period( period.getYears(), period.getMonths(), period.getDays() );
     }
 
-    public double calculateYears( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+    @Override
+    public double calculateYears(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
       if ( begin.isEqual( end ) ) {
         return 0.0;
       }
@@ -112,7 +115,8 @@ public interface TimeSystem {
     }
 
 
-    public double calculateDays( @Nonnull LocalDate begin, @Nonnull LocalDate end ) {
+    @Override
+    public double calculateDays(@Nonnull LocalDate begin, @Nonnull LocalDate end ) {
       return new org.joda.time.Period( begin, end, PeriodType.days() ).getDays();
     }
 
