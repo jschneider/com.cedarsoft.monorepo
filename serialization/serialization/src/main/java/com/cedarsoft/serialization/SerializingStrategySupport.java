@@ -98,7 +98,9 @@ public class SerializingStrategySupport<T, S, D, E extends Throwable, O, I> {
   public <R extends T> SerializingStrategy<R, S, D, E, O, I> findStrategy( @Nonnull R object ) throws NotFoundException {
     for ( SerializingStrategy<? extends T, S, D, E, O, I> strategy : strategies ) {
       if ( strategy.supports( object ) ) {
-        return ( SerializingStrategy<R, S, D, E, O, I> ) strategy;
+        @SuppressWarnings("unchecked")
+        SerializingStrategy<R, S, D, E, O, I> strategyCast = (SerializingStrategy<R, S, D, E, O, I>) strategy;
+        return strategyCast;
       }
     }
 

@@ -71,6 +71,7 @@ public class DelegatesMappings<S, D, E extends Throwable, O, I> {
 
   @Nonnull
   public <T> PluggableSerializer<? super T, S, D, E,O, I> getSerializer( @Nonnull Class<T> type ) throws SerializationException{
+    @SuppressWarnings("unchecked")
     PluggableSerializer<? super T, S, D, E,O, I> serializer = ( PluggableSerializer<? super T, S, D, E, O, I> ) serializers.get( type );
     if ( serializer == null ) {
       throw new SerializationException( SerializationException.Details.NO_SERIALIZER_FOUND, type.getName());
