@@ -60,12 +60,17 @@ public abstract class AbstractSerializerTest2<T> {
     Serializer<T, OutputStream, InputStream> serializer = getSerializer();
 
     //Serialize
-    byte[] serialized = serialize( serializer, ( T ) entry.getObject() );
+    @SuppressWarnings("unchecked")
+    T object = (T) entry.getObject();
+    @SuppressWarnings("unchecked")
+    byte[] serialized = serialize(serializer, object);
 
     //Verify
-    verifySerialized( ( Entry<T> ) entry, serialized );
+    @SuppressWarnings("unchecked")
+    Entry<T> entryCast = (Entry<T>) entry;
+    verifySerialized(entryCast, serialized );
 
-    verifyDeserialized( serializer.deserialize( new ByteArrayInputStream( serialized ) ), ( T ) entry.getObject() );
+    verifyDeserialized(serializer.deserialize( new ByteArrayInputStream( serialized ) ), object);
   }
 
   @Nonnull
