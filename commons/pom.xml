@@ -39,11 +39,7 @@
     <module>objectaccess</module>
     <module>presenter</module>
     <module>provider</module>
-    <module>renderer</module>
-    <module>registry</module>
     <module>repository</module>
-    <!--<module>spring</module>-->
-    <!--<module>string-conversion</module>-->
     <module>struct</module>
     <module>swing</module>
     <module>test-utils</module>
@@ -51,9 +47,6 @@
     <module>workflow</module>
     <module>xml-commons</module>
     <module>zip</module>
-    <!--<module>legacy</module>-->
-    <!--<module>ooorg</module>-->
-    <!--<module>excel</module>-->
   </modules>
 
 
