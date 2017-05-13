@@ -58,7 +58,7 @@ public class ContainsOnlyFilesMatcherTest {
     Files.touch( new File( tmp.newFolder( "dir" ), "a" ) );
     assertThat( ContainsOnlyFilesMatcher.toTree( tmp.getRoot() ), tmp.getRoot(), ContainsOnlyFilesMatcher.containsOnlyFiles( "dir/a" ) );
 
-    expectedException.handleAssertionErrors().expect( AssertionError.class );
+    expectedException.expect( AssertionError.class );
     Files.touch( new File( tmp.newFolder( "dir2" ), "a2" ) );
     assertThat( ContainsOnlyFilesMatcher.toTree( tmp.getRoot() ), tmp.getRoot(), ContainsOnlyFilesMatcher.containsOnlyFiles( "dir/a" ) );
   }
@@ -72,13 +72,13 @@ public class ContainsOnlyFilesMatcherTest {
 
   @Test
   public void testNone() throws IOException {
-    expectedException.handleAssertionErrors().expect( AssertionError.class );
+    expectedException.expect( AssertionError.class );
     assertThat( ContainsOnlyFilesMatcher.toTree( tmp.getRoot() ), tmp.getRoot(), ContainsOnlyFilesMatcher.containsOnlyFiles( "dir/a" ) );
   }
 
   @Test
   public void testWrong() throws IOException {
-    expectedException.handleAssertionErrors().expect( AssertionError.class );
+    expectedException.expect( AssertionError.class );
     Files.touch( new File( tmp.newFolder( "dir" ), "a" ) );
     assertThat( ContainsOnlyFilesMatcher.toTree( tmp.getRoot() ), tmp.getRoot(), ContainsOnlyFilesMatcher.containsOnlyFiles( "dir/b" ) );
   }

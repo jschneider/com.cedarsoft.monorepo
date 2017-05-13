@@ -68,7 +68,7 @@ public class ContainsFileMatcherTest {
   public void testEmpty() throws IOException {
     assertThat( tmp.getRoot(), is( empty() ) );
 
-    expectedException.handleAssertionErrors().expect( AssertionError.class );
+    expectedException.expect( AssertionError.class );
     Files.touch( tmp.newFile( "a" ) );
     assertThat( tmp.getRoot(), is( empty() ) );
   }
@@ -105,7 +105,7 @@ public class ContainsFileMatcherTest {
 
   @Test
   public void testNontExistent() throws IOException {
-    expectedException.handleAssertionErrors().expect( AssertionError.class );
+    expectedException.expect( AssertionError.class );
     assertThat( tmp.getRoot(), containsFiles( "a" ) );
   }
 }
