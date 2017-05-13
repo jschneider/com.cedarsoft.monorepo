@@ -103,11 +103,11 @@ public class ZipCreator {
    * @throws IOException if any.
    */
   protected void addFiles( @Nonnull String baseName, @Nonnull ZipArchiveOutputStream outStream, @Nonnull File directory ) throws IOException {
-    byte[] data = new byte[BUFFER_SIZE];
     @Nullable File[] files = directory.listFiles();
     if (files == null) {
       throw new IOException("could not list <" + directory.getAbsolutePath() + ">");
     }
+    byte[] data = new byte[BUFFER_SIZE];
     for (File file : files) {
       String relativeName = getRelativePath( baseName, file );
       ArchiveEntry entry = new ZipArchiveEntry( relativeName );
