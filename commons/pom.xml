@@ -35,7 +35,6 @@
     <module>lang</module>
     <module>lookup</module>
     <module>mail</module>
-    <module>objectaccess</module>
     <module>swing</module>
     <module>test-utils</module>
     <module>version</module>
