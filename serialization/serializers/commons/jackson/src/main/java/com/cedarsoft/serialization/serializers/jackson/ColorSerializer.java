@@ -31,11 +31,11 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -84,7 +84,7 @@ public class ColorSerializer extends AbstractJacksonSerializer<Color> {
     String currentName2 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_RED.equals( currentName2 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_RED + "> but was <" + currentName2 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_RED + "> but was <" + currentName2 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     int red = parserWrapper.getIntValue();
@@ -94,7 +94,7 @@ public class ColorSerializer extends AbstractJacksonSerializer<Color> {
     String currentName1 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_GREEN.equals( currentName1 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_GREEN + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_GREEN + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     int green = parserWrapper.getIntValue();
@@ -104,7 +104,7 @@ public class ColorSerializer extends AbstractJacksonSerializer<Color> {
     String currentName = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_BLUE.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_BLUE + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_BLUE + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     int blue = parserWrapper.getIntValue();

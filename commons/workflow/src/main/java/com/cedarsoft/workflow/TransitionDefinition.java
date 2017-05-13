@@ -60,6 +60,7 @@ public class TransitionDefinition<T> {
    * @param actions a Action object.
    */
   @SafeVarargs
+  @SuppressWarnings("varargs")
   public TransitionDefinition(@Nonnull State<T> source, @Nonnull State<T> target, @Nonnull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
   }

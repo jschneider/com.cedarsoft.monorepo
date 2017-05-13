@@ -31,7 +31,6 @@
 
 package com.cedarsoft.workflow;
 
-import junit.framework.Assert;
 import javax.annotation.Nonnull;
 import org.junit.*;
 
@@ -76,23 +75,23 @@ public class WorkflowTest {
   @Test
   public void testTransitions1() {
     assertNotNull( workflow );
-    Assert.assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
-    Assert.assertEquals( 2, workflow.getPossibleTransition().size() );
+    assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
+    assertEquals( 2, workflow.getPossibleTransition().size() );
 
     workflow.getPossibleTransition().get( 0 ).transit();
-    Assert.assertEquals( "target1", workflow.getCurrentState().getId() );
-    Assert.assertEquals( "1", workflow.getBean().getMessage() );
+    assertEquals( "target1", workflow.getCurrentState().getId() );
+    assertEquals( "1", workflow.getBean().getMessage() );
   }
 
   @Test
   public void testTransitions2() {
     assertNotNull( workflow );
-    Assert.assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
-    Assert.assertEquals( 2, workflow.getPossibleTransition().size() );
+    assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
+    assertEquals( 2, workflow.getPossibleTransition().size() );
 
     workflow.getPossibleTransition().get( 1 ).transit();
-    Assert.assertEquals( "target2", workflow.getCurrentState().getId() );
-    Assert.assertEquals( "2", workflow.getBean().getMessage() );
+    assertEquals( "target2", workflow.getCurrentState().getId() );
+    assertEquals( "2", workflow.getBean().getMessage() );
   }
 
   public static class MyObject {

@@ -34,12 +34,13 @@ package com.cedarsoft.zip;
 import com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.io.FileUtils;
-import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.rules.*;
 
+import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher.containsOnlyFiles;
 import static org.junit.Assert.*;
@@ -83,11 +84,11 @@ public class ZipCreatorTest {
 
     File baseDir1 = tmp.newFolder( "base1" );
     File file1 = new File( baseDir1, "file1" );
-    FileUtils.writeStringToFile( file1, "file1content" );
+    FileUtils.writeStringToFile(file1, "file1content", StandardCharsets.UTF_8);
 
     File baseDir2 = tmp.newFolder( "base2" );
     File file2 = new File( new File( baseDir2, "subDir" ), "file2" );
-    FileUtils.writeStringToFile( file2, "file2content" );
+    FileUtils.writeStringToFile(file2, "file2content", StandardCharsets.UTF_8);
 
     assertSame( file, creator.getZipFile() );
     File zip = creator.zip( baseDir1, baseDir2 );

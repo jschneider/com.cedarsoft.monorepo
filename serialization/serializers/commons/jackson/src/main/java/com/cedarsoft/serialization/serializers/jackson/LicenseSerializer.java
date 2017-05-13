@@ -31,22 +31,21 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import com.cedarsoft.license.CreativeCommonsLicense;
+import com.cedarsoft.license.License;
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.license.CreativeCommonsLicense;
-import com.cedarsoft.license.License;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 
-import javax.annotation.Nullable;
-
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.net.URL;
@@ -109,7 +108,7 @@ public class LicenseSerializer extends AbstractJacksonSerializer<License> {
       String currentName = parserWrapper.getCurrentName();
 
       if ( !PROPERTY_ID.equals( currentName ) ) {
-        throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_ID + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+        throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_ID + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
       }
     }
 
@@ -124,7 +123,7 @@ public class LicenseSerializer extends AbstractJacksonSerializer<License> {
     String currentName1 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_NAME.equals( currentName1 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_NAME + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_NAME + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     String name = deserializeFrom.getText();
@@ -134,7 +133,7 @@ public class LicenseSerializer extends AbstractJacksonSerializer<License> {
     String currentName = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_URL.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_URL + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_URL + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
     }
     JsonToken token = deserializeFrom.nextToken();
     @Nullable URL url;

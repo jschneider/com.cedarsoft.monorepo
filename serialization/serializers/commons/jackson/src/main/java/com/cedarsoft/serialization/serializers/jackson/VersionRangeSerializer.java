@@ -31,11 +31,11 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -86,7 +86,7 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
     String currentName3 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_MIN.equals( currentName3 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_MIN + "> but was <" + currentName3 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_MIN + "> but was <" + currentName3 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     Version min = Version.parse( deserializeFrom.getText() );
@@ -96,7 +96,7 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
     String currentName2 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_MAX.equals( currentName2 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_MAX + "> but was <" + currentName2 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_MAX + "> but was <" + currentName2 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     Version max = Version.parse( deserializeFrom.getText() );
@@ -106,7 +106,7 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
     String currentName1 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_INCLUDELOWER.equals( currentName1 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_INCLUDELOWER + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_INCLUDELOWER + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     boolean includeLower = deserializeFrom.getBooleanValue();
@@ -116,7 +116,7 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
     String currentName = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_INCLUDEUPPER.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_INCLUDEUPPER + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_INCLUDEUPPER + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     boolean includeUpper = deserializeFrom.getBooleanValue();

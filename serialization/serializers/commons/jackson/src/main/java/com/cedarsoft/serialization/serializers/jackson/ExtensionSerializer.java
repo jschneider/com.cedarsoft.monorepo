@@ -31,12 +31,12 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import com.cedarsoft.file.Extension;
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -79,7 +79,7 @@ public class ExtensionSerializer extends AbstractJacksonSerializer<Extension> {
     String currentName1 = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_DELIMITER.equals( currentName1 ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_DELIMITER + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_DELIMITER + "> but was <" + currentName1 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     String delimiter = parserWrapper.getText();
@@ -89,7 +89,7 @@ public class ExtensionSerializer extends AbstractJacksonSerializer<Extension> {
     String currentName = parserWrapper.getCurrentName();
 
     if ( !PROPERTY_EXTENSION.equals( currentName ) ) {
-      throw new JsonParseException( "Invalid field. Expected <" + PROPERTY_EXTENSION + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_EXTENSION + "> but was <" + currentName + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();
     String extension = parserWrapper.getText();

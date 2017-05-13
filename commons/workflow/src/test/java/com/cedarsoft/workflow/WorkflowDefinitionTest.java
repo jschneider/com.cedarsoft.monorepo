@@ -31,7 +31,6 @@
 
 package com.cedarsoft.workflow;
 
-import junit.framework.Assert;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -45,8 +44,8 @@ public class WorkflowDefinitionTest {
 
   @Before
   public void setUp() throws Exception {
-    initialState = new State<MyObject>( "initialState" );
-    workflowDefinition = new WorkflowDefinition<MyObject>( initialState );
+    initialState = new State<>("initialState");
+    workflowDefinition = new WorkflowDefinition<>(initialState);
   }
 
   @After
@@ -59,9 +58,9 @@ public class WorkflowDefinitionTest {
     assertNotNull( workflowDefinition.getInitialState() );
     assertSame( initialState, workflowDefinition.getInitialState() );
 
-    State<MyObject> otherState = new State<MyObject>( "otherState" );
+    State<MyObject> otherState = new State<>("otherState");
     workflowDefinition.getInitialState().createTransition( otherState );
-    Assert.assertEquals( 1, initialState.getTransitions().size() );
+    assertEquals( 1, initialState.getTransitions().size() );
   }
 
   public static class MyObject {

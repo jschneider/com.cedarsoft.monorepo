@@ -101,6 +101,7 @@ public class State<T> {
    * @return a TransitionDefinition object.
    */
   @SafeVarargs
+  @SuppressWarnings("varargs")
   @Nonnull
   public final TransitionDefinition<T> createTransition(@Nonnull State<T> targetState, @Nonnull Action<T>... actions) {
     return createTransition( targetState, Arrays.asList( actions ) );
