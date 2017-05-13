@@ -75,6 +75,7 @@ public class ThreadDeadlockDetectorTest {
       }
 
       @Override
+      @SuppressWarnings("WaitNotInLoop")
       protected void execute() throws Exception {
         ThreadDeadlockDetector deadlockDetector = new ThreadDeadlockDetector( 10 );
         deadlockDetector.addListener( listener );
@@ -112,6 +113,7 @@ public class ThreadDeadlockDetectorTest {
         hasBeenRunLock.lock();
         try {
           deadlockDetector.start();
+          //noinspection AwaitNotInLoop
           hasBeenRun.await();
         } finally {
           hasBeenRunLock.unlock();

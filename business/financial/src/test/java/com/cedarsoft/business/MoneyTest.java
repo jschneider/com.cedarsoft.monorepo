@@ -154,12 +154,14 @@ public class MoneyTest {
   @Test
   public void testCalc() {
     MoneyProvider mutableProvider = new MoneyProvider() {
+      @Override
       @Nonnull
       public AbstractMoney getMoney() {
         return new MutableMoney( 1000 );
       }
     };
     MoneyProvider immutableProvider = new MoneyProvider() {
+      @Override
       @Nonnull
       public Money getMoney() {
         return new Money( 1000 );
