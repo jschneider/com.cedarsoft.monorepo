@@ -53,10 +53,21 @@ public class ApplicationHomeAccessFactory {
    * Creates a app home access within the temp dir
    */
   @Nonnull
-  public static ApplicationHomeAccess createTemporaryHomeAccess() {
+  public static ApplicationHomeAccess createTemporaryApplicationHomeAccess() {
     File dir = new File(new File(System.getProperty("java.io.tmpdir")), "." + System.currentTimeMillis());
-    dir.mkdir();
-    return new StaticApplicationHomeAccess("mockDir", new File(dir, "config"), new File(dir, "data"), new File(dir, "cache"));
+    return createTemporaryApplicationHomeAccess(dir);
+  }
+
+  @Nonnull
+  public static ApplicationHomeAccess createTemporaryApplicationHomeAccess(@Nonnull File dir) {
+    File configHome = new File(dir, "config");
+    createDirIfNecessary(configHome);
+    File data = new File(dir, "data");
+    createDirIfNecessary(data);
+    File cacheHome = new File(dir, "cache");
+    createDirIfNecessary(cacheHome);
+
+    return new StaticApplicationHomeAccess("mockDir", configHome, data, cacheHome);
   }
 
   private static void createDirIfNecessary( @Nonnull File dir ) {
