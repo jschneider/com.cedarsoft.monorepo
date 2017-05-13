@@ -42,7 +42,7 @@ public class CollectionSerializer<T> extends AbstractJacksonSerializer<List<? ex
   public List<? extends T> deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
     verifyVersionReadable(formatVersion);
 
-    List<? extends T> elements = deserializeArray(listType, getType(), deserializeFrom, formatVersion);
+    List<? extends T> elements = deserializeArray(listType, getType(), formatVersion, deserializeFrom);
 
     JacksonParserWrapper parser = new JacksonParserWrapper(deserializeFrom);
     parser.closeObject();

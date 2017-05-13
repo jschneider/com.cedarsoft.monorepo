@@ -271,7 +271,7 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
 
   @Nonnull
   protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException {
-    return deserializeArray(type, null, deserializeFrom, formatVersion );
+    return deserializeArray(type, null, formatVersion, deserializeFrom);
   }
 
   @Nonnull

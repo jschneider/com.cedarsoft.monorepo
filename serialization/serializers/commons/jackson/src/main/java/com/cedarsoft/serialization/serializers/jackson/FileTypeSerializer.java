@@ -37,7 +37,6 @@ import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.file.FileType;
-import com.cedarsoft.file.FileTypeRegistry;
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -110,7 +109,7 @@ public class FileTypeSerializer extends AbstractJacksonSerializer<FileType> {
     }
     parserWrapper.nextToken();
     String contentType = parserWrapper.getText();
-    List<? extends Extension> extensions = deserializeArray( Extension.class, PROPERTY_EXTENSIONS, deserializeFrom, formatVersion );
+    List<? extends Extension> extensions = deserializeArray(Extension.class, PROPERTY_EXTENSIONS, formatVersion, deserializeFrom);
 
     parserWrapper.nextToken( JsonToken.END_OBJECT );
     return new FileType( id, contentType, dependentType, extensions );
