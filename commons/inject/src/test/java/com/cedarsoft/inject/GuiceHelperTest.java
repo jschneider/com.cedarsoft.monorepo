@@ -52,7 +52,9 @@ public class GuiceHelperTest {
     AbstractModule module = new AbstractModule() {
       @Override
       protected void configure() {
-        bind( ( ( Key<Set<String>> ) Key.get( Types.setOf( String.class ) ) ) ).toInstance( new HashSet<String>() );
+        @SuppressWarnings("unchecked")
+        Key<Set<String>> setKey = (Key<Set<String>>) Key.get(Types.setOf(String.class));
+        bind(setKey).toInstance(new HashSet<>() );
         GuiceHelper.bindWildcardCollectionForSet( binder(), String.class );
       }
     };
