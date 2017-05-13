@@ -863,11 +863,6 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>lookup</artifactId>
-        <version>${monorepo.dep.management.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>mail</artifactId>
         <version>${monorepo.dep.management.version}</version>
       </dependency>
