@@ -298,6 +298,9 @@ public abstract class AbstractJacksonSerializer<T> extends AbstractStreamSeriali
     return deserialized;
   }
 
+  /**
+   * Has a strange order of parameters. Do not use anymore
+   */
   @Deprecated
   protected <A> List<? extends A> deserializeArray(@Nonnull Class<A> type, @Nullable String propertyName, @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
     return deserializeArray(type, propertyName, formatVersion, deserializeFrom);
