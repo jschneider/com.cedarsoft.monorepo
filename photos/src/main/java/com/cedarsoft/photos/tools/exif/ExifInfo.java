@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
 import com.google.errorprone.annotations.Immutable;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.text.ParseException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -75,7 +76,7 @@ public class ExifInfo {
   }
 
   public ExifInfo(@Nonnull InputStream exifIn) throws IOException {
-    List<String> lines = IOUtils.readLines(exifIn);
+    List<String> lines = IOUtils.readLines(exifIn, Charset.defaultCharset());
 
     Map<String, Entry> entriesBuilder = new HashMap<>();
 
