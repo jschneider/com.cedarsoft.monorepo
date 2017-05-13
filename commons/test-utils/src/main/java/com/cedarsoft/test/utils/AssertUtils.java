@@ -190,7 +190,8 @@ public class AssertUtils {
    * @param current              a Object object.
    * @param expectedAlternatives a Object object.
    */
-  public static <T> void assertOne( @Nullable T current, @Nonnull T... expectedAlternatives ) {
+  @SafeVarargs
+  public static <T> void assertOne(@Nullable T current, @Nonnull T... expectedAlternatives ) {
     Collection<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
 
     for ( T expectedAlternative : expectedAlternatives ) {

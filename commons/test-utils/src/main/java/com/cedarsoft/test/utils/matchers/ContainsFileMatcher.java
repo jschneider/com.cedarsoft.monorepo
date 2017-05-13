@@ -112,7 +112,7 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
 
   @Nonnull
   public static String toTree( @Nonnull final File dir ) {
-    List<File> files = Lists.newArrayList( ( Iterator<File> ) FileUtils.iterateFiles( dir, TrueFileFilter.TRUE, TrueFileFilter.TRUE ) );
+    List<File> files = Lists.newArrayList(FileUtils.iterateFiles(dir, TrueFileFilter.TRUE, TrueFileFilter.TRUE ));
 
     List<String> names = Lists.newArrayList( Lists.transform( files, new Function<File, String>() {
       @Override
