@@ -76,7 +76,7 @@ public abstract class AbstractXmlSerializerTest2<T> extends AbstractSerializerTe
 
   @Nonnull
   protected Charset getEncoding() {
-    return Charsets.UTF_8;
+    return StandardCharsets.UTF_8;
   }
 
   @Override

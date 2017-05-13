@@ -34,12 +34,13 @@ package com.cedarsoft.test.utils;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.*;
 import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static com.cedarsoft.test.utils.AssertUtils.assertFileByHash;
 import static com.cedarsoft.test.utils.AssertUtils.assertFileByHashes;
@@ -59,10 +60,10 @@ public class AssertUtilsFileCompareTest {
   @Before
   public void setUp() throws Exception {
     fileA = tmp.newFile("a");
-    FileUtils.writeStringToFile(fileA, "daContent");
+    FileUtils.writeStringToFile(fileA, "daContent", StandardCharsets.UTF_8);
 
     fileB = tmp.newFile("b");
-    FileUtils.writeStringToFile(fileB, "daContentB");
+    FileUtils.writeStringToFile(fileB, "daContentB", StandardCharsets.UTF_8);
   }
 
   @Test
