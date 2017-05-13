@@ -30,8 +30,8 @@
  */
 package com.cedarsoft.serialization.jackson.test.compatible;
 
-import com.cedarsoft.serialization.jackson.JacksonSupport;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
+import com.cedarsoft.serialization.jackson.JacksonSupport;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -39,9 +39,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Fail.fail;
 
 /**
@@ -62,7 +61,7 @@ public class JacksonParserWrapperTest {
 
   @Test
   public void testStartObject() throws Exception {
-    JacksonParserWrapper parser = new JacksonParserWrapper( jsonFactory.createJsonParser( "{}" ) );
+    JacksonParserWrapper parser = new JacksonParserWrapper(jsonFactory.createParser("{}"));
     parser.startObject();
     try {
       parser.startObject();
@@ -74,7 +73,7 @@ public class JacksonParserWrapperTest {
 
   @Test
   public void testEndObject() throws Exception {
-    JacksonParserWrapper parser = new JacksonParserWrapper( jsonFactory.createJsonParser( "{}" ) );
+    JacksonParserWrapper parser = new JacksonParserWrapper(jsonFactory.createParser("{}"));
     parser.startObject();
     parser.endObject();
     try {
@@ -87,7 +86,7 @@ public class JacksonParserWrapperTest {
 
   @Test
   public void testSimple() throws Exception {
-    JacksonParserWrapper parser = new JacksonParserWrapper( jsonFactory.createJsonParser( getClass().getResource( "simple.json" ) ) );
+    JacksonParserWrapper parser = new JacksonParserWrapper(jsonFactory.createParser(getClass().getResource("simple.json")));
     parser.startObject();
 
     parser.nextFieldValue( "street" );
