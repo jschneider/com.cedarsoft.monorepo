@@ -97,6 +97,7 @@ public class MockitoTest {
    */
   @Test
   public void testIt() {
+    @SuppressWarnings("unchecked")
     List<String> list = mock( List.class );
 
     when( list.size() ).thenReturn( 1 ).thenReturn( 2 );
