@@ -66,7 +66,7 @@ public class JacksonTest {
     generator.writeNull();
     verifyGenerator( "null" );
 
-    JsonParser parser = jsonFactory.createJsonParser( "null" );
+    JsonParser parser = jsonFactory.createParser( "null" );
     assertEquals( null, parser.getCurrentToken() );
     assertEquals( JsonToken.VALUE_NULL, parser.nextToken() );
     assertEquals( null, parser.nextToken() );

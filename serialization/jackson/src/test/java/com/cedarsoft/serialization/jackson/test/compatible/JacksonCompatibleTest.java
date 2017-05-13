@@ -76,7 +76,7 @@ public class JacksonCompatibleTest {
 
   @Test
   public void testReadCompatible() throws Exception {
-    JsonParser parser = jsonFactory.createJsonParser( getClass().getResource( "simple.json" ) );
+    JsonParser parser = jsonFactory.createParser( getClass().getResource( "simple.json" ) );
 
     JacksonParserWrapper wrapper = new JacksonParserWrapper( parser );
     wrapper.startObject();

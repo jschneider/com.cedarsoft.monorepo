@@ -31,15 +31,14 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
 import com.cedarsoft.serialization.SerializingStrategy;
 import com.cedarsoft.serialization.ToString;
 import com.cedarsoft.serialization.VersionMappings;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
 import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
-import org.apache.commons.io.Charsets;
+import com.cedarsoft.test.utils.AssertUtils;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.junit.*;
 import org.xml.sax.SAXException;
@@ -51,6 +50,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 
 import static org.junit.Assert.*;
@@ -126,8 +126,8 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<
   public void testIt() throws IOException, SAXException {
     assertEquals( 2, serializer.getStrategies().size() );
 
-    AssertUtils.assertXMLEquals( new String( serializer.serializeToByteArray( 1 ), Charsets.UTF_8 ).trim(), "<number xmlns=\"http://number/1.0.0\" type=\"int\">1</number>" );
-    AssertUtils.assertXMLEquals( new String( serializer.serializeToByteArray( 2.0 ), Charsets.UTF_8 ).trim(), "<number xmlns=\"http://number/1.0.0\" type=\"double\">2.0</number>" );
+    AssertUtils.assertXMLEquals(new String(serializer.serializeToByteArray(1), StandardCharsets.UTF_8).trim(), "<number xmlns=\"http://number/1.0.0\" type=\"int\">1</number>");
+    AssertUtils.assertXMLEquals(new String(serializer.serializeToByteArray(2.0), StandardCharsets.UTF_8).trim(), "<number xmlns=\"http://number/1.0.0\" type=\"double\">2.0</number>");
   }
 
   @Test

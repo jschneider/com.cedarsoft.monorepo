@@ -63,7 +63,7 @@ public class UserSerializerTest extends AbstractJsonSerializerTest2<User> {
                                new Role( 0, "Admin" )
                              ),
                              new Email( "single" ),
-                             new UserDetails( 2351351L, 36351531153L, new String( Hex.encodeHex( "hash".getBytes(StandardCharsets.UTF_8) ) ).getBytes() )
+                             new UserDetails( 2351351L, 36351531153L, new String( Hex.encodeHex( "hash".getBytes(StandardCharsets.UTF_8) ) ).getBytes(StandardCharsets.UTF_8) )
     ), UserSerializerTest.class.getResource( "user.withDetails.json" ) );
   }
 

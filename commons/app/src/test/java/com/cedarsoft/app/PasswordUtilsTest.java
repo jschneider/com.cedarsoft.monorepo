@@ -61,10 +61,10 @@ public class PasswordUtilsTest {
 
   @Test
   public void testEx() throws InvalidPasswordException {
-    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "a".getBytes() );
+    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "a".getBytes(StandardCharsets.UTF_8) );
 
     expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "b".getBytes() );
+    PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "b".getBytes(StandardCharsets.UTF_8) );
   }
 
   @Test
@@ -76,7 +76,7 @@ public class PasswordUtilsTest {
   @Test
   public void testEx3() throws InvalidPasswordException {
     expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "ab".getBytes() );
+    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "ab".getBytes(StandardCharsets.UTF_8) );
   }
 
   @Test
