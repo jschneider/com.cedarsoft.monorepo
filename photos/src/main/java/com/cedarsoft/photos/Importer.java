@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class Importer {
   @Nonnull
-  private static final Set<String> SUPPORTED_FILE_SUFFICIES = ImmutableSet.of("jpeg", "jpg", "cr2");
+  private static final ImmutableSet<String> SUPPORTED_FILE_SUFFICIES = ImmutableSet.of("jpeg", "jpg", "cr2");
   @Nonnull
   private final ImageStorage imageStorage;
 
