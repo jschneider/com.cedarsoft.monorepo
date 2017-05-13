@@ -54,7 +54,7 @@ public abstract class AbstractNeo4jVersionTest2<T> {
       tx.success();
     }
 
-    try (@SuppressWarnings("unused") Transaction tx = db.beginTx()) {
+    try (Transaction tx = db.beginTx()) {
       return serializer.deserialize( db.getNodeById( 0 ) );
     }
   }
