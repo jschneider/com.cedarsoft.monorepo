@@ -68,10 +68,12 @@ public class MappedInterestRateProvider implements InterestRateProvider {
     rateMapping.put( yearMonth, rate );
   }
 
-  public double getRate( @Nonnull LocalDate date ) {
+  @Override
+  public double getRate(@Nonnull LocalDate date ) {
     return getRate( new YearMonth( date ) );
   }
 
+  @Override
   @Nonnull
   public ValidityPeriod getValidityPeriod() {
     return ValidityPeriod.MONTHLY;
