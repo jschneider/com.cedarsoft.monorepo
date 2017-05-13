@@ -31,11 +31,9 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
 import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest;
-import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.test.Money;
+import com.cedarsoft.version.Version;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
