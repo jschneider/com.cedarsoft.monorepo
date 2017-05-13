@@ -63,7 +63,7 @@ public class DaAbstractSerializerTest {
 
   @Test
   public void testSeria() throws Exception {
-    assertThat( new String( serializer.serializeToByteArray( "daObject" ), Charsets.UTF_8 ), is( "daObject" ) );
+    assertThat( new String( serializer.serializeToByteArray( "daObject" ), StandardCharsets.UTF_8 ), is( "daObject" ) );
   }
 
   @Test

@@ -31,19 +31,18 @@
 
 package com.cedarsoft.execution;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import com.cedarsoft.test.utils.MockitoTemplate;
+import com.google.common.io.ByteStreams;
+import org.junit.*;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import org.junit.*;
-import org.mockito.Matchers;
-import org.mockito.Mock;
-
-import com.cedarsoft.test.utils.MockitoTemplate;
-import com.google.common.io.ByteStreams;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -81,7 +80,7 @@ public class ExecutorTest {
 
       @Override
       protected void verifyMocks() throws Exception {
-        verify( listener ).executionStarted( Matchers.<Process>any() );
+        verify(listener).executionStarted(ArgumentMatchers.any());
         verify( listener ).executionFinished( 0 );
         verifyNoMoreInteractions( listener );
       }
