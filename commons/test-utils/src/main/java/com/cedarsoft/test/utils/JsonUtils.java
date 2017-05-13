@@ -95,7 +95,7 @@ public class JsonUtils {
       JsonNode tree = mapper.readTree( unformated );
 
       StringWriter out = new StringWriter();
-      JsonGenerator jsonGenerator = mapper.getJsonFactory().createJsonGenerator( out );
+      JsonGenerator jsonGenerator = mapper.getFactory().createGenerator( out );
 
       jsonGenerator.useDefaultPrettyPrinter();
       jsonGenerator.writeTree( tree );
