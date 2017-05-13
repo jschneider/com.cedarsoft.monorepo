@@ -381,7 +381,8 @@ public abstract class AbstractStaxBasedSerializer<T, S> extends AbstractXmlSeria
     visitChildren( deserializeFrom, new CB() {
       @Override
       public void tagEntered( @Nonnull XMLStreamReader deserializeFrom, @Nonnull String tagName ) throws XMLStreamException, IOException {
-        CollectionsMapping.Entry entry = collectionsMapping.getEntry( tagName );
+        @SuppressWarnings("unchecked")
+        CollectionsMapping.Entry<Object> entry = (CollectionsMapping.Entry<Object>) collectionsMapping.getEntry(tagName );
         Object deserialized = deserialize( entry.getType(), formatVersion, deserializeFrom );
         entry.getTargetCollection().add( deserialized );
       }
