@@ -31,9 +31,6 @@
 
 package com.cedarsoft.cmd;
 
-import com.cedarsoft.renderer.DefaultRenderer;
-import com.cedarsoft.renderer.Renderer;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.BufferedReader;
@@ -123,127 +120,7 @@ public abstract class AbstractCmdLine implements CmdLine {
       throw new RuntimeException( e );
     }
   }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements ) {
-    return readSelection( message, elements, null );
-  }
-
-  /**
-   * <p>printPossibleElements</p>
-   *
-   * @param elements  a List object.
-   * @param presenter a Renderer object.
-   */
-  protected <T> void printPossibleElements( @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
-    if ( presenter == null ) {
-      //noinspection AssignmentToMethodParameter
-      presenter = new DefaultRenderer();
-    }
-    int index = 0;
-    for ( T element : elements ) {
-      out( "\t" + index + '\t' + presenter.render( element, null ) );
-      index++;
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter ) {
-    out( message );
-    printPossibleElements( elements, presenter );
-    return elements.get( readInt( "Enter the number of the element you want to select", 0, elements.size() ) );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public String read( @Nonnull String message, @Nonnull List<String> elements ) {
-    out( message );
-    printPossibleElements( elements, null );
-
-    @Nullable
-    String read = null;
-    while ( read == null || read.length() == 0 ) {
-      read = read( "Enter the value. Or enter the number of the element you want to select." );
-
-      try {
-        int selected = Integer.parseInt( read );
-
-        if ( selected < 0 || selected > elements.size() - 1 ) {
-          read = null;
-          warning( "Selection invalid: <" + selected + "> " );
-        } else {
-          return elements.get( selected );
-        }
-      } catch ( NumberFormatException ignore ) {
-        return read;
-      }
-    }
-
-    throw new IllegalStateException( "Should not reach" );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public String read( @Nonnull String message, @Nonnull List<String> elements, @Nonnull String preselected ) {
-    out( message );
-    printPossibleElements( elements, null );
-
-    String read = read( "Enter the value. Or enter the number of the element you want to select. Default selection: " + preselected );
-
-    if ( read.length() == 0 ) {
-      return preselected;
-    } else {
-      return read;
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Nonnull
-  public <T> T read( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @Nonnull ObjectFactory<T> objectFactory ) {
-    out( message );
-    printPossibleElements( elements, presenter );
-
-    String read = null;
-
-    while ( read == null ) {
-      read = read( "Enter the value. Or enter the number of the element you want to select." );
-      try {
-        int index = Integer.parseInt( read );
-        if ( index >= 0 && index < elements.size() ) {
-          return elements.get( index );
-        }
-      } catch ( NumberFormatException ignore ) {
-      }
-
-      try {
-        return objectFactory.create( read );
-      } catch ( ObjectFactory.InvalidRepresentationException e ) {
-        this.error( "Invalid input: " + e.getMessage() );
-        //noinspection AssignmentToNull
-        read = null;
-      }
-    }
-
-    throw new IllegalStateException( "Should not reach" );
-  }
-
+  
   /**
    * <p>getOut</p>
    *

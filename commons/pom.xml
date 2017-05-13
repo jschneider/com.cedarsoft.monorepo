@@ -16,8 +16,6 @@
 
   <modules>
     <module>app</module>
-    <module>cluster</module>
-    <module>cmd</module>
     <module>collections</module>
     <module>commons</module>
     <module>concurrent</module>

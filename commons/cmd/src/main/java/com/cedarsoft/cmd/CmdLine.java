@@ -31,10 +31,8 @@
 
 package com.cedarsoft.cmd;
 
-import com.cedarsoft.renderer.Renderer;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -128,18 +126,6 @@ public interface CmdLine {
   int readInt( @Nonnull String message ) throws IOException;
 
   /**
-   * Select an element from the list
-   *
-   * @param message   the message
-   * @param elements  the elements that may be choosen @return the selected element
-   * @param presenter an optional presenter that creates a string representation for the elements
-   * @param <T>       a T object.
-   * @return the selected element
-   */
-  @Nonnull
-  <T> T readSelection( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<? super T, Object> presenter );
-
-  /**
    * Selects an element
    *
    * @param message  the message
@@ -176,19 +162,6 @@ public interface CmdLine {
    * @param process the process the output for is redirected
    */
   void out( @Nonnull Process process );
-
-  /**
-   * Reads a string from the console
-   *
-   * @param message       the message
-   * @param elements      the elements (the user may select one of them)
-   * @param presenter     the presenter
-   * @param objectFactory a ObjectFactory object.
-   * @param <T>           a T object.
-   * @return the string that has been entered manually or the object that has been selected (String or T)
-   */
-  @Nonnull
-  <T> T read( @Nonnull String message, @Nonnull List<? extends T> elements, @Nullable Renderer<T, Object> presenter, @Nonnull ObjectFactory<T> objectFactory );
 
   /**
    * Reads a string from the console

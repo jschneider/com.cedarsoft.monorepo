@@ -115,33 +115,4 @@ public class FileTypeSerializer extends AbstractJacksonSerializer<FileType> {
     parserWrapper.nextToken( JsonToken.END_OBJECT );
     return new FileType( id, contentType, dependentType, extensions );
   }
-
-  public static class Referenced extends AbstractJacksonSerializer<FileType> {
-    @Nonnull
-    private final FileTypeRegistry fileTypeRegistry;
-
-    @Inject
-    public Referenced( @Nonnull FileTypeRegistry fileTypeRegistry ) {
-      super( "file-type", VersionRange.single( 1, 0, 0 ) );
-      this.fileTypeRegistry = fileTypeRegistry;
-    }
-
-    @Override
-    public boolean isObjectType() {
-      return false;
-    }
-
-    @Override
-    public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull FileType object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-      serializeTo.writeString( object.getId() );
-    }
-
-    @Nonnull
-    @Override
-    public FileType deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-      String id = deserializeFrom.getText();
-      return fileTypeRegistry.valueOf( id );
-    }
-  }
-
 }

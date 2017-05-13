@@ -74,24 +74,4 @@ public class FileNamesTest {
 
     assertEquals( 5, fileNames.getFileNames().size() );
   }
-
-  @Test
-  public void testParse() throws IOException {
-    File dir = TestUtils.createEmptyTmpDir();
-
-    try {
-      FileUtils.touch( new File( dir, "1.jpg" ) );
-      FileUtils.touch( new File( dir, "2.jpg" ) );
-      FileUtils.touch( new File( dir, "3.jpg" ) );
-      FileUtils.touch( new File( dir, "4.jpg" ) );
-      FileUtils.touch( new File( dir, "5.jpg" ) );
-      FileUtils.touch( new File( dir, "5.cr2" ) );
-
-      FileNames fileNames = new FileNamesFactory( new FileTypeRegistry() ).create( dir );
-
-      assertEquals( 6, fileNames.getFileNames().size() );
-    } finally {
-      FileUtils.deleteDirectory( dir );
-    }
-  }
 }

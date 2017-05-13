@@ -773,16 +773,6 @@
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>cluster</artifactId>
-        <version>${monorepo.dep.management.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
-        <artifactId>cmd</artifactId>
-        <version>${monorepo.dep.management.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cedarsoft.commons</groupId>
         <artifactId>collections</artifactId>
         <version>${monorepo.dep.management.version}</version>
       </dependency>

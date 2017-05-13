@@ -17,10 +17,5 @@
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>cluster</artifactId>
-    </dependency>
   </dependencies>
 </project>

@@ -31,16 +31,14 @@
 
 package com.cedarsoft.business.payment;
 
-import java.beans.PropertyChangeListener;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import javax.annotation.Nonnull;
-
+import com.cedarsoft.business.Money;
 import org.joda.time.LocalDate;
 
-import com.cedarsoft.business.Money;
-import com.cedarsoft.cluster.event.ClusteredPropertyChangeSupport;
+import javax.annotation.Nonnull;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  *
@@ -63,7 +61,7 @@ public class DefaultPayment implements Payment {
   protected ReadWriteLock lock = new ReentrantReadWriteLock();
 
   @Nonnull
-  protected final ClusteredPropertyChangeSupport pcs = new ClusteredPropertyChangeSupport(this);
+  protected final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 
   @Deprecated
@@ -74,13 +72,6 @@ public class DefaultPayment implements Payment {
   private Money amount;
   @Nonnull
   private LocalDate date;
-
-  /**
-   * Hibernate
-   */
-  @Deprecated
-  protected DefaultPayment() {
-  }
 
   public DefaultPayment(@Nonnull Money amount, @Nonnull LocalDate date) {
     this(amount, date, "");
@@ -189,28 +180,10 @@ public class DefaultPayment implements Payment {
     }
   }
 
-  public void addPropertyChangeListener(@Nonnull PropertyChangeListener listener, boolean isTransient) {
-    lock.writeLock().lock();
-    try {
-      pcs.addPropertyChangeListener(listener, isTransient);
-    } finally {
-      lock.writeLock().unlock();
-    }
-  }
-
   public void addPropertyChangeListener(@Nonnull String propertyName, @Nonnull PropertyChangeListener listener) {
     lock.writeLock().lock();
     try {
       pcs.addPropertyChangeListener(propertyName, listener);
-    } finally {
-      lock.writeLock().unlock();
-    }
-  }
-
-  public void addPropertyChangeListener(@Nonnull String propertyName, @Nonnull PropertyChangeListener listener, boolean isTransient) {
-    lock.writeLock().lock();
-    try {
-      pcs.addPropertyChangeListener(propertyName, listener, isTransient);
     } finally {
       lock.writeLock().unlock();
     }
