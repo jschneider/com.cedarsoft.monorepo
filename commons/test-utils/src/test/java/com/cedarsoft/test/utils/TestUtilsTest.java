@@ -31,13 +31,8 @@
 
 package com.cedarsoft.test.utils;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
@@ -45,6 +40,9 @@ import static org.junit.Assert.*;
  *
  */
 public class TestUtilsTest {
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+
   @Test
   public void testCleanup() throws IllegalAccessException {
     MyClass object = new MyClass();
@@ -63,21 +61,5 @@ public class TestUtilsTest {
   private static class MyClass {
     private String message = "asdf";
     private final String finalMessage = "asdf";
-  }
-
-  @Test
-  public void testDir() throws IllegalAccessException {
-    File created = TestUtils.createEmptyTmpDir();
-    assertTrue( created.isDirectory() );
-    assertEquals( 0, created.listFiles().length );
-
-    assertEquals( created.getParentFile(), TestUtils.getTmpDir() );
-  }
-
-  @Test
-  public void testTmpFileCreation() throws IllegalAccessException, IOException {
-    File created = TestUtils.createTmpFile( "prefix", "suffix", new ByteArrayInputStream( "content".getBytes(StandardCharsets.UTF_8) ) );
-    assertTrue( created.isFile() );
-    assertEquals( "content", FileUtils.readFileToString( created ) );
   }
 }

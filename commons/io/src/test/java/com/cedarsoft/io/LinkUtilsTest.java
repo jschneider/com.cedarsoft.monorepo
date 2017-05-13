@@ -34,6 +34,7 @@ package com.cedarsoft.io;
 import com.cedarsoft.test.utils.TestUtils;
 import org.apache.commons.lang.SystemUtils;
 import org.junit.*;
+import org.junit.rules.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +45,10 @@ import static org.junit.Assert.*;
  *
  */
 public class LinkUtilsTest {
+  @Rule
+  public TemporaryFolder tmp = new TemporaryFolder();
+
+
   @Test
   public void testLinkTypes() {
     assertNotNull( LinkType.HARD );
@@ -61,7 +66,7 @@ public class LinkUtilsTest {
 
     assertFalse(LinkUtils.isLink(target));
 
-    File dir = TestUtils.createEmptyTmpDir();
+    File dir = tmp.newFolder();
     File link = new File(dir, "link");
     assertFalse(link.exists());
 

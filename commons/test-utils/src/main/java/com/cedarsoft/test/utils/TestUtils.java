@@ -81,48 +81,4 @@ public class TestUtils {
   public static File getTmpDir() {
     return new File( System.getProperty( "java.io.tmpdir" ) );
   }
-
-  /**
-   * @param prefix a String object.
-   * @param suffix a String object.
-   * @param in     a InputStream object.
-   * @return a File object.
-   *
-   * @throws IOException if any.
-   * @deprecated Use org.junit.rules.TemporaryFolder instead
-   */
-  @Deprecated
-  @Nonnull
-  public static File createTmpFile( @Nonnull String prefix, @Nonnull String suffix, @Nonnull InputStream in ) throws IOException {
-    File file = File.createTempFile( prefix, suffix );
-    file.deleteOnExit();
-
-    FileOutputStream out = new FileOutputStream( file );
-    try {
-      IOUtils.copy( in, out );
-    } finally {
-      out.close();
-    }
-    return file;
-  }
-
-  /**
-   * @return a File object.
-   *
-   * @deprecated Use org.junit.rules.TemporaryFolder instead
-   *             <p>createEmptyTmpDir</p>
-   */
-  @Deprecated
-  @Nonnull
-  public static File createEmptyTmpDir() {
-    File tmp = getTmpDir();
-    File dir = null;
-
-    while ( dir == null || dir.exists() ) {
-      dir = new File( tmp, String.valueOf( ( int ) ( Math.random() * 1000000 ) ) );
-    }
-
-    dir.mkdir();
-    return dir;
-  }
 }
