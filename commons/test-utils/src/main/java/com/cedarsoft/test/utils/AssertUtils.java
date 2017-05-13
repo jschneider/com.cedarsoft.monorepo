@@ -112,7 +112,7 @@ public class AssertUtils {
    * @throws SAXException if any.
    * @throws IOException  if any.
    */
-  public static void assertXMLEquals( String control, String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( String control, String test, boolean ignoreWhiteSpace ) throws IOException {
     assertXMLEquals( control, test, ignoreWhiteSpace, true );
   }
 
@@ -135,12 +135,12 @@ public class AssertUtils {
    * @throws IOException  if any.
    */
   @Deprecated
-  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws SAXException, IOException {
+  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws IOException {
     assertXMLEquals( control, test, ignoreWhiteSpace, true);
   }
 
   @Deprecated
-  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments ) throws SAXException, IOException {
+  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments ) throws IOException {
     assertXMLEquals(control,  test, ignoreWhiteSpace,  ignoreComments);
   }
 
