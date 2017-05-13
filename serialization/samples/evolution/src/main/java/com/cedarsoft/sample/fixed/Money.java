@@ -61,13 +61,19 @@ public class Money {
   //END SNIPPET: main
 
   @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( !( o instanceof Money ) ) return false;
+  public boolean equals( Object obj) {
+    if ( this == obj) {
+      return true;
+    }
+    if ( !( obj instanceof Money ) ) {
+      return false;
+    }
 
-    Money money = ( Money ) o;
+    Money money = ( Money ) obj;
 
-    if ( cents != money.cents ) return false;
+    if ( cents != money.cents ) {
+      return false;
+    }
 
     return true;
   }
