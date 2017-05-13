@@ -132,7 +132,8 @@ public abstract class AbstractMoney implements Comparable<AbstractMoney> {
     return ( short ) ( value > 0 ? 1 : value < 0 ? -1 : 0 );
   }
 
-  public int compareTo( @Nonnull AbstractMoney o ) {
+  @Override
+  public int compareTo(@Nonnull AbstractMoney o ) {
     return Long.valueOf( getValue() ).compareTo( o.getValue() );
   }
 

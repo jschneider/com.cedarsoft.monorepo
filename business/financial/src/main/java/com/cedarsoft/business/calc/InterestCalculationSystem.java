@@ -47,11 +47,13 @@ public interface InterestCalculationSystem {
    */
   @Nonnull
   InterestCalculationSystem SIMPLE = new InterestCalculationSystem() {
+    @Override
     @Nonnull
     public Money calculateInterest( @Nonnull Money amount, double intervalInYears, double intervalInDays, double interestRate ) {
       return Money.getMoneyForValue( ( long ) ( amount.getValue() * interestRate * intervalInYears ) );
     }
 
+    @Override
     public boolean isCompoundSystem() {
       return false;
     }
@@ -62,12 +64,14 @@ public interface InterestCalculationSystem {
    */
   @Nonnull
   InterestCalculationSystem DAILY_COMPOUND_INTEREST = new InterestCalculationSystem() {
+    @Override
     @Nonnull
     public Money calculateInterest( @Nonnull Money amount, double intervalInYears, double intervalInDays, double interestRate ) {
       double daysPerYear = intervalInDays / intervalInYears;
       return amount.multiply( Math.pow( 1 + interestRate / daysPerYear, intervalInDays ) ).minus( amount );
     }
 
+    @Override
     public boolean isCompoundSystem() {
       return true;
     }
