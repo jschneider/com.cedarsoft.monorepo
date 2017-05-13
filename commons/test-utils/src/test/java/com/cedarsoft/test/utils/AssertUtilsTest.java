@@ -133,13 +133,13 @@ public class AssertUtilsTest {
   @Test
   public void testXml2WComments() throws Exception {
     try {
-      AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, false);
+      AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, false);
       fail("Where is the Exception");
     } catch (ComparisonFailure e) {
       Assertions.assertThat(e.getMessage()).startsWith("XML comparison failed expected");
     }
 
-    AssertUtils.assertXMLEquals("err", new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
+    AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
   }
 
   @Test

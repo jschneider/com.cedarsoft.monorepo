@@ -40,7 +40,6 @@ import com.google.common.io.ByteStreams;
 import java.nio.charset.Charset;
 import junit.framework.AssertionFailedError;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.hamcrest.CoreMatchers;
@@ -124,26 +123,6 @@ public class AssertUtils {
     assertXMLEquals( toString( control, charset), test, ignoreWhiteSpace );
   }
 
-  /**
-   * <p>assertXMLEqual</p>
-   *
-   * @param err              a String object.
-   * @param control          a String object.
-   * @param test             a String object.
-   * @param ignoreWhiteSpace a boolean.
-   * @throws SAXException if any.
-   * @throws IOException  if any.
-   */
-  @Deprecated
-  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace ) throws IOException {
-    assertXMLEquals( control, test, ignoreWhiteSpace, true);
-  }
-
-  @Deprecated
-  public static void assertXMLEquals( @Nullable String err, @Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments ) throws IOException {
-    assertXMLEquals(control,  test, ignoreWhiteSpace,  ignoreComments);
-  }
-
   public static void assertXMLEquals(@Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments) throws IOException {
     if (test.trim().isEmpty()) {
       throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
@@ -172,16 +151,6 @@ public class AssertUtils {
       //Do not format if it is not possible...
       return control;
     }
-  }
-
-  @Deprecated
-  public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace ) throws SAXException, IOException {
-    assertXMLEquals(test, err, control, ignoreWhiteSpace, Charsets.UTF_8);
-  }
-
-  @Deprecated
-  public static void assertXMLEquals( @Nonnull String test, @Nonnull String err, @Nonnull URL control, boolean ignoreWhiteSpace , @Nonnull Charset charset) throws SAXException, IOException {
-    assertXMLEquals( err, toString( control, charset), test, ignoreWhiteSpace );
   }
 
   /**
