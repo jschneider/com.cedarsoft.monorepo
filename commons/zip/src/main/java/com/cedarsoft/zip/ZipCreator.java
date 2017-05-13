@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.ZipException;
 
 /**
@@ -121,21 +122,10 @@ public class ZipCreator {
         continue;
       }
 
-      FileInputStream fileInputStream = null;
-      BufferedInputStream origin = null;
-      try {
-        fileInputStream = new FileInputStream( file );
-        origin = new BufferedInputStream( fileInputStream, BUFFER_SIZE );
+      try (InputStream origin = new BufferedInputStream(new FileInputStream(file), BUFFER_SIZE)) {
         int count;
-        while ( ( count = origin.read( data, 0, BUFFER_SIZE ) ) != -1 ) {
-          outStream.write( data, 0, count );
-        }
-      } finally {
-        if ( fileInputStream != null ) {
-          fileInputStream.close();
-        }
-        if ( origin != null ) {
-          origin.close();
+        while ((count = origin.read(data, 0, BUFFER_SIZE)) != -1) {
+          outStream.write(data, 0, count);
         }
       }
 
