@@ -159,22 +159,22 @@ public class ThreadRule implements TestRule {
       String threadGroupName = threadGroup.getName();
       String threadName = remainingThread.getName();
 
-      if (threadGroupName.equals("system") &&
-        threadName.equals( "Keep-Alive-Timer" )
+      if ((threadGroupName.equals("system") &&
+        threadName.equals("Keep-Alive-Timer"))
         ||
-        threadGroupName.equals( "system" ) &&
-          threadName.equals( "process reaper" )
+        (threadGroupName.equals("system") &&
+          threadName.equals("process reaper"))
         ||
-        threadGroupName.equals( "system" ) &&
-          threadName.equals( "Keep-Alive-SocketCleaner" )
+        (threadGroupName.equals("system") &&
+          threadName.equals("Keep-Alive-SocketCleaner"))
         ||
-        threadGroupName.equals( "system" ) &&
-          threadName.equals( "Java2D Disposer" )
+        (threadGroupName.equals("system") &&
+          threadName.equals("Java2D Disposer"))
         ||
-          threadName.startsWith( "AWT-" )
+        threadName.startsWith("AWT-")
         ||
-        threadGroupName.equals( "main" ) &&
-          threadName.startsWith( "QuantumRenderer" )
+        (threadGroupName.equals("main") &&
+          threadName.startsWith("QuantumRenderer"))
         ) {
         return true;
       }
