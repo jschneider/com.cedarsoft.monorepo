@@ -74,6 +74,7 @@ public class MoneyConverter implements Converter {
   //END SNIPPET: unmarshal
 
   @Override
+  @SuppressWarnings("rawtypes")
   public boolean canConvert( Class type ) {
     return type.equals( Money.class );
   }

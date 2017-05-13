@@ -9,8 +9,9 @@ import org.apache.commons.io.IOUtils;
 import org.junit.*;
 import org.junit.experimental.theories.*;
 import org.junit.runner.*;
-import org.neo4j.graphdb.*;
+import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Result;
+import org.neo4j.graphdb.Transaction;
 import org.xml.sax.SAXException;
 
 import javax.annotation.Nonnull;
@@ -53,7 +54,7 @@ public abstract class AbstractNeo4jVersionTest2<T> {
       tx.success();
     }
 
-    try ( Transaction tx = db.beginTx() ) {
+    try (@SuppressWarnings("unused") Transaction tx = db.beginTx()) {
       return serializer.deserialize( db.getNodeById( 0 ) );
     }
   }

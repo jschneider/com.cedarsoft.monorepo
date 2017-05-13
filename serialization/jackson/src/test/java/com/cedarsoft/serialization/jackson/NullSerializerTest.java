@@ -76,7 +76,7 @@ public class NullSerializerTest {
     assertNull( getSerializer().deserialize( parser ) );
     JacksonParserWrapper parserWrapper = new JacksonParserWrapper( parser );
     if ( parserWrapper.nextToken() != null ) {
-      throw new JsonParseException( "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation() );
+      throw new JsonParseException(parser, "No consumed everything " + parserWrapper.getCurrentToken(), parserWrapper.getCurrentLocation());
     }
 
     parserWrapper.close();
