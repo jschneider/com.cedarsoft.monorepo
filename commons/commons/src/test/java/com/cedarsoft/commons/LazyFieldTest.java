@@ -1,10 +1,10 @@
-package com.cedarsoft.lang;
+package com.cedarsoft.commons;
 
 import org.junit.*;
 
 import javax.annotation.Nonnull;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
