@@ -32,13 +32,12 @@
 package com.cedarsoft.test.io2;
 
 import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
+import com.cedarsoft.test.Money;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
-import com.cedarsoft.test.Money;
 import org.junit.*;
 
 import javax.annotation.Nonnull;

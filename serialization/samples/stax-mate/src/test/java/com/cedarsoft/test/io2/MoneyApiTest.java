@@ -32,13 +32,13 @@
 package com.cedarsoft.test.io2;
 
 import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.test.Money;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import com.cedarsoft.test.Money;
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.junit.experimental.theories.*;
 
