@@ -42,7 +42,6 @@ public class Money {
     this.cents = cents;
   }
 
-  @Deprecated
   public Money( double amount ) {
     this( convertValueToCents( amount ) );
   }
