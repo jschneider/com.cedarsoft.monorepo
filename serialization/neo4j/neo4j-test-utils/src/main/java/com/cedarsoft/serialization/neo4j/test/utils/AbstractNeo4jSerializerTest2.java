@@ -125,12 +125,16 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
     AbstractNeo4jSerializer<T> serializer = getSerializer();
 
     //Serialize
-    String serialized = serialize( serializer, ( T ) entry.getObject() );
+    @SuppressWarnings("unchecked")
+    T object = (T) entry.getObject();
+    String serialized = serialize(serializer, object);
 
     //Verify
-    verifySerialized( ( Entry<T> ) entry, serialized );
+    @SuppressWarnings("unchecked")
+    Entry<T> castEntry = (Entry<T>) entry;
+    verifySerialized(castEntry, serialized );
 
-    verifyDeserialized( deserialize( serializer, serialized ), ( T ) entry.getObject() );
+    verifyDeserialized(deserialize( serializer, serialized ), object);
   }
 
   @Nonnull
