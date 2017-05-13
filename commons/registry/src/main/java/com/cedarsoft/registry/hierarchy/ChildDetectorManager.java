@@ -93,6 +93,8 @@ public class ChildDetectorManager {
    */
   @Nonnull
   public <P, C> ChildDetector<P, C> getChildDetector( @Nonnull Class<P> parentType ) throws IllegalArgumentException {
-    return ( ChildDetector<P, C> ) registry.getElement( parentType );
+    @SuppressWarnings("unchecked")
+    ChildDetector<P, C> childDetector = (ChildDetector<P, C>) registry.getElement(parentType);
+    return childDetector;
   }
 }
