@@ -41,6 +41,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,8 +60,8 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
   }
 
   @Override
-  public boolean matches( Object o ) {
-    File file = ( File ) o;
+  public boolean matches(Object item) {
+    File file = (File) item;
     if ( !file.isDirectory() ) {
       return false;
     }
@@ -84,8 +85,12 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
   public static Matcher<File> empty() {
     return new BaseMatcher<File>() {
       @Override
-      public boolean matches( Object o ) {
-        return ( ( File ) o ).list().length == 0;
+      public boolean matches(Object item) {
+        @Nullable String[] list = ((File) item).list();
+        if (list == null) {
+          throw new IllegalStateException("Can not list " + ((File) item).getAbsolutePath());
+        }
+        return list.length == 0;
       }
 
       @Override
@@ -102,7 +107,7 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
       matchers.add( containsFile( relativeFilePath ) );
     }
 
-    return new AndMatcher( matchers );
+    return new AndMatcher<>(matchers);
   }
 
   @Nonnull
@@ -111,8 +116,8 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
 
     List<String> names = Lists.newArrayList( Lists.transform( files, new Function<File, String>() {
       @Override
-      public String apply( File from ) {
-        return from.getPath().substring( dir.getPath().length() + 1 );
+      public String apply(File input) {
+        return input.getPath().substring(dir.getPath().length() + 1);
       }
     } ) );
     Collections.sort( names );
