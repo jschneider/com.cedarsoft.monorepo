@@ -21,7 +21,7 @@ import org.neo4j.graphdb.traversal.Uniqueness;
 import java.io.File;
 import java.util.ArrayList;
 
-import static org.neo4j.graphdb.DynamicRelationshipType.withName;
+import static org.neo4j.graphdb.RelationshipType.withName;
 
 public class OrderedPath {
   private static final RelationshipType REL1 = withName( "REL1" ), REL2 = withName( "REL2" ), REL3 = withName( "REL3" );

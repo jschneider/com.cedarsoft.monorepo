@@ -99,7 +99,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
   @Test
   public void testWrite100() throws IOException, SAXException {
     byte[] serialized = getSerializer().serializeToByteArray( new DateTime( 2001, 1, 1, 1, 1, 1, 1, zoneRule.getZone() ) );
-    AssertUtils.assertXMLEquals(new String(serialized, Charsets.UTF_8).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20010101T010101.001-0500</dateTime>");
+    AssertUtils.assertXMLEquals(new String(serialized, StandardCharsets.UTF_8).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20010101T010101.001-0500</dateTime>");
 
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     assertEqualsDateTime( deserialized, new DateTime( 2001, 1, 1, 1, 1, 1, 1, zoneRule.getZone() ) );
@@ -112,7 +112,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
   public void testWrite100_2() throws IOException, SAXException {
     DateTime dateTime = new DateTime( 2001, 1, 1, 1, 1, 1, 1, DateTimeZone.forID( "Europe/Berlin" ) );
     byte[] serialized = getSerializer().serializeToByteArray( dateTime );
-    AssertUtils.assertXMLEquals( new String( serialized, Charsets.UTF_8 ).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20010101T010101.001+0100</dateTime>" );
+    AssertUtils.assertXMLEquals( new String( serialized, StandardCharsets.UTF_8 ).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20010101T010101.001+0100</dateTime>" );
 
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     assertEqualsDateTime( deserialized, new DateTime( 2001, 1, 1, 1, 1, 1, 1, DateTimeZone.forID( "Europe/Berlin" ) ) );
@@ -176,7 +176,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
 
     byte[] serialized = getSerializer().serializeToByteArray( dateTime );
 
-    AssertUtils.assertXMLEquals( new String( serialized, Charsets.UTF_8 ).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20091231T235901.999-0500</dateTime>" );
+    AssertUtils.assertXMLEquals( new String( serialized, StandardCharsets.UTF_8 ).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20091231T235901.999-0500</dateTime>" );
 
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     assertEquals( deserialized.getMillis(), dateTime.getMillis() );

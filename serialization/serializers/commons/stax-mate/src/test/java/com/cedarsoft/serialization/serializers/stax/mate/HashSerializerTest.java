@@ -43,6 +43,7 @@ import org.junit.experimental.theories.*;
 
 import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  *
@@ -60,7 +61,7 @@ public class HashSerializerTest extends AbstractXmlSerializerTest2<Hash> {
   @Test
   public void testIt() throws Exception {
     byte[] serialized = getSerializer().serializeToByteArray( Hash.fromHex( Algorithm.MD5, "121212" ) );
-    AssertUtils.assertXMLEquals( new String( serialized, Charsets.UTF_8 ).trim(), "<hash xmlns=\"http://www.cedarsoft.com/crypt/hash/1.0.0\" algorithm=\"MD5\">121212</hash>" );
+    AssertUtils.assertXMLEquals(new String(serialized, StandardCharsets.UTF_8 ).trim(), "<hash xmlns=\"http://www.cedarsoft.com/crypt/hash/1.0.0\" algorithm=\"MD5\">121212</hash>" );
 
     Hash deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     Assert.assertEquals( deserialized, Hash.fromHex( Algorithm.MD5, "121212" ) );

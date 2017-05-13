@@ -68,7 +68,7 @@ public class FileNameSerializerTest extends AbstractXmlSerializerTest2<FileName>
   @Override
   protected void verifySerialized( @Nonnull Entry<FileName> entry, @Nonnull byte[] serialized ) throws Exception {
     super.verifySerialized( entry, serialized );
-    assertTrue(XmlCommons.format(new String(serialized, Charsets.UTF_8)), new String(serialized, StandardCharsets.UTF_8).contains("xmlns=\"http://www.cedarsoft.com/file/fileName/" + getSerializer().getFormatVersion() + "\""));
+    assertTrue(XmlCommons.format(new String(serialized, StandardCharsets.UTF_8)), new String(serialized, StandardCharsets.UTF_8).contains("xmlns=\"http://www.cedarsoft.com/file/fileName/" + getSerializer().getFormatVersion() + "\""));
   }
 
   @Test
