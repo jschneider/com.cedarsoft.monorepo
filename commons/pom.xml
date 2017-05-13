@@ -32,7 +32,6 @@
     <module>inject</module>
     <module>io</module>
     <module>license</module>
-    <module>lang</module>
     <module>mail</module>
     <module>swing</module>
     <module>test-utils</module>
