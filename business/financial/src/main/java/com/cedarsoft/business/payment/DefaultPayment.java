@@ -84,6 +84,7 @@ public class DefaultPayment implements Payment {
   }
 
   @Nonnull
+  @Override
   public Money getAmount() {
     lock.readLock().lock();
     try {
@@ -98,6 +99,7 @@ public class DefaultPayment implements Payment {
     return getAmount().negative();
   }
 
+  @Override
   @Nonnull
   public LocalDate getDate() {
     lock.readLock().lock();
@@ -149,6 +151,7 @@ public class DefaultPayment implements Payment {
     }
   }
 
+  @Override
   public int compareTo(@Nonnull Payment o) {
     return getDate().compareTo(o.getDate());
   }
