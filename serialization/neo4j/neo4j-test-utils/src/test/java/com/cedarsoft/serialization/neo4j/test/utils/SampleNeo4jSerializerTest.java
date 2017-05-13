@@ -3,13 +3,16 @@ package com.cedarsoft.serialization.neo4j.test.utils;
 import com.cedarsoft.serialization.SerializationException;
 import com.ecyrd.speed4j.StopWatch;
 import com.google.common.collect.ImmutableList;
+import org.assertj.core.api.*;
 import org.junit.*;
 import org.neo4j.graphdb.DynamicLabel;
+import org.neo4j.graphdb.Label;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +33,10 @@ public class SampleNeo4jSerializerTest extends AbstractNeo4JTest {
       Person deserialized = deserialize( node );
       assertThat( deserialized.getName() ).isEqualTo( person.getName() );
       assertThat( deserialized.getAddress().getStreet() ).isEqualTo( person.getAddress().getStreet() );
+
+      List<? extends String> strings = Arrays.asList("a", "b", "c");
+      assertThat(strings).hasSize(3 );
+
       assertThat( deserialized.getMails() ).hasSize( 3 );
       assertThat( (List )deserialized.getMails() ).containsExactly( new Email( "1" ), new Email( "2" ), new Email( "3" ) );
       tx.success();
@@ -46,9 +53,9 @@ public class SampleNeo4jSerializerTest extends AbstractNeo4JTest {
 
       //remove label
       node.removeLabel(personSerializer.getTypeLabel());
-      node.addLabel(DynamicLabel.label("lab1"));
-      node.addLabel(DynamicLabel.label("lab2"));
-      node.addLabel(DynamicLabel.label("lab3"));
+      node.addLabel(Label.label("lab1"));
+      node.addLabel(Label.label("lab2"));
+      node.addLabel(Label.label("lab3"));
 
       tx.success();
     }

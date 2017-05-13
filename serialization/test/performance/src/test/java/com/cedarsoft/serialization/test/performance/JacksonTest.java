@@ -100,7 +100,7 @@ public class JacksonTest {
 
   @Test
   public void testParse() throws Exception {
-    JsonParser parser = jsonFactory.createJsonParser( JSON );
+    JsonParser parser = jsonFactory.createParser( JSON );
 
     assertEquals( JsonToken.START_OBJECT, parser.nextToken() );
 
