@@ -33,12 +33,6 @@ public class StaticApplicationHomeAccess implements ApplicationHomeAccess {
 
   @Nonnull
   @Override
-  public File getApplicationHome() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Nonnull
-  @Override
   public File getConfigHome() {
     return configHome;
   }

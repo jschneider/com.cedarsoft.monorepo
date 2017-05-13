@@ -49,15 +49,6 @@ public interface ApplicationHomeAccess {
   @Nonnull
   String getApplicationName();
 
-  /**
-   * Returns the application home dir
-   *
-   * @return the application home dir
-   */
-  @Deprecated
-  @Nonnull
-  File getApplicationHome();
-
 
   /**
    * Returns the directory that should be used for the configuration
