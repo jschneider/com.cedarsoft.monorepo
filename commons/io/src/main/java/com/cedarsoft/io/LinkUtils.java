@@ -31,7 +31,6 @@
 
 package com.cedarsoft.io;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
@@ -39,6 +38,7 @@ import javax.annotation.Nullable;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -150,54 +150,13 @@ public class LinkUtils {
     try {
       int result = process.waitFor();
       if ( result != 0 ) {
-        throw new IOException( "Creation of link failed: " + IOUtils.toString( process.getErrorStream() ) );
+        throw new IOException("Creation of link failed: " + IOUtils.toString(process.getErrorStream(), Charset.defaultCharset()));
       }
     } catch ( InterruptedException e ) {
       throw new RuntimeException( e );
     }
 
     return true;
-  }
-
-  /**
-   * Deletes the symbolic link
-   *
-   * @param linkFile the link file
-   * @throws IOException if any.
-   */
-  public static void deleteSymbolicLink( @Nonnull File linkFile ) throws IOException {
-    if ( !linkFile.exists() ) {
-      throw new FileNotFoundException( "No such symlink: " + linkFile );
-    }
-    // find the resource of the existing link:
-    File canonicalFile = linkFile.getCanonicalFile();
-
-    // rename the resource, thus breaking the link:
-    File temp = createTempFile( "symlink", ".tmp", canonicalFile.getParentFile() );
-    try {
-      try {
-        FileUtils.moveFile( canonicalFile, temp );
-      } catch ( IOException e ) {
-        throw new IOException(
-          "Couldn't rename resource when attempting to delete "
-            + linkFile );
-      }
-      // delete the (now) broken link:
-      if ( !linkFile.delete() ) {
-        throw new IOException( "Couldn't delete symlink: " + linkFile
-          + " (was it a real file? is this not a UNIX system?)" );
-      }
-    } finally {
-      // return the resource to its original name:
-      try {
-        FileUtils.moveFile( temp, canonicalFile );
-      } catch ( IOException e ) {
-        throw new IOException( "Couldn't return resource " + temp
-          + " to its original name: " + canonicalFile.getAbsolutePath()
-          + "\n THE RESOURCE'S NAME ON DISK HAS "
-          + "BEEN CHANGED BY THIS ERROR!\n" );
-      }
-    }
   }
 
   /**

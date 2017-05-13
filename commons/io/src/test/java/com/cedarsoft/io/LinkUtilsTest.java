@@ -70,7 +70,7 @@ public class LinkUtilsTest {
     assertTrue(LinkUtils.isLink(link));
 
     assertTrue(target.exists());
-    LinkUtils.deleteSymbolicLink(link);
+    link.delete();
     assertTrue(target.exists());
     assertFalse(link.exists());
   }
