@@ -25,7 +25,7 @@ public class ExceptionPurger {
    * These exceptions are purged: They are not reported themselves. Instead the cause is shown in the dialog
    */
   @Nonnull
-  protected static final Set<String> PURGED = ImmutableSet.of(
+  protected static final ImmutableSet<String> PURGED = ImmutableSet.of(
     RuntimeException.class.getName()
     , InvocationTargetException.class.getName()
     , ExecutionException.class.getName()
