@@ -100,8 +100,9 @@ public class State<T> {
    * @param actions     a Action object.
    * @return a TransitionDefinition object.
    */
+  @SafeVarargs
   @Nonnull
-  public TransitionDefinition<T> createTransition( @Nonnull State<T> targetState, @Nonnull Action<T>... actions ) {
+  public final TransitionDefinition<T> createTransition(@Nonnull State<T> targetState, @Nonnull Action<T>... actions) {
     return createTransition( targetState, Arrays.asList( actions ) );
   }
 

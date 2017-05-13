@@ -59,7 +59,8 @@ public class TransitionDefinition<T> {
    * @param target  a State object.
    * @param actions a Action object.
    */
-  public TransitionDefinition( @Nonnull State<T> source, @Nonnull State<T> target, @Nonnull Action<T>... actions ) {
+  @SafeVarargs
+  public TransitionDefinition(@Nonnull State<T> source, @Nonnull State<T> target, @Nonnull Action<T>... actions ) {
     this( source, target, Arrays.asList( actions ) );
   }
 
