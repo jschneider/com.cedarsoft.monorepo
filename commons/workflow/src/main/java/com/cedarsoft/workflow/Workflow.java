@@ -115,17 +115,6 @@ public class Workflow<T> {
     return list;
   }
 
-  /**
-   * Returns the possible transition definitions
-   *
-   * @return the currently possible transition definitions
-   */
-  @Nonnull
-  @Deprecated
-  public List<? extends TransitionDefinition<T>> getPossibleTransitionDefinitions() {
-    return getCurrentState().getTransitions();
-  }
-
   @Nonnull
   private Transition<T> createTransition( @Nonnull final TransitionDefinition<T> definition ) {
     return new Transition<T>() {

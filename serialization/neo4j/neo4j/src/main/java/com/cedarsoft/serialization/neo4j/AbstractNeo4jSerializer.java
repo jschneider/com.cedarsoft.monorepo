@@ -85,7 +85,7 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
    */
   @Nonnull
   public Label getTypeLabel() {
-    return DynamicLabel.label(type);
+    return Label.label(type);
   }
 
   @Nonnull

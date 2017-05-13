@@ -75,7 +75,7 @@ public class WorkflowTest {
   @Test
   public void testTransitions1() {
     assertNotNull( workflow );
-    assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
+    assertEquals(2, workflow.getCurrentState().getTransitions().size() );
     assertEquals( 2, workflow.getPossibleTransition().size() );
 
     workflow.getPossibleTransition().get( 0 ).transit();
@@ -86,7 +86,7 @@ public class WorkflowTest {
   @Test
   public void testTransitions2() {
     assertNotNull( workflow );
-    assertEquals( 2, workflow.getPossibleTransitionDefinitions().size() );
+    assertEquals(2, workflow.getCurrentState().getTransitions().size() );
     assertEquals( 2, workflow.getPossibleTransition().size() );
 
     workflow.getPossibleTransition().get( 1 ).transit();

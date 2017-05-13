@@ -91,7 +91,7 @@ public class WorkflowRealTest {
 
     Workflow<MyObject> workflow = new Workflow<MyObject>( bean, workflowDefinition );
     assertEquals( "input", workflow.getCurrentState().getId() );
-    assertEquals( 1, workflow.getPossibleTransitionDefinitions().size() );
+    assertEquals(1, workflow.getCurrentState().getTransitions().size() );
 
     workflow.getPossibleTransition().get( 0 ).transit();
     assertEquals( "audit", workflow.getCurrentState().getId() );
