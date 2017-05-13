@@ -69,10 +69,6 @@ public abstract class AbstractMoney implements Comparable<AbstractMoney> {
     return Math.round( getValue() / ( SCALE / 100.0 ) );
   }
 
-  public boolean equals( @Nonnull final AbstractMoney money ) {
-    return getValue() == money.getValue();
-  }
-
   /**
    * Whether this is lesser than the given money
    *
@@ -91,10 +87,6 @@ public abstract class AbstractMoney implements Comparable<AbstractMoney> {
    */
   public boolean isGreaterThan( @Nonnull final AbstractMoney money ) {
     return getValue() > money.getValue();
-  }
-
-  public boolean equals( final double money ) {
-    return this.getValue() == ( long ) ( money * SCALE );
   }
 
   /**
