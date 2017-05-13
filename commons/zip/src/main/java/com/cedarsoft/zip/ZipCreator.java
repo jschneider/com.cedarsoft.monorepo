@@ -85,14 +85,11 @@ public class ZipCreator {
    * @throws IOException if an io exception occures
    */
   public File zip( @Nonnull File... directories ) throws IOException {
-    ZipArchiveOutputStream outStream = new ZipArchiveOutputStream( new BufferedOutputStream( new FileOutputStream( zipFile ) ) );
-    try {
-      for ( File directory : directories ) {
+    try (ZipArchiveOutputStream outStream = new ZipArchiveOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)))) {
+      for (File directory : directories) {
         String baseName = directory.getCanonicalPath();
-        addFiles( baseName, outStream, directory );
+        addFiles(baseName, outStream, directory);
       }
-    } finally {
-      outStream.close();
     }
     return zipFile;
   }
