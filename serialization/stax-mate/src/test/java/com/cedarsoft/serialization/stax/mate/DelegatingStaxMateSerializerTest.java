@@ -161,7 +161,7 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<
   }
 
   public static class MySerializer extends AbstractDelegatingStaxMateSerializer<Number> {
-    public MySerializer( SerializingStrategy intSerializer, SerializingStrategy doubleSerializer ) {
+    public MySerializer( AbstractStaxMateSerializingStrategy<Integer> intSerializer, AbstractStaxMateSerializingStrategy<Double> doubleSerializer ) {
       super( "number", "http://number", VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 ) );
 
       addStrategy( intSerializer )
