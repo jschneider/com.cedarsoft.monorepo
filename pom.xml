@@ -136,6 +136,7 @@
     <currentDevelopmentVersion>8.0.0-SNAPSHOT</currentDevelopmentVersion>
 
     <java.version>1.8</java.version>
+    <kotlin.version>1.1.2-4</kotlin.version>
 
     <maven-site-plugin.skip>false</maven-site-plugin.skip>
 
@@ -181,6 +182,30 @@
 
   <dependencyManagement>
     <dependencies>
+      <!--Kotlin related stuff-->
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-stdlib-jre8</artifactId>
+        <version>${kotlin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-reflect</artifactId>
+        <version>${kotlin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-test</artifactId>
+        <version>${kotlin.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-test-junit</artifactId>
+        <version>${kotlin.version}</version>
+        <scope>test</scope>
+      </dependency>
+
       <!--Nullable / Nonnull Annotations-->
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
