@@ -12,18 +12,21 @@ import java.awt.Color;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Borders {
+  public static final int TWO = UiScaler.scale(2);
   public static final int FIVE = UiScaler.scale(5);
   public static final int TEN = UiScaler.scale(10);
-  public static final int TWO = UiScaler.scale(2);
+  public static final int FIFTEEN = UiScaler.scale(15);
 
   @Nonnull
   public static final Border DIALOG_CONTENT_BORDER = BorderFactory.createCompoundBorder(
     BorderFactory.createMatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY)
-    , BorderFactory.createEmptyBorder(TEN, TEN, TEN, TEN)
+    , BorderFactory.createEmptyBorder(FIFTEEN, FIFTEEN, FIFTEEN, FIFTEEN)
   );
 
   @Nonnull
   public static final Border DIALOG_BUTTON_PANEL_BORDER = BorderFactory.createEmptyBorder(TEN, UiScaler.scale(100), TEN, TEN);
+  @Nonnull
+  public static final Border DEFAULT_15_PX = BorderFactory.createEmptyBorder(FIFTEEN, FIFTEEN, FIFTEEN, FIFTEEN);
   @Nonnull
   public static final Border DEFAULT_10_PX = BorderFactory.createEmptyBorder(TEN, TEN, TEN, TEN);
   @Nonnull

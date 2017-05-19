@@ -70,6 +70,7 @@ public abstract class AbstractDialog extends StandardDialog {
    * Applies the default borders
    */
   protected void applyBorders() {
+    //Banner panel has a 10px border by itself
     getBannerPanel().setBorder(Borders.DEFAULT_5_PX);
     getContentPanel().setBorder(Borders.DIALOG_CONTENT_BORDER);
 
