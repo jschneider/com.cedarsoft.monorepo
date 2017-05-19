@@ -198,7 +198,12 @@ public class SwingHelper {
       throw new IllegalStateException("More than one frame found");
     }
 
-    return (JFrame) frames.get(0);
+    Frame frame = frames.get(0);
+    if (frame instanceof JFrame) {
+      return (JFrame) frame;
+    }
+
+    return null;
   }
 
   /**
