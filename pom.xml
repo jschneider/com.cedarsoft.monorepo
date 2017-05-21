@@ -19,6 +19,7 @@
     <module>unit</module>
     <module>photos</module>
     <module>maven</module>
+    <module>tests</module>
   </modules>
 
   <licenses>
