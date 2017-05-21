@@ -6,6 +6,7 @@ import org.junit.*;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Ignore
 public class RoachMotelTest {
   @Test
   public void it() throws Exception {
