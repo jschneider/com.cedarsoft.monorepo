@@ -57,16 +57,16 @@ public class RoachMotelTest {
 
     private static Object monitor = new Object();
 
-    int a;
-    boolean called;
-    int c;
+    volatile int a;
+    volatile boolean called;
+    volatile int c;
 
     public void doIt() {
       a = 1;
-      synchronized (monitor) {
+      //synchronized (monitor) {
         called = true;
         someMethod();
-      }
+      //}
       c = 1;
     }
 
