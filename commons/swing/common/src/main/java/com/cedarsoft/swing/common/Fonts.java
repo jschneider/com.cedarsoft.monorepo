@@ -5,6 +5,10 @@ import com.cedarsoft.unit.other.pt;
 import javax.annotation.Nonnull;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.text.AttributedCharacterIterator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Commonly used fonts
@@ -38,6 +42,9 @@ public interface Fonts {
   @Nonnull
   Font SIZE_10 = createWithSize(Font.PLAIN, 10);
 
+  @Nonnull
+  Font STRIKE_THROUGH = createStrikeThrough(DEFAULT);
+
   /**
    * Creates a font with the given style and size
    */
@@ -58,5 +65,14 @@ public interface Fonts {
   @Nonnull
   static Font getBaseFont() {
     return new JLabel().getFont();
+  }
+
+  @Nonnull
+  static Font createStrikeThrough(@Nonnull Font baseFont) {
+    Map<AttributedCharacterIterator.Attribute, Object> attributes = new HashMap<AttributedCharacterIterator.Attribute, Object>();
+    attributes.putAll(baseFont.getAttributes());
+    attributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+
+    return new Font(attributes);
   }
 }
