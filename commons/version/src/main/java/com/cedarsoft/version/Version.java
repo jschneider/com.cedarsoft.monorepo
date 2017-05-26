@@ -320,6 +320,11 @@ public class Version implements Comparable<Version>, Serializable {
     return new Version( major, minor, build );
   }
 
+  @Nonnull
+  public static Version valueOf(int major, int minor, int build, @Nullable String suffix) {
+    return new Version(major, minor, build, suffix);
+  }
+
   /**
    * @param major the major
    * @param minor the minor
