@@ -22,6 +22,31 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.2.0 (2017-05-27)
+
+### Features
+* Dependency Injection
+  * introduce CachingProvider  
+* ApplicationHomeAccess#createTemporaryHomeAccess() for unit testing
+* Swing
+  * JGoodies: add Validating Component
+  * Dialogs: Improve borders
+  * Fonts: add strike through font
+* Serialization
+  * Common Jackson serializers: Add serializer for java.time types  
+* Dependencies
+  * add Jackson databinding dependencies
+* Version: add valueOf() method with parameter suffix
+
+### Bugs
+* Using charset for string/file access in several places
+* CodeStyle
+  * use @Immutable from ErrorProne compiler
+  * avoiding a lot of compiler warnings
+  * replace deprecated methods/classes
+* Delete a lot of unused / old code and modules
+
+
 ## 8.1.1 (2017-05-04)
 * Use project version for plugins
 * Swing
