@@ -5,6 +5,10 @@ git checkout develop
 git checkout -b release/75.3.0
 ````
 
+#### Release notes
+update README.md with the lastet release notes
+
+
 #### Check project state
 ````
 mvn clean install
