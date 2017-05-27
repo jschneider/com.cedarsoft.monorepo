@@ -108,7 +108,6 @@ public class AssertUtils {
    * @param control          a String object.
    * @param test             a String object.
    * @param ignoreWhiteSpace a boolean.
-   * @throws SAXException if any.
    * @throws IOException  if any.
    */
   public static void assertXMLEquals( String control, String test, boolean ignoreWhiteSpace ) throws IOException {
