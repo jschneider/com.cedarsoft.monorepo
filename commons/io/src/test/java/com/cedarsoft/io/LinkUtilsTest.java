@@ -31,13 +31,11 @@
 
 package com.cedarsoft.io;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.*;
 import org.junit.rules.*;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 

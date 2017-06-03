@@ -31,11 +31,11 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.serialization.AbstractSerializer;
 import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import org.apache.commons.lang.time.StopWatch;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
+import org.apache.commons.lang3.time.StopWatch;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.out.SMOutputElement;
 
