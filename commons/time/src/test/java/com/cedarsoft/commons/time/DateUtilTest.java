@@ -17,13 +17,17 @@ public class DateUtilTest {
 
   @Test
   public void humanReadableDuration() throws Exception {
-    assertThat(DateUtil.toHumanReadableDuration(1000)).isEqualTo("1 second");
-    assertThat(DateUtil.toHumanReadableDuration(1000 + 1000 * 61)).isEqualTo("1 minute 2 seconds");
+    assertThat(DateUtil.toDurationWords(1000)).isEqualTo("1 second");
+    assertThat(DateUtil.toDurationWords(1000 + 1000 * 61)).isEqualTo("1 minute 2 seconds");
+  }
+
+  @Test
+  public void format() throws Exception {
+    assertThat(DateUtil.formatDurationHHmmSSmmm(1000 + 1000 * 61)).isEqualTo("00:01:02.000");
   }
 
   @Test
   public void duration() throws Exception {
-    assertThat(DateUtil.formatHMSM(1000 + 1000 * 61)).isEqualTo("00:01:02.000");
     assertThat(DateUtil.formatDurationWords(1000 + 1000 * 61)).isEqualTo("1min 02s");
 
     assertThat(DateUtil.formatDurationWords(Duration.ofDays(3).toMillis())).isEqualTo("72h 00min 00s");

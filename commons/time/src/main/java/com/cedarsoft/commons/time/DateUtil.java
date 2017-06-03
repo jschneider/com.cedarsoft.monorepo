@@ -46,8 +46,11 @@ public class DateUtil {
     return ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), zone);
   }
 
+  /**
+   * Interpret the millis as duration and format them words
+   */
   @Nonnull
-  public static String toHumanReadableDuration(@ms long millis) {
+  public static String toDurationWords(@ms long millis) {
     return DurationFormatUtils.formatDurationWords(millis, true, true);
   }
 
@@ -55,7 +58,7 @@ public class DateUtil {
    * Formats hour, minute, seconds, millis
    */
   @Nonnull
-  public static String formatHMSM(@ms long millis) {
+  public static String formatDurationHHmmSSmmm(@ms long millis) {
     return DurationFormatUtils.formatDurationHMS(millis);
   }
 
