@@ -16,9 +16,10 @@ import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Date related utils
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateUtil {
+public class DateUtils {
   /**
    * Pattern to format a duration as HH:mm
    */
