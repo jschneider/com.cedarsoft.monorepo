@@ -3,6 +3,7 @@ package com.cedarsoft.commons.time;
 import com.cedarsoft.unit.si.ms;
 import com.cedarsoft.unit.si.ns;
 import com.cedarsoft.unit.si.s;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 
 import javax.annotation.Nonnull;
@@ -13,7 +14,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
+import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
 
 /**
  * Date related utils
@@ -57,8 +61,62 @@ public class DateUtils {
    */
   @Nonnull
   public static String formatDurationWords(@ms long millis) {
-    return DurationFormatUtils.formatDurationWords(millis, true, true);
+    return formatDurationWords(millis, Locale.getDefault());
   }
+
+  @Nonnull
+  public static String formatDurationWords(@ms long millis, @Nonnull Locale language) {
+    return formatDurationWords(millis, DurationI18n.get(language));
+  }
+
+  @Nonnull
+  private static String formatDurationWords(final long durationMillis, @Nonnull DurationI18n durationI18n) {
+    // This method is generally replaceable by the format method, but
+    // there are a series of tweaks and special cases that require
+    // trickery to replicate.
+    String duration = formatDuration(durationMillis, "d' " + durationI18n.getDaysString() + " 'H' " + durationI18n.getHoursString() + " 'm' " + durationI18n.getMinutesString() + " 's' " + durationI18n.getSecondsString() + "'");
+    {
+      // this is a temporary marker on the front. Like ^ in regexp.
+      duration = " " + duration;
+      String tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getDaysString(), StringUtils.EMPTY);
+      if (tmp.length() != duration.length()) {
+        duration = tmp;
+        tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getHoursString(), StringUtils.EMPTY);
+        if (tmp.length() != duration.length()) {
+          duration = tmp;
+          tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getMinutesString(), StringUtils.EMPTY);
+          duration = tmp;
+          if (tmp.length() != duration.length()) {
+            duration = StringUtils.replaceOnce(tmp, " 0 " + durationI18n.getSecondsString(), StringUtils.EMPTY);
+          }
+        }
+      }
+      if (!duration.isEmpty()) {
+        // strip the space off again
+        duration = duration.substring(1);
+      }
+    }
+    String tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getSecondsString(), StringUtils.EMPTY);
+    if (tmp.length() != duration.length()) {
+      duration = tmp;
+      tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getMinutesString(), StringUtils.EMPTY);
+      if (tmp.length() != duration.length()) {
+        duration = tmp;
+        tmp = StringUtils.replaceOnce(duration, " 0 " + durationI18n.getHoursString(), StringUtils.EMPTY);
+        if (tmp.length() != duration.length()) {
+          duration = StringUtils.replaceOnce(tmp, " 0 " + durationI18n.getDaysString(), StringUtils.EMPTY);
+        }
+      }
+    }
+    // handle plurals
+    duration = " " + duration;
+    duration = StringUtils.replaceOnce(duration, " 1 " + durationI18n.getSecondsString(), " 1 " + durationI18n.getSecondString());
+    duration = StringUtils.replaceOnce(duration, " 1 " + durationI18n.getMinutesString(), " 1 " + durationI18n.getMinuteString());
+    duration = StringUtils.replaceOnce(duration, " 1 " + durationI18n.getHoursString(), " 1 " + durationI18n.getHourString());
+    duration = StringUtils.replaceOnce(duration, " 1 " + durationI18n.getHoursString(), " 1 " + durationI18n.getDayString());
+    return duration.trim();
+  }
+
 
   /**
    * Formats hour, minute, seconds, millis
@@ -73,7 +131,7 @@ public class DateUtils {
    */
   @Nonnull
   public static String formatHMS(@ms long millis) {
-    return DurationFormatUtils.formatDuration(millis, "HH:mm:ss");
+    return formatDuration(millis, "HH:mm:ss");
   }
 
   @s
@@ -143,7 +201,7 @@ public class DateUtils {
 
   @Nonnull
   public static String formatDurationHHmm(@Nonnull Duration duration) {
-    return DurationFormatUtils.formatDuration(duration.toMillis(), PATTERN_HH_MM);
+    return formatDuration(duration.toMillis(), PATTERN_HH_MM);
   }
 
   @Nonnull

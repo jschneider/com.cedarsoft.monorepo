@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
  */
 public class DateUtilsTest {
   @Rule
-  public LocaleRule localeRule = new LocaleRule(Locale.GERMAN);
+  public LocaleRule localeRule = new LocaleRule(Locale.US);
 
   @Test
   public void humanReadableDuration() throws Exception {
