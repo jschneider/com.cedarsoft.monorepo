@@ -30,6 +30,7 @@
     <module>license</module>
     <module>mail</module>
     <module>swing</module>
+    <module>time</module>
     <module>test-utils</module>
     <module>version</module>
     <module>workflow</module>
