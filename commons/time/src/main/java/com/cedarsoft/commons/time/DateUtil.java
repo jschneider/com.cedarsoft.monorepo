@@ -20,6 +20,12 @@ import java.util.concurrent.TimeUnit;
  */
 public class DateUtil {
   /**
+   * Pattern to format a duration as HH:mm
+   */
+  @Nonnull
+  public static final String PATTERN_HH_MM = "HH:mm";
+
+  /**
    * Converts the millis to a local date with the given zone
    *
    * @param millis the milli seconds
@@ -128,6 +134,21 @@ public class DateUtil {
 
   @Nonnull
   public static String formatDurationHHmm(@Nonnull Duration duration) {
-    return DurationFormatUtils.formatDuration(duration.toMillis(), "HH:mm");
+    return DurationFormatUtils.formatDuration(duration.toMillis(), PATTERN_HH_MM);
+  }
+
+  @Nonnull
+  public static Duration parseDurationHHmm(@Nonnull String formatted) {
+    int index = formatted.indexOf(':');
+    if (index < 0) {
+      throw new IllegalArgumentException("Could not parse <" + formatted + ">");
+    }
+
+    String firstPart = formatted.substring(0, index);
+    String secondPart = formatted.substring(index + 1);
+
+    return Duration
+      .ofHours(Long.parseLong(firstPart))
+      .plusMinutes(Long.parseLong(secondPart));
   }
 }

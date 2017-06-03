@@ -46,5 +46,8 @@ public class DateUtilTest {
     assertThat(DateUtil.formatDurationHHmm(Duration.ofHours(1).plusMinutes(10))).isEqualTo("01:10");
     assertThat(DateUtil.formatDurationHHmm(Duration.ofHours(18).plusMinutes(10))).isEqualTo("18:10");
     assertThat(DateUtil.formatDurationHHmm(Duration.ofHours(118).plusMinutes(10))).isEqualTo("118:10");
+
+    String formatted = DateUtil.formatDurationHHmm(Duration.ofHours(118).plusMinutes(10));
+    assertThat(DateUtil.parseDurationHHmm(formatted)).isEqualTo(Duration.ofHours(118).plusMinutes(10));
   }
 }
