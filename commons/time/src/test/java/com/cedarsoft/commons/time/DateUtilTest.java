@@ -17,8 +17,8 @@ public class DateUtilTest {
 
   @Test
   public void humanReadableDuration() throws Exception {
-    assertThat(DateUtil.toDurationWords(1000)).isEqualTo("1 second");
-    assertThat(DateUtil.toDurationWords(1000 + 1000 * 61)).isEqualTo("1 minute 2 seconds");
+    assertThat(DateUtil.formatDurationWords(1000)).isEqualTo("1 second");
+    assertThat(DateUtil.formatDurationWords(1000 + 1000 * 61)).isEqualTo("1 minute 2 seconds");
   }
 
   @Test
@@ -27,22 +27,28 @@ public class DateUtilTest {
   }
 
   @Test
+  public void durationWorldsNotFollowing() throws Exception {
+    assertThat(DateUtil.formatDurationWords(Duration.ofHours(1).plusMinutes(30))).isEqualTo("1 hour 30 minutes");
+    assertThat(DateUtil.formatDurationWords(Duration.ofHours(1))).isEqualTo("1 hour");
+  }
+
+  @Test
   public void duration() throws Exception {
-    assertThat(DateUtil.formatDurationWords(1000 + 1000 * 61)).isEqualTo("1min 02s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(1000 + 1000 * 61)).isEqualTo("1min 02s");
 
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(3).toMillis())).isEqualTo("72h 00min 00s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(3).toMillis() + 1000)).isEqualTo("72h 00min 01s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(13).toMillis() + 1000)).isEqualTo("312h 00min 01s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofMinutes(3).toMillis() + 1000)).isEqualTo("3min 01s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(3).toMillis())).isEqualTo("72h 00min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(3).toMillis() + 1000)).isEqualTo("72h 00min 01s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(13).toMillis() + 1000)).isEqualTo("312h 00min 01s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofMinutes(3).toMillis() + 1000)).isEqualTo("3min 01s");
 
-    assertThat(DateUtil.formatDurationWords(Duration.ofSeconds(1).toMillis())).isEqualTo("1s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofMinutes(1).toMillis())).isEqualTo("1min 00s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofHours(1).toMillis())).isEqualTo("1h 00min 00s");
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(1).toMillis())).isEqualTo("24h 00min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofSeconds(1).toMillis())).isEqualTo("1s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofMinutes(1).toMillis())).isEqualTo("1min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofHours(1).toMillis())).isEqualTo("1h 00min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(1).toMillis())).isEqualTo("24h 00min 00s");
     Locale.setDefault(Locale.US);
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(100).toMillis())).isEqualTo("2,400h 00min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(100).toMillis())).isEqualTo("2,400h 00min 00s");
     Locale.setDefault(Locale.GERMAN);
-    assertThat(DateUtil.formatDurationWords(Duration.ofDays(100).toMillis())).isEqualTo("2.400h 00min 00s");
+    assertThat(DateUtil.formatDurationWordsWithSeconds(Duration.ofDays(100).toMillis())).isEqualTo("2.400h 00min 00s");
   }
 
   @Test

@@ -46,11 +46,16 @@ public class DateUtil {
     return ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), zone);
   }
 
+  @Nonnull
+  public static String formatDurationWords(@Nonnull Duration duration) {
+    return formatDurationWords(duration.toMillis());
+  }
+
   /**
    * Interpret the millis as duration and format them words
    */
   @Nonnull
-  public static String toDurationWords(@ms long millis) {
+  public static String formatDurationWords(@ms long millis) {
     return DurationFormatUtils.formatDurationWords(millis, true, true);
   }
 
@@ -76,11 +81,11 @@ public class DateUtil {
   private static final long SECONDS_PER_MINUTE = 60;
 
   @Nonnull
-  public static String formatDurationWords(@ms Duration duration) {
-    return formatDurationWords(duration.toMillis());
+  public static String formatDurationWordsWithSeconds(@ms Duration duration) {
+    return formatDurationWordsWithSeconds(duration.toMillis());
   }
 
-  public static String formatDurationWords(@ms long millis) {
+  public static String formatDurationWordsWithSeconds(@ms long millis) {
     StringBuilder sb = new StringBuilder();
 
     @s long seconds = millis / 1000; // skip milliseconds
