@@ -32,11 +32,13 @@
 package com.cedarsoft.serialization;
 
 import com.google.common.base.Splitter;
-import org.apache.commons.lang.time.StopWatch;
+import com.google.common.base.Stopwatch;
+import org.apache.commons.lang3.time.StopWatch;
 
 import javax.annotation.Nonnull;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
@@ -107,15 +109,14 @@ public class SplittingPerformanceRunner {
     }
 
     //Do the work
-    StopWatch stopWatch = new StopWatch();
-    stopWatch.start();
+    Stopwatch stopWatch = Stopwatch.createStarted();
 
     for ( int i = 0; i < 100000; i++ ) {
       assertEquals( "1.0.0", callable.call() );
     }
 
     stopWatch.stop();
-    System.out.println( description + " took " + stopWatch.getTime() );
+    System.out.println(description + " took " + stopWatch.elapsed(TimeUnit.MILLISECONDS) + " ms");
   }
 
 }
