@@ -22,6 +22,17 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.2.1 (2017-06-10)
+### Features
+* Dependencies
+  * new dependency: three-ten-extra
+  * use newer Apache Commons artifact IDs
+* add FxAsync: JavaFX implementation of the SwingAsync class
+* add time module
+  * DateUtils with duration formatting stuff
+* Serialization
+  * add duration serializer
+
 ## 8.2.0 (2017-05-27)
 
 ### Features
