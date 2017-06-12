@@ -682,6 +682,11 @@
         <artifactId>jfxtras-all</artifactId>
         <version>8.0-r5</version>
       </dependency>
+      <dependency>
+        <groupId>org.jfree</groupId>
+        <artifactId>fxgraphics2d</artifactId>
+        <version>1.5</version>
+      </dependency>
 
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
