@@ -18,9 +18,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.jfree.fx.FXGraphics2D;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -28,6 +30,25 @@ import javax.annotation.Nonnull;
 public class CanvasRunner extends Application {
   public static void main(String[] args) {
     launch(args);
+  }
+
+  @Override
+  public void init() throws Exception {
+    super.init();
+    Parameters parameters = getParameters();
+
+    System.out.println("-----------");
+    for (Map.Entry<String, String> entry : parameters.getNamed().entrySet()) {
+      System.out.println(entry.getKey() + ": " + entry.getValue());
+    }
+    System.out.println("-----------");
+    for (String s : parameters.getRaw()) {
+      System.out.println("s = " + s);
+    }
+    System.out.println("-----------");
+    for (String s : parameters.getUnnamed()) {
+      System.out.println("s = " + s);
+    }
   }
 
   @Override
@@ -59,6 +80,10 @@ public class CanvasRunner extends Application {
       public void handle(MouseEvent event) {
         canvas.getGraphicsContext2D().setFill(Color.ORANGE);
         canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        FXGraphics2D g2d = new FXGraphics2D(canvas.getGraphicsContext2D());
+        g2d.setColor(java.awt.Color.DARK_GRAY);
+        g2d.drawString("Hello World", 10, 10);
       }
     });
 
