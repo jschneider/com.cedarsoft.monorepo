@@ -31,55 +31,36 @@
 
 package com.cedarsoft.test.utils;
 
-import org.junit.jupiter.api.extension.*;
+import org.apache.commons.lang3.LocaleUtils;
 
 import javax.annotation.Nonnull;
 import java.util.Locale;
+import java.util.Optional;
 
 /**
  * Rule that sets the TimeZone
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class LocaleExtension implements BeforeEachCallback, AfterEachCallback {
-  @Nonnull
-  protected final Locale locale;
-
-  public LocaleExtension() throws IllegalArgumentException {
-    this( Locale.US );
-  }
-
-  public LocaleExtension(@Nonnull Locale locale ) {
-    this.locale = locale;
-  }
-
-  private Locale oldLocale;
-
-  @Override
-  public void beforeEach(TestExtensionContext context) throws Exception {
-    before();
-  }
-
-  @Override
-  public void afterEach(TestExtensionContext context) throws Exception {
-    after();
-  }
-
-  private void before() {
-    oldLocale = Locale.getDefault();
-    Locale.setDefault( locale );
-  }
-
-  private void after() {
-    Locale.setDefault( oldLocale );
+public class LocaleExtension extends AbstractConfiguringExtension<Locale, CustomLocale> {
+  public LocaleExtension() {
+    super(Locale.class, CustomLocale.class, "locale");
   }
 
   @Nonnull
-  public Locale getLocale() {
-    return locale;
+  @Override
+  protected Optional<Locale> convert(@Nonnull CustomLocale annotation) {
+    return Optional.ofNullable(LocaleUtils.toLocale(annotation.value()));
   }
 
-  public Locale getOldLocale() {
-    return oldLocale;
+  @Nonnull
+  @Override
+  protected Locale getOldValue() {
+    return Locale.getDefault();
+  }
+
+  @Override
+  protected void applyValue(@Nonnull Locale value) {
+    Locale.setDefault(value);
   }
 }

@@ -30,18 +30,18 @@
  */
 package com.cedarsoft.test.utils;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Ignore
+@Disabled
+@ExtendWith(CatchAllExceptionsExtension.class)
 public class CatchAllExceptionsExtensionTest {
-  @Rule
-  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
   @Test
   public void successfulTest() throws Exception {
