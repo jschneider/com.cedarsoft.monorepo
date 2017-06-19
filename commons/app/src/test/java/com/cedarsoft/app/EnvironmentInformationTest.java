@@ -41,10 +41,10 @@ import static org.junit.Assert.*;
 public class EnvironmentInformationTest {
   @Test
   public void testIt() {
-    assertNotNull( EnvironmentInformation.getHostName() );
-    assertNotNull( EnvironmentInformation.getUserName() );
+    assertNotNull(EnvironmentInformation.getHostName() );
+    assertNotNull(EnvironmentInformation.getUserName() );
 
-    assertTrue( EnvironmentInformation.getHostName().length() > 2 );
-    assertTrue( EnvironmentInformation.getUserName().length() > 2 );
+    assertTrue(EnvironmentInformation.getHostName().length() > 2 );
+    assertTrue(EnvironmentInformation.getUserName().length() > 2 );
   }
 }
