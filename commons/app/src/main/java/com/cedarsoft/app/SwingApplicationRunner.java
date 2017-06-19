@@ -35,6 +35,7 @@ import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
@@ -46,7 +47,7 @@ import java.io.IOException;
  */
 public class SwingApplicationRunner {
   @MainFrame
-  @Nonnull
+  @Nullable
   private JFrame mainFrame;
   @Nonnull
   private final Application application;
@@ -94,7 +95,7 @@ public class SwingApplicationRunner {
     frame.setVisible( true );
   }
 
-  @Nonnull
+  @Nullable
   @MainFrame
   public JFrame getMainFrame() {
     return mainFrame;
