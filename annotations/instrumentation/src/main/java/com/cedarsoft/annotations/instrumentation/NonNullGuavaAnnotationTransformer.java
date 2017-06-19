@@ -37,6 +37,6 @@ import java.io.IOException;
  */
 public class NonNullGuavaAnnotationTransformer extends DefaultNonNullAnnotationTransformer {
   public NonNullGuavaAnnotationTransformer() throws IOException {
-    super( NonNullGuavaAnnotationTransformer.class.getResourceAsStream( "nonNullReturnValueGuava.txt" ), NonNullGuavaAnnotationTransformer.class.getResourceAsStream( "nonNullParamGuava.txt" ) );
+    super( NonNullGuavaAnnotationTransformer.class.getResourceAsStream( "nonNullReturnValueGuava.java-tpl" ), NonNullGuavaAnnotationTransformer.class.getResourceAsStream( "nonNullParamGuava.java-tpl" ) );
   }
 }

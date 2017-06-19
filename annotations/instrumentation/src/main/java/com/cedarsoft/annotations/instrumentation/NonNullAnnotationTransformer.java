@@ -43,6 +43,6 @@ import javax.annotation.Nonnull;
  */
 public class NonNullAnnotationTransformer extends DefaultNonNullAnnotationTransformer {
   public NonNullAnnotationTransformer() throws IOException {
-    super( NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullReturnValue.txt" ), NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullParam.txt" ) );
+    super( NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullReturnValue.java-tpl" ), NonNullAnnotationTransformer.class.getResourceAsStream( "nonNullParam.java-tpl" ) );
   }
 }
