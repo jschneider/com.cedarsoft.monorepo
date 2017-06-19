@@ -38,26 +38,8 @@ import com.cedarsoft.version.Version
 
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-class ApplicationInformation(val name: String, val version: Version) {
+data class ApplicationInformation(val name: String, val version: Version) {
     override fun toString(): String {
         return "$name ($version)"
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other?.javaClass != javaClass) return false
-
-        other as ApplicationInformation
-
-        if (name != other.name) return false
-        if (version != other.version) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = name.hashCode()
-        result = 31 * result + version.hashCode()
-        return result
     }
 }
