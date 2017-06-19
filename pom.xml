@@ -25,7 +25,7 @@
   <licenses>
     <license>
       <name>GPLv3 with Classpath Exception</name>
-      <url>http://www.cedarsoft.org/gpl3ce</url>
+      <url>https://www.cedarsoft.org/gpl3ce</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -672,7 +672,21 @@
         <artifactId>miglayout-swing</artifactId>
         <version>5.0</version>
       </dependency>
-
+      <dependency>
+        <groupId>com.miglayout</groupId>
+        <artifactId>miglayout-javafx</artifactId>
+        <version>5.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jfxtras</groupId>
+        <artifactId>jfxtras-all</artifactId>
+        <version>8.0-r5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jfree</groupId>
+        <artifactId>fxgraphics2d</artifactId>
+        <version>1.5</version>
+      </dependency>
 
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
@@ -1550,7 +1564,7 @@
           </excludes>
 
           <mapping>
-            <fx>JAVADOC_STYLE</fx>
+            <fxml>XML_STYLE</fxml>
             <ufraw>XML_STYLE</ufraw>
           </mapping>
         </configuration>
