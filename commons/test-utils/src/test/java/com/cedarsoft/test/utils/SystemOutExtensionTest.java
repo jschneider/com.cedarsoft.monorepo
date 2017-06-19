@@ -31,61 +31,50 @@
 
 package com.cedarsoft.test.utils;
 
-import javax.annotation.Nonnull;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
-import java.util.Locale;
+import javax.annotation.Nonnull;
+
+import static org.junit.Assert.*;
 
 /**
- * Rule that sets the TimeZone
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class LocaleRule implements MethodRule {
-  @Nonnull
-  protected final Locale locale;
+@ExtendWith(SystemOutExtension.class)
+public class SystemOutExtensionTest {
+  private String n;
 
-  public LocaleRule() throws IllegalArgumentException {
-    this( Locale.US );
+  @BeforeEach
+  public void setUp() throws Exception {
+    n = System.getProperty("line.separator");
+    Assertions.assertThat(n.length()).isGreaterThanOrEqualTo(1);
   }
 
-  public LocaleRule( @Nonnull Locale locale ) {
-    this.locale = locale;
+  @Test
+  public void testIt(@Nonnull SystemOutExtension systemOutExtension) {
+    System.out.println("Hey");
+    System.out.println("2");
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.getOutAsString());
+    System.out.println("3");
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.getOutAsString());
   }
 
-  private Locale oldLocale;
-
-  @Override
-  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
+  @Test
+  public void testOut2(@Nonnull SystemOutExtension systemOutExtension) {
+    System.out.println("2");
+    assertEquals("2" + n + "", systemOutExtension.getOutAsString());
+    System.out.println("3");
+    assertEquals("2" + n + "3" + n + "", systemOutExtension.getOutAsString());
   }
 
-  private void before() {
-    oldLocale = Locale.getDefault();
-    Locale.setDefault( locale );
-  }
-
-  private void after() {
-    Locale.setDefault( oldLocale );
-  }
-
-  @Nonnull
-  public Locale getLocale() {
-    return locale;
-  }
-
-  public Locale getOldLocale() {
-    return oldLocale;
+  @Test
+  public void testErr(@Nonnull SystemOutExtension systemOutExtension) {
+    System.err.println("Hey");
+    System.err.println("2");
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.getErrAsString());
+    System.err.println("3");
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.getErrAsString());
   }
 }

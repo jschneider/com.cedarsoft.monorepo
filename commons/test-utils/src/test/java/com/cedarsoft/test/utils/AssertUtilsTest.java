@@ -39,6 +39,7 @@ import org.apache.commons.io.FileUtils;
 import org.assertj.core.api.*;
 import org.junit.*;
 import org.junit.rules.*;
+import org.opentest4j.AssertionFailedError;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,8 +51,6 @@ import static org.junit.Assert.*;
  *
  */
 public class AssertUtilsTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
   @Rule
   public TemporaryFolder tmp = new TemporaryFolder();
   @Rule
@@ -79,8 +78,12 @@ public class AssertUtilsTest {
 
   @Test
   public void testJsonNotEquals() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
-    JsonUtils.assertJsonEquals( "{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}" );
+    try {
+      JsonUtils.assertJsonEquals("{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}");
+      fail("Where is the Exception");
+    } catch (AssertionFailedError e) {
+      Assertions.assertThat(e.getMessage()).contains("JSON comparison failed");
+    }
   }
 
   @Test
@@ -88,19 +91,25 @@ public class AssertUtilsTest {
     try {
       JsonUtils.assertJsonEquals( ( String ) null, null );
       fail( "Where is the Exception" );
-    } catch ( ComparisonFailure ignore ) {
+    } catch ( AssertionFailedError e ) {
+      Assertions.assertThat(e.getMessage()).contains("Empty test json");
     }
     try {
       JsonUtils.assertJsonEquals( "affase", "asdf" );
       fail( "Where is the Exception" );
-    } catch ( ComparisonFailure ignore ) {
+    } catch ( AssertionFailedError e ) {
+      Assertions.assertThat(e.getMessage()).contains("JSON parsing error");
     }
   }
 
   @Test
   public void testXml() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
-    AssertUtils.assertXMLEquals( "<xml2/>", "<xml/>" );
+    try {
+      AssertUtils.assertXMLEquals("<xml2/>", "<xml/>");
+      fail("Where is the Exception");
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).contains("Expected element tag name");
+    }
   }
 
   @Test
@@ -120,8 +129,11 @@ public class AssertUtilsTest {
 
   @Test
   public void testXml2() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
-    AssertUtils.assertXMLEquals( getClass().getResource( "AssertUtilsTest.1.xml" ), "<xml/>" );
+    try {
+      AssertUtils.assertXMLEquals(getClass().getResource("AssertUtilsTest.1.xml"), "<xml/>");
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).contains("Expected element tag name");
+    }
   }
 
   @Test
@@ -134,29 +146,21 @@ public class AssertUtilsTest {
     try {
       AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, false);
       fail("Where is the Exception");
-    } catch (ComparisonFailure e) {
-      Assertions.assertThat(e.getMessage()).startsWith("XML comparison failed expected");
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).contains("Expected presence");
     }
 
     AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
   }
 
-  @Test
+  @org.junit.jupiter.api.Test
   public void testFormat() throws Exception {
-    expectedException.expect( ComparisonFailure.class );
-    AssertUtils.assertXMLEquals( "<xml2/>", "This is no xml!" );
-  }
-
-  @Test
-  public void testAssertOne() {
-    AssertUtils.assertOne( "a", "a", "b", "c" );
-    AssertUtils.assertOne( "a", "b", "c", "a" );
-
-    expectedException.expect( AssertionError.class );
-    expectedException.expectMessage(
-      "Expected: (is \"b\" or is \"c\")\n" +
-        "     but: was \"a\"" );
-    AssertUtils.assertOne( "a", "b", "c" );
+    try {
+      AssertUtils.assertXMLEquals("<xml2/>", "This is no xml!");
+      fail("Where is the Exception");
+    } catch (AssertionFailedError e) {
+      Assertions.assertThat(e.getMessage()).contains("XML error");
+    }
   }
 
   @Test
@@ -182,16 +186,6 @@ public class AssertUtilsTest {
       AssertUtils.assertFileByHash( AssertUtilsTest.class, testName.getMethodName(), Hash.fromHex( Algorithm.MD5, "aa" ), file );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
-      assertTrue(e.getMessage().trim(),
-                 e.getMessage().contains("Stored questionable file under test at <")
-                   &&
-                   e.getMessage().contains("com.cedarsoft.test.utils.AssertUtilsTest" + File.separator + "testFileByHash" + File.separator + "daFile")
-                   &&
-                   e.getMessage().contains(
-                     "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                       "     but: was <[MD5: aa]>")
-      );
-
       File copiedFile = AssertUtils.createCopyFile(AssertUtils.createPath(AssertUtilsTest.class, "testFileByHash"), "daFile");
       assertTrue(e.getMessage().contains(copiedFile.getAbsolutePath()));
 
@@ -204,16 +198,7 @@ public class AssertUtilsTest {
       AssertUtils.assertFileByHash( Hash.fromHex( Algorithm.MD5, "aa" ), file );
       fail( "Where is the Exception" );
     } catch ( AssertionError e ) {
-      assertTrue( e.getMessage().trim(),
-                  e.getMessage().contains( "Stored questionable file under test at <" )
-                    &&
-                    e.getMessage().contains( "com.cedarsoft.test.utils.AssertUtilsTest" + File.separator + "testFileByHash" + File.separator +
-                      "daFile" )
-                    &&
-                    e.getMessage().contains(
-                      "Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                        "     but: was <[MD5: aa]>" )
-      );
+      Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test at");
     }
   }
 

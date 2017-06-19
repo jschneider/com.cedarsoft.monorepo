@@ -32,68 +32,35 @@
 package com.cedarsoft.test.utils;
 
 
-import javax.annotation.Nonnull;
 import org.joda.time.DateTimeZone;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+
+import javax.annotation.Nonnull;
+import java.util.Optional;
 
 /**
  * Rule that sets the TimeZone
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateTimeZoneRule implements MethodRule {
-  @Nonnull
-  protected final DateTimeZone zone;
-
-  public DateTimeZoneRule() throws IllegalArgumentException {
-    this( "America/New_York" );
+public class DateTimeZoneExtension extends AbstractConfiguringExtension<DateTimeZone, CustomDateTimeZone> {
+  public DateTimeZoneExtension() {
+    super(DateTimeZone.class, CustomDateTimeZone.class, "OLD_ZONE");
   }
-
-  public DateTimeZoneRule( @Nonnull String zoneId ) throws IllegalArgumentException {
-    this( DateTimeZone.forID( zoneId ) );
-  }
-
-  public DateTimeZoneRule( @Nonnull DateTimeZone zone ) {
-    this.zone = zone;
-  }
-
-  private DateTimeZone oldTimeZone;
 
   @Override
-  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
-  }
-
-  private void before() {
-    oldTimeZone = DateTimeZone.getDefault();
-    DateTimeZone.setDefault( zone );
-  }
-
-  private void after() {
-    DateTimeZone.setDefault( oldTimeZone );
+  protected void applyValue(@Nonnull DateTimeZone value) {
+    DateTimeZone.setDefault(value);
   }
 
   @Nonnull
-  public DateTimeZone getZone() {
-    return zone;
+  @Override
+  protected DateTimeZone getOldValue() {
+    return DateTimeZone.getDefault();
   }
 
   @Nonnull
-  public DateTimeZone getOldTimeZone() {
-    if ( oldTimeZone == null ) {
-      throw new IllegalStateException( "No old zone set" );
-    }
-    return oldTimeZone;
+  @Override
+  protected Optional<DateTimeZone> convert(@Nonnull CustomDateTimeZone annotation) {
+    return Optional.ofNullable(DateTimeZone.forID(annotation.value()));
   }
 }

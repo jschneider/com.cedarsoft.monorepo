@@ -41,6 +41,7 @@ import java.nio.charset.Charset;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.junit.*;
+import org.opentest4j.AssertionFailedError;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -64,10 +65,10 @@ public class JsonUtils {
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
     if ( test == null || test.trim().isEmpty() ) {
-      throw new ComparisonFailure( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new AssertionFailedError( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
     if ( control == null || control.trim().isEmpty() ) {
-      throw new ComparisonFailure( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new AssertionFailedError( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
     }
 
     try {
@@ -76,15 +77,15 @@ public class JsonUtils {
       JsonNode controlTree = mapper.readTree( control );
 
       if ( !controlTree.equals( testTree ) ) {
-        throw new ComparisonFailure( "JSON comparison failed", formatJson( control ).trim(), formatJson( test ).trim() );
+        throw new AssertionFailedError("JSON comparison failed", formatJson(control ).trim(), formatJson(test ).trim() );
       }
     } catch ( JsonProcessingException e ) {
-      throw new ComparisonFailure( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new AssertionFailedError( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
     }
   }
 
   @Deprecated
-  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, ComparisonFailure {
+  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, AssertionFailedError {
     assertJsonEquals(control, test);
   }
 

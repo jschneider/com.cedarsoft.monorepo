@@ -39,9 +39,9 @@ import static org.junit.Assert.assertFalse;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Ignore
-public class CatchAllExceptionsRuleTest {
+public class CatchAllExceptionsExtensionTest {
   @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
+  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
   @Test
   public void successfulTest() throws Exception {

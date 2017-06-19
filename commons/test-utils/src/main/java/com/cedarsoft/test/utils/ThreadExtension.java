@@ -31,9 +31,7 @@
 package com.cedarsoft.test.utils;
 
 import com.google.common.base.Joiner;
-import org.junit.rules.*;
-import org.junit.runner.*;
-import org.junit.runners.model.*;
+import org.junit.jupiter.api.extension.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -44,40 +42,33 @@ import java.util.Iterator;
 import java.util.Set;
 
 
-public class ThreadRule implements TestRule {
+public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
+  @Override
+  public void beforeEach(TestExtensionContext context) throws Exception {
+    before();
+  }
+
+  @Override
+  public void afterEach(TestExtensionContext context) throws Exception {
+    if (context.getTestException().isPresent()) {
+      afterFailing();
+      return;
+    }
+
+    after();
+  }
 
   public static final String STACK_TRACE_ELEMENT_SEPARATOR = "\n\tat ";
 
   @Nullable
   private final ThreadMatcher ignoredThreadMatcher;
 
-  public ThreadRule() {
+  public ThreadExtension() {
     this( new DefaultThreadMatcher() );
   }
 
-  public ThreadRule( @Nullable ThreadMatcher ignoredThreadMatcher ) {
+  public ThreadExtension(@Nullable ThreadMatcher ignoredThreadMatcher ) {
     this.ignoredThreadMatcher = ignoredThreadMatcher;
-  }
-
-  @Override
-  public Statement apply( final Statement base, Description description ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        try {
-          before();
-          try {
-            base.evaluate();
-          } catch (Throwable t) {
-            afterFailing();
-            throw t;
-          }
-          after();
-        } catch (Throwable throwable) {
-          throw new AssertionError("Thread rule failed with <" + throwable.getMessage() + "> " + Joiner.on("\n").join(throwable.getStackTrace()), throwable);
-        }
-      }
-    };
   }
 
   private Collection<Thread> initialThreads;

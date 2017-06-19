@@ -47,9 +47,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class KeepAliveTest {
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
   @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
+  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
   @Test
   public void testKeepAlive() throws Exception {

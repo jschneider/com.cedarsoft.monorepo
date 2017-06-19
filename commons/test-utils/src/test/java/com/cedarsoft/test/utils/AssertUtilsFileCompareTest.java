@@ -119,10 +119,9 @@ public class AssertUtilsFileCompareTest {
                          Hash.fromHex(Algorithm.MD5, "CC"),
                          Hash.fromHex(Algorithm.MD5, "BB")
       );
+      fail("Where is the Exception");
     } catch (AssertionError e) {
-      Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
-      Assertions.assertThat(e.getMessage()).contains("Expected: is <[[MD5: aa], [MD5: cc], [MD5: bb]]>\n" +
-                                                       "     but: was <[[MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f], [MD5: 913aa4a45cea16f9714f109e7324159f]]>");
+      Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test");
     }
   }
 
@@ -130,10 +129,9 @@ public class AssertUtilsFileCompareTest {
   public void testFail() throws Exception {
     try {
       assertFileByHash(Hash.fromHex(Algorithm.MD5, "AA"), fileA);
+      fail("Where is the Exception");
     } catch (AssertionError e) {
-      Assertions.assertThat(e.getMessage()).startsWith("Stored questionable file under test at <");
-      Assertions.assertThat(e.getMessage()).contains("Expected: is <[MD5: 913aa4a45cea16f9714f109e7324159f]>\n" +
-                                                       "     but: was <[MD5: aa]>");
+      Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test");
     }
   }
 }

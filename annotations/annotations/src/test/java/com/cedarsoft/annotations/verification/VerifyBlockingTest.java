@@ -34,17 +34,17 @@ import javax.annotation.Nullable;
 
 import org.junit.*;
 
-import com.cedarsoft.test.utils.CatchAllExceptionsRule;
-import com.cedarsoft.test.utils.ThreadRule;
+import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
+import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class VerifyBlockingTest {
   @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
+  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
 
   @Nullable
   private NotStuckVerifier.ThreadStuckEvaluator oldEvaluator;

@@ -28,24 +28,20 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
+
 package com.cedarsoft.test.utils;
 
-import static org.junit.Assert.*;
-
-import java.time.ZoneId;
-
-import org.junit.*;
+import org.assertj.core.api.Assertions;
+import org.joda.time.DateTimeZone;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
-public class JavaTimeZoneRuleTest {
-  @Rule
-  public JavaTimeZoneRule rule = new JavaTimeZoneRule("Europe/London");
-
+public class DateTimeZoneExtensionTest {
+  @CustomDateTimeZone("Europe/London")
   @Test
   public void testIt() {
-    assertNotNull(rule.getOldTimeZone());
-    assertEquals(ZoneId.systemDefault(), rule.getZone());
+    Assertions.assertThat(DateTimeZone.getDefault().getID()).isEqualTo("Europe/London");
   }
 }

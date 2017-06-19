@@ -32,7 +32,9 @@
 package com.cedarsoft.test.utils.matchers;
 
 import com.google.common.io.Files;
+import org.assertj.core.api.*;
 import org.junit.*;
+import org.junit.Assert;
 import org.junit.rules.*;
 
 import java.io.File;
@@ -53,15 +55,15 @@ public class ContainsFileMatcherTest {
   @Test
   public void testBasic() throws IOException {
     Files.touch( tmp.newFile( "a" ) );
-    assertThat( tmp.getRoot(), containsFiles( "a" ) );
+    Assertions.assertThat(tmp.getRoot()).matches(containsFiles("a"));
     Files.touch( tmp.newFile( "b" ) );
-    assertThat( tmp.getRoot(), containsFiles( "a", "b" ) );
+    Assertions.assertThat(tmp.getRoot()).matches(containsFiles("a", "b"));
   }
 
   @Test
   public void testSubDir() throws IOException {
     Files.touch( new File( tmp.newFolder( "dir" ), "a" ) );
-    assertThat( tmp.getRoot(), containsFiles( "dir/a" ) );
+    Assertions.assertThat(tmp.getRoot()).matches(containsFiles("dir/a"));
   }
 
   @Test
@@ -106,6 +108,6 @@ public class ContainsFileMatcherTest {
   @Test
   public void testNontExistent() throws IOException {
     expectedException.expect( AssertionError.class );
-    assertThat( tmp.getRoot(), containsFiles( "a" ) );
+    Assertions.assertThat(tmp.getRoot()).matches(containsFiles("a"));
   }
 }

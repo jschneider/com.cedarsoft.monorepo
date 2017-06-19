@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.commons.time;
 
-import com.cedarsoft.test.utils.LocaleRule;
+import com.cedarsoft.test.utils.LocaleExtension;
 import org.junit.*;
 
 import java.time.Duration;
@@ -43,7 +43,7 @@ import static org.assertj.core.api.Assertions.*;
  */
 public class DateUtilsTest {
   @Rule
-  public LocaleRule localeRule = new LocaleRule(Locale.US);
+  public LocaleExtension localeExtension = new LocaleExtension(Locale.US);
 
   @Test
   public void humanReadableDuration() throws Exception {

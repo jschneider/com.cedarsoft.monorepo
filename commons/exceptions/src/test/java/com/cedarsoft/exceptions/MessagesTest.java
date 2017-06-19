@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions;
 
-import com.cedarsoft.test.utils.LocaleRule;
+import com.cedarsoft.test.utils.LocaleExtension;
 import org.junit.*;
 
 import java.util.Locale;
@@ -55,5 +55,5 @@ public class MessagesTest {
   }
 
   @Rule
-  public LocaleRule localeRule = new LocaleRule( Locale.FRENCH );
+  public LocaleExtension localeExtension = new LocaleExtension(Locale.FRENCH );
 }

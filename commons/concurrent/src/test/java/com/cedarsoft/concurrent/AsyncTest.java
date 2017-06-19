@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadRule;
+import com.cedarsoft.test.utils.ThreadExtension;
 import org.junit.*;
 
 import java.util.concurrent.ExecutorService;
@@ -46,7 +46,7 @@ import static org.awaitility.Awaitility.await;
  */
 public class AsyncTest {
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
   private ExecutorService executor;
 
   @Before

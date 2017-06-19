@@ -30,43 +30,28 @@
  */
 package com.cedarsoft.test.utils.matchers;
 
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
+import com.google.common.collect.ImmutableList;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-class AndMatcher<T> extends BaseMatcher<T> {
-  private final List<Matcher<?>> matchers;
+class AndMatcher<T> implements Predicate<T> {
+  private final List<Predicate<? super T>> matchers;
 
-  public AndMatcher(List<? extends Matcher<?>> matchers) {
-    this.matchers = new ArrayList<Matcher<?>>(matchers);
+  AndMatcher(List<? extends Predicate<? super T>> matchers) {
+    this.matchers = ImmutableList.copyOf(matchers);
   }
 
   @Override
-  public boolean matches(Object argument) {
-    for (Matcher<?> matcher : matchers) {
-      if (!matcher.matches(argument)) {
+  public boolean test(T t) {
+    for (Predicate<? super T> matcher : matchers) {
+      if (!matcher.test(t)) {
         return false;
       }
     }
     return true;
-  }
-
-  @Override
-  public void describeTo( Description description ) {
-    description.appendText( "and(" );
-    for ( Iterator<Matcher<?>> it = matchers.iterator(); it.hasNext(); ) {
-      it.next().describeTo( description );
-      if ( it.hasNext() ) {
-        description.appendText( ", " );
-      }
-    }
-    description.appendText( ")" );
   }
 }

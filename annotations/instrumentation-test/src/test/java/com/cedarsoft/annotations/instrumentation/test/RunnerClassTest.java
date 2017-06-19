@@ -36,14 +36,14 @@ import static org.assertj.core.api.Assertions.fail;
 import org.assertj.core.api.Assertions;
 import org.junit.*;
 
-import com.cedarsoft.test.utils.CatchAllExceptionsRule;
+import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class RunnerClassTest {
   @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
+  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
   @Test
   public void testNullMethodReturnValue() throws Exception {

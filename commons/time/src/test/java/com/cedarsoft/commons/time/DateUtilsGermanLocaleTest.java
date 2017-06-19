@@ -30,23 +30,20 @@
  */
 package com.cedarsoft.commons.time;
 
-import com.cedarsoft.test.utils.LocaleRule;
-import org.assertj.core.api.*;
+import com.cedarsoft.test.utils.LocaleExtension;
 import org.junit.*;
-import org.junit.Assert;
 
 import java.time.Duration;
 import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DateUtilsGermanLocaleTest {
   @Rule
-  public LocaleRule localeRule = new LocaleRule(Locale.GERMANY);
+  public LocaleExtension localeExtension = new LocaleExtension(Locale.GERMANY);
 
   @Test
   public void words() throws Exception {

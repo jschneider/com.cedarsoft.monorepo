@@ -32,20 +32,23 @@
 package com.cedarsoft.test.utils;
 
 import org.joda.time.DateTimeZone;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class DateTimeZoneRuleTest {
-  @Rule
-  public DateTimeZoneRule rule = new DateTimeZoneRule( "Europe/London" );
-
+@CustomDateTimeZone("America/Chicago")
+public class DateTimeZoneExtensionTest2 {
   @Test
   public void testIt() {
-    assertNotNull( rule.getOldTimeZone() );
-    assertEquals( DateTimeZone.getDefault(), rule.getZone() );
+    assertEquals("America/Chicago", DateTimeZone.getDefault().getID());
+  }
+
+  @CustomDateTimeZone("Europe/Paris")
+  @Test
+  void testDouble() {
+    assertEquals("Europe/Paris", DateTimeZone.getDefault().getID());
   }
 }

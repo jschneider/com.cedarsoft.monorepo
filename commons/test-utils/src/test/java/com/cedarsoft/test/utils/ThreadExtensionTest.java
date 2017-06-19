@@ -38,9 +38,9 @@ import static org.assertj.core.api.Fail.fail;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Ignore
-public class ThreadRuleTest {
+public class ThreadExtensionTest {
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
 
   //@Test
   //public void testFx() throws Exception {

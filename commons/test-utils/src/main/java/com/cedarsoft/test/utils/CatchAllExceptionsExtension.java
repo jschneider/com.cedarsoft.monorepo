@@ -30,10 +30,7 @@
  */
 package com.cedarsoft.test.utils;
 
-import org.junit.*;
-import org.junit.rules.*;
-import org.junit.runner.*;
-import org.junit.runners.model.*;
+import org.junit.jupiter.api.extension.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,26 +44,22 @@ import java.util.List;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class CatchAllExceptionsRule implements TestRule {
+public class CatchAllExceptionsExtension implements BeforeEachCallback, AfterEachCallback {
   @Nullable
   private Thread.UncaughtExceptionHandler oldHandler;
 
   @Override
-  public Statement apply( final Statement base, Description description ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } catch ( Throwable t ) {
-          afterFailing();
-          throw t;
-        }
+  public void beforeEach(TestExtensionContext context) throws Exception {
+    before();
+  }
 
-        afterSuccess();
-      }
-    };
+  @Override
+  public void afterEach(TestExtensionContext context) throws Exception {
+    if (context.getTestException().isPresent()) {
+      afterFailing();
+      return;
+    }
+    afterSuccess();
   }
 
   private void before() {

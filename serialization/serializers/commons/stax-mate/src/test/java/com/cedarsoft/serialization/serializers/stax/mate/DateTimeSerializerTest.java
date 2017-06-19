@@ -31,12 +31,10 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.test.utils.DateTimeZoneRule;
-import org.apache.commons.io.Charsets;
+import com.cedarsoft.test.utils.DateTimeZoneExtension;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
@@ -60,7 +58,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
   protected static final DateTimeZone ZONE = DateTimeZone.forID( "America/New_York" );
 
   @Rule
-  public final DateTimeZoneRule zoneRule = new DateTimeZoneRule( ZONE );
+  public final DateTimeZoneExtension zoneRule = new DateTimeZoneExtension(ZONE );
 
   @Nonnull
   @Override

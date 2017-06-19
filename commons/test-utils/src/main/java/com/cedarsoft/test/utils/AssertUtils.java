@@ -37,28 +37,24 @@ import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.xml.XmlCommons;
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
-import java.nio.charset.Charset;
-import junit.framework.AssertionFailedError;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.*;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
+import org.junit.jupiter.api.Assertions;
+import org.opentest4j.AssertionFailedError;
+import org.xml.sax.SAXException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.junit.*;
-import org.xml.sax.SAXException;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 
 /**
  * <p>AssertUtils class.</p>
@@ -124,10 +120,10 @@ public class AssertUtils {
 
   public static void assertXMLEquals(@Nonnull String control, @Nonnull String test, boolean ignoreWhiteSpace, boolean ignoreComments) throws IOException {
     if (test.trim().isEmpty()) {
-      throw new ComparisonFailure( "Empty test xml", formatXml( control ).trim(), formatXml( test ).trim() );
+      throw new AssertionFailedError("Empty test xml", formatXml(control).trim(), formatXml(test).trim());
     }
     if (control.trim().isEmpty()) {
-      throw new ComparisonFailure( "Empty control xml", formatXml( control ).trim(), formatXml( test ).trim() );
+      throw new AssertionFailedError("Empty control xml", formatXml(control).trim(), formatXml(test).trim());
     }
 
     try {
@@ -136,9 +132,9 @@ public class AssertUtils {
       XMLAssert.assertXMLEqual( control, test );
       setIgnoreWhitespace( false );
     } catch ( SAXException e ) {
-      throw new ComparisonFailure( "XML error (" + e.getMessage() + ")", formatXml( control ).trim(), formatXml( test ).trim() );
+      throw new AssertionFailedError("XML error (" + e.getMessage() + ")", formatXml(control).trim(), formatXml(test).trim());
     } catch ( AssertionFailedError ignore ) {
-      throw new ComparisonFailure( "XML comparison failed", formatXml( control ).trim(), formatXml( test ).trim() );
+      throw new AssertionFailedError("XML comparison failed", formatXml(control).trim(), formatXml(test).trim());
     }
   }
 
@@ -153,24 +149,6 @@ public class AssertUtils {
   }
 
   /**
-   * <p>assertOne</p>
-   *
-   * @param current              a Object object.
-   * @param expectedAlternatives a Object object.
-   */
-  @SafeVarargs
-  public static <T> void assertOne(@Nullable T current, @Nonnull T... expectedAlternatives ) {
-    Collection<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
-
-    for ( T expectedAlternative : expectedAlternatives ) {
-      matchers.add( is( expectedAlternative ) );
-    }
-
-    Matcher<T> objectMatcher = anyOf( matchers );
-    assertThat( current, objectMatcher );
-  }
-
-  /**
    * <p>assertEquals</p>
    *
    * @param expectedResourceUri a URL object.
@@ -182,7 +160,7 @@ public class AssertUtils {
   }
   
   public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual,@Nonnull Charset charset ) throws IOException {
-    Assert.assertEquals( toString( expectedResourceUri, charset), actual );
+    Assertions.assertEquals(toString(expectedResourceUri, charset), actual);
   }
 
   @Nonnull
@@ -236,7 +214,7 @@ public class AssertUtils {
     }
     FileUtils.copyFile( fileUnderTest, copy );
 
-    assertThat( createReason( copy ), expected, is( actual ) );
+    org.assertj.core.api.Assertions.assertThat(actual).describedAs(createReason(copy)).isEqualTo(expected);
   }
 
   @Nonnull
@@ -258,7 +236,7 @@ public class AssertUtils {
     File copy = createCopyFile( path, fileUnderTest.getName() );
     FileUtils.copyFile( fileUnderTest, copy );
 
-    Assert.assertThat( createReason( copy ), actualHashes, CoreMatchers.<Iterable<? extends Hash>>is( expectedHashes ) );
+    org.assertj.core.api.Assertions.assertThat(actualHashes).describedAs(createReason(copy)).isEqualTo(expectedHashes);
   }
 
   @Nonnull

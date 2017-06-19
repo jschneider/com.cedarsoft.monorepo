@@ -33,7 +33,7 @@ package com.cedarsoft.annotations.instrumentation.test;
 import com.cedarsoft.annotations.verification.DelegatingThreadVerificationStrategy;
 import com.cedarsoft.annotations.verification.ThreadVerificationStrategy;
 import com.cedarsoft.annotations.verification.VerifyThread;
-import com.cedarsoft.test.utils.CatchAllExceptionsRule;
+import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import com.google.common.collect.ImmutableList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
@@ -51,7 +51,7 @@ import java.util.Set;
  */
 public class CustomThreadTest {
   @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
+  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
   @Before
   public void setUp() throws Exception {

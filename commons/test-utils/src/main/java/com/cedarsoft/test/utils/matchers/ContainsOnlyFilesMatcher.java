@@ -33,12 +33,8 @@ package com.cedarsoft.test.utils.matchers;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 
 import javax.annotation.Nonnull;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,11 +43,12 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  *
  */
-public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
+public class ContainsOnlyFilesMatcher implements Predicate<File> {
   @Nonnull
   private final List<String> filePaths;
 
@@ -60,9 +57,8 @@ public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
   }
 
   @Override
-  public boolean matches( Object o ) {
-    File dir = ( File ) o;
-    if ( !( ( File ) o ).isDirectory() ) {
+  public boolean test(File dir) {
+    if (!((File) dir).isDirectory()) {
       return false;
     }
 
@@ -93,18 +89,13 @@ public class ContainsOnlyFilesMatcher extends BaseMatcher<File> {
     return expected;
   }
 
-  @Override
-  public void describeTo( Description description ) {
-    description.appendText( "contains only files " + filePaths );
-  }
-
   @Nonnull
   public List<? extends String> getFilePaths() {
     return Collections.unmodifiableList( filePaths );
   }
 
   @Nonnull
-  public static Matcher<File> containsOnlyFiles( @Nonnull String... relativeFilePaths ) {
+  public static Predicate<File> containsOnlyFiles(@Nonnull String... relativeFilePaths) {
     return new ContainsOnlyFilesMatcher( relativeFilePaths );
   }
 

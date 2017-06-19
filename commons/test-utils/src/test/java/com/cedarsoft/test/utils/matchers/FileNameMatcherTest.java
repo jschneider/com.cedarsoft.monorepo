@@ -46,14 +46,10 @@ public class FileNameMatcherTest {
   public void testIt() {
     FileNameMatcher matcher = FileNameMatcher.fileName( "asdf" );
 
-    StringDescription description = new StringDescription();
-    matcher.describeTo( description );
-    assertEquals( "File with name <asdf>", description.toString() );
-
-    assertTrue( matcher.matches( new File( "asdf" ) ) );
-    assertFalse( matcher.matches( new File( "asdf2" ) ) );
-    assertTrue( matcher.matches( new File( "/asdf" ) ) );
-    assertTrue( matcher.matches( new File( "asdf/asdf" ) ) );
-    assertFalse( matcher.matches( new File( "asdf/asdf2" ) ) );
+    assertTrue( matcher.test( new File( "asdf" ) ) );
+    assertFalse( matcher.test( new File( "asdf2" ) ) );
+    assertTrue( matcher.test( new File( "/asdf" ) ) );
+    assertTrue( matcher.test( new File( "asdf/asdf" ) ) );
+    assertFalse( matcher.test( new File( "asdf/asdf2" ) ) );
   }
 }

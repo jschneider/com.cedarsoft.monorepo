@@ -28,72 +28,58 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
+
 package com.cedarsoft.test.utils;
 
-import java.time.ZoneId;
-import java.util.TimeZone;
+import org.junit.jupiter.api.extension.*;
 
 import javax.annotation.Nonnull;
-
-import org.fest.reflect.core.Reflection;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+import java.util.Locale;
 
 /**
+ * Rule that sets the TimeZone
+ *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class JavaTimeZoneRule implements MethodRule {
+public class LocaleExtension implements BeforeEachCallback, AfterEachCallback {
   @Nonnull
-  protected final ZoneId zone;
+  protected final Locale locale;
 
-  public JavaTimeZoneRule() throws IllegalArgumentException {
-    this("America/New_York");
+  public LocaleExtension() throws IllegalArgumentException {
+    this( Locale.US );
   }
 
-  public JavaTimeZoneRule(@Nonnull String zoneId) throws IllegalArgumentException {
-    this(ZoneId.of(zoneId));
+  public LocaleExtension(@Nonnull Locale locale ) {
+    this.locale = locale;
   }
 
-  public JavaTimeZoneRule(@Nonnull ZoneId zone) {
-    this.zone = zone;
-  }
-
-  private ZoneId oldTimeZone;
+  private Locale oldLocale;
 
   @Override
-  public Statement apply(final Statement base, FrameworkMethod method, Object target) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
+  public void beforeEach(TestExtensionContext context) throws Exception {
+    before();
+  }
+
+  @Override
+  public void afterEach(TestExtensionContext context) throws Exception {
+    after();
   }
 
   private void before() {
-    oldTimeZone = TimeZone.getDefault().toZoneId();
-    TimeZone.setDefault(TimeZone.getTimeZone(zone));
+    oldLocale = Locale.getDefault();
+    Locale.setDefault( locale );
   }
 
   private void after() {
-    TimeZone.setDefault(TimeZone.getTimeZone(oldTimeZone));
+    Locale.setDefault( oldLocale );
   }
 
   @Nonnull
-  public ZoneId getZone() {
-    return zone;
+  public Locale getLocale() {
+    return locale;
   }
 
-  @Nonnull
-  public ZoneId getOldTimeZone() {
-    if (oldTimeZone == null) {
-      throw new IllegalStateException("No old zone set");
-    }
-    return oldTimeZone;
+  public Locale getOldLocale() {
+    return oldLocale;
   }
 }

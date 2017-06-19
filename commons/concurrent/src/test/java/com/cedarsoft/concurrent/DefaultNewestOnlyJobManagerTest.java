@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadRule;
+import com.cedarsoft.test.utils.ThreadExtension;
 import org.junit.*;
 
 import javax.annotation.Nonnull;
@@ -48,7 +48,7 @@ import static org.awaitility.Awaitility.await;
  */
 public class DefaultNewestOnlyJobManagerTest {
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
 
   private ExecutorService executorService;
 

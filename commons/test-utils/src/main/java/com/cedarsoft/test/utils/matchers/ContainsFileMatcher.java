@@ -36,22 +36,19 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  *
  */
-public class ContainsFileMatcher extends BaseMatcher<File> {
+public class ContainsFileMatcher implements Predicate<File> {
   @Nonnull
   private final String relativeFilePath;
 
@@ -60,8 +57,7 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
   }
 
   @Override
-  public boolean matches(Object item) {
-    File file = (File) item;
+  public boolean test(File file) {
     if ( !file.isDirectory() ) {
       return false;
     }
@@ -70,44 +66,33 @@ public class ContainsFileMatcher extends BaseMatcher<File> {
     return searched.isFile();
   }
 
-  @Override
-  public void describeTo( Description description ) {
-    description.appendText( "contains file " );
-    description.appendValue( relativeFilePath );
-  }
-
   @Nonnull
   public static ContainsFileMatcher containsFile( @Nonnull String relativeFilePath ) {
     return new ContainsFileMatcher( relativeFilePath );
   }
 
   @Nonnull
-  public static Matcher<File> empty() {
-    return new BaseMatcher<File>() {
+  public static Predicate<File> empty() {
+    return new Predicate<File>() {
       @Override
-      public boolean matches(Object item) {
-        @Nullable String[] list = ((File) item).list();
+      public boolean test(File file) {
+        @Nullable String[] list = file.list();
         if (list == null) {
-          throw new IllegalStateException("Can not list " + ((File) item).getAbsolutePath());
+          throw new IllegalStateException("Can not list " + ((File) file).getAbsolutePath());
         }
         return list.length == 0;
-      }
-
-      @Override
-      public void describeTo( Description description ) {
-        description.appendText( "empty" );
       }
     };
   }
 
   @Nonnull
-  public static Matcher<File> containsFiles( @Nonnull String... relativeFilePaths ) {
-    List<Matcher<?>> matchers = new ArrayList<Matcher<?>>();
+  public static Predicate<File> containsFiles(@Nonnull String... relativeFilePaths) {
+    List<Predicate<? super File>> matchers = new ArrayList<>();
     for ( String relativeFilePath : relativeFilePaths ) {
       matchers.add( containsFile( relativeFilePath ) );
     }
 
-    return new AndMatcher<>(matchers);
+    return new AndMatcher<File>(matchers);
   }
 
   @Nonnull

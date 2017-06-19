@@ -28,49 +28,21 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-
 package com.cedarsoft.test.utils;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
+
+import java.time.ZoneId;
 
 import static org.junit.Assert.*;
 
 /**
  *
  */
-public class SystemOutRuleTest {
-  @Rule
-  public SystemOutRule rule = new SystemOutRule();
-  private String n;
-
-  @Before
-  public void setUp() throws Exception {
-    n = System.getProperty("line.separator");
-  }
-
+public class JavaTimeZoneExtensionTest {
+  @CustomTimeZone("Europe/London")
   @Test
   public void testIt() {
-    System.out.println("Hey");
-    System.out.println("2");
-    assertEquals("Hey" + n + "2" + n + "", rule.getOutAsString());
-    System.out.println("3");
-    assertEquals("Hey" + n + "2" + n + "3" + n + "", rule.getOutAsString());
-  }
-
-  @Test
-  public void testOut2() {
-    System.out.println("2");
-    assertEquals("2" + n + "", rule.getOutAsString());
-    System.out.println("3");
-    assertEquals("2" + n + "3" + n + "", rule.getOutAsString());
-  }
-
-  @Test
-  public void testErr() {
-    System.err.println("Hey");
-    System.err.println("2");
-    assertEquals("Hey" + n + "2" + n + "", rule.getErrAsString());
-    System.err.println("3");
-    assertEquals("Hey" + n + "2" + n + "3" + n + "", rule.getErrAsString());
+    assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/London"));
   }
 }

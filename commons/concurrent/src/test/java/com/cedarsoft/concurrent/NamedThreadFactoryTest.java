@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadRule;
+import com.cedarsoft.test.utils.ThreadExtension;
 import org.junit.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class NamedThreadFactoryTest {
   @Rule
-  public ThreadRule threadRule = new ThreadRule();
+  public ThreadExtension threadExtension = new ThreadExtension();
 
   @Test(timeout = 1000)
   public void simple() throws Exception {

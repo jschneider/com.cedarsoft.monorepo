@@ -28,24 +28,35 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-
 package com.cedarsoft.test.utils;
 
-import org.joda.time.DateTimeZone;
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import java.time.ZoneId;
+import java.util.Optional;
+import java.util.TimeZone;
 
 /**
- *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateTimeZoneRuleTest2 {
-  @Rule
-  public DateTimeZoneRule rule = new DateTimeZoneRule( "America/Chicago" );
+public class JavaTimeZoneExtension extends AbstractConfiguringExtension<ZoneId, CustomTimeZone> {
+  public JavaTimeZoneExtension() {
+    super(ZoneId.class, CustomTimeZone.class, "timeZone");
+  }
 
-  @Test
-  public void testIt() {
-    assertNotNull( rule.getOldTimeZone() );
-    assertEquals( DateTimeZone.getDefault(), rule.getZone() );
+  @Nonnull
+  @Override
+  protected Optional<ZoneId> convert(@Nonnull CustomTimeZone annotation) {
+    return Optional.ofNullable(ZoneId.of(annotation.value()));
+  }
+
+  @Override
+  protected void applyValue(@Nonnull ZoneId value) {
+    TimeZone.setDefault(TimeZone.getTimeZone(value));
+  }
+
+  @Nonnull
+  @Override
+  protected ZoneId getOldValue() {
+    return ZoneId.systemDefault();
   }
 }
