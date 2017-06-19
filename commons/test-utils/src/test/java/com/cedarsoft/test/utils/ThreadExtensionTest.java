@@ -30,18 +30,17 @@
  */
 package com.cedarsoft.test.utils;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
-import static org.assertj.core.api.Fail.fail;
+import static org.assertj.core.api.Fail.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Ignore
+@Disabled
+@ExtendWith(ThreadExtension.class)
 public class ThreadExtensionTest {
-  @Rule
-  public ThreadExtension threadExtension = new ThreadExtension();
-
   //@Test
   //public void testFx() throws Exception {
   //  javafx.application.Platform.isFxApplicationThread();
@@ -53,7 +52,7 @@ public class ThreadExtensionTest {
       @Override
       public void run() {
         try {
-          Thread.sleep( 100 );
+          Thread.sleep( 500 );
         } catch ( InterruptedException e ) {
           throw new RuntimeException( e );
         }
@@ -67,7 +66,7 @@ public class ThreadExtensionTest {
       @Override
       public void run() {
         try {
-          Thread.sleep( 100 );
+          Thread.sleep( 500 );
         } catch ( InterruptedException e ) {
           throw new RuntimeException( e );
         }
@@ -77,7 +76,7 @@ public class ThreadExtensionTest {
       @Override
       public void run() {
         try {
-          Thread.sleep( 100 );
+          Thread.sleep( 500 );
         } catch ( InterruptedException e ) {
           throw new RuntimeException( e );
         }
@@ -91,7 +90,7 @@ public class ThreadExtensionTest {
       @Override
       public void run() {
         try {
-          Thread.sleep( 100 );
+          Thread.sleep( 500 );
         } catch ( InterruptedException e ) {
           throw new RuntimeException( e );
         }

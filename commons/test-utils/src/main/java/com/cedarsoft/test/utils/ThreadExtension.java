@@ -71,12 +71,12 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
     this.ignoredThreadMatcher = ignoredThreadMatcher;
   }
 
+  @Nullable
   private Collection<Thread> initialThreads;
 
   private void before() {
     if ( initialThreads != null ) {
-      System.out.println("--> " + "???");
-      throw new IllegalStateException( "???" );
+      throw new IllegalStateException("initialThreads is not null");
     }
 
     initialThreads = Thread.getAllStackTraces().keySet();
@@ -85,7 +85,6 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
   @Nonnull
   public Collection<? extends Thread> getInitialThreads() {
     if ( initialThreads == null ) {
-      System.out.println("not initialized yet");
       throw new IllegalStateException( "not initialized yet" );
     }
     return Collections.unmodifiableCollection( initialThreads );
@@ -96,18 +95,27 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
     if ( !remainingThreads.isEmpty() ) {
       System.err.print( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
     }
+
+    initialThreads = null;
   }
 
   private void after() {
-    Set<? extends Thread> remainingThreads = getRemainingThreads();
-    if ( !remainingThreads.isEmpty() ) {
-      System.out.println("--> " + "Some threads have been left:\n" + buildMessage(remainingThreads));
-      throw new IllegalStateException( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
+    try {
+      Set<? extends Thread> remainingThreads = getRemainingThreads();
+      if (!remainingThreads.isEmpty()) {
+        System.err.println("--> " + "Some threads have been left:\n" + buildMessage(remainingThreads));
+        throw new IllegalStateException("Some threads have been left:\n" + buildMessage(remainingThreads));
+      }
+    } finally {
+      initialThreads = null;
     }
   }
 
   @Nonnull
   public Set<? extends Thread> getRemainingThreads() {
+    if (initialThreads == null) {
+      throw new IllegalStateException("initialThreads is null");
+    }
     Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
 
     Set<Thread> remainingThreads = new HashSet<Thread>( threadsNow );
