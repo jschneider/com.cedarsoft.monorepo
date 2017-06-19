@@ -84,9 +84,9 @@ object ApplicationHomeAccessFactory {
 
   @JvmStatic
   private fun createWindowsHomeAccess(applicationName: String): ApplicationHomeAccess {
-    val appData = File(WindowsUtil.getAppData(), applicationName)
+    val appData = File(WindowsUtil.appData, applicationName)
     createDirIfNecessary(appData)
-    val localAppData = File(WindowsUtil.getLocalAppData(), applicationName)
+    val localAppData = File(WindowsUtil.localAppData, applicationName)
     createDirIfNecessary(localAppData)
     return StaticApplicationHomeAccess(applicationName, appData, appData, localAppData)
   }

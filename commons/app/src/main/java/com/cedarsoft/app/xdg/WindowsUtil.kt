@@ -42,12 +42,14 @@ object WindowsUtil {
   /**
    * Returns the app data home dir
    */
-  fun getAppData(): File = getDir(APP_DATA_HOME)
+  val appData: File
+    get() = getDir(APP_DATA_HOME)
 
   /**
    * Returns the local app data home dir
    */
-  fun getLocalAppData(): File = getDir(LOCAL_APP_DATA_HOME)
+  val localAppData: File
+    get() = getDir(LOCAL_APP_DATA_HOME)
 
   private fun getDir(propertyName: String): File {
     val dirName = System.getenv(propertyName) ?: throw IllegalStateException("property <$propertyName> not found")
