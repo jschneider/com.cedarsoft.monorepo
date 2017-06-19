@@ -44,22 +44,22 @@ class EnvironmentInformation {
   companion object {
     /**
      * Returns the host name
-     * @return a String object.
      */
     @JvmStatic
-    fun getHostName(): String {
-      try {
-        return InetAddress.getLocalHost().hostName
-      } catch (e: UnknownHostException) {
-        throw RuntimeException(e)
+    val hostName: String
+      get() {
+        try {
+          return InetAddress.getLocalHost().hostName
+        } catch (e: UnknownHostException) {
+          throw RuntimeException(e)
+        }
       }
-    }
 
     /**
      * Returns the current user name
-     * @return a String object.
      */
     @JvmStatic
-    fun getUserName(): String = System.getProperty("user.name")
+    val userName: String
+      get() = System.getProperty("user.name")
   }
 }
