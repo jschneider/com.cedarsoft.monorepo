@@ -94,11 +94,11 @@ object ApplicationHomeAccessFactory {
 
   @JvmStatic
   private fun createLinuxHomeAccess(applicationName: String): ApplicationHomeAccess {
-    val configHome = File(XdgUtil.getConfigHome(), applicationName)
+    val configHome = File(XdgUtil.configHome, applicationName)
     createDirIfNecessary(configHome)
-    val dataHome = File(XdgUtil.getDataHome(), applicationName)
+    val dataHome = File(XdgUtil.dataHome, applicationName)
     createDirIfNecessary(dataHome)
-    val cacheHome = File(XdgUtil.getCacheHome(), applicationName)
+    val cacheHome = File(XdgUtil.cacheHome, applicationName)
     createDirIfNecessary(cacheHome)
 
     return StaticApplicationHomeAccess(applicationName, configHome, dataHome, cacheHome)
