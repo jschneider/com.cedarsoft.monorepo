@@ -1564,7 +1564,7 @@
           </excludes>
 
           <mapping>
-            <fx>JAVADOC_STYLE</fx>
+            <fxml>XML_STYLE</fxml>
             <ufraw>XML_STYLE</ufraw>
           </mapping>
         </configuration>
