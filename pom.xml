@@ -25,7 +25,7 @@
   <licenses>
     <license>
       <name>GPLv3 with Classpath Exception</name>
-      <url>http://www.cedarsoft.org/gpl3ce</url>
+      <url>https://www.cedarsoft.org/gpl3ce</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
