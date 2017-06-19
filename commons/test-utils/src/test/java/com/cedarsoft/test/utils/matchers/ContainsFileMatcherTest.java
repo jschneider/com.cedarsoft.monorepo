@@ -34,15 +34,14 @@ package com.cedarsoft.test.utils.matchers;
 import com.google.common.io.Files;
 import org.assertj.core.api.*;
 import org.junit.*;
-import org.junit.Assert;
 import org.junit.rules.*;
+import org.opentest4j.AssertionFailedError;
 
 import java.io.File;
 import java.io.IOException;
 
 import static com.cedarsoft.test.utils.matchers.ContainsFileMatcher.containsFiles;
 import static com.cedarsoft.test.utils.matchers.ContainsFileMatcher.empty;
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -68,11 +67,15 @@ public class ContainsFileMatcherTest {
 
   @Test
   public void testEmpty() throws IOException {
-    assertThat( tmp.getRoot(), is( empty() ) );
+    Assertions.assertThat(tmp.getRoot()).matches(empty());
 
-    expectedException.expect( AssertionError.class );
-    Files.touch( tmp.newFile( "a" ) );
-    assertThat( tmp.getRoot(), is( empty() ) );
+    try {
+      Files.touch(tmp.newFile("a"));
+      Assertions.assertThat(tmp.getRoot()).matches(empty(), "to be empty");
+      fail("Where is the Exception");
+    } catch (AssertionError e) {
+      Assertions.assertThat(e.getMessage()).contains("to be empty");
+    }
   }
 
   @Test

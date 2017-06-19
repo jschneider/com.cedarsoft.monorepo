@@ -78,7 +78,7 @@ public class ContainsFileMatcher implements Predicate<File> {
       public boolean test(File file) {
         @Nullable String[] list = file.list();
         if (list == null) {
-          throw new IllegalStateException("Can not list " + ((File) file).getAbsolutePath());
+          throw new IllegalStateException("Can not list " + file.getAbsolutePath());
         }
         return list.length == 0;
       }
