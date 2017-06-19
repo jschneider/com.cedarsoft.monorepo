@@ -33,7 +33,8 @@ package com.cedarsoft.app.xdg;
 import com.google.common.base.StandardSystemProperty;
 import org.junit.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -50,5 +51,19 @@ public class XdgUtilDemo {
     System.err.println( "Config Home: " + XdgUtil.getConfigHome().getAbsolutePath() );
     System.err.println( "Cache Home: " + XdgUtil.getCacheHome().getAbsolutePath() );
     System.err.println( "Data Home: " + XdgUtil.getDataHome().getAbsolutePath() );
+  }
+
+  @Ignore
+  @Test
+  public void testFields() throws Exception {
+    System.out.println("Fields --------------");
+    for (Field field : XdgUtil.class.getDeclaredFields()) {
+      System.out.println("Field: " + field);
+    }
+
+    System.out.println("Methods --------------");
+    for (Method method : XdgUtil.class.getDeclaredMethods()) {
+      System.out.println("Method: " + method);
+    }
   }
 }
