@@ -38,25 +38,7 @@ import java.io.File;
  * Created from http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
  */
 public class WindowsUtil {
-  @Nonnull
-  private static final File HOME_DIR = getHomeDir();
-
   private WindowsUtil() {
-  }
-
-  @Nonnull
-  private static File getHomeDir() {
-    String userHomeAsString = System.getProperty( "user.home" );
-    if ( userHomeAsString == null ) {
-      throw new IllegalStateException( "No property found for user.home" );
-    }
-
-    File home = new File( userHomeAsString );
-    if ( !home.isDirectory() ) {
-      throw new IllegalStateException( "User home <" + home.getAbsolutePath() + "> is not a directory" );
-    }
-
-    return home;
   }
 
   @Nonnull
