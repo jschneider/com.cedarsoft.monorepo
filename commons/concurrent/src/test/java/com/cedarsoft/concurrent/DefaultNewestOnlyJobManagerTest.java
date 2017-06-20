@@ -30,34 +30,35 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadExtension;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.awaitility.Awaitility.await;
 
-import javax.annotation.Nonnull;
+import java.time.Duration;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-import static org.awaitility.Awaitility.await;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+
+import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
 public class DefaultNewestOnlyJobManagerTest {
-  @Rule
-  public ThreadExtension threadExtension = new ThreadExtension();
-
   private ExecutorService executorService;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     executorService = Executors.newCachedThreadPool();
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     executorService.shutdownNow();
     assertThat(executorService.awaitTermination(1, TimeUnit.SECONDS)).isTrue();
@@ -69,11 +70,28 @@ public class DefaultNewestOnlyJobManagerTest {
     jobManager.startWorkers();
   }
 
-  @Test(timeout = 1000)
+  @Test
   public void onlyYoungestJobIsExecuted() throws Exception {
-    DefaultNewestOnlyJobManager jobManager = new DefaultNewestOnlyJobManager(executorService, 1);
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
+      DefaultNewestOnlyJobManager jobManager = new DefaultNewestOnlyJobManager(executorService, 1);
 
-    for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 10; i++) {
+        jobManager.scheduleJob(new NewestOnlyJobsManager.Job() {
+          @Nonnull
+          @Override
+          public Object getKey() {
+            return "asdf";
+          }
+
+          @Override
+          public void execute() {
+            fail("Must not be executed");
+          }
+        });
+      }
+
+      AtomicBoolean executed = new AtomicBoolean();
+
       jobManager.scheduleJob(new NewestOnlyJobsManager.Job() {
         @Nonnull
         @Override
@@ -83,30 +101,15 @@ public class DefaultNewestOnlyJobManagerTest {
 
         @Override
         public void execute() {
-          fail("Must not be executed");
+          executed.set(true);
         }
       });
-    }
 
-    AtomicBoolean executed = new AtomicBoolean();
+      assertThat(executed.get()).isFalse();
 
-    jobManager.scheduleJob(new NewestOnlyJobsManager.Job() {
-      @Nonnull
-      @Override
-      public Object getKey() {
-        return "asdf";
-      }
-
-      @Override
-      public void execute() {
-        executed.set(true);
-      }
+      jobManager.startWorkers();
+      await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
     });
-
-    assertThat(executed.get()).isFalse();
-
-    jobManager.startWorkers();
-    await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
   }
 
   @Test

@@ -30,17 +30,18 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadExtension;
-import org.junit.*;
-
 import static org.awaitility.Awaitility.await;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.*;
+
+import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
 public class AwaitTest {
-  @Rule
-  public ThreadExtension threadExtension = new ThreadExtension();
 
   @Test
   public void checkThreadsLeft() throws Exception {

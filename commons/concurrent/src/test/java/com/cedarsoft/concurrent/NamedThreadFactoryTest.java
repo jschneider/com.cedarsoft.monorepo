@@ -30,27 +30,32 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadExtension;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.time.Duration;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+
+import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
 public class NamedThreadFactoryTest {
-  @Rule
-  public ThreadExtension threadExtension = new ThreadExtension();
 
-  @Test(timeout = 1000)
+  @Test
   public void simple() throws Exception {
-    NamedThreadFactory factory = new NamedThreadFactory("daName");
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
+      NamedThreadFactory factory = new NamedThreadFactory("daName");
 
-    Thread thread = factory.newThread(() -> {
+      Thread thread = factory.newThread(() -> {
+      });
+      thread.start();
+
+      assertThat(thread.getName()).isEqualTo("daName-1");
+      thread.join();
     });
-    thread.start();
-
-    assertThat(thread.getName()).isEqualTo("daName-1");
-    thread.join();
   }
 }
