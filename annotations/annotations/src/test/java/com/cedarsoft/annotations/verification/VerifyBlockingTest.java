@@ -32,7 +32,9 @@ package com.cedarsoft.annotations.verification;
 
 import javax.annotation.Nullable;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+import org.junit.jupiter.api.function.*;
 
 import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import com.cedarsoft.test.utils.ThreadExtension;
@@ -40,31 +42,33 @@ import com.cedarsoft.test.utils.ThreadExtension;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
+@ExtendWith(CatchAllExceptionsExtension.class)
 public class VerifyBlockingTest {
-  @Rule
-  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
-  @Rule
-  public ThreadExtension threadExtension = new ThreadExtension();
-
   @Nullable
   private NotStuckVerifier.ThreadStuckEvaluator oldEvaluator;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     oldEvaluator = NotStuckVerifier.getEvaluator();
     NotStuckVerifier.setEvaluator(new NotStuckVerifier.ExceptionThrowingEvaluator(10));
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     NotStuckVerifier.setEvaluator(oldEvaluator);
   }
 
-  @Test(expected = IllegalThreadStateException.class)
+  @Test
   public void testItShouldFail() throws Exception {
-    NotStuckVerifier notStuckVerifier = NotStuckVerifier.start();
-    callBlockingMethod();
-    notStuckVerifier.finished();
+    Assertions.assertThrows(IllegalThreadStateException.class, new Executable() {
+      @Override
+      public void execute() throws Throwable {
+        NotStuckVerifier notStuckVerifier = NotStuckVerifier.start();
+        callBlockingMethod();
+        notStuckVerifier.finished();
+      }
+    });
   }
 
   @Test

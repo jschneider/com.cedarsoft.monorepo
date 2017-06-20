@@ -30,16 +30,18 @@
  */
 package com.cedarsoft.exceptions;
 
-import com.cedarsoft.test.utils.LocaleExtension;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.Locale;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.test.utils.WithLocale;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithLocale("fr_FR")
 public class MessagesTest {
   @Test
   public void testBundles() throws Exception {
@@ -53,7 +55,4 @@ public class MessagesTest {
 
     assertThat( messages.get("ERROR_1", Locale.FRENCH ) ).isEqualTo("The Value 1 default: <{0}>" );
   }
-
-  @Rule
-  public LocaleExtension localeExtension = new LocaleExtension(Locale.FRENCH );
 }
