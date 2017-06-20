@@ -30,21 +30,20 @@
  */
 package com.cedarsoft.commons.time;
 
-import com.cedarsoft.test.utils.LocaleExtension;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.time.Duration;
 import java.util.Locale;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.test.utils.WithLocale;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithLocale("de_DE")
 public class DateUtilsTest {
-  @Rule
-  public LocaleExtension localeExtension = new LocaleExtension(Locale.US);
-
   @Test
   public void humanReadableDuration() throws Exception {
     assertThat(DateUtils.formatDurationWords(1000)).isEqualTo("1 second");
