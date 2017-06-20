@@ -30,30 +30,31 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+
 import com.cedarsoft.annotations.verification.DelegatingThreadVerificationStrategy;
 import com.cedarsoft.annotations.verification.ThreadVerificationStrategy;
 import com.cedarsoft.annotations.verification.VerifyThread;
 import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import com.google.common.collect.ImmutableList;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
-import org.assertj.core.api.Assertions;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(CatchAllExceptionsExtension.class)
 public class CustomThreadTest {
-  @Rule
-  public CatchAllExceptionsExtension catchAllExceptionsExtension = new CatchAllExceptionsExtension();
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     VerifyThread.setStrategy( new ThreadVerificationStrategy() {
       @Override
@@ -66,7 +67,7 @@ public class CustomThreadTest {
     } );
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     VerifyThread.setStrategy( new DelegatingThreadVerificationStrategy( ImmutableList.<ThreadVerificationStrategy>of() ) );
   }
