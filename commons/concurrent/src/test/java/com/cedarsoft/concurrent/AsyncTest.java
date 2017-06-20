@@ -30,31 +30,32 @@
  */
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.ThreadRule;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.awaitility.Awaitility.await;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.assertj.core.api.Assertions.fail;
-import static org.awaitility.Awaitility.await;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+
+import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
 public class AsyncTest {
-  @Rule
-  public ThreadRule threadRule = new ThreadRule();
   private ExecutorService executor;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     executor = Executors.newSingleThreadExecutor();
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     executor.shutdownNow();
     executor.awaitTermination(100, TimeUnit.MILLISECONDS);

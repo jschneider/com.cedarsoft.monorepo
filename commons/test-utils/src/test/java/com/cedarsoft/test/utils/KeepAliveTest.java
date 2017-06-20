@@ -30,9 +30,7 @@
  */
 package com.cedarsoft.test.utils;
 
-import com.google.common.io.ByteStreams;
-import org.junit.*;
-import sun.net.www.http.HttpClient;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.InputStream;
 import java.net.ConnectException;
@@ -40,17 +38,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.*;
+
+import com.google.common.io.ByteStreams;
+
+import sun.net.www.http.HttpClient;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(ThreadExtension.class)
+@ExtendWith(CatchAllExceptionsExtension.class)
 public class KeepAliveTest {
-  @Rule
-  public ThreadRule threadRule = new ThreadRule();
-  @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
-
   @Test
   public void testKeepAlive() throws Exception {
     try {

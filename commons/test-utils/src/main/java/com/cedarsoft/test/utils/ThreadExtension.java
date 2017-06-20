@@ -31,9 +31,7 @@
 package com.cedarsoft.test.utils;
 
 import com.google.common.base.Joiner;
-import org.junit.rules.*;
-import org.junit.runner.*;
-import org.junit.runners.model.*;
+import org.junit.jupiter.api.extension.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -44,48 +42,41 @@ import java.util.Iterator;
 import java.util.Set;
 
 
-public class ThreadRule implements TestRule {
+public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
+  @Override
+  public void beforeEach(TestExtensionContext context) throws Exception {
+    before();
+  }
+
+  @Override
+  public void afterEach(TestExtensionContext context) throws Exception {
+    if (context.getTestException().isPresent()) {
+      afterFailing();
+      return;
+    }
+
+    after();
+  }
 
   public static final String STACK_TRACE_ELEMENT_SEPARATOR = "\n\tat ";
 
   @Nullable
   private final ThreadMatcher ignoredThreadMatcher;
 
-  public ThreadRule() {
+  public ThreadExtension() {
     this( new DefaultThreadMatcher() );
   }
 
-  public ThreadRule( @Nullable ThreadMatcher ignoredThreadMatcher ) {
+  public ThreadExtension(@Nullable ThreadMatcher ignoredThreadMatcher ) {
     this.ignoredThreadMatcher = ignoredThreadMatcher;
   }
 
-  @Override
-  public Statement apply( final Statement base, Description description ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        try {
-          before();
-          try {
-            base.evaluate();
-          } catch (Throwable t) {
-            afterFailing();
-            throw t;
-          }
-          after();
-        } catch (Throwable throwable) {
-          throw new AssertionError("Thread rule failed with <" + throwable.getMessage() + "> " + Joiner.on("\n").join(throwable.getStackTrace()), throwable);
-        }
-      }
-    };
-  }
-
+  @Nullable
   private Collection<Thread> initialThreads;
 
   private void before() {
     if ( initialThreads != null ) {
-      System.out.println("--> " + "???");
-      throw new IllegalStateException( "???" );
+      throw new IllegalStateException("initialThreads is not null");
     }
 
     initialThreads = Thread.getAllStackTraces().keySet();
@@ -94,7 +85,6 @@ public class ThreadRule implements TestRule {
   @Nonnull
   public Collection<? extends Thread> getInitialThreads() {
     if ( initialThreads == null ) {
-      System.out.println("not initialized yet");
       throw new IllegalStateException( "not initialized yet" );
     }
     return Collections.unmodifiableCollection( initialThreads );
@@ -105,18 +95,27 @@ public class ThreadRule implements TestRule {
     if ( !remainingThreads.isEmpty() ) {
       System.err.print( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
     }
+
+    initialThreads = null;
   }
 
   private void after() {
-    Set<? extends Thread> remainingThreads = getRemainingThreads();
-    if ( !remainingThreads.isEmpty() ) {
-      System.out.println("--> " + "Some threads have been left:\n" + buildMessage(remainingThreads));
-      throw new IllegalStateException( "Some threads have been left:\n" + buildMessage( remainingThreads ) );
+    try {
+      Set<? extends Thread> remainingThreads = getRemainingThreads();
+      if (!remainingThreads.isEmpty()) {
+        System.err.println("--> " + "Some threads have been left:\n" + buildMessage(remainingThreads));
+        throw new IllegalStateException("Some threads have been left:\n" + buildMessage(remainingThreads));
+      }
+    } finally {
+      initialThreads = null;
     }
   }
 
   @Nonnull
   public Set<? extends Thread> getRemainingThreads() {
+    if (initialThreads == null) {
+      throw new IllegalStateException("initialThreads is null");
+    }
     Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
 
     Set<Thread> remainingThreads = new HashSet<Thread>( threadsNow );

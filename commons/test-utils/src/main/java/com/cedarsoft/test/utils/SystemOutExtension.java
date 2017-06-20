@@ -32,41 +32,40 @@
 package com.cedarsoft.test.utils;
 
 
-import javax.annotation.Nonnull;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+import org.junit.jupiter.api.extension.*;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 /**
  *
  */
-public class SystemOutRule implements MethodRule {
-  @Nonnull
-  private final ByteArrayOutputStream newOut = new ByteArrayOutputStream();
+public class SystemOutExtension implements BeforeEachCallback, AfterEachCallback, ParameterResolver {
+  @Nullable
+  private ByteArrayOutputStream newOut;
   private PrintStream oldOut;
 
-  @Nonnull
-  private final ByteArrayOutputStream newErr = new ByteArrayOutputStream();
+  @Nullable
+  private ByteArrayOutputStream newErr;
   private PrintStream oldErr;
 
+
   @Override
-  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
+  public void beforeEach(TestExtensionContext context) throws Exception {
+    before();
+  }
+
+  @Override
+  public void afterEach(TestExtensionContext context) throws Exception {
+    after();
   }
 
   protected void before() {
+    newOut = new ByteArrayOutputStream();
+    newErr = new ByteArrayOutputStream();
+
     if ( oldOut != null ) {
       throw new IllegalStateException( "oldOut is not null: " + oldOut );
     }
@@ -83,6 +82,11 @@ public class SystemOutRule implements MethodRule {
   protected void after() {
     System.setOut( oldOut );
     oldOut = null;
+    System.setErr(oldErr);
+    oldErr = null;
+
+    newOut = null;
+    newErr = null;
   }
 
   @Nonnull
@@ -109,5 +113,18 @@ public class SystemOutRule implements MethodRule {
       throw new IllegalStateException( "oldErr is null. Rule not activated" );
     }
     return oldErr;
+  }
+
+  @Override
+  public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+    if (parameterContext.getParameter().getType().equals(getClass())) {
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+  public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+    return this;
   }
 }

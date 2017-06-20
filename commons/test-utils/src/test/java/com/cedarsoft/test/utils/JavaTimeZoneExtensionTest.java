@@ -28,64 +28,21 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-
 package com.cedarsoft.test.utils;
 
-import javax.annotation.Nonnull;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+import org.junit.jupiter.api.*;
 
-import java.util.Locale;
+import java.time.ZoneId;
+
+import static org.junit.Assert.*;
 
 /**
- * Rule that sets the TimeZone
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class LocaleRule implements MethodRule {
-  @Nonnull
-  protected final Locale locale;
-
-  public LocaleRule() throws IllegalArgumentException {
-    this( Locale.US );
-  }
-
-  public LocaleRule( @Nonnull Locale locale ) {
-    this.locale = locale;
-  }
-
-  private Locale oldLocale;
-
-  @Override
-  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
-  }
-
-  private void before() {
-    oldLocale = Locale.getDefault();
-    Locale.setDefault( locale );
-  }
-
-  private void after() {
-    Locale.setDefault( oldLocale );
-  }
-
-  @Nonnull
-  public Locale getLocale() {
-    return locale;
-  }
-
-  public Locale getOldLocale() {
-    return oldLocale;
+public class JavaTimeZoneExtensionTest {
+  @WithTimeZone("Europe/London")
+  @Test
+  public void testIt() {
+    assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/London"));
   }
 }

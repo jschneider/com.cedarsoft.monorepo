@@ -34,7 +34,9 @@ package com.cedarsoft.zip;
 import com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.*;
 import org.junit.*;
+import org.junit.Assert;
 import org.junit.rules.*;
 
 import javax.annotation.Nonnull;
@@ -60,7 +62,7 @@ public class ZipCreatorTest {
     extractor.extract( target, FileUtils.openInputStream( createZip() ) );
 
     assertEquals( 2, target.listFiles().length );
-    assertThat( ContainsOnlyFilesMatcher.toTree(target), target, containsOnlyFiles( "file1", "subDir/file2" ) );
+    Assertions.assertThat(target).matches(containsOnlyFiles("file1", "subDir/file2"));
   }
 
   @Test

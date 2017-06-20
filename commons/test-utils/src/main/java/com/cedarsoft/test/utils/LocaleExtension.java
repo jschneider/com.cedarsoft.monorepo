@@ -28,72 +28,39 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
+
 package com.cedarsoft.test.utils;
 
-import java.time.ZoneId;
-import java.util.TimeZone;
+import org.apache.commons.lang3.LocaleUtils;
 
 import javax.annotation.Nonnull;
-
-import org.fest.reflect.core.Reflection;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+import java.util.Locale;
+import java.util.Optional;
 
 /**
+ * Rule that sets the TimeZone
+ *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class JavaTimeZoneRule implements MethodRule {
+public class LocaleExtension extends AbstractConfiguringExtension<Locale, WithLocale> {
+  public LocaleExtension() {
+    super(Locale.class, WithLocale.class, "locale");
+  }
+
   @Nonnull
-  protected final ZoneId zone;
-
-  public JavaTimeZoneRule() throws IllegalArgumentException {
-    this("America/New_York");
+  @Override
+  protected Optional<Locale> convert(@Nonnull WithLocale annotation) {
+    return Optional.ofNullable(LocaleUtils.toLocale(annotation.value()));
   }
 
-  public JavaTimeZoneRule(@Nonnull String zoneId) throws IllegalArgumentException {
-    this(ZoneId.of(zoneId));
+  @Nonnull
+  @Override
+  protected Locale getOldValue() {
+    return Locale.getDefault();
   }
-
-  public JavaTimeZoneRule(@Nonnull ZoneId zone) {
-    this.zone = zone;
-  }
-
-  private ZoneId oldTimeZone;
 
   @Override
-  public Statement apply(final Statement base, FrameworkMethod method, Object target) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
-  }
-
-  private void before() {
-    oldTimeZone = TimeZone.getDefault().toZoneId();
-    TimeZone.setDefault(TimeZone.getTimeZone(zone));
-  }
-
-  private void after() {
-    TimeZone.setDefault(TimeZone.getTimeZone(oldTimeZone));
-  }
-
-  @Nonnull
-  public ZoneId getZone() {
-    return zone;
-  }
-
-  @Nonnull
-  public ZoneId getOldTimeZone() {
-    if (oldTimeZone == null) {
-      throw new IllegalStateException("No old zone set");
-    }
-    return oldTimeZone;
+  protected void applyValue(@Nonnull Locale value) {
+    Locale.setDefault(value);
   }
 }

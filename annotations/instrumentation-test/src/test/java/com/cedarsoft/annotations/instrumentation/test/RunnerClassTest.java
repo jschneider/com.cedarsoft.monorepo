@@ -30,20 +30,19 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.Assertions.*;
 
 import org.assertj.core.api.Assertions;
-import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
-import com.cedarsoft.test.utils.CatchAllExceptionsRule;
+import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@ExtendWith(CatchAllExceptionsExtension.class)
 public class RunnerClassTest {
-  @Rule
-  public CatchAllExceptionsRule catchAllExceptionsRule = new CatchAllExceptionsRule();
 
   @Test
   public void testNullMethodReturnValue() throws Exception {
@@ -53,7 +52,7 @@ public class RunnerClassTest {
       runnerClass.nonNullMethod();
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
-      Assertions.assertThat(e ).isInstanceOf(java.lang.IllegalStateException.class );
+      Assertions.assertThat(e).isInstanceOf(IllegalStateException.class);
       Assertions.assertThat( e ).hasMessage( "Return value must not be null for method annotated with @Nonnull" );
     }
   }

@@ -31,69 +31,50 @@
 
 package com.cedarsoft.test.utils;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
 import javax.annotation.Nonnull;
-import org.joda.time.DateTimeZone;
-import org.junit.rules.*;
-import org.junit.runners.model.*;
+
+import static org.junit.Assert.*;
 
 /**
- * Rule that sets the TimeZone
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateTimeZoneRule implements MethodRule {
-  @Nonnull
-  protected final DateTimeZone zone;
+@ExtendWith(SystemOutExtension.class)
+public class SystemOutExtensionTest {
+  private String n;
 
-  public DateTimeZoneRule() throws IllegalArgumentException {
-    this( "America/New_York" );
+  @BeforeEach
+  public void setUp() throws Exception {
+    n = System.getProperty("line.separator");
+    Assertions.assertThat(n.length()).isGreaterThanOrEqualTo(1);
   }
 
-  public DateTimeZoneRule( @Nonnull String zoneId ) throws IllegalArgumentException {
-    this( DateTimeZone.forID( zoneId ) );
+  @Test
+  public void testIt(@Nonnull SystemOutExtension systemOutExtension) {
+    System.out.println("Hey");
+    System.out.println("2");
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.getOutAsString());
+    System.out.println("3");
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.getOutAsString());
   }
 
-  public DateTimeZoneRule( @Nonnull DateTimeZone zone ) {
-    this.zone = zone;
+  @Test
+  public void testOut2(@Nonnull SystemOutExtension systemOutExtension) {
+    System.out.println("2");
+    assertEquals("2" + n + "", systemOutExtension.getOutAsString());
+    System.out.println("3");
+    assertEquals("2" + n + "3" + n + "", systemOutExtension.getOutAsString());
   }
 
-  private DateTimeZone oldTimeZone;
-
-  @Override
-  public Statement apply( final Statement base, FrameworkMethod method, Object target ) {
-    return new Statement() {
-      @Override
-      public void evaluate() throws Throwable {
-        before();
-        try {
-          base.evaluate();
-        } finally {
-          after();
-        }
-      }
-    };
-  }
-
-  private void before() {
-    oldTimeZone = DateTimeZone.getDefault();
-    DateTimeZone.setDefault( zone );
-  }
-
-  private void after() {
-    DateTimeZone.setDefault( oldTimeZone );
-  }
-
-  @Nonnull
-  public DateTimeZone getZone() {
-    return zone;
-  }
-
-  @Nonnull
-  public DateTimeZone getOldTimeZone() {
-    if ( oldTimeZone == null ) {
-      throw new IllegalStateException( "No old zone set" );
-    }
-    return oldTimeZone;
+  @Test
+  public void testErr(@Nonnull SystemOutExtension systemOutExtension) {
+    System.err.println("Hey");
+    System.err.println("2");
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.getErrAsString());
+    System.err.println("3");
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.getErrAsString());
   }
 }

@@ -30,24 +30,19 @@
  */
 package com.cedarsoft.commons.time;
 
-import com.cedarsoft.test.utils.LocaleRule;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.Assert;
+import static org.assertj.core.api.Assertions.*;
 
 import java.time.Duration;
-import java.util.Locale;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.test.utils.WithLocale;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithLocale("de_DE")
 public class DateUtilsGermanLocaleTest {
-  @Rule
-  public LocaleRule localeRule = new LocaleRule(Locale.GERMANY);
-
   @Test
   public void words() throws Exception {
     assertThat(DateUtils.formatDurationWords(Duration.ofHours(13).plusMinutes(10))).isEqualTo("13 Stunden 10 Minuten");

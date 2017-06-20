@@ -31,17 +31,14 @@
 
 package com.cedarsoft.test.utils.matchers;
 
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-
 import javax.annotation.Nonnull;
-
 import java.io.File;
+import java.util.function.Predicate;
 
 /**
  *
  */
-public class FileNameMatcher extends BaseMatcher<File> {
+public class FileNameMatcher implements Predicate<File> {
   @Nonnull
   private final String fileName;
 
@@ -50,14 +47,8 @@ public class FileNameMatcher extends BaseMatcher<File> {
   }
 
   @Override
-  public boolean matches( Object o ) {
-    File file = ( File ) o;
+  public boolean test(File file) {
     return file.getPath().endsWith( fileName );
-  }
-
-  @Override
-  public void describeTo( Description description ) {
-    description.appendText( "File with name <" + fileName + ">" );
   }
 
   @Nonnull

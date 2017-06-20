@@ -31,21 +31,36 @@
 
 package com.cedarsoft.test.utils;
 
-import org.joda.time.DateTimeZone;
-import org.junit.*;
 
-import static org.junit.Assert.*;
+import org.joda.time.DateTimeZone;
+
+import javax.annotation.Nonnull;
+import java.util.Optional;
 
 /**
+ * Rule that sets the TimeZone
  *
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateTimeZoneRuleTest {
-  @Rule
-  public DateTimeZoneRule rule = new DateTimeZoneRule( "Europe/London" );
+public class DateTimeZoneExtension extends AbstractConfiguringExtension<DateTimeZone, WithDateTimeZone> {
+  public DateTimeZoneExtension() {
+    super(DateTimeZone.class, WithDateTimeZone.class, "OLD_ZONE");
+  }
 
-  @Test
-  public void testIt() {
-    assertNotNull( rule.getOldTimeZone() );
-    assertEquals( DateTimeZone.getDefault(), rule.getZone() );
+  @Override
+  protected void applyValue(@Nonnull DateTimeZone value) {
+    DateTimeZone.setDefault(value);
+  }
+
+  @Nonnull
+  @Override
+  protected DateTimeZone getOldValue() {
+    return DateTimeZone.getDefault();
+  }
+
+  @Nonnull
+  @Override
+  protected Optional<DateTimeZone> convert(@Nonnull WithDateTimeZone annotation) {
+    return Optional.ofNullable(DateTimeZone.forID(annotation.value()));
   }
 }
