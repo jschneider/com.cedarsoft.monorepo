@@ -42,14 +42,14 @@ import java.util.Optional;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class LocaleExtension extends AbstractConfiguringExtension<Locale, CustomLocale> {
+public class LocaleExtension extends AbstractConfiguringExtension<Locale, WithLocale> {
   public LocaleExtension() {
-    super(Locale.class, CustomLocale.class, "locale");
+    super(Locale.class, WithLocale.class, "locale");
   }
 
   @Nonnull
   @Override
-  protected Optional<Locale> convert(@Nonnull CustomLocale annotation) {
+  protected Optional<Locale> convert(@Nonnull WithLocale annotation) {
     return Optional.ofNullable(LocaleUtils.toLocale(annotation.value()));
   }
 

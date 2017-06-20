@@ -40,7 +40,7 @@ import static org.junit.Assert.*;
  *
  */
 public class JavaTimeZoneExtensionTest {
-  @CustomTimeZone("Europe/London")
+  @WithTimeZone("Europe/London")
   @Test
   public void testIt() {
     assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/London"));

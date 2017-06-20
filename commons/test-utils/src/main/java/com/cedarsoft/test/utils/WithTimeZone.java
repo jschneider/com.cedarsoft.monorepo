@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@ExtendWith(DateTimeZoneExtension.class)
-public @interface CustomDateTimeZone {
+@ExtendWith(JavaTimeZoneExtension.class)
+public @interface WithTimeZone {
   @Nonnull
   String value();
 }

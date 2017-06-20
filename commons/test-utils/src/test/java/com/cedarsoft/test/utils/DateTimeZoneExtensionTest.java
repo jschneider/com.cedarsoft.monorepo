@@ -39,7 +39,7 @@ import org.junit.jupiter.api.*;
  *
  */
 public class DateTimeZoneExtensionTest {
-  @CustomDateTimeZone("Europe/London")
+  @WithDateTimeZone("Europe/London")
   @Test
   public void testIt() {
     Assertions.assertThat(DateTimeZone.getDefault().getID()).isEqualTo("Europe/London");

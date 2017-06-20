@@ -38,14 +38,14 @@ import java.util.TimeZone;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class JavaTimeZoneExtension extends AbstractConfiguringExtension<ZoneId, CustomTimeZone> {
+public class JavaTimeZoneExtension extends AbstractConfiguringExtension<ZoneId, WithTimeZone> {
   public JavaTimeZoneExtension() {
-    super(ZoneId.class, CustomTimeZone.class, "timeZone");
+    super(ZoneId.class, WithTimeZone.class, "timeZone");
   }
 
   @Nonnull
   @Override
-  protected Optional<ZoneId> convert(@Nonnull CustomTimeZone annotation) {
+  protected Optional<ZoneId> convert(@Nonnull WithTimeZone annotation) {
     return Optional.ofNullable(ZoneId.of(annotation.value()));
   }
 
