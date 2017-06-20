@@ -32,8 +32,6 @@ package com.cedarsoft.app;
 
 import org.junit.*;
 
-import static org.junit.Assert.*;
-
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
