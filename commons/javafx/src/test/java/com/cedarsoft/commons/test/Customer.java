@@ -83,7 +83,7 @@ public class Customer {
   }
 
   @Nonnull
-  public List<Object> getAddresses() {
+  public List<Address> getAddresses() {
     return Collections.unmodifiableList(addresses);
   }
 

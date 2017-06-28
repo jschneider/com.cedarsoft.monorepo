@@ -41,6 +41,8 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -293,12 +295,47 @@ public class ControlRunner extends Application {
       customers.add(customer);
     }
 
-    TableView<Customer> table = new TableView<>(customers);
+    FilteredList<Customer> filteredCustomers = new FilteredList<Customer>(customers);
+    SortedList<Customer> sortedCustomers = new SortedList<>(filteredCustomers);
+
+    TableView<Customer> table = new TableView<>(sortedCustomers);
     TableColumn<Customer, String> nameColumn = new TableColumn<>("Column 1");
     table.getColumns().add(nameColumn);
     TableColumn<Customer, Integer> addressesColumn = new TableColumn<>("Column 2");
+    addressesColumn.setSortable(false);
     table.getColumns().add(addressesColumn);
     root.add(table, "wrap, span");
+
+    TextField filterField = new TextField();
+    root.add(filterField);
+
+    //Bind the comparator property
+    sortedCustomers.comparatorProperty().bind(table.comparatorProperty());
+
+
+    filterField.textProperty().addListener((observable, oldValue, newValue) -> filteredCustomers.setPredicate(customer -> {
+      if (newValue == null || newValue.isEmpty()) {
+        return true;
+      }
+
+      if (customer.getName().contains(newValue)) {
+        return true;
+      }
+
+      for (Customer.Address address : customer.getAddresses()) {
+        if (address.getCity().contains(newValue)) {
+          return true;
+        }
+        if (address.getStreet().contains(newValue)) {
+          return true;
+        }
+        if (String.valueOf(address.getNumber()).contains(newValue)) {
+          return true;
+        }
+      }
+
+      return false;
+    }));
 
     nameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Customer, String>, ObservableValue<String>>() {
       @Override
