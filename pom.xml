@@ -929,6 +929,11 @@
         <version>${monorepo.dep.management.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.cedarsoft.commons</groupId>
+        <artifactId>guava</artifactId>
+        <version>${monorepo.dep.management.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>core</artifactId>
         <version>${monorepo.dep.management.version}</version>
