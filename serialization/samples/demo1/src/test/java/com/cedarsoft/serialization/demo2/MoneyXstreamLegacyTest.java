@@ -80,7 +80,7 @@ public class MoneyXstreamLegacyTest {
                       "converter-type      : com.thoughtworks.xstream.converters.reflection.ReflectionConverter\n" +
                       "path                : /money/amount\n" +
                       "line number         : 3\n" +
-                      "version             : 1.4.9\n" +
+                      "version             : 1.4.10\n" +
                       "-------------------------------", e.getMessage() );
     }
   }

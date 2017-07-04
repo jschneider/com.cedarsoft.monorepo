@@ -152,10 +152,10 @@
     <neo4j.version>3.1.0</neo4j.version>
     <guice.version>4.1.0</guice.version>
     <jaxb.version>2.3.0-b170127.1453</jaxb.version>
-    <jetty.version>9.4.5.v20170502</jetty.version>
-    <jackson.version>2.8.8</jackson.version>
+    <jetty.version>9.4.6.v20170531</jetty.version>
+    <jackson.version>2.8.9</jackson.version>
     <old.jackson.version>1.9.13</old.jackson.version>
-    <jooby.version>1.1.1</jooby.version>
+    <jooby.version>1.1.3</jooby.version>
   </properties>
 
   <prerequisites>
@@ -233,7 +233,7 @@
       <dependency>
         <groupId>com.google.errorprone</groupId>
         <artifactId>error_prone_annotations</artifactId>
-        <version>2.0.19</version>
+        <version>2.0.21</version>
       </dependency>
 
       <dependency>
@@ -246,7 +246,7 @@
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <version>1.16.16</version>
+        <version>1.16.18</version>
         <scope>provided</scope>
       </dependency>
 
@@ -280,7 +280,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
-        <version>3.5</version>
+        <version>3.6</version>
       </dependency>
       <dependency>
         <groupId>commons-cli</groupId>
@@ -295,7 +295,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-compress</artifactId>
-        <version>1.13</version>
+        <version>1.14</version>
       </dependency>
       <dependency>
         <groupId>org.tukaani</groupId>
@@ -369,7 +369,7 @@
       <dependency>
         <groupId>org.threeten</groupId>
         <artifactId>threeten-extra</artifactId>
-        <version>1.1</version>
+        <version>1.2</version>
       </dependency>
 
       <dependency>
@@ -485,7 +485,7 @@
       <dependency>
         <groupId>io.reactivex.rxjava2</groupId>
         <artifactId>rxjava</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
       </dependency>
 
       <dependency>
@@ -519,7 +519,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.9</version>
+        <version>1.4.10</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
@@ -649,7 +649,7 @@
       <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
-        <version>2.8.0</version>
+        <version>2.8.1</version>
       </dependency>
       <dependency>
         <groupId>org.mapdb</groupId>
@@ -660,7 +660,7 @@
       <dependency>
         <groupId>javax.mail</groupId>
         <artifactId>mail</artifactId>
-        <version>	1.4.3</version>
+        <version>1.5.0-b01</version>
         <scope>compile</scope>
       </dependency>
 
@@ -673,7 +673,7 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
@@ -688,7 +688,7 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-swing</artifactId>
-        <version>3.5.0</version>
+        <version>3.6.0</version>
       </dependency>
 
       <dependency>
@@ -728,7 +728,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>2.7.22</version>
+        <version>2.8.47</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -772,7 +772,7 @@
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-servlets</artifactId>
-        <version>${jetty.version}</version>
+        <version>9.4.6.v20170531</version>
       </dependency>
 
       <!--<dependency>-->
@@ -794,58 +794,58 @@
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-core-asl</artifactId>
-        <version>${old.jackson.version}</version>
+        <version>1.9.13</version>
       </dependency>
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-mapper-asl</artifactId>
-        <version>${old.jackson.version}</version>
+        <version>1.9.13</version>
       </dependency>
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-xc</artifactId>
-        <version>${old.jackson.version}</version>
+        <version>1.9.13</version>
       </dependency>
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-jaxrs</artifactId>
-        <version>${old.jackson.version}</version>
+        <version>1.9.13</version>
       </dependency>
 
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.datatype</groupId>
         <artifactId>jackson-datatype-jdk8</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.datatype</groupId>
         <artifactId>jackson-datatype-jsr310</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.datatype</groupId>
         <artifactId>jackson-datatype-guava</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.module</groupId>
         <artifactId>jackson-module-parameter-names</artifactId>
-        <version>${jackson.version}</version>
+        <version>2.9.0.pr4</version>
       </dependency>
       <dependency>
         <groupId>com.intellij</groupId>
@@ -867,7 +867,7 @@
       <dependency>
         <groupId>org.javassist</groupId>
         <artifactId>javassist</artifactId>
-        <version>3.21.0-GA</version>
+        <version>3.22.0-CR2</version>
       </dependency>
 
       <!--Dependency Managment for sub projects-->
@@ -936,7 +936,7 @@
       <dependency>
         <groupId>com.cedarsoft.commons.history</groupId>
         <artifactId>core</artifactId>
-        <version>${monorepo.dep.management.version}</version>
+        <version>8.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
@@ -971,7 +971,7 @@
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
         <artifactId>objectaccess</artifactId>
-        <version>${monorepo.dep.management.version}</version>
+        <version>8.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.commons</groupId>
@@ -1063,17 +1063,17 @@
       <dependency>
         <groupId>com.cedarsoft.business</groupId>
         <artifactId>contact</artifactId>
-        <version>${monorepo.dep.management.version}</version>
+        <version>8.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.business</groupId>
         <artifactId>locations</artifactId>
-        <version>${monorepo.dep.management.version}</version>
+        <version>8.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.business</groupId>
         <artifactId>dependencies</artifactId>
-        <version>${monorepo.dep.management.version}</version>
+        <version>8.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.cedarsoft.business</groupId>
