@@ -519,7 +519,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.10-java7</version>
+        <version>1.4.10</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
@@ -633,7 +633,7 @@
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-graphviz</artifactId>
-        <version>neo4j-graphviz</version>
+        <version>${neo4j.version}</version>
       </dependency>
 
       <dependency>
