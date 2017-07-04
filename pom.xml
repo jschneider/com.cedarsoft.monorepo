@@ -606,19 +606,19 @@
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-shell</artifactId>
-        <version>3.3.0-alpha03</version>
+        <version>${neo4j.version}</version>
       </dependency>
 
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j</artifactId>
-        <version>3.3.0-alpha03</version>
+        <version>${neo4j.version}</version>
       </dependency>
 
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-io</artifactId>
-        <version>3.3.0-alpha03</version>
+        <version>${neo4j.version}</version>
         <type>test-jar</type>
         <scope>test</scope>
       </dependency>
@@ -626,14 +626,14 @@
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-kernel</artifactId>
-        <version>3.3.0-alpha03</version>
+        <version>${neo4j.version}</version>
         <type>test-jar</type>
       </dependency>
 
       <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-graphviz</artifactId>
-        <version>3.2.0-alpha05</version>
+        <version>neo4j-graphviz</version>
       </dependency>
 
       <dependency>
