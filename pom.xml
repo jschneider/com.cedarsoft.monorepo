@@ -94,6 +94,11 @@
 
   <repositories>
     <repository>
+      <id>central</id>
+      <url>http://jcenter.bintray.com</url>
+    </repository>
+
+    <repository>
       <id>oss-sonatype-releases</id>
       <name>OSS Sonatype Releases</name>
       <url>https://oss.sonatype.org/content/repositories/releases/</url>
