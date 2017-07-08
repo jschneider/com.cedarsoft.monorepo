@@ -1285,6 +1285,7 @@
                   <arg>-Xlint:all</arg>
                   <arg>-Xlint:-serial</arg>
                   <arg>-Xlint:-unchecked</arg>
+                  <arg>-parameters</arg>
                 </compilerArgs>
               </configuration>
             </execution>
@@ -1298,6 +1299,7 @@
                 <showDeprecation>false</showDeprecation>
                 <compilerArgs>
                   <arg>-Xlint:none</arg>
+                  <arg>-parameters</arg>
                 </compilerArgs>
               </configuration>
             </execution>
