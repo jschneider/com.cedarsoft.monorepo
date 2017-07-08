@@ -56,12 +56,10 @@ import javax.annotation.WillNotClose
 </T> */
 abstract class AbstractJacksonSerializer<T>
 protected constructor(
-  private val type: String,
+  override val type: String,
   formatVersionRange: VersionRange) : AbstractStreamSerializer<T, JsonGenerator, JsonParser, JsonProcessingException>(formatVersionRange), JacksonSerializer<T> {
 
-  override fun getType(): String {
-    return type
-  }
+  override val isObjectType = true
 
   @Throws(SerializationException::class)
   override fun verifyType(type: String?) {
@@ -386,10 +384,6 @@ protected constructor(
 
   override fun <A> getSerializer(type: Class<A>): JacksonSerializer<in A> {
     return super.getSerializer(type) as JacksonSerializer<in A>
-  }
-
-  override fun isObjectType(): Boolean {
-    return true
   }
 
   @Throws(IOException::class)

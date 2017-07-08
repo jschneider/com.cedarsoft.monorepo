@@ -48,8 +48,4 @@ protected constructor(
   override fun supports(`object`: Any): Boolean {
     return supportedType.isAssignableFrom(`object`.javaClass)
   }
-
-  override fun isObjectType(): Boolean {
-    return super.isObjectType()
-  }
 }
