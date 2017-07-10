@@ -63,8 +63,8 @@ protected constructor(
 
   /** @noinspection RefusedBequest
    */
-  override fun readVersion(`in`: Node): Version {
-    return Version.parse(`in`.getProperty(PROPERTY_DELEGATING_FORMAT_VERSION) as String)
+  override fun readVersion(inNode: Node): Version {
+    return Version.parse(inNode.getProperty(PROPERTY_DELEGATING_FORMAT_VERSION) as String)
   }
 
   @Throws(IOException::class)
