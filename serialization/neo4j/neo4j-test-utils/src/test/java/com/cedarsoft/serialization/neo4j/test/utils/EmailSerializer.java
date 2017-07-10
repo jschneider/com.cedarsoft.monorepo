@@ -52,8 +52,8 @@ public class EmailSerializer extends AbstractNeo4jSerializer<Email> {
   }
 
   @Override
-  protected void serializeInternal( @Nonnull Node serializeTo, @Nonnull Email object, @Nonnull Version formatVersion ) {
-    serializeTo.setProperty( "mail", object.getMail() );
+  protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Email objectToSerialize, @Nonnull Version formatVersion ) {
+    serializeTo.setProperty("mail", objectToSerialize.getMail() );
   }
 
   @Nonnull

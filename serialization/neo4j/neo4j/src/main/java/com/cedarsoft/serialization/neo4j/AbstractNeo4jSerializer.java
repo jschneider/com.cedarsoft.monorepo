@@ -102,11 +102,11 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
    * This method must be implemented by sub classes. Serialize the custom fields when necessary.<br>
    * This method is called from serialize(Node, Object, Version). The type label and format version have already been added to the node
    * @param serializeTo the node to serialize to
-   * @param object the object
+   * @param objectToSerialize the object
    * @param formatVersion the format version
    * @throws IOException if there is an io problem
    */
-  protected abstract void serializeInternal( @Nonnull Node serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws IOException;
+  protected abstract void serializeInternal( @Nonnull Node serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws IOException;
 
   /**
    * Returns the type label

@@ -62,11 +62,11 @@ public class PersonSerializer extends AbstractNeo4jSerializer<Person> {
   }
 
   @Override
-  protected void serializeInternal( @Nonnull Node serializeTo, @Nonnull Person object, @Nonnull Version formatVersion ) throws IOException {
-    serializeTo.setProperty( "name", object.getName() );
+  protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Person objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
+    serializeTo.setProperty("name", objectToSerialize.getName() );
 
-    serializeWithRelationship( object.getAddress(), Address.class, serializeTo, Relations.ADDRESS, formatVersion );
-    serializeWithRelationships( object.getMails(),Email.class, serializeTo, Relations.EMAIL, formatVersion );
+    serializeWithRelationship(objectToSerialize.getAddress(), Address.class, serializeTo, Relations.ADDRESS, formatVersion );
+    serializeWithRelationships(objectToSerialize.getMails(), Email.class, serializeTo, Relations.EMAIL, formatVersion );
   }
 
   @Nonnull

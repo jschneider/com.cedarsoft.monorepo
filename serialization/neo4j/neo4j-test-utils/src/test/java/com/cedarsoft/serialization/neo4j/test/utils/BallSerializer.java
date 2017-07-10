@@ -70,9 +70,9 @@ public class BallSerializer extends AbstractDelegatingNeo4jSerializer<Ball> {
 
 
     @Override
-    protected void serializeInternal( @Nonnull Node serializeTo, @Nonnull Ball.TennisBall object, @Nonnull Version formatVersion ) throws IOException {
+    protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Ball.TennisBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
       verifyVersionReadable( formatVersion );
-      serializeTo.setProperty( "newId", object.getId() );
+      serializeTo.setProperty("newId", objectToSerialize.getId() );
     }
 
     @Nonnull
@@ -102,9 +102,9 @@ public class BallSerializer extends AbstractDelegatingNeo4jSerializer<Ball> {
     }
 
     @Override
-    protected void serializeInternal( @Nonnull Node serializeTo, @Nonnull Ball.BasketBall object, @Nonnull Version formatVersion ) throws IOException {
+    protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Ball.BasketBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
       verifyVersionReadable( formatVersion );
-      serializeTo.setProperty( "myNewId", object.getTheId() );
+      serializeTo.setProperty("myNewId", objectToSerialize.getTheId() );
     }
 
     @Nonnull
