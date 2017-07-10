@@ -51,9 +51,8 @@ import javax.annotation.WillNotClose
 
 /**
  * @param <T> the type
- * *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
-</T> */
+ */
 abstract class AbstractJacksonSerializer<T>
 protected constructor(
   override val type: String,
@@ -85,9 +84,7 @@ protected constructor(
    * This method also writes the @type property.
 
    * @param objectToSerialize    the object that is serialized
-   * *
    * @param generator the serialize to object
-   * *
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
@@ -145,11 +142,8 @@ protected constructor(
   /**
    * This method creates the parser. This method may be overridden to create a FilteringJsonParser or something like that
    * @param jsonFactory the json factory
-   * *
    * @param in the input stream
-   * *
    * @return the created json parser
-   * *
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
@@ -160,11 +154,8 @@ protected constructor(
   /**
    * If the format version override is not null, the type and version field are skipped
    * @param parser the parser
-   * *
    * @param formatVersionOverride the format version override (usually "null")
-   * *
    * @return the deserialized object
-   * *
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
@@ -191,11 +182,8 @@ protected constructor(
    * This can be useful for cases where this information is not available...
 
    * @param wrapper the wrapper
-   * *
    * @param formatVersionOverride the format version
-   * *
    * @return the format version
-   * *
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, SerializationException::class)
@@ -228,7 +216,6 @@ protected constructor(
    * Callback method that is called before the type and version are parsed
 
    * @param wrapper the wrapper
-   * *
    * @throws java.io.IOException if there is an io exception
    */
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
@@ -393,20 +380,13 @@ protected constructor(
 
   /**
    * Deserializes the enumeration
-
    * @param enumClass    the enum class
-   * *
    * @param propertyName the property name
-   * *
    * @param parser       the parser
-   * *
    * @param <A>          the type
-   * *
    * @return the deserialized enum
-   * *
-   * *
    * @throws IOException
-  </A> */
+   */
   @Throws(IOException::class)
   fun <A : Enum<A>> deserializeEnum(enumClass: Class<A>, propertyName: String, parser: JsonParser): A {
     val wrapper = JacksonParserWrapper(parser)
