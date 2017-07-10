@@ -49,8 +49,8 @@ import java.nio.charset.StandardCharsets;
  */
 public class ZoneInfoSerializer implements Serializer<DateTimeZone,OutputStream,InputStream> {
   @Override
-  public void serialize( @Nonnull DateTimeZone object, @Nonnull OutputStream out ) throws IOException {
-    out.write( object.getID().getBytes(StandardCharsets.UTF_8) );
+  public void serialize(@Nonnull DateTimeZone objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+    out.write(objectToSerialize.getID().getBytes(StandardCharsets.UTF_8) );
   }
 
   @Nonnull

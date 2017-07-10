@@ -61,7 +61,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractStaxBasedSer
   }
 
   @Override
-  public void serialize( @Nonnull T object, @Nonnull OutputStream out ) throws IOException {
+  public void serialize(@Nonnull T objectToSerialize, @Nonnull OutputStream out ) throws IOException {
     try {
       SMOutputFactory factory = StaxMateSupport.getSmOutputFactory();
       SMOutputDocument doc = factory.createOutputDocument( out );
@@ -71,7 +71,7 @@ public abstract class AbstractStaxMateSerializer<T> extends AbstractStaxBasedSer
       SMNamespace nameSpace = doc.getNamespace( nameSpaceUri );
 
       SMOutputElement root = doc.addElement( nameSpace, getDefaultElementName() );
-      serialize( root, object, getFormatVersion() );
+      serialize(root, objectToSerialize, getFormatVersion() );
       doc.closeRoot();
     } catch ( XMLStreamException e ) {
       throw new SerializationException( e, e.getLocation(), SerializationException.Details.XML_EXCEPTION, e.getMessage() );

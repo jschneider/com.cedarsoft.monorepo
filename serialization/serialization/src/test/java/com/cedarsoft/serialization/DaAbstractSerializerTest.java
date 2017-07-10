@@ -35,7 +35,6 @@ import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionMismatchException;
 import com.cedarsoft.version.VersionRange;
-import org.apache.commons.io.Charsets;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -154,8 +153,8 @@ public class DaAbstractSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull String object, @Nonnull OutputStream out ) throws IOException {
-      out.write( object.getBytes(StandardCharsets.UTF_8) );
+    public void serialize(@Nonnull String objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+      out.write(objectToSerialize.getBytes(StandardCharsets.UTF_8) );
     }
 
     @Nonnull

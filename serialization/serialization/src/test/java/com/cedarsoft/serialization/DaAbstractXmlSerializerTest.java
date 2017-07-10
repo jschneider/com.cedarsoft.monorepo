@@ -99,8 +99,8 @@ public class DaAbstractXmlSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull String object, @Nonnull OutputStream out ) throws IOException {
-      out.write( object.getBytes(StandardCharsets.UTF_8) );
+    public void serialize(@Nonnull String objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+      out.write(objectToSerialize.getBytes(StandardCharsets.UTF_8) );
     }
 
     @Nonnull

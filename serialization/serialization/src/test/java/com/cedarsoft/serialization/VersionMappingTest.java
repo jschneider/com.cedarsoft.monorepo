@@ -317,7 +317,7 @@ public class VersionMappingTest {
     }
 
     @Override
-    public void serialize( @Nonnull Object object, @Nonnull OutputStream out ) throws IOException {
+    public void serialize(@Nonnull Object objectToSerialize, @Nonnull OutputStream out ) throws IOException {
     }
 
     @Nonnull

@@ -54,7 +54,7 @@ interface Serializer<T, O, I> {
    * @throws IOException if there is an io problem
    */
   @Throws(IOException::class, SerializationException::class)
-  fun serialize(`object`: T, out: O)
+  fun serialize(objectToSerialize: T, out: O)
 
   /**
    * Deserializes the object from the input stream

@@ -69,11 +69,11 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  override fun serialize(`object`: T, @WillNotClose out: OutputStream) {
+  override fun serialize(objectToSerialize: T, @WillNotClose out: OutputStream) {
     val jsonFactory = JacksonSupport.getJsonFactory()
     val generator = jsonFactory.createGenerator(out, JsonEncoding.UTF8)
 
-    serialize(`object`, generator)
+    serialize(objectToSerialize, generator)
     generator.flush()
   }
 

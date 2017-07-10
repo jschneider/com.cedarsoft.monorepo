@@ -63,7 +63,7 @@ public abstract class AbstractStaxSerializer<T> extends AbstractStaxBasedSeriali
   }
 
   @Override
-  public void serialize( @Nonnull T object, @Nonnull OutputStream out ) throws IOException {
+  public void serialize(@Nonnull T objectToSerialize, @Nonnull OutputStream out ) throws IOException {
     try {
       XMLOutputFactory xmlOutputFactory = StaxSupport.getXmlOutputFactory();
       XMLStreamWriter writer = wrapWithIndent(xmlOutputFactory.createXMLStreamWriter(out));
@@ -75,7 +75,7 @@ public abstract class AbstractStaxSerializer<T> extends AbstractStaxBasedSeriali
       writer.writeStartElement( getDefaultElementName() );
       writer.writeDefaultNamespace( nameSpace );
 
-      serialize( writer, object, getFormatVersion() );
+      serialize(writer, objectToSerialize, getFormatVersion() );
       writer.writeEndElement();
 
       writer.close();

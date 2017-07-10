@@ -76,8 +76,8 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
   }
 
   @Override
-  public final void serialize( @Nonnull T object, @Nonnull Node out ) throws IOException {
-    serialize( out, object, getFormatVersion() );
+  public final void serialize( @Nonnull T objectToSerialize, @Nonnull Node out ) throws IOException {
+    serialize( out, objectToSerialize, getFormatVersion() );
   }
 
   @Override
