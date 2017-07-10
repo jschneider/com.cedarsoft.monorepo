@@ -117,8 +117,8 @@ protected constructor(
   }
 
   @Throws(IOException::class, VersionException::class)
-  override fun deserialize(`in`: InputStream): T {
-    return deserialize(`in`, null)
+  override fun deserialize(deserializeFrom: InputStream): T {
+    return deserialize(deserializeFrom, null)
   }
 
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)

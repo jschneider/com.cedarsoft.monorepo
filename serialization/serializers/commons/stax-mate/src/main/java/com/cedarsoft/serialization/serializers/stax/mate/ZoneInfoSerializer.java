@@ -55,8 +55,8 @@ public class ZoneInfoSerializer implements Serializer<DateTimeZone,OutputStream,
 
   @Nonnull
   @Override
-  public DateTimeZone deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
-    return DateTimeZone.forID(IOUtils.toString(in, StandardCharsets.UTF_8));
+  public DateTimeZone deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
+    return DateTimeZone.forID(IOUtils.toString(deserializeFrom, StandardCharsets.UTF_8));
   }
 
   @Nonnull

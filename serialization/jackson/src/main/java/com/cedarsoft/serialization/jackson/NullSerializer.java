@@ -83,7 +83,7 @@ public class NullSerializer extends AbstractJacksonSerializer<Void> {
 
   @Nullable
   @Override
-  public Void deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+  public Void deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
     //noinspection ConstantConditions
     return null;
   }

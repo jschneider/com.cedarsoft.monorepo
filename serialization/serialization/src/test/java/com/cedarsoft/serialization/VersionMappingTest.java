@@ -322,7 +322,7 @@ public class VersionMappingTest {
 
     @Nonnull
     @Override
-    public Object deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+    public Object deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
       throw new UnsupportedOperationException();
     }
   }

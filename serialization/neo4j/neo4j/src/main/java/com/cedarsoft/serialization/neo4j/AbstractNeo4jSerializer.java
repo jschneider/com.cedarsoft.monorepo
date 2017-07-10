@@ -119,13 +119,13 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
 
   @Nonnull
   @Override
-  public T deserialize( @Nonnull Node in ) throws IOException, VersionException {
-    verifyType(in);
+  public T deserialize( @Nonnull Node deserializeFrom) throws IOException, VersionException {
+    verifyType(deserializeFrom);
 
-    Version version = readVersion( in );
+    Version version = readVersion(deserializeFrom);
     verifyVersionReadable(version);
 
-    return deserialize(in, version);
+    return deserialize(deserializeFrom, version);
   }
 
   @Nonnull

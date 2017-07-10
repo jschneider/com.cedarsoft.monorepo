@@ -73,9 +73,9 @@ public abstract class AbstractStaxBasedSerializer<T, S> extends AbstractXmlSeria
 
   @Override
   @Nonnull
-  public T deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+  public T deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
     try {
-      XMLStreamReader reader = StaxSupport.getXmlInputFactory().createXMLStreamReader( in );
+      XMLStreamReader reader = StaxSupport.getXmlInputFactory().createXMLStreamReader(deserializeFrom);
 
       int result = reader.nextTag();
       if ( result != XMLStreamConstants.START_ELEMENT ) {

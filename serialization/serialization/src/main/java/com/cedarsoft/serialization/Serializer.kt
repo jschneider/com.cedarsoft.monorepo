@@ -64,7 +64,7 @@ interface Serializer<T, O, I> {
    * @throws java.io.IOException if there is an io problem2
    */
   @Throws(IOException::class, VersionException::class, SerializationException::class)
-  fun deserialize(`in`: I): T
+  fun deserialize(deserializeFrom: I): T
 
   /**
    * Returns the format version that is written.

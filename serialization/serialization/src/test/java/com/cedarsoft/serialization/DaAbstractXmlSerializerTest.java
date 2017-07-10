@@ -105,7 +105,7 @@ public class DaAbstractXmlSerializerTest {
 
     @Nonnull
     @Override
-    public String deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+    public String deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
       throw new UnsupportedOperationException();
     }
   }
