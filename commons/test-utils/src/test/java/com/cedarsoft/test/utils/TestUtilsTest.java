@@ -32,7 +32,6 @@
 package com.cedarsoft.test.utils;
 
 import org.junit.*;
-import org.junit.rules.*;
 
 import static org.junit.Assert.*;
 
@@ -41,7 +40,7 @@ import static org.junit.Assert.*;
  */
 public class TestUtilsTest {
   @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
+  public org.junit.rules.TemporaryFolder tmp = new org.junit.rules.TemporaryFolder();
 
   @Test
   public void testCleanup() throws IllegalAccessException {

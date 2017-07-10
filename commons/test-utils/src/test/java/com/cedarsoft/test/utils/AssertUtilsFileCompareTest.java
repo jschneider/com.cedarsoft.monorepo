@@ -53,7 +53,8 @@ public class AssertUtilsFileCompareTest {
   @Rule
   public ExpectedException expectedException = ExpectedException.none();
   @Rule
-  public final TemporaryFolder tmp = new TemporaryFolder();
+  public final org.junit.rules.TemporaryFolder tmp = new org.junit.rules.TemporaryFolder();
+
   private File fileA;
   private File fileB;
 

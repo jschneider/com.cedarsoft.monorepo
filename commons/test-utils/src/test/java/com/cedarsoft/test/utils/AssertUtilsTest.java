@@ -52,7 +52,7 @@ import static org.junit.Assert.*;
  */
 public class AssertUtilsTest {
   @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
+  public org.junit.rules.TemporaryFolder tmp = new org.junit.rules.TemporaryFolder();
   @Rule
   public TestName testName = new TestName();
 
