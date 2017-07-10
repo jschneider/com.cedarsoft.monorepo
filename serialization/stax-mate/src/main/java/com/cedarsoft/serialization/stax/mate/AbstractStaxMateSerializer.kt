@@ -159,6 +159,6 @@ protected constructor(
 
   companion object {
     @JvmStatic
-    val INDENT_STR = "\n                            "
+    private val INDENT_STR = "\n                            "
   }
 }
