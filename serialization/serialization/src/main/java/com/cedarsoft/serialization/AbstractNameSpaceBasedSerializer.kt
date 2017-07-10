@@ -72,7 +72,7 @@ abstract class AbstractNameSpaceBasedSerializer<T, S, D, E : Throwable> protecte
    * @throws SerializationException if the namespace is invalid
    */
   @Throws(SerializationException::class, VersionException::class)
-  fun verifyNamespace(namespace: String?) {
+  open fun verifyNamespace(namespace: String?) {
     if (namespace == null || namespace.trim { it <= ' ' }.isEmpty()) {
       throw VersionException("No version information available")
     }
@@ -89,7 +89,7 @@ abstract class AbstractNameSpaceBasedSerializer<T, S, D, E : Throwable> protecte
    * @throws SerializationException if the namespace is invalid
    */
   @Throws(SerializationException::class, VersionException::class)
-  fun parseAndVerifyNameSpace(namespaceURI: String?): Version {
+  open fun parseAndVerifyNameSpace(namespaceURI: String?): Version {
     //Verify the name space
     verifyNamespace(namespaceURI)
 
