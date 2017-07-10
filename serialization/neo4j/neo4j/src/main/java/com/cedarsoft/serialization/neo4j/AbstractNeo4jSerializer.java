@@ -201,7 +201,7 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
     }
 
     if (deserializedList.size() > 1 && !indices.isEmpty()) {
-      Collections.sort(deserializedList, new Comparator<A>() {
+      deserializedList.sort(new Comparator<A>() {
         @Override
         public int compare(A o1, A o2) {
           @Nullable Integer index1 = indices.get(o1);
