@@ -110,7 +110,7 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  protected fun beforeTypeAndVersion(objectToSerialize: T, serializeTo: JsonGenerator) {
+  protected open fun beforeTypeAndVersion(objectToSerialize: T, serializeTo: JsonGenerator) {
   }
 
   @Throws(IOException::class, VersionException::class)
@@ -124,7 +124,7 @@ protected constructor(
   }
 
   @Throws(IOException::class, VersionException::class)
-  fun deserialize(deserializeFrom: InputStream, version: Version?): T {
+  open fun deserialize(deserializeFrom: InputStream, version: Version?): T {
     val jsonFactory = JacksonSupport.getJsonFactory()
     val parser = createJsonParser(jsonFactory, deserializeFrom)
 
@@ -147,7 +147,7 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
-  protected fun createJsonParser(jsonFactory: JsonFactory, deserializeFrom: InputStream): JsonParser {
+  open protected fun createJsonParser(jsonFactory: JsonFactory, deserializeFrom: InputStream): JsonParser {
     return jsonFactory.createParser(deserializeFrom)
   }
 
@@ -159,7 +159,7 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
-  protected fun deserializeInternal(parser: JsonParser, formatVersionOverride: Version?): T {
+  protected open fun deserializeInternal(parser: JsonParser, formatVersionOverride: Version?): T {
     val parserWrapper = JacksonParserWrapper(parser)
 
     val version = prepareDeserialization(parserWrapper, formatVersionOverride)
@@ -219,16 +219,16 @@ protected constructor(
    * @throws java.io.IOException if there is an io exception
    */
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
-  protected fun beforeTypeAndVersion(wrapper: JacksonParserWrapper) {
+  protected open fun beforeTypeAndVersion(wrapper: JacksonParserWrapper) {
   }
 
   @Throws(IOException::class)
-  protected fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, serializeTo: JsonGenerator, formatVersion: Version) {
+  protected open fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, serializeTo: JsonGenerator, formatVersion: Version) {
     serializeArray(elements, type, null, serializeTo, formatVersion)
   }
 
   @Throws(IOException::class)
-  protected fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, propertyName: String?, serializeTo: JsonGenerator, formatVersion: Version) {
+  protected open fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, propertyName: String?, serializeTo: JsonGenerator, formatVersion: Version) {
     val serializer = getSerializer(type)
     val delegateVersion = delegatesMappings.versionMappings.resolveVersion(type, formatVersion)
 
