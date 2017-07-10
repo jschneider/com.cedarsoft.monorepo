@@ -22,7 +22,7 @@ constructor(private val file: File) : FilterOutputStream(null) {
   private val tmpFile: File
 
   init {
-    tmpFile = File(file.parent, file.name + SUFFIX_TMP)
+    tmpFile = File(file.parent, file.name + SUFFIX_TMP + "_" + System.nanoTime())
     tmpFile.deleteOnExit()
 
     this.out = tmpFile.outputStream().buffered()
