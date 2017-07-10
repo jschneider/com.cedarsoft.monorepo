@@ -19,7 +19,7 @@ constructor(private val file: File) : FilterOutputStream(null) {
   /**
    * The tmp file that is written first
    */
-  private val tmpFile: File
+  val tmpFile: File
 
   init {
     tmpFile = File(file.parent, file.name + SUFFIX_TMP + "_" + System.nanoTime())
