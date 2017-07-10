@@ -77,6 +77,7 @@ public class FileOutputStreamWithMoveTest {
     out.write("asdf".getBytes(StandardCharsets.UTF_8));
 
     assertThat(targetOut).exists();
+    assertThat(out.getTmpFile()).exists();
     //old content
     assertThat(Files.asCharSource(targetOut, StandardCharsets.UTF_8).read()).isEqualTo("daContent");
 
