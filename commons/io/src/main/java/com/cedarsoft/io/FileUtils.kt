@@ -51,3 +51,11 @@ object FileUtils {
     }
   }
 }
+
+/**
+ * Creates the directory if it does not exist
+ */
+inline fun File.createDirectoryIfNotExisting(): File {
+  FileUtils.ensureDirectoryExists(this)
+  return this;
+}
