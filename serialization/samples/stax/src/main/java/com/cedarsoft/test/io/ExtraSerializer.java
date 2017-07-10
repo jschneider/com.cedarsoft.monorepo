@@ -71,15 +71,15 @@ public class ExtraSerializer extends AbstractStaxSerializer<Extra> {
   //START SNIPPET: serialize
 
   @Override
-  public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull Extra object, Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Extra objectToSerialize, Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
     serializeTo.writeStartElement( "description" );
-    serializeTo.writeCharacters( object.getDescription() );
+    serializeTo.writeCharacters(objectToSerialize.getDescription() );
     serializeTo.writeEndElement();
 
     //We delegate the serialization of the price to the money serializer
     serializeTo.writeStartElement( "price" );
-    serialize( object.getPrice(), Money.class, serializeTo, formatVersion );
+    serialize(objectToSerialize.getPrice(), Money.class, serializeTo, formatVersion );
     serializeTo.writeEndElement();
   }
 

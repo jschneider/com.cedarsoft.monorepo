@@ -87,10 +87,10 @@ public class Foo {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Foo object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Foo objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addAttribute( "description", object.getDescription() );
-      serializeEnum( object.getDirection(), "direction", serializeTo );
+      serializeTo.addAttribute("description", objectToSerialize.getDescription() );
+      serializeEnum(objectToSerialize.getDirection(), "direction", serializeTo );
     }
 
     @Nonnull

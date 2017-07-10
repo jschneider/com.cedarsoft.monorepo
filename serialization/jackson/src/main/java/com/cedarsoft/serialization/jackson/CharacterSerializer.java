@@ -51,8 +51,8 @@ public class CharacterSerializer extends AbstractJacksonSerializer<Character> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Character object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeString( Character.toString( object ) );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Character objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeString( Character.toString(objectToSerialize) );
   }
 
   @Nonnull

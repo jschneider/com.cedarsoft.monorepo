@@ -61,8 +61,8 @@ public class SkipTypeInfoSerializer<T> extends AbstractJacksonSerializer<T> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    delegate.serialize( serializeTo, object, formatVersion );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    delegate.serialize(serializeTo, objectToSerialize, formatVersion );
   }
 
   @Nonnull

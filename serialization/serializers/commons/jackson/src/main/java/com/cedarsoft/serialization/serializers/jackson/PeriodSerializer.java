@@ -59,9 +59,9 @@ public class PeriodSerializer extends AbstractJacksonSerializer<Period> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Period object, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Period objectToSerialize, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeTo.writeString(object.toString());
+    serializeTo.writeString(objectToSerialize.toString());
   }
 
   @Nonnull

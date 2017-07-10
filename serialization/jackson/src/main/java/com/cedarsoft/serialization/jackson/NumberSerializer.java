@@ -52,11 +52,11 @@ public class NumberSerializer extends AbstractJacksonSerializer<Number> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Number object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    if ( isIntegerNumber( object ) ) {
-      serializeTo.writeNumber( object.longValue() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Number objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    if ( isIntegerNumber(objectToSerialize) ) {
+      serializeTo.writeNumber(objectToSerialize.longValue() );
     } else {
-      serializeTo.writeNumber( object.doubleValue() );
+      serializeTo.writeNumber(objectToSerialize.doubleValue() );
     }
   }
 

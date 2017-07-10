@@ -61,11 +61,11 @@ public class HashSerializer extends AbstractJacksonSerializer<Hash> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Hash object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Hash objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
 
-    serializeTo.writeStringField( PROPERTY_ALGORITHM, object.getAlgorithm().name() );
-    serializeTo.writeStringField( PROPERTY_VALUE, object.getValueAsHex() );
+    serializeTo.writeStringField(PROPERTY_ALGORITHM, objectToSerialize.getAlgorithm().name() );
+    serializeTo.writeStringField(PROPERTY_VALUE, objectToSerialize.getValueAsHex() );
   }
 
   @Nonnull

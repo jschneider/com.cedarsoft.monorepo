@@ -51,8 +51,8 @@ public class IntegerSerializer extends AbstractJacksonSerializer<Integer> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumber( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull

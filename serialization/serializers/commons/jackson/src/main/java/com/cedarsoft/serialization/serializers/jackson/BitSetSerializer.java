@@ -55,9 +55,9 @@ public class BitSetSerializer extends AbstractJacksonSerializer<BitSet> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull BitSet bitSet, @Nonnull Version formatVersion) throws IOException, VersionException, SerializationException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull BitSet objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, SerializationException, JsonProcessingException {
     serializeTo.writeStartArray();
-    for (int i = bitSet.nextSetBit(0); i != -1; i = bitSet.nextSetBit(i + 1)) {
+    for (int i = objectToSerialize.nextSetBit(0); i != -1; i = objectToSerialize.nextSetBit(i + 1)) {
       serializeTo.writeNumber(i);
     }
     serializeTo.writeEndArray();

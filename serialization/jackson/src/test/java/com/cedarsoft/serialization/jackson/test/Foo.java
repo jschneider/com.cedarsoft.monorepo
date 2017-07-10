@@ -88,10 +88,10 @@ public class Foo {
     }
 
     @Override
-    public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Foo object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Foo objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
       assert isVersionWritable( formatVersion );
-      serializeTo.writeStringField( "description", object.getDescription() );
-      serializeEnum( object.getDirection(), "direction", serializeTo );
+      serializeTo.writeStringField("description", objectToSerialize.getDescription() );
+      serializeEnum(objectToSerialize.getDirection(), "direction", serializeTo );
     }
 
     @Nonnull

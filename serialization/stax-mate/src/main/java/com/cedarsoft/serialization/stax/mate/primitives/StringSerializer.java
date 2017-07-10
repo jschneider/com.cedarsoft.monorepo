@@ -52,8 +52,8 @@ public class StringSerializer extends AbstractStaxMateSerializer<String> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull String object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.addCharacters( String.valueOf( object ) );
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.addCharacters( String.valueOf(objectToSerialize) );
   }
 
   @Nonnull

@@ -62,17 +62,17 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull VersionRange object, @Nonnull Version formatVersion )
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull VersionRange objectToSerialize, @Nonnull Version formatVersion )
     throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
 
-    serializeTo.writeStringField( PROPERTY_MIN, object.getMin().format() );
-    serializeTo.writeStringField( PROPERTY_MAX, object.getMax().format() );
+    serializeTo.writeStringField(PROPERTY_MIN, objectToSerialize.getMin().format() );
+    serializeTo.writeStringField(PROPERTY_MAX, objectToSerialize.getMax().format() );
 
     //includeLower
-    serializeTo.writeBooleanField( PROPERTY_INCLUDELOWER, object.isIncludeLower() );
+    serializeTo.writeBooleanField(PROPERTY_INCLUDELOWER, objectToSerialize.isIncludeLower() );
     //includeUpper
-    serializeTo.writeBooleanField( PROPERTY_INCLUDEUPPER, object.isIncludeUpper() );
+    serializeTo.writeBooleanField(PROPERTY_INCLUDEUPPER, objectToSerialize.isIncludeUpper() );
   }
 
   @Nonnull

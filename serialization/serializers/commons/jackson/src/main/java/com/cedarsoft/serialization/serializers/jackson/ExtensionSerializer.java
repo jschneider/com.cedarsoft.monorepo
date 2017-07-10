@@ -59,13 +59,13 @@ public class ExtensionSerializer extends AbstractJacksonSerializer<Extension> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Extension object, @Nonnull Version formatVersion )
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Extension objectToSerialize, @Nonnull Version formatVersion )
     throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
     //delimiter
-    serializeTo.writeStringField( PROPERTY_DELIMITER, object.getDelimiter() );
+    serializeTo.writeStringField(PROPERTY_DELIMITER, objectToSerialize.getDelimiter() );
     //extension
-    serializeTo.writeStringField( PROPERTY_EXTENSION, object.getExtension() );
+    serializeTo.writeStringField(PROPERTY_EXTENSION, objectToSerialize.getExtension() );
   }
 
   @Nonnull

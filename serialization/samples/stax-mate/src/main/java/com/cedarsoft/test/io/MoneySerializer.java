@@ -51,9 +51,9 @@ public class MoneySerializer extends AbstractStaxMateSerializer<Money> {
   }
 
   @Override
-  public void serialize( SMOutputElement serializeTo, Money object, Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(SMOutputElement serializeTo, Money objectToSerialize, Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
-    serializeTo.addCharacters( String.valueOf( object.getCents() ) );
+    serializeTo.addCharacters( String.valueOf(objectToSerialize.getCents() ) );
   }
 
   @Override

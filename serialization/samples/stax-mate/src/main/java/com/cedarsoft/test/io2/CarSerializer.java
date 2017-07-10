@@ -85,20 +85,20 @@ public class CarSerializer extends AbstractStaxMateSerializer<Car> {
   //START SNIPPET: serialize
 
   @Override
-  public void serialize( SMOutputElement serializeTo, Car object, Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(SMOutputElement serializeTo, Car objectToSerialize, Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
 
     SMOutputElement colorElement = serializeTo.addElement( serializeTo.getNamespace(), "color" );  //okay, should be a own serializer in real world...
-    colorElement.addAttribute( "red", String.valueOf( object.getColor().getRed() ) );
-    colorElement.addAttribute( "blue", String.valueOf( object.getColor().getBlue() ) );
-    colorElement.addAttribute( "green", String.valueOf( object.getColor().getGreen() ) );
+    colorElement.addAttribute( "red", String.valueOf(objectToSerialize.getColor().getRed() ) );
+    colorElement.addAttribute( "blue", String.valueOf(objectToSerialize.getColor().getBlue() ) );
+    colorElement.addAttribute( "green", String.valueOf(objectToSerialize.getColor().getGreen() ) );
 
-    serialize( object.getModel(), Model.class, serializeTo.addElement( serializeTo.getNamespace(), "model" ), formatVersion );
-    serialize( object.getBasePrice(), Money.class, serializeTo.addElement( serializeTo.getNamespace(), "basePrice" ), formatVersion );
+    serialize(objectToSerialize.getModel(), Model.class, serializeTo.addElement(serializeTo.getNamespace(), "model" ), formatVersion );
+    serialize(objectToSerialize.getBasePrice(), Money.class, serializeTo.addElement(serializeTo.getNamespace(), "basePrice" ), formatVersion );
 
 
     //We could also at an additional tag called "extras". But I don't like that style... So here we go...
-    serializeCollection( object.getExtras(), Extra.class, "extra", serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getExtras(), Extra.class, "extra", serializeTo, formatVersion );
 
     //The statement above does exactly the same as this loop:
     //    for ( Extra extra : object.getExtras() ) {

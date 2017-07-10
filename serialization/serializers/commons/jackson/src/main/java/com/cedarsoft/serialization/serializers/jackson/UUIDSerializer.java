@@ -60,9 +60,9 @@ public class UUIDSerializer extends AbstractJacksonSerializer<UUID> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull UUID object, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull UUID objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeTo.writeString(object.toString());
+    serializeTo.writeString(objectToSerialize.toString());
   }
 
   @Override

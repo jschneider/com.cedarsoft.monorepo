@@ -107,7 +107,7 @@ public class PerformanceRunner {
     }
 
     @Override
-    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
+    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
       throw new UnsupportedOperationException();
     }
 

@@ -63,12 +63,12 @@ public class FileNameSerializer extends AbstractJacksonSerializer<FileName> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull FileName object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull FileName objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
     //baseName
-    serialize( object.getBaseName(), BaseName.class, PROPERTY_BASENAME, serializeTo, formatVersion );
+    serialize(objectToSerialize.getBaseName(), BaseName.class, PROPERTY_BASENAME, serializeTo, formatVersion );
     //extension
-    serialize( object.getExtension(), Extension.class, PROPERTY_EXTENSION, serializeTo, formatVersion );
+    serialize(objectToSerialize.getExtension(), Extension.class, PROPERTY_EXTENSION, serializeTo, formatVersion );
   }
 
   @Nonnull

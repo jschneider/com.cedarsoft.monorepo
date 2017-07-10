@@ -51,8 +51,8 @@ public class LongSerializer extends AbstractJacksonSerializer<Long> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Long object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumber( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Long objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull

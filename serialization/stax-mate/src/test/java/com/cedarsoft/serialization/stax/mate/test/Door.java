@@ -79,9 +79,9 @@ public class Door {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Door object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Door objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addElementWithCharacters( serializeTo.getNamespace(), "description", object.getDescription() );
+      serializeTo.addElementWithCharacters(serializeTo.getNamespace(), "description", objectToSerialize.getDescription() );
     }
 
     @Nonnull

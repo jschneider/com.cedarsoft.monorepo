@@ -52,8 +52,8 @@ public class StringSerializer extends AbstractJacksonSerializer<String> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull String object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeString( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeString(objectToSerialize);
   }
 
   @Nonnull

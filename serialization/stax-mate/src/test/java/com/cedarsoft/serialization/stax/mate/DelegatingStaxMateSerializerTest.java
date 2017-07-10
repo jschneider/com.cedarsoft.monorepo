@@ -65,8 +65,8 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<
   public void setUp() throws Exception {
     AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", "asdf", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
-      public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-        serializeTo.addCharacters( object.toString() );
+      public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+        serializeTo.addCharacters(objectToSerialize.toString() );
 
       }
 
@@ -81,9 +81,9 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<
 
     AbstractStaxMateSerializingStrategy<Double> doubleSerializer = new AbstractStaxMateSerializingStrategy<Double>( "double", "asdf", Double.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
-      public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Double object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+      public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Double objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
         assert isVersionWritable( formatVersion );
-        serializeTo.addCharacters( object.toString() );
+        serializeTo.addCharacters(objectToSerialize.toString() );
 
       }
 

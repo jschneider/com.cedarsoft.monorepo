@@ -67,14 +67,14 @@ public class FileTypeSerializer extends AbstractJacksonSerializer<FileType> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull FileType object, @Nonnull Version formatVersion )
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull FileType objectToSerialize, @Nonnull Version formatVersion )
     throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
 
-    serializeTo.writeStringField( PROPERTY_ID, object.getId() );
-    serializeTo.writeBooleanField( PROPERTY_DEPENDENT_TYPE, object.isDependentType() );
-    serializeTo.writeStringField( PROPERTY_CONTENT_TYPE, object.getContentType() );
-    serializeArray( object.getExtensions(), Extension.class, PROPERTY_EXTENSIONS, serializeTo, formatVersion );
+    serializeTo.writeStringField(PROPERTY_ID, objectToSerialize.getId() );
+    serializeTo.writeBooleanField(PROPERTY_DEPENDENT_TYPE, objectToSerialize.isDependentType() );
+    serializeTo.writeStringField(PROPERTY_CONTENT_TYPE, objectToSerialize.getContentType() );
+    serializeArray(objectToSerialize.getExtensions(), Extension.class, PROPERTY_EXTENSIONS, serializeTo, formatVersion );
   }
 
   @Nonnull

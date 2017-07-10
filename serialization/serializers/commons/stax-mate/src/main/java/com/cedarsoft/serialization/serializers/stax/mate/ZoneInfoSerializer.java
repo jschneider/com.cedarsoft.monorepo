@@ -49,14 +49,14 @@ import java.nio.charset.StandardCharsets;
  */
 public class ZoneInfoSerializer implements Serializer<DateTimeZone,OutputStream,InputStream> {
   @Override
-  public void serialize( @Nonnull DateTimeZone object, @Nonnull OutputStream out ) throws IOException {
-    out.write( object.getID().getBytes(StandardCharsets.UTF_8) );
+  public void serialize(@Nonnull DateTimeZone objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+    out.write(objectToSerialize.getID().getBytes(StandardCharsets.UTF_8) );
   }
 
   @Nonnull
   @Override
-  public DateTimeZone deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
-    return DateTimeZone.forID(IOUtils.toString(in, StandardCharsets.UTF_8));
+  public DateTimeZone deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
+    return DateTimeZone.forID(IOUtils.toString(deserializeFrom, StandardCharsets.UTF_8));
   }
 
   @Nonnull

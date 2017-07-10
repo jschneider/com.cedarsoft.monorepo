@@ -149,12 +149,12 @@ public class DelegatesTest {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Room object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Room objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeToElementWithCharacters( "description", object.getDescription(), serializeTo );
+      serializeToElementWithCharacters("description", objectToSerialize.getDescription(), serializeTo );
 
-      serializeCollectionToElement( object.getDoors(), Door.class, "doors", "door", serializeTo, formatVersion );
-      serializeCollectionToElement( object.getWindows(), Window.class, "windows", "window", serializeTo, formatVersion );
+      serializeCollectionToElement(objectToSerialize.getDoors(), Door.class, "doors", "door", serializeTo, formatVersion );
+      serializeCollectionToElement(objectToSerialize.getWindows(), Window.class, "windows", "window", serializeTo, formatVersion );
     }
 
     @Nonnull

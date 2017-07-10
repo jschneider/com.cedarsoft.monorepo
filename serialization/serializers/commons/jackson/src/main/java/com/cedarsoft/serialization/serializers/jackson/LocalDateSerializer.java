@@ -58,9 +58,9 @@ public class LocalDateSerializer extends AbstractJacksonSerializer<LocalDate> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull LocalDate object, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull LocalDate objectToSerialize, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeTo.writeString(object.toString());
+    serializeTo.writeString(objectToSerialize.toString());
   }
 
   @Nonnull

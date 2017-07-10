@@ -66,21 +66,21 @@ public class LicenseSerializer extends AbstractJacksonSerializer<License> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull License object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull License objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
 
-    if ( object instanceof CreativeCommonsLicense ) {
+    if ( objectToSerialize instanceof CreativeCommonsLicense ) {
       serializeTo.writeStringField( PROPERTY_SUB_TYPE, SUB_TYPE_CC );
     }
 
     //id
-    serializeTo.writeStringField( PROPERTY_ID, object.getId() );
+    serializeTo.writeStringField(PROPERTY_ID, objectToSerialize.getId() );
     //name
-    serializeTo.writeStringField( PROPERTY_NAME, object.getName() );
+    serializeTo.writeStringField(PROPERTY_NAME, objectToSerialize.getName() );
 
     //URL
     serializeTo.writeFieldName( PROPERTY_URL );
-    URL url = object.getUrl();
+    URL url = objectToSerialize.getUrl();
     if ( url == null ) {
       serializeTo.writeNull();
     } else {

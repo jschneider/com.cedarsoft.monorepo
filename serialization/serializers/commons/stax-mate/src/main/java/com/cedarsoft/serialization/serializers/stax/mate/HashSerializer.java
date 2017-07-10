@@ -58,10 +58,10 @@ public class HashSerializer extends AbstractStaxMateSerializer<Hash> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Hash object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Hash objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
-    serializeTo.addAttribute( ATTRIBUTE_ALGORITHM, object.getAlgorithm().name() );
-    serializeTo.addCharacters( object.getValueAsHex() );
+    serializeTo.addAttribute(ATTRIBUTE_ALGORITHM, objectToSerialize.getAlgorithm().name() );
+    serializeTo.addCharacters(objectToSerialize.getValueAsHex() );
   }
 
   @Nonnull

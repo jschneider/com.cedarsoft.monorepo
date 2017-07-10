@@ -63,14 +63,14 @@ public abstract class AbstractDelegatingJacksonSerializer<T> extends AbstractJac
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     assert isVersionWritable( formatVersion );
 
-    SerializingStrategy<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream> strategy = serializingStrategySupport.findStrategy( object );
+    SerializingStrategy<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream> strategy = serializingStrategySupport.findStrategy(objectToSerialize);
     Version resolvedVersion = serializingStrategySupport.resolveVersion( strategy, formatVersion );
     serializeTo.writeStringField( PROPERTY_SUB_TYPE, strategy.getId() );
 
-    strategy.serialize( serializeTo, object, resolvedVersion );
+    strategy.serialize(serializeTo, objectToSerialize, resolvedVersion );
   }
 
   @Nonnull

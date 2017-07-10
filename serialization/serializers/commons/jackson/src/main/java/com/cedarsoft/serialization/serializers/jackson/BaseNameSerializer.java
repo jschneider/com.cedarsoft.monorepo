@@ -51,9 +51,9 @@ public class BaseNameSerializer extends AbstractJacksonSerializer<BaseName> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull BaseName object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull BaseName objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
-    serializeTo.writeString( object.getName() );
+    serializeTo.writeString(objectToSerialize.getName() );
   }
 
   @Nonnull

@@ -35,7 +35,6 @@ import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionMismatchException;
 import com.cedarsoft.version.VersionRange;
-import org.apache.commons.io.Charsets;
 import org.junit.*;
 import org.junit.rules.*;
 
@@ -143,8 +142,8 @@ public class DaAbstractSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull StringBuffer serializeTo, @Nonnull String object, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
-      serializeTo.append( object );
+    public void serialize(@Nonnull StringBuffer serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
+      serializeTo.append(objectToSerialize);
     }
 
     @Nonnull
@@ -154,13 +153,13 @@ public class DaAbstractSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull String object, @Nonnull OutputStream out ) throws IOException {
-      out.write( object.getBytes(StandardCharsets.UTF_8) );
+    public void serialize(@Nonnull String objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+      out.write(objectToSerialize.getBytes(StandardCharsets.UTF_8) );
     }
 
     @Nonnull
     @Override
-    public String deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+    public String deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
       throw new UnsupportedOperationException();
     }
   }

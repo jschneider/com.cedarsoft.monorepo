@@ -77,16 +77,16 @@ public class FileTypeSerializer extends AbstractStaxMateSerializer<FileType> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull FileType object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull FileType objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
-    serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf( object.isDependentType() ) );
-    serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters( object.getId() );
-    serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_CONTENT_TYPE ).addCharacters( object.getContentType() );
+    serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf(objectToSerialize.isDependentType() ) );
+    serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters(objectToSerialize.getId() );
+    serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_CONTENT_TYPE ).addCharacters(objectToSerialize.getContentType() );
 
-    for ( Extension extension : object.getExtensions() ) {
+    for ( Extension extension : objectToSerialize.getExtensions() ) {
       SMOutputElement extensionElement = serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_EXTENSION );
 
-      if ( object.isDefaultExtension( extension ) ) {
+      if ( objectToSerialize.isDefaultExtension(extension ) ) {
         extensionElement.addAttribute( ATTRIBUTE_DEFAULT, String.valueOf( true ) );
       }
 

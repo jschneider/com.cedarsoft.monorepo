@@ -58,9 +58,9 @@ public class DurationSerializer extends AbstractJacksonSerializer<Duration> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Duration object, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Duration objectToSerialize, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeTo.writeString(object.toString());
+    serializeTo.writeString(objectToSerialize.toString());
   }
 
   @Nonnull

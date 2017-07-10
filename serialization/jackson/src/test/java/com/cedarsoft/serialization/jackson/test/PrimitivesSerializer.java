@@ -68,17 +68,17 @@ public class PrimitivesSerializer extends com.cedarsoft.serialization.jackson.Ab
   }
 
   @Override
-  public void serialize( @Nonnull com.fasterxml.jackson.core.JsonGenerator serializeTo, @Nonnull Primitives object, @Nonnull com.cedarsoft.version.Version formatVersion ) throws IOException, com.cedarsoft.version.VersionException {
+  public void serialize(@Nonnull com.fasterxml.jackson.core.JsonGenerator serializeTo, @Nonnull Primitives objectToSerialize, @Nonnull com.cedarsoft.version.Version formatVersion ) throws IOException, com.cedarsoft.version.VersionException {
     verifyVersionWritable( formatVersion );
-    serialize( object.getFoo1(), Integer.class, PROPERTY_FOO_1, serializeTo, formatVersion );
-    serialize( object.getFoo2(), Short.class, PROPERTY_FOO_2, serializeTo, formatVersion );
-    serialize( object.getFoo3(), Byte.class, PROPERTY_FOO_3, serializeTo, formatVersion );
-    serialize( object.getFoo4(), Long.class, PROPERTY_FOO_4, serializeTo, formatVersion );
-    serialize( object.getFoo5(), Double.class, PROPERTY_FOO_5, serializeTo, formatVersion );
-    serialize( object.getFoo6(), Float.class, PROPERTY_FOO_6, serializeTo, formatVersion );
-    serialize( object.getFoo7(), Character.class, PROPERTY_FOO_7, serializeTo, formatVersion );
-    serialize( object.isFoo8(), Boolean.class, PROPERTY_FOO_8, serializeTo, formatVersion );
-    serialize( object.getFoo9(), String.class, PROPERTY_FOO_9, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo1(), Integer.class, PROPERTY_FOO_1, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo2(), Short.class, PROPERTY_FOO_2, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo3(), Byte.class, PROPERTY_FOO_3, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo4(), Long.class, PROPERTY_FOO_4, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo5(), Double.class, PROPERTY_FOO_5, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo6(), Float.class, PROPERTY_FOO_6, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo7(), Character.class, PROPERTY_FOO_7, serializeTo, formatVersion );
+    serialize(objectToSerialize.isFoo8(), Boolean.class, PROPERTY_FOO_8, serializeTo, formatVersion );
+    serialize(objectToSerialize.getFoo9(), String.class, PROPERTY_FOO_9, serializeTo, formatVersion );
   }
 
   @Override

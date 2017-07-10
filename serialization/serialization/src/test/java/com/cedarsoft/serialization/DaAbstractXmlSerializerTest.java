@@ -88,8 +88,8 @@ public class DaAbstractXmlSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull StringBuffer serializeTo, @Nonnull String object, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
-      serializeTo.append( object );
+    public void serialize(@Nonnull StringBuffer serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
+      serializeTo.append(objectToSerialize);
     }
 
     @Nonnull
@@ -99,13 +99,13 @@ public class DaAbstractXmlSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull String object, @Nonnull OutputStream out ) throws IOException {
-      out.write( object.getBytes(StandardCharsets.UTF_8) );
+    public void serialize(@Nonnull String objectToSerialize, @Nonnull OutputStream out ) throws IOException {
+      out.write(objectToSerialize.getBytes(StandardCharsets.UTF_8) );
     }
 
     @Nonnull
     @Override
-    public String deserialize( @Nonnull InputStream in ) throws IOException, VersionException {
+    public String deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
       throw new UnsupportedOperationException();
     }
   }

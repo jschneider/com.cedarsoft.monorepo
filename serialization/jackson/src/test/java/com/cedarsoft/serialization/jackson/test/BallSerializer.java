@@ -72,9 +72,9 @@ public class BallSerializer extends AbstractDelegatingJacksonSerializer<Ball> {
     }
 
     @Override
-    public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Ball.TennisBall object, @Nonnull Version formatVersion ) throws IOException {
+    public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Ball.TennisBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
       verifyVersionReadable( formatVersion );
-      serializeTo.writeNumberField( "id", object.getId() );
+      serializeTo.writeNumberField("id", objectToSerialize.getId() );
     }
 
     @Nonnull
@@ -106,9 +106,9 @@ public class BallSerializer extends AbstractDelegatingJacksonSerializer<Ball> {
     }
 
     @Override
-    public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Ball.BasketBall object, @Nonnull Version formatVersion ) throws IOException {
+    public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Ball.BasketBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
       verifyVersionReadable( formatVersion );
-      serializeTo.writeStringField( "theId", String.valueOf( object.getTheId() ) );
+      serializeTo.writeStringField( "theId", String.valueOf(objectToSerialize.getTheId() ) );
     }
 
     @Nonnull

@@ -52,9 +52,9 @@ public class VersionSerializer extends AbstractStaxMateSerializer<Version> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Version object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Version objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
-    serializeTo.addCharacters( object.toString() );
+    serializeTo.addCharacters(objectToSerialize.toString() );
   }
 
   @Override

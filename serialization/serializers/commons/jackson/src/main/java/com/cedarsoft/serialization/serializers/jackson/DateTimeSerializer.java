@@ -57,8 +57,8 @@ public class DateTimeSerializer extends AbstractJacksonSerializer<DateTime> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull DateTime object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeString( createFormatter().print( object ) );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull DateTime objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeString( createFormatter().print(objectToSerialize) );
   }
 
   @Nonnull

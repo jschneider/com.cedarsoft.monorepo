@@ -58,10 +58,10 @@ public class DateTimeZoneSerializer extends AbstractJacksonSerializer<DateTimeZo
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull DateTimeZone object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull DateTimeZone objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionWritable( formatVersion );
 
-    serializeTo.writeString( object.getID() );
+    serializeTo.writeString(objectToSerialize.getID() );
   }
 
   @Nonnull

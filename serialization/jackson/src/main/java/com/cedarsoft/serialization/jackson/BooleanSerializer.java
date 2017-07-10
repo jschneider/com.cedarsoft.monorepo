@@ -51,8 +51,8 @@ public class BooleanSerializer extends AbstractJacksonSerializer<Boolean> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Boolean object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeBoolean( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Boolean objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeBoolean(objectToSerialize);
   }
 
   @Nonnull

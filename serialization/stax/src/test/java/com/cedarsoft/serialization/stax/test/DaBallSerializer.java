@@ -57,10 +57,10 @@ public class DaBallSerializer extends AbstractStaxSerializer<DaBall> {
   }
 
   @Override
-  public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeAttribute( "id", String.valueOf( object.getId() ) );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.writeAttribute( "id", String.valueOf(objectToSerialize.getId() ) );
 
-    serializeCollection( object.getElements(), DaBall.Element.class, "daElement", serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getElements(), DaBall.Element.class, "daElement", serializeTo, formatVersion );
   }
 
   @Nonnull
@@ -78,13 +78,13 @@ public class DaBallSerializer extends AbstractStaxSerializer<DaBall> {
     }
 
     @Override
-    public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall.Element object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall.Element objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
       serializeTo.writeStartElement( "name1" );
-      serializeTo.writeCharacters( object.getName() );
+      serializeTo.writeCharacters(objectToSerialize.getName() );
       serializeTo.writeEndElement();
 
       serializeTo.writeStartElement( "name2" );
-      serializeTo.writeCharacters( object.getName() );
+      serializeTo.writeCharacters(objectToSerialize.getName() );
       serializeTo.writeEndElement();
     }
 
