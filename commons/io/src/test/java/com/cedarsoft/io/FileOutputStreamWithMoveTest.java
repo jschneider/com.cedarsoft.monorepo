@@ -78,11 +78,11 @@ public class FileOutputStreamWithMoveTest {
 
     assertThat(targetOut).exists();
     //old content
-    assertThat(Files.toString(targetOut, StandardCharsets.UTF_8)).isEqualTo("daContent");
+    assertThat(Files.asCharSource(targetOut, StandardCharsets.UTF_8).read()).isEqualTo("daContent");
 
     out.close();
 
     assertThat(targetOut).exists();
-    assertThat(Files.toString(targetOut, StandardCharsets.UTF_8)).isEqualTo("asdf");
+    assertThat(Files.asCharSource(targetOut, StandardCharsets.UTF_8).read()).isEqualTo("asdf");
   }
 }
