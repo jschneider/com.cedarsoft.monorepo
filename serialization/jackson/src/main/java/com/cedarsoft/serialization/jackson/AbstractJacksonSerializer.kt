@@ -300,7 +300,7 @@ protected constructor(
   /**
    * Has a strange order of parameters. Do not use anymore
    */
-  @Deprecated("")
+  @Deprecated("wrong order of parameters", replaceWith = ReplaceWith("deserializeArray(type, propertyName, formatVersion, deserializeFrom)"))
   @Throws(IOException::class)
   protected fun <A> deserializeArray(type: Class<A>, propertyName: String?, deserializeFrom: JsonParser, formatVersion: Version): List<A> {
     return deserializeArray(type, propertyName, formatVersion, deserializeFrom)
