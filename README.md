@@ -22,6 +22,22 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.3.0 (2017-07-10)
+### Features
+* Upgrade to JUnit 5
+  * Convert rules to extensions
+  * add Temporary Folder extension
+* Kotlin
+  * Add Kotlin Maven plugin
+  * Convert a lot of classes to Kotlin
+  * Some Guava extension methods
+* Java Compiler: add parameter names
+
+### Tasks
+* Update Travic CI configuration to use latest JDK 8
+* Update license headers
+* Update version numbers for third party dependencies
+
 ## 8.2.1 (2017-06-10)
 ### Features
 * Dependencies
