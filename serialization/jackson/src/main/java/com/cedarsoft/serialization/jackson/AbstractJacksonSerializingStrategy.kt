@@ -45,7 +45,7 @@ protected constructor(
   val supportedType: Class<out T>,
   formatVersionRange: VersionRange) : AbstractJacksonSerializer<T>(type, formatVersionRange), JacksonSerializingStrategy<T> {
 
-  override fun supports(`object`: Any): Boolean {
-    return supportedType.isAssignableFrom(`object`.javaClass)
+  override fun supports(objectToSerialize: Any): Boolean {
+    return supportedType.isAssignableFrom(objectToSerialize.javaClass)
   }
 }

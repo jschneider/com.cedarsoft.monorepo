@@ -54,14 +54,14 @@ protected constructor(formatVersionRange: VersionRange) : AbstractSerializer<T, 
 
   /**
    * Helper method that serializes to a byte array
-   * @param object the object
+   * @param objectToSerialize the object
    * @return the serialized object
    * @throws IOException if there is an io problem
    */
   @Throws(IOException::class)
-  fun serializeToByteArray(`object`: T): ByteArray {
+  fun serializeToByteArray(objectToSerialize: T): ByteArray {
     val out = ByteArrayOutputStream()
-    serialize(`object`, out)
+    serialize(objectToSerialize, out)
     return out.toByteArray()
   }
 }

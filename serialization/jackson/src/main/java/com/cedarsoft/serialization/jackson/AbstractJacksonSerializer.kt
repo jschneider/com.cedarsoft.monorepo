@@ -113,7 +113,7 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  protected fun beforeTypeAndVersion(`object`: T, serializeTo: JsonGenerator) {
+  protected fun beforeTypeAndVersion(objectToSerialize: T, serializeTo: JsonGenerator) {
   }
 
   @Throws(IOException::class, VersionException::class)
@@ -127,9 +127,9 @@ protected constructor(
   }
 
   @Throws(IOException::class, VersionException::class)
-  fun deserialize(`in`: InputStream, version: Version?): T {
+  fun deserialize(deserializeFrom: InputStream, version: Version?): T {
     val jsonFactory = JacksonSupport.getJsonFactory()
-    val parser = createJsonParser(jsonFactory, `in`)
+    val parser = createJsonParser(jsonFactory, deserializeFrom)
 
     val deserialized = deserializeInternal(parser, version)
 
@@ -153,8 +153,8 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
-  protected fun createJsonParser(jsonFactory: JsonFactory, `in`: InputStream): JsonParser {
-    return jsonFactory.createParser(`in`)
+  protected fun createJsonParser(jsonFactory: JsonFactory, deserializeFrom: InputStream): JsonParser {
+    return jsonFactory.createParser(deserializeFrom)
   }
 
   /**
@@ -311,23 +311,23 @@ protected constructor(
    * If the object is null nothing will be written.
    */
   @Throws(JsonProcessingException::class, IOException::class)
-  fun <A> serializeIfNotNull(`object`: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
-    if (`object` == null) {
+  fun <A> serializeIfNotNull(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+    if (objectToSerialize == null) {
       return
     }
 
-    serialize(`object`, type, propertyName, serializeTo, formatVersion)
+    serialize(objectToSerialize, type, propertyName, serializeTo, formatVersion)
   }
 
   /**
    * Serializes the object. Writes "null" if the object is null
    */
   @Throws(JsonProcessingException::class, IOException::class)
-  fun <A> serialize(`object`: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+  fun <A> serialize(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
     serializeTo.writeFieldName(propertyName)
 
     //Fast exit if the value is null
-    if (`object` == null) {
+    if (objectToSerialize == null) {
       serializeTo.writeNull()
       return
     }
@@ -338,7 +338,7 @@ protected constructor(
       serializeTo.writeStartObject()
     }
 
-    serializer.serialize(serializeTo, `object`, delegateVersion)
+    serializer.serialize(serializeTo, objectToSerialize, delegateVersion)
 
     if (serializer.isObjectType) {
       serializeTo.writeEndObject()

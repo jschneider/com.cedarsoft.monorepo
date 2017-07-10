@@ -51,8 +51,8 @@ interface SerializingStrategy<T, S, D, E : Throwable, O, I> : PluggableSerialize
   /**
    * Whether the given reference type is supported.
    * This method is called to identify the strategy that is used to serialize the object.
-   * @param object the reference
+   * @param objectToSerialize the reference
    * @return true if this strategy supports the reference, false otherwise
    */
-  fun supports(`object`: Any): Boolean
+  fun supports(objectToSerialize: Any): Boolean
 }
