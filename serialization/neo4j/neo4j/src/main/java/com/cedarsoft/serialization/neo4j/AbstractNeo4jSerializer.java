@@ -81,13 +81,13 @@ public abstract class AbstractNeo4jSerializer<T> extends AbstractSerializer<T, N
   }
 
   @Override
-  public final void serialize( @Nonnull Node serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws VersionException, IOException {
+  public final void serialize(@Nonnull Node serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws VersionException, IOException {
     verifyVersionWritable( formatVersion );
 
     serializeTo.addLabel(getTypeLabel());
     addVersion( serializeTo );
 
-    serializeInternal( serializeTo, object, formatVersion );
+    serializeInternal(serializeTo, objectToSerialize, formatVersion );
   }
 
   /**

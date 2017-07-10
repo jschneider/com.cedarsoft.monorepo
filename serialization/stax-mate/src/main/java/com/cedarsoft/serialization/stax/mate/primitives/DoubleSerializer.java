@@ -52,8 +52,8 @@ public class DoubleSerializer extends AbstractStaxMateSerializer<Double> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Double object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.addCharacters( String.valueOf( object ) );
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Double objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.addCharacters( String.valueOf(objectToSerialize) );
   }
 
   @Nonnull

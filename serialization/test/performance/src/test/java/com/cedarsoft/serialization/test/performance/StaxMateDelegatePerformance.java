@@ -156,12 +156,12 @@ public class StaxMateDelegatePerformance {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull FileType object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-      serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf( object.isDependent() ) );
-      serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters( object.getId() );
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull FileType objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+      serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf(objectToSerialize.isDependent() ) );
+      serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters(objectToSerialize.getId() );
 
       SMOutputElement extensionElement = serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_EXTENSION );
-      serialize( object.getExtension(), Extension.class, extensionElement, formatVersion );
+      serialize(objectToSerialize.getExtension(), Extension.class, extensionElement, formatVersion );
     }
 
     @Nonnull
@@ -204,12 +204,12 @@ public class StaxMateDelegatePerformance {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull FileType object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-      serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf( object.isDependent() ) );
-      serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters( object.getId() );
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull FileType objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+      serializeTo.addAttribute( ATTRIBUTE_DEPENDENT, String.valueOf(objectToSerialize.isDependent() ) );
+      serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_ID ).addCharacters(objectToSerialize.getId() );
 
       SMOutputElement extensionElement = serializeTo.addElement( serializeTo.getNamespace(), ELEMENT_EXTENSION );
-      extensionSerializer.serialize( extensionElement, object.getExtension(), EXTENSION_FORMAT_VERSION );
+      extensionSerializer.serialize(extensionElement, objectToSerialize.getExtension(), EXTENSION_FORMAT_VERSION );
     }
 
     @Nonnull
@@ -242,11 +242,11 @@ public class StaxMateDelegatePerformance {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Extension object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Extension objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addAttribute( ATTRIBUTE_DEFAULT, String.valueOf( object.isDefault() ) );
-      serializeTo.addAttribute( ATTRIBUTE_DELIMITER, object.getDelimiter() );
-      serializeTo.addCharacters( object.getExtension() );
+      serializeTo.addAttribute( ATTRIBUTE_DEFAULT, String.valueOf(objectToSerialize.isDefault() ) );
+      serializeTo.addAttribute(ATTRIBUTE_DELIMITER, objectToSerialize.getDelimiter() );
+      serializeTo.addCharacters(objectToSerialize.getExtension() );
     }
 
     @Nonnull

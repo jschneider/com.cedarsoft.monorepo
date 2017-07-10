@@ -94,9 +94,9 @@ public class NullSerializerTest {
     }
 
     @Override
-    public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull MyObject object, @Nonnull Version formatVersion) throws IOException, VersionException, SerializationException, JsonProcessingException {
-      serializeIfNotNull(object.getNumber(), Double.class, NUMBER, serializeTo, formatVersion);
-      serialize(object.getValue(), String.class, VALUE, serializeTo, formatVersion);
+    public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull MyObject objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, SerializationException, JsonProcessingException {
+      serializeIfNotNull(objectToSerialize.getNumber(), Double.class, NUMBER, serializeTo, formatVersion);
+      serialize(objectToSerialize.getValue(), String.class, VALUE, serializeTo, formatVersion);
     }
 
     @Nonnull

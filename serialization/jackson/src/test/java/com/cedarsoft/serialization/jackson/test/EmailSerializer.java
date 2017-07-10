@@ -53,8 +53,8 @@ public class EmailSerializer extends AbstractJacksonSerializer<Email> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Email object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeString( object.getMail() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Email objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeString(objectToSerialize.getMail() );
   }
 
   @Nonnull

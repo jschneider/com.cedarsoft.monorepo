@@ -62,9 +62,9 @@ public class CollectionSerializer<T> extends AbstractJacksonSerializer<List<? ex
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends T> object, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeArray(object, listType, getType(), serializeTo, formatVersion);
+    serializeArray(objectToSerialize, listType, getType(), serializeTo, formatVersion);
   }
 
   @Nonnull

@@ -52,8 +52,8 @@ public class NumberSerializer extends AbstractStaxMateSerializer<Number> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Number object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.addCharacters( String.valueOf( object ) );
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Number objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.addCharacters( String.valueOf(objectToSerialize) );
   }
 
   @Nonnull

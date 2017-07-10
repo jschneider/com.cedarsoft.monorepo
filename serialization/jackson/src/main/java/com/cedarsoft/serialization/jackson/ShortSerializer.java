@@ -51,8 +51,8 @@ public class ShortSerializer extends AbstractJacksonSerializer<Short> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Short object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumber( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Short objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull

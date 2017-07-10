@@ -101,12 +101,12 @@ public class Window {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Window object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Window objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addAttribute( "width", String.valueOf( object.getWidth() ) );
-      serializeTo.addAttribute( "height", String.valueOf( object.getHeight() ) );
+      serializeTo.addAttribute( "width", String.valueOf(objectToSerialize.getWidth() ) );
+      serializeTo.addAttribute( "height", String.valueOf(objectToSerialize.getHeight() ) );
 
-      serializeTo.addElementWithCharacters( serializeTo.getNamespace(), "description", object.getDescription() );
+      serializeTo.addElementWithCharacters(serializeTo.getNamespace(), "description", objectToSerialize.getDescription() );
     }
 
     @Nonnull

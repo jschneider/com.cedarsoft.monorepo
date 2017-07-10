@@ -52,9 +52,9 @@ public class UrlSerializer extends AbstractJacksonSerializer<URL> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull URL object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull URL objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionWritable( formatVersion );
-    serializeTo.writeString( object.toString() );
+    serializeTo.writeString(objectToSerialize.toString() );
   }
 
   @Nonnull

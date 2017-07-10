@@ -56,9 +56,9 @@ public class DateTimeSerializer extends AbstractStaxMateSerializer<DateTime> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull DateTime object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull DateTime objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
-    serializeTo.addCharacters( createFormatter().print( object ) );
+    serializeTo.addCharacters( createFormatter().print(objectToSerialize) );
   }
 
   @Nonnull

@@ -306,7 +306,7 @@ public class VersionMappingTest {
     }
 
     @Override
-    public void serialize( @Nonnull Object serializeTo, @Nonnull Object object, @Nonnull Version formatVersion ) throws IOException, IOException {
+    public void serialize(@Nonnull Object serializeTo, @Nonnull Object objectToSerialize, @Nonnull Version formatVersion ) throws IOException, IOException {
       assert isVersionWritable( formatVersion );
     }
 

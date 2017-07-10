@@ -67,10 +67,10 @@ public class ColorSerializer extends AbstractJacksonSerializer<Color> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Color object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumberField( PROPERTY_RED, object.getRed() );
-    serializeTo.writeNumberField( PROPERTY_GREEN, object.getGreen() );
-    serializeTo.writeNumberField( PROPERTY_BLUE, object.getBlue() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Color objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumberField(PROPERTY_RED, objectToSerialize.getRed() );
+    serializeTo.writeNumberField(PROPERTY_GREEN, objectToSerialize.getGreen() );
+    serializeTo.writeNumberField(PROPERTY_BLUE, objectToSerialize.getBlue() );
   }
 
   @Nonnull

@@ -51,8 +51,8 @@ public class ByteSerializer extends AbstractJacksonSerializer<Byte> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Byte object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumber( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Byte objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull

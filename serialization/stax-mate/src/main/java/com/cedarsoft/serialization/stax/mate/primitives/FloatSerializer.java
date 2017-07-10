@@ -52,8 +52,8 @@ public class FloatSerializer extends AbstractStaxMateSerializer<Float> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Float object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.addCharacters( String.valueOf( object ) );
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Float objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.addCharacters( String.valueOf(objectToSerialize) );
   }
 
   @Nonnull

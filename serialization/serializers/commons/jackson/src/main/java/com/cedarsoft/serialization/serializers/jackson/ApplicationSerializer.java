@@ -65,12 +65,12 @@ public class ApplicationSerializer extends AbstractJacksonSerializer<Application
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull ApplicationInformation object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull ApplicationInformation objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
     //name
-    serializeTo.writeStringField( PROPERTY_NAME, object.getName() );
+    serializeTo.writeStringField(PROPERTY_NAME, objectToSerialize.getName() );
     //version
-    serialize( object.getVersion(), Version.class, PROPERTY_VERSION, serializeTo, formatVersion );
+    serialize(objectToSerialize.getVersion(), Version.class, PROPERTY_VERSION, serializeTo, formatVersion );
   }
 
   @Nonnull

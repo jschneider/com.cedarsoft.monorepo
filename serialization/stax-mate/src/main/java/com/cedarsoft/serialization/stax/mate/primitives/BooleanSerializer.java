@@ -52,8 +52,8 @@ public class BooleanSerializer extends AbstractStaxMateSerializer<Boolean> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Boolean object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.addCharacters( String.valueOf( object ) );
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Boolean objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.addCharacters( String.valueOf(objectToSerialize) );
   }
 
   @Nonnull

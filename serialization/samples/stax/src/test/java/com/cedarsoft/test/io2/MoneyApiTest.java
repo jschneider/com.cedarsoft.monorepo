@@ -87,10 +87,10 @@ public class MoneyApiTest extends AbstractXmlSerializerTest<MoneyApiTest.MyObjec
     }
 
     @Override
-    public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull MyObject object, Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull MyObject objectToSerialize, Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
       serializeTo.writeStartElement( "money" );
-      serialize( object.getMoney(), Money.class, serializeTo, formatVersion );
+      serialize(objectToSerialize.getMoney(), Money.class, serializeTo, formatVersion );
       serializeTo.writeEndElement();
     }
 

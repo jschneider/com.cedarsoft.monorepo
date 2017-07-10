@@ -72,15 +72,15 @@ public abstract class AbstractDelegatingStaxMateSerializer<T> extends AbstractSt
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws IOException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
     assert isVersionWritable( formatVersion );
 
     try {
-      SerializingStrategy<T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream> strategy = serializingStrategySupport.findStrategy( object );
+      SerializingStrategy<T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream> strategy = serializingStrategySupport.findStrategy(objectToSerialize);
       Version resolvedVersion = serializingStrategySupport.resolveVersion( strategy, formatVersion );
       serializeTo.addAttribute( ATTRIBUTE_TYPE, strategy.getId() );
 
-      strategy.serialize( serializeTo, object, resolvedVersion );
+      strategy.serialize(serializeTo, objectToSerialize, resolvedVersion );
     } catch ( XMLStreamException e ) {
       throw new SerializationException( e, e.getLocation(), SerializationException.Details.XML_EXCEPTION, e.getMessage() );
     }

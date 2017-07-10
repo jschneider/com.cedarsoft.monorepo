@@ -61,15 +61,15 @@ public class ColorSerializer extends AbstractStaxMateSerializer<Color> {
   }
 
   @Override
-  public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Color object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Color objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
     assert isVersionWritable( formatVersion );
 
     //red
-    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_RED, String.valueOf( object.getRed() ) );
+    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_RED, String.valueOf(objectToSerialize.getRed() ) );
     //green
-    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_GREEN, String.valueOf( object.getGreen() ) );
+    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_GREEN, String.valueOf(objectToSerialize.getGreen() ) );
     //blue
-    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_BLUE, String.valueOf( object.getBlue() ) );
+    serializeTo.addElementWithCharacters( serializeTo.getNamespace(), ELEMENT_BLUE, String.valueOf(objectToSerialize.getBlue() ) );
   }
 
   @Nonnull

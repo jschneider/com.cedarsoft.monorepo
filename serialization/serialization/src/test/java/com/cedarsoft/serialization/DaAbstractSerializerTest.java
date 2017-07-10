@@ -143,8 +143,8 @@ public class DaAbstractSerializerTest {
     }
 
     @Override
-    public void serialize( @Nonnull StringBuffer serializeTo, @Nonnull String object, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
-      serializeTo.append( object );
+    public void serialize(@Nonnull StringBuffer serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
+      serializeTo.append(objectToSerialize);
     }
 
     @Nonnull

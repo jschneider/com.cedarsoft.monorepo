@@ -66,7 +66,7 @@ interface JacksonSerializer<T> : PluggableSerializer<T, JsonGenerator, JsonParse
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, JsonProcessingException::class)
-  fun serialize(`object`: T, generator: JsonGenerator)
+  fun serialize(objectToSerialize: T, generator: JsonGenerator)
 
   /**
    * Deserializes the object from the given parser.

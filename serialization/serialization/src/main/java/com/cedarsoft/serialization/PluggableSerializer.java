@@ -54,13 +54,13 @@ public interface PluggableSerializer<T, S, D, E extends Throwable, O, I> extends
    * throws com.cedarsoft.version.VersionException if the version does not match
    *
    * @param serializeTo   the serializeTo
-   * @param object        the object
+   * @param objectToSerialize  the object to serialize
    * @param formatVersion the format version
    *
    * @throws E if serialization failed
    * @throws java.io.IOException if there is an io problem
    */
-  void serialize( @Nonnull S serializeTo, @Nonnull T object, @Nonnull Version formatVersion ) throws IOException, VersionException, SerializationException, E;
+  void serialize(@Nonnull S serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, SerializationException, E;
 
   /**
    * Deserializes the object from the given document

@@ -64,10 +64,10 @@ public class UserDetailsSerializer extends AbstractJacksonSerializer<UserDetails
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull UserDetails object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumberField( PROPERTY_REGISTRATION_DATE, object.getRegistrationDate() );
-    serializeTo.writeNumberField( PROPERTY_LAST_LOGIN, object.getLastLogin() );
-    serializeTo.writeStringField( PROPERTY_PASSWORD_HASH, new String( Hex.encodeHex( object.getPasswordHash() ) ) );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull UserDetails objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumberField(PROPERTY_REGISTRATION_DATE, objectToSerialize.getRegistrationDate() );
+    serializeTo.writeNumberField(PROPERTY_LAST_LOGIN, objectToSerialize.getLastLogin() );
+    serializeTo.writeStringField( PROPERTY_PASSWORD_HASH, new String( Hex.encodeHex(objectToSerialize.getPasswordHash() ) ) );
   }
 
   @Nonnull

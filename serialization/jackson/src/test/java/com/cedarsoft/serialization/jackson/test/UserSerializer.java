@@ -72,16 +72,16 @@ public class UserSerializer extends AbstractJacksonSerializer<User> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull User object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull User objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     verifyVersionWritable( formatVersion );
 
-    serializeTo.writeStringField( PROPERTY_NAME, object.getName() );
+    serializeTo.writeStringField(PROPERTY_NAME, objectToSerialize.getName() );
 
-    serializeArray( object.getEmails(), Email.class, PROPERTY_EMAILS, serializeTo, formatVersion );
-    serializeArray( object.getRoles(), Role.class, PROPERTY_ROLES, serializeTo, formatVersion );
+    serializeArray(objectToSerialize.getEmails(), Email.class, PROPERTY_EMAILS, serializeTo, formatVersion );
+    serializeArray(objectToSerialize.getRoles(), Role.class, PROPERTY_ROLES, serializeTo, formatVersion );
 
-    serialize( object.getUserDetails(), UserDetails.class, PROPERTY_USER_DETAILS, serializeTo, formatVersion );
-    serialize( object.getSingleEmail(), Email.class, PROPERTY_SINGLE_EMAIL, serializeTo, formatVersion );
+    serialize(objectToSerialize.getUserDetails(), UserDetails.class, PROPERTY_USER_DETAILS, serializeTo, formatVersion );
+    serialize(objectToSerialize.getSingleEmail(), Email.class, PROPERTY_SINGLE_EMAIL, serializeTo, formatVersion );
   }
 
   @Nonnull

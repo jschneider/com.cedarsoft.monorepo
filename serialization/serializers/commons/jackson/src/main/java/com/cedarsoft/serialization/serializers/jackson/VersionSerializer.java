@@ -50,9 +50,9 @@ public class VersionSerializer extends AbstractJacksonSerializer<Version> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Version object, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Version objectToSerialize, @Nonnull Version formatVersion ) throws IOException, JsonProcessingException {
     verifyVersionReadable( formatVersion );
-    serializeTo.writeString( object.format() );
+    serializeTo.writeString(objectToSerialize.format() );
   }
 
   @Override

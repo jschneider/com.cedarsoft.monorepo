@@ -64,10 +64,10 @@ public class CollectionSerializer<T> extends AbstractStaxMateSerializer<List<? e
   }
 
   @Override
-  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull List<? extends T> object, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
     verifyVersionWritable(formatVersion);
 
-    serializeCollection(object, type, serializeTo, formatVersion);
+    serializeCollection(objectToSerialize, type, serializeTo, formatVersion);
   }
 
   @Nonnull

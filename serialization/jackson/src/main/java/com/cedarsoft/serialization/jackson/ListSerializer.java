@@ -56,11 +56,11 @@ public class ListSerializer extends AbstractJacksonSerializer<List<? extends Obj
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull List<? extends Object> object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends Object> objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     serializeTo.writeStartArray();
 
-    for ( int i = 0; i < object.size(); i++ ) {
-      Object current = object.get( i );
+    for (int i = 0; i < objectToSerialize.size(); i++ ) {
+      Object current = objectToSerialize.get(i );
       serializeElement( serializeTo, current, i );
     }
 

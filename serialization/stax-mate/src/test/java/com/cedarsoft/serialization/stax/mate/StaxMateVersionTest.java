@@ -101,8 +101,8 @@ public class StaxMateVersionTest {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-      serializeTo.addCharacters( object.toString() );
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+      serializeTo.addCharacters(objectToSerialize.toString() );
     }
 
     @Nonnull
@@ -127,8 +127,8 @@ public class StaxMateVersionTest {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-      serializeTo.addCharacters( object.toString() );
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+      serializeTo.addCharacters(objectToSerialize.toString() );
     }
 
     @Nonnull
@@ -145,9 +145,9 @@ public class StaxMateVersionTest {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Integer object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addAttribute( "value", object.toString() );
+      serializeTo.addAttribute("value", objectToSerialize.toString() );
     }
 
     @Nonnull

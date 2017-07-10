@@ -57,13 +57,13 @@ public class UserSerializer extends AbstractStaxSerializer<User> {
   }
 
   @Override
-  public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull User object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull User objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
     serializeTo.writeStartElement( "name" );
-    serializeTo.writeCharacters( object.getName() );
+    serializeTo.writeCharacters(objectToSerialize.getName() );
     serializeTo.writeEndElement();
 
-    serializeCollection( object.getEmails(), Email.class, serializeTo, formatVersion );
-    serializeCollection( object.getRoles(), Role.class, serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getEmails(), Email.class, serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getRoles(), Role.class, serializeTo, formatVersion );
   }
 
   @Nonnull

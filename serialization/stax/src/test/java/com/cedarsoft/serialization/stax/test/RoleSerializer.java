@@ -54,9 +54,9 @@ public class RoleSerializer extends AbstractStaxSerializer<Role> {
   }
 
   @Override
-  public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull Role object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeAttribute( "id", String.valueOf( object.getId() ) );
-    serializeTo.writeCharacters( object.getDescription() );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Role objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.writeAttribute( "id", String.valueOf(objectToSerialize.getId() ) );
+    serializeTo.writeCharacters(objectToSerialize.getDescription() );
   }
 
   @Nonnull

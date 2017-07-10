@@ -132,12 +132,12 @@ public class Room {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Room object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Room objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       assert isVersionWritable( formatVersion );
-      serializeTo.addElementWithCharacters( serializeTo.getNamespace(), "description", object.getDescription() );
+      serializeTo.addElementWithCharacters(serializeTo.getNamespace(), "description", objectToSerialize.getDescription() );
 
-      serializeCollection( object.getWindows(), Window.class, "window", serializeTo, formatVersion );
-      serializeCollection( object.getDoors(), Door.class, "door", serializeTo, formatVersion );
+      serializeCollection(objectToSerialize.getWindows(), Window.class, "window", serializeTo, formatVersion );
+      serializeCollection(objectToSerialize.getDoors(), Door.class, "door", serializeTo, formatVersion );
     }
 
     @Nonnull

@@ -84,22 +84,22 @@ protected constructor(
    * The serializer is responsible for writing start/close object/array brackets if necessary.
    * This method also writes the @type property.
 
-   * @param object    the object that is serialized
+   * @param objectToSerialize    the object that is serialized
    * *
    * @param generator the serialize to object
    * *
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
-  override fun serialize(`object`: T, generator: JsonGenerator) {
+  override fun serialize(objectToSerialize: T, generator: JsonGenerator) {
     if (isObjectType) {
       generator.writeStartObject()
 
-      beforeTypeAndVersion(`object`, generator)
+      beforeTypeAndVersion(objectToSerialize, generator)
       writeTypeAndVersion(generator)
     }
 
-    serialize(generator, `object`, formatVersion)
+    serialize(generator, objectToSerialize, formatVersion)
 
     if (isObjectType) {
       generator.writeEndObject()

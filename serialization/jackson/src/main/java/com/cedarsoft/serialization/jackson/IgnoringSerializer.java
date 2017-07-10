@@ -57,7 +57,7 @@ public class IgnoringSerializer extends AbstractJacksonSerializer<Void> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Void object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Void objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     throw new UnsupportedOperationException();
   }
 

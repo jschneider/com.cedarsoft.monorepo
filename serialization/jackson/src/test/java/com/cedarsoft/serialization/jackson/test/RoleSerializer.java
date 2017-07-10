@@ -59,9 +59,9 @@ public class RoleSerializer extends AbstractJacksonSerializer<Role> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Role object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumberField( PROPERTY_ID, object.getId() );
-    serializeTo.writeStringField( PROPERTY_DESCRIPTION, object.getDescription() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Role objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumberField(PROPERTY_ID, objectToSerialize.getId() );
+    serializeTo.writeStringField(PROPERTY_DESCRIPTION, objectToSerialize.getDescription() );
   }
 
   @Nonnull

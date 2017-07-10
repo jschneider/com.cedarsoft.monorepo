@@ -54,8 +54,8 @@ public class EmailSerializer extends AbstractStaxSerializer<Email> {
   }
 
   @Override
-  public void serialize( @Nonnull XMLStreamWriter serializeTo, @Nonnull Email object, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeCharacters( object.getMail() );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Email objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
+    serializeTo.writeCharacters(objectToSerialize.getMail() );
   }
 
   @Nonnull

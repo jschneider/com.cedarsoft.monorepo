@@ -58,9 +58,9 @@ public class LocalTimeSerializer extends AbstractJacksonSerializer<LocalTime> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull LocalTime object, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull LocalTime objectToSerialize, @Nonnull Version formatVersion) throws IOException, JsonProcessingException {
     verifyVersionWritable(formatVersion);
-    serializeTo.writeString(object.toString());
+    serializeTo.writeString(objectToSerialize.toString());
   }
 
   @Nonnull

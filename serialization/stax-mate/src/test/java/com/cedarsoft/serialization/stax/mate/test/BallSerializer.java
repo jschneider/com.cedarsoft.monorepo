@@ -72,9 +72,9 @@ public class BallSerializer extends AbstractDelegatingStaxMateSerializer<Ball> {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Ball.TennisBall object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Ball.TennisBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       verifyVersionReadable( formatVersion );
-      serializeTo.addAttribute( "id", String.valueOf( object.getId() ) );
+      serializeTo.addAttribute( "id", String.valueOf(objectToSerialize.getId() ) );
     }
 
     @Nonnull
@@ -103,9 +103,9 @@ public class BallSerializer extends AbstractDelegatingStaxMateSerializer<Ball> {
     }
 
     @Override
-    public void serialize( @Nonnull SMOutputElement serializeTo, @Nonnull Ball.BasketBall object, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
+    public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull Ball.BasketBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
       verifyVersionReadable( formatVersion );
-      serializeTo.addAttribute( "theId", String.valueOf( object.getTheId() ) );
+      serializeTo.addAttribute( "theId", String.valueOf(objectToSerialize.getTheId() ) );
     }
 
     @Nonnull

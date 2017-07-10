@@ -61,7 +61,7 @@ public class NullSerializer extends AbstractJacksonSerializer<Void> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nullable Void object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nullable Void objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
     serializeTo.writeNull();
   }
 

@@ -51,8 +51,8 @@ public class DoubleSerializer extends AbstractJacksonSerializer<Double> {
   }
 
   @Override
-  public void serialize( @Nonnull JsonGenerator serializeTo, @Nonnull Double object, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumber( object );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Double objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+    serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull
