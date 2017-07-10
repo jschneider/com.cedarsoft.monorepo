@@ -56,3 +56,9 @@ constructor(private val file: File) : FilterOutputStream(null) {
   }
 }
 
+/**
+ * Creates a new file input stream that first writes to a tmp file and moves the file on close
+ */
+inline fun File.outputStreamWithMove(): FileOutputStreamWithMove {
+  return FileOutputStreamWithMove(this)
+}
