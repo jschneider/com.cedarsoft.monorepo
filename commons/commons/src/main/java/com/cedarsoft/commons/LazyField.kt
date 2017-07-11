@@ -30,46 +30,26 @@
  */
 package com.cedarsoft.commons
 
-import java.util.concurrent.locks.ReadWriteLock
-import java.util.concurrent.locks.ReentrantReadWriteLock
-import javax.annotation.concurrent.GuardedBy
-import kotlin.concurrent.withLock
-
 /**
  * Represents a field that is instantiated on first access
 
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-class LazyField<T>
-@JvmOverloads constructor(
-  private val instanceFactory: InstanceFactory<T>,
-  val lock: ReadWriteLock = ReentrantReadWriteLock()) {
+class LazyField<out T>
+constructor(private val instanceFactory: InstanceFactory<T>) {
 
-  @GuardedBy("lock")
-  private var instance: T? = null
-
-  fun getInstance(): T {
-    lock.readLock().withLock {
-      if (instance != null) {
-        return instance as T
-      }
-    }
-
-    lock.writeLock().withLock {
-      if (instance != null) {
-        return instance as T
-      }
-
-      instance = instanceFactory.create()
-      return instance as T
-    }
+  val lazyInstance = lazy {
+    instanceFactory.create()
   }
+
+  val instance: T by lazyInstance
 
   val instanceNullable: T?
     get() {
-      lock.readLock().withLock {
+      if (lazyInstance.isInitialized()) {
         return instance
       }
+      return null
     }
 
   interface InstanceFactory<T> {
