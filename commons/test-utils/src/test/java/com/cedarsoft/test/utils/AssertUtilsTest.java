@@ -81,7 +81,7 @@ public class AssertUtilsTest {
     try {
       JsonUtils.assertJsonEquals("{\"id\":\"asdfasdf\",   \"unformated\":true}", "{\"id\":\"asdfasdf\",   \"unformated\":false}");
       fail("Where is the Exception");
-    } catch (AssertionFailedError e) {
+    } catch (ComparisonFailure e) {
       Assertions.assertThat(e.getMessage()).contains("JSON comparison failed");
     }
   }
@@ -91,13 +91,13 @@ public class AssertUtilsTest {
     try {
       JsonUtils.assertJsonEquals( ( String ) null, null );
       fail( "Where is the Exception" );
-    } catch ( AssertionFailedError e ) {
+    } catch ( ComparisonFailure e ) {
       Assertions.assertThat(e.getMessage()).contains("Empty test json");
     }
     try {
       JsonUtils.assertJsonEquals( "affase", "asdf" );
       fail( "Where is the Exception" );
-    } catch ( AssertionFailedError e ) {
+    } catch ( ComparisonFailure e ) {
       Assertions.assertThat(e.getMessage()).contains("JSON parsing error");
     }
   }
