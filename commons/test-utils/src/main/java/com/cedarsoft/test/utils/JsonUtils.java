@@ -36,17 +36,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
-import java.nio.charset.Charset;
+import org.junit.*;
+import org.xml.sax.SAXException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.junit.*;
-import org.opentest4j.AssertionFailedError;
-import org.xml.sax.SAXException;
-
 import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URL;
+import java.nio.charset.Charset;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -59,16 +57,16 @@ public class JsonUtils {
     assertJsonEquals(control, test, Charsets.UTF_8);
   }
   
-  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test , @Nonnull Charset charset) throws SAXException, IOException {
+  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test , @Nonnull Charset charset) throws IOException {
     assertJsonEquals( AssertUtils.toString( control, charset), test );
   }
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
     if ( test == null || test.trim().isEmpty() ) {
-      throw new AssertionFailedError( "Empty test json", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new ComparisonFailure("Empty test json", formatJson(control).trim(), formatJson(test).trim());
     }
     if ( control == null || control.trim().isEmpty() ) {
-      throw new AssertionFailedError( "Empty control json", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new ComparisonFailure("Empty control json", formatJson(control).trim(), formatJson(test).trim());
     }
 
     try {
@@ -77,15 +75,15 @@ public class JsonUtils {
       JsonNode controlTree = mapper.readTree( control );
 
       if ( !controlTree.equals( testTree ) ) {
-        throw new AssertionFailedError("JSON comparison failed", formatJson(control ).trim(), formatJson(test ).trim() );
+        throw new ComparisonFailure("JSON comparison failed", formatJson(control).trim(), formatJson(test).trim());
       }
     } catch ( JsonProcessingException e ) {
-      throw new AssertionFailedError( "JSON parsing error (" + e.getMessage() + ")", formatJson( control ).trim(), formatJson( test ).trim() );
+      throw new ComparisonFailure("JSON parsing error (" + e.getMessage() + ")", formatJson(control).trim(), formatJson(test).trim());
     }
   }
 
   @Deprecated
-  public static void assertJsonEquals( @Nullable String err, @Nullable String control, @Nullable String test ) throws IOException, AssertionFailedError {
+  public static void assertJsonEquals(@Nullable String err, @Nullable String control, @Nullable String test) throws IOException, ComparisonFailure {
     assertJsonEquals(control, test);
   }
 
