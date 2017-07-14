@@ -427,7 +427,11 @@
         <artifactId>jooby</artifactId>
         <version>${jooby.version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>org.jooby</groupId>
+        <artifactId>jooby-lang-kotlin</artifactId>
+        <version>${jooby.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.jooby</groupId>
         <artifactId>jooby-netty</artifactId>
