@@ -30,18 +30,20 @@
  */
 package com.cedarsoft.concurrent;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.awaitility.Awaitility.await;
+import com.cedarsoft.test.utils.ThreadExtension;
+import org.hamcrest.core.IsNot;
+import org.hamcrest.core.IsNull;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.*;
-
-import com.cedarsoft.test.utils.ThreadExtension;
+import static org.assertj.core.api.Assertions.*;
+import static org.awaitility.Awaitility.await;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -59,6 +61,36 @@ public class AsyncTest {
   public void tearDown() throws Exception {
     executor.shutdownNow();
     executor.awaitTermination(100, TimeUnit.MILLISECONDS);
+  }
+
+  @Test
+  void testException() throws InterruptedException {
+    Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+
+
+    try {
+      AtomicReference<Throwable> caught = new AtomicReference<>();
+
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+          caught.set(e);
+        }
+      });
+
+      Async async = new Async(executor);
+
+      async.last(new Runnable() {
+        @Override
+        public void run() {
+          throw new IllegalArgumentException("Uups");
+        }
+      });
+
+      await().timeout(1, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
+    } finally {
+      Thread.setDefaultUncaughtExceptionHandler(defaultUncaughtExceptionHandler);
+    }
   }
 
   @Test
