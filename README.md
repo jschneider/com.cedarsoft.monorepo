@@ -22,11 +22,11 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.3.1-SNAPSHOT
+## 8.3.1 (2017-07-15)
 
 ### Bugfixes
 * JsonUtils: Fix exception type: Use `org.junit.ComparisonFailure` to allow IDE to show diff
-
+* LazyField uses Kotlin lazy()
 
 ## 8.3.0 (2017-07-10)
 ### Features
