@@ -22,6 +22,8 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.3.2-SNAPSHOT
+
 ## 8.3.1 (2017-07-15)
 
 ### Bugfixes
