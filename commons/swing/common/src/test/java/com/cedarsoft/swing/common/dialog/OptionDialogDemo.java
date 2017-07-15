@@ -56,7 +56,8 @@ public class OptionDialogDemo {
 
   @Test
   public void message() throws Exception {
-    OptionDialog.showMessageDialog(null, "Really?", "daTitle");
+    OptionDialog.ResultType result = OptionDialog.showMessageDialog(null, "Really?", "daTitle");
+    System.out.println("result = " + result);
   }
 
   @Test
