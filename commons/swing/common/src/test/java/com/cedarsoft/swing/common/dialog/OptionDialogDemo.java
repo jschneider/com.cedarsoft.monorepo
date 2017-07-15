@@ -91,4 +91,10 @@ public class OptionDialogDemo {
     String result = OptionDialog.showComboBoxDialog(null, "What do you want?", "daTitle", OptionDialog.MessageType.ERROR_MESSAGE, comboBoxModel, 2, defaultListCellRenderer);
     System.out.println("result = " + result);
   }
+
+  @Test
+  public void input() throws Exception {
+    String result = OptionDialog.showInputDialog(null, "Da Message", "Da Titel", OptionDialog.MessageType.QUESTION_MESSAGE, null);
+    System.out.println("result = " + result);
+  }
 }

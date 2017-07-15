@@ -30,10 +30,18 @@
  */
 package com.cedarsoft.swing.common.dialog;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
+import com.cedarsoft.annotations.UiThread;
+import com.cedarsoft.swing.common.Borders;
+import com.cedarsoft.swing.common.Messages;
+import com.cedarsoft.swing.common.SwingHelper;
+import com.cedarsoft.swing.common.UiScaler;
+import com.cedarsoft.swing.common.components.CButton;
+import com.cedarsoft.unit.other.px;
+import com.jidesoft.dialog.BannerPanel;
+import com.jidesoft.dialog.ButtonPanel;
+import com.jidesoft.dialog.StandardDialog;
+import com.jidesoft.swing.StyledLabel;
+import net.miginfocom.swing.MigLayout;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -50,23 +58,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
-import com.cedarsoft.annotations.UiThread;
-import com.cedarsoft.swing.common.Borders;
-import com.cedarsoft.swing.common.Messages;
-import com.cedarsoft.swing.common.SwingHelper;
-import com.cedarsoft.swing.common.UiScaler;
-import com.cedarsoft.swing.common.components.CButton;
-import com.cedarsoft.unit.other.px;
-import com.jidesoft.dialog.BannerPanel;
-import com.jidesoft.dialog.ButtonPanel;
-import com.jidesoft.dialog.StandardDialog;
-import com.jidesoft.swing.StyledLabel;
-
-import net.miginfocom.swing.MigLayout;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
 
 /**
  * Replaces JOptionPane
@@ -172,6 +172,25 @@ public class OptionDialog extends StandardDialog {
   @UiThread
   public static ResultType showMessageDialog(@Nullable Component parentComponent, @Nonnull Object message, @Nullable String title, @Nonnull ButtonFactory buttonFactory, @Nonnull MessageType messageType, @Nullable ImageIcon icon) {
     return showOptionDialog(parentComponent, message, title, buttonFactory, messageType, icon);
+  }
+
+  /**
+   * Returns null on cancel
+   */
+  @Nullable
+  public static String showInputDialog(@Nullable Component parentComponent, @Nonnull String message, @Nullable String title, @Nonnull MessageType messageType, @Nullable String defaultValue) {
+    JTextField inputField = new JTextField();
+
+    JPanel panel = new JPanel(new MigLayout("insets 0, fillx", "[][fill,grow]"));
+    panel.add(new JLabel(message));
+    panel.add(inputField);
+
+    ResultType resultType = showMessageDialog(parentComponent, panel, title, OptionType.OK_CANCEL_OPTION, messageType);
+    if (resultType != ResultType.RESULT_OK) {
+      return null;
+    }
+
+    return inputField.getText();
   }
 
   @Nullable
@@ -300,14 +319,14 @@ public class OptionDialog extends StandardDialog {
 
   @Override
   public JComponent createContentPanel() {
-    JPanel panel = new JPanel(new MigLayout("insets 0, fillx", "", ""));
+    JPanel panel = new JPanel(new BorderLayout());
     if (message instanceof Component) {
-      panel.add((Component) message);
+      panel.add((Component) message, BorderLayout.CENTER);
     }
     else {
       StyledLabel styledLabel = new StyledLabel(message.toString());
       styledLabel.setLineWrap(true);
-      panel.add(styledLabel);
+      panel.add(styledLabel, BorderLayout.CENTER);
     }
     panel.setBorder(Borders.DIALOG_CONTENT_BORDER);
     return panel;
