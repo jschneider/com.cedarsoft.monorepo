@@ -24,6 +24,7 @@
     <module>execution</module>
     <module>file</module>
     <module>guava</module>
+    <module>guice</module>
     <module>id</module>
     <module>image</module>
     <module>inject</module>
