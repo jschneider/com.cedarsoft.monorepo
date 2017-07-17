@@ -1,7 +1,6 @@
 package com.cedarsoft.guava
 
 import com.google.common.collect.ImmutableList
-import com.cearsoft.guava.copyAndAdd
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 

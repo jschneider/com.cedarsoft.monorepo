@@ -1,4 +1,4 @@
-package com.cearsoft.guava
+package com.cedarsoft.guava
 
 import com.google.common.collect.ImmutableList
 
