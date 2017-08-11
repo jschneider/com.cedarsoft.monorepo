@@ -44,13 +44,13 @@ import java.util.Set;
 
 public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
   @Override
-  public void beforeEach(TestExtensionContext context) throws Exception {
+  public void beforeEach(ExtensionContext extensionContext) throws Exception {
     before();
   }
 
   @Override
-  public void afterEach(TestExtensionContext context) throws Exception {
-    if (context.getTestException().isPresent()) {
+  public void afterEach(ExtensionContext extensionContext) throws Exception {
+    if (extensionContext.getExecutionException().isPresent()) {
       afterFailing();
       return;
     }

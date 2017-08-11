@@ -53,12 +53,12 @@ public class SystemOutExtension implements BeforeEachCallback, AfterEachCallback
 
 
   @Override
-  public void beforeEach(TestExtensionContext context) throws Exception {
+  public void beforeEach(ExtensionContext extensionContext) throws Exception {
     before();
   }
 
   @Override
-  public void afterEach(TestExtensionContext context) throws Exception {
+  public void afterEach(ExtensionContext extensionContext) throws Exception {
     after();
   }
 
@@ -116,15 +116,12 @@ public class SystemOutExtension implements BeforeEachCallback, AfterEachCallback
   }
 
   @Override
-  public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    if (parameterContext.getParameter().getType().equals(getClass())) {
-      return true;
-    }
-    return false;
+  public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+    return parameterContext.getParameter().getType().equals(getClass());
   }
 
   @Override
-  public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+  public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
     return this;
   }
 }

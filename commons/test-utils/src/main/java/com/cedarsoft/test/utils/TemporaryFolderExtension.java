@@ -40,13 +40,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class TemporaryFolderExtension implements ParameterResolver, AfterTestExecutionCallback, TestInstancePostProcessor {
   @Override
-  public void afterTestExecution(TestExtensionContext context) throws Exception {
+  public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
     // clean up test instance
-    cleanUpTemporaryFolder(context);
+    cleanUpTemporaryFolder(extensionContext);
 
-    if (context.getParent().isPresent()) {
+    if (extensionContext.getParent().isPresent()) {
       // clean up injected member
-      cleanUpTemporaryFolder(context.getParent().get());
+      cleanUpTemporaryFolder(extensionContext.getParent().get());
     }
   }
 
@@ -57,12 +57,8 @@ public class TemporaryFolderExtension implements ParameterResolver, AfterTestExe
   }
 
   @Override
-  public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+  public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
     Parameter parameter = parameterContext.getParameter();
-
-    if (!(extensionContext instanceof TestExtensionContext)) {
-      return false;
-    }
 
     if (parameter.getType().isAssignableFrom(TemporaryFolder.class)) {
       return true;
@@ -80,10 +76,9 @@ public class TemporaryFolderExtension implements ParameterResolver, AfterTestExe
   }
 
   @Override
-  public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    TestExtensionContext testExtensionContext = (TestExtensionContext) extensionContext;
+  public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
     try {
-      TemporaryFolder temporaryFolder = createTemporaryFolder(testExtensionContext, testExtensionContext.getTestMethod().orElseThrow(() -> new IllegalStateException("No test method found")));
+      TemporaryFolder temporaryFolder = createTemporaryFolder(extensionContext, extensionContext.getTestMethod().orElseThrow(() -> new IllegalStateException("No test method found")));
 
       Parameter parameter = parameterContext.getParameter();
       if (parameter.getType().isAssignableFrom(TemporaryFolder.class)) {

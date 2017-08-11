@@ -97,7 +97,7 @@ public class SampleNeo4jSerializerTest extends AbstractNeo4JTest {
       }
       fail("Where is the Exception");
     } catch (SerializationException e) {
-      assertThat( e ).isNotNull().hasMessage("[INVALID_TYPE] Invalid type. Expected <com.cedarsoft.test.person> but was <[lab1, lab2, lab3]>.");
+      assertThat( e.getMessage() ).contains("[INVALID_TYPE] Invalid type. Expected <com.cedarsoft.test.person> but was <").contains("lab1").contains("lab2").contains("lab3");
     }
   }
 

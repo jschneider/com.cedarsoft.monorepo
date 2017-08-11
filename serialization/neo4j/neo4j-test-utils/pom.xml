@@ -41,11 +41,11 @@
       <scope>compile</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.neo4j</groupId>
-      <artifactId>neo4j-graphviz</artifactId>
-      <scope>compile</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.neo4j</groupId>-->
+      <!--<artifactId>neo4j-graphviz</artifactId>-->
+      <!--<scope>compile</scope>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.neo4j</groupId>
