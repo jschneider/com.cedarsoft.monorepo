@@ -651,11 +651,11 @@
         <type>test-jar</type>
       </dependency>
 
-      <dependency>
-        <groupId>org.neo4j</groupId>
-        <artifactId>neo4j-graphviz</artifactId>
-        <version>${neo4j.version}</version>
-      </dependency>
+      <!--<dependency>-->
+        <!--<groupId>org.neo4j</groupId>-->
+        <!--<artifactId>neo4j-graphviz</artifactId>-->
+        <!--<version>${neo4j.version}</version>-->
+      <!--</dependency>-->
 
       <dependency>
         <groupId>org.javolution</groupId>
