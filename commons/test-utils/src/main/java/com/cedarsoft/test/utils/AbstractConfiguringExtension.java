@@ -27,23 +27,23 @@ public abstract class AbstractConfiguringExtension<T, A extends Annotation> impl
   }
 
   @Override
-  public void beforeAll(ContainerExtensionContext context) throws Exception {
-    getConfiguredType(context).ifPresent(value -> before(value, context, Scope.CLASS));
+  public void beforeAll(ExtensionContext extensionContext) throws Exception {
+    getConfiguredType(extensionContext).ifPresent(value -> before(value, extensionContext, Scope.CLASS));
   }
 
   @Override
-  public void afterAll(ContainerExtensionContext context) throws Exception {
-    after(context, Scope.CLASS);
+  public void afterAll(ExtensionContext extensionContext) throws Exception {
+    after(extensionContext, Scope.CLASS);
   }
 
   @Override
-  public void beforeEach(TestExtensionContext context) throws Exception {
-    getConfiguredType(context).ifPresent(value -> before(value, context, Scope.METHOD));
+  public void beforeEach(ExtensionContext extensionContext) throws Exception {
+    getConfiguredType(extensionContext).ifPresent(value -> before(value, extensionContext, Scope.METHOD));
   }
 
   @Override
-  public void afterEach(TestExtensionContext context) throws Exception {
-    after(context, Scope.METHOD);
+  public void afterEach(ExtensionContext extensionContext) throws Exception {
+    after(extensionContext, Scope.METHOD);
   }
 
   @Nonnull
