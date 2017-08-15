@@ -51,7 +51,8 @@ import java.util.HashMap
 abstract class AbstractNeo4jSerializer<T>
 protected constructor(
   private val type: String,
-  formatVersionRange: VersionRange) : AbstractSerializer<T, Node, Node, IOException, Node, Node>(formatVersionRange) {
+  formatVersionRange: VersionRange
+) : AbstractSerializer<T, Node, Node, IOException, Node, Node>(formatVersionRange) {
 
   /**
    * Returns the type label

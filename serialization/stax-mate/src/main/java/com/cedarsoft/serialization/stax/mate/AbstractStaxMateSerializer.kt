@@ -48,7 +48,8 @@ abstract class AbstractStaxMateSerializer<T>
 protected constructor(
   defaultElementName: String,
   nameSpaceUriBase: String,
-  formatVersionRange: VersionRange) : AbstractStaxBasedSerializer<T, SMOutputElement>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
+  formatVersionRange: VersionRange
+) : AbstractStaxBasedSerializer<T, SMOutputElement>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
 
   @Throws(IOException::class)
   override fun serialize(objectToSerialize: T, out: OutputStream) {

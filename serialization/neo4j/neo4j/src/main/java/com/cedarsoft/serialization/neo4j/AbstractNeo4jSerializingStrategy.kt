@@ -40,8 +40,9 @@ abstract class AbstractNeo4jSerializingStrategy<T>
 protected constructor(
   override val id: String,
   type: String,
-  val supportedType: Class<out T>,
-  formatVersionRange: VersionRange) : AbstractNeo4jSerializer<T>(type, formatVersionRange), Neo4jSerializingStrategy<T> {
+  private val supportedType: Class<out T>,
+  formatVersionRange: VersionRange
+) : AbstractNeo4jSerializer<T>(type, formatVersionRange), Neo4jSerializingStrategy<T> {
 
   override fun supports(objectToSerialize: Any): Boolean {
     return supportedType.isAssignableFrom(objectToSerialize.javaClass)

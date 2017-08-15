@@ -63,7 +63,8 @@ abstract class AbstractStaxBasedSerializer<T, S>
 protected constructor(
   defaultElementName: String,
   nameSpaceUriBase: String,
-  formatVersionRange: VersionRange) : AbstractXmlSerializer<T, S, XMLStreamReader, XMLStreamException>(defaultElementName, nameSpaceUriBase, formatVersionRange), StaxBasedSerializer<T, S> {
+  formatVersionRange: VersionRange
+) : AbstractXmlSerializer<T, S, XMLStreamReader, XMLStreamException>(defaultElementName, nameSpaceUriBase, formatVersionRange), StaxBasedSerializer<T, S> {
 
   @Throws(IOException::class, VersionException::class)
   override fun deserialize(deserializeFrom: InputStream): T {

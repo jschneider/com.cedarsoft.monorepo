@@ -56,7 +56,8 @@ protected
 constructor(
   defaultElementName: String,
   nameSpaceUriBase: String,
-  formatVersionRange: VersionRange) : AbstractStaxBasedSerializer<T, XMLStreamWriter>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
+  formatVersionRange: VersionRange
+) : AbstractStaxBasedSerializer<T, XMLStreamWriter>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
 
   @Throws(IOException::class)
   override fun serialize(objectToSerialize: T, out: OutputStream) {

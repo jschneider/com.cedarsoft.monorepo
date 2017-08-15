@@ -56,7 +56,8 @@ import javax.annotation.WillNotClose
 abstract class AbstractJacksonSerializer<T>
 protected constructor(
   override val type: String,
-  formatVersionRange: VersionRange) : AbstractStreamSerializer<T, JsonGenerator, JsonParser, JsonProcessingException>(formatVersionRange), JacksonSerializer<T> {
+  formatVersionRange: VersionRange
+) : AbstractStreamSerializer<T, JsonGenerator, JsonParser, JsonProcessingException>(formatVersionRange), JacksonSerializer<T> {
 
   override val isObjectType = true
 

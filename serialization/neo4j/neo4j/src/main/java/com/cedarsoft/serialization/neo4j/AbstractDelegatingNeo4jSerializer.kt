@@ -48,7 +48,8 @@ import java.io.IOException
 open class AbstractDelegatingNeo4jSerializer<T>
 protected constructor(
   nameSpaceUriBase: String,
-  formatVersionRange: VersionRange) : AbstractNeo4jSerializer<T>(nameSpaceUriBase, formatVersionRange) {
+  formatVersionRange: VersionRange
+) : AbstractNeo4jSerializer<T>(nameSpaceUriBase, formatVersionRange) {
 
   val serializingStrategySupport: SerializingStrategySupport<T, Node, Node, IOException, Node, Node> = SerializingStrategySupport<T, Node, Node, IOException, Node, Node>(formatVersionRange)
 
