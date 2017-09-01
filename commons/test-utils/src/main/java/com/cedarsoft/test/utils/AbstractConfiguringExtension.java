@@ -59,12 +59,12 @@ public abstract class AbstractConfiguringExtension<T, A extends Annotation> impl
   }
 
   private void before(@Nonnull T value, @Nonnull ExtensionContext context, @Nonnull Scope scope) {
-    context.getStore().put(createStoreKey(scope), getOldValue());
+    context.getStore(ExtensionContext.Namespace.GLOBAL).put(createStoreKey(scope), getOldValue());
     applyValue(value);
   }
 
   private void after(@Nonnull ExtensionContext context, @Nonnull Scope scope) {
-    @Nullable T originalValue = context.getStore().get(createStoreKey(scope), storedObjectType);
+    @Nullable T originalValue = context.getStore(ExtensionContext.Namespace.GLOBAL).get(createStoreKey(scope), storedObjectType);
     if (originalValue != null) {
       applyValue(originalValue);
     }
