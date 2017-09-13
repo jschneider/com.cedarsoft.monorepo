@@ -1133,6 +1133,12 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>3.5</version>
+        </plugin>
+
+        <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>instrumentation-maven-plugin</artifactId>
           <version>${monorepo.dep.management.version}</version>
