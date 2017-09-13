@@ -52,7 +52,7 @@ public class BasicNeo4JTest extends AbstractNeo4JTest {
     ObjectName objectName = JmxUtils.getObjectName( graphDb, "Kernel" );
     String version = JmxUtils.getAttribute( objectName, "KernelVersion" );
 
-    assertThat( version ).contains( "neo4j" ).contains( "version: 3.2.3" );
+    assertThat( version ).contains( "neo4j-kernel, version:" );
   }
 
   @Test
