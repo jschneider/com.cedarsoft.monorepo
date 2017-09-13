@@ -51,6 +51,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>instrumentation-maven-plugin</artifactId>
+          <version>${monorepo.dep.management.version}</version>
 
           <dependencies>
             <dependency>
