@@ -41,7 +41,7 @@ public class TemporaryFolderExtension extends AbstractResourceProvidingExtension
 
   @Nonnull
   @Override
-  protected TemporaryFolder createResource() {
+  protected TemporaryFolder createResource(ExtensionContext extensionContext) {
     return new TemporaryFolder();
   }
 

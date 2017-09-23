@@ -26,7 +26,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
   @Override
   public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
     for (Field field : testInstance.getClass().getDeclaredFields()) {
-      if (field.getType().isAssignableFrom(resourceType)) {
+      if (resourceType.isAssignableFrom(field.getType())) {
         T resource = getResource(context, field);
         field.setAccessible(true);
         field.set(testInstance, resource);
@@ -40,14 +40,14 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
   @Nonnull
   protected T getResource(ExtensionContext extensionContext, Member key) {
     Map<Member, T> map = getStore(extensionContext).getOrComputeIfAbsent(extensionContext.getTestClass().get(), (c) -> new ConcurrentHashMap<>(), Map.class);
-    return map.computeIfAbsent(key, member -> createResource());
+    return map.computeIfAbsent(key, member -> createResource(extensionContext));
   }
 
   /**
    * Creates the resource
    */
   @Nonnull
-  protected abstract T createResource();
+  protected abstract T createResource(ExtensionContext extensionContext);
 
   @Override
   public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
@@ -55,7 +55,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
       T resource = getResource(extensionContext, extensionContext.getTestMethod().orElseThrow(() -> new IllegalStateException("No test method found")));
 
       Parameter parameter = parameterContext.getParameter();
-      if (parameter.getType().isAssignableFrom(resourceType)) {
+      if (resourceType.isAssignableFrom(parameter.getType())) {
         //return the resource directly
         return resource;
       }
@@ -107,7 +107,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
 
   @Override
   public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    return parameterContext.getParameter().getType().isAssignableFrom(resourceType);
+    return resourceType.isAssignableFrom(parameterContext.getParameter().getType());
   }
 
 
