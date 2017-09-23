@@ -45,4 +45,10 @@ public class JavaTimeZoneExtensionTest {
   public void testIt() {
     assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/London"));
   }
+
+  @WithTimeZone("Europe/Berlin")
+  @Test
+  public void testBerlin() {
+    assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/Berlin"));
+  }
 }

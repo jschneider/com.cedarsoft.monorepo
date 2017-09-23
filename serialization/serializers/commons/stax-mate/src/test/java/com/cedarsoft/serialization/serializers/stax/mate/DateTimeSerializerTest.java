@@ -52,12 +52,12 @@ import org.xml.sax.SAXException;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.test.utils.WithDateTimeZone;
+import com.cedarsoft.test.utils.WithJodaDateTimeZone;
 
 /**
  *
  */
-@WithDateTimeZone("America/New_York")
+@WithJodaDateTimeZone("America/New_York")
 public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime> {
   @Nonnull
   protected static final DateTimeZone ZONE = DateTimeZone.forID( "America/New_York" );
