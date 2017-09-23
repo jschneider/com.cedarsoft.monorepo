@@ -28,105 +28,59 @@ import org.junit.jupiter.api.extension.*;
 import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Member;
 import java.lang.reflect.Parameter;
-import java.util.Collections;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
+ * Extension that fills a File parameter with a temporary file or folder.
+ * Use {@link WithTempFiles} at the class/method and add {@link TempFolder} oder {@link TempFile} to the test method parameters
  */
-public class TemporaryFolderExtension implements ParameterResolver, AfterTestExecutionCallback, TestInstancePostProcessor {
-  @Override
-  public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
-    // clean up test instance
-    cleanUpTemporaryFolder(extensionContext);
-
-    if (extensionContext.getParent().isPresent()) {
-      // clean up injected member
-      cleanUpTemporaryFolder(extensionContext.getParent().get());
-    }
+public class TemporaryFolderExtension extends AbstractResourceProvidingExtension<TemporaryFolder> {
+  protected TemporaryFolderExtension() {
+    super(TemporaryFolder.class);
   }
 
-  protected void cleanUpTemporaryFolder(ExtensionContext extensionContext) {
-    for (TemporaryFolder temporaryFolder : getTemporaryFolders(extensionContext)) {
-      temporaryFolder.after();
-    }
+  @Nonnull
+  @Override
+  protected TemporaryFolder createResource() {
+    return new TemporaryFolder();
   }
 
   @Override
   public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    Parameter parameter = parameterContext.getParameter();
-
-    if (parameter.getType().isAssignableFrom(TemporaryFolder.class)) {
+    if (super.supportsParameter(parameterContext, extensionContext)) {
       return true;
     }
 
-    if (!parameter.getType().isAssignableFrom(File.class)) {
+    if (!parameterContext.getParameter().getType().isAssignableFrom(File.class)) {
       return false;
     }
 
-    if (parameter.isAnnotationPresent(TempFolder.class)) {
+    if (parameterContext.getParameter().isAnnotationPresent(TempFolder.class)) {
       return true;
     }
 
-    return parameter.isAnnotationPresent(TempFile.class);
-  }
-
-  @Override
-  public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    try {
-      TemporaryFolder temporaryFolder = createTemporaryFolder(extensionContext, extensionContext.getTestMethod().orElseThrow(() -> new IllegalStateException("No test method found")));
-
-      Parameter parameter = parameterContext.getParameter();
-      if (parameter.getType().isAssignableFrom(TemporaryFolder.class)) {
-        return temporaryFolder;
-      }
-      if (parameter.isAnnotationPresent(TempFolder.class)) {
-        return temporaryFolder.newFolder();
-      }
-      if (parameter.isAnnotationPresent(TempFile.class)) {
-        TempFile annotation = parameter.getAnnotation(TempFile.class);
-        if (!annotation.value().isEmpty()) {
-          return temporaryFolder.newFile(annotation.value());
-        }
-        return temporaryFolder.newFile();
-      }
-
-      throw new ParameterResolutionException("unable to resolve parameter for " + parameterContext);
-    } catch (IOException e) {
-      throw new ParameterResolutionException("failed to create temp file or folder", e);
-    }
-  }
-
-  @Override
-  public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
-    for (Field field : testInstance.getClass().getDeclaredFields()) {
-      if (field.getType().isAssignableFrom(TemporaryFolder.class)) {
-        TemporaryFolder temporaryFolder = createTemporaryFolder(context, field);
-        field.setAccessible(true);
-        field.set(testInstance, temporaryFolder);
-      }
-    }
-  }
-
-  protected Iterable<TemporaryFolder> getTemporaryFolders(ExtensionContext extensionContext) {
-    Map<Object, TemporaryFolder> map = getStore(extensionContext).get(extensionContext.getTestClass().get(), Map.class);
-    if (map == null) {
-      return Collections.emptySet();
-    }
-    return map.values();
-  }
-
-  protected TemporaryFolder createTemporaryFolder(ExtensionContext extensionContext, Member key) {
-    Map<Member, TemporaryFolder> map = getStore(extensionContext).getOrComputeIfAbsent(extensionContext.getTestClass().get(), (c) -> new ConcurrentHashMap<>(), Map.class);
-    return map.computeIfAbsent(key, member -> new TemporaryFolder());
+    return parameterContext.getParameter().isAnnotationPresent(TempFile.class);
   }
 
   @Nonnull
-  protected ExtensionContext.Store getStore(@Nonnull ExtensionContext context) {
-    return context.getStore(ExtensionContext.Namespace.create(getClass(), context));
+  @Override
+  protected Object convertResourceForParameter(@Nonnull Parameter parameter, @Nonnull TemporaryFolder resource) throws ParameterResolutionException, IOException {
+    if (parameter.isAnnotationPresent(TempFolder.class)) {
+      return resource.newFolder();
+    }
+    if (parameter.isAnnotationPresent(TempFile.class)) {
+      TempFile annotation = parameter.getAnnotation(TempFile.class);
+      if (!annotation.value().isEmpty()) {
+        return resource.newFile(annotation.value());
+      }
+      return resource.newFile();
+    }
+
+    throw new ParameterResolutionException("unable to resolve parameter for " + parameter);
+  }
+
+  @Override
+  protected void cleanup(@Nonnull TemporaryFolder resource) {
+    resource.delete();
   }
 }
