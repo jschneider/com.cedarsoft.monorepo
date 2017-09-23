@@ -47,6 +47,7 @@ import java.util.List;
  * Rule that provides neo4j databases
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Deprecated
 public class Neo4jRule implements TestRule {
   @Nonnull
   private final TemporaryFolder tmp = new TemporaryFolder();
