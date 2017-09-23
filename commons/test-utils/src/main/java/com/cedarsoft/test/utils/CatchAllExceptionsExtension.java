@@ -49,13 +49,13 @@ public class CatchAllExceptionsExtension implements BeforeEachCallback, AfterEac
   private Thread.UncaughtExceptionHandler oldHandler;
 
   @Override
-  public void beforeEach(ExtensionContext extensionContext) throws Exception {
+  public void beforeEach(ExtensionContext context) throws Exception {
     before();
   }
 
   @Override
-  public void afterEach(ExtensionContext extensionContext) throws Exception {
-    if (extensionContext.getExecutionException().isPresent()) {
+  public void afterEach(ExtensionContext context) throws Exception {
+    if (context.getExecutionException().isPresent()) {
       afterFailing();
       return;
     }
