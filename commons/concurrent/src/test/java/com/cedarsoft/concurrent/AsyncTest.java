@@ -80,11 +80,8 @@ public class AsyncTest {
 
       Async async = new Async(executor);
 
-      async.last(new Runnable() {
-        @Override
-        public void run() {
-          throw new IllegalArgumentException("Uups");
-        }
+      async.last(() -> {
+        throw new IllegalArgumentException("Uups");
       });
 
       await().timeout(1, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));

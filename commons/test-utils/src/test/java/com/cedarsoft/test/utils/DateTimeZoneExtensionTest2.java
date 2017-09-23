@@ -39,14 +39,14 @@ import static org.junit.Assert.*;
 /**
  *
  */
-@WithDateTimeZone("America/Chicago")
+@WithJodaDateTimeZone("America/Chicago")
 public class DateTimeZoneExtensionTest2 {
   @Test
   public void testIt() {
     assertEquals("America/Chicago", DateTimeZone.getDefault().getID());
   }
 
-  @WithDateTimeZone("Europe/Paris")
+  @WithJodaDateTimeZone("Europe/Paris")
   @Test
   void testDouble() {
     assertEquals("Europe/Paris", DateTimeZone.getDefault().getID());

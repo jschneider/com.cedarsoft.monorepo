@@ -1,8 +1,7 @@
-package com.cedarsoft.test.utils;
+package com.cedarsoft.serialization.neo4j.test.utils;
 
 import org.junit.jupiter.api.extension.*;
 
-import javax.annotation.Nonnull;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -13,8 +12,8 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@ExtendWith(DateTimeZoneExtension.class)
-public @interface WithDateTimeZone {
-  @Nonnull
-  String value();
+@ExtendWith(Neo4jExtension.class)
+public @interface WithNeo4j {
+
+
 }

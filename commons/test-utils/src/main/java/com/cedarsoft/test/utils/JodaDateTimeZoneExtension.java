@@ -42,9 +42,9 @@ import java.util.Optional;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DateTimeZoneExtension extends AbstractConfiguringExtension<DateTimeZone, WithDateTimeZone> {
-  public DateTimeZoneExtension() {
-    super(DateTimeZone.class, WithDateTimeZone.class, "OLD_ZONE");
+public class JodaDateTimeZoneExtension extends AbstractConfiguringExtension<DateTimeZone, WithJodaDateTimeZone> {
+  public JodaDateTimeZoneExtension() {
+    super(DateTimeZone.class, WithJodaDateTimeZone.class, "OLD_ZONE");
   }
 
   @Override
@@ -60,7 +60,7 @@ public class DateTimeZoneExtension extends AbstractConfiguringExtension<DateTime
 
   @Nonnull
   @Override
-  protected Optional<DateTimeZone> convert(@Nonnull WithDateTimeZone annotation) {
+  protected Optional<DateTimeZone> convert(@Nonnull WithJodaDateTimeZone annotation) {
     return Optional.ofNullable(DateTimeZone.forID(annotation.value()));
   }
 }

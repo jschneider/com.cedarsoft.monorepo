@@ -36,10 +36,6 @@ public class TemporaryFolder {
   @Nullable
   private File root;
 
-  public void after() {
-    delete();
-  }
-
   protected File getRoot() throws IOException {
     if (root == null) {
       root = createTemporaryFolder(null);
@@ -47,7 +43,7 @@ public class TemporaryFolder {
     return root;
   }
 
-  protected void delete() {
+  public void delete() {
     if (root != null) {
       recursiveDelete(root);
       root = null;
