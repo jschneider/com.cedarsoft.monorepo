@@ -49,12 +49,12 @@ public class CatchAllExceptionsExtension implements BeforeEachCallback, AfterEac
   private Thread.UncaughtExceptionHandler oldHandler;
 
   @Override
-  public void beforeEach(ExtensionContext context) throws Exception {
+  public void beforeEach(ExtensionContext context) {
     before();
   }
 
   @Override
-  public void afterEach(ExtensionContext context) throws Exception {
+  public void afterEach(ExtensionContext context) {
     if (context.getExecutionException().isPresent()) {
       afterFailing();
       return;
@@ -64,19 +64,16 @@ public class CatchAllExceptionsExtension implements BeforeEachCallback, AfterEac
 
   private void before() {
     oldHandler = Thread.getDefaultUncaughtExceptionHandler();
-    Thread.setDefaultUncaughtExceptionHandler( new Thread.UncaughtExceptionHandler() {
-      @Override
-      public void uncaughtException( Thread t, Throwable e ) {
-        caught.add( e );
-        if ( oldHandler != null ) {
-          oldHandler.uncaughtException( t, e );
-        }
+    Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+      caught.add( e );
+      if ( oldHandler != null ) {
+        oldHandler.uncaughtException( t, e );
       }
-    } );
+    });
   }
 
   @Nonnull
-  private final List<Throwable> caught = new ArrayList<Throwable>();
+  private final List<Throwable> caught = new ArrayList<>();
 
   private void afterSuccess() {
     Thread.setDefaultUncaughtExceptionHandler( oldHandler );
@@ -97,7 +94,7 @@ public class CatchAllExceptionsExtension implements BeforeEachCallback, AfterEac
 
       StringWriter out = new StringWriter();
       throwable.printStackTrace( new PrintWriter( out ) );
-      builder.append( out.toString() );
+      builder.append(out);
     }
 
     builder.append( "---------------------\n" );
