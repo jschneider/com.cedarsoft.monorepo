@@ -42,7 +42,7 @@ import com.cedarsoft.test.utils.WithLocale;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@WithLocale("de_DE")
+@WithLocale("en_US")
 public class DateUtilsTest {
   @Test
   public void humanReadableDuration() throws Exception {
@@ -61,6 +61,7 @@ public class DateUtilsTest {
     assertThat(DateUtils.formatDurationWords(Duration.ofHours(1))).isEqualTo("1 hour");
   }
 
+  @WithLocale("en_US")
   @Test
   public void duration() throws Exception {
     assertThat(DateUtils.formatDurationWordsWithSeconds(1000 + 1000 * 61)).isEqualTo("1min 02s");
