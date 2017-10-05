@@ -17,6 +17,7 @@
   <modules>
     <module>roach-motel</module>
     <module>spring</module>
+    <module>tornadofx</module>
   </modules>
 
 </project>
