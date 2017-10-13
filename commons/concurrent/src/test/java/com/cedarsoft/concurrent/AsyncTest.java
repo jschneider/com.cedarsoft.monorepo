@@ -67,21 +67,19 @@ public class AsyncTest {
   void testException() throws InterruptedException {
     Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
 
-
     try {
       AtomicReference<Throwable> caught = new AtomicReference<>();
 
-      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-        @Override
-        public void uncaughtException(Thread t, Throwable e) {
-          caught.set(e);
-        }
-      });
+      Thread.setDefaultUncaughtExceptionHandler((t, e) -> caught.set(e));
 
       Async async = new Async(executor);
 
-      async.last(() -> {
-        throw new IllegalArgumentException("Uups");
+      //noinspection Convert2Lambda tests fail with lambad, why???
+      async.last(new Runnable() {
+        @Override
+        public void run() {
+          throw new IllegalArgumentException("Uups");
+        }
       });
 
       await().timeout(1, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
