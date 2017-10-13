@@ -2,6 +2,7 @@ package com.cedarsoft.exceptions.handling
 
 import com.cedarsoft.commons.javafx.FxUtils
 import javafx.stage.Stage
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.testfx.framework.junit5.ApplicationTest
 
@@ -17,21 +18,23 @@ class ApplicationExceptionFxDialogTest : ApplicationTest() {
       MyTestException.TestExceptionDetails.ERROR_1, "asdf")
 
     ApplicationExceptionFxDialog(exception).show()
-
   }
 
   @Test
   internal fun testAppFxExceptionDialog() {
+    println("Thread: ${Thread.currentThread().name}")
+
     val targetWindow = targetWindow(0)
+    val smallWidth = targetWindow.targetWindow().width
 
-    println("Children: ${targetWindow().scene.root.childrenUnmodifiable}")
+    assertThat(smallWidth).isLessThan(400.0)
 
-
-    //    targetWindow.clickOn(".button")
     targetWindow.clickOn(".details-button")
 
-    FxUtils.dump(targetWindow().scene.root, System.out)
+    if (false) {
+      FxUtils.dump(targetWindow().scene.root, System.out)
+    }
 
-    Thread.sleep(10000)
+    assertThat(targetWindow.targetWindow().width).isGreaterThan(400.0)
   }
 }
