@@ -15,7 +15,7 @@ object FxUtils {
   }
 
   private fun dump(node: Node, out: PrintStream, depth: Int) {
-    out.println(Strings.repeat("  ", depth) + node)
+    out.println(Strings.repeat("  ", depth) + node + " #" + node.id)
     (node as? Parent)?.childrenUnmodifiable?.forEach { c -> dump(c, out, depth + 1) }
   }
 }
