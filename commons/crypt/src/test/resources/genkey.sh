@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 # Copyright (C) 2010 cedarsoft GmbH.
 #
