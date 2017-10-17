@@ -5,6 +5,7 @@ import javafx.stage.Stage
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.testfx.framework.junit5.ApplicationTest
+import org.testfx.util.WaitForAsyncUtils
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
@@ -35,6 +36,7 @@ class ApplicationExceptionFxDialogTest : ApplicationTest() {
       FxUtils.dump(targetWindow().scene.root, System.out)
     }
 
+    WaitForAsyncUtils.waitForFxEvents()
     assertThat(targetWindow.targetWindow().width).isGreaterThan(400.0)
   }
 }
