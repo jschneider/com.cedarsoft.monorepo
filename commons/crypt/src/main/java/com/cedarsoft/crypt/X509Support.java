@@ -255,14 +255,9 @@ public class X509Support {
   @Nonnull
   public static X509Certificate readCertificate( @Nonnull URL certificateUrl ) throws IOException, GeneralSecurityException {
     //Read the cert
-    DataInputStream in = new DataInputStream( certificateUrl.openStream() );
-    try {
-      CertificateFactory cf = CertificateFactory.getInstance( X_509_CERTIFICATE_TYPE );
-      X509Certificate certificate = ( X509Certificate ) cf.generateCertificate( in );
-      certificate.checkValidity();
-      return certificate;
-    } finally {
-      in.close();
+    try (DataInputStream in = new DataInputStream(certificateUrl.openStream())) {
+      CertificateFactory cf = CertificateFactory.getInstance(X_509_CERTIFICATE_TYPE);
+      return (X509Certificate) cf.generateCertificate(in);
     }
   }
 }

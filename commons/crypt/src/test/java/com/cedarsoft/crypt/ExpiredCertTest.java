@@ -1,0 +1,25 @@
+package com.cedarsoft.crypt;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+/**
+ * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ */
+public class ExpiredCertTest {
+
+  private X509Support x509Support;
+
+  @BeforeEach
+  public void setUp() throws Exception {
+    x509Support = new X509Support(getClass().getResource("/test_expired.crt"), getClass().getResource("/test_expired.der"));
+  }
+
+  @org.junit.jupiter.api.Test
+  public void testDate() throws Exception {
+    byte[] plainText = "Hello World".getBytes();
+    com.cedarsoft.crypt.Signature signature = x509Support.sign(plainText);
+
+    Assertions.assertThat(x509Support.verifySignature(plainText, signature)).isTrue();
+  }
+}
