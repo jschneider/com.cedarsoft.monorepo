@@ -29,6 +29,10 @@
       <artifactId>miglayout-swing</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.miglayout</groupId>
+      <artifactId>miglayout-javafx</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>version</artifactId>
     </dependency>
