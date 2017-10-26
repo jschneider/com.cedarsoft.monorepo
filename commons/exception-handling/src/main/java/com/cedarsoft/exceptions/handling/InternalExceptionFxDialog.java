@@ -30,14 +30,12 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import com.cedarsoft.exceptions.ApplicationException;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 
 import javax.annotation.Nonnull;
 import java.io.PrintWriter;
@@ -46,26 +44,25 @@ import java.io.StringWriter;
 /**
  * Shows an application exception
  */
-public class ApplicationExceptionFxDialog extends Alert {
+public class InternalExceptionFxDialog extends Alert {
   @Nonnull
-  private final ApplicationException e;
+  private final Throwable throwable;
 
-  public ApplicationExceptionFxDialog(@Nonnull ApplicationException e) {
+
+  public InternalExceptionFxDialog(@Nonnull Throwable throwable) {
     super(AlertType.ERROR);
-    this.e = e;
+    this.throwable = throwable;
 
-    setAlertType(AlertType.WARNING);
-
-    setTitle(e.getTitle() + " (" + e.getErrorCode() + ")");
-    setHeaderText(e.getTitle() + " (" + e.getErrorCode() + ")");
-    setContentText(e.getLocalizedMessage());
+    setTitle(Messages.get("internal.exception.message"));
+    setHeaderText(Messages.get("internal.exception.message"));
+    setContentText(createErrorMessageText());
     setResizable(true);
 
     getDialogPane().setPrefWidth(500);
 
     StringWriter sw = new StringWriter();
     PrintWriter pw = new PrintWriter(sw);
-    e.printStackTrace(pw);
+    throwable.printStackTrace(pw);
     String exceptionText = sw.toString();
 
     Label label = new Label("Exception Stacktrace:");
@@ -90,9 +87,14 @@ public class ApplicationExceptionFxDialog extends Alert {
 
     getDialogPane().expandedProperty().addListener((observable, oldValue, newValue) -> {
       Platform.runLater(() -> {
-        System.out.println("adjust size");
         getDialogPane().getScene().getWindow().sizeToScene();
       });
     });
+  }
+
+
+  @Nonnull
+  private String createErrorMessageText() {
+    return throwable.getClass().getName() + "\n" + throwable.getLocalizedMessage();
   }
 }

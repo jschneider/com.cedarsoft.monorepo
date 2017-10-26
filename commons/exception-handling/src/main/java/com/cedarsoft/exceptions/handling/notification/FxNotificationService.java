@@ -65,7 +65,7 @@ import java.util.Queue;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ThreadSafe
-public class NotificationService {
+public class FxNotificationService {
   @ms
   public static final int VISIBILITY_TIME = 15000;
   @Nonnull
@@ -169,5 +169,4 @@ public class NotificationService {
     protected void onStyleChange() {
     }
   }
-
 }

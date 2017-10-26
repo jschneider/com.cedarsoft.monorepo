@@ -35,12 +35,14 @@ import com.cedarsoft.annotations.AnyThread;
 import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.exceptions.ApplicationException;
 import com.cedarsoft.exceptions.NotificationException;
+import com.cedarsoft.exceptions.handling.notification.FxNotificationService;
 import com.cedarsoft.exceptions.handling.notification.Notification;
 import com.cedarsoft.exceptions.handling.notification.NotificationService;
 import com.cedarsoft.swing.common.SwingHelper;
 import com.cedarsoft.swing.common.dialog.OptionDialog;
 import com.cedarsoft.version.Version;
 import com.google.common.collect.ImmutableMap;
+import javafx.application.Platform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +63,7 @@ public class FxExceptionHandler extends ExceptionHandler {
   private static final Logger LOG = LoggerFactory.getLogger(FxExceptionHandler.class.getName());
 
   @Nonnull
-  private final NotificationService notificationService;
+  private final FxNotificationService notificationService;
   @Nonnull
   private final Version applicationVersion;
   @Nonnull
@@ -70,11 +72,11 @@ public class FxExceptionHandler extends ExceptionHandler {
   @Nonnull
   private final Map<Class<? extends Throwable>, ExceptionTypeHandler> exceptionTypeHandlers;
 
-  public FxExceptionHandler(@Nonnull NotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter) {
+  public FxExceptionHandler(@Nonnull FxNotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter) {
     this(notificationService, applicationVersion, exceptionReporter, new HashMap<>());
   }
 
-  public FxExceptionHandler(@Nonnull NotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter, @Nonnull Map<Class<? extends Throwable>, ExceptionTypeHandler> exceptionTypeHandlers) {
+  public FxExceptionHandler(@Nonnull FxNotificationService notificationService, @Nonnull Version applicationVersion, @Nonnull ExceptionReporter exceptionReporter, @Nonnull Map<Class<? extends Throwable>, ExceptionTypeHandler> exceptionTypeHandlers) {
     this.notificationService = notificationService;
     this.applicationVersion = applicationVersion;
     this.exceptionReporter = exceptionReporter;
@@ -115,7 +117,7 @@ public class FxExceptionHandler extends ExceptionHandler {
   }
 
   public void handleNotificationException(@Nonnull NotificationException throwable, @Nonnull Throwable original) {
-    SwingUtilities.invokeLater(() -> notificationService.showNotification(new Notification(throwable.getTitle(), throwable.getMessage(), notification -> handleInternalError(original, original))));
+    Platform.runLater(() -> notificationService.showNotification(new Notification(throwable.getTitle(), throwable.getMessage(), notification -> handleInternalError(original, original))));
   }
 
   public void handleIoException(@Nonnull IOException throwable, @Nonnull Throwable original) {
@@ -142,12 +144,11 @@ public class FxExceptionHandler extends ExceptionHandler {
     showExceptionDialog(original);
   }
 
+  @AnyThread
   private void showExceptionDialog(@Nonnull final Throwable original) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @UiThread
+    Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        //Remember the parent frame
         try {
           if (dialogOpen.get()) {
             return;
@@ -204,15 +205,15 @@ public class FxExceptionHandler extends ExceptionHandler {
    */
   @AnyThread
   public void showApplicationExceptionDialog(@Nonnull ApplicationException applicationException) {
-    SwingUtilities.invokeLater(() -> {
+    Platform.runLater(() -> {
       if (dialogOpen.get()) {
         return;
       }
 
       try {
         dialogOpen.set(true);
-        ApplicationExceptionDialog dialog = new ApplicationExceptionDialog(SwingHelper.getFrameSafe(), applicationException, null);
-        dialog.setVisible(true);
+        ApplicationExceptionFxDialog dialog = new ApplicationExceptionFxDialog(applicationException);
+        dialog.show();
       } finally {
         dialogOpen.set(false);
       }

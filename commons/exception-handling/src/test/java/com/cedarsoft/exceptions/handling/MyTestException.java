@@ -69,13 +69,13 @@ public class MyTestException extends ApplicationException {
     @Nonnull
     @Override
     public String getLocalizedMessage(@Nullable Object... messageArguments) {
-      return "localized message";
+      return "A very long localized messages with a new line:\nThis is the next line!\nAnd another\n\nTwo new lines before";
     }
 
     @Nonnull
     @Override
     public String getLocalizedMessage(@Nonnull Locale locale, @Nullable Object... messageArguments) {
-      return "localized message";
+      return getLocalizedMessage();
     }
 
     @Nonnull

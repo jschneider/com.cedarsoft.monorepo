@@ -43,9 +43,9 @@ public class Notification {
   private final String message;
 
   @Nullable
-  private final NotificationService.DetailsCallback detailsCallback;
+  private final DetailsCallback detailsCallback;
 
-  public Notification(@Nonnull String title, @Nonnull String message, @Nullable NotificationService.DetailsCallback detailsCallback) {
+  public Notification(@Nonnull String title, @Nonnull String message, @Nullable DetailsCallback detailsCallback) {
     this.title = title;
     this.message = message;
     this.detailsCallback = detailsCallback;
@@ -62,7 +62,7 @@ public class Notification {
   }
 
   @Nullable
-  public NotificationService.DetailsCallback getDetailsCallback() {
+  public DetailsCallback getDetailsCallback() {
     return detailsCallback;
   }
 }
