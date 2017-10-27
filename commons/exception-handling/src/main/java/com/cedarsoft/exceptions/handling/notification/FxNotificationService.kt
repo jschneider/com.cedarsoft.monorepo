@@ -120,29 +120,6 @@ class FxNotificationService {
     dialog.y = stage.y + stage.height - dialog.height
   }
 
-  /**
-   * Positions the balloon at the bottom right
-   */
-  private class BottomRightPositioner internal constructor(private val mainFrameComponent: JComponent) : BalloonTipPositioner() {
-
-    override fun getTipLocation(): Point {
-      throw UnsupportedOperationException("not available")
-    }
-
-    override fun determineAndSetLocation(attached: Rectangle) {
-      val preferredSize = balloonTip.preferredSize
-
-      val x = mainFrameComponent.width.toDouble() - preferredSize.getWidth() - 10.0
-      val y = mainFrameComponent.height.toDouble() - preferredSize.getHeight() - 15.0
-
-      balloonTip.size = preferredSize
-      balloonTip.setLocation(x.toInt(), y.toInt())
-      balloonTip.revalidate()
-    }
-
-    override fun onStyleChange() {}
-  }
-
   companion object {
     @ms
     val VISIBILITY_TIME = 15000
