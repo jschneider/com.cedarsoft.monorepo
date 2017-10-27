@@ -4,8 +4,10 @@ import com.google.common.base.Strings
 import com.sun.javafx.stage.StageHelper
 import javafx.scene.Node
 import javafx.scene.Parent
+import javafx.stage.Screen
 import javafx.stage.Stage
 import java.io.PrintStream
+
 
 /**
  * Fx utility methods
@@ -24,6 +26,10 @@ object FxUtils {
   /**
    * Returns the currently focused stage, or the one open stage or null if there is no stage or there are multiple stages
    */
+  fun getStage(): Stage {
+    return getStageSafe() ?: throw IllegalStateException("No stage found")
+  }
+
   fun getStageSafe(): Stage? {
     val stages = StageHelper.getStages()
     for (stage in stages) {
@@ -40,5 +46,14 @@ object FxUtils {
 
     //no stage found
     return null;
+  }
+
+  /**
+   * Center the stage on the given coordinates
+   */
+  fun centerStage(stage: Stage, width: Double, height: Double) {
+    val screenBounds = Screen.getPrimary().getVisualBounds()
+    stage.x = (screenBounds.getWidth() - width) / 2
+    stage.y = (screenBounds.getHeight() - height) / 2
   }
 }
