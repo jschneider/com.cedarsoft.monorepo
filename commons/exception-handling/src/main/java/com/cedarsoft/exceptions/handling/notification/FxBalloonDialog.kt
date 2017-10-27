@@ -23,7 +23,6 @@ import java.util.concurrent.Callable
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class FxBalloonDialog(notification: Notification) : Dialog<ButtonType>() {
-
   init {
     isResizable = true
     initStyle(StageStyle.UNDECORATED)
@@ -90,5 +89,8 @@ abstract class FxBalloonDialog(notification: Notification) : Dialog<ButtonType>(
     }
   }
 
+  /**
+   * Is called when the balloon should be closed
+   */
   abstract fun closeBalloon()
 }
