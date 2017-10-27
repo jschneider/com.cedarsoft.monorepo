@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -28,41 +28,12 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.exceptions.handling.notification;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+package com.cedarsoft.exceptions.handling.notification
 
 /**
  * Notification that can be shown in a balloon
  */
-public class Notification {
-  @Nonnull
-  private final String title;
-  @Nonnull
-  private final String message;
-
-  @Nullable
-  private final DetailsCallback detailsCallback;
-
-  public Notification(@Nonnull String title, @Nonnull String message, @Nullable DetailsCallback detailsCallback) {
-    this.title = title;
-    this.message = message;
-    this.detailsCallback = detailsCallback;
-  }
-
-  @Nonnull
-  public String getMessage() {
-    return message;
-  }
-
-  @Nonnull
-  public String getTitle() {
-    return title;
-  }
-
-  @Nullable
-  public DetailsCallback getDetailsCallback() {
-    return detailsCallback;
-  }
-}
+data class Notification(
+  val title: String,
+  val message: String,
+  val detailsCallback: DetailsCallback?)
