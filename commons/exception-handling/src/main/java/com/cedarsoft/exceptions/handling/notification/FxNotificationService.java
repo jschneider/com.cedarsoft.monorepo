@@ -31,32 +31,20 @@
 package com.cedarsoft.exceptions.handling.notification;
 
 import com.cedarsoft.annotations.UiThread;
-import com.cedarsoft.exceptions.handling.Messages;
-import com.cedarsoft.swing.common.Fonts;
-import com.cedarsoft.swing.common.SwingHelper;
-import com.cedarsoft.swing.common.dialog.AbstractDialog;
 import com.cedarsoft.unit.si.ms;
-import net.java.balloontip.BalloonTip;
-import net.java.balloontip.CustomBalloonTip;
+import javafx.scene.control.ButtonType;
 import net.java.balloontip.positioners.BalloonTipPositioner;
 import net.java.balloontip.styles.ToolTipBalloonStyle;
-import net.java.balloontip.utils.TimingUtils;
-import net.miginfocom.swing.MigLayout;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.ThreadSafe;
-import javax.swing.AbstractAction;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -84,16 +72,12 @@ public class FxNotificationService {
       return;
     }
 
-    @Nullable JFrame frame = SwingHelper.getFrameSafe();
-    if (frame == null) {
-      throw new IllegalArgumentException("No frame found");
-    }
-    JComponent mainFrameComponent = (JComponent) frame.getContentPane();
-
-    BalloonTip balloonTip = new CustomBalloonTip(mainFrameComponent, new JPanel(), new Rectangle(10, 10), STYLE, new BottomRightPositioner(mainFrameComponent), BalloonTip.getDefaultCloseButton()) {
+    FxBalloonDialog fxBalloonDialog = new FxBalloonDialog(notification) {
       @Override
       public void closeBalloon() {
-        super.closeBalloon();
+        setResult(ButtonType.OK);
+        close();
+
         notificationVisible = false;
 
         //Look if there is a notification available
@@ -103,38 +87,17 @@ public class FxNotificationService {
         }
 
         //Wait for 1200 ms until the notification is shown
+        //TODO Convert to JavaFX
         Timer timer = new Timer(1200, e -> showNotification(nextNotification));
         timer.setRepeats(false);
         timer.start();
       }
     };
 
-    JPanel content = new JPanel(new MigLayout("fill, wrap 2", "[][grow,fill]", "[fill][fill,grow][fill]"));
-    content.setOpaque(false);
-
-    JLabel headlineLabel = new JLabel(notification.getTitle());
-    headlineLabel.setFont(Fonts.TITLE);
-
-    content.add(new JLabel(AbstractDialog.Icons.WARNING));
-    content.add(headlineLabel, "wrap");
-    content.add(new JLabel(notification.getMessage()), "span");
-
-    @Nullable DetailsCallback detailsCallback = notification.getDetailsCallback();
-    if (detailsCallback != null) {
-      content.add(SwingHelper.createHyperLink(new AbstractAction(Messages.get("details")) {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          balloonTip.closeBalloon();
-          detailsCallback.detailsClicked(notification);
-        }
-      }), "alignx right, span");
-    }
-
-    balloonTip.setContents(content);
-
-
     notificationVisible = true;
-    TimingUtils.showTimedBalloon(balloonTip, VISIBILITY_TIME);
+
+    fxBalloonDialog.show();
+    //TimingUtils.showTimedBalloon(balloonTip, VISIBILITY_TIME);
   }
 
   /**
