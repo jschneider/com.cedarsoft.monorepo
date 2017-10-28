@@ -3,6 +3,7 @@ package com.cedarsoft.exceptions.handling
 import com.cedarsoft.commons.javafx.FxUtils
 import javafx.stage.Stage
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.testfx.framework.junit5.ApplicationTest
 import org.testfx.util.WaitForAsyncUtils
@@ -15,12 +16,12 @@ class ApplicationExceptionFxDialogTest : ApplicationTest() {
   override fun start(stage: Stage?) {
     super.start(stage)
 
-    val exception = MyTestException(
-      MyTestException.TestExceptionDetails.ERROR_1, "asdf")
+    val exception = MyTestException(MyTestException.TestExceptionDetails.ERROR_1, "asdf")
 
     ApplicationExceptionFxDialog(exception).show()
   }
 
+  @Disabled
   @Test
   internal fun testAppFxExceptionDialog() {
     println("Thread: ${Thread.currentThread().name}")
