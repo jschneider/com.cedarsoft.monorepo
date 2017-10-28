@@ -1,5 +1,11 @@
 .balloon-dialog {
   -fx-background-color: #FFFBC0;
+  -fx-border-color: #767676;
+  -fx-border-width: 1;
+}
+
+.balloon-dialog .header-panel{
+  -fx-background-color: #FFFBC0;
 }
 
 .balloon-dialog .pane {

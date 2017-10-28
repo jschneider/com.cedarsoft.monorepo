@@ -36,14 +36,10 @@ import com.cedarsoft.unit.si.ms
 import javafx.beans.InvalidationListener
 import javafx.scene.control.ButtonType
 import javafx.stage.Stage
-import net.java.balloontip.positioners.BalloonTipPositioner
 import net.java.balloontip.styles.ToolTipBalloonStyle
 import java.awt.Color
-import java.awt.Point
-import java.awt.Rectangle
-import java.util.LinkedList
+import java.util.*
 import javax.annotation.concurrent.ThreadSafe
-import javax.swing.JComponent
 import javax.swing.Timer
 
 /**
@@ -116,8 +112,8 @@ class FxNotificationService {
   }
 
   private fun position(dialog: FxBalloonDialog, stage: Stage) {
-    dialog.x = stage.x + stage.width - dialog.width - 20
-    dialog.y = stage.y + stage.height - dialog.height
+    dialog.x = stage.x + stage.width - dialog.width - 15
+    dialog.y = stage.y + stage.height - dialog.height - 15
   }
 
   companion object {
