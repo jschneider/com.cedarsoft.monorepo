@@ -58,7 +58,8 @@ public class InternalExceptionFxDialog extends Alert {
     setContentText(createErrorMessageText());
     setResizable(true);
 
-    getDialogPane().setPrefWidth(500);
+    getDialogPane().setMinWidth(300);
+    getDialogPane().setPrefWidth(600);
 
     StringWriter sw = new StringWriter();
     PrintWriter pw = new PrintWriter(sw);
@@ -83,13 +84,6 @@ public class InternalExceptionFxDialog extends Alert {
 
     // Set expandable Exception into the dialog pane.
     getDialogPane().setExpandableContent(expContent);
-
-
-    getDialogPane().expandedProperty().addListener((observable, oldValue, newValue) -> {
-      Platform.runLater(() -> {
-        getDialogPane().getScene().getWindow().sizeToScene();
-      });
-    });
   }
 
 
