@@ -31,7 +31,7 @@ internal class FxBalloonDialogDemo : Application() {
     }
 
     val notification = Notification("daTitle",
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.\nasdf asdf sadf fsda fasd asdf sadf asdf\n\naslkjawl4kjasldkfj",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.\nasdf asdf sadf fsda fasd asdf sadfa dfafs dfasd af sddasf afsd asdf asfasdfasf dfasdfasd  asdf\n\naslkjawl4kjasldkfj",
       DetailsCallback { notification -> println("--> Details clicked <$notification>") })
     notificationService.showNotification(notification)
   }
