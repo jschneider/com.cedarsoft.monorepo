@@ -156,39 +156,8 @@ public class FxExceptionHandler extends ExceptionHandler {
 
           try {
             dialogOpen.set(true);
-            InternalExceptionDialog internalExceptionDialog = new InternalExceptionDialog(SwingHelper.getFrameSafe(), original, new ExceptionReporter() {
-              @Override
-              public void report(@Nonnull Throwable throwable) {
-                ReportingExceptionsDialog reportingExceptionsDialog = new ReportingExceptionsDialog(SwingHelper.getFrameSafe());
-                reportingExceptionsDialog.setVisibleNonBlocking();
-
-                new SwingWorker<Void, Void>() {
-                  @Override
-                  @Nullable
-                  protected Void doInBackground() throws Exception {
-                    exceptionReporter.report(throwable);
-                    return null;
-                  }
-
-                  @Override
-                  protected void done() {
-                    super.done();
-                    reportingExceptionsDialog.cancel();
-
-                    try {
-                      get();
-                      OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem has been reported successfully", "The exception has been reported successfully", OptionDialog.OptionType.OK_OPTION);
-                    } catch (InterruptedException | ExecutionException e) {
-                      //We can't do anything about this. Just log it...
-                      LOG.warn("Exception reporting failed due to", e);
-
-                      OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem reporting has failed due to: \n" + e.getClass().getName() + ":\n" + e.getMessage(), "Problem reporting has failed", OptionDialog.OptionType.OK_OPTION);
-                    }
-                  }
-                }.execute();
-              }
-            }, applicationVersion);
-            internalExceptionDialog.setVisible(true);
+            InternalExceptionFxDialog internalExceptionDialog = new InternalExceptionFxDialog(original);
+            internalExceptionDialog.showAndWait();
           } finally {
             dialogOpen.set(false);
           }
