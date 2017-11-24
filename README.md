@@ -24,6 +24,22 @@ Documentation and projects available at [cedarsoft.org]
 
 ## 8.3.2-SNAPSHOT
 
+### Bugfixes
+* Fix package name for guava extension methods
+* X509Support handles expired certificates correctly
+
+### Features
+* Upgrade dependencies
+* Use dokka to generate documentation (instead of javadoc maven plugin)
+* Add Kluent dependency
+* Add Kotlin Guice extension methods
+* Convert more tests to JUnit 5
+* New annotations: @Sorted
+* JavaFX
+  * add exception handler with JavaFX base didalog
+  * add balloon basics
+  * add Kotlin extension methods
+
 ## 8.3.1 (2017-07-15)
 
 ### Bugfixes
