@@ -22,7 +22,7 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.3.2-SNAPSHOT
+## 8.4.0 (2017-11-24)
 
 ### Bugfixes
 * Fix package name for guava extension methods
