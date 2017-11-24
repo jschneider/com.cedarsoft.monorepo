@@ -4,7 +4,7 @@ One big repository containing most OpenSource projects created by [cedarsoft Gmb
 
 
 ### Projects contained in this repository
-#### 
+####
 * [cedarsoft Annotatinos](annotations/README.md)
 * [cedarsoft Unit](unit/README.md)
 * [cedarsoft Serialization](serialization/README.md)
@@ -36,7 +36,7 @@ Documentation and projects available at [cedarsoft.org]
 * Convert more tests to JUnit 5
 * New annotations: @Sorted
 * JavaFX
-  * add exception handler with JavaFX base didalog
+  * add exception handler with JavaFX base dialog
   * add balloon basics
   * add Kotlin extension methods
 
@@ -77,14 +77,14 @@ Documentation and projects available at [cedarsoft.org]
 
 ### Features
 * Dependency Injection
-  * introduce CachingProvider  
+  * introduce CachingProvider
 * ApplicationHomeAccess#createTemporaryHomeAccess() for unit testing
 * Swing
   * JGoodies: add Validating Component
   * Dialogs: Improve borders
   * Fonts: add strike through font
 * Serialization
-  * Common Jackson serializers: Add serializer for java.time types  
+  * Common Jackson serializers: Add serializer for java.time types
 * Dependencies
   * add Jackson databinding dependencies
 * Version: add valueOf() method with parameter suffix
@@ -105,10 +105,10 @@ Documentation and projects available at [cedarsoft.org]
   * Add busy icon to AbstractDialog
   * Exception Handler: Add support for TypeHandlers
 * Update dependencies to latest version
-  * add dep for XZ compression 
+  * add dep for XZ compression
 
 ## 8.1.0 (2017-05-04)
-* JGoodies related classes: 
+* JGoodies related classes:
     * IconFeedbackPanel
     * ComponentFactory
 * delete Os* classes
@@ -120,7 +120,7 @@ Documentation and projects available at [cedarsoft.org]
     * add UUID Serializer
   * Stax
     * Remove JSON support (use Jackson instead)
-    
+
 * New sub projects
   * Photos
   * OSGI validator maven plugin
@@ -128,8 +128,8 @@ Documentation and projects available at [cedarsoft.org]
   * Business
 * Use error prone compiler
   * Use @Immutable class from error prone compiler
-  
- 
+
+
 ## 8.0.1 (2017-03-24)
 * Using logback for logging
 * Version number in dependency management can be overridden in a property: monorepo.dep.management.version
