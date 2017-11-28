@@ -170,10 +170,6 @@
     <jooby.version>1.2.3</jooby.version>
   </properties>
 
-  <prerequisites>
-    <maven>${required.maven.version}</maven>
-  </prerequisites>
-
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
