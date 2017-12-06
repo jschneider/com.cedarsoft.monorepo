@@ -885,6 +885,12 @@
         <version>${jackson.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.fasterxml.jackson.module</groupId>
+        <artifactId>jackson-module-kotlin</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.intellij</groupId>
         <artifactId>annotations</artifactId>
         <version>12.0</version>
@@ -1302,6 +1308,7 @@
             <compilerArgs>
               <arg>-Xlint:all</arg>
               <arg>-Xlint:-serial</arg>
+              <arg>-parameters</arg>
             </compilerArgs>
 
             <compilerId>javac-with-errorprone</compilerId>
@@ -1334,7 +1341,6 @@
                   <arg>-Xlint:all</arg>
                   <arg>-Xlint:-serial</arg>
                   <arg>-Xlint:-unchecked</arg>
-                  <arg>-parameters</arg>
                 </compilerArgs>
               </configuration>
             </execution>
@@ -1348,7 +1354,6 @@
                 <showDeprecation>false</showDeprecation>
                 <compilerArgs>
                   <arg>-Xlint:none</arg>
-                  <arg>-parameters</arg>
                 </compilerArgs>
               </configuration>
             </execution>
