@@ -1265,6 +1265,7 @@
           <configuration>
             <args>
               <arg>-java-parameters</arg>
+              <arg>-Xjsr305=strict</arg>
             </args>
           </configuration>
 
