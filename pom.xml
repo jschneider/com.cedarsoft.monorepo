@@ -156,7 +156,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <required.maven.version>3.3.9</required.maven.version>
+    <required.maven.version>3.5.0</required.maven.version>
 
     <maven.skin.version>2.0.0</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
@@ -1695,7 +1695,21 @@
         <artifactId>maven-enforcer-plugin</artifactId>
         <executions>
           <execution>
-            <id>enforce-java-and-maven-versions</id>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>${required.maven.version}</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>enforce-java-versions</id>
             <goals>
               <goal>enforce</goal>
             </goals>
@@ -1704,9 +1718,6 @@
                 <requireJavaVersion>
                   <version>${java.version}</version>
                 </requireJavaVersion>
-                <requireMavenVersion>
-                  <version>${required.maven.version}</version>
-                </requireMavenVersion>
               </rules>
             </configuration>
           </execution>
