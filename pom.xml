@@ -145,10 +145,10 @@
     <currentDevelopmentVersion>8.3.2-SNAPSHOT</currentDevelopmentVersion>
 
     <java.version>1.8</java.version>
-    <kotlin.version>1.2.0</kotlin.version>
+    <kotlin.version>1.2.10</kotlin.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-    <kotlin.compiler.languageVersion>1.1</kotlin.compiler.languageVersion>
-    <kotlin.compiler.apiVersion>1.1</kotlin.compiler.apiVersion>
+    <kotlin.compiler.languageVersion>1.2</kotlin.compiler.languageVersion>
+    <kotlin.compiler.apiVersion>1.2</kotlin.compiler.apiVersion>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
 
     <maven-site-plugin.skip>false</maven-site-plugin.skip>
