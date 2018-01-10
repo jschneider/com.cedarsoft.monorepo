@@ -158,6 +158,16 @@
 
     <maven.skin.version>2.0.0</maven.skin.version>
     <license.header.url>${project.licenses[0].url}.header</license.header.url>
+
+    <!--Deprecated-->
+    <neo4j.version>3.3.0</neo4j.version>
+    <guice.version>4.1.0</guice.version>
+    <jaxb.version>2.3.0</jaxb.version>
+    <jetty.version>9.4.8.v20171121</jetty.version>
+    <jackson.version>2.9.3</jackson.version>
+    <old.jackson.version>1.9.13</old.jackson.version>
+    <jooby.version>1.2.3</jooby.version>
+
   </properties>
 
   <dependencies>
