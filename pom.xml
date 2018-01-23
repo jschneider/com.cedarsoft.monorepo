@@ -142,7 +142,7 @@
     <!--The currently released version-->
     <currentStableVersion>8.3.1</currentStableVersion>
     <!--The current development version-->
-    <currentDevelopmentVersion>8.3.2-SNAPSHOT</currentDevelopmentVersion>
+    <currentDevelopmentVersion>8.4.1-SNAPSHOT</currentDevelopmentVersion>
 
     <java.version>1.8</java.version>
     <kotlin.version>1.2.10</kotlin.version>
