@@ -22,6 +22,8 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.5.2
+
 ## 8.5.1 (2018-02-01)
 
 ### Bugfixes
