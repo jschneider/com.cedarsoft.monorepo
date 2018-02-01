@@ -35,7 +35,7 @@
   <extension>
     <groupId>fr.brouillard.oss</groupId>
     <artifactId>jgitver-maven-plugin</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.8</version>
   </extension>
   <extension>
         <groupId>co.leantechniques</groupId>
