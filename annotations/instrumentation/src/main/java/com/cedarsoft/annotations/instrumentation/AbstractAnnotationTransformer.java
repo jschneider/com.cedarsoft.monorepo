@@ -30,13 +30,6 @@
  */
 package com.cedarsoft.annotations.instrumentation;
 
-import java.lang.annotation.Annotation;
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
-import java.security.ProtectionDomain;
-
-import javax.annotation.Nonnull;
-
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtBehavior;
@@ -45,7 +38,14 @@ import javassist.CtField;
 import javassist.CtMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
+import javassist.bytecode.AccessFlag;
 import javassist.bytecode.DuplicateMemberException;
+
+import javax.annotation.Nonnull;
+import java.lang.annotation.Annotation;
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.security.ProtectionDomain;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -115,6 +115,8 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
   protected static void ensureAssertField( @Nonnull CtClass ctClass ) throws CannotCompileException {
     try {
       CtField assertionsDisabledField = CtField.make("static final boolean " + ASSERTION_DISABLED_FIELD_NAME + " = !" + ctClass.getName() + ".class.desiredAssertionStatus();", ctClass);
+      //Ensure the field is marked as synthetic
+      assertionsDisabledField.setModifiers(AccessFlag.of(AccessFlag.SYNTHETIC | assertionsDisabledField.getModifiers()));
       ctClass.addField(assertionsDisabledField);
     } catch (DuplicateMemberException ignore) {
     }
