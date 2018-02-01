@@ -35,7 +35,7 @@ import javax.annotation.Nonnull;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public abstract class AbstractBaseClass {
+public abstract class AbstractBaseClass<T> {
   @Nonnull
   private String inAbstrBaseClass = "asdf";
 
@@ -45,6 +45,13 @@ public abstract class AbstractBaseClass {
   }
 
   public void setInAbstrBaseClass(@Nonnull String inAbstrBaseClass) {
+    assert inAbstrBaseClass!=null;
     this.inAbstrBaseClass = inAbstrBaseClass;
+  }
+
+  public static class AlreadyClosedException extends Exception {
+    public AlreadyClosedException() {
+      super("Already closed");
+    }
   }
 }

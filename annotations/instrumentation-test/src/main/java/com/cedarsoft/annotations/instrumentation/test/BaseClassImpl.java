@@ -35,7 +35,7 @@ import javax.annotation.Nonnull;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class BaseClassImpl extends BaseClass {
+public class BaseClassImpl extends BaseClass<String> {
   @Nonnull
   private final Object o;
 

@@ -30,10 +30,11 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
 import org.junit.*;
+
+import java.lang.reflect.Field;
+
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -49,5 +50,18 @@ public class BaseClassTest {
     } catch (Exception e) {
       assertThat(e).hasMessage("Parameter 1 must not be null");
     }
+  }
+
+  @Test
+  public void testAnnotationFieldSyntethic() {
+    for (Field field : BaseClass.class.getDeclaredFields()) {
+
+      if (field.getName().equals("$assertionsDisabled")) {
+        assertThat(field.isSynthetic()).isTrue();
+        return;
+      }
+    }
+
+    fail("Assert field not found");
   }
 }

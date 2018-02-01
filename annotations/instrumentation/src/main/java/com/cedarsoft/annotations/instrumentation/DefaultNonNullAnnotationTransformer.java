@@ -82,6 +82,7 @@ public class DefaultNonNullAnnotationTransformer extends AbstractAnnotationTrans
       }
 
       //Checking for return values
+      //noinspection NegativelyNamedBooleanVariable
       boolean nonNullAnnotation = isAnnotated( method, Nonnull.class );
       boolean nullAnnotation = isAnnotated( method, Nullable.class );
 
