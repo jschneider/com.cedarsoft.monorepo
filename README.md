@@ -22,6 +22,18 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.5.0 (2018-02-01)
+### Features
+* Upgrade Kotlin to 1.2.0
+* add -parameters to compiler
+* Updated jgitver
+* Updated dependencies and plugins
+
+
+### Bugfixes
+* Improve instrumentation plugin: Add SYNTETHIC keyword to generated assertion field
+
+
 ## 8.4.0 (2017-11-24)
 
 ### Bugfixes
