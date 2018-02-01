@@ -1240,7 +1240,9 @@
         <plugin>
           <groupId>org.jetbrains.kotlin</groupId>
           <artifactId>kotlin-maven-plugin</artifactId>
-          <version>${kotlin.version}</version>
+          <!--Bug in 1.2.20: https://youtrack.jetbrains.com/issue/KT-22642-->
+          <version>1.2.10</version>
+          <!--<version>${kotlin.version}</version>-->
           <configuration>
             <args>
               <arg>-java-parameters</arg>
