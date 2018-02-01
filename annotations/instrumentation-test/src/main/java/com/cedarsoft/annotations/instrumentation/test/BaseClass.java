@@ -35,7 +35,7 @@ import javax.annotation.Nonnull;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class BaseClass extends AbstractBaseClass{
+public class BaseClass<T> extends AbstractBaseClass<T>{
   @Nonnull
   private final String asdf;
 
@@ -46,5 +46,9 @@ public class BaseClass extends AbstractBaseClass{
   @Nonnull
   public String getAsdf() {
     return asdf;
+  }
+
+  public void asdf() {
+    assert Thread.currentThread().getName() != "asdf";
   }
 }
