@@ -1815,13 +1815,6 @@
       </activation>
       <build>
         <plugins>
-          <!--Configure the jgitver plugin first, to ensure it runs *before* the git-plugin-->
-          <plugin>
-            <groupId>fr.brouillard.oss</groupId>
-            <artifactId>jgitver-maven-plugin</artifactId>
-            <version>1.1.8</version>
-          </plugin>
-
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
