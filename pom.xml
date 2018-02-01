@@ -1452,22 +1452,28 @@
             <skip>true</skip>
           </configuration>
         </plugin>
-        <!--<plugin>-->
-        <!--<groupId>org.jetbrains.dokka</groupId>-->
-        <!--<artifactId>dokka-maven-plugin</artifactId>-->
-        <!--<version>0.9.15</version>-->
-        <!--<configuration>-->
-        <!--<jdkVersion>8</jdkVersion>-->
-        <!--</configuration>-->
-        <!--<executions>-->
-        <!--<execution>-->
-        <!--<phase>package</phase>-->
-        <!--<goals>-->
-        <!--<goal>javadocJar</goal>-->
-        <!--</goals>-->
-        <!--</execution>-->
-        <!--</executions>-->
-        <!--</plugin>-->
+        <plugin>
+          <groupId>org.jetbrains.dokka</groupId>
+          <artifactId>dokka-maven-plugin</artifactId>
+          <version>0.9.15</version>
+          <configuration>
+            <jdkVersion>8</jdkVersion>
+            <sourceRoots>
+              <root>
+                <path>src/main/java</path>
+                <platforms>JVM</platforms>
+              </root>
+            </sourceRoots>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>javadocJar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>clirr-maven-plugin</artifactId>
@@ -1830,10 +1836,10 @@
           </plugin>
 
           <!--Only run dokka on release-->
-          <!--<plugin>-->
-          <!--<groupId>org.jetbrains.dokka</groupId>-->
-          <!--<artifactId>dokka-maven-plugin</artifactId>-->
-          <!--</plugin>-->
+          <plugin>
+            <groupId>org.jetbrains.dokka</groupId>
+            <artifactId>dokka-maven-plugin</artifactId>
+          </plugin>
 
         </plugins>
       </build>
