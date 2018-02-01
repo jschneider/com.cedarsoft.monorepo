@@ -6,7 +6,7 @@ git checkout -b release/75.3.0
 ````
 
 #### Release notes
-update README.md with the lastet release notes
+update README.md with the latest release notes
 
 
 #### Check project state
