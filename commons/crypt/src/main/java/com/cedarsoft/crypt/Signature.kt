@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -29,66 +29,46 @@
  * have any questions.
  */
 
-package com.cedarsoft.crypt;
+package com.cedarsoft.crypt
 
-import javax.annotation.Nonnull;
-
-import java.util.Arrays;
+import java.util.Arrays
 
 /**
  * Represents a signature
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-public class Signature {
-  /**
-   * Null signature
-   */
-  @Nonnull
-  public static final Signature NULL = new Signature( new byte[0] );
+class Signature(bytes: ByteArray) {
 
-  @Nonnull
-  private final byte[] bytes;
-
-  /**
-   * Creates a new signature
-   *
-   * @param bytes the bytes
-   */
-  public Signature( @Nonnull byte[] bytes ) {
-    this.bytes = bytes.clone();
-  }
+  private val bytes: ByteArray = bytes.clone()
 
   /**
    * Returns the byte array representing the signature
    *
    * @return the byte array
    */
-  @Nonnull
-  public byte[] getBytes() {
-    return bytes.clone();
+  fun getBytes(): ByteArray {
+    return bytes.clone()
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( !( o instanceof Signature ) ) return false;
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (other !is Signature) return false
 
-    Signature signature = ( Signature ) o;
+    val signature = other as Signature?
 
-    if ( !Arrays.equals( bytes, signature.bytes ) ) return false;
-
-    return true;
+    return Arrays.equals(bytes, signature!!.bytes)
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int hashCode() {
-    return Arrays.hashCode( bytes );
+  override fun hashCode(): Int {
+    return Arrays.hashCode(bytes)
+  }
+
+  companion object {
+    /**
+     * Null signature
+     */
+    @JvmStatic
+    val NULL = Signature(ByteArray(0))
   }
 }
