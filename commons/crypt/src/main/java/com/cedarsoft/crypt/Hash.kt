@@ -95,6 +95,7 @@ class Hash(
      * @param valueAsHex the hex value
      * @return the hash
      */
+    @JvmStatic
     fun fromHex(algorithm: Algorithm, valueAsHex: String): Hash {
       try {
         return Hash(algorithm, Hex.decodeHex(valueAsHex.toCharArray()))
