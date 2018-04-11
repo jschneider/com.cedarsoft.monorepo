@@ -32,8 +32,6 @@
 package com.cedarsoft.execution;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -52,9 +50,9 @@ public class Executor {
   @Nonnull
   private final ProcessBuilder processBuilder;
   @Nonnull
-  private OutputStream targetOut;
+  private final OutputStream targetOut;
   @Nonnull
-  private OutputStream targetErr;
+  private final OutputStream targetErr;
 
   /**
    * <p>Constructor for Executor.</p>
