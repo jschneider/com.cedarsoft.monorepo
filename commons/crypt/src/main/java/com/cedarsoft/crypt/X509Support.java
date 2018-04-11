@@ -34,7 +34,6 @@ package com.cedarsoft.crypt;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
-
 import javax.annotation.Nullable;
 import javax.crypto.Cipher;
 import javax.inject.Inject;
@@ -230,15 +229,12 @@ public class X509Support {
     }
 
     //We have an url --> return it
-    DataInputStream in = new DataInputStream( privateKeyUrl.openStream() );
-    try {
-      byte[] keyBytes = IOUtils.toByteArray( in );
-      KeyFactory keyFactory = KeyFactory.getInstance( RSA );
+    try (DataInputStream in = new DataInputStream(privateKeyUrl.openStream())) {
+      byte[] keyBytes = IOUtils.toByteArray(in);
+      KeyFactory keyFactory = KeyFactory.getInstance(RSA);
 
-      PKCS8EncodedKeySpec privSpec = new PKCS8EncodedKeySpec( keyBytes );
-      return ( RSAPrivateKey ) keyFactory.generatePrivate( privSpec );
-    } finally {
-      in.close();
+      PKCS8EncodedKeySpec privSpec = new PKCS8EncodedKeySpec(keyBytes);
+      return (RSAPrivateKey) keyFactory.generatePrivate(privSpec);
     }
   }
 
