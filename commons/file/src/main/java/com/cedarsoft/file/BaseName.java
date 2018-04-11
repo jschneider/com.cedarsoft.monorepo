@@ -32,10 +32,10 @@
 package com.cedarsoft.file;
 
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
-import java.lang.String;
 
 /**
  * A base name of a file
@@ -56,7 +56,7 @@ public class BaseName implements Comparable<BaseName>, Serializable {
   }
 
   /**
-   * <p>Getter for the field <code>name</code>.</p>
+   * <p>Getter for the field {@code name}.</p>
    *
    * @return a String object.
    */
@@ -65,42 +65,36 @@ public class BaseName implements Comparable<BaseName>, Serializable {
     return name;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String toString() {
     return name;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( !( o instanceof BaseName ) ) return false;
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof BaseName)) {
+      return false;
+    }
 
-    BaseName baseName = ( BaseName ) o;
+    BaseName baseName = (BaseName) obj;
 
-    if ( !name.equals( baseName.name ) ) return false;
+    if (!name.equals(baseName.name)) {
+      return false;
+    }
 
     return true;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public int hashCode() {
     return name.hashCode();
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public int compareTo( BaseName o ) {
+  public int compareTo(@NotNull BaseName o) {
     return name.compareTo( o.name );
   }
 }
