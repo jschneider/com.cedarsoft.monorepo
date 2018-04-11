@@ -35,7 +35,6 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 
 import javax.annotation.Nonnull;
-
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -64,7 +63,7 @@ public class Hash implements Serializable {
   }
 
   /**
-   * <p>Getter for the field <code>algorithm</code>.</p>
+   * <p>Getter for the field {@code algorithm}.</p>
    *
    * @return a Algorithm object.
    */
@@ -84,7 +83,7 @@ public class Hash implements Serializable {
   }
 
   /**
-   * <p>Getter for the field <code>value</code>.</p>
+   * <p>Getter for the field {@code value}.</p>
    *
    * @return an array of byte.
    */
@@ -93,34 +92,33 @@ public class Hash implements Serializable {
     return value.clone();
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   @Nonnull
   public String toString() {
     return "[" + algorithm + ": " + getValueAsHex() + "]";
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( o == null || getClass() != o.getClass() ) return false;
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
-    Hash hash = ( Hash ) o;
+    Hash hash = (Hash) obj;
 
-    if ( algorithm != hash.algorithm ) return false;
-    if ( !Arrays.equals( value, hash.value ) ) return false;
+    if (algorithm != hash.algorithm) {
+      return false;
+    }
+    if (!Arrays.equals(value, hash.value)) {
+      return false;
+    }
 
     return true;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public int hashCode() {
     int result;
