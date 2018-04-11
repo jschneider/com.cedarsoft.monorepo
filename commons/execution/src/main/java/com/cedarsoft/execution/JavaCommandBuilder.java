@@ -67,7 +67,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>classPathElements</code>.</p>
+   * <p>Getter for the field {@code classPathElements}.</p>
    *
    * @return a List object.
    */
@@ -77,7 +77,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>classPathElements</code>.</p>
+   * <p>Setter for the field {@code classPathElements}.</p>
    *
    * @param classPathElements a String object.
    */
@@ -92,7 +92,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>javaBin</code>.</p>
+   * <p>Getter for the field {@code javaBin}.</p>
    *
    * @return a String object.
    */
@@ -135,7 +135,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>mainClass</code>.</p>
+   * <p>Getter for the field {@code mainClass}.</p>
    *
    * @return a String object.
    */
@@ -154,7 +154,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>vmProperties</code>.</p>
+   * <p>Getter for the field {@code vmProperties}.</p>
    *
    * @return a List object.
    */
@@ -164,7 +164,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>vmProperties</code>.</p>
+   * <p>Setter for the field {@code vmProperties}.</p>
    *
    * @param vmProperties a String object.
    */
@@ -197,7 +197,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>arguments</code>.</p>
+   * <p>Setter for the field {@code arguments}.</p>
    *
    * @param arguments a String object.
    */
@@ -212,7 +212,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>arguments</code>.</p>
+   * <p>Getter for the field {@code arguments}.</p>
    *
    * @return a List object.
    */
