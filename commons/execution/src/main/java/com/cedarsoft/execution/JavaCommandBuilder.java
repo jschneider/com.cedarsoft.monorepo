@@ -34,9 +34,7 @@ package com.cedarsoft.execution;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.File;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -86,7 +84,7 @@ public class JavaCommandBuilder {
   public void setClassPathElements( @Nonnull String... classPathElements ) {
     this.classPathElements.clear();
     for ( String element : classPathElements ) {
-      if ( element == null || element.length() == 0 ) {
+      if (element == null || element.isEmpty()) {
         continue;
       }
       this.classPathElements.add( element );
@@ -116,7 +114,7 @@ public class JavaCommandBuilder {
     StringBuilder stringBuilder = new StringBuilder();
     for ( Iterator<String> it = classPathElements.iterator(); it.hasNext(); ) {
       String classPathElement = it.next();
-      if ( classPathElement == null || classPathElement.length() == 0 ) {
+      if (classPathElement == null || classPathElement.isEmpty()) {
         continue;
       }
       stringBuilder.append( classPathElement );
@@ -173,7 +171,7 @@ public class JavaCommandBuilder {
   public void setVmProperties( @Nonnull String... vmProperties ) {
     this.vmProperties.clear();
     for ( String vmProperty : vmProperties ) {
-      if ( vmProperty == null || vmProperty.length() == 0 ) {
+      if (vmProperty == null || vmProperty.isEmpty()) {
         continue;
       }
       this.vmProperties.add( vmProperty );
@@ -206,7 +204,7 @@ public class JavaCommandBuilder {
   public void setArguments( @Nonnull String... arguments ) {
     this.arguments.clear();
     for ( String argument : arguments ) {
-      if ( argument == null || argument.length() == 0 ) {
+      if (argument == null || argument.isEmpty()) {
         continue;
       }
       this.arguments.add( argument );
