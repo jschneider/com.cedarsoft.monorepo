@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -29,24 +29,19 @@
  * have any questions.
  */
 
-package com.cedarsoft.crypt;
+package com.cedarsoft.crypt
 
 
-import javax.inject.Qualifier;
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import javax.inject.Qualifier
 
 /**
- * <p>PrivateKeyUrl class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
+ * Marks an url to the private key
+ *
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@Retention( RetentionPolicy.RUNTIME )
-@Target( {ElementType.FIELD, ElementType.PARAMETER} )
-@Documented
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER)
+@MustBeDocumented
 @Qualifier
-public @interface PrivateKeyUrl {
-}
+annotation class PrivateKeyUrl
