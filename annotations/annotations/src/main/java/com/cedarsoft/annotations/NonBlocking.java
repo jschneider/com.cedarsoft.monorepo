@@ -30,15 +30,15 @@
  */
 package com.cedarsoft.annotations;
 
+import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
+
+import javax.annotation.Nonnull;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import javax.annotation.Nonnull;
-
-import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -47,6 +47,7 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 @Retention( RetentionPolicy.RUNTIME )
 @Target( {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD} )
 @ThreadDescribingAnnotation(NonBlocking.THREAD_DESCRIPTOR)
+@Inherited
 public @interface NonBlocking {
   @Nonnull
   String THREAD_DESCRIPTOR = "non-blocking";

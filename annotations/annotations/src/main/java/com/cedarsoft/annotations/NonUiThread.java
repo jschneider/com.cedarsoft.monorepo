@@ -34,6 +34,7 @@ import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -46,6 +47,7 @@ import java.lang.annotation.Target;
 @Retention( RetentionPolicy.RUNTIME )
 @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE})
 @ThreadDescribingAnnotation(NonUiThread.THREAD_DESCRIPTOR)
+@Inherited
 public @interface NonUiThread {
   String THREAD_DESCRIPTOR = "non-ui-thread";
 }
