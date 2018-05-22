@@ -82,7 +82,7 @@ public class AsyncTest {
         }
       });
 
-      await().timeout(1, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
+      await().timeout(10, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(defaultUncaughtExceptionHandler);
     }
