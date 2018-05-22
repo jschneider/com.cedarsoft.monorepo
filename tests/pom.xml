@@ -18,7 +18,7 @@
     <module>roach-motel</module>
     <module>spring</module>
     <module>tornadofx</module>
-    <module>dl4j</module>
+    <!--<module>dl4j</module>-->
   </modules>
 
 </project>
