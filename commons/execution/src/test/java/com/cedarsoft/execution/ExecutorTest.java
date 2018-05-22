@@ -122,6 +122,5 @@ public class ExecutorTest {
 
     int available = in.available();
     assertTrue( available > 100 );
-    assertEquals( available - 1, in.available() );
   }
 }
