@@ -74,12 +74,8 @@ public class AsyncTest {
 
       Async async = new Async(executor);
 
-      //noinspection Convert2Lambda tests fail with lambad, why???
-      async.last(new Runnable() {
-        @Override
-        public void run() {
-          throw new IllegalArgumentException("Uups");
-        }
+      async.last(() -> {
+        throw new IllegalArgumentException("Uups");
       });
 
       await().timeout(10, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
