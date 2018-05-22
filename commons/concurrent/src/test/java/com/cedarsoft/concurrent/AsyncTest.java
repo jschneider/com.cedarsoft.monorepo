@@ -33,9 +33,7 @@ package com.cedarsoft.concurrent;
 import com.cedarsoft.test.utils.ThreadExtension;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
-import org.junit.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.*;
 
 import java.util.concurrent.ExecutorService;
@@ -65,7 +63,7 @@ public class AsyncTest {
     executor.awaitTermination(100, TimeUnit.MILLISECONDS);
   }
 
-  @Ignore
+  @Disabled
   @Test
   void testException() throws InterruptedException {
     Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
