@@ -102,7 +102,7 @@ public class ExecutorTest {
     executor.execute();
     assertEquals( "", out.toString() );
 
-    assertTrue( errorOut.toString(), errorOut.toString().startsWith( "java" ) );
+    assertTrue( errorOut.toString(), errorOut.toString().contains( "java" ) );
   }
 
   @Test
