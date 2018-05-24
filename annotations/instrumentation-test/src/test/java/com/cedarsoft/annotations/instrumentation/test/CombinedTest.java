@@ -32,8 +32,7 @@ package com.cedarsoft.annotations.instrumentation.test;
 
 import org.junit.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -45,7 +44,7 @@ public class CombinedTest {
       new Combined().doIt();
       fail("Where is the Exception");
     } catch (Exception e) {
-      assertThat(e).hasMessage("Return value must not be null for method annotated with @Nonnull");
+      assertThat(e.getMessage()).contains("must not be null").contains("annotated with @Nonnull");
     }
   }
 }
