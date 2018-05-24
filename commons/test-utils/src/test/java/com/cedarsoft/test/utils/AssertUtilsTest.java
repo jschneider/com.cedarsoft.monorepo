@@ -153,7 +153,7 @@ public class AssertUtilsTest {
     AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
   }
 
-  @org.junit.jupiter.api.Test
+  @Test
   public void testFormat() throws Exception {
     try {
       AssertUtils.assertXMLEquals("<xml2/>", "This is no xml!");
