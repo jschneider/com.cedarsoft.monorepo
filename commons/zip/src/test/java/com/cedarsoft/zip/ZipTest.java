@@ -31,9 +31,11 @@
 
 package com.cedarsoft.zip;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.junit.*;
+import com.cedarsoft.test.utils.TempFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
+import org.junit.jupiter.api.*;
 
+import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
 
@@ -41,19 +43,22 @@ import static org.junit.Assert.*;
 
 /**
  */
+@WithTempFiles
 public class ZipTest {
-  @Test
-  public void testIt() throws IOException {
-    File file = new File(TestUtils.getTmpDir(), "asdf" + System.nanoTime());
+  @org.junit.jupiter.api.Test
+  public void testIt(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
     assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
+    assertEquals(name, ZipCreator.getRelativePath(parent.getAbsolutePath(), file));
   }
 
   @Test
-  public void testDirectory() throws IOException {
-    File file = new File(TestUtils.getTmpDir(), "asdf" + System.nanoTime());
+  public void testDirectory(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
     file.mkdirs();
     assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
+    assertEquals(name + "/", ZipCreator.getRelativePath(parent.getAbsolutePath(), file));
   }
 }
