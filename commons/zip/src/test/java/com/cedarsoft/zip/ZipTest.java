@@ -44,14 +44,14 @@ import static org.junit.Assert.*;
 public class ZipTest {
   @Test
   public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
+    File file = new File(TestUtils.getTmpDir(), "asdf" + System.nanoTime());
     assertFalse( file.isDirectory() );
     assertEquals( "asdf", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
   }
 
   @Test
   public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
+    File file = new File(TestUtils.getTmpDir(), "asdf" + System.nanoTime());
     file.mkdirs();
     assertTrue( file.isDirectory() );
     assertEquals( "asdf_/", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
