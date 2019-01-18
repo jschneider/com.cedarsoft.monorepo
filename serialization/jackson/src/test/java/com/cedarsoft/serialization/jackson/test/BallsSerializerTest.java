@@ -34,14 +34,12 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import org.assertj.core.api.*;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.google.common.collect.ImmutableList;
-
-import org.assertj.core.api.Assertions;
-import org.junit.experimental.theories.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -53,7 +51,6 @@ public class BallsSerializerTest extends AbstractJsonSerializerTest2<List<? exte
     return new BallsSerializer( new BallSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create(
     ImmutableList.<Ball>of(
       new Ball.TennisBall(7),

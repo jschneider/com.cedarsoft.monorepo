@@ -31,27 +31,25 @@
 
 package com.cedarsoft.serialization.stax.test;
 
-import com.cedarsoft.serialization.SerializationException;
-import com.cedarsoft.version.VersionMismatchException;
-import com.google.common.collect.Lists;
-import org.junit.*;
-import org.junit.rules.*;
+import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
-import static org.junit.Assert.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.SerializationException;
+import com.cedarsoft.version.VersionMismatchException;
+import com.google.common.collect.Lists;
 
 /**
  *
  */
 public class DaBallSerializerTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testIt() throws Exception {
     DaBallSerializer serializer = new DaBallSerializer();
@@ -68,8 +66,13 @@ public class DaBallSerializerTest {
   public void testMissing() throws IOException {
     DaBallSerializer serializer = new DaBallSerializer();
 
-    expectedException.expect( SerializationException.class );
-    serializer.serialize( new DaBall( 77, Lists.newArrayList( new DaBall.Element( "a" ), new DaBall.Element( "b" ) ) ), new ByteArrayOutputStream() );
+    try {
+      serializer.serialize(new DaBall(77, Lists.newArrayList(new DaBall.Element("a"), new DaBall.Element("b"))), new ByteArrayOutputStream());
+      fail("Where is the Exception");
+    }
+    catch (SerializationException ignore) {
+
+    }
   }
 
   @Test
@@ -84,15 +87,24 @@ public class DaBallSerializerTest {
 
   @Test
   public void testInvalidNamespaceVersion() throws IOException {
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Version mismatch. Expected [1.0.0-1.1.0] but was [1.1.1]" );
-    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/ball/1.1.1\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8) ) );
+    try {
+      new DaBallSerializer().deserialize(new ByteArrayInputStream("<ball xmlns=\"http://test/ball/1.1.1\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8)));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException e) {
+      Assertions.assertThat(e).hasMessage("Version mismatch. Expected [1.0.0-1.1.0] but was [1.1.1]");
+    }
   }
 
   @Test
   public void testInvalidNamespace() throws IOException {
-    expectedException.expect( SerializationException.class );
-    expectedException.expectMessage( "[INVALID_NAME_SPACE] Invalid name space. Expected <http://test/ball/1.1.0> but was <http://test/wrong/1.1.0>." );
-    new DaBallSerializer().deserialize( new ByteArrayInputStream( "<ball xmlns=\"http://test/wrong/1.1.0\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8) ) );
+    try {
+      new DaBallSerializer().deserialize(new ByteArrayInputStream("<ball xmlns=\"http://test/wrong/1.1.0\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8)));
+      fail("Where is the Exception");
+
+    }
+    catch (SerializationException e) {
+      Assertions.assertThat(e).hasMessage("[INVALID_NAME_SPACE] Invalid name space. Expected <http://test/ball/1.1.0> but was <http://test/wrong/1.1.0>.");
+    }
   }
 }

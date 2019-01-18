@@ -31,6 +31,13 @@
 
 package com.cedarsoft.serialization.test.performance;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.test.utils.JsonUtils;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -38,12 +45,6 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.*;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -53,7 +54,7 @@ public class JacksonTest {
   public static final String JSON = "{\"id\":\"Canon Raw\",\"dependent\":false,\"extension\":{\"extension\":\"cr2\",\"default\":true,\"delimiter\":\".\"}}";
   private JsonFactory jsonFactory;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     jsonFactory = new JsonFactory();
   }

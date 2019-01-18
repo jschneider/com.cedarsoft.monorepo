@@ -31,19 +31,20 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.file.Extension;
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
  *
@@ -55,13 +56,9 @@ public class ExtensionSerializerTest extends AbstractXmlSerializerTest2<Extensio
     return new ExtensionSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new Extension( ",", "jpg" ), "<extension delimiter=\",\">jpg</extension>" );
-  @DataPoint
   public static final Entry<?> entry2 = create( new Extension( ".", "jpg" ), "<extension delimiter=\".\">jpg</extension>" );
-  @DataPoint
   public static final Entry<?> entry3 = create( new Extension( "-", "jpg" ), "<extension delimiter=\"-\">jpg</extension>" );
-  @DataPoint
   public static final Entry<?> entry4 = create( new Extension( ",", "cr2" ), "<extension delimiter=\",\">cr2</extension>" );
 
   @Test

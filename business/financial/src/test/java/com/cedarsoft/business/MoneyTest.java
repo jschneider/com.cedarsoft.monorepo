@@ -31,12 +31,13 @@
 
 package com.cedarsoft.business;
 
-import javax.annotation.Nonnull;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

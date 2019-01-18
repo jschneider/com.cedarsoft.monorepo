@@ -31,20 +31,18 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 public class VersionRangeSerializerVersionTest
   extends AbstractJsonVersionTest2<VersionRange> {
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = VersionRangeSerializerVersionTest.create(
     Version.valueOf( 1, 0, 0 ),
     VersionRangeSerializerVersionTest.class.getResource( "VersionRange_1.0.0_1.json" ) );
@@ -57,10 +55,10 @@ public class VersionRangeSerializerVersionTest
 
   @Override
   protected void verifyDeserialized( @Nonnull VersionRange deserialized, @Nonnull Version version ) throws Exception {
-    Assert.assertEquals( "1.0.0", deserialized.getMin().format() );
-    Assert.assertEquals( "1.9.17", deserialized.getMax().format() );
-    Assert.assertEquals( true, deserialized.isIncludeLower() );
-    Assert.assertEquals( true, deserialized.isIncludeUpper() );
+    Assertions.assertEquals("1.0.0", deserialized.getMin().format());
+    Assertions.assertEquals("1.9.17", deserialized.getMax().format());
+    Assertions.assertEquals(true, deserialized.isIncludeLower());
+    Assertions.assertEquals(true, deserialized.isIncludeUpper());
   }
 
 }

@@ -31,17 +31,17 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.test.Money;
-
 import javax.annotation.Nonnull;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.test.Money;
 
 /**
  *
  */
-public class MoneySerializerTest extends AbstractXmlSerializerTest<Money> {
+public class MoneySerializerTest extends AbstractXmlSerializerTest2<Money> {
   //We don't need a multi test for such an easy class...
   @Nonnull
   @Override
@@ -49,15 +49,5 @@ public class MoneySerializerTest extends AbstractXmlSerializerTest<Money> {
     return new MoneySerializer();
   }
 
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<money cents=\"1199\"/>";
-  }
-
-  @Nonnull
-  @Override
-  protected Money createObjectToSerialize() {
-    return new Money( 1199 );
-  }
+  public static final Entry<? extends Money> ENTRY1 = create(new Money(1199), "<money cents=\"1199\"/>");
 }

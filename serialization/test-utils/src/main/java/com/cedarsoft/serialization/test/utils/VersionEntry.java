@@ -31,10 +31,10 @@
 
 package com.cedarsoft.serialization.test.utils;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.Serializer;
-
 import javax.annotation.Nonnull;
+
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.version.Version;
 
 /**
  * An entry used for AbstractVersionTest2. It provides a version information and a serialized object.

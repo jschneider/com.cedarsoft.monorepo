@@ -30,11 +30,12 @@
  */
 package com.cedarsoft.app.xdg;
 
-import com.google.common.base.StandardSystemProperty;
-import org.junit.*;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import org.junit.jupiter.api.*;
+
+import com.google.common.base.StandardSystemProperty;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -53,7 +54,7 @@ public class XdgUtilDemo {
     System.err.println( "Data Home: " + XdgUtil.getDataHome().getAbsolutePath() );
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void testFields() throws Exception {
     System.out.println("Fields --------------");

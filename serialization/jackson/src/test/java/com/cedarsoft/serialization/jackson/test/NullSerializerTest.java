@@ -30,6 +30,18 @@
  */
 package com.cedarsoft.serialization.jackson.test;
 
+import static org.assertj.core.api.Assertions.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.DoubleSerializer;
@@ -44,16 +56,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 import com.google.inject.Guice;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

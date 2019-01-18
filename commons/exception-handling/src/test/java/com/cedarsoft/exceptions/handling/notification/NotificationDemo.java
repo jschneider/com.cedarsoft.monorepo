@@ -30,11 +30,11 @@
  */
 package com.cedarsoft.exceptions.handling.notification;
 
-import org.junit.*;
-
 import javax.annotation.Nonnull;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

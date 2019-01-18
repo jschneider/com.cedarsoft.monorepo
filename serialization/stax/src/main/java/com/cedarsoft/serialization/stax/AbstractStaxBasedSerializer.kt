@@ -288,6 +288,7 @@ protected constructor(
     visitChildren(deserializeFrom, object : CB {
       @Throws(XMLStreamException::class, IOException::class)
       override fun tagEntered(deserializeFrom: XMLStreamReader, tagName: String) {
+        @Suppress("UNCHECKED_CAST")
         val entry = collectionsMapping.getEntry(tagName) as CollectionsMapping.Entry<Any>
         val deserialized = deserialize(entry.type, formatVersion, deserializeFrom)
         entry.targetCollection.add(deserialized)

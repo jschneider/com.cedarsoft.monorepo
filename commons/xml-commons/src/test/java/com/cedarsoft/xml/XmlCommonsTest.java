@@ -31,10 +31,12 @@
 
 package com.cedarsoft.xml;
 
-import org.junit.*;
-import org.junit.rules.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
@@ -42,30 +44,26 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayOutputStream;
-import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
  */
 public class XmlCommonsTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-  private String n;
+  private String lineSeparator;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
-    n = System.getProperty( "line.separator" );
+    lineSeparator = System.getProperty("line.separator");
   }
 
   @Test
   public void testFormat() {
     assertEquals( "", XmlCommons.format( "" ) );
-    assertThat( XmlCommons.format( "<xml><a/><b>asdf</b></xml>" ) ).contains( n );
+    assertThat(XmlCommons.format("<xml><a/><b>asdf</b></xml>")).contains(lineSeparator);
   }
 
   @Test
@@ -86,13 +84,13 @@ public class XmlCommonsTest {
 
     transformer.transform( new DOMSource( doc ), new StreamResult( out ) );
 
-    assertThat( out.toString() ).isEqualTo( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
-                                              "<root>" + n +
-                                              "  <child/>" + n +
-                                              "  <child>" + n +
-                                              "    <another/>" + n +
-                                              "  </child>" + n +
-                                              "</root>" + n
+    assertThat(out.toString()).isEqualTo("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + lineSeparator +
+                                           "<root>" + lineSeparator +
+                                           "  <child/>" + lineSeparator +
+                                           "  <child>" + lineSeparator +
+                                           "    <another/>" + lineSeparator +
+                                           "  </child>" + lineSeparator +
+                                           "</root>" + lineSeparator
     );
   }
 
@@ -116,9 +114,9 @@ public class XmlCommonsTest {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
-                    "<daRoot>" + n +
-                    "  <daChild/>" + n +
+    assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + lineSeparator +
+                   "<daRoot>" + lineSeparator +
+                   "  <daChild/>" + lineSeparator +
                     "</daRoot>"
       , out.toString().trim() );
   }
@@ -138,9 +136,9 @@ public class XmlCommonsTest {
     StringWriter out = new StringWriter();
     XmlCommons.out( doc, out );
 
-    assertEquals( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + n +
-                    "<daRoot>" + n +
-                    "  <daChild/>" + n +
+    assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + lineSeparator +
+                   "<daRoot>" + lineSeparator +
+                   "  <daChild/>" + lineSeparator +
                     "</daRoot>"
       , out.toString().trim() );
   }

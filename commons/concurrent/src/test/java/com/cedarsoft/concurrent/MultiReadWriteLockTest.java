@@ -31,29 +31,30 @@
 
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.commons.ThreadUtils;
-import javax.annotation.Nullable;
-
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nullable;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.commons.ThreadUtils;
 
 /**
  *
  */
 public class MultiReadWriteLockTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testEmpty() throws Exception {
-    expectedException.expect( IllegalArgumentException.class );
-    new MultiReadWriteLock();
+    try {
+      new MultiReadWriteLock();
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+    }
   }
 
   @Test

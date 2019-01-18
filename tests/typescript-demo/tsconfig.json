@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": false,
+    "declaration": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "noErrorTruncation": true,
+    "noImplicitReturns": true,
+    //    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    //    "outDir": "target/ts",
+    //    "lib": ["es6", "dom"],
+    "target": "es5"
+    //    "outFile": "target/single-out"
+  },
+  "include": [
+    "src/*.ts"
+  ],
+  //  "files": [
+  //    "src/greeter.ts",
+  //    "src/hello.ts",
+  //    "src/greet.ts",
+  //    "src/main.ts"
+  //  ],
+  "compileOnSave": true
+}

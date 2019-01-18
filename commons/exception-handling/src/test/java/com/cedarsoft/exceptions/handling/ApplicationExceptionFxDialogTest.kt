@@ -1,8 +1,9 @@
 package com.cedarsoft.exceptions.handling
 
 import com.cedarsoft.commons.javafx.FxUtils
+import com.cedarsoft.test.utils.DisableIfHeadless
 import javafx.stage.Stage
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.testfx.framework.junit5.ApplicationTest
@@ -11,6 +12,7 @@ import org.testfx.util.WaitForAsyncUtils
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
+@DisableIfHeadless
 class ApplicationExceptionFxDialogTest : ApplicationTest() {
 
   override fun start(stage: Stage?) {

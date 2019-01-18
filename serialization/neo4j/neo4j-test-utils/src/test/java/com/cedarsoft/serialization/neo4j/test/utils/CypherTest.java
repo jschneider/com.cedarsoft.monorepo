@@ -30,13 +30,13 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.ResourceIterator;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.helpers.collection.Iterators;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -45,7 +45,7 @@ public class CypherTest extends AbstractNeo4JTest {
 
 
   @Test
-  public void testCyper1() throws Exception {
+  public void testCypher1() throws Exception {
     try ( Transaction tx = graphDb.beginTx() ) {
       Node node1 = graphDb.createNode();
       node1.setProperty( "name", "MM" );
@@ -63,7 +63,7 @@ public class CypherTest extends AbstractNeo4JTest {
     }
 
     String query = "start n=node(*) where n.name = 'MM' return n, n.name";
-    assertThat( graphDb.execute( query ).resultAsString().trim() ).isEqualTo( "+-----------------------------+\n" +
+    assertThat( graphDb.execute( query ).resultAsString().trim().replaceAll("\r", "") ).isEqualTo( "+-----------------------------+\n" +
                                                             "| n                  | n.name |\n" +
                                                             "+-----------------------------+\n" +
                                                             "| Node[0]{name:\"MM\"} | \"MM\"   |\n" +

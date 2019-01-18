@@ -31,18 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.file.BaseName;
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
 import javax.annotation.Nonnull;
 
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.file.BaseName;
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
+
 public class BaseNameSerializerVersionTest extends AbstractJsonVersionTest2<BaseName> {
-  @DataPoint
   public static final VersionEntry ENTRY1 = BaseNameSerializerVersionTest.create(
     Version.valueOf( 1, 0, 0 ),
     "\"daName\"" );
@@ -54,6 +52,6 @@ public class BaseNameSerializerVersionTest extends AbstractJsonVersionTest2<Base
 
   @Override
   protected void verifyDeserialized( @Nonnull BaseName deserialized, @Nonnull Version version ) throws Exception {
-    Assert.assertEquals( "daName", deserialized.getName() );
+    Assertions.assertEquals("daName", deserialized.getName());
   }
 }

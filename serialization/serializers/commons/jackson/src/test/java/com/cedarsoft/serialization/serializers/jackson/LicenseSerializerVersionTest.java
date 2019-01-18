@@ -31,18 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.license.License;
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
 import javax.annotation.Nonnull;
 
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.license.License;
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
+
 public class LicenseSerializerVersionTest extends AbstractJsonVersionTest2<License> {
-  @DataPoint
   public static final VersionEntry ENTRY1 = LicenseSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), LicenseSerializerVersionTest.class.getResource( "License_1.0.0_1.json" ) );
 
   @Override
@@ -52,6 +50,6 @@ public class LicenseSerializerVersionTest extends AbstractJsonVersionTest2<Licen
 
   @Override
   protected void verifyDeserialized( @Nonnull License deserialized, @Nonnull Version version ) throws Exception {
-    Assert.assertSame( License.GPL_3, deserialized );
+    Assertions.assertSame(License.GPL_3, deserialized);
   }
 }

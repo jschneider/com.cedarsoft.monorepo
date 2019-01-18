@@ -30,11 +30,11 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.lang.reflect.Field;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -45,8 +45,9 @@ public class BaseClassTest {
     assert "asdf" != null;
 
     try {
-      new BaseClass(null);
-      fail("Where is the Exception");
+      //noinspection ResultOfObjectAllocationIgnored
+      new BaseClass<Void>(null);
+      fail("Exception missing for null param");
     } catch (Exception e) {
       assertThat(e).hasMessage("Parameter 1 must not be null");
     }

@@ -31,9 +31,9 @@
 
 package com.cedarsoft.file;
 
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -68,7 +68,7 @@ public class BaseNameAwareFileNamesTest {
     assertEquals( 3, sameBaseNameEntry.getFileNames().size() );
   }
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     report = new BaseNameAwareFileNames();
   }

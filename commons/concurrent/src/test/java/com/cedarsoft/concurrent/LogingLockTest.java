@@ -31,22 +31,21 @@
 
 package com.cedarsoft.concurrent;
 
-import org.junit.*;
-import org.junit.rules.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class LogingLockTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-
   @Test
   public void testIt() {
     LogingReentrantLock lock = new LogingReentrantLock();
     lock.readLock().lock();
 
-    thrown.expect( InvalidLockStateException.class );
-    lock.writeLock().lock();
+    try {
+      lock.writeLock().lock();
+    }
+    catch (InvalidLockStateException ignore) {
+    }
   }
 }

@@ -31,9 +31,11 @@
 
 package com.cedarsoft.business.calc.roi;
 
-import com.cedarsoft.business.Money;
 import static org.junit.Assert.*;
-import org.junit.*;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.business.Money;
 
 /**
  *

@@ -31,23 +31,25 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
 import com.cedarsoft.test.utils.AssertUtils;
 import com.cedarsoft.version.UnsupportedVersionException;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionMismatchException;
 import com.cedarsoft.version.VersionRange;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
-import org.xml.sax.SAXException;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  *

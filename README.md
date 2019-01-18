@@ -22,6 +22,24 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.7.0 (2018-11-06)
+* Update dependencies
+* Convert all tests to JUnit 5
+* Prepare for JDK 11 update
+* add JavaFX utils
+  * 3D support
+  * util classes
+* introduce dependency-sets
+* cleanup Kotlin dependencies
+* Add a lot of extension methods for Kotlin
+  * guava
+  * tornadofx
+  * JavaFX
+
+## 8.5.2 (2018-06-21)
+* Convert a lot of code to Kotlin
+* Update dependencies
+
 ## 8.5.1 (2018-02-01)
 
 ### Bugfixes

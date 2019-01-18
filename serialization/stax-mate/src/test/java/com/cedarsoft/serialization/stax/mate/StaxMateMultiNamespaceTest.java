@@ -31,13 +31,14 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import org.junit.*;
+import static org.junit.Assert.*;
+
+import java.io.StringReader;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
-import java.io.StringReader;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

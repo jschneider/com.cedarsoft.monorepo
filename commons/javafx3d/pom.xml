@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>commons</artifactId>
+    <version>0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cedarsoft.commons</groupId>
+  <artifactId>javafx3d</artifactId>
+  <name>commons.JavaFX 3D</name>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>openjfx</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>javafx</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>unit</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>concurrent</artifactId>
+    </dependency>
+
+
+    <!--Tests-->
+    <dependency>
+      <groupId>org.fxyz3d</groupId>
+      <artifactId>fxyz3d</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.miglayout</groupId>
+      <artifactId>miglayout-javafx</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jfxtras</groupId>
+      <artifactId>jfxtras-all</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jfree</groupId>
+      <artifactId>fxgraphics2d</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.jfoenix</groupId>
+      <artifactId>jfoenix</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.jensd</groupId>
+      <artifactId>fontawesomefx</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.controlsfx</groupId>
+      <artifactId>controlsfx</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.hansolo</groupId>
+      <artifactId>tilesfx</artifactId>
+      <version>1.5.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.mihosoft.vrl.workflow</groupId>
+      <artifactId>vworkflows-fx</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <!--<plugin>-->
+      <!--<groupId>com.zenjava</groupId>-->
+      <!--<artifactId>javafx-maven-plugin</artifactId>-->
+      <!--<version>8.6.0</version>-->
+      <!--<configuration>-->
+      <!--<mainClass>com.cedarsoft.commons.test.MyJavaFxApp</mainClass>-->
+      <!--</configuration>-->
+      <!--<executions>-->
+      <!--<execution>-->
+      <!--<id>create-jfxjar</id>-->
+      <!--<phase>package</phase>-->
+      <!--<goals>-->
+      <!--<goal>build-jar</goal>-->
+      <!--</goals>-->
+      <!--</execution>-->
+      <!--</executions>-->
+      <!--</plugin>-->
+    </plugins>
+  </build>
+</project>

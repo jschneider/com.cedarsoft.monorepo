@@ -30,17 +30,18 @@
  */
 package com.cedarsoft.commons.test;
 
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.*;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableListBase;
-import org.junit.*;
-
-import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -49,7 +50,7 @@ public class CustomerTest {
 
   private Customer customer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     customer = new Customer();
   }

@@ -31,10 +31,10 @@
 
 package com.cedarsoft.version;
 
-import org.junit.*;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

@@ -31,24 +31,10 @@ package com.cedarsoft.serialization.neo4j.test.utils;
  * have any questions.
  */
 
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
-import com.cedarsoft.serialization.test.utils.Entry;
-import com.cedarsoft.serialization.test.utils.ReflectionEquals;
-import com.google.common.base.Charsets;
-import org.apache.commons.io.IOUtils;
-import org.fest.reflect.core.Reflection;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-import org.junit.runner.*;
-import org.neo4j.cypher.export.DatabaseSubGraph;
-import org.neo4j.cypher.export.SubGraph;
-import org.neo4j.cypher.export.SubGraphExporter;
-import org.neo4j.graphdb.*;
-import org.neo4j.graphdb.Result;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -56,9 +42,28 @@ import java.io.StringWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.apache.commons.io.IOUtils;
+import org.fest.reflect.core.Reflection;
+import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.*;
+import org.neo4j.cypher.export.DatabaseSubGraph;
+import org.neo4j.cypher.export.SubGraph;
+import org.neo4j.cypher.export.SubGraphExporter;
+import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Result;
+import org.neo4j.graphdb.Transaction;
+
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.serialization.test.utils.ReflectionEquals;
+import com.cedarsoft.test.utils.ByTypeSource;
+import com.google.common.base.Charsets;
 
 /**
  * Abstract base class for neo4j based serializers.
@@ -70,10 +75,14 @@ import static org.junit.Assert.*;
  *
  * @param <T> the type of the serialized object
  */
-@RunWith( Theories.class )
+@WithNeo4j
 public abstract class AbstractNeo4jSerializerTest2<T> {
-  @Rule
-  public Neo4jRule neo4jRule = new Neo4jRule();
+  private GraphDatabaseService db;
+
+  @BeforeEach
+  void setUp(@Nonnull GraphDatabaseService db) {
+    this.db = db;
+  }
 
   @Nonnull
   public static <T> Entry<? extends T> create( @Nonnull T object, @Nonnull byte[] expected ) {
@@ -112,7 +121,7 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
   }
 
   protected void verifySerialized( @Nonnull Entry<T> entry, @Nonnull String serialized ) throws Exception {
-    verify( serialized.trim(), new String( entry.getExpected(), Charsets.UTF_8 ).trim() );
+    verify(serialized.trim().replaceAll("\r", ""), new String(entry.getExpected(), Charsets.UTF_8).trim());
   }
 
   @Nonnull
@@ -120,7 +129,8 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
     return new Entry<T>( object, expected.getBytes(StandardCharsets.UTF_8) );
   }
 
-  @Theory
+  @ParameterizedTest
+  @ByTypeSource(type = Entry.class)
   public void testSerializer( @Nonnull Entry<?> entry ) throws Exception {
     AbstractNeo4jSerializer<T> serializer = getSerializer();
 
@@ -139,8 +149,6 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
 
   @Nonnull
   private T deserialize( @Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized ) throws IOException {
-    GraphDatabaseService db = neo4jRule.createDb();
-
     //Fill the db initially
     try ( Transaction tx = db.beginTx() ) {
       Result  result = db.execute( serialized );
@@ -154,8 +162,6 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
 
   @Nonnull
   protected String serialize( @Nonnull Serializer<T, Node, Node> serializer, @Nonnull T objectToSerialize ) throws IOException {
-    GraphDatabaseService db = neo4jRule.createDb();
-
     try ( Transaction tx = db.beginTx() ) {
       Node rootNode = db.createNode();
       serializer.serialize( objectToSerialize, rootNode );
@@ -189,6 +195,6 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
    */
   protected void verifyDeserialized( @Nonnull T deserialized, @Nonnull T original ) {
     assertEquals( original, deserialized );
-    Assert.assertThat( deserialized, is( new ReflectionEquals( original ) ) );
+    Assert.assertThat(deserialized, is(new ReflectionEquals(original)));
   }
 }

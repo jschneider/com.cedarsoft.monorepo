@@ -47,7 +47,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import javax.crypto.Cipher;
 
 import org.apache.commons.codec.binary.Base64;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 /**
  * <p>

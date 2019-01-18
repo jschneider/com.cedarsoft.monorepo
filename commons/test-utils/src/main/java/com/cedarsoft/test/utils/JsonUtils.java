@@ -31,20 +31,22 @@
 
 package com.cedarsoft.test.utils;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.net.URL;
+import java.nio.charset.Charset;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.junit.*;
+import org.xml.sax.SAXException;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
-import org.junit.*;
-import org.xml.sax.SAXException;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.net.URL;
-import java.nio.charset.Charset;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

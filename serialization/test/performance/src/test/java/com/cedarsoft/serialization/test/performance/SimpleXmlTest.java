@@ -31,16 +31,17 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import org.junit.*;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  *

@@ -31,22 +31,23 @@
 
 package com.cedarsoft.io;
 
-import org.apache.commons.lang3.SystemUtils;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.lang3.SystemUtils;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  *
  */
+@WithTempFiles
 public class LinkUtilsTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
-
   @Test
   public void testLinkTypes() {
     assertNotNull( LinkType.HARD );
@@ -54,7 +55,7 @@ public class LinkUtilsTest {
   }
 
   @Test
-  public void testCreation() throws Exception {
+  public void testCreation(@Nonnull TemporaryFolder tmp) throws Exception {
     if (SystemUtils.IS_OS_WINDOWS) {
       return;
     }

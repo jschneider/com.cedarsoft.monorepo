@@ -31,14 +31,15 @@
 
 package com.cedarsoft.image;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.imageio.ImageIO;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import javax.imageio.ImageIO;
+
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -47,7 +48,7 @@ public class ImageConverterTest {
   private ImageConverter imageConverter = new ImageConverter();
   private BufferedImage original;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     original = ImageIO.read( getClass().getResource( "/paris.jpg" ) );
   }

@@ -30,16 +30,16 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import org.junit.*;
-
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ApplicationExceptionDialogDemo {
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     UIManager.setLookAndFeel(new NimbusLookAndFeel());
   }

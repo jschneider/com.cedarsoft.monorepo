@@ -31,13 +31,13 @@
 
 package com.cedarsoft.swing.common;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  * <p>
@@ -47,12 +47,12 @@ import static org.junit.Assert.*;
 public class ImageComponentTest {
   private ImageComponent component;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     component = new ImageComponent();
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
 
   }

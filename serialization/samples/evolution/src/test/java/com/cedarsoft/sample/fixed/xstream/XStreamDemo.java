@@ -31,6 +31,15 @@
 
 package com.cedarsoft.sample.fixed.xstream;
 
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
 import com.cedarsoft.sample.fixed.Car;
 import com.cedarsoft.sample.fixed.Extra;
 import com.cedarsoft.sample.fixed.Model;
@@ -38,14 +47,6 @@ import com.cedarsoft.sample.fixed.Money;
 import com.cedarsoft.test.utils.AssertUtils;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
-import org.junit.*;
-import org.xml.sax.SAXException;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 
 /**

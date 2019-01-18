@@ -30,14 +30,13 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import com.cedarsoft.version.Version;
-import org.junit.experimental.theories.*;
+import static org.junit.Assert.*;
 
 import javax.annotation.Nonnull;
 
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -60,13 +59,9 @@ public class BallSerializerVersionTest extends AbstractNeo4jVersionTest2<Ball> {
     }
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY2 = create( Version.valueOf( 1, 1, 0 ), BallSerializerVersionTest.class.getResource( "ball1.cypher" ) );
-  @DataPoint
   public static final VersionEntry ENTRY3 = create( Version.valueOf( 1, 1, 0 ), BallSerializerVersionTest.class.getResource( "ball1_2.cypher" ) );
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create( Version.valueOf( 1, 0, 0 ), BallSerializerVersionTest.class.getResource( "ball2.cypher" ) );
-  @DataPoint
   public static final VersionEntry ENTRY4 = create( Version.valueOf( 1, 0, 0 ), BallSerializerVersionTest.class.getResource( "ball2_2.cypher" ) );
 }

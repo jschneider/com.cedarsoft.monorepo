@@ -30,17 +30,19 @@
  */
 package com.cedarsoft.swing.common;
 
-import org.junit.*;
+import com.cedarsoft.test.utils.DisableIfHeadless;
+import org.junit.jupiter.api.*;
 
 import javax.imageio.ImageIO;
 import java.awt.Image;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NotSoVolatileImageTest {
+  @DisableIfHeadless
   @Test
   public void basic() throws Exception {
     Image image = ImageIO.read(getClass().getResourceAsStream("elephant.jpg"));

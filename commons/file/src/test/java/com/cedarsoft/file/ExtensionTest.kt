@@ -31,8 +31,6 @@
 
 package com.cedarsoft.file
 
-import org.amshove.kluent.`should equal`
-import org.amshove.kluent.shouldEqual
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -47,24 +45,8 @@ class ExtensionTest {
   }
 
   @Test
-  fun testEquals() {
-    Extension(".", "txt") shouldEqual Extension(".", "txt")
-    Extension.NONE shouldEqual Extension("", "")
-    Extension.NONE `should equal` Extension("", "")
-  }
-
-  @Test
   fun testEmpty() {
     assertEquals("", Extension("", "").combined)
     assertEquals(".txt", Extension("txt").combined)
-  }
-
-  @Test
-  @Throws(Exception::class)
-  fun testCaseInsensitive() {
-    Extension(".", "jpg").createCaseSensitiveExtension("asdf.jpg").combined shouldEqual ".jpg"
-    Extension(".", "jpg").createCaseSensitiveExtension("asdf.Jpg").combined shouldEqual ".Jpg"
-    Extension(".", "jpg").createCaseSensitiveExtension("asdf.Jpg").delimiter shouldEqual "."
-    Extension(".", "jpg").createCaseSensitiveExtension("asdf.Jpg").extension shouldEqual "Jpg"
   }
 }

@@ -31,6 +31,16 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.test.utils.JsonUtils;
 import com.cedarsoft.version.Version;
 import com.fasterxml.jackson.core.JsonEncoding;
@@ -38,14 +48,6 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.nio.charset.StandardCharsets;
-
-import static org.junit.Assert.*;
 
 /**
  *

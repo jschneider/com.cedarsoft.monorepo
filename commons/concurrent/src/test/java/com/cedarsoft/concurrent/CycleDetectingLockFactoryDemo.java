@@ -31,10 +31,7 @@
 package com.cedarsoft.concurrent;
 
 import static org.assertj.core.api.Assertions.fail;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +41,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.CycleDetectingLockFactory;
@@ -52,7 +49,7 @@ import com.google.common.util.concurrent.CycleDetectingLockFactory;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Ignore
+@Disabled
 public class CycleDetectingLockFactoryDemo {
   private ReentrantLock lockA;
   private ReentrantLock lockB;
@@ -70,7 +67,7 @@ public class CycleDetectingLockFactoryDemo {
   private ReentrantLock lock02;
   private ReentrantLock lock03;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     CycleDetectingLockFactory factory = CycleDetectingLockFactory.newInstance(CycleDetectingLockFactory.Policies.THROW);
     lockA = factory.newReentrantLock("LockA");
@@ -515,6 +512,7 @@ public class CycleDetectingLockFactoryDemo {
     }
   }
 
+  @Test
   public void testReentrantReadWriteLock_implDoesNotExposeShadowedLocks() {
     assertEquals(
       "Unexpected number of public methods in ReentrantReadWriteLock. " +

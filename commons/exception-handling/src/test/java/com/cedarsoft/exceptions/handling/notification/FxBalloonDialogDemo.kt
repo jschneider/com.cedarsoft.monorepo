@@ -1,6 +1,6 @@
 package com.cedarsoft.exceptions.handling.notification
 
-import com.sun.javafx.stage.StageHelper
+import com.cedarsoft.commons.javafx.FxUtils
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
@@ -25,7 +25,7 @@ internal class FxBalloonDialogDemo : Application() {
     primaryStage.show()
     primaryStage.centerOnScreen()
 
-    val stages = StageHelper.getStages()
+    val stages = FxUtils.getStages()
     for (stage in stages) {
       println("stage --> ${stage}")
     }

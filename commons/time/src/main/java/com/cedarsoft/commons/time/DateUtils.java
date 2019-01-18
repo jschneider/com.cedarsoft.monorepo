@@ -30,24 +30,32 @@
  */
 package com.cedarsoft.commons.time;
 
-import com.cedarsoft.unit.si.ms;
-import com.cedarsoft.unit.si.ns;
-import com.cedarsoft.unit.si.s;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DurationFormatUtils;
+import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
 
-import javax.annotation.Nonnull;
 import java.text.NumberFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.Temporal;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.jetbrains.annotations.NotNull;
+
+import com.cedarsoft.unit.si.ms;
+import com.cedarsoft.unit.si.ns;
+import com.cedarsoft.unit.si.s;
 
 /**
  * Date related utils
@@ -164,6 +172,19 @@ public class DateUtils {
     return formatDuration(millis, "HH:mm:ss");
   }
 
+  @Nonnull
+  public static String asWeeksAndDays(@Nonnull Period period) {
+    int days = period.getDays() % 7;
+    int weeks = period.getDays() / 7;
+
+    return weeks + " weeks, " + days + " days";
+  }
+
+  @Nonnull
+  public static String formatHHmm(@Nonnull LocalTime time) {
+    return DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).format(time);
+  }
+
   @s
   private static final long SECONDS_PER_HOUR = 60 * 60;
   @s
@@ -247,5 +268,17 @@ public class DateUtils {
     return Duration
       .ofHours(Long.parseLong(firstPart))
       .plusMinutes(Long.parseLong(secondPart));
+  }
+
+  /**
+   * Formats a local date or local date time format
+   */
+  @NotNull
+  public static String formatLocalDateAndOrTime(@Nonnull Temporal temporal) {
+    if (temporal instanceof LocalDateTime) {
+      return DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(temporal);
+    }
+
+    return DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).format(temporal);
   }
 }

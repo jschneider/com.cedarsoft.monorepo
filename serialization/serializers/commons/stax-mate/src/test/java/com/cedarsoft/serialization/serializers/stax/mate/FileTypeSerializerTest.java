@@ -31,16 +31,15 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import static org.junit.Assert.*;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.file.FileType;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -62,7 +61,6 @@ public class FileTypeSerializerTest extends AbstractXmlSerializerTest2<FileType>
     assertEquals( ",ext", deserialized.getDefaultExtension().getCombined() );
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create(
     new FileType( "TheId", "application/special", true, new Extension( ",", "ext" ), new Extension( ".", "_ext2" ) ),
     "<fileType dependent=\"true\">\n" +

@@ -30,13 +30,12 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
-import static org.assertj.core.api.Assertions.*;
-
+import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.*;
 
-import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -53,7 +52,7 @@ public class RunnerClassTest {
       fail( "Where is the Exception" );
     } catch ( Exception e ) {
       Assertions.assertThat(e).isInstanceOf(IllegalStateException.class);
-      Assertions.assertThat( e ).hasMessage( "Return value must not be null for method annotated with @Nonnull" );
+      Assertions.assertThat( e.getMessage() ).contains( "@Nonnull" );
     }
   }
 

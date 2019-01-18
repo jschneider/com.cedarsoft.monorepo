@@ -11,7 +11,7 @@
   <artifactId>stax</artifactId>
   <name>serialization.stax.Samples</name>
 
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>

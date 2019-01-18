@@ -15,9 +15,9 @@
  */
 package com.cedarsoft.unit.utils;
 
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

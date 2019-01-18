@@ -31,17 +31,18 @@
 
 package com.cedarsoft.serialization.ui;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.DelegatesMappings;
-import com.cedarsoft.serialization.VersionMappingTest;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.DelegatesMappings;
+import com.cedarsoft.serialization.VersionMappingTest;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -51,7 +52,7 @@ public class DelegatesMappingVisualizerTest {
   private DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> delegatesMappings;
   private VersionMappingTest.MySerializer serializer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     mine = VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
     delegatesMappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( mine );

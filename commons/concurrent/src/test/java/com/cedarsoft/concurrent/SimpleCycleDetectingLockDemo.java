@@ -32,7 +32,7 @@ package com.cedarsoft.concurrent;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import com.google.common.util.concurrent.CycleDetectingLockFactory;
 
@@ -41,7 +41,7 @@ import com.google.common.util.concurrent.CycleDetectingLockFactory;
  */
 public class SimpleCycleDetectingLockDemo {
   @Test
-  @Ignore
+  @Disabled
   public void testName() throws Exception {
     CycleDetectingLockFactory lockFactory = CycleDetectingLockFactory.newInstance(new CycleDetectingLockFactory.Policy() {
       @Override

@@ -31,15 +31,14 @@
 
 package com.cedarsoft.test.utils;
 
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.junit.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-import java.lang.Exception;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 /**
  * <p>MockitoTest class.</p>

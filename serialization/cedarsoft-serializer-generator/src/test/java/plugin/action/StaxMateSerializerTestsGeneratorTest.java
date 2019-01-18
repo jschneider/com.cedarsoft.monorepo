@@ -44,7 +44,7 @@ import com.intellij.psi.PsiField;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.refactoring.MultiFileTestCase;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.util.List;

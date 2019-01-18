@@ -30,11 +30,12 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.unit.other.pct;
+import java.awt.Color;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.awt.Color;
+
+import com.cedarsoft.unit.other.pct;
 
 public class ColorTools {
   private ColorTools() {
@@ -45,7 +46,7 @@ public class ColorTools {
    */
   @Nonnull
   public static Color parseRgbColor(@Nonnull String rgbString) {
-    final String[] values = rgbString.split(",");
+    final String[] values = rgbString.split(",", -1);
 
     if (values.length != 3) {
       throw new IllegalArgumentException("Could not parse rgb string <" + rgbString + ">");

@@ -3,7 +3,7 @@
 
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>monorepo</artifactId>
+    <artifactId>open</artifactId>
     <version>0</version>
   </parent>
 

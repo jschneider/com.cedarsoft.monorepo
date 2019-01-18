@@ -31,12 +31,6 @@
 
 package com.cedarsoft.zip;
 
-import org.apache.commons.compress.archivers.ArchiveEntry;
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
-import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -45,6 +39,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipException;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 
 /**
  * Helper class that creates zip files
@@ -97,7 +98,7 @@ public class ZipCreator {
   /**
    * Add the files within the given directory to the ZipOutputStream. This method will call itself for each subdirectory.
    *
-   * @param baseName  represents the relative base name within the zip file
+   * @param baseName  represents the relative canonical base name within the zip file
    * @param outStream the ouput stream
    * @param directory the directory
    * @throws IOException if any.
@@ -109,7 +110,7 @@ public class ZipCreator {
     }
     byte[] data = new byte[BUFFER_SIZE];
     for (File file : files) {
-      String relativeName = getRelativePath( baseName, file );
+      String relativeName = getCanonicalRelativePath( baseName, file );
       ArchiveEntry entry = new ZipArchiveEntry( relativeName );
       try {
         outStream.putArchiveEntry( entry );
@@ -134,18 +135,36 @@ public class ZipCreator {
   }
 
   /**
+   * Returns the relative canonical path
+   *
+   * @param baseName the canonical base path
+   * @param file     the file
+   * @return the path of the given file relative to the base name
+   * @see #getRelativePath(String, File)
+   * @throws IOException if any.
+   */
+  @Nonnull
+  protected static String getCanonicalRelativePath( @Nonnull String baseName, @Nonnull File file ) throws IOException {
+    //noinspection NonConstantStringShouldBeStringBuffer
+    String name = file.getCanonicalPath().substring( baseName.length() + 1 ); // use #getCanonicalPath because baseName is canonical
+    if ( file.isDirectory() ) {
+      name += '/';
+    }
+    return name.replaceAll( "\\\\", "/" );
+  }
+
+  /**
    * Returns the relative path
    *
    * @param baseName the base path
    * @param file     the file
    * @return the path of the given file relative to the base name
-   *
-   * @throws IOException if any.
+   * @see #getCanonicalRelativePath(String, File)
    */
   @Nonnull
-  protected static String getRelativePath( @Nonnull String baseName, @Nonnull File file ) throws IOException {
+  protected static String getRelativePath( @Nonnull String baseName, @Nonnull File file ) {
     //noinspection NonConstantStringShouldBeStringBuffer
-    String name = file.getCanonicalPath().substring( baseName.length() + 1 );
+    String name = file.getAbsolutePath().substring( baseName.length() + 1 );
     if ( file.isDirectory() ) {
       name += '/';
     }

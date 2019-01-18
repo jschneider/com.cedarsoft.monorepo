@@ -45,7 +45,7 @@ public class NameSpaceSupport {
 
   @Nonnull
   public static String createNameSpaceUriBase( @Nonnull String className ) {
-    String[] parts = className.split( "\\." );
+    String[] parts = className.split( "\\.", -1 );
 
     //If we have lesser than three parts just return the type - a fallback
     if ( parts.length < 3 ) {

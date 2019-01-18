@@ -30,16 +30,17 @@
  */
 package com.cedarsoft.serialization.jackson.test;
 
-import com.cedarsoft.test.utils.JsonUtils;
-import com.fasterxml.jackson.core.JsonParseException;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Fail.fail;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.JsonUtils;
+import com.fasterxml.jackson.core.JsonParseException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

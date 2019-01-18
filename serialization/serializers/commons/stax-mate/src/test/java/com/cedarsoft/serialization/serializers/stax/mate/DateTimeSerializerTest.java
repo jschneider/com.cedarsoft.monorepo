@@ -31,8 +31,6 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import static org.junit.Assert.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -43,10 +41,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
-import org.junit.*;
-import org.junit.experimental.theories.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
@@ -68,7 +63,6 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
     return new DateTimeSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new DateTime( 2009, 5, 1, 2, 2, 5, 4, ZONE ), "<dateTime>20090501T020205.004-0400</dateTime>" );
 
   @Override
@@ -83,16 +77,16 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
   }
 
   private void verifyFormatter( long instant, @Nonnull String text ) {
-    assertEquals( DateTimeSerializer.createFormatter().print( instant ), text );
-    assertEquals( DateTimeSerializer.createFormatter().parseDateTime( text ).getMillis(), instant );
+    Assertions.assertEquals(DateTimeSerializer.createFormatter().print(instant), text);
+    Assertions.assertEquals(DateTimeSerializer.createFormatter().parseDateTime(text).getMillis(), instant);
   }
 
   @Test
   public void test100() throws IOException, SAXException {
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20010101T010101.001-0500</dateTime>".getBytes(StandardCharsets.UTF_8) ) );
-    assertEquals(deserialized.getMillis(), new DateTime(2001, 1, 1, 1, 1, 1, 1, DateTimeZone.getDefault()).getMillis());
+    Assertions.assertEquals(deserialized.getMillis(), new DateTime(2001, 1, 1, 1, 1, 1, 1, DateTimeZone.getDefault()).getMillis());
 
-    assertEquals( "-05:00", deserialized.getZone().getID() );
+    Assertions.assertEquals("-05:00", deserialized.getZone().getID());
   }
 
   @Test
@@ -103,7 +97,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     assertEqualsDateTime(deserialized, new DateTime(2001, 1, 1, 1, 1, 1, 1, DateTimeZone.getDefault()));
 
-    assertEquals( "-05:00", deserialized.getZone().getID() );
+    Assertions.assertEquals("-05:00", deserialized.getZone().getID());
   }
 
   @Test
@@ -115,8 +109,8 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
     assertEqualsDateTime( deserialized, new DateTime( 2001, 1, 1, 1, 1, 1, 1, DateTimeZone.forID( "Europe/Berlin" ) ) );
 
-    assertEquals( "Europe/Berlin", dateTime.getZone().getID() );
-    assertEquals( "+01:00", deserialized.getZone().getID() );
+    Assertions.assertEquals("Europe/Berlin", dateTime.getZone().getID());
+    Assertions.assertEquals("+01:00", deserialized.getZone().getID());
   }
 
   @Test
@@ -131,7 +125,7 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
 
   private byte[] verifyZone( @Nonnull String id ) throws IOException {
     DateTimeZone zone = DateTimeZone.forID( id );
-    assertEquals( zone.getID(), id );
+    Assertions.assertEquals(zone.getID(), id);
 
     DateTime dateTime = new DateTime(2001, 5, 3, 4, 5, 3, 2, DateTimeZone.getDefault());
     byte[] serialized = getSerializer().serializeToByteArray( dateTime );
@@ -143,8 +137,8 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
 
 
   static void assertEqualsDateTime( @Nonnull DateTime dateTime, @Nonnull DateTime deserialized ) {
-    assertEquals( deserialized + " vs " + dateTime, deserialized.getMillis(), dateTime.getMillis() );
-    assertEquals( deserialized.getZone().getOffset( deserialized.getMillis() ), dateTime.getZone().getOffset( deserialized.getMillis() ) );
+    Assertions.assertEquals(deserialized.getMillis(), dateTime.getMillis(), deserialized + " vs " + dateTime);
+    Assertions.assertEquals(deserialized.getZone().getOffset(deserialized.getMillis()), dateTime.getZone().getOffset(deserialized.getMillis()));
   }
 
   @Disabled
@@ -159,10 +153,10 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
       DateTimeFormatter format = ISODateTimeFormat.basicDateTime();
 
       //Compare string pbased
-      Assert.assertEquals( "00010101T010101.001-0456", format.print( dateTime ) );
+      Assertions.assertEquals("00010101T010101.001-0456", format.print(dateTime));
 
       //Round
-      Assert.assertEquals( format.parseDateTime( format.print( dateTime ) ), dateTime );
+      Assertions.assertEquals(format.parseDateTime(format.print(dateTime)), dateTime);
     } finally {
       DateTimeZone.setDefault( oldDefault );
     }
@@ -177,17 +171,17 @@ public class DateTimeSerializerTest extends AbstractXmlSerializerTest2<DateTime>
     AssertUtils.assertXMLEquals( new String( serialized, StandardCharsets.UTF_8 ).trim(), "<dateTime xmlns=\"http://www.joda.org/time/dateTime/1.0.0\">20091231T235901.999-0500</dateTime>" );
 
     DateTime deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
-    assertEquals( deserialized.getMillis(), dateTime.getMillis() );
+    Assertions.assertEquals(deserialized.getMillis(), dateTime.getMillis());
   }
 
   @Test
   public void testLegacy() throws IOException {
-    assertNotNull( getSerializer() );
+    Assertions.assertNotNull(getSerializer());
 
     DateTimeZone oldDefault = DateTimeZone.getDefault();
 
     try {
-      assertEquals( getSerializer().deserialize( new ByteArrayInputStream( "<startTime xmlns=\"http://www.joda.org/time/dateTime/0.9.0\">1245859619998</startTime>".getBytes(StandardCharsets.UTF_8) ) ).withZone( DateTimeZone.UTC ), new DateTime( 2009, 6, 24, 16, 6, 59, 998, DateTimeZone.UTC ) );
+      Assertions.assertEquals(getSerializer().deserialize(new ByteArrayInputStream("<startTime xmlns=\"http://www.joda.org/time/dateTime/0.9.0\">1245859619998</startTime>".getBytes(StandardCharsets.UTF_8))).withZone(DateTimeZone.UTC), new DateTime(2009, 6, 24, 16, 6, 59, 998, DateTimeZone.UTC));
     } finally {
       DateTimeZone.setDefault( oldDefault );
     }

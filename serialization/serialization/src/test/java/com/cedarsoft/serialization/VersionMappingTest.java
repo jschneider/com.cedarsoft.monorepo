@@ -31,20 +31,22 @@
 
 package com.cedarsoft.serialization;
 
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import javax.annotation.Nonnull;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.version.UnsupportedVersionException;
 import com.cedarsoft.version.UnsupportedVersionRangeException;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import static org.junit.Assert.*;
 
 
 /**
@@ -197,24 +199,27 @@ public class VersionMappingTest {
   public void testFluentTypicalFaults() {
     VersionMapping mapping = new VersionMapping( VersionRange.from( 0, 5, 0 ).to( 2, 2, 7 ), VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ) );
 
-    expectedException.expect( SerializationException.class );
-    expectedException.expectMessage( "Duplicate call to <to>. Did you mean <toDelegateVersion> instead?" );
-
-    mapping.map( VersionRange.from( 0, 5, 0 ).to() ).to( 7, 1, 1 ).to( 2, 0, 0 );
+    try {
+      mapping.map(VersionRange.from(0, 5, 0).to()).to(7, 1, 1).to(2, 0, 0);
+      fail("Where is the Exception");
+    }
+    catch (SerializationException e) {
+      org.assertj.core.api.Assertions.assertThat(e.getMessage()).contains("Duplicate call to <to>. Did you mean <toDelegateVersion> instead?");
+    }
   }
 
   @Test
   public void testFluentTypicalFaults2() {
     VersionMapping mapping = new VersionMapping( VersionRange.from( 0, 5, 0 ).to( 2, 2, 7 ), VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ) );
 
-    expectedException.expect( SerializationException.class );
-    expectedException.expectMessage( "Duplicate call to <to>. Did you mean <toDelegateVersion> instead?" );
-
-    mapping.map( VersionRange.from( 0, 5, 0 ).to() ).to( 2, 1, 1 );
+    try {
+      mapping.map(VersionRange.from(0, 5, 0).to()).to(2, 1, 1);
+      fail("Where is the Exception");
+    }
+    catch (SerializationException e) {
+      Assertions.assertThat(e.getMessage()).contains("Duplicate call to <to>. Did you mean <toDelegateVersion> instead?");
+    }
   }
-
-  @Rule
-  public final ExpectedException expectedException = ExpectedException.none();
 
   //  @Test
   //  public void testBasic() {

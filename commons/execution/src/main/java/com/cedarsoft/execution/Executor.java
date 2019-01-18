@@ -31,13 +31,12 @@
 
 package com.cedarsoft.execution;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
 
 /**
  * Executes a process and notifies execution listeners whenever the process has finished
@@ -52,9 +51,9 @@ public class Executor {
   @Nonnull
   private final ProcessBuilder processBuilder;
   @Nonnull
-  private OutputStream targetOut;
+  private final OutputRedirector.ByteSink targetOut;
   @Nonnull
-  private OutputStream targetErr;
+  private final OutputRedirector.ByteSink targetErr;
 
   /**
    * <p>Constructor for Executor.</p>
@@ -63,7 +62,7 @@ public class Executor {
    */
   @Deprecated
   public Executor( @Nonnull ProcessBuilder processBuilder ) {
-    this( processBuilder, System.out, System.err );
+    this( processBuilder, new OutputStreamByteSink(System.out), new OutputStreamByteSink(System.err) );
   }
 
   /**
@@ -74,10 +73,14 @@ public class Executor {
    */
   @Deprecated
   public Executor( @Nonnull ProcessBuilder processBuilder, boolean redirectStreams ) {
-    this( processBuilder, System.out, System.err );
+    this( processBuilder, new OutputStreamByteSink(System.out), new OutputStreamByteSink(System.err) );
   }
 
-  public Executor( @Nonnull ProcessBuilder processBuilder, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {
+  public Executor(@Nonnull ProcessBuilder processBuilder, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {
+    this(processBuilder, new OutputStreamByteSink(targetOut), new OutputStreamByteSink(targetErr));
+  }
+
+  public Executor( @Nonnull ProcessBuilder processBuilder, @Nonnull OutputRedirector.ByteSink targetOut, @Nonnull OutputRedirector.ByteSink targetErr ) {
     this.processBuilder = processBuilder;
     this.targetOut = targetOut;
     this.targetErr = targetErr;
@@ -125,16 +128,13 @@ public class Executor {
    */
   @Nonnull
   public Thread executeAsync() {
-    Thread thread = new Thread( new Runnable() {
-      @Override
-      public void run() {
-        try {
-          execute();
-        } catch ( Exception e ) {
-          throw new RuntimeException( e );
-        }
+    Thread thread = new Thread(() -> {
+      try {
+        execute();
+      } catch ( Exception e ) {
+        throw new RuntimeException( e );
       }
-    } );
+    });
     thread.start();
     return thread;
   }
@@ -180,12 +180,12 @@ public class Executor {
   }
 
   @Nonnull
-  public OutputStream getTargetOut() {
+  public OutputRedirector.ByteSink getTargetOut() {
     return targetOut;
   }
 
   @Nonnull
-  public OutputStream getTargetErr() {
+  public OutputRedirector.ByteSink getTargetErr() {
     return targetErr;
   }
 }

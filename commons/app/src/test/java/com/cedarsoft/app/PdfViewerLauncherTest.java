@@ -31,9 +31,9 @@
 
 package com.cedarsoft.app;
 
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

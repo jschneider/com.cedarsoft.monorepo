@@ -31,9 +31,11 @@
 
 package com.cedarsoft.serialization.stax;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.StringReader;
 
 import javax.annotation.Nonnull;
 import javax.xml.namespace.QName;
@@ -44,11 +46,11 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 import javax.xml.stream.events.XMLEvent;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringReader;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  *

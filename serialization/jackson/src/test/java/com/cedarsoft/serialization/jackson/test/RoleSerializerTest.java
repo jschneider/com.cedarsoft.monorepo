@@ -31,12 +31,11 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -48,7 +47,6 @@ public class RoleSerializerTest extends AbstractJsonSerializerTest2<Role> {
     return new RoleSerializer();
   }
 
-  @DataPoint
   public static Entry<?> json() {
     return create( new Role( 7, "nobody" ), RoleSerializerTest.class.getResource( "role.json" ) );
   }

@@ -31,13 +31,12 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.license.License;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -49,21 +48,18 @@ public class LicenseSerializerTest extends AbstractXmlSerializerTest2<License> {
     return new LicenseSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create(
     License.PUBLIC_DOMAIN,
     "<license id=\"PUBLIC_DOMAIN\">\n" +
       "  <name>Public Domain</name>\n" +
       "</license>" );
 
-  @DataPoint
   public static final Entry<?> entry2 = create(
     License.ALL_RIGHTS_RESERVED,
     "<license id=\"ALL_RIGHTS_RESERVED\">\n" +
       "  <name>All rights reserved</name>\n" +
       "</license>" );
 
-  @DataPoint
   public static final Entry<?> entry3 = create(
     License.UNKNOWN,
     "<license id=\"UNKNOWN\">\n" +

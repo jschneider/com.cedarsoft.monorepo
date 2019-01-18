@@ -31,19 +31,16 @@
 
 package com.cedarsoft.version;
 
-import org.junit.*;
-import org.junit.rules.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class VersionTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testSmapper() throws Exception {
     assertThat(Version.valueOf(1, 0, 0).smallerThan(Version.valueOf(2, 0, 0))).isTrue();
@@ -64,8 +61,12 @@ public class VersionTest {
   public void testMatch() {
     Version.verifyMatch( Version.valueOf( 1, 2, 3 ), Version.valueOf( 1, 2, 3 ) );
 
-    expectedException.expect( VersionMismatchException.class );
-    Version.verifyMatch( Version.valueOf( 1, 2, 3 ), Version.valueOf( 1, 2, 4 ) );
+    try {
+      Version.verifyMatch(Version.valueOf(1, 2, 3), Version.valueOf(1, 2, 4));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException ignore) {
+    }
   }
 
   @Test

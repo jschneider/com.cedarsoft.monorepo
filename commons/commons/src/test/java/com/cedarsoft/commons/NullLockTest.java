@@ -31,12 +31,12 @@
 
 package com.cedarsoft.commons;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -44,40 +44,45 @@ import static org.junit.Assert.*;
 public class NullLockTest {
   private NullLock lock;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     lock = NullLock.LOCK;
   }
 
-  @Test( timeout = 1000 )
-  public void testTimeout() throws InterruptedException {
-    lock.tryLock( 100, TimeUnit.DAYS );
+  @Test
+  public void testTimeout() {
+    Assertions.assertTimeout(Duration.ofSeconds(1), () -> lock.tryLock(100, TimeUnit.DAYS));
   }
 
-  @Test( timeout = 1000 )
+  @Test
   public void testIt() throws InterruptedException {
-    lock.lock();
-    lock.lock();
-    lock.unlock();
-    lock.unlock();
-    lock.lockInterruptibly();
-    lock.lockInterruptibly();
-    lock.tryLock();
-    lock.tryLock();
+    Assertions.assertTimeout(Duration.ofSeconds(1), () -> {
+      lock.lock();
+      lock.lock();
+      lock.unlock();
+      lock.unlock();
+      lock.lockInterruptibly();
+      lock.lockInterruptibly();
+      lock.tryLock();
+      lock.tryLock();
+    });
   }
 
-  @Test( timeout = 1000 )
+  @Test
   public void testLocks() throws InterruptedException {
-    assertSame( lock, lock.readLock() );
-    assertSame( lock, lock.writeLock() );
+    Assertions.assertTimeout(Duration.ofSeconds(1), () -> {
+      assertSame(lock, lock.readLock());
+      assertSame(lock, lock.writeLock());
+    });
   }
-
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
 
   @Test
   public void testCondition() {
-    expectedException.expect( NullPointerException.class );
-    lock.newCondition();
+    try {
+      lock.newCondition();
+      fail("Where is the Exception");
+    }
+    catch (NullPointerException ignore) {
+    }
   }
 }

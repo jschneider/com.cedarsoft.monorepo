@@ -31,24 +31,24 @@
 
 package com.cedarsoft.file;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class FileTypeTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testInva() throws Exception {
-    expectedException.expect( IllegalArgumentException.class );
-    new FileType( "asdf", "asdf", true );
+    try {
+      new FileType( "asdf", "asdf", true );
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+    }
   }
 
   @Test
@@ -91,8 +91,12 @@ public class FileTypeTest {
     assertEquals( "_", FileTypeRegistry.JPEG.getBaseName( "_.jpeg" ) );
     assertEquals( "", FileTypeRegistry.JPEG.getBaseName( ".jpeg" ) );
 
-    expectedException.expect( IllegalArgumentException.class );
-    FileTypeRegistry.JPEG.getBaseName( "jpeg" );
+    try {
+      FileTypeRegistry.JPEG.getBaseName( "jpeg" );
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+    }
   }
 
   @Test

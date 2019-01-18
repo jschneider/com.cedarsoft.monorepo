@@ -31,17 +31,18 @@
 
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.commons.ThreadUtils;
-import javax.annotation.Nullable;
-
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nullable;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.commons.ThreadUtils;
 
 /**
  *
@@ -51,14 +52,14 @@ public class MultiLockTest {
   private Lock lock1;
   private MultiLock multiLock;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     lock0 = new ReentrantLock();
     lock1 = new ReentrantLock();
     multiLock = new MultiLock( lock0, lock1 );
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
 
   }

@@ -1,14 +1,15 @@
 package com.cedarsoft.test.utils;
 
-import org.junit.jupiter.api.extension.*;
-
-import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Parameter;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.extension.*;
 
 /**
  * Abstract base class for extensions that provide a resource
@@ -39,6 +40,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
    */
   @Nonnull
   protected T getResource(ExtensionContext extensionContext, Member key) {
+    //noinspection unchecked
     Map<Member, T> map = getStore(extensionContext).getOrComputeIfAbsent(extensionContext.getTestClass().get(), (c) -> new ConcurrentHashMap<>(), Map.class);
     return map.computeIfAbsent(key, member -> createResource(extensionContext));
   }
@@ -98,6 +100,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
 
   @Nonnull
   protected Iterable<T> getResources(ExtensionContext extensionContext) {
+    //noinspection unchecked
     Map<Object, T> map = getStore(extensionContext).get(extensionContext.getTestClass().get(), Map.class);
     if (map == null) {
       return Collections.emptySet();

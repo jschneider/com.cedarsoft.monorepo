@@ -31,116 +31,82 @@
 
 package com.cedarsoft.concurrent;
 
-import com.cedarsoft.test.utils.MockitoTemplate;
-import com.google.common.collect.Sets;
-import javax.annotation.Nonnull;
-import org.junit.*;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Set;
+import java.time.Duration;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.locks.Condition;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static org.junit.Assert.*;
+import org.awaitility.Awaitility;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class ThreadDeadlockDetectorTest {
-
-  @Test( timeout = 5000 )
+  /**
+   * Create two threads that deadlock each other.
+   */
+  @Test
   public void testBasic() throws Exception {
-    final Lock lock1 = new ReentrantLock();
-    final Lock lock2 = new ReentrantLock();
+    Assertions.assertTimeout(Duration.ofSeconds(10), () -> {
+      final Lock lockA = new ReentrantLock();
+      final Lock lockB = new ReentrantLock();
 
-    final CyclicBarrier barrier = new CyclicBarrier( 2 );
+      final CyclicBarrier barrier = new CyclicBarrier(2);
 
-    final Thread thread1 = new Thread( new MyRunnable( lock1, lock2, barrier ), "dead-thread1" );
-    final Thread thread2 = new Thread( new MyRunnable( lock2, lock1, barrier ), "dead-thread2" );
+      //Lock the locks in different order for both threads
+      final Thread thread1 = new Thread(new LockBothLocksRunnable(lockA, lockB, barrier), "dead-thread1");
+      final Thread thread2 = new Thread(new LockBothLocksRunnable(lockB, lockA, barrier), "dead-thread2");
 
-    new MockitoTemplate() {
-      @Mock
-      private ThreadDeadlockDetector.Listener listener;
-      @Nonnull
-      private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+      ThreadDeadlockDetector deadlockDetector = new ThreadDeadlockDetector(10);
 
-      @Override
-      protected void stub() throws Exception {
-      }
+      final ByteArrayOutputStream out = new ByteArrayOutputStream();
+      deadlockDetector.addListener(new DefaultDeadlockListener(new PrintStream(out)));
 
-      @Override
-      @SuppressWarnings("WaitNotInLoop")
-      protected void execute() throws Exception {
-        ThreadDeadlockDetector deadlockDetector = new ThreadDeadlockDetector( 10 );
-        deadlockDetector.addListener( listener );
-        deadlockDetector.addListener( new DefaultDeadlockListener( new PrintStream( out ) ) );
-        thread1.start();
-        thread2.start();
+      AtomicBoolean deadLockDetected = new AtomicBoolean(false);
+      deadlockDetector.addListener(deadlockedThreads -> deadLockDetected.set(true));
+      deadlockDetector.start();
 
+      thread1.start();
+      thread2.start();
 
-        while ( lock1.tryLock() ) {
-          lock1.unlock();
-        }
-        while ( lock2.tryLock() ) {
-          lock2.unlock();
-        }
+      //Wait until the dead lock has been detected
+      Awaitility
+        .waitAtMost(5, TimeUnit.SECONDS)
+        .untilTrue(deadLockDetected);
 
+      deadlockDetector.stop();
 
-        final Lock hasBeenRunLock = new ReentrantLock();
-        final Condition hasBeenRun = hasBeenRunLock.newCondition();
-        deadlockDetector.addListener( new ThreadDeadlockDetector.DetailedListener() {
-          @Override
-          public void checkHasBeenRun() {
-            hasBeenRunLock.lock();
-            try {
-              hasBeenRun.signalAll();
-            } finally {
-              hasBeenRunLock.unlock();
-            }
-          }
-
-          @Override
-          public void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads ) {
-          }
-        } );
-
-        hasBeenRunLock.lock();
-        try {
-          deadlockDetector.start();
-          //noinspection AwaitNotInLoop
-          hasBeenRun.await();
-        } finally {
-          hasBeenRunLock.unlock();
-        }
-
-        deadlockDetector.stop();
-
-        assertTrue( out.toString(), out.toString().contains( "Deadlocked Threads:" ) );
-        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread1,5" ) );
-        assertTrue( out.toString(), out.toString().contains( "Thread[dead-thread2,5" ) );
-        assertTrue( out.toString(), out.toString().contains( "sun.misc.Unsafe.park(Native Method)" ) );
-      }
-
-      @Override
-      protected void verifyMocks() throws Exception {
-        Mockito.verify( listener ).deadlockDetected( Sets.newHashSet( thread1, thread2 ) );
-        Mockito.verifyNoMoreInteractions( listener );
-      }
-    }.run();
+      //Check the output of the dumps
+      assertThat(out.toString()).contains("Deadlocked Threads:");
+      assertThat(out.toString()).contains("Thread[dead-thread1,5");
+      assertThat(out.toString()).contains("Thread[dead-thread2,5");
+    });
   }
 
-  private static class MyRunnable implements Runnable {
+  /**
+   * A runnable that locks both locks.
+   *
+   *
+   * <ul>
+   * <li>Lock {@link #lock1}</li>
+   * <li>Wait for the barrier {@link #barrier}</li>
+   * <li>Lock {@link #lock2}</li>
+   * </ul>
+   */
+  private static class LockBothLocksRunnable implements Runnable {
     private final Lock lock1;
     private final CyclicBarrier barrier;
     private final Lock lock2;
 
-    private MyRunnable( Lock lock1, Lock lock2, CyclicBarrier barrier ) {
+    private LockBothLocksRunnable(Lock lock1, Lock lock2, CyclicBarrier barrier) {
       this.lock1 = lock1;
       this.barrier = barrier;
       this.lock2 = lock2;
@@ -148,15 +114,16 @@ public class ThreadDeadlockDetectorTest {
 
     @Override
     public void run() {
+      //noinspection LockAcquiredButNotSafelyReleased
       lock1.lock();
       try {
         barrier.await();
-      } catch ( InterruptedException e ) {
-        throw new RuntimeException( e );
-      } catch ( BrokenBarrierException e ) {
+      }
+      catch (InterruptedException | BrokenBarrierException e) {
         throw new RuntimeException( e );
       }
 
+      //noinspection LockAcquiredButNotSafelyReleased
       lock2.lock();
     }
   }

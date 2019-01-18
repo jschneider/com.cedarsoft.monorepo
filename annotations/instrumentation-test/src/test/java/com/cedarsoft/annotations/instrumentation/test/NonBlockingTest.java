@@ -30,9 +30,11 @@
  */
 package com.cedarsoft.annotations.instrumentation.test;
 
+import static org.assertj.core.api.Fail.*;
+
 import javax.annotation.Nullable;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import com.cedarsoft.annotations.NonBlocking;
 import com.cedarsoft.annotations.verification.NotStuckVerifier;
@@ -44,20 +46,29 @@ public class NonBlockingTest {
   @Nullable
   private NotStuckVerifier.ThreadStuckEvaluator oldEvaluator;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     oldEvaluator = NotStuckVerifier.getEvaluator();
     NotStuckVerifier.setEvaluator(new NotStuckVerifier.ExceptionThrowingEvaluator(10));
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     NotStuckVerifier.setEvaluator(oldEvaluator);
   }
 
-  @Test(expected = IllegalThreadStateException.class)
-  @NonBlocking
+  @Test
   public void testFailWhenInstrumented() throws Exception {
+    try {
+      blockingMethod();
+      fail("Where is the Exception");
+    }
+    catch (IllegalThreadStateException ignore) {
+    }
+  }
+
+  @NonBlocking
+  private void blockingMethod() throws InterruptedException {
     Thread.sleep(1000);
   }
 }

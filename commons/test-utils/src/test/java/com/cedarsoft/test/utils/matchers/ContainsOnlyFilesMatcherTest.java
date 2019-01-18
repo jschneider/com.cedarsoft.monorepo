@@ -31,23 +31,33 @@
 
 package com.cedarsoft.test.utils.matchers;
 
-import com.google.common.io.Files;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Fail.*;
 
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
+import com.google.common.io.Files;
+
 /**
  *
  */
+@SuppressWarnings("TryFailThrowable")
+@WithTempFiles
 public class ContainsOnlyFilesMatcherTest {
-  @Rule
-  public final TemporaryFolder tmp = new TemporaryFolder();
 
-  @Rule
-  public final ExpectedException expectedException = ExpectedException.none();
+  private TemporaryFolder tmp;
+
+  @BeforeEach
+  public void setUp(@Nonnull TemporaryFolder tmp) throws Exception {
+    this.tmp = tmp;
+  }
 
   @Test
   public void testOnly() throws IOException {
@@ -55,21 +65,33 @@ public class ContainsOnlyFilesMatcherTest {
 
     Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/a"));
 
-    expectedException.expect( AssertionError.class );
-    Files.touch( new File( tmp.newFolder( "dir2" ), "a2" ) );
-    Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/a"));
+    try {
+      Files.touch(new File(tmp.newFolder("dir2"), "a2"));
+      Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/a"));
+      fail("Where is the Exception");
+    }
+    catch (AssertionError ignore) {
+    }
   }
 
   @Test
   public void testNone() throws IOException {
-    expectedException.expect( AssertionError.class );
-    Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/a"));
+    try {
+      Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/a"));
+      fail("Where is the Exception");
+    }
+    catch (AssertionError ignore) {
+    }
   }
 
   @Test
   public void testWrong() throws IOException {
-    expectedException.expect( AssertionError.class );
     Files.touch( new File( tmp.newFolder( "dir" ), "a" ) );
-    Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/b"));
+    try {
+      Assertions.assertThat(tmp.getRoot()).describedAs(ContainsOnlyFilesMatcher.toTree(tmp.getRoot())).matches(ContainsOnlyFilesMatcher.containsOnlyFiles("dir/b"));
+      fail("Where is the Exception");
+    }
+    catch (AssertionError ignore) {
+    }
   }
 }

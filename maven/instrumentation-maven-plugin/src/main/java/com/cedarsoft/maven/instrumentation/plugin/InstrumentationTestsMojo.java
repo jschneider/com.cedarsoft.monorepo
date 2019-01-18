@@ -15,21 +15,21 @@
  */
 package com.cedarsoft.maven.instrumentation.plugin;
 
-import org.apache.maven.plugins.annotations.LifecyclePhase;
-import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.plugins.annotations.ResolutionScope;
-
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
+
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Mojo( name = "instrument-tests", defaultPhase = LifecyclePhase.PROCESS_TEST_CLASSES, requiresDependencyResolution = ResolutionScope.TEST )
+@Mojo( name = "instrument-tests", defaultPhase = LifecyclePhase.PROCESS_TEST_CLASSES, requiresDependencyResolution = ResolutionScope.TEST, threadSafe = true)
 public class InstrumentationTestsMojo extends AbstractInstrumentationMojo {
   @Parameter(readonly = true, required = true, property = "project.build.testOutputDirectory")
   private File outputDirectory;

@@ -31,7 +31,8 @@
 
 package com.cedarsoft.app;
 
-import org.junit.*;
+import com.cedarsoft.test.utils.DisableIfHeadless;
+import org.junit.jupiter.api.*;
 
 import java.awt.Dimension;
 
@@ -41,12 +42,13 @@ import static org.junit.Assert.*;
  *
  */
 public class ScreenSizeUtilsTest {
+  @DisableIfHeadless
   @Test
   public void testIt() {
     Dimension screenSize = ScreenSizeUtils.getScreenSize();
-    assertNotNull( screenSize );
+    assertNotNull(screenSize);
 
-    assertTrue( screenSize.width > 0 );
-    assertTrue( screenSize.height > 0 );
+    assertTrue(screenSize.width > 0);
+    assertTrue(screenSize.height > 0);
   }
 }

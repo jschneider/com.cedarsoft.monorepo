@@ -15,11 +15,6 @@
  */
 package com.cedarsoft.maven.instrumentation.plugin.util;
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-
-import javax.annotation.Nonnull;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -33,8 +28,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.security.ProtectionDomain;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 import com.cedarsoft.maven.instrumentation.plugin.ClassTransformationException;
+
+import javassist.CannotCompileException;
+import javassist.ClassPool;
+import javassist.CtClass;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -47,7 +50,7 @@ public class ClassFile {
   @Nonnull
   private final ClassPool classPool;
 
-  public ClassFile( @Nonnull final File classFile, @Nonnull ClassLoader dependenciesClassLoader, @Nonnull ClassPool classPool ) throws IOException {
+  public ClassFile(@Nonnull final File classFile, @Nonnull ClassLoader dependenciesClassLoader, @Nonnull ClassPool classPool) {
     this.classFile = classFile;
     this.dependenciesClassLoader = dependenciesClassLoader;
     this.classPool = classPool;
@@ -97,7 +100,7 @@ public class ClassFile {
     } catch ( final IOException e ) {
       throw new ClassTransformationException( "Failed to write transformed class file contents.", e );
     } catch ( final CannotCompileException e ) {
-      throw new RuntimeException( "Should not happen. Failed to convert a valid compiled class into bytecode", e );
+      throw new RuntimeException("Should not happen. Failed to convert a valid compiled class <" + getClassName() + "> into bytecode", e);
     } catch ( final IllegalClassFormatException e ) {
       throw new RuntimeException( "Should not happen.  The class file does not contain valid content", e );
     }
@@ -106,7 +109,7 @@ public class ClassFile {
   private void doTransform( @Nonnull final ClassFileTransformer agent ) throws CannotCompileException, IOException, IllegalClassFormatException {
     CtClass compiledClass = getCompiledClass();
 
-    final ClassLoader loader = getClassLoader();
+    final ClassLoader loader = createClassLoader();
     final String className = getInternalClassName();
 
     final Class<?> classBeingRedefined = compiledClass.toClass( loader, loader.getClass().getProtectionDomain() );
@@ -126,9 +129,13 @@ public class ClassFile {
   }
 
   @Nonnull
-  private ClassLoader getClassLoader() throws MalformedURLException {
+  private ClassLoader createClassLoader() throws MalformedURLException {
     final File parentDir = getClassParentDir();
-    return new URLClassLoader( new URL[]{parentDir.toURI().toURL()}, dependenciesClassLoader);
+
+    List<URL> newUrls = new ArrayList<>();
+    newUrls.add(parentDir.toURI().toURL());
+
+    return new URLClassLoader(newUrls.toArray(new URL[0]), dependenciesClassLoader);
   }
 
   @Nonnull

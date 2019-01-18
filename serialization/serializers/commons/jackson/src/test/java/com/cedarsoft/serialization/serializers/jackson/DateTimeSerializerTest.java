@@ -31,16 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.junit.experimental.theories.*;
+import static org.junit.Assert.*;
 
 import javax.annotation.Nonnull;
 
-import static org.junit.Assert.*;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
  *
@@ -49,7 +49,6 @@ public class DateTimeSerializerTest extends AbstractJsonSerializerTest2<DateTime
   @Nonnull
   protected static final DateTimeZone ZONE = DateTimeZone.forID( "America/New_York" );
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new DateTime( 2009, 5, 1, 2, 2, 5, 4, ZONE ), "\"20090501T020205.004-0400\"" );
 
   @Nonnull

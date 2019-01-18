@@ -31,14 +31,8 @@
 
 package com.cedarsoft.inject;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Guice;
-import com.google.inject.Key;
-import com.google.inject.Provides;
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.inject.Inject;
-import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -46,7 +40,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import javax.inject.Inject;
+import javax.inject.Qualifier;
+
+import org.junit.jupiter.api.*;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Provides;
 
 /**
  *

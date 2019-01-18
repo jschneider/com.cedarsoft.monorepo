@@ -30,18 +30,21 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.exceptions.NotFoundException;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.cedarsoft.photos.di.Modules;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class LinkByDateCreatorRunner {
+  private static final Logger LOG = Logger.getLogger(LinkByDateCreatorRunner.class.getName());
+
   public static void main(String[] args) throws IOException {
     System.out.println("Creating links by date");
 
@@ -53,7 +56,7 @@ public class LinkByDateCreatorRunner {
       try {
         File link = linkByDateCreator.createLink(dataFile, hash);
       } catch (Exception e) {
-        e.printStackTrace();
+        LOG.log(Level.WARNING, "Could not create link due to <" + e.getMessage() + ">", e);
       }
     });
   }

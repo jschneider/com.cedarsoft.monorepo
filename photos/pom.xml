@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>monorepo</artifactId>
+    <artifactId>open</artifactId>
     <version>0</version>
   </parent>
 
@@ -12,6 +12,12 @@
   <name>Photos</name>
 
   <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
     <dependency>
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
@@ -65,6 +71,11 @@
 
     <!-- Test dependencies -->
     <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymock</artifactId>
       <scope>test</scope>
@@ -74,6 +85,12 @@
       <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 </project>

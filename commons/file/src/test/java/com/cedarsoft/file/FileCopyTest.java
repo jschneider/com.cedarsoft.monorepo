@@ -31,14 +31,20 @@
 
 package com.cedarsoft.file;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  * <p>
@@ -48,17 +54,17 @@ import static org.junit.Assert.*;
  * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
  *         <a href="http://www.xore.de">Xore Systems</a>
  */
+@WithTempFiles
 public class FileCopyTest {
+  private TemporaryFolder temporaryFolder;
+
   private File tmp;
   private File myFile;
 
-  @Rule
-  public TemporaryFolder tmpFolderRule = new TemporaryFolder();
-
-
-  @Before
-  public void setUp() throws Exception {
-    tmp = tmpFolderRule.newFolder();
+  @BeforeEach
+  public void setUp(@Nonnull TemporaryFolder temporaryFolder) throws Exception {
+    tmp = temporaryFolder.newFolder();
+    this.temporaryFolder = temporaryFolder;
     tmp.mkdir();
     myFile = new File( tmp, "test.txt" );
 
@@ -69,7 +75,7 @@ public class FileCopyTest {
 
   @Test
   public void testCopySimple() throws IOException {
-    File dst = tmpFolderRule.newFolder();
+    File dst = temporaryFolder.newFolder();
     FileCopyManager.copy( tmp, dst );
     assertTrue( dst.exists() );
     assertEquals( 1, dst.list().length );

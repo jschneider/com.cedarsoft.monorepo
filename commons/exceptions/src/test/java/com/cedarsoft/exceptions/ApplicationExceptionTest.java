@@ -31,13 +31,14 @@
 package com.cedarsoft.exceptions;
 
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
-import javax.annotation.Nonnull;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

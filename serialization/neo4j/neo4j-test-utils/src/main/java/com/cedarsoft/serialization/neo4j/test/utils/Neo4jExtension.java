@@ -1,17 +1,20 @@
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.cedarsoft.test.utils.AbstractResourceProvidingExtension;
-import com.cedarsoft.test.utils.TemporaryFolder;
-import org.junit.jupiter.api.extension.*;
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.test.TestGraphDatabaseFactory;
-
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Parameter;
 
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.extension.*;
+import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.test.TestGraphDatabaseFactory;
+
+import com.cedarsoft.test.utils.AbstractResourceProvidingExtension;
+import com.cedarsoft.test.utils.TemporaryFolder;
+
 /**
+ * Use by annotating a test with {@link WithNeo4j}
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Neo4jExtension extends AbstractResourceProvidingExtension<Neo4jExtension.TemporaryGraphDatabase> {

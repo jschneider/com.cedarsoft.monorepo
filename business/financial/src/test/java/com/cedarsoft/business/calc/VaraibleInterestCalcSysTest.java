@@ -31,13 +31,14 @@
 
 package com.cedarsoft.business.calc;
 
-import com.cedarsoft.business.Money;
-import org.joda.time.LocalDate;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.joda.time.LocalDate;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.business.Money;
 
 /**
  *
@@ -47,7 +48,7 @@ public class VaraibleInterestCalcSysTest {
   private VariableInterestCalculationSystem compoundSystem;
   private MappedInterestRateProvider interestRateProvider;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     interestRateProvider = new MappedInterestRateProvider( 0.1 );
     interestRateProvider.setRate( 0.05, new YearMonth( 2008, 1 ) );
@@ -56,7 +57,7 @@ public class VaraibleInterestCalcSysTest {
     compoundSystem = new VariableInterestCalculationSystem( interestRateProvider, InterestCalculationSystem.DAILY_COMPOUND_INTEREST, TimeSystem.CALENDAR_BASED );
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
 
   }

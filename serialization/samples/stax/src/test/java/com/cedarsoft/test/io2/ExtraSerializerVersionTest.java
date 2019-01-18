@@ -31,49 +31,46 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
+import static org.junit.Assert.*;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.AbstractSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest;
-import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Money;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.version.Version;
 
 /**
  * Testing the new version.
  */
-public class ExtraSerializerVersionTest extends AbstractXmlVersionTest<Extra> {
+public class ExtraSerializerVersionTest extends AbstractXmlVersionTest2<Extra> {
   @Nonnull
   @Override
   protected StreamSerializer<Extra> getSerializer() throws Exception {
     return new ExtraSerializer( new MoneySerializer() );
   }
 
-  @Nonnull
-  @Override
-  protected Map<? extends Version, ? extends String> getSerializedXml() {
-    Map<Version, String> map = new HashMap<Version, String>();
 
-    map.put( Version.valueOf( 1, 5, 0 ), "<extra>\n" +
+  public static final VersionEntry ENTRY1 = create(
+    Version.valueOf(1, 5, 0),
+    "<extra>\n" +
       "  <description>Metallic</description>\n" +
       "  <price>40001</price>\n" +
-      "</extra>" );
+      "</extra>");
 
-    map.put( Version.valueOf( 1, 5, 1 ), "<extra>\n" +
+  public static final VersionEntry ENTRY2 = create(
+    Version.valueOf(1, 5, 1),
+    "<extra>\n" +
       "  <description>Metallic</description>\n" +
       "  <price cents=\"40001\"/>\n" +
-      "</extra>" );
+      "</extra>");
 
-    return map;
-  }
 
   @Override
   protected void verifyDeserialized( @Nonnull Extra deserialized, @Nonnull Version version ) throws Exception {

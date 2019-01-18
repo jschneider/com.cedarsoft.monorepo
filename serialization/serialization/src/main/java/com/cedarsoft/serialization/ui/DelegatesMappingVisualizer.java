@@ -31,12 +31,13 @@
 
 package com.cedarsoft.serialization.ui;
 
-import com.cedarsoft.serialization.DelegatesMappings;
-import com.cedarsoft.serialization.ToString;
-
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Comparator;
+
+import javax.annotation.Nonnull;
+
+import com.cedarsoft.serialization.DelegatesMappings;
+import com.cedarsoft.serialization.ToString;
 
 /**
  *
@@ -61,7 +62,7 @@ public class DelegatesMappingVisualizer {
       @Nonnull
       @Override
       public String convert( @Nonnull Class<?> object ) {
-        String[] parts = object.getName().split( "\\." );
+        String[] parts = object.getName().split("\\.", -1);
         return parts[parts.length - 1];
       }
     }

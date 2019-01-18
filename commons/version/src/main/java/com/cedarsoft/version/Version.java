@@ -32,9 +32,10 @@
 package com.cedarsoft.version;
 
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.io.Serializable;
 
 /**
  * A version
@@ -150,6 +151,10 @@ public class Version implements Comparable<Version>, Serializable {
   @Nonnull
   public String format() {
     return toString();
+  }
+
+  public boolean isSnapshot() {
+    return suffix != null && suffix.contains("SNAPSHOT");
   }
 
   /**

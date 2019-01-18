@@ -15,24 +15,22 @@
  */
 package com.cedarsoft.unit.utils.prefix;
 
+import static org.junit.Assert.*;
+
+import org.junit.*;
+import org.junit.jupiter.api.Test;
+
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.deci;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.si.cm;
 import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.mm;
-import org.junit.*;
-import org.junit.rules.*;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class PrefixedTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testIt() {
     assertEquals( 0.01, Prefixed.getFactor( centi.class ), 0 );
@@ -45,14 +43,19 @@ public class PrefixedTest {
     assertEquals( 0.01, Prefixed.getFactor( cm.class ), 0 );
     assertEquals( 0.001, Prefixed.getFactor( mm.class ), 0 );
 
-    expectedException.expect( IllegalArgumentException.class );
-    Prefixed.getFactor( m.class );
+    try {
+      Prefixed.getFactor(m.class);
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException e) {
+
+    }
   }
 
   @Test
   public void testIsPrefixed() throws Exception {
     Assert.assertTrue( Prefixed.isPrefixed( cm.class ) );
-    Assert.assertTrue( Prefixed.isPrefixed( mm.class ) );
+    Assert.assertTrue(Prefixed.isPrefixed(mm.class));
     Assert.assertFalse( Prefixed.isPrefixed( m.class ) );
   }
 

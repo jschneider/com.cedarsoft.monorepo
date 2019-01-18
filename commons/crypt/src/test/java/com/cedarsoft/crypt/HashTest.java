@@ -31,23 +31,19 @@
 
 package com.cedarsoft.crypt;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.*;
 
 /**
  * <p>
@@ -83,11 +79,8 @@ public class HashTest {
     assertEquals( deserialized, hash );
   }
 
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
   @Test
-  public void testIt() throws NoSuchAlgorithmException, IOException {
+  public void testIt() throws Exception {
     URL paris = getClass().getResource( "/paris.jpg" );
     assertNotNull( paris );
 
@@ -96,10 +89,6 @@ public class HashTest {
 
     assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, IOUtils.toByteArray( paris.openStream() ) ).getValueAsHex() );
     assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, paris.openStream() ).getValueAsHex() );
-
-    File file = tmp.newFile( "paris.jpg" );
-    FileUtils.writeByteArrayToFile( file, IOUtils.toByteArray( paris.openStream() ) );
-    assertEquals( "aa5371938c4190543bddcfc1193a247717feba06", HashCalculator.calculate( Algorithm.SHA1, file ).getValueAsHex() );
   }
 
   @Test

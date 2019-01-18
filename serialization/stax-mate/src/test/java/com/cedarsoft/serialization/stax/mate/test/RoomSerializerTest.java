@@ -31,52 +31,47 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-
-import javax.annotation.Nonnull;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
  *
  */
-public class RoomSerializerTest extends AbstractXmlSerializerTest<Room> {
+public class RoomSerializerTest extends AbstractXmlSerializerTest2<Room> {
   @Nonnull
   @Override
-  protected String getExpectedSerialized() {
-    return
-      "<room>\n" +
-        "  <description>descr</description>\n" +
-        "    <window width=\"20.0\" height=\"30.0\">\n" +
-        "      <description>asdf</description>\n" +
-        "    </window>\n" +
-        "    <window width=\"50.0\" height=\"60.7\">\n" +
-        "      <description>asdf2</description>\n" +
-        "    </window>\n" +
-        "    <door>\n" +
-        "      <description>asdf</description>\n" +
-        "    </door>\n" +
-        "    <door>\n" +
-        "      <description>asdf2</description>\n" +
-        "    </door>\n" +
-        "    <door>\n" +
-        "      <description>asdf3</description>\n" +
-        "    </door>\n" +
-        "</room>";
-  }
-
-  @Nonnull
-  @Override
-  protected Serializer<Room, OutputStream, InputStream> getSerializer() throws Exception {
+  protected StreamSerializer<Room> getSerializer() throws Exception {
     return new Room.Serializer( new Window.Serializer(), new Door.Serializer() );
   }
 
+  public static final Entry<? extends Room> ENTRY1 = create(createObjectToSerialize(),
+                                                            "<room>\n" +
+                                                              "  <description>descr</description>\n" +
+                                                              "    <window width=\"20.0\" height=\"30.0\">\n" +
+                                                              "      <description>asdf</description>\n" +
+                                                              "    </window>\n" +
+                                                              "    <window width=\"50.0\" height=\"60.7\">\n" +
+                                                              "      <description>asdf2</description>\n" +
+                                                              "    </window>\n" +
+                                                              "    <door>\n" +
+                                                              "      <description>asdf</description>\n" +
+                                                              "    </door>\n" +
+                                                              "    <door>\n" +
+                                                              "      <description>asdf2</description>\n" +
+                                                              "    </door>\n" +
+                                                              "    <door>\n" +
+                                                              "      <description>asdf3</description>\n" +
+                                                              "    </door>\n" +
+                                                              "</room>");
+
   @Nonnull
-  @Override
-  protected Room createObjectToSerialize() throws Exception {
+  private static Room createObjectToSerialize() {
     List<Window> windows = Arrays.asList( new Window( "asdf", 20, 30 ), new Window( "asdf2", 50, 60.7 ) );
     List<Door> doors = Arrays.asList( new Door( "asdf" ), new Door( "asdf2" ), new Door( "asdf3" ) );
     return new Room( "descr", windows, doors );

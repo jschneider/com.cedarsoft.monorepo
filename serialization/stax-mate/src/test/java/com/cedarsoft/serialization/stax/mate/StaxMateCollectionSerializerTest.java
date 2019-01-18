@@ -31,25 +31,29 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import org.codehaus.staxmate.out.SMOutputElement;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
-public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<List<String>> {
+public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest2<List<String>> {
   @Nonnull
   @Override
   protected AbstractStaxMateSerializer<List<String>> getSerializer() {
@@ -92,14 +96,10 @@ public class StaxMateCollectionSerializerTest extends AbstractXmlSerializerTest<
   }
 
   @Nonnull
-  @Override
-  protected List<String> createObjectToSerialize() {
-    return Arrays.asList( "1", "2", "3" );
-  }
+  public static final Entry<? extends List<String>> ENTRY1 = create(Arrays.asList("1", "2", "3"), "<aString><string>1</string><string>2</string><string>3</string><description>descr</description></aString>");
 
-  @Nonnull
   @Override
-  protected String getExpectedSerialized() {
-    return "<aString><string>1</string><string>2</string><string>3</string><description>descr</description></aString>";
+  protected void verifyDeserialized(@Nonnull List<String> deserialized, @Nonnull List<String> original) {
+    Assertions.assertEquals(original, deserialized);
   }
 }

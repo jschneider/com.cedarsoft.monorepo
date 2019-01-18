@@ -31,34 +31,23 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-
 import javax.annotation.Nonnull;
-import java.io.InputStream;
-import java.io.OutputStream;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
  *
  */
-public class WindowSerializerTest extends AbstractXmlSerializerTest<Window> {
+public class WindowSerializerTest extends AbstractXmlSerializerTest2<Window> {
   @Nonnull
   @Override
-  protected Serializer<Window, OutputStream, InputStream> getSerializer() throws Exception {
+  protected StreamSerializer<Window> getSerializer() throws Exception {
     return new Window.Serializer();
   }
 
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<window width=\"123.3\" height=\"444.4\">\n" +
-      "  <description>the window</description>\n" +
-      "</window>";
-  }
-
-  @Nonnull
-  @Override
-  protected Window createObjectToSerialize() throws Exception {
-    return new Window( "the window", 123.3, 444.4 );
-  }
+  public static final Entry<? extends Window> ENTRY1 = create(new Window("the window", 123.3, 444.4), "<window width=\"123.3\" height=\"444.4\">\n" +
+                                                                                                        "  <description>the window</description>\n" +
+                                                                                                        "</window>");
 }

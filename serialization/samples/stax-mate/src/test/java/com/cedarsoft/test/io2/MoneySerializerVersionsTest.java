@@ -52,9 +52,7 @@ public class MoneySerializerVersionsTest extends AbstractXmlVersionTest2<Money> 
     return new MoneySerializer();
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create( Version.valueOf( 1, 0, 0 ), "<money>799</money>" );
-  @DataPoint
   public static final VersionEntry ENTRY2 = create( Version.valueOf( 1, 0, 1 ), "<money cents=\"799\" />" );
 
   @Override

@@ -58,7 +58,6 @@ public class BaseNameSerializerVersionsTest extends AbstractXmlVersionTest2<Base
     assertThat( deserialized.getName(), is( "asdf" ) );
   }
 
-  @DataPoint
   public static final VersionEntry entry1 = create(
     Version.valueOf( 1, 0, 0 ),
     "<baseName>asdf</baseName>" );

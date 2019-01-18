@@ -31,18 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.app.ApplicationInformation;
+import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import com.cedarsoft.version.Version;
 
 public class ApplicationInformationSerializerTest extends AbstractJsonSerializerTest2<ApplicationInformation> {
 
-  @DataPoint
   public static final Entry<? extends ApplicationInformation> ENTRY1 = ApplicationInformationSerializerTest.create(
     new ApplicationInformation("name", Version.valueOf(1, 2, 3 ) ), ApplicationInformationSerializerTest.class.getResource("Application_1.0.0_1.json" ) );
 

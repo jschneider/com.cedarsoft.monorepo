@@ -31,17 +31,15 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import com.cedarsoft.version.Version;
 
 public class VersionSerializerTest extends AbstractJsonSerializerTest2<Version> {
 
-  @DataPoint
   public static final Entry<? extends Version> ENTRY1 = VersionSerializerTest.create(
     new Version( 42, 42, 42, "suffix" ), "\"42.42.42-suffix\"" );
 

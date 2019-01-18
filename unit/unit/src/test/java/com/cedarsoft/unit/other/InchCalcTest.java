@@ -15,10 +15,11 @@
  */
 package com.cedarsoft.unit.other;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.*;
 
 import com.cedarsoft.unit.si.mm;
-import org.junit.*;
 
 
 /**

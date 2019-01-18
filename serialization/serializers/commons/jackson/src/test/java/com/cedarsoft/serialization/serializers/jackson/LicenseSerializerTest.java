@@ -31,24 +31,20 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.license.License;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 public class LicenseSerializerTest extends AbstractJsonSerializerTest2<License> {
-  @DataPoint
   @Nonnull
   public static final Entry<? extends License> ENTRY1 = AbstractSerializerTest2.create( License.GPL_3, LicenseSerializerTest.class.getResource( "License_1.0.0_1.json" ) );
-  @DataPoint
   public static final Entry<? extends License> ENTRY_NULL_URL = LicenseSerializerTest.create(
     new License( "daId", "daName" ), LicenseSerializerTest.class.getResource( "License_1.0.0_nullUrl.json" ) );
 
-  @DataPoint
   public static final Entry<? extends License> ENTRY_CC = LicenseSerializerTest.create(
     License.CC_BY_NC_SA, LicenseSerializerTest.class.getResource( "License_1.0.0_CC.json" ) );
 

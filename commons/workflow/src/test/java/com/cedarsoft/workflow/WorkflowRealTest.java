@@ -31,10 +31,13 @@
 
 package com.cedarsoft.workflow;
 
-import javax.annotation.Nonnull;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import javax.annotation.Nonnull;
+
+import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -42,7 +45,7 @@ import static org.junit.Assert.*;
 public class WorkflowRealTest {
   private WorkflowDefinition<MyObject> workflowDefinition;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     State<MyObject> input = new State<MyObject>( "input" );
     workflowDefinition = new WorkflowDefinition<MyObject>( input );

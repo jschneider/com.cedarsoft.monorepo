@@ -31,29 +31,53 @@
 
 package com.cedarsoft.zip;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TempFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  */
+@WithTempFiles
 public class ZipTest {
   @Test
-  public void testIt() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf" );
+  public void testFile(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
     assertFalse( file.isDirectory() );
-    assertEquals( "asdf", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
+    assertEquals(name, ZipCreator.getRelativePath(parent.getAbsolutePath(), file));
   }
 
   @Test
-  public void testDirectory() throws IOException {
-    File file = new File( TestUtils.getTmpDir(), "asdf_" );
+  public void testFileCanonical(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
+    assertFalse(file.isDirectory());
+    assertEquals(name, ZipCreator.getCanonicalRelativePath(parent.getCanonicalPath(), file));
+  }
+
+  @Test
+  public void testDirectory(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
     file.mkdirs();
     assertTrue( file.isDirectory() );
-    assertEquals( "asdf_/", ZipCreator.getRelativePath( TestUtils.getTmpDir().getAbsolutePath(), file ) );
+    assertEquals(name + "/", ZipCreator.getRelativePath(parent.getAbsolutePath(), file));
+  }
+
+  @Test
+  public void testDirectoryCanonical(@Nonnull @TempFolder File parent) throws IOException {
+    String name = "asdf" + System.nanoTime();
+    File file = new File(parent, name);
+    file.mkdirs();
+    assertTrue(file.isDirectory());
+    assertEquals(name + "/", ZipCreator.getCanonicalRelativePath(parent.getCanonicalPath(), file));
   }
 }

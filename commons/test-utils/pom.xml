@@ -1,3 +1,4 @@
+
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -16,6 +17,20 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin-test</artifactId>
+      <scope>compile</scope>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>test-basics</artifactId>
+      <scope>compile</scope>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>xml-commons</artifactId>
     </dependency>
@@ -23,6 +38,7 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>crypt</artifactId>
     </dependency>
+
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -38,12 +54,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>compile</scope>
-    </dependency>
-
-    <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
       <optional>true</optional>
@@ -54,11 +64,6 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-reflect</artifactId>
     </dependency>
 
     <dependency>
@@ -81,6 +86,13 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>compile</scope>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.willowtreeapps.assertk</groupId>
+      <artifactId>assertk</artifactId>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>

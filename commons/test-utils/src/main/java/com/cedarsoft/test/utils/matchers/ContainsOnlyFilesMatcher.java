@@ -58,7 +58,7 @@ public class ContainsOnlyFilesMatcher implements Predicate<File> {
 
   @Override
   public boolean test(File dir) {
-    if (!((File) dir).isDirectory()) {
+    if (!dir.isDirectory()) {
       return false;
     }
 

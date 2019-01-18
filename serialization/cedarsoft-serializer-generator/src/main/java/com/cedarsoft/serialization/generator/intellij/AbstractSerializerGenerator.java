@@ -30,6 +30,17 @@
  */
 package com.cedarsoft.serialization.generator.intellij;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import javax.annotation.Nonnull;
+
+import org.jetbrains.annotations.Nullable;
+
 import com.cedarsoft.serialization.generator.intellij.model.DelegatingSerializer;
 import com.cedarsoft.serialization.generator.intellij.model.FieldSetter;
 import com.cedarsoft.serialization.generator.intellij.model.FieldToSerialize;
@@ -53,18 +64,6 @@ import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.intellij.psi.codeStyle.VariableKind;
 import com.intellij.psi.search.PsiShortNamesCache;
-import org.jetbrains.annotations.Nullable;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -266,7 +265,7 @@ public abstract class AbstractSerializerGenerator implements SerializerGenerator
       .append( notNull() )
       .append( "com.cedarsoft.version.Version formatVersion" ).append( ") throws java.io.IOException, com.cedarsoft.version.VersionException, " ).append( serializeExceptionType ).append( " {" );
 
-    methodBuilder.append( "verifyVersionWritable( formatVersion );" );
+    methodBuilder.append("verifyVersionReadable( formatVersion );");
     methodBuilder.append( "\n\n" );
 
     //Appends the deserialize statements

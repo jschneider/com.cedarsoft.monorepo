@@ -31,21 +31,8 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.serialization.SerializingStrategy;
-import com.cedarsoft.serialization.ToString;
-import com.cedarsoft.serialization.VersionMappings;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
-import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -53,15 +40,31 @@ import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.ToString;
+import com.cedarsoft.serialization.VersionMappings;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
+import com.cedarsoft.test.utils.AssertUtils;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
-public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<Number> {
+public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest2<Number> {
   private MySerializer serializer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     AbstractStaxMateSerializingStrategy<Integer> intSerializer = new AbstractStaxMateSerializingStrategy<Integer>( "int", "asdf", Integer.class, new VersionRange( new Version( 1, 0, 0 ), new Version( 1, 0, 0 ) ) ) {
       @Override
@@ -104,22 +107,12 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest<
     return serializer;
   }
 
-  @Nonnull
-  @Override
-  protected Number createObjectToSerialize() {
-    return 1;
-  }
-
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-      "<number xmlns=\"http://number/1.0.0\" type=\"int\">1</number>";
-  }
+  public static final Entry<? extends Number> ENTRY1 = create(1, "<number xmlns=\"http://number/1.0.0\" type=\"int\">1</number>");
 
   @Override
-  protected void verifyDeserialized( @Nonnull Number deserialized ) {
+  protected void verifyDeserialized(@Nonnull Number deserialized, @Nonnull Number original) {
     assertEquals( 1, deserialized );
+
   }
 
   @Test

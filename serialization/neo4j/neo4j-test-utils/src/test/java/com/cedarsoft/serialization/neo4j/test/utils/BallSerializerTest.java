@@ -30,19 +30,20 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.neo4j.graphdb.Node;
+
 import com.cedarsoft.serialization.SerializingStrategy;
 import com.cedarsoft.serialization.ToString;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
 import com.cedarsoft.version.Version;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-import org.neo4j.graphdb.Node;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -54,18 +55,16 @@ public class BallSerializerTest extends AbstractNeo4jSerializerTest2<Ball> {
     return new BallSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create(
     new Ball.TennisBall( 7 ), BallSerializerTest.class.getResource( "ball1_2.cypher" )
   );
 
-  @DataPoint
   public static final Entry<?> ENTRY2 = create(
     new Ball.BasketBall( "asdf" ), BallSerializerTest.class.getResource( "ball2_2.cypher" ) );
 
 
   @Test
-  public void testAsccii() throws Exception {
+  public void testAscii() throws Exception {
     assertEquals( 2, getSerializer().getSerializingStrategySupport().getVersionMappings().getMappings().size() );
     assertEquals( "         -->  basketBa  tennisBa\n" +
                     "--------------------------------\n" +

@@ -30,20 +30,22 @@
  */
 package com.cedarsoft.app;
 
-import org.junit.*;
-import org.junit.rules.*;
-
 import static org.assertj.core.api.Assertions.*;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithTempFiles
 public class ApplicationHomeAccessFactoryTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
   @Test
-  public void name() throws Exception {
+  public void testName(@Nonnull TemporaryFolder tmp) throws Exception {
     ApplicationHomeAccess applicationHomeAccess = ApplicationHomeAccessFactory.createTemporaryApplicationHomeAccess(tmp.newFolder());
 
     assertThat(applicationHomeAccess.getApplicationName()).isNotNull();

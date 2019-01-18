@@ -31,25 +31,24 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import com.cedarsoft.serialization.SerializingStrategy;
-import com.cedarsoft.serialization.ToString;
-import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import static org.junit.Assert.*;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.ToString;
+import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
+import com.cedarsoft.version.Version;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -61,12 +60,10 @@ public class BallSerializerTest extends AbstractJsonSerializerTest2<Ball> {
     return new BallSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create(
     new Ball.TennisBall( 7 ), "{\"@subtype\" : \"tennisBall\",\"id\" : 7}"
   );
 
-  @DataPoint
   public static final Entry<?> ENTRY2 = create(
     new Ball.BasketBall( "asdf" ), "{\"@subtype\" : \"basketBall\",\"theId\" : \"asdf\"}" );
 

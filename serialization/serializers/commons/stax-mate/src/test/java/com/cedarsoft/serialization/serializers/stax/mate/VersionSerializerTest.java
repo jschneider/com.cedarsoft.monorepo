@@ -31,13 +31,12 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import com.cedarsoft.version.Version;
 
 /**
  *
@@ -49,8 +48,6 @@ public class VersionSerializerTest extends AbstractXmlSerializerTest2<Version> {
     return new VersionSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new Version( 1, 2, 3, "build65" ), "<version>1.2.3-build65</version>" );
-  @DataPoint
   public static final Entry<?> entry2 = create( new Version( 1, 2, 4 ), "<version>1.2.4</version>" );
 }

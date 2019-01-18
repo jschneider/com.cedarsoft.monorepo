@@ -30,29 +30,31 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
-import com.google.common.io.Files;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.crypt.Hash;
+import com.cedarsoft.crypt.HashCalculator;
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
+import com.google.common.io.Files;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithTempFiles
 public class ImageStorageTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
   private ImageStorage imageStorage;
   private Hash hash;
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  public void setUp(@Nonnull TemporaryFolder tmp) throws Exception {
     imageStorage = new ImageStorage(tmp.newFolder(), tmp.newFolder());
     hash = HashCalculator.calculate(ImageStorage.ALGORITHM, "thecontent");
     assertThat(hash.getValueAsHex()).isEqualTo("8ba871f31f3c8ad7d74591859e60f42fe89852ceb407fcd13f32433d37b751db");
@@ -72,14 +74,14 @@ public class ImageStorageTest {
     assertThat(imageStorage.getDir(hash)).exists();
 
     //Write the file
-    Files.write("daContent", file, StandardCharsets.UTF_8);
+    Files.asCharSink(file, StandardCharsets.UTF_8).write("daContent");
 
     imageStorage.delete(hash);
     assertThat(imageStorage.getDir(hash)).doesNotExist();
     assertThat(imageStorage.getDataFile(hash)).doesNotExist();
 
     assertThat(imageStorage.getDeletedDataFile(hash)).exists();
-    assertThat(Files.readFirstLine(imageStorage.getDeletedDataFile(hash), StandardCharsets.UTF_8)).isEqualTo("daContent");
+    assertThat(Files.asCharSource(imageStorage.getDeletedDataFile(hash), StandardCharsets.UTF_8).read()).isEqualTo("daContent");
   }
 
   @Test

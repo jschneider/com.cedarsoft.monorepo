@@ -31,20 +31,19 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.nio.charset.StandardCharsets;
 
 public class HashSerializerTest
   extends AbstractJsonSerializerTest2<Hash> {
 
-  @DataPoint
   public static final Entry<? extends Hash> ENTRY1 = HashSerializerTest.create(
     new Hash( Algorithm.MD5, "HASH".getBytes(StandardCharsets.UTF_8) ),
     HashSerializerTest.class.getResource( "Hash_1.0.0_1.json" )

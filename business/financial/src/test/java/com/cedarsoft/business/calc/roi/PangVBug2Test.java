@@ -31,15 +31,17 @@
 
 package com.cedarsoft.business.calc.roi;
 
-import com.cedarsoft.business.Money;
-import com.cedarsoft.business.payment.DefaultPayment;
-import com.cedarsoft.business.payment.Payment;
-import org.joda.time.LocalDate;
 import static org.junit.Assert.*;
-import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.joda.time.LocalDate;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.business.Money;
+import com.cedarsoft.business.payment.DefaultPayment;
+import com.cedarsoft.business.payment.Payment;
 
 /**
  *
@@ -47,7 +49,7 @@ import java.util.List;
 public class PangVBug2Test {
   private List<Payment> payments;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     payments = new ArrayList<Payment>();
 

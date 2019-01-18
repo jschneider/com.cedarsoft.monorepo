@@ -31,31 +31,48 @@
 
 package com.cedarsoft.serialization.test.utils;
 
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.StreamSerializer;
-import org.apache.commons.io.IOUtils;
-import org.junit.experimental.theories.*;
-import org.junit.runner.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.stream.Stream;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.*;
+
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.test.utils.ByTypeSource;
 
 /**
  * Abstract base class for serializer tests.
  *
  * @param <T> the type of domain object
  */
-@RunWith( Theories.class )
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class AbstractSerializerTest2<T> {
-  @Theory
+
+  private final boolean reflectionEqualsCheckEnabled;
+
+  protected AbstractSerializerTest2() {
+    this(false);
+  }
+
+  protected AbstractSerializerTest2(boolean reflectionEqualsCheckEnabled) {
+    this.reflectionEqualsCheckEnabled = reflectionEqualsCheckEnabled;
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideData")
+  @ByTypeSource(type = Entry.class)
   public void testSerializer( @Nonnull Entry<?> entry ) throws Exception {
     Serializer<T, OutputStream, InputStream> serializer = getSerializer();
 
@@ -80,6 +97,15 @@ public abstract class AbstractSerializerTest2<T> {
     return out.toByteArray();
   }
 
+  /**
+   * Provides some test data.
+   * May be overridden by sub classes
+   */
+  @Nonnull
+  protected Stream<? extends Entry<? extends T>> provideData() {
+    return Stream.empty();
+  }
+
   protected abstract void verifySerialized( @Nonnull Entry<T> entry, @Nonnull byte[] serialized ) throws Exception;
 
   /**
@@ -98,7 +124,9 @@ public abstract class AbstractSerializerTest2<T> {
    */
   protected void verifyDeserialized( @Nonnull T deserialized, @Nonnull T original ) {
     assertEquals( original, deserialized );
-    assertThat( deserialized, is( new ReflectionEquals( original ) ) );
+    if (reflectionEqualsCheckEnabled) {
+      assertThat( deserialized, is( new ReflectionEquals( original ) ) );
+    }
   }
 
   @Nonnull

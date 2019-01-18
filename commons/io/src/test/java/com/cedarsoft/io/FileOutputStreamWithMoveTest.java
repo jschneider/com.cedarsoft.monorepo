@@ -30,24 +30,27 @@
  */
 package com.cedarsoft.io;
 
-import com.google.common.io.Files;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
+import com.google.common.io.Files;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithTempFiles
 public class FileOutputStreamWithMoveTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
 
   @Test
-  public void basics() throws Exception {
+  public void basics(@Nonnull TemporaryFolder tmp) throws Exception {
     File targetOut = new File(tmp.newFolder(), "asdf");
     assertThat(targetOut).doesNotExist();
 
@@ -67,7 +70,7 @@ public class FileOutputStreamWithMoveTest {
   }
 
   @Test
-  public void exception() throws Exception {
+  public void exception(@Nonnull TemporaryFolder tmp) throws Exception {
     File targetOut = new File(tmp.newFolder(), "asdf");
 
     Files.write("daContent".getBytes(StandardCharsets.UTF_8), targetOut);

@@ -31,13 +31,12 @@
 
 package com.cedarsoft.test.io;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Model;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -55,13 +54,9 @@ public class ModelSerializerTest extends AbstractXmlSerializerTest2<Model> {
 
   //Note: The xml serializers write a version information to the xml. This has been left out here!
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new Model( "Toyota" ), "<model>Toyota</model>" );
-  @DataPoint
   public static final Entry<?> ENTRY2 = create( new Model( "GM" ), "<model>GM</model>" );
-  @DataPoint
   public static final Entry<?> ENTRY3 = create( new Model( "Volkswagen" ), "<model>Volkswagen</model>" );
-  @DataPoint
   public static final Entry<?> ENTRY4 = create( new Model( "Renault" ), "<model>Renault</model>" );
 
   @Override

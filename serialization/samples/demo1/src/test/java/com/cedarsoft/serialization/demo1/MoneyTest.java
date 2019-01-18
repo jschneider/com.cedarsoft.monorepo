@@ -31,9 +31,13 @@
 
 package com.cedarsoft.serialization.demo1;
 
-import com.thoughtworks.xstream.XStream;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLInputFactory;
@@ -41,13 +45,11 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 
-import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.thoughtworks.xstream.XStream;
 
 /**
  *
@@ -60,7 +62,7 @@ public class MoneyTest {
 
   private XStream xStream;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     xStream = new XStream();
     xStream.alias( "money", Money.class );

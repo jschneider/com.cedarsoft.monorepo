@@ -31,30 +31,26 @@
 
 package com.cedarsoft.exceptions.handling;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.cedarsoft.annotations.AnyThread;
-import com.cedarsoft.annotations.UiThread;
 import com.cedarsoft.exceptions.ApplicationException;
 import com.cedarsoft.exceptions.NotificationException;
 import com.cedarsoft.exceptions.handling.notification.FxNotificationService;
 import com.cedarsoft.exceptions.handling.notification.Notification;
-import com.cedarsoft.exceptions.handling.notification.NotificationService;
-import com.cedarsoft.swing.common.SwingHelper;
-import com.cedarsoft.swing.common.dialog.OptionDialog;
 import com.cedarsoft.version.Version;
 import com.google.common.collect.ImmutableMap;
-import javafx.application.Platform;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicBoolean;
+import javafx.application.Platform;
 
 /**
  * Swing based exception handler
@@ -194,6 +190,6 @@ public class FxExceptionHandler extends ExceptionHandler {
    */
   @FunctionalInterface
   public interface ExceptionTypeHandler {
-    void handle(@Nonnull FxExceptionHandler swingExceptionHandler, @Nonnull Thread thread, @Nonnull Throwable throwable, @Nonnull Throwable original);
+    void handle(@Nonnull FxExceptionHandler exceptionHandler, @Nonnull Thread thread, @Nonnull Throwable throwable, @Nonnull Throwable original);
   }
 }

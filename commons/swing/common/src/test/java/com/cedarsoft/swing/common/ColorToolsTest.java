@@ -30,11 +30,11 @@
  */
 package com.cedarsoft.swing.common;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.awt.Color;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -47,9 +47,10 @@ public class ColorToolsTest {
     assertThat(ColorTools.parseRgbColor("1, 2 , 255 ")).isEqualTo(new Color(1, 2, 255));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void bounds() throws Exception {
-    ColorTools.parseRgbColor("1, 2 , 256 ");
+    Assertions.assertThrows(IllegalArgumentException.class, () -> ColorTools.parseRgbColor("1, 2 , 256 "));
+
   }
 
   @Test

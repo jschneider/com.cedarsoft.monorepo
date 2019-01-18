@@ -31,20 +31,19 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest;
-import com.cedarsoft.test.Money;
-import com.cedarsoft.version.Version;
+import static org.junit.Assert.*;
 
 import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Map;
 
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.test.Money;
+import com.cedarsoft.version.Version;
 
 /**
  *
  */
-public class MoneySerializerVersionsTest extends AbstractXmlVersionTest<Money> {
+public class MoneySerializerVersionsTest extends AbstractXmlVersionTest2<Money> {
   @Nonnull
   @Override
   protected MoneySerializer getSerializer() {
@@ -52,16 +51,10 @@ public class MoneySerializerVersionsTest extends AbstractXmlVersionTest<Money> {
   }
 
   @Nonnull
-  @Override
-  protected Map<? extends Version, ? extends String> getSerializedXml() {
-    Map<Version, String> map = new HashMap<Version, String>();
+  public static final VersionEntry ENTRY1 = create(Version.valueOf(1, 0, 0), "<money>799</money>");
+  @Nonnull
+  public static final VersionEntry ENTRY2 = create(Version.valueOf(1, 0, 1), "<money cents=\"799\" />");
 
-    //We don't have to add the namespace containing the version. This is done automatically
-    map.put( new Version( 1, 0, 1 ), "<money cents=\"799\" />" );
-    map.put( new Version( 1, 0, 0 ), "<money>799</money>" );
-
-    return map;
-  }
 
   @Override
   protected void verifyDeserialized( @Nonnull Money deserialized, @Nonnull Version version ) {

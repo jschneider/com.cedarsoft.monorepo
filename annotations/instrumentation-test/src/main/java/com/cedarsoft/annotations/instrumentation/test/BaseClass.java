@@ -49,6 +49,6 @@ public class BaseClass<T> extends AbstractBaseClass<T>{
   }
 
   public void asdf() {
-    assert Thread.currentThread().getName() != "asdf";
+    assert !Thread.currentThread().getName().equals("asdf");
   }
 }

@@ -31,21 +31,24 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
-public class ComplexStaxMateSerializerTest extends AbstractXmlSerializerTest<String> {
+public class ComplexStaxMateSerializerTest extends AbstractXmlSerializerTest2<String> {
   @Nonnull
   @Override
   protected AbstractStaxMateSerializer<String> getSerializer() {
@@ -81,7 +84,7 @@ public class ComplexStaxMateSerializerTest extends AbstractXmlSerializerTest<Str
         nextTag( deserializeFrom, "sub" );
         String string = stringSerializer.deserialize( deserializeFrom, formatVersion );
 
-        Assert.assertEquals( "", getChildText( deserializeFrom, "emptyChild" ) );
+        Assertions.assertEquals("", getChildText(deserializeFrom, "emptyChild"));
         closeTag( deserializeFrom );
 
         return string;
@@ -89,15 +92,5 @@ public class ComplexStaxMateSerializerTest extends AbstractXmlSerializerTest<Str
     };
   }
 
-  @Nonnull
-  @Override
-  protected String createObjectToSerialize() {
-    return "asdf";
-  }
-
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<aString><sub>asdf</sub><emptyChild/></aString>";
-  }
+  public static final Entry<? extends String> ENTRY1 = create("asdf", "<aString><sub>asdf</sub><emptyChild/></aString>");
 }

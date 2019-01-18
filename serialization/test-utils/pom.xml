@@ -11,7 +11,7 @@
   <artifactId>test-utils</artifactId>
   <name>serialization.Test Utils</name>
 
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
@@ -80,6 +80,13 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>test-basics</artifactId>
+      <scope>compile</scope>
+      <type>pom</type>
     </dependency>
 
     <dependency>

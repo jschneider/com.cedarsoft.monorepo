@@ -30,15 +30,18 @@
  */
 package com.cedarsoft.photos.tools.imagemagick;
 
-import com.cedarsoft.image.Resolution;
-import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.annotation.Nonnull;
+
+import org.junit.*;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.image.Resolution;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

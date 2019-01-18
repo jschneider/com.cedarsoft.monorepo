@@ -31,15 +31,15 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import java.awt.Color;
 
 import javax.annotation.Nonnull;
-import java.awt.Color;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
 
 public class ColorSerializerVersionTest extends AbstractXmlVersionTest2<Color> {
   @Nonnull
@@ -48,7 +48,6 @@ public class ColorSerializerVersionTest extends AbstractXmlVersionTest2<Color> {
     return new ColorSerializer();
   }
 
-  @DataPoint
   public static final VersionEntry entry1 = create(
     Version.valueOf( 1, 0, 0 ),
     "<color>\n" +
@@ -59,8 +58,8 @@ public class ColorSerializerVersionTest extends AbstractXmlVersionTest2<Color> {
 
   @Override
   protected void verifyDeserialized( @Nonnull Color deserialized, @Nonnull Version version ) throws Exception {
-    Assert.assertEquals( 100, deserialized.getRed() );
-    Assert.assertEquals( 42, deserialized.getGreen() );
-    Assert.assertEquals( 130, deserialized.getBlue() );
+    Assertions.assertEquals(100, deserialized.getRed());
+    Assertions.assertEquals(42, deserialized.getGreen());
+    Assertions.assertEquals(130, deserialized.getBlue());
   }
 }

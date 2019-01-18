@@ -30,16 +30,18 @@
  */
 package com.cedarsoft.photos.tools.imagemagick;
 
-import com.cedarsoft.photos.tools.AbstractCommandLineTool;
-import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import com.google.common.base.Splitter;
-import org.apache.commons.io.output.ByteArrayOutputStream;
-
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.output.ByteArrayOutputStream;
+
+import com.cedarsoft.photos.tools.AbstractCommandLineTool;
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
+import com.google.common.base.Splitter;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -64,7 +66,7 @@ public class Identify extends AbstractCommandLineTool {
     String type = parts.get(1);
     String dimensionString = parts.get(2);
 
-    String[] dimensionParts = dimensionString.split("x");
+    String[] dimensionParts = dimensionString.split("x", -1);
     if (dimensionParts.length != 2) {
       throw new IllegalStateException("Invalid dimension <" + dimensionString + "> in output <" + output + ">");
     }

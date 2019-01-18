@@ -30,38 +30,41 @@
  */
 package com.cedarsoft.photos.tools.exif;
 
-import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import org.apache.commons.io.IOUtils;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.logging.Logger;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  *
  */
+@Disabled
+@WithTempFiles
 public class ExifToolTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
 
   private ExifTool exifTool;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     exifTool = createExifTool();
   }
 
   @Test
-  public void testClearRotation() throws IOException {
+  public void testClearRotation(@Nonnull TemporaryFolder tmp) throws IOException {
     if (exifTool == null) {
       return;
     }

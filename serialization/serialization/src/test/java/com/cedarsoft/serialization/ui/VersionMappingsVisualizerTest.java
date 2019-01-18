@@ -31,16 +31,18 @@
 
 package com.cedarsoft.serialization.ui;
 
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.ToString;
-import com.cedarsoft.serialization.VersionMappings;
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Comparator;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.ToString;
+import com.cedarsoft.serialization.VersionMappings;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -50,7 +52,7 @@ public class VersionMappingsVisualizerTest {
   private VersionMappings<Class<?>> versionMappings;
   private VersionRange other;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     mine = VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
     versionMappings = new VersionMappings<Class<?>>( mine );

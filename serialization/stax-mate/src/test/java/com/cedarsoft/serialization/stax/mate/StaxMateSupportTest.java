@@ -31,30 +31,33 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.serialization.stax.StaxSupport;
-import com.ctc.wstx.stax.WstxInputFactory;
-import com.ctc.wstx.stax.WstxOutputFactory;
+import static org.junit.Assert.*;
+
+import javax.xml.stream.XMLStreamReader;
+
 import org.codehaus.jettison.mapped.Configuration;
 import org.codehaus.jettison.mapped.MappedXMLInputFactory;
 import org.codehaus.jettison.mapped.MappedXMLOutputFactory;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.SMOutputFactory;
 import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
-import javax.xml.stream.XMLStreamReader;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.stax.StaxSupport;
+import com.ctc.wstx.stax.WstxInputFactory;
+import com.ctc.wstx.stax.WstxOutputFactory;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class StaxMateSupportTest {
-  @Before
+  @BeforeEach
   public void setup() {
     clear();
   }
 
-  @After
+  @AfterEach
   public void testDown() {
     clear();
   }

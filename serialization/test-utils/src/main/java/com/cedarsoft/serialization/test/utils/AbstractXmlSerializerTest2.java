@@ -31,19 +31,20 @@
 
 package com.cedarsoft.serialization.test.utils;
 
-import com.cedarsoft.serialization.AbstractXmlSerializer;
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.xml.XmlCommons;
-import org.apache.commons.io.Charsets;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.serialization.AbstractXmlSerializer;
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.test.utils.AssertUtils;
+import com.cedarsoft.xml.XmlCommons;
 
 /**
  * Abstract base class for XML based serializers.
@@ -108,6 +109,6 @@ public abstract class AbstractXmlSerializerTest2<T> extends AbstractSerializerTe
 
   @Nonnull
   protected static <T> Entry<? extends T> create( @Nonnull T object, @Nonnull String expected ) {
-    return new Entry<T>( object, expected.getBytes(StandardCharsets.UTF_8) );
+    return new Entry<>(object, expected.getBytes(StandardCharsets.UTF_8));
   }
 }

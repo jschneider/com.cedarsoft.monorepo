@@ -31,15 +31,16 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
+import org.apache.commons.codec.binary.Hex;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.apache.commons.codec.binary.Hex;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -51,7 +52,6 @@ public class UserSerializerTest extends AbstractJsonSerializerTest2<User> {
     return new UserSerializer( new EmailSerializer(), new RoleSerializer(), new UserDetailsSerializer() );
   }
 
-  @DataPoint
   public static Entry<?> json() {
     return create( new User( "Max Mustermann",
                              Arrays.asList(
@@ -67,7 +67,6 @@ public class UserSerializerTest extends AbstractJsonSerializerTest2<User> {
     ), UserSerializerTest.class.getResource( "user.withDetails.json" ) );
   }
 
-  @DataPoint
   public static Entry<?> noDetails() {
     return create( new User( "Max Mustermann",
                              Arrays.asList(

@@ -31,12 +31,11 @@
 
 package com.cedarsoft.test.utils.matchers;
 
-import org.hamcrest.StringDescription;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

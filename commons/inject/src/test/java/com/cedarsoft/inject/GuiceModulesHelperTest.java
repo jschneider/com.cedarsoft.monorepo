@@ -31,20 +31,21 @@
 
 package com.cedarsoft.inject;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.ConfigurationException;
-import com.google.inject.Key;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.ConfigurationException;
+import com.google.inject.Key;
 
 /**
  *
  */
+@SuppressWarnings("TryFailThrowable")
 public class GuiceModulesHelperTest {
   @Test
   public void testFail() {
@@ -77,19 +78,14 @@ public class GuiceModulesHelperTest {
     assertEquals( 1, result.getTypes().size() );
   }
 
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testAssertMini() throws Exception {
-    expectedException.expect( AssertionError.class );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
+    Assertions.assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module1(), new Module2()), MyObject.class));
   }
 
   @Test
   public void testAssertMini4() throws Exception {
-    expectedException.expect( AssertionError.class );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module2() ), Object.class );
+    Assertions.assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module2()), Object.class));
   }
 
   @Test

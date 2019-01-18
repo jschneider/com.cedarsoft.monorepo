@@ -31,6 +31,14 @@
 
 package com.cedarsoft.test.io2;
 
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
@@ -39,20 +47,12 @@ import com.cedarsoft.test.Money;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
 
 /**
  *
  */
 public class MoneyApiTest extends AbstractXmlSerializerTest2<MoneyApiTest.MyObject> {
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create(
     new MyObject( new Money( 2034, 99 ) ),
     "<myObject>\n" +

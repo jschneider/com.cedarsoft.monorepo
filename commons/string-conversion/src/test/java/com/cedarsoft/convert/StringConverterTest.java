@@ -31,7 +31,7 @@
 
 package com.cedarsoft.convert;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.junit.rules.*;
 
 import java.awt.Point;
@@ -52,7 +52,7 @@ public class StringConverterTest {
 
   private StringConverterManager converterManager;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     converterManager = new StringConverterManager( true );
   }

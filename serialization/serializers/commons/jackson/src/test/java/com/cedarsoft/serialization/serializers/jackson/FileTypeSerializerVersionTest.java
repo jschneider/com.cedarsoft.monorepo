@@ -31,18 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.file.FileType;
 import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import com.cedarsoft.version.Version;
 
 public class FileTypeSerializerVersionTest
   extends AbstractJsonVersionTest2<FileType> {
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = FileTypeSerializerVersionTest.create(
     Version.valueOf( 1, 0, 0 ),
     FileTypeSerializerVersionTest.class.getResource( "FileType_1.0.0_1.json" ) );
@@ -56,10 +54,10 @@ public class FileTypeSerializerVersionTest
   @Override
   protected void verifyDeserialized( FileType deserialized, Version version )
     throws Exception {
-    Assert.assertEquals( 2, deserialized.getExtensions().size() );
-    Assert.assertEquals( "id", deserialized.getId() );
-    Assert.assertEquals( true, deserialized.isDependentType() );
-    Assert.assertEquals( "contentType", deserialized.getContentType() );
+    Assertions.assertEquals(2, deserialized.getExtensions().size());
+    Assertions.assertEquals("id", deserialized.getId());
+    Assertions.assertEquals(true, deserialized.isDependentType());
+    Assertions.assertEquals("contentType", deserialized.getContentType());
   }
 
 }

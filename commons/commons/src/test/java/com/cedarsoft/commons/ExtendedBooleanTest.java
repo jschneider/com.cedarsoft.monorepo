@@ -31,18 +31,18 @@
 
 package com.cedarsoft.commons;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class ExtendedBooleanTest {
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     Locale.setDefault( Locale.US );
     ResourceBundle.clearCache();

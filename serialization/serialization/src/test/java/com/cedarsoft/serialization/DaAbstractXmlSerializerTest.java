@@ -31,31 +31,29 @@
 
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Fail.fail;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
 public class DaAbstractXmlSerializerTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   private MySerializer serializer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     serializer = new MySerializer();
   }
@@ -65,9 +63,13 @@ public class DaAbstractXmlSerializerTest {
     serializer.verifyNamespace( "nsBase" );
     serializer.verifyNamespace( "nsBaseADDITIONAL" );
 
-    expectedException.expect( SerializationException.class );
-    expectedException.expectMessage( "[INVALID_NAME_SPACE] Invalid name space. Expected <nsBase/1.0.0> but was <WrongnsBaseWRONG>." );
-    serializer.verifyNamespace( "WrongnsBaseWRONG" );
+    try {
+      serializer.verifyNamespace("WrongnsBaseWRONG");
+      fail("Where is the Exception");
+    }
+    catch (SerializationException e) {
+      assertThat(e).hasMessage("[INVALID_NAME_SPACE] Invalid name space. Expected <nsBase/1.0.0> but was <WrongnsBaseWRONG>.");
+    }
   }
 
   @Test

@@ -19,6 +19,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>com.google.inject.extensions</groupId>
       <artifactId>guice-grapher</artifactId>
       <scope>test</scope>

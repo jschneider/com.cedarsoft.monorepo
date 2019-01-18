@@ -30,27 +30,29 @@
  */
 package com.cedarsoft.annotations.instrumentation;
 
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtField;
-import javassist.CtMethod;
-import javassist.bytecode.DuplicateMemberException;
-import org.fest.reflect.core.Reflection;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
-import javax.annotation.Nonnull;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.annotation.Nonnull;
+
+import org.fest.reflect.core.Reflection;
+import org.junit.jupiter.api.*;
+
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtField;
+import javassist.CtMethod;
+import javassist.bytecode.DuplicateMemberException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Ignore
+@Disabled
 public class JavassistTest {
   @Test
   public void testIt() throws Exception {

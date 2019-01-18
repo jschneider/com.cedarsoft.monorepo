@@ -30,18 +30,13 @@
  */
 package com.cedarsoft.exceptions.handling.notification;
 
-import com.cedarsoft.annotations.UiThread;
-import com.cedarsoft.exceptions.handling.Messages;
-import com.cedarsoft.swing.common.Fonts;
-import com.cedarsoft.swing.common.SwingHelper;
-import com.cedarsoft.swing.common.dialog.AbstractDialog;
-import com.cedarsoft.unit.si.ms;
-import net.java.balloontip.BalloonTip;
-import net.java.balloontip.CustomBalloonTip;
-import net.java.balloontip.positioners.BalloonTipPositioner;
-import net.java.balloontip.styles.ToolTipBalloonStyle;
-import net.java.balloontip.utils.TimingUtils;
-import net.miginfocom.swing.MigLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -52,13 +47,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.util.LinkedList;
-import java.util.Queue;
+
+import com.cedarsoft.annotations.UiThread;
+import com.cedarsoft.exceptions.handling.Messages;
+import com.cedarsoft.swing.common.Fonts;
+import com.cedarsoft.swing.common.SwingHelper;
+import com.cedarsoft.swing.common.dialog.AbstractDialog;
+import com.cedarsoft.unit.si.ms;
+
+import net.java.balloontip.BalloonTip;
+import net.java.balloontip.CustomBalloonTip;
+import net.java.balloontip.positioners.BalloonTipPositioner;
+import net.java.balloontip.styles.ToolTipBalloonStyle;
+import net.java.balloontip.utils.TimingUtils;
+import net.miginfocom.swing.MigLayout;
 
 /**
  * Shows notifications in a popup
@@ -73,7 +75,7 @@ public class NotificationService {
 
   @UiThread
   @Nonnull
-  private final Queue<Notification> notificationQueue = new LinkedList<>();
+  private final Queue<Notification> notificationQueue = new ArrayDeque<>();
 
   private boolean notificationVisible;
 

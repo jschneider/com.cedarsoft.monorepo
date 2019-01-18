@@ -30,16 +30,18 @@
  */
 package com.cedarsoft.serialization.test.utils;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -58,7 +60,7 @@ public class XmlNamespaceTranslator {
   }
 
   public void translateNamespaces( @Nonnull Document xmlDoc, boolean addNsToAttributes ) {
-    Stack<Node> nodes = new Stack<Node>();
+    Deque<Node> nodes = new ArrayDeque<>();
     nodes.push( xmlDoc.getDocumentElement() );
 
     while ( !nodes.isEmpty() ) {

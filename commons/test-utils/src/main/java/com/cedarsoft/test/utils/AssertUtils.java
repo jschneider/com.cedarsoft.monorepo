@@ -38,10 +38,9 @@ import com.cedarsoft.xml.XmlCommons;
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
 import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.*;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 import org.opentest4j.AssertionFailedError;
 import org.xml.sax.SAXException;
 
@@ -158,7 +157,7 @@ public class AssertUtils {
   public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual ) throws IOException {
     assertEquals(expectedResourceUri, actual, Charsets.UTF_8);
   }
-  
+
   public static void assertEquals( @Nonnull URL expectedResourceUri, @Nullable Object actual,@Nonnull Charset charset ) throws IOException {
     Assertions.assertEquals(toString(expectedResourceUri, charset), actual);
   }
@@ -248,7 +247,7 @@ public class AssertUtils {
    * The directory where the files have been stored
    */
   @Nonnull
-  public static final File FAILED_FILES_DIR = new File( TestUtils.getTmpDir(), "junit-failed-files" );
+  public static final File FAILED_FILES_DIR = new File(TestUtils.getTmpDir(), "junit-failed-files-" + System.currentTimeMillis());
 
   @Nonnull
   public static String guessPathFromStackTrace() {

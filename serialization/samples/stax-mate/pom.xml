@@ -11,7 +11,7 @@
   <artifactId>stax-mate</artifactId>
   <name>serialization.Stax Mate</name>
 
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>

@@ -31,13 +31,14 @@
 
 package com.cedarsoft.business.calc;
 
+import static org.junit.Assert.*;
+
+import org.joda.time.LocalDate;
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.business.Money;
 import com.cedarsoft.business.MutableMoney;
 import com.cedarsoft.business.payment.DefaultPayment;
-import org.joda.time.LocalDate;
-import org.junit.*;
-
-import static org.junit.Assert.*;
 
 /**
  *

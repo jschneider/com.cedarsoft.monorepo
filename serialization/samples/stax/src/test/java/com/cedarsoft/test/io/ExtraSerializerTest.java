@@ -31,20 +31,18 @@
 
 package com.cedarsoft.test.io;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerMultiTest;
-import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Money;
-
-import javax.annotation.Nonnull;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  *
  */
-public class ExtraSerializerTest extends AbstractXmlSerializerMultiTest<Extra> {
+public class ExtraSerializerTest extends AbstractXmlSerializerTest2<Extra> {
   @Nonnull
   @Override
   protected StreamSerializer<Extra> getSerializer() {
@@ -52,26 +50,19 @@ public class ExtraSerializerTest extends AbstractXmlSerializerMultiTest<Extra> {
     return new ExtraSerializer( new MoneySerializer() );
   }
 
-  @Nonnull
-  @Override
-  protected Iterable<? extends Extra> createObjectsToSerialize() {
-    return Arrays.asList(
-      new Extra( "Metallic", new Money( 400, 00 ) ),
-      new Extra( "Great Radio", new Money( 700, 00 ) )
-    );
-  }
+  public static final Entry<? extends Extra> ENTRY1 = create(
+    new Extra("Metallic", new Money(400, 00)),
+    "<extra>\n" +
+      "  <description>Metallic</description>\n" +
+      "  <price>40000</price>\n" +
+      "</extra>"
+  );
 
-  @Nonnull
-  @Override
-  protected List<? extends String> getExpectedSerialized() throws Exception {
-    return Arrays.asList(
-      "<extra>\n" +
-        "  <description>Metallic</description>\n" +
-        "  <price>40000</price>\n" +
-        "</extra>",
-      "<extra>\n" +
-        "  <description>Great Radio</description>\n" +
-        "  <price>70000</price>\n" +
-        "</extra>" );
-  }
+  public static final Entry<? extends Extra> ENTRY2 = create(
+    new Extra("Great Radio", new Money(700, 00)),
+    "<extra>\n" +
+      "  <description>Great Radio</description>\n" +
+      "  <price>70000</price>\n" +
+      "</extra>"
+  );
 }

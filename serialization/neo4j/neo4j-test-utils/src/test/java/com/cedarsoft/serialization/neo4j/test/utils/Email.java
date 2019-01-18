@@ -30,10 +30,11 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 import javax.annotation.Nonnull;
+
+import com.google.common.base.MoreObjects;
 
 /**
  * The type Email.
@@ -63,22 +64,20 @@ public class Email {
   }
 
   @Override
-  public boolean equals( Object obj ) {
-    if ( this == obj ) {
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
     }
-    if ( obj == null || getClass() != obj.getClass() ) {
+    if (!(obj instanceof Email)) {
       return false;
     }
-
-    Email that = ( Email ) obj;
-
-    return Objects.equal( this.mail, that.mail );
+    Email email = (Email) obj;
+    return mail.equals(email.mail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode( mail );
+    return Objects.hash(mail);
   }
 
   @Override

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>monorepo</artifactId>
+    <artifactId>open</artifactId>
     <version>0</version>
   </parent>
 
@@ -37,6 +37,12 @@
   </modules>
 
   <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>

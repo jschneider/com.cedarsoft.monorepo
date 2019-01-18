@@ -31,12 +31,12 @@
 
 package com.cedarsoft.execution;
 
-import javax.annotation.Nonnull;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+
+import javax.annotation.Nonnull;
 
 /**
  * Redirects a stream into another
@@ -66,16 +66,22 @@ public class OutputRedirector implements Runnable {
    * @return the two redirecting threads
    */
   public static Thread[] redirect( @Nonnull Process process, @Nonnull OutputStream targetOut, @Nonnull OutputStream targetErr ) {
-    Thread inputThread = new Thread( new OutputRedirector( process.getInputStream(), targetOut ) );
+    return redirect(process, new OutputStreamByteSink(targetOut), new OutputStreamByteSink(targetErr));
+  }
+
+  public static Thread[] redirect(@Nonnull Process process, @Nonnull ByteSink targetOut, @Nonnull ByteSink targetErr) {
+    Thread inputThread = new Thread(new OutputRedirector(process.getInputStream(), targetOut));
     inputThread.start();
-    Thread outputThread = new Thread( new OutputRedirector( process.getErrorStream(), targetErr ) );
+    Thread outputThread = new Thread(new OutputRedirector(process.getErrorStream(), targetErr));
     outputThread.start();
 
     return new Thread[]{inputThread, outputThread};
   }
 
+  @Nonnull
   private final InputStream in;
-  private final OutputStream out;
+  @Nonnull
+  private final ByteSink out;
 
   private int waitingPeriod = 100;
   private int bufferSize = 1024;
@@ -86,7 +92,11 @@ public class OutputRedirector implements Runnable {
    * @param in  the input stream
    * @param out the output stream
    */
-  public OutputRedirector( @Nonnull InputStream in, @Nonnull OutputStream out ) {
+  public OutputRedirector(@Nonnull InputStream in, @Nonnull OutputStream out) {
+    this(in, new OutputStreamByteSink(out));
+  }
+
+  public OutputRedirector(@Nonnull InputStream in, @Nonnull ByteSink out) {
     this.in = in;
     this.out = out;
   }
@@ -124,10 +134,21 @@ public class OutputRedirector implements Runnable {
 
       int readBytes;
       while ( !Thread.interrupted() && ( readBytes = in.read( buffer ) ) > -1 ) {
-        out.write( buffer, 0, readBytes );
+        out.take(buffer, readBytes);
       }
     } catch ( IOException e ) {
       throw new RuntimeException( e );
     }
+  }
+
+  /**
+   * Accepts bytes
+   */
+  @FunctionalInterface
+  public interface ByteSink {
+    /**
+     * Accepts the given byte array
+     */
+    void take(@Nonnull byte[] bytes, int length);
   }
 }

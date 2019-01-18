@@ -30,22 +30,22 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import org.junit.*;
-import org.neo4j.graphdb.GraphDatabaseService;
-
 import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.neo4j.graphdb.GraphDatabaseService;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithNeo4j
 public class AbstractNeo4JTest {
-  @Rule
-  public Neo4jRule neo4jRule = new Neo4jRule(  );
-
   protected GraphDatabaseService graphDb;
 
-  @Before
-  public void prepareTestDatabase() throws IOException {
-    graphDb = neo4jRule.createDb();
+  @BeforeEach
+  public void prepareTestDatabase(@Nonnull GraphDatabaseService db) throws IOException {
+    graphDb = db;
   }
 }

@@ -31,20 +31,19 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.version.Version;
+import static org.junit.Assert.*;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.AbstractSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
-import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Money;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.version.Version;
 
 /**
  * Testing the new version.
@@ -56,7 +55,6 @@ public class ExtraSerializerVersionTest extends AbstractXmlVersionTest2<Extra> {
     return new ExtraSerializer( new MoneySerializer() );
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create(
     Version.valueOf( 1, 5, 0 ),
     "<extra>\n" +
@@ -64,7 +62,6 @@ public class ExtraSerializerVersionTest extends AbstractXmlVersionTest2<Extra> {
       "  <price>40001</price>\n" +
       "</extra>" );
 
-  @DataPoint
   public static final VersionEntry ENTRY2 = create(
     Version.valueOf( 1, 5, 1 ),
     "<extra>\n" +
@@ -81,11 +78,11 @@ public class ExtraSerializerVersionTest extends AbstractXmlVersionTest2<Extra> {
   @Test
   public void testAsciiArt() throws Exception {
     DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer( ( ( AbstractSerializer<?, ?, ?, ?, ?, ?> ) getSerializer() ).getDelegatesMappings() );
-    assertEquals( visualizer.visualize(),
-                  "         -->     Money\n" +
-                    "----------------------\n" +
-                    "   1.5.0 -->     1.0.0\n" +
-                    "   1.5.1 -->     1.0.1\n" +
-                    "----------------------\n" );
+    assertEquals("         -->     Money\n" +
+                   "----------------------\n" +
+                   "   1.5.0 -->     1.0.0\n" +
+                   "   1.5.1 -->     1.0.1\n" +
+                   "----------------------\n",
+                 visualizer.visualize());
   }
 }

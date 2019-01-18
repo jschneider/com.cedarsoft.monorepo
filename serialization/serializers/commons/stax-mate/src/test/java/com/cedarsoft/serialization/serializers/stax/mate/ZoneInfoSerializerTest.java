@@ -31,15 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import org.joda.time.DateTimeZone;
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.joda.time.DateTimeZone;
+import org.junit.jupiter.api.*;
 
 /**
  *

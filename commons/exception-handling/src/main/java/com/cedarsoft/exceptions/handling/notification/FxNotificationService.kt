@@ -38,7 +38,7 @@ import javafx.scene.control.ButtonType
 import javafx.stage.Stage
 import net.java.balloontip.styles.ToolTipBalloonStyle
 import java.awt.Color
-import java.util.*
+import java.util.LinkedList
 import javax.annotation.concurrent.ThreadSafe
 import javax.swing.Timer
 
@@ -82,7 +82,7 @@ class FxNotificationService {
 
         //Wait for 1200 ms until the notification is shown
         //TODO Convert to JavaFX
-        val timer = Timer(1200) { e -> showNotification(nextNotification) }
+        val timer = Timer(1200) { _ -> showNotification(nextNotification) }
         timer.isRepeats = false
         timer.start()
       }

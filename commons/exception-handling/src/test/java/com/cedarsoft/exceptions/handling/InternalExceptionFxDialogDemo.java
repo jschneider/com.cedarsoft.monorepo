@@ -30,12 +30,8 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import com.cedarsoft.version.Version;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import org.junit.*;
-
-import javax.swing.SwingUtilities;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

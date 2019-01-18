@@ -31,31 +31,30 @@
 
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionMismatchException;
-import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionMismatchException;
+import com.cedarsoft.version.VersionRange;
 /**
  *
  */
 public class DaAbstractSerializerTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
   private MySerializer serializer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     serializer = new MySerializer();
   }
@@ -80,9 +79,13 @@ public class DaAbstractSerializerTest {
 
     serializer.verifyVersionWritable( Version.valueOf( 2, 0, 0 ) );
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Version mismatch. Expected [2.0.0] but was [2.0.1]" );
-    serializer.verifyVersionWritable( Version.valueOf( 2, 0, 1 ) );
+    try {
+      serializer.verifyVersionWritable(Version.valueOf(2, 0, 1));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException e) {
+      Assertions.assertThat(e).hasMessage("Version mismatch. Expected [2.0.0] but was [2.0.1]");
+    }
   }
 
   @Test
@@ -96,9 +99,13 @@ public class DaAbstractSerializerTest {
     serializer.verifyVersionReadable( Version.valueOf( 1, 0, 0 ) );
     serializer.verifyVersionReadable( Version.valueOf( 2, 0, 0 ) );
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Version mismatch. Expected [1.0.0-2.0.0] but was [2.0.1]" );
-    serializer.verifyVersionReadable( Version.valueOf( 2, 0, 1 ) );
+    try {
+      serializer.verifyVersionReadable(Version.valueOf(2, 0, 1));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException e) {
+      Assertions.assertThat(e).hasMessage("Version mismatch. Expected [1.0.0-2.0.0] but was [2.0.1]");
+    }
   }
 
   @Test
@@ -107,10 +114,13 @@ public class DaAbstractSerializerTest {
     serializer.verifyVersionReadable( Version.valueOf( 1, 5, 0 ) );
     serializer.verifyVersionReadable( Version.valueOf( 2, 0, 0 ) );
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Version mismatch. Expected [1.0.0-2.0.0] but was [2.0.1]" );
-
-    serializer.verifyVersionReadable( Version.valueOf( 2, 0, 1 ) );
+    try {
+      serializer.verifyVersionReadable(Version.valueOf(2, 0, 1));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException e) {
+      Assertions.assertThat(e).hasMessage("Version mismatch. Expected [1.0.0-2.0.0] but was [2.0.1]");
+    }
   }
 
   @Test
@@ -119,10 +129,13 @@ public class DaAbstractSerializerTest {
     serializer.verifyVersionReadable( Version.valueOf( 1, 5, 0 ) );
     serializer.verifyVersionReadable( Version.valueOf( 2, 0, 0 ) );
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Version mismatch. Expected [1.0.0-2.0.0] but was [0.99.99]" );
-
-    serializer.verifyVersionReadable( Version.valueOf( 0, 99, 99 ) );
+    try {
+      serializer.verifyVersionReadable(Version.valueOf(0, 99, 99));
+      fail("Where is the Exception");
+    }
+    catch (VersionMismatchException e) {
+      Assertions.assertThat(e).hasMessage("Version mismatch. Expected [1.0.0-2.0.0] but was [0.99.99]");
+    }
   }
 
   @Test
@@ -130,10 +143,13 @@ public class DaAbstractSerializerTest {
     assertThat( serializer.getFormatVersion(), is( Version.valueOf( 2, 0, 0 ) ) );
     assertThat( serializer.getFormatVersionRange(), is( VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 ) ) );
 
-    expectedException.expect( VersionException.class );
-    expectedException.expectMessage( "No mappings available" );
-
-    serializer.getDelegatesMappings().verify();
+    try {
+      serializer.getDelegatesMappings().verify();
+      fail("Where is the Exception");
+    }
+    catch (VersionException e) {
+      Assertions.assertThat(e).hasMessage("No mappings available");
+    }
   }
 
   public static class MySerializer extends AbstractStreamSerializer<String, StringBuffer, String, IOException> {

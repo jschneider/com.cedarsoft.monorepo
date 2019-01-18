@@ -15,14 +15,22 @@
  */
 package com.cedarsoft.unit.utils;
 
-import com.cedarsoft.unit.quantity.Length;
+import static org.junit.Assert.*;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.unit.Symbol;
 import com.cedarsoft.unit.other.deg;
 import com.cedarsoft.unit.other.px;
-import com.cedarsoft.unit.utils.prefix.Prefixed;
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.kilo;
 import com.cedarsoft.unit.prefix.milli;
+import com.cedarsoft.unit.quantity.Length;
 import com.cedarsoft.unit.si.SIBaseUnit;
 import com.cedarsoft.unit.si.SiDerivedUnit;
 import com.cedarsoft.unit.si.cm;
@@ -33,14 +41,7 @@ import com.cedarsoft.unit.si.m_s;
 import com.cedarsoft.unit.si.mm;
 import com.cedarsoft.unit.si.rad;
 import com.cedarsoft.unit.si.s;
-import javax.annotation.Nonnull;
-
-import org.junit.*;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.unit.utils.prefix.Prefixed;
 
 /**
  *

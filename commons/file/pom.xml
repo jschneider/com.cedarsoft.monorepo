@@ -29,11 +29,5 @@
       <artifactId>test-utils</artifactId>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>org.amshove.kluent</groupId>
-      <artifactId>kluent</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 </project>

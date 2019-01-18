@@ -31,12 +31,11 @@
 
 package com.cedarsoft.serialization.stax.test;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -48,6 +47,5 @@ public class RoleSerializerTest extends AbstractXmlSerializerTest2<Role> {
     return new RoleSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new Role( 7, "Nobody" ), "<role id=\"7\">Nobody</role>" );
 }

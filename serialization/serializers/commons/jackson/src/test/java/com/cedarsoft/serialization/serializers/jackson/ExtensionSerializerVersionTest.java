@@ -31,20 +31,17 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
 import javax.annotation.Nonnull;
 
-public class ExtensionSerializerVersionTest
-  extends AbstractJsonVersionTest2<Extension> {
+import org.assertj.core.api.*;
 
-  @DataPoint
+import com.cedarsoft.file.Extension;
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
+
+public class ExtensionSerializerVersionTest extends AbstractJsonVersionTest2<Extension> {
+
   public static final VersionEntry ENTRY1 = ExtensionSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), ExtensionSerializerVersionTest.class.getResource( "Extension_1.0.0_1.json" ) );
 
   @Nonnull
@@ -54,10 +51,9 @@ public class ExtensionSerializerVersionTest
   }
 
   @Override
-  protected void verifyDeserialized( @Nonnull Extension deserialized, @Nonnull Version version )
-    throws Exception {
-    Assert.assertEquals( "daDelimiter", deserialized.getDelimiter() );
-    Assert.assertEquals( "daExtension", deserialized.getExtension() );
+  protected void verifyDeserialized(@Nonnull Extension deserialized, @Nonnull Version version) throws Exception {
+    Assertions.assertThat(deserialized.getDelimiter()).isEqualTo("daDelimiter");
+    Assertions.assertThat(deserialized.getExtension()).isEqualTo("daExtension");
   }
 
 }

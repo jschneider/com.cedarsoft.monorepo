@@ -31,19 +31,18 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.awt.Color;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
 
 /**
  *
  */
 public class ColorSerializerTest extends AbstractJsonSerializerTest2<Color> {
-  @DataPoint
   public static final Entry<? extends Color> ENTRY1 = AbstractJsonSerializerTest2.create(
     new Color(100, 42, 130),
     ColorSerializerTest.class.getResource("Color_1.0.0_1.json"));

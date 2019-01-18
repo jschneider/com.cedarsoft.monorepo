@@ -31,30 +31,29 @@
 
 package com.cedarsoft.test.io;
 
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+import java.io.IOException;
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerMultiTest;
-import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
 import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
-import org.apache.commons.io.IOUtils;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  *
  */
-public class CarSerializerTest extends AbstractXmlSerializerMultiTest<Car> {
+public class CarSerializerTest extends AbstractXmlSerializerTest2<Car> {
   @Nonnull
   @Override
   protected StreamSerializer<Car> getSerializer() {
@@ -63,37 +62,22 @@ public class CarSerializerTest extends AbstractXmlSerializerMultiTest<Car> {
     return new CarSerializer( moneySerializer, new ExtraSerializer( moneySerializer ), new ModelSerializer() );
   }
 
-  @Nonnull
-  @Override
-  protected Iterable<? extends Car> createObjectsToSerialize() {
-    return Arrays.asList(
-      new Car( new Model( "Toyota" ), Color.BLACK, new Money( 49000, 00 ) ),
-      new Car( new Model( "Ford" ), Color.ORANGE, new Money( 19000, 00 ), Arrays.asList( new Extra( "Whoo effect", new Money( 99, 98 ) ), new Extra( "Better Whoo effect", new Money( 199, 00 ) ) ) )
-    );
-  }
+  public static final Entry<? extends Car> ENTRY1 = create(
+    new Car(new Model("Toyota"), Color.BLACK, new Money(49000, 00)),
+    CarSerializerTest.class.getResourceAsStream("car1.xml"));
 
-  @Nonnull
-  @Override
-  protected List<? extends String> getExpectedSerialized() throws Exception {
-    return Arrays.asList(
-      IOUtils.toString(getClass().getResourceAsStream( "car1.xml" ), StandardCharsets.UTF_8 ),
-      IOUtils.toString( getClass().getResourceAsStream( "car2.xml" ), StandardCharsets.UTF_8 )
-    );
-  }
+  public static final Entry<? extends Car> ENTRY2 = create(
+    new Car(new Model("Ford"), Color.ORANGE, new Money(19000, 00), Arrays.asList(new Extra("Whoo effect", new Money(99, 98)), new Extra("Better Whoo effect", new Money(199, 00)))),
+    CarSerializerTest.class.getResourceAsStream("car2.xml"));
 
   @Override
-  protected void verifyDeserialized( @Nonnull List<? extends Car> deserialized ) {
+  protected void verifyDeserialized(@Nonnull Car deserialized, @Nonnull Car original) {
     //We don't implement equals in the car, therefore compare manually
     //    super.verifyDeserialized( deserialized );
 
-    assertEquals( 2, deserialized.size() );
-
-    Car first = deserialized.get( 0 );
-    assertEquals( Color.BLACK, first.getColor() );
-    assertEquals( first.getBasePrice(), new Money( 49000, 0 ) );
-
+    assertEquals(original.getColor(), deserialized.getColor());
+    assertEquals(original.getBasePrice(), deserialized.getBasePrice());
     //....
-
   }
 
   @Test

@@ -31,19 +31,18 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.utils.AssertUtils;
-import org.apache.commons.io.Charsets;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 
 /**
  *
@@ -55,7 +54,6 @@ public class HashSerializerTest extends AbstractXmlSerializerTest2<Hash> {
     return new HashSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( Hash.fromHex( Algorithm.SHA256, "11223344" ), "<hash algorithm=\"SHA256\">11223344</hash>" );
 
   @Test
@@ -64,6 +62,6 @@ public class HashSerializerTest extends AbstractXmlSerializerTest2<Hash> {
     AssertUtils.assertXMLEquals(new String(serialized, StandardCharsets.UTF_8 ).trim(), "<hash xmlns=\"http://www.cedarsoft.com/crypt/hash/1.0.0\" algorithm=\"MD5\">121212</hash>" );
 
     Hash deserialized = getSerializer().deserialize( new ByteArrayInputStream( serialized ) );
-    Assert.assertEquals( deserialized, Hash.fromHex( Algorithm.MD5, "121212" ) );
+    Assertions.assertEquals(deserialized, Hash.fromHex(Algorithm.MD5, "121212"));
   }
 }

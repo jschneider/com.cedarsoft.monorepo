@@ -31,31 +31,30 @@
 
 package com.cedarsoft.test.utils;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
-import com.google.common.io.ByteStreams;
-import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.rules.*;
-import org.opentest4j.AssertionFailedError;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.Assertions;
+import org.junit.*;
+import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
+
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
+import com.cedarsoft.crypt.HashCalculator;
+import com.google.common.io.ByteStreams;
 
 /**
  *
  */
+@SuppressWarnings("TryFailThrowable")
 public class AssertUtilsTest {
-  @Rule
-  public org.junit.rules.TemporaryFolder tmp = new org.junit.rules.TemporaryFolder();
-  @Rule
-  public TestName testName = new TestName();
-
   @Test
   public void testJsonFormat() throws Exception {
     String separator = System.getProperty("line.separator");
@@ -106,7 +105,7 @@ public class AssertUtilsTest {
   public void testXml() throws Exception {
     try {
       AssertUtils.assertXMLEquals("<xml2/>", "<xml/>");
-      fail("Where is the Exception");
+      throw new RuntimeException("expected assertion");
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("Expected element tag name");
     }
@@ -145,7 +144,7 @@ public class AssertUtilsTest {
   public void testXml2WComments() throws Exception {
     try {
       AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, false);
-      fail("Where is the Exception");
+      throw new RuntimeException("expected assertion");
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("Expected presence");
     }
@@ -153,7 +152,7 @@ public class AssertUtilsTest {
     AssertUtils.assertXMLEquals(new String(ByteStreams.toByteArray(getClass().getResourceAsStream("AssertUtilsTest.2.xml")), StandardCharsets.UTF_8), "<xml><!--comment2--></xml>", true, true);
   }
 
-  @org.junit.jupiter.api.Test
+  @Test
   public void testFormat() throws Exception {
     try {
       AssertUtils.assertXMLEquals("<xml2/>", "This is no xml!");
@@ -163,31 +162,27 @@ public class AssertUtilsTest {
     }
   }
 
+  @WithTempFiles
   @Test
-  public void testTestName() {
-    assertEquals( "testTestName", testName.getMethodName() );
-  }
-
-  @Test
-  public void testFileByHash() throws Exception {
-    File file = tmp.newFile( "daFile" );
+  public void testFileByHash(@Nonnull TemporaryFolder tmp) throws Exception {
+    File file = tmp.newFile("daFile" );
     FileUtils.writeStringToFile(file, "daContent", StandardCharsets.UTF_8);
 
-    Hash expected = HashCalculator.calculate( Algorithm.MD5, file );
-    assertEquals( "913aa4a45cea16f9714f109e7324159f", expected.getValueAsHex() );
+    Hash expected = HashCalculator.calculate(Algorithm.MD5, file );
+    assertEquals("913aa4a45cea16f9714f109e7324159f", expected.getValueAsHex() );
 
-    AssertUtils.assertFileByHash( "path", expected, file );
-    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.MD5, file ), file );
-    AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA256, file ), file );
+    AssertUtils.assertFileByHash("path", expected, file );
+    AssertUtils.assertFileByHash("path", HashCalculator.calculate(Algorithm.MD5, file ), file );
+    AssertUtils.assertFileByHash("path", HashCalculator.calculate(Algorithm.SHA256, file ), file );
     AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA1, file ), file );
     AssertUtils.assertFileByHash( "path", HashCalculator.calculate( Algorithm.SHA512, file ), file );
 
     try {
-      AssertUtils.assertFileByHash( AssertUtilsTest.class, testName.getMethodName(), Hash.fromHex( Algorithm.MD5, "aa" ), file );
-      fail( "Where is the Exception" );
+      AssertUtils.assertFileByHash(AssertUtilsTest.class, "testFileByHash", Hash.fromHex(Algorithm.MD5, "aa"), file);
+      throw new RuntimeException("expected assertion");
     } catch ( AssertionError e ) {
       File copiedFile = AssertUtils.createCopyFile(AssertUtils.createPath(AssertUtilsTest.class, "testFileByHash"), "daFile");
-      assertTrue(e.getMessage().contains(copiedFile.getAbsolutePath()));
+      Assertions.assertThat(e.getMessage()).contains(copiedFile.getAbsolutePath());
 
       assertTrue(copiedFile.getParentFile().exists());
       assertTrue(copiedFile.exists());
@@ -196,7 +191,7 @@ public class AssertUtilsTest {
 
     try {
       AssertUtils.assertFileByHash( Hash.fromHex( Algorithm.MD5, "aa" ), file );
-      fail( "Where is the Exception" );
+      throw new RuntimeException("expected assertion");
     } catch ( AssertionError e ) {
       Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test at");
     }

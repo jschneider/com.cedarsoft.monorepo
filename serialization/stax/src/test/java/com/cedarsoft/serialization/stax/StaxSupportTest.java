@@ -31,11 +31,11 @@
 
 package com.cedarsoft.serialization.stax;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import javax.xml.stream.XMLStreamReader;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

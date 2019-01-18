@@ -42,15 +42,18 @@ import java.util.Iterator;
 import java.util.Set;
 
 
+/**
+ * Extension that checks whether some threads have been left after the unit test has finished.
+ */
 public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
   @Override
-  public void beforeEach(ExtensionContext extensionContext) throws Exception {
+  public void beforeEach(ExtensionContext context) throws Exception {
     before();
   }
 
   @Override
-  public void afterEach(ExtensionContext extensionContext) throws Exception {
-    if (extensionContext.getExecutionException().isPresent()) {
+  public void afterEach(ExtensionContext context) throws Exception {
+    if (context.getExecutionException().isPresent()) {
       afterFailing();
       return;
     }
@@ -64,7 +67,7 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
   private final ThreadMatcher ignoredThreadMatcher;
 
   public ThreadExtension() {
-    this( new DefaultThreadMatcher() );
+    this(new DefaultThreadMatcher() );
   }
 
   public ThreadExtension(@Nullable ThreadMatcher ignoredThreadMatcher ) {
@@ -118,10 +121,10 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
     }
     Collection<Thread> threadsNow = Thread.getAllStackTraces().keySet();
 
-    Set<Thread> remainingThreads = new HashSet<Thread>( threadsNow );
-    remainingThreads.removeAll( initialThreads );
+    Set<Thread> remainingThreads = new HashSet<Thread>(threadsNow);
+    remainingThreads.removeAll(initialThreads);
 
-    for ( Iterator<Thread> iterator = remainingThreads.iterator(); iterator.hasNext(); ) {
+    for (Iterator<Thread> iterator = remainingThreads.iterator(); iterator.hasNext(); ) {
       Thread remainingThread = iterator.next();
       if ( !remainingThread.isAlive() ) {
         iterator.remove();
@@ -129,7 +132,7 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
       }
 
       //Ignore the threads
-      if ( this.ignoredThreadMatcher != null && ignoredThreadMatcher.shallIgnore( remainingThread ) ) {
+      if (this.ignoredThreadMatcher != null && ignoredThreadMatcher.shallIgnore(remainingThread)) {
         iterator.remove();
         continue;
       }
@@ -152,7 +155,7 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
   }
 
   @Nonnull
-  private String buildMessage( @Nonnull Set<? extends Thread> remainingThreads ) {
+  private String buildMessage(@Nonnull Set<? extends Thread> remainingThreads ) {
     StringBuilder builder = new StringBuilder();
 
     builder.append( "// Remaining Threads:" ).append( "\n" );
@@ -162,16 +165,16 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
       builder.append( "\n" );
       builder.append( remainingThread );
       builder.append( STACK_TRACE_ELEMENT_SEPARATOR );
-      builder.append( Joiner.on( STACK_TRACE_ELEMENT_SEPARATOR ).join( remainingThread.getStackTrace() ) );
-      builder.append( "\n" );
+      builder.append(Joiner.on(STACK_TRACE_ELEMENT_SEPARATOR ).join(remainingThread.getStackTrace() ) );
+      builder.append("\n" );
     }
-    builder.append( "-----------------------" ).append( "\n" );
+    builder.append("-----------------------" ).append("\n" );
 
     return builder.toString();
   }
 
   public interface ThreadMatcher {
-    boolean shallIgnore( @Nonnull Thread remainingThread );
+    boolean shallIgnore(@Nonnull Thread remainingThread );
   }
 
   /**
@@ -179,7 +182,7 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
    */
   public static class DefaultThreadMatcher implements ThreadMatcher {
     @Override
-    public boolean shallIgnore( @Nonnull Thread remainingThread ) {
+    public boolean shallIgnore(@Nonnull Thread remainingThread) {
       @Nullable ThreadGroup threadGroup = remainingThread.getThreadGroup();
       if ( threadGroup == null ) {
         //this means the thread has died
@@ -189,22 +192,25 @@ public class ThreadExtension implements BeforeEachCallback, AfterEachCallback {
       String threadName = remainingThread.getName();
 
       if ((threadGroupName.equals("system") &&
-        threadName.equals("Keep-Alive-Timer"))
-        ||
-        (threadGroupName.equals("system") &&
-          threadName.equals("process reaper"))
-        ||
-        (threadGroupName.equals("system") &&
-          threadName.equals("Keep-Alive-SocketCleaner"))
-        ||
-        (threadGroupName.equals("system") &&
-          threadName.equals("Java2D Disposer"))
-        ||
-        threadName.startsWith("AWT-")
-        ||
-        (threadGroupName.equals("main") &&
-          threadName.startsWith("QuantumRenderer"))
-        ) {
+             threadName.equals("Keep-Alive-Timer"))
+            ||
+            (threadGroupName.equals("system") &&
+               threadName.equals("process reaper"))
+            ||
+            (threadGroupName.equals("system") &&
+               threadName.equals("Keep-Alive-SocketCleaner"))
+            ||
+            (threadGroupName.equals("system") &&
+               threadName.equals("Java2D Disposer"))
+            ||
+            threadName.startsWith("AWT-")
+            ||
+            (threadGroupName.equals("main") &&
+               threadName.startsWith("QuantumRenderer"))
+            ||
+            (threadGroupName.equals("InnocuousThreadGroup") &&
+               threadName.startsWith("Keep-Alive-Timer"))
+      ) {
         return true;
       }
 

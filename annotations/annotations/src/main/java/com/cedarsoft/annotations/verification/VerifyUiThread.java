@@ -46,7 +46,6 @@ public class VerifyUiThread {
   static {
     List<UiThreadVerificationStrategy> delegates = new ArrayList<UiThreadVerificationStrategy>();
     delegates.add(new SwingThreadVerificationStrategy());
-    delegates.add(new JavaFxUiThreadVerificationStrategy());
     delegates.add(new SwtUiThreadVerificationStrategy());
     strategy =new DelegatingUiThreadVerificationStrategy(delegates);
   }

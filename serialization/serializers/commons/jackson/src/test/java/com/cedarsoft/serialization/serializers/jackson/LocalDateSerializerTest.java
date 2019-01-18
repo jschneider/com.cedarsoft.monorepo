@@ -30,17 +30,16 @@
  */
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.time.LocalDate;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.time.LocalDate;
 
 public class LocalDateSerializerTest extends AbstractJsonSerializerTest2<LocalDate> {
-  @DataPoint
   public static final Entry<? extends LocalDate> ENTRY1 = AbstractSerializerTest2.create(LocalDate.of(2017, 1, 13),
                                                                                          LocalDateSerializerTest.class.getResource("LocalDate_1.0.0_1.json"));
 

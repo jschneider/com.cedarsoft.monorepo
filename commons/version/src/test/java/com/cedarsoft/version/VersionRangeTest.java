@@ -31,12 +31,15 @@
 
 package com.cedarsoft.version;
 
-import com.google.common.collect.ImmutableList;
-import org.junit.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
+import org.junit.*;
+import org.junit.jupiter.api.Test;
+
+import com.google.common.collect.ImmutableList;
 
 /**
  *

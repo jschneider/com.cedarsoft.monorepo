@@ -31,13 +31,12 @@
 
 package com.cedarsoft.test.io2;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Money;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -49,6 +48,5 @@ public class MoneySerializerTest extends AbstractXmlSerializerTest2<Money> {
     return new MoneySerializer();
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new Money( 1199 ), "<money cents=\"1199\"/>" );
 }

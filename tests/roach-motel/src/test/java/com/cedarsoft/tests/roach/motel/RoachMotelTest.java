@@ -31,12 +31,14 @@
 package com.cedarsoft.tests.roach.motel;
 
 import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@Ignore
+@Disabled
 public class RoachMotelTest {
   @Test
   public void it() throws Exception {

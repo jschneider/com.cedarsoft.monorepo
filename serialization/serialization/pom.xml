@@ -10,7 +10,7 @@
   <artifactId>serialization</artifactId>
   <name>Serialization</name>
 
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>

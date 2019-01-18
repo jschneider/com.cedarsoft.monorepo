@@ -31,23 +31,20 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.apache.commons.io.Charsets;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import com.cedarsoft.version.Version;
 
-import javax.annotation.Nonnull;
-import java.nio.charset.StandardCharsets;
+public class HashSerializerVersionTest extends AbstractJsonVersionTest2<Hash> {
 
-public class HashSerializerVersionTest
-  extends AbstractJsonVersionTest2<Hash> {
-
-  @DataPoint
   public static final VersionEntry ENTRY1 = HashSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), HashSerializerVersionTest.class.getResource( "Hash_1.0.0_1.json" ) );
 
   @Nonnull
@@ -59,8 +56,8 @@ public class HashSerializerVersionTest
   @Override
   protected void verifyDeserialized( @Nonnull Hash deserialized, @Nonnull Version version )
     throws Exception {
-    Assert.assertEquals( Algorithm.MD5, deserialized.getAlgorithm() );
-    Assert.assertEquals( "HASH", new String(deserialized.getValue(), StandardCharsets.UTF_8 ) );
+    Assertions.assertEquals(Algorithm.MD5, deserialized.getAlgorithm());
+    Assertions.assertEquals("HASH", new String(deserialized.getValue(), StandardCharsets.UTF_8));
   }
 
 }

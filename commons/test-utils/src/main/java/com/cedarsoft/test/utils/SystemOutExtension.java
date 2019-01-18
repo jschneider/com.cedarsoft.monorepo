@@ -40,7 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 /**
- *
+ * Extensino that modifies System.out and System.err during a test
  */
 public class SystemOutExtension implements BeforeEachCallback, AfterEachCallback, ParameterResolver {
   @Nullable

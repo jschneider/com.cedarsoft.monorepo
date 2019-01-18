@@ -30,27 +30,30 @@
  */
 package com.cedarsoft.photos.tools.imagemagick;
 
-import com.cedarsoft.image.Resolution;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
 
-import static org.assertj.core.api.Assertions.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.lang3.SystemUtils;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.image.Resolution;
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithTempFiles
 public class ConvertTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
   private File imageFile;
   private Convert convert;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     URL resource = getClass().getResource("/img1.jpg");
     URI uri = resource.toURI();
@@ -60,7 +63,11 @@ public class ConvertTest {
   }
 
   @Test
-  public void basic() throws Exception {
+  public void basic(@Nonnull TemporaryFolder tmp) throws Exception {
+    if (SystemUtils.IS_OS_WINDOWS) {
+      return;
+    }
+
     File thumbFile = new File(tmp.newFolder(), "thumb.jpg");
 
     convert.createThumbnail(imageFile, thumbFile, new Resolution(800, 800), "jpg");

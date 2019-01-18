@@ -31,15 +31,16 @@
 
 package com.cedarsoft.serialization.test.performance;
 
+import static org.junit.Assert.*;
+
+import java.io.StringWriter;
+
+import javax.xml.stream.XMLStreamWriter;
+
 import org.codehaus.jettison.badgerfish.BadgerFishXMLStreamWriter;
 import org.codehaus.jettison.mapped.MappedNamespaceConvention;
 import org.codehaus.jettison.mapped.MappedXMLStreamWriter;
-import org.junit.*;
-
-import javax.xml.stream.XMLStreamWriter;
-import java.io.StringWriter;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

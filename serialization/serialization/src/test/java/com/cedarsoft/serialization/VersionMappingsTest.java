@@ -31,16 +31,17 @@
 
 package com.cedarsoft.serialization;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.version.UnsupportedVersionException;
 import com.cedarsoft.version.UnsupportedVersionRangeException;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionMismatchException;
+import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 
 
 /**
@@ -50,9 +51,9 @@ public class VersionMappingsTest {
   private final VersionRange mine = VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
   private VersionMappings<Class<?>> mapping;
 
-  @Before
+  @BeforeEach
   public void setup() {
-    mapping = new VersionMappings<Class<?>>( mine );
+    mapping = new VersionMappings<>(mine);
   }
 
   @Test
@@ -62,10 +63,13 @@ public class VersionMappingsTest {
       .map( 1, 6, 0 ).to( 1, 9, 0 ).toDelegateVersion( 8, 0, 0 )
     ;
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Invalid mapping for <class java.lang.String>: Upper border of source range not mapped: Expected [2.0.0] but was [1.9.0]" );
-
-    mapping.verify();
+    try {
+      mapping.verify();
+      fail("Where is the Exception");
+    }
+    catch (VersionException e) {
+      org.assertj.core.api.Assertions.assertThat(e).hasMessage("Invalid mapping for <class java.lang.String>: Upper border of source range not mapped: Expected [2.0.0] but was [1.9.0]");
+    }
   }
 
   @Test
@@ -75,10 +79,14 @@ public class VersionMappingsTest {
       .map( 1, 6, 0 ).to( 2, 0, 0 ).toDelegateVersion( 8, 0, 0 )
     ;
 
-    expectedException.expect( VersionMismatchException.class );
-    expectedException.expectMessage( "Invalid mapping for <class java.lang.String>: Lower border of source range not mapped: Expected [1.0.0] but was [1.0.1]" );
+    try {
+      mapping.verify();
+      fail("Where is the Exception");
+    }
+    catch (VersionException e) {
+      org.assertj.core.api.Assertions.assertThat(e).hasMessage("Invalid mapping for <class java.lang.String>: Lower border of source range not mapped: Expected [1.0.0] but was [1.0.1]");
+    }
 
-    mapping.verify();
   }
 
   @Test
@@ -103,65 +111,81 @@ public class VersionMappingsTest {
     assertThat( mapping.resolveVersion( String.class, Version.valueOf( 1, 99, 99 ) ), is( Version.valueOf( 8, 0, 0 ) ) );
     assertThat( mapping.resolveVersion( String.class, Version.valueOf( 2, 0, 0 ) ), is( Version.valueOf( 8, 0, 0 ) ) );
 
-    expectedException.expect( UnsupportedVersionException.class );
-    expectedException.expectMessage( "No delegate version mapped for source version <1.5.1>" );
-
-    assertThat( mapping.resolveVersion( String.class, Version.valueOf( 1, 5, 1 ) ), is( Version.valueOf( 7, 1, 0 ) ) );
+    try {
+      assertThat(mapping.resolveVersion(String.class, Version.valueOf(1, 5, 1)), is(Version.valueOf(7, 1, 0)));
+      fail("Where is the Exception");
+    }
+    catch (UnsupportedVersionException e) {
+      Assertions.assertThat(e).hasMessage("No delegate version mapped for source version <1.5.1>");
+    }
   }
 
   @Test
   public void testDuplicate() {
-    expectedException.expect( UnsupportedVersionRangeException.class );
-    expectedException.expectMessage( "The version range has still been mapped: Was <[1.0.0-1.0.0]>" );
-
-    mapping.add( String.class, VersionRange.from( 7, 0, 0 ).to( 8, 0, 0 ) )
-      .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 1 )
-      .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 2 )
-    ;
+    try {
+      mapping.add(String.class, VersionRange.from(7, 0, 0).to(8, 0, 0))
+        .map(1, 0, 0).toDelegateVersion(7, 0, 1)
+        .map(1, 0, 0).toDelegateVersion(7, 0, 2)
+      ;
+      fail("Where is the Exception");
+    }
+    catch (VersionException e) {
+      Assertions.assertThat(e).hasMessage("The version range has still been mapped: Was <[1.0.0-1.0.0]>");
+    }
   }
 
   @Test
   public void testDuplicate2() {
-    expectedException.expect( UnsupportedVersionRangeException.class );
-    expectedException.expectMessage( "The version range has still been mapped: Was <[1.0.0-2.0.0]>" );
-
-    mapping.add( String.class, VersionRange.from( 7, 0, 0 ).to( 8, 0, 0 ) )
-      .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 1 )
-      .map( 1, 0, 0 ).to( 2, 0, 0 ).toDelegateVersion( 7, 0, 2 )
-    ;
+    try {
+      mapping.add(String.class, VersionRange.from(7, 0, 0).to(8, 0, 0))
+        .map(1, 0, 0).toDelegateVersion(7, 0, 1)
+        .map(1, 0, 0).to(2, 0, 0).toDelegateVersion(7, 0, 2)
+      ;
+      fail("Where is the Exception");
+    }
+    catch (UnsupportedVersionRangeException e) {
+      Assertions.assertThat(e).hasMessage("The version range has still been mapped: Was <[1.0.0-2.0.0]>");
+    }
   }
 
   @Test
   public void testDuplicate3() {
-    expectedException.expect( UnsupportedVersionRangeException.class );
-    expectedException.expectMessage( "The version range has still been mapped: Was <[1.0.0-2.0.0]>" );
-
-    mapping.add( String.class, VersionRange.from( 7, 0, 0 ).to( 8, 0, 0 ) )
-      .map( 1, 0, 1 ).toDelegateVersion( 7, 0, 1 )
-      .map( 1, 0, 0 ).to( 2, 0, 0 ).toDelegateVersion( 7, 0, 2 )
-    ;
+    try {
+      mapping.add(String.class, VersionRange.from(7, 0, 0).to(8, 0, 0))
+        .map(1, 0, 1).toDelegateVersion(7, 0, 1)
+        .map(1, 0, 0).to(2, 0, 0).toDelegateVersion(7, 0, 2)
+      ;
+      fail("Where is the Exception");
+    }
+    catch (UnsupportedVersionRangeException e) {
+      Assertions.assertThat(e).hasMessage("The version range has still been mapped: Was <[1.0.0-2.0.0]>");
+    }
   }
 
   @Test
   public void testDuplicate4() {
-    expectedException.expect( UnsupportedVersionRangeException.class );
-    expectedException.expectMessage( "The version range has still been mapped: Was <[1.0.0-2.0.0]>" );
-
-    mapping.add( String.class, VersionRange.from( 7, 0, 0 ).to( 8, 0, 0 ) )
-      .map( 2, 0, 0 ).toDelegateVersion( 7, 0, 1 )
-      .map( 1, 0, 0 ).to( 2, 0, 0 ).toDelegateVersion( 7, 0, 2 )
-    ;
+    try {
+      mapping.add(String.class, VersionRange.from(7, 0, 0).to(8, 0, 0))
+        .map(2, 0, 0).toDelegateVersion(7, 0, 1)
+        .map(1, 0, 0).to(2, 0, 0).toDelegateVersion(7, 0, 2)
+      ;
+      fail("Where is the Exception");
+    }
+    catch (UnsupportedVersionRangeException e) {
+      Assertions.assertThat(e).hasMessage("The version range has still been mapped: Was <[1.0.0-2.0.0]>");
+    }
   }
 
   @Test
   public void testDuplicate1() {
     mapping.addMapping( String.class, VersionRange.from( 7, 0, 0 ).to() );
 
-    expectedException.expect( IllegalArgumentException.class );
-    mapping.addMapping( String.class, VersionRange.from( 7, 0, 0 ).to() );
+    try {
+      mapping.addMapping(String.class, VersionRange.from(7, 0, 0).to());
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+    }
   }
-
-  @Rule
-  public final ExpectedException expectedException = ExpectedException.none();
 
 }

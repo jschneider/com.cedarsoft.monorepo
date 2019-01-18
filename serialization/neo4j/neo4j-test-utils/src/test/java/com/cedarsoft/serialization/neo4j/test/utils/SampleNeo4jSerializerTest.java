@@ -30,23 +30,23 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.cedarsoft.serialization.SerializationException;
-import com.ecyrd.speed4j.StopWatch;
-import com.google.common.collect.ImmutableList;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.neo4j.graphdb.DynamicLabel;
-import org.neo4j.graphdb.Label;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Transaction;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Fail.fail;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.neo4j.graphdb.Label;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Transaction;
+
+import com.cedarsoft.serialization.SerializationException;
+import com.ecyrd.speed4j.StopWatch;
+import com.google.common.collect.ImmutableList;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -101,7 +101,7 @@ public class SampleNeo4jSerializerTest extends AbstractNeo4JTest {
     }
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void testPerformanceSerialization() throws Exception {
     int transactionCount = 10000;

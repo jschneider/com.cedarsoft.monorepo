@@ -3,7 +3,7 @@
 
   <parent>
     <groupId>com.cedarsoft.annotations</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>annotations-parent</artifactId>
     <version>0</version>
   </parent>
 
@@ -37,7 +37,6 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-reflect</artifactId>
-      <version>1.4.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -53,7 +52,7 @@
         <plugin>
           <groupId>com.cedarsoft</groupId>
           <artifactId>instrumentation-maven-plugin</artifactId>
-          <version>${monorepo.dep.management.version}</version>
+          <version>${project.version}</version>
 
           <configuration>
             <useGuava>true</useGuava>

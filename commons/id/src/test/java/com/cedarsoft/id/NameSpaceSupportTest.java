@@ -31,11 +31,11 @@
 
 package com.cedarsoft.id;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.awt.Color;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

@@ -31,6 +31,15 @@
 
 package com.cedarsoft.serialization.test.utils;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+
+import org.fest.reflect.core.Reflection;
+
 import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.test.utils.JsonUtils;
@@ -40,20 +49,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ContainerNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.apache.commons.io.Charsets;
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import org.fest.reflect.core.Reflection;
-
-import javax.annotation.Nonnull;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Abstract base class for JSON based serializers.
@@ -105,7 +100,6 @@ public abstract class AbstractJsonSerializerTest2<T> extends AbstractSerializerT
   }
 
   @Nonnull
-
   public static String addTypeInformation( @Nonnull String type, @Nonnull Version version, @Nonnull byte[] xmlBytes ) throws Exception {
     JsonNode tree = new ObjectMapper().readTree( new String( xmlBytes, StandardCharsets.UTF_8 ) );
 

@@ -31,40 +31,30 @@
 
 package com.cedarsoft.serialization.stax;
 
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
-public class StaxTestSerializerTest extends AbstractXmlSerializerTest<Integer> {
+public class StaxTestSerializerTest extends AbstractXmlSerializerTest2<Integer> {
   @Nonnull
   @Override
-  protected String getExpectedSerialized() {
-    return "<int  xmlns=\"http://int/1.0.0\">7</int>";
-  }
-
-  @Nonnull
-  @Override
-  protected Serializer<Integer, OutputStream, InputStream> getSerializer() {
+  protected StreamSerializer<Integer> getSerializer() throws Exception {
     return new StaxIntegerSerializer();
   }
 
-  @Nonnull
-  @Override
-  protected Integer createObjectToSerialize() {
-    return 7;
-  }
+  public static final Entry<? extends Integer> ENTRY1 = create(7, "<int  xmlns=\"http://int/1.0.0\">7</int>");
 
   public static class StaxIntegerSerializer extends AbstractStaxSerializer<Integer> {
     public StaxIntegerSerializer() {

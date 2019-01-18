@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>tests</artifactId>
+    <version>0</version>
+  </parent>
+  <groupId>com.cedarsoft.asteroids</groupId>
+  <artifactId>asteroids</artifactId>
+  <name>asteroids</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>openjfx</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.almasb</groupId>
+      <artifactId>fxgl</artifactId>
+      <version>0.5.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+  </dependencies>
+</project>

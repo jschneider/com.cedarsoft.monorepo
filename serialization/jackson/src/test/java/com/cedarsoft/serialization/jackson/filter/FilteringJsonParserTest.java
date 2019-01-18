@@ -30,19 +30,21 @@
  */
 package com.cedarsoft.serialization.jackson.filter;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.test.utils.MockitoTemplate;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.junit.*;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

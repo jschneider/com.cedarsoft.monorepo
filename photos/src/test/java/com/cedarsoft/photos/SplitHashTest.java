@@ -30,12 +30,12 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Algorithm;
+import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
-import org.junit.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

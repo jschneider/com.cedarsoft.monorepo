@@ -31,12 +31,10 @@
 
 package com.cedarsoft.zip;
 
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
-import org.junit.*;
-
-import java.util.zip.ZipEntry;
-
 import static org.junit.Assert.*;
+
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.junit.jupiter.api.*;
 
 /**
  *

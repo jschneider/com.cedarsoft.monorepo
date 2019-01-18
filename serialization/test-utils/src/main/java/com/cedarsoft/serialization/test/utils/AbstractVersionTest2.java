@@ -31,17 +31,20 @@
 
 package com.cedarsoft.serialization.test.utils;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.Serializer;
-import org.junit.experimental.theories.*;
-import org.junit.runner.*;
-import org.xml.sax.SAXException;
-
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.stream.Stream;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.*;
+
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.test.utils.ByTypeSource;
+import com.cedarsoft.version.Version;
 
 /**
  * Abstract test class for testing the support for multiple format versions
@@ -50,14 +53,16 @@ import java.io.OutputStream;
  *
  * @param <T> the type that is deserialized
  */
-@RunWith( Theories.class )
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class AbstractVersionTest2<T> {
   /**
    * This method checks old serialized objects
    *
    * @throws Exception if there is any error
    */
-  @Theory
+  @ParameterizedTest
+  @MethodSource("provideData")
+  @ByTypeSource(type = VersionEntry.class)
   public void testVersion( @Nonnull VersionEntry entry ) throws Exception {
     Serializer<T, OutputStream, InputStream> serializer = getSerializer();
 
@@ -66,6 +71,15 @@ public abstract class AbstractVersionTest2<T> {
 
     T deserialized = serializer.deserialize( new ByteArrayInputStream( serialized ) );
     verifyDeserialized( deserialized, version );
+  }
+
+  /**
+   * Provides some test data.
+   * May be overridden by sub classes
+   */
+  @Nonnull
+  protected Stream<? extends VersionEntry> provideData() {
+    return Stream.empty();
   }
 
   /**

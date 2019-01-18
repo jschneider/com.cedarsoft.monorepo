@@ -31,21 +31,23 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.cedarsoft.serialization.test.performance.jaxb.Extension;
-import com.cedarsoft.serialization.test.performance.jaxb.FileType;
-import com.cedarsoft.test.utils.AssertUtils;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.StringReader;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringReader;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.serialization.test.performance.jaxb.Extension;
+import com.cedarsoft.serialization.test.performance.jaxb.FileType;
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  *
@@ -53,7 +55,7 @@ import static org.junit.Assert.*;
 public class JaxbTest {
   private JAXBContext context;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     context = JAXBContext.newInstance( FileType.class );
   }

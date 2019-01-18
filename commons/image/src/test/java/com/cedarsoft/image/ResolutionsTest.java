@@ -31,12 +31,16 @@
 
 package com.cedarsoft.image;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Fail.*;
 
 import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.List;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Assert;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -44,7 +48,7 @@ import java.util.List;
 public class ResolutionsTest {
   private Resolutions resolutions;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     resolutions = new Resolutions();
   }
@@ -74,9 +78,6 @@ public class ResolutionsTest {
     }
   }
 
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testNone() {
     try {
@@ -85,9 +86,13 @@ public class ResolutionsTest {
     } catch ( IllegalArgumentException ignore ) {
     }
 
-    expectedException.expect( IllegalArgumentException.class );
-    expectedException.expectMessage( "No resolution found for 10/10" );
-    Assert.assertEquals( resolutions.getBest( 10, 10 ), new Dimension( 160, 160 ) );
+    try {
+      Assert.assertEquals( resolutions.getBest( 10, 10 ), new Dimension( 160, 160 ) );
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException e) {
+      Assertions.assertThat(e).hasMessage("No resolution found for 10/10");
+    }
   }
 
   @Test

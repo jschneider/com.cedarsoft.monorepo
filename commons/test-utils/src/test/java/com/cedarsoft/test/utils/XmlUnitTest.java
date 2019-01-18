@@ -35,9 +35,9 @@ import java.io.IOException;
 
 import javax.annotation.Nonnull;
 
-import org.assertj.core.api.*;
+import org.assertj.core.api.Assertions;
 import org.custommonkey.xmlunit.XMLAssert;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.xml.sax.SAXException;
 
 /**
@@ -45,6 +45,7 @@ import org.xml.sax.SAXException;
  *
  * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
+@SuppressWarnings("TryFailThrowable")
 public class XmlUnitTest {
   @Nonnull
   public static final String WITH_WHITESPACES = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +

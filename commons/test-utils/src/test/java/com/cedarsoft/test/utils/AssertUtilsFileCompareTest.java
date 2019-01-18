@@ -31,35 +31,34 @@
 
 package com.cedarsoft.test.utils;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
-import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.rules.*;
+import static com.cedarsoft.test.utils.AssertUtils.assertFileByHash;
+import static com.cedarsoft.test.utils.AssertUtils.assertFileByHashes;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static com.cedarsoft.test.utils.AssertUtils.assertFileByHash;
-import static com.cedarsoft.test.utils.AssertUtils.assertFileByHashes;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
 
 /**
  *
  */
+@SuppressWarnings("TryFailThrowable")
+@WithTempFiles
 public class AssertUtilsFileCompareTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-  @Rule
-  public final org.junit.rules.TemporaryFolder tmp = new org.junit.rules.TemporaryFolder();
-
   private File fileA;
   private File fileB;
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  public void setUp(@Nonnull TemporaryFolder tmp) throws Exception {
     fileA = tmp.newFile("a");
     FileUtils.writeStringToFile(fileA, "daContent", StandardCharsets.UTF_8);
 
@@ -81,8 +80,13 @@ public class AssertUtilsFileCompareTest {
 
   @Test
   public void testInvalid() throws IOException {
-    expectedException.expect(IllegalArgumentException.class);
-    assertFileByHashes(fileA);
+    try {
+      assertFileByHashes(fileA);
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+
+    }
   }
 
   @Test
@@ -120,7 +124,7 @@ public class AssertUtilsFileCompareTest {
                          Hash.fromHex(Algorithm.MD5, "CC"),
                          Hash.fromHex(Algorithm.MD5, "BB")
       );
-      fail("Where is the Exception");
+      throw new RuntimeException("expected assertion");
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test");
     }
@@ -130,7 +134,7 @@ public class AssertUtilsFileCompareTest {
   public void testFail() throws Exception {
     try {
       assertFileByHash(Hash.fromHex(Algorithm.MD5, "AA"), fileA);
-      fail("Where is the Exception");
+      throw new RuntimeException("expected assertion");
     } catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("Stored questionable file under test");
     }

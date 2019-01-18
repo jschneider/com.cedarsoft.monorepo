@@ -30,10 +30,10 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import org.assertj.core.api.Assertions;
-import org.junit.*;
-
 import java.io.IOException;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

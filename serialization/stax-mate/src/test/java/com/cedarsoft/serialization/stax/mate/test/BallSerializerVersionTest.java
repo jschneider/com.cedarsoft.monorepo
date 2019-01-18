@@ -65,13 +65,9 @@ public class BallSerializerVersionTest extends AbstractXmlVersionTest2<Ball> {
     }
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create( Version.valueOf( 1, 0, 0 ), "<ball type=\"basketBall\">asdf</ball>" );
-  @DataPoint
   public static final VersionEntry ENTRY4 = create( Version.valueOf( 1, 0, 0 ), "<ball type=\"tennisBall\">7</ball>" );
 
-  @DataPoint
   public static final VersionEntry ENTRY2 = create( Version.valueOf( 1, 1, 0 ), "<ball type=\"tennisBall\" id=\"7\" />" );
-  @DataPoint
   public static final VersionEntry ENTRY3 = create( Version.valueOf( 1, 1, 0 ), "<ball type=\"basketBall\" theId=\"asdf\"/>" );
 }

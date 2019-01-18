@@ -31,13 +31,13 @@
 
 package com.cedarsoft.ooorg;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class OOTest {
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
   }
 

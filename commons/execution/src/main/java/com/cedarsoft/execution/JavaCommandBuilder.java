@@ -34,9 +34,7 @@ package com.cedarsoft.execution;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.io.File;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -69,7 +67,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>classPathElements</code>.</p>
+   * <p>Getter for the field {@code classPathElements}.</p>
    *
    * @return a List object.
    */
@@ -79,14 +77,14 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>classPathElements</code>.</p>
+   * <p>Setter for the field {@code classPathElements}.</p>
    *
    * @param classPathElements a String object.
    */
   public void setClassPathElements( @Nonnull String... classPathElements ) {
     this.classPathElements.clear();
     for ( String element : classPathElements ) {
-      if ( element == null || element.length() == 0 ) {
+      if (element == null || element.isEmpty()) {
         continue;
       }
       this.classPathElements.add( element );
@@ -94,7 +92,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>javaBin</code>.</p>
+   * <p>Getter for the field {@code javaBin}.</p>
    *
    * @return a String object.
    */
@@ -116,7 +114,7 @@ public class JavaCommandBuilder {
     StringBuilder stringBuilder = new StringBuilder();
     for ( Iterator<String> it = classPathElements.iterator(); it.hasNext(); ) {
       String classPathElement = it.next();
-      if ( classPathElement == null || classPathElement.length() == 0 ) {
+      if (classPathElement == null || classPathElement.isEmpty()) {
         continue;
       }
       stringBuilder.append( classPathElement );
@@ -137,7 +135,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>mainClass</code>.</p>
+   * <p>Getter for the field {@code mainClass}.</p>
    *
    * @return a String object.
    */
@@ -156,7 +154,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>vmProperties</code>.</p>
+   * <p>Getter for the field {@code vmProperties}.</p>
    *
    * @return a List object.
    */
@@ -166,14 +164,14 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>vmProperties</code>.</p>
+   * <p>Setter for the field {@code vmProperties}.</p>
    *
    * @param vmProperties a String object.
    */
   public void setVmProperties( @Nonnull String... vmProperties ) {
     this.vmProperties.clear();
     for ( String vmProperty : vmProperties ) {
-      if ( vmProperty == null || vmProperty.length() == 0 ) {
+      if (vmProperty == null || vmProperty.isEmpty()) {
         continue;
       }
       this.vmProperties.add( vmProperty );
@@ -199,14 +197,14 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Setter for the field <code>arguments</code>.</p>
+   * <p>Setter for the field {@code arguments}.</p>
    *
    * @param arguments a String object.
    */
   public void setArguments( @Nonnull String... arguments ) {
     this.arguments.clear();
     for ( String argument : arguments ) {
-      if ( argument == null || argument.length() == 0 ) {
+      if (argument == null || argument.isEmpty()) {
         continue;
       }
       this.arguments.add( argument );
@@ -214,7 +212,7 @@ public class JavaCommandBuilder {
   }
 
   /**
-   * <p>Getter for the field <code>arguments</code>.</p>
+   * <p>Getter for the field {@code arguments}.</p>
    *
    * @return a List object.
    */

@@ -31,31 +31,29 @@
 
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.test.utils.MockitoTemplate;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import com.cedarsoft.test.utils.MockitoTemplate;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
 public class SerializingStrategySupportTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   private SerializingStrategySupport<Integer, StringBuilder, String, IOException, OutputStream, InputStream> support;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     support = new SerializingStrategySupport<Integer, StringBuilder, String, IOException, OutputStream, InputStream>( VersionRange.single(1, 0, 0) );
   }
@@ -64,25 +62,37 @@ public class SerializingStrategySupportTest {
   public void testIt() throws Exception {
     assertEquals( 0, support.getStrategies().size() );
 
-    expectedException.expect( NotFoundException.class );
-    expectedException.expectMessage( "No strategy found for id <daId>" );
-    support.findStrategy( "daId" );
+    try {
+      support.findStrategy("daId");
+      fail("Where is the Exception");
+    }
+    catch (NotFoundException e) {
+      Assertions.assertThat(e).hasMessage("No strategy found for id <daId>");
+    }
   }
 
   @Test
   public void festFind() throws Exception {
     assertEquals( 0, support.getStrategies().size() );
 
-    expectedException.expect( NotFoundException.class );
-    expectedException.expectMessage( "No strategy found for object <77>" );
-    support.findStrategy( 77 );
+    try {
+      support.findStrategy(77);
+      fail("Where is the Exception");
+    }
+    catch (NotFoundException e) {
+      Assertions.assertThat(e).hasMessage("No strategy found for object <77>");
+    }
   }
 
   @Test
   public void testVerify() throws Exception {
-    expectedException.expect( SerializationException.class );
-    expectedException.expectMessage( "No strategies available. Verification not possible." );
-    assertFalse( support.verify() );
+    try {
+      assertFalse(support.verify());
+      fail("Where is the Exception");
+    }
+    catch (SerializationException e) {
+      Assertions.assertThat(e.getMessage()).contains("No strategies available. Verification not possible.");
+    }
   }
 
   @Test

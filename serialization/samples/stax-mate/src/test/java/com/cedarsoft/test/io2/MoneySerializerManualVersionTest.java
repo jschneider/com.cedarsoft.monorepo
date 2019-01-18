@@ -31,16 +31,17 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.test.Money;
-import com.cedarsoft.test.utils.AssertUtils;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.Money;
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  * Test class that tests the old versions manually
@@ -61,12 +62,12 @@ public class MoneySerializerManualVersionTest {
   @Test
   public void testOldFormat() throws IOException {
     MoneySerializer serializer = new MoneySerializer();
-    assertEquals(serializer.deserialize( new ByteArrayInputStream( ( "<money xmlns=\"http://thecompany.com/test/money/1.0.0\">799</money>" ).getBytes(StandardCharsets.UTF_8) ) ), new Money(7, 99 ) );
+    assertEquals(serializer.deserialize(new ByteArrayInputStream("<money xmlns=\"http://thecompany.com/test/money/1.0.0\">799</money>".getBytes(StandardCharsets.UTF_8))), new Money(7, 99));
   }
 
   @Test
   public void testCurrentFormat() throws IOException {
     MoneySerializer serializer = new MoneySerializer();
-    assertEquals( serializer.deserialize( new ByteArrayInputStream( ( "<money xmlns=\"http://thecompany.com/test/money/1.0.1\" cents=\"799\" />" ).getBytes(StandardCharsets.UTF_8) ) ), new Money( 7, 99 ) );
+    assertEquals(serializer.deserialize(new ByteArrayInputStream("<money xmlns=\"http://thecompany.com/test/money/1.0.1\" cents=\"799\" />".getBytes(StandardCharsets.UTF_8))), new Money(7, 99));
   }
 }

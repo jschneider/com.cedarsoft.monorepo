@@ -31,14 +31,9 @@
 
 package com.cedarsoft.file;
 
-import com.cedarsoft.test.utils.TestUtils;
-import org.apache.commons.io.FileUtils;
-import org.junit.*;
-
-import java.io.File;
-import java.io.IOException;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

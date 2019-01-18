@@ -37,7 +37,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import static org.junit.Assert.*;
 

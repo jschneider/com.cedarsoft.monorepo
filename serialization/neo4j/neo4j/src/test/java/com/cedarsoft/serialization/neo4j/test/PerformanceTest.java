@@ -30,12 +30,13 @@
  */
 package com.cedarsoft.serialization.neo4j.test;
 
-import com.ecyrd.speed4j.StopWatch;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.test.TestGraphDatabaseFactory;
+
+import com.ecyrd.speed4j.StopWatch;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -43,17 +44,17 @@ import org.neo4j.test.TestGraphDatabaseFactory;
 public class PerformanceTest {
   private GraphDatabaseService graphDb;
 
-  @Before
+  @BeforeEach
   public void prepareTestDatabase() {
     graphDb = new TestGraphDatabaseFactory().newImpermanentDatabase();
   }
 
-  @After
+  @AfterEach
   public void destroyTestDatabase() {
     graphDb.shutdown();
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void testName() throws Exception {
     int nodes = 50000;

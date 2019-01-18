@@ -31,16 +31,14 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 public class BaseNameSerializerTest extends AbstractJsonSerializerTest2<BaseName> {
-  @DataPoint
   public static final Entry<? extends BaseName> ENTRY1 = AbstractJsonSerializerTest2.create(
     new BaseName( "daName" ), "\"daName\"" );
 

@@ -30,11 +30,11 @@
  */
 package com.cedarsoft.commons;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import javax.annotation.Nonnull;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

@@ -31,15 +31,25 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.thoughtworks.xstream.XStream;
-import de.undercouch.bson4jackson.BsonFactory;
-import de.undercouch.bson4jackson.BsonGenerator;
-import javolution.xml.internal.stream.XMLInputFactoryImpl;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.time.StopWatch;
 import org.codehaus.jettison.badgerfish.BadgerFishXMLInputFactory;
@@ -52,7 +62,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jibx.runtime.BindingDirectory;
 import org.jibx.runtime.IBindingFactory;
 import org.jibx.runtime.IUnmarshallingContext;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
@@ -63,23 +73,17 @@ import org.neo4j.test.TestGraphDatabaseFactory;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
 
-import static org.junit.Assert.*;
+import de.undercouch.bson4jackson.BsonFactory;
+import de.undercouch.bson4jackson.BsonGenerator;
+
+import javolution.xml.internal.stream.XMLInputFactoryImpl;
 
 /**
  *
@@ -237,7 +241,7 @@ public class XmlParserPerformance {
     new XmlParserPerformance().benchJavolution();
   }
 
-  public void benchSerialization() throws IOException {
+  private void benchSerialization() throws IOException {
     FileType type = new FileType( "Canon Raw", new Extension( ".", "cr2", true ), false );
 
     ByteArrayOutputStream bao = new ByteArrayOutputStream();
@@ -261,7 +265,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchJibx() {
+  private void benchJibx() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -279,7 +283,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchJAXB() {
+  private void benchJAXB() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -296,7 +300,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchXStream() {
+  private void benchXStream() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -312,7 +316,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchSimpleXml() {
+  private void benchSimpleXml() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -330,7 +334,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchJdom() {
+  private void benchJdom() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -408,7 +412,7 @@ public class XmlParserPerformance {
 --> 1693
    */
 
-  public void benchJava() {
+  private void benchJava() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -441,7 +445,7 @@ public class XmlParserPerformance {
   //    }, 4 );
   //  }
 
-  public void benchWoodstox() {
+  private void benchWoodstox() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -456,7 +460,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchNeo4j1Transaction() {
+  private void benchNeo4j1Transaction() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {
@@ -489,7 +493,7 @@ public class XmlParserPerformance {
                   }, 4 );
   }
 
-  public void benchNeo4jMultiTransaction() {
+  private void benchNeo4jMultiTransaction() {
     runBenchmark( new Runnable() {
                     @Override
                     public void run() {

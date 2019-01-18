@@ -30,18 +30,17 @@
  */
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.time.Duration;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.time.Duration;
 
 public class DurationSerializerTest extends AbstractJsonSerializerTest2<Duration> {
 
-  @DataPoint
   public static final Entry<? extends Duration> ENTRY1 = AbstractSerializerTest2.create(Duration.ofHours(1).plusMinutes(30),
                                                                                         DurationSerializerTest.class.getResource("Duration_1.0.0_1.json"));
 

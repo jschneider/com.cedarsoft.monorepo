@@ -31,25 +31,24 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.serialization.SerializingStrategy;
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.ToString;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
-import com.cedarsoft.version.Version;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import static org.junit.Assert.*;
+
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.SerializingStrategy;
+import com.cedarsoft.serialization.ToString;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
+import com.cedarsoft.version.Version;
 
 /**
  *
@@ -61,14 +60,11 @@ public class BallSerializerTest extends AbstractXmlSerializerTest2<Ball> {
     return new BallSerializer();
   }
 
-  @DataPoint
-  public static final Entry<?> ENTRY1 = create(
+  public static final Entry<? extends Ball> ENTRY1 = create(
     new Ball.TennisBall( 7 ), "<ball type=\"tennisBall\" id=\"7\" />" );
 
-  @DataPoint
-  public static final Entry<?> ENTRY2 = create(
+  public static final Entry<? extends Ball> ENTRY2 = create(
     new Ball.BasketBall( "asdf" ), "<ball type=\"basketBall\" theId=\"asdf\"></ball>" );
-
 
   @Test
   public void testAsccii() throws Exception {

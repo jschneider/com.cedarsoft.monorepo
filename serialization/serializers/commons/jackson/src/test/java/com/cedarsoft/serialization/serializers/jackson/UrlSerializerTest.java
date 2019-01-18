@@ -30,17 +30,16 @@
  */
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.DataPoint;
-
-import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.annotation.Nonnull;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+
 public class UrlSerializerTest extends AbstractJsonSerializerTest2<URL> {
-  @DataPoint
   public static Entry<? extends URL> entry1() throws MalformedURLException {
     return UrlSerializerTest.create( new URL( "http://localhost:351/asdf" ), UrlSerializerTest.class.getResource( "Url_1.0.0_1.json" ) );
   }

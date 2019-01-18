@@ -31,7 +31,7 @@
 
 package com.cedarsoft.execution;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -40,13 +40,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class OutputRedirectorTest {
-  @Test( timeout = 1000 )
+  @Test
   public void testDefault() {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -57,7 +57,7 @@ public class OutputRedirectorTest {
   }
 
 
-  @Test( timeout = 1000 )
+  @Test
   public void testThreaded() throws InterruptedException {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 

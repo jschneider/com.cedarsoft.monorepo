@@ -30,7 +30,11 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+
+import javax.management.ObjectName;
+
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.Transaction;
@@ -38,10 +42,6 @@ import org.neo4j.graphdb.event.TransactionData;
 import org.neo4j.graphdb.event.TransactionEventHandler;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.jmx.JmxUtils;
-
-import javax.management.ObjectName;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

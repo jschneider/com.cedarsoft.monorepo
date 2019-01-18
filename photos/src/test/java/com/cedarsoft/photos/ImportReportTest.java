@@ -30,16 +30,17 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
-import com.google.common.collect.ImmutableList;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.crypt.Algorithm;
+import com.cedarsoft.crypt.Hash;
+import com.google.common.collect.ImmutableList;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

@@ -30,6 +30,13 @@
  */
 package com.cedarsoft.annotations.instrumentation;
 
+import java.lang.annotation.Annotation;
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.security.ProtectionDomain;
+
+import javax.annotation.Nonnull;
+
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtBehavior;
@@ -40,12 +47,6 @@ import javassist.LoaderClassPath;
 import javassist.NotFoundException;
 import javassist.bytecode.AccessFlag;
 import javassist.bytecode.DuplicateMemberException;
-
-import javax.annotation.Nonnull;
-import java.lang.annotation.Annotation;
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
-import java.security.ProtectionDomain;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -74,7 +75,7 @@ public abstract class AbstractAnnotationTransformer implements ClassFileTransfor
   protected abstract void transformClass( @Nonnull CtClass ctClass ) throws ClassNotFoundException, CannotCompileException, NotFoundException;
 
   protected static boolean isAnnotated( @Nonnull CtMethod method, @Nonnull Class<? extends Annotation> annotationType ) throws ClassNotFoundException {
-    return method.hasAnnotation(annotationType);
+    return method.hasAnnotation(annotationType.getName());
   }
 
   @Nonnull

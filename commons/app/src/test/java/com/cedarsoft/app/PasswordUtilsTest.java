@@ -31,14 +31,13 @@
 
 package com.cedarsoft.app;
 
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -56,32 +55,45 @@ public class PasswordUtilsTest {
     assertFalse( PasswordUtils.hasExpectedHash( "topsecret", Hex.decodeHex( "1234".toCharArray() ) ) );
   }
 
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testEx() throws InvalidPasswordException {
     PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "a".getBytes(StandardCharsets.UTF_8) );
 
-    expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "b".getBytes(StandardCharsets.UTF_8) );
+    try {
+      PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "b".getBytes(StandardCharsets.UTF_8));
+      fail("Where is the Exception");
+    }
+    catch (InvalidPasswordException ignore) {
+    }
   }
 
   @Test
   public void testEx2() throws InvalidPasswordException {
-    expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( null, null );
+    try {
+      PasswordUtils.validatePasswordHash(null, null);
+      fail("Where is the Exception");
+    }
+    catch (InvalidPasswordException ignore) {
+    }
   }
 
   @Test
   public void testEx3() throws InvalidPasswordException {
-    expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), "ab".getBytes(StandardCharsets.UTF_8) );
+    try {
+      PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), "ab".getBytes(StandardCharsets.UTF_8));
+      fail("Where is the Exception");
+    }
+    catch (InvalidPasswordException ignore) {
+    }
   }
 
   @Test
   public void testEx4() throws InvalidPasswordException {
-    expectedException.expect( InvalidPasswordException.class );
-    PasswordUtils.validatePasswordHash( "a".getBytes(StandardCharsets.UTF_8), null );
+    try {
+      PasswordUtils.validatePasswordHash("a".getBytes(StandardCharsets.UTF_8), null);
+      fail("Where is the Exception");
+    }
+    catch (InvalidPasswordException ignore) {
+    }
   }
 }

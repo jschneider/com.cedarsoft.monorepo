@@ -30,35 +30,36 @@
  */
 package com.cedarsoft.serialization.jackson;
 
+import static org.assertj.core.api.Assertions.*;
+
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.*;
+
 import com.cedarsoft.version.Version;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-import org.junit.runner.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@RunWith( Theories.class )
 public class IgnoringSerializerTest {
-
   private IgnoringSerializer serializer;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     serializer = new IgnoringSerializer();
   }
 
-  @Theory
-  public void testIt( @Nonnull String json ) throws Exception {
+  @ParameterizedTest
+  @MethodSource("provideTestData")
+  public void provideTestData(@Nonnull String json) throws Exception {
     JsonFactory jsonFactory = JacksonSupport.getJsonFactory();
     JsonParser parser = jsonFactory.createParser( new ByteArrayInputStream( json.getBytes(StandardCharsets.UTF_8) ) );
 
@@ -69,8 +70,7 @@ public class IgnoringSerializerTest {
     assertThat( nextToken ).isNull();
   }
 
-  @DataPoints
-  public static String[] testIt() throws Exception {
+  public static String[] provideTestData() throws Exception {
     return new String[]{
       "{}",
       "[]",

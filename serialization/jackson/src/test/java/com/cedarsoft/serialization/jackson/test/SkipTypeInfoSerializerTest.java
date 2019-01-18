@@ -30,14 +30,15 @@
  */
 package com.cedarsoft.serialization.jackson.test;
 
-import com.cedarsoft.serialization.jackson.SkipTypeInfoSerializer;
-import com.cedarsoft.test.utils.JsonUtils;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.jackson.SkipTypeInfoSerializer;
+import com.cedarsoft.test.utils.JsonUtils;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

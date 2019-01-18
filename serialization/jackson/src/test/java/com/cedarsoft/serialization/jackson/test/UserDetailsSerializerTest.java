@@ -31,14 +31,13 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -50,7 +49,6 @@ public class UserDetailsSerializerTest extends AbstractJsonSerializerTest2<UserD
     return new UserDetailsSerializer();
   }
 
-  @DataPoint
   public static Entry<?> json() {
     return create( new UserDetails( 73511399L, 73511333L, HashCalculator.calculate( Algorithm.SHA512, "thePass" ).getValue() ), UserDetailsSerializerTest.class.getResource( "userDetails.json" ) );
   }

@@ -31,20 +31,22 @@
 
 package com.cedarsoft.serialization.stax.mate;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import org.codehaus.staxmate.SMOutputFactory;
-import org.codehaus.staxmate.out.SMNamespace;
-import org.codehaus.staxmate.out.SMOutputDocument;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.StringReader;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamReader;
-import java.io.ByteArrayOutputStream;
-import java.io.StringReader;
 
-import static org.junit.Assert.*;
+import org.codehaus.staxmate.SMOutputFactory;
+import org.codehaus.staxmate.out.SMNamespace;
+import org.codehaus.staxmate.out.SMOutputDocument;
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  *

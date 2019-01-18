@@ -34,6 +34,8 @@ package com.cedarsoft.app
 
 import java.net.InetAddress
 import java.net.UnknownHostException
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * Offers information about the environment
@@ -61,5 +63,34 @@ class EnvironmentInformation {
     @JvmStatic
     val userName: String
       get() = System.getProperty("user.name")
+
+
+    /**
+     * Creates host description string
+     */
+    fun createHostDescription(): String {
+      return "Local Date: " + DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.now()) + "\n" +
+        "User: " + System.getProperty("user.name") + "\n" +
+        "Host Name: " + hostName + "\n"
+    }
+
+    /**
+     * Returns a string that describes the environment
+     */
+    fun createEnvironmentDescription(): String {
+      val builder = StringBuilder()
+
+      val properties = System.getProperties()
+      val enumeration = properties.propertyNames()
+      while (enumeration.hasMoreElements()) {
+        val propertyKey = enumeration.nextElement()
+        val value = properties[propertyKey]
+
+        builder.append(propertyKey).append(": ").append(value).append("\n")
+      }
+
+      return builder.toString()
+    }
+
   }
 }

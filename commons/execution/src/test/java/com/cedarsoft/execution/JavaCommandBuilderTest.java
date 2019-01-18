@@ -31,12 +31,12 @@
 
 package com.cedarsoft.execution;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  * <p>
@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
 public class JavaCommandBuilderTest {
   private JavaCommandBuilder starter;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     starter = new JavaCommandBuilder( "mainClass" );
   }

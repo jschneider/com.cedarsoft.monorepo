@@ -31,26 +31,28 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
+import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
+import com.cedarsoft.test.utils.AssertUtils;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -61,7 +63,7 @@ public class DelegatesTest {
   private Room hall;
   private Room kitchen;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     house = new House( new Door( "Front door" ) );
     door1 = new Door( "door1" );

@@ -31,15 +31,16 @@
 
 package com.cedarsoft.license;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nullable;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nullable;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

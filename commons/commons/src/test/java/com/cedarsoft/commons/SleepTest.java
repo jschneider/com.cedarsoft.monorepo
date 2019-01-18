@@ -31,23 +31,27 @@
 
 package com.cedarsoft.commons;
 
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class SleepTest {
-  @Ignore
-  @Test( timeout = 210 )
+  @Disabled
+  @Test
   public void testIt() {
-    long start = System.currentTimeMillis();
-    Sleep.now( 100 );
+    Assertions.assertTimeout(Duration.ofMillis(210), () -> {
+      long start = System.currentTimeMillis();
+      Sleep.now(100);
 
-    long time = System.currentTimeMillis() - start;
-    assertTrue( String.valueOf( time ), time > 99 );
-    assertTrue( String.valueOf( time ), time < 105 );
+      long time = System.currentTimeMillis() - start;
+      assertTrue(String.valueOf(time), time > 99);
+      assertTrue(String.valueOf(time), time < 105);
+    });
   }
 
   @Test

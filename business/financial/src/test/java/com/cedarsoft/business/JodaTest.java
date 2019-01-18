@@ -31,6 +31,12 @@
 
 package com.cedarsoft.business;
 
+import static org.junit.Assert.*;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -38,13 +44,7 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.Years;
 import org.joda.time.chrono.GJChronology;
-import org.junit.*;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -52,7 +52,7 @@ import static org.junit.Assert.*;
 public class JodaTest {
   private DateTime dateTime;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     dateTime = new DateTime( new GregorianCalendar( 2007, Calendar.SEPTEMBER, 18, 14, 53 ) );
   }

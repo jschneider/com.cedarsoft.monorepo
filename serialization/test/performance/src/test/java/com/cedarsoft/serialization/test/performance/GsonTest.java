@@ -31,12 +31,13 @@
 
 package com.cedarsoft.serialization.test.performance;
 
+import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.test.performance.jaxb.Extension;
 import com.cedarsoft.serialization.test.performance.jaxb.FileType;
 import com.google.gson.Gson;
-import org.junit.*;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

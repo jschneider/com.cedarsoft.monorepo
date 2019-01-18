@@ -15,17 +15,19 @@
  */
 package com.cedarsoft.maven.instrumentation.plugin.util;
 
-import javassist.ClassPool;
-import javassist.LoaderClassPath;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Objects;
+
+import javax.annotation.Nonnull;
+
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.maven.plugin.logging.Log;
 
-import javax.annotation.Nonnull;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
+import javassist.ClassPool;
+import javassist.LoaderClassPath;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -55,8 +57,8 @@ public final class ClassFileLocator {
   private Collection<? extends ClassFile> recursivelyFindClasses( @Nonnull final File targetDir ) {
     final FileFilter directoryFilter = FileFilterUtils.directoryFileFilter();
     final File[] subDirs = targetDir.listFiles( directoryFilter );
-    final Collection<ClassFile> classesFound = new ArrayList<ClassFile>();
-    for ( final File subDir : subDirs ) {
+    final Collection<ClassFile> classesFound = new ArrayList<>();
+    for (final File subDir : Objects.requireNonNull(subDirs)) {
       classesFound.addAll( recursivelyFindClasses( subDir ) );
     }
 
@@ -70,18 +72,13 @@ public final class ClassFileLocator {
     final FileFilter classNameFilter = new ClassFileFilter();
     final File[] classFiles = directory.listFiles( classNameFilter );
 
-    final Collection<ClassFile> classesFound = new ArrayList<ClassFile>();
-
     ClassPool classPool = new ClassPool( true );
     classPool.appendClassPath(new LoaderClassPath(classLoader));
 
-    for ( final File file : classFiles ) {
-      try {
-        ClassFile classFile = new ClassFile( file, classLoader, classPool);
-        classesFound.add( classFile );
-      } catch ( final IOException e ) {
-        getLog().warn( "Failed to read in file: " + file + ", it will be ignored.", e );
-      }
+    final Collection<ClassFile> classesFound = new ArrayList<>();
+    for (final File file : Objects.requireNonNull(classFiles)) {
+      ClassFile classFile = new ClassFile(file, classLoader, classPool);
+      classesFound.add(classFile);
     }
     return classesFound;
   }

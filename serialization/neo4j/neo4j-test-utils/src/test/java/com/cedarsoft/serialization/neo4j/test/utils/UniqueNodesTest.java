@@ -30,15 +30,16 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.index.UniqueFactory;
-
-import javax.annotation.Nonnull;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

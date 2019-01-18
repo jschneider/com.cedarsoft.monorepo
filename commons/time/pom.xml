@@ -25,6 +25,7 @@
     <dependency>
       <groupId>com.cedarsoft</groupId>
       <artifactId>unit</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>

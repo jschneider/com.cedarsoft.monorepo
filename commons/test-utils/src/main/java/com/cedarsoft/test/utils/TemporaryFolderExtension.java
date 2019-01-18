@@ -23,12 +23,13 @@
  */
 package com.cedarsoft.test.utils;
 
-import org.junit.jupiter.api.extension.*;
-
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Parameter;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.extension.*;
 
 /**
  * Extension that fills a File parameter with a temporary file or folder.
@@ -51,23 +52,32 @@ public class TemporaryFolderExtension extends AbstractResourceProvidingExtension
       return true;
     }
 
-    if (!parameterContext.getParameter().getType().isAssignableFrom(File.class)) {
-      return false;
+    if (parameterContext.getParameter().getType().isAssignableFrom(File.class)) {
+      if (parameterContext.getParameter().isAnnotationPresent(TempFolder.class)) {
+        return true;
+      }
+
+      return parameterContext.getParameter().isAnnotationPresent(TempFile.class);
     }
 
-    if (parameterContext.getParameter().isAnnotationPresent(TempFolder.class)) {
+    if (parameterContext.getParameter().getType().isAssignableFrom(TemporaryFolder.class)) {
       return true;
     }
 
-    return parameterContext.getParameter().isAnnotationPresent(TempFile.class);
+    return false;
   }
 
   @Nonnull
   @Override
   protected Object convertResourceForParameter(@Nonnull Parameter parameter, @Nonnull TemporaryFolder resource) throws ParameterResolutionException, IOException {
+    if (parameter.getType().isAssignableFrom(TemporaryFolder.class)) {
+      return resource;
+    }
+
     if (parameter.isAnnotationPresent(TempFolder.class)) {
       return resource.newFolder();
     }
+
     if (parameter.isAnnotationPresent(TempFile.class)) {
       TempFile annotation = parameter.getAnnotation(TempFile.class);
       if (!annotation.value().isEmpty()) {

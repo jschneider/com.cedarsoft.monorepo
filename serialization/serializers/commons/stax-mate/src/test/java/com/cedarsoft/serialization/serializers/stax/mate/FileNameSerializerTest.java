@@ -39,9 +39,7 @@ import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.io.Charsets;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import org.junit.jupiter.api.*;
 
 import com.cedarsoft.file.FileName;
 import com.cedarsoft.serialization.StreamSerializer;
@@ -59,7 +57,6 @@ public class FileNameSerializerTest extends AbstractXmlSerializerTest2<FileName>
     return new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new FileName( "a", ",", "pdf" ), "<fileName>\n" +
     "  <baseName>a</baseName>\n" +
     "  <extension delimiter=\",\">pdf</extension>\n" +

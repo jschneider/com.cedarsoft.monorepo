@@ -31,44 +31,37 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.test.Money;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import org.junit.*;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.test.Money;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
  */
-public class MoneyApiTest extends AbstractXmlSerializerTest<MoneyApiTest.MyObject> {
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return
-      "<myObject>\n" +
-        "  <money cents=\"203499\" />\n" +
-        "</myObject>";
-  }
+public class MoneyApiTest extends AbstractXmlSerializerTest2<MoneyApiTest.MyObject> {
+  public static final Entry<? extends MoneyApiTest.MyObject> ENTRY1 = create(new MyObject(new Money(2034, 99)), "<myObject>\n" +
+                                                                                                                  "  <money cents=\"203499\" />\n" +
+                                                                                                                  "</myObject>");
+
 
   @Nonnull
   @Override
   protected StreamSerializer<MyObject> getSerializer() throws Exception {
     return new MyObjectSerializer( new com.cedarsoft.test.io2.MoneySerializer() );
-  }
-
-  @Nonnull
-  @Override
-  protected MyObject createObjectToSerialize() throws Exception {
-    return new MyObject( new Money( 2034, 99 ) );
   }
 
   @Test

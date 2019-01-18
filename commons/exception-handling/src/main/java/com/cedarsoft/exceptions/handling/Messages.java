@@ -30,16 +30,17 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import org.jetbrains.annotations.PropertyKey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.jetbrains.annotations.PropertyKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -119,7 +120,7 @@ public class Messages {
    * Returns the key for a enum value and specifier
    */
   @Nonnull
-  private static String getKey(@Nonnull Enum<?> enumValue, @Nullable String specifier) throws MissingResourceException {
+  public static String getKey(@Nonnull Enum<?> enumValue, @Nullable String specifier) throws MissingResourceException {
     if (specifier == null) {
       return enumValue.name();
     }

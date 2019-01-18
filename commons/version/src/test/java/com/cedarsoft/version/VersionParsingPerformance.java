@@ -31,15 +31,15 @@
 
 package com.cedarsoft.version;
 
-import com.google.common.base.Splitter;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import static org.junit.Assert.*;
 
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.google.common.base.Splitter;
 
 /**
  *
@@ -54,7 +54,7 @@ public class VersionParsingPerformance {
     run( "String.plit", new Callable<Version>() {
       @Override
       public Version call() throws Exception {
-        String[] parts = VERSION.split( "\\." );
+        String[] parts = VERSION.split( "\\.", -1 );
         if ( parts.length != 3 ) {
           throw new IllegalArgumentException( "Version <" + VERSION + "> must contain exactly three parts delimited with '.'" );
         }

@@ -3,7 +3,7 @@
 
   <parent>
     <groupId>com.cedarsoft.annotations</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>annotations-parent</artifactId>
     <version>0</version>
   </parent>
 
@@ -27,5 +27,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
 </project>

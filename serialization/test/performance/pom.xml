@@ -11,10 +11,6 @@
   <artifactId>performance</artifactId>
   <name>serialization.Performance Tests</name>
 
-  <properties>
-    <java.version>1.7</java.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.cedarsoft</groupId>
@@ -111,6 +107,17 @@
       <groupId>org.mapdb</groupId>
       <artifactId>mapdb</artifactId>
     </dependency>
+    <!--Dependencies for eclipse collections-->
+    <dependency>
+      <groupId>org.eclipse.collections</groupId>
+      <artifactId>eclipse-collections-api</artifactId>
+      <version>10.0.0.M2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.collections</groupId>
+      <artifactId>eclipse-collections-forkjoin</artifactId>
+      <version>10.0.0.M2</version>
+    </dependency>
 
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -125,6 +132,17 @@
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-kernel</artifactId>
       <type>test-jar</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.neo4j.test</groupId>
+      <artifactId>neo4j-harness</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.neo4j.community</groupId>
+      <artifactId>it-test-support</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>

@@ -30,32 +30,38 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import com.cedarsoft.version.Version;
-import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
 import org.apache.commons.io.IOUtils;
-import org.junit.*;
 import org.junit.experimental.theories.*;
-import org.junit.runner.*;
+import org.junit.jupiter.api.*;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Result;
 import org.neo4j.graphdb.Transaction;
 import org.xml.sax.SAXException;
 
-import javax.annotation.Nonnull;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
+import com.google.common.base.Charsets;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-@RunWith( Theories.class )
+@WithNeo4j
 public abstract class AbstractNeo4jVersionTest2<T> {
-  @Rule
-  public Neo4jRule neo4jRule = new Neo4jRule();
+
+  private GraphDatabaseService db;
+
+  @BeforeEach
+  public void setup(@Nonnull GraphDatabaseService dbService) {
+    this.db = dbService;
+  }
 
   /**
    * This method checks old serialized objects
@@ -76,8 +82,6 @@ public abstract class AbstractNeo4jVersionTest2<T> {
 
   @Nonnull
   private T deserialize( @Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized ) throws IOException {
-    GraphDatabaseService db = neo4jRule.createDb();
-
     //Fill the db initially
     try ( Transaction tx = db.beginTx() ) {
       Result result = db.execute(serialized );

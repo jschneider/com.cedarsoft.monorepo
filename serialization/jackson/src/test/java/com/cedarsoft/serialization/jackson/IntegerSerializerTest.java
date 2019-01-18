@@ -31,7 +31,18 @@
 
 package com.cedarsoft.serialization.jackson;
 
-import com.cedarsoft.serialization.StreamSerializer;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Fail.fail;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.utils.JsonUtils;
@@ -39,17 +50,6 @@ import com.cedarsoft.version.Version;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayOutputStream;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
 
 /**
  *
@@ -102,6 +102,5 @@ public class IntegerSerializerTest extends AbstractJsonSerializerTest2<Integer> 
     JsonUtils.assertJsonEquals("12", out.toString());
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( 123, "123" );
 }

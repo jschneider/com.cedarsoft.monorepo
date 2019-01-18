@@ -31,25 +31,25 @@
 
 package com.cedarsoft.image;
 
-import org.junit.*;
-import org.junit.rules.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class DPITest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testIt() {
     assertSame( DPI.DPI_072, DPI.find( 72 ) );
     assertSame( DPI.DPI_300, DPI.find( 300 ) );
 
-    expectedException.expect( IllegalArgumentException.class );
-    DPI.find( 301 );
+    try {
+      DPI.find(301);
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException ignore) {
+    }
   }
 
 }

@@ -48,7 +48,6 @@ import com.cedarsoft.version.Version;
  */
 public class UUIDSerializerVersionTest extends AbstractJsonVersionTest2<UUID> {
   @Nonnull
-  @DataPoint
   public static final VersionEntry ENTRY1 = AbstractJsonVersionTest2.create(
     Version.valueOf(1, 0, 0), UUIDSerializerVersionTest.class.getResource("UUID_1.0.0_1.json"));
 

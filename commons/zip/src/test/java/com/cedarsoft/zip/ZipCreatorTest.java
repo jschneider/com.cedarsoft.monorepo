@@ -31,42 +31,41 @@
 
 package com.cedarsoft.zip;
 
-import com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher;
-import org.apache.commons.compress.archivers.ArchiveEntry;
-import org.apache.commons.io.FileUtils;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.Assert;
-import org.junit.rules.*;
+import static com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher.containsOnlyFiles;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcher.containsOnlyFiles;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  *
  */
+@WithTempFiles
 public class ZipCreatorTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
   @Test
-  public void testIt() throws IOException {
+  public void testIt(@Nonnull TemporaryFolder tmp) throws IOException {
     File target = tmp.newFolder( "target" );
 
     ZipExtractor extractor = new ZipExtractor();
-    extractor.extract( target, FileUtils.openInputStream( createZip() ) );
+    extractor.extract(target, FileUtils.openInputStream(createZip(tmp)));
 
     assertEquals( 2, target.listFiles().length );
     Assertions.assertThat(target).matches(containsOnlyFiles("file1", "subDir/file2"));
   }
 
   @Test
-  public void testCondition() throws IOException {
+  public void testCondition(@Nonnull TemporaryFolder tmp) throws IOException {
     File target = tmp.newFolder( "target" );
 
     ZipExtractor extractor = new ZipExtractor( new ZipExtractor.InvertedCondition( new ZipExtractor.Condition() {
@@ -75,12 +74,12 @@ public class ZipCreatorTest {
         return true;
       }
     } ) );
-    extractor.extract( target, FileUtils.openInputStream( createZip() ) );
+    extractor.extract(target, FileUtils.openInputStream(createZip(tmp)));
     assertEquals( 0, target.listFiles().length );
   }
 
   @Nonnull
-  private File createZip() throws IOException {
+  private File createZip(@Nonnull TemporaryFolder tmp) throws IOException {
     File file = tmp.newFile( "file.zip" );
     ZipCreator creator = new ZipCreator( file );
 

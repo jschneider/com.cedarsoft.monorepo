@@ -31,6 +31,13 @@
 
 package com.cedarsoft.test.io2;
 
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
@@ -39,13 +46,6 @@ import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
 import com.cedarsoft.test.io.ModelSerializer;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -58,7 +58,6 @@ public class CarSerializerTest extends AbstractXmlSerializerTest2<Car> {
     return new CarSerializer( moneySerializer, new ExtraSerializer( moneySerializer ), new ModelSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY2 = create(
     new Car( new Model( "Ford" ), Color.ORANGE, new Money( 19000, 00 ), Arrays.asList( new Extra( "Whoo effect", new Money( 99, 98 ) ), new Extra( "Better Whoo effect", new Money( 199, 00 ) ) ) ),
     CarSerializerTest.class.getResourceAsStream( "car3.xml" ) );

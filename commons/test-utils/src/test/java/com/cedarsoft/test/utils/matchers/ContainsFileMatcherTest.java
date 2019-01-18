@@ -31,25 +31,34 @@
 
 package com.cedarsoft.test.utils.matchers;
 
-import com.google.common.io.Files;
-import org.assertj.core.api.*;
-import org.junit.*;
-import org.junit.rules.*;
-import org.opentest4j.AssertionFailedError;
-
-import java.io.File;
-import java.io.IOException;
-
 import static com.cedarsoft.test.utils.matchers.ContainsFileMatcher.containsFiles;
 import static com.cedarsoft.test.utils.matchers.ContainsFileMatcher.empty;
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
+import com.google.common.io.Files;
+
 /**
  *
  */
+@SuppressWarnings("TryFailThrowable")
+@WithTempFiles
 public class ContainsFileMatcherTest {
-  @Rule
-  public final TemporaryFolder tmp = new TemporaryFolder();
+  private TemporaryFolder tmp;
+
+  @BeforeEach
+  void setUp(@Nonnull TemporaryFolder tmp) {
+    this.tmp = tmp;
+  }
 
   @Test
   public void testBasic() throws IOException {
@@ -69,13 +78,10 @@ public class ContainsFileMatcherTest {
   public void testEmpty() throws IOException {
     Assertions.assertThat(tmp.getRoot()).matches(empty());
 
-    try {
+    org.junit.jupiter.api.Assertions.assertThrows(AssertionError.class, () -> {
       Files.touch(tmp.newFile("a"));
       Assertions.assertThat(tmp.getRoot()).matches(empty(), "to be empty");
-      fail("Where is the Exception");
-    } catch (AssertionError e) {
-      Assertions.assertThat(e.getMessage()).contains("to be empty");
-    }
+    });
   }
 
   @Test
@@ -105,12 +111,14 @@ public class ContainsFileMatcherTest {
     assertTrue(tree.contains("dir2" + File.separator + "c"));
   }
 
-  @Rule
-  public final ExpectedException expectedException = ExpectedException.none();
-
+  @SuppressWarnings("TryFailThrowable")
   @Test
   public void testNontExistent() throws IOException {
-    expectedException.expect( AssertionError.class );
-    Assertions.assertThat(tmp.getRoot()).matches(containsFiles("a"));
+    try {
+      Assertions.assertThat(tmp.getRoot()).matches(containsFiles("a"));
+      throw new RuntimeException("expected assertion");
+    }
+    catch (AssertionError ignore) {
+    }
   }
 }

@@ -31,25 +31,26 @@
 
 package com.cedarsoft.test.io2;
 
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
 import com.cedarsoft.test.io.ModelSerializer;
 
-import javax.annotation.Nonnull;
-import java.awt.Color;
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
-
 /**
  *
  */
-public class CarSerializerTest extends AbstractXmlSerializerTest<Car> {
+public class CarSerializerTest extends AbstractXmlSerializerTest2<Car> {
   @Nonnull
   @Override
   protected StreamSerializer<Car> getSerializer() throws Exception {
@@ -57,11 +58,9 @@ public class CarSerializerTest extends AbstractXmlSerializerTest<Car> {
     return new CarSerializer( moneySerializer, new ExtraSerializer( moneySerializer ), new ModelSerializer() );
   }
 
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return
-      "<car>\n" +
+  public static final Entry<? extends Car> ENTRY1 = create(
+    new Car(new Model("Ford"), Color.ORANGE, new Money(19000, 00), Arrays.asList(new Extra("Whoo effect", new Money(99, 98)), new Extra("Better Whoo effect", new Money(199, 00))))
+    , "<car>\n" +
         "  <color red=\"255\" blue=\"0\" green=\"200\" />\n" +
         "  <model>Ford</model>\n" +
         "  <basePrice cents=\"1900000\" />\n" +
@@ -73,17 +72,10 @@ public class CarSerializerTest extends AbstractXmlSerializerTest<Car> {
         "    <description>Better Whoo effect</description>\n" +
         "    <price cents=\"19900\" />\n" +
         "  </extra>\n" +
-        "</car>";
-  }
-
-  @Nonnull
-  @Override
-  protected Car createObjectToSerialize() throws Exception {
-    return new Car( new Model( "Ford" ), Color.ORANGE, new Money( 19000, 00 ), Arrays.asList( new Extra( "Whoo effect", new Money( 99, 98 ) ), new Extra( "Better Whoo effect", new Money( 199, 00 ) ) ) );
-  }
+        "</car>");
 
   @Override
-  protected void verifyDeserialized( @Nonnull Car deserialized ) throws Exception {
+  protected void verifyDeserialized(@Nonnull Car deserialized, @Nonnull Car original) {
     assertEquals( Color.ORANGE, deserialized.getColor() );
     assertEquals( deserialized.getBasePrice(), new Money( 19000, 0 ) );
     //.... (and much more)

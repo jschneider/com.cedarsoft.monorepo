@@ -30,19 +30,18 @@
  */
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 public class ZonedDateTimeSerializerTest extends AbstractJsonSerializerTest2<ZonedDateTime> {
 
-  @DataPoint
   public static final Entry<? extends ZonedDateTime> ENTRY1 = AbstractSerializerTest2.create(ZonedDateTime.of(2017, 1, 13, 10, 12, 11, 1533, ZoneId.of("Europe/Berlin")),
                                                                                              ZonedDateTimeSerializerTest.class.getResource("ZonedDateTime_1.0.0_1.json"));
 

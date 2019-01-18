@@ -15,7 +15,13 @@
  */
 package com.cedarsoft.unit.utils;
 
-import com.cedarsoft.unit.Unit;
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
+import org.junit.*;
+import org.junit.jupiter.api.Test;
+
 import com.cedarsoft.unit.other.AM;
 import com.cedarsoft.unit.prefix.hecto;
 import com.cedarsoft.unit.si.A;
@@ -25,11 +31,6 @@ import com.cedarsoft.unit.si.degC;
 import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.m2;
 import com.cedarsoft.unit.si.m_s2;
-import org.junit.*;
-
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -58,7 +59,7 @@ public class UnitsTest {
 
   @Test
   public void testSiBase() throws Exception {
-    Assert.assertTrue( Units.isSiBaseUnit( m.class ) );
+    Assert.assertTrue(Units.isSiBaseUnit(m.class));
     Assert.assertTrue( Units.isSiBaseUnit( A.class ) );
     Assert.assertFalse( Units.isSiBaseUnit( degC.class ) );
     Assert.assertFalse( Units.isSiBaseUnit( C.class ) );

@@ -65,7 +65,6 @@ public class FileTypeSerializerVersionTest extends AbstractXmlVersionTest2<FileT
     }
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create( Version.valueOf( 1, 0, 0 ),
                                                     "<fileType dependent=\"true\">\n" +
                                                       "  <id>TheId</id>\n" +
@@ -73,7 +72,6 @@ public class FileTypeSerializerVersionTest extends AbstractXmlVersionTest2<FileT
                                                       "  <extension delimiter=\".\">_ext2</extension>\n" +
                                                       "</fileType>" );
 
-  @DataPoint
   public static final VersionEntry ENTRY2 = create( Version.valueOf( 1, 0, 1 ),
                                                     "<fileType dependent=\"true\">\n" +
                                                       "  <id>TheId</id>\n" +

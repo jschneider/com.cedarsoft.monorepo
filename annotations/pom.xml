@@ -3,12 +3,12 @@
 
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>monorepo</artifactId>
+    <artifactId>open</artifactId>
     <version>0</version>
   </parent>
 
   <groupId>com.cedarsoft.annotations</groupId>
-  <artifactId>parent</artifactId>
+  <artifactId>annotations-parent</artifactId>
 
   <name>annotations.Parent</name>
   <description>Parent for the annotations project</description>

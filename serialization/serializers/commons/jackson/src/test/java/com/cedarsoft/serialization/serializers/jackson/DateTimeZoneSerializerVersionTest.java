@@ -43,7 +43,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DateTimeZoneSerializerVersionTest extends AbstractJsonVersionTest2<DateTimeZone> {
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = DateTimeZoneSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), DateTimeZoneSerializerVersionTest.class.getResource( "DateTimeZone_1.0.0_1.json" ) );
 
   @Nonnull

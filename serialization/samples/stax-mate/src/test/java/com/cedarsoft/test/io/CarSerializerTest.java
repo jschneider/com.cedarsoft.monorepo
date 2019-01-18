@@ -31,6 +31,16 @@
 
 package com.cedarsoft.test.io;
 
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+import java.io.IOException;
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
@@ -39,15 +49,6 @@ import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
-import java.io.IOException;
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -61,10 +62,8 @@ public class CarSerializerTest extends AbstractXmlSerializerTest2<Car> {
     return new CarSerializer( moneySerializer, new ExtraSerializer( moneySerializer ), new ModelSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new Car( new Model( "Toyota" ), Color.BLACK, new Money( 49000, 00 ) ), CarSerializerTest.class.getResourceAsStream( "car1.xml" ) );
 
-  @DataPoint
   public static final Entry<?> ENTRY2 = create(
     new Car( new Model( "Ford" ), Color.ORANGE, new Money( 19000, 00 ), Arrays.asList( new Extra( "Whoo effect", new Money( 99, 98 ) ), new Extra( "Better Whoo effect", new Money( 199, 00 ) ) ) ),
     CarSerializerTest.class.getResourceAsStream( "car2.xml" ) );
@@ -85,10 +84,10 @@ public class CarSerializerTest extends AbstractXmlSerializerTest2<Car> {
     CarSerializer serializer = ( CarSerializer ) getSerializer();
     DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer( serializer.getDelegatesMappings() );
 
-    assertEquals( visualizer.visualize(),
-                  "         -->     Extra     Model     Money\n" +
-                    "------------------------------------------\n" +
-                    "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
-                    "------------------------------------------\n" );
+    assertEquals("         -->     Extra     Model     Money\n" +
+                   "------------------------------------------\n" +
+                   "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
+                   "------------------------------------------\n",
+                 visualizer.visualize());
   }
 }

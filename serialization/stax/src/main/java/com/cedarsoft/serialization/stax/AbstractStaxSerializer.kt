@@ -32,13 +32,14 @@
 package com.cedarsoft.serialization.stax
 
 import com.cedarsoft.serialization.SerializationException
+import com.cedarsoft.serialization.stax.util.IndentingXMLStreamWriter
 import com.cedarsoft.version.Version
 import com.cedarsoft.version.VersionRange
-import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter
 import java.io.IOException
 import java.io.OutputStream
 import javax.xml.stream.XMLStreamException
 import javax.xml.stream.XMLStreamWriter
+
 
 /**
  * Abstract base class for serializer using stax.

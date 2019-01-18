@@ -1,10 +1,11 @@
 package com.cedarsoft.test.utils;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.*;
+import java.io.File;
 
 import javax.annotation.Nonnull;
-import java.io.File;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -19,5 +20,10 @@ class TemporaryFolderExtensionTest {
   @Test
   void testTmpFile(@Nonnull @TempFile File file) {
     Assertions.assertThat(file).isNotNull().exists().isFile();
+  }
+
+  @Test
+  void testTempFolder(@Nonnull TemporaryFolder tmp) throws Exception {
+    Assertions.assertThat(tmp.newFolder()).exists().isDirectory();
   }
 }

@@ -34,8 +34,6 @@ import java.util.BitSet;
 
 import javax.annotation.Nonnull;
 
-import org.junit.experimental.theories.*;
-
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
@@ -45,7 +43,6 @@ import com.cedarsoft.serialization.test.utils.Entry;
  */
 public class BitSetSerializerTest extends AbstractJsonSerializerTest2<BitSet> {
 
-  @DataPoint
   public static Entry<? extends BitSet> entry1() {
     BitSet bitSet = new BitSet(50);
     bitSet.set(0);

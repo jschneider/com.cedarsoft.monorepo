@@ -31,11 +31,11 @@
 
 package com.cedarsoft.workflow;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

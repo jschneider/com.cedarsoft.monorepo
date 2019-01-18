@@ -31,23 +31,25 @@
 
 package com.cedarsoft.serialization;
 
-import com.cedarsoft.version.UnsupportedVersionRangeException;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionMismatchException;
-import com.cedarsoft.version.VersionRange;
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.version.UnsupportedVersionRangeException;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionMismatchException;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -57,7 +59,7 @@ public class DelegatesMappingsTest {
   private VersionMappingTest.MySerializer serializer;
   private DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> delegatesMappings;
 
-  @Before
+  @BeforeEach
   public void setup() {
     serializer = new VersionMappingTest.MySerializer( VersionRange.from( 7, 0, 0 ).to( 7, 5, 9 ) );
     delegatesMappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( mine );
@@ -192,25 +194,26 @@ public class DelegatesMappingsTest {
     delegatesMappings.add( serializer ).responsibleFor( String.class )
       .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 2 );
 
-    expectedException.expect( IllegalArgumentException.class );
-    expectedException.expectMessage( "An entry for the key <class java.lang.String> has still been added" );
-
-    delegatesMappings.add( serializer ).responsibleFor( String.class );
+    try {
+      delegatesMappings.add(serializer).responsibleFor(String.class);
+      fail("Where is the Exception");
+    }
+    catch (IllegalArgumentException e) {
+      assertThat(e).hasMessage("An entry for the key <class java.lang.String> has still been added");
+    }
   }
 
   @Test
   public void testErrorHandling() {
-    expectedException.expect( UnsupportedVersionRangeException.class );
-    expectedException.expectMessage( "The version range has still been mapped: Was <[1.0.0-1.0.0]>" );
-
-    delegatesMappings.add( serializer ).responsibleFor( String.class )
-      .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 1 )
-      .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 2 );
+    try {
+      delegatesMappings.add(serializer).responsibleFor(String.class)
+        .map(1, 0, 0).toDelegateVersion(7, 0, 1)
+        .map(1, 0, 0).toDelegateVersion(7, 0, 2);
+    }
+    catch (UnsupportedVersionRangeException e) {
+      assertThat(e).hasMessage("The version range has still been mapped: Was <[1.0.0-1.0.0]>");
+    }
   }
-
-  @Rule
-  public final ExpectedException expectedException = ExpectedException.none();
-
 
   public static class ClassUtils {
     @Nonnull

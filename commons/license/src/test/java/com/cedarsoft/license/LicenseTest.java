@@ -31,10 +31,10 @@
 
 package com.cedarsoft.license;
 
-import org.assertj.core.api.Assertions;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
 
 /**
  *

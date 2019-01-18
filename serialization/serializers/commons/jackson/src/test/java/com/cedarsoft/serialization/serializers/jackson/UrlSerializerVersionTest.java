@@ -42,7 +42,6 @@ import java.net.URL;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UrlSerializerVersionTest extends AbstractJsonVersionTest2<URL> {
-  @DataPoint
   public static final VersionEntry ENTRY1 = UrlSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), UrlSerializerVersionTest.class.getResource( "Url_1.0.0_1.json" ) );
 
   @Nonnull

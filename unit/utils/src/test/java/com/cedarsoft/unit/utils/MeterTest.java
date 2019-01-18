@@ -15,10 +15,11 @@
  */
 package com.cedarsoft.unit.utils;
 
-import com.cedarsoft.unit.si.m;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.unit.si.m;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

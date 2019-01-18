@@ -55,7 +55,7 @@ object FileUtils {
 /**
  * Creates the directory if it does not exist
  */
-inline fun File.createDirectoryIfNotExisting(): File {
+fun File.createDirectoryIfNotExisting(): File {
   FileUtils.ensureDirectoryExists(this)
-  return this;
+  return this
 }

@@ -3,7 +3,7 @@
 
   <parent>
     <groupId>com.cedarsoft.unit</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>parent-unit</artifactId>
     <version>0</version>
   </parent>
 

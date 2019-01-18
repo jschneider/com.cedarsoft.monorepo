@@ -31,13 +31,12 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.file.BaseName;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -49,12 +48,10 @@ public class BaseNameSerializerTest extends AbstractXmlSerializerTest2<BaseName>
     return new BaseNameSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create(
     new BaseName( "asdf" ),
     "<baseName>asdf</baseName>" );
 
-  @DataPoint
   public static final Entry<?> entry2 = create(
     new BaseName( "asdf2" ),
     "<baseName>asdf2</baseName>" );

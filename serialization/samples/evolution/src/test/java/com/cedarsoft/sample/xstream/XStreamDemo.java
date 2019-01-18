@@ -31,6 +31,15 @@
 
 package com.cedarsoft.sample.xstream;
 
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
 import com.cedarsoft.sample.Car;
 import com.cedarsoft.sample.Extra;
 import com.cedarsoft.sample.Model;
@@ -38,24 +47,12 @@ import com.cedarsoft.sample.Money;
 import com.cedarsoft.test.utils.AssertUtils;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
-import org.junit.*;
-import org.junit.rules.*;
-import org.xml.sax.SAXException;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 
 /**
  *
  */
 public class XStreamDemo {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   //START SNIPPET: createSampleCar
   public Car createSampleCar() {
     Model model = new Model( "Ford" );
@@ -98,7 +95,6 @@ public class XStreamDemo {
     xStream.alias( "extra", com.cedarsoft.sample.fixed.Extra.class );
     xStream.alias( "money", com.cedarsoft.sample.fixed.Money.class );
 
-    expectedException.expect( ConversionException.class );
-    xStream.fromXML( getClass().getResourceAsStream( "car.xml" ) );
+    Assertions.assertThrows(ConversionException.class, () -> xStream.fromXML(getClass().getResourceAsStream("car.xml")));
   }
 }

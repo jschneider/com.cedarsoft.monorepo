@@ -30,18 +30,19 @@
  */
 package com.cedarsoft.serialization.jackson.test.compatible;
 
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Fail.fail;
+
+import java.io.ByteArrayOutputStream;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.serialization.jackson.JacksonSupport;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
-import org.junit.*;
-
-import java.io.ByteArrayOutputStream;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Fail.fail;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -51,7 +52,7 @@ public class JacksonParserWrapperTest {
   private ByteArrayOutputStream out;
   private JsonGenerator generator;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     jsonFactory = JacksonSupport.getJsonFactory();
     out = new ByteArrayOutputStream();

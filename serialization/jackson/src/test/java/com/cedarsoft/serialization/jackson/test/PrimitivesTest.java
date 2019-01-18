@@ -31,7 +31,8 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
-import com.cedarsoft.serialization.Serializer;
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.jackson.BooleanSerializer;
 import com.cedarsoft.serialization.jackson.ByteSerializer;
@@ -44,9 +45,6 @@ import com.cedarsoft.serialization.jackson.ShortSerializer;
 import com.cedarsoft.serialization.jackson.StringSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -63,7 +61,6 @@ public class PrimitivesTest extends AbstractJsonSerializerTest2<Primitives> {
     return new PrimitivesSerializer( new IntegerSerializer(), new ShortSerializer(), new ByteSerializer(), new LongSerializer(), new DoubleSerializer(), new FloatSerializer(), new CharacterSerializer(), new BooleanSerializer(), new StringSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new Primitives( 1, ( short ) 2, ( byte ) 3, 4L, 5.5, 6.4f, '7', true, "asdf" ), PrimitivesTest.class.getResource( "primitives_1.0.0.json" ) );
 
 }

@@ -31,19 +31,17 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.file.Extension;
 import com.cedarsoft.file.FileType;
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 public class FileTypeSerializerTest extends AbstractJsonSerializerTest2<FileType> {
 
-  @DataPoint
   public static final Entry<? extends FileType> ENTRY1 = AbstractSerializerTest2.create(
     new FileType( "id", "contentType", true, new Extension( "jpg" ), new Extension( "ccx" ) ),
     FileTypeSerializerTest.class.getResource( "FileType_1.0.0_1.json" )

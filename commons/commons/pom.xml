@@ -15,6 +15,24 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>unit</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
     </dependency>

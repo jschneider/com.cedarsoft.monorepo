@@ -31,17 +31,15 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
 import javax.annotation.Nonnull;
 
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
+import com.cedarsoft.serialization.test.utils.VersionEntry;
+import com.cedarsoft.version.Version;
+
 public class VersionSerializerVersionTest extends AbstractJsonVersionTest2<Version> {
-  @DataPoint
   public static final VersionEntry ENTRY1 = VersionSerializerVersionTest.create( Version.valueOf( 1, 0, 0 ), "\"42.42.42-suffix\"" );
 
   @Override
@@ -51,10 +49,10 @@ public class VersionSerializerVersionTest extends AbstractJsonVersionTest2<Versi
 
   @Override
   protected void verifyDeserialized( @Nonnull Version deserialized, @Nonnull Version version ) throws Exception {
-    Assert.assertEquals( 42, deserialized.getMajor() );
-    Assert.assertEquals( 42, deserialized.getMinor() );
-    Assert.assertEquals( 42, deserialized.getBuild() );
-    Assert.assertEquals( "suffix", deserialized.getSuffix() );
+    Assertions.assertEquals(42, deserialized.getMajor());
+    Assertions.assertEquals(42, deserialized.getMinor());
+    Assertions.assertEquals(42, deserialized.getBuild());
+    Assertions.assertEquals("suffix", deserialized.getSuffix());
   }
 
 }

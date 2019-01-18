@@ -31,23 +31,23 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.cedarsoft.test.utils.JsonUtils;
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.undercouch.bson4jackson.BsonFactory;
-import de.undercouch.bson4jackson.BsonGenerator;
-import org.apache.commons.codec.binary.Hex;
-import org.assertj.core.api.Assertions;
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import org.apache.commons.codec.binary.Hex;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+
+import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import de.undercouch.bson4jackson.BsonFactory;
+import de.undercouch.bson4jackson.BsonGenerator;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -57,7 +57,7 @@ public class Bson4JacksonTest {
   public static final String BSON = "00000000026964000a00000043616e6f6e205261770008646570656e64656e74000003657874656e73696f6e000000000002657874656e73696f6e0004000000637232000864656661756c7400010264656c696d6974657200020000002e000000";
   private BsonFactory jsonFactory;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     jsonFactory = new BsonFactory();
     jsonFactory.enable( BsonGenerator.Feature.ENABLE_STREAMING );

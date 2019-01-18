@@ -30,18 +30,17 @@
  */
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.time.Period;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.time.Period;
 
 public class PeriodSerializerTest extends AbstractJsonSerializerTest2<Period> {
 
-  @DataPoint
   public static final Entry<? extends Period> ENTRY1 = AbstractSerializerTest2.create(Period.of(1, 2, 3),
                                                                                       PeriodSerializerTest.class.getResource("Period_1.0.0_1.json"));
 

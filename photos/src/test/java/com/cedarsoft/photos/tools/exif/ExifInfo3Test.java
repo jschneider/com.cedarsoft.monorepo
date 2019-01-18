@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos.tools.exif;
 
-import org.junit.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,8 +39,7 @@ import java.text.ParseException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -47,7 +47,7 @@ import static org.junit.Assert.*;
 public class ExifInfo3Test {
   private ExifInfo exifInfo;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     InputStream in = getClass().getResourceAsStream("/exif-detailed3.txt");
     assertNotNull(in);

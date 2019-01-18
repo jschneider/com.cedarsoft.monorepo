@@ -31,10 +31,10 @@
 
 package com.cedarsoft.file;
 
-import org.apache.commons.io.FilenameUtils;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.apache.commons.io.FilenameUtils;
+import org.junit.jupiter.api.*;
 
 /**
  *

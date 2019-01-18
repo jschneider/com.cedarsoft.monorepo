@@ -31,23 +31,24 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import org.codehaus.staxmate.out.SMOutputElement;
-import org.junit.*;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionException;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *

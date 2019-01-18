@@ -30,20 +30,21 @@
  */
 package com.cedarsoft.serialization.test.utils;
 
-import com.cedarsoft.test.utils.AssertUtils;
-import com.cedarsoft.xml.XmlCommons;
-import com.sun.org.apache.xerces.internal.dom.DeferredNode;
-import org.junit.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import static org.assertj.core.api.Assertions.*;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.junit.jupiter.api.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import com.cedarsoft.test.utils.AssertUtils;
+import com.cedarsoft.xml.XmlCommons;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

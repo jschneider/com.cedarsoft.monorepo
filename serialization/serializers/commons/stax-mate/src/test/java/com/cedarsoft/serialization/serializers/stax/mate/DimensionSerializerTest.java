@@ -31,15 +31,15 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import static org.junit.Assert.*;
+
+import java.awt.Dimension;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Dimension;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -51,7 +51,6 @@ public class DimensionSerializerTest extends AbstractXmlSerializerTest2<Dimensio
     return new DimensionSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create( new Dimension( 1600, 600 ), "<dimension>1600x600</dimension>" );
 
   @Override

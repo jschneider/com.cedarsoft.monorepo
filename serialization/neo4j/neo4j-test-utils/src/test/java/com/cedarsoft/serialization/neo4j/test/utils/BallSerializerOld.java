@@ -30,15 +30,17 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.neo4j.graphdb.Node;
+
 import com.cedarsoft.serialization.neo4j.AbstractDelegatingNeo4jSerializer;
 import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializingStrategy;
 import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
-import org.neo4j.graphdb.Node;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -78,7 +80,7 @@ public class BallSerializerOld extends AbstractDelegatingNeo4jSerializer<Ball> {
     public Ball.TennisBall deserialize( @Nonnull Node deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
       verifyVersionReadable( formatVersion );
 
-      int id = ((Long) deserializeFrom.getProperty( "id" )).intValue();
+      int id = ((Number) deserializeFrom.getProperty("id")).intValue();
       return new Ball.TennisBall( id );
     }
   }

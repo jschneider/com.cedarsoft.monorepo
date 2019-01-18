@@ -31,34 +31,23 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
-
 import javax.annotation.Nonnull;
-import java.io.InputStream;
-import java.io.OutputStream;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
  *
  */
-public class DoorSerializerTest extends AbstractXmlSerializerTest<Door> {
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<door>" +
-      "  <description>descr</description>" +
-      "</door>";
-  }
+public class DoorSerializerTest extends AbstractXmlSerializerTest2<Door> {
+  public static final Entry<? extends Door> ENTRY1 = create(new Door("descr"), "<door>" +
+                                                                                 "  <description>descr</description>" +
+                                                                                 "</door>");
 
   @Nonnull
   @Override
-  protected Serializer<Door, OutputStream, InputStream> getSerializer() throws Exception {
+  protected StreamSerializer<Door> getSerializer() throws Exception {
     return new Door.Serializer();
-  }
-
-  @Nonnull
-  @Override
-  protected Door createObjectToSerialize() throws Exception {
-    return new Door( "descr" );
   }
 }

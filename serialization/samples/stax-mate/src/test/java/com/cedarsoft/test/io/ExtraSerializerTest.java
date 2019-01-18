@@ -31,14 +31,13 @@
 
 package com.cedarsoft.test.io;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Money;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
 
 /**
  *
@@ -51,7 +50,6 @@ public class ExtraSerializerTest extends AbstractXmlSerializerTest2<Extra> {
     return new ExtraSerializer( new MoneySerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create(
     new Extra( "Metallic", new Money( 400, 00 ) ),
     "<extra>\n" +
@@ -59,7 +57,6 @@ public class ExtraSerializerTest extends AbstractXmlSerializerTest2<Extra> {
       "  <price>40000</price>\n" +
       "</extra>" );
 
-  @DataPoint
   public static final Entry<?> ENTRY2 = create(
     new Extra( "Great Radio", new Money( 700, 00 ) ),
     "<extra>\n" +

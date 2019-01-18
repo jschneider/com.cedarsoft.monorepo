@@ -1,12 +1,12 @@
 /**
  * Copyright (C) cedarsoft GmbH.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,6 +27,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -55,7 +56,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   /**
    * The fully qualified class names of the transformers to apply.
    */
-  @Parameter( required = false )
+  @Parameter(required = false)
   @Nullable
   protected List<String> classTransformers;
   /**
@@ -72,7 +73,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   /**
    * Whether to add the null checks
    */
-  @Parameter( required = false, defaultValue = "true", property = "addNullChecks" )
+  @Parameter(required = false, defaultValue = "true", property = "addNullChecks")
   protected boolean addNullChecks = true;
 
   /**
@@ -80,21 +81,27 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
    * If this property is set to "true"
    * {@link Preconditions#checkNotNull(Object)} statements are inserted.
    */
-  @Parameter( required = false, defaultValue = "false", property = "useGuava" )
+  @Parameter(required = false, defaultValue = "false", property = "useGuava")
   protected boolean useGuava;
 
   /**
    * Whether thread verification code is added for all methods that are annotated
    * with an {@link ThreadDescribingAnnotation} annotation.
    */
-  @Parameter( required = false, defaultValue = "true", property = "addThreadVerifications" )
+  @Parameter(required = false, defaultValue = "true", property = "addThreadVerifications")
   protected boolean addThreadVerifications = true;
 
   /**
    * Whether to insert verification code for methods annotated with {@link NonBlocking}.
    */
-  @Parameter( required = false, defaultValue = "true", property = "addNonBlockingVerifications" )
+  @Parameter(required = false, defaultValue = "true", property = "addNonBlockingVerifications")
   protected boolean addNonBlockingVerifications = true;
+
+  /**
+   * Contains a blacklist of classes that may be skipped
+   */
+  @Parameter(required = false)
+  protected List<String> blacklist;
 
   @Nonnull
   protected File getLastInstrumentationDateFile() throws IOException {
@@ -122,6 +129,10 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
   private void performClassTransformation(@Nonnull final Iterable<? extends ClassFile> classFiles, @Nonnull final Iterable<? extends ClassFileTransformer> agents) throws MojoExecutionException {
     for (final ClassFile classFile : classFiles) {
+      if (classFile.getCompiledClass().isInterface()) {
+        continue;
+      }
+
       for (final ClassFileTransformer agent : agents) {
         transformClass(classFile, agent);
       }
@@ -153,13 +164,17 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
     final Class<?> agentClass) throws MojoExecutionException {
     try {
       return (ClassFileTransformer) agentClass.getConstructor().newInstance();
-    } catch (final InstantiationException e) {
+    }
+    catch (final InstantiationException e) {
       throw new MojoExecutionException("Failed to instantiate class: " + agentClass + ". Does it have a no-arg constructor?", e);
-    } catch (final IllegalAccessException e) {
+    }
+    catch (final IllegalAccessException e) {
       throw new MojoExecutionException(agentClass + ". Does not have a public no-arg constructor?", e);
-    } catch (NoSuchMethodException e) {
+    }
+    catch (NoSuchMethodException e) {
       throw new MojoExecutionException("Failed to instantiate class: " + agentClass + ". Does it have a no-arg constructor", e);
-    } catch (InvocationTargetException e) {
+    }
+    catch (InvocationTargetException e) {
       throw new MojoExecutionException("Failed to instantiate class: " + agentClass + ". Could not invoke constructor", e);
     }
   }
@@ -168,7 +183,8 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   private static Class<?> resolveClass(@Nonnull final String className) throws MojoExecutionException {
     try {
       return Class.forName(className);
-    } catch (final ClassNotFoundException e) {
+    }
+    catch (final ClassNotFoundException e) {
       final String message = MessageFormat.format("Could not find class: {0}. Is it a registered dependency of the project or the plugin?", className);
       throw new MojoExecutionException(message, e);
     }
@@ -182,7 +198,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
     if (getProject().getPackaging().equals("pom")) {
-      getLog().debug( "Skipping because <" + getProject().getName() + "> is a pom project" );
+      getLog().debug("Skipping because <" + getProject().getName() + "> is a pom project");
       return;
     }
 
@@ -199,11 +215,43 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
     //Now filter the classes based upon the compile date
     try {
-      performClassTransformation(filterInstrumented(classFiles), agents);
+      performClassTransformation(filterBlacklisted(filterInstrumented(classFiles)), agents);
       storeInstrumentationDate(System.currentTimeMillis());
-    } catch (IOException e) {
+    }
+    catch (IOException e) {
       throw new MojoFailureException("error accessing instrumentation date file", e);
     }
+  }
+
+  @Nonnull
+  protected Iterable<? extends ClassFile> filterBlacklisted(@Nonnull Collection<? extends ClassFile> classFiles) {
+    if (blacklist == null || blacklist.isEmpty()) {
+      return classFiles;
+    }
+
+    return classFiles.stream()
+             .filter(file -> {
+               boolean removed = isBlacklisted(file.getClassName());
+               if (removed) {
+                 getLog().debug("Skipping blacklisted class: " + file.getClassName());
+               }
+               return !removed;
+             })
+             .collect(Collectors.toList());
+  }
+
+  private boolean isBlacklisted(@Nonnull String className) {
+    for (String entry : blacklist) {
+      if (entry.equals(className)) {
+        return true;
+      }
+
+      if (className.matches(entry)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -217,7 +265,8 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
     try {
       lastInstrumentationDate = getLastInstrumentationDate();
       getLog().debug("last instrumentation date: " + lastInstrumentationDate);
-    } catch (NoLastInstrumentationDateFoundException ignore) {
+    }
+    catch (NoLastInstrumentationDateFoundException ignore) {
       getLog().info("Instrumenting all (" + classFiles.size() + ") files");
       //No instrumentation has yet happened, therefore return the complete list
       return classFiles;
@@ -230,7 +279,8 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
       if (modificationDate > lastInstrumentationDate) {
         unInstrumented.add(classFile);
-      }else {
+      }
+      else {
         getLog().debug("\tSkipping: " + classFile.getClassName() + "\t\t(" + modificationDate + ")");
       }
     }
@@ -277,12 +327,13 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
 
       try {
         urls.add(file.toURI().toURL());
-      } catch (MalformedURLException e) {
+      }
+      catch (MalformedURLException e) {
         throw new MojoExecutionException("Could not convert <" + classpathElement + "> to url", e);
       }
     }
 
-    return new URLClassLoader(urls.toArray(new URL[urls.size()]), getClass().getClassLoader());
+    return new URLClassLoader(urls.toArray(new URL[0]));
   }
 
   @Nonnull
@@ -293,42 +344,44 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
     final Collection<ClassFileTransformer> transformers = new ArrayList<>();
 
     //First add the convenience transformers
-    transformers.addAll( createConvenienceTransformers() );
+    transformers.addAll(createConvenienceTransformers());
 
     //Add the configured class transformers
-    if ( classTransformers != null ) {
+    if (classTransformers != null) {
       for (final String className : classTransformers) {
         final ClassFileTransformer instance = createAgentInstance(className);
-        transformers.add( instance );
+        transformers.add(instance);
       }
     }
     return transformers;
   }
 
   @Nonnull
-  protected Collection<? extends ClassFileTransformer> createConvenienceTransformers(){
+  protected Collection<? extends ClassFileTransformer> createConvenienceTransformers() {
     try {
       final Collection<ClassFileTransformer> transformers = new ArrayList<>();
 
-      if ( isAddNullChecks() ) {
-        if ( isUseGuava() ) {
-          transformers.add( new NonNullGuavaAnnotationTransformer() );
-        }else{
-          transformers.add( new NonNullAnnotationTransformer() );
+      if (isAddNullChecks()) {
+        if (isUseGuava()) {
+          transformers.add(new NonNullGuavaAnnotationTransformer());
+        }
+        else {
+          transformers.add(new NonNullAnnotationTransformer());
         }
       }
 
-      if ( isAddThreadVerifications() ) {
-        transformers.add( new ThreadAnnotationTransformer() );
+      if (isAddThreadVerifications()) {
+        transformers.add(new ThreadAnnotationTransformer());
       }
 
-      if ( isAddNonBlockingVerifications() ) {
-        transformers.add( new NonBlockingAnnotationTransformer() );
+      if (isAddNonBlockingVerifications()) {
+        transformers.add(new NonBlockingAnnotationTransformer());
       }
 
       return transformers;
-    } catch ( IOException e ) {
-      throw new RuntimeException( e );
+    }
+    catch (IOException e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -353,6 +406,6 @@ public abstract class AbstractInstrumentationMojo extends AbstractMojo {
     return addThreadVerifications;
   }
 
-  public static class NoLastInstrumentationDateFoundException extends Exception{
+  public static class NoLastInstrumentationDateFoundException extends Exception {
   }
 }

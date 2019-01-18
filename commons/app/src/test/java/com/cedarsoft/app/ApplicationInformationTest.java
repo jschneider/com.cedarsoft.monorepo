@@ -31,10 +31,11 @@
 
 package com.cedarsoft.app;
 
-import com.cedarsoft.version.Version;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.version.Version;
 
 /**
  *

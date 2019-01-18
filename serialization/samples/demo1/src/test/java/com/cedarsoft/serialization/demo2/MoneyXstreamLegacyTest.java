@@ -32,20 +32,22 @@
 package com.cedarsoft.serialization.demo2;
 
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.ConversionException;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
-import java.io.InputStream;
 
-import static com.cedarsoft.test.utils.AssertUtils.assertXMLEquals;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.ConversionException;
 
 /**
  *
@@ -53,7 +55,7 @@ import static org.junit.Assert.*;
 public class MoneyXstreamLegacyTest {
   private XStream xStream;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     xStream = new XStream();
     xStream.alias( "money", Money.class );
@@ -80,7 +82,7 @@ public class MoneyXstreamLegacyTest {
                       "converter-type      : com.thoughtworks.xstream.converters.reflection.ReflectionConverter\n" +
                       "path                : /money/amount\n" +
                       "line number         : 3\n" +
-                      "version             : 1.4.10\n" +
+                      "version             : 1.4.11.1\n" +
                       "-------------------------------", e.getMessage() );
     }
   }

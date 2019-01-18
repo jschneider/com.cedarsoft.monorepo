@@ -31,17 +31,18 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.test.Money;
-import com.cedarsoft.test.utils.AssertUtils;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.test.Money;
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  * Test class that tests the old versions manually

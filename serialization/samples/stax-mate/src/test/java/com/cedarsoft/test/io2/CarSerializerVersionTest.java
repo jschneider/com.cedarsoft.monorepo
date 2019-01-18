@@ -31,22 +31,22 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.version.Version;
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.serialization.AbstractSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2;
-import com.cedarsoft.serialization.Serializer;
 import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
 import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Money;
 import com.cedarsoft.test.io.ModelSerializer;
-import org.junit.*;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
-
-import static org.junit.Assert.*;
+import com.cedarsoft.version.Version;
 
 /**
  *
@@ -59,7 +59,6 @@ public class CarSerializerVersionTest extends AbstractXmlVersionTest2<Car> {
     return new CarSerializer( moneySerializer, new ExtraSerializer( moneySerializer ), new ModelSerializer() );
   }
 
-  @DataPoint
   public static final VersionEntry ENTRY1 = create( Version.valueOf( 1, 0, 0 ), "<car>\n" +
     "  <color red=\"255\" blue=\"0\" green=\"200\" />\n" +
     "  <model>Ford</model>\n" +
@@ -74,7 +73,6 @@ public class CarSerializerVersionTest extends AbstractXmlVersionTest2<Car> {
     "  </extra>" +
     "</car>" );
 
-  @DataPoint
   public static final VersionEntry ENTRY2 = create( Version.valueOf( 1, 0, 1 ), "<car>\n" +
     "  <color red=\"255\" blue=\"0\" green=\"200\" />\n" +
     "  <model>Ford</model>\n" +
@@ -99,11 +97,11 @@ public class CarSerializerVersionTest extends AbstractXmlVersionTest2<Car> {
   @Test
   public void testAsciiArt() throws Exception {
     DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer( ( ( AbstractSerializer<?, ?, ?, ?, ?, ?> ) getSerializer() ).getDelegatesMappings() );
-    assertEquals( visualizer.visualize(),
-                  "         -->     Extra     Model     Money\n" +
-                    "------------------------------------------\n" +
-                    "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
-                    "   1.0.1 -->     1.5.1       |       1.0.1\n" +
-                    "------------------------------------------\n" );
+    assertEquals("         -->     Extra     Model     Money\n" +
+                   "------------------------------------------\n" +
+                   "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
+                   "   1.0.1 -->     1.5.1       |       1.0.1\n" +
+                   "------------------------------------------\n",
+                 visualizer.visualize());
   }
 }

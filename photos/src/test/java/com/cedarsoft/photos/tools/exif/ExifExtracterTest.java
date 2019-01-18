@@ -39,21 +39,20 @@ import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
 
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import org.junit.*;
-import org.junit.rules.*;
 
 /**
  *
  */
+@Disabled
 public class ExifExtracterTest {
   private InputStream source;
   private URL sourceUrl;
 
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     sourceUrl = getClass().getResource("/img1.jpg");
     source = sourceUrl.openStream();

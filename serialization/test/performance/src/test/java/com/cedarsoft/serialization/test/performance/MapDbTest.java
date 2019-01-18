@@ -30,25 +30,27 @@
  */
 package com.cedarsoft.serialization.test.performance;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.assertj.core.api.Assertions.*;
+
+import java.io.File;
+import java.util.concurrent.ConcurrentNavigableMap;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
 import org.mapdb.BTreeMap;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.Serializer;
 
-import java.io.File;
-import java.util.concurrent.ConcurrentNavigableMap;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.cedarsoft.test.utils.TemporaryFolder;
+import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithTempFiles
 public class MapDbTest {
-  @Rule
-  public TemporaryFolder tmp = new TemporaryFolder();
-
   @Test
   public void testIt() throws Exception {
     DB db = DBMaker.memoryDB().make();
@@ -67,7 +69,7 @@ public class MapDbTest {
   }
 
   @Test
-  public void testMoreComplex() throws Exception {
+  public void testMoreComplex(@Nonnull TemporaryFolder tmp) throws Exception {
     File file = new File(tmp.getRoot(), "db.file");
     assertThat(file).doesNotExist();
 

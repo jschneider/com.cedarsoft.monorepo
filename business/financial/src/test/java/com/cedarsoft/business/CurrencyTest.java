@@ -32,10 +32,11 @@
 package com.cedarsoft.business;
 
 import static org.junit.Assert.*;
-import org.junit.*;
 
 import java.util.Currency;
 import java.util.Locale;
+
+import org.junit.jupiter.api.*;
 
 /**
  *

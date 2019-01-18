@@ -31,42 +31,36 @@
 
 package com.cedarsoft.commons;
 
-import org.junit.*;
-import org.junit.rules.*;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
  */
 public class ThreadUtilsTest {
-  @Rule
-  public ExpectedException expectedException = ExpectedException.none();
-
   @Test
   public void testIt() {
     ThreadUtils.assertNotEventDispatchThread();
 
-    expectedException.expect( IllegalThreadStateException.class );
-    expectedException.expectMessage( "Is EDT" );
-
-    ThreadUtils.invokeInEventDispatchThread( new Runnable() {
-      @Override
-      public void run() {
-        ThreadUtils.assertNotEventDispatchThread();
-      }
-    } );
+    Assertions.assertThrows(IllegalThreadStateException.class, () -> {
+      ThreadUtils.invokeInEventDispatchThread(new Runnable() {
+        @Override
+        public void run() {
+          ThreadUtils.assertNotEventDispatchThread();
+        }
+      });
+    });
   }
 
   @Test
   public void testEdt() {
-    expectedException.expect( IllegalThreadStateException.class );
-    expectedException.expectMessage( "Not in EDT" );
-
-    ThreadUtils.assertEventDispatchThread();
+    Assertions.assertThrows(IllegalThreadStateException.class, () -> {
+      ThreadUtils.assertEventDispatchThread();
+    });
   }
 
   @Test

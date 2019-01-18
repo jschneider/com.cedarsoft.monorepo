@@ -31,11 +31,11 @@
 
 package com.cedarsoft.crypt;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

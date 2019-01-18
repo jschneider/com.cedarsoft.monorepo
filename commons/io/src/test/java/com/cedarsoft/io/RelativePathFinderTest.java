@@ -31,11 +31,11 @@
 
 package com.cedarsoft.io;
 
-import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -43,7 +43,7 @@ import static org.junit.Assert.*;
 public class RelativePathFinderTest {
   private String s;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     s = File.separator;
   }

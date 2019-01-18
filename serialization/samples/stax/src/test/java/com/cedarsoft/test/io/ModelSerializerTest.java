@@ -31,19 +31,17 @@
 
 package com.cedarsoft.test.io;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerMultiTest;
-import com.cedarsoft.serialization.Serializer;
-import com.cedarsoft.test.Model;
-
 import javax.annotation.Nonnull;
-import java.util.Arrays;
-import java.util.List;
+
+import com.cedarsoft.serialization.StreamSerializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.test.Model;
 
 /**
  *
  */
-public class ModelSerializerTest extends AbstractXmlSerializerMultiTest<Model> {
+public class ModelSerializerTest extends AbstractXmlSerializerTest2<Model> {
   @Nonnull
   @Override
   protected StreamSerializer<Model> getSerializer() {
@@ -51,37 +49,26 @@ public class ModelSerializerTest extends AbstractXmlSerializerMultiTest<Model> {
     return new ModelSerializer();
   }
 
-  @Nonnull
-  @Override
-  protected Iterable<? extends Model> createObjectsToSerialize() {
-    //Just create a few examples of objects that shall be serialized
-    return Arrays.asList(
-      new Model( "Toyota" ),
-      new Model( "GM" ),
-      new Model( "Volkswagen" ),
-      new Model( "Renault" )
-    );
-  }
+  //Just create a few examples of objects that shall be serialized
+  public static final Entry<? extends Model> ENTRY1 = create(
+    new Model("Toyota"),
 
-  @Nonnull
-  @Override
-  protected List<? extends String> getExpectedSerialized() throws Exception {
     //We just return the sole part of the xml that should be compared.
     //For comparison XML-Unit is used, so there is no need to take care of formatting etc.
 
     //Note: The xml serializers write a version information to the xml. This has been left out here!
-    return Arrays.asList(
-      "<model>Toyota</model>",
-      "<model>GM</model>",
-      "<model>Volkswagen</model>",
-      "<model>Renault</model>"
-    );
-  }
+    "<model>Toyota</model>");
+  public static final Entry<? extends Model> ENTRY2 = create(
+    new Model("GM"), "<model>GM</model>");
+  public static final Entry<? extends Model> ENTRY3 = create(
+    new Model("Volkswagen"), "<model>Volkswagen</model>");
+  public static final Entry<? extends Model> ENTRY4 = create(
+    new Model("Renault"), "<model>Renault</model>");
 
   @Override
-  protected void verifyDeserialized( @Nonnull List<? extends Model> deserialized ) throws Exception {
+  protected void verifyDeserialized(@Nonnull Model deserialized, @Nonnull Model original) {
     //We *might* override this method and verify the deserialized objects on our own
     //The default implementation simply calls "equals" for each single object.
-    super.verifyDeserialized( deserialized );
+    super.verifyDeserialized(deserialized, original);
   }
 }

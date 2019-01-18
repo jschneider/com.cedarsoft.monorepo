@@ -31,13 +31,13 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -49,7 +49,6 @@ public class EmailSerializerTest extends AbstractJsonSerializerTest2<Email> {
     return new EmailSerializer();
   }
 
-  @DataPoint
   public static Entry<?> json() {
     return create( new Email( "test@test.de" ), "\"test@test.de\"".getBytes(StandardCharsets.UTF_8) );
   }

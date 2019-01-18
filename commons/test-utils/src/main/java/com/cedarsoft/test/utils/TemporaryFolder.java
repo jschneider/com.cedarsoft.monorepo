@@ -24,10 +24,11 @@
 package com.cedarsoft.test.utils;
 
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Represents a temporary folder
@@ -36,7 +37,8 @@ public class TemporaryFolder {
   @Nullable
   private File root;
 
-  protected File getRoot() throws IOException {
+  @Nonnull
+  public File getRoot() throws IOException {
     if (root == null) {
       root = createTemporaryFolder(null);
     }
@@ -67,6 +69,13 @@ public class TemporaryFolder {
   @Nonnull
   public File newFolder() throws IOException {
     return createTemporaryFolder(getRoot());
+  }
+
+  @Nonnull
+  public File newFolder(@Nonnull String name) throws IOException {
+    File folder = new File(getRoot(), name);
+    folder.mkdir();
+    return folder;
   }
 
   @Nonnull

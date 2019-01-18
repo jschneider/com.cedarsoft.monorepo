@@ -31,13 +31,13 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
+import java.awt.Color;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.awt.Color;
 
 public class ColorSerializerTest extends AbstractXmlSerializerTest2<Color> {
   @Nonnull
@@ -46,7 +46,6 @@ public class ColorSerializerTest extends AbstractXmlSerializerTest2<Color> {
     return new ColorSerializer();
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create(
     new Color( 100, 42, 130 ),
     "<color>\n" +

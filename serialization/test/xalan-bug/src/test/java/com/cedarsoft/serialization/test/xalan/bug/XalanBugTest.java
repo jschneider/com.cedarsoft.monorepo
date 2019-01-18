@@ -30,12 +30,13 @@
  */
 package com.cedarsoft.serialization.test.xalan.bug;
 
-import com.cedarsoft.xml.XmlCommons;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
 
 import javax.xml.transform.Transformer;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.xml.XmlCommons;
 
 /**
  * Reproduces https://github.com/jschneider/com.cedarsoft.serialization/issues/2

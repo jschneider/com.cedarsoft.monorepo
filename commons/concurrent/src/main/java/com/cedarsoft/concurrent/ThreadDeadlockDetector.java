@@ -31,8 +31,6 @@
 
 package com.cedarsoft.concurrent;
 
-import javax.annotation.Nonnull;
-
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
@@ -42,6 +40,10 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArraySet;
+
+import javax.annotation.Nonnull;
+
+import com.cedarsoft.unit.si.ms;
 
 /**
  * <p>ThreadDeadlockDetector class.</p>
@@ -54,7 +56,8 @@ public class ThreadDeadlockDetector {
    * It may be expensive to check for deadlocks, and it is not
    * critical to know so quickly.
    */
-  private static final long DEFAULT_DEADLOCK_CHECK_PERIOD = 10000;
+  @ms
+  private static final long DEFAULT_DEADLOCK_CHECK_PERIOD = 10_000;
   @Nonnull
   private final Timer threadCheck = new Timer( "ThreadDeadlockDetector", true );
   @Nonnull
@@ -62,7 +65,7 @@ public class ThreadDeadlockDetector {
 
   private final long deadlockCheckPeriod;
   @Nonnull
-  private final Collection<Listener> listeners = new CopyOnWriteArraySet<Listener>();
+  private final Collection<Listener> listeners = new CopyOnWriteArraySet<>();
 
   /**
    * <p>Constructor for ThreadDeadlockDetector.</p>
@@ -81,12 +84,12 @@ public class ThreadDeadlockDetector {
   }
 
   public void start() {
-    threadCheck.schedule( new TimerTask() {
+    threadCheck.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
         checkForDeadlocks();
       }
-    }, this.deadlockCheckPeriod );
+    }, this.deadlockCheckPeriod, this.deadlockCheckPeriod);
   }
 
   public void stop() {
@@ -103,7 +106,6 @@ public class ThreadDeadlockDetector {
       }
       fireDeadlockDetected( threads );
     }
-    fireCheckRun(  );
   }
 
   private long[] findDeadlockedThreads() {
@@ -113,14 +115,6 @@ public class ThreadDeadlockDetector {
       return mXBean.findDeadlockedThreads();
     } else {
       return mXBean.findMonitorDeadlockedThreads();
-    }
-  }
-
-  private void fireCheckRun() {
-    for ( Listener listener : listeners ) {
-      if ( listener instanceof DetailedListener ) {
-        ( ( DetailedListener ) listener ).checkHasBeenRun();
-      }
     }
   }
 
@@ -163,11 +157,8 @@ public class ThreadDeadlockDetector {
   /**
    * This is called whenever a problem with threads is detected.
    */
+  @FunctionalInterface
   public interface Listener {
     void deadlockDetected( @Nonnull Set<? extends Thread> deadlockedThreads );
-  }
-
-  public interface DetailedListener extends Listener{
-    void checkHasBeenRun();
   }
 }

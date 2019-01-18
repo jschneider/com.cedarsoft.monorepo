@@ -31,10 +31,10 @@
 
 package com.cedarsoft.business.calc;
 
-import org.joda.time.LocalDate;
-import org.junit.*;
-
 import static org.junit.Assert.*;
+
+import org.joda.time.LocalDate;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -43,7 +43,7 @@ public class InterestRateProviderTest {
   private MappedInterestRateProvider provider;
   private static final double DEFAULT_RATE = 0.045;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     provider = new MappedInterestRateProvider( DEFAULT_RATE );
   }

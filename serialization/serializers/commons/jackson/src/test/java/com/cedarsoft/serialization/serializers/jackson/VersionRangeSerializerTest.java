@@ -31,18 +31,16 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.VersionRange;
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import com.cedarsoft.version.VersionRange;
 
 public class VersionRangeSerializerTest
   extends AbstractJsonSerializerTest2<VersionRange> {
 
-  @DataPoint
   public static final Entry<? extends VersionRange> ENTRY1 = VersionRangeSerializerTest.create(
     VersionRange.from( 1, 0, 0 ).to( 1, 9, 17 ), VersionRangeSerializerTest.class.getResource( "VersionRange_1.0.0_1.json" ) );
 

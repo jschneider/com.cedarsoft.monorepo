@@ -53,7 +53,7 @@ import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.intellij.psi.codeStyle.VariableKind;
 import com.intellij.psi.search.PsiShortNamesCache;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import javax.annotation.Nonnull;
 import java.util.List;

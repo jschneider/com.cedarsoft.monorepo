@@ -31,16 +31,18 @@
 
 package com.cedarsoft.commons;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import javax.swing.SwingUtilities;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.SwingUtilities;
+
+import com.cedarsoft.annotations.Blocking;
 
 /**
  * Offers static thread utils
@@ -104,7 +106,8 @@ public class ThreadUtils {
    *
    * @param runnable a Runnable object.
    */
-  public static void invokeInEventDispatchThread( @Nonnull Runnable runnable ) {
+  @Blocking
+  public static void invokeInEventDispatchThread(@Nonnull Runnable runnable ) {
     if ( isEventDispatchThread() ) {
       runnable.run();
     } else {

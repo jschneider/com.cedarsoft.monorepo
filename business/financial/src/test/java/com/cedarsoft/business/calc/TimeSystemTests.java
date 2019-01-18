@@ -31,14 +31,15 @@
 
 package com.cedarsoft.business.calc;
 
+import static org.junit.Assert.*;
+
 import javax.annotation.Nonnull;
+
 import org.joda.time.Interval;
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 /**
  *

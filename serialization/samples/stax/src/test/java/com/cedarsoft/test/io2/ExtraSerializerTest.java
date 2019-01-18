@@ -31,36 +31,26 @@
 
 package com.cedarsoft.test.io2;
 
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest;
-import com.cedarsoft.serialization.Serializer;
+import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Money;
-
-import javax.annotation.Nonnull;
 
 /**
  *
  */
-public class ExtraSerializerTest extends AbstractXmlSerializerTest<Extra> {
+public class ExtraSerializerTest extends AbstractXmlSerializerTest2<Extra> {
   @Nonnull
   @Override
   protected StreamSerializer<Extra> getSerializer() throws Exception {
     return new ExtraSerializer( new MoneySerializer() );
   }
 
-  @Nonnull
-  @Override
-  protected String getExpectedSerialized() {
-    return "<extra>\n" +
-      "  <description>descr</description>\n" +
-      "  <price cents=\"7099\" />\n" +
-      "</extra>";
-  }
-
-  @Nonnull
-  @Override
-  protected Extra createObjectToSerialize() throws Exception {
-    return new Extra( "descr", new Money( 70, 99 ) );
-  }
+  public static final Entry<? extends Extra> ENTRY1 = create(new Extra("descr", new Money(70, 99)), "<extra>\n" +
+                                                                                                      "  <description>descr</description>\n" +
+                                                                                                      "  <price cents=\"7099\" />\n" +
+                                                                                                      "</extra>");
 }

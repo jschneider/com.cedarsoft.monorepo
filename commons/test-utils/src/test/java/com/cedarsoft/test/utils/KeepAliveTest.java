@@ -33,17 +33,14 @@ package com.cedarsoft.test.utils;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.InputStream;
-import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.*;
 
 import com.google.common.io.ByteStreams;
-
-import sun.net.www.http.HttpClient;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -51,16 +48,7 @@ import sun.net.www.http.HttpClient;
 @ExtendWith(ThreadExtension.class)
 @ExtendWith(CatchAllExceptionsExtension.class)
 public class KeepAliveTest {
-  @Test
-  public void testKeepAlive() throws Exception {
-    try {
-      HttpClient client = HttpClient.New( new URL( "http://www.google.de" ) );
-      assertThat( client ).isNotNull();
-    } catch ( ConnectException e ) {
-      assertThat( e ).hasMessage( "Connection refused" );
-    }
-  }
-
+  @Disabled
   @Test
   public void testTestIt() throws Exception {
     URLConnection urlConnection = new URL( "http://www.google.de" ).openConnection();

@@ -31,15 +31,15 @@
 
 package com.cedarsoft.serialization.stax.test;
 
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -59,7 +59,6 @@ public class UserSerializerTest extends AbstractXmlSerializerTest2<User> {
     super.verifyDeserialized( deserialized, original );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( new User( "Markus Mustermann",
                                                           Arrays.<Email>asList(
                                                             new Email( "test@test.de" ),

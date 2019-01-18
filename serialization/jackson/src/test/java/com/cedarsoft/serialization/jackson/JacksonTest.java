@@ -31,19 +31,21 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.test.utils.JsonUtils;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 
 /**
@@ -54,7 +56,7 @@ public class JacksonTest {
   private ByteArrayOutputStream out;
   private JsonGenerator generator;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     jsonFactory = JacksonSupport.getJsonFactory();
     out = new ByteArrayOutputStream();

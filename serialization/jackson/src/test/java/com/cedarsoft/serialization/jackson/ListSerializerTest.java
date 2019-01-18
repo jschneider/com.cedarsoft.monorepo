@@ -31,25 +31,25 @@
 
 package com.cedarsoft.serialization.jackson;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.test.utils.JsonUtils;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
-import com.cedarsoft.serialization.test.utils.Entry;
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
-import org.junit.*;
-import org.junit.experimental.theories.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.*;
+
+import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
+import com.cedarsoft.serialization.test.utils.Entry;
+import com.cedarsoft.test.utils.JsonUtils;
+import com.cedarsoft.version.Version;
+import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
 
 /**
  *
@@ -101,10 +101,8 @@ public class ListSerializerTest extends AbstractJsonSerializerTest2<List<? exten
     assertEquals( null, deserialized.get( 6 ) );
   }
 
-  @DataPoint
   public static final Entry<?> ENTRY1 = create( Arrays.asList( "a", "b", "c", 54, 234.0, 32.0, false ), "[ \"a\", \"b\", \"c\", 54, 234.0, 32.0, false ]" );
 
-  @DataPoint
   public static final Entry<?> ONLY_STRINGS = create( Arrays.asList( "a", "b", "c" ), "[ \"a\", \"b\", \"c\" ]" );
 
 }

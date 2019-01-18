@@ -31,16 +31,16 @@
 
 package com.cedarsoft.zip;
 
-import org.junit.*;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.junit.*;
 
 /**
  * Assertions for zip files
@@ -74,7 +74,7 @@ public class ZipAssertions {
       }
       throw new AssertionError( "Uups. Unexpected element in actual: " + actualEntry.getName() );
     }
-    Assert.assertEquals( expected.size(), actual.size() );
+    Assert.assertEquals(expected.size(), actual.size());
   }
 
   public static void compare( @Nullable ZipEntry expectedEntry, @Nullable ZipEntry actualEntry ) {

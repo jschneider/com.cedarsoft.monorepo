@@ -31,26 +31,27 @@
 
 package com.cedarsoft.serialization.test.performance;
 
-import com.cedarsoft.serialization.test.performance.jaxb.Extension;
-import com.cedarsoft.serialization.test.performance.jaxb.FileType;
-import com.cedarsoft.test.utils.AssertUtils;
-import org.jibx.runtime.BindingDirectory;
-import org.jibx.runtime.IBindingFactory;
-import org.jibx.runtime.IMarshallingContext;
-import org.jibx.runtime.JiBXException;
-import org.junit.*;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.StringWriter;
 
-import static org.junit.Assert.*;
+import org.jibx.runtime.BindingDirectory;
+import org.jibx.runtime.IBindingFactory;
+import org.jibx.runtime.IMarshallingContext;
+import org.jibx.runtime.JiBXException;
+import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import com.cedarsoft.serialization.test.performance.jaxb.Extension;
+import com.cedarsoft.serialization.test.performance.jaxb.FileType;
+import com.cedarsoft.test.utils.AssertUtils;
 
 /**
  *
  */
 public class JibxTest {
-  @Ignore
+  @Disabled
   @Test
   public void testIt() throws JiBXException, IOException, SAXException {
     IBindingFactory bindingFactory = BindingDirectory.getFactory( Extension.class );

@@ -31,14 +31,13 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import com.cedarsoft.serialization.StreamSerializer;
-import com.cedarsoft.version.Version;
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.app.ApplicationInformation;
+import com.cedarsoft.serialization.StreamSerializer;
 import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
-import org.junit.experimental.theories.*;
-
-import javax.annotation.Nonnull;
+import com.cedarsoft.version.Version;
 
 /**
  *
@@ -50,7 +49,6 @@ public class ApplicationInformationSerializerTest extends AbstractXmlSerializerT
     return new ApplicationSerializer( new VersionSerializer() );
   }
 
-  @DataPoint
   public static final Entry<?> entry1 = create(
     new ApplicationInformation("gimp", new Version(1, 2, 3 ) ),
     "<application >\n" +

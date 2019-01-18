@@ -68,4 +68,11 @@ public class Entry<T> {
   public T getObject() {
     return object;
   }
+
+  @Override
+  public String toString() {
+    return "Entry{" +
+             "object=" + object +
+             '}';
+  }
 }

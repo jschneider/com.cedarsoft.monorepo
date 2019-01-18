@@ -31,12 +31,13 @@
 
 package com.cedarsoft.business.calc.roi;
 
+import static org.junit.Assert.*;
+
+import org.joda.time.LocalDate;
+import org.junit.jupiter.api.*;
+
 import com.cedarsoft.business.Money;
 import com.cedarsoft.business.payment.DefaultPayment;
-import org.joda.time.LocalDate;
-import org.junit.*;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -46,7 +47,7 @@ public class PangVCalculatorTest {
   private PAngV2000Calculator calculator;
   private LocalDate base;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     base = new LocalDate( 2007, 1, 1 );
     calculator = new PAngV2000Calculator( base );

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.cedarsoft.tests</groupId>
+    <artifactId>ktor</artifactId>
+    <version>0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>ktor-server</artifactId>
+  <name>test.Ktor.server</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>ktor</artifactId>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>build-executable-jar</id>
+      <activation>
+        <property>
+          <name>createContainer</name>
+        </property>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>make-jar-with-dependencies</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+
+                <configuration>
+                  <archive>
+                    <manifest>
+                      <mainClass>com/cedarsoft/test/ktor/KtorServerMainKt</mainClass>
+                      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                      <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                    </manifest>
+                  </archive>
+
+                  <finalName>ktor-server-demo</finalName>
+                  <appendAssemblyId>false</appendAssemblyId>
+                  <attach>true</attach>
+
+                  <recompressZippedFiles>true</recompressZippedFiles>
+
+
+                  <descriptors>
+                    <descriptor>src/main/assembly/executable_jar.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.27.2</version>
+
+            <configuration>
+              <images>
+                <image>
+                  <name>cedarsoft/ktor-rasp-server</name>
+                </image>
+              </images>
+            </configuration>
+
+            <executions>
+              <execution>
+                <id>build-docker-image</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+
+
+    </profile>
+  </profiles>
+
+</project>

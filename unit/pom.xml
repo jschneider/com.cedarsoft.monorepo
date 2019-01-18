@@ -3,12 +3,12 @@
 
   <parent>
     <groupId>com.cedarsoft</groupId>
-    <artifactId>monorepo</artifactId>
+    <artifactId>open</artifactId>
     <version>0</version>
   </parent>
 
   <groupId>com.cedarsoft.unit</groupId>
-  <artifactId>parent</artifactId>
+  <artifactId>parent-unit</artifactId>
   <name>unit.Parent</name>
   <description>Unit - Parent module</description>
   <packaging>pom</packaging>
@@ -27,6 +27,12 @@
   </distributionManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+    </dependency>
+
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
