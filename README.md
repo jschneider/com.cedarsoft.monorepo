@@ -17,9 +17,6 @@ Documentation and projects available at [cedarsoft.org]
 [cedarsoft.org]: http://www.cedarsoft.org
 
 
-[![Build Status](https://travis-ci.org/jschneider/com.cedarsoft.monorepo.svg?branch=develop)](https://travis-ci.org/jschneider/com.cedarsoft.monorepo)
-
-
 # Release Notes
 
 ## 8.7.0 (2018-11-06)
