@@ -33,6 +33,7 @@ package com.cedarsoft.version;
 
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -185,38 +186,24 @@ public class Version implements Comparable<Version>, Serializable {
     return Integer.valueOf( build ).compareTo( o.build );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public boolean equals( Object o ) {
-    if ( this == o ) return true;
-    if ( !( o instanceof Version ) ) return false;
-
-    if ( !this.getClass().equals( o.getClass() ) ) {
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof Version)) {
       return false;
     }
-
-    Version version = ( Version ) o;
-
-    if ( build != version.build ) return false;
-    if ( major != version.major ) return false;
-    if ( minor != version.minor ) return false;
-    if ( suffix != null ? !suffix.equals( version.suffix ) : version.suffix != null ) return false;
-
-    return true;
+    Version version = (Version) obj;
+    return major == version.major &&
+             minor == version.minor &&
+             build == version.build &&
+             Objects.equals(suffix, version.suffix);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public int hashCode() {
-    int result = major;
-    result = 31 * result + minor;
-    result = 31 * result + build;
-    result = 31 * result + ( suffix != null ? suffix.hashCode() : 0 );
-    return result;
+    return Objects.hash(major, minor, build, suffix);
   }
 
   /**
