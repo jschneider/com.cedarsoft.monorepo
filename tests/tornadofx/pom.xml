@@ -13,6 +13,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.cedarsoft.dependencies-sets</groupId>
       <artifactId>openjfx</artifactId>
       <type>pom</type>
@@ -27,10 +32,19 @@
       <groupId>no.tornado</groupId>
       <artifactId>tornadofx</artifactId>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>com.github.thomasnield</groupId>-->
-      <!--<artifactId>rxkotlinfx</artifactId>-->
-    <!--</dependency>-->
+
+    <dependency>
+      <groupId>com.github.davidmoten</groupId>
+      <artifactId>rxjava2-extras</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.thomasnield</groupId>
+      <artifactId>rxkotlinfx</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.reactivex.rxjava2</groupId>
+      <artifactId>rxkotlin</artifactId>
+    </dependency>
 
   </dependencies>
 
