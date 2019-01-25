@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.javafx.busy;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.annotation.Nonnull;
 
 import javafx.animation.KeyFrame;
@@ -80,23 +82,32 @@ public class BusySupport {
     };
     busyStatusProperty.addListener(listener);
 
+    AtomicBoolean finished = new AtomicBoolean();
+
     //Check after (default: 500 millis) to get very fast events
     new Timeline(new KeyFrame(manualCheckDelay, event -> {
       if (!busyStatusProperty.get()) {
+        finished.set(true);
         callback.finished();
         busyStatusProperty.removeListener(listener);
       }
     })).play();
 
-
     //Timeout check
     new Timeline(new KeyFrame(timeoutDelay, event -> {
+      if (finished.get()) {
+        //Already notified, just return
+        return;
+      }
+
       if (!busyStatusProperty.get()) {
+        finished.set(true);
         callback.finished();
         busyStatusProperty.removeListener(listener);
       }
       else {
         //Still busy, timeout
+        finished.set(true);
         callback.timedOut();
         busyStatusProperty.removeListener(listener);
       }
