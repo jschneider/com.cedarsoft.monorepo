@@ -18,12 +18,14 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.ReadOnlyFloatProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.property.ReadOnlyLongProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableObjectValue;
 import javafx.beans.value.ObservableValue;
@@ -49,6 +51,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * Helper stuff for the components
@@ -147,7 +150,7 @@ public class Components {
   public static Label labelInteger(@Nonnull IntegerProperty integerProperty) {
     Label label = new Label();
     minWidth2pref(label);
-    NumberStringConverterForIntegers converter = new NumberStringConverterForIntegers();
+    NumberStringConverterForWholeNumbers converter = new NumberStringConverterForWholeNumbers();
     integerProperty.addListener((observable, oldValue, newValue) -> label.setText(converter.toString(newValue)));
     label.setText(converter.toString(integerProperty.get()));
     return label;
@@ -395,15 +398,30 @@ public class Components {
 
   @Nonnull
   public static TextField textFieldIntegerReadonly(@Nonnull ReadOnlyIntegerProperty integerProperty) {
-    return textFieldIntegerReadonly(integerProperty, new NumberStringConverterForIntegers());
+    return textFieldIntegerReadonly(integerProperty, new NumberStringConverterForWholeNumbers());
   }
 
   @Nonnull
-  public static TextField textFieldIntegerReadonly(@Nonnull ReadOnlyIntegerProperty integerProperty, @Nonnull NumberStringConverterForIntegers integerConverter) {
+  public static TextField textFieldIntegerReadonly(@Nonnull ReadOnlyIntegerProperty integerProperty, @Nonnull NumberStringConverterForWholeNumbers integerConverter) {
     TextField textField = new TextField();
     textField.alignmentProperty().set(Pos.TOP_RIGHT);
     integerProperty.addListener((observable, oldValue, newValue) -> textField.setText(integerConverter.toString(newValue)));
     textField.setText(integerConverter.toString(integerProperty.get()));
+    textField.setEditable(false);
+    return textField;
+  }
+
+  @Nonnull
+  public static TextField textFieldLongReadonly(@Nonnull ReadOnlyLongProperty longProperty) {
+    return textFieldLongReadonly(longProperty, new NumberStringConverterForWholeNumbers());
+  }
+
+  @Nonnull
+  public static TextField textFieldLongReadonly(@Nonnull ReadOnlyLongProperty longProperty, @Nonnull NumberStringConverterForWholeNumbers integerConverter) {
+    TextField textField = new TextField();
+    textField.alignmentProperty().set(Pos.TOP_RIGHT);
+    longProperty.addListener((observable, oldValue, newValue) -> textField.setText(integerConverter.toString(newValue)));
+    textField.setText(integerConverter.toString(longProperty.get()));
     textField.setEditable(false);
     return textField;
   }
@@ -476,7 +494,7 @@ public class Components {
 
   @Nonnull
   public static TextField textFieldIntegerDelayed(@Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter) {
-    NumberStringConverterForIntegers converter = new NumberStringConverterForIntegers();
+    NumberStringConverterForWholeNumbers converter = new NumberStringConverterForWholeNumbers();
     TextField textField = textFieldDelayed(integerProperty, converter);
     textField.alignmentProperty().set(Pos.CENTER_RIGHT);
     applyIntegerFormatter(textField, integerProperty, filter, converter);
@@ -486,8 +504,54 @@ public class Components {
   /**
    * Adds a text formatter to the text field that only allows adding integers
    */
-  public static void applyIntegerFormatter(@Nonnull TextField textField, @Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverterForIntegers converter) {
+  public static void applyIntegerFormatter(@Nonnull TextField textField, @Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverterForWholeNumbers converter) {
     textField.setTextFormatter(new TextFormatter<>(converter, integerProperty.get(), new IntegerTextFormatterFilter(converter, filter)));
+  }
+
+  @Nonnull
+  public static TextField textFieldIntegerDelayedHex(@Nonnull IntegerProperty integerProperty) {
+    return textFieldIntegerDelayedHex(integerProperty, i -> true);
+  }
+
+  @Nonnull
+  public static TextField textFieldIntegerDelayedHex(@Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter) {
+    NumberStringConverterForIntegerHex converter = new NumberStringConverterForIntegerHex();
+    TextField textField = textFieldDelayed(integerProperty, converter);
+    textField.alignmentProperty().set(Pos.CENTER_RIGHT);
+    applyIntegerHexFormatter(textField, integerProperty, filter, converter);
+    return textField;
+  }
+
+  /**
+   * Adds a text formatter to the text field that only allows adding integers in hex format
+   */
+  public static void applyIntegerHexFormatter(@Nonnull TextField textField, @Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverterForIntegerHex converter) {
+    textField.setTextFormatter(new TextFormatter<>(converter, integerProperty.get(), new IntegerHexTextFormatterFilter(converter, filter)));
+  }
+
+  @Nonnull
+  public static TextField textFieldLongDelayedHex(@Nonnull LongProperty longProperty) {
+    return textFieldLongDelayedHex(longProperty, l -> true);
+  }
+
+  @Nonnull
+  public static TextField textFieldLongDelayedHex(@Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter) {
+    NumberStringConverterForLongHex converter = new NumberStringConverterForLongHex();
+    TextField textField = textFieldDelayed(longProperty, converter);
+    textField.alignmentProperty().set(Pos.CENTER_RIGHT);
+    applyLongHexFormatter(textField, longProperty, filter, converter);
+    return textField;
+  }
+
+  /**
+   * Adds a text formatter to the text field that only allows adding longs in hex format
+   */
+  public static void applyLongFormatter(@Nonnull TextField textField, @Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter, @Nonnull NumberStringConverterForWholeNumbers converter) {
+    textField.setTextFormatter(new TextFormatter<>(converter, longProperty.get(), new LongTextFormatterFilter(converter, filter)));
+  }
+
+  public static void applyLongHexFormatter(@Nonnull TextField textField, @Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter, @Nonnull NumberStringConverterForLongHex converter) {
+    textField.setTextFormatter(new TextFormatter<>(converter, longProperty.get(), new LongHexTextFormatterFilter(converter, filter)));
   }
 
   @Nonnull

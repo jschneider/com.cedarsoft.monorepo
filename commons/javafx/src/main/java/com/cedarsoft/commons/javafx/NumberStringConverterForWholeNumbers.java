@@ -8,26 +8,26 @@ import javax.annotation.Nonnull;
 import javafx.util.converter.NumberStringConverter;
 
 /**
- * A {@link NumberStringConverter} for integer values only.
+ * A {@link NumberStringConverter} for integer and long values.
  *
  * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
  */
-public class NumberStringConverterForIntegers extends NumberStringConverter {
+public class NumberStringConverterForWholeNumbers extends NumberStringConverter {
   @Nonnull
-  private final NumberFormat integerNumberFormat;
+  private final NumberFormat wholeNumberFormat; // works for Integers _and_ Longs
 
-  public NumberStringConverterForIntegers() {
+  public NumberStringConverterForWholeNumbers() {
     this(Locale.getDefault());
   }
 
-  public NumberStringConverterForIntegers(@Nonnull Locale locale) {
-    integerNumberFormat = NumberFormat.getIntegerInstance(locale);
+  public NumberStringConverterForWholeNumbers(@Nonnull Locale locale) {
+    wholeNumberFormat = NumberFormat.getIntegerInstance(locale); // works for Integers _and_ Longs
   }
 
   @Nonnull
   @Override
   protected NumberFormat getNumberFormat() {
-    return integerNumberFormat;
+    return wholeNumberFormat;
   }
 
   @Override

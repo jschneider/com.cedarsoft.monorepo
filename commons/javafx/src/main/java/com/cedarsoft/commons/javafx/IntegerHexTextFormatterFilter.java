@@ -7,9 +7,9 @@ import javax.annotation.Nonnull;
 /**
  * Processes text formatter changes. Ensures only valid integers are added
  */
-class IntegerTextFormatterFilter extends NumberTextFormatterFilter {
+class IntegerHexTextFormatterFilter extends NumberTextFormatterFilter {
 
-  IntegerTextFormatterFilter(@Nonnull NumberStringConverterForWholeNumbers converter, @Nonnull Predicate<Integer> filter) {
+  IntegerHexTextFormatterFilter(@Nonnull NumberStringConverterForIntegerHex converter, @Nonnull Predicate<Integer> filter) {
     super(converter, number -> filter.test(number.intValue()), 0);
   }
 
