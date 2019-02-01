@@ -23,6 +23,7 @@
     <module>aparapi</module>
     <module>ktor</module>
     <module>typescript-demo</module>
+    <module>coroutines</module>
     <!--<module>dl4j</module>-->
   </modules>
 

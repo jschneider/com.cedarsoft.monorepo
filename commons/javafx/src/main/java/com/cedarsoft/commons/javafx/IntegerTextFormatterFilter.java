@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
  */
 class IntegerTextFormatterFilter extends NumberTextFormatterFilter {
 
-  IntegerTextFormatterFilter(@Nonnull NumberStringConverterForWholeNumbers converter, @Nonnull Predicate<Integer> filter) {
+  IntegerTextFormatterFilter(@Nonnull NumberStringConverterForIntegers converter, @Nonnull Predicate<Integer> filter) {
     super(converter, number -> filter.test(number.intValue()), 0);
   }
 

@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
  */
 class LongTextFormatterFilter extends NumberTextFormatterFilter {
 
-  LongTextFormatterFilter(@Nonnull NumberStringConverterForWholeNumbers converter, @Nonnull Predicate<Long> filter) {
+  LongTextFormatterFilter(@Nonnull NumberStringConverterForIntegers converter, @Nonnull Predicate<Long> filter) {
     super(converter, number -> filter.test(number.longValue()), 0);
   }
 

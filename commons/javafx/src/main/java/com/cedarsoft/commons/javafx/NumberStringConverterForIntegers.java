@@ -12,22 +12,22 @@ import javafx.util.converter.NumberStringConverter;
  *
  * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
  */
-public class NumberStringConverterForWholeNumbers extends NumberStringConverter {
+public class NumberStringConverterForIntegers extends NumberStringConverter {
   @Nonnull
-  private final NumberFormat wholeNumberFormat; // works for Integers _and_ Longs
+  private final NumberFormat integerNumberFormat; // works for Integers _and_ Longs
 
-  public NumberStringConverterForWholeNumbers() {
+  public NumberStringConverterForIntegers() {
     this(Locale.getDefault());
   }
 
-  public NumberStringConverterForWholeNumbers(@Nonnull Locale locale) {
-    wholeNumberFormat = NumberFormat.getIntegerInstance(locale); // works for Integers _and_ Longs
+  public NumberStringConverterForIntegers(@Nonnull Locale locale) {
+    integerNumberFormat = NumberFormat.getIntegerInstance(locale); // works for Integers _and_ Longs
   }
 
   @Nonnull
   @Override
   protected NumberFormat getNumberFormat() {
-    return wholeNumberFormat;
+    return integerNumberFormat;
   }
 
   @Override
