@@ -17,6 +17,7 @@ import com.sun.javafx.binding.BidirectionalBinding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
@@ -440,6 +441,35 @@ public class Components {
     return textField;
   }
 
+  @Nonnull
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty) {
+    return textFieldFloatDelayed(floatProperty, d -> true);
+  }
+
+  @Nonnull
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+    return textFieldFloatDelayed(floatProperty, d -> true, converter);
+  }
+
+  @Nonnull
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter) {
+    return textFieldFloatDelayed(floatProperty, filter, new NumberStringConverterForFloatingPointNumbers());
+  }
+
+  @Nonnull
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+    TextField textField = textFieldDelayed(floatProperty, converter);
+    textField.alignmentProperty().set(Pos.CENTER_RIGHT);
+    applyFloatFormatter(textField, floatProperty, filter, converter);
+    return textField;
+  }
+
+  /**
+   * Adds a text formatter to the text field that only allows adding floats
+   */
+  public static void applyFloatFormatter(@Nonnull TextField textField, @Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+    textField.setTextFormatter(new TextFormatter<>(converter, floatProperty.get(), new FloatTextFormatterFilter(converter, filter)));
+  }
 
   @Nonnull
   public static TextField textFieldDoubleReadonly(@Nonnull ReadOnlyDoubleProperty doubleProperty) {
