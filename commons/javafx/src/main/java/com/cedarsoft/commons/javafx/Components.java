@@ -50,6 +50,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.util.StringConverter;
 
@@ -198,6 +199,14 @@ public class Components {
   public static Label headline2(@Nonnull String headline) {
     Label label = new Label(headline);
     label.getStyleClass().add("headline-2");
+    return label;
+  }
+
+  @Nonnull
+  public static Label createBigLabel(@Nonnull String title, @Nonnull Color color, double size) {
+    Label label = Components.label(title);
+    label.setStyle("-fx-text-fill: " + ColorUtil.toRGB(color));
+    label.setFont(Font.font(label.getFont().getFamily(), FontWeight.BOLD, size));
     return label;
   }
 
@@ -385,6 +394,14 @@ public class Components {
     TextField textField = new TextField();
     textField.setEditable(false);
     textField.textProperty().bind(Bindings.createStringBinding(() -> EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.get()), enumProperty));
+    return textField;
+  }
+
+  @Nonnull
+  public static TextField textFieldReadonly(@Nonnull String text) {
+    TextField textField = new TextField();
+    textField.setText(text);
+    textField.setEditable(false);
     return textField;
   }
 
