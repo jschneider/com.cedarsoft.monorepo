@@ -53,6 +53,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * Helper stuff for the components
@@ -419,11 +420,11 @@ public class Components {
   }
 
   @Nonnull
-  public static TextField textFieldIntegerReadonly(@Nonnull ReadOnlyIntegerProperty integerProperty, @Nonnull NumberStringConverterForIntegers integerConverter) {
+  public static TextField textFieldIntegerReadonly(@Nonnull ReadOnlyIntegerProperty integerProperty, @Nonnull NumberStringConverter numberStringConverter) {
     TextField textField = new TextField();
     textField.alignmentProperty().set(Pos.TOP_RIGHT);
-    integerProperty.addListener((observable, oldValue, newValue) -> textField.setText(integerConverter.toString(newValue)));
-    textField.setText(integerConverter.toString(integerProperty.get()));
+    integerProperty.addListener((observable, oldValue, newValue) -> textField.setText(numberStringConverter.toString(newValue)));
+    textField.setText(numberStringConverter.toString(integerProperty.get()));
     textField.setEditable(false);
     return textField;
   }
