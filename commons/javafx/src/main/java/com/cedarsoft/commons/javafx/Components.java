@@ -150,13 +150,23 @@ public class Components {
 
   @Nonnull
   public static Label labelInteger(@Nonnull IntegerProperty integerProperty) {
+    return labelNumber(integerProperty, new NumberStringConverterForIntegers());
+  }
+
+  @Nonnull
+  public static Label labelLong(@Nonnull LongProperty longProperty) {
+    return labelNumber(longProperty, new NumberStringConverterForIntegers());
+  }
+
+  @Nonnull
+  public static Label labelNumber(@Nonnull Property<Number> numberProperty, @Nonnull NumberStringConverter numberStringConverter) {
     Label label = new Label();
     minWidth2pref(label);
-    NumberStringConverterForIntegers converter = new NumberStringConverterForIntegers();
-    integerProperty.addListener((observable, oldValue, newValue) -> label.setText(converter.toString(newValue)));
-    label.setText(converter.toString(integerProperty.get()));
+    numberProperty.addListener((observable, oldValue, newValue) -> label.setText(numberStringConverter.toString(newValue)));
+    label.setText(numberStringConverter.toString(numberProperty.getValue()));
     return label;
   }
+
 
   /**
    * Sets the min width to use the pref size
@@ -435,7 +445,7 @@ public class Components {
   }
 
   @Nonnull
-  public static TextField textFieldLongReadonly(@Nonnull ReadOnlyLongProperty longProperty, @Nonnull NumberStringConverterForIntegers integerConverter) {
+  public static TextField textFieldLongReadonly(@Nonnull ReadOnlyLongProperty longProperty, @Nonnull NumberStringConverter integerConverter) {
     TextField textField = new TextField();
     textField.alignmentProperty().set(Pos.TOP_RIGHT);
     longProperty.addListener((observable, oldValue, newValue) -> textField.setText(integerConverter.toString(newValue)));
