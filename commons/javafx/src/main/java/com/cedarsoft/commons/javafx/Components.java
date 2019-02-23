@@ -695,27 +695,29 @@ public class Components {
   }
 
   @Nonnull
-  public static Slider slider(@Nonnull IntegerProperty integerProperty, int minValue, int maxValue, int step) {
+  public static Slider slider(@Nonnull Property<Number> valueProperty, double minValue, double maxValue, double step) {
     Slider slider = new Slider();
     slider.setMin(minValue);
     slider.setMax(maxValue);
     slider.setMajorTickUnit(step);
+    slider.setMinorTickCount(10);
     slider.setSnapToTicks(true); // skip double values
-    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(integerProperty,
+
+    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(valueProperty,
                                                                         slider.valueProperty(),
                                                                         (observable, oldValue, newValue) -> {
                                                                           // property -> slider
-                                                                          slider.valueProperty().set(getNextStepForValue(newValue.intValue(), (int) slider.getMin(), (int) slider.getMax(), step));
+                                                                          slider.valueProperty().set(findClosestStepForValue(newValue.doubleValue(), (int) slider.getMin(), (int) slider.getMax(), step));
                                                                         },
                                                                         (observable, oldValue, newValue) -> {
                                                                           // slider -> property
-                                                                          integerProperty.set(getNextStepForValue(newValue.intValue(), (int) slider.getMin(), (int) slider.getMax(), step));
+                                                                          valueProperty.setValue(findClosestStepForValue(newValue.doubleValue(), (int) slider.getMin(), (int) slider.getMax(), step));
                                                                         });
     return slider;
   }
 
-  private static int getNextStepForValue(int value, final int min, final int max, final int step) {
-    int nextStep = (value / step) * step;
+  private static double findClosestStepForValue(double value, final double min, final double max, final double step) {
+    double nextStep = (value / step) * step;
     if (nextStep < min) {
       nextStep = min;
     }
