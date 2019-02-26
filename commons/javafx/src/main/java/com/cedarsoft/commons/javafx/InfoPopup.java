@@ -2,6 +2,8 @@ package com.cedarsoft.commons.javafx;
 
 import javax.annotation.Nonnull;
 
+import com.cedarsoft.unit.other.px;
+
 import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -18,12 +20,14 @@ import javafx.stage.Popup;
  * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
  */
 public class InfoPopup extends Popup {
+  @px
+  public static final double DEFAULT_MAX_WIDTH = 500.0;
 
-  private InfoPopup(@Nonnull String message) {
+  private InfoPopup(@Nonnull Node content, double maxWidth) {
     setAutoHide(true);
     setAutoFix(true);
 
-    Parent root = createContent(message);
+    Parent root = createContent(content, maxWidth);
 
     root.getStylesheets().add(getClass().getResource("InfoPopupService.css").toExternalForm());
     root.getStyleClass().add("sick-uiglv2");
@@ -38,24 +42,39 @@ public class InfoPopup extends Popup {
   }
 
   @Nonnull
-  private static Parent createContent(@Nonnull String message) {
-    Text text = new Text(message);
-    TextFlow textFlow = new TextFlow(text);
-    VBox root = new VBox(textFlow);
-    root.setMaxWidth(500);
+  private static Parent createContent(@Nonnull Node content, double maxWidth) {
+    VBox root = new VBox(content);
+    root.setMaxWidth(maxWidth);
     return root;
   }
 
-  public static void showInfoPopup(@Nonnull Node parent, @Nonnull String message) {
-    new InfoPopup(message).show(parent);
+  private static void showInfoPopup(@Nonnull Node parent, @Nonnull Node content, double maxWidth) {
+    new InfoPopup(content, maxWidth).show(parent);
   }
 
   @Nonnull
   public static ImageView createInfoBox(@Nonnull String message) {
+    return createInfoBox(message, DEFAULT_MAX_WIDTH);
+  }
+
+  @Nonnull
+  public static ImageView createInfoBox(@Nonnull String message, double maxWidth) {
+    Text text = new Text(message);
+    TextFlow textFlow = new TextFlow(text);
+    return createInfoBox(textFlow, maxWidth);
+  }
+
+  @Nonnull
+  public static ImageView createInfoBox(@Nonnull Node content) {
+    return createInfoBox(content, DEFAULT_MAX_WIDTH);
+  }
+
+  @Nonnull
+  public static ImageView createInfoBox(@Nonnull Node content, double maxWidth) {
     ImageView imageView = new ImageView(InfoPopup.class.getResource("info_16.png").toExternalForm());
     imageView.setCursor(Cursor.HAND);
 
-    imageView.setOnMouseClicked(event -> showInfoPopup(imageView, message));
+    imageView.setOnMouseClicked(event -> showInfoPopup(imageView, content, maxWidth));
 
     return imageView;
   }
