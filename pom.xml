@@ -41,14 +41,4 @@
     <system>GitHub</system>
     <url>https://github.com/jschneider/com.cedarsoft.monorepo/issues</url>
   </issueManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.dependencies-sets</groupId>
-      <artifactId>kotlin-test</artifactId>
-      <scope>test</scope>
-      <type>pom</type>
-    </dependency>
-  </dependencies>
-
 </project>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.cedarsoft.tests</groupId>
+    <artifactId>kotlinjs</artifactId>
+    <version>0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jsSampleClient</artifactId>
+  <name>test.Kotlin JS Sample Client</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-js</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test-js</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <!--suppress KotlinMavenPluginPhase -->
+        <artifactId>kotlin-maven-plugin</artifactId>
+
+        <configuration combine.self="override">
+          <!--<moduleKind>umd</moduleKind>-->
+          <sourceMap>true</sourceMap>
+
+          <args>
+            <arg>-progressive</arg>
+          </args>
+        </configuration>
+
+        <executions>
+          <execution>
+            <id>compile</id>
+            <phase>none</phase>
+          </execution>
+
+          <execution>
+            <id>compile-js</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>js</goal>
+            </goals>
+
+            <configuration>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+              </sourceDirs>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>test-compile</id>
+            <phase>none</phase>
+          </execution>
+
+          <execution>
+            <id>test-compile-js</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>test-js</goal>
+            </goals>
+
+            <configuration>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+              </sourceDirs>
+            </configuration>
+
+          </execution>
+
+        </executions>
+
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jetbrains.kotlin</groupId>
+                  <artifactId>kotlin-stdlib-js</artifactId>
+                  <version>1.3.20</version>
+                  <outputDirectory>${project.build.directory}/js/lib</outputDirectory>
+                  <includes>*.js,*.js.map</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

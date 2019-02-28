@@ -16,6 +16,14 @@
       <artifactId>aparapi</artifactId>
       <version>1.4.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin-test</artifactId>
+      <type>pom</type>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 </project>

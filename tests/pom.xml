@@ -24,15 +24,11 @@
     <module>ktor</module>
     <module>typescript-demo</module>
     <module>coroutines</module>
+    <module>kotlinjs</module>
     <!--<module>dl4j</module>-->
   </modules>
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.dependencies-sets</groupId>
-      <artifactId>kotlin</artifactId>
-      <type>pom</type>
-    </dependency>
   </dependencies>
 
 </project>
