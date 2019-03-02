@@ -78,6 +78,20 @@ public class Components {
   }
 
   @Nonnull
+  public static HBox hbox5(@Nonnull String labelText, @Nonnull Node... nodes) {
+    return hbox5(label(labelText), nodes);
+  }
+
+  @Nonnull
+  private static HBox hbox5(@Nonnull Node node, @Nonnull Node... nodes) {
+    return hbox5(ImmutableList.<Node>builder()
+                   .add(node)
+                   .addAll(Arrays.asList(nodes))
+                   .build()
+    );
+  }
+
+  @Nonnull
   public static HBox hbox5(@Nonnull Collection<? extends Node> nodes) {
     return hbox(5, nodes);
   }
@@ -216,7 +230,6 @@ public class Components {
   @Nonnull
   public static Label createBigLabel(@Nonnull String title, @Nonnull Color color, double size) {
     Label label = Components.label(title);
-    label.setStyle("-fx-text-fill: " + ColorUtil.toRGB(color));
     label.setFont(Font.font(label.getFont().getFamily(), FontWeight.BOLD, size));
     return label;
   }

@@ -8,6 +8,7 @@ import com.cedarsoft.unit.si.ns;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -26,8 +27,13 @@ public abstract class AbstractCanvas extends Canvas {
 
   protected AbstractCanvas() {
     //Automatically mark as dirty on resize
-    widthProperty().addListener(observable -> markAsDirty());
-    heightProperty().addListener(observable -> markAsDirty());
+    registerDirtyListener(widthProperty());
+    registerDirtyListener(heightProperty());
+
+    //Repaint when snap has changed
+    registerDirtyListener(snapYValuesToPixel);
+    registerDirtyListener(snapXValuesToPixel);
+
 
     new AnimationTimer() {
       @Override
@@ -44,6 +50,10 @@ public abstract class AbstractCanvas extends Canvas {
         }
       }
     }.start();
+  }
+
+  public final void registerDirtyListener(@Nonnull ObservableValue<?> property) {
+    registerDirtyListener(this, property);
   }
 
   /**
@@ -148,5 +158,9 @@ public abstract class AbstractCanvas extends Canvas {
 
 
     gc.strokeOval(getWidth() - 5, getHeight() / 2.0 - 5, 10, 10);
+  }
+
+  public static void registerDirtyListener(@Nonnull AbstractCanvas canvas, @Nonnull ObservableValue<?> property) {
+    property.addListener((observable, oldValue, newValue) -> canvas.markAsDirty());
   }
 }
