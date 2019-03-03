@@ -30,6 +30,7 @@ import javafx.beans.property.ReadOnlyLongProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableObjectValue;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,6 +38,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -359,6 +361,15 @@ public class Components {
     }
 
     return new RadioButton[]{radioButtonTrue, radioButtonFalse};
+  }
+
+  @Nonnull
+  public static <E extends Enum<E>> ComboBox<E> comboBox(@Nonnull ObjectProperty<E> enumProperty, @Nonnull E[] values) {
+    ToggleGroup toggleGroup = new ToggleGroup();
+
+    ComboBox<E> comboBox = new ComboBox<>(FXCollections.observableArrayList(values));
+    comboBox.valueProperty().bindBidirectional(enumProperty);
+    return comboBox;
   }
 
   @Nonnull

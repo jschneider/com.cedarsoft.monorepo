@@ -6,9 +6,9 @@ import com.cedarsoft.unit.other.px;
 import com.cedarsoft.unit.si.ns;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.Observable;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -45,14 +45,14 @@ public abstract class AbstractCanvas extends Canvas {
           return;
         }
         if (repaintRequired) {
-          paint(getGraphicsContext2D());
           repaintRequired = false;
+          paint(getGraphicsContext2D());
         }
       }
     }.start();
   }
 
-  public final void registerDirtyListener(@Nonnull ObservableValue<?> property) {
+  public final void registerDirtyListener(@Nonnull Observable property) {
     registerDirtyListener(this, property);
   }
 
@@ -102,11 +102,6 @@ public abstract class AbstractCanvas extends Canvas {
     return snapXValuesToPixel;
   }
 
-  @px
-  protected double snapXValue(@px double value) {
-    return FxPaintingUtils.snapPosition(value, isSnapXValuesToPixel());
-  }
-
   public boolean isSnapYValuesToPixel() {
     return snapYValuesToPixel.get();
   }
@@ -117,8 +112,23 @@ public abstract class AbstractCanvas extends Canvas {
   }
 
   @px
+  protected double snapXValue(@px double value) {
+    return FxPaintingUtils.snapPosition(value, isSnapXValuesToPixel());
+  }
+
+  @px
+  protected double snapXSize(@px double value) {
+    return FxPaintingUtils.snapSize(value, isSnapXValuesToPixel());
+  }
+
+  @px
   protected double snapYValue(@px double value) {
     return FxPaintingUtils.snapPosition(value, isSnapYValuesToPixel());
+  }
+
+  @px
+  protected double snapYSize(@px double value) {
+    return FxPaintingUtils.snapSize(value, isSnapYValuesToPixel());
   }
 
   @Deprecated
@@ -141,26 +151,26 @@ public abstract class AbstractCanvas extends Canvas {
   protected void paintDebugInfo(@Nonnull GraphicsContext gc) {
     //Around
     gc.beginPath();
-    gc.rect(0, 0, getWidth(), getHeight());
+    gc.rect(snapXValue(0), snapYValue(0), snapXSize(getWidth()), snapYSize(getHeight()));
     gc.closePath();
     gc.setStroke(Color.ORANGE);
     gc.stroke();
 
     //Center
     gc.beginPath();
-    gc.moveTo(0, snapSize(getHeight() / 2.0));
-    gc.lineTo(getWidth(), snapSize(getHeight() / 2.0));
-    gc.moveTo(getWidth() / 2.0, 0);
-    gc.lineTo(getWidth() / 2.0, snapSize(getHeight()));
+    gc.moveTo(snapXValue(0), snapYValue(getHeight() / 2.0));
+    gc.lineTo(snapXValue(getWidth()), snapYValue(getHeight() / 2.0));
+    gc.moveTo(snapXValue(getWidth() / 2.0), 0);
+    gc.lineTo(snapXValue(getWidth() / 2.0), snapYValue(getHeight()));
 
     gc.closePath();
     gc.stroke();
 
 
-    gc.strokeOval(getWidth() - 5, getHeight() / 2.0 - 5, 10, 10);
+    gc.strokeOval(snapXValue(getWidth() - 5), snapYValue(getHeight() / 2.0 - 5), snapXSize(10), snapYSize(10));
   }
 
-  public static void registerDirtyListener(@Nonnull AbstractCanvas canvas, @Nonnull ObservableValue<?> property) {
-    property.addListener((observable, oldValue, newValue) -> canvas.markAsDirty());
+  public static void registerDirtyListener(@Nonnull AbstractCanvas canvas, @Nonnull Observable property) {
+    property.addListener(observable -> canvas.markAsDirty());
   }
 }
