@@ -32,7 +32,9 @@ import javafx.beans.value.ObservableObjectValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -230,7 +232,7 @@ public class Components {
   }
 
   @Nonnull
-  public static Label createBigLabel(@Nonnull String title, @Nonnull Color color, double size) {
+  public static Label createStyledLabel(@Nonnull String title, @Nonnull Color color, double size) {
     Label label = Components.label(title);
     label.setFont(Font.font(label.getFont().getFamily(), FontWeight.BOLD, size));
     return label;
@@ -370,6 +372,14 @@ public class Components {
     ComboBox<E> comboBox = new ComboBox<>(FXCollections.observableArrayList(values));
     comboBox.valueProperty().bindBidirectional(enumProperty);
     return comboBox;
+  }
+
+  @Nonnull
+  public static Node createCheckBoxReadOnly(@Nonnull String label, @Nonnull BooleanProperty booleanProperty) {
+    CheckBox checkBox = new CheckBox(label);
+    checkBox.selectedProperty().bind(booleanProperty);
+    checkBox.addEventFilter(EventType.ROOT, Event::consume);
+    return checkBox;
   }
 
   @Nonnull
