@@ -217,6 +217,17 @@ public class Components {
     return minWidth2prefLabel(text);
   }
 
+  /**
+   * Creates a label with the min width set to USE_PREF, styled with styleClass
+   */
+  @Nonnull
+  public static Label styledLabel(@Nonnull String text, @Nonnull String styleClass) {
+    Label label = new Label(text);
+    label.getStyleClass().add(styleClass);
+    return minWidth2pref(label);
+  }
+
+
   @Nonnull
   public static Label headline1(@Nonnull String headline) {
     Label label = new Label(headline);
@@ -228,13 +239,6 @@ public class Components {
   public static Label headline2(@Nonnull String headline) {
     Label label = new Label(headline);
     label.getStyleClass().add("headline-2");
-    return label;
-  }
-
-  @Nonnull
-  public static Label createStyledLabel(@Nonnull String title, @Nonnull Color color, double size) {
-    Label label = Components.label(title);
-    label.setFont(Font.font(label.getFont().getFamily(), FontWeight.BOLD, size));
     return label;
   }
 
