@@ -22,6 +22,9 @@ public class AxisTickConfigurer {
     axis.tickUnitProperty().bind(Bindings.createDoubleBinding(() -> {
       final double lowerBound = axis.lowerBoundProperty().get();
       final double upperBound = axis.upperBoundProperty().get();
+      if (Double.isNaN(lowerBound) || Double.isNaN(upperBound)) {
+        return 1.0;
+      }
       final double range = upperBound - lowerBound;
       return AxisTickConfigurer.getTickCount(range);
     }, axis.lowerBoundProperty(), axis.upperBoundProperty()));
@@ -30,6 +33,9 @@ public class AxisTickConfigurer {
   @SuppressWarnings("MagicNumber")
   public static double getTickCount(double range) {
     final double positiveRange = Math.abs(range);
+    if (positiveRange == 0) {
+      return 1.0;
+    }
     int powerOfTen = (int) Math.pow(10, Math.floor(Math.log10(positiveRange))); // 3145 -> 3000, 27 -> 10, 534 -> 100 etc
     int limit = (int) (positiveRange / powerOfTen) * powerOfTen;
     return Math.max(1.0, limit * 0.1);

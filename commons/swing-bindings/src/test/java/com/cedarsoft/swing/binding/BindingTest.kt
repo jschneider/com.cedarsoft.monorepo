@@ -3,12 +3,25 @@ package com.cedarsoft.swing.binding
 import javafx.beans.property.SimpleStringProperty
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
+import javax.swing.JComboBox
 import javax.swing.JTextField
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-internal class TextFieldBindingTest {
+internal class BindingTest {
+  @Test
+  internal fun testCombo() {
+    val comboBox = JComboBox<String>(ComboBoxObservableListModel())
+    assertThat(comboBox.items()).hasSize(0)
+  }
+
+  @Test
+  internal fun testTextField() {
+    val textField = JTextField()
+    textField.textProperty()
+  }
+
   @Test
   internal fun testTextFieldText() {
     val property = SimpleStringProperty()
@@ -17,7 +30,7 @@ internal class TextFieldBindingTest {
     val textField = JTextField()
     textField.text = "asdf"
 
-    Binding.bindText(textField, property)
+    bindText(textField, property)
     assertThat(property.get()).isEqualTo("asdf")
 
     textField.text = "newText"

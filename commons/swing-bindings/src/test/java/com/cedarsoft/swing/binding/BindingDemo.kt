@@ -53,67 +53,67 @@ object BindingDemo {
       fxComboBox.valueProperty()
     }
 
-    Binding.getItems(comboBox).add(Member("csdf"))
-    Binding.getDisableProperty(comboBox).bindBidirectional(Binding.getSelectedProperty(checkboxComboDisabled))
-    Binding.getEditableProperty(comboBox).bindBidirectional(Binding.getSelectedProperty(checkboxEditable))
+    comboBox.items().add(Member("csdf"))
+    comboBox.disableProperty().bindBidirectional(checkboxComboDisabled.selectedProperty())
+    comboBox.editableProperty().bindBidirectional(checkboxEditable.selectedProperty())
 
 
-    Binding.getTextProperty(labelComboValue).bind(Binding.getValueProperty(comboBox).asString())
-    Binding.getTextProperty(labelComboValueType).bind(
+    labelComboValue.textProperty().bind(comboBox.valueProperty().asString())
+    labelComboValueType.textProperty().bind(
       Bindings.createStringBinding(
-        Callable<String?> { Binding.getValuePropertyEditable(comboBox).get()?.javaClass?.name ?: "" },
-        Binding.getValueProperty(comboBox)
+        Callable<String?> { comboBox.valuePropertyEditable().get()?.javaClass?.name ?: "" },
+        comboBox.valueProperty()
       )
     )
 
-    Binding.getTextProperty(textLabel).bind(Binding.getTextProperty(textField))
-    Binding.getTextProperty(textField).bindBidirectional(Binding.getTextProperty(textField2))
+    textLabel.textProperty().bind(textField.textProperty())
+    textField.textProperty().bindBidirectional(textField2.textProperty())
 
 
-    Binding.getSelectedProperty(checkboxSelected).bindBidirectional(Binding.getSelectedProperty(checkboxSelected2))
-    Binding.getDisableProperty(textField).bindBidirectional(Binding.getSelectedProperty(checkboxDisabled))
+    checkboxSelected.selectedProperty().bindBidirectional(checkboxSelected2.selectedProperty())
+    textField.disableProperty().bindBidirectional(checkboxDisabled.selectedProperty())
 
 
-    assertThat(Binding.getTextProperty(textLabel)).isSameAs(Binding.getTextProperty(textLabel))
-    assertThat(Binding.getSelectedProperty(checkboxSelected)).isSameAs(Binding.getSelectedProperty(checkboxSelected))
-    assertThat(Binding.getSelectedProperty(checkboxSelected2)).isSameAs(Binding.getSelectedProperty(checkboxSelected2))
+    assertThat(textLabel.textProperty()).isSameAs(textLabel.textProperty())
+    assertThat(checkboxSelected.selectedProperty()).isSameAs(checkboxSelected.selectedProperty())
+    assertThat(checkboxSelected2.selectedProperty()).isSameAs(checkboxSelected2.selectedProperty())
 
-    Binding.getTextProperty(textLabelFocused).bind(Binding.getFocusedProperty(textField).asString())
+    textLabelFocused.textProperty().bind(textField.focusedProperty().asString())
 
-    Binding.getSelectedProperty(radio1).bind(Binding.getTextProperty(textField).isEqualTo("val"))
-    Binding.getSelectedProperty(radio2).bind(Binding.getTextProperty(textField).isNotEqualTo("val"))
+    radio1.selectedProperty().bind(textField.textProperty().isEqualTo("val"))
+    radio2.selectedProperty().bind(textField.textProperty().isNotEqualTo("val"))
 
-    Binding.getDisableProperty(radio1).value = true
-    Binding.getDisableProperty(radio2).value = true
+    radio1.disableProperty().value = true
+    radio2.disableProperty().value = true
 
-    Binding.getTextProperty(checkboxSelected).bind(Binding.getTextProperty(textField))
-    Binding.getTextProperty(radio1).bind(Binding.getTextProperty(textField))
+    checkboxSelected.textProperty().bind(textField.textProperty())
+    radio1.textProperty().bind(textField.textProperty())
 
     //Progress bar
-    Binding.getMaximumProperty(progressBar).value = 100
-    Binding.getMinimumProperty(progressBar).value = 2
-    Binding.getValueProperty(progressBar).value = 50
-    Binding.getIndeterminateProperty(progressBar).bind(Binding.getSelectedProperty(checkboxSelected))
+    progressBar.maximumProperty().value = 100
+    progressBar.minimumProperty().value = 2
+    progressBar.valueProperty().value = 50
+    progressBar.indeterminateProperty().bind(checkboxSelected.selectedProperty())
 
     //Slider
-    Binding.getMaximumProperty(slider).value = 100
-    Binding.getMinimumProperty(slider).value = 2
+    slider.maximumProperty().value = 100
+    slider.minimumProperty().value = 2
 
-    Binding.getValueProperty(progressBar).bind(Binding.getValueProperty(slider))
-    Binding.getValueProperty(slider).value = 50
+    progressBar.valueProperty().bind(slider.valueProperty())
+    slider.valueProperty().value = 50
 
     if (false) {
       val radioButton = RadioButton()
       radioButton.focusedProperty()
     }
 
-    //    Binding.bindText(textFieldUni, textProperty)
-    //    Binding.bindText(textProperty, textLabel)
-    //    Binding.bindTextBidirectional(textProperty, textFieldBi)
+    //    bindText(textFieldUni, textProperty)
+    //    bindText(textProperty, textLabel)
+    //    bindTextBidirectional(textProperty, textFieldBi)
     //
-    //    Binding.bindDisabled(disabledProperty, textFieldBi)
+    //    bindDisabled(disabledProperty, textFieldBi)
     //
-    //    Binding.bindSelectedBidirectional(disabledProperty, checkboxSelected)
+    //    bindSelectedBidirectional(disabledProperty, checkboxSelected)
 
 
     val contentPane = frame.contentPane
@@ -149,7 +149,7 @@ object BindingDemo {
 
     contentPane.add(JButton(object : AbstractAction("Add element") {
       override fun actionPerformed(e: ActionEvent?) {
-        val items = Binding.getItems(comboBox)
+        val items = comboBox.items()
         items.add(Member("newElement: " + items.size))
       }
     }), "wrap")
