@@ -26,7 +26,6 @@
     <module>unit</module>
     <module>photos</module>
     <module>maven</module>
-    <module>tests</module>
   </modules>
 
   <licenses>
@@ -41,4 +40,21 @@
     <system>GitHub</system>
     <url>https://github.com/jschneider/com.cedarsoft.monorepo/issues</url>
   </issueManagement>
+
+  <profiles>
+    <profile>
+      <id>add-tests-module</id>
+
+      <activation>
+        <property>
+          <name>!performRelease</name>
+        </property>
+      </activation>
+
+      <modules>
+        <module>tests</module>
+      </modules>
+    </profile>
+  </profiles>
+
 </project>

@@ -19,6 +19,17 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.8.0 (2018-11-06)
+* Instrumentation plugin: Updated for Java 11
+* Swing: Bindings to JavaFX Properties
+* Kotlin:
+  * extension methods for Guava
+  * concurrent-kotlin: GuardedByLock
+* TornadoFX: Commons module
+* JavaFX: Extension methods
+* Commons REST: Jackson configuration and common models
+
+
 ## 8.7.0 (2018-11-06)
 * Update dependencies
 * Convert all tests to JUnit 5
