@@ -16,7 +16,9 @@ import javax.swing.JLabel
 import javax.swing.JProgressBar
 import javax.swing.JRadioButton
 import javax.swing.JSlider
+import javax.swing.JSpinner
 import javax.swing.JTextField
+import javax.swing.SpinnerNumberModel
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
@@ -42,6 +44,10 @@ object BindingDemo {
 
     val progressBar = JProgressBar()
     val slider = JSlider()
+
+    val spinner = JSpinner(SpinnerNumberModel(1.0, 0.0, 100.0, 1.0))
+    val spinnerStepSizeLabel = JLabel("...")
+    val spinnerValueLabel = JLabel("...")
 
     val comboBox = JComboBox<Member>(ComboBoxObservableListModel(Member("asdf"), Member("bsdf")))
     val labelComboValue = JLabel()
@@ -102,6 +108,13 @@ object BindingDemo {
     progressBar.valueProperty().bind(slider.valueProperty())
     slider.valueProperty().value = 50
 
+    //Spinner
+    spinner.minimumProperty().value = -100.0
+    spinner.maximumProperty().value = 100.0
+    spinner.valueProperty().bindBidirectional(slider.valueProperty())
+    spinnerStepSizeLabel.textProperty().bind(spinner.stepSizeProperty().asString())
+    spinnerValueLabel.textProperty().bind(spinner.valueProperty().asString())
+
     if (false) {
       val radioButton = RadioButton()
       radioButton.focusedProperty()
@@ -143,6 +156,11 @@ object BindingDemo {
 
     contentPane.add(progressBar, "span")
     contentPane.add(slider, "span")
+    contentPane.add(spinner, "span")
+    contentPane.add(JLabel("Step Size:"), "")
+    contentPane.add(spinnerStepSizeLabel, "")
+    contentPane.add(JLabel("Spinner Value:"), "")
+    contentPane.add(spinnerValueLabel, "span")
     contentPane.add(comboBox)
     contentPane.add(labelComboValue)
     contentPane.add(labelComboValueType)

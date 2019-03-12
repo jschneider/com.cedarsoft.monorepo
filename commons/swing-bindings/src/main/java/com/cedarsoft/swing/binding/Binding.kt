@@ -1,11 +1,13 @@
 package com.cedarsoft.swing.binding
 
 import javafx.beans.property.BooleanProperty
+import javafx.beans.property.DoubleProperty
 import javafx.beans.property.IntegerProperty
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.Property
 import javafx.beans.property.ReadOnlyBooleanProperty
 import javafx.beans.property.SimpleBooleanProperty
+import javafx.beans.property.SimpleDoubleProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
@@ -22,6 +24,8 @@ import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JProgressBar
 import javax.swing.JSlider
+import javax.swing.JSpinner
+import javax.swing.SpinnerNumberModel
 import javax.swing.event.DocumentEvent
 import javax.swing.event.DocumentListener
 import javax.swing.text.JTextComponent
@@ -178,6 +182,55 @@ private fun bindValueBidirectional(property: IntegerProperty, model: BoundedRang
   property.setIfDifferent(model.value)
 }
 
+private fun bindMaximumBidirectional(property: DoubleProperty, model: SpinnerNumberModel) {
+  model.addChangeListener {
+    property.setIfDifferent((model.maximum as Double?) ?: 0.0)
+  }
+
+  property.addListener { _, _, newValue ->
+    model.maximum = newValue.toDouble()
+  }
+
+  property.setIfDifferent((model.maximum as Double?) ?: 0.0)
+}
+
+private fun bindMinimumBidirectional(property: DoubleProperty, model: SpinnerNumberModel) {
+  model.addChangeListener {
+    property.setIfDifferent((model.minimum as Double?) ?: 0.0)
+  }
+
+  property.addListener { _, _, newValue ->
+    model.minimum = newValue.toDouble()
+  }
+
+  property.setIfDifferent((model.minimum as Double?) ?: 0.0)
+}
+
+
+private fun bindValueBidirectional(property: DoubleProperty, model: SpinnerNumberModel) {
+  model.addChangeListener {
+    property.setIfDifferent(model.value as Number)
+  }
+
+  property.addListener { _, _, newValue ->
+    model.value = newValue.toDouble()
+  }
+
+  property.setIfDifferent(model.value as Number)
+}
+
+private fun bindStepSizeBidirectional(property: DoubleProperty, model: SpinnerNumberModel) {
+  model.addChangeListener {
+    property.setIfDifferent(model.stepSize as Number)
+  }
+
+  property.addListener { _, _, newValue ->
+    model.stepSize = newValue.toDouble()
+  }
+
+  property.setIfDifferent(model.stepSize as Number)
+}
+
 private fun bindIndeterminateBidirectional(property: BooleanProperty, progressBar: JProgressBar) {
   progressBar.addPropertyChangeListener {
     if (it.propertyName == "indeterminate") {
@@ -219,7 +272,7 @@ private fun bindSelectedBidirectional(property: Property<Boolean>, button: Abstr
   property.setIfDifferent(button.isSelected)
 }
 
-private fun <T> bindEditableBidirectional(property: Property<Boolean>, comboBox: JComboBox<T>) {
+private fun bindEditableBidirectional(property: Property<Boolean>, comboBox: JComboBox<*>) {
   comboBox.addPropertyChangeListener {
     if (it.propertyName == "editable") {
       property.setIfDifferent(comboBox.isEditable)
@@ -240,6 +293,7 @@ private const val FOCUSED_PROPERTY_KEY: String = "focusedPropertyKey"
 private const val MAXIMUM_PROPERTY_KEY: String = "maximumPropertyKey"
 private const val MINIMUM_PROPERTY_KEY: String = "minimumPropertyKey"
 private const val VALUE_PROPERTY_KEY: String = "valuePropertyKey"
+private const val STEP_SIZE_PROPERTY_KEY: String = "stepSizePropertyKey"
 private const val INDETERMINATE_PROPERTY_KEY: String = "indeterminatePropertyKey"
 private const val EDITABLE_PROPERTY_KEY: String = "editablePropertyKey"
 
@@ -249,7 +303,7 @@ private const val EDITABLE_PROPERTY_KEY: String = "editablePropertyKey"
 
 fun <T> JComboBox<T>.editableProperty(): BooleanProperty {
   return getProperty(this, EDITABLE_PROPERTY_KEY) {
-    val property = SimpleBooleanProperty()
+    val property = SimpleBooleanProperty(this, "editable")
     bindEditableBidirectional(property, this)
     property
   }
@@ -271,7 +325,7 @@ fun <T> JComboBox<T>.items(): ObservableList<T> {
  */
 fun <T> JComboBox<T>.valueProperty(): ObjectProperty<T> {
   return getProperty(this, VALUE_PROPERTY_KEY) {
-    val property = SimpleObjectProperty<T>()
+    val property = SimpleObjectProperty<T>(this, "value")
     bindValueBidirectional(property, this)
     property
   }
@@ -289,7 +343,7 @@ fun <T> JComboBox<T>.valuePropertyEditable(): ObjectProperty<*> {
 
 fun JProgressBar.indeterminateProperty(): BooleanProperty {
   return getProperty(this, INDETERMINATE_PROPERTY_KEY) {
-    val property = SimpleBooleanProperty()
+    val property = SimpleBooleanProperty(this, "indeterminate")
     bindIndeterminateBidirectional(property, this)
     property
   }
@@ -301,7 +355,7 @@ fun JProgressBar.indeterminateProperty(): BooleanProperty {
 
 fun JProgressBar.maximumProperty(): IntegerProperty {
   return getProperty(this, MAXIMUM_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "maximum")
     bindMaximumBidirectional(property, model)
     property
   }
@@ -310,7 +364,7 @@ fun JProgressBar.maximumProperty(): IntegerProperty {
 
 fun JProgressBar.minimumProperty(): IntegerProperty {
   return getProperty(this, MINIMUM_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "minimum")
     bindMinimumBidirectional(property, model)
     property
   }
@@ -319,7 +373,7 @@ fun JProgressBar.minimumProperty(): IntegerProperty {
 
 fun JProgressBar.valueProperty(): IntegerProperty {
   return getProperty(this, VALUE_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "value")
     bindValueBidirectional(property, model)
     property
   }
@@ -328,7 +382,7 @@ fun JProgressBar.valueProperty(): IntegerProperty {
 
 fun JSlider.maximumProperty(): IntegerProperty {
   return getProperty(this, MAXIMUM_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "maximum")
     bindMaximumBidirectional(property, model)
     property
   }
@@ -337,7 +391,7 @@ fun JSlider.maximumProperty(): IntegerProperty {
 
 fun JSlider.minimumProperty(): IntegerProperty {
   return getProperty(this, MINIMUM_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "minimum")
     bindMinimumBidirectional(property, model)
     property
   }
@@ -346,8 +400,42 @@ fun JSlider.minimumProperty(): IntegerProperty {
 
 fun JSlider.valueProperty(): IntegerProperty {
   return getProperty(this, VALUE_PROPERTY_KEY) {
-    val property = SimpleIntegerProperty()
+    val property = SimpleIntegerProperty(this, "value")
     bindValueBidirectional(property, model)
+    property
+  }
+}
+
+fun JSpinner.maximumProperty(): DoubleProperty {
+  return getProperty(this, MAXIMUM_PROPERTY_KEY) {
+    val property = SimpleDoubleProperty(this, "maximum")
+    bindMaximumBidirectional(property, model as SpinnerNumberModel)
+    property
+  }
+}
+
+
+fun JSpinner.minimumProperty(): DoubleProperty {
+  return getProperty(this, MINIMUM_PROPERTY_KEY) {
+    val property = SimpleDoubleProperty(this, "minimum")
+    bindMinimumBidirectional(property, model as SpinnerNumberModel)
+    property
+  }
+}
+
+
+fun JSpinner.valueProperty(): DoubleProperty {
+  return getProperty(this, VALUE_PROPERTY_KEY) {
+    val property = SimpleDoubleProperty(this, "value")
+    bindValueBidirectional(property, model as SpinnerNumberModel)
+    property
+  }
+}
+
+fun JSpinner.stepSizeProperty(): DoubleProperty {
+  return getProperty(this, STEP_SIZE_PROPERTY_KEY) {
+    val property = SimpleDoubleProperty(this, "stepSize")
+    bindStepSizeBidirectional(property, model as SpinnerNumberModel)
     property
   }
 }
@@ -358,7 +446,7 @@ fun JSlider.valueProperty(): IntegerProperty {
 
 fun JLabel.textProperty(): StringProperty {
   return getProperty(this, TEXT_PROPERTY_KEY) {
-    val property = SimpleStringProperty()
+    val property = SimpleStringProperty(this, "text")
     bindText(property, this)
     property
   }
@@ -369,7 +457,7 @@ fun JLabel.textProperty(): StringProperty {
  */
 fun JTextComponent.textProperty(): StringProperty {
   return getProperty(this, TEXT_PROPERTY_KEY) {
-    val property = SimpleStringProperty()
+    val property = SimpleStringProperty(this, "text")
     bindTextBidirectional(property, this)
     property
   }
@@ -378,7 +466,7 @@ fun JTextComponent.textProperty(): StringProperty {
 
 fun AbstractButton.textProperty(): StringProperty {
   return getProperty(this, TEXT_PROPERTY_KEY) {
-    val property = SimpleStringProperty()
+    val property = SimpleStringProperty(this, "text")
     bindTextBidirectional(property, this)
     property
   }
@@ -390,7 +478,7 @@ fun AbstractButton.textProperty(): StringProperty {
 
 fun AbstractButton.selectedProperty(): BooleanProperty {
   return getProperty(this, SELECTED_PROPERTY_KEY) {
-    val property = SimpleBooleanProperty()
+    val property = SimpleBooleanProperty(this, "selected")
     bindSelectedBidirectional(property, this)
     property
   }
@@ -402,7 +490,7 @@ fun AbstractButton.selectedProperty(): BooleanProperty {
 
 fun JComponent.disableProperty(): BooleanProperty {
   return getProperty(this, DISABLE_PROPERTY_KEY) {
-    val property = SimpleBooleanProperty()
+    val property = SimpleBooleanProperty(this, "disable")
     bindDisableBidirectional(property, this)
     property
   }
@@ -414,7 +502,7 @@ fun JComponent.disableProperty(): BooleanProperty {
 
 fun JComponent.focusedProperty(): ReadOnlyBooleanProperty {
   return getProperty(this, FOCUSED_PROPERTY_KEY) {
-    val property = SimpleBooleanProperty()
+    val property = SimpleBooleanProperty(this, "focused")
     bindFocused(this, property)
     property
   }
