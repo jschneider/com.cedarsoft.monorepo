@@ -17,12 +17,6 @@
       <type>pom</type>
     </dependency>
 
-    <dependency>
-      <groupId>com.cedarsoft.dependencies-sets</groupId>
-      <artifactId>ktor-client</artifactId>
-      <type>pom</type>
-    </dependency>
-
     <!--Test dependencies-->
     <dependency>
       <groupId>com.cedarsoft.dependencies-sets</groupId>
