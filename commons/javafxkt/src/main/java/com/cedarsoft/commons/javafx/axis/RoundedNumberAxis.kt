@@ -16,7 +16,7 @@ class RoundedNumberAxis(
   lower: Double = 0.0,
   upper: Double = 100.0
 
-) : ValueAxis<Double>(lower, upper) {
+) : ValueAxis<Number>(lower, upper) {
 
   val tickLabelFormatterProperty: ObjectProperty<NumberFormat> = SimpleObjectProperty<NumberFormat>(DecimalFormat())
   var tickLabelFormatter by tickLabelFormatterProperty
@@ -32,7 +32,7 @@ class RoundedNumberAxis(
   override fun setRange(range: Any?, animate: Boolean) {
   }
 
-  override fun getTickMarkLabel(value: Double?): String {
+  override fun getTickMarkLabel(value: Number?): String {
     if (value == null) {
       return ""
     }
@@ -40,11 +40,11 @@ class RoundedNumberAxis(
     return tickLabelFormatter.format(value)
   }
 
-  override fun calculateTickValues(length: Double, range: Any?): List<Double> {
+  override fun calculateTickValues(length: Double, range: Any?): List<Number> {
     return RoundedAxisTickCalculator(lowerBound, upperBound).calculateTickValues()
   }
 
-  override fun calculateMinorTickMarks(): MutableList<Double> {
+  override fun calculateMinorTickMarks(): MutableList<Number> {
     return mutableListOf()
   }
 }

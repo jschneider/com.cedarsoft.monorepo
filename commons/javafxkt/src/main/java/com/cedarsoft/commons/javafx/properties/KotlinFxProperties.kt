@@ -2,10 +2,12 @@ package com.cedarsoft.commons.javafx.properties
 
 import javafx.beans.binding.DoubleExpression
 import javafx.beans.binding.IntegerExpression
+import javafx.beans.binding.LongExpression
 import javafx.beans.property.Property
 import javafx.beans.value.ObservableValue
 import javafx.beans.value.WritableDoubleValue
 import javafx.beans.value.WritableIntegerValue
+import javafx.beans.value.WritableLongValue
 import kotlin.reflect.KProperty
 
 /**
@@ -20,6 +22,11 @@ operator fun <T> Property<T>.setValue(thisRef: Any, property: KProperty<*>, valu
 operator fun DoubleExpression.getValue(thisRef: Any, property: KProperty<*>) = value
 
 operator fun WritableDoubleValue.setValue(thisRef: Any, property: KProperty<*>, value: Double?) = setValue(value)
+
+
+operator fun LongExpression.getValue(thisRef: Any, property: KProperty<*>) = value
+
+operator fun WritableLongValue.setValue(thisRef: Any, property: KProperty<*>, value: Long?) = setValue(value)
 
 
 operator fun IntegerExpression.getValue(thisRef: Any, property: KProperty<*>) = value
