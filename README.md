@@ -19,7 +19,12 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.8.0 (2018-11-06)
+## 8.8.0 (2019-03-19)
+* Swing with JavaFX properties: Additional bindings
+* Kotlin FX: Additional extension methods (e.g. properties access)
+  * Rounded number axis
+
+## 8.8.0 (2018-03-09)
 * Instrumentation plugin: Updated for Java 11
 * Swing: Bindings to JavaFX Properties
 * Kotlin:

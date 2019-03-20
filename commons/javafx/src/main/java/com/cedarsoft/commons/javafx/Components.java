@@ -49,6 +49,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -214,6 +215,16 @@ public class Components {
   @Nonnull
   public static Label label(@Nonnull String text) {
     return minWidth2prefLabel(text);
+  }
+
+  /**
+   * Creates a label with min width set to pref and a ToolTip
+   */
+  @Nonnull
+  public static Label labelWithToolTip(@Nonnull String text, @Nonnull String toolTipText) {
+    Label label = minWidth2prefLabel(text);
+    label.setTooltip(new Tooltip(toolTipText));
+    return label;
   }
 
   /**
