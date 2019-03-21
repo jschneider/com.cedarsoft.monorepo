@@ -508,7 +508,7 @@ public class Components {
   }
 
   @Nonnull
-  public static TextField textFieldFloatReadonly(@Nonnull ReadOnlyFloatProperty floatProperty, @Nonnull NumberStringConverterForFloatingPointNumbers floatConverter) {
+  public static TextField textFieldFloatReadonly(@Nonnull ReadOnlyFloatProperty floatProperty, @Nonnull NumberStringConverter floatConverter) {
     TextField textField = new TextField();
     textField.alignmentProperty().set(Pos.TOP_RIGHT);
     floatProperty.addListener((observable, oldValue, newValue) -> textField.setText(floatConverter.toString(newValue)));
@@ -523,7 +523,7 @@ public class Components {
   }
 
   @Nonnull
-  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull NumberStringConverter converter) {
     return textFieldFloatDelayed(floatProperty, d -> true, converter);
   }
 
@@ -533,7 +533,7 @@ public class Components {
   }
 
   @Nonnull
-  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+  public static TextField textFieldFloatDelayed(@Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverter converter) {
     TextField textField = textFieldDelayed(floatProperty, converter);
     textField.alignmentProperty().set(Pos.CENTER_RIGHT);
     applyFloatFormatter(textField, floatProperty, filter, converter);
@@ -543,7 +543,7 @@ public class Components {
   /**
    * Adds a text formatter to the text field that only allows adding floats
    */
-  public static void applyFloatFormatter(@Nonnull TextField textField, @Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverterForFloatingPointNumbers converter) {
+  public static void applyFloatFormatter(@Nonnull TextField textField, @Nonnull FloatProperty floatProperty, @Nonnull Predicate<Float> filter, @Nonnull NumberStringConverter converter) {
     textField.setTextFormatter(new TextFormatter<>(converter, floatProperty.get(), new FloatTextFormatterFilter(converter, filter)));
   }
 
@@ -598,8 +598,17 @@ public class Components {
   }
 
   @Nonnull
+  public static TextField textFieldIntegerDelayed(@Nonnull IntegerProperty integerProperty, @Nonnull NumberStringConverter converter) {
+    return textFieldIntegerDelayed(integerProperty, i -> true, converter);
+  }
+
+  @Nonnull
   public static TextField textFieldIntegerDelayed(@Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter) {
-    NumberStringConverterForIntegers converter = new NumberStringConverterForIntegers();
+    return textFieldIntegerDelayed(integerProperty, filter, new NumberStringConverterForIntegers());
+  }
+
+  @Nonnull
+  public static TextField textFieldIntegerDelayed(@Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverter converter) {
     TextField textField = textFieldDelayed(integerProperty, converter);
     textField.alignmentProperty().set(Pos.CENTER_RIGHT);
     applyIntegerFormatter(textField, integerProperty, filter, converter);
@@ -609,7 +618,7 @@ public class Components {
   /**
    * Adds a text formatter to the text field that only allows adding integers
    */
-  public static void applyIntegerFormatter(@Nonnull TextField textField, @Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverterForIntegers converter) {
+  public static void applyIntegerFormatter(@Nonnull TextField textField, @Nonnull IntegerProperty integerProperty, @Nonnull Predicate<Integer> filter, @Nonnull NumberStringConverter converter) {
     textField.setTextFormatter(new TextFormatter<>(converter, integerProperty.get(), new IntegerTextFormatterFilter(converter, filter)));
   }
 
@@ -640,11 +649,20 @@ public class Components {
   }
 
   @Nonnull
+  public static TextField textFieldLongDelayed(@Nonnull LongProperty longProperty, @Nonnull NumberStringConverter numberStringConverter) {
+    return textFieldLongDelayed(longProperty, l -> true, numberStringConverter);
+  }
+
+  @Nonnull
   public static TextField textFieldLongDelayed(@Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter) {
-    NumberStringConverterForIntegers converter = new NumberStringConverterForIntegers();
-    TextField textField = textFieldDelayed(longProperty, converter);
+    return textFieldLongDelayed(longProperty, filter, new NumberStringConverterForIntegers());
+  }
+
+  @Nonnull
+  public static TextField textFieldLongDelayed(@Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter, @Nonnull NumberStringConverter numberStringConverter) {
+    TextField textField = textFieldDelayed(longProperty, numberStringConverter);
     textField.alignmentProperty().set(Pos.CENTER_RIGHT);
-    applyLongFormatter(textField, longProperty, filter, converter);
+    applyLongFormatter(textField, longProperty, filter, numberStringConverter);
     return textField;
   }
 
@@ -665,7 +683,7 @@ public class Components {
   /**
    * Adds a text formatter to the text field that only allows adding longs
    */
-  public static void applyLongFormatter(@Nonnull TextField textField, @Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter, @Nonnull NumberStringConverterForIntegers converter) {
+  public static void applyLongFormatter(@Nonnull TextField textField, @Nonnull LongProperty longProperty, @Nonnull Predicate<Long> filter, @Nonnull NumberStringConverter converter) {
     textField.setTextFormatter(new TextFormatter<>(converter, longProperty.get(), new LongTextFormatterFilter(converter, filter)));
   }
 
