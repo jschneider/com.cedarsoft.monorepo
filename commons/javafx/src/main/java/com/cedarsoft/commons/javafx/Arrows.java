@@ -2,6 +2,11 @@ package com.cedarsoft.commons.javafx;
 
 import javax.annotation.Nonnull;
 
+import org.jetbrains.annotations.NotNull;
+
+import com.cedarsoft.unit.other.px;
+
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -18,7 +23,7 @@ public class Arrows {
   }
 
   @Nonnull
-  public static Path createArrowToTop(int lineLength) {
+  public static Path createArrowToTop(@px int lineLength) {
     Path arrowHeadPath = new Path();
     arrowHeadPath.getStyleClass().add("arrow");
     arrowHeadPath.getElements().add(new MoveTo(0, -ARROW_LENGTH)); //start @ top of arrow
@@ -29,5 +34,17 @@ public class Arrows {
     arrowHeadPath.getElements().add(new LineTo(0, lineLength)); //middle bottom
 
     return arrowHeadPath;
+  }
+
+  public static void addArrowPath(double arrowLength, @px double lineTotalLength, @NotNull GraphicsContext gc) {
+    gc.beginPath();
+
+    gc.moveTo(0, 0);
+    gc.lineTo(arrowLength / 2.0, +arrowLength); //bottom right
+    gc.lineTo(-(arrowLength / 2.0), +arrowLength); //bottom left
+    gc.lineTo(0, 0); //back to top of arrow
+    gc.lineTo(0, +arrowLength); //middle bottom
+    gc.lineTo(0, lineTotalLength); //middle bottom
+    gc.closePath();
   }
 }
