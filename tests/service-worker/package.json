@@ -1,0 +1,24 @@
+{
+  "name": "service-worker-demo",
+  "version": "1.0.0",
+  "description": "npm init -y",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Christian Erbelding",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.1",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  }
+}
