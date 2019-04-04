@@ -1,5 +1,6 @@
 package com.cedarsoft.tests.kotlin.js
 
+import com.cedarsoft.tests.kotlinjs.lib.helloSampleWorld
 import kotlin.browser.document
 
 /**
@@ -10,7 +11,7 @@ fun main() {
 }
 
 fun myApp() {
-  println("myApp is called")
+  println("myApp is called ${helloSampleWorld()}")
 
   document.bgColor = "FFAA12"
 

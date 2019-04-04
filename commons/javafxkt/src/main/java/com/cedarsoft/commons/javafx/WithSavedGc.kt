@@ -25,6 +25,10 @@ class WithSavedGc(
  */
 fun GraphicsContext.saved(action: (gc: GraphicsContext) -> Unit) {
   save()
-  action(this)
-  restore()
+  try {
+    action(this)
+  } finally {
+    restore()
+  }
+
 }

@@ -15,7 +15,25 @@
 
   <modules>
     <module>sample-lib</module>
-    <module>js-sample-client</module>
+    <!--    <module>js-sample-client</module>-->
+    <module>java-sample-client</module>
   </modules>
+
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.cedarsoft.tests.kotlinjs</groupId>
+        <artifactId>sample-lib</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cedarsoft.tests.kotlinjs</groupId>
+        <artifactId>sample-lib</artifactId>
+        <classifier>js</classifier>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 </project>
