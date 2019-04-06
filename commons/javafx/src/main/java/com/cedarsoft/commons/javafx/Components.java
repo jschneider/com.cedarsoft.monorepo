@@ -237,6 +237,16 @@ public class Components {
     return minWidth2pref(label);
   }
 
+  /**
+   * Creates a new styled label and binds the given string binding to the text property
+   */
+  @Nonnull
+  public static Label styledLabel(@Nonnull ObservableValue<String> binding, @Nonnull String styleClass) {
+    Label label = new Label();
+    label.getStyleClass().add(styleClass);
+    label.textProperty().bind(binding);
+    return label;
+  }
 
   @Nonnull
   public static Label headline1(@Nonnull String headline) {
