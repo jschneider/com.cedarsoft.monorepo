@@ -31,9 +31,7 @@
 
 package com.cedarsoft.version;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
@@ -63,7 +61,7 @@ public class VersionTest {
 
     try {
       Version.verifyMatch(Version.valueOf(1, 2, 3), Version.valueOf(1, 2, 4));
-      fail("Where is the Exception");
+      Assertions.fail("Where is the Exception");
     }
     catch (VersionMismatchException ignore) {
     }
@@ -71,45 +69,45 @@ public class VersionTest {
 
   @Test
   public void testToInt() {
-    assertEquals( 10203, new Version( 1, 2, 3 ).toInt() );
-    assertEquals( 123456, new Version( 12, 34, 56 ).toInt() );
+    Assertions.assertEquals(10203, new Version(1, 2, 3).toInt());
+    Assertions.assertEquals(123456, new Version(12, 34, 56).toInt());
   }
 
   @Test
   public void testEquals() {
-    assertEquals( new Version( 1, 2, 3 ), new Version( 1, 2, 3 ) );
-    assertEquals( new Version( 1, 2, 3, "asdf" ), new Version( 1, 2, 3, "asdf" ) );
+    Assertions.assertEquals(new Version(1, 2, 3), new Version(1, 2, 3));
+    Assertions.assertEquals(new Version(1, 2, 3, "asdf"), new Version(1, 2, 3, "asdf"));
   }
 
   @Test
   public void testToString() {
-    assertEquals( "1.2.3", new Version( 1, 2, 3 ).toString() );
-    assertEquals( "1.2.3-asdf", new Version( 1, 2, 3, "asdf" ).toString() );
+    Assertions.assertEquals("1.2.3", new Version(1, 2, 3).toString());
+    Assertions.assertEquals("1.2.3-asdf", new Version(1, 2, 3, "asdf").toString());
   }
 
   @Test
   public void testParse() {
-    assertEquals( new Version( 1, 2, 3 ), Version.parse( "1.2.3" ) );
-    assertEquals( new Version( 1, 2, 3, "build76" ), Version.parse( "1.2.3-build76" ) );
-    assertEquals( new Version( 1, 2, 3, "build76" ), Version.parse( new Version( 1, 2, 3, "build76" ).toString() ) );
+    Assertions.assertEquals(new Version(1, 2, 3), Version.parse("1.2.3"));
+    Assertions.assertEquals(new Version(1, 2, 3, "build76"), Version.parse("1.2.3-build76"));
+    Assertions.assertEquals(new Version(1, 2, 3, "build76"), Version.parse(new Version(1, 2, 3, "build76").toString()));
   }
 
   @Test
   public void testCompareGreater() {
-    assertTrue( new Version( 1, 2, 3 ).sameOrGreaterThan( new Version( 1, 2, 3 ) ) );
-    assertTrue( new Version( 1, 2, 3 ).sameOrGreaterThan( new Version( 1, 2, 2 ) ) );
-    assertTrue( new Version( 1, 2, 3 ).sameOrGreaterThan( new Version( 0, 2, 2 ) ) );
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrGreaterThan(new Version(1, 2, 3)));
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrGreaterThan(new Version(1, 2, 2)));
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrGreaterThan(new Version(0, 2, 2)));
 
-    assertFalse( new Version( 1, 2, 3 ).sameOrGreaterThan( new Version( 1, 2, 4 ) ) );
+    Assertions.assertFalse(new Version(1, 2, 3).sameOrGreaterThan(new Version(1, 2, 4)));
   }
 
   @Test
   public void testCompareSmaller() {
-    assertTrue( new Version( 1, 2, 3 ).sameOrSmallerThan( new Version( 1, 2, 3 ) ) );
-    assertTrue( new Version( 1, 2, 3 ).sameOrSmallerThan( new Version( 1, 2, 4 ) ) );
-    assertTrue( new Version( 1, 2, 3 ).sameOrSmallerThan( new Version( 2, 2, 2 ) ) );
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrSmallerThan(new Version(1, 2, 3)));
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrSmallerThan(new Version(1, 2, 4)));
+    Assertions.assertTrue(new Version(1, 2, 3).sameOrSmallerThan(new Version(2, 2, 2)));
 
-    assertFalse( new Version( 1, 2, 3 ).sameOrSmallerThan( new Version( 0, 2, 4 ) ) );
+    Assertions.assertFalse(new Version(1, 2, 3).sameOrSmallerThan(new Version(0, 2, 4)));
   }
 
   @Test

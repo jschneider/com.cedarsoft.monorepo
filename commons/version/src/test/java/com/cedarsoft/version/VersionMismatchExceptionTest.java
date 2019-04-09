@@ -31,8 +31,7 @@
 
 package com.cedarsoft.version;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
@@ -42,11 +41,11 @@ import org.junit.jupiter.api.*;
 public class VersionMismatchExceptionTest {
   @Test
   public void testIt() {
-    assertThat( new VersionMismatchException( Version.valueOf( 1, 0, 0 ), Version.valueOf( 2, 0, 0 ) ).getMessage(), is( "Version mismatch. Expected [1.0.0] but was [2.0.0]" ) );
-    assertThat( new VersionMismatchException( Version.valueOf( 1, 0, 0 ), Version.valueOf( 2, 0, 0 ), "Da Prefix. " ).getMessage(), is( "Da Prefix. Expected [1.0.0] but was [2.0.0]" ) );
-    assertThat( new VersionMismatchException( Version.valueOf( 1, 0, 0 ), Version.valueOf( 2, 0, 0 ), "Da Prefix. ", true ).getMessage(), is( "Da Prefix. Expected [1.0.0] but was [2.0.0]" ) );
-    assertThat( new VersionMismatchException( Version.valueOf( 1, 0, 0 ), Version.valueOf( 2, 0, 0 ), "Da Prefix. ", false ).getMessage(), is( "Da Prefix. " ) );
+    assertThat(new VersionMismatchException(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0))).hasMessage("Version mismatch. Expected [1.0.0] but was [2.0.0]");
+    assertThat(new VersionMismatchException(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0), "Da Prefix. ")).hasMessage("Da Prefix. Expected [1.0.0] but was [2.0.0]");
+    assertThat(new VersionMismatchException(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0), "Da Prefix. ", true)).hasMessage("Da Prefix. Expected [1.0.0] but was [2.0.0]");
+    assertThat(new VersionMismatchException(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0), "Da Prefix. ", false)).hasMessage("Da Prefix. ");
 
-    assertThat( new VersionMismatchException( VersionRange.from( 1, 0, 0 ).to( 1, 4, 6 ), Version.valueOf( 2, 0, 0 ) ).getMessage(), is( "Version mismatch. Expected [1.0.0-1.4.6] but was [2.0.0]" ) );
+    assertThat(new VersionMismatchException(VersionRange.from(1, 0, 0).to(1, 4, 6), Version.valueOf(2, 0, 0))).hasMessage("Version mismatch. Expected [1.0.0-1.4.6] but was [2.0.0]");
   }
 }
