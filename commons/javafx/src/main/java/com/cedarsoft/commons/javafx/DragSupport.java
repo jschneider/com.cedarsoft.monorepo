@@ -55,7 +55,8 @@ public class DragSupport<T extends Node> {
   }
 
   public void install(@Nonnull Handler<T> handler) {
-    this.node.setOnMouseDragged(event -> {
+    //Listen for dragging event
+    this.node.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
       if (!isDragging()) {
         if (!draggingAllowed.get()) {
           //dragging currently not allowed
@@ -74,13 +75,13 @@ public class DragSupport<T extends Node> {
       @ns long deltaTime = updateMouseLocation(event);
       mouseDragSpeedCalculator.add(deltaTime, deltaX, deltaY);
 
-      handler.dragged(this.node, deltaX, deltaY);
+      handler.dragged(node, deltaX, deltaY);
 
       event.consume();
     });
 
-
-    this.node.setOnMouseReleased(event -> {
+    //Disable dragging on mouse released
+    this.node.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
       if (!isDragging()) {
         return;
       }
@@ -109,7 +110,6 @@ public class DragSupport<T extends Node> {
     return dragging;
   }
 
-  @Nonnull
   public boolean isDraggingAllowed() {
     return draggingAllowed.get();
   }

@@ -19,15 +19,22 @@ public class BidirectionalBinding {
    * <u>Beware that the order matters:</u><br>
    * this method copies the value from propertyA to propertyB initially by calling updateB!
    *
-   * @param updateFromAtoB is called when A has changed and should update property B
+   * @param updateFromAToB is called when A has changed and should update property B
    * @param updateFromBToA is called when B has changed and should update property A
    */
-  public static <A, B> void bindBidirectional(@Nonnull ObservableValue<A> propertyA, @Nonnull ObservableValue<B> propertyB, @Nonnull ChangeListener<A> updateFromAtoB, @Nonnull ChangeListener<B> updateFromBToA) {
-    propertyA.addListener(new FlaggedChangeListener<>(updateFromAtoB));
+  public static <A, B> void bindBidirectional(@Nonnull ObservableValue<A> propertyA, @Nonnull ObservableValue<B> propertyB, @Nonnull ChangeListener<A> updateFromAToB, @Nonnull ChangeListener<B> updateFromBToA, ObservableValue<?>... additionalDependencies) {
+    propertyA.addListener(new FlaggedChangeListener<>(updateFromAToB));
     propertyB.addListener(new FlaggedChangeListener<>(updateFromBToA));
 
+    for (ObservableValue<?> additionalDependency : additionalDependencies) {
+      additionalDependency.addListener(new FlaggedChangeListener<>((ChangeListener<Object>) (observable, oldValue, newValue) -> {
+        updateFromAToB.changed(propertyA, null, propertyA.getValue());
+        updateFromBToA.changed(propertyB, null, propertyB.getValue());
+      }));
+    }
+
     //Initially update property B
-    updateFromAtoB.changed(propertyA, null, propertyA.getValue());
+    updateFromAToB.changed(propertyA, null, propertyA.getValue());
   }
 
   /**
@@ -55,7 +62,8 @@ public class BidirectionalBinding {
       try {
         m_alreadyCalled = true;
         m_updateProperty.changed(observable, oldValue, newValue);
-      } finally {
+      }
+      finally {
         m_alreadyCalled = false;
       }
     }
