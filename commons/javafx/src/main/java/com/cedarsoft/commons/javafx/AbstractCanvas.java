@@ -154,9 +154,10 @@ public abstract class AbstractCanvas extends Canvas {
     gc.rect(snapXValue(0), snapYValue(0), snapXSize(getWidth()), snapYSize(getHeight()));
     gc.closePath();
     gc.setStroke(Color.ORANGE);
+    gc.setLineWidth(3);
     gc.stroke();
 
-    //Center
+    //cross wire to mark the center
     gc.beginPath();
     gc.moveTo(snapXValue(0), snapYValue(getHeight() / 2.0));
     gc.lineTo(snapXValue(getWidth()), snapYValue(getHeight() / 2.0));
@@ -164,10 +165,18 @@ public abstract class AbstractCanvas extends Canvas {
     gc.lineTo(snapXValue(getWidth() / 2.0), snapYValue(getHeight()));
 
     gc.closePath();
+    gc.setLineWidth(2);
     gc.stroke();
 
-
-    gc.strokeOval(snapXValue(getWidth() - 5), snapYValue(getHeight() / 2.0 - 5), snapXSize(10), snapYSize(10));
+    //oval in the corners
+    //Bottom right
+    gc.strokeOval(snapXValue(getWidth() - 10), snapYValue(getHeight() - 10), snapXSize(20), snapYSize(20));
+    //Top right
+    gc.strokeOval(snapXValue(getWidth() - 10), snapYValue(0 - 10), snapXSize(20), snapYSize(20));
+    //Bottom left
+    gc.strokeOval(snapXValue(0 - 10), snapYValue(getHeight() - 10), snapXSize(20), snapYSize(20));
+    //top left
+    gc.strokeOval(snapXValue(0 - 10), snapYValue(0 - 10), snapXSize(20), snapYSize(20));
   }
 
   public static void registerDirtyListener(@Nonnull AbstractCanvas canvas, @Nonnull Observable property) {
