@@ -20,6 +20,7 @@
     <module>roach-motel</module>
     <module>spring</module>
     <module>tornadofx</module>
+    <module>gradle</module>
     <module>aparapi</module>
     <module>ktor</module>
     <module>typescript-demo</module>
