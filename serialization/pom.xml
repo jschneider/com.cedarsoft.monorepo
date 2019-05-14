@@ -30,7 +30,7 @@
     <module>neo4j</module>
 
     <module>serializers</module>
-    <module>test-utils</module>
+    <module>serialization-test-utils</module>
     <module>test</module>
 
     <module>samples</module>

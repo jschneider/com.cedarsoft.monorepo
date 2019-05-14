@@ -1,4 +1,4 @@
-description = """App stuff"""
+description = """Exceptions stuff"""
 
 
 plugins {
@@ -9,15 +9,6 @@ plugins {
 
 dependencies {
   api(project(":dependencies-sets:annotations"))
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":open:annotations:annotations"))
-  api(project(":open:commons:xml-commons"))
-  api(project(":open:commons:version"))
-
-  api("com.google.guava:guava")
-  api("commons-io:commons-io")
-  api("commons-logging:commons-logging")
-  api("log4j:log4j")
 
   testImplementation(project(":dependencies-sets:test-basics"))
   testImplementation(project(":open:commons:test-utils"))

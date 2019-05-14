@@ -1,4 +1,4 @@
-description = """App stuff"""
+description = """Swing bindings"""
 
 
 plugins {
@@ -19,7 +19,7 @@ dependencies {
   api("commons-logging:commons-logging")
   api("log4j:log4j")
 
-  testImplementation(project(":dependencies-sets:test-basics"))
+  testImplementation("com.miglayout:miglayout-swing")
   testImplementation(project(":open:commons:test-utils"))
   testImplementation("commons-codec:commons-codec")
 }

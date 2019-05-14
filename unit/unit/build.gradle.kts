@@ -1,4 +1,4 @@
-description = """Crypt related stuff"""
+description = """Unit"""
 
 
 plugins {
@@ -10,10 +10,8 @@ plugins {
 dependencies {
   api(project(":dependencies-sets:annotations"))
   api(project(":dependencies-sets:kotlin"))
+  api(project(":open:annotations:annotations"))
 
-  api("com.google.guava:guava")
-  api("commons-codec:commons-codec")
-  api("commons-io:commons-io")
-
-  testImplementation(project(":dependencies-sets:test-basics"))
+  testImplementation(project(":dependencies-sets:kotlin-test"))
+  testImplementation(project(":open:commons:test-utils"))
 }

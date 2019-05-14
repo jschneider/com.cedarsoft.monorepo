@@ -13,8 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>stax-mate</module>
-    <module>stax</module>
+    <module>stax-mate-demo</module>
+    <module>stax-demo</module>
     <module>demo1</module>
     <module>evolution</module>
   </modules>

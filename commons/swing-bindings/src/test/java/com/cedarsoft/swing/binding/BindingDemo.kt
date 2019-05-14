@@ -5,6 +5,7 @@ import javafx.scene.control.ComboBox
 import javafx.scene.control.RadioButton
 import net.miginfocom.swing.MigLayout
 import org.assertj.core.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import java.awt.event.ActionEvent
 import java.util.concurrent.Callable
 import javax.swing.AbstractAction
@@ -23,6 +24,7 @@ import javax.swing.SpinnerNumberModel
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
+@Disabled
 object BindingDemo {
   @JvmStatic
   fun main(args: Array<String>) {

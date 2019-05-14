@@ -13,8 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>jackson</module>
-    <module>stax-mate</module>
+    <module>jackson-common-serializers</module>
+    <module>stax-mate-common-serializers</module>
   </modules>
 
   <dependencies>

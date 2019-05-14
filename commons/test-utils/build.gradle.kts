@@ -12,57 +12,34 @@ plugins {
   kotlin("jvm")
 }
 
-repositories {
-  // Use jcenter for resolving your dependencies.
-  // You can declare any Maven/Ivy/file repository here.
-  mavenCentral()
-  jcenter()
-}
-
 dependencies {
-  // This dependency is exported to consumers, that is to say found on their compile classpath.
+  api(project(":dependencies-sets:annotations"))
+  api(project(":dependencies-sets:kotlin"))
+  api(project(":dependencies-sets:test-basics"))
+
   api(project(":open:commons:crypt"))
   api(project(":open:commons:xml-commons"))
 
-  api("org.codehaus.staxmate:staxmate:2.0.1")
-  api("org.codehaus.woodstox:woodstox-core-asl:4.4.1")
-  api("org.apache.commons:commons-lang3:3.8.1")
-  api("commons-io:commons-io:2.6")
-  api("org.mockito:mockito-core:2.25.1")
-  api("org.easymock:easymockclassextension:3.2")
-  api("org.easymock:easymock:4.0.2")
-  api("org.assertj:assertj-core:3.12.2")
-  api("org.easytesting:fest-reflect:1.4.1")
-  api("com.fasterxml.jackson.core:jackson-databind:2.9.8")
-  api("xmlunit:xmlunit:1.6")
+  api("com.google.guava:guava")
+  api("commons-codec:commons-codec")
+  api("commons-io:commons-io")
 
-  api("junit:junit:4.12")
-  api("org.junit.jupiter:junit-jupiter-api:5.4.0")
-  api("org.junit.jupiter:junit-jupiter-params:5.4.0")
-  api("org.junit.vintage:junit-vintage-engine:5.4.0")
-  api("org.junit.jupiter:junit-jupiter-engine:5.4.0")
-  api("org.assertj:assertj-core:3.12.2")
+  api("org.codehaus.staxmate:staxmate")
+  api("org.codehaus.woodstox:woodstox-core-asl")
+  api("org.apache.commons:commons-lang3")
+  api("commons-io:commons-io")
+  api("org.mockito:mockito-core")
+  api("org.easymock:easymockclassextension")
+  api("org.easymock:easymock")
+  api("org.assertj:assertj-core")
+  api("org.easytesting:fest-reflect")
+  api("com.fasterxml.jackson.core:jackson-databind")
+  api("xmlunit:xmlunit")
 
   //TODO make optional
-  api("joda-time:joda-time:2.10.1")
+  api("joda-time:joda-time")
 
-
-  // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-  implementation(kotlin("stdlib-jdk8"))
-  implementation(kotlin("reflect"))
-
-  implementation("com.google.code.findbugs:jsr305:3.0.2")
-  implementation("javax.inject:javax.inject:1")
-  implementation("com.google.errorprone:error_prone_annotations:2.3.3")
 
   //Test stuff
-  api("com.google.guava:guava:27.0.1-jre")
-
-
-  testImplementation("io.strikt:strikt-core:0.19.2")
-  testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.3.21")
-
-  //Kotlin specific stuff
-  testImplementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.21")
-  testImplementation("com.willowtreeapps.assertk:assertk:0.10")
+  testImplementation(project(":dependencies-sets:kotlin-test"))
 }

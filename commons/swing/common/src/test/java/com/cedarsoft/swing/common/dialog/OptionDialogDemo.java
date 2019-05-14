@@ -43,6 +43,7 @@ import org.junit.jupiter.api.*;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Disabled
 public class OptionDialogDemo {
   @BeforeEach
   public void setUp() throws Exception {

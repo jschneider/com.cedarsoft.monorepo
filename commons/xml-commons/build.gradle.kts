@@ -12,28 +12,12 @@ plugins {
 }
 
 dependencies {
-  // This dependency is exported to consumers, that is to say found on their compile classpath.
-  api("commons-io:commons-io:2.6")
-  api("commons-codec:commons-codec:1.12")
-  api("com.google.guava:guava:27.0.1-jre")
+  api(project(":dependencies-sets:annotations"))
 
-  // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-  implementation("com.google.code.findbugs:jsr305:3.0.2")
-  implementation("javax.inject:javax.inject:1")
-  implementation("com.google.errorprone:error_prone_annotations:2.3.3")
+  api("commons-io:commons-io")
+  api("commons-codec:commons-codec")
+  api("com.google.guava:guava")
 
   //Test stuff
-
-  testImplementation("junit:junit:4.12")
-  testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.0")
-  testImplementation("org.junit.jupiter:junit-jupiter-params:5.4.0")
-  testImplementation("org.junit.vintage:junit-vintage-engine:5.4.0")
-  testImplementation("org.junit.jupiter:junit-jupiter-engine:5.4.0")
-  testImplementation("org.assertj:assertj-core:3.12.2")
-
-  testImplementation("io.strikt:strikt-core:0.19.2")
-  testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.3.21")
-
-  //Kotlin specific stuff
-  testImplementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.21")
+  testImplementation(project(":dependencies-sets:kotlin-test"))
 }
