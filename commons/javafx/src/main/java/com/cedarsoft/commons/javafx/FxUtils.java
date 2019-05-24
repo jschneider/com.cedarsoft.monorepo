@@ -253,7 +253,7 @@ public class FxUtils {
   }
 
   /**
-   * Calculates the location relative to the ancestor
+   * Calculates the location relative to the ancestor (parent or parent of parent or parent of...)
    */
   public static Point2D localToAncestor(@Nonnull Node node, @Nonnull Node ancestor, double x, double y) {
     Point2D point2D = new Point2D(x, y);

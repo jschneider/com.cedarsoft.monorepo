@@ -1,12 +1,8 @@
 package com.cedarsoft.tests.coroutines
 
 
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -15,29 +11,59 @@ fun main(args: Array<String>) {
 }
 
 class CoroutinesDemo {
-  fun run() = runBlocking {
-    val job = launch {
-      try {
-        repeat(1000) { i ->
-          logger.info("I'm sleeping $i ...")
-          delay(500L)
-        }
-      } finally {
-        withContext(NonCancellable) {
-          logger.info("I'm running finally")
-          delay(1000L)
-          logger.info("And I've just delayed for 1 sec because I'm non-cancellable")
+
+  fun run() {
+    runBlocking {
+      val channel = ConflatedBroadcastChannel("asdf")
+
+      GlobalScope.async {
+        delay(100)
+        println("will set")
+        channel.offer("SENT0")
+        channel.offer("SENT1")
+        channel.offer("SENT2")
+        delay(100)
+        channel.offer("SENT3")
+        delay(100)
+        channel.offer("SENT4")
+        delay(100)
+        channel.offer("SENT5")
+        delay(100)
+        channel.offer("SENT6")
+        delay(100)
+        channel.offer("SENT7")
+        println("did set")
+      }
+
+
+
+      GlobalScope.async {
+        val subscription = channel.openSubscription()
+
+        while (true) {
+          delay(200)
+
+          val value = subscription.receiveOrNull()
+          println("got value: $value")
         }
       }
-    }
 
-    delay(1300L) // delay a bit
-    logger.info("main: I'm tired of waiting!")
-    job.cancelAndJoin() // cancels the job and waits for its completion
-    logger.info("main: Now I can quit.")
+      delay(4000)
+    }
+    println("done...")
+  }
+
+  private fun println(message: String) {
+    logger.info(message)
   }
 
   companion object {
     val logger: Logger = LoggerFactory.getLogger(CoroutinesDemo::class.qualifiedName)
   }
 }
+
+// Message types for counterActor
+sealed class CounterMsg
+
+object IncCounter : CounterMsg() // one-way message to increment counter
+class GetCounter(val response: CompletableDeferred<Int>) : CounterMsg() // a request with reply
