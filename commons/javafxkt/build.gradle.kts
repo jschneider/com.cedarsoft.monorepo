@@ -17,8 +17,8 @@ dependencies {
   api(project(":open:unit:unit"))
   api(project(":open:commons:concurrent"))
   api("org.fxyz3d:fxyz3d:0.3.0")
-  api("org.testfx:testfx-junit5")
-
+  
+  testImplementation("org.testfx:testfx-junit5")
   testImplementation(project(":dependencies-sets:kotlin-test"))
   testImplementation(project(":open:commons:test-utils"))
   testImplementation("com.miglayout:miglayout-javafx")

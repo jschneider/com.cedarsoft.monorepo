@@ -68,6 +68,8 @@ public class ConvertTest {
       return;
     }
 
+    IdentifyDemo.verifyImagemagicInstalled();
+
     File thumbFile = new File(tmp.newFolder(), "thumb.jpg");
 
     convert.createThumbnail(imageFile, thumbFile, new Resolution(800, 800), "jpg");

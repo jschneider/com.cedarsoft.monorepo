@@ -13,9 +13,11 @@ dependencies {
 
   api("com.google.guava:guava")
   api("javax.annotation:javax.annotation-api")
+  api("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8")
 
   testImplementation(project(":dependencies-sets:kotlin-test"))
   testImplementation(project(":open:commons:test-utils"))
   testImplementation(project(":open:commons:commons"))
   testImplementation("org.awaitility:awaitility")
+  testImplementation("ch.qos.logback:logback-classic")
 }

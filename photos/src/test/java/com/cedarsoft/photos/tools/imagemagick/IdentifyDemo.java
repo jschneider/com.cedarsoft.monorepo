@@ -61,10 +61,15 @@ public class IdentifyDemo {
 
   @Nonnull
   public static Identify createIdentify() throws CmdLineToolNotAvailableException {
+    verifyImagemagicInstalled();
+    File bin = new File("/usr/bin/identify");
+    return new Identify(bin);
+  }
+
+  public static void verifyImagemagicInstalled() throws AssumptionViolatedException {
     File bin = new File("/usr/bin/identify");
     if (!bin.exists()) {
       throw new AssumptionViolatedException("Imagemagick not installed. Could not find identify");
     }
-    return new Identify(bin);
   }
 }
