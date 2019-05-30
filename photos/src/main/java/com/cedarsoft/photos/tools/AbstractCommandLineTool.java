@@ -31,7 +31,7 @@
 package com.cedarsoft.photos.tools;
 
 import com.cedarsoft.execution.OutputRedirector;
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;

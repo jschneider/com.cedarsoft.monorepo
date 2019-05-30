@@ -33,7 +33,7 @@ package com.cedarsoft.commons.properties;
 
 
 import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 import javax.annotation.Nonnull;
 import java.util.Collections;

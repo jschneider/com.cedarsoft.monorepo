@@ -32,7 +32,7 @@ package com.cedarsoft.photos.tools.exif;
 
 import com.cedarsoft.photos.tools.AbstractCommandLineTool;
 import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 import javax.annotation.Nonnull;
 import java.io.File;

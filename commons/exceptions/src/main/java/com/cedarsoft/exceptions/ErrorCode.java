@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions;
 
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 import javax.annotation.Nonnull;
 

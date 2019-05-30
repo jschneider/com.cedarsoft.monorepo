@@ -1,9 +1,10 @@
 package com.cedarsoft.commons.concurrent
 
+import com.cedarsoft.test.utils.untilAtomicIsTrue
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.*
 import org.assertj.core.api.Assertions.*
 import org.awaitility.Awaitility
-import org.awaitility.core.ConditionFactory
 import org.hamcrest.CoreMatchers
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
@@ -15,6 +16,56 @@ import java.util.concurrent.atomic.AtomicInteger
  */
 @ExperimentalCoroutinesApi
 internal class CoAsyncTest {
+
+  @Test
+  internal fun testArrayBroadcastChannel() {
+    runBlocking {
+      val channel = BroadcastChannel<Int>(17)
+
+      async {
+        for (i in 1..100) {
+          channel.send(i)
+          delay(40)
+        }
+
+        channel.close()
+      }
+
+
+      channel.openSubscription()
+        .consumeEach {
+          println("Consumed $it")
+        }
+
+    }
+  }
+
+  @Test
+  fun testCollect() {
+    runBlocking {
+
+      val channel = produce<Int> {
+        for (i in 1..100) {
+          this.send(i)
+          delay(40)
+        }
+
+        close()
+      }
+
+
+      channel
+        .map {
+          return@map "it"
+        }
+        .consumeEachIndexed {
+          println("Consuming ${it.index} --> ${it.value}")
+        }
+    }
+
+    println("done")
+  }
+
   @ExperimentalCoroutinesApi
   @Test
   internal fun testIt() {
@@ -75,8 +126,8 @@ internal class CoAsyncTest {
       }
 
       job.join()
-      Awaitility.await().untilAtomic(finishedAdding)
-      Awaitility.await().untilAtomic(finishedRun)
+      Awaitility.await().untilAtomicIsTrue(finishedAdding)
+      Awaitility.await().untilAtomicIsTrue(finishedRun)
 
       assertThat(calledFor.get()).isEqualTo(30)
       assertThat(runCount.get()).isLessThan(3)
@@ -90,8 +141,4 @@ internal class CoAsyncTest {
   companion object {
     val logger: org.slf4j.Logger = LoggerFactory.getLogger(CoAsyncTest::class.java)
   }
-}
-
-private fun ConditionFactory.untilAtomic(atomicBoolean: AtomicBoolean) {
-  return untilAtomic(atomicBoolean, CoreMatchers.`is`(true))
 }

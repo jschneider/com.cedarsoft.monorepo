@@ -35,10 +35,10 @@ dependencies {
   api("org.easytesting:fest-reflect")
   api("com.fasterxml.jackson.core:jackson-databind")
   api("xmlunit:xmlunit")
+  api("org.awaitility:awaitility")
 
   //TODO make optional
   api("joda-time:joda-time")
-
 
   //Test stuff
   testImplementation(project(":dependencies-sets:kotlin-test"))

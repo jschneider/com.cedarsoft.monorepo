@@ -32,7 +32,7 @@ package com.cedarsoft.exceptions.handling;
 
 import com.cedarsoft.exceptions.ApplicationException;
 import com.cedarsoft.exceptions.ErrorCode;
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

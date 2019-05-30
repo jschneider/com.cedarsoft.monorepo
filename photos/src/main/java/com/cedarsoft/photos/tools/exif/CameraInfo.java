@@ -31,7 +31,7 @@
 package com.cedarsoft.photos.tools.exif;
 
 
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 import javax.annotation.Nonnull;
 

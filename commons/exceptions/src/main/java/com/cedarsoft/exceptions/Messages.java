@@ -30,12 +30,13 @@
  */
 package com.cedarsoft.exceptions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.google.errorprone.annotations.Immutable;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * Offers access to resource bundle entries

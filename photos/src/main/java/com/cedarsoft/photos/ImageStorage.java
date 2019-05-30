@@ -33,7 +33,7 @@ package com.cedarsoft.photos;
 import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.crypt.Algorithm;
 import com.cedarsoft.crypt.Hash;
-import com.google.errorprone.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nonnull;

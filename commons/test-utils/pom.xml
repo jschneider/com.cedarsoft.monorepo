@@ -81,6 +81,12 @@
       <scope>compile</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
     <!--required for xml unit-->
     <dependency>
       <groupId>junit</groupId>
