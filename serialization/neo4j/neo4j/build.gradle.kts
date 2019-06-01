@@ -28,6 +28,6 @@ dependencies {
   testImplementation("org.neo4j:neo4j-kernel")
   testImplementation("org.neo4j.test:neo4j-harness")
   testImplementation("org.neo4j.community:it-test-support")
-  testImplementation("org.neo4j:neo4j-shell")
+  //testImplementation("org.neo4j:neo4j-shell")
   testImplementation("org.neo4j:neo4j-io")
 }

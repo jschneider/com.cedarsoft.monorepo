@@ -25,7 +25,7 @@ object GradleConversionHelper {
   val settingsPaths: MutableList<String> = mutableListOf()
 
   fun run() {
-    val baseDir = File("/home/johannes/projects/com.cedarsoft.monorepo/closed/sick")
+    val baseDir = File("/home/johannes/projects/com.cedarsoft.monorepo/closed/autoresultat/ng")
     if (!baseDir.isDirectory) {
       throw IOException("Not a directory <${baseDir.absolutePath}>")
     }
@@ -70,7 +70,7 @@ object GradleConversionHelper {
           .replace(")", "")
       }
       .forEach {
-        println("include(\"$it\")")
+        println("include($it)")
       }
   }
 
@@ -170,7 +170,7 @@ object GradleConversionHelper {
     }
   }
 
-  private val writeFiles = false
+  private val writeFiles = true
 
   private fun Document.isPackagingPom(): Boolean {
     val packaging: Element? = document.rootElement.getChild("packaging", document.rootElement.namespace)

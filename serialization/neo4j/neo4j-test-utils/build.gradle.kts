@@ -19,7 +19,7 @@ dependencies {
   api("com.google.guava:guava")
   api("org.neo4j:neo4j-kernel")
   api("org.neo4j.community:it-test-support")
-  api("org.neo4j:neo4j-shell")
+  //api("org.neo4j:neo4j-shell")
   api("org.mockito:mockito-core")
   api("org.easymock:easymockclassextension")
   api("org.easymock:easymock")

@@ -22,7 +22,7 @@ internal class CoAsyncTest {
     runBlocking {
       val channel = BroadcastChannel<Int>(17)
 
-      async {
+      launch {
         for (i in 1..100) {
           channel.send(i)
           delay(40)
