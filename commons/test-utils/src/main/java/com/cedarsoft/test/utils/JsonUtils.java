@@ -65,10 +65,10 @@ public class JsonUtils {
 
   public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
     if ( test == null || test.trim().isEmpty() ) {
-      throw new ComparisonFailure("Empty test json", formatJson(control).trim(), formatJson(test).trim());
+      throw new ComparisonFailure("Empty test json", formatJson(test).trim(), formatJson(control).trim());
     }
     if ( control == null || control.trim().isEmpty() ) {
-      throw new ComparisonFailure("Empty control json", formatJson(control).trim(), formatJson(test).trim());
+      throw new ComparisonFailure("Empty control json", formatJson(test).trim(), formatJson(control).trim());
     }
 
     try {
@@ -77,10 +77,10 @@ public class JsonUtils {
       JsonNode controlTree = mapper.readTree( control );
 
       if ( !controlTree.equals( testTree ) ) {
-        throw new ComparisonFailure("JSON comparison failed", formatJson(control).trim(), formatJson(test).trim());
+        throw new ComparisonFailure("JSON comparison failed", formatJson(test).trim(), formatJson(control).trim());
       }
     } catch ( JsonProcessingException e ) {
-      throw new ComparisonFailure("JSON parsing error (" + e.getMessage() + ")", formatJson(control).trim(), formatJson(test).trim());
+      throw new ComparisonFailure("JSON parsing error (" + e.getMessage() + ")", formatJson(test).trim(), formatJson(control).trim());
     }
   }
 

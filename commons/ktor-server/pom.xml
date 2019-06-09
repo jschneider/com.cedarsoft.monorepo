@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>commons</artifactId>
+    <version>0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cedarsoft.commons</groupId>
+  <artifactId>ktor-server</artifactId>
+  <name>commons.KTor Server Commons</name>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>ktor</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>kotlinx-serializers</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jetbrains.kotlinx</groupId>
+      <artifactId>kotlinx-coroutines-jdk8</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlinx</groupId>
+      <artifactId>kotlinx-serialization-runtime</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.cedarsoft</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>concurrent</artifactId>
+    </dependency>
+
+    <!--Test dependencies-->
+    <dependency>
+      <groupId>io.ktor</groupId>
+      <artifactId>ktor-server-test-host</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>commons</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+</project>

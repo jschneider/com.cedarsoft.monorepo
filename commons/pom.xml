@@ -34,6 +34,8 @@
     <module>javafx3d</module>
     <module>javafxkt</module>
     <module>javafx-test-utils</module>
+    <module>kotlinx-serializers</module>
+    <module>ktor-server</module>
     <module>license</module>
     <module>mail</module>
     <module>rest</module>
