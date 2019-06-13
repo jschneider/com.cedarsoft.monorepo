@@ -136,6 +136,10 @@ public abstract class AbstractSerializerTest2<T> {
 
   @Nonnull
   public static <T> Entry<? extends T> create( @Nonnull T object, @Nonnull URL expected ) {
+    if (expected == null) {
+      throw new IllegalArgumentException("No expected ULR found");
+    }
+
     try {
       return new Entry<>(object, IOUtils.toByteArray(expected.openStream()));
     } catch ( IOException e ) {

@@ -55,38 +55,38 @@ public class JsonUtils {
   private JsonUtils() {
   }
 
-  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test ) throws SAXException, IOException {
-    assertJsonEquals(control, test, Charsets.UTF_8);
-  }
-  
-  public static void assertJsonEquals( @Nonnull URL control, @Nullable String test , @Nonnull Charset charset) throws IOException {
-    assertJsonEquals( AssertUtils.toString( control, charset), test );
+  public static void assertJsonEquals(@Nonnull URL expected, @Nullable String actual) throws SAXException, IOException {
+    assertJsonEquals(expected, actual, Charsets.UTF_8);
   }
 
-  public static void assertJsonEquals( @Nullable String control, @Nullable String test ) throws IOException {
-    if ( test == null || test.trim().isEmpty() ) {
-      throw new ComparisonFailure("Empty test json", formatJson(test).trim(), formatJson(control).trim());
+  public static void assertJsonEquals(@Nonnull URL expected, @Nullable String actual, @Nonnull Charset charset) throws IOException {
+    assertJsonEquals(AssertUtils.toString(expected, charset), actual);
+  }
+
+  public static void assertJsonEquals(@Nullable String expected, @Nullable String actual) throws IOException {
+    if (actual == null || actual.trim().isEmpty()) {
+      throw new ComparisonFailure("Empty actual json", formatJson(expected).trim(), formatJson(actual).trim());
     }
-    if ( control == null || control.trim().isEmpty() ) {
-      throw new ComparisonFailure("Empty control json", formatJson(test).trim(), formatJson(control).trim());
+    if (expected == null || expected.trim().isEmpty()) {
+      throw new ComparisonFailure("Empty expected json", formatJson(expected).trim(), formatJson(actual).trim());
     }
 
     try {
       ObjectMapper mapper = new ObjectMapper();
-      JsonNode testTree = mapper.readTree( test );
-      JsonNode controlTree = mapper.readTree( control );
+      JsonNode expectedTree = mapper.readTree(expected);
+      JsonNode actualTree = mapper.readTree(actual);
 
-      if ( !controlTree.equals( testTree ) ) {
-        throw new ComparisonFailure("JSON comparison failed", formatJson(test).trim(), formatJson(control).trim());
+      if (!expectedTree.equals(actualTree)) {
+        throw new ComparisonFailure("JSON comparison failed", formatJson(expected).trim(), formatJson(actual).trim());
       }
     } catch ( JsonProcessingException e ) {
-      throw new ComparisonFailure("JSON parsing error (" + e.getMessage() + ")", formatJson(test).trim(), formatJson(control).trim());
+      throw new ComparisonFailure("JSON parsing error (" + e.getMessage() + ")", formatJson(expected).trim(), formatJson(actual).trim());
     }
   }
 
   @Deprecated
-  public static void assertJsonEquals(@Nullable String err, @Nullable String control, @Nullable String test) throws IOException, ComparisonFailure {
-    assertJsonEquals(control, test);
+  public static void assertJsonEquals(@Nullable String err, @Nullable String expected, @Nullable String actual) throws IOException, ComparisonFailure {
+    assertJsonEquals(expected, actual);
   }
 
   @Nonnull

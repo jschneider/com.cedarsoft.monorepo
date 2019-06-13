@@ -48,7 +48,7 @@ import java.io.IOException;
  */
 public abstract class AbstractSerializer<T, S, D, E extends Throwable, O, I> implements PluggableSerializer<T, S, D, E, O, I> {
   @Nonnull
-  protected final VersionRange formatVersionRange;
+  private final VersionRange formatVersionRange;
   @Nonnull
   protected final DelegatesMappings<S, D, E, O, I> delegatesMappings;
 

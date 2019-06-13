@@ -91,7 +91,7 @@ public class AssertUtilsTest {
       JsonUtils.assertJsonEquals( ( String ) null, null );
       fail( "Where is the Exception" );
     } catch ( ComparisonFailure e ) {
-      Assertions.assertThat(e.getMessage()).contains("Empty test json");
+      Assertions.assertThat(e.getMessage()).contains("Empty actual json");
     }
     try {
       JsonUtils.assertJsonEquals( "affase", "asdf" );
