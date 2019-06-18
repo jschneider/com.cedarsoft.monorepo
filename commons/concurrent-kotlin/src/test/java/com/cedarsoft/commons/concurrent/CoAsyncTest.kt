@@ -6,6 +6,7 @@ import kotlinx.coroutines.channels.*
 import org.assertj.core.api.Assertions.*
 import org.awaitility.Awaitility
 import org.hamcrest.CoreMatchers
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.util.concurrent.atomic.AtomicBoolean
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger
 @ExperimentalCoroutinesApi
 internal class CoAsyncTest {
 
+  @Disabled
   @Test
   internal fun testArrayBroadcastChannel() {
     runBlocking {
@@ -40,6 +42,7 @@ internal class CoAsyncTest {
     }
   }
 
+  @Disabled
   @Test
   fun testCollect() {
     runBlocking {
