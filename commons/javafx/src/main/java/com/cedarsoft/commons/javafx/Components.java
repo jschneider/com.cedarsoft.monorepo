@@ -50,8 +50,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -792,6 +794,16 @@ public class Components {
     return slider;
   }
 
+  public static Node imageViewHolder(@Nonnull ImageView imageView) {
+    imageView.minHeight(1);
+    imageView.setPreserveRatio(true);
+    StackPane imageViewStackPane = new StackPane();
+    imageViewStackPane.getChildren().add(imageView);
+    imageViewStackPane.setMinHeight(1);
+    imageView.fitHeightProperty().bind(imageViewStackPane.heightProperty());
+    return imageViewStackPane;
+  }
+
   private static double findClosestStepForValue(double value, final double min, final double max, final double step) {
     double nextStep = (value / step) * step;
     if (nextStep < min) {
@@ -802,5 +814,4 @@ public class Components {
     }
     return nextStep;
   }
-
 }
