@@ -5,7 +5,8 @@ import kotlin.concurrent.read
 import kotlin.concurrent.write
 
 /**
- * Helper class that is guarded by lock
+ * Helper class that is guarded by lock.
+ * Can be used to wrap mutable objects (e.g. lists)
  */
 class GuardedByLock<out T>(
   val lock: ReentrantReadWriteLock,

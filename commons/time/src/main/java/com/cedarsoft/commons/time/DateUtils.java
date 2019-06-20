@@ -109,6 +109,10 @@ public class DateUtils {
 
   @Nonnull
   private static String formatDurationWords(final long durationMillis, @Nonnull DurationI18n durationI18n) {
+    if (durationMillis < 0) {
+      return durationMillis + " ms";
+    }
+
     // This method is generally replaceable by the format method, but
     // there are a series of tweaks and special cases that require
     // trickery to replicate.
