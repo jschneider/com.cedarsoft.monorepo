@@ -92,6 +92,7 @@ public class FxExceptionHandler extends ExceptionHandler {
     @Nullable ExceptionTypeHandler exceptionTypeHandler = exceptionTypeHandlers.get(throwable.getClass());
     if (exceptionTypeHandler != null) {
       exceptionTypeHandler.handle(this, thread, throwable, original);
+      return;
     }
 
     if (throwable instanceof ApplicationException) {

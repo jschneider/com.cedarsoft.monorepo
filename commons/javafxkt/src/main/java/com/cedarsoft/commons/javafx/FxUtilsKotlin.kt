@@ -1,6 +1,7 @@
 package com.cedarsoft.commons.javafx
 
 import com.google.common.base.Strings
+import javafx.application.Platform
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.stage.Screen
@@ -101,4 +102,14 @@ object FxUtilsKotlin {
    * Used for reflection workaround
    */
   private val isJdk8: Boolean = System.getProperty("java.version").contains("1.8")
+
+  /**
+   * Throws an exception if the current thread is not the JavaFX UI Thread
+   */
+  @Throws(IllegalThreadStateException::class)
+  fun ensureFxThread() {
+    if (!Platform.isFxApplicationThread()) {
+      throw IllegalThreadStateException("Expected JavaFX Application thread but was <${Thread.currentThread().name}>")
+    }
+  }
 }
