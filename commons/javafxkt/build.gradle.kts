@@ -16,8 +16,10 @@ dependencies {
   api("com.google.guava:guava")
   api(project(":open:unit:unit"))
   api(project(":open:commons:concurrent"))
-  api("org.fxyz3d:fxyz3d:0.3.0")
-  
+  api("org.fxyz3d:fxyz3d:0.3.0") {
+    exclude(group = "org.slf4j", module = "slf4j-simple")
+  }
+
   testImplementation("org.testfx:testfx-junit5")
   testImplementation(project(":dependencies-sets:kotlin-test"))
   testImplementation(project(":open:commons:test-utils"))

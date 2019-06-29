@@ -6,8 +6,11 @@ import javafx.beans.property.SimpleDoubleProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.beans.property.StringProperty
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
@@ -21,6 +24,27 @@ internal class KotlinFxPropertiesKtTest {
     foo.name = "asdf"
     assertThat(foo.name).isEqualTo("asdf")
     assertThat(foo.nameProperty.get()).isEqualTo("asdf")
+  }
+
+  @Test
+  internal fun testSetMultipleTimes() {
+    val foo = Foo()
+    foo.name = "daName"
+
+    val called = AtomicBoolean()
+
+    foo.nameProperty.addListener(object : ChangeListener<String?> {
+      override fun changed(observable: ObservableValue<out String?>?, oldValue: String?, newValue: String?) {
+        called.set(true)
+      }
+    })
+
+    assertThat(called).isFalse
+    //Same name, should not trigger the listener
+    foo.name = "daName"
+    assertThat(called).isFalse
+    foo.name = "daName2"
+    assertThat(called).isTrue
   }
 }
 

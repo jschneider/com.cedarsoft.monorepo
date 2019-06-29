@@ -74,9 +74,15 @@ public class BusySupport {
     ChangeListener<Boolean> listener = new ChangeListener<Boolean>() {
       @Override
       public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+        if (oldValue == newValue) {
+          //Avoid duplicate notifications
+          return;
+        }
+
         if (!newValue) {
-          callback.finished();
+          //Remove the listener first to avoid multiple calls (if the callback itself sets busy to true again
           observable.removeListener(this);
+          callback.finished();
         }
       }
     };
@@ -88,8 +94,9 @@ public class BusySupport {
     new Timeline(new KeyFrame(manualCheckDelay, event -> {
       if (!busyStatusProperty.get()) {
         finished.set(true);
-        callback.finished();
+        //Remove the listener first to avoid multiple calls (if the callback itself sets busy to true again
         busyStatusProperty.removeListener(listener);
+        callback.finished();
       }
     })).play();
 
@@ -102,14 +109,14 @@ public class BusySupport {
 
       if (!busyStatusProperty.get()) {
         finished.set(true);
-        callback.finished();
         busyStatusProperty.removeListener(listener);
+        callback.finished();
       }
       else {
         //Still busy, timeout
         finished.set(true);
-        callback.timedOut();
         busyStatusProperty.removeListener(listener);
+        callback.timedOut();
       }
     })).play();
   }
