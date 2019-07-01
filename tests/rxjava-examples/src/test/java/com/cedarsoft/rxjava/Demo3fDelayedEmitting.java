@@ -1,5 +1,6 @@
 package com.cedarsoft.rxjava;
 
+import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,10 +9,16 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
 /**
+ * Dieses Demo zeigt das Verhalten, wenn die Ergebnisse mit einer Verzögerung emitted werden.
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Demo2 {
-  public Observable<String> getFunnyNames() {
+public class Demo3fDelayedEmitting {
+  @Test
+  void testIt() throws Exception {
+
+  }
+
+  public Observable<String> getNames() {
     LOG.info("getFunnyNames called");
 
     return Observable.create(new ObservableOnSubscribe<String>() {
@@ -40,5 +47,5 @@ public class Demo2 {
     });
   }
 
-  private static final Logger LOG = LoggerFactory.getLogger(Demo2.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(Demo3fDelayedEmitting.class.getName());
 }

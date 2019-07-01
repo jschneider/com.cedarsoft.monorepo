@@ -79,5 +79,5 @@ public class Demo3Throttle {
   }
 
 
-  private static final Logger LOG = LoggerFactory.getLogger(Demo1.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(Demo1Basics.class.getName());
 }

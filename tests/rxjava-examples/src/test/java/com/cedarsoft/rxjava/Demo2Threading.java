@@ -14,58 +14,53 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Demo1 {
+public class Demo2Threading {
+  /**
+   * Demo um zu schauen, auf welchem Thread was genau passiert
+   */
   @Test
-  void basics1HelloWorld() throws Exception {
-    Observable<String> myObservable = getFunnyNamesSimple();
-    //No code running yet
-    //"Configure" the observable (if you want to)
-
-    myObservable.subscribe(); //Here they come....
-  }
-
-  @Test
-  void basics2Disposable() throws Exception {
-    Observable<String> myObservable = getFunnyNamesSimple();
-
-    Disposable disposable = myObservable.subscribe();
-    disposable.dispose();
-  }
-
-  @Test
-  void basics3Observer() throws Exception {
-    System.out.println("Starting");
-
-    Observable<String> myObservable = getFunnyNamesSimple();
-    System.out.println("Got the observable " + myObservable);
-
-    myObservable.subscribe(new Observer<String>() {
-      @Override
-      public void onSubscribe(Disposable d) {
-      }
-
-      @Override
-      public void onNext(String s) {
-        System.out.println("Next: " + s);
-      }
-
-      @Override
-      public void onError(Throwable e) {
-        LOG.error("An error occurred", e);
-      }
-
-      @Override
-      public void onComplete() {
-        System.out.println("Completed");
-      }
-    });
-  }
-
-  @Test
-  void basics4Threading() throws Exception {
+  void threading1noConfiguration() throws Exception {
     LOG.info("Starting");
 
-    Observable<String> myObservable = getFunnyNames();
+    Observable<String> myObservable = getNames();
+    LOG.info("Got the observable");
+
+    myObservable
+      .subscribe(new Observer<String>() {
+        @Override
+        public void onSubscribe(Disposable d) {
+          LOG.info("onSubscribe");
+        }
+
+        @Override
+        public void onNext(String s) {
+          LOG.info("on next <" + s + ">");
+        }
+
+        @Override
+        public void onError(Throwable e) {
+          LOG.error("Uups", e);
+        }
+
+        @Override
+        public void onComplete() {
+          LOG.info("on complete");
+        }
+      });
+
+
+    //Warten bis alles erledigt ist
+    Thread.sleep(1000);
+  }
+
+  /**
+   * Wir möchten Kontrolle darüber haben, auf welchen Threads die Events eintrudeln
+   */
+  @Test
+  void threading2threadingConfigured() throws Exception {
+    LOG.info("Starting");
+
+    Observable<String> myObservable = getNames();
     LOG.info("Got the observable");
 
     myObservable
@@ -79,7 +74,7 @@ public class Demo1 {
 
         @Override
         public void onNext(String s) {
-          LOG.info("on next");
+          LOG.info("on next <" + s + ">");
         }
 
         @Override
@@ -91,14 +86,13 @@ public class Demo1 {
           LOG.info("on complete");
         }
       });
+
+    //Warten bis alles erledigt ist
+    Thread.sleep(1000);
   }
 
-  public Observable<String> getFunnyNamesSimple() {
-    return Observable.fromArray("Bugs", "Bunny");
-  }
-
-  public Observable<String> getFunnyNames() {
-    LOG.info("getFunnyNames called");
+  public Observable<String> getNames() {
+    LOG.info("getNames called");
     //Just for now, (too) simple implementation
     return Observable.create(new ObservableOnSubscribe<String>() {
       @Override
@@ -111,6 +105,7 @@ public class Demo1 {
           @Override
           public void run() {
             emitter.onNext("Bunny");
+            emitter.onNext("Sylvester");
             emitter.onComplete();
           }
         }, "MyFunnyNameProducerThread").start();
@@ -118,6 +113,5 @@ public class Demo1 {
     });
   }
 
-
-  private static final Logger LOG = LoggerFactory.getLogger(Demo1.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(Demo2Threading.class.getName());
 }
