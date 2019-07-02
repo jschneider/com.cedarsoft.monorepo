@@ -794,13 +794,35 @@ public class Components {
     return slider;
   }
 
-  public static Node imageViewHolder(@Nonnull ImageView imageView) {
+  /**
+   * Wraps the given {@link ImageView} such that its height is bound to the height of the cell it belongs to (MigLayout)
+   *
+   * @see #imageViewHolderWithBoundedWidth(ImageView)
+   */
+  @Nonnull
+  public static Node imageViewHolderWithBoundedHeight(@Nonnull ImageView imageView) {
     imageView.minHeight(1);
     imageView.setPreserveRatio(true);
     StackPane imageViewStackPane = new StackPane();
     imageViewStackPane.getChildren().add(imageView);
     imageViewStackPane.setMinHeight(1);
     imageView.fitHeightProperty().bind(imageViewStackPane.heightProperty());
+    return imageViewStackPane;
+  }
+
+  /**
+   * Wraps the given {@link ImageView} such that its width is bound to the width of the cell it belongs to (MigLayout)
+   *
+   * @see #imageViewHolderWithBoundedHeight(ImageView)
+   */
+  @Nonnull
+  public static Node imageViewHolderWithBoundedWidth(@Nonnull ImageView imageView) {
+    imageView.minWidth(1);
+    imageView.setPreserveRatio(true);
+    StackPane imageViewStackPane = new StackPane();
+    imageViewStackPane.getChildren().add(imageView);
+    imageViewStackPane.setMinWidth(1);
+    imageView.fitWidthProperty().bind(imageViewStackPane.widthProperty());
     return imageViewStackPane;
   }
 
