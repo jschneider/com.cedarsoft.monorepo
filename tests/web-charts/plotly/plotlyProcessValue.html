@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Test</title>
+  <script src="plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="graph" style="width:90vw;height:90vh;"></div>
+
+<script>
+  function rand() {
+    return Math.random();
+  }
+
+  function getXAxisTimeRange(timestamp) {
+    let time = timestamp.getTime();
+    return [new Date(time - 60000), new Date(timestamp)]; // 60 seconds
+  }
+
+  let graphNode = document.getElementById('graph');
+
+  // assumed time span is one minute
+  const arrayLength = 15 * 60 * 1000 / 100; // 15 minutes * 60 seconds * 1000 milliseconds / 100 milliseconds
+
+  let timestamps1 = [];
+  let timestamps2 = [];
+  let timestamps3 = [];
+  let timestamps4 = [];
+  let timestamps5 = [];
+  let timestamps6 = [];
+  let timestamps7 = [];
+  let timestamps8 = [];
+  
+  let yValues1 = [];
+  let yValues2 = [];
+  let yValues3 = [];
+  let yValues4 = [];
+  let yValues5 = [];
+  let yValues6 = [];
+  let yValues7 = [];
+  let yValues8 = [];
+
+  // pre-fill traces
+  let now = new Date().getTime();
+  for (let i = 0; i < arrayLength; i++) {
+    timestamps1[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps2[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps3[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps4[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps5[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps6[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps7[i] = new Date(now - (arrayLength - i) * 100);
+    timestamps8[i] = new Date(now - (arrayLength - i) * 100);
+    
+    yValues1[i] = rand();
+    yValues2[i] = rand();
+    yValues3[i] = rand();
+    yValues4[i] = rand();
+    yValues5[i] = rand();
+    yValues6[i] = rand();
+    yValues7[i] = rand();
+    yValues8[i] = rand();
+  }
+  
+  const traceType = 'scattergl';
+  
+  let massFlowRate = {
+    x: timestamps1,
+    y: yValues1,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Mass flow rate',
+    marker: {
+      color: '#0000ff',
+      size: 8
+    },
+    line: {
+      color: '#0000ff',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let flowVelocity = {
+    x: timestamps2,
+    y: yValues2,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Flow velocity',
+    marker: {
+      color: '#f61451',
+      size: 8
+    },
+    line: {
+      color: '#f61451',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+  
+  let volume = {
+    x: timestamps3,
+    y: yValues3,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Volume',
+    marker: {
+      color: '#9900f6',
+      size: 8
+    },
+    line: {
+      color: '#9900f6',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let volumetricFowRate = {
+    x: timestamps4,
+    y: yValues4,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Volumetric Flow Rate',
+    marker: {
+      color: '#60f61f',
+      size: 8
+    },
+    line: {
+      color: '#60f61f',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let mass = {
+    x: timestamps5,
+    y: yValues5,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Mass',
+    marker: {
+      color: '#f6eb00',
+      size: 8
+    },
+    line: {
+      color: '#f6eb00',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let energy = {
+    x: timestamps6,
+    y: yValues6,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Energy',
+    marker: {
+      color: '#f69200',
+      size: 8
+    },
+    line: {
+      color: '#f69200',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let temperature = {
+    x: timestamps7,
+    y: yValues7,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Temperature',
+    marker: {
+      color: '#0f8ef6',
+      size: 8
+    },
+    line: {
+      color: '#0f8ef6',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+  
+  let pressure = {
+    x: timestamps8,
+    y: yValues8,
+    connectgaps: true,
+    type: traceType,
+    mode: 'lines',
+    name: 'Pressure',
+    marker: {
+      color: '#3b7a2f',
+      size: 8
+    },
+    line: {
+      color: '#3b7a2f',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let data = [
+    massFlowRate, 
+    flowVelocity, 
+    volume,
+    volumetricFowRate,
+    mass,
+    energy,
+    temperature,
+    pressure
+  ];
+
+  let layout = {
+    title: 'Some title',
+    xaxis: {
+      title: 'Timeline',
+      type: 'date',
+      showgrid: true,
+      zeroline: false,
+      range: getXAxisTimeRange(new Date()),
+      autorange: true,
+      showline: true,
+      showticklabels: true,
+      linecolor: 'rgb(204,204,204)',
+      linewidth: 2,
+      autotick: false,
+      ticks: 'outside',
+      tickcolor: 'rgb(204,204,204)',
+      tickwidth: 2,
+      ticklen: 5,
+      tickfont: {
+        family: 'Arial',
+        size: 12,
+        color: 'rgb(82, 82, 82)'
+      }
+    },
+    yaxis: {
+      title: 'TODO'
+    }
+  };
+
+  Plotly.newPlot(graphNode, data, layout);
+
+  let interval = setInterval(function () {
+    console.time('update');
+
+    // fetch data via REST API
+    timestamps1.push(new Date());
+    timestamps2.push(new Date());
+    timestamps3.push(new Date());
+    timestamps4.push(new Date());
+    timestamps5.push(new Date());
+    timestamps6.push(new Date());
+    timestamps7.push(new Date());
+    timestamps8.push(new Date());
+
+    timestamps1.shift();
+    timestamps2.shift();
+    timestamps3.shift();
+    timestamps4.shift();
+    timestamps5.shift();
+    timestamps6.shift();
+    timestamps7.shift();
+    timestamps8.shift();
+
+    massFlowRate.y.push(rand());
+    massFlowRate.y.shift();
+
+    flowVelocity.y.push(rand());
+    flowVelocity.y.shift();
+    
+    volume.y.push(rand());
+    volume.y.shift();
+    
+    volumetricFowRate.y.push(rand());
+    volumetricFowRate.y.shift();
+    
+    mass.y.push(rand());
+    mass.y.shift();
+    
+    energy.y.push(rand());
+    energy.y.shift();
+
+    temperature.y.push(rand());
+    temperature.y.shift();
+    
+    pressure.y.push(rand());
+    pressure.y.shift();
+    
+    let update = {
+      x: [timestamps1, timestamps2, timestamps3, timestamps4, timestamps5, timestamps6, timestamps7, timestamps8],
+      y: [massFlowRate.y, flowVelocity.y, volume.y, volumetricFowRate.y, mass.y, energy.y, temperature.y, pressure.y]
+    };
+
+    let layout = {
+      xaxis: {
+        range: getXAxisTimeRange(new Date())
+      }
+    };
+
+    Plotly.update(graphNode, update, layout);
+
+    console.timeEnd('update');
+  }, 100);
+</script>
+
+</body>
+</html>

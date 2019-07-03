@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Process Value Line Graph Test</title>
+  <script src="bundle.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+
+<process-value-graph id="lineGraph" style="width:80vw;height:50vh"></process-value-graph>
+
+<br>
+<button id="toggleEnable" type="button" onclick="toggleEnableLineGraph()">Disable</button>
+<br>
+<hr/>
+
+Id: <input type="text" id="addProcessValueId"/>
+Label: <input type="text" id="addProcessValueLabel"/>
+Unit: <input type="text" id="addProcessValueUnit"/>
+Min. value: <input type="number" id="addProcessValueMinValue" name="minValue" value="0.0"/>
+Max. value: <input type="number" id="addProcessValueMaxValue" name="maxValue" value="100.0"/>
+Selected: <input type="checkbox" id="addProcessValueSelected" name="selected" value="Selected"/>
+Visible: <input type="checkbox" id="addProcessValueVisible" name="visible" value="Selected" checked/>
+Color: <input type="color" id="addProcessValueColor" name="color"/>
+<button type="button" onclick="addProcessValue()">Add process value</button>
+<br>
+<hr/>
+
+Id: <select id="updateProcessValueId">
+  <option value="MassFlowRate">MassFlowRate</option>
+  <option value="FlowVelocity">FlowVelocity</option>
+  <option value="Volume">Volume</option>
+  <option value="VolumetricFlowRate">VolumetricFlowRate</option>
+  <option value="Mass">Mass</option>
+  <option value="Energy">Energy</option>
+  <option value="Temperature">Temperature</option>
+  <option value="Pressure">Pressure</option>
+</select>
+
+Label: <input type="text" id="updateProcessValueLabel"/>
+Unit: <input type="text" id="updateProcessValueUnit"/>
+Min. value: <input type="number" id="updateProcessValueMinValue" name="minValue" value="0.0"/>
+Max. value: <input type="number" id="updateProcessValueMaxValue" name="maxValue" value="100.0"/>
+Selected: <input type="checkbox" id="updateProcessValueSelected" name="selected" value="Selected"/>
+Visible: <input type="checkbox" id="updateProcessValueVisible" name="visible" value="Selected" checked/>
+Color: <input type="color" id="updateProcessValueColor" name="color"/>
+<button type="button" onclick="updateProcessValue()">Update process value</button>
+<br>
+
+<hr/>
+
+<script>
+
+  function toggleEnableLineGraph() {
+    let lineGraph = document.getElementById('lineGraph');
+    lineGraph.disabled = !lineGraph.disabled;
+    let button = document.getElementById('toggleEnable');
+    if (lineGraph.disabled) {
+      button.innerText = 'Enable';
+    }
+    else {
+      button.innerText = 'Disable';
+    }
+  }
+
+  function updateProcessValue() {
+    let processValueId = document.getElementById('updateProcessValueId').value;
+    let processValueLabel = document.getElementById('updateProcessValueLabel').value;
+    let processValueUnit = document.getElementById('updateProcessValueUnit').value;
+    let processValueMinValue = document.getElementById('updateProcessValueMinValue').value;
+    let processValueMaxValue = document.getElementById('updateProcessValueMaxValue').value;
+    let processValueSelected = document.getElementById('updateProcessValueSelected').checked;
+    let processValueVisible = document.getElementById('updateProcessValueVisible').checked;
+    let processValueColor = document.getElementById('updateProcessValueColor').value;
+
+    let graph = document.getElementById('lineGraph');
+    graph.updateProcessValue({
+      id: processValueId,
+      label: processValueLabel,
+      unit: processValueUnit,
+      selected: processValueSelected,
+      visible: processValueVisible,
+      color: processValueColor,
+      minValue: processValueMinValue,
+      maxValue: processValueMaxValue
+    });
+  }
+  
+  function addProcessValue() {
+    let processValueId = document.getElementById('addProcessValueId').value;
+    let processValueLabel = document.getElementById('addProcessValueLabel').value;
+    let processValueUnit = document.getElementById('addProcessValueUnit').value;
+    let processValueMinValue = document.getElementById('addProcessValueMinValue').value;
+    let processValueMaxValue = document.getElementById('addProcessValueMaxValue').value;
+    let processValueSelected = document.getElementById('addProcessValueSelected').checked;
+    let processValueVisible = document.getElementById('addProcessValueVisible').checked;
+    let processValueColor = document.getElementById('addProcessValueColor').value;
+
+    let graph = document.getElementById('lineGraph');
+    graph.addProcessValue({
+      id: processValueId,
+      label: processValueLabel,
+      unit: processValueUnit,
+      selected: processValueSelected,
+      visible: processValueVisible,
+      color: processValueColor,
+      minValue: processValueMinValue,
+      maxValue: processValueMaxValue
+    });
+  }
+
+  function populateGraph() {
+    let graph = document.getElementById('lineGraph');
+    
+    window.setInterval(function() {
+      graph.addDataPoint({
+        timestamp: new Date(),
+        values: [
+          {
+            processValueId: 'MassFlowRate',
+            value: Math.random() * 10.0
+          },
+          {
+            processValueId: 'FlowVelocity',
+            value: Math.random() * 33.0
+          },
+          {
+            processValueId: 'Volume',
+            value: Math.random() * 17.0
+          },
+          {
+            processValueId: 'VolumetricFlowRate',
+            value: Math.random() * 11.0
+          },
+          {
+            processValueId: 'Mass',
+            value: Math.random() * 111.0
+          },
+          {
+            processValueId: 'Energy',
+            value: Math.random() * 83.0
+          },
+          {
+            processValueId: 'Temperature',
+            value: Math.random() * 2222.0
+          },
+          {
+            processValueId: 'Pressure',
+            value: Math.random(),
+          }
+        ]
+      });
+    }, 100);
+  }
+  
+  function initGraph() {
+    let graph = document.getElementById('lineGraph');
+
+    graph.addProcessValue({id: 'MassFlowRate', label: 'MassFlowRate', unit: 'kg/h', selected: true, visible: true, color: '#ff0000', minValue: 0, maxValue: 10.0});
+    graph.addProcessValue({id: 'FlowVelocity', label: 'FlowVelocity', unit: 'm/s', visible: true, color: '#00ff00', minValue: 0, maxValue: 33.0});
+    graph.addProcessValue({id: 'Volume', label: 'Volume', unit: 'm³', visible: false, color: '#0000ff', minValue: 0, maxValue: 17.0});
+    graph.addProcessValue({id: 'VolumetricFlowRate', label: 'VolumetricFlowRate', unit: 'm³/h', color: '#ff8800', minValue: 0, maxValue: 11.0});
+    graph.addProcessValues([
+      {id: 'Mass', label: 'Mass', unit: 'kg', color: '#f05588', minValue: 0, maxValue: 111.0},
+      {id: 'Energy', label: 'Energy', unit: 'kWh', color: '#6d00f0', minValue: 0, maxValue: 83.0},
+      {id: 'Temperature', label: 'Temperature', unit: '°C', color: '#f0bb05', minValue: 0, maxValue: 2222.0},
+      {id: 'Pressure', label: 'Pressure', unit: 'bar', color: '#177a31', minValue: 0, maxValue: 1.0}
+    ]);
+    
+    window.setTimeout(populateGraph, 500);
+  }
+
+  customElements.whenDefined('process-value-graph').then(() => initGraph());
+
+</script>
+
+</body>
+</html>

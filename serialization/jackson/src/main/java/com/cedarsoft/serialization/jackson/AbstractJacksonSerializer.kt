@@ -379,6 +379,16 @@ protected constructor(
     serializeTo.writeStringField(propertyName, enumValue.name)
   }
 
+  @Throws(IOException::class)
+  fun serializeEnum(enumValue: Enum<*>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+    serializeTo.writeStringField(propertyName, enumValue.name)
+  }
+
+  @Throws(IOException::class)
+  fun serializeEnum(enumValue: Enum<*>, type: Class<*>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+    serializeTo.writeStringField(propertyName, enumValue.name)
+  }
+
   /**
    * Deserializes the enumeration
    * @param enumClass    the enum class
@@ -393,6 +403,11 @@ protected constructor(
     val wrapper = JacksonParserWrapper(parser)
     wrapper.nextFieldValue(propertyName)
     return java.lang.Enum.valueOf<A>(enumClass, parser.text)
+  }
+
+  @Throws(IOException::class)
+  fun <A : Enum<A>> deserializeEnum(enumClass: Class<A>, formatVersion: Version, parser: JsonParser): A {
+    return deserializeEnum(enumClass, parser)
   }
 
   @Throws(IOException::class)

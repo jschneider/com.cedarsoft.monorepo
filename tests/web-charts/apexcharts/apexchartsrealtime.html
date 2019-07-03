@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apexcharts Test</title>
+  <script src="apexcharts.js"></script>
+</head>
+<body>
+
+<div id="chart" style="width:900px;height:600px;"></div>
+
+<button type="button" onclick="pause()">Pause</button>
+
+<script>
+  // assumed time span is one minute
+  const arrayLength = 60 * 1000 / 100; // 60 seconds * 1000 milliseconds / 100 milliseconds
+
+  function updateTrace(trace, offset, scale) {
+    trace.push([new Date().getTime() + offset, rand() * scale]);
+    if (trace.length > arrayLength) {
+      trace.splice(0, 1);
+    }
+  }
+
+  let isPaused = false;
+
+  function pause() {
+    isPaused = !isPaused;
+  }
+
+  function rand() {
+    return Math.random();
+  }
+
+  let trace1 = [];
+  let trace2 = [];
+  let trace3 = [];
+  let trace4 = [];
+
+  const options = {
+    chart: {
+      type: 'line',
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        speed: 100,
+        animateGradually: {
+          enabled: false,
+          delay: 150
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 100
+        }
+      }
+    },
+    series: [
+      {
+        name: 'TRACE1',
+        data: trace1
+      },
+      {
+        name: 'TRACE2',
+        data: trace2
+      },
+      {
+        name: 'TRACE3',
+        data: trace3
+      },
+      {
+        name: 'TRACE4',
+        data: trace4
+      }
+    ],
+    xaxis: {
+      type: 'datetime',
+      range: 10 * 1000, // 60 seconds,
+      labels: {
+        format: 'mm:ss:fff'
+      }
+    },
+    yaxis: [
+      {
+        title: {
+          text: "Series A"
+        },
+        seriesName: 'TRACE1',
+      },
+      {
+        title: {
+          text: "Series B"
+        },
+        seriesName: 'TRACE2',
+      },
+      {
+        opposite: true,
+        title: {
+          text: "Series C"
+        },
+        seriesName: 'TRACE3',
+      },
+      {
+        opposite: true,
+        title: {
+          text: "Series D"
+        },
+        seriesName: 'TRACE4',
+      }
+    ]
+  };
+
+  let chart = new ApexCharts(document.getElementById("chart"), options);
+  chart.render();
+
+  window.setInterval(function() {
+    if (isPaused) {
+      return;
+    }
+
+    if (true) {
+      updateTrace(trace1, 0, 10.0);
+      updateTrace(trace2, 10, 33.0);
+      updateTrace(trace3, 25, 666.0);
+      updateTrace(trace4, 50, 9999.0);
+
+      chart.updateSeries([
+        {
+          data: trace1
+        },
+        {
+          data: trace2
+        },
+        {
+          data: trace3
+        },
+        {
+          data: trace4
+        }
+      ]);
+    }
+    else {
+      chart.appendData([
+        {
+          data: [[new Date().getTime(), rand() * 10.0]]
+        },
+        {
+          data: [[new Date().getTime() + 10, rand() * 33.0]]
+        },
+        {
+          data: [[new Date().getTime() + 25, rand() * 666.0]]
+        },
+        {
+          data: [[new Date().getTime() + 50, rand() * 9999.0]]
+        }
+      ], false);
+    }
+  }, 100)
+
+</script>
+
+</body>
+</html>

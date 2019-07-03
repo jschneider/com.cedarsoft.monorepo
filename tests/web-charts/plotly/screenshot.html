@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Test</title>
+  <script src="plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="graph" style="width:1300px;height:600px;"></div>
+
+<script>
+  function rand(previous, min, max, percentage) {
+    const span = (max - min) * percentage;
+    let next = previous + (Math.random() - 0.5) * span;
+    if (next > max) {
+      next = max - span;
+    }
+    if (next < min) {
+      next = min + span;
+    }
+    return next;
+  }
+
+  const arrayLength = 75;
+  const updateRate = 10;
+  
+  function getXAxisTimeRange(timestamp) {
+    let time = timestamp.getTime();
+    return [new Date(time - arrayLength * updateRate), new Date(timestamp)];
+  }
+
+  let graphNode = document.getElementById('graph');
+  
+
+  let timestamps = [];
+  let y1 = [];
+  let y2 = [];
+  let y3 = [];
+  let y4 = [];
+  let now = new Date().getTime();
+
+  let previousY1 = 5;
+  let previousY2 = 33;
+  let previousY3 = 80;
+  let previousY4 = 17;
+  for (let i = 0; i < arrayLength; i++) {
+    timestamps.push(new Date(now + (i - arrayLength) * updateRate));
+    y1.push(previousY1 = rand(previousY1, 0, 100, 0.1));
+    y2.push(previousY2 = rand(previousY2, 0, 100, 0.05));
+    y3.push(previousY3 = rand(previousY3, 0, 100, 0.01));
+    y4.push(previousY4 = rand(previousY4, 0, 100, 0.5));
+  }
+
+  let trace1 = {
+    x: timestamps,
+    y: y1,
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Trace 1',
+    marker: {
+      color: '#0000ff',
+      size: 8
+    },
+    line: {
+      color: '#8888ff',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let trace2 = {
+    x: timestamps,
+    y: y2,
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Trace 2',
+    marker: {
+      color: '#f61451',
+      size: 8
+    },
+    line: {
+      color: '#ff98e6',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let trace3 = {
+    x: timestamps,
+    y: y3,
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Trace 3',
+    marker: {
+      color: '#438045',
+      size: 8
+    },
+    line: {
+      color: '#72c474',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let trace4 = {
+    x: timestamps,
+    y: y4,
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Trace 4',
+    marker: {
+      color: '#ff7115',
+      size: 8
+    },
+    line: {
+      color: '#ff9950',
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let data = [trace1, trace2, trace3, trace4];
+
+  let layout = {
+    title: 'Some title',
+    xaxis: {
+      title: 'Timeline',
+      type: 'date',
+      showgrid: true,
+      zeroline: false,
+      range: getXAxisTimeRange(new Date()),
+      autorange: true,
+      showline: true,
+      showticklabels: true,
+      linecolor: 'rgb(204,204,204)',
+      linewidth: 2,
+      autotick: true,
+      ticks: 'outside',
+      tickcolor: 'rgb(204,204,204)',
+      tickwidth: 2,
+      ticklen: 5,
+      tickfont: {
+        family: 'Arial',
+        size: 12,
+        color: 'rgb(82, 82, 82)'
+      }
+    },
+    yaxis: {
+      title: 'TODO'
+    }
+  };
+
+  Plotly.newPlot(graphNode, data, layout);
+
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Test</title>
+  <script src="plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="graph" style="width:900px;height:600px;"></div>
+
+<script>
+  function rand() {
+    return Math.random();
+  }
+
+  let graphNode = document.getElementById('graph');
+
+  var time = new Date();
+
+  var data = [
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#80CAF6'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#f66832'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#34f656'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#3128f6'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#d124f6'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#f61451'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#090f12'}
+    },
+    {
+      x: [time],
+      y: [rand],
+      mode: 'lines',
+      line: {color: '#2c6224'}
+    }
+  ];
+
+  Plotly.newPlot(graphNode, data);
+
+  var cnt = 0;
+
+  var interval = setInterval(function () {
+
+    var time = new Date();
+
+    var update = {
+      x: [[time]],
+      y: [[rand()]]
+    };
+
+    var olderTime = time.setMinutes(time.getMinutes() - 1);
+    var futureTime = time.setMinutes(time.getMinutes() + 1);
+
+    var layout = {
+      xaxis: {
+        type: 'date',
+        range: [olderTime, futureTime]
+      }
+    };
+
+    Plotly.relayout(graphNode, layout); // updates the layout
+    Plotly.extendTraces(graphNode, update, [0]);
+
+    if (false && cnt === 100) {
+      clearInterval(interval);
+    }
+  }, 100);
+</script>
+
+</body>
+</html>

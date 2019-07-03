@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Epochjs Test</title>
+  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+  <!-- <script type="text/javascript" src="d3.min.js"></script> -->
+  <!-- <script type="text/javascript" src="epoch.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="epoch.min.css">
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/css/epoch.min.css"> -->  
+  
+</head>
+<body>
+
+<div id="lineChart" style="width: 800px; height: 200px"></div>
+<script>
+  $(function(){
+    let lineChartData = [
+      // First series
+      {
+        label: "Series 1",
+        values: [{time: 1370044800, y: 100}, {time: 1370044801, y: 1000}]
+      },
+
+      // The second series
+      {
+        label: "Series 2",
+        values: [{time: 1370044800, y: 78}, {time: 1370044801, y: 98}]
+      }
+    ];
+
+    let lineChart = $('#lineChart').epoch({
+      type: 'time.line',
+      data: lineChartData,
+      windowSize: 600,
+      historySize: 600,
+      queueSize: 600
+    });
+    
+    window.setInterval(function() {
+      // THIS DOES NOT WORK!
+      //lineChart.push({time: new Date().getTime(), y: Math.random() * 10.0});
+      lineChartData[0].values.push({time: new Date().getTime(), y: Math.random() * 10.0});
+      lineChartData[1].values.push({time: new Date().getTime(), y: Math.random() * 100.0});
+    }, 100);
+  });
+</script>
+
+</body>
+</html>

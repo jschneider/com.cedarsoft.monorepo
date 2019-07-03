@@ -64,12 +64,10 @@ public class Demo2Threading {
     LOG.info("Got the observable");
 
     myObservable
-      .subscribeOn(Schedulers.computation())
       .observeOn(Schedulers.io())
       .subscribe(new Observer<String>() {
         @Override
         public void onSubscribe(Disposable d) {
-          LOG.info("onSubscribe");
         }
 
         @Override
@@ -105,6 +103,12 @@ public class Demo2Threading {
           @Override
           public void run() {
             emitter.onNext("Bunny");
+
+            //Disposed?
+            if (emitter.isDisposed()) {
+              return;
+            }
+
             emitter.onNext("Sylvester");
             emitter.onComplete();
           }

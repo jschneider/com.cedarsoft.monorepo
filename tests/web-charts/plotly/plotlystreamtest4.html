@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Test</title>
+  <script src="plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="graph" style="width:900px;height:600px;"></div>
+
+<button type="button" onclick="pause()">Pause</button>
+
+<script>
+  // assumed time span is one minute
+  const arrayLength = 60 * 1000 / 100; // 60 seconds * 1000 milliseconds / 100 milliseconds
+
+  let isPaused = false;
+
+  function pause() {
+    isPaused = !isPaused;
+  }
+
+  function rand() {
+    return Math.random();
+  }
+
+  function updateY(arr, scale) {
+    arr.push(rand() * scale);
+    if (arr.length > arrayLength) {
+      arr.splice(0, 1);
+    }
+  }
+
+  function updateX(arr, timestamp) {
+    arr.push(timestamp);
+    if (arr.length > arrayLength) {
+      arr.splice(0, 1);
+    }
+  }
+
+  let graphNode = document.getElementById('graph');
+
+
+  let timestamps = new Array(arrayLength);
+
+  const colorMassFlowRate = '#0000ff';
+  const colorFlowVelocity = '#f61451';
+  const colorVolume = '#f66832';
+  const colorVolumetricFlowRate = '#34f656';
+  const colorMass = '#090f12';
+  const colorEnergy = '#ff98e6';
+  const colorTemperature = '#d124f6';
+  const colorPressure = '#f6d11c';
+
+  // TODO use real max and min values
+  const scaleMassFlowRate = 1.0;
+  const scaleFlowVelocity = 5.0;
+  const scaleVolume = 10.0;
+  const scaleVolumetricFlowRate = 15.0;
+  const scaleMass = 20.0;
+  const scaleEnergy = 25.0;
+  const scaleTemperature = 30.0;
+  const scalePressure = 35.0;
+
+  let massFlowRate = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Mass flow rate',
+    marker: {
+      color: colorMassFlowRate,
+      size: 8
+    },
+    line: {
+      color: colorMassFlowRate,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let flowVelocity = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y2',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Flow velocity',
+    marker: {
+      color: colorFlowVelocity,
+      size: 8
+    },
+    line: {
+      color: colorFlowVelocity,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let volume = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y3',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Volume',
+    marker: {
+      color: colorVolume,
+      size: 8
+    },
+    line: {
+      color: colorVolume,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let volumetricFlowRate = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y4',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Volumetric flow rate',
+    marker: {
+      color: colorVolumetricFlowRate,
+      size: 8
+    },
+    line: {
+      color: colorVolumetricFlowRate,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let mass = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y5',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Mass',
+    marker: {
+      color: colorMass,
+      size: 8
+    },
+    line: {
+      color: colorMass,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let energy = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y6',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Energy',
+    marker: {
+      color: colorEnergy,
+      size: 8
+    },
+    line: {
+      color: colorEnergy,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let temperature = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y7',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Temperature',
+    marker: {
+      color: colorTemperature,
+      size: 8
+    },
+    line: {
+      color: colorTemperature,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let pressure = {
+    x: timestamps,
+    y: new Array(arrayLength),
+    yaxis: 'y8',
+    connectgaps: true,
+    mode: 'lines+markers',
+    name: 'Pressure',
+    marker: {
+      color: colorPressure,
+      size: 8
+    },
+    line: {
+      color: colorPressure,
+      width: 3,
+      shape: 'linear',
+      dash: 'solid'
+    }
+  };
+
+  let data = [
+    massFlowRate
+    /*
+    flowVelocity,
+    volume,
+    volumetricFlowRate,
+    mass,
+    energy,
+    temperature,
+    pressure
+    */
+  ];
+
+  let layout = {
+    title: 'Some title',
+    xaxis: {
+      title: 'Time passed (seconds)',
+      autorange: 'reversed',
+      type: 'date',
+      //tickvals: [0, 100, 200, 300, 400, 500, 600],
+      //ticktext: ['0', '10', '20', '30', '40', '50', '60']
+      /*
+      showgrid: true,
+      zeroline: false,
+      range: getXAxisTimeRange(now),
+      autorange: true,
+      showline: true,
+      showticklabels: true,
+      linecolor: 'rgb(204,204,204)',
+      linewidth: 2,
+      autotick: false,
+      ticks: 'outside',
+      tickcolor: 'rgb(204,204,204)',
+      tickwidth: 2,
+      ticklen: 5,
+      tickfont: {
+        family: 'Arial',
+        size: 12,
+        color: 'rgb(82, 82, 82)'
+      }
+      */
+    }
+    ,
+    yaxis: {
+      title: 'Mass flow rate',
+      range: [0, 1.0 * scaleMassFlowRate],
+      fixedrange: true, // do not zoom y-axis,
+      titlefont: {color: colorMassFlowRate},
+      tickfont: {color: colorMassFlowRate}
+    },
+    yaxis2: {
+      title: 'Flow velocity',
+      range: [0, 1.0 * scaleFlowVelocity],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorFlowVelocity},
+      tickfont: {color: colorFlowVelocity},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'right'
+    },
+    yaxis3: {
+      title: 'Volume',
+      range: [0, 1.0 * scaleVolume],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorVolume},
+      tickfont: {color: colorVolume},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'left'
+    },
+    yaxis4: {
+      title: 'Volumetric flow rate',
+      range: [0, 1.0 * scaleVolumetricFlowRate],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorVolumetricFlowRate},
+      tickfont: {color: colorVolumetricFlowRate},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'right'
+    },
+    yaxis5: {
+      title: 'Mass',
+      range: [0, 1.0 * scaleMass],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorMass},
+      tickfont: {color: colorMass},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'left'
+    },
+    yaxis6: {
+      title: 'Energy',
+      range: [0, 1.0 * scaleEnergy],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorEnergy},
+      tickfont: {color: colorEnergy},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'right'
+    },
+    yaxis7: {
+      title: 'Temperature',
+      range: [0, 1.0 * scaleTemperature],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorTemperature},
+      tickfont: {color: colorTemperature},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'left'
+    },
+    yaxis8: {
+      title: 'Pressure',
+      range: [0, 1.0 * scalePressure],
+      fixedrange: true, // do not zoom y-axis
+      titlefont: {color: colorPressure},
+      tickfont: {color: colorPressure},
+      anchor: 'y',
+      overlaying: 'y',
+      side: 'right'
+    },
+  };
+
+  // buttons of the modebar are (see https://github.com/plotly/plotly.js/blob/master/src/components/modebar/buttons.js):
+  /*
+  toImage,
+  sendDataToCloud,
+  zoom2d,
+  pan2d,
+  select2d,
+  lasso2d,
+  zoomIn2d,
+  zoomOut2d,
+  autoScale2d,
+  resetScale2d,
+  hoverClosestCartesian,
+  hoverCompareCartesian,
+  toggleSpikelines,
+  ....
+   */
+  Plotly.newPlot(graphNode,
+    data,
+    layout,
+    {displaylogo: false, modeBarButtonsToRemove: ['select2d', 'lasso2d', 'toggleSpikelines']});
+
+  let interval = setInterval(function () {
+    if (isPaused) {
+      return;
+    }
+    // fetch data via REST API
+    let now = new Date();
+    updateX(massFlowRate.x, now);
+
+    updateY(massFlowRate.y, scaleMassFlowRate); // TODO real value
+    updateY(flowVelocity.y, scaleFlowVelocity); // TODO real value
+    updateY(volume.y, scaleVolume); // TODO real value
+    updateY(volumetricFlowRate.y, scaleVolumetricFlowRate); // TODO real value
+    updateY(mass.y, scaleMass); // TODO real value
+    updateY(energy.y, scaleEnergy); // TODO real value
+    updateY(temperature.y, scaleTemperature); // TODO real value
+    updateY(pressure.y, scalePressure); // TODO real value
+
+    let update = {
+      y: [
+        massFlowRate.y
+        /*
+        flowVelocity.y,
+        volume.y,
+        volumetricFlowRate.y,
+        mass.y,
+        energy.y,
+        temperature.y,
+        pressure.y
+        */
+      ]
+    };
+
+    Plotly.update(graphNode, update);
+
+  }, 100);
+</script>
+
+</body>
+</html>

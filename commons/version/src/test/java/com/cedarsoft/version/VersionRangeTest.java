@@ -33,8 +33,8 @@ package com.cedarsoft.version;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.*;
 import org.junit.jupiter.api.Test;
@@ -45,6 +45,13 @@ import com.google.common.collect.ImmutableList;
  *
  */
 public class VersionRangeTest {
+  @Test
+  void testSame() {
+    VersionRange range = VersionRange.from(1, 1, 1).to(1, 1, 1);
+    assertThat(range.getMin()).isEqualTo(Version.valueOf(1, 1, 1));
+    assertThat(range.getMax()).isEqualTo(Version.valueOf(1, 1, 1));
+  }
+
   @Test
   public void fromList() throws Exception {
     assertThat(VersionRange.fromVersions(ImmutableList.of(Version.valueOf(1, 0, 0), Version.valueOf(2, 0, 0)))).isEqualTo(VersionRange.from(1, 0, 0).to(2, 0, 0));

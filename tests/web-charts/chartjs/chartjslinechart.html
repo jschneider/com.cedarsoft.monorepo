@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>chartjs Test</title>
+  <script src="chart.bundle.min.js"></script>
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+<div style="display:flex;flex-direction: row; flex-wrap: wrap; width:80vw;border:1px solid red;">
+  <div style="flex-basis: 80%;border:1px solid green;">
+    <canvas id="myChart"></canvas>
+  </div>
+  <div style="flex-basis: 20%; border:1px solid blue;overflow: hidden;">
+    <div style="display:flex;flex-direction: column; overflow-x:hidden;overflow-y: auto;">
+      <div id="massFlowRate" style="border:1px solid gray;" onclick="setProcessValueSelected(event)">
+        <p>Mass Flow Rate</p>
+        <input type="checkbox" name="massFlowRateVisible" id="massFlowRateVisible" checked onchange="setProcessValueVisible(event)"/>
+        <label for="massFlowRateVisible">Visible</label>
+        <input type="color" name="massFlowRateColor" id="massFlowRateColor" value="#ff0000" onchange="setProcessValueColor(event)"/>
+        <label for="massFlowRateColor">Color</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" onclick="pause()">Pause</button>
+
+<script>
+  let isPaused = false;
+  function pause() {
+    isPaused = !isPaused;
+  }
+
+  // assumed time span is one minute
+  const arrayLength = 15 * 60 * 1000 / 100; // 15 minutes * 60 seconds * 1000 milliseconds / 100 milliseconds
+
+  function rand() {
+    return Math.random();
+  }
+
+  function checkArraySize(arr) {
+    if (arr.length > arrayLength) {
+      arr.shift();
+    }
+  }
+  
+  function setProcessValueVisible(event) {
+    console.log("setProcessValueVisible: " + event);
+  }
+  
+  function setProcessValueSelected(event) {
+    console.log("setProcessValueSelected: " + event);    
+  }
+  
+  function setProcessValueColor(event) {
+    console.log("setProcessValueColor: " + event);
+  }
+
+  let trace1 = [];
+  let trace2 = [];
+  let trace3 = [];
+  let trace4 = [];
+  let trace5 = [];
+  let trace6 = [];
+  let trace7 = [];
+  let trace8 = [];
+  
+  let dataset1 = {
+    label: 'Trace1',
+    yAxisID: 'Trace1',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#ff0000',
+    data: trace1,
+  };
+  let dataset2 = {
+    label: 'Trace2',
+    yAxisID: 'Trace2',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#00785f',
+    data: trace2,
+  };
+  let dataset3 = {
+    label: 'Trace3',
+    yAxisID: 'Trace3',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#9600aa',
+    data: trace3,
+  };
+  let dataset4 = {
+    label: 'Trace4',
+    yAxisID: 'Trace4',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#334fc4',
+    data: trace4,
+  };
+  let dataset5 = {
+    label: 'Trace5',
+    yAxisID: 'Trace5',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#d28600',
+    data: trace5,
+  };
+  let dataset6 = {
+    label: 'Trace6',
+    yAxisID: 'Trace6',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#bae240',
+    data: trace6,
+  };
+  let dataset7 = {
+    label: 'Trace7',
+    yAxisID: 'Trace7',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#1895a8',
+    data: trace7,
+  };
+  let dataset8 = {
+    label: 'Trace8',
+    yAxisID: 'Trace8',
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    borderColor: '#91000e',
+    data: trace8,
+  };
+
+  // pre-fill traces
+  let now = new Date().getTime();
+  for (let i = 0; i < arrayLength; i++) {
+    trace1[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace2[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace3[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace4[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace5[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace6[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace7[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+    trace8[i] = {t: now - (arrayLength - i) * 100, y: rand() * 10.0};
+  }
+
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let chart = new Chart(ctx, {
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+      datasets: [
+        dataset1, 
+        dataset2, 
+        dataset3,
+        dataset4, 
+        dataset5, 
+        dataset6,
+        dataset7, 
+        dataset8
+      ]
+    },
+
+    options: {
+      // performance improvements /////////////////////////////////
+      //
+      elements: {
+        line: {
+          tension: 0, // disables bezier curves
+        }
+      },
+      animation: {
+        duration: 0, // general animation time
+      },
+      hover: {
+        animationDuration: 0, // duration of animations when hovering an item
+      },
+      responsiveAnimationDuration: 0, // animation duration after a resize
+      //
+      // performance improvements /////////////////////////////////
+      legend: {
+        display: true
+      },
+      scales: {
+        xAxes: [
+          {
+            type: 'time',
+            distribution: 'linear',
+            time: {
+              unit: 'millisecond',
+              displayFormats: {
+                millisecond: 'HH:mm:ss'
+              },
+              stepSize: 30000 // a tick every 3 seconds
+            }
+          }
+        ],
+        yAxes: [
+          {
+            id: dataset1.yAxisID,
+            scaleLabel: {
+              display: true, // show label
+              fontColor: dataset1.borderColor,
+              labelString: 'Mass Flow Rate (bar)'
+            },
+            ticks: {
+              fontColor: dataset1.borderColor,
+              padding: 5 // default seems to be 0
+            },
+            type: 'linear',
+            position: 'left'
+          },
+          {
+            id: dataset2.yAxisID,
+            type: 'linear',
+            position: 'right'
+          },
+          {
+            id: dataset3.yAxisID,
+            type: 'linear',
+            position: 'left'
+          },
+          {
+            id: dataset4.yAxisID,
+            type: 'linear',
+            position: 'right'
+          },
+          {
+            id: dataset5.yAxisID,
+            type: 'linear',
+            position: 'left'
+          },
+          {
+            id: dataset6.yAxisID,
+            type: 'linear',
+            position: 'right'
+          },
+          {
+            id: dataset7.yAxisID,
+            type: 'linear',
+            position: 'left'
+          },
+          {
+            id: dataset8.yAxisID,
+            type: 'linear',
+            position: 'right'
+          },
+        ]
+      }
+    }
+  });
+
+  window.setInterval(function () {
+    if (isPaused) {
+      return;
+    }
+
+    let timestamp = new Date().getTime();
+
+    trace1.push({t: timestamp, y: rand() * 10});
+    checkArraySize(trace1);
+
+    trace2.push({t: timestamp + 3, y: rand() * 333});
+    checkArraySize(trace2);
+
+    trace3.push({t: timestamp + 6, y: rand() * 33});
+    checkArraySize(trace3);
+
+    trace4.push({t: timestamp + 9, y: rand() * 57});
+    checkArraySize(trace4);
+
+    trace5.push({t: timestamp + 12, y: rand() * 123});
+    checkArraySize(trace5);
+
+    trace6.push({t: timestamp + 15, y: rand() * 11});
+    checkArraySize(trace6);
+
+    trace7.push({t: timestamp + 18, y: rand() * 17});
+    checkArraySize(trace7);
+
+    trace8.push({t: timestamp + 21, y: rand() * 63});
+    checkArraySize(trace8);
+
+    chart.update({
+      duration: 0,
+      lazy: true
+    });
+  }, 100);
+
+</script>
+
+</body>
+</html>

@@ -88,7 +88,7 @@ public class Demo1Basics {
 
       @Override
       public void onError(Throwable e) {
-        LOG.error("An error occurred", e);
+        e.printStackTrace();
       }
 
       @Override
