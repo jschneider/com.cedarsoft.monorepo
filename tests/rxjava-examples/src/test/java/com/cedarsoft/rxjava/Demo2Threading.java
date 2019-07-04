@@ -22,7 +22,7 @@ public class Demo2Threading {
   void threading1noConfiguration() throws Exception {
     LOG.info("Starting");
 
-    Observable<String> myObservable = getNames();
+    Observable<String> myObservable = fetchBestMovies();
     LOG.info("Got the observable");
 
     myObservable
@@ -60,7 +60,7 @@ public class Demo2Threading {
   void threading2threadingConfigured() throws Exception {
     LOG.info("Starting");
 
-    Observable<String> myObservable = getNames();
+    Observable<String> myObservable = fetchBestMovies();
     LOG.info("Got the observable");
 
     myObservable
@@ -89,30 +89,28 @@ public class Demo2Threading {
     Thread.sleep(1000);
   }
 
-  public Observable<String> getNames() {
-    LOG.info("getNames called");
-    //Just for now, (too) simple implementation
+  public Observable<String> fetchBestMovies() {
     return Observable.create(new ObservableOnSubscribe<String>() {
       @Override
       public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-        LOG.info("Subscribe called");
-
-        emitter.onNext("Bugs");
+        emitter.onNext("The Godfather");
 
         new Thread(new Runnable() {
           @Override
           public void run() {
-            emitter.onNext("Bunny");
+            emitter.onNext("The Shawshank Redemption");
 
-            //Disposed?
+            //Disposed: Beenden, falls Downstream abgebrochen hat?
             if (emitter.isDisposed()) {
               return;
             }
 
-            emitter.onNext("Sylvester");
+            emitter.onNext("Pulp Fiction");
+            emitter.onNext("Star Wars");
+            emitter.onNext("The Dark Knight");
             emitter.onComplete();
           }
-        }, "MyFunnyNameProducerThread").start();
+        }, "Fetch-Best-Movies-Thread").start();
       }
     });
   }

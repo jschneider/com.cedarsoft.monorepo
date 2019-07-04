@@ -21,7 +21,7 @@ public class Demo1Basics {
    */
   @Test
   void basics1Observable() throws Exception {
-    Observable<String> myObservable = getNames();
+    Observable<String> myObservable = fetchBestMovies();
     //Der Code läuft nocht nicht!
     //Das Observable kann "konfiguriert" werden, falls gewünscht.
 
@@ -29,52 +29,13 @@ public class Demo1Basics {
   }
 
   /**
-   * Und wie bekommen wir jetzt die Ergebnisse mitgeteilt?
-   */
-  @Test
-  void basics2Observer() throws Exception {
-    Observable<String> myObservable = getNames();
-
-    //Einfachste Art sich als Observer zu registrieren
-    //Ein Consumer ist ein einfaches Interface für "Umsteiger" - sehr ählich zu einem typischen Listener
-    myObservable.subscribe(new Consumer<String>() {
-      @Override
-      public void accept(String s) throws Exception {
-        System.out.println("Consumed <" + s + ">");
-      }
-    });
-
-    //Und jetzt als Lambda
-    myObservable.subscribe(s -> System.out.println("Consumed <" + s + ">"));
-  }
-
-  /**
-   * Abbrechen - z.B. aufgrund einer UI-Aktion (Seite geschlossen, Aktion abgebrochen,
-   * anderer Server hat schneller reagiert, ...)
-   */
-  @Test
-  void basics3Disposable() throws Exception {
-    Observable<String> myObservable = getNames();
-
-    Disposable disposable = myObservable.subscribe(new Consumer<String>() {
-      @Override
-      public void accept(String s) throws Exception {
-        System.out.println("Consumed <" + s + ">");
-      }
-    });
-
-    //Wird aufgerufen, wenn z.B. der User weg navigiert
-    disposable.dispose();
-  }
-
-  /**
    * Erweitertes Interface - mit mehr Callbacks für alle relevanten Zustände
    */
   @Test
-  void basics4Observer() throws Exception {
-    Observable<String> myObservable = getNames();
+  void basics2Observer() throws Exception {
+    Observable<String> myObservable = fetchBestMovies();
 
-    //Wir registrieren ein Observer (anstatt eines Consumers weiter oben)
+    //Wir registrieren ein Observer - das eigentliche Callback
     myObservable.subscribe(new Observer<String>() {
       @Override
       public void onSubscribe(Disposable d) {
@@ -99,13 +60,52 @@ public class Demo1Basics {
   }
 
   /**
+   * Alternativ mit Consumer
+   */
+  @Test
+  void basics3Consumer() throws Exception {
+    Observable<String> myObservable = fetchBestMovies();
+
+    //Einfachste Art sich als Observer zu registrieren
+    //Ein Consumer ist ein einfaches Interface für "Umsteiger" - sehr ählich zu einem typischen Listener
+    myObservable.subscribe(new Consumer<String>() {
+      @Override
+      public void accept(String s) throws Exception {
+        System.out.println("Consumed <" + s + ">");
+      }
+    });
+
+    //Und jetzt als Lambda
+    myObservable.subscribe(s -> System.out.println("Consumed <" + s + ">"));
+  }
+
+  /**
+   * Abbrechen - z.B. aufgrund einer UI-Aktion (Seite geschlossen, Aktion abgebrochen,
+   * anderer Server hat schneller reagiert, ...)
+   */
+  @Test
+  void basics3Disposable() throws Exception {
+    Observable<String> myObservable = fetchBestMovies();
+
+    Disposable disposable = myObservable.subscribe(new Consumer<String>() {
+      @Override
+      public void accept(String s) throws Exception {
+        System.out.println("Consumed <" + s + ">");
+      }
+    });
+
+    //Wird aufgerufen, wenn z.B. der User weg navigiert
+    disposable.dispose();
+  }
+
+  /**
    * Liefert das einfachst mögliche Observable zurück.
    * <p>
    * ACHTUNG: Diese Implementierung macht so keinen Sinn!!!
    * Dafür benötigt man kein RX-Java. Dann lieber eine ganz normale Liste nehmen
    */
-  public Observable<String> getNames() {
-    return Observable.fromArray("Bugs", "Bunny");
+  public Observable<String> fetchBestMovies() {
+    return Observable.fromArray("The Godfather", "The Shawshank Redemption", "Pulp Fiction", "Star Wars", "The Dark Knight");
   }
 
   private static final Logger LOG = LoggerFactory.getLogger(Demo1Basics.class.getName());

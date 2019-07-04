@@ -16,10 +16,10 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Demo3Throttle {
+public class Demo4Throttle {
   @Test
   void testThrotteling() throws Exception {
-    getLetters()
+    fetchLetters()
       .throttleLatest(500L, TimeUnit.MILLISECONDS, true)
       .observeOn(Schedulers.io()) //Maybe a ui thread?
       .subscribe(new Observer<String>() {
@@ -29,7 +29,7 @@ public class Demo3Throttle {
 
         @Override
         public void onNext(String s) {
-          LOG.info("onNext :" + s);
+          LOG.info("onNext: " + s);
         }
 
         @Override
@@ -44,17 +44,12 @@ public class Demo3Throttle {
       });
 
     Thread.sleep(50000);
-
   }
 
-  public Observable<String> getLetters() {
-    LOG.info("getFunnyNames called");
-    //Just for now, (too) simple implementation
+  public Observable<String> fetchLetters() {
     return Observable.create(new ObservableOnSubscribe<String>() {
       @Override
       public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-        LOG.info("Subscribe called");
-
         new Thread(new Runnable() {
           @Override
           public void run() {
@@ -66,14 +61,13 @@ public class Demo3Throttle {
                 emitter.onNext(nextValue);
               }
 
-              LOG.info("Completed");
               emitter.onComplete();
             }
             catch (InterruptedException e) {
               throw new RuntimeException(e);
             }
           }
-        }, "MyFunnyNameProducerThread").start();
+        }, "Letter-Producer-Thread").start();
       }
     });
   }

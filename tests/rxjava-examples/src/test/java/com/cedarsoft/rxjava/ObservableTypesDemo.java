@@ -85,7 +85,7 @@ public class ObservableTypesDemo {
     Flowable<String> flowable = Flowable.create(new FlowableOnSubscribe<String>() {
       @Override
       public void subscribe(FlowableEmitter<String> emitter) throws Exception {
-        emitter.requested();
+        long numberOfRequestedItems = emitter.requested();
       }
     }, BackpressureStrategy.BUFFER);
   }

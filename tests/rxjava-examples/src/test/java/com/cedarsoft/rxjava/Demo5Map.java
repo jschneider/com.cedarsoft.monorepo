@@ -16,14 +16,14 @@ import javafx.util.Pair;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Demo4Map {
-  public Observable<String> getUrls() {
+public class Demo5Map {
+  public Observable<String> getUrlsAsString() {
     return Observable.fromArray("https://cedarsoft.com", "https://cedarsoft.de");
   }
 
   @Test
   void demo1FetchUrls() throws Exception {
-    getUrls()
+    getUrlsAsString()
       .map(new Function<String, URL>() {
         @Override
         public URL apply(String s) throws Exception {
@@ -66,7 +66,7 @@ public class Demo4Map {
 
   @Test
   void demo1FetchUrlsLambda() throws Exception {
-    getUrls()
+    getUrlsAsString()
       .map(URL::new)
       .map(URL::openStream)
       .map(inputStream -> new String(ByteStreams.toByteArray(inputStream)))
@@ -93,8 +93,8 @@ public class Demo4Map {
   }
 
   @Test
-  void demo2FetchUrlsWithPais() throws Exception {
-    getUrls()
+  void demo2FetchUrlsWithPairs() throws Exception {
+    getUrlsAsString()
       .map(URL::new)
       .map(url -> new Pair<>(url, url.openStream()))
       .map(pair -> new Pair<>(pair.getKey(), new String(ByteStreams.toByteArray(pair.getValue()))))

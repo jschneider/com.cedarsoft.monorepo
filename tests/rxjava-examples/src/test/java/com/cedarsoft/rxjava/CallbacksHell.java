@@ -32,7 +32,37 @@ public class CallbacksHell {
             get("hostname:80/user-info", new Callback() {
               @Override
               public void success(String content) {
-                //TOOD continue....
+                //we got the user
+                String userId = content;
+
+                get("hostname:80/preferences/" + userId, new Callback() {
+                  @Override
+                  public void success(String content) {
+                    String userPreferences = content;
+
+                    //Fetch data based upon the preferences
+
+                    get("hostname:80/data/forUser/" + userId, new Callback() {
+                      @Override
+                      public void success(String content) {
+                        //Now got the data
+                      }
+
+                      @Override
+                      public void failure(String errorMessage) {
+                        //Hmm. what to do now?
+                        throw new RuntimeException(new IOException("Could not find any preferences: " + errorMessage));
+                      }
+                    });
+                  }
+
+                  @Override
+                  public void failure(String errorMessage) {
+                    //Hmm. what to do now?
+                    throw new RuntimeException(new IOException("Could not find any preferences: " + errorMessage));
+                  }
+                });
+
               }
 
               @Override

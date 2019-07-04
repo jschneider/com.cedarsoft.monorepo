@@ -25,6 +25,7 @@
     <module>ktor</module>
     <module>typescript-demo</module>
     <module>coroutines</module>
+    <module>rxjava-examples</module>
     <!--    <module>kotlinjs</module>-->
     <module>kotlin-minimize</module>
     <!--<module>dl4j</module>-->
