@@ -8,9 +8,7 @@ import kotlinx.coroutines.channels.*
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@ExperimentalCoroutinesApi
 class CoAsync {
-
   private val channel = ConflatedBroadcastChannel<suspend () -> Unit>()
 
   /**

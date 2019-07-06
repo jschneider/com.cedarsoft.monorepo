@@ -247,6 +247,19 @@ public class Version implements Comparable<Version>, Serializable {
   }
 
   /**
+   * Returns the fallback version in case of a parse exception
+   */
+  @Nonnull
+  public static Version parseOrFallback(@Nonnull String version, @Nonnull Version fallback) {
+    try {
+      return parse(version);
+    }
+    catch (IllegalArgumentException ignore) {
+      return fallback;
+    }
+  }
+
+  /**
    * <p>verifyMatch</p>
    *
    * @param expected a Version object.
