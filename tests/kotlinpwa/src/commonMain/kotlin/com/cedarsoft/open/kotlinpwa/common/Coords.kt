@@ -1,11 +1,13 @@
-package com.cedarsoft.tests.pwa
+package com.cedarsoft.open.kotlinpwa.common
 
+import kotlinx.serialization.Serializable
 import kotlin.math.PI
 import kotlin.math.cos
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
+@Serializable
 data class Coords(
   /**
    * Breite (north/south)
@@ -31,27 +33,12 @@ data class Coords(
 }
 
 /**
- * The distance in meters
- */
-data class Distance(
-  /**
-   * the distance to the north
-   */
-  val north: Double,
-  /**
-   * the distance to the east
-   */
-  val east: Double
-)
-
-/**
  * Converts degrees to radians
  */
-private fun Double.toRadians(): Double {
+fun Double.toRadians(): Double {
   return this / 180.0 * PI
 }
 
-private fun average(val0: Double, val1: Double): Double {
+fun average(val0: Double, val1: Double): Double {
   return (val0 + val1) / 2.0
 }
-
