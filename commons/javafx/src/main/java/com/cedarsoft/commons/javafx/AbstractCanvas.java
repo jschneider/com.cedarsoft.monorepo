@@ -9,9 +9,13 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.Observable;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 
 /**
  * Abstract base class for a canvas that is automatically repainted if necessary<p/>
@@ -23,7 +27,14 @@ public abstract class AbstractCanvas extends Canvas {
   /**
    * Is set to true if a repaint is required
    */
-  protected boolean repaintRequired;
+  private boolean repaintRequired;
+
+  /**
+   * If set to true, the repaint is disabled.
+   * This can be used to avoid unnecessary paintings - e.g. if the canvas is currently not shown
+   */
+  @Nonnull
+  private final BooleanProperty repaintDisabled = new SimpleBooleanProperty();
 
   protected AbstractCanvas() {
     //Automatically mark as dirty on resize
@@ -34,6 +45,19 @@ public abstract class AbstractCanvas extends Canvas {
     registerDirtyListener(snapYValuesToPixel);
     registerDirtyListener(snapXValuesToPixel);
 
+    repaintDisabled.addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+        if (newValue) {
+          //Paint painting disabled text
+          paintRepaintDisabled(getGraphicsContext2D());
+        }
+        else {
+          //A initial repaint is necessary
+          repaintRequired = true;
+        }
+      }
+    });
 
     new AnimationTimer() {
       @Override
@@ -44,6 +68,10 @@ public abstract class AbstractCanvas extends Canvas {
         if (!isVisible()) {
           return;
         }
+        if (isRepaintDisabled()) {
+          return;
+        }
+
         if (repaintRequired) {
           repaintRequired = false;
           paint(getGraphicsContext2D());
@@ -61,6 +89,39 @@ public abstract class AbstractCanvas extends Canvas {
    */
   public void markAsDirty() {
     repaintRequired = true;
+  }
+
+  public boolean isRepaintDisabled() {
+    return repaintDisabled.get();
+  }
+
+  /**
+   * If set to true the canvas does *not* repaint itself
+   */
+  public void setRepaintDisabled(boolean repaintDisabled) {
+    this.repaintDisabled.setValue(repaintDisabled);
+  }
+
+  @Nonnull
+  public final BooleanProperty repaintDisabledProperty() {
+    return repaintDisabled;
+  }
+
+  /**
+   * Paints a template text when paining is disabled.
+   * This way it becomes obvious if somebody forgot to set {@link #isRepaintDisabled()} back to false
+   */
+  protected void paintRepaintDisabled(@Nonnull GraphicsContext g2d) {
+    clearBackground(g2d);
+    g2d.setFill(Color.LIGHTGRAY);
+    g2d.fillRect(0, 0, getWidth(), getHeight());
+
+    //Paint a text
+    g2d.setTextAlign(TextAlignment.LEFT);
+    g2d.setTextBaseline(VPos.TOP);
+
+    g2d.setFill(Color.DARKGRAY);
+    g2d.fillText("Repainting is disabled", 0, 0);
   }
 
   /**
