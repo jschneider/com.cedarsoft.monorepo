@@ -6,12 +6,14 @@ import javafx.scene.control.RadioButton
 import net.miginfocom.swing.MigLayout
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Disabled
+import java.awt.Color
 import java.awt.event.ActionEvent
 import java.util.concurrent.Callable
 import javax.swing.AbstractAction
 import javax.swing.JButton
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
+import javax.swing.JComponent
 import javax.swing.JFrame
 import javax.swing.JLabel
 import javax.swing.JProgressBar
@@ -20,6 +22,7 @@ import javax.swing.JSlider
 import javax.swing.JSpinner
 import javax.swing.JTextField
 import javax.swing.SpinnerNumberModel
+import javax.swing.SwingWorker
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
@@ -76,7 +79,9 @@ object BindingDemo {
 
     textLabel.textProperty().bind(textField.textProperty())
     textField.textProperty().bindBidirectional(textField2.textProperty())
-
+    textLabel.foregroundProperty().set(Color.ORANGE)
+    textLabel.backgroundProperty().set(Color.BLUE)
+    textLabel.isOpaque = true
 
     checkboxSelected.selectedProperty().bindBidirectional(checkboxSelected2.selectedProperty())
     textField.disableProperty().bindBidirectional(checkboxDisabled.selectedProperty())
@@ -176,6 +181,26 @@ object BindingDemo {
 
     contentPane.add(checkboxComboDisabled, "")
     contentPane.add(checkboxEditable, "wrap")
+
+    val button = JButton(object : AbstractAction("Disable on click") {
+      override fun actionPerformed(e: ActionEvent) {
+        (e.source as JComponent).isEnabled = false
+        object : SwingWorker<Unit, Unit>() {
+          override fun doInBackground() {
+            Thread.sleep(1000)
+            return
+          }
+
+          override fun done() {
+            super.done()
+            (e.source as JComponent).isEnabled = true
+          }
+        }.execute()
+
+      }
+    })
+    button.disableProperty().bind(checkboxDisabled.selectedProperty())
+    contentPane.add(button, "wrap")
 
 
     frame.pack()

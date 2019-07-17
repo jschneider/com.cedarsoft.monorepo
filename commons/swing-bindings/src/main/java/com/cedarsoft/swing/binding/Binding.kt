@@ -13,8 +13,8 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.beans.property.StringProperty
 import javafx.beans.value.ObservableValue
-import javafx.beans.value.WritableValue
 import javafx.collections.ObservableList
+import java.awt.Color
 import java.awt.event.FocusEvent
 import java.awt.event.FocusListener
 import javax.swing.AbstractButton
@@ -66,7 +66,7 @@ private fun <T> bindValueBidirectional(property: ObjectProperty<T>, comboBox: JC
 /**
  * Binds the given property to the text of the text field
  */
-internal fun bindText(source: JTextComponent, target: WritableValue<String>) {
+internal fun bindText(source: JTextComponent, target: Property<String>) {
   source.document.addDocumentListener(object : DocumentListener {
     override fun changedUpdate(e: DocumentEvent?) {
       target.setIfDifferent(source.text)
@@ -85,7 +85,7 @@ internal fun bindText(source: JTextComponent, target: WritableValue<String>) {
   target.setIfDifferent(source.text)
 }
 
-private fun bindText(source: AbstractButton, target: WritableValue<String>) {
+private fun bindText(source: AbstractButton, target: Property<String>) {
   source.addPropertyChangeListener {
     if (it.propertyName == javax.swing.AbstractButton.TEXT_CHANGED_PROPERTY) {
       target.setIfDifferent(source.text)
@@ -285,8 +285,35 @@ private fun bindEditableBidirectional(property: Property<Boolean>, comboBox: JCo
   property.setIfDifferent(comboBox.isEditable)
 }
 
+private fun bindForegroundBidirectional(property: Property<Color>, component: JComponent) {
+  component.addPropertyChangeListener {
+    if (it.propertyName == "foreground") {
+      property.setIfDifferent(component.foreground)
+    }
+  }
+
+  property.addListener { _, _, newValue -> component.foreground = newValue }
+
+  //Set initially
+  property.setIfDifferent(component.foreground)
+}
+
+private fun bindBackgroundBidirectional(property: Property<Color>, component: JComponent) {
+  component.addPropertyChangeListener {
+    if (it.propertyName == "background") {
+      property.setIfDifferent(component.background)
+    }
+  }
+
+  property.addListener { _, _, newValue -> component.background = newValue }
+
+  //Set initially
+  property.setIfDifferent(component.background)
+}
 
 private const val TEXT_PROPERTY_KEY: String = "textPropertyKey"
+private const val FOREGROUND_PROPERTY_KEY: String = "foregroundPropertyKey"
+private const val BACKGROUND_PROPERTY_KEY: String = "backgroundPropertyKey"
 private const val SELECTED_PROPERTY_KEY: String = "selectedPropertyKey"
 private const val DISABLE_PROPERTY_KEY: String = "disablePropertyKey"
 private const val FOCUSED_PROPERTY_KEY: String = "focusedPropertyKey"
@@ -463,6 +490,21 @@ fun JTextComponent.textProperty(): StringProperty {
   }
 }
 
+fun JComponent.foregroundProperty(): ObjectProperty<Color> {
+  return getProperty(this, FOREGROUND_PROPERTY_KEY) {
+    val property = SimpleObjectProperty<Color>(this, "foreground", Color.BLACK)
+    bindForegroundBidirectional(property, this)
+    property
+  }
+}
+
+fun JComponent.backgroundProperty(): ObjectProperty<Color> {
+  return getProperty(this, BACKGROUND_PROPERTY_KEY) {
+    val property = SimpleObjectProperty<Color>(this, "background", Color.BLACK)
+    bindBackgroundBidirectional(property, this)
+    property
+  }
+}
 
 fun AbstractButton.textProperty(): StringProperty {
   return getProperty(this, TEXT_PROPERTY_KEY) {
@@ -511,7 +553,12 @@ fun JComponent.focusedProperty(): ReadOnlyBooleanProperty {
 /**
  * Sets the value if the current value of the property is not equal
  */
-private fun <T> WritableValue<T>.setIfDifferent(newValue: T) {
+private fun <T> Property<T>.setIfDifferent(newValue: T) {
+  if (isBound) {
+    //Skip writing the value if the property is bound
+    return
+  }
+
   if (value != newValue) {
     value = newValue
   }

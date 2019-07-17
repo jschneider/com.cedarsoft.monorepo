@@ -19,6 +19,28 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.9.0 (2019-07-16)
+* Swing with JavaFX properties: Bindings for background and foreground
+* JavaFX: 
+    * Formatter improved
+    * Progress indicator bar
+    * Improve bidirectional bindings
+    * RoundedAxisTickCaluculator added
+    * Canvas Holder improvements
+* Dependcy updates (especially Kotlin to 1.3.40)    
+* Kotlin:
+    * introduced GuardedProperty
+    * CoAsync: Async with Kotlin Coroutines
+    * Improved test utilities    
+    * Serializers module added for kotlinx.serialization
+    * KotlinAwait implemented
+* Serialization
+    * additional serializers for default classes added
+    * 
+* Test-Utils
+    * Updated / fixed Json helper
+            
+
 ## 8.8.0 (2019-03-19)
 * Swing with JavaFX properties: Additional bindings
 * Kotlin FX: Additional extension methods (e.g. properties access)

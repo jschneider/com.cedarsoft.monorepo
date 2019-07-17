@@ -38,8 +38,8 @@ public final class ProgressIndicatorBar extends StackPane {
     this.labelFormatSpecifier = labelFormatSpecifier;
     this.unitLabel = unitLabel;
     progressBar.setMaxWidth(Double.MAX_VALUE);
-    text.setFill(Color.WHITE);
-    text.setFont(Font.font(text.getFont().getFamily(), FontWeight.BOLD, 14.0));
+    text.setFill(Color.BLACK);
+    text.setFont(Font.font(text.getFont().getFamily(), FontWeight.NORMAL, 14.0));
 
     syncProgress();
 
@@ -59,11 +59,11 @@ public final class ProgressIndicatorBar extends StackPane {
 
   // synchronizes the progress indicated with the work done.
   private void syncProgress() {
-    if (totalWork == 0) {
+    if (totalWork < 0) {
       text.setText("");
       progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
     } else {
-      text.setText(String.format(labelFormatSpecifier, Math.ceil(workDone.get())) + " " + unitLabel);
+      text.setText(String.format(labelFormatSpecifier, workDone.get()) + " " + unitLabel);
       progressBar.setProgress(workDone.get() / totalWork);
     }
 
