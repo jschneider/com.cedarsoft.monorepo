@@ -36,4 +36,22 @@ internal class BindingTest {
     textField.text = "newText"
     assertThat(property.get()).isEqualTo("newText")
   }
+
+  @Test
+  internal fun testVisible() {
+    val textField = JTextField()
+    val visibleProperty = textField.visibleProperty()
+
+    assertThat(visibleProperty.get()).isTrue()
+    assertThat(textField.isVisible).isTrue()
+
+    visibleProperty.set(false)
+    assertThat(visibleProperty.get()).isFalse()
+    assertThat(textField.isVisible).isFalse()
+
+    visibleProperty.set(true)
+    assertThat(visibleProperty.get()).isTrue()
+    assertThat(visibleProperty.get()).isTrue()
+    assertThat(textField.isVisible).isTrue()
+  }
 }

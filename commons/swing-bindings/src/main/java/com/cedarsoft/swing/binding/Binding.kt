@@ -15,6 +15,8 @@ import javafx.beans.property.StringProperty
 import javafx.beans.value.ObservableValue
 import javafx.collections.ObservableList
 import java.awt.Color
+import java.awt.event.ComponentEvent
+import java.awt.event.ComponentListener
 import java.awt.event.FocusEvent
 import java.awt.event.FocusListener
 import javax.swing.AbstractButton
@@ -285,6 +287,29 @@ private fun bindEditableBidirectional(property: Property<Boolean>, comboBox: JCo
   property.setIfDifferent(comboBox.isEditable)
 }
 
+private fun bindVisibleBidirectional(property: Property<Boolean>, component: JComponent) {
+  component.addComponentListener(object : ComponentListener {
+    override fun componentMoved(e: ComponentEvent?) {
+    }
+
+    override fun componentResized(e: ComponentEvent?) {
+    }
+
+    override fun componentHidden(e: ComponentEvent?) {
+      property.setIfDifferent(false)
+    }
+
+    override fun componentShown(e: ComponentEvent?) {
+      property.setIfDifferent(true)
+    }
+  })
+
+  property.addListener { _, _, newValue -> component.isVisible = newValue }
+
+  //Set initially
+  property.setIfDifferent(component.isVisible)
+}
+
 private fun bindForegroundBidirectional(property: Property<Color>, component: JComponent) {
   component.addPropertyChangeListener {
     if (it.propertyName == "foreground") {
@@ -313,6 +338,7 @@ private fun bindBackgroundBidirectional(property: Property<Color>, component: JC
 
 private const val TEXT_PROPERTY_KEY: String = "textPropertyKey"
 private const val FOREGROUND_PROPERTY_KEY: String = "foregroundPropertyKey"
+private const val VISIBLE_PROPERTY_KEY: String = "visiblePropertyKey"
 private const val BACKGROUND_PROPERTY_KEY: String = "backgroundPropertyKey"
 private const val SELECTED_PROPERTY_KEY: String = "selectedPropertyKey"
 private const val DISABLE_PROPERTY_KEY: String = "disablePropertyKey"
@@ -494,6 +520,14 @@ fun JComponent.foregroundProperty(): ObjectProperty<Color> {
   return getProperty(this, FOREGROUND_PROPERTY_KEY) {
     val property = SimpleObjectProperty<Color>(this, "foreground", Color.BLACK)
     bindForegroundBidirectional(property, this)
+    property
+  }
+}
+
+fun JComponent.visibleProperty(): BooleanProperty {
+  return getProperty(this, VISIBLE_PROPERTY_KEY) {
+    val property = SimpleBooleanProperty(this, "visible")
+    bindVisibleBidirectional(property, this)
     property
   }
 }

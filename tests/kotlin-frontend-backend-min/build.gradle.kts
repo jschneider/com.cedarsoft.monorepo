@@ -10,7 +10,7 @@ repositories {
 plugins {
   kotlin("multiplatform")
   id("kotlinx-serialization")
-  id("com.github.johnrengelman.shadow") version "5.1.0"
+  id("com.github.johnrengelman.shadow")
   //id("kotlin2js")
   //id("kotlin-dce-js")
   //id("org.jetbrains.kotlin.frontend")
@@ -79,18 +79,18 @@ kotlin {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime")
 
-        api(project(":dependencies-sets:annotations"))
-        api(project(":dependencies-sets:kotlin"))
-        api(project(":open:annotations:annotations"))
-        api(project(":open:unit:unit"))
+        implementation(project(":dependencies-sets:annotations"))
+        implementation(project(":dependencies-sets:kotlin"))
+        implementation(project(":open:annotations:annotations"))
+        implementation(project(":open:unit:unit"))
 
-        api(project(":open:unit:unit"))
+        implementation(project(":open:unit:unit"))
 
-        api(project(":open:commons:ktor-server"))
-        api("io.ktor:ktor-html-builder")
-        api("org.slf4j:slf4j-api")
-        api("ch.qos.logback:logback-classic")
-        api("io.reactivex.rxjava2:rxjava")
+        implementation(project(":open:commons:ktor-server"))
+        implementation("io.ktor:ktor-html-builder")
+        implementation("org.slf4j:slf4j-api")
+        implementation("ch.qos.logback:logback-classic")
+        implementation("io.reactivex.rxjava2:rxjava")
 
         implementation(project(":closed:ktor-http-client"))
 
@@ -175,6 +175,8 @@ task("run", type = JavaExec::class) {
 
 tasks.withType<ShadowJar> {
   archiveBaseName.set("server")
+
+  minimize()
 
   from(project.configurations["jvmRuntimeClasspath"])
   from(file("build/classes/kotlin/jvm/main"))

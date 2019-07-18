@@ -43,6 +43,7 @@ object BindingDemo {
     val checkboxDisabled = JCheckBox("disabled")
     val checkboxComboDisabled = JCheckBox("disabled")
     val checkboxEditable = JCheckBox("editable")
+    val checkboxVisible = JCheckBox("visible")
 
     val radio1 = JRadioButton("radio 1")
     val radio2 = JRadioButton("radio 2")
@@ -67,6 +68,7 @@ object BindingDemo {
     comboBox.items().add(Member("csdf"))
     comboBox.disableProperty().bindBidirectional(checkboxComboDisabled.selectedProperty())
     comboBox.editableProperty().bindBidirectional(checkboxEditable.selectedProperty())
+    comboBox.visibleProperty().bindBidirectional(checkboxVisible.selectedProperty())
 
 
     labelComboValue.textProperty().bind(comboBox.valueProperty().asString())
@@ -181,6 +183,7 @@ object BindingDemo {
 
     contentPane.add(checkboxComboDisabled, "")
     contentPane.add(checkboxEditable, "wrap")
+    contentPane.add(checkboxVisible, "wrap")
 
     val button = JButton(object : AbstractAction("Disable on click") {
       override fun actionPerformed(e: ActionEvent) {

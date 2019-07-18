@@ -9,7 +9,7 @@ repositories {
 plugins {
   kotlin("multiplatform")
   id("kotlinx-serialization")
-  id("com.github.johnrengelman.shadow") version "5.1.0"
+  id("com.github.johnrengelman.shadow")
   //id("kotlin2js")
   //id("kotlin-dce-js")
   //id("org.jetbrains.kotlin.frontend")
