@@ -201,7 +201,6 @@ signing {
 }
 
 nexusStaging {
-  //stagingProfileId = "com.cedarsoft.staging-from-gradle"
   username = project.findProperty("ossUsername") as? String
   password = project.findProperty("oddPassword") as? String
   packageGroup = "com.cedarsoft"
@@ -210,71 +209,3 @@ nexusStaging {
 
 inline val Project.isSnapshot: Boolean
   get() = version.toString().endsWith("-SNAPSHOT")
-/*
-
-publishing {
-  publications {
-    create<MavenPublication>("maven") {
-
-      //groupId = "${project.group}"
-      //artifactId = "${project.name}"
-      //version = "${project.version}"
-
-      from(components["javaPlatform"])
-
-      pom {
-        description.set(project.description)
-        url.set("https://cedarsoft.com")
-
-        //TODO add license
-        //licenses {
-        //  license {
-        //    name.set("The Apache License, Version 2.0")
-        //    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-        //  }
-        //}
-      }
-    }
-
-    repositories {
-      maven {
-        val releasesRepoUrl = "$buildDir/repos/releases"
-        val snapshotsRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-        //val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-        url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
-
-
-        credentials {
-          this.username = "js@cedarsoft.com"
-          this.password = "asdfasdf"
-        }
-
-        //url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-      }
-
-      //maven {
-      //  // change to point to your repo, e.g. http://my.org/repo
-      //  repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-      //  authentication(userName: v_ossrhUsername, password: v_ossrhPassword)
-      //}
-      //
-      //  url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-      //
-      //  authentication {
-      //    this.
-      //  }
-      //
-      //}
-    }
-  }
-}
-
-signing {
-  //Skip for SNAPSHOT versions
-  isRequired = !version.toString().endsWith("-SNAPSHOT")
-  useGpgCmd()
-  sign(publishing.publications["maven"])
-}
-
-
- */

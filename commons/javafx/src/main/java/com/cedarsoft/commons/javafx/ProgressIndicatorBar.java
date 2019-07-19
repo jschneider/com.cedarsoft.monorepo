@@ -39,7 +39,7 @@ public final class ProgressIndicatorBar extends StackPane {
     this.unitLabel = unitLabel;
     progressBar.setMaxWidth(Double.MAX_VALUE);
     text.setFill(Color.BLACK);
-    text.setFont(Font.font(text.getFont().getFamily(), FontWeight.NORMAL, 14.0));
+    text.setFont(Font.font(text.getFont().getFamily(), FontWeight.BOLD, 14.0));
 
     syncProgress();
 

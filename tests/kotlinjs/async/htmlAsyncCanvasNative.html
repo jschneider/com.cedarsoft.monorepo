@@ -1,0 +1,86 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Kotlin HTML Async Canvas Sample</h1>
+
+<div>
+  <canvas id="myCanvas" width="1600" height="600">
+  </canvas>
+</div>
+
+<script type="text/javascript">
+  const TILE_COUNT = 12;
+  const TILE_COLS = 4;
+  const TILE_ROWS = 3;
+  const TILE_WIDTH = 400.0;
+  const TILE_HEIGHT = 200.0;
+
+  let pendingUpdates = 0;
+  let canvases = [];
+  for (let i = 0; i < TILE_COUNT; i++) {
+    canvases.push(document.createElement("CANVAS"));
+  }
+
+  window.requestAnimationFrame((timestamp) => paintCanvas(timestamp));
+
+
+  function paintCanvas(timestamp_) {
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    context.save();
+    for (let i = 0; i < canvases.length; i++) {
+      context.drawImage(canvases[i], (i % TILE_COLS) * TILE_WIDTH, Math.round(i / 4) * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+    }
+    context.fillStyle = "#ff0000";
+    context.font = "30px Arial";
+    context.fillText(new Date().toTimeString(), 100, 100);
+    context.restore();
+
+    updateOffscreenCanvases();
+
+    window.requestAnimationFrame((timestamp) => paintCanvas(timestamp))
+  }
+
+  function updateOffscreenCanvases() {
+    if (pendingUpdates <= 0) {
+      pendingUpdates = TILE_COUNT;
+      return;
+    }
+    for (let i = 0; i < canvases.length; i++) {
+      paintOffscreenCanvas(canvases[i]);
+    }
+  }
+
+  async function paintOffscreenCanvas(canvas) {
+    consumeCpuTime();
+    let context = canvas.getContext("2d");
+    context.save();
+    context.fillStyle = getRandomFillStyle();
+    context.fillRect(0.0, 0.0, TILE_WIDTH, TILE_HEIGHT);
+    context.fillStyle = "#000000";
+    context.fillText(new Date().toTimeString(), 100, 100);
+    context.restore();
+    pendingUpdates--;
+  }
+
+  function getRandomFillStyle() {
+    let red = Math.random() * 255;
+    let green = Math.random() * 255;
+    let blue = Math.random() * 255;
+    return "#" + red.toString(16).substr(0, 2) + green.toString(16).substr(0, 2) + blue.toString(16).substr(0, 2);
+  }
+
+  function consumeCpuTime() {
+    let min = Number.MAX_VALUE;
+    let max = Number.MIN_VALUE;
+    for (let i = 0; i < 10000000; i++) {
+      min = Math.min(min, Math.random());
+      max = Math.max(max, Math.random());
+    }
+  }
+</script>
+
+</body>
+</html>
