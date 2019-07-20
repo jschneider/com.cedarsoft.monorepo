@@ -6,6 +6,8 @@
  * User Manual available at https://docs.gradle.org/5.2.1/userguide/java_library_plugin.html
  */
 
+group = "com.cedarsoft"
+
 plugins {
   // Apply the java-library plugin to add support for Java Library
   `java-library`

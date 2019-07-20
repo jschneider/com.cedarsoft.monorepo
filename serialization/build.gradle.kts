@@ -1,3 +1,3 @@
 subprojects {
-  group = "com.cedarsoft.open.serialization"
+  group = "com.cedarsoft.serialization"
 }

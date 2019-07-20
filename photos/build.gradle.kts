@@ -1,5 +1,6 @@
 description = """Photos"""
 
+group = "com.cedarsoft.photos"
 
 plugins {
   // Apply the java-library plugin to add support for Java Library
