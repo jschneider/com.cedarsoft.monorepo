@@ -52,9 +52,6 @@ subprojects {
 
     publications {
       create<MavenPublication>("maven") {
-        //groupId = "com.cedarsoft.tests"
-        //artifactId = "gradle-deployment"
-
         from(components["java"])
 
         artifact(tasks["sourcesJar"])
