@@ -22,15 +22,6 @@ subprojects {
     }
   }
 
-  extensions.configure<SigningExtension>("signing") {
-    useGpgCmd()
-    //Only sign if *not* snapshot
-    if (!isSnapshot) {
-      sign(extensions.getByName<PublishingExtension>("publishing").publications["maven"])
-    }
-    isRequired = !isSnapshot
-  }
-
   extensions.configure<PublishingExtension>("publishing") {
     repositories {
       maven {
@@ -84,9 +75,28 @@ subprojects {
             developerConnection.set("scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git")
             url.set("https://github.com/jschneider/com.cedarsoft.monorepo")
           }
+
+          versionMapping {
+            usage("java-api") {
+              fromResolutionOf("runtimeClasspath")
+            }
+            usage("java-runtime") {
+              fromResolutionResult()
+            }
+          }
         }
       }
     }
+  }
+
+  //Signing must be called after publication
+  extensions.configure<SigningExtension>("signing") {
+    useGpgCmd()
+    //Only sign if *not* snapshot
+    if (!isSnapshot) {
+      sign(extensions.getByName<PublishingExtension>("publishing").publications["maven"])
+    }
+    isRequired = !isSnapshot
   }
 
 }

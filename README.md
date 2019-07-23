@@ -19,6 +19,11 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## 8.9.1 (2019-07-22)
+* Java FX:
+    * additional Swing bindings
+* Release build with gradle now
+
 ## 8.9.0 (2019-07-16)
 * Swing with JavaFX properties: Bindings for background and foreground
 * JavaFX: 
