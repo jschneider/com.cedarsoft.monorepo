@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -28,38 +28,42 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.commons.javafx;
 
-import javax.annotation.concurrent.ThreadSafe;
-
-import org.jetbrains.annotations.NotNull;
-
-import com.cedarsoft.annotations.NonBlocking;
-import com.cedarsoft.concurrent.AbstractAsync;
-
-import javafx.application.Platform;
+package com.cedarsoft.commons
 
 /**
- * Allows lazy calls in the ui thread.
- * Only the *last* call for each runnable is called.
- * <p>
- * This class is useful if there are many background events and
- * the UI should only updated as fast as possible/necessary.
- * <p>
- * Therefore not for every change a new event is generated which might
- * overload the UI thread.
+ * A condition.
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@ThreadSafe
-public class FxAsync extends AbstractAsync {
+interface Condition {
   /**
-   * Run in target thread
-   * @param runnable
+   *
+   * isValid
    */
-  @Override
-  @NonBlocking
-  protected void runInTargetThread(@NotNull Runnable runnable) {
-    Platform.runLater(runnable);
+  val valid: Boolean
+
+  @Deprecated(message = "Use property instead", replaceWith = ReplaceWith("valid"))
+  fun isValid(): Boolean {
+    return valid
+  }
+
+  companion object {
+    /**
+     * Static condition that is always false.
+     */
+    @JvmField
+    val FALSE: Condition = object : Condition {
+      override val valid: Boolean
+        get() = false
+    }
+    /**
+     * Static condition that is always true.
+     */
+    @JvmField
+    val TRUE: Condition = object : Condition {
+      override val valid: Boolean
+        get() = true
+    }
   }
 }

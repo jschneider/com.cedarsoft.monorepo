@@ -19,6 +19,12 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
+## ??? (???)
+* Update serializers group ids
+
+## 8.9.2 (2019-07-22)
+* Rerelease with updated gradle dependencies
+
 ## 8.9.1 (2019-07-22)
 * Java FX:
     * additional Swing bindings

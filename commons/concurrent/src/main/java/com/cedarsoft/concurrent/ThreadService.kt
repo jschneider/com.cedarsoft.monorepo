@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -28,38 +28,47 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.commons.javafx;
+package com.cedarsoft.concurrent
 
-import javax.annotation.concurrent.ThreadSafe;
-
-import org.jetbrains.annotations.NotNull;
-
-import com.cedarsoft.annotations.NonBlocking;
-import com.cedarsoft.concurrent.AbstractAsync;
-
-import javafx.application.Platform;
+import com.cedarsoft.unit.si.ms
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.ThreadFactory
+import javax.swing.Timer
 
 /**
- * Allows lazy calls in the ui thread.
- * Only the *last* call for each runnable is called.
- * <p>
- * This class is useful if there are many background events and
- * the UI should only updated as fast as possible/necessary.
- * <p>
- * Therefore not for every change a new event is generated which might
- * overload the UI thread.
+ * Creates threads/timers/executors and stuff
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@ThreadSafe
-public class FxAsync extends AbstractAsync {
+interface ThreadService : ThreadFactory {
   /**
-   * Run in target thread
-   * @param runnable
+   * Creates a new thread
    */
-  @Override
-  @NonBlocking
-  protected void runInTargetThread(@NotNull Runnable runnable) {
-    Platform.runLater(runnable);
-  }
+  override fun newThread(r: Runnable): Thread
+
+  /**
+   * Creates a new fixed thread pool
+   */
+  fun newFixedThreadPool(nThreads: Int, name: String): ExecutorService
+
+  /**
+   * Creates a new cached thread pool
+   */
+  fun newCachedThreadPool(name: String): ExecutorService
+
+  /**
+   * Creates a new scheduled executor service
+   */
+  fun newScheduledThreadPool(nThreads: Int, name: String): ScheduledExecutorService
+
+  /**
+   * Creates a new timer
+   */
+  fun newTimer(name: String): java.util.Timer
+
+  /**
+   * Creates a new swing timer
+   */
+  fun newSwingTimer(@ms delay: Int): Timer
 }
