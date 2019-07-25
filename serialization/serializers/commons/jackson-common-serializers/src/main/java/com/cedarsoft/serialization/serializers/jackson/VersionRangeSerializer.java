@@ -31,6 +31,11 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
@@ -41,10 +46,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
 
 public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRange> {
 
@@ -70,9 +71,9 @@ public class VersionRangeSerializer extends AbstractJacksonSerializer<VersionRan
     serializeTo.writeStringField(PROPERTY_MAX, objectToSerialize.getMax().format() );
 
     //includeLower
-    serializeTo.writeBooleanField(PROPERTY_INCLUDELOWER, objectToSerialize.isIncludeLower() );
+    serializeTo.writeBooleanField(PROPERTY_INCLUDELOWER, objectToSerialize.getIncludeLower());
     //includeUpper
-    serializeTo.writeBooleanField(PROPERTY_INCLUDEUPPER, objectToSerialize.isIncludeUpper() );
+    serializeTo.writeBooleanField(PROPERTY_INCLUDEUPPER, objectToSerialize.getIncludeUpper());
   }
 
   @Nonnull

@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -29,36 +29,37 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.serializers.jackson;
+package com.cedarsoft.file
 
-import javax.annotation.Nonnull;
 
-import org.junit.jupiter.api.*;
+import java.io.Serializable
 
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+/**
+ * A base name of a file
+ *
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
+ */
+data class BaseName
+/**
+ * Creates a new base name
+ *
+ * @param name the name
+ */
+  (
+  /**
+   *
+   * Getter for the field `name`.
+   *
+   * @return a String object.
+   */
+  val name: String
+) : Comparable<BaseName>, Serializable {
 
-public class VersionRangeSerializerVersionTest
-  extends AbstractJsonVersionTest2<VersionRange> {
-
-  public static final VersionEntry ENTRY1 = VersionRangeSerializerVersionTest.create(
-    Version.valueOf( 1, 0, 0 ),
-    VersionRangeSerializerVersionTest.class.getResource( "VersionRange_1.0.0_1.json" ) );
-
-  @Nonnull
-  @Override
-  protected VersionRangeSerializer getSerializer() throws Exception {
-    return new VersionRangeSerializer();
+  override fun toString(): String {
+    return name
   }
 
-  @Override
-  protected void verifyDeserialized( @Nonnull VersionRange deserialized, @Nonnull Version version ) throws Exception {
-    Assertions.assertEquals("1.0.0", deserialized.getMin().format());
-    Assertions.assertEquals("1.9.17", deserialized.getMax().format());
-    Assertions.assertEquals(true, deserialized.getIncludeLower());
-    Assertions.assertEquals(true, deserialized.getIncludeUpper());
+  override fun compareTo(other: BaseName): Int {
+    return name.compareTo(other.name)
   }
-
 }

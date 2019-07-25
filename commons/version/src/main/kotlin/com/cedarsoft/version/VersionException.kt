@@ -5,8 +5,8 @@
  * with Classpath Exception; you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *         http://www.cedarsoft.org/gpl3ce
- *         (GPL 3 with Classpath Exception)
+ * http://www.cedarsoft.org/gpl3ce
+ * (GPL 3 with Classpath Exception)
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3 only, as
@@ -29,36 +29,51 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.serializers.jackson;
+package com.cedarsoft.version
 
-import javax.annotation.Nonnull;
+/**
+ * Common exception for all kinds of version related problems
+ *
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
+ */
+open class VersionException : RuntimeException {
+  /**
+   *
+   * Constructor for VersionException.
+   */
+  constructor() {}
 
-import org.junit.jupiter.api.*;
+  /**
+   *
+   * Constructor for VersionException.
+   *
+   * @param message a String object.
+   */
+  constructor(message: String) : super(message) {}
 
-import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
-import com.cedarsoft.serialization.test.utils.VersionEntry;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+  /**
+   *
+   * Constructor for VersionException.
+   *
+   * @param message a String object.
+   * @param cause   a Throwable object.
+   */
+  constructor(message: String, cause: Throwable) : super(message, cause) {}
 
-public class VersionRangeSerializerVersionTest
-  extends AbstractJsonVersionTest2<VersionRange> {
+  /**
+   *
+   * Constructor for VersionException.
+   *
+   * @param cause a Throwable object.
+   */
+  constructor(cause: Throwable) : super(cause) {}
 
-  public static final VersionEntry ENTRY1 = VersionRangeSerializerVersionTest.create(
-    Version.valueOf( 1, 0, 0 ),
-    VersionRangeSerializerVersionTest.class.getResource( "VersionRange_1.0.0_1.json" ) );
-
-  @Nonnull
-  @Override
-  protected VersionRangeSerializer getSerializer() throws Exception {
-    return new VersionRangeSerializer();
-  }
-
-  @Override
-  protected void verifyDeserialized( @Nonnull VersionRange deserialized, @Nonnull Version version ) throws Exception {
-    Assertions.assertEquals("1.0.0", deserialized.getMin().format());
-    Assertions.assertEquals("1.9.17", deserialized.getMax().format());
-    Assertions.assertEquals(true, deserialized.getIncludeLower());
-    Assertions.assertEquals(true, deserialized.getIncludeUpper());
-  }
-
+  /**
+   * Creates a new version exception
+   *
+   * @param message       the message (is always used)
+   * @param messageSuffix the suffix (only used when appendSuffix==true)
+   * @param appendSuffix  whether to append the suffix
+   */
+  constructor(message: String, messageSuffix: String, appendSuffix: Boolean) : super(message + if (appendSuffix) messageSuffix else "") {}
 }

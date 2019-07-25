@@ -8,13 +8,22 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
+  api(project(":dependencies-sets:kotlin"))
+
   api(project(":open:annotations:annotations"))
 
   api(project(":open:commons:concurrent"))
   api(project(":open:unit:unit"))
 
   api("com.google.guava:guava")
+
+  api(project(":open:commons:time"))
+  api(project(":open:unit:unit"))
+  api(project(":open:commons:concurrent"))
+
+  api("org.fxyz3d:fxyz3d:0.3.0") {
+    exclude(group = "org.slf4j", module = "slf4j-simple")
+  }
 
   testImplementation(project(":dependencies-sets:kotlin-test"))
   testImplementation(project(":open:commons:test-utils"))

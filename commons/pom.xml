@@ -18,7 +18,6 @@
     <module>app</module>
     <module>commons</module>
     <module>concurrent</module>
-    <module>concurrent-kotlin</module>
     <module>crypt</module>
     <module>exceptions</module>
     <module>exception-handling</module>
@@ -32,7 +31,6 @@
     <module>io</module>
     <module>javafx</module>
     <module>javafx3d</module>
-    <module>javafxkt</module>
     <module>javafx-test-utils</module>
     <module>kotlinx-serializers</module>
     <module>ktor-server</module>

@@ -97,7 +97,11 @@ class SwingExceptionHandler
 
   fun handleNotificationException(throwable: NotificationException, original: Throwable) {
     SwingUtilities.invokeLater {
-      notificationService.showNotification(Notification(throwable.title, throwable.message, DetailsCallback { _ -> handleInternalError(original, original) }))
+      notificationService.showNotification(Notification(throwable.title, throwable.message ?: "", object : DetailsCallback {
+        override fun detailsClicked(notification: Notification) {
+          handleInternalError(original, original)
+        }
+      }))
     }
   }
 

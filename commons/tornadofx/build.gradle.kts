@@ -11,7 +11,7 @@ dependencies {
   api(project(":dependencies-sets:kotlin"))
   api(project(":open:annotations:annotations"))
 
-  api(project(":open:commons:javafxkt"))
+  api(project(":open:commons:javafx"))
   api("com.google.guava:guava")
   api("com.miglayout:miglayout-javafx")
   api("no.tornado:tornadofx")
