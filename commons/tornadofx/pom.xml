@@ -22,6 +22,10 @@
     </dependency>
 
     <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>javafx</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
     </dependency>
@@ -32,6 +36,10 @@
     <dependency>
       <groupId>no.tornado</groupId>
       <artifactId>tornadofx</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
 
     <!--Tests-->

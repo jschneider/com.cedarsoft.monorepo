@@ -15,6 +15,7 @@ dependencies {
   api("com.google.guava:guava")
   api("com.miglayout:miglayout-javafx")
   api("no.tornado:tornadofx")
+  api("org.slf4j:slf4j-api")
 
   api(project(":open:commons:time"))
 

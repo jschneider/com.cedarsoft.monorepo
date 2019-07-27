@@ -36,6 +36,10 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>concurrent</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>time</artifactId>
+    </dependency>
 
 
     <!--Tests-->

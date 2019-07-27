@@ -82,8 +82,9 @@ internal class CoAsyncTest {
 
       //create threads that schedule updates
       val job = async(Dispatchers.Default) {
-        for (i in 1..70000) {
+        for (i in 1..70_000) {
           async.last {
+            delay(5)
             calledFor.set(i)
             runCount.incrementAndGet()
           }
@@ -93,8 +94,8 @@ internal class CoAsyncTest {
       }
 
       job.join()
-      Awaitility.await().untilAtomic(finished, CoreMatchers.`is`(true))
-
+      Awaitility.await().untilAtomic(calledFor, CoreMatchers.`is`(70_000))
+      assertThat(finished.get()).isTrue()
       assertThat(calledFor.get()).isEqualTo(70000)
       assertThat(runCount.get()).isLessThan(70000 - 1)
     }

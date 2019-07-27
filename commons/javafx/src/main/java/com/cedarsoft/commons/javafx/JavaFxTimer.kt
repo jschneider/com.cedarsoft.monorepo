@@ -17,10 +17,12 @@ object JavaFxTimer {
   /**
    * Calls the given runnable on the JavaFX Application Thread after the given delay.
    */
+  @JvmStatic
   fun start(delay: Duration, run: Runnable) {
     Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() })).play()
   }
 
+  @JvmStatic
   fun repeat(delay: Duration, run: Runnable) {
     val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { _ -> run.run() }))
     timeline.cycleCount = Animation.INDEFINITE

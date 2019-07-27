@@ -16,6 +16,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.jetbrains.kotlinx</groupId>
+      <artifactId>kotlinx-coroutines-jdk8</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.cedarsoft</groupId>
       <artifactId>annotations</artifactId>
     </dependency>
@@ -52,6 +57,10 @@
       <groupId>com.cedarsoft.commons</groupId>
       <artifactId>test-utils</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
     </dependency>
 
     <dependency>

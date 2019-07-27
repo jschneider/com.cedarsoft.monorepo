@@ -12,8 +12,6 @@
   <artifactId>version</artifactId>
   <name>commons.Version</name>
 
-
-
   <dependencies>
     <dependency>
       <groupId>com.google.guava</groupId>

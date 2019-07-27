@@ -40,4 +40,14 @@
     <system>GitHub</system>
     <url>https://github.com/jschneider/com.cedarsoft.monorepo/issues</url>
   </issueManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.dependencies-sets</groupId>
+      <artifactId>kotlin</artifactId>
+      <type>pom</type>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
 </project>

@@ -21,10 +21,6 @@ dependencies {
   api(project(":open:unit:unit"))
   api(project(":open:commons:concurrent"))
 
-  api("org.fxyz3d:fxyz3d:0.3.0") {
-    exclude(group = "org.slf4j", module = "slf4j-simple")
-  }
-
   testImplementation(project(":dependencies-sets:kotlin-test"))
   testImplementation(project(":open:commons:test-utils"))
   testImplementation("com.miglayout:miglayout-javafx")
