@@ -70,7 +70,7 @@ constructor(
       val it = classPathElements.iterator()
       while (it.hasNext()) {
         val classPathElement = it.next()
-        if (classPathElement == null || classPathElement.isEmpty()) {
+        if (classPathElement.isEmpty()) {
           continue
         }
         stringBuilder.append(classPathElement)

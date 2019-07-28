@@ -18,7 +18,7 @@ class ComboBoxObservableListModel<T>() : ComboBoxModel<T> {
     this.items.addAll(items)
   }
 
-  constructor(items: Collection<out @JvmWildcard T>) : this() {
+  constructor(items: Collection<@JvmWildcard T>) : this() {
     this.items.addAll(items)
   }
 

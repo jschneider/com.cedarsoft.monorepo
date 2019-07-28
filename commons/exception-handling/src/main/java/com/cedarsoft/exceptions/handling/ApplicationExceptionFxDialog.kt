@@ -88,7 +88,7 @@ class ApplicationExceptionFxDialog(
     dialogPane.expandableContent = expContent
 
 
-    dialogPane.expandedProperty().addListener { observable, oldValue, newValue ->
+    dialogPane.expandedProperty().addListener { _, _, _ ->
       Platform.runLater {
         dialogPane.scene.window.sizeToScene()
       }

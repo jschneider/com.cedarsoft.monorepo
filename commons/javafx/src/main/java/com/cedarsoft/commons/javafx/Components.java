@@ -65,7 +65,7 @@ import javafx.util.converter.NumberStringConverter;
  * Helper stuff for the components
  */
 public class Components {
-  private static String ENUM_VALUE = "enumValue";
+  private static final String ENUM_VALUE = "enumValue";
 
   private Components() {
   }

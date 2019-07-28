@@ -134,14 +134,14 @@ constructor(
   /**
    * {@inheritDoc}
    */
-  override fun compareTo(o: Version): Int {
-    if (major != o.major) {
-      return Integer.valueOf(major)!!.compareTo(o.major)
+  override fun compareTo(other: Version): Int {
+    if (major != other.major) {
+      return Integer.valueOf(major)!!.compareTo(other.major)
     }
 
-    return if (minor != o.minor) {
-      Integer.valueOf(minor)!!.compareTo(o.minor)
-    } else Integer.valueOf(build)!!.compareTo(o.build)
+    return if (minor != other.minor) {
+      Integer.valueOf(minor)!!.compareTo(other.minor)
+    } else Integer.valueOf(build)!!.compareTo(other.build)
   }
 
   /**

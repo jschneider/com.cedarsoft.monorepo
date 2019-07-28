@@ -60,7 +60,6 @@ object ThreadDumper {
     }
 
   @JvmStatic
-  @JvmOverloads
   fun dumpThreads(threadInfos: Array<ThreadInfo>): String {
     try {
       val writer = StringWriter()
@@ -80,43 +79,40 @@ object ThreadDumper {
     var edtStack: Array<StackTraceElement>? = null
 
     for (info in threadInfos) {
-      if (info != null) {
-        if (info.threadName.startsWith("AWT-EventQueue-")) {
-          edtStack = info.stackTrace
-        }
-        dumpThreadInfo(info, writer)
+      if (info.threadName.startsWith("AWT-EventQueue-")) {
+        edtStack = info.stackTrace
       }
+      dumpThreadInfo(info, writer)
     }
 
     return edtStack
   }
 
   @JvmStatic
-  @Throws(IOException::class)
   fun dumpThreads(writer: Writer): Array<StackTraceElement>? {
     return dumpThreads(threadInfos, writer)
   }
 
   private fun sort(threads: Array<ThreadInfo>): Array<ThreadInfo> {
-    Arrays.sort(threads) { o1, o2 ->
+    Arrays.sort(threads, fun(o1: ThreadInfo, o2: ThreadInfo): Int {
       val t1 = o1.threadName
       val t2 = o2.threadName
       if (t1.startsWith("AWT-EventQueue")) {
-        return@sort -1
+        return -1
       }
       if (t2.startsWith("AWT-EventQueue")) {
-        return@sort 1
+        return 1
       }
       val r1 = o1.threadState == Thread.State.RUNNABLE
       val r2 = o2.threadState == Thread.State.RUNNABLE
       if (r1 && !r2) {
-        return@sort -1
+        return -1
       }
       if (r2 && !r1) {
-        return@sort 1
+        return 1
       }
-      0
-    }
+      return 0
+    })
 
     return threads
   }

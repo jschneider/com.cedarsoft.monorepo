@@ -67,17 +67,6 @@ class Executor(
   constructor(processBuilder: ProcessBuilder) : this(processBuilder, OutputStreamByteSink(System.out), OutputStreamByteSink(System.err)) {
   }
 
-  /**
-   *
-   * Constructor for Executor.
-   *
-   * @param processBuilder  a ProcessBuilder object.
-   * @param redirectStreams a boolean.
-   */
-  @Deprecated("")
-  constructor(processBuilder: ProcessBuilder, redirectStreams: Boolean) : this(processBuilder, OutputStreamByteSink(System.out), OutputStreamByteSink(System.err)) {
-  }
-
   constructor(processBuilder: ProcessBuilder, targetOut: OutputStream, targetErr: OutputStream) : this(processBuilder, OutputStreamByteSink(targetOut), OutputStreamByteSink(targetErr)) {}
 
   /**

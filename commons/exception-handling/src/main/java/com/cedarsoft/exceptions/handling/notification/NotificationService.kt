@@ -84,7 +84,7 @@ class NotificationService {
         val nextNotification = notificationQueue.poll() ?: return
 
         //Wait for 1200 ms until the notification is shown
-        val timer = Timer(1200) { e -> showNotification(nextNotification) }
+        val timer = Timer(1200) { _ -> showNotification(nextNotification) }
         timer.isRepeats = false
         timer.start()
       }

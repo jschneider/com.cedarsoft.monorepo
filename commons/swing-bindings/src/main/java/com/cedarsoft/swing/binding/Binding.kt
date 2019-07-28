@@ -45,6 +45,7 @@ object Binding
 private fun <T, P : Property<T>> getProperty(component: JComponent, key: Any, create: (component: JComponent) -> P): P {
   val foundProperty = component.getClientProperty(key)
   if (foundProperty != null) {
+    @Suppress("UNCHECKED_CAST")
     return foundProperty as P
   }
 
@@ -55,6 +56,7 @@ private fun <T, P : Property<T>> getProperty(component: JComponent, key: Any, cr
 
 private fun <T> bindValueBidirectional(property: ObjectProperty<T>, comboBox: JComboBox<T>) {
   comboBox.addActionListener {
+    @Suppress("UNCHECKED_CAST")
     property.setIfDifferent(comboBox.selectedItem as T)
   }
 
@@ -62,6 +64,7 @@ private fun <T> bindValueBidirectional(property: ObjectProperty<T>, comboBox: JC
     comboBox.selectedItem = newValue
   }
 
+  @Suppress("UNCHECKED_CAST")
   property.setIfDifferent(comboBox.selectedItem as T)
 }
 

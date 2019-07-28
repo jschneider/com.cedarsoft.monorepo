@@ -1,8 +1,6 @@
 package com.cedarsoft.swing.binding
 
 import javafx.beans.binding.Bindings
-import javafx.scene.control.ComboBox
-import javafx.scene.control.RadioButton
 import net.miginfocom.swing.MigLayout
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Disabled
@@ -58,12 +56,6 @@ object BindingDemo {
     val comboBox = JComboBox<Member>(ComboBoxObservableListModel(Member("asdf"), Member("bsdf")))
     val labelComboValue = JLabel()
     val labelComboValueType = JLabel()
-
-    if (false) {
-      val fxComboBox = ComboBox<Member>()
-      val itemsProperty = fxComboBox.itemsProperty()
-      fxComboBox.valueProperty()
-    }
 
     comboBox.items().add(Member("csdf"))
     comboBox.disableProperty().bindBidirectional(checkboxComboDisabled.selectedProperty())
@@ -123,11 +115,6 @@ object BindingDemo {
     spinner.valueProperty().bindBidirectional(slider.valueProperty())
     spinnerStepSizeLabel.textProperty().bind(spinner.stepSizeProperty().asString())
     spinnerValueLabel.textProperty().bind(spinner.valueProperty().asString())
-
-    if (false) {
-      val radioButton = RadioButton()
-      radioButton.focusedProperty()
-    }
 
     //    bindText(textFieldUni, textProperty)
     //    bindText(textProperty, textLabel)

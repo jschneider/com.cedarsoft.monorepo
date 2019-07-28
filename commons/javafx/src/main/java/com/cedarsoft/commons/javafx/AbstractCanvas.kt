@@ -199,14 +199,12 @@ abstract class AbstractCanvas protected constructor() : Canvas() {
   }
 
   companion object {
-    @Deprecated("???", ReplaceWith("FxPaintingUtils.snapSize(value, false)"))
     @px
     @JvmStatic
     protected fun snapSize(@px value: Double): Double {
       return FxPaintingUtils.snapSize(value, false)
     }
 
-    @Deprecated("???", ReplaceWith("FxPaintingUtils.snapPosition(value)"))
     @px
     @JvmStatic
     protected fun snapPosition(@px value: Double): Double {
@@ -220,7 +218,7 @@ abstract class AbstractCanvas protected constructor() : Canvas() {
 
     @JvmStatic
     fun registerDirtyListener(canvas: AbstractCanvas, property: Observable) {
-      property.addListener { observable -> canvas.markAsDirty() }
+      property.addListener { canvas.markAsDirty() }
     }
   }
 }

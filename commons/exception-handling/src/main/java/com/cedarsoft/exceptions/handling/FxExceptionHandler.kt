@@ -48,7 +48,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 /**
  * Swing based exception handler
  */
-class FxExceptionHandler @JvmOverloads constructor(
+open class FxExceptionHandler @JvmOverloads constructor(
   private val notificationService: FxNotificationService,
   private val applicationVersion: Version,
   private val exceptionReporter: ExceptionReporter,
@@ -105,7 +105,7 @@ class FxExceptionHandler @JvmOverloads constructor(
     }
   }
 
-  fun handleIoException(throwable: IOException, original: Throwable) {
+  open fun handleIoException(throwable: IOException, original: Throwable) {
     //val title = Messages.get("io.exception.title", throwable.message)
     //val errorMessage = Messages.get("io.exception.description", throwable.message)
 
@@ -118,13 +118,13 @@ class FxExceptionHandler @JvmOverloads constructor(
    * @param throwable the (purged) exception
    * @param original  the original exception
    */
-  fun handleInternalError(throwable: Throwable, original: Throwable) {
-    var throwableMessage: String? = throwable.message
-    if (throwableMessage == null) {
-      throwableMessage = ""
-    }
-    val titleErrorMessage = if (throwableMessage.length > 64) throwableMessage.substring(0, 64) + "..." else throwableMessage
-    val basicErrorMessage = if (throwableMessage.length > 512) throwableMessage.substring(0, 512) + "..." else throwableMessage
+  open fun handleInternalError(throwable: Throwable, original: Throwable) {
+    //var throwableMessage: String? = throwable.message
+    //if (throwableMessage == null) {
+    //  throwableMessage = ""
+    //}
+    //val titleErrorMessage = if (throwableMessage.length > 64) throwableMessage.substring(0, 64) + "..." else throwableMessage
+    //val basicErrorMessage = if (throwableMessage.length > 512) throwableMessage.substring(0, 512) + "..." else throwableMessage
 
     showExceptionDialog(original)
   }

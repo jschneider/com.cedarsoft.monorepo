@@ -57,7 +57,7 @@ constructor(
     }
 
     if (throwable is RejectedExecutionException) {
-      handleRejectedExecutionException(throwable, original)
+      handleRejectedExecutionException(original)
       return
     }
 
@@ -79,8 +79,8 @@ constructor(
     reportException(throwable)
   }
 
-  private fun handleRejectedExecutionException(throwable: Throwable, original: Throwable) {
-    reportException(throwable)
+  private fun handleRejectedExecutionException(original: Throwable) {
+    reportException(original)
   }
 
   private fun reportException(throwable: Throwable) {
