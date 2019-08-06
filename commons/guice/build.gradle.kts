@@ -8,11 +8,11 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":open:commons:commons"))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.open_commons_commons))
 
-  api("com.google.inject:guice")
+  api(Libs.guice)
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

@@ -8,17 +8,17 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":open:commons:guava"))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.open_commons_guava))
 
-  api("com.google.guava:guava")
-  api("com.fasterxml.jackson.core:jackson-annotations")
-  api("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
-  api("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-  api("com.fasterxml.jackson.datatype:jackson-datatype-guava")
-  api("com.fasterxml.jackson.module:jackson-module-parameter-names")
-  api("com.fasterxml.jackson.module:jackson-module-kotlin")
+  api(Libs.com_google_guava_guava)
+  api(Libs.jackson_annotations)
+  api(Libs.jackson_datatype_jdk8)
+  api(Libs.jackson_datatype_jsr310)
+  api(Libs.jackson_datatype_guava)
+  api(Libs.jackson_module_parameter_names)
+  api(Libs.jackson_module_kotlin)
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

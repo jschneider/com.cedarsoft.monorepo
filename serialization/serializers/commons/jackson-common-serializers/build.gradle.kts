@@ -11,20 +11,20 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api(project(":open:serialization:jackson"))
-  api("commons-io:commons-io")
-  api(project(":open:commons:xml-commons"))
+  api(project(Projects.open_serialization_serialization))
+  api(project(Projects.open_serialization_jackson))
+  api(Libs.commons_io)
+  api(project(Projects.open_commons_xml_commons))
 
-  api(project(":open:commons:app"))
-  api(project(":open:commons:license"))
-  api(project(":open:commons:file"))
-  api(project(":open:commons:crypt"))
-  api("joda-time:joda-time")
+  api(project(Projects.open_commons_app))
+  api(project(Projects.open_commons_license))
+  api(project(Projects.open_commons_file))
+  api(project(Projects.open_commons_crypt))
+  api(Libs.joda_time)
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

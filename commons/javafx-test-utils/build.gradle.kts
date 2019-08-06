@@ -8,17 +8,17 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:annotations:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_annotations))
 
-  api(project(":open:commons:javafx"))
-  api("com.google.guava:guava")
-  api(project(":open:unit:unit"))
-  api(project(":open:commons:concurrent"))
-  api("org.fxyz3d:fxyz3d:0.3.0")
-  api("org.testfx:testfx-junit5")
+  api(project(Projects.open_commons_javafx))
+  api(Libs.com_google_guava_guava)
+  api(project(Projects.open_unit_unit))
+  api(project(Projects.open_commons_concurrent))
+  api(Libs.fxyz3d)
+  api(Libs.testfx_junit5)
 
 
-  api(project(":dependencies-sets:kotlin-test"))
-  api(project(":open:commons:test-utils"))
+  api(project(Projects.dependencies_sets_kotlin_test))
+  api(project(Projects.open_commons_test_utils))
 }

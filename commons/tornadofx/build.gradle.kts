@@ -8,19 +8,19 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":open:annotations:annotations"))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.open_annotations))
 
-  api(project(":open:commons:javafx"))
-  api("com.google.guava:guava")
-  api("com.miglayout:miglayout-javafx")
-  api("no.tornado:tornadofx")
-  api("org.slf4j:slf4j-api")
+  api(project(Projects.open_commons_javafx))
+  api(Libs.com_google_guava_guava)
+  api(Libs.miglayout_javafx)
+  api(Libs.tornadofx)
+  api(Libs.org_slf4j_slf4j_api)
 
-  api(project(":open:commons:time"))
+  api(project(Projects.open_commons_time))
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation(project(":open:commons:javafx-test-utils"))
-  testImplementation("org.controlsfx:controlsfx")
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(project(Projects.open_commons_javafx_test_utils))
+  testImplementation(Libs.controlsfx)
 }

@@ -11,23 +11,23 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api(project(":open:serialization:stax-mate"))
-  api("com.google.guava:guava")
-  api("org.neo4j:neo4j")
-  api("org.perf4j:perf4j")
-  api("com.ecyrd.speed4j:speed4j")
-  api(project(":open:commons:xml-commons"))
+  api(project(Projects.open_serialization_serialization))
+  api(project(Projects.open_serialization_stax_mate))
+  api(Libs.com_google_guava_guava)
+  api(Libs.neo4j)
+  api(Libs.perf4j)
+  api(Libs.speed4j)
+  api(project(Projects.open_commons_xml_commons))
 
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation("org.neo4j:neo4j-kernel")
-  testImplementation("org.neo4j.test:neo4j-harness")
-  testImplementation("org.neo4j.community:it-test-support")
-  //testImplementation("org.neo4j:neo4j-shell")
-  testImplementation("org.neo4j:neo4j-io")
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
+
+  testImplementation(Libs.neo4j_kernel)
+  testImplementation(Libs.neo4j_harness)
+  testImplementation(Libs.org_neo4j_community_it_test_support)
+  testImplementation(Libs.neo4j_io)
 }

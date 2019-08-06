@@ -8,18 +8,18 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":open:annotations:annotations"))
-  api(project(":open:commons:xml-commons"))
-  api(project(":open:commons:version"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.open_annotations))
+  api(project(Projects.open_commons_xml_commons))
+  api(project(Projects.open_commons_version))
 
-  api("com.google.guava:guava")
-  api("commons-io:commons-io")
-  api("commons-logging:commons-logging")
-  api("log4j:log4j")
+  api(Libs.com_google_guava_guava)
+  api(Libs.commons_io)
+  api(Libs.commons_logging)
+  api(Libs.log4j)
 
-  testImplementation("com.miglayout:miglayout-swing")
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation("commons-codec:commons-codec")
+  testImplementation(Libs.miglayout_swing)
+  testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(Libs.commons_codec)
 }

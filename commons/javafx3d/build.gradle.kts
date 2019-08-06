@@ -8,24 +8,24 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:annotations:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_annotations))
 
-  api(project(":open:commons:javafx"))
-  api("com.google.guava:guava")
-  api(project(":open:unit:unit"))
-  api(project(":open:commons:concurrent"))
-  api("org.fxyz3d:fxyz3d:0.3.0")
+  api(project(Projects.open_commons_javafx))
+  api(Libs.com_google_guava_guava)
+  api(project(Projects.open_unit_unit))
+  api(project(Projects.open_commons_concurrent))
+  api(Libs.fxyz3d)
 
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation("com.miglayout:miglayout-javafx")
-  testImplementation("org.jfxtras:jfxtras-all")
-  testImplementation("org.jfree:fxgraphics2d")
-  testImplementation("com.jfoenix:jfoenix")
-  testImplementation("de.jensd:fontawesomefx")
-  testImplementation("org.controlsfx:controlsfx")
-  testImplementation("eu.hansolo:tilesfx")
-  testImplementation("eu.mihosoft.vrl.workflow:vworkflows-fx")
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(Libs.miglayout_javafx)
+  testImplementation(Libs.jfxtras_all)
+  testImplementation(Libs.fxgraphics2d)
+  testImplementation(Libs.jfoenix)
+  testImplementation(Libs.fontawesomefx)
+  testImplementation(Libs.controlsfx)
+  testImplementation(Libs.tilesfx)
+  testImplementation(Libs.vworkflows_fx)
 }

@@ -11,15 +11,15 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api(project(":open:serialization:stax-mate"))
-  api("commons-io:commons-io")
-  api(project(":open:commons:xml-commons"))
-  api("com.thoughtworks.xstream:xstream")
+  api(project(Projects.open_serialization_serialization))
+  api(project(Projects.open_serialization_stax_mate))
+  api(Libs.commons_io)
+  api(project(Projects.open_commons_xml_commons))
+  api(Libs.xstream)
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

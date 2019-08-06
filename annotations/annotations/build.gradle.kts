@@ -14,6 +14,6 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  testImplementation(project(":open:commons:test-utils"))
+  api(project(Projects.dependencies_sets_annotations))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

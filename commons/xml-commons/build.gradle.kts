@@ -12,12 +12,12 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
 
-  api("commons-io:commons-io")
-  api("commons-codec:commons-codec")
-  api("com.google.guava:guava")
+  api(Libs.commons_io)
+  api(Libs.commons_codec)
+  api(Libs.com_google_guava_guava)
 
   //Test stuff
-  testImplementation(project(":dependencies-sets:kotlin-test"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
 }

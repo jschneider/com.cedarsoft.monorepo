@@ -8,16 +8,16 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
 
   //
   // Compile Deps
   //
-  api("com.google.guava:guava")
-  api(project(":open:unit:unit"))
+  api(Libs.com_google_guava_guava)
+  api(project(Projects.open_unit_unit))
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

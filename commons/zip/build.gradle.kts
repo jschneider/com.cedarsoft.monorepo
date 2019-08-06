@@ -2,10 +2,10 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api("commons-io:commons-io")
-  api("org.apache.commons:commons-compress")
+  api(project(Projects.dependencies_sets_annotations))
+  api(Libs.commons_io)
+  api(Libs.commons_compress)
 
-  testImplementation(project(":dependencies-sets:test-basics"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_test_basics))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

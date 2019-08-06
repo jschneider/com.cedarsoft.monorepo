@@ -11,23 +11,23 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:neo4j:neo4j"))
-  api(project(":open:serialization:serialization-test-utils"))
-  api(project(":open:commons:test-utils"))
-  api("org.junit.jupiter:junit-jupiter-api")
-  api("junit:junit")
-  api("com.google.guava:guava")
-  api("org.neo4j:neo4j-kernel")
-  api("org.neo4j.community:it-test-support")
+  api(project(Projects.open_serialization_neo4j))
+  api(project(Projects.open_serialization_serialization_test_utils))
+  api(project(Projects.open_commons_test_utils))
+  api(Libs.junit_jupiter_api)
+  api(Libs.junit)
+  api(Libs.com_google_guava_guava)
+  api(Libs.neo4j_kernel)
+  api(Libs.org_neo4j_community_it_test_support)
   //api("org.neo4j:neo4j-shell")
-  api("org.mockito:mockito-core")
-  api("org.easymock:easymockclassextension")
-  api("org.easymock:easymock")
-  api("org.assertj:assertj-core")
-  api("org.easytesting:fest-reflect")
+  api(Libs.mockito_core)
+  api(Libs.easymockclassextension)
+  api(Libs.easymock)
+  api(Libs.assertj_core)
+  api(Libs.fest_reflect)
 
   //
   // Test Deps
   //
-  testImplementation("org.neo4j:neo4j-io")
+  testImplementation(Libs.neo4j_io)
 }

@@ -8,11 +8,11 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:annotations:annotations"))
-  api(project(":open:unit:unit"))
-  api("org.apache.commons:commons-lang3:")
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_annotations))
+  api(project(Projects.open_unit_unit))
+  api(Libs.commons_lang3)
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

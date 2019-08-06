@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:kotlin"))
-  testImplementation(project(":dependencies-sets:test-basics"))
+  api(project(Projects.dependencies_sets_kotlin))
+  testImplementation(project(Projects.dependencies_sets_test_basics))
 }

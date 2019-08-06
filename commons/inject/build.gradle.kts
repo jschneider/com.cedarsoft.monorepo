@@ -8,10 +8,10 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api("aopalliance:aopalliance")
-  api("com.google.inject:guice")
+  api(project(Projects.dependencies_sets_annotations))
+  api(Libs.aopalliance)
+  api(Libs.guice)
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

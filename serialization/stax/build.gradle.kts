@@ -11,13 +11,13 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api("org.codehaus.jettison:jettison")
+  api(project(Projects.open_serialization_serialization))
+  api(Libs.jettison)
 
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

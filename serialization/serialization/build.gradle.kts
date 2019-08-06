@@ -11,13 +11,13 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:commons:version"))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_commons_version))
 
   //
   // Test Deps
   //
-  testImplementation("com.google.guava:guava")
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(Libs.com_google_guava_guava)
+  testImplementation(project(Projects.open_commons_test_utils))
 }

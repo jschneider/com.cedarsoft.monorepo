@@ -11,14 +11,14 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api("com.fasterxml.jackson.core:jackson-core")
+  api(project(Projects.open_serialization_serialization))
+  api(Libs.jackson_core)
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation("com.fasterxml.jackson.core:jackson-databind")
-  testImplementation("com.google.inject:guice")
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(Libs.jackson_databind)
+  testImplementation(Libs.guice)
 }

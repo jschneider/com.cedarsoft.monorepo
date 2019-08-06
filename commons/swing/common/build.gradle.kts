@@ -8,18 +8,18 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
 
-  api("org.slf4j:slf4j-api")
-  api("com.miglayout:miglayout-swing")
-  api("com.intellij:annotations")
-  api("com.jidesoft:jide-oss")
-  api("com.google.guava:guava")
-  api(project(":open:annotations:annotations"))
-  api(project(":open:unit:unit"))
+  api(Libs.org_slf4j_slf4j_api)
+  api(Libs.miglayout_swing)
+  api(Libs.com_intellij_annotations)
+  api(Libs.jide_oss)
+  api(Libs.com_google_guava_guava)
+  api(project(Projects.open_annotations))
+  api(project(Projects.open_unit_unit))
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

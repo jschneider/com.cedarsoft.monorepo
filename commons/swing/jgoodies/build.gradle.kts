@@ -8,16 +8,16 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:annotations:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_annotations))
 
-  api("com.jgoodies:jgoodies-binding")
-  api("com.jgoodies:jgoodies-validation")
-  api("net.java.dev.glazedlists:glazedlists_java16")
-  api("com.miglayout:miglayout-swing")
+  api(Libs.jgoodies_binding)
+  api(Libs.jgoodies_validation)
+  api(Libs.glazedlists_java16)
+  api(Libs.miglayout_swing)
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

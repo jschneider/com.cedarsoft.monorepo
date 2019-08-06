@@ -13,33 +13,33 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":dependencies-sets:kotlin"))
-  api(project(":dependencies-sets:test-basics"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_test_basics))
 
-  api(project(":open:commons:crypt"))
-  api(project(":open:commons:xml-commons"))
+  api(project(Projects.open_commons_crypt))
+  api(project(Projects.open_commons_xml_commons))
 
-  api("com.google.guava:guava")
-  api("commons-codec:commons-codec")
-  api("commons-io:commons-io")
+  api(Libs.com_google_guava_guava)
+  api(Libs.commons_codec)
+  api(Libs.commons_io)
 
-  api("org.codehaus.staxmate:staxmate")
-  api("org.codehaus.woodstox:woodstox-core-asl")
-  api("org.apache.commons:commons-lang3")
-  api("commons-io:commons-io")
-  api("org.mockito:mockito-core")
-  api("org.easymock:easymockclassextension")
-  api("org.easymock:easymock")
-  api("org.assertj:assertj-core")
-  api("org.easytesting:fest-reflect")
-  api("com.fasterxml.jackson.core:jackson-databind")
-  api("xmlunit:xmlunit")
-  api("org.awaitility:awaitility")
+  api(Libs.staxmate)
+  api(Libs.woodstox_core_asl)
+  api(Libs.commons_lang3)
+  api(Libs.commons_io)
+  api(Libs.mockito_core)
+  api(Libs.easymockclassextension)
+  api(Libs.easymock)
+  api(Libs.assertj_core)
+  api(Libs.fest_reflect)
+  api(Libs.jackson_databind)
+  api(Libs.xmlunit)
+  api(Libs.awaitility)
 
   //TODO make optional
-  api("joda-time:joda-time")
+  api(Libs.joda_time)
 
   //Test stuff
-  testImplementation(project(":dependencies-sets:kotlin-test"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
 }

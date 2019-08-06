@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
+  api(project(Projects.dependencies_sets_annotations))
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

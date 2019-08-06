@@ -8,14 +8,14 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":open:annotations:annotations"))
-  api(project(":open:unit:unit"))
-  api(project(":open:commons:exceptions"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.open_annotations))
+  api(project(Projects.open_unit_unit))
+  api(project(Projects.open_commons_exceptions))
 
-  api("com.google.guava:guava")
+  api(Libs.com_google_guava_guava)
 
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

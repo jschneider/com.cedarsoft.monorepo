@@ -8,9 +8,9 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:kotlin"))
+  api(project(Projects.dependencies_sets_kotlin))
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
-  testImplementation("org.awaitility:awaitility")
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(Libs.awaitility)
 }

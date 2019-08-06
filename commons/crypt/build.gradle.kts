@@ -8,12 +8,12 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api(project(":dependencies-sets:kotlin"))
+  api(project(Projects.dependencies_sets_annotations))
+  api(project(Projects.dependencies_sets_kotlin))
 
-  api("com.google.guava:guava")
-  api("commons-codec:commons-codec")
-  api("commons-io:commons-io")
+  api(Libs.com_google_guava_guava)
+  api(Libs.commons_codec)
+  api(Libs.commons_io)
 
-  testImplementation(project(":dependencies-sets:test-basics"))
+  testImplementation(project(Projects.dependencies_sets_test_basics))
 }

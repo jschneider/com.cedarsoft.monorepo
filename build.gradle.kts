@@ -23,23 +23,7 @@ subprojects {
   }
 
   extensions.configure<PublishingExtension>("publishing") {
-    repositories {
-      maven {
-        name = if (isSnapshot) "SonatypeOsssnapshots" else "SonatypeOssSstaging"
-        url = if (isSnapshot) {
-          uri("https://oss.sonatype.org/content/repositories/snapshots/")
-        } else {
-          uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-        }
-
-        credentials {
-          //Environment variable: ORG_GRADLE_PROJECT_MAVEN_REPO_USER
-          username = project.findProperty("MAVEN_REPO_USER") as? String
-          //Environment variable: ORG_GRADLE_PROJECT_MAVEN_REPO_PASS
-          password = project.findProperty("MAVEN_REPO_PASS") as? String
-        }
-      }
-    }
+    configureMavenReposForPublish(project)
 
     publications {
       create<MavenPublication>("maven") {
@@ -98,8 +82,4 @@ subprojects {
     }
     isRequired = !isSnapshot
   }
-
 }
-
-inline val Project.isSnapshot: Boolean
-  get() = version.toString().endsWith("-SNAPSHOT")

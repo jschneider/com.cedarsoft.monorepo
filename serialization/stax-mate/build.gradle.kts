@@ -11,17 +11,17 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(":open:serialization:serialization"))
-  api(project(":open:serialization:stax"))
-  api("org.codehaus.staxmate:staxmate")
-  api("org.codehaus.woodstox:woodstox-core-asl")
-  api("org.apache.commons:commons-lang3")
-  api("org.codehaus.jettison:jettison")
+  api(project(Projects.open_serialization_serialization))
+  api(project(Projects.open_serialization_stax))
+  api(Libs.staxmate)
+  api(Libs.woodstox_core_asl)
+  api(Libs.commons_lang3)
+  api(Libs.jettison)
 
 
   //
   // Test Deps
   //
-  testImplementation(project(":open:serialization:serialization-test-utils"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.open_serialization_serialization_test_utils))
+  testImplementation(project(Projects.open_commons_test_utils))
 }

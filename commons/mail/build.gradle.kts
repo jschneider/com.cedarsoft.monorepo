@@ -8,11 +8,10 @@ plugins {
 }
 
 dependencies {
-  api(project(":dependencies-sets:annotations"))
-  api("javax.mail:mail")
-  api("javax.mail:mail")
-  api("log4j:log4j")
+  api(project(Projects.dependencies_sets_annotations))
+  api(Libs.javax_mail_mail)
+  api(Libs.log4j)
 
-  testImplementation(project(":dependencies-sets:kotlin-test"))
-  testImplementation(project(":open:commons:test-utils"))
+  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.open_commons_test_utils))
 }
