@@ -10,7 +10,7 @@ plugins {
 dependencies {
   api(project(Projects.dependencies_sets_annotations))
 
-  api(Libs.org_slf4j_slf4j_api)
+  api(Libs.slf4j_api)
   api(Libs.miglayout_swing)
   api(Libs.com_intellij_annotations)
   api(Libs.jide_oss)

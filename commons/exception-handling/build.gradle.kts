@@ -18,7 +18,7 @@ dependencies {
   api(project(Projects.open_commons_javafx))
   api(Libs.controlsfx)
   api(Libs.fontawesomefx)
-  api(Libs.org_slf4j_slf4j_api)
+  api(Libs.slf4j_api)
   api(Libs.com_google_guava_guava)
   api(Libs.balloontip)
   api(Libs.com_intellij_annotations)
