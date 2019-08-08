@@ -14,7 +14,7 @@ dependencies {
   api(project(Projects.open_commons_xml_commons))
   api(project(Projects.open_commons_version))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.commons_io)
   api(Libs.commons_logging)
   api(Libs.log4j)

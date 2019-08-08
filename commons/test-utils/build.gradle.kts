@@ -20,7 +20,7 @@ dependencies {
   api(project(Projects.open_commons_crypt))
   api(project(Projects.open_commons_xml_commons))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.commons_codec)
   api(Libs.commons_io)
 

@@ -1,5 +1,3 @@
-import org.jetbrains.dokka.gradle.DokkaTask
-
 allprojects {
   group = "com.cedarsoft.open"
 }
@@ -8,19 +6,6 @@ subprojects {
   //Relevant for publishing to Maven Central
   apply(plugin = "maven-publish")
   apply(plugin = "signing")
-
-  //Sources jar and javadoc jar for deployment to Maven Central
-  (extensions.findByName("sourceSets") as SourceSetContainer?)?.let {
-    tasks.register<Jar>("sourcesJar") {
-      from(it.named<SourceSet>("main").get().allSource)
-      archiveClassifier.set("sources")
-    }
-
-    tasks.register<Jar>("javadocJar") {
-      from(tasks.named<DokkaTask>("dokka"))
-      archiveClassifier.set("javadoc")
-    }
-  }
 
   extensions.configure<PublishingExtension>("publishing") {
     configureMavenReposForPublish(project)

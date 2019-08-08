@@ -13,7 +13,7 @@ dependencies {
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_exceptions))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
 
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))

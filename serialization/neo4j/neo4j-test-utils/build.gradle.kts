@@ -16,7 +16,7 @@ dependencies {
   api(project(Projects.open_commons_test_utils))
   api(Libs.junit_jupiter_api)
   api(Libs.junit)
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.neo4j_kernel)
   api(Libs.org_neo4j_community_it_test_support)
   //api("org.neo4j:neo4j-shell")

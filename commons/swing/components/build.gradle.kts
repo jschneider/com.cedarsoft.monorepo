@@ -13,7 +13,7 @@ dependencies {
   //
   // Compile Deps
   //
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(project(Projects.open_unit_unit))
 
   //

@@ -19,7 +19,7 @@ dependencies {
   api(Libs.controlsfx)
   api(Libs.fontawesomefx)
   api(Libs.slf4j_api)
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.balloontip)
   api(Libs.com_intellij_annotations)
 

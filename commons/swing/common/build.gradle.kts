@@ -14,7 +14,7 @@ dependencies {
   api(Libs.miglayout_swing)
   api(Libs.com_intellij_annotations)
   api(Libs.jide_oss)
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))
 

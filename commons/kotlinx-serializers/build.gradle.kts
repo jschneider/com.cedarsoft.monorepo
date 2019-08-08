@@ -13,7 +13,7 @@ dependencies {
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_commons_guava))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.javax_annotation_api)
   api(Libs.kotlinx_coroutines_jdk8)
   api(AdditionalLibs.kotlinx_serialization_runtime_common)

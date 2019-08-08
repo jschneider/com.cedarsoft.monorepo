@@ -11,7 +11,7 @@ dependencies {
   api(project(Projects.dependencies_sets_kotlin))
   api(project(Projects.open_commons_guava))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.jackson_annotations)
   api(Libs.jackson_datatype_jdk8)
   api(Libs.jackson_datatype_jsr310)

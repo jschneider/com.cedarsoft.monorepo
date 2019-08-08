@@ -18,6 +18,6 @@ dependencies {
   //
   // Test Deps
   //
-  testImplementation(Libs.com_google_guava_guava)
+  testImplementation(Libs.guava)
   testImplementation(project(Projects.open_commons_test_utils))
 }

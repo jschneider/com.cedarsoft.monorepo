@@ -13,7 +13,7 @@ dependencies {
   //
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_serialization_stax_mate))
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.neo4j)
   api(Libs.perf4j)
   api(Libs.speed4j)

@@ -16,7 +16,7 @@ dependencies {
 
   api(Libs.commons_io)
   api(Libs.commons_codec)
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
 
   //Test stuff
   testImplementation(project(Projects.dependencies_sets_kotlin_test))

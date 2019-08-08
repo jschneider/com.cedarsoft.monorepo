@@ -12,7 +12,7 @@ dependencies {
   api(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_javafx))
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.miglayout_javafx)
   api(Libs.tornadofx)
   api(Libs.slf4j_api)

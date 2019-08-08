@@ -11,7 +11,7 @@ dependencies {
   api(project(Projects.dependencies_sets_annotations))
   api(project(Projects.dependencies_sets_kotlin))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
   api(Libs.commons_codec)
   api(Libs.commons_io)
 

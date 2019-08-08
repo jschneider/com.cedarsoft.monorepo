@@ -15,7 +15,7 @@ dependencies {
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_unit_unit))
 
-  api(Libs.com_google_guava_guava)
+  api(Libs.guava)
 
   api(project(Projects.open_commons_time))
   api(project(Projects.open_unit_unit))
