@@ -90,6 +90,10 @@ public class ByTypeArgumentsProvider implements ArgumentsProvider, AnnotationCon
     List<Arguments> entries = new ArrayList<>();
 
     for (Method declaredMethod : context.getRequiredTestClass().getDeclaredMethods()) {
+      if (declaredMethod.isSynthetic()) {
+        continue;
+      }
+
       if (declaredMethod.getReturnType().equals(this.type)) {
 
         //Warnings when marked as DataPoint

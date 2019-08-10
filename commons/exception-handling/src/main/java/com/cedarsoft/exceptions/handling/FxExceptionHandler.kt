@@ -32,6 +32,7 @@
 package com.cedarsoft.exceptions.handling
 
 import com.cedarsoft.annotations.AnyThread
+import com.cedarsoft.commons.javafx.FxUtilsKotlin
 import com.cedarsoft.exceptions.ApplicationException
 import com.cedarsoft.exceptions.NotificationException
 import com.cedarsoft.exceptions.handling.notification.DetailsCallback
@@ -164,6 +165,7 @@ open class FxExceptionHandler @JvmOverloads constructor(
       try {
         dialogOpen.set(true)
         val dialog = ApplicationExceptionFxDialog(applicationException)
+        dialog.initOwner(FxUtilsKotlin.getStageSafe())
         dialog.show()
       } finally {
         dialogOpen.set(false)
