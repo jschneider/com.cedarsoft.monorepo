@@ -4,8 +4,8 @@ description = """Ktor Server Commons"""
 plugins {
   // Apply the java-library plugin to add support for Java Library
   `java-library`
-  kotlin("jvm")
-  id("kotlinx-serialization")
+  kotlinJvm
+  kotlinxSerialization
 }
 
 dependencies {

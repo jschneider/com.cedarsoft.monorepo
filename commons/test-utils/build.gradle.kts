@@ -9,7 +9,7 @@
 plugins {
   // Apply the java-library plugin to add support for Java Library
   `java-library`
-  kotlin("jvm")
+  kotlinJvm
 }
 
 dependencies {
