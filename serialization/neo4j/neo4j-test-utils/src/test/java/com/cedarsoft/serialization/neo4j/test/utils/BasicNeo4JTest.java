@@ -47,12 +47,13 @@ import org.neo4j.jmx.JmxUtils;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BasicNeo4JTest extends AbstractNeo4JTest {
+  @Disabled
   @Test
   public void testJmx() throws Exception {
-    ObjectName objectName = JmxUtils.getObjectName( graphDb, "Kernel" );
-    String version = JmxUtils.getAttribute( objectName, "KernelVersion" );
+    ObjectName objectName = JmxUtils.getObjectName(graphDb, "Kernel" );
+    String version = JmxUtils.getAttribute(objectName, "KernelVersion" );
 
-    assertThat( version ).contains( "neo4j-kernel, version:" );
+    assertThat(version ).contains("neo4j-kernel, version:" );
   }
 
   @Test

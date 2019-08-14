@@ -81,7 +81,7 @@ object Components {
   }
 
   /**
-   * Creates a new hbox with aspacing of 5 of the given nodes
+   * Creates a new hbox with a spacing of 5 of the given nodes
    */
   @JvmStatic
   fun hbox5(vararg nodes: Node): HBox {
@@ -296,7 +296,7 @@ object Components {
       .toList()
 
 
-    toggleGroup.selectedToggleProperty().addListener { obs, ov, newValue -> property.setValue(newValue.properties[ENUM_VALUE] as T) }
+    toggleGroup.selectedToggleProperty().addListener { _, _, newValue -> property.setValue(newValue.properties[ENUM_VALUE] as T) }
 
     property.addListener { _, _, nv ->
       if (nv != null) {
@@ -384,8 +384,6 @@ object Components {
 
   @JvmStatic
   fun <E : Enum<E>> comboBox(enumProperty: Property<E>, values: Array<E>): ComboBox<E> {
-    val toggleGroup = ToggleGroup()
-
     val comboBox = ComboBox(FXCollections.observableArrayList(*values))
     comboBox.valueProperty().bindBidirectional(enumProperty)
     return comboBox
@@ -503,7 +501,7 @@ object Components {
   fun textFieldLongReadonly(longProperty: ReadOnlyLongProperty, integerConverter: NumberStringConverter = NumberStringConverterForIntegers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
-    longProperty.addListener { observable, oldValue, newValue -> textField.text = integerConverter.toString(newValue) }
+    longProperty.addListener { _, _, newValue -> textField.text = integerConverter.toString(newValue) }
     textField.text = integerConverter.toString(longProperty.get())
     textField.isEditable = false
     return textField
@@ -514,7 +512,7 @@ object Components {
   fun textFieldFloatReadonly(floatProperty: ReadOnlyFloatProperty, floatConverter: NumberStringConverter = NumberStringConverterForFloatingPointNumbers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
-    floatProperty.addListener { observable, oldValue, newValue -> textField.text = floatConverter.toString(newValue) }
+    floatProperty.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
     textField.text = floatConverter.toString(floatProperty.get())
     textField.isEditable = false
     return textField
@@ -547,7 +545,7 @@ object Components {
   fun textFieldDoubleReadonly(doubleProperty: ReadOnlyDoubleProperty, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
-    doubleProperty.addListener { observable, oldValue, newValue -> textField.text = floatConverter.toString(newValue) }
+    doubleProperty.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
     textField.text = floatConverter.toString(doubleProperty.get())
     textField.isEditable = false
     return textField

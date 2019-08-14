@@ -25,7 +25,7 @@ internal class FxBalloonDialogDemo : Application() {
     primaryStage.show()
     primaryStage.centerOnScreen()
 
-    val stages = FxUtils.getStages()
+    val stages = FxUtils.stages
     for (stage in stages) {
       println("stage --> ${stage}")
     }

@@ -91,7 +91,7 @@ class FxNotificationService {
     notificationVisible = true
 
 
-    val stage = FxUtils.getStage()
+    val stage = FxUtils.stage
     dialog.initOwner(stage)
     position(dialog, stage)
     dialog.show()
