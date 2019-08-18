@@ -3,6 +3,10 @@ allprojects {
 }
 
 subprojects {
+  if (this.isIntermediate) {
+    return@subprojects
+  }
+
   //Relevant for publishing to Maven Central
   apply(plugin = "maven-publish")
   apply(plugin = "signing")
