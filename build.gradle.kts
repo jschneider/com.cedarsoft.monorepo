@@ -3,7 +3,7 @@ allprojects {
 }
 
 subprojects {
-  if (this.isIntermediate) {
+  if (isIntermediate) {
     return@subprojects
   }
 
@@ -14,47 +14,51 @@ subprojects {
   extensions.configure<PublishingExtension>("publishing") {
     configureMavenReposForPublish(project)
 
-    publications {
-      create<MavenPublication>("maven") {
-        from(components["java"])
+    if (path == ":open:unit:unit") {
+      //No configuration for unit necessary.
+    } else {
+      publications {
+        create<MavenPublication>("maven") {
+          from(components["java"])
 
-        artifact(tasks["sourcesJar"])
-        artifact(tasks["javadocJar"])
+          artifact(tasks["sourcesJar"])
+          artifact(tasks["javadocJar"])
 
-        repositories {
-        }
-
-        pom {
-          name.set("${project.name}")
-          description.set("Path: ${project.path}")
-          url.set("http://cedarsoft.com")
-
-          licenses {
-            license {
-              name.set("GPLv3 with Classpath Exception")
-              url.set("https://www.cedarsoft.org/gpl3ce")
-            }
-          }
-          developers {
-            developer {
-              id.set("jschneider")
-              name.set("Johannes Schneider")
-              email.set("js@cedarsoft.com")
-            }
+          repositories {
           }
 
-          scm {
-            connection.set("scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git")
-            developerConnection.set("scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git")
-            url.set("https://github.com/jschneider/com.cedarsoft.monorepo")
-          }
+          pom {
+            name.set("${project.name}")
+            description.set("Path: ${project.path}")
+            url.set("http://cedarsoft.com")
 
-          versionMapping {
-            usage("java-api") {
-              fromResolutionOf("runtimeClasspath")
+            licenses {
+              license {
+                name.set("GPLv3 with Classpath Exception")
+                url.set("https://www.cedarsoft.org/gpl3ce")
+              }
             }
-            usage("java-runtime") {
-              fromResolutionResult()
+            developers {
+              developer {
+                id.set("jschneider")
+                name.set("Johannes Schneider")
+                email.set("js@cedarsoft.com")
+              }
+            }
+
+            scm {
+              connection.set("scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git")
+              developerConnection.set("scm:git:git@github.com:jschneider/com.cedarsoft.monorepo.git")
+              url.set("https://github.com/jschneider/com.cedarsoft.monorepo")
+            }
+
+            versionMapping {
+              usage("java-api") {
+                fromResolutionOf("runtimeClasspath")
+              }
+              usage("java-runtime") {
+                fromResolutionResult()
+              }
             }
           }
         }
