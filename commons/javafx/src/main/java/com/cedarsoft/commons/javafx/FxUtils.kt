@@ -11,6 +11,7 @@ import javafx.geometry.Point2D
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.control.ScrollPane
+import javafx.scene.paint.Color
 import javafx.stage.Stage
 import javafx.stage.Window
 import javafx.util.Duration
@@ -274,4 +275,31 @@ object FxUtils {
 
     throw IllegalStateException("Could not find ancestor <$lastParent> for <$child>")
   }
+}
+
+
+/**
+ * Converts a color to an RGB hex string
+ */
+fun Color.toRGBCode(): String {
+  if (opacity != 1.0) {
+    return toRGBOCode()
+  }
+
+  return String.format(
+    "#%02X%02X%02X",
+    (red * 255).toInt(),
+    (green * 255).toInt(),
+    (blue * 255).toInt()
+  )
+}
+
+fun Color.toRGBOCode(): String {
+  return String.format(
+    "#%02X%02X%02X%02X",
+    (red * 255).toInt(),
+    (green * 255).toInt(),
+    (blue * 255).toInt(),
+    (opacity * 255).toInt()
+  )
 }
