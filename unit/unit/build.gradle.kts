@@ -91,7 +91,7 @@ kotlin {
         languageVersion = "1.3"
         allWarningsAsErrors = false
         verbose = true
-        this.freeCompilerArgs
+        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
       }
     }
   }

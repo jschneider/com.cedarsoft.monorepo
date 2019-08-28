@@ -45,6 +45,6 @@ public class EnvironmentInformationTest {
     assertNotNull(EnvironmentInformation.getUserName() );
 
     assertTrue(EnvironmentInformation.getHostName().length() > 2 );
-    assertTrue(EnvironmentInformation.getUserName().length() > 2 );
+    assertTrue(EnvironmentInformation.getUserName().length() > 1 );
   }
 }
