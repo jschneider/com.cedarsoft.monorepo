@@ -21,7 +21,8 @@ import javafx.scene.text.TextAlignment
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractCanvas protected constructor() : Canvas() {
+@Deprecated("Use classes from algorithms instead")
+abstract class AbstractFxCanvas protected constructor() : Canvas() {
   /**
    * Is set to true if a repaint is required
    */
@@ -217,7 +218,7 @@ abstract class AbstractCanvas protected constructor() : Canvas() {
     protected const val DEBUG_ENABLED: Boolean = false
 
     @JvmStatic
-    fun registerDirtyListener(canvas: AbstractCanvas, property: Observable) {
+    fun registerDirtyListener(canvas: AbstractFxCanvas, property: Observable) {
       property.addListener { canvas.markAsDirty() }
     }
   }

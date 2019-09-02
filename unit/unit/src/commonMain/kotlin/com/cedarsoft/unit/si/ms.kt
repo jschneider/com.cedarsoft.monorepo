@@ -22,9 +22,25 @@ import com.cedarsoft.unit.prefix.milli
 import com.cedarsoft.unit.quantity.Time
 
 /**
+ * Marks milli seconds
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@Retention(AnnotationRetention.RUNTIME)
+@Target(
+  AnnotationTarget.TYPE,
+  AnnotationTarget.TYPE_PARAMETER,
+  AnnotationTarget.VALUE_PARAMETER,
+  AnnotationTarget.LOCAL_VARIABLE,
+  AnnotationTarget.FUNCTION,
+  AnnotationTarget.PROPERTY,
+  AnnotationTarget.PROPERTY_GETTER,
+  AnnotationTarget.PROPERTY_SETTER,
+  AnnotationTarget.FIELD,
+  AnnotationTarget.CONSTRUCTOR,
+  AnnotationTarget.CLASS,
+  AnnotationTarget.ANNOTATION_CLASS,
+  AnnotationTarget.EXPRESSION
+)
+@Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented
 @Suppress("ClassName")
 @Unit
