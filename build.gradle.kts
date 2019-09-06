@@ -14,7 +14,7 @@ subprojects {
   extensions.configure<PublishingExtension>("publishing") {
     configureMavenReposForPublish(project)
 
-    if (path == ":open:unit:unit") {
+    if (path == ":internal:open:unit:unit") {
       //No configuration for unit necessary.
     } else {
       publications {
