@@ -18,21 +18,21 @@ package com.cedarsoft.unit.other
 import com.cedarsoft.unit.Name
 import com.cedarsoft.unit.Symbol
 import com.cedarsoft.unit.Unit
-import com.cedarsoft.unit.quantity.Fraction
+import com.cedarsoft.unit.quantity.Frequency
+import com.cedarsoft.unit.si.SiDerivedUnit
+import com.cedarsoft.unit.si.s
 
 /**
+ * Frames per second
  *
+ * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 @Suppress("ClassName")
 @Unit
-@Fraction
-@Name("percentage")
-@Symbol(pct.SYMBOL)
-annotation class pct {
-  companion object {
-    const val SYMBOL: String = "%"
-  }
-
-}
+@Frequency
+@SiDerivedUnit(s::class)
+@Name("frames per second")
+@Symbol("fps")
+annotation class fps
