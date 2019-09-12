@@ -29,9 +29,13 @@ object JavaFxTimer {
     timeline.play()
   }
 
-  fun repeat(delay: Duration, run: () -> Unit) {
+  /**
+   * Repeats the given lambda every [delay]
+   */
+  fun repeat(delay: Duration, run: () -> Unit): Timeline {
     val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { _ -> run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
+    return timeline
   }
 }
