@@ -15,7 +15,9 @@ dependencies {
   api(Libs.guava)
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_concurrent))
-  api(Libs.fxyz3d)
+  api(Libs.fxyz3d) {
+    exclude("org.slf4j", module = "slf4j-simple")
+  }
   api(Libs.testfx_junit5)
 
 
