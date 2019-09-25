@@ -24,7 +24,7 @@ object JavaFxTimer {
 
   @JvmStatic
   fun repeat(delay: Duration, run: Runnable) {
-    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { _ -> run.run() }))
+    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
   }
@@ -33,9 +33,16 @@ object JavaFxTimer {
    * Repeats the given lambda every [delay]
    */
   fun repeat(delay: Duration, run: () -> Unit): Timeline {
-    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { _ -> run() }))
+    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
     return timeline
+  }
+
+  /**
+   * Repeats the given lambda every [delay]
+   */
+  fun repeat(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
+    return repeat(Duration.millis(delay.inMilliseconds), run)
   }
 }
