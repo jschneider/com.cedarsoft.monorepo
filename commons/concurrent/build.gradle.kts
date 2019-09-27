@@ -1,3 +1,5 @@
+import Libs.logback_classic
+
 description = """Concurrent stuff"""
 
 
@@ -23,5 +25,5 @@ dependencies {
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
-  testImplementation(Libs.ch_qos_logback_logback_classic)
+  testImplementation(Libs.logback_classic)
 }
