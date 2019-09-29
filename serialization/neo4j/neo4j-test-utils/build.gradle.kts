@@ -18,7 +18,7 @@ dependencies {
   api(Libs.junit)
   api(Libs.guava)
   api(Libs.neo4j_kernel)
-  api(Libs.org_neo4j_community_it_test_support)
+  api(Libs.it_test_support)
   //api("org.neo4j:neo4j-shell")
   api(Libs.mockito_core)
   api(Libs.easymockclassextension)
