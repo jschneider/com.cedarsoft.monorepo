@@ -30,6 +30,7 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.RadioButton
+import javafx.scene.control.ScrollPane
 import javafx.scene.control.Slider
 import javafx.scene.control.Spinner
 import javafx.scene.control.SpinnerValueFactory
@@ -386,6 +387,7 @@ object Components {
   fun <E : Enum<E>> comboBox(enumProperty: Property<E>, values: Array<E>): ComboBox<E> {
     val comboBox = ComboBox(FXCollections.observableArrayList(*values))
     comboBox.valueProperty().bindBidirectional(enumProperty)
+    EnumListCell.createFor(comboBox)
     return comboBox
   }
 
@@ -781,4 +783,11 @@ object Components {
     }
     return nextStep
   }
+}
+
+/**
+ * Wraps the node in a scroll pane
+ */
+fun Node.inScrollPane(): ScrollPane {
+  return ScrollPane(this)
 }
