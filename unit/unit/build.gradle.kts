@@ -75,7 +75,6 @@ kotlin {
     named("jsMain") {
       dependencies {
         implementation(Libs.kotlin_stdlib_js)
-        implementation(Libs.kotlinx_coroutines_core_js)
       }
     }
     named("jsTest") {
