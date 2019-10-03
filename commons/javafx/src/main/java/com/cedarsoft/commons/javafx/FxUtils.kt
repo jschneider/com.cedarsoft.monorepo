@@ -157,6 +157,38 @@ object FxUtils {
   }
 
   /**
+   * Scrolls the given scroll pane by the given distance
+   */
+  @JvmStatic
+  fun scroll(scrollPane: ScrollPane, @px deltaY: Double): Double {
+    @px val visibleBottomBeforeScroll = scrollPane.currentlyVisibleBottom()
+
+    //The bottom y for the target area
+    scrollToVisible(scrollPane, visibleBottomBeforeScroll + deltaY, 0.0, scrollMargin = 0.0, animated = false)
+
+    val visibleBottomAfterScroll = scrollPane.currentlyVisibleBottom()
+
+    return visibleBottomAfterScroll - visibleBottomBeforeScroll
+  }
+
+  /**
+   * Returns the currently visible bottom of the scroll pane
+   */
+  @px
+  private fun ScrollPane.currentlyVisibleBottom(): Double {
+    //The height of the view port
+    @px val viewportHeight = viewportBounds.height
+    //The height of the content
+    @px val contentHeight = content.layoutBounds.height
+    //The height that is always hidden
+    @px val hiddenHeight = contentHeight - viewportHeight
+
+    //The current min/max y values that are visible
+    @px val currentlyVisibleTop = vvalue * hiddenHeight
+    return currentlyVisibleTop + viewportHeight
+  }
+
+  /**
    * Scrolls an area to visible
    *
    * @param scrollPane   the pane that is moved
