@@ -63,16 +63,16 @@ subprojects {
           }
         }
       }
-    }
-  }
 
-  //Signing must be called after publication
-  extensions.configure<SigningExtension>("signing") {
-    useGpgCmd()
-    //Only sign if *not* snapshot
-    if (!isSnapshot) {
-      sign(extensions.getByName<PublishingExtension>("publishing").publications["maven"])
+      //Signing must be called after publication
+      extensions.configure<SigningExtension>("signing") {
+        useGpgCmd()
+        //Only sign if *not* snapshot
+        if (!isSnapshot) {
+          sign(extensions.getByName<PublishingExtension>("publishing").publications["maven"])
+        }
+        isRequired = !isSnapshot
+      }
     }
-    isRequired = !isSnapshot
   }
 }

@@ -19,8 +19,14 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## ??? (???)
+## 8.9.4 (???)
+* JavaFX Utils updates
+* Dependencies updates
+* Units is now a multi platform project
+
+## 8.9.3 (2019-08-02)
 * Update serializers group ids
+* Dependencies updates 
 
 ## 8.9.2 (2019-07-22)
 * Rerelease with updated gradle dependencies
