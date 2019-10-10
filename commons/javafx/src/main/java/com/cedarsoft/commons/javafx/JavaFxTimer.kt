@@ -18,9 +18,22 @@ object JavaFxTimer {
    * Calls the given runnable on the JavaFX Application Thread after the given delay.
    */
   @JvmStatic
-  fun start(delay: Duration, run: Runnable) {
-    Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() })).play()
+  fun start(delay: Duration, run: Runnable): Timeline {
+    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() }))
+    timeline.play()
+    return timeline
   }
+
+  /**
+   * Calls the given lambda after the delay once
+   */
+  @JvmStatic
+  fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
+    val timeline = Timeline(KeyFrame(delay.toJavaFx(), EventHandler<ActionEvent> { run() }))
+    timeline.play()
+    return timeline
+  }
+
 
   @JvmStatic
   fun repeat(delay: Duration, run: Runnable) {
@@ -43,6 +56,12 @@ object JavaFxTimer {
    * Repeats the given lambda every [delay]
    */
   fun repeat(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
-    return repeat(Duration.millis(delay.inMilliseconds), run)
+    return repeat(delay.toJavaFx(), run)
   }
 }
+
+
+/**
+ * Converts a Kotlin duration to a JavaFX duration
+ */
+fun kotlin.time.Duration.toJavaFx(): Duration = Duration.millis(inMilliseconds)
