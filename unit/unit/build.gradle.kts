@@ -14,25 +14,23 @@ kotlin {
       //artifact("dokkaJar") //TODO add as soon as dokka is working
     }
   }
+
   js() {
-    configure(listOf(compilations["main"], compilations["test"])) {
-      tasks.getByName(compileKotlinTaskName) {
-        kotlinOptions {
-          languageVersion = "1.3"
-          metaInfo = true
-          sourceMap = true
-          sourceMapEmbedSources = "always"
-          moduleKind = "umd"
-        }
+    val main by compilations.getting {
+      kotlinOptions {
+        main = "call"
+
+        metaInfo = true
+        sourceMap = true
+        moduleKind = "commonjs"
+
+        sourceMapEmbedSources = "always"
+        moduleKind = "commonjs"
       }
     }
 
-    configure(listOf(compilations["main"])) {
-      tasks.getByName(compileKotlinTaskName) {
-        kotlinOptions {
-          main = "call"
-        }
-      }
+    nodejs {
+      // target and run tests on node.js
     }
   }
 
