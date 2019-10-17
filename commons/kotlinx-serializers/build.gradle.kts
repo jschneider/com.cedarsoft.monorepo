@@ -7,7 +7,7 @@ plugins {
   // Apply the java-library plugin to add support for Java Library
   `java-library`
   kotlinJvm
-  id("kotlinx-serialization")
+  kotlinxSerialization
 }
 
 dependencies {
