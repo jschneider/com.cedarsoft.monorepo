@@ -392,6 +392,14 @@ object Components {
   }
 
   @JvmStatic
+  fun <T> comboBox(enumProperty: Property<T>, values: List<T>, converter: (T) -> String): ComboBox<T> {
+    val comboBox = ComboBox(FXCollections.observableArrayList(values))
+    comboBox.valueProperty().bindBidirectional(enumProperty)
+    ConverterListCell.createFor(comboBox, converter)
+    return comboBox
+  }
+
+  @JvmStatic
   fun createCheckBoxReadOnly(label: String, selectedProperty: Property<Boolean>): Node {
     val checkBox = CheckBox(label)
     checkBox.selectedProperty().bind(selectedProperty)
