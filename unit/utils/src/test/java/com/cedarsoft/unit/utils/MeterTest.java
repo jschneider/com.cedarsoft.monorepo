@@ -25,8 +25,9 @@ import com.cedarsoft.unit.si.m;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class MeterTest {
+  @Disabled
   @Test
   public void testToString() throws Exception {
-    assertEquals( "m", Units.getSymbol( m.class ) );
+    assertEquals("m", Units.getSymbol(m.class ) );
   }
 }

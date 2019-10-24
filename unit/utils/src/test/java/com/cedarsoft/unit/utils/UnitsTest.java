@@ -21,6 +21,7 @@ import java.util.Arrays;
 
 import org.junit.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import com.cedarsoft.unit.other.AM;
 import com.cedarsoft.unit.prefix.hecto;
@@ -35,6 +36,7 @@ import com.cedarsoft.unit.si.m_s2;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Disabled
 public class UnitsTest {
   @Test
   public void testIsUnit() throws Exception {

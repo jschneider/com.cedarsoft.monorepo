@@ -15,11 +15,11 @@
  */
 package com.cedarsoft.unit.other
 
-import com.cedarsoft.unit.Unit
-import com.cedarsoft.unit.quantity.Intensity
 import com.cedarsoft.unit.Definition
 import com.cedarsoft.unit.Name
 import com.cedarsoft.unit.Symbol
+import com.cedarsoft.unit.Unit
+import com.cedarsoft.unit.quantity.Intensity
 import com.cedarsoft.unit.si.SiDerivedUnit
 import com.cedarsoft.unit.si.kWh
 import com.cedarsoft.unit.si.s
@@ -27,9 +27,25 @@ import com.cedarsoft.unit.si.s
 /**
  *
  */
-@Retention(AnnotationRetention.RUNTIME)
+@Retention(AnnotationRetention.SOURCE)
+@Target(
+  AnnotationTarget.CLASS,
+  AnnotationTarget.ANNOTATION_CLASS,
+  AnnotationTarget.TYPE_PARAMETER,
+  AnnotationTarget.PROPERTY,
+  AnnotationTarget.FIELD,
+  AnnotationTarget.LOCAL_VARIABLE,
+  AnnotationTarget.VALUE_PARAMETER,
+  AnnotationTarget.CONSTRUCTOR,
+  AnnotationTarget.FUNCTION,
+  AnnotationTarget.PROPERTY_GETTER,
+  AnnotationTarget.PROPERTY_SETTER,
+  AnnotationTarget.TYPE,
+  AnnotationTarget.EXPRESSION,
+  AnnotationTarget.FILE,
+  AnnotationTarget.TYPEALIAS
+)
 @MustBeDocumented
-
 @Unit
 @Intensity
 @Name("kWh per square meter and day")

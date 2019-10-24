@@ -25,22 +25,24 @@ import com.cedarsoft.unit.quantity.Time
  * Marks milli seconds
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
+@Retention(AnnotationRetention.SOURCE)
 @Target(
-  AnnotationTarget.TYPE,
-  AnnotationTarget.TYPE_PARAMETER,
-  AnnotationTarget.VALUE_PARAMETER,
-  AnnotationTarget.LOCAL_VARIABLE,
-  AnnotationTarget.FUNCTION,
-  AnnotationTarget.PROPERTY,
-  AnnotationTarget.PROPERTY_GETTER,
-  AnnotationTarget.PROPERTY_SETTER,
-  AnnotationTarget.FIELD,
-  AnnotationTarget.CONSTRUCTOR,
   AnnotationTarget.CLASS,
   AnnotationTarget.ANNOTATION_CLASS,
-  AnnotationTarget.EXPRESSION
+  AnnotationTarget.TYPE_PARAMETER,
+  AnnotationTarget.PROPERTY,
+  AnnotationTarget.FIELD,
+  AnnotationTarget.LOCAL_VARIABLE,
+  AnnotationTarget.VALUE_PARAMETER,
+  AnnotationTarget.CONSTRUCTOR,
+  AnnotationTarget.FUNCTION,
+  AnnotationTarget.PROPERTY_GETTER,
+  AnnotationTarget.PROPERTY_SETTER,
+  AnnotationTarget.TYPE,
+  AnnotationTarget.EXPRESSION,
+  AnnotationTarget.FILE,
+  AnnotationTarget.TYPEALIAS
 )
-@Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented
 @Suppress("ClassName")
 @Unit

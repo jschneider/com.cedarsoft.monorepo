@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import com.cedarsoft.unit.prefix.centi;
 import com.cedarsoft.unit.prefix.deci;
@@ -30,6 +31,7 @@ import com.cedarsoft.unit.si.mm;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Disabled
 public class PrefixedTest {
   @Test
   public void testIt() {

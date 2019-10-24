@@ -46,6 +46,7 @@ import com.cedarsoft.unit.utils.prefix.Prefixed;
 /**
  *
  */
+@Disabled
 public class UnitTest {
   @m
   public static double calcMetres( @m double amount ) {
