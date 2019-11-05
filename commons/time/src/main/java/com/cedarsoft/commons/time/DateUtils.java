@@ -41,13 +41,16 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.chrono.Chronology;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
 import java.time.temporal.Temporal;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
@@ -284,5 +287,25 @@ public class DateUtils {
     }
 
     return DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).format(temporal);
+  }
+
+  /**
+   * Returns a date time formatter that contains the milli seconds format
+   */
+  @Nonnull
+  public static DateTimeFormatter createTimeMillisFormat(@Nonnull Locale locale) {
+    return createMillisFormat(locale, null, FormatStyle.MEDIUM);
+  }
+
+  @Nonnull
+  public static DateTimeFormatter createDateTimeMillisFormat(@Nonnull Locale locale) {
+    return createMillisFormat(locale, FormatStyle.MEDIUM, FormatStyle.MEDIUM);
+  }
+
+  @Nonnull
+  private static DateTimeFormatter createMillisFormat(@Nonnull Locale locale, @Nullable FormatStyle dateStyle, @Nullable FormatStyle timeStyle) {
+    Chronology chronology = Chronology.ofLocale(locale);
+    String pattern = DateTimeFormatterBuilder.getLocalizedDateTimePattern(dateStyle, timeStyle, chronology, locale).replace(":ss", ":ss.SSS");
+    return DateTimeFormatter.ofPattern(pattern, locale);
   }
 }
