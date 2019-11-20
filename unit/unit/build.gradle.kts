@@ -5,7 +5,7 @@ group = "com.cedarsoft"
 plugins {
   // Apply the java-library plugin to add support for Java Library
   kotlinMultiPlatform
-  //dokka //TODO add dokka as soon as 0.9.19 is released
+  dokka
 }
 
 kotlin {
