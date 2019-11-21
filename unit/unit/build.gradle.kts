@@ -22,10 +22,9 @@ kotlin {
 
         metaInfo = true
         sourceMap = true
-        moduleKind = "commonjs"
 
         sourceMapEmbedSources = "always"
-        moduleKind = "commonjs"
+        //moduleKind = "commonjs"
       }
     }
 
