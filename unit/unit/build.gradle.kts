@@ -24,7 +24,7 @@ kotlin {
         sourceMap = true
 
         sourceMapEmbedSources = "always"
-        //moduleKind = "commonjs"
+        moduleKind = "umd"
       }
     }
 
