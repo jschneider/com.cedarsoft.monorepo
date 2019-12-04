@@ -1,6 +1,6 @@
 
 
-description = """Concurrent stuff"""
+description = """Concurrent stuff - with coroutines"""
 
 
 plugins {
@@ -14,10 +14,9 @@ dependencies {
 
   api(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))
-  api(project(Projects.open_commons_exceptions))
+  api(project(Projects.open_commons_concurrent))
 
-  api(Libs.guava)
-  api(Libs.javax_annotation_api)
+  api(Libs.kotlinx_coroutines_jdk8)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
