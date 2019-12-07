@@ -1,13 +1,18 @@
 package com.cedarsoft.commons.javafx;
 
+import java.util.concurrent.Callable;
+
 import javax.annotation.Nonnull;
 
 import com.cedarsoft.unit.other.px;
 
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -73,6 +78,16 @@ public class InfoPopup extends Popup {
   public static ImageView createInfoBox(@Nonnull Node content, double maxWidth) {
     ImageView imageView = new ImageView(InfoPopup.class.getResource("info_16.png").toExternalForm());
     imageView.setCursor(Cursor.HAND);
+
+    // make image brighter in case the image view is disabled
+    imageView.effectProperty().bind(Bindings.createObjectBinding((Callable<Effect>) () -> {
+      if (imageView.isDisabled()) {
+        ColorAdjust brighter = new ColorAdjust();
+        brighter.setBrightness(0.7);
+        return brighter;
+      }
+      return null;
+    }, imageView.disabledProperty()));
 
     imageView.setOnMouseClicked(event -> showInfoPopup(imageView, content, maxWidth));
 
