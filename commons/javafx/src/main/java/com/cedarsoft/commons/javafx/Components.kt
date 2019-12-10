@@ -167,6 +167,16 @@ object Components {
     return label
   }
 
+  /**
+   * Calls the given [converter] to convert values from [binding] to string
+   */
+  @JvmStatic
+  fun <T> labelToString(binding: ObservableValue<T>, converter: (T) -> String): Label {
+    val label = Label()
+    label.textProperty().bind(Bindings.createStringBinding(Callable { converter.invoke(binding.value) }, binding))
+    return label
+  }
+
   @JvmStatic
   fun labelInteger(integerProperty: IntegerExpression): Label {
     return labelNumber(integerProperty, NumberStringConverterForIntegers())
