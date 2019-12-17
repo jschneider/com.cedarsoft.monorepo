@@ -37,9 +37,6 @@ dependencies {
   api(Libs.xmlunit)
   api(Libs.awaitility)
 
-  //TODO make optional
-  api(Libs.joda_time)
-
   //Test stuff
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
 }

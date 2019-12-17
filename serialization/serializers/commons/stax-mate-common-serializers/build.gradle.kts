@@ -21,7 +21,6 @@ dependencies {
   api(project(Projects.open_commons_license))
   api(project(Projects.open_commons_file))
   api(project(Projects.open_commons_crypt))
-  api(Libs.joda_time)
 
   //
   // Test Deps
