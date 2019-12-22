@@ -27,6 +27,7 @@ import javafx.geometry.Pos
 import javafx.scene.Node
 import javafx.scene.control.Button
 import javafx.scene.control.CheckBox
+import javafx.scene.control.ChoiceBox
 import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.RadioButton
@@ -402,11 +403,27 @@ object Components {
   }
 
   @JvmStatic
-  fun <T> comboBox(enumProperty: Property<T>, values: List<T>, converter: (T) -> String): ComboBox<T> {
+  fun <T> comboBox(property: Property<T>, values: List<T>, converter: (T) -> String): ComboBox<T> {
     val comboBox = ComboBox(FXCollections.observableArrayList(values))
-    comboBox.valueProperty().bindBidirectional(enumProperty)
+    comboBox.valueProperty().bindBidirectional(property)
     ConverterListCell.createFor(comboBox, converter)
     return comboBox
+  }
+
+  @JvmStatic
+  fun <T> choiceBox(property: Property<T>, values: List<T>, converter: (T) -> String): ChoiceBox<T> {
+    val choiceBox = ChoiceBox(FXCollections.observableArrayList(values))
+    choiceBox.valueProperty().bindBidirectional(property)
+    choiceBox.converter = object : StringConverter<T>() {
+      override fun toString(`object`: T): String {
+        return converter(`object`)
+      }
+
+      override fun fromString(string: String?): T {
+        throw UnsupportedOperationException()
+      }
+    }
+    return choiceBox
   }
 
   @JvmStatic
