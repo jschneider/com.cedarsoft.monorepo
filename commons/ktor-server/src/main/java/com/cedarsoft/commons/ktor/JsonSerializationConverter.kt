@@ -9,8 +9,8 @@ import io.ktor.http.charset
 import io.ktor.http.withCharset
 import io.ktor.request.ApplicationReceiveRequest
 import io.ktor.util.pipeline.PipelineContext
-import kotlinx.coroutines.io.*
-import kotlinx.coroutines.io.jvm.javaio.*
+import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.jvm.javaio.toInputStream
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json

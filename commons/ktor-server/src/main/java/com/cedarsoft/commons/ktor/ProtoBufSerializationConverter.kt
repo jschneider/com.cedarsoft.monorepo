@@ -6,7 +6,7 @@ import io.ktor.http.ContentType
 import io.ktor.request.ApplicationReceiveRequest
 import io.ktor.util.cio.toByteArray
 import io.ktor.util.pipeline.PipelineContext
-import kotlinx.coroutines.io.*
+import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.protobuf.ProtoBuf
 

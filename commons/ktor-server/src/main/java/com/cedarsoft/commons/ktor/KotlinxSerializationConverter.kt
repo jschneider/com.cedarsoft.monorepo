@@ -8,7 +8,7 @@ import io.ktor.http.ContentType
 import io.ktor.request.ApplicationReceiveRequest
 import io.ktor.request.contentType
 import io.ktor.util.pipeline.PipelineContext
-import kotlinx.coroutines.io.*
+import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.UnstableDefault

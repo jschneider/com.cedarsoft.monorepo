@@ -38,6 +38,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.OffsetDateTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -90,6 +91,11 @@ public class DateUtils {
   @Nonnull
   public static ZonedDateTime toZonedDateTime(long millis, @Nonnull ZoneId zone) {
     return ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), zone);
+  }
+
+  @Nonnull
+  public static OffsetDateTime toOffsetDateTime(long millis, @Nonnull ZoneId zone) {
+    return OffsetDateTime.ofInstant(Instant.ofEpochMilli(millis), zone);
   }
 
   @Nonnull
