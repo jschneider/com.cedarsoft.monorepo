@@ -23,12 +23,11 @@ class WithSavedGc(
 /**
  * Executes the action within a saved context
  */
-fun GraphicsContext.saved(action: (gc: GraphicsContext) -> Unit) {
+inline fun GraphicsContext.saved(action: (gc: GraphicsContext) -> Unit) {
   save()
   try {
     action(this)
   } finally {
     restore()
   }
-
 }
