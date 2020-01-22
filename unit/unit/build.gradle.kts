@@ -1,3 +1,5 @@
+import org.apache.commons.io.FileUtils.copyFile
+
 description = """Unit"""
 
 group = "com.cedarsoft"
@@ -92,3 +94,28 @@ kotlin {
     }
   }
 }
+
+
+val prepareNpmTask: Task = task("prepareNpm") {
+  description = "Copy files for NPM"
+
+  dependsOn("jsJar", "jsMainClasses")
+
+  doLast {
+    val targetDir = file("build/npm")
+    if (!targetDir.exists()) {
+      targetDir.mkdir()
+    }
+    copyFile(file("package.json"), File(targetDir, "package.json"))
+
+    copy {
+      from(zipTree("build/libs/unit-js-$version.jar"))
+      into("$buildDir/npm")
+
+      include("com.cedarsoft.monorepo-unit.js")
+    }
+  }
+}
+
+tasks.getByName("build").dependsOn(prepareNpmTask)
+

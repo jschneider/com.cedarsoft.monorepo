@@ -1,0 +1,7 @@
+{
+  "name": "com.cedarsoft.monorepo-unit",
+  "version": "8.9.5-SNAPSHOT",
+  "main": "com.cedarsoft.monorepo-unit.js",
+  "_source": "gradle",
+  "private": true
+}
