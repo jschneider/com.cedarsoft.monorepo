@@ -1,0 +1,8 @@
+{
+  "name": "$MODULE",
+  "version": "$VERSION",
+  "main": "com.cedarsoft.monorepo-unit.js",
+  "_source": "gradle",
+  "private": true,
+  "sideEffects": false
+}

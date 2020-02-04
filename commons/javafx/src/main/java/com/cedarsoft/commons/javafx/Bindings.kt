@@ -36,10 +36,20 @@ fun <T> ObservableList<T>.onListChange(listener: (ListChangeListener.Change<out 
 
 /**
  * The given function is called for the current value and all new values
+ * Calls the function immediately
  */
 fun <T> ObservableValue<T>.consume(function: (T) -> Unit) {
   function(value)
   addListener { _, _, newValue ->
     function(newValue)
   }
+}
+
+/**
+ * Creates a binding with a map function
+ */
+fun <T, R> ObservableValue<T>.map(conversion: (T) -> R): ObservableValue<R> {
+  return Bindings.createObjectBinding(Callable {
+    conversion(this.value)
+  }, this)
 }
