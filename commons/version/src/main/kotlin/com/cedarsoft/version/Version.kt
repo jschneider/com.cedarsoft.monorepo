@@ -262,12 +262,27 @@ constructor(
 
     @JvmStatic
     fun valueOf(major: Int, minor: Int, build: Int): Version {
-      return Version(major, minor, build)
+      return of(major, minor, build)
     }
 
     @JvmStatic
     fun valueOf(major: Int, minor: Int, build: Int, suffix: String?): Version {
+      return of(major, minor, build, suffix)
+    }
+
+    @JvmStatic
+    fun of(major: Int, minor: Int, build: Int): Version {
+      return Version(major, minor, build)
+    }
+
+    @JvmStatic
+    fun of(major: Int, minor: Int, build: Int, suffix: String?): Version {
       return Version(major, minor, build, suffix)
     }
+
+    @Suppress("ObjectPropertyName")
+    @JvmStatic
+    val _1_0_0: Version = of(1, 0, 0)
+
   }
 }
