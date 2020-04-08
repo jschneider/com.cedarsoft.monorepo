@@ -1,8 +1,9 @@
 package com.cedarsoft.charting.annotations
 
-import com.cedarsoft.unit.other.px
+import com.cedarsoft.unit.other.pct
+
 /**
- * A value (in pixels) relative to the origin of a tile
+ * A value (in percentage of the tile size) relative to a tile origin
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
@@ -25,5 +26,5 @@ import com.cedarsoft.unit.other.px
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@px
-annotation class Tile
+@pct
+annotation class TileRelative

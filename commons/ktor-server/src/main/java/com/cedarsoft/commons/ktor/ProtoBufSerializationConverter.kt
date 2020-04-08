@@ -16,7 +16,7 @@ val ContentType.Application.ProtoBuf: ContentType
 /**
  * Serializer that converts to protocol buffers
  */
-class ProtoBufSerializationConverter(private val protoBuf: ProtoBuf = ProtoBuf.plain) : KotlinxSerializationConverter() {
+class ProtoBufSerializationConverter(private val protoBuf: ProtoBuf = ProtoBuf()) : KotlinxSerializationConverter() {
   override suspend fun deserialize(
     context: PipelineContext<ApplicationReceiveRequest, ApplicationCall>,
     contentType: ContentType,

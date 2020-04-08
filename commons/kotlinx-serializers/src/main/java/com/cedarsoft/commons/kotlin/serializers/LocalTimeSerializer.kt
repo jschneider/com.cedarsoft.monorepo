@@ -3,10 +3,10 @@ package com.cedarsoft.commons.kotlin.serializers
 import kotlinx.serialization.Decoder
 import kotlinx.serialization.Encoder
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.PrimitiveDescriptor
+import kotlinx.serialization.PrimitiveKind
 import kotlinx.serialization.SerialDescriptor
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.internal.StringDescriptor
-import kotlinx.serialization.withName
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter
  */
 @Serializer(forClass = LocalTime::class)
 object LocalTimeSerializer : KSerializer<LocalTime> {
-  override val descriptor: SerialDescriptor = StringDescriptor.withName("LocalTime")
+  override val descriptor: SerialDescriptor = PrimitiveDescriptor("LocalTime", PrimitiveKind.STRING)
 
   override fun serialize(encoder: Encoder, obj: LocalTime) {
     encoder.encodeString(obj.format(DateTimeFormatter.ISO_TIME))

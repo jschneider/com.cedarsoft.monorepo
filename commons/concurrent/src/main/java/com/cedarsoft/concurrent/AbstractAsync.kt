@@ -73,14 +73,14 @@ abstract class AbstractAsync {
     }
 
     //There has no other event been scheduled
-    runInTargetThread(Runnable { get(key).run() })
+    runInTargetThread(Runnable { getAndRemove(key).run() })
   }
 
   /**
    * Returns the runnable for the given key
    */
   @UiThread
-  private operator fun get(key: Any): Runnable {
+  private fun getAndRemove(key: Any): Runnable {
     lock.write {
       return scheduledRunnables.remove(key) ?: throw IllegalStateException("No job found for <$key>")
     }

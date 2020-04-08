@@ -1,8 +1,7 @@
 package com.cedarsoft.charting.annotations
 
-import com.cedarsoft.unit.other.px
 /**
- * A value (in pixels) relative to the origin of a tile
+ * A pixel value that corresponds to *real* pixels on the screen
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
@@ -25,5 +24,4 @@ import com.cedarsoft.unit.other.px
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@px
-annotation class Tile
+annotation class PhysicalPixel

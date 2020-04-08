@@ -7,7 +7,7 @@ import kotlinx.serialization.Encoder
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialDescriptor
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.internal.ArrayListClassDesc
+import kotlinx.serialization.StructureKind
 
 /**
  * Serializer for immutable lists
@@ -15,13 +15,13 @@ import kotlinx.serialization.internal.ArrayListClassDesc
 @Serializer(forClass = ImmutableList::class)
 class ImmutableListSerializer<T>(private val elementsSerializer: KSerializer<T>) : KSerializer<ImmutableList<T>> {
 
-  override val descriptor: SerialDescriptor = ArrayListClassDesc(elementsSerializer.descriptor)
+  override val descriptor: SerialDescriptor = SerialDescriptor("ImmutableList", StructureKind.LIST)
 
-  override fun serialize(encoder: Encoder, obj: ImmutableList<T>) {
-    val size = obj.size
+  override fun serialize(encoder: Encoder, value: ImmutableList<T>) {
+    val size = value.size
 
     val compositeEncoder = encoder.beginCollection(descriptor, size, elementsSerializer)
-    obj.forEachIndexed { index, t ->
+    value.forEachIndexed { index, t ->
       compositeEncoder.encodeSerializableElement(descriptor, index, elementsSerializer, t)
     }
 

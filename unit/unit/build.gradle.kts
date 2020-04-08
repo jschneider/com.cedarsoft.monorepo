@@ -6,7 +6,6 @@ plugins {
   // Apply the java-library plugin to add support for Java Library
   kotlinMultiPlatform
   dokka
-  npmBundle
 }
 
 kotlin {
@@ -17,21 +16,22 @@ kotlin {
   }
 
   js() {
-    val main by compilations.getting {
-      kotlinOptions {
-        main = "call"
-
-        metaInfo = true
-        sourceMap = true
-
-        sourceMapEmbedSources = "always"
-        moduleKind = "umd"
-      }
-    }
-
     nodejs {
       // target and run tests on node.js
     }
+
+    //val main by compilations.getting {
+    //  kotlinOptions {
+    //    main = "call"
+    //
+    //    metaInfo = true
+    //    sourceMap = true
+    //
+    //    sourceMapEmbedSources = "always"
+    //    moduleKind = "umd"
+    //  }
+    //}
+    //
   }
 
   sourceSets {
@@ -81,24 +81,4 @@ kotlin {
       }
     }
   }
-
-  targets.all {
-    compilations.all {
-      kotlinOptions {
-        languageVersion = "1.3"
-        allWarningsAsErrors = false
-        verbose = true
-        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
-      }
-    }
-  }
-}
-
-tasks.withType<com.cedarsoft.gradle.npmbundle.CopyBundleContentTask> {
-  from(zipTree("build/libs/unit-js-${project.version}.jar"))
-  include("com.cedarsoft.monorepo-unit.js")
-}
-
-npmBundle {
-  moduleName.set("quickchart-unit")
 }

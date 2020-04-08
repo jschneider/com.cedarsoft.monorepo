@@ -86,7 +86,7 @@ inline fun ContentNegotiation.Configuration.kotlinxSerialization(
   block: KotlinxSerializationConverter.() -> Unit
 ) {
   val jsonSerializationConverter: JsonSerializationConverter? = json?.let { JsonSerializationConverter(it) }
-  val protoBufSerializationConverter: ProtoBufSerializationConverter? = protoBuf?.let { ProtoBufSerializationConverter(it) }
+    val protoBufSerializationConverter: ProtoBufSerializationConverter? = protoBuf?.let { ProtoBufSerializationConverter(it) }
 
   kotlinxSerialization(jsonSerializationConverter, protoBufSerializationConverter, block)
 }
