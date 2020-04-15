@@ -7,11 +7,13 @@ import javafx.animation.Interpolator
 import javafx.animation.KeyFrame
 import javafx.animation.KeyValue
 import javafx.animation.Timeline
+import javafx.application.Platform
 import javafx.geometry.Point2D
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.control.ScrollPane
 import javafx.scene.paint.Color
+import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.Window
 import javafx.util.Duration
@@ -27,10 +29,11 @@ object FxUtils {
    */
   @px
   internal const val SCROLL_TO_VISIBLE_MARGIN: Int = 10
+
   /**
    * Used for reflection workaround
    */
-  private val IS_JDK_8 = System.getProperty("java.version").contains("1.8")
+  private val isJdk8: Boolean = System.getProperty("java.version").contains("1.8")
 
   /**
    * Returns the currently focused stage, or the one open stage or null if there is no stage or there are multiple stages
@@ -77,10 +80,12 @@ object FxUtils {
   val stages: List<Stage>
     get() {
       try {
-        if (IS_JDK_8) {
+        if (isJdk8) {
           val stageHelper = Class.forName("com.sun.javafx.stage.StageHelper")
           return stageHelper.getDeclaredMethod("getStages").invoke(null) as List<Stage>
         }
+
+        //Code for JDK 11
         val windows = Stage::class.java.getMethod("getWindows").invoke(null) as List<Window>
 
         return windows.stream()
@@ -92,6 +97,25 @@ object FxUtils {
         throw RuntimeException(e)
       }
     }
+
+  /**
+   * Center the stage on the given coordinates
+   */
+  @JvmStatic
+  fun centerStage(stage: Stage, width: Double, height: Double) {
+    val screenBounds = Screen.getPrimary().visualBounds
+    stage.x = (screenBounds.width - width) / 2
+    stage.y = (screenBounds.height - height) / 2
+  }
+
+  /**
+   * Throws an exception if the current thread is not the JavaFX UI Thread
+   */
+  fun ensureFxThread() {
+    if (!Platform.isFxApplicationThread()) {
+      throw IllegalThreadStateException("Expected JavaFX Application thread but was <${Thread.currentThread().name}>")
+    }
+  }
 
   @JvmStatic
   fun dump(node: Node, out: PrintStream) {
@@ -309,7 +333,6 @@ object FxUtils {
   }
 }
 
-
 /**
  * Converts a color to an RGB hex string
  */
@@ -334,4 +357,24 @@ fun Color.toRGBOCode(): String {
     (blue * 255).toInt(),
     (opacity * 255).toInt()
   )
+}
+
+/**
+ * Returns the stage for the given node
+ */
+val Node.stage: Stage?
+  get() {
+    return window as? Stage
+  }
+
+val Node.window: Window?
+  get() = scene?.window
+
+/**
+ * Returns the root
+ */
+fun Node.root(): Node {
+  return parent?.let {
+    return@let it.root()
+  } ?: this
 }

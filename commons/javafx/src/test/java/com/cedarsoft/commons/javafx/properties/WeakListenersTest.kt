@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.javafx.properties
 
-import com.cedarsoft.commons.javafx.consume
+import com.cedarsoft.commons.javafx.consumeImmediately
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -40,7 +40,7 @@ class WeakListenersTest {
   }
 
   private fun registerListener(counter: AtomicInteger) {
-    foo.nameProperty.consume {
+    foo.nameProperty.consumeImmediately {
       counter.incrementAndGet()
     }
   }
