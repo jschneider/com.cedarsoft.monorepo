@@ -3,7 +3,6 @@ package com.cedarsoft.commons.javafx
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
-import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.util.Duration
 
@@ -19,7 +18,7 @@ object JavaFxTimer {
    */
   @JvmStatic
   fun start(delay: Duration, run: Runnable): Timeline {
-    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() }))
+    val timeline = Timeline(KeyFrame(delay, EventHandler { run.run() }))
     timeline.play()
     return timeline
   }
@@ -29,7 +28,7 @@ object JavaFxTimer {
    */
   @JvmStatic
   fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
-    val timeline = Timeline(KeyFrame(delay.toJavaFx(), EventHandler<ActionEvent> { run() }))
+    val timeline = Timeline(KeyFrame(delay.toJavaFx(), EventHandler { run() }))
     timeline.play()
     return timeline
   }
@@ -37,7 +36,7 @@ object JavaFxTimer {
 
   @JvmStatic
   fun repeat(delay: Duration, run: Runnable) {
-    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run.run() }))
+    val timeline = Timeline(KeyFrame(delay, EventHandler { run.run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
   }
@@ -46,7 +45,7 @@ object JavaFxTimer {
    * Repeats the given lambda every [delay]
    */
   fun repeat(delay: Duration, run: () -> Unit): Timeline {
-    val timeline = Timeline(KeyFrame(delay, EventHandler<ActionEvent> { run() }))
+    val timeline = Timeline(KeyFrame(delay, EventHandler { run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
     return timeline
