@@ -427,6 +427,23 @@ object Components {
   }
 
   @JvmStatic
+  fun <E : Enum<E>> choiceBox(property: Property<E>, values: Array<E>): ChoiceBox<E> {
+    val choiceBox = ChoiceBox(FXCollections.observableArrayList(*values))
+    choiceBox.valueProperty().bindBidirectional(property)
+
+    choiceBox.converter = object : StringConverter<E>() {
+      override fun toString(`object`: E): String {
+        return EnumTranslatorUtil.getEnumTranslator().translate(`object`)
+      }
+
+      override fun fromString(string: String?): E {
+        throw UnsupportedOperationException()
+      }
+    }
+    return choiceBox
+  }
+
+  @JvmStatic
   fun createCheckBoxReadOnly(label: String, selectedProperty: Property<Boolean>): Node {
     val checkBox = CheckBox(label)
     checkBox.selectedProperty().bind(selectedProperty)
