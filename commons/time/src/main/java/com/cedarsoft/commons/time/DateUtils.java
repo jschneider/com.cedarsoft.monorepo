@@ -309,6 +309,11 @@ public class DateUtils {
   }
 
   @Nonnull
+  public static DateTimeFormatter createDateTimeShortMillisFormat(@Nonnull Locale locale) {
+    return createMillisFormat(locale, FormatStyle.SHORT, FormatStyle.MEDIUM);
+  }
+
+  @Nonnull
   private static DateTimeFormatter createMillisFormat(@Nonnull Locale locale, @Nullable FormatStyle dateStyle, @Nullable FormatStyle timeStyle) {
     Chronology chronology = Chronology.ofLocale(locale);
     String pattern = DateTimeFormatterBuilder.getLocalizedDateTimePattern(dateStyle, timeStyle, chronology, locale).replace(":ss", ":ss.SSS");
