@@ -38,6 +38,7 @@ import javafx.scene.control.SpinnerValueFactory
 import javafx.scene.control.TextField
 import javafx.scene.control.TextFormatter
 import javafx.scene.control.Toggle
+import javafx.scene.control.ToggleButton
 import javafx.scene.control.ToggleGroup
 import javafx.scene.control.Tooltip
 import javafx.scene.image.ImageView
@@ -474,6 +475,13 @@ object Components {
     button.onAction = EventHandler {
       onAction(it)
     }
+    return button
+  }
+
+  @JvmStatic
+  fun toggleButton(text: String, selected: Property<Boolean>): ToggleButton {
+    val button = ToggleButton(text)
+    button.selectedProperty().bindBidirectional(selected)
     return button
   }
 
