@@ -1,10 +1,11 @@
 package com.cedarsoft.container
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.container.builder.ZippedContainerBuilder
 import com.cedarsoft.container.builder.ZippedContainerReader
 import com.cedarsoft.version.Version
 import com.google.common.io.ByteStreams
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 import java.io.File

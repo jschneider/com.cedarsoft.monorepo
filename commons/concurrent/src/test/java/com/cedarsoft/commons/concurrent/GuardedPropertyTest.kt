@@ -1,6 +1,7 @@
 package com.cedarsoft.commons.concurrent
 
-import org.assertj.core.api.Assertions.*
+import assertk.*
+import assertk.assertions.*
 import org.junit.jupiter.api.Test
 
 /**

@@ -1,9 +1,10 @@
 package com.cedarsoft.exceptions.handling
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.commons.javafx.FxUtils
 import com.cedarsoft.test.utils.DisableIfHeadless
 import javafx.stage.Stage
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.testfx.framework.junit5.ApplicationTest

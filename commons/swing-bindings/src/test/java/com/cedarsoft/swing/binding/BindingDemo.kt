@@ -1,8 +1,9 @@
 package com.cedarsoft.swing.binding
 
+import assertk.*
+import assertk.assertions.*
 import javafx.beans.binding.Bindings
 import net.miginfocom.swing.MigLayout
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import java.awt.Color
 import java.awt.event.ActionEvent

@@ -1,9 +1,10 @@
 package com.cedarsoft.commons.concurrent
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.test.utils.untilAtomicIsTrue
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
-import org.assertj.core.api.Assertions.*
 import org.awaitility.Awaitility
 import org.hamcrest.CoreMatchers
 import org.junit.jupiter.api.Disabled

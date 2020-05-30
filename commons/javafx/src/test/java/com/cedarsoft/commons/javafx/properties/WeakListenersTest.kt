@@ -1,7 +1,8 @@
 package com.cedarsoft.commons.javafx.properties
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.commons.javafx.consumeImmediately
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.lang.System.gc

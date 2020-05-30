@@ -1,7 +1,8 @@
 package com.cedarsoft.commons.kotlin.serializers
 
+import assertk.*
+import assertk.assertions.*
 import kotlinx.serialization.json.Json
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.Duration
 import java.time.LocalDate

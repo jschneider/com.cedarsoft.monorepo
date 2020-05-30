@@ -1,7 +1,8 @@
 package com.cedarsoft.swing.binding
 
+import assertk.*
+import assertk.assertions.*
 import javafx.beans.property.SimpleStringProperty
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import javax.swing.JComboBox
 import javax.swing.JTextField

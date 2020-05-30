@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.javafx.properties
 
+import assertk.*
+import assertk.assertions.*
 import javafx.beans.property.DoubleProperty
 import javafx.beans.property.IntegerProperty
 import javafx.beans.property.SimpleDoubleProperty
@@ -8,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.beans.property.StringProperty
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -39,12 +40,13 @@ internal class KotlinFxPropertiesKtTest {
       }
     })
 
-    assertThat(called).isFalse
+
+    assertThat(called.get()).isFalse()
     //Same name, should not trigger the listener
     foo.name = "daName"
-    assertThat(called).isFalse
+    assertThat(called.get()).isFalse()
     foo.name = "daName2"
-    assertThat(called).isTrue
+    assertThat(called.get()).isTrue()
   }
 }
 

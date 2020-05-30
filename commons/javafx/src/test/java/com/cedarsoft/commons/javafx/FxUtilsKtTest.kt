@@ -1,7 +1,8 @@
 package com.cedarsoft.commons.javafx
 
+import assertk.*
+import assertk.assertions.*
 import javafx.scene.paint.Color
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 /**

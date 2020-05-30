@@ -1,8 +1,9 @@
 package com.cedarsoft.rest
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.test.utils.JsonUtils
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 /**

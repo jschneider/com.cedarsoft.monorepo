@@ -1,7 +1,8 @@
 package com.cedarsoft.container
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.version.Version
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 /**
