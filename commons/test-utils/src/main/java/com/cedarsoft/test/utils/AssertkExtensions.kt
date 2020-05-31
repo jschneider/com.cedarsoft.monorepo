@@ -31,12 +31,30 @@ fun <T> Assert<List<T>>.containsExactly(vararg elements: T) {
   }
 }
 
-fun <T> Assert<List<T>>.anyMatch(predicate: (T) -> Boolean) = given {
+fun <T> Assert<List<T>>.anyMatch(predicate: (T) -> Boolean): Unit = given {
   if (it.any(predicate)) return
   expected("to have at least one match:${show(predicate)}")
 }
 
-fun Assert<Double>.isNaN() = given {
+fun Assert<Double>.isNaN(): Unit = given {
   if (it.isNaN()) return
   expected("to be NaN but was ${show(it)}")
+}
+
+
+/**
+ * Runs the test on the first element of the given iterable
+ */
+fun <E> Assert<Iterable<E>>.first(f: (Assert<E>) -> Unit): Unit = given { actual ->
+  all {
+    val firstElement = actual.first()
+    f(assertThat(firstElement, name = "${name ?: ""}${show(firstElement, "[]")}"))
+  }
+}
+
+fun <E> Assert<List<E>>.last(f: (Assert<E>) -> Unit): Unit = given { actual ->
+  all {
+    val lastElement = actual.last()
+    f(assertThat(lastElement, name = "${name ?: ""}${show(lastElement, "[]")}"))
+  }
 }
