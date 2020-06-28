@@ -524,7 +524,7 @@ object Components {
   }
 
   @JvmStatic
-  fun <E : Enum<E>> textFieldEnumReadOnly(enumProperty: Property<E>): TextField {
+  fun <E : Enum<E>> textFieldEnumReadOnly(enumProperty: ObservableValue<E>): TextField {
     val textField = TextField()
     textField.isEditable = false
     textField.textProperty().bind(Bindings.createStringBinding(Callable { EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.value) }, enumProperty))
