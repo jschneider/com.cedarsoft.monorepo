@@ -717,7 +717,7 @@ object Components {
 
   @JvmStatic
   @JvmOverloads
-  fun spinner(valueProperty: IntegerProperty, defaultValue: Int = 0): Spinner<Int> {
+  fun spinner(valueProperty: IntegerProperty, defaultValue: Int = valueProperty.get()): Spinner<Int> {
     return spinner(valueProperty, defaultValue, Integer.MIN_VALUE, Integer.MAX_VALUE)
   }
 
