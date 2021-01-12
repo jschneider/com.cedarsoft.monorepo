@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-12T17:33:14" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.061">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-12T21:08:27" hostname="runner-kggansxr-project-47-concurrent-0" time="0.151">
   <properties/>
-  <testcase name="testNew()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.029"/>
-  <testcase name="testOld()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.027"/>
-  <testcase name="testVersionsFail()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.004"/>
+  <testcase name="testNew()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.065"/>
+  <testcase name="testOld()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.076"/>
+  <testcase name="testVersionsFail()" classname="com.cedarsoft.serialization.stax.mate.StaxMateVersionTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
