@@ -31,20 +31,20 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Serializes a collection of primitive types (java.lang.Number or java.lang.String) into a json array
@@ -56,12 +56,12 @@ public class ListSerializer extends AbstractJacksonSerializer<List<? extends Obj
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends Object> objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends Object> objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     serializeTo.writeStartArray();
 
-    for (int i = 0; i < objectToSerialize.size(); i++ ) {
-      Object current = objectToSerialize.get(i );
-      serializeElement( serializeTo, current, i );
+    for (int i = 0; i < objectToSerialize.size(); i++) {
+      Object current = objectToSerialize.get(i);
+      serializeElement(serializeTo, current, i);
     }
 
     serializeTo.writeEndArray();
@@ -87,12 +87,12 @@ public class ListSerializer extends AbstractJacksonSerializer<List<? extends Obj
 
   @Nonnull
   @Override
-  public List<? extends Object> deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public List<? extends Object> deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     List<Object> deserialized = new ArrayList<Object>();
 
     int index = 0;
-    while ( deserializeFrom.nextToken() != JsonToken.END_ARRAY ) {
-      deserialized.add( deserializeElement( deserializeFrom, index ) );
+    while (deserializeFrom.nextToken() != JsonToken.END_ARRAY) {
+      deserialized.add(deserializeElement(deserializeFrom, index));
       index++;
     }
 

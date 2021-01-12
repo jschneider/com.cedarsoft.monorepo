@@ -36,4 +36,4 @@ import java.io.OutputStream
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface StreamSerializer<T> : Serializer<T, OutputStream, InputStream>
+interface StreamSerializer<T : Any> : Serializer<T, OutputStream, InputStream>

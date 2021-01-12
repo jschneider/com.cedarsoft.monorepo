@@ -31,21 +31,22 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import com.cedarsoft.serialization.stax.CollectionsMapping;
-import org.codehaus.staxmate.out.SMOutputElement;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+
+import com.cedarsoft.serialization.stax.CollectionsMapping;
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -142,15 +143,15 @@ public class Room {
 
     @Nonnull
     @Override
-    public Room deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      assert isVersionReadable( formatVersion );
-      String description = getChildText( deserializeFrom, "description" );
+    public Room deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws Exception {
+      assert isVersionReadable(formatVersion);
+      String description = getChildText(deserializeFrom, "description");
 
       List<Window> windows = new ArrayList<Window>();
       List<Door> doors = new ArrayList<Door>();
-      deserializeCollections( deserializeFrom, formatVersion, new CollectionsMapping()
-        .append( Window.class, windows, "window" )
-        .append( Door.class, doors, "door" )
+      deserializeCollections(deserializeFrom, formatVersion, new CollectionsMapping()
+        .append(Window.class, windows, "window")
+        .append(Door.class, doors, "door")
       );
 
       return new Room( description, windows, doors );

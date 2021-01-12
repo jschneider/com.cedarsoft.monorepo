@@ -34,10 +34,10 @@ package com.cedarsoft.serialization.stax
 import com.cedarsoft.serialization.AbstractXmlSerializer
 import com.cedarsoft.serialization.SerializationException
 import com.cedarsoft.version.Version
-import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionRange
 import java.io.IOException
 import java.io.InputStream
+import java.lang.Enum.valueOf
 import java.util.ArrayList
 import javax.xml.stream.XMLStreamConstants
 import javax.xml.stream.XMLStreamException
@@ -53,7 +53,7 @@ import javax.xml.stream.XMLStreamReader
  * @param <T> the type
  * @param <S> the object to serialize to
  */
-abstract class AbstractStaxBasedSerializer<T, S>
+abstract class AbstractStaxBasedSerializer<T : Any, S : Any>
 /**
  * Creates a new serializer
  * @param defaultElementName the name for the root element, if this serializers is not used as delegate. For delegating serializers that value is not used.
@@ -64,9 +64,9 @@ protected constructor(
   defaultElementName: String,
   nameSpaceUriBase: String,
   formatVersionRange: VersionRange
-) : AbstractXmlSerializer<T, S, XMLStreamReader, XMLStreamException>(defaultElementName, nameSpaceUriBase, formatVersionRange), StaxBasedSerializer<T, S> {
+) : AbstractXmlSerializer<T, S, XMLStreamReader>(defaultElementName, nameSpaceUriBase, formatVersionRange), StaxBasedSerializer<T, S> {
 
-  @Throws(IOException::class, VersionException::class)
+  @Throws(Exception::class)
   override fun deserialize(deserializeFrom: InputStream): T {
     try {
       val reader = StaxSupport.getXmlInputFactory().createXMLStreamReader(deserializeFrom)
@@ -246,8 +246,8 @@ protected constructor(
    * @throws XMLStreamException if there is an xml problem
    * @throws IOException if there is an io problem
    */
-  @Throws(XMLStreamException::class, IOException::class)
-  protected fun <L> deserializeCollection(deserializeFrom: XMLStreamReader, type: Class<L>, formatVersion: Version): List<L> {
+  @Throws(Exception::class)
+  protected fun <L : Any> deserializeCollection(deserializeFrom: XMLStreamReader, type: Class<L>, formatVersion: Version): List<L> {
     return deserializeCollection(type, formatVersion, deserializeFrom)
   }
 
@@ -261,8 +261,8 @@ protected constructor(
    * @throws XMLStreamException if there is an xml problem
    * @throws IOException if there is an io problem
   </L> */
-  @Throws(XMLStreamException::class, IOException::class)
-  protected fun <L> deserializeCollection(type: Class<L>, formatVersion: Version, deserializeFrom: XMLStreamReader): List<L> {
+  @Throws(Exception::class)
+  protected fun <L : Any> deserializeCollection(type: Class<L>, formatVersion: Version, deserializeFrom: XMLStreamReader): List<L> {
     val deserializedObjects = ArrayList<L>()
 
     visitChildren(deserializeFrom, object : CB {
@@ -283,7 +283,7 @@ protected constructor(
    * @throws XMLStreamException if there is an xml problem
    * @throws IOException if there is an io problem
    */
-  @Throws(XMLStreamException::class, IOException::class)
+  @Throws(Exception::class)
   protected fun deserializeCollections(deserializeFrom: XMLStreamReader, formatVersion: Version, collectionsMapping: CollectionsMapping) {
     visitChildren(deserializeFrom, object : CB {
       @Throws(XMLStreamException::class, IOException::class)
@@ -306,7 +306,7 @@ protected constructor(
   </E> */
   fun <E : Enum<E>> deserializeEnum(enumType: Class<E>, propertyName: String, deserializeFrom: XMLStreamReader): E {
     val enumValue = deserializeFrom.getAttributeValue(null, propertyName)
-    return java.lang.Enum.valueOf<E>(enumType, enumValue)
+    return valueOf(enumType, enumValue)
   }
 
   /**

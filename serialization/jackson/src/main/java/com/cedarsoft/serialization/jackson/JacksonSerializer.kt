@@ -36,15 +36,13 @@ import com.cedarsoft.serialization.SerializationException
 import com.cedarsoft.serialization.StreamSerializer
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.core.JsonProcessingException
-import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
 /**
  * @param <T> the type of object this serializer is able to (de)serialize
 </T> */
-interface JacksonSerializer<T> : PluggableSerializer<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>, StreamSerializer<T> {
+interface JacksonSerializer<T : Any> : PluggableSerializer<T, JsonGenerator, JsonParser, OutputStream, InputStream>, StreamSerializer<T> {
   /**
    * Returns the type
    * @return the type
@@ -61,11 +59,11 @@ interface JacksonSerializer<T> : PluggableSerializer<T, JsonGenerator, JsonParse
    * Serializes the object to the given generator.
    * The serializer is responsible for writing start/close object/array brackets if necessary.
    * This method also writes the @type property.
-   * @param object    the object
+   * @param objectToSerialize    the object that is serialized
    * @param generator the generator
    * @throws java.io.IOException if there is an io problem
    */
-  @Throws(IOException::class, JsonProcessingException::class)
+  @Throws(Exception::class)
   fun serialize(objectToSerialize: T, generator: JsonGenerator)
 
   /**
@@ -75,7 +73,7 @@ interface JacksonSerializer<T> : PluggableSerializer<T, JsonGenerator, JsonParse
    * @return the deserialized object
    * @throws java.io.IOException if there is an io problem
    */
-  @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
+  @Throws(Exception::class)
   fun deserialize(parser: JsonParser): T
 
   /**
@@ -83,5 +81,5 @@ interface JacksonSerializer<T> : PluggableSerializer<T, JsonGenerator, JsonParse
    * @param type the type
    */
   @Throws(SerializationException::class)
-  fun verifyType(type: String?)
+  fun verifyType(type: String)
 }

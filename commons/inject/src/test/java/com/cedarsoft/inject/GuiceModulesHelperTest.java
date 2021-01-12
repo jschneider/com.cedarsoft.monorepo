@@ -31,7 +31,7 @@
 
 package com.cedarsoft.inject;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,42 +50,42 @@ public class GuiceModulesHelperTest {
   @Test
   public void testFail() {
     try {
-      GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), List.class );
-      fail( "Where is the Exception" );
+      GuiceModulesHelper.minimize(Arrays.asList(new Module1(), new Module2()), List.class);
+      Assertions.fail("Where is the Exception");
     } catch ( ConfigurationException ignore ) {
     }
   }
 
   @Test
   public void testMinimization() {
-    GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), Object.class );
-    assertEquals( 2, result.getRemoved().size() );
-    assertEquals( 0, result.getTypes().size() );
+    GuiceModulesHelper.Result result = GuiceModulesHelper.minimize(Arrays.asList(new Module1(), new Module2()), Object.class);
+    assertEquals(2, result.getRemoved().size());
+    assertEquals(0, result.getTypes().size());
   }
 
   @Test
   public void testMinimization2() {
-    GuiceModulesHelper.Result result = GuiceModulesHelper.minimize( Arrays.asList( new Module1(), new Module2() ), MyObject.class );
-    assertEquals( 1, result.getRemoved().size() );
-    assertEquals( 1, result.getTypes().size() );
+    GuiceModulesHelper.Result result = GuiceModulesHelper.minimize(Arrays.asList(new Module1(), new Module2()), MyObject.class);
+    assertEquals(1, result.getRemoved().size());
+    assertEquals(1, result.getTypes().size());
   }
 
   @Test
   public void testMinimization3() {
-    GuiceModulesHelper.Result result = new GuiceModulesHelper.Result( Arrays.asList( new Module1(), new Module2() ) );
-    assertSame( result, GuiceModulesHelper.minimize( result, MyObject.class ) );
-    assertEquals( 1, result.getRemoved().size() );
-    assertEquals( 1, result.getTypes().size() );
+    GuiceModulesHelper.Result result = new GuiceModulesHelper.Result(Arrays.asList(new Module1(), new Module2()));
+    Assertions.assertSame(result, GuiceModulesHelper.minimize(result, MyObject.class));
+    assertEquals(1, result.getRemoved().size());
+    assertEquals(1, result.getTypes().size());
   }
 
   @Test
   public void testAssertMini() throws Exception {
-    Assertions.assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module1(), new Module2()), MyObject.class));
+    assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module1(), new Module2()), MyObject.class));
   }
 
   @Test
   public void testAssertMini4() throws Exception {
-    Assertions.assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module2()), Object.class));
+    assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module2()), Object.class));
   }
 
   @Test

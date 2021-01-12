@@ -47,7 +47,7 @@ public class NamedThreadFactoryTest {
 
   @Test
   public void simple() throws Exception {
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(10), () -> {
       NamedThreadFactory factory = new NamedThreadFactory("daName");
 
       Thread thread = factory.newThread(() -> {

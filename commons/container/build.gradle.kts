@@ -8,7 +8,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
   api(project(Projects.dependencies_sets_kotlin))
   api(project(Projects.open_commons_version))
   api(project(Projects.open_commons_io))

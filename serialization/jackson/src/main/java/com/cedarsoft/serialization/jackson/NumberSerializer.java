@@ -31,16 +31,14 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
 
 /**
  * Serializes/deserializes a number
@@ -52,11 +50,12 @@ public class NumberSerializer extends AbstractJacksonSerializer<Number> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Number objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    if ( isIntegerNumber(objectToSerialize) ) {
-      serializeTo.writeNumber(objectToSerialize.longValue() );
-    } else {
-      serializeTo.writeNumber(objectToSerialize.doubleValue() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Number objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
+    if (isIntegerNumber(objectToSerialize)) {
+      serializeTo.writeNumber(objectToSerialize.longValue());
+    }
+    else {
+      serializeTo.writeNumber(objectToSerialize.doubleValue());
     }
   }
 
@@ -67,7 +66,7 @@ public class NumberSerializer extends AbstractJacksonSerializer<Number> {
 
   @Nonnull
   @Override
-  public Number deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public Number deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     return deserializeFrom.getNumberValue();
   }
 

@@ -60,17 +60,17 @@ public class WindowSerializerNamespaceSkipTest {
   }
 
   @Test
-  public void testIt() throws IOException {
+  public void testIt() throws Exception {
     DaSkippingSerializer serializer = new DaSkippingSerializer();
-    Window deserialized = serializer.deserialize( new ByteArrayInputStream( (
-                                                                              "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                                                                "<window xmlns=\"window/0.9.0\" width=\"123.3\" height=\"444.4\">\n" +
-                                                                                "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
-                                                                                "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
-                                                                                "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
-                                                                                "  <description>the window</description>\n" +
-                                                                                "  <other xmlns=\"asdf\"/>" +
-                                                                                "  <other xmlns=\"asdf2\"/>" +
+    Window deserialized = serializer.deserialize(new ByteArrayInputStream((
+                                                                            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                                                                              "<window xmlns=\"window/0.9.0\" width=\"123.3\" height=\"444.4\">\n" +
+                                                                              "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
+                                                                              "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
+                                                                              "  <other xmlns=\"window/2.0.0\"><a><b>content of b</b></a></other>\n" +
+                                                                              "  <description>the window</description>\n" +
+                                                                              "  <other xmlns=\"asdf\"/>" +
+                                                                              "  <other xmlns=\"asdf2\"/>" +
                                                                                 "</window>" ).getBytes(StandardCharsets.UTF_8) ) );
 
     assertEquals( "the window", deserialized.getDescription() );

@@ -12,12 +12,12 @@ plugins {
 dependencies {
   api(project(Projects.dependencies_sets_kotlin))
 
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_exceptions))
 
   api(Libs.guava)
-  api(Libs.javax_annotation_api)
+  compileOnlyApi(Libs.javax_annotation_api)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

@@ -31,19 +31,19 @@
 
 package com.cedarsoft.serialization.stax.test;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 public class DaBallSerializer extends AbstractStaxSerializer<DaBall> {
   public DaBallSerializer() {
@@ -57,19 +57,19 @@ public class DaBallSerializer extends AbstractStaxSerializer<DaBall> {
   }
 
   @Override
-  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeAttribute( "id", String.valueOf(objectToSerialize.getId() ) );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall objectToSerialize, @Nonnull Version formatVersion) throws Exception {
+    serializeTo.writeAttribute("id", String.valueOf(objectToSerialize.getId()));
 
-    serializeCollection(objectToSerialize.getElements(), DaBall.Element.class, "daElement", serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getElements(), DaBall.Element.class, "daElement", serializeTo, formatVersion);
   }
 
   @Nonnull
   @Override
-  public DaBall deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    int id = Integer.parseInt( deserializeFrom.getAttributeValue( null, "id" ) );
+  public DaBall deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws Exception {
+    int id = Integer.parseInt(deserializeFrom.getAttributeValue(null, "id"));
 
-    List<? extends DaBall.Element> elements = deserializeCollection( deserializeFrom, DaBall.Element.class, formatVersion );
-    return new DaBall( id, elements );
+    List<? extends DaBall.Element> elements = deserializeCollection(deserializeFrom, DaBall.Element.class, formatVersion);
+    return new DaBall(id, elements);
   }
 
   public static class ElementSerializer extends AbstractStaxSerializer<DaBall.Element> {
@@ -78,30 +78,30 @@ public class DaBallSerializer extends AbstractStaxSerializer<DaBall> {
     }
 
     @Override
-    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall.Element objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      serializeTo.writeStartElement( "name1" );
-      serializeTo.writeCharacters(objectToSerialize.getName() );
+    public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull DaBall.Element objectToSerialize, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+      serializeTo.writeStartElement("name1");
+      serializeTo.writeCharacters(objectToSerialize.getName());
       serializeTo.writeEndElement();
 
-      serializeTo.writeStartElement( "name2" );
-      serializeTo.writeCharacters(objectToSerialize.getName() );
+      serializeTo.writeStartElement("name2");
+      serializeTo.writeCharacters(objectToSerialize.getName());
       serializeTo.writeEndElement();
     }
 
     @Nonnull
     @Override
-    public DaBall.Element deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      assertEquals( Version.valueOf( 2, 0, 0 ), formatVersion );
+    public DaBall.Element deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+      assertEquals(Version.valueOf(2, 0, 0), formatVersion);
 
-      String name2 = getChildText( deserializeFrom, "name1" );
+      String name2 = getChildText(deserializeFrom, "name1");
 
-      nextTag( deserializeFrom, "name2" );
-      String name = getText( deserializeFrom );
-      assertEquals( name, name2 );
+      nextTag(deserializeFrom, "name2");
+      String name = getText(deserializeFrom);
+      assertEquals(name, name2);
 
-      closeTag( deserializeFrom );
+      closeTag(deserializeFrom);
 
-      return new DaBall.Element( name );
+      return new DaBall.Element(name);
     }
   }
 }

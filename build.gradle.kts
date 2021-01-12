@@ -19,10 +19,16 @@ subprojects {
     } else {
       publications {
         create<MavenPublication>("maven") {
-          from(components["java"])
+          val javaComponent = components.findByName("java")
 
-          artifact(tasks["sourcesJar"])
-          artifact(tasks["javadocJar"])
+          if (javaComponent != null) {
+            from(javaComponent)
+
+            artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
+          } else {
+            from(components["kotlin"])
+          }
 
           repositories {
           }

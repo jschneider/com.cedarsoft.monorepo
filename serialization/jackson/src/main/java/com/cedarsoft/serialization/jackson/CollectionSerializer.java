@@ -30,13 +30,11 @@
  */
 package com.cedarsoft.serialization.jackson;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -62,14 +60,14 @@ public class CollectionSerializer<T> extends AbstractJacksonSerializer<List<? ex
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     verifyVersionWritable(formatVersion);
     serializeArray(objectToSerialize, listType, getType(), serializeTo, formatVersion);
   }
 
   @Nonnull
   @Override
-  public List<? extends T> deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException, VersionException, JsonProcessingException {
+  public List<? extends T> deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     verifyVersionReadable(formatVersion);
 
     List<? extends T> elements = deserializeArray(listType, getType(), formatVersion, deserializeFrom);

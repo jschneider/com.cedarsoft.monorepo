@@ -36,11 +36,10 @@ import com.cedarsoft.serialization.StreamSerializer
 import org.codehaus.staxmate.out.SMOutputElement
 import java.io.InputStream
 import java.io.OutputStream
-import javax.xml.stream.XMLStreamException
 import javax.xml.stream.XMLStreamReader
 
 /**
  * Serializing strategy based on stax mate
  * @param <T> the type this strategy serializes
  */
-interface StaxMateSerializingStrategy<T> : SerializingStrategy<T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream>, StreamSerializer<T>
+interface StaxMateSerializingStrategy<T : Any> : SerializingStrategy<T, SMOutputElement, XMLStreamReader, OutputStream, InputStream>, StreamSerializer<T>

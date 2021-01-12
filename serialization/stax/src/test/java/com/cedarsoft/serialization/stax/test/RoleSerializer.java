@@ -31,16 +31,16 @@
 
 package com.cedarsoft.serialization.stax.test;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
+
+import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -54,15 +54,15 @@ public class RoleSerializer extends AbstractStaxSerializer<Role> {
   }
 
   @Override
-  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Role objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeAttribute( "id", String.valueOf(objectToSerialize.getId() ) );
-    serializeTo.writeCharacters(objectToSerialize.getDescription() );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Role objectToSerialize, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+    serializeTo.writeAttribute("id", String.valueOf(objectToSerialize.getId()));
+    serializeTo.writeCharacters(objectToSerialize.getDescription());
   }
 
   @Nonnull
   @Override
-  public Role deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    int id = Integer.parseInt( deserializeFrom.getAttributeValue( null, "id" ) );
-    return new Role( id, getText( deserializeFrom ) );
+  public Role deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+    int id = Integer.parseInt(deserializeFrom.getAttributeValue(null, "id"));
+    return new Role(id, getText(deserializeFrom));
   }
 }

@@ -1,13 +1,15 @@
 package com.cedarsoft.commons.kotlin.serializers
 
 import com.google.common.collect.ImmutableSet
-import kotlinx.serialization.CompositeDecoder
-import kotlinx.serialization.Decoder
-import kotlinx.serialization.Encoder
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialDescriptor
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.StructureKind
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.StructureKind
+import kotlinx.serialization.descriptors.buildSerialDescriptor
+import kotlinx.serialization.encoding.CompositeDecoder
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * Serializer for immutable lists
@@ -15,14 +17,15 @@ import kotlinx.serialization.StructureKind
 @Serializer(forClass = ImmutableSet::class)
 class ImmutableSetSerializer<T>(private val elementsSerializer: KSerializer<T>) : KSerializer<ImmutableSet<T>> {
 
-  override val descriptor: SerialDescriptor = SerialDescriptor("ImmutableSet", StructureKind.LIST)
+  @OptIn(InternalSerializationApi::class)
+  override val descriptor: SerialDescriptor = buildSerialDescriptor("ImmutableSet", StructureKind.LIST)
 
-  override fun serialize(encoder: Encoder, obj: ImmutableSet<T>) {
+  override fun serialize(encoder: Encoder, value: ImmutableSet<T>) {
 
-    val size = obj.size
+    val size = value.size
 
-    val compositeEncoder = encoder.beginCollection(descriptor, size, elementsSerializer)
-    obj.forEachIndexed { index, t ->
+    val compositeEncoder = encoder.beginCollection(descriptor, size)
+    value.forEachIndexed { index, t ->
       compositeEncoder.encodeSerializableElement(descriptor, index, elementsSerializer, t)
     }
 
@@ -30,17 +33,14 @@ class ImmutableSetSerializer<T>(private val elementsSerializer: KSerializer<T>) 
   }
 
   override fun deserialize(decoder: Decoder): ImmutableSet<T> {
-    val compositeDecoder = decoder.beginStructure(descriptor, elementsSerializer)
+    val compositeDecoder = decoder.beginStructure(descriptor)
 
     val builder = ImmutableSet.builder<T>()
 
     mainLoop@ while (true) {
       when (val index = compositeDecoder.decodeElementIndex(descriptor)) {
-        CompositeDecoder.READ_ALL  -> {
-          throw UnsupportedOperationException("READ_ALL not supported")
-        }
-        CompositeDecoder.READ_DONE -> break@mainLoop
-        else                       -> builder.add(compositeDecoder.decodeSerializableElement(descriptor, index, elementsSerializer))
+        CompositeDecoder.DECODE_DONE -> break@mainLoop
+        else                         -> builder.add(compositeDecoder.decodeSerializableElement(descriptor, index, elementsSerializer))
       }
     }
 

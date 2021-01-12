@@ -63,7 +63,7 @@ public class ByTypeArgumentsProvider implements ArgumentsProvider, AnnotationCon
           entries.add(toArguments(value));
         }
         catch (Exception e) {
-          throw new RuntimeException(e);
+          throw new RuntimeException("Error accessing " + declaredField.getName(), e);
         }
       }
     }
@@ -75,11 +75,13 @@ public class ByTypeArgumentsProvider implements ArgumentsProvider, AnnotationCon
   private static Object getValue(@Nonnull Field declaredField, @Nullable Object testInstance) throws IllegalAccessException {
     //Warning when not static!
     if (Modifier.isStatic(declaredField.getModifiers())) {
+      declaredField.setAccessible(true);
+
       return declaredField.get(null);
     }
 
     if (testInstance == null) {
-      throw new IllegalStateException("Test instance requried");
+      throw new IllegalStateException("Test instance required");
     }
 
     return declaredField.get(testInstance);

@@ -139,38 +139,38 @@ open class SwingExceptionHandler
 
         try {
           dialogOpen.set(true)
-          val internalExceptionDialog = InternalExceptionDialog(SwingHelper.getFrameSafe(), original, object : ExceptionReporter {
-            override fun report(throwable: Throwable) {
-              val reportingExceptionsDialog = ReportingExceptionsDialog(SwingHelper.getFrameSafe())
-              reportingExceptionsDialog.setVisibleNonBlocking()
+          val internalExceptionDialog = InternalExceptionDialog(SwingHelper.getFrameSafe(), original, { throwable ->
 
-              object : SwingWorker<Void, Void>() {
-                @Throws(Exception::class)
-                override fun doInBackground(): Void? {
-                  exceptionReporter.report(throwable)
-                  return null
+            val reportingExceptionsDialog = ReportingExceptionsDialog(SwingHelper.getFrameSafe())
+            reportingExceptionsDialog.setVisibleNonBlocking()
+
+            object : SwingWorker<Void, Void>() {
+              @Throws(Exception::class)
+              override fun doInBackground(): Void? {
+                exceptionReporter.report(throwable)
+                return null
+              }
+
+              override fun done() {
+                super.done()
+                reportingExceptionsDialog.cancel()
+
+                try {
+                  get()
+                  OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem has been reported successfully", "The exception has been reported successfully", OptionDialog.OptionType.OK_OPTION)
+                } catch (e: InterruptedException) {
+                  //We can't do anything about this. Just log it...
+                  LOG.warn("Exception reporting failed due to", e)
+
+                  OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem reporting has failed due to: \n" + e.javaClass.name + ":\n" + e.message, "Problem reporting has failed", OptionDialog.OptionType.OK_OPTION)
+                } catch (e: ExecutionException) {
+                  LOG.warn("Exception reporting failed due to", e)
+                  OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem reporting has failed due to: \n" + e.javaClass.name + ":\n" + e.message, "Problem reporting has failed", OptionDialog.OptionType.OK_OPTION)
                 }
 
-                override fun done() {
-                  super.done()
-                  reportingExceptionsDialog.cancel()
+              }
+            }.execute()
 
-                  try {
-                    get()
-                    OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem has been reported successfully", "The exception has been reported successfully", OptionDialog.OptionType.OK_OPTION)
-                  } catch (e: InterruptedException) {
-                    //We can't do anything about this. Just log it...
-                    LOG.warn("Exception reporting failed due to", e)
-
-                    OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem reporting has failed due to: \n" + e.javaClass.name + ":\n" + e.message, "Problem reporting has failed", OptionDialog.OptionType.OK_OPTION)
-                  } catch (e: ExecutionException) {
-                    LOG.warn("Exception reporting failed due to", e)
-                    OptionDialog.showMessageDialog(SwingHelper.getFrameSafe(), "Problem reporting has failed due to: \n" + e.javaClass.name + ":\n" + e.message, "Problem reporting has failed", OptionDialog.OptionType.OK_OPTION)
-                  }
-
-                }
-              }.execute()
-            }
           }, applicationVersion)
           internalExceptionDialog.isVisible = true
         } finally {

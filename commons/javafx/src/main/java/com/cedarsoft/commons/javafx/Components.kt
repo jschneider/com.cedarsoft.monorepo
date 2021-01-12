@@ -1,5 +1,8 @@
 package com.cedarsoft.commons.javafx
 
+import com.cedarsoft.commons.javafx.combo.ItemThatMayBeDisabled
+import com.cedarsoft.commons.javafx.combo.ListViewListCellCallbackForItemThatMayBeDisabled
+import com.cedarsoft.commons.javafx.properties.*
 import com.cedarsoft.unit.other.px
 import com.google.common.collect.ImmutableList
 import com.sun.javafx.binding.BidirectionalBinding
@@ -12,13 +15,13 @@ import javafx.beans.property.IntegerProperty
 import javafx.beans.property.LongProperty
 import javafx.beans.property.Property
 import javafx.beans.property.ReadOnlyBooleanProperty
-import javafx.beans.property.ReadOnlyDoubleProperty
 import javafx.beans.property.ReadOnlyFloatProperty
 import javafx.beans.property.ReadOnlyLongProperty
-import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableDoubleValue
 import javafx.beans.value.ObservableObjectValue
 import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.event.EventType
@@ -28,7 +31,9 @@ import javafx.scene.Node
 import javafx.scene.control.Button
 import javafx.scene.control.CheckBox
 import javafx.scene.control.ChoiceBox
+import javafx.scene.control.ColorPicker
 import javafx.scene.control.ComboBox
+import javafx.scene.control.Hyperlink
 import javafx.scene.control.Label
 import javafx.scene.control.RadioButton
 import javafx.scene.control.ScrollPane
@@ -272,6 +277,13 @@ object Components {
   }
 
   @JvmStatic
+  fun checkBox(text: String, selected: BooleanPropertyWithWritableState): CheckBox {
+    return checkBox(text, selected.property).also {
+      it.disableProperty().bind(selected.writableProperty.not())
+    }
+  }
+
+  @JvmStatic
   fun checkBox(text: String, selected: Property<Boolean>): CheckBox {
     val checkBox = CheckBox(text)
     checkBox.selectedProperty().bindBidirectional(selected)
@@ -407,7 +419,35 @@ object Components {
   fun <T> comboBox(property: Property<T>, values: List<T>, converter: (T) -> String): ComboBox<T> {
     val comboBox = ComboBox(FXCollections.observableArrayList(values))
     comboBox.valueProperty().bindBidirectional(property)
-    ConverterListCell.createFor(comboBox, converter)
+    comboBox.formatUsingConverter(converter)
+    return comboBox
+  }
+
+  /**
+   * Creates a new combo box with optional items
+   */
+  @JvmStatic
+  fun <T> comboBoxWithOptionalItems(property: Property<T>, options: ObservableList<ItemThatMayBeDisabled<T>>, converter: (T) -> String): ComboBox<ItemThatMayBeDisabled<T>> {
+    val comboBox = ComboBox(options)
+
+    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(
+      property, comboBox.valueProperty(),
+      { _, _, newValue ->
+        comboBox.valueProperty().value = options.find {
+          it.value == newValue
+        } ?: throw IllegalStateException("Not found")
+      },
+      { _, _, newValue ->
+        property.value = newValue.value
+      }
+    )
+
+    comboBox.formatUsingConverter {
+      converter(it.value)
+    }
+
+    comboBox.cellFactory = ListViewListCellCallbackForItemThatMayBeDisabled(converter)
+
     return comboBox
   }
 
@@ -415,13 +455,9 @@ object Components {
   fun <T> choiceBox(property: Property<T>, values: List<T>, converter: (T) -> String): ChoiceBox<T> {
     val choiceBox = ChoiceBox(FXCollections.observableArrayList(values))
     choiceBox.valueProperty().bindBidirectional(property)
-    choiceBox.converter = object : StringConverter<T>() {
-      override fun toString(`object`: T): String {
-        return converter(`object`)
-      }
-
-      override fun fromString(string: String?): T {
-        throw UnsupportedOperationException()
+    choiceBox.converter = object : OneWayConverter<T>() {
+      override fun format(toFormat: T): String {
+        return converter(toFormat)
       }
     }
     return choiceBox
@@ -432,20 +468,29 @@ object Components {
     val choiceBox = ChoiceBox(FXCollections.observableArrayList(*values))
     choiceBox.valueProperty().bindBidirectional(property)
 
-    choiceBox.converter = object : StringConverter<E>() {
-      override fun toString(`object`: E): String {
-        return EnumTranslatorUtil.getEnumTranslator().translate(`object`)
-      }
-
-      override fun fromString(string: String?): E {
-        throw UnsupportedOperationException()
+    choiceBox.converter = object : OneWayConverter<E>() {
+      override fun format(toFormat: E): String {
+        return EnumTranslatorUtil.getEnumTranslator().translate(toFormat)
       }
     }
     return choiceBox
   }
 
   @JvmStatic
-  fun createCheckBoxReadOnly(label: String, selectedProperty: Property<Boolean>): Node {
+  fun <T> choiceBox(property: Property<T>, values: ObservableList<T>, converter: (T) -> String): ChoiceBox<T> {
+    val choiceBox = ChoiceBox(values)
+    choiceBox.valueProperty().bindBidirectional(property)
+
+    choiceBox.converter = object : OneWayConverter<T>() {
+      override fun format(toFormat: T): String {
+        return converter(toFormat)
+      }
+    }
+    return choiceBox
+  }
+
+  @JvmStatic
+  fun createCheckBoxReadOnly(label: String, selectedProperty: Property<Boolean>): CheckBox {
     val checkBox = CheckBox(label)
     checkBox.selectedProperty().bind(selectedProperty)
     checkBox.addEventFilter(EventType.ROOT) { it.consume() }
@@ -453,10 +498,17 @@ object Components {
   }
 
   @JvmStatic
-  fun createCheckBox(label: String, selectedProperty: Property<Boolean>): Node {
+  fun createCheckBox(label: String, selectedProperty: Property<Boolean>): CheckBox {
     val checkBox = CheckBox(label)
     checkBox.selectedProperty().bindBidirectional(selectedProperty)
     return checkBox
+  }
+
+  @JvmStatic
+  fun createCheckBox(label: String, selectedProperty: BooleanPropertyWithWritableState): CheckBox {
+    return createCheckBox(label, selectedProperty.property).also {
+      it.disableProperty().bind(selectedProperty.writableProperty.not())
+    }
   }
 
   /**
@@ -470,12 +522,21 @@ object Components {
   }
 
   @JvmStatic
-  fun button(text: String, onAction: (ActionEvent) -> Unit): Button {
+  fun button(text: String?, onAction: (ActionEvent) -> Unit): Button {
     val button = Button(text)
     button.onAction = EventHandler {
       onAction(it)
     }
     return button
+  }
+
+  @JvmStatic
+  fun link(text: String, onAction: (ActionEvent) -> Unit): Hyperlink {
+    val link = Hyperlink(text)
+    link.onAction = EventHandler {
+      onAction(it)
+    }
+    return link
   }
 
   @JvmStatic
@@ -493,6 +554,13 @@ object Components {
   }
 
   @JvmStatic
+  fun textField(text: PropertyWithWritableState<String>): TextField {
+    return textField(text.property).also {
+      it.disableProperty().bind(text.writableProperty.not())
+    }
+  }
+
+  @JvmStatic
   fun <T> textField(property: Property<T>, converter: StringConverter<T>): TextField {
     val textField = TextField()
     textField.textProperty().bindBidirectional(property, converter)
@@ -507,6 +575,13 @@ object Components {
     val textField = TextField()
     DelayedTextFieldBinding.connect(textField, text)
     return textField
+  }
+
+  @JvmStatic
+  fun textFieldDelayed(text: PropertyWithWritableState<String>): TextField {
+    return textFieldDelayed(text.property).also {
+      it.disableProperty().bind(text.writableProperty.not())
+    }
   }
 
   /**
@@ -604,7 +679,7 @@ object Components {
 
   @JvmStatic
   @JvmOverloads
-  fun textFieldDoubleReadonly(doubleProperty: ReadOnlyDoubleProperty, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+  fun textFieldDoubleReadonly(doubleProperty: ObservableDoubleValue, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
     doubleProperty.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
@@ -627,6 +702,14 @@ object Components {
     return textField
   }
 
+  @JvmStatic
+  @JvmOverloads
+  fun textFieldDoubleDelayed(doubleProperty: DoublePropertyWithWritableState, filter: Predicate<Double> = Predicate { _ -> true }, converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+    return textFieldDoubleDelayed(doubleProperty.property, filter, converter).also {
+      it.disableProperty().bind(doubleProperty.writableProperty.not())
+    }
+  }
+
   /**
    * Adds a text formatter to the text field that only allows adding doubles
    */
@@ -647,6 +730,14 @@ object Components {
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyIntegerFormatter(textField, integerProperty, filter, converter)
     return textField
+  }
+
+  @JvmStatic
+  @JvmOverloads
+  fun textFieldIntegerDelayed(integerProperty: IntegerPropertyWithWritableState, filter: Predicate<Int> = Predicate { _ -> true }, converter: NumberStringConverter = NumberStringConverterForIntegers()): TextField {
+    return textFieldIntegerDelayed(integerProperty.property, filter, converter).also {
+      it.disableProperty().bind(integerProperty.writableProperty.not())
+    }
   }
 
   /**
@@ -780,6 +871,12 @@ object Components {
 
   @JvmStatic
   fun slider(valueProperty: Property<Number>, minValue: Double, maxValue: Double, step: Double): Slider {
+    //check for plausibility of step size
+    val tickCount = (maxValue - minValue) / step
+    require(tickCount <= 10_000) {
+      "Step too small. Was $step but results in $tickCount ticks for min: $minValue - max: $maxValue"
+    }
+
     val slider = Slider()
     slider.min = minValue
     slider.max = maxValue
@@ -787,16 +884,17 @@ object Components {
     slider.minorTickCount = 10
     slider.isSnapToTicks = true // skip double values
 
-    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(valueProperty,
-                                                                        slider.valueProperty(),
-                                                                        ChangeListener { _, _, newValue ->
-                                                                          // property -> slider
-                                                                          slider.valueProperty().set(findClosestStepForValue(newValue.toDouble(), slider.min.toInt().toDouble(), slider.max.toInt().toDouble(), step))
-                                                                        },
-                                                                        ChangeListener { _, _, newValue ->
-                                                                          // slider -> property
-                                                                          valueProperty.setValue(findClosestStepForValue(newValue.toDouble(), slider.min.toInt().toDouble(), slider.max.toInt().toDouble(), step))
-                                                                        })
+    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(
+      valueProperty,
+      slider.valueProperty(),
+      { _, _, newValue ->
+        // property -> slider
+        slider.valueProperty().set(findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step))
+      },
+      { _, _, newValue ->
+        // slider -> property
+        valueProperty.setValue(findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step))
+      })
     return slider
   }
 
@@ -843,11 +941,31 @@ object Components {
     }
     return nextStep
   }
+
+  @JvmStatic
+  fun colorPicker(colorProperty: PropertyWithWritableState<Color>): ColorPicker {
+    return colorPicker(colorProperty.property).also {
+      it.disableProperty().bind(colorProperty.writableProperty.not())
+    }
+  }
+
+  /**
+   * Creates a color picker
+   */
+  @JvmStatic
+  fun colorPicker(property: Property<Color>): ColorPicker {
+    return ColorPicker().also {
+      it.valueProperty().bindBidirectional(property)
+    }
+  }
 }
 
 /**
  * Wraps the node in a scroll pane
  */
 fun Node.inScrollPane(): ScrollPane {
-  return ScrollPane(this)
+  return ScrollPane(this).also {
+    it.isFitToHeight = true
+    it.isFitToWidth = true
+  }
 }

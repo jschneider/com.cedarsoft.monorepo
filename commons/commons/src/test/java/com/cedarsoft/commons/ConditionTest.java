@@ -41,8 +41,8 @@ import org.junit.jupiter.api.*;
 public class ConditionTest {
   @Test
   public void testConstants() {
-    assertFalse( Condition.FALSE.isValid() );
-    assertTrue( Condition.TRUE.isValid() );
+    assertFalse(Condition.False.isValid());
+    assertTrue(Condition.True.isValid());
   }
 
 }

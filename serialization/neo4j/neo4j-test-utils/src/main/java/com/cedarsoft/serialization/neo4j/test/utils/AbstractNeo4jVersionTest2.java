@@ -81,15 +81,15 @@ public abstract class AbstractNeo4jVersionTest2<T> {
   }
 
   @Nonnull
-  private T deserialize( @Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized ) throws IOException {
+  private T deserialize(@Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized) throws Exception {
     //Fill the db initially
-    try ( Transaction tx = db.beginTx() ) {
-      Result result = db.execute(serialized );
+    try (Transaction tx = db.beginTx()) {
+      Result result = db.execute(serialized);
       tx.success();
     }
 
     try (Transaction tx = db.beginTx()) {
-      return serializer.deserialize( db.getNodeById( 0 ) );
+      return serializer.deserialize(db.getNodeById(0));
     }
   }
 

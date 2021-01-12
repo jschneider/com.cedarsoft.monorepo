@@ -9,7 +9,7 @@ plugins {
 
 dependencies {
   api(project(Projects.open_unit_unit))
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_commons_exceptions))
   api(project(Projects.open_commons_swing_common))
   api(Libs.miglayout_swing)
@@ -21,7 +21,7 @@ dependencies {
   api(Libs.slf4j_api)
   api(Libs.guava)
   api(Libs.balloontip)
-  api(Libs.com_intellij_annotations)
+  compileOnlyApi(Libs.com_intellij_annotations)
 
 
   testImplementation(project(Projects.open_commons_test_utils))

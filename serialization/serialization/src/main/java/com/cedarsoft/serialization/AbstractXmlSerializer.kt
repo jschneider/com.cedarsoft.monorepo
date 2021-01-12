@@ -39,9 +39,8 @@ import com.cedarsoft.version.VersionRange
  * @param <T> the type of object this serializer is able to (de)serialize
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
- * @param <E> the exception that might be thrown
  */
-abstract class AbstractXmlSerializer<T, S, D, E : Throwable>
+abstract class AbstractXmlSerializer<T : Any, S : Any, D : Any>
 /**
  * Creates a new serializer
  * @param defaultElementName the default element name
@@ -49,9 +48,10 @@ abstract class AbstractXmlSerializer<T, S, D, E : Throwable>
  * @param formatVersionRange the version range. The max value is used when written.
  */
 protected constructor(
-  val defaultElementName: String, nameSpaceBase: String, formatVersionRange: VersionRange) : AbstractNameSpaceBasedSerializer<T, S, D, E>(nameSpaceBase, formatVersionRange) {
+  val defaultElementName: String, nameSpaceBase: String, formatVersionRange: VersionRange
+) : AbstractNameSpaceBasedSerializer<T, S, D>(nameSpaceBase, formatVersionRange) {
 
-  override fun <ST> getSerializer(type: Class<ST>): AbstractXmlSerializer<in ST, S, D, E> {
-    return super.getSerializer(type) as AbstractXmlSerializer<in ST, S, D, E>
+  override fun <ST : Any> getSerializer(type: Class<ST>): AbstractXmlSerializer<in ST, S, D> {
+    return super.getSerializer(type) as AbstractXmlSerializer<in ST, S, D>
   }
 }

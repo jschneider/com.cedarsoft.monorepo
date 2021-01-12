@@ -6,6 +6,8 @@ import java.text.ParseException;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.cedarsoft.commons.javafx.properties.*;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
@@ -41,7 +43,17 @@ public class BindingsHelper {
   }
 
   @Nonnull
-  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull ObjectProperty<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
+  public static <T extends Enum<T>> ComboBox<T> bindEnumCombo(@Nonnull PropertyWithWritableState<T> property, @Nonnull Class<T> type) {
+    return bindEnumCombo(new ComboBox<>(), property, type);
+  }
+
+  @Nonnull
+  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull Property<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
+    return bindEnumComboSpecificEnums(new ComboBox<>(), property, type, enumConstants);
+  }
+
+  @Nonnull
+  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull PropertyWithWritableState<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
     return bindEnumComboSpecificEnums(new ComboBox<>(), property, type, enumConstants);
   }
 
@@ -51,7 +63,19 @@ public class BindingsHelper {
   }
 
   @Nonnull
-  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull ComboBox<T> combo, @Nonnull ObjectProperty<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
+  public static <T extends Enum<T>> ComboBox<T> bindEnumCombo(@Nonnull ComboBox<T> combo, @Nonnull PropertyWithWritableState<T> property, @Nonnull Class<T> type) {
+    return bindEnumComboSpecificEnums(combo, property, type, type.getEnumConstants());
+  }
+
+  @Nonnull
+  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull ComboBox<T> combo, @Nonnull PropertyWithWritableState<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
+    bindEnumComboSpecificEnums(combo, property.getProperty(), type, enumConstants);
+    combo.disableProperty().bind(property.getWritableProperty().not());
+    return combo;
+  }
+
+  @Nonnull
+  public static <T extends Enum<T>> ComboBox<T> bindEnumComboSpecificEnums(@Nonnull ComboBox<T> combo, @Nonnull Property<T> property, @Nonnull Class<T> type, @Nonnull T[] enumConstants) {
     combo.itemsProperty().set(FXCollections.observableArrayList(enumConstants));
     combo.valueProperty().bindBidirectional(property);
 
@@ -60,7 +84,6 @@ public class BindingsHelper {
 
     return combo;
   }
-
 
 
   @Nonnull

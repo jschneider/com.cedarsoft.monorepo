@@ -30,18 +30,18 @@
  */
 package com.cedarsoft.serialization.jackson;
 
-import com.cedarsoft.serialization.SerializationException;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonToken;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
-import java.io.IOException;
+
+import com.cedarsoft.serialization.SerializationException;
+import com.cedarsoft.version.Version;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.JsonToken;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -61,14 +61,14 @@ public class SkipTypeInfoSerializer<T> extends AbstractJacksonSerializer<T> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    delegate.serialize(serializeTo, objectToSerialize, formatVersion );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull T objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
+    delegate.serialize(serializeTo, objectToSerialize, formatVersion);
   }
 
   @Nonnull
   @Override
-  public T deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    return delegate.deserialize( deserializeFrom, formatVersion );
+  public T deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
+    return delegate.deserialize(deserializeFrom, formatVersion);
   }
 
 

@@ -30,16 +30,17 @@
  */
 package com.cedarsoft.serialization.jackson;
 
+import java.io.IOException;
+
+import javax.inject.Inject;
+
+import org.jetbrains.annotations.NotNull;
+
+import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -51,13 +52,13 @@ public class FloatSerializer extends AbstractJacksonSerializer<Float> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Float objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@NotNull JsonGenerator serializeTo, @NotNull Float objectToSerialize, @NotNull Version formatVersion) throws IOException, SerializationException, Exception {
     serializeTo.writeNumber(objectToSerialize);
   }
 
-  @Nonnull
+  @NotNull
   @Override
-  public Float deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public Float deserialize(@NotNull JsonParser deserializeFrom, @NotNull Version formatVersion) throws IOException, SerializationException, Exception {
     return deserializeFrom.getFloatValue();
   }
 

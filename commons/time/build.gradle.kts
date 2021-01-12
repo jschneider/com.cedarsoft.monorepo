@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))
   api(Libs.commons_lang3)
 

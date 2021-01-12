@@ -2,7 +2,7 @@ package com.cedarsoft.commons.concurrent
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.test.utils.untilAtomicIsTrue
+import com.cedarsoft.test.utils.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import org.awaitility.Awaitility
@@ -17,11 +17,11 @@ import java.util.concurrent.atomic.AtomicInteger
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @ExperimentalCoroutinesApi
-internal class CoAsyncTest {
+class CoAsyncTest {
 
-  @Disabled
+  @Disabled //long running test
   @Test
-  internal fun testArrayBroadcastChannel() {
+  fun testArrayBroadcastChannel() {
     runBlocking {
       val channel = BroadcastChannel<Int>(17)
 
@@ -43,36 +43,9 @@ internal class CoAsyncTest {
     }
   }
 
-  @Disabled
-  @Test
-  fun testCollect() {
-    runBlocking {
-
-      val channel = produce<Int> {
-        for (i in 1..100) {
-          this.send(i)
-          delay(40)
-        }
-
-        close()
-      }
-
-
-      channel
-        .map {
-          return@map "it"
-        }
-        .consumeEachIndexed {
-          println("Consuming ${it.index} --> ${it.value}")
-        }
-    }
-
-    println("done")
-  }
-
   @ExperimentalCoroutinesApi
   @Test
-  internal fun testIt() {
+  fun testIt() {
     runBlocking {
       val async = CoAsync().start(CoroutineScope(Dispatchers.Default))
 
@@ -103,7 +76,7 @@ internal class CoAsyncTest {
   }
 
   @Test
-  internal fun testDelay() {
+  fun testDelay() {
     runBlocking {
       val async = CoAsync().start(CoroutineScope(Dispatchers.Default))
 

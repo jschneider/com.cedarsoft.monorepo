@@ -31,7 +31,6 @@
 
 package com.cedarsoft.test.utils;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -58,23 +57,24 @@ public class MockitoTest {
       private List<String> list;
 
       @Override
-      protected void stub() throws Exception {
-        when( list.size() ).thenReturn( 1 ).thenReturn( 2 );
-        doThrow( new RuntimeException() ).when( list ).clear();
+      protected void stub() {
+        when(list.size()).thenReturn(1).thenReturn(2);
+        doThrow(new RuntimeException()).when(list).clear();
       }
 
       @Override
       protected void execute() throws Exception {
-        list.add( "asdf" );
-        list.add( "other" );
+        list.add("asdf");
+        list.add("other");
 
-        assertEquals( 1, list.size() );
-        assertEquals( 2, list.size() );
+        Assertions.assertEquals(1, list.size());
+        Assertions.assertEquals(2, list.size());
 
         try {
           list.clear();
-          fail( "Where is the Exception" );
-        } catch ( RuntimeException ignore ) {
+          Assertions.fail("Where is the Exception");
+        }
+        catch (RuntimeException ignore) {
         }
       }
 
@@ -97,26 +97,27 @@ public class MockitoTest {
   @Test
   public void testIt() {
     @SuppressWarnings("unchecked")
-    List<String> list = mock( List.class );
+    List<String> list = mock(List.class);
 
-    when( list.size() ).thenReturn( 1 ).thenReturn( 2 );
-    doThrow( new RuntimeException() ).when( list ).clear();
+    when(list.size()).thenReturn(1).thenReturn(2);
+    doThrow(new RuntimeException()).when(list).clear();
 
-    list.add( "asdf" );
-    list.add( "other" );
+    list.add("asdf");
+    list.add("other");
 
-    assertEquals( 1, list.size() );
-    assertEquals( 2, list.size() );
+    Assertions.assertEquals(1, list.size());
+    Assertions.assertEquals(2, list.size());
 
     try {
       list.clear();
-      fail( "Where is the Exception" );
-    } catch ( RuntimeException ignore ) {
+      Assertions.fail("Where is the Exception");
+    }
+    catch (RuntimeException ignore) {
     }
 
-    verify( list, times( 2 ) ).size();
+    verify(list, times(2)).size();
 
-    verify( list ).add( "asdf" );
+    verify(list).add("asdf");
     verify( list ).add( "other" );
     verify( list ).clear();
 
@@ -138,8 +139,8 @@ public class MockitoTest {
   public void testAnnotations() {
     MockitoAnnotations.initMocks( this );
 
-    assertNotNull( mock );
-    mock.add( "asdf" );
+    Assertions.assertNotNull(mock);
+    mock.add("asdf");
 
     verify( mock ).add( "asdf" );
   }

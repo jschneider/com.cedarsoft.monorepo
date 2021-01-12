@@ -11,7 +11,7 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(Projects.dependencies_sets_test_basics))
+  api(project(Projects.dependencies_sets_kotlin_test))
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_commons_test_utils))
 

@@ -1,12 +1,12 @@
 package com.cedarsoft.commons.kotlin.serializers
 
-import kotlinx.serialization.Decoder
-import kotlinx.serialization.Encoder
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.PrimitiveDescriptor
-import kotlinx.serialization.PrimitiveKind
-import kotlinx.serialization.SerialDescriptor
 import kotlinx.serialization.Serializer
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import java.time.Period
 
 /**
@@ -15,7 +15,7 @@ import java.time.Period
  */
 @Serializer(forClass = Period::class)
 object PeriodSerializer : KSerializer<Period> {
-  override val descriptor: SerialDescriptor = PrimitiveDescriptor("Period", PrimitiveKind.STRING)
+  override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Period", PrimitiveKind.STRING)
 
   override fun serialize(encoder: Encoder, obj: Period) {
     encoder.encodeString(obj.toString())

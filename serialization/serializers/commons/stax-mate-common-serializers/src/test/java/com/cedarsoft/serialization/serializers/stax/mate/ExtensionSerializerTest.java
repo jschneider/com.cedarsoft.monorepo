@@ -34,7 +34,6 @@ package com.cedarsoft.serialization.serializers.stax.mate;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
@@ -62,22 +61,22 @@ public class ExtensionSerializerTest extends AbstractXmlSerializerTest2<Extensio
   public static final Entry<?> entry4 = create( new Extension( ",", "cr2" ), "<extension delimiter=\",\">cr2</extension>" );
 
   @Test
-  public void testDelimiter() throws IOException {
-    Extension extension = deserialize( "<extension xmlns=\"http://www.cedarsoft.com/file/extension/1.0.0\" delimiter=\".\">jpg</extension>\n" );
+  public void testDelimiter() throws Exception {
+    Extension extension = deserialize("<extension xmlns=\"http://www.cedarsoft.com/file/extension/1.0.0\" delimiter=\".\">jpg</extension>\n");
 
-    assertEquals( ".", extension.getDelimiter() );
-    assertEquals( "jpg", extension.getExtension() );
+    assertEquals(".", extension.getDelimiter());
+    assertEquals("jpg", extension.getExtension());
   }
 
   @Test
-  public void testMissingDelimiter() throws IOException {
-    Extension extension = deserialize( "<extension xmlns=\"http://www.cedarsoft.com/file/extension/1.0.0\">jpg</extension>\n" );
+  public void testMissingDelimiter() throws Exception {
+    Extension extension = deserialize("<extension xmlns=\"http://www.cedarsoft.com/file/extension/1.0.0\">jpg</extension>\n");
 
-    assertEquals( ".", extension.getDelimiter() );
-    assertEquals( "jpg", extension.getExtension() );
+    assertEquals(".", extension.getDelimiter());
+    assertEquals("jpg", extension.getExtension());
   }
 
-  private Extension deserialize( String xml ) throws IOException {
-    return new ExtensionSerializer().deserialize( new ByteArrayInputStream( xml.getBytes(StandardCharsets.UTF_8) ) );
+  private Extension deserialize(String xml) throws Exception {
+    return new ExtensionSerializer().deserialize(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
   }
 }

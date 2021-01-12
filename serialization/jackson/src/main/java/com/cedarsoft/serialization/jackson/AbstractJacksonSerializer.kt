@@ -34,7 +34,6 @@ package com.cedarsoft.serialization.jackson
 import com.cedarsoft.serialization.AbstractStreamSerializer
 import com.cedarsoft.serialization.SerializationException
 import com.cedarsoft.version.Version
-import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionRange
 import com.fasterxml.jackson.core.JsonEncoding
 import com.fasterxml.jackson.core.JsonFactory
@@ -53,22 +52,22 @@ import javax.annotation.WillNotClose
  * @param <T> the type
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractJacksonSerializer<T>
+abstract class AbstractJacksonSerializer<T : Any>
 protected constructor(
   override val type: String,
   formatVersionRange: VersionRange
-) : AbstractStreamSerializer<T, JsonGenerator, JsonParser, JsonProcessingException>(formatVersionRange), JacksonSerializer<T> {
+) : AbstractStreamSerializer<T, JsonGenerator, JsonParser>(formatVersionRange), JacksonSerializer<T> {
 
   override val isObjectType = true
 
   @Throws(SerializationException::class)
-  override fun verifyType(type: String?) {
-    if (this.type != type) {//$NON-NLS-1$
+  override fun verifyType(type: String) {
+    if (this.type != type) {
       throw SerializationException(SerializationException.Details.INVALID_TYPE, this.type, type)
     }
   }
 
-  @Throws(IOException::class)
+  @Throws(Exception::class)
   override fun serialize(objectToSerialize: T, @WillNotClose out: OutputStream) {
     val jsonFactory = JacksonSupport.getJsonFactory()
     val generator = jsonFactory.createGenerator(out, JsonEncoding.UTF8)
@@ -88,7 +87,7 @@ protected constructor(
    * @param generator the serialize to object
    * @throws java.io.IOException if there is an io problem
    */
-  @Throws(IOException::class)
+  @Throws(Exception::class)
   override fun serialize(objectToSerialize: T, generator: JsonGenerator) {
     if (isObjectType) {
       generator.writeStartObject()
@@ -114,18 +113,24 @@ protected constructor(
   protected open fun beforeTypeAndVersion(objectToSerialize: T, serializeTo: JsonGenerator) {
   }
 
-  @Throws(IOException::class, VersionException::class)
+  @Throws(Exception::class)
   override fun deserialize(deserializeFrom: InputStream): T {
     return deserialize(deserializeFrom, null)
   }
 
-  @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
+  @Throws(Exception::class)
   override fun deserialize(parser: JsonParser): T {
     return deserializeInternal(parser, null)
   }
 
-  @Throws(IOException::class, VersionException::class)
-  open fun deserialize(deserializeFrom: InputStream, version: Version?): T {
+  @Throws(Exception::class)
+  open fun deserialize(
+    deserializeFrom: InputStream,
+    /**
+     * The format version
+     */
+    version: Version?
+  ): T {
     val jsonFactory = JacksonSupport.getJsonFactory()
     val parser = createJsonParser(jsonFactory, deserializeFrom)
 
@@ -148,7 +153,7 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class)
-  open protected fun createJsonParser(jsonFactory: JsonFactory, deserializeFrom: InputStream): JsonParser {
+  protected open fun createJsonParser(jsonFactory: JsonFactory, deserializeFrom: InputStream): JsonParser {
     return jsonFactory.createParser(deserializeFrom)
   }
 
@@ -160,7 +165,13 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, JsonProcessingException::class, SerializationException::class)
-  protected open fun deserializeInternal(parser: JsonParser, formatVersionOverride: Version?): T {
+  protected open fun deserializeInternal(
+    parser: JsonParser,
+    /**
+     * The optional format version override
+     */
+    formatVersionOverride: Version?
+  ): T {
     val parserWrapper = JacksonParserWrapper(parser)
 
     val version = prepareDeserialization(parserWrapper, formatVersionOverride)
@@ -188,28 +199,34 @@ protected constructor(
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, SerializationException::class)
-  protected open fun prepareDeserialization(wrapper: JacksonParserWrapper, formatVersionOverride: Version?): Version {
-    if (isObjectType) {
-      wrapper.nextToken(JsonToken.START_OBJECT)
-
-      beforeTypeAndVersion(wrapper)
-
-      if (formatVersionOverride == null) {
-        wrapper.nextFieldValue(PROPERTY_TYPE)
-        val readType = wrapper.text
-        verifyType(readType)
-        wrapper.nextFieldValue(PROPERTY_VERSION)
-        val version = Version.parse(wrapper.text)
-        verifyVersionReadable(version)
-        return version
-      } else {
-        verifyVersionReadable(formatVersionOverride)
-        return formatVersionOverride
-      }
-    } else {
+  protected open fun prepareDeserialization(
+    wrapper: JacksonParserWrapper,
+    /**
+     * The optional format version override
+     */
+    formatVersionOverride: Version?
+  ): Version {
+    if (!isObjectType) {
       //Not an object type
       wrapper.nextToken()
       return formatVersion
+    }
+
+    wrapper.nextToken(JsonToken.START_OBJECT)
+
+    beforeTypeAndVersion(wrapper)
+
+    return if (formatVersionOverride == null) {
+      wrapper.nextFieldValue(PROPERTY_TYPE)
+      val readType = wrapper.text
+      verifyType(readType)
+      wrapper.nextFieldValue(PROPERTY_VERSION)
+      val version = Version.parse(wrapper.text)
+      verifyVersionReadable(version)
+      version
+    } else {
+      verifyVersionReadable(formatVersionOverride)
+      formatVersionOverride
     }
   }
 
@@ -224,12 +241,21 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  protected open fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, serializeTo: JsonGenerator, formatVersion: Version) {
+  protected open fun <A : Any> serializeArray(elements: Iterable<A>, type: Class<A>, serializeTo: JsonGenerator, formatVersion: Version) {
     serializeArray(elements, type, null, serializeTo, formatVersion)
   }
 
   @Throws(IOException::class)
-  protected open fun <A> serializeArray(elements: Iterable<A>, type: Class<A>, propertyName: String?, serializeTo: JsonGenerator, formatVersion: Version) {
+  protected open fun <A : Any> serializeArray(
+    elements: Iterable<A>,
+    type: Class<A>,
+    /**
+     * The optional property name
+     */
+    propertyName: String?,
+    serializeTo: JsonGenerator,
+    formatVersion: Version
+  ) {
     val serializer = getSerializer(type)
     val delegateVersion = delegatesMappings.versionMappings.resolveVersion(type, formatVersion)
 
@@ -253,17 +279,17 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  protected fun <A> deserializeArray(type: Class<A>, formatVersion: Version, deserializeFrom: JsonParser): List<A> {
+  protected fun <A : Any> deserializeArray(type: Class<A>, formatVersion: Version, deserializeFrom: JsonParser): List<A> {
     return deserializeArray(type, deserializeFrom, formatVersion)
   }
 
   @Throws(IOException::class)
-  protected fun <A> deserializeArray(type: Class<A>, deserializeFrom: JsonParser, formatVersion: Version): List<A> {
+  protected fun <A : Any> deserializeArray(type: Class<A>, deserializeFrom: JsonParser, formatVersion: Version): List<A> {
     return deserializeArray(type, null, formatVersion, deserializeFrom)
   }
 
   @Throws(IOException::class)
-  protected fun <A> deserializeArray(type: Class<A>, propertyName: String?, formatVersion: Version, deserializeFrom: JsonParser): List<A> {
+  protected fun <A : Any> deserializeArray(type: Class<A>, propertyName: String?, formatVersion: Version, deserializeFrom: JsonParser): List<A> {
     val parserWrapper = JacksonParserWrapper(deserializeFrom)
     if (propertyName == null) {
       parserWrapper.verifyCurrentToken(JsonToken.START_ARRAY)
@@ -290,7 +316,7 @@ protected constructor(
    */
   @Deprecated("wrong order of parameters", replaceWith = ReplaceWith("deserializeArray(type, propertyName, formatVersion, deserializeFrom)"))
   @Throws(IOException::class)
-  protected fun <A> deserializeArray(type: Class<A>, propertyName: String?, deserializeFrom: JsonParser, formatVersion: Version): List<A> {
+  protected fun <A : Any> deserializeArray(type: Class<A>, propertyName: String?, deserializeFrom: JsonParser, formatVersion: Version): List<A> {
     return deserializeArray(type, propertyName, formatVersion, deserializeFrom)
   }
 
@@ -299,7 +325,7 @@ protected constructor(
    * If the object is null nothing will be written.
    */
   @Throws(JsonProcessingException::class, IOException::class)
-  fun <A> serializeIfNotNull(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+  fun <A : Any> serializeIfNotNull(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
     if (objectToSerialize == null) {
       return
     }
@@ -311,7 +337,7 @@ protected constructor(
    * Serializes the object. Writes "null" if the object is null
    */
   @Throws(JsonProcessingException::class, IOException::class)
-  fun <A> serialize(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
+  fun <A : Any> serialize(objectToSerialize: A?, type: Class<A>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
     serializeTo.writeFieldName(propertyName)
 
     //Fast exit if the value is null
@@ -334,7 +360,7 @@ protected constructor(
   }
 
   @Throws(IOException::class, JsonProcessingException::class)
-  protected fun <A> deserializeNullable(type: Class<A>, propertyName: String, formatVersion: Version, deserializeFrom: JsonParser): A? {
+  protected fun <A : Any> deserializeNullable(type: Class<A>, propertyName: String, formatVersion: Version, deserializeFrom: JsonParser): A? {
     val parserWrapper = JacksonParserWrapper(deserializeFrom)
     parserWrapper.nextFieldValue(propertyName)
 
@@ -346,7 +372,7 @@ protected constructor(
   }
 
   @Throws(IOException::class, JsonProcessingException::class)
-  protected fun <A> deserialize(type: Class<A>, propertyName: String, formatVersion: Version, deserializeFrom: JsonParser): A {
+  protected fun <A : Any> deserialize(type: Class<A>, propertyName: String, formatVersion: Version, deserializeFrom: JsonParser): A {
     val parserWrapper = JacksonParserWrapper(deserializeFrom)
     parserWrapper.nextToken()
     parserWrapper.verifyCurrentToken(JsonToken.FIELD_NAME)
@@ -363,14 +389,14 @@ protected constructor(
    * Supports null values
    */
   @Throws(JsonProcessingException::class, IOException::class)
-  fun <A> deserializeNullable(type: Class<A>, formatVersion: Version, deserializeFrom: JsonParser): A? {
+  fun <A : Any> deserializeNullable(type: Class<A>, formatVersion: Version, deserializeFrom: JsonParser): A? {
     if (deserializeFrom.currentToken == JsonToken.VALUE_NULL) {
       return null
     }
     return super.deserialize(type, formatVersion, deserializeFrom)
   }
 
-  override fun <A> getSerializer(type: Class<A>): JacksonSerializer<in A> {
+  override fun <A : Any> getSerializer(type: Class<A>): JacksonSerializer<in A> {
     return super.getSerializer(type) as JacksonSerializer<in A>
   }
 

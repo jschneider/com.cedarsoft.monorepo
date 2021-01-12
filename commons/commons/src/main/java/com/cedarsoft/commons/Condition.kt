@@ -53,15 +53,16 @@ interface Condition {
      * Static condition that is always false.
      */
     @JvmField
-    val FALSE: Condition = object : Condition {
+    val False: Condition = object : Condition {
       override val valid: Boolean
         get() = false
     }
+
     /**
      * Static condition that is always true.
      */
     @JvmField
-    val TRUE: Condition = object : Condition {
+    val True: Condition = object : Condition {
       override val valid: Boolean
         get() = true
     }

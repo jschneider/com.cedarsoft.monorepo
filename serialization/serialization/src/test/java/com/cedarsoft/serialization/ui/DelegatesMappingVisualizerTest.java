@@ -49,14 +49,14 @@ import com.cedarsoft.version.VersionRange;
  */
 public class DelegatesMappingVisualizerTest {
   private VersionRange mine;
-  private DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> delegatesMappings;
+  private DelegatesMappings<Object, Object, OutputStream, InputStream> delegatesMappings;
   private VersionMappingTest.MySerializer serializer;
 
   @BeforeEach
   public void setUp() throws Exception {
-    mine = VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
-    delegatesMappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( mine );
-    serializer = new VersionMappingTest.MySerializer( new VersionRange( new Version( 7, 0, 0 ), new Version( 7, 5, 9 ) ) );
+    mine = VersionRange.from(1, 0, 0).to(2, 0, 0);
+    delegatesMappings = new DelegatesMappings<Object, Object, OutputStream, InputStream>(mine);
+    serializer = new VersionMappingTest.MySerializer(new VersionRange(new Version(7, 0, 0), new Version(7, 5, 9)));
   }
 
   @Test
@@ -82,14 +82,14 @@ public class DelegatesMappingVisualizerTest {
       .map( 2, 0, 0 ).to( 2, 0, 0 ).toDelegateVersion( 7, 5, 9 )
     ;
 
-    assertEquals( new DelegatesMappingVisualizer( delegatesMappings ).visualize(),
-                  "         -->   Integer    Object    String\n" +
-                    "------------------------------------------\n" +
-                    "   1.0.0 -->     7.1.1     7.0.1     7.1.1\n" +
-                    "   1.0.1 -->    7.1.12     7.0.2     7.0.2\n" +
-                    "   1.0.2 -->    7.0.91     7.1.0     7.1.0\n" +
-                    "  1.15.0 -->       |         |         |  \n" +
-                    "   2.0.0 -->     7.5.9     7.5.9     7.5.9\n" +
-                    "------------------------------------------\n" );
+    assertEquals(new DelegatesMappingVisualizer( delegatesMappings ).visualize(),
+                 "         -->   Integer    Object    String\n" +
+                   "------------------------------------------\n" +
+                   "   1.0.0 -->     7.1.1     7.0.1     7.1.1\n" +
+                   "   1.0.1 -->    7.1.12     7.0.2     7.0.2\n" +
+                   "   1.0.2 -->    7.0.91     7.1.0     7.1.0\n" +
+                   "  1.15.0 -->         |         |         |\n" +
+                   "   2.0.0 -->     7.5.9     7.5.9     7.5.9\n" +
+                   "------------------------------------------\n" );
   }
 }

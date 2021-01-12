@@ -13,7 +13,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
   api(project(Projects.dependencies_sets_kotlin))
   api(project(Projects.dependencies_sets_test_basics))
 

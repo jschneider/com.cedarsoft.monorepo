@@ -34,7 +34,6 @@ package com.cedarsoft.serialization.serializers.stax.mate;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
@@ -69,33 +68,33 @@ public class FileNameSerializerTest extends AbstractXmlSerializerTest2<FileName>
   }
 
   @Test
-  public void testDelimiter() throws IOException {
+  public void testDelimiter() throws Exception {
     FileName fileName = deserialize(
       "<fileName xmlns=\"http://www.cedarsoft.com/file/fileName/1.0.0\">\n" +
         "  <baseName>baseName</baseName>\n" +
         "  <extension delimiter=\".\">jpg</extension>\n" +
-        "</fileName>" );
+        "</fileName>");
 
-    assertEquals( "baseName", fileName.getBaseName().getName() );
-    assertEquals( ".", fileName.getExtension().getDelimiter() );
-    assertEquals( "jpg", fileName.getExtension().getExtension() );
+    assertEquals("baseName", fileName.getBaseName().getName());
+    assertEquals(".", fileName.getExtension().getDelimiter());
+    assertEquals("jpg", fileName.getExtension().getExtension());
   }
 
   @Test
-  public void testMissingDelimiter() throws IOException {
+  public void testMissingDelimiter() throws Exception {
     FileName fileName = deserialize(
       "<fileName xmlns=\"http://www.cedarsoft.com/file/fileName/1.0.0\">\n" +
         "  <baseName>baseName</baseName>\n" +
         "  <extension>jpg</extension>\n" +
-        "</fileName>" );
+        "</fileName>");
 
-    assertEquals( "baseName", fileName.getBaseName().getName() );
-    assertEquals( ".", fileName.getExtension().getDelimiter() );
-    assertEquals( "jpg", fileName.getExtension().getExtension() );
+    assertEquals("baseName", fileName.getBaseName().getName());
+    assertEquals(".", fileName.getExtension().getDelimiter());
+    assertEquals("jpg", fileName.getExtension().getExtension());
   }
 
-  private FileName deserialize( String xml ) throws IOException {
-    FileNameSerializer serializer = new FileNameSerializer( new BaseNameSerializer(), new ExtensionSerializer() );
-    return serializer.deserialize( new ByteArrayInputStream( xml.getBytes(StandardCharsets.UTF_8) ) );
+  private FileName deserialize(String xml) throws Exception {
+    FileNameSerializer serializer = new FileNameSerializer(new BaseNameSerializer(), new ExtensionSerializer());
+    return serializer.deserialize(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
   }
 }

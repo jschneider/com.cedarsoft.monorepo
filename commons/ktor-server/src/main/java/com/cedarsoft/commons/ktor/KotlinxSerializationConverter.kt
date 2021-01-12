@@ -9,12 +9,9 @@ import io.ktor.request.ApplicationReceiveRequest
 import io.ktor.request.contentType
 import io.ktor.util.pipeline.PipelineContext
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.protobuf.ProtoBuf
-import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 
 /**
@@ -30,11 +27,6 @@ abstract class KotlinxSerializationConverter(
 
   inline fun <reified T : Any> register(serializer: KSerializer<T>) {
     register(T::class, serializer)
-  }
-
-  @ImplicitReflectionSerializer
-  inline fun <reified T : Any> register() {
-    register(T::class.serializer())
   }
 
   fun <T : Any> getSerializer(type: KClass<out T>): KSerializer<T> {
@@ -79,19 +71,17 @@ abstract class KotlinxSerializationConverter(
 /**
  * Registers the serializable converters for json and proto buf if provided.
  */
-@UnstableDefault
 inline fun ContentNegotiation.Configuration.kotlinxSerialization(
-  json: Json? = Json.plain,
+  json: Json = Json { prettyPrint = true },
   protoBuf: ProtoBuf? = null,
   block: KotlinxSerializationConverter.() -> Unit
 ) {
   val jsonSerializationConverter: JsonSerializationConverter? = json?.let { JsonSerializationConverter(it) }
-    val protoBufSerializationConverter: ProtoBufSerializationConverter? = protoBuf?.let { ProtoBufSerializationConverter(it) }
+  val protoBufSerializationConverter: ProtoBufSerializationConverter? = protoBuf?.let { ProtoBufSerializationConverter(it) }
 
   kotlinxSerialization(jsonSerializationConverter, protoBufSerializationConverter, block)
 }
 
-@UnstableDefault
 inline fun ContentNegotiation.Configuration.kotlinxSerialization(
   jsonConverter: JsonSerializationConverter? = null,
   protoBufConverter: ProtoBufSerializationConverter? = null,

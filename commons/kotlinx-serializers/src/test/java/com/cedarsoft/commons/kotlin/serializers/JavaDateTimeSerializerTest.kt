@@ -16,36 +16,36 @@ internal class JavaDateTimeSerializerTest {
   @Test
   internal fun testLocalDate() {
     val obj = LocalDate.now()
-    val json = Json.stringify(LocalDateSerializer, obj)
+    val json = Json.encodeToString(LocalDateSerializer, obj)
     println("json: $json")
-    val parsed = Json.parse(LocalDateSerializer, json)
+    val parsed = Json.decodeFromString(LocalDateSerializer, json)
     assertThat(parsed).isEqualTo(obj)
   }
 
   @Test
   internal fun testLocalTime() {
     val obj = LocalTime.now()
-    val json = Json.stringify(LocalTimeSerializer, obj)
+    val json = Json.encodeToString(LocalTimeSerializer, obj)
     println("json: $json")
-    val parsed = Json.parse(LocalTimeSerializer, json)
+    val parsed = Json.decodeFromString(LocalTimeSerializer, json)
     assertThat(parsed).isEqualTo(obj)
   }
 
   @Test
   internal fun testDuration() {
     val obj = Duration.ofMinutes(77)
-    val json = Json.stringify(DurationSerializer, obj)
+    val json = Json.encodeToString(DurationSerializer, obj)
     println("json: $json")
-    val parsed = Json.parse(DurationSerializer, json)
+    val parsed = Json.decodeFromString(DurationSerializer, json)
     assertThat(parsed).isEqualTo(obj)
   }
 
   @Test
   internal fun testPeriod() {
     val obj = Period.ofDays(44)
-    val json = Json.stringify(PeriodSerializer, obj)
+    val json = Json.encodeToString(PeriodSerializer, obj)
     println("json: $json")
-    val parsed = Json.parse(PeriodSerializer, json)
+    val parsed = Json.decodeFromString(PeriodSerializer, json)
     assertThat(parsed).isEqualTo(obj)
   }
 }

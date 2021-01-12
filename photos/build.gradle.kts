@@ -24,7 +24,7 @@ dependencies {
   api(Libs.im4java)
   api(Libs.jsr305)
   api(Libs.javax_inject)
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
 
 
   //

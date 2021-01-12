@@ -32,7 +32,6 @@
 package com.cedarsoft.serialization
 
 import com.cedarsoft.version.Version
-import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionRange
 import java.io.IOException
 
@@ -46,24 +45,24 @@ import java.io.IOException
  * @param <O> the type of the object that is serialized to
  * @param <I> the type of the object that is serialized from
  */
-interface Serializer<T, O, I> {
+interface Serializer<T : Any, O : Any, I : Any> {
   /**
    * Serializes the object to the given output object
-   * @param object the object to serialize
+   * @param objectToSerialize the object to serialize
    * @param out    the out stream
    * @throws IOException if there is an io problem
    */
-  @Throws(IOException::class, SerializationException::class)
+  @Throws(Exception::class)
   fun serialize(objectToSerialize: T, out: O)
 
   /**
    * Deserializes the object from the input stream
    * throws com.cedarsoft.version.VersionException if any version related problem occurred
-   * @param in the input object
+   * @param deserializeFrom the input object
    * @return the deserialized object
    * @throws java.io.IOException if there is an io problem2
    */
-  @Throws(IOException::class, VersionException::class, SerializationException::class)
+  @Throws(Exception::class)
   fun deserialize(deserializeFrom: I): T
 
   /**

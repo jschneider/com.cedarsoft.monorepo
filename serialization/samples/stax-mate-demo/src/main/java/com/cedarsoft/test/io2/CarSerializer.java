@@ -31,21 +31,23 @@
 
 package com.cedarsoft.test.io2;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+import java.awt.Color;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+
 import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
 import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
 import com.cedarsoft.test.io.ModelSerializer;
-import org.codehaus.staxmate.out.SMOutputElement;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.awt.Color;
-import java.io.IOException;
-import java.util.List;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  * This is an extended version of com.cedarsoft.test.io.CarSerializer.
@@ -110,17 +112,17 @@ public class CarSerializer extends AbstractStaxMateSerializer<Car> {
   //START SNIPPET: deserialize
 
   @Override
-  public Car deserialize( XMLStreamReader deserializeFrom, Version formatVersion ) throws IOException, XMLStreamException {
-    assert isVersionReadable( formatVersion );
+  public Car deserialize(XMLStreamReader deserializeFrom, Version formatVersion) throws Exception {
+    assert isVersionReadable(formatVersion);
     //We deserialize the color. This should be done in its own serializer in real world --> improved reusability and testability
-    nextTag( deserializeFrom, "color" );
-    int red = Integer.parseInt( deserializeFrom.getAttributeValue( null, "red" ) );
-    int blue = Integer.parseInt( deserializeFrom.getAttributeValue( null, "blue" ) );
-    int green = Integer.parseInt( deserializeFrom.getAttributeValue( null, "green" ) );
-    Color color = new Color( red, green, blue );
-    closeTag( deserializeFrom );
+    nextTag(deserializeFrom, "color");
+    int red = Integer.parseInt(deserializeFrom.getAttributeValue(null, "red"));
+    int blue = Integer.parseInt(deserializeFrom.getAttributeValue(null, "blue"));
+    int green = Integer.parseInt(deserializeFrom.getAttributeValue(null, "green"));
+    Color color = new Color(red, green, blue);
+    closeTag(deserializeFrom);
 
-    nextTag( deserializeFrom, "model" );
+    nextTag(deserializeFrom, "model");
     Model model = deserialize( Model.class, formatVersion, deserializeFrom );
 
     nextTag( deserializeFrom, "basePrice" );

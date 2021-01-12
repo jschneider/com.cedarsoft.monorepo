@@ -31,7 +31,7 @@
 
 package com.cedarsoft.inject;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -65,14 +65,14 @@ public class GuiceHelperTest {
 
   @Test
   public void testIt() {
-    assertEquals( "java.util.Collection<? extends java.lang.String>", GuiceHelper.superCollectionOf( String.class ).toString() );
-    assertEquals( "java.util.List<? extends java.lang.String>", GuiceHelper.superListOf( String.class ).toString() );
+    assertEquals("java.util.Collection<? extends java.lang.String>", GuiceHelper.superCollectionOf(String.class).toString());
+    assertEquals("java.util.List<? extends java.lang.String>", GuiceHelper.superListOf(String.class).toString());
   }
 
   @Test
   public void testGuice() {
-    assertEquals( "java.util.List<java.lang.String>", Types.listOf( String.class ).toString() );
-    assertEquals( "java.util.List<? extends java.lang.String>", Types.listOf( Types.subtypeOf( String.class ) ).toString() );
-    assertEquals( "java.util.Collection<? extends java.lang.String>", Types.newParameterizedType( Collection.class, Types.subtypeOf( String.class ) ).toString() );
+    assertEquals("java.util.List<java.lang.String>", Types.listOf(String.class).toString());
+    assertEquals("java.util.List<? extends java.lang.String>", Types.listOf(Types.subtypeOf(String.class)).toString());
+    assertEquals("java.util.Collection<? extends java.lang.String>", Types.newParameterizedType(Collection.class, Types.subtypeOf(String.class)).toString());
   }
 }

@@ -33,7 +33,6 @@ package com.cedarsoft.serialization.stax
 import com.cedarsoft.serialization.PluggableSerializer
 import java.io.InputStream
 import java.io.OutputStream
-import javax.xml.stream.XMLStreamException
 import javax.xml.stream.XMLStreamReader
 
 
@@ -47,4 +46,4 @@ import javax.xml.stream.XMLStreamReader
  * @param <S> the object to serialize to
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface StaxBasedSerializer<T, S> : PluggableSerializer<T, S, XMLStreamReader, XMLStreamException, OutputStream, InputStream>
+interface StaxBasedSerializer<T : Any, S : Any> : PluggableSerializer<T, S, XMLStreamReader, OutputStream, InputStream>

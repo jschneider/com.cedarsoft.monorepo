@@ -10,13 +10,16 @@ import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.protobuf.ProtoBuf
 
-val ContentType.Application.ProtoBuf: ContentType
+val ProtoBuf: ContentType
   get() = ContentType("application", "protobuf")
 
 /**
  * Serializer that converts to protocol buffers
  */
-class ProtoBufSerializationConverter(private val protoBuf: ProtoBuf = ProtoBuf()) : KotlinxSerializationConverter() {
+class ProtoBufSerializationConverter(
+  private val protoBuf: ProtoBuf = ProtoBuf {
+  }
+) : KotlinxSerializationConverter() {
   override suspend fun deserialize(
     context: PipelineContext<ApplicationReceiveRequest, ApplicationCall>,
     contentType: ContentType,
@@ -24,7 +27,7 @@ class ProtoBufSerializationConverter(private val protoBuf: ProtoBuf = ProtoBuf()
     serializer: KSerializer<Any>
   ): Any? {
     val bytes = input.toByteArray()
-    return protoBuf.load(serializer, bytes)
+    return protoBuf.decodeFromByteArray(serializer, bytes)
   }
 
   override suspend fun serialize(
@@ -34,7 +37,7 @@ class ProtoBufSerializationConverter(private val protoBuf: ProtoBuf = ProtoBuf()
     serializer: KSerializer<Any>
   ): Any? {
     return ByteArrayContent(
-      bytes = protoBuf.dump(serializer, value),
+      bytes = protoBuf.encodeToByteArray(serializer, value),
       contentType = ContentType.Application.ProtoBuf
     )
   }

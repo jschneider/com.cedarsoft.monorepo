@@ -11,12 +11,6 @@ import java.util.logging.Logger
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class GuiceExtensionTest {
-  @Test @Disabled
-  internal fun testSimple() {
-    configureInjections(test = false).getInstance<AppService>().run()
-    configureInjections(test = true).getInstance<AppService>().run()
-  }
-
   fun configureInjections(test: Boolean) = GuiceInjectorBuilder.injector {
     module {
       if (test) {

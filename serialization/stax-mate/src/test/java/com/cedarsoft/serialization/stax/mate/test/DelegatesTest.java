@@ -45,13 +45,11 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.codehaus.staxmate.out.SMOutputElement;
 import org.junit.jupiter.api.*;
-import org.xml.sax.SAXException;
 
 import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
 import com.cedarsoft.serialization.ui.DelegatesMappingVisualizer;
 import com.cedarsoft.test.utils.AssertUtils;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 
 /**
@@ -87,18 +85,18 @@ public class DelegatesTest {
                   "         -->      Door    Window\n" +
                     "--------------------------------\n" +
                     "   1.0.0 -->     1.0.0     1.0.0\n" +
-                    "   1.5.0 -->       |         |  \n" +
-                    "   2.0.0 -->       |       2.0.0\n" +
+                    "   1.5.0 -->         |         |\n" +
+                    "   2.0.0 -->         |     2.0.0\n" +
                     "--------------------------------\n" );
   }
 
   @Test
-  public void testSimple() throws IOException, SAXException {
+  public void testSimple() throws Exception {
     AbstractStaxMateSerializer<Room> roomSerializer = new MyRoomSerializer();
 
     //Now try to serialize them
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    roomSerializer.serialize( hall, out );
+    roomSerializer.serialize(hall, out);
 
     AssertUtils.assertXMLEquals(out.toString(),
                                 "<room xmlns=\"room/2.0.0\">\n" +
@@ -161,17 +159,17 @@ public class DelegatesTest {
 
     @Nonnull
     @Override
-    public Room deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull final Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      assert isVersionReadable( formatVersion );
-      String description = getChildText( deserializeFrom, "description" );
+    public Room deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull final Version formatVersion) throws Exception {
+      assert isVersionReadable(formatVersion);
+      String description = getChildText(deserializeFrom, "description");
 
-      nextTag( deserializeFrom, "doors" );
-      List<? extends Door> doors = deserializeCollection( deserializeFrom, Door.class, formatVersion );
-      nextTag( deserializeFrom, "windows" );
-      List<? extends Window> windows = deserializeCollection( deserializeFrom, Window.class, formatVersion );
+      nextTag(deserializeFrom, "doors");
+      List<? extends Door> doors = deserializeCollection(deserializeFrom, Door.class, formatVersion);
+      nextTag(deserializeFrom, "windows");
+      List<? extends Window> windows = deserializeCollection(deserializeFrom, Window.class, formatVersion);
 
-      closeTag( deserializeFrom );
-      return new Room( description, windows, doors );
+      closeTag(deserializeFrom);
+      return new Room(description, windows, doors);
     }
   }
 }

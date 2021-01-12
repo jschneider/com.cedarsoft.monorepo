@@ -31,16 +31,14 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
 
 /**
  *
@@ -52,13 +50,13 @@ public class StringSerializer extends AbstractJacksonSerializer<String> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull String objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     serializeTo.writeString(objectToSerialize);
   }
 
   @Nonnull
   @Override
-  public String deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public String deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     return deserializeFrom.getText();
   }
 

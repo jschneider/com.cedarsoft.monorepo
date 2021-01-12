@@ -32,8 +32,6 @@ package com.cedarsoft.serialization.neo4j.test.utils;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
 import javax.annotation.Nonnull;
 
 import org.junit.jupiter.api.*;
@@ -70,10 +68,10 @@ public class BallSerializerTest extends AbstractNeo4jSerializerTest2<Ball> {
                     "--------------------------------\n" +
                     "   1.0.0 -->     2.0.0     1.5.0\n" +
                     "   1.1.0 -->     2.0.1     1.5.1\n" +
-                    "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, Node, Node, IOException, Node, Node>>() {
+                    "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, Node, Node, Node, Node>>() {
       @Nonnull
       @Override
-      public String convert( @Nonnull SerializingStrategy<? extends Ball, Node, Node, IOException, Node, Node> object ) {
+      public String convert( @Nonnull SerializingStrategy<? extends Ball, Node, Node, Node, Node> object ) {
         return object.getId();
       }
     } ) );

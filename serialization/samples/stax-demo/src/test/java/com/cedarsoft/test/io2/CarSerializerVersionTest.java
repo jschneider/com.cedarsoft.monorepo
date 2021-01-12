@@ -102,13 +102,13 @@ public class CarSerializerVersionTest extends AbstractXmlVersionTest2<Car> {
 
   @Test
   public void testAsciiArt() throws Exception {
-    DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer( ( ( AbstractSerializer<?, ?, ?, ?, ?, ?> ) getSerializer() ).getDelegatesMappings() );
-    assertEquals( visualizer.visualize(),
-                  "         -->     Extra     Model     Money\n" +
-                    "------------------------------------------\n" +
-                    "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
-                    "   1.0.1 -->     1.5.1       |       1.0.1\n" +
-                    "------------------------------------------\n" );
+    DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer(((AbstractSerializer<?, ?, ?, ?, ?>) getSerializer()).getDelegatesMappings());
+    assertEquals(visualizer.visualize(),
+                 "         -->     Extra     Model     Money\n" +
+                   "------------------------------------------\n" +
+                   "   1.0.0 -->     1.5.0     1.0.0     1.0.0\n" +
+                   "   1.0.1 -->     1.5.1         |     1.0.1\n" +
+                   "------------------------------------------\n" );
   }
 
 }

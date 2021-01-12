@@ -12,11 +12,13 @@ import io.ktor.util.pipeline.PipelineContext
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.jvm.javaio.toInputStream
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 
-class JsonSerializationConverter @UnstableDefault constructor(
-  private val json: Json = Json.plain
+class JsonSerializationConverter constructor(
+  private val json: Json = Json {
+    prettyPrint = true
+  }
+
 ) : KotlinxSerializationConverter() {
   override suspend fun serialize(
     context: PipelineContext<Any, ApplicationCall>,
@@ -25,7 +27,7 @@ class JsonSerializationConverter @UnstableDefault constructor(
     serializer: KSerializer<Any>
   ): Any? {
     return TextContent(
-      text = json.stringify(serializer, value),
+      text = json.encodeToString(serializer, value),
       contentType = ContentType.Application.Json.withCharset(context.call.suitableCharset())
     )
   }
@@ -37,6 +39,6 @@ class JsonSerializationConverter @UnstableDefault constructor(
     serializer: KSerializer<Any>
   ): Any? {
     val text = input.toInputStream().reader(contentType.charset() ?: Charsets.UTF_8).readText()
-    return json.parse(serializer, text)
+    return json.decodeFromString(serializer, text)
   }
 }

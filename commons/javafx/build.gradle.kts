@@ -10,7 +10,7 @@ plugins {
 dependencies {
   api(project(Projects.dependencies_sets_kotlin))
 
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_unit_unit))
@@ -23,6 +23,7 @@ dependencies {
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(project(Projects.open_commons_javafx_test_utils))
   testImplementation(Libs.miglayout_javafx)
   testImplementation(Libs.jfxtras_all)
   testImplementation(Libs.fxgraphics2d)

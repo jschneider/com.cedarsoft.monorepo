@@ -30,16 +30,17 @@
  */
 package com.cedarsoft.serialization.neo4j.test.utils;
 
-import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.RelationshipType;
 
-import javax.annotation.Nonnull;
-import java.io.IOException;
-import java.util.List;
+import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  * The type Person serializer.
@@ -62,24 +63,24 @@ public class PersonSerializer extends AbstractNeo4jSerializer<Person> {
   }
 
   @Override
-  protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Person objectToSerialize, @Nonnull Version formatVersion ) throws IOException {
-    serializeTo.setProperty("name", objectToSerialize.getName() );
+  protected void serializeInternal(@Nonnull Node serializeTo, @Nonnull Person objectToSerialize, @Nonnull Version formatVersion) throws Exception {
+    serializeTo.setProperty("name", objectToSerialize.getName());
 
-    serializeWithRelationship(objectToSerialize.getAddress(), Address.class, serializeTo, Relations.ADDRESS, formatVersion );
-    serializeWithRelationships(objectToSerialize.getMails(), Email.class, serializeTo, Relations.EMAIL, formatVersion );
+    serializeWithRelationship(objectToSerialize.getAddress(), Address.class, serializeTo, Relations.ADDRESS, formatVersion);
+    serializeWithRelationships(objectToSerialize.getMails(), Email.class, serializeTo, Relations.EMAIL, formatVersion);
   }
 
   @Nonnull
   @Override
-  public Person deserialize( @Nonnull Node deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
-    verifyVersionReadable( formatVersion );
+  public Person deserialize(@Nonnull Node deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+    verifyVersionReadable(formatVersion);
 
-    String name = ( String ) deserializeFrom.getProperty( "name" );
+    String name = (String) deserializeFrom.getProperty("name");
 
-    Address address = deserializeWithRelationship( Address.class, Relations.ADDRESS, deserializeFrom, formatVersion );
+    Address address = deserializeWithRelationship(Address.class, Relations.ADDRESS, deserializeFrom, formatVersion);
 
-    List<? extends Email> emails = deserializeWithRelationships( Email.class, Relations.EMAIL, deserializeFrom, formatVersion );
-    return new Person( name, address, emails );
+    List<? extends Email> emails = deserializeWithRelationships(Email.class, Relations.EMAIL, deserializeFrom, formatVersion);
+    return new Person(name, address, emails);
   }
 
   /**

@@ -9,7 +9,11 @@ plugins {
 
 dependencies {
   api(project(Projects.dependencies_sets_kotlin))
-  api(project(Projects.open_annotations))
+  //No dependency to dependencies_sets_tornadofx --> to avoid circular deps
+
+  api(Libs.kotlin_reflect)
+
+  compileOnlyApi(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_javafx))
   api(Libs.guava)

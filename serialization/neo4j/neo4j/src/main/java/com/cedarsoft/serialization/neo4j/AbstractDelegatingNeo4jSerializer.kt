@@ -35,7 +35,6 @@ import com.cedarsoft.serialization.SerializingStrategy
 import com.cedarsoft.serialization.SerializingStrategySupport
 import com.cedarsoft.serialization.VersionMapping
 import com.cedarsoft.version.Version
-import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionRange
 import org.neo4j.graphdb.Node
 import org.neo4j.graphdb.NotFoundException
@@ -45,16 +44,16 @@ import java.io.IOException
  * Abstract base class for all neo4j serializers
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-open class AbstractDelegatingNeo4jSerializer<T>
+open class AbstractDelegatingNeo4jSerializer<T : Any>
 protected constructor(
   nameSpaceUriBase: String,
   formatVersionRange: VersionRange
 ) : AbstractNeo4jSerializer<T>(nameSpaceUriBase, formatVersionRange) {
 
-  val serializingStrategySupport: SerializingStrategySupport<T, Node, Node, IOException, Node, Node> = SerializingStrategySupport<T, Node, Node, IOException, Node, Node>(formatVersionRange)
+  val serializingStrategySupport: SerializingStrategySupport<T, Node, Node, Node, Node> = SerializingStrategySupport(formatVersionRange)
 
-  val strategies: Collection<SerializingStrategy<out T, Node, Node, IOException, Node, Node>>
-    get() = serializingStrategySupport.strategies
+  val strategies: Collection<SerializingStrategy<out T, Node, Node, Node, Node>>
+    get() = serializingStrategySupport.getStrategies()
 
   /** @noinspection RefusedBequest
    */
@@ -80,7 +79,7 @@ protected constructor(
     strategy.serialize(serializeTo, objectToSerialize, resolvedVersion)
   }
 
-  @Throws(IOException::class, VersionException::class, IOException::class)
+  @Throws(Exception::class)
   override fun deserialize(deserializeFrom: Node, formatVersion: Version): T {
     assert(isVersionReadable(formatVersion))
 
@@ -95,15 +94,16 @@ protected constructor(
     }
   }
 
-  fun addStrategy(strategy: SerializingStrategy<out T, Node, Node, IOException, Node, Node>): VersionMapping {
+  fun addStrategy(strategy: SerializingStrategy<out T, Node, Node, Node, Node>): VersionMapping {
     return serializingStrategySupport.addStrategy(strategy)
   }
 
   companion object {
-    val PROPERTY_DELEGATING_FORMAT_VERSION = "delegatingFormatVersion"
+    const val PROPERTY_DELEGATING_FORMAT_VERSION: String = "delegatingFormatVersion"
+
     /**
      * Used for delegating serializers
      */
-    val PROPERTY_SUB_TYPE = "subtype"
+    const val PROPERTY_SUB_TYPE: String = "subtype"
   }
 }

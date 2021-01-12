@@ -1,9 +1,7 @@
 package com.cedarsoft.commons.ktor
 
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 
 /**
@@ -33,11 +31,6 @@ class SerializersMap {
 
   inline fun <reified T : Any> register(serializer: KSerializer<T>) {
     register(T::class, serializer)
-  }
-
-  @ImplicitReflectionSerializer
-  inline fun <reified T : Any> register() {
-    register(T::class.serializer())
   }
 
   fun <T : Any> getSerializerNullable(type: KClass<out T>): KSerializer<T>? {

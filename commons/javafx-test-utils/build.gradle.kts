@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.open_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_javafx))
   api(Libs.guava)

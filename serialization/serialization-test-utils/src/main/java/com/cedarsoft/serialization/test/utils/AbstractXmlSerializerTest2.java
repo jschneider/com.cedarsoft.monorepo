@@ -65,7 +65,7 @@ public abstract class AbstractXmlSerializerTest2<T> extends AbstractSerializerTe
     if ( addNameSpace() ) {
       String expectedWithNamespace;
       try {
-        expectedWithNamespace = addNameSpace( ( AbstractXmlSerializer<?, ?, ?, ?> ) getSerializer(), expectedXml );
+        expectedWithNamespace = addNameSpace(( AbstractXmlSerializer<?, ?, ?> ) getSerializer(), expectedXml );
       } catch ( SAXException ignore ) {
         expectedWithNamespace = new String( expectedXml, StandardCharsets.UTF_8 );
       }
@@ -90,7 +90,7 @@ public abstract class AbstractXmlSerializerTest2<T> extends AbstractSerializerTe
   }
 
   @Nonnull
-  public static String addNameSpace( @Nonnull AbstractXmlSerializer<?, ?, ?, ?> serializer, @Nonnull byte[] xmlBytes ) throws Exception {
+  public static String addNameSpace(@Nonnull AbstractXmlSerializer<?, ?, ?> serializer, @Nonnull byte[] xmlBytes ) throws Exception {
     return addNameSpace( serializer.createNameSpace( serializer.getFormatVersion() ), xmlBytes );
   }
 

@@ -1,10 +1,13 @@
 package com.cedarsoft.commons.javafx
 
+import com.sun.javafx.tk.Toolkit
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
-import javafx.event.EventHandler
+import javafx.application.Platform
 import javafx.util.Duration
+import java.util.concurrent.Callable
+import java.util.concurrent.FutureTask
 
 
 /**
@@ -18,7 +21,7 @@ object JavaFxTimer {
    */
   @JvmStatic
   fun start(delay: Duration, run: Runnable): Timeline {
-    val timeline = Timeline(KeyFrame(delay, EventHandler { run.run() }))
+    val timeline = Timeline(KeyFrame(delay, { run.run() }))
     timeline.play()
     return timeline
   }
@@ -27,16 +30,38 @@ object JavaFxTimer {
    * Calls the given lambda after the delay once
    */
   @JvmStatic
-  fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
-    val timeline = Timeline(KeyFrame(delay.toJavaFx(), EventHandler { run() }))
+  fun delay(delay: Duration, run: () -> Unit): Timeline {
+    if (delay.toMillis() == 0.0) {
+      Platform.runLater(run)
+      return Timeline() //return an empty timeline that is stopped
+    }
+
+    val timeline = Timeline(KeyFrame(delay, { run() }))
     timeline.play()
     return timeline
   }
 
+  /**
+   * Returns the time line or null if the action has been scheduled immediately
+   */
+  @JvmStatic
+  fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
+    return delay(delay.toJavaFx(), run)
+  }
+
+  @JvmStatic
+  fun delay(delay: kotlin.time.Duration, run: Runnable): Timeline {
+    return delay(delay, run::run)
+  }
+
+  @JvmStatic
+  fun delay(delay: Duration, run: Runnable): Timeline {
+    return delay(delay, run::run)
+  }
 
   @JvmStatic
   fun repeat(delay: Duration, run: Runnable) {
-    val timeline = Timeline(KeyFrame(delay, EventHandler { run.run() }))
+    val timeline = Timeline(KeyFrame(delay, { run.run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
   }
@@ -45,7 +70,7 @@ object JavaFxTimer {
    * Repeats the given lambda every [delay]
    */
   fun repeat(delay: Duration, run: () -> Unit): Timeline {
-    val timeline = Timeline(KeyFrame(delay, EventHandler { run() }))
+    val timeline = Timeline(KeyFrame(delay, { run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
     return timeline
@@ -56,6 +81,47 @@ object JavaFxTimer {
    */
   fun repeat(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
     return repeat(delay.toJavaFx(), run)
+  }
+
+  /**
+   * Similar to SwingUtilities#invokeAndWait
+   */
+  fun runAndWait(runnable: Runnable) {
+    runAndWait(runnable::run)
+  }
+
+  fun runAndWait(runnable: () -> Unit) {
+    if (Platform.isFxApplicationThread()) {
+      //run inline in fx thread
+      runnable()
+      return
+    }
+
+    FutureTask<Void?>(runnable, null).also {
+      Platform.runLater(it)
+    }.get()
+  }
+
+  /**
+   * Similar to SwingUtilities#invokeAndWait
+   *
+   * @return the result of the [callable]
+   */
+  fun <V> runAndWait(callable: Callable<V>): V {
+    if (Platform.isFxApplicationThread()) {
+      return callable.call()
+    }
+
+    return FutureTask(callable).also {
+      Platform.runLater(it)
+    }.get()
+  }
+
+  /**
+   * Waits until the next paint pulse has been fired
+   */
+  fun waitForPaintPulse() {
+    runAndWait { Toolkit.getToolkit().firePulse() }
   }
 }
 

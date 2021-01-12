@@ -41,7 +41,7 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
   @Nonnull
   protected T getResource(ExtensionContext extensionContext, Member key) {
     //noinspection unchecked
-    Map<Member, T> map = getStore(extensionContext).getOrComputeIfAbsent(extensionContext.getTestClass().get(), (c) -> new ConcurrentHashMap<>(), Map.class);
+    Map<Member, T> map = getStore(extensionContext).getOrComputeIfAbsent(extensionContext.getTestClass().get(), c -> new ConcurrentHashMap<>(), Map.class);
     return map.computeIfAbsent(key, member -> createResource(extensionContext));
   }
 
@@ -72,11 +72,11 @@ public abstract class AbstractResourceProvidingExtension<T> implements Parameter
    * Converts the given resource to an object for the parameter - based on the type and annotations of the parameter
    */
   @Nonnull
-  protected abstract Object convertResourceForParameter(@Nonnull Parameter parameter, @Nonnull T resource) throws ParameterResolutionException, Exception;
+  protected abstract Object convertResourceForParameter(@Nonnull Parameter parameter, @Nonnull T resource) throws Exception;
 
 
   @Override
-  public void afterTestExecution(ExtensionContext context) throws Exception {
+  public void afterTestExecution(ExtensionContext context) {
     // clean up test instance
     cleanupResources(context);
 

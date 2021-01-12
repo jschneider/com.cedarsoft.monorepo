@@ -8,7 +8,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
 
   //
   // Compile Deps

@@ -31,21 +31,20 @@
 
 package com.cedarsoft.serialization.jackson;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+
 import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
-
-import javax.annotation.Nullable;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  *
@@ -61,13 +60,13 @@ public class NullSerializer extends AbstractJacksonSerializer<Void> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nullable Void objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nullable Void objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     serializeTo.writeNull();
   }
 
   @Nonnull
   @Override
-  public Void deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public Void deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     throw new UnsupportedOperationException();
   }
 
@@ -83,7 +82,7 @@ public class NullSerializer extends AbstractJacksonSerializer<Void> {
 
   @Nullable
   @Override
-  public Void deserialize( @Nonnull InputStream deserializeFrom) throws IOException, VersionException {
+  public Void deserialize(@Nonnull InputStream deserializeFrom) throws Exception {
     //noinspection ConstantConditions
     return null;
   }

@@ -34,7 +34,6 @@ package com.cedarsoft.serialization;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -51,11 +50,11 @@ import com.cedarsoft.version.VersionRange;
  *
  */
 public class SerializingStrategySupportTest {
-  private SerializingStrategySupport<Integer, StringBuilder, String, IOException, OutputStream, InputStream> support;
+  private SerializingStrategySupport<Integer, StringBuilder, String, OutputStream, InputStream> support;
 
   @BeforeEach
   public void setUp() throws Exception {
-    support = new SerializingStrategySupport<Integer, StringBuilder, String, IOException, OutputStream, InputStream>( VersionRange.single(1, 0, 0) );
+    support = new SerializingStrategySupport<Integer, StringBuilder, String, OutputStream, InputStream>(VersionRange.single(1, 0, 0) );
   }
 
   @Test
@@ -99,9 +98,9 @@ public class SerializingStrategySupportTest {
   public void testVersionMappings() throws Exception {
     new MockitoTemplate() {
       @Mock
-      private SerializingStrategy<Integer, StringBuilder, String, IOException, OutputStream, InputStream> strategy1;
+      private SerializingStrategy<Integer, StringBuilder, String, OutputStream, InputStream> strategy1;
       @Mock
-      private SerializingStrategy<Integer, StringBuilder, String, IOException, OutputStream, InputStream> strategy2;
+      private SerializingStrategy<Integer, StringBuilder, String, OutputStream, InputStream> strategy2;
 
       @Override
       protected void stub() throws Exception {
@@ -138,7 +137,7 @@ public class SerializingStrategySupportTest {
   public void festFind3() throws Exception {
     new MockitoTemplate() {
       @Mock
-      private SerializingStrategy<Integer, StringBuilder, String, IOException, OutputStream, InputStream> strategy;
+      private SerializingStrategy<Integer, StringBuilder, String, OutputStream, InputStream> strategy;
 
       @Override
       protected void stub() throws Exception {

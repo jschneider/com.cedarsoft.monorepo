@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cedarsoft.commons.test.CustomerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-12T17:32:58" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.618">
+  <properties/>
+  <testcase name="testList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.369"/>
+  <testcase name="testListeners()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.008"/>
+  <testcase name="testSimpleBinding()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.01"/>
+  <testcase name="testLazyObsList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.004"/>
+  <testcase name="testBasics()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.196"/>
+  <testcase name="testAddressValid()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.005"/>
+  <system-out><![CDATA[add
+Change... { [com.cedarsoft.commons.test.Customer$Address@4aa3a40e] added at 0 }
+next <[com.cedarsoft.commons.test.Customer$Address@4aa3a40e]> and removed <[]>
+add
+Change... { [com.cedarsoft.commons.test.Customer$Address@45bba439] added at 1 }
+next <[com.cedarsoft.commons.test.Customer$Address@45bba439]> and removed <[]>
+addAll
+Change... { [com.cedarsoft.commons.test.Customer$Address@56d83932, com.cedarsoft.commons.test.Customer$Address@579d673, com.cedarsoft.commons.test.Customer$Address@52ad8106] added at 2 }
+next <[com.cedarsoft.commons.test.Customer$Address@56d83932, com.cedarsoft.commons.test.Customer$Address@579d673, com.cedarsoft.commons.test.Customer$Address@52ad8106]> and removed <[]>
+setting name
+Invalidated
+Changed from <> to <New Name>
+name set
+Changed from <false> to <true>
+setting number
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

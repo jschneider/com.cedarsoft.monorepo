@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test
 class FxUtilsKtTest {
   @Test
   fun test2RGB() {
-    assertThat(Color.RED.toRGBCode()).isEqualTo("#FF0000")
-    assertThat(Color.GREEN.toRGBCode()).isEqualTo("#008000")
-    assertThat(Color.BLUE.toRGBCode()).isEqualTo("#0000FF")
-    assertThat(Color.LIGHTGRAY.toRGBCode()).isEqualTo("#D3D3D3")
-    assertThat(Color.DARKGRAY.toRGBCode()).isEqualTo("#A9A9A9")
-    assertThat(Color.GRAY.toRGBCode()).isEqualTo("#808080")
+    assertThat(Color.RED.toRGBHex()).isEqualTo("#FF0000")
+    assertThat(Color.GREEN.toRGBHex()).isEqualTo("#008000")
+    assertThat(Color.BLUE.toRGBHex()).isEqualTo("#0000FF")
+    assertThat(Color.LIGHTGRAY.toRGBHex()).isEqualTo("#D3D3D3")
+    assertThat(Color.DARKGRAY.toRGBHex()).isEqualTo("#A9A9A9")
+    assertThat(Color.GRAY.toRGBHex()).isEqualTo("#808080")
   }
 }

@@ -39,15 +39,15 @@ import com.cedarsoft.version.VersionRange
  * @param <T> the type of object this serializer is able to (de)serialize
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
- * @param <E> the exception that might be thrown
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractNameSpaceBasedSerializer<T, S, D, E : Throwable> protected constructor(
+abstract class AbstractNameSpaceBasedSerializer<T : Any, S : Any, D : Any> protected constructor(
   /**
    * Returns the name space uri without the form at version
    * @return the name space uri base
    */
-  val nameSpaceBase: String, formatVersionRange: VersionRange) : AbstractStreamSerializer<T, S, D, E>(formatVersionRange) {
+  val nameSpaceBase: String, formatVersionRange: VersionRange
+) : AbstractStreamSerializer<T, S, D>(formatVersionRange) {
 
   /**
    * Returns the name space uri (including the version)
@@ -78,7 +78,7 @@ abstract class AbstractNameSpaceBasedSerializer<T, S, D, E : Throwable> protecte
     }
     val expectedBase = nameSpaceBase
     if (!namespace.startsWith(expectedBase)) {
-      throw SerializationException(SerializationException.Details.INVALID_NAME_SPACE, expectedBase + "/" + formatVersion, namespace)
+      throw SerializationException(SerializationException.Details.INVALID_NAME_SPACE, "$expectedBase/$formatVersion", namespace)
     }
   }
 

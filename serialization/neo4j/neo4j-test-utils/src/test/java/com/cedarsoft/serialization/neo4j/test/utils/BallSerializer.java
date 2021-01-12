@@ -79,14 +79,15 @@ public class BallSerializer extends AbstractDelegatingNeo4jSerializer<Ball> {
 
     @Nonnull
     @Override
-    public Ball.TennisBall deserialize( @Nonnull Node deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, IOException {
-      verifyVersionReadable( formatVersion );
+    public Ball.TennisBall deserialize(@Nonnull Node deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+      verifyVersionReadable(formatVersion);
 
       int id;
-      if ( formatVersion.equals( Version.valueOf( 1, 5, 0 ) ) ) {
+      if (formatVersion.equals(Version.valueOf(1, 5, 0))) {
         //legacy support
         id = ((Number) deserializeFrom.getProperty("id")).intValue();
-      }else{
+      }
+      else {
         //This is the new version
         id = ((Number) deserializeFrom.getProperty("newId")).intValue();
       }

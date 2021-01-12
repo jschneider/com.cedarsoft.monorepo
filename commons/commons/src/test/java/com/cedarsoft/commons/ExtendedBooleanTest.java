@@ -31,7 +31,7 @@
 
 package com.cedarsoft.commons;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -50,49 +50,49 @@ public class ExtendedBooleanTest {
 
   @Test
   public void testResourceBundles() throws Exception {
-    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName() ).getLocale().getLanguage() );
-    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.FRENCH ).getLocale().getLanguage() );
-    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH ).getLocale().getLanguage() );
-    assertEquals( "", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ).getLocale().getLanguage() );
-    assertEquals( "de", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ).getLocale().getLanguage() );
+    assertEquals("", ResourceBundle.getBundle(ExtendedBoolean.class.getName()).getLocale().getLanguage());
+    assertEquals("", ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.FRENCH).getLocale().getLanguage());
+    assertEquals("", ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.ENGLISH).getLocale().getLanguage());
+    assertEquals("", ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.US).getLocale().getLanguage());
+    assertEquals("de", ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.GERMANY).getLocale().getLanguage());
 
 
-    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ) );
-    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ) );
+    Assertions.assertNotNull(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.GERMANY));
+    Assertions.assertNotNull(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.US));
 
-    assertNotSame( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ),
-                   ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH )
+    Assertions.assertNotSame(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.GERMANY),
+                             ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.ENGLISH)
     );
 
-    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ) );
-    assertNotNull( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ) );
-    assertNotSame( ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.GERMANY ),
-                   ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.ENGLISH )
+    Assertions.assertNotNull(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.GERMANY));
+    Assertions.assertNotNull(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.US));
+    Assertions.assertNotSame(ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.GERMANY),
+                             ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.ENGLISH)
     );
 
 
-    assertEquals( "Yes", ResourceBundle.getBundle( ExtendedBoolean.class.getName(), Locale.US ).getString( "TRUE" ) );
+    assertEquals("Yes", ResourceBundle.getBundle(ExtendedBoolean.class.getName(), Locale.US).getString("True"));
   }
 
   @Test
   public void testTranslation() {
-    assertEquals( "Ja", ExtendedBoolean.TRUE.getDescription( Locale.GERMANY ) );
-    assertEquals( "Yes", ExtendedBoolean.TRUE.getDescription( Locale.US ) );
-    assertEquals( "Yes", ExtendedBoolean.TRUE.getDescription( Locale.FRANCE ) );
+    assertEquals("Ja", ExtendedBoolean.True.getDescription(Locale.GERMANY));
+    assertEquals("Yes", ExtendedBoolean.True.getDescription(Locale.US));
+    assertEquals("Yes", ExtendedBoolean.True.getDescription(Locale.FRANCE));
 
-    assertEquals( "Nein", ExtendedBoolean.FALSE.getDescription( Locale.GERMANY ) );
-    assertEquals( "No", ExtendedBoolean.FALSE.getDescription( Locale.US ) );
-    assertEquals( "No", ExtendedBoolean.FALSE.getDescription( Locale.FRANCE ) );
+    assertEquals("Nein", ExtendedBoolean.False.getDescription(Locale.GERMANY));
+    assertEquals("No", ExtendedBoolean.False.getDescription(Locale.US));
+    assertEquals("No", ExtendedBoolean.False.getDescription(Locale.FRANCE));
 
-    assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.GERMANY ) );
-    assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.US ) );
-    assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription( Locale.FRANCE ) );
+    assertEquals("?", ExtendedBoolean.Unknown.getDescription(Locale.GERMANY));
+    assertEquals("?", ExtendedBoolean.Unknown.getDescription(Locale.US));
+    assertEquals("?", ExtendedBoolean.Unknown.getDescription(Locale.FRANCE));
   }
 
   @Test
   public void testValueOf() {
-    assertEquals( ExtendedBoolean.TRUE, ExtendedBoolean.valueOf( true ) );
-    assertEquals( ExtendedBoolean.FALSE, ExtendedBoolean.valueOf( false ) );
+    assertEquals(ExtendedBoolean.True, ExtendedBoolean.valueOf(true));
+    assertEquals(ExtendedBoolean.False, ExtendedBoolean.valueOf(false));
   }
 
   @Test
@@ -100,10 +100,10 @@ public class ExtendedBooleanTest {
     Locale old = Locale.getDefault();
 
     try {
-      Locale.setDefault( Locale.GERMANY );
-      assertEquals( "Ja", ExtendedBoolean.TRUE.getDescription() );
-      assertEquals( "Nein", ExtendedBoolean.FALSE.getDescription() );
-      assertEquals( "?", ExtendedBoolean.UNKNOWN.getDescription() );
+      Locale.setDefault(Locale.GERMANY);
+      assertEquals("Ja", ExtendedBoolean.True.getDescription());
+      assertEquals("Nein", ExtendedBoolean.False.getDescription());
+      assertEquals("?", ExtendedBoolean.Unknown.getDescription());
     } finally {
       Locale.setDefault( old );
     }
@@ -111,16 +111,16 @@ public class ExtendedBooleanTest {
 
   @Test
   public void testBasic() {
-    assertTrue( ExtendedBoolean.TRUE.isTrue() );
-    assertFalse( ExtendedBoolean.TRUE.isFalse() );
-    assertFalse( ExtendedBoolean.TRUE.isUnknown() );
+    Assertions.assertTrue(ExtendedBoolean.True.isTrue());
+    Assertions.assertFalse(ExtendedBoolean.True.isFalse());
+    Assertions.assertFalse(ExtendedBoolean.True.isUnknown());
 
-    assertFalse( ExtendedBoolean.FALSE.isTrue() );
-    assertTrue( ExtendedBoolean.FALSE.isFalse() );
-    assertFalse( ExtendedBoolean.FALSE.isUnknown() );
+    Assertions.assertFalse(ExtendedBoolean.False.isTrue());
+    Assertions.assertTrue(ExtendedBoolean.False.isFalse());
+    Assertions.assertFalse(ExtendedBoolean.False.isUnknown());
 
-    assertFalse( ExtendedBoolean.UNKNOWN.isTrue() );
-    assertFalse( ExtendedBoolean.UNKNOWN.isFalse() );
-    assertTrue( ExtendedBoolean.UNKNOWN.isUnknown() );
+    Assertions.assertFalse(ExtendedBoolean.Unknown.isTrue());
+    Assertions.assertFalse(ExtendedBoolean.Unknown.isFalse());
+    Assertions.assertTrue(ExtendedBoolean.Unknown.isUnknown());
   }
 }

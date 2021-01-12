@@ -46,7 +46,7 @@ import javax.xml.stream.XMLStreamWriter
 
  * @param <T> the type
 </T> */
-abstract class AbstractStaxSerializer<T>
+abstract class AbstractStaxSerializer<T : Any>
 /**
  * Creates a new serializer
  * @param defaultElementName the default element name
@@ -60,7 +60,7 @@ constructor(
   formatVersionRange: VersionRange
 ) : AbstractStaxBasedSerializer<T, XMLStreamWriter>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
 
-  @Throws(IOException::class)
+  @Throws(Exception::class)
   override fun serialize(objectToSerialize: T, out: OutputStream) {
     try {
       val xmlOutputFactory = StaxSupport.getXmlOutputFactory()
@@ -92,10 +92,10 @@ constructor(
    * @throws XMLStreamException if there is an xml problem
    * @throws IOException if there is an io problem
    */
-  @Throws(XMLStreamException::class, IOException::class)
-  protected fun <CT> serializeCollection(objects: Iterable<CT>, type: Class<CT>, elementName: String, serializeTo: XMLStreamWriter, formatVersion: Version) {
+  @Throws(Exception::class)
+  protected fun <CT : Any> serializeCollection(objects: Iterable<CT>, type: Class<CT>, elementName: String, serializeTo: XMLStreamWriter, formatVersion: Version) {
     val serializer = getSerializer(type)
-    val resolvedVersion = getDelegatesMappings().resolveVersion(type, formatVersion)
+    val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
     for (`object` in objects) {
       serializeTo.writeStartElement(elementName)
@@ -104,10 +104,10 @@ constructor(
     }
   }
 
-  @Throws(XMLStreamException::class, IOException::class)
-  protected fun <CT> serializeCollection(objects: Iterable<CT>, type: Class<CT>, serializeTo: XMLStreamWriter, formatVersion: Version) {
+  @Throws(Exception::class)
+  protected fun <CT : Any> serializeCollection(objects: Iterable<CT>, type: Class<CT>, serializeTo: XMLStreamWriter, formatVersion: Version) {
     val serializer = getSerializer(type)
-    val resolvedVersion = getDelegatesMappings().resolveVersion(type, formatVersion)
+    val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
     for (`object` in objects) {
       serializeTo.writeStartElement(serializer.defaultElementName)
@@ -119,13 +119,12 @@ constructor(
   companion object {
     @JvmStatic
     fun wrapWithIndent(xmlStreamWriter: XMLStreamWriter): XMLStreamWriter {
-      try {
-        return IndentingXMLStreamWriter(xmlStreamWriter)
+      return try {
+        IndentingXMLStreamWriter(xmlStreamWriter)
       } catch (ignore: Exception) {
         //We could not instantiate the writer
-        return xmlStreamWriter
+        xmlStreamWriter
       }
-
     }
   }
 }

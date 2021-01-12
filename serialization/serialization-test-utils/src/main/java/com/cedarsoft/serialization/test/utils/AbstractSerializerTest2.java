@@ -45,6 +45,7 @@ import java.util.stream.Stream;
 import javax.annotation.Nonnull;
 
 import org.apache.commons.io.IOUtils;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
@@ -91,9 +92,9 @@ public abstract class AbstractSerializerTest2<T> {
   }
 
   @Nonnull
-  protected byte[] serialize( @Nonnull Serializer<T, OutputStream, InputStream> serializer, @Nonnull T objectToSerialize ) throws IOException {
+  protected byte[] serialize(@Nonnull Serializer<T, OutputStream, InputStream> serializer, @Nonnull T objectToSerialize) throws Exception {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    serializer.serialize( objectToSerialize, out );
+    serializer.serialize(objectToSerialize, out);
     return out.toByteArray();
   }
 
@@ -125,7 +126,7 @@ public abstract class AbstractSerializerTest2<T> {
   protected void verifyDeserialized( @Nonnull T deserialized, @Nonnull T original ) {
     assertEquals( original, deserialized );
     if (reflectionEqualsCheckEnabled) {
-      assertThat( deserialized, is( new ReflectionEquals( original ) ) );
+      MatcherAssert.assertThat(deserialized, is(new ReflectionEquals(original)));
     }
   }
 
@@ -136,10 +137,6 @@ public abstract class AbstractSerializerTest2<T> {
 
   @Nonnull
   public static <T> Entry<? extends T> create( @Nonnull T object, @Nonnull URL expected ) {
-    if (expected == null) {
-      throw new IllegalArgumentException("No expected ULR found");
-    }
-
     try {
       return new Entry<>(object, IOUtils.toByteArray(expected.openStream()));
     } catch ( IOException e ) {

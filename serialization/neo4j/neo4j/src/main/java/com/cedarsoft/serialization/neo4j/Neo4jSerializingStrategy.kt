@@ -33,10 +33,8 @@ package com.cedarsoft.serialization.neo4j
 import com.cedarsoft.serialization.SerializingStrategy
 import org.neo4j.graphdb.Node
 
-import java.io.IOException
-
 /**
  * Represents a neo4j serializing strategy
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface Neo4jSerializingStrategy<T> : SerializingStrategy<T, Node, Node, IOException, Node, Node>
+interface Neo4jSerializingStrategy<T : Any> : SerializingStrategy<T, Node, Node, Node, Node>

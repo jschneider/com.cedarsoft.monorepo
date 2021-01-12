@@ -30,16 +30,14 @@
  */
 package com.cedarsoft.serialization.jackson;
 
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -51,13 +49,13 @@ public class IntegerSerializer extends AbstractJacksonSerializer<Integer> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Integer objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     serializeTo.writeNumber(objectToSerialize);
   }
 
   @Nonnull
   @Override
-  public Integer deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public Integer deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     return deserializeFrom.getIntValue();
   }
 

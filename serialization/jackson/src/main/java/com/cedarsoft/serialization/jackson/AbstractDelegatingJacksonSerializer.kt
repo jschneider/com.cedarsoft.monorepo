@@ -50,14 +50,15 @@ import java.io.OutputStream
  * @param <T> the type
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractDelegatingJacksonSerializer<T>
+abstract class AbstractDelegatingJacksonSerializer<T : Any>
 protected constructor(
-  nameSpaceUriBase: String, formatVersionRange: VersionRange) : AbstractJacksonSerializer<T>(nameSpaceUriBase, formatVersionRange) {
+  nameSpaceUriBase: String, formatVersionRange: VersionRange
+) : AbstractJacksonSerializer<T>(nameSpaceUriBase, formatVersionRange) {
 
-  val serializingStrategySupport: SerializingStrategySupport<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream> = SerializingStrategySupport<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>(formatVersionRange)
+  val serializingStrategySupport: SerializingStrategySupport<T, JsonGenerator, JsonParser, OutputStream, InputStream> = SerializingStrategySupport(formatVersionRange)
 
-  val strategies: Collection<SerializingStrategy<out T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>>
-    get() = serializingStrategySupport.strategies
+  val strategies: Collection<SerializingStrategy<out T, JsonGenerator, JsonParser, OutputStream, InputStream>>
+    get() = serializingStrategySupport.getStrategies()
 
   @Throws(IOException::class, VersionException::class, JsonProcessingException::class)
   override fun serialize(serializeTo: JsonGenerator, objectToSerialize: T, formatVersion: Version) {
@@ -65,7 +66,7 @@ protected constructor(
 
     val strategy = serializingStrategySupport.findStrategy(objectToSerialize)
     val resolvedVersion = serializingStrategySupport.resolveVersion(strategy, formatVersion)
-    serializeTo.writeStringField(AbstractJacksonSerializer.PROPERTY_SUB_TYPE, strategy.id)
+    serializeTo.writeStringField(PROPERTY_SUB_TYPE, strategy.id)
 
     strategy.serialize(serializeTo, objectToSerialize, resolvedVersion)
   }
@@ -79,18 +80,18 @@ protected constructor(
     parserWrapper.verifyCurrentToken(JsonToken.FIELD_NAME)
     val currentName = parserWrapper.currentName
 
-    if (AbstractJacksonSerializer.PROPERTY_SUB_TYPE != currentName) {
-      throw JsonParseException(parserWrapper.parser, "Invalid field. Expected <" + AbstractJacksonSerializer.PROPERTY_SUB_TYPE + "> but was <" + currentName + ">", parserWrapper.currentLocation)
+    if (PROPERTY_SUB_TYPE != currentName) {
+      throw JsonParseException(parserWrapper.parser, "Invalid field. Expected <$PROPERTY_SUB_TYPE> but was <$currentName>", parserWrapper.currentLocation)
     }
     parserWrapper.nextToken()
-    val type = deserializeFrom.text ?: throw JsonParseException(parserWrapper.parser, "Attribute" + AbstractJacksonSerializer.PROPERTY_SUB_TYPE + " not found. Cannot find strategy.", deserializeFrom.currentLocation)
+    val type = deserializeFrom.text ?: throw JsonParseException(parserWrapper.parser, "Attribute$PROPERTY_SUB_TYPE not found. Cannot find strategy.", deserializeFrom.currentLocation)
 
     val strategy = serializingStrategySupport.findStrategy(type)
     val resolvedVersion = serializingStrategySupport.resolveVersion(strategy, formatVersion)
     return strategy.deserialize(deserializeFrom, resolvedVersion)
   }
 
-  fun addStrategy(strategy: SerializingStrategy<out T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>): VersionMapping {
+  fun addStrategy(strategy: SerializingStrategy<out T, JsonGenerator, JsonParser, OutputStream, InputStream>): VersionMapping {
     return serializingStrategySupport.addStrategy(strategy)
   }
 }

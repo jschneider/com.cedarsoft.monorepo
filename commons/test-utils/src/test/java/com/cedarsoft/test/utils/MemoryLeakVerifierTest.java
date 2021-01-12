@@ -47,7 +47,7 @@ public class MemoryLeakVerifierTest {
     List<Object> objects = new ArrayList<Object>();
     objects.add( new Object() );
 
-    MemoryLeakVerifier<Object> leakVerifier = new MemoryLeakVerifier<Object>( objects.get( 0 ) );
+    SwingMemoryLeakVerifier<Object> leakVerifier = new SwingMemoryLeakVerifier<Object>(objects.get(0));
     assertThat( leakVerifier.getObject() ).isNotNull();
 
     objects.clear();

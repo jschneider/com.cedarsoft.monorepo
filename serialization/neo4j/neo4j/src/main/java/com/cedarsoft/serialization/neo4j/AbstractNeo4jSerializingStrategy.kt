@@ -36,7 +36,7 @@ import com.cedarsoft.version.VersionRange
  * Serializing strategy for neo4j
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractNeo4jSerializingStrategy<T>
+abstract class AbstractNeo4jSerializingStrategy<T : Any>
 protected constructor(
   override val id: String,
   type: String,

@@ -35,7 +35,6 @@ import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.*;
@@ -60,13 +59,13 @@ public class MoneySerializerManualVersionTest {
   }
 
   @Test
-  public void testOldFormat() throws IOException {
+  public void testOldFormat() throws Exception {
     MoneySerializer serializer = new MoneySerializer();
     assertEquals(serializer.deserialize(new ByteArrayInputStream("<money xmlns=\"http://thecompany.com/test/money/1.0.0\">799</money>".getBytes(StandardCharsets.UTF_8))), new Money(7, 99));
   }
 
   @Test
-  public void testCurrentFormat() throws IOException {
+  public void testCurrentFormat() throws Exception {
     MoneySerializer serializer = new MoneySerializer();
     assertEquals(serializer.deserialize(new ByteArrayInputStream("<money xmlns=\"http://thecompany.com/test/money/1.0.1\" cents=\"799\" />".getBytes(StandardCharsets.UTF_8))), new Money(7, 99));
   }

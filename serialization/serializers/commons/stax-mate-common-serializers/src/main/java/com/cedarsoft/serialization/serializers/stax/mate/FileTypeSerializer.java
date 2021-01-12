@@ -31,19 +31,21 @@
 
 package com.cedarsoft.serialization.serializers.stax.mate;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.file.Extension;
-import com.cedarsoft.file.FileType;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import org.codehaus.staxmate.out.SMOutputElement;
+import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
-import java.util.List;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+
+import com.cedarsoft.file.Extension;
+import com.cedarsoft.file.FileType;
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -96,16 +98,17 @@ public class FileTypeSerializer extends AbstractStaxMateSerializer<FileType> {
 
   @Nonnull
   @Override
-  public FileType deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, XMLStreamException {
-    assert isVersionReadable( formatVersion );
-    boolean dependent = Boolean.parseBoolean( deserializeFrom.getAttributeValue( null, ATTRIBUTE_DEPENDENT ) );
-    String id = getChildText( deserializeFrom, ELEMENT_ID );
+  public FileType deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws Exception {
+    assert isVersionReadable(formatVersion);
+    boolean dependent = Boolean.parseBoolean(deserializeFrom.getAttributeValue(null, ATTRIBUTE_DEPENDENT));
+    String id = getChildText(deserializeFrom, ELEMENT_ID);
 
     String contentType;
-    if ( formatVersion.equals( 1, 0, 0 ) ) {
+    if (formatVersion.equals(1, 0, 0)) {
       contentType = "application/unknown";
-    } else {
-      contentType = getChildText( deserializeFrom, ELEMENT_CONTENT_TYPE );
+    }
+    else {
+      contentType = getChildText(deserializeFrom, ELEMENT_CONTENT_TYPE);
     }
 
     List<? extends Extension> extensions = deserializeCollection( deserializeFrom, Extension.class, formatVersion );

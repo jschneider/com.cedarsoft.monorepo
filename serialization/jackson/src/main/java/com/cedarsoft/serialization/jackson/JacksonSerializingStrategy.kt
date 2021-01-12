@@ -35,7 +35,6 @@ import com.cedarsoft.serialization.SerializingStrategy
 import com.cedarsoft.serialization.StreamSerializer
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.core.JsonProcessingException
 
 import java.io.InputStream
 import java.io.OutputStream
@@ -47,4 +46,4 @@ import java.io.OutputStream
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface JacksonSerializingStrategy<T> : SerializingStrategy<T, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>, StreamSerializer<T>
+interface JacksonSerializingStrategy<T : Any> : SerializingStrategy<T, JsonGenerator, JsonParser, OutputStream, InputStream>, StreamSerializer<T>

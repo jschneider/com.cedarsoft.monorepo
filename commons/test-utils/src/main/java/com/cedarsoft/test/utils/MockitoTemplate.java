@@ -31,7 +31,6 @@
 
 package com.cedarsoft.test.utils;
 
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 /**
@@ -68,16 +67,10 @@ public abstract class MockitoTemplate {
    * @throws Exception if any.
    */
   public void run() throws Exception {
-    initMocks();
-    stub();
-    execute();
-    verifyMocks();
-  }
-
-  /**
-   * <p>initMocks</p>
-   */
-  protected void initMocks() {
-    MockitoAnnotations.initMocks( this );
+    try (AutoCloseable ignored = MockitoAnnotations.openMocks(this)) {
+      stub();
+      execute();
+      verifyMocks();
+    }
   }
 }

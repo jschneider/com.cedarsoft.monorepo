@@ -31,17 +31,18 @@
 
 package com.cedarsoft.serialization.stax.mate.test;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.mate.AbstractDelegatingStaxMateSerializer;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializingStrategy;
-import org.codehaus.staxmate.out.SMOutputElement;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.IOException;
+
+import org.codehaus.staxmate.out.SMOutputElement;
+
+import com.cedarsoft.serialization.stax.mate.AbstractDelegatingStaxMateSerializer;
+import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializingStrategy;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -79,18 +80,19 @@ public class BallSerializer extends AbstractDelegatingStaxMateSerializer<Ball> {
 
     @Nonnull
     @Override
-    public Ball.TennisBall deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      verifyVersionReadable( formatVersion );
+    public Ball.TennisBall deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+      verifyVersionReadable(formatVersion);
 
       int id;
-      if ( formatVersion.equals( Version.valueOf( 1, 5, 0 ) ) ) {
-        id = Integer.parseInt( getText( deserializeFrom ) );
-      } else {
-        id = Integer.parseInt( deserializeFrom.getAttributeValue( null, "id" ) );
-        closeTag( deserializeFrom );
+      if (formatVersion.equals(Version.valueOf(1, 5, 0))) {
+        id = Integer.parseInt(getText(deserializeFrom));
+      }
+      else {
+        id = Integer.parseInt(deserializeFrom.getAttributeValue(null, "id"));
+        closeTag(deserializeFrom);
       }
 
-      return new Ball.TennisBall( id );
+      return new Ball.TennisBall(id);
     }
   }
 
@@ -110,18 +112,19 @@ public class BallSerializer extends AbstractDelegatingStaxMateSerializer<Ball> {
 
     @Nonnull
     @Override
-    public Ball.BasketBall deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-      verifyVersionReadable( formatVersion );
+    public Ball.BasketBall deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
+      verifyVersionReadable(formatVersion);
 
       String theId;
-      if ( formatVersion.equals( Version.valueOf( 2, 0, 0 ) ) ) {
-        theId = getText( deserializeFrom );
-      } else {
-        theId = deserializeFrom.getAttributeValue( null, "theId" );
-        closeTag( deserializeFrom );
+      if (formatVersion.equals(Version.valueOf(2, 0, 0))) {
+        theId = getText(deserializeFrom);
+      }
+      else {
+        theId = deserializeFrom.getAttributeValue(null, "theId");
+        closeTag(deserializeFrom);
       }
 
-      return new Ball.BasketBall( theId );
+      return new Ball.BasketBall(theId);
     }
   }
 }

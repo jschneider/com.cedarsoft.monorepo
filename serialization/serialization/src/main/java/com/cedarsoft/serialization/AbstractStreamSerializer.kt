@@ -42,15 +42,14 @@ import java.io.OutputStream
  * @param <T> the type of object this serializer is able to (de)serialize
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
- * @param <E> the exception that might be thrown
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractStreamSerializer<T, S, D, E : Throwable>
+abstract class AbstractStreamSerializer<T : Any, S : Any, D : Any>
 /**
  * Creates a serializer.
  * @param formatVersionRange the version range. The max value is used as format version when written.
  */
-protected constructor(formatVersionRange: VersionRange) : AbstractSerializer<T, S, D, E, OutputStream, InputStream>(formatVersionRange), StreamSerializer<T> {
+protected constructor(formatVersionRange: VersionRange) : AbstractSerializer<T, S, D, OutputStream, InputStream>(formatVersionRange), StreamSerializer<T> {
 
   /**
    * Helper method that serializes to a byte array

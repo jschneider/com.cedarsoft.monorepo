@@ -37,8 +37,7 @@ import com.cedarsoft.annotations.UiThread
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@FunctionalInterface
-interface ExceptionReporter {
+fun interface ExceptionReporter {
   /**
    * Reports the exception
    */

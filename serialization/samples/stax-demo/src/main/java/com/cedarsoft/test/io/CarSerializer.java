@@ -31,21 +31,20 @@
 
 package com.cedarsoft.test.io;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+import java.awt.Color;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
+
 import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
 import com.cedarsoft.test.Car;
 import com.cedarsoft.test.Extra;
 import com.cedarsoft.test.Model;
 import com.cedarsoft.test.Money;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
-import java.awt.Color;
-import java.io.IOException;
-import java.util.List;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  *
@@ -74,17 +73,17 @@ public class CarSerializer extends AbstractStaxSerializer<Car> {
   //START SNIPPET: serialize
 
   @Override
-  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Car objectToSerialize, Version formatVersion ) throws IOException, XMLStreamException {
-    assert isVersionWritable( formatVersion );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull Car objectToSerialize, Version formatVersion) throws Exception {
+    assert isVersionWritable(formatVersion);
 
-    serializeTo.writeStartElement( "color" ); //okay, should be a own serializer in real world...
-    serializeTo.writeAttribute( "red", String.valueOf(objectToSerialize.getColor().getRed() ) );
-    serializeTo.writeAttribute( "blue", String.valueOf(objectToSerialize.getColor().getBlue() ) );
-    serializeTo.writeAttribute( "green", String.valueOf(objectToSerialize.getColor().getGreen() ) );
+    serializeTo.writeStartElement("color"); //okay, should be a own serializer in real world...
+    serializeTo.writeAttribute("red", String.valueOf(objectToSerialize.getColor().getRed()));
+    serializeTo.writeAttribute("blue", String.valueOf(objectToSerialize.getColor().getBlue()));
+    serializeTo.writeAttribute("green", String.valueOf(objectToSerialize.getColor().getGreen()));
     serializeTo.writeEndElement();
 
 
-    serializeTo.writeStartElement( "model" );
+    serializeTo.writeStartElement("model");
     serialize(objectToSerialize.getModel(), Model.class, serializeTo, formatVersion );
     serializeTo.writeEndElement();
 
@@ -107,17 +106,17 @@ public class CarSerializer extends AbstractStaxSerializer<Car> {
   //START SNIPPET: deserialize
 
   @Override
-  public Car deserialize( XMLStreamReader deserializeFrom, Version formatVersion ) throws IOException, XMLStreamException {
-    assert isVersionReadable( formatVersion );
+  public Car deserialize(XMLStreamReader deserializeFrom, Version formatVersion) throws Exception {
+    assert isVersionReadable(formatVersion);
     //We deserialize the color. This should be done in its own serializer in real world --> improved reusability and testability
-    nextTag( deserializeFrom, "color" );
-    int red = Integer.parseInt( deserializeFrom.getAttributeValue( null, "red" ) );
-    int blue = Integer.parseInt( deserializeFrom.getAttributeValue( null, "blue" ) );
-    int green = Integer.parseInt( deserializeFrom.getAttributeValue( null, "green" ) );
-    Color color = new Color( red, green, blue );
-    closeTag( deserializeFrom );
+    nextTag(deserializeFrom, "color");
+    int red = Integer.parseInt(deserializeFrom.getAttributeValue(null, "red"));
+    int blue = Integer.parseInt(deserializeFrom.getAttributeValue(null, "blue"));
+    int green = Integer.parseInt(deserializeFrom.getAttributeValue(null, "green"));
+    Color color = new Color(red, green, blue);
+    closeTag(deserializeFrom);
 
-    nextTag( deserializeFrom, "model" );
+    nextTag(deserializeFrom, "model");
     Model model = deserialize( Model.class, formatVersion, deserializeFrom );
 
     nextTag( deserializeFrom, "basePrice" );

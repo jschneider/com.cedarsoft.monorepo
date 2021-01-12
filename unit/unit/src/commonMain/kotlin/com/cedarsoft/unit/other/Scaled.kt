@@ -15,9 +15,6 @@
  */
 package com.cedarsoft.unit.other
 
-
-
-
 /**
  * Marks value that have been scaled
  *

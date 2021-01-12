@@ -43,7 +43,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 
 import com.cedarsoft.serialization.SerializationException;
-import com.cedarsoft.version.VersionMismatchException;
 import com.google.common.collect.Lists;
 
 /**
@@ -63,7 +62,7 @@ public class DaBallSerializerTest {
   }
 
   @Test
-  public void testMissing() throws IOException {
+  public void testMissing() throws Exception {
     DaBallSerializer serializer = new DaBallSerializer();
 
     try {
@@ -91,13 +90,13 @@ public class DaBallSerializerTest {
       new DaBallSerializer().deserialize(new ByteArrayInputStream("<ball xmlns=\"http://test/ball/1.1.1\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8)));
       fail("Where is the Exception");
     }
-    catch (VersionMismatchException e) {
+    catch (Exception e) {
       Assertions.assertThat(e).hasMessage("Version mismatch. Expected [1.0.0-1.1.0] but was [1.1.1]");
     }
   }
 
   @Test
-  public void testInvalidNamespace() throws IOException {
+  public void testInvalidNamespace() throws Exception {
     try {
       new DaBallSerializer().deserialize(new ByteArrayInputStream("<ball xmlns=\"http://test/wrong/1.1.0\" id=\"77\"/>".getBytes(StandardCharsets.UTF_8)));
       fail("Where is the Exception");

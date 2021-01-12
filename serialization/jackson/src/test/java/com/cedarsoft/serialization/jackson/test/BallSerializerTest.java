@@ -48,7 +48,6 @@ import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
 import com.cedarsoft.version.Version;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -60,12 +59,9 @@ public class BallSerializerTest extends AbstractJsonSerializerTest2<Ball> {
     return new BallSerializer();
   }
 
-  public static final Entry<?> ENTRY1 = create(
-    new Ball.TennisBall( 7 ), "{\"@subtype\" : \"tennisBall\",\"id\" : 7}"
-  );
+  public static final Entry<?> ENTRY1 = create(new Ball.TennisBall( 7 ), "{\"@subtype\" : \"tennisBall\",\"id\" : 7}");
 
-  public static final Entry<?> ENTRY2 = create(
-    new Ball.BasketBall( "asdf" ), "{\"@subtype\" : \"basketBall\",\"theId\" : \"asdf\"}" );
+  public static final Entry<?> ENTRY2 = create(new Ball.BasketBall( "asdf" ), "{\"@subtype\" : \"basketBall\",\"theId\" : \"asdf\"}" );
 
 
   @Test
@@ -75,10 +71,10 @@ public class BallSerializerTest extends AbstractJsonSerializerTest2<Ball> {
                     "--------------------------------\n" +
                     "   1.0.0 -->     2.0.0     1.5.0\n" +
                     "   1.1.0 -->     2.0.1     1.5.1\n" +
-                    "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream>>() {
+                    "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, OutputStream, InputStream>>() {
       @Nonnull
       @Override
-      public String convert( @Nonnull SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, JsonProcessingException, OutputStream, InputStream> object ) {
+      public String convert( @Nonnull SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, OutputStream, InputStream> object ) {
         return object.getId();
       }
     } ) );

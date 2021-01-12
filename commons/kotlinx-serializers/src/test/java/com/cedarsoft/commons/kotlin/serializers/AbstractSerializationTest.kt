@@ -11,8 +11,8 @@ open class AbstractSerializationTest {
   }
 
   protected fun <T> verifyJsonRoundTrip(objectToSerialize: T, serializer: KSerializer<T>) {
-    val json = Json.stringify(serializer, objectToSerialize)
-    val read = Json.parse(serializer, json)
+    val json = Json.encodeToString(serializer, objectToSerialize)
+    val read = Json.decodeFromString(serializer, json)
     Assertions.assertThat(read).isEqualTo(objectToSerialize)
   }
 

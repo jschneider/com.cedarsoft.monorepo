@@ -41,7 +41,7 @@ package com.cedarsoft.serialization
  * @param <D> the deserializing object
  * @param <E> the exception that might be thrown
  */
-interface SerializingStrategy<T, S, D, E : Throwable, O, I> : PluggableSerializer<T, S, D, E, O, I> {
+interface SerializingStrategy<T : Any, S : Any, D : Any, O : Any, I : Any> : PluggableSerializer<T, S, D, O, I> {
   /**
    * Returns the id that is used to identify the strategy/object
    * @return the id

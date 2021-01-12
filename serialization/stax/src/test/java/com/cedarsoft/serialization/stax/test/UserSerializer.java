@@ -31,19 +31,17 @@
 
 package com.cedarsoft.serialization.stax.test;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
-import com.cedarsoft.serialization.stax.CollectionsMapping;
-
-import javax.annotation.Nonnull;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
+
+import com.cedarsoft.serialization.stax.AbstractStaxSerializer;
+import com.cedarsoft.serialization.stax.CollectionsMapping;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -57,26 +55,26 @@ public class UserSerializer extends AbstractStaxSerializer<User> {
   }
 
   @Override
-  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull User objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    serializeTo.writeStartElement( "name" );
-    serializeTo.writeCharacters(objectToSerialize.getName() );
+  public void serialize(@Nonnull XMLStreamWriter serializeTo, @Nonnull User objectToSerialize, @Nonnull Version formatVersion) throws Exception {
+    serializeTo.writeStartElement("name");
+    serializeTo.writeCharacters(objectToSerialize.getName());
     serializeTo.writeEndElement();
 
-    serializeCollection(objectToSerialize.getEmails(), Email.class, serializeTo, formatVersion );
-    serializeCollection(objectToSerialize.getRoles(), Role.class, serializeTo, formatVersion );
+    serializeCollection(objectToSerialize.getEmails(), Email.class, serializeTo, formatVersion);
+    serializeCollection(objectToSerialize.getRoles(), Role.class, serializeTo, formatVersion);
   }
 
   @Nonnull
   @Override
-  public User deserialize( @Nonnull XMLStreamReader deserializeFrom, @Nonnull final Version formatVersion ) throws IOException, VersionException, XMLStreamException {
-    String name = getChildText( deserializeFrom, "name" );
+  public User deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull final Version formatVersion) throws Exception {
+    String name = getChildText(deserializeFrom, "name");
 
     List<Email> mails = new ArrayList<Email>();
     List<Role> roles = new ArrayList<Role>();
-    deserializeCollections( deserializeFrom, formatVersion,
-                            new CollectionsMapping()
-                              .append( Email.class, mails, EmailSerializer.DEFAULT_ELEMENT_NAME )
-                              .append( Role.class, roles, RoleSerializer.DEFAULT_ELEMENT_NAME )
+    deserializeCollections(deserializeFrom, formatVersion,
+                           new CollectionsMapping()
+                             .append(Email.class, mails, EmailSerializer.DEFAULT_ELEMENT_NAME)
+                             .append(Role.class, roles, RoleSerializer.DEFAULT_ELEMENT_NAME)
     );
 
     return new User( name, mails, roles );

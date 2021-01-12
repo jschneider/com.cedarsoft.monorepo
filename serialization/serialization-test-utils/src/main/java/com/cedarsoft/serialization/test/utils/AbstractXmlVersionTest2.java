@@ -59,12 +59,12 @@ public abstract class AbstractXmlVersionTest2<T> extends AbstractVersionTest2<T>
    * @return the byte array using the xml string
    */
   @Nonnull
-  protected static byte[] processXml( @Nonnull String xml, @Nonnull Version version, @Nonnull AbstractXmlSerializer<?, ?, ?, ?> serializer ) throws Exception {
+  protected static byte[] processXml( @Nonnull String xml, @Nonnull Version version, @Nonnull AbstractXmlSerializer<?, ?, ?> serializer ) throws Exception {
     return processXml( xml, serializer.createNameSpace( version ) );
   }
 
   @Nonnull
-  protected static byte[] processXml( @Nonnull byte[] xml, @Nonnull Version version, @Nonnull AbstractXmlSerializer<?, ?, ?, ?> serializer ) throws Exception {
+  protected static byte[] processXml( @Nonnull byte[] xml, @Nonnull Version version, @Nonnull AbstractXmlSerializer<?, ?, ?> serializer ) throws Exception {
     return processXml( xml, serializer.createNameSpace( version ) );
   }
 
@@ -117,7 +117,7 @@ public abstract class AbstractXmlVersionTest2<T> extends AbstractVersionTest2<T>
     @Nonnull
     @Override
     public byte[] getSerialized( @Nonnull Serializer<?, ?, ?> serializer ) throws Exception {
-      return processXml( xml, version, ( AbstractXmlSerializer<?, ?, ?, ?> ) serializer );
+      return processXml( xml, version, ( AbstractXmlSerializer<?, ?, ?> ) serializer );
     }
   }
 }

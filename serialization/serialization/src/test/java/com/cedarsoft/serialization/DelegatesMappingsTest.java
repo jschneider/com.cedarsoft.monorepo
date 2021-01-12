@@ -32,10 +32,9 @@
 package com.cedarsoft.serialization;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -57,12 +56,12 @@ import com.cedarsoft.version.VersionRange;
 public class DelegatesMappingsTest {
   private final VersionRange mine = VersionRange.from( 1, 0, 0 ).to( 2, 0, 0 );
   private VersionMappingTest.MySerializer serializer;
-  private DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> delegatesMappings;
+  private DelegatesMappings<Object, Object, OutputStream, InputStream> delegatesMappings;
 
   @BeforeEach
   public void setup() {
-    serializer = new VersionMappingTest.MySerializer( VersionRange.from( 7, 0, 0 ).to( 7, 5, 9 ) );
-    delegatesMappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( mine );
+    serializer = new VersionMappingTest.MySerializer(VersionRange.from(7, 0, 0).to(7, 5, 9));
+    delegatesMappings = new DelegatesMappings<Object, Object, OutputStream, InputStream>(mine);
   }
 
   @Test
@@ -104,7 +103,7 @@ public class DelegatesMappingsTest {
   @Test
   public void testVerify3() {
     {
-      DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> mappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 ) );
+      DelegatesMappings<Object, Object, OutputStream, InputStream> mappings = new DelegatesMappings<Object, Object, OutputStream, InputStream>(VersionRange.from(1, 0, 0).to(1, 0, 0));
       mappings.add( serializer ).responsibleFor( Object.class )
         .map( 1, 0, 0 ).toDelegateVersion( 7, 0, 0 );
 
@@ -117,7 +116,7 @@ public class DelegatesMappingsTest {
     }
 
     {
-      DelegatesMappings<Object, Object, IOException, OutputStream, InputStream> mappings = new DelegatesMappings<Object, Object, IOException, OutputStream, InputStream>( VersionRange.from( 1, 0, 0 ).to( 1, 0, 0 ) );
+      DelegatesMappings<Object, Object, OutputStream, InputStream> mappings = new DelegatesMappings<Object, Object, OutputStream, InputStream>(VersionRange.from(1, 0, 0).to(1, 0, 0));
       mappings.add( serializer ).responsibleFor( Object.class )
         .map( 1, 0, 0 ).toDelegateVersion( 7, 5, 9 )
       ;

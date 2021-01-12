@@ -33,7 +33,6 @@ package com.cedarsoft.serialization.neo4j
 import com.cedarsoft.serialization.AbstractSerializer
 import com.cedarsoft.serialization.SerializationException
 import com.cedarsoft.version.Version
-import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionRange
 import org.neo4j.graphdb.Direction
 import org.neo4j.graphdb.Label
@@ -48,11 +47,11 @@ import java.util.HashMap
  * Abstract base class for neo4j serializers
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-abstract class AbstractNeo4jSerializer<T>
+abstract class AbstractNeo4jSerializer<T : Any>
 protected constructor(
   private val type: String,
   formatVersionRange: VersionRange
-) : AbstractSerializer<T, Node, Node, IOException, Node, Node>(formatVersionRange) {
+) : AbstractSerializer<T, Node, Node, Node, Node>(formatVersionRange) {
 
   /**
    * Returns the type label
@@ -61,12 +60,12 @@ protected constructor(
   val typeLabel: Label
     get() = Label.label(type)
 
-  @Throws(IOException::class)
+  @Throws(Exception::class)
   override fun serialize(objectToSerialize: T, out: Node) {
     serialize(out, objectToSerialize, formatVersion)
   }
 
-  @Throws(VersionException::class, IOException::class)
+  @Throws(Exception::class)
   override fun serialize(serializeTo: Node, objectToSerialize: T, formatVersion: Version) {
     verifyVersionWritable(formatVersion)
 
@@ -92,10 +91,10 @@ protected constructor(
    * @param formatVersion the format version
    * @throws IOException if there is an io problem
    */
-  @Throws(IOException::class)
+  @Throws(Exception::class)
   protected abstract fun serializeInternal(serializeTo: Node, objectToSerialize: T, formatVersion: Version)
 
-  @Throws(IOException::class, VersionException::class)
+  @Throws(Exception::class)
   override fun deserialize(deserializeFrom: Node): T {
     verifyType(deserializeFrom)
 
@@ -109,15 +108,14 @@ protected constructor(
     return Version.parse(inNode.getProperty(PROPERTY_FORMAT_VERSION) as String)
   }
 
-  @Throws(SerializationException::class)
   private fun verifyType(inNode: Node) {
     if (!inNode.hasLabel(typeLabel)) {
       throw SerializationException(SerializationException.Details.INVALID_TYPE, typeLabel, inNode.labels)
     }
   }
 
-  @Throws(IOException::class)
-  fun <A> serializeWithRelationships(objects: Iterable<A>, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version) {
+  @Throws(Exception::class)
+  fun <A : Any> serializeWithRelationships(objects: Iterable<A>, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version) {
     var index = 0
     for (`object` in objects) {
       serializeWithRelationship(`object`, type, node, relationshipType, formatVersion, index)
@@ -136,7 +134,7 @@ protected constructor(
    * @throws IOException if there is an io problem
   </A> */
   @Throws(IOException::class)
-  fun <A> serializeWithRelationship(objectToSerialize: A, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version) {
+  fun <A : Any> serializeWithRelationship(objectToSerialize: A, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version) {
     serializeWithRelationship(objectToSerialize, type, node, relationshipType, formatVersion, null)
   }
 
@@ -144,7 +142,7 @@ protected constructor(
    * Serializes with relationship. Adds an optional index
    */
   @Throws(IOException::class)
-  protected fun <A> serializeWithRelationship(objectToSerialize: A, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version, index: Int?) {
+  protected fun <A : Any> serializeWithRelationship(objectToSerialize: A, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version, index: Int?) {
     val targetNode = node.graphDatabase.createNode()
     val relationship = node.createRelationshipTo(targetNode, relationshipType)
 
@@ -157,13 +155,13 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  fun <A> deserializeWithRelationship(type: Class<A>, relationshipType: RelationshipType, node: Node, formatVersion: Version): A {
+  fun <A : Any> deserializeWithRelationship(type: Class<A>, relationshipType: RelationshipType, node: Node, formatVersion: Version): A {
     val relationship = node.getSingleRelationship(relationshipType, Direction.OUTGOING)!!
     return deserialize(type, formatVersion, relationship.endNode)
   }
 
   @Throws(IOException::class)
-  fun <A> deserializeWithRelationships(type: Class<A>, relationshipType: RelationshipType, node: Node, formatVersion: Version): List<A> {
+  fun <A : Any> deserializeWithRelationships(type: Class<A>, relationshipType: RelationshipType, node: Node, formatVersion: Version): List<A> {
     val deserializedList = ArrayList<A>()
     val indices = HashMap<A, Int>()
 
@@ -199,10 +197,11 @@ protected constructor(
     /**
      * This property contains the format version for a node
      */
-    val PROPERTY_FORMAT_VERSION = "formatVersion"
+    const val PROPERTY_FORMAT_VERSION: String = "formatVersion"
+
     /**
      * Property used to identify the order
      */
-    private val PROPERTY_ORDER_INDEX = "orderIndex"
+    private const val PROPERTY_ORDER_INDEX = "orderIndex"
   }
 }

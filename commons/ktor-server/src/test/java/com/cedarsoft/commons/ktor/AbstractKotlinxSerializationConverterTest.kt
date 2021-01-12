@@ -20,7 +20,7 @@ import io.ktor.server.testing.contentType
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.withTestApplication
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.protobuf.ProtoId
+import kotlinx.serialization.protobuf.ProtoNumber
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -174,19 +174,19 @@ abstract class AbstractKotlinxSerializationConverterTest {
 
 @Serializable
 data class Entity(
-  @ProtoId(1)
+  @ProtoNumber(1)
   val id: Int,
-  @ProtoId(2)
+  @ProtoNumber(2)
   val name: String,
-  @ProtoId(3)
+  @ProtoNumber(3)
   val children: List<Child>
 )
 
 @Serializable
 data class Child(
-  @ProtoId(1)
+  @ProtoNumber(1)
   val item: String,
-  @ProtoId(2)
+  @ProtoNumber(2)
   val quantity: Int
 )
 

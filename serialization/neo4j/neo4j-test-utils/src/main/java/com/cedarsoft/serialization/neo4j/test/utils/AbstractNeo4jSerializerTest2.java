@@ -148,30 +148,30 @@ public abstract class AbstractNeo4jSerializerTest2<T> {
   }
 
   @Nonnull
-  private T deserialize( @Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized ) throws IOException {
+  private T deserialize(@Nonnull AbstractNeo4jSerializer<T> serializer, @Nonnull String serialized) throws Exception {
     //Fill the db initially
-    try ( Transaction tx = db.beginTx() ) {
-      Result  result = db.execute( serialized );
+    try (Transaction tx = db.beginTx()) {
+      Result result = db.execute(serialized);
       tx.success();
     }
 
-    try ( Transaction tx = db.beginTx() ) {
-      return serializer.deserialize( db.getNodeById( 0 ) );
+    try (Transaction tx = db.beginTx()) {
+      return serializer.deserialize(db.getNodeById(0));
     }
   }
 
   @Nonnull
-  protected String serialize( @Nonnull Serializer<T, Node, Node> serializer, @Nonnull T objectToSerialize ) throws IOException {
-    try ( Transaction tx = db.beginTx() ) {
+  protected String serialize(@Nonnull Serializer<T, Node, Node> serializer, @Nonnull T objectToSerialize) throws Exception {
+    try (Transaction tx = db.beginTx()) {
       Node rootNode = db.createNode();
-      serializer.serialize( objectToSerialize, rootNode );
+      serializer.serialize(objectToSerialize, rootNode);
 
       tx.success();
     }
 
     //Creates the cyper representation for this database
     StringWriter out = new StringWriter();
-    try ( Transaction tx = db.beginTx() ) {
+    try (Transaction tx = db.beginTx()) {
       final SubGraph graph = DatabaseSubGraph.from( db );
       new SubGraphExporter( graph ).export( new PrintWriter( out ) );
       tx.success();

@@ -40,7 +40,6 @@ import javax.xml.stream.XMLStreamReader;
 import org.codehaus.staxmate.out.SMOutputElement;
 
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 
 /**
@@ -64,7 +63,7 @@ public class CollectionSerializer<T> extends AbstractStaxMateSerializer<List<? e
   }
 
   @Override
-  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
+  public void serialize(@Nonnull SMOutputElement serializeTo, @Nonnull List<? extends T> objectToSerialize, @Nonnull Version formatVersion) throws IOException, XMLStreamException {
     verifyVersionWritable(formatVersion);
 
     serializeCollection(objectToSerialize, type, serializeTo, formatVersion);
@@ -72,7 +71,7 @@ public class CollectionSerializer<T> extends AbstractStaxMateSerializer<List<? e
 
   @Nonnull
   @Override
-  public List<? extends T> deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws IOException, VersionException, XMLStreamException {
+  public List<? extends T> deserialize(@Nonnull XMLStreamReader deserializeFrom, @Nonnull Version formatVersion) throws Exception {
     verifyVersionReadable(formatVersion);
 
     return deserializeCollection(deserializeFrom, type, formatVersion);

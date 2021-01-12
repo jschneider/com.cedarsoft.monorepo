@@ -18,9 +18,9 @@ dependencies {
 
 
   api(Libs.guava)
-  api(Libs.javax_annotation_api)
+  compileOnlyApi(Libs.javax_annotation_api)
   api(Libs.kotlinx_coroutines_jdk8)
-  api(Libs.kotlinx_serialization_runtime)
+  api(Libs.kotlinx_serialization_json)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

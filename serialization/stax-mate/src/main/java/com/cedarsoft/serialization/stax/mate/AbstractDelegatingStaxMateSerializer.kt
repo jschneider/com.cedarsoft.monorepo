@@ -48,7 +48,7 @@ import javax.xml.stream.XMLStreamReader
  * Abstract base class for a serializers that uses strategies to serialize objects.
  * @param <T> the type
 </T> */
-abstract class AbstractDelegatingStaxMateSerializer<T>
+abstract class AbstractDelegatingStaxMateSerializer<T : Any>
 /**
  * Creates a new serializer
  * @param defaultElementName the default element name
@@ -56,16 +56,16 @@ abstract class AbstractDelegatingStaxMateSerializer<T>
  * @param formatVersionRange the format version name
  */
 protected constructor(defaultElementName: String, nameSpaceUriBase: String, formatVersionRange: VersionRange) : AbstractStaxMateSerializer<T>(defaultElementName, nameSpaceUriBase, formatVersionRange) {
-  val serializingStrategySupport: SerializingStrategySupport<T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream> = SerializingStrategySupport<T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream>(formatVersionRange)
+  val serializingStrategySupport: SerializingStrategySupport<T, SMOutputElement, XMLStreamReader, OutputStream, InputStream> = SerializingStrategySupport(formatVersionRange)
 
   /**
    * Returns the strategies
    * @return the strategies
    */
-  val strategies: Collection<SerializingStrategy<out T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream>>
-    get() = serializingStrategySupport.strategies
+  val strategies: Collection<SerializingStrategy<out T, SMOutputElement, XMLStreamReader, OutputStream, InputStream>>
+    get() = serializingStrategySupport.getStrategies()
 
-  fun addStrategy(strategy: SerializingStrategy<out T, SMOutputElement, XMLStreamReader, XMLStreamException, OutputStream, InputStream>): VersionMapping {
+  fun addStrategy(strategy: SerializingStrategy<out T, SMOutputElement, XMLStreamReader, OutputStream, InputStream>): VersionMapping {
     return serializingStrategySupport.addStrategy(strategy)
   }
 
@@ -74,7 +74,7 @@ protected constructor(defaultElementName: String, nameSpaceUriBase: String, form
     assert(isVersionWritable(formatVersion))
 
     try {
-      val strategy = serializingStrategySupport.findStrategy(objectToSerialize)
+      val strategy: SerializingStrategy<T, SMOutputElement, XMLStreamReader, OutputStream, InputStream> = serializingStrategySupport.findStrategy(objectToSerialize)
       val resolvedVersion = serializingStrategySupport.resolveVersion(strategy, formatVersion)
       serializeTo.addAttribute(ATTRIBUTE_TYPE, strategy.id)
 
@@ -96,7 +96,7 @@ protected constructor(defaultElementName: String, nameSpaceUriBase: String, form
   }
 
   companion object {
-    private val ATTRIBUTE_TYPE = "type"
+    private const val ATTRIBUTE_TYPE = "type"
   }
 }
 

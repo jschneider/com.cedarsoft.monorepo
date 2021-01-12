@@ -30,19 +30,17 @@
  */
 package com.cedarsoft.serialization.jackson;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+
 import com.cedarsoft.serialization.SerializationException;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import java.io.IOException;
 
 /**
  * Attention: Does not yet work with StringValues! Use StringSerializer for those cases.
@@ -57,22 +55,22 @@ public class IgnoringSerializer extends AbstractJacksonSerializer<Void> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Void objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Void objectToSerialize, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     throw new UnsupportedOperationException();
   }
 
   @Nullable
   @Override
-  public Void deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
+  public Void deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws Exception, JsonProcessingException {
     JsonToken inToken = deserializeFrom.nextToken();
 
-    if ( isValueToken( inToken ) ) {
+    if (isValueToken(inToken)) {
       deserializeFrom.nextToken();
       return null;
     }
 
 
-    JsonToken outToken = findOutToken( inToken );
+    JsonToken outToken = findOutToken(inToken);
 
     int depth = 1;
 

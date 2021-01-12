@@ -30,7 +30,6 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import javax.annotation.Nonnull;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -60,11 +59,8 @@ public class InternalExceptionDialogDemo {
   @Test
   public void basicWithExceReporter() throws Exception {
     SwingUtilities.invokeAndWait(() -> {
-      InternalExceptionDialog dialog = new InternalExceptionDialog(null, new RuntimeException(new IllegalArgumentException("Uups")), new ExceptionReporter() {
-        @Override
-        public void report(@Nonnull Throwable throwable) {
-          System.err.println("Reporting exception");
-        }
+      InternalExceptionDialog dialog = new InternalExceptionDialog(null, new RuntimeException(new IllegalArgumentException("Uups")), throwable -> {
+        System.err.println("Reporting exception");
       }, Version.valueOf(1, 2, 3));
       dialog.setVisible(true);
     });

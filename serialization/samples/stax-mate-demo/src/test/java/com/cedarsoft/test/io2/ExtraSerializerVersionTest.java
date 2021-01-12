@@ -77,7 +77,7 @@ public class ExtraSerializerVersionTest extends AbstractXmlVersionTest2<Extra> {
 
   @Test
   public void testAsciiArt() throws Exception {
-    DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer( ( ( AbstractSerializer<?, ?, ?, ?, ?, ?> ) getSerializer() ).getDelegatesMappings() );
+    DelegatesMappingVisualizer visualizer = new DelegatesMappingVisualizer(((AbstractSerializer<?, ?, ?, ?, ?>) getSerializer()).getDelegatesMappings());
     assertEquals("         -->     Money\n" +
                    "----------------------\n" +
                    "   1.5.0 -->     1.0.0\n" +

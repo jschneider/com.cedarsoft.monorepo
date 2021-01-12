@@ -84,7 +84,7 @@ public class DaAbstractXmlSerializerTest {
     }
   }
 
-  public static class MySerializer extends AbstractXmlSerializer<String, StringBuffer, String, IOException> {
+  public static class MySerializer extends AbstractXmlSerializer<String, StringBuffer, String> {
     public MySerializer() {
       super( "mu", "nsBase", VersionRange.single( 1, 0, 0 ) );
     }

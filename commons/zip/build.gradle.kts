@@ -2,7 +2,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_annotations))
   api(Libs.commons_io)
   api(Libs.commons_compress)
 

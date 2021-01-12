@@ -44,7 +44,7 @@ import javax.xml.stream.XMLStreamException
  * Abstract base class for stax mate based serializers
  * @param <T> the type
  */
-abstract class AbstractStaxMateSerializer<T>
+abstract class AbstractStaxMateSerializer<T : Any>
 protected constructor(
   defaultElementName: String,
   nameSpaceUriBase: String,
@@ -81,7 +81,7 @@ protected constructor(
    * @throws IOException if there is an io problem
   </A> */
   @Throws(XMLStreamException::class, IOException::class)
-  fun <A> serialize(`object`: A, type: Class<A>, subElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
+  fun <A : Any> serialize(`object`: A, type: Class<A>, subElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
     val element = serializeTo.addElement(serializeTo.namespace, subElementName)
     serialize(`object`, type, element, formatVersion)
   }
@@ -97,9 +97,9 @@ protected constructor(
    * @throws IOException if there is an io problem
    */
   @Throws(XMLStreamException::class, IOException::class)
-  protected fun <A> serializeCollection(objects: Iterable<A>, type: Class<A>, elementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
+  protected fun <A : Any> serializeCollection(objects: Iterable<A>, type: Class<A>, elementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
     val serializer = getSerializer(type)
-    val resolvedVersion = getDelegatesMappings().resolveVersion(type, formatVersion)
+    val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
     for (`object` in objects) {
       val doorElement = serializeTo.addElement(serializeTo.namespace, elementName)
@@ -108,9 +108,9 @@ protected constructor(
   }
 
   @Throws(XMLStreamException::class, IOException::class)
-  protected fun <A> serializeCollection(objects: Iterable<A>, type: Class<A>, serializeTo: SMOutputElement, formatVersion: Version) {
+  protected fun <A : Any> serializeCollection(objects: Iterable<A>, type: Class<A>, serializeTo: SMOutputElement, formatVersion: Version) {
     val serializer = getSerializer(type)
-    val resolvedVersion = getDelegatesMappings().resolveVersion(type, formatVersion)
+    val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
     for (`object` in objects) {
       val doorElement = serializeTo.addElement(serializeTo.namespace, serializer.defaultElementName)
@@ -130,13 +130,13 @@ protected constructor(
    * @throws IOException if there is an io problem
    */
   @Throws(XMLStreamException::class, IOException::class)
-  protected fun <A> serializeCollectionToElement(objects: Iterable<A>, type: Class<A>, collectionElementName: String, elementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
+  protected fun <A : Any> serializeCollectionToElement(objects: Iterable<A>, type: Class<A>, collectionElementName: String, elementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
     val collectionElement = serializeTo.addElement(serializeTo.namespace, collectionElementName)
     serializeCollection(objects, type, elementName, collectionElement, formatVersion)
   }
 
   @Throws(XMLStreamException::class, IOException::class)
-  protected fun <A> serializeCollectionToElement(objects: Iterable<A>, type: Class<A>, collectionElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
+  protected fun <A : Any> serializeCollectionToElement(objects: Iterable<A>, type: Class<A>, collectionElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
     val collectionElement = serializeTo.addElement(serializeTo.namespace, collectionElementName)
     serializeCollection(objects, type, collectionElement, formatVersion)
   }

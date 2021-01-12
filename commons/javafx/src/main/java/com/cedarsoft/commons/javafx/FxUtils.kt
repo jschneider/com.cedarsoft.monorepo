@@ -8,6 +8,7 @@ import javafx.animation.KeyFrame
 import javafx.animation.KeyValue
 import javafx.animation.Timeline
 import javafx.application.Platform
+import javafx.beans.property.BooleanProperty
 import javafx.geometry.Point2D
 import javafx.scene.Node
 import javafx.scene.Parent
@@ -336,9 +337,9 @@ object FxUtils {
 /**
  * Converts a color to an RGB hex string
  */
-fun Color.toRGBCode(): String {
+fun Color.toRGBHex(): String {
   if (opacity != 1.0) {
-    return toRGBOCode()
+    return toRGBAHex()
   }
 
   return String.format(
@@ -349,7 +350,7 @@ fun Color.toRGBCode(): String {
   )
 }
 
-fun Color.toRGBOCode(): String {
+fun Color.toRGBAHex(): String {
   return String.format(
     "#%02X%02X%02X%02X",
     (red * 255).toInt(),
@@ -377,4 +378,11 @@ fun Node.root(): Node {
   return parent?.let {
     return@let it.root()
   } ?: this
+}
+
+/**
+ * Toggles the value of the boolean property
+ */
+fun BooleanProperty.toggle() {
+  this.value = !this.value
 }

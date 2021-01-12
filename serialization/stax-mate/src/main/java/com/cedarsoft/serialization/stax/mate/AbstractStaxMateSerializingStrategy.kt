@@ -37,10 +37,11 @@ import com.cedarsoft.version.VersionRange
  * Abstract base class for serializing strategies using stax mate
  * @param <T> the type
  */
-abstract class AbstractStaxMateSerializingStrategy<T>
+abstract class AbstractStaxMateSerializingStrategy<T : Any>
 protected constructor(
   override val id: String, nameSpaceUriBase: String,
-  private val supportedType: Class<out T>, formatVersionRange: VersionRange) : AbstractStaxMateSerializer<T>(id, nameSpaceUriBase, formatVersionRange), StaxMateSerializingStrategy<T> {
+  private val supportedType: Class<out T>, formatVersionRange: VersionRange
+) : AbstractStaxMateSerializer<T>(id, nameSpaceUriBase, formatVersionRange), StaxMateSerializingStrategy<T> {
 
   override fun supports(objectToSerialize: Any): Boolean {
     return supportedType.isAssignableFrom(objectToSerialize.javaClass)
