@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-12T21:08:57" hostname="runner-kggansxr-project-47-concurrent-0" time="0.207">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-13T03:21:33" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.155">
   <properties/>
-  <testcase name="[1] entry=Entry{object=,jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.054"/>
-  <testcase name="[2] entry=Entry{object=.jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.053"/>
-  <testcase name="[3] entry=Entry{object=-jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.05"/>
-  <testcase name="[4] entry=Entry{object=,cr2}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.036"/>
-  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.003"/>
-  <testcase name="testDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.002"/>
+  <testcase name="[1] entry=Entry{object=,jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.055"/>
+  <testcase name="[2] entry=Entry{object=.jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.039"/>
+  <testcase name="[3] entry=Entry{object=-jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.018"/>
+  <testcase name="[4] entry=Entry{object=,cr2}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.025"/>
+  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.011"/>
+  <testcase name="testDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
