@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-13T03:21:34" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.049">
+<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-14T03:24:24" hostname="runner-kggansxr-project-47-concurrent-0" time="0.366">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@6c9be4f6" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.021"/>
-  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@10e7ffc8" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.007"/>
-  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.002"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@755b9d45" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.015"/>
+  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@5e0bcd87" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.006"/>
+  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.324"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

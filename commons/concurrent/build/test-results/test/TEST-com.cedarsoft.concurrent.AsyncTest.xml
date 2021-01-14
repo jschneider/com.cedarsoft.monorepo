@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.AsyncTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-01-13T03:21:01" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.211">
+<testsuite name="com.cedarsoft.concurrent.AsyncTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-01-14T03:22:42" hostname="runner-kggansxr-project-47-concurrent-0" time="0.293">
   <properties/>
-  <testcase name="testException()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.003">
+  <testcase name="testException()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.002">
     <skipped/>
   </testcase>
-  <testcase name="basic()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.196"/>
+  <testcase name="basic()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.284"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
