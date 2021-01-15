@@ -1,7 +1,7 @@
 package com.cedarsoft.unit.other
 
 /**
- * Describes values that represent an index
+ * Describes values that represent an ID
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
@@ -23,4 +23,4 @@ package com.cedarsoft.unit.other
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-annotation class Index
+annotation class ID

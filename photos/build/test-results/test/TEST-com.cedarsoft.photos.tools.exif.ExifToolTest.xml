@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.exif.ExifToolTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-01-14T03:22:09" hostname="runner-kggansxr-project-47-concurrent-0" time="0.01">
+<testsuite name="com.cedarsoft.photos.tools.exif.ExifToolTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-01-15T03:21:52" hostname="runner-kggansxr-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="testClearRotation(TemporaryFolder)" classname="com.cedarsoft.photos.tools.exif.ExifToolTest" time="0.01">
+  <testcase name="testClearRotation(TemporaryFolder)" classname="com.cedarsoft.photos.tools.exif.ExifToolTest" time="0.001">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

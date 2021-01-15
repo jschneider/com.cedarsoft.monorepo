@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-14T03:23:53" hostname="runner-kggansxr-project-47-concurrent-0" time="0.066">
+<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-15T03:23:38" hostname="runner-kggansxr-project-47-concurrent-0" time="0.045">
   <properties/>
-  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
+  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
   <testcase name="testSeria()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
-  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.012"/>
-  <testcase name="testReadable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
-  <testcase name="testDeserialize()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
-  <testcase name="testVerify()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
+  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.006"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.006"/>
+  <testcase name="testReadable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.003"/>
+  <testcase name="testDeserialize()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
+  <testcase name="testVerify()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
