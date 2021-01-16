@@ -2,6 +2,7 @@ package com.cedarsoft.commons.serialization
 
 import com.cedarsoft.test.utils.*
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.cbor.Cbor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.protobuf.ProtoBuf
@@ -47,3 +48,25 @@ fun <T> roundTripProtoBuf(objectToSerialize: T, expectedHex: String, serializer:
   val deserialized = protoBuf.decodeFromByteArray(serializer, bytes)
   assertThat(deserialized).isEqualTo(objectToSerialize)
 }
+
+/**
+ * Serializes a list of objects
+ */
+fun <T> roundTripList(vararg objectsToSerialize: T, expectedJson: String, serializer: KSerializer<T>) {
+  val encoder = Json {
+    prettyPrint = false
+  }
+
+  val listSerializer = ListSerializer(serializer)
+
+  val objectsToSerializeList: List<T> = objectsToSerialize.toList()
+  val json = encoder.encodeToString(listSerializer, objectsToSerializeList)
+
+  println("JSON length: ${json.toByteArray().size}")
+
+  JsonUtils.assertJsonEquals(expectedJson, json)
+
+  val deserialized = Json.decodeFromString(listSerializer, json)
+  assertThat(deserialized).isEqualTo(objectsToSerializeList)
+}
+

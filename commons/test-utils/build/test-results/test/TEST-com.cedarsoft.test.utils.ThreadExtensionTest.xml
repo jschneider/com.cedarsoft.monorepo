@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-01-15T03:23:18" hostname="runner-kggansxr-project-47-concurrent-0" time="0.007">
+<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-01-16T03:23:25" hostname="runner-kggansxr-project-47-concurrent-0" time="0.004">
   <properties/>
-  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.002">
+  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.001">
+  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testMulti()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.001">
