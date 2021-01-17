@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-01-16T03:23:38" hostname="runner-kggansxr-project-47-concurrent-0" time="0.016">
+<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-01-17T03:21:37" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.007">
   <properties/>
   <testcase name="testReflection()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testNames()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testNames()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testSpeed()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testSpeed()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testArea()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testArea()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="testConvert()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
