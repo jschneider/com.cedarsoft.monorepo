@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-17T03:21:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.072">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-18T03:21:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.076">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@58bd712b" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.02"/>
-  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@3422565" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.007"/>
-  <testcase name="[3] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@2882de1c" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.018"/>
-  <testcase name="[4] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@5e8284b8" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.004"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@3c8c1b17" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.016"/>
+  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@6acb2f48" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.006"/>
+  <testcase name="[3] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@67412940" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.008"/>
+  <testcase name="[4] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@302f3094" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerVersionTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

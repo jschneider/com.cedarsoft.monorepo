@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-17T03:21:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.679">
+<testsuite name="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-18T03:21:11" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.154">
   <properties/>
-  <testcase name="testEmptyList$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" time="0.997"/>
-  <testcase name="testImmutableList$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" time="0.676"/>
+  <testcase name="testEmptyList$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" time="0.645"/>
+  <testcase name="testImmutableList$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" time="0.496"/>
   <testcase name="testMeptyMyInnerSmall$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.GuavaSerializationTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
