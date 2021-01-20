@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-19T03:22:12" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.003">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-20T03:21:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.035">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@11d93281" classname="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerVersionTest" time="0.003"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@827c3c8" classname="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerVersionTest" time="0.035"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

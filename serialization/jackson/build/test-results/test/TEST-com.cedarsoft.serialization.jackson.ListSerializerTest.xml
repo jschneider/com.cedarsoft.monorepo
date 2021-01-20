@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.ListSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-19T03:21:48" hostname="runner-pgnkb89--project-47-concurrent-0" time="2.75">
+<testsuite name="com.cedarsoft.serialization.jackson.ListSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-20T03:21:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.027">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[a, b, c, 54, 234.0, 32.0, false]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="2.709"/>
-  <testcase name="[2] entry=Entry{object=[a, b, c]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.016"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.007"/>
+  <testcase name="[1] entry=Entry{object=[a, b, c, 54, 234.0, 32.0, false]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.015"/>
+  <testcase name="[2] entry=Entry{object=[a, b, c]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

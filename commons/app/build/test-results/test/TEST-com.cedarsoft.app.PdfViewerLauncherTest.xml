@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.app.PdfViewerLauncherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-19T03:20:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.029">
+<testsuite name="com.cedarsoft.app.PdfViewerLauncherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-20T03:20:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.01">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.app.PdfViewerLauncherTest" time="0.029"/>
+  <testcase name="testIt()" classname="com.cedarsoft.app.PdfViewerLauncherTest" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
