@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" tests="6" skipped="1" failures="0" errors="0" timestamp="2021-01-20T03:21:22" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.339">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" tests="6" skipped="1" failures="0" errors="0" timestamp="2021-01-21T03:22:41" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.922">
   <properties/>
-  <testcase name="testJmx()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.001">
+  <testcase name="testJmx()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.002">
     <skipped/>
   </testcase>
-  <testcase name="testById()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.175"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.157"/>
-  <testcase name="testIndexDuplicates()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.647"/>
-  <testcase name="testLegacyIndex()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.157"/>
-  <testcase name="testSelfRef()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.198"/>
+  <testcase name="testById()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.161"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.148"/>
+  <testcase name="testIndexDuplicates()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.231"/>
+  <testcase name="testLegacyIndex()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.229"/>
+  <testcase name="testSelfRef()" classname="com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest" time="0.149"/>
   <system-out><![CDATA[com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest.beforeCommit
-org.neo4j.kernel.impl.coreapi.TxStateTransactionDataSnapshot@1979920
+org.neo4j.kernel.impl.coreapi.TxStateTransactionDataSnapshot@45bf319f
 Created Nodes: [Node[0]]
 Created Relationships: [(0)-[MARRIED,0]->(0)]
 com.cedarsoft.serialization.neo4j.test.utils.BasicNeo4JTest.afterCommit
-org.neo4j.kernel.impl.coreapi.TxStateTransactionDataSnapshot@1979920
+org.neo4j.kernel.impl.coreapi.TxStateTransactionDataSnapshot@45bf319f
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
