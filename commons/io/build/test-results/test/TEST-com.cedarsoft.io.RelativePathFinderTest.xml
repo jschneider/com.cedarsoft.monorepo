@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-21T03:21:06" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.093">
+<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-22T03:22:13" hostname="runner-kggansxr-project-47-concurrent-0" time="0.146">
   <properties/>
-  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.014"/>
-  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.006"/>
-  <testcase name="testGetRelativePath2()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.008"/>
-  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.015"/>
-  <testcase name="testDirectParent()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.008"/>
-  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.006"/>
-  <testcase name="testGetRelativePathWin()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
+  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.064"/>
+  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.007"/>
+  <testcase name="testGetRelativePath2()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.005"/>
+  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.005"/>
+  <testcase name="testDirectParent()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.004"/>
+  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
+  <testcase name="testGetRelativePathWin()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
