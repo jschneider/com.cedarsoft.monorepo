@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-22T03:23:20" hostname="runner-kggansxr-project-47-concurrent-0" time="0.131">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:23:24" hostname="runner-kggansxr-project-47-concurrent-0" time="0.078">
   <properties/>
-  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.058"/>
+  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.053"/>
   <testcase name="testWrongVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.004"/>
-  <testcase name="testWrongNamespaceVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.022"/>
+  <testcase name="testWrongNamespaceVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.007"/>
   <testcase name="testNoVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

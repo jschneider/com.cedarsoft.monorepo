@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.VersionMappingsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-01-22T03:23:03" hostname="runner-kggansxr-project-47-concurrent-0" time="0.142">
+<testsuite name="com.cedarsoft.serialization.VersionMappingsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:23:08" hostname="runner-kggansxr-project-47-concurrent-0" time="0.196">
   <properties/>
-  <testcase name="testDuplicate1()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.002"/>
-  <testcase name="testDuplicate2()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.083"/>
-  <testcase name="testDuplicate3()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.001"/>
-  <testcase name="testDuplicate4()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.005"/>
-  <testcase name="testValidate()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.002"/>
-  <testcase name="testValidate2()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.018"/>
-  <testcase name="testBasicMapping()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.008"/>
-  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.002"/>
+  <testcase name="testDuplicate1()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.001"/>
+  <testcase name="testDuplicate2()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.101"/>
+  <testcase name="testDuplicate3()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.002"/>
+  <testcase name="testDuplicate4()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.002"/>
+  <testcase name="testValidate()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.013"/>
+  <testcase name="testValidate2()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.009"/>
+  <testcase name="testBasicMapping()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.033"/>
+  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingsTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

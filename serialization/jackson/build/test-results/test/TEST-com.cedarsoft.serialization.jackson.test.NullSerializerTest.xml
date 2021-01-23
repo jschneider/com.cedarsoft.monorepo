@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.NullSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-22T03:23:02" hostname="runner-kggansxr-project-47-concurrent-0" time="1.667">
+<testsuite name="com.cedarsoft.serialization.jackson.test.NullSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:23:12" hostname="runner-kggansxr-project-47-concurrent-0" time="2.053">
   <properties/>
-  <testcase name="basics()" classname="com.cedarsoft.serialization.jackson.test.NullSerializerTest" time="1.667"/>
+  <testcase name="basics()" classname="com.cedarsoft.serialization.jackson.test.NullSerializerTest" time="2.053"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
