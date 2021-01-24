@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:23:23" hostname="runner-kggansxr-project-47-concurrent-0" time="0.136">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-24T03:23:45" hostname="runner-kggansxr-project-47-concurrent-0" time="0.21">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.032"/>
-  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.019"/>
-  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.024"/>
-  <testcase name="[4] entry=Entry{object=3.4028235E38}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.026"/>
-  <testcase name="[5] entry=Entry{object=-3.4028235E38}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.022"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.001"/>
+  <testcase name="[1] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.046"/>
+  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.027"/>
+  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.029"/>
+  <testcase name="[4] entry=Entry{object=3.4028235E38}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.038"/>
+  <testcase name="[5] entry=Entry{object=-3.4028235E38}" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.039"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.FloatSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

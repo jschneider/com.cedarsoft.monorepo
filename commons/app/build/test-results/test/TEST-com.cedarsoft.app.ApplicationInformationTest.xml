@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.app.ApplicationInformationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:20:53" hostname="runner-kggansxr-project-47-concurrent-0" time="0.197">
+<testsuite name="com.cedarsoft.app.ApplicationInformationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-24T03:21:14" hostname="runner-kggansxr-project-47-concurrent-0" time="0.21">
   <properties/>
-  <testcase name="testEquals2()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.156"/>
-  <testcase name="testIt()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.012"/>
-  <testcase name="testEquals()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.011"/>
+  <testcase name="testEquals2()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.188"/>
+  <testcase name="testIt()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.002"/>
+  <testcase name="testEquals()" classname="com.cedarsoft.app.ApplicationInformationTest" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

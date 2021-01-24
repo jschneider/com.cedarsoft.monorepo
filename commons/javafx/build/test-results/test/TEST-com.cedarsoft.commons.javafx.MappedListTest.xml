@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.MappedListTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-23T03:22:33" hostname="runner-kggansxr-project-47-concurrent-0" time="0.068">
+<testsuite name="com.cedarsoft.commons.javafx.MappedListTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-24T03:22:53" hostname="runner-kggansxr-project-47-concurrent-0" time="0.051">
   <properties/>
-  <testcase name="remove" classname="com.cedarsoft.commons.javafx.MappedListTest" time="0.054"/>
+  <testcase name="remove" classname="com.cedarsoft.commons.javafx.MappedListTest" time="0.038"/>
   <testcase name="add" classname="com.cedarsoft.commons.javafx.MappedListTest" time="0.002"/>
-  <testcase name="replace" classname="com.cedarsoft.commons.javafx.MappedListTest" time="0.002"/>
+  <testcase name="replace" classname="com.cedarsoft.commons.javafx.MappedListTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
