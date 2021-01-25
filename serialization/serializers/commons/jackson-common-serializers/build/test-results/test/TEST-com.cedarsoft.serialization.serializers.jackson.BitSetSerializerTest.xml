@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.BitSetSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-24T03:24:21" hostname="runner-kggansxr-project-47-concurrent-0" time="0.015">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.BitSetSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-25T03:21:07" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.009">
   <properties/>
-  <testcase name="[1] entry=Entry{object={0, 2, 3, 100}}" classname="com.cedarsoft.serialization.serializers.jackson.BitSetSerializerTest" time="0.015"/>
+  <testcase name="[1] entry=Entry{object={0, 2, 3, 100}}" classname="com.cedarsoft.serialization.serializers.jackson.BitSetSerializerTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING. Could not add type information due to com.fasterxml.jackson.databind.node.ArrayNode cannot be cast to com.fasterxml.jackson.databind.node.ObjectNode
 ]]></system-err>

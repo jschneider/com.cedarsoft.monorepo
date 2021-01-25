@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.DPITest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-24T03:21:25" hostname="runner-kggansxr-project-47-concurrent-0" time="0.008">
+<testsuite name="com.cedarsoft.image.DPITest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-25T03:20:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.131">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.image.DPITest" time="0.008"/>
+  <testcase name="testIt()" classname="com.cedarsoft.image.DPITest" time="0.131"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
