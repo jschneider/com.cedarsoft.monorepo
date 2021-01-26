@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ApplicationInformationSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-25T03:21:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.015">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ApplicationInformationSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-26T03:21:39" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.03">
   <properties/>
-  <testcase name="[1] entry=Entry{object=gimp (1.2.3)}" classname="com.cedarsoft.serialization.serializers.stax.mate.ApplicationInformationSerializerTest" time="0.015"/>
+  <testcase name="[1] entry=Entry{object=gimp (1.2.3)}" classname="com.cedarsoft.serialization.serializers.stax.mate.ApplicationInformationSerializerTest" time="0.03"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

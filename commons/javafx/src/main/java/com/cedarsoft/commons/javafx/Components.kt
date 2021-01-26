@@ -587,14 +587,18 @@ object Components {
   /**
    * Creates a text field with a [DelayedTextFieldBinding].
    *
-   * @param text      the property the text field's text property is bidirectionally bound to
+   * @param textProperty      the property the text field's text property is bidirectionally bound to
    * @param converter its `toString`-method is called to convert the value of the property to the text of the text field;
    * its `fromString`-method is called to convert the text of the text field to the value of the property.
    */
   @JvmStatic
-  fun <T> textFieldDelayed(text: Property<T>, converter: StringConverter<T>): TextField {
+  fun <T> textFieldDelayed(textProperty: Property<T>, converter: StringConverter<T>): TextField {
     val textField = TextField()
-    DelayedTextFieldBinding.connect(textField, text, converter)
+    DelayedTextFieldBinding.connect(textField, textProperty, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = textProperty
+
     return textField
   }
 
@@ -603,6 +607,10 @@ object Components {
     val textField = TextField()
     textField.isEditable = false
     textField.textProperty().bind(Bindings.createStringBinding(Callable { EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.value) }, enumProperty))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = enumProperty
+
     return textField
   }
 
@@ -615,9 +623,9 @@ object Components {
   }
 
   @JvmStatic
-  fun textFieldReadonly(text: ObservableValue<out String>): TextField {
+  fun textFieldReadonly(observableText: ObservableValue<out String>): TextField {
     val textField = TextField()
-    textField.textProperty().bind(text)
+    textField.textProperty().bind(observableText)
     textField.isEditable = false
     return textField
   }
@@ -641,6 +649,10 @@ object Components {
     longProperty.addListener { _, _, newValue -> textField.text = integerConverter.toString(newValue) }
     textField.text = integerConverter.toString(longProperty.get())
     textField.isEditable = false
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = longProperty
+
     return textField
   }
 
@@ -652,6 +664,10 @@ object Components {
     floatProperty.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
     textField.text = floatConverter.toString(floatProperty.get())
     textField.isEditable = false
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = floatProperty
+
     return textField
   }
 
@@ -666,6 +682,10 @@ object Components {
     val textField = textFieldDelayed(floatProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyFloatFormatter(textField, floatProperty, filter, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = floatProperty
+
     return textField
   }
 
@@ -679,12 +699,16 @@ object Components {
 
   @JvmStatic
   @JvmOverloads
-  fun textFieldDoubleReadonly(doubleProperty: ObservableDoubleValue, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+  fun textFieldDoubleReadonly(observableValue: ObservableDoubleValue, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
-    doubleProperty.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
-    textField.text = floatConverter.toString(doubleProperty.get())
+    observableValue.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
+    textField.text = floatConverter.toString(observableValue.get())
     textField.isEditable = false
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = observableValue
+
     return textField
   }
 
@@ -699,6 +723,10 @@ object Components {
     val textField = textFieldDelayed(doubleProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyDoubleFormatter(textField, doubleProperty, filter, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = doubleProperty
+
     return textField
   }
 
@@ -716,6 +744,9 @@ object Components {
   @JvmStatic
   fun applyDoubleFormatter(textField: TextField, doubleProperty: DoubleProperty, filter: Predicate<Double>, converter: NumberStringConverterForFloatingPointNumbers) {
     textField.textFormatter = TextFormatter(converter, doubleProperty.get(), DoubleTextFormatterFilter(converter, filter))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = doubleProperty
   }
 
   @JvmStatic
@@ -729,6 +760,10 @@ object Components {
     val textField = textFieldDelayed(integerProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyIntegerFormatter(textField, integerProperty, filter, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = integerProperty
+
     return textField
   }
 
@@ -746,6 +781,9 @@ object Components {
   @JvmStatic
   fun applyIntegerFormatter(textField: TextField, integerProperty: IntegerProperty, filter: Predicate<Int>, converter: NumberStringConverter) {
     textField.textFormatter = TextFormatter(converter, integerProperty.get(), IntegerTextFormatterFilter(converter, filter))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = integerProperty
   }
 
   @JvmStatic
@@ -755,6 +793,10 @@ object Components {
     val textField = textFieldDelayed(integerProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyIntegerHexFormatter(textField, integerProperty, filter, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = integerProperty
+
     return textField
   }
 
@@ -764,6 +806,9 @@ object Components {
   @JvmStatic
   fun applyIntegerHexFormatter(textField: TextField, integerProperty: IntegerProperty, filter: Predicate<Int>, converter: NumberStringConverterForIntegerHex) {
     textField.textFormatter = TextFormatter(converter, integerProperty.get(), IntegerHexTextFormatterFilter(converter, filter))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = integerProperty
   }
 
   @JvmStatic
@@ -777,6 +822,10 @@ object Components {
     val textField = textFieldDelayed(longProperty, numberStringConverter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyLongFormatter(textField, longProperty, filter, numberStringConverter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = longProperty
+
     return textField
   }
 
@@ -787,6 +836,10 @@ object Components {
     val textField = textFieldDelayed(longProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyLongHexFormatter(textField, longProperty, filter, converter)
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = longProperty
+
     return textField
   }
 
@@ -796,6 +849,9 @@ object Components {
   @JvmStatic
   fun applyLongFormatter(textField: TextField, longProperty: LongProperty, filter: Predicate<Long>, converter: NumberStringConverter) {
     textField.textFormatter = TextFormatter(converter, longProperty.get(), LongTextFormatterFilter(converter, filter))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = longProperty
   }
 
   /**
@@ -804,6 +860,9 @@ object Components {
   @JvmStatic
   fun applyLongHexFormatter(textField: TextField, longProperty: LongProperty, filter: Predicate<Long>, converter: NumberStringConverterForLongHex) {
     textField.textFormatter = TextFormatter(converter, longProperty.get(), LongHexTextFormatterFilter(converter, filter))
+
+    //Avoid premature gc of the property
+    textField.properties["observableBoundToText"] = longProperty
   }
 
   @JvmStatic
