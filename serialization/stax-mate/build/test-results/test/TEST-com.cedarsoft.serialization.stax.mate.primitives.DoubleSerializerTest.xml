@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-26T03:21:38" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.281">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-01-27T03:21:54" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.179">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.063"/>
-  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.074"/>
-  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.038"/>
-  <testcase name="[4] entry=Entry{object=1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.047"/>
-  <testcase name="[5] entry=Entry{object=-1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.034"/>
+  <testcase name="[1] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.03"/>
+  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.042"/>
+  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.051"/>
+  <testcase name="[4] entry=Entry{object=1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.02"/>
+  <testcase name="[5] entry=Entry{object=-1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.024"/>
   <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.DoubleSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

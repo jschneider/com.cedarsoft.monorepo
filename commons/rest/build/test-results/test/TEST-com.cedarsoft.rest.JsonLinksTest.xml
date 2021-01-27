@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.rest.JsonLinksTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-26T03:21:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="6.594">
+<testsuite name="com.cedarsoft.rest.JsonLinksTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-27T03:21:21" hostname="runner-pgnkb89--project-47-concurrent-0" time="7.106">
   <properties/>
-  <testcase name="testParse$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="6.4"/>
-  <testcase name="testWithLinksApi$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.034"/>
+  <testcase name="testParse$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="6.908"/>
+  <testcase name="testWithLinksApi$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.102"/>
   <testcase name="testWithLinks$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.071"/>
-  <testcase name="testJackson()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.046"/>
+  <testcase name="testJackson()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
