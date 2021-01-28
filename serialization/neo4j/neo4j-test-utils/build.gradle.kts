@@ -14,20 +14,20 @@ dependencies {
   api(project(Projects.open_serialization_neo4j))
   api(project(Projects.open_serialization_serialization_test_utils))
   api(project(Projects.open_commons_test_utils))
-  api(Libs.junit_jupiter_api)
+  api(Libs.junitJupiterApi)
   api(Libs.junit)
   api(Libs.guava)
-  api(Libs.neo4j_kernel)
-  api(Libs.org_neo4j_community_it_test_support)
+  api(Libs.neo4jKernel)
+  api(Libs.orgNeo4jCommunityItTestSupport)
   //api("org.neo4j:neo4j-shell")
-  api(Libs.mockito_core)
-  api(Libs.easymockclassextension)
+  api(Libs.mockitoCore)
+  api(Libs.easyMockClassExtension)
   api(Libs.easymock)
-  api(Libs.assertj_core)
-  api(Libs.fest_reflect)
+  api(Libs.assertjCore)
+  api(Libs.festReflect)
 
   //
   // Test Deps
   //
-  testImplementation(Libs.neo4j_io)
+  testImplementation(Libs.neo4jIo)
 }

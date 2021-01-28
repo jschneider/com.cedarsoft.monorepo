@@ -16,14 +16,14 @@ dependencies {
   api(project(Projects.open_commons_guava))
 
   api(Libs.guava)
-  compileOnlyApi(Libs.javax_annotation_api)
-  api(Libs.kotlinx_coroutines_jdk8)
-  api(Libs.kotlinx_serialization_json)
-  api(Libs.kotlinx_serialization_protobuf)
+  compileOnlyApi(Libs.javaxAnnotationApi)
+  api(Libs.kotlinxCoroutinesJdk8)
+  api(KotlinX.serialization.json)
+  api(KotlinX.serialization.protobuf)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
+  testImplementation(Libs.logbackClassic)
 }

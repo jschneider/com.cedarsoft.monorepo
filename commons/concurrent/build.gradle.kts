@@ -17,11 +17,11 @@ dependencies {
   api(project(Projects.open_commons_exceptions))
 
   api(Libs.guava)
-  compileOnlyApi(Libs.javax_annotation_api)
+  compileOnlyApi(Libs.javaxAnnotationApi)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
+  testImplementation(Libs.logbackClassic)
 }

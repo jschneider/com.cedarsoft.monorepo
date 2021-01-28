@@ -9,7 +9,7 @@ plugins {
 
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
-  api(Libs.javax_mail_mail)
+  api(Libs.javaxMailMail)
   api(Libs.log4j)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))

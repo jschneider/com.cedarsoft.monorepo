@@ -18,14 +18,14 @@ dependencies {
 
 
   api(Libs.guava)
-  compileOnlyApi(Libs.javax_annotation_api)
-  api(Libs.kotlinx_coroutines_jdk8)
-  api(Libs.kotlinx_serialization_json)
+  compileOnlyApi(Libs.javaxAnnotationApi)
+  api(Libs.kotlinxCoroutinesJdk8)
+  api(KotlinX.serialization.json)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
-  testImplementation(Libs.ktor_server_test_host)
+  testImplementation(Libs.logbackClassic)
+  testImplementation(Libs.ktorServerTestHost)
 }

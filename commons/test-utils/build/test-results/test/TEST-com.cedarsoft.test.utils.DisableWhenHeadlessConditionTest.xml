@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.DisableWhenHeadlessConditionTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-01-27T03:20:42" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.001">
+<testsuite name="com.cedarsoft.test.utils.DisableWhenHeadlessConditionTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-01-28T03:20:36" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
   <properties/>
-  <testcase name="testItIfHeadless()" classname="com.cedarsoft.test.utils.DisableWhenHeadlessConditionTest" time="0.001">
+  <testcase name="testItIfHeadless()" classname="com.cedarsoft.test.utils.DisableWhenHeadlessConditionTest" time="0.004">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

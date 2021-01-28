@@ -13,7 +13,7 @@ dependencies {
   //
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_serialization_stax_mate))
-  api(Libs.commons_io)
+  api(Libs.commonsIo)
   api(project(Projects.open_commons_xml_commons))
 
 

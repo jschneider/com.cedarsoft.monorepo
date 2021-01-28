@@ -15,11 +15,11 @@ dependencies {
   api(project(Projects.open_commons_version))
 
   api(Libs.guava)
-  api(Libs.commons_io)
-  api(Libs.commons_logging)
+  api(Libs.commonsIo)
+  api(Libs.commonsLogging)
   api(Libs.log4j)
 
   testImplementation(project(Projects.dependencies_sets_test_basics))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.commons_codec)
+  testImplementation(Libs.commonsCodec)
 }

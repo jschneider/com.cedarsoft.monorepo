@@ -18,11 +18,11 @@ dependencies {
   api(project(Projects.dependencies_sets_test_basics))
 
   api(Libs.guava)
-  compileOnlyApi(Libs.javax_annotation_api)
-  api(Libs.kotlinx_coroutines_jdk8)
-  api(Libs.kotlinx_serialization_json)
-  api(Libs.kotlinx_serialization_protobuf)
-  api(Libs.kotlinx_serialization_cbor)
+  compileOnlyApi(Libs.javaxAnnotationApi)
+  api(Libs.kotlinxCoroutinesJdk8)
+  api(KotlinX.serialization.json)
+  api(KotlinX.serialization.protobuf)
+  api(KotlinX.serialization.cbor)
 
   api(project(Projects.dependencies_sets_kotlin_test))
   api(project(Projects.open_commons_test_utils))

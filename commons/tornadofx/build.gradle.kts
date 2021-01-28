@@ -11,15 +11,15 @@ dependencies {
   api(project(Projects.dependencies_sets_kotlin))
   //No dependency to dependencies_sets_tornadofx --> to avoid circular deps
 
-  api(Libs.kotlin_reflect)
+  api(Libs.kotlinReflect)
 
   compileOnlyApi(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_javafx))
   api(Libs.guava)
-  api(Libs.miglayout_javafx)
+  api(Libs.miglayoutJavafx)
   api(Libs.tornadofx)
-  api(Libs.slf4j_api)
+  api(Libs.slf4jApi)
 
   api(project(Projects.open_commons_time))
 

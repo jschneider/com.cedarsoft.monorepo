@@ -16,11 +16,11 @@ dependencies {
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_concurrent))
 
-  api(Libs.kotlinx_coroutines_jdk8)
+  api(Libs.kotlinxCoroutinesJdk8)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
+  testImplementation(Libs.logbackClassic)
 }

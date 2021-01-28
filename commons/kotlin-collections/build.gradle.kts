@@ -25,8 +25,8 @@ kotlin {
 
     val commonTest by getting {
       dependencies {
-        implementation(Libs.kotlin_test_common)
-        implementation(Libs.kotlin_test_annotations_common)
+        implementation(Libs.kotlinTestCommon)
+        implementation(Libs.kotlinTestAnnotationsCommon)
       }
     }
 
@@ -40,8 +40,8 @@ kotlin {
 
     jvm().compilations["test"].defaultSourceSet {
       dependencies {
-        implementation(Libs.kotlin_test)
-        implementation(Libs.kotlin_test_junit)
+        implementation(Libs.kotlinTest)
+        implementation(Libs.kotlinTestJunit)
 
         implementation(project(Projects.dependencies_sets_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))

@@ -14,8 +14,8 @@ plugins {
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
 
-  api(Libs.commons_io)
-  api(Libs.commons_codec)
+  api(Libs.commonsIo)
+  api(Libs.commonsCodec)
   api(Libs.guava)
 
   //Test stuff

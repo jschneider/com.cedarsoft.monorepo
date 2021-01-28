@@ -10,12 +10,12 @@ dependencies {
   //
   // Compile Deps
   //
-  api(Libs.joda_time)
+  api(Libs.jodaTime)
 
   //
   // Compile Deps
   //
   api(project(Projects.open_commons_commons))
-  api(Libs.joda_time)
+  api(Libs.jodaTime)
   testImplementation(project(Projects.open_commons_test_utils))
 }

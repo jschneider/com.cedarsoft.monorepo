@@ -20,12 +20,12 @@ dependencies {
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.miglayout_javafx)
-  testImplementation(Libs.jfxtras_all)
-  testImplementation(Libs.fxgraphics2d)
+  testImplementation(Libs.miglayoutJavafx)
+  testImplementation(Libs.jfxtrasAll)
+  testImplementation(Libs.fxGraphics2d)
   testImplementation(Libs.jfoenix)
-  testImplementation(Libs.fontawesomefx)
+  testImplementation(Libs.fontAwesomeFx)
   testImplementation(Libs.controlsfx)
-  testImplementation(Libs.tilesfx)
-  testImplementation(Libs.vworkflows_fx)
+  testImplementation(Libs.tilesFx)
+  testImplementation(Libs.vworkflowsFx)
 }

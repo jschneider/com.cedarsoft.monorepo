@@ -11,15 +11,15 @@ dependencies {
   api(project(Projects.dependencies_sets_kotlin))
   api(project(Projects.open_commons_guava))
 
-  api(Libs.kotlin_reflect)
+  api(Libs.kotlinReflect)
 
   api(Libs.guava)
-  compileOnlyApi(Libs.jackson_annotations)
-  api(Libs.jackson_datatype_jdk8)
-  api(Libs.jackson_datatype_jsr310)
-  api(Libs.jackson_datatype_guava)
-  api(Libs.jackson_module_parameter_names)
-  api(Libs.jackson_module_kotlin)
+  compileOnlyApi(Libs.jacksonAnnotations)
+  api(Libs.jacksonDatatypeJdk8)
+  api(Libs.jacksonDatatypeJsr310)
+  api(Libs.jacksonDatatypeGuava)
+  api(Libs.jacksonModuleParameterNames)
+  api(Libs.jacksonModuleKotlin)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

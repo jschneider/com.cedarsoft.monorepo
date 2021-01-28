@@ -11,10 +11,10 @@ dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
   compileOnlyApi(project(Projects.open_annotations))
 
-  api(Libs.jgoodies_binding)
-  api(Libs.jgoodies_validation)
-  api(Libs.glazedlists_java16)
-  api(Libs.miglayout_swing)
+  api(Libs.jgoodiesBinding)
+  api(Libs.jgoodiesValidation)
+  api(Libs.glazedlistsJava16)
+  api(Libs.miglayoutSwing)
 
   //
   // Test Deps

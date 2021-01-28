@@ -10,10 +10,10 @@ plugins {
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
 
-  api(Libs.slf4j_api)
-  api(Libs.miglayout_swing)
-  compileOnlyApi(Libs.com_intellij_annotations)
-  api(Libs.jide_oss)
+  api(Libs.slf4jApi)
+  api(Libs.miglayoutSwing)
+  compileOnlyApi(Libs.comIntellijAnnotations)
+  api(Libs.jideOss)
   api(Libs.guava)
   compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))

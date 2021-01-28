@@ -46,14 +46,14 @@ kotlin {
 
     named("jvmTest") {
       dependencies {
-        implementation(Libs.kotlin_test)
-        implementation(Libs.kotlin_test_junit)
+        implementation(Libs.kotlinTest)
+        implementation(Libs.kotlinTestJunit)
 
         implementation(project(Projects.dependencies_sets_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
 
-        implementation(Libs.commons_io)
-        implementation(Libs.assertj_core)
+        implementation(Libs.commonsIo)
+        implementation(Libs.assertjCore)
 
       }
     }
