@@ -14,11 +14,11 @@ dependencies {
   api(Libs.kotlinReflect)
 
   api(Libs.guava)
-  compileOnlyApi(Libs.jacksonAnnotations)
-  api(Libs.jacksonDatatypeJdk8)
-  api(Libs.jacksonDatatypeJsr310)
-  api(Libs.jacksonDatatypeGuava)
-  api(Libs.jacksonModuleParameterNames)
+  compileOnlyApi(Libs.jackson.annotations)
+  api(Libs.jackson.datatypeJdk8)
+  api(Libs.jackson.datatypeJsr310)
+  api(Libs.jackson.datatypeGuava)
+  api(Libs.jackson.moduleParameterNames)
   api(Libs.jacksonModuleKotlin)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))

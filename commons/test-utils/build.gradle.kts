@@ -33,7 +33,7 @@ dependencies {
   api(Libs.easymock)
   api(Libs.assertjCore)
   api(Libs.festReflect)
-  api(Libs.jacksonDatabind)
+  api(Libs.jackson.databind)
   api(Libs.xmlunit)
   api(Libs.awaitility)
 

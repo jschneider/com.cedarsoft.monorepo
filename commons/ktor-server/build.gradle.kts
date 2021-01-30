@@ -27,5 +27,5 @@ dependencies {
   testImplementation(project(Projects.open_commons_commons))
   testImplementation(Libs.awaitility)
   testImplementation(Libs.logbackClassic)
-  testImplementation(Libs.ktorServerTestHost)
+  testImplementation(Ktor.server.testHost)
 }

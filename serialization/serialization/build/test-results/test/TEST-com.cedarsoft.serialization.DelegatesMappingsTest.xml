@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DelegatesMappingsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-01-29T03:21:07" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.071">
+<testsuite name="com.cedarsoft.serialization.DelegatesMappingsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-01-30T03:21:25" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.046">
   <properties/>
-  <testcase name="testVerify22()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.003"/>
+  <testcase name="testVerify22()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.012"/>
   <testcase name="testIt()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
-  <testcase name="testVerify2()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.004"/>
-  <testcase name="testVerify3()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.014"/>
-  <testcase name="testErrorHandling()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
-  <testcase name="testPrimitiveTypes()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.021"/>
-  <testcase name="testVerify()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.002"/>
-  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.007"/>
+  <testcase name="testVerify2()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
+  <testcase name="testVerify3()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
+  <testcase name="testErrorHandling()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.003"/>
+  <testcase name="testPrimitiveTypes()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.013"/>
+  <testcase name="testVerify()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
+  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.DelegatesMappingsTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

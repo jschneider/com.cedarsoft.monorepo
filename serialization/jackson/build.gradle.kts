@@ -12,13 +12,13 @@ dependencies {
   // Compile Deps
   //
   api(project(Projects.open_serialization_serialization))
-  api(Libs.jacksonCore)
+  api(Libs.jackson.core)
 
   //
   // Test Deps
   //
   testImplementation(project(Projects.open_serialization_serialization_test_utils))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.jacksonDatabind)
+  testImplementation(Libs.jackson.databind)
   testImplementation(Libs.guice)
 }

@@ -25,6 +25,6 @@ dependencies {
   api(Libs.assertjCore)
   api(Libs.festReflect)
   api(Libs.junit)
-  api(Libs.jacksonDatabind)
+  api(Libs.jackson.databind)
   api(Libs.xmlunit)
 }
