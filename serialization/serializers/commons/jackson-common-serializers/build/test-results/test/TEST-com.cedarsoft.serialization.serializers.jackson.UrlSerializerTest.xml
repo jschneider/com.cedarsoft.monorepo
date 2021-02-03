@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.UrlSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-02T03:22:32" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.007">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.UrlSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-03T03:22:33" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.003">
   <properties/>
-  <testcase name="[1] entry=Entry{object=http://localhost:351/asdf}" classname="com.cedarsoft.serialization.serializers.jackson.UrlSerializerTest" time="0.007"/>
+  <testcase name="[1] entry=Entry{object=http://localhost:351/asdf}" classname="com.cedarsoft.serialization.serializers.jackson.UrlSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING. Could not add type information due to com.fasterxml.jackson.databind.node.TextNode cannot be cast to com.fasterxml.jackson.databind.node.ContainerNode
 ]]></system-err>
