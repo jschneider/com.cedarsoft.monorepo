@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-02-03T03:21:23" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.248">
+<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-02-04T03:21:10" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.213">
   <properties/>
-  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.116"/>
-  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.019"/>
-  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.011"/>
-  <testcase name="testBasic()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
-  <testcase name="testNames()" classname="com.cedarsoft.business.JodaTest" time="0.034"/>
-  <testcase name="testRound()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
-  <testcase name="testPeriode()" classname="com.cedarsoft.business.JodaTest" time="0.008"/>
+  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.094"/>
+  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.014"/>
+  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.007"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.business.JodaTest" time="0.003"/>
+  <testcase name="testNames()" classname="com.cedarsoft.business.JodaTest" time="0.022"/>
+  <testcase name="testRound()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
+  <testcase name="testPeriode()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
   <testcase name="testIt()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
-  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.021"/>
-  <testcase name="testNoLeap()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
+  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.032"/>
+  <testcase name="testNoLeap()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

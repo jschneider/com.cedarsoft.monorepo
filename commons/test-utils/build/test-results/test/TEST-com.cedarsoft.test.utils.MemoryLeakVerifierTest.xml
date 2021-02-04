@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.MemoryLeakVerifierTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-03T03:21:18" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.249">
+<testsuite name="com.cedarsoft.test.utils.MemoryLeakVerifierTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-04T03:20:59" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.169">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.MemoryLeakVerifierTest" time="0.249"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.MemoryLeakVerifierTest" time="0.169"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

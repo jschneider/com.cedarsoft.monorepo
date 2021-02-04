@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.AsyncTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-02-03T03:21:35" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.226">
+<testsuite name="com.cedarsoft.concurrent.AsyncTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-02-04T03:21:16" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.228">
   <properties/>
-  <testcase name="testException()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.001">
+  <testcase name="testException()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.003">
     <skipped/>
   </testcase>
   <testcase name="basic()" classname="com.cedarsoft.concurrent.AsyncTest" time="0.221"/>
