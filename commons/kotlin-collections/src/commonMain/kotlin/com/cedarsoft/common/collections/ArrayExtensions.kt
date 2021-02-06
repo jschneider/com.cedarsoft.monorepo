@@ -55,3 +55,10 @@ private val emptyArrayOfFloats: FloatArray = FloatArray(0)
  */
 fun emptyFloatArray(): FloatArray = emptyArrayOfFloats
 
+
+/**
+ * Returns an array that contains this (if not null) or is empty (if this == null)
+ */
+inline fun <reified T> T?.arrayOfNotNull(): Array<T> {
+  return if (this != null) arrayOf(this) else emptyArray()
+}

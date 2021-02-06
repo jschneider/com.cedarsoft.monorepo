@@ -16,14 +16,6 @@ kotlin {
     nodejs()
   }
 
-  sourceSets.all {
-    languageSettings.apply {
-      languageVersion = "1.4"
-      apiVersion = "1.4"
-      progressiveMode = true
-    }
-  }
-
   sourceSets {
     commonMain {
       dependencies {
