@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.kotlin.serializers.UuidSerializationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-06T03:21:57" hostname="runner-pgnkb89--project-47-concurrent-0" time="1.974">
+<testsuite name="com.cedarsoft.commons.kotlin.serializers.UuidSerializationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-07T03:23:09" hostname="runner-kggansxr-project-47-concurrent-0" time="0.504">
   <properties/>
-  <testcase name="testJson$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.UuidSerializationTest" time="1.974"/>
+  <testcase name="testJson$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.UuidSerializationTest" time="0.504"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

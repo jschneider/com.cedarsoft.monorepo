@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.ImageConverterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-06T03:21:13" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.311">
+<testsuite name="com.cedarsoft.image.ImageConverterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-07T03:21:45" hostname="runner-kggansxr-project-47-concurrent-0" time="0.258">
   <properties/>
-  <testcase name="testSizes()" classname="com.cedarsoft.image.ImageConverterTest" time="0.176"/>
-  <testcase name="testResize()" classname="com.cedarsoft.image.ImageConverterTest" time="0.122"/>
+  <testcase name="testSizes()" classname="com.cedarsoft.image.ImageConverterTest" time="0.155"/>
+  <testcase name="testResize()" classname="com.cedarsoft.image.ImageConverterTest" time="0.1"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

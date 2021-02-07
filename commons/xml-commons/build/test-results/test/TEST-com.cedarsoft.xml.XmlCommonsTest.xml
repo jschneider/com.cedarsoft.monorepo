@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.xml.XmlCommonsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-06T03:20:56" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.955">
+<testsuite name="com.cedarsoft.xml.XmlCommonsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-07T03:23:32" hostname="runner-kggansxr-project-47-concurrent-0" time="1.382">
   <properties/>
-  <testcase name="testParse()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.252"/>
-  <testcase name="testFormat()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.645"/>
-  <testcase name="testOutDom()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.013"/>
-  <testcase name="testOutStream()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.026"/>
-  <testcase name="testOutWriter()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.012"/>
+  <testcase name="testParse()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.278"/>
+  <testcase name="testFormat()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.977"/>
+  <testcase name="testOutDom()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.033"/>
+  <testcase name="testOutStream()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.036"/>
+  <testcase name="testOutWriter()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.021"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

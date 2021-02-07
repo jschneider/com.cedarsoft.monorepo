@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.imagemagick.ConvertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-06T03:21:32" hostname="runner-pgnkb89--project-47-concurrent-0" time="1.797">
+<testsuite name="com.cedarsoft.photos.tools.imagemagick.ConvertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-07T03:22:02" hostname="runner-kggansxr-project-47-concurrent-0" time="1.415">
   <properties/>
-  <testcase name="basic(TemporaryFolder)" classname="com.cedarsoft.photos.tools.imagemagick.ConvertTest" time="1.797"/>
+  <testcase name="basic(TemporaryFolder)" classname="com.cedarsoft.photos.tools.imagemagick.ConvertTest" time="1.415"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
