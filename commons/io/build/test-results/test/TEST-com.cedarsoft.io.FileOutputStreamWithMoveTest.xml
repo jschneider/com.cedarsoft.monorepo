@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.FileOutputStreamWithMoveTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-07T03:22:55" hostname="runner-kggansxr-project-47-concurrent-0" time="0.611">
+<testsuite name="com.cedarsoft.io.FileOutputStreamWithMoveTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-08T03:21:29" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.701">
   <properties/>
-  <testcase name="basics(TemporaryFolder)" classname="com.cedarsoft.io.FileOutputStreamWithMoveTest" time="0.356"/>
-  <testcase name="exception(TemporaryFolder)" classname="com.cedarsoft.io.FileOutputStreamWithMoveTest" time="0.252"/>
+  <testcase name="basics(TemporaryFolder)" classname="com.cedarsoft.io.FileOutputStreamWithMoveTest" time="0.503"/>
+  <testcase name="exception(TemporaryFolder)" classname="com.cedarsoft.io.FileOutputStreamWithMoveTest" time="0.195"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
