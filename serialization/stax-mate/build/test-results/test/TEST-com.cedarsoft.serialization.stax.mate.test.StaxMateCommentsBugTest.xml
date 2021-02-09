@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.StaxMateCommentsBugTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-08T03:22:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.028">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.StaxMateCommentsBugTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-09T03:22:56" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.006">
   <properties/>
-  <testcase name="testManualWithComment()" classname="com.cedarsoft.serialization.stax.mate.test.StaxMateCommentsBugTest" time="0.028"/>
+  <testcase name="testManualWithComment()" classname="com.cedarsoft.serialization.stax.mate.test.StaxMateCommentsBugTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

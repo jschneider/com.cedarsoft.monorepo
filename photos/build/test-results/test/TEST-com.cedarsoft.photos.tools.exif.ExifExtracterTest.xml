@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.exif.ExifExtracterTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-02-08T03:21:40" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.001">
+<testsuite name="com.cedarsoft.photos.tools.exif.ExifExtracterTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-02-09T03:21:50" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.009">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.photos.tools.exif.ExifExtracterTest" time="0.001">
+  <testcase name="testIt()" classname="com.cedarsoft.photos.tools.exif.ExifExtracterTest" time="0.009">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AssertionsEnabledTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-08T03:22:22" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.001">
+<testsuite name="com.cedarsoft.test.utils.AssertionsEnabledTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-09T03:22:27" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.002">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.AssertionsEnabledTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.AssertionsEnabledTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

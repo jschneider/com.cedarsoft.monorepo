@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.license.CreativeCommonsLicenseTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-02-08T03:21:31" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.078">
+<testsuite name="com.cedarsoft.license.CreativeCommonsLicenseTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-02-09T03:21:34" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.067">
   <properties/>
-  <testcase name="testAll()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
-  <testcase name="testCCBy()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.002"/>
-  <testcase name="testCCNC()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.012"/>
-  <testcase name="testCCND()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.004"/>
+  <testcase name="testAll()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.011"/>
+  <testcase name="testCCBy()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.006"/>
+  <testcase name="testCCNC()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
+  <testcase name="testCCND()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
   <testcase name="testCCSA()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.002"/>
-  <testcase name="testUrls()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.002"/>
-  <testcase name="testResolve()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.002"/>
-  <testcase name="testCCNCND()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
-  <testcase name="testCCNCSA()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
-  <testcase name="testLicenseUrlTranslated()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
+  <testcase name="testUrls()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
+  <testcase name="testResolve()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.001"/>
+  <testcase name="testCCNCND()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.002"/>
+  <testcase name="testCCNCSA()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.013"/>
+  <testcase name="testLicenseUrlTranslated()" classname="com.cedarsoft.license.CreativeCommonsLicenseTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
