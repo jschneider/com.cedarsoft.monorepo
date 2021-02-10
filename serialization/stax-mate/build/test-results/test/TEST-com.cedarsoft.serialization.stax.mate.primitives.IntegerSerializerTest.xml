@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-09T03:22:59" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.12">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-10T03:23:01" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.162">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.017"/>
-  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.066"/>
-  <testcase name="[3] entry=Entry{object=2147483647}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.016"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.022"/>
+  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.044"/>
+  <testcase name="[3] entry=Entry{object=2147483647}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.041"/>
   <testcase name="[4] entry=Entry{object=-2147483648}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.016"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.001"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

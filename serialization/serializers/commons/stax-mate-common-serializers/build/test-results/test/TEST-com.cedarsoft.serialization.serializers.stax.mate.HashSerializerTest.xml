@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-09T03:22:58" hostname="runner-pgnkb89--project-47-concurrent-0" time="1.547">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-10T03:22:59" hostname="runner-pgnkb89--project-47-concurrent-0" time="1.274">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[SHA256: 11223344]}" classname="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" time="1.488"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" time="0.052"/>
+  <testcase name="[1] entry=Entry{object=[SHA256: 11223344]}" classname="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" time="1.198"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.serializers.stax.mate.HashSerializerTest" time="0.066"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
