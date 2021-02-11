@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-02-10T03:21:41" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.0">
+<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-02-11T03:21:05" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
   <properties/>
-  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
+  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.003">
     <skipped/>
   </testcase>
   <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.ResolutionsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-10T03:21:31" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.354">
+<testsuite name="com.cedarsoft.image.ResolutionsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-11T03:20:52" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.738">
   <properties/>
-  <testcase name="testSizes()" classname="com.cedarsoft.image.ResolutionsTest" time="0.016"/>
-  <testcase name="testNone()" classname="com.cedarsoft.image.ResolutionsTest" time="0.305"/>
-  <testcase name="testScreenResolutions()" classname="com.cedarsoft.image.ResolutionsTest" time="0.007"/>
-  <testcase name="testSorting()" classname="com.cedarsoft.image.ResolutionsTest" time="0.008"/>
+  <testcase name="testSizes()" classname="com.cedarsoft.image.ResolutionsTest" time="0.005"/>
+  <testcase name="testNone()" classname="com.cedarsoft.image.ResolutionsTest" time="0.687"/>
+  <testcase name="testScreenResolutions()" classname="com.cedarsoft.image.ResolutionsTest" time="0.002"/>
+  <testcase name="testSorting()" classname="com.cedarsoft.image.ResolutionsTest" time="0.016"/>
   <testcase name="testConstructor()" classname="com.cedarsoft.image.ResolutionsTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
