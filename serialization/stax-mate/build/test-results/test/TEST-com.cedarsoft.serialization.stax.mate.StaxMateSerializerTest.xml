@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-02-12T03:23:06" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.042">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:22:54" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.056">
   <properties/>
-  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.024"/>
-  <testcase name="testWrongVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.012"/>
-  <testcase name="testWrongNamespaceVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.004"/>
+  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.022"/>
+  <testcase name="testWrongVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.02"/>
+  <testcase name="testWrongNamespaceVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.01"/>
   <testcase name="testNoVersion()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
