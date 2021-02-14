@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangVOtherButTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:21:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.008">
+<testsuite name="com.cedarsoft.business.calc.roi.PangVOtherButTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:21:18" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.03">
   <properties/>
-  <testcase name="testSum()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.002"/>
+  <testcase name="testSum()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

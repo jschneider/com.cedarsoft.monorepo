@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:22:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.035">
+<testsuite name="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:22:22" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.044">
   <properties/>
-  <testcase name="testNonObjectType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.005"/>
-  <testcase name="testWithoutType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.022"/>
+  <testcase name="testNonObjectType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.014"/>
+  <testcase name="testWithoutType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.028"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

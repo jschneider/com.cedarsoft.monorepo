@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.InterestRateProviderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:21:45" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.246">
+<testsuite name="com.cedarsoft.business.calc.InterestRateProviderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:21:17" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.377">
   <properties/>
-  <testcase name="testDefaultRate()" classname="com.cedarsoft.business.calc.InterestRateProviderTest" time="0.207"/>
+  <testcase name="testDefaultRate()" classname="com.cedarsoft.business.calc.InterestRateProviderTest" time="0.373"/>
   <testcase name="testPeriode()" classname="com.cedarsoft.business.calc.InterestRateProviderTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

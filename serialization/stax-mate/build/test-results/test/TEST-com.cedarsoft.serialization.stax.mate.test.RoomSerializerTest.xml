@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.RoomSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:22:51" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.092">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.RoomSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:22:27" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.094">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Room@b9b4a72d}" classname="com.cedarsoft.serialization.stax.mate.test.RoomSerializerTest" time="0.092"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Room@b9b4a72d}" classname="com.cedarsoft.serialization.stax.mate.test.RoomSerializerTest" time="0.094"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

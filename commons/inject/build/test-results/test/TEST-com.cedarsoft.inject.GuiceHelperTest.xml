@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.inject.GuiceHelperTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-13T03:21:31" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.094">
+<testsuite name="com.cedarsoft.inject.GuiceHelperTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:21:04" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.066">
   <properties/>
-  <testcase name="testGuice()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.026"/>
-  <testcase name="testIt()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.011"/>
-  <testcase name="testBindCollections()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.036"/>
+  <testcase name="testGuice()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.03"/>
+  <testcase name="testIt()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.004"/>
+  <testcase name="testBindCollections()" classname="com.cedarsoft.inject.GuiceHelperTest" time="0.024"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
