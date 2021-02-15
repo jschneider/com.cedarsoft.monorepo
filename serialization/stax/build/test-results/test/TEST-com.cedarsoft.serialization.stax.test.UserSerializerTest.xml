@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.test.UserSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:22:20" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.15">
+<testsuite name="com.cedarsoft.serialization.stax.test.UserSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-15T03:23:26" hostname="runner-kggansxr-project-47-concurrent-0" time="0.157">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.test.User@629e139c}" classname="com.cedarsoft.serialization.stax.test.UserSerializerTest" time="0.15"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.test.User@629e139c}" classname="com.cedarsoft.serialization.stax.test.UserSerializerTest" time="0.157"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

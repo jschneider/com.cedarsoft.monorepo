@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.UniqueNodesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:22:37" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.736">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.UniqueNodesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-15T03:24:14" hostname="runner-kggansxr-project-47-concurrent-0" time="0.607">
   <properties/>
-  <testcase name="testUnique1()" classname="com.cedarsoft.serialization.neo4j.test.utils.UniqueNodesTest" time="0.736"/>
+  <testcase name="testUnique1()" classname="com.cedarsoft.serialization.neo4j.test.utils.UniqueNodesTest" time="0.607"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

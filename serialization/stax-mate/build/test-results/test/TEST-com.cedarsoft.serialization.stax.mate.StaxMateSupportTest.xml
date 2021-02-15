@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-02-14T03:22:27" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.079">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-02-15T03:23:37" hostname="runner-kggansxr-project-47-concurrent-0" time="0.073">
   <properties/>
-  <testcase name="testFactories()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.031"/>
-  <testcase name="testEventNames()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.017"/>
-  <testcase name="testStaxMateChangeAfter()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.005"/>
-  <testcase name="testFactories2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.005"/>
-  <testcase name="testStaxMateChangeBefore()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.003"/>
-  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.013"/>
+  <testcase name="testFactories()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.045"/>
+  <testcase name="testEventNames()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.002"/>
+  <testcase name="testStaxMateChangeAfter()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.018"/>
+  <testcase name="testFactories2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
+  <testcase name="testStaxMateChangeBefore()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
+  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
