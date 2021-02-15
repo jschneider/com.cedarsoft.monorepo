@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-15T03:23:56" hostname="runner-kggansxr-project-47-concurrent-0" time="0.29">
+<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-15T19:16:04" hostname="runner-kggansxr-project-47-concurrent-0" time="0.448">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@3d8f130" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.005"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@3d8f130" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.013"/>
   <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@1cd0ba28" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.004"/>
-  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.272"/>
+  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.421"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

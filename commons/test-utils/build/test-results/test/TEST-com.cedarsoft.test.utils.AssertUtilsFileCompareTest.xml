@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-02-15T03:23:05" hostname="runner-kggansxr-project-47-concurrent-0" time="0.174">
+<testsuite name="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-02-15T19:15:19" hostname="runner-kggansxr-project-47-concurrent-0" time="0.26">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.004"/>
-  <testcase name="testOneOf()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.019"/>
-  <testcase name="testFail()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.014"/>
-  <testcase name="testCopyFile()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.01"/>
-  <testcase name="testInvalid()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.008"/>
-  <testcase name="testOneOf2()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.011"/>
-  <testcase name="testOneOf4()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.003"/>
-  <testcase name="testOneOfFail()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.078"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.014"/>
+  <testcase name="testOneOf()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.008"/>
+  <testcase name="testFail()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.013"/>
+  <testcase name="testCopyFile()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.021"/>
+  <testcase name="testInvalid()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.006"/>
+  <testcase name="testOneOf2()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.048"/>
+  <testcase name="testOneOf4()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.004"/>
+  <testcase name="testOneOfFail()" classname="com.cedarsoft.test.utils.AssertUtilsFileCompareTest" time="0.085"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
