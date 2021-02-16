@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.IntegerSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-15T19:15:40" hostname="runner-kggansxr-project-47-concurrent-0" time="0.028">
+<testsuite name="com.cedarsoft.serialization.jackson.IntegerSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-16T03:23:55" hostname="runner-kggansxr-project-47-concurrent-0" time="0.029">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.IntegerSerializerTest" time="0.008"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.IntegerSerializerTest" time="0.003"/>
   <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.IntegerSerializerTest" time="0.003"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.IntegerSerializerTest" time="0.004"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.IntegerSerializerTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

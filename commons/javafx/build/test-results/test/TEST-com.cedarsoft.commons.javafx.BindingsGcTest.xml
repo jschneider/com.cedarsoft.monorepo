@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.BindingsGcTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-02-15T19:14:51" hostname="runner-kggansxr-project-47-concurrent-0" time="0.005">
+<testsuite name="com.cedarsoft.commons.javafx.BindingsGcTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-02-16T03:23:09" hostname="runner-kggansxr-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="testBindingWithTextFieldStringProperty()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.001">
+  <testcase name="testBindingWithTextFieldStringProperty()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testBindingWithTextField()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.001">
+  <testcase name="testBindingWithTextField()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testOnlyBinding()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.001">
+  <testcase name="testOnlyBinding()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

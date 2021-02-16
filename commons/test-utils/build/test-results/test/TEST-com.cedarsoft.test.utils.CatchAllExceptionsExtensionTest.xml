@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-02-15T19:15:16" hostname="runner-kggansxr-project-47-concurrent-0" time="0.011">
+<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-02-16T03:23:33" hostname="runner-kggansxr-project-47-concurrent-0" time="0.016">
   <properties/>
-  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
+  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.011">
     <skipped/>
   </testcase>
   <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
+  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.004">
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

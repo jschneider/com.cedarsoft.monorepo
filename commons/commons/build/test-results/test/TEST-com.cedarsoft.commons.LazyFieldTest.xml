@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.LazyFieldTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-15T19:14:19" hostname="runner-kggansxr-project-47-concurrent-0" time="0.71">
+<testsuite name="com.cedarsoft.commons.LazyFieldTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-16T03:22:30" hostname="runner-kggansxr-project-47-concurrent-0" time="0.471">
   <properties/>
-  <testcase name="testSimple()" classname="com.cedarsoft.commons.LazyFieldTest" time="0.71"/>
+  <testcase name="testSimple()" classname="com.cedarsoft.commons.LazyFieldTest" time="0.471"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
