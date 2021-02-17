@@ -1,12 +1,28 @@
 package com.cedarsoft.common.kotlin.lang
 
+import assertk.*
+import assertk.assertions.*
 import org.assertj.core.api.AssertionsForClassTypes
 import org.junit.jupiter.api.Test
 import kotlin.math.PI
 
-internal class MathExtensionsKtTest {
+class MathExtensionsKtTest {
   @Test
-  internal fun testToRadians() {
+  fun testBetween() {
+    assertThat(7.0.betweenInclusive(1.0, 7.0)).isTrue()
+    assertThat(7.0.betweenInclusive(1.0, 7.1)).isTrue()
+    assertThat(7.0.betweenInclusive(1.0, 6.999)).isFalse()
+  }
+
+  @Test
+  fun testBetweenOtherOrder() {
+    assertThat(7.0.betweenInclusive(7.0, 1.0)).isTrue()
+    assertThat(7.0.betweenInclusive(7.1, 1.0)).isTrue()
+    assertThat(7.0.betweenInclusive(6.999, 1.0)).isFalse()
+  }
+
+  @Test
+  fun testToRadians() {
     AssertionsForClassTypes.assertThat(0.0.toRadians()).isEqualTo(0.0)
     AssertionsForClassTypes.assertThat(45.0.toRadians()).isEqualTo(PI / 4.0 * 1) //bottom-right
     AssertionsForClassTypes.assertThat(90.0.toRadians()).isEqualTo(PI / 4.0 * 2) //bottom

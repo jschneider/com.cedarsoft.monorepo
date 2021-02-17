@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.guava.GuavaExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-16T03:22:52" hostname="runner-kggansxr-project-47-concurrent-0" time="0.643">
+<testsuite name="com.cedarsoft.guava.GuavaExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-17T03:21:57" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.908">
   <properties/>
-  <testcase name="testAddCopy$guava()" classname="com.cedarsoft.guava.GuavaExtensionTest" time="0.643"/>
+  <testcase name="testAddCopy$guava()" classname="com.cedarsoft.guava.GuavaExtensionTest" time="0.908"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-02-16T03:23:37" hostname="runner-kggansxr-project-47-concurrent-0" time="0.021">
+<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-02-17T03:21:21" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.007">
   <properties/>
-  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.011">
+  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.002">
     <skipped/>
   </testcase>
   <testcase name="testFailing()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testMulti()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.008">
+  <testcase name="testMulti()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

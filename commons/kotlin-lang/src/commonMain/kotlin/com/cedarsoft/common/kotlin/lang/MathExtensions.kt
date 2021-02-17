@@ -267,7 +267,16 @@ val Int.prevPowerOfTwo: Int get() = if (isPowerOfTwo) this else (nextPowerOfTwo 
 val Int.isPowerOfTwo: Boolean get() = this.nextPowerOfTwo == this
 
 
-inline fun Double.betweenInclusive(min: Double, max: Double): Boolean = (this >= min) && (this <= max)
+/**
+ * Returns true if this is between start and end.
+ *
+ * Attention: start *may* be larger than end
+ */
+inline fun Double.betweenInclusive(start: Double, end: Double): Boolean {
+  return (this >= start) && (this <= end)
+    ||
+    (this >= end) && (this <= start) //if start < end, this check is relevant
+}
 
 /** Clamps the integer value in the 0..255 range */
 fun Int.clampUByte(): Int {
