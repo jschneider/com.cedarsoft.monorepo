@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-02-17T03:22:30" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.041">
+<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-02-18T03:22:35" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.076">
   <properties/>
-  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
-  <testcase name="testSeria()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.003"/>
-  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
-  <testcase name="testReadable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.012"/>
-  <testcase name="testDeserialize()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
+  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
+  <testcase name="testSeria()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
+  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.004"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
+  <testcase name="testReadable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.009"/>
+  <testcase name="testDeserialize()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.021"/>
   <testcase name="testVerify()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

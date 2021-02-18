@@ -170,3 +170,14 @@ fun String.unquote(): String = if (isQuoted()) this.substring(1, this.length - 1
 val String?.quoted: String get() = this.quote()
 val String.unquoted: String get() = this.unquote()
 
+
+/**
+ * Returns true if this string contains all given strings.
+ *
+ * Does *not* check the order
+ */
+fun String.containsAll(elements: Iterable<String>, ignoreCase: Boolean = false): Boolean {
+  return elements.all {
+    this.contains(it, ignoreCase)
+  }
+}
