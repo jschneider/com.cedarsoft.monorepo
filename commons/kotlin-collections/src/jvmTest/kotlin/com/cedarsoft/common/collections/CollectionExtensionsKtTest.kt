@@ -9,6 +9,17 @@ import org.junit.jupiter.api.Test
 
 class CollectionExtensionsKtTest {
   @Test
+  fun testConsumeUntil2() {
+    val list = listOf(1, 2, 3, 4, 5)
+
+    val consumeUntil = list.consumeUntil("3") {
+      it.toString()
+    } ?: "null"
+
+
+  }
+
+  @Test
   fun testModulo() {
     val elements = listOf("0", "1", "2", "3")
 

@@ -42,7 +42,7 @@ fun <T> List<T>.getModuloOrNull(index: Int): T? {
  * Iterates over this collection delivering its elements to [consumer] while the [consumer] returns true for a consumed element
  * @see [consumeUntil]
  */
-fun <E> Collection<E>.consumeWhile(consumer: (E) -> Boolean) {
+inline fun <E> Collection<E>.consumeWhile(consumer: (E) -> Boolean) {
   val iter = iterator()
   while (iter.hasNext()) {
     if (!consumer(iter.next())) {
@@ -54,14 +54,32 @@ fun <E> Collection<E>.consumeWhile(consumer: (E) -> Boolean) {
 /**
  * Iterates over this collection delivering its elements to [consumer] until the [consumer] returns false for a consumed element
  * @see [consumeWhile]
+ * @return true if the consumer returned true for any value. false otherwise
  */
-fun <E> Collection<E>.consumeUntil(consumer: (E) -> Boolean) {
+inline fun <E> Collection<E>.consumeUntil(consumer: (E) -> Boolean): Boolean {
   val iter = iterator()
   while (iter.hasNext()) {
     if (consumer(iter.next())) {
-      return
+      return true
     }
   }
+
+  return false
+}
+
+/**
+ * Consumes the consumer until it returns the cancel value
+ * @return the cancel value or null if no consumer has returned the cancel value
+ */
+inline fun <E, T> Collection<E>.consumeUntil(cancelValue: T, consumer: (E) -> T): T? {
+  val iter = iterator()
+  while (iter.hasNext()) {
+    if (consumer(iter.next()) == cancelValue) {
+      return cancelValue
+    }
+  }
+
+  return null
 }
 
 /**
