@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.execution.OutputRedirectorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-19T03:21:00" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.525">
+<testsuite name="com.cedarsoft.execution.OutputRedirectorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-02-20T03:20:46" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.256">
   <properties/>
-  <testcase name="testThreaded()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.232"/>
-  <testcase name="testStreamsBuffered()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.015"/>
-  <testcase name="testBlocking()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.235"/>
+  <testcase name="testThreaded()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.022"/>
+  <testcase name="testStreamsBuffered()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.002"/>
+  <testcase name="testBlocking()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.222"/>
   <testcase name="testDefault()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.001"/>
   <testcase name="testStreams()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
