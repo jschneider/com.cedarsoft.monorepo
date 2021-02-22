@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-02-21T03:22:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="4.084">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-02-22T03:21:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.648">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.neo4j.test.utils.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="3.436"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.neo4j.test.utils.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.272"/>
-  <testcase name="testAscii()" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.203"/>
-  <testcase name="testVersion()" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.168"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.neo4j.test.utils.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.156"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.neo4j.test.utils.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.178"/>
+  <testcase name="testAscii()" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.153"/>
+  <testcase name="testVersion()" classname="com.cedarsoft.serialization.neo4j.test.utils.BallSerializerTest" time="0.159"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

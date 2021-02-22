@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.MockitoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-21T03:22:03" hostname="runner-pgnkb89--project-47-concurrent-0" time="3.245">
+<testsuite name="com.cedarsoft.test.utils.MockitoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-22T03:20:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.849">
   <properties/>
-  <testcase name="testAnnotations()" classname="com.cedarsoft.test.utils.MockitoTest" time="3.186"/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.MockitoTest" time="0.031"/>
-  <testcase name="testTemplate()" classname="com.cedarsoft.test.utils.MockitoTest" time="0.022"/>
+  <testcase name="testAnnotations()" classname="com.cedarsoft.test.utils.MockitoTest" time="1.756"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.MockitoTest" time="0.027"/>
+  <testcase name="testTemplate()" classname="com.cedarsoft.test.utils.MockitoTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

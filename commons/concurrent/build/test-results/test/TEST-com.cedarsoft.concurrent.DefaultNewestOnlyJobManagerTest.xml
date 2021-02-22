@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-21T03:21:31" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.848">
+<testsuite name="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-22T03:20:54" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.689">
   <properties/>
-  <testcase name="onlyYoungestJobIsExecuted()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.776"/>
-  <testcase name="smoke()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.025"/>
-  <testcase name="reproduceDeadLock()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.045"/>
+  <testcase name="onlyYoungestJobIsExecuted()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.599"/>
+  <testcase name="smoke()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.035"/>
+  <testcase name="reproduceDeadLock()" classname="com.cedarsoft.concurrent.DefaultNewestOnlyJobManagerTest" time="0.044"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
