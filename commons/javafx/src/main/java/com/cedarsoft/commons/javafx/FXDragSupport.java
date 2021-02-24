@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class DragSupport<T extends Node> {
+public class FXDragSupport<T extends Node> {
 
   private boolean dragging;
 
@@ -50,7 +50,7 @@ public class DragSupport<T extends Node> {
   @Nonnull
   private final MouseDragSpeedCalculator mouseDragSpeedCalculator = new MouseDragSpeedCalculator();
 
-  public DragSupport(@Nonnull T node) {
+  public FXDragSupport(@Nonnull T node) {
     this.node = node;
   }
 

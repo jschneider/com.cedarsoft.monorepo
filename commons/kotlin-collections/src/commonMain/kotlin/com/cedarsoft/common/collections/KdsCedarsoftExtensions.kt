@@ -99,13 +99,18 @@ fun FloatArrayList(initialSize: Int = 7, fill: (Int) -> Float): FloatArrayList {
  */
 fun IntArrayList.isNotEmpty(): Boolean = !isEmpty()
 fun IntArrayList.lastOrNull(): Int? = if (isEmpty()) null else this.getAt(size - 1)
+fun IntArrayList.last(): Int = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(size - 1)
+fun IntArrayList.first(): Int = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(0)
 
 fun DoubleArrayList.isNotEmpty(): Boolean = !isEmpty()
 fun DoubleArrayList.lastOrNull(): Double? = if (isEmpty()) null else this.getAt(size - 1)
+fun DoubleArrayList.last(): Double = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(size - 1)
+fun DoubleArrayList.first(): Double = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(0)
 
 fun FloatArrayList.isNotEmpty(): Boolean = !isEmpty()
 fun FloatArrayList.lastOrNull(): Float? = if (isEmpty()) null else this.getAt(size - 1)
-
+fun FloatArrayList.last(): Float = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(size - 1)
+fun FloatArrayList.first(): Float = if (isEmpty()) throw NoSuchElementException("Empty array") else this.getAt(0)
 
 fun DoubleArray.minOrElse(nil: Double): Double {
   if (isEmpty()) return nil

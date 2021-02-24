@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.FooTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-23T03:21:32" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.031">
+<testsuite name="com.cedarsoft.serialization.jackson.test.FooTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-24T03:22:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.021">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Foo@213f785b}" classname="com.cedarsoft.serialization.jackson.test.FooTest" time="0.015"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Foo@1a3e93f0}" classname="com.cedarsoft.serialization.jackson.test.FooTest" time="0.006"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Foo@fa1386e5}" classname="com.cedarsoft.serialization.jackson.test.FooTest" time="0.002"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Foo@2a415468}" classname="com.cedarsoft.serialization.jackson.test.FooTest" time="0.018"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
