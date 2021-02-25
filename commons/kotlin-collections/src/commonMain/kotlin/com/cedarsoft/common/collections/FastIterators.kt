@@ -73,6 +73,14 @@ inline fun DoubleArray.fastForEachIndexed(callback: (index: Int, value: Double) 
   }
 }
 
+inline fun DoubleArray.fastForEachIndexedReverse(callback: (index: Int, value: Double) -> Unit) {
+  val currentSize = size
+
+  for (i in (currentSize - 1) downTo 0) {
+    callback(i, this[i])
+  }
+}
+
 /**
  * Iterates over the entries of a list
  *

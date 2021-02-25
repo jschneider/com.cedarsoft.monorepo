@@ -9,6 +9,23 @@ import org.junit.jupiter.api.Test
  */
 class FastIteratorsKtTest {
   @Test
+  fun testReverse() {
+    val list = DoubleArray(10) { it * 10.0 }
+
+    assertThat(list).hasSize(10)
+
+    var callCount = 0
+
+    list.fastForEachIndexedReverse { index, value ->
+      callCount++
+      assertThat(index, "for index $index").isEqualTo(list.size - callCount)
+      assertThat(value, "for index $index").isEqualTo((list.size - callCount) * 10.0)
+    }
+
+    assertThat(callCount).isEqualTo(10)
+  }
+
+  @Test
   fun testFastAny() {
     val list = DoubleArrayList()
 
