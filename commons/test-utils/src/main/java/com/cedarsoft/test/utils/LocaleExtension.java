@@ -31,11 +31,10 @@
 
 package com.cedarsoft.test.utils;
 
-import org.apache.commons.lang3.LocaleUtils;
-
-import javax.annotation.Nonnull;
 import java.util.Locale;
-import java.util.Optional;
+
+import org.apache.commons.lang3.LocaleUtils;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Rule that sets the TimeZone
@@ -44,23 +43,22 @@ import java.util.Optional;
  */
 public class LocaleExtension extends AbstractConfiguringExtension<Locale, WithLocale> {
   public LocaleExtension() {
-    super(Locale.class, WithLocale.class, "locale");
-  }
+    super(Locale.class, WithLocale.class, "locale", new ConfigurationCallback<Locale, WithLocale>() {
+      @Override
+      public Locale getOriginalValue() {
+        return Locale.getDefault();
+      }
 
-  @Nonnull
-  @Override
-  protected Optional<Locale> convert(@Nonnull WithLocale annotation) {
-    return Optional.ofNullable(LocaleUtils.toLocale(annotation.value()));
-  }
+      @NotNull
+      @Override
+      public Locale extract(@NotNull WithLocale annotation) {
+        return LocaleUtils.toLocale(annotation.value());
+      }
 
-  @Nonnull
-  @Override
-  protected Locale getOldValue() {
-    return Locale.getDefault();
-  }
-
-  @Override
-  protected void applyValue(@Nonnull Locale value) {
-    Locale.setDefault(value);
+      @Override
+      public void applyValue(Locale value) {
+        Locale.setDefault(value);
+      }
+    });
   }
 }

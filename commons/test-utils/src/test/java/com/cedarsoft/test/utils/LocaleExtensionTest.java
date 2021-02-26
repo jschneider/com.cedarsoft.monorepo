@@ -1,15 +1,22 @@
 package com.cedarsoft.test.utils;
 
-import org.junit.jupiter.api.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.Locale;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@WithLocale("ja_JP")
 public class LocaleExtensionTest {
+  @Test
+  void testWithout() {
+    //Value from "global" config for complete test
+    assertThat(Locale.getDefault()).isEqualTo(Locale.JAPAN);
+  }
+
   @WithLocale("de_DE")
   @Test
   void testDe() {

@@ -70,6 +70,10 @@ object JavaFxTimer {
    * Repeats the given lambda every [delay]
    */
   fun repeat(delay: Duration, run: () -> Unit): Timeline {
+    require(delay.toMillis() >= 16.0) {
+      "A delay of at least 16 ms is required because of limitations of the JavaFX timer resolution"
+    }
+
     val timeline = Timeline(KeyFrame(delay, { run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()

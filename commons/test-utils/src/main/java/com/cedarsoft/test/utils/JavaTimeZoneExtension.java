@@ -30,33 +30,32 @@
  */
 package com.cedarsoft.test.utils;
 
-import javax.annotation.Nonnull;
 import java.time.ZoneId;
-import java.util.Optional;
 import java.util.TimeZone;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class JavaTimeZoneExtension extends AbstractConfiguringExtension<ZoneId, WithTimeZone> {
   public JavaTimeZoneExtension() {
-    super(ZoneId.class, WithTimeZone.class, "timeZone");
-  }
+    super(ZoneId.class, WithTimeZone.class, "timeZone", new ConfigurationCallback<ZoneId, WithTimeZone>() {
+      @Override
+      public ZoneId getOriginalValue() {
+        return ZoneId.systemDefault();
+      }
 
-  @Nonnull
-  @Override
-  protected Optional<ZoneId> convert(@Nonnull WithTimeZone annotation) {
-    return Optional.ofNullable(ZoneId.of(annotation.value()));
-  }
+      @NotNull
+      @Override
+      public ZoneId extract(@NotNull WithTimeZone annotation) {
+        return ZoneId.of(annotation.value());
+      }
 
-  @Override
-  protected void applyValue(@Nonnull ZoneId value) {
-    TimeZone.setDefault(TimeZone.getTimeZone(value));
-  }
-
-  @Nonnull
-  @Override
-  protected ZoneId getOldValue() {
-    return ZoneId.systemDefault();
+      @Override
+      public void applyValue(ZoneId value) {
+        TimeZone.setDefault(TimeZone.getTimeZone(value));
+      }
+    });
   }
 }

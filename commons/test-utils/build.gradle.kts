@@ -17,6 +17,9 @@ dependencies {
   api(project(Projects.dependencies_sets_kotlin))
   api(project(Projects.dependencies_sets_test_basics))
 
+  api(project(Projects.open_unit_unit))
+  api(project(Projects.open_commons_kotlin_lang))
+
   api(project(Projects.open_commons_crypt))
   api(project(Projects.open_commons_xml_commons))
 
