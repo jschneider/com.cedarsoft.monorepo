@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.MoneySerializerVersionsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-02-28T03:23:11" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.024">
+<testsuite name="com.cedarsoft.test.io2.MoneySerializerVersionsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-03-01T03:23:10" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.036">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@78dcf221" classname="com.cedarsoft.test.io2.MoneySerializerVersionsTest" time="0.004"/>
-  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@33be4221" classname="com.cedarsoft.test.io2.MoneySerializerVersionsTest" time="0.004"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@754b6383" classname="com.cedarsoft.test.io2.MoneySerializerVersionsTest" time="0.018"/>
+  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@32ab77f7" classname="com.cedarsoft.test.io2.MoneySerializerVersionsTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.DimensionSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-28T03:23:15" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.06">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.DimensionSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-01T03:23:14" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.051">
   <properties/>
-  <testcase name="[1] entry=Entry{object=java.awt.Dimension[width=1600,height=600]}" classname="com.cedarsoft.serialization.serializers.stax.mate.DimensionSerializerTest" time="0.06"/>
+  <testcase name="[1] entry=Entry{object=java.awt.Dimension[width=1600,height=600]}" classname="com.cedarsoft.serialization.serializers.stax.mate.DimensionSerializerTest" time="0.051"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
