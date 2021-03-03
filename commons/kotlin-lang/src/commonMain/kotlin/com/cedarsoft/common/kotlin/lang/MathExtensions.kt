@@ -1,6 +1,7 @@
 package com.cedarsoft.common.kotlin.lang
 
 import com.cedarsoft.unit.other.deg
+import com.cedarsoft.unit.other.pct
 import com.cedarsoft.unit.si.rad
 import kotlin.math.PI
 import kotlin.math.abs
@@ -14,6 +15,23 @@ import kotlin.math.pow
  * Math methods
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+
+/**
+ * Calculates the distance between two coordinates
+ */
+fun distance(x1: Double, y1: Double, x2: Double, y2: Double): Double {
+  val deltaX = x1 - x2
+  val deltaY = y1 - y2
+
+  return distance(deltaX, deltaY)
+}
+
+/**
+ * Returns the distance for delta x and delta y
+ */
+fun distance(deltaX: Double, deltaY: Double): Double {
+  return (deltaX * deltaX + deltaY * deltaY).sqrt()
+}
 
 /**
  * Converts radians to degree
@@ -38,6 +56,14 @@ fun Int.toRadians(): @rad Double {
 
 inline fun Double.isCloseTo(targetValue: Double, epsilon: Double = 0.0001): Boolean {
   return isEquivalent(this, targetValue, epsilon)
+}
+
+/**
+ * Normalizes a value for the given base.
+ * Returns the percentage of this relative to the given base
+ */
+inline fun Double.normalize(base: Double): @pct Double {
+  return 1.0 / base * this
 }
 
 

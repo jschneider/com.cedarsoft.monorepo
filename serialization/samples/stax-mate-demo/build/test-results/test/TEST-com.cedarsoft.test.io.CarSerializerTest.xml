@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io.CarSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-01T03:23:10" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.664">
+<testsuite name="com.cedarsoft.test.io.CarSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-03T03:07:01" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.557">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Car@3f1320d1}" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.082"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.test.Car@39b671c7}" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.085"/>
-  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.494"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Car@a4e28c8}" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.067"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.test.Car@6c752df7}" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.079"/>
+  <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io.CarSerializerTest" time="0.407"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
