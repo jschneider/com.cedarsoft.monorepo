@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.PeriodSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-03T03:07:04" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.016">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.PeriodSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-04T03:06:59" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.011">
   <properties/>
-  <testcase name="[1] entry=Entry{object=P1Y2M3D}" classname="com.cedarsoft.serialization.serializers.jackson.PeriodSerializerTest" time="0.016"/>
+  <testcase name="[1] entry=Entry{object=P1Y2M3D}" classname="com.cedarsoft.serialization.serializers.jackson.PeriodSerializerTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING. Could not add type information due to com.fasterxml.jackson.databind.node.TextNode cannot be cast to com.fasterxml.jackson.databind.node.ContainerNode
 ]]></system-err>
