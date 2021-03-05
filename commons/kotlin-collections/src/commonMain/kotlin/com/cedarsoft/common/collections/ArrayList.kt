@@ -232,7 +232,7 @@ class DoubleArrayList(capacity: Int = 7) {
     add(other)
   }
 
-  private fun ensure(count: Int) {
+  fun ensure(count: Int) {
     if (length + count > data.size) {
       data = data.copyOf(kotlin.math.max(length + count, data.size * 3)) as DoubleArray
     }
@@ -283,6 +283,17 @@ class DoubleArrayList(capacity: Int = 7) {
     data[length++] = v3
     data[length++] = v4
     data[length++] = v5
+  }
+
+  /**
+   * Sets all values from the given array.
+   * Clears all other elements
+   */
+  fun set(values: DoubleArray) {
+    clear()
+    ensure(values.size)
+    values.copyInto(data)
+    length = values.size
   }
 
   operator fun plusAssign(value: Double) = add(value)
@@ -366,7 +377,9 @@ class DoubleArrayList(capacity: Int = 7) {
   fun removeAt(index: Int): Double = removeAt(index, 1)
 
   fun removeAt(index: Int, count: Int): Double {
-    if (index < 0 || index >= length || index + count > length) throw IndexOutOfBoundsException()
+    if (index < 0 || index >= length || index + count > length) {
+      throw IndexOutOfBoundsException()
+    }
     val out = data[index]
     if (count > 0) {
       if (index < length - count) arraycopy(data, index + count, data, index, length - index - count)

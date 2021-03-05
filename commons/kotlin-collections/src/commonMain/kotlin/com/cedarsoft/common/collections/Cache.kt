@@ -6,7 +6,9 @@ import kotlin.jvm.JvmOverloads
 /**
  * Use the cache map instead
  */
-class Cache<K, V> @JvmOverloads constructor(
+class Cache<K, V>
+@Deprecated("use cache() method instead to allow use for better", level = DeprecationLevel.WARNING)
+@JvmOverloads constructor(
   maxSize: Int = 16,
   free: (K, V) -> Unit = { _, _ -> }
 ) {
@@ -118,6 +120,7 @@ class Cache<K, V> @JvmOverloads constructor(
 /**
  * Creates a new cache. Use this method when creating a cache to allow registration of observers
  */
+@Suppress("DEPRECATION")
 fun <K, V> cache(description: String, maxSize: Int): Cache<K, V> {
   return cacheStatsHandler.let {
     if (it != null) {

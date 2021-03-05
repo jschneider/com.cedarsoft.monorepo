@@ -1,13 +1,28 @@
 package com.cedarsoft.common.collections
 
-import assertk.*
-import assertk.assertions.*
+import assertk.assertThat
+import assertk.assertions.containsExactly
+import assertk.assertions.isEqualTo
+import assertk.assertions.isSameAs
+import assertk.assertions.isTrue
+import assertk.fail
 import org.junit.jupiter.api.Test
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class DoubleArrayListTest {
+  @Test
+  fun testSet() {
+    val list = DoubleArrayList(0)
+    assertThat(list.size).isEqualTo(0)
+
+    list.set(doubleArrayOf(1.0, 1.1, 1.2))
+
+    assertThat(list.size).isEqualTo(3)
+    assertThat(list.toDoubleArray()).containsExactly(1.0, 1.1, 1.2)
+  }
+
   @Test
   fun testAdd() {
     val list = DoubleArrayList(0)

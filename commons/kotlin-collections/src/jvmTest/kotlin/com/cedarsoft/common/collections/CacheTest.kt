@@ -4,7 +4,8 @@ import assertk.*
 import assertk.assertions.*
 import org.junit.jupiter.api.Test
 
-internal class CacheTest {
+@Suppress("DEPRECATION")
+class CacheTest {
   @Test
   fun testCacheTypes() {
     Cache<Int, String>().getOrStore(7) {

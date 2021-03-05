@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 /**
  *
  */
+@Suppress("DEPRECATION")
 class CacheMap2Test {
   @Test
   internal fun testRemove() {

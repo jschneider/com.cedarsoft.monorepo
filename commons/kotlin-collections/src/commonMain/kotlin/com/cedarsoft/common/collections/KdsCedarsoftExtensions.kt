@@ -125,3 +125,21 @@ fun DoubleArray.maxOrElse(nil: Double): Double {
   for (i in 0..lastIndex) out = kotlin.math.max(out, this[i])
   return out
 }
+
+
+/**
+ * Removes the elements if the given predicate returns true
+ */
+fun DoubleArrayList.removeAll(predicate: (Double) -> Boolean) {
+  var n = 0
+  while (n < size) {
+    val currentValue = this.getAt(n)
+
+    if (predicate(currentValue)) {
+      removeAt(n)
+    } else {
+      //Only iterate if no element has been removed
+      n++
+    }
+  }
+}

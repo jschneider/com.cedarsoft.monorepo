@@ -9,6 +9,7 @@ import kotlin.test.assertEquals
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
+@Suppress("DEPRECATION")
 class CacheMapTest {
   @Test
   fun test() {

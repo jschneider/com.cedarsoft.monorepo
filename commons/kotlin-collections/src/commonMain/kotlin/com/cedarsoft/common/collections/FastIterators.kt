@@ -60,6 +60,35 @@ inline fun DoubleArray.fastForEach(callback: (value: Double) -> Unit) {
   }
 }
 
+inline fun DoubleArray.fastAny(predicate: (Double) -> Boolean): Boolean {
+  var n = 0
+  val currentSize = size
+  while (n < currentSize) {
+    val element = this[n++]
+    if (predicate(element)) {
+      return true
+    }
+  }
+
+  return false
+}
+
+/**
+ * Returns true if [predicate] returns true for all elements
+ */
+inline fun DoubleArray.fastAll(predicate: (Double) -> Boolean): Boolean {
+  var n = 0
+  val currentSize = size
+  while (n < currentSize) {
+    val element = this[n++]
+    if (!predicate(element)) {
+      return false
+    }
+  }
+
+  return true
+}
+
 /**
  * Iterates over the entries of a double array
  *
