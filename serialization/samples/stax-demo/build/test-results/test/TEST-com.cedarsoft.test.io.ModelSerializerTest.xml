@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io.ModelSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-06T03:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.184">
+<testsuite name="com.cedarsoft.test.io.ModelSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-07T03:06:47" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.255">
   <properties/>
-  <testcase name="[1] entry=Entry{object=Model{name='Toyota'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.049"/>
-  <testcase name="[2] entry=Entry{object=Model{name='GM'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.035"/>
-  <testcase name="[3] entry=Entry{object=Model{name='Volkswagen'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.058"/>
-  <testcase name="[4] entry=Entry{object=Model{name='Renault'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.016"/>
+  <testcase name="[1] entry=Entry{object=Model{name='Toyota'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.07"/>
+  <testcase name="[2] entry=Entry{object=Model{name='GM'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.045"/>
+  <testcase name="[3] entry=Entry{object=Model{name='Volkswagen'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.071"/>
+  <testcase name="[4] entry=Entry{object=Model{name='Renault'}}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.049"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
