@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.FixedNowProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-07T03:06:30" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.003">
+<testsuite name="com.cedarsoft.test.utils.FixedNowProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-08T03:05:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.003">
   <properties/>
   <testcase name="testIt$test_utils()" classname="com.cedarsoft.test.utils.FixedNowProviderExtensionTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
