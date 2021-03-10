@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-09T03:05:39" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.328">
+<testsuite name="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-10T03:05:15" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.189">
   <properties/>
-  <testcase name="testLocalTime$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.238"/>
-  <testcase name="testPeriod$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.003"/>
-  <testcase name="testDuration$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.032"/>
-  <testcase name="testLocalDate$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.007"/>
-  <system-out><![CDATA[json: "03:05:40.007"
+  <testcase name="testLocalTime$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.113"/>
+  <testcase name="testPeriod$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.009"/>
+  <testcase name="testDuration$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.011"/>
+  <testcase name="testLocalDate$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.JavaDateTimeSerializerTest" time="0.035"/>
+  <system-out><![CDATA[json: "03:05:15.007"
 json: "P44D"
 json: "PT1H17M"
-json: "2021-03-09"
+json: "2021-03-10"
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

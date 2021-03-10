@@ -36,5 +36,10 @@ import java.io.File
  * Simple implementation that just holds the dirs as fields
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-data class StaticApplicationHomeAccess(override val applicationName: String, override val configHome: File, override val dataHome: File, override val cacheHome: File) : ApplicationHomeAccess {
+data class StaticApplicationHomeAccess(
+  override val applicationName: String,
+  override val configHome: File,
+  override val dataHome: File,
+  override val cacheHome: File
+) : ApplicationHomeAccess {
 }

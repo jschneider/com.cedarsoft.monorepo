@@ -3,13 +3,7 @@ package com.cedarsoft.common.kotlin.lang
 import com.cedarsoft.unit.other.deg
 import com.cedarsoft.unit.other.pct
 import com.cedarsoft.unit.si.rad
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.ceil
-import kotlin.math.floor
-import kotlin.math.ln
-import kotlin.math.log
-import kotlin.math.pow
+import kotlin.math.*
 
 /**
  * Math methods
