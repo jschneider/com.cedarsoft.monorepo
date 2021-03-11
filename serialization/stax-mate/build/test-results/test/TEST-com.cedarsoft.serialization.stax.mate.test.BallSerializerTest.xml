@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-10T03:05:34" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.099">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-11T03:05:46" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.13">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.024"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.03"/>
-  <testcase name="testVersion()" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.006"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.063"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.01"/>
+  <testcase name="testVersion()" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.002"/>
   <testcase name="testAsccii()" classname="com.cedarsoft.serialization.stax.mate.test.BallSerializerTest" time="0.035"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
