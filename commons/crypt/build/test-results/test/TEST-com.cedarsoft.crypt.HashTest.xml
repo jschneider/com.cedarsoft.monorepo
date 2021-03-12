@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.crypt.HashTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-03-11T03:04:40" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.189">
+<testsuite name="com.cedarsoft.crypt.HashTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-03-12T03:04:31" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.181">
   <properties/>
-  <testcase name="testDigestTest()" classname="com.cedarsoft.crypt.HashTest" time="0.04"/>
+  <testcase name="testDigestTest()" classname="com.cedarsoft.crypt.HashTest" time="0.041"/>
   <testcase name="testSerialization()" classname="com.cedarsoft.crypt.HashTest" time="0.009"/>
-  <testcase name="testAlgos()" classname="com.cedarsoft.crypt.HashTest" time="0.03"/>
-  <testcase name="testRound()" classname="com.cedarsoft.crypt.HashTest" time="0.087"/>
+  <testcase name="testAlgos()" classname="com.cedarsoft.crypt.HashTest" time="0.027"/>
+  <testcase name="testRound()" classname="com.cedarsoft.crypt.HashTest" time="0.091"/>
   <testcase name="testToString()" classname="com.cedarsoft.crypt.HashTest" time="0.001"/>
   <testcase name="testIt()" classname="com.cedarsoft.crypt.HashTest" time="0.005"/>
   <testcase name="testString()" classname="com.cedarsoft.crypt.HashTest" time="0.001"/>

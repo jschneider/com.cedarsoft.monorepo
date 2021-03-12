@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.kotlin.serializers.ImmutableListSerializationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-11T03:05:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.008">
+<testsuite name="com.cedarsoft.commons.kotlin.serializers.ImmutableListSerializationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-12T03:05:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="testJson$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.ImmutableListSerializationTest" time="0.008"/>
+  <testcase name="testJson$kotlinx_serializers()" classname="com.cedarsoft.commons.kotlin.serializers.ImmutableListSerializationTest" time="0.023"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-03-11T03:05:45" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.196">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-03-12T03:05:36" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.147">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.046"/>
-  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.033"/>
-  <testcase name="[3] entry=Entry{object=2147483647}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.052"/>
-  <testcase name="[4] entry=Entry{object=-2147483648}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.041"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.002"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.026"/>
+  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.053"/>
+  <testcase name="[3] entry=Entry{object=2147483647}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.031"/>
+  <testcase name="[4] entry=Entry{object=-2147483648}" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.033"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.IntegerSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
