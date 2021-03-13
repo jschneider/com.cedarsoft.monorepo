@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.PrimitivesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-12T03:05:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.018">
+<testsuite name="com.cedarsoft.serialization.jackson.test.PrimitivesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-13T03:05:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.063">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Primitives@279e63db}" classname="com.cedarsoft.serialization.jackson.test.PrimitivesTest" time="0.018"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Primitives@279e63db}" classname="com.cedarsoft.serialization.jackson.test.PrimitivesTest" time="0.063"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

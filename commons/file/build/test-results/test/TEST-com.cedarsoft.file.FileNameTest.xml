@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileNameTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-12T03:05:07" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.038">
+<testsuite name="com.cedarsoft.file.FileNameTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-13T03:05:25" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.048">
   <properties/>
-  <testcase name="testFileNameUtils()" classname="com.cedarsoft.file.FileNameTest" time="0.008"/>
-  <testcase name="testDel()" classname="com.cedarsoft.file.FileNameTest" time="0.008"/>
-  <testcase name="testCase()" classname="com.cedarsoft.file.FileNameTest" time="0.003"/>
+  <testcase name="testFileNameUtils()" classname="com.cedarsoft.file.FileNameTest" time="0.041"/>
+  <testcase name="testDel()" classname="com.cedarsoft.file.FileNameTest" time="0.003"/>
+  <testcase name="testCase()" classname="com.cedarsoft.file.FileNameTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
