@@ -27,14 +27,22 @@ expect object ClockNowProvider : NowProvider {
  *
  * ATTENTION: It is required to reset the original [NowProvider] after finishing the unit test by calling [resetNowProvider].
  *
+ * This is done automatically if the annotation @FixedTime is used for a test
  *
  * Example code to be used in the unit tests
  * ```
- * @AfterEach
- * fun tearDown() {
- *   resetNowProvider()
- * }
+ * @FixedTime
+ * class MyTestClass{
+ *  @Test
+ *  fun testMethod() {
+ *    [...]
+ *  }
  *
+ *  @Test
+ *  fun testMethodWithParameter(nowProvider: FixedNowProvider) {
+ *    [...]
+ *  }
+ * }
  * ```
  */
 class FixedNowProvider(
@@ -43,5 +51,12 @@ class FixedNowProvider(
 
   override fun nowMillis(): Double {
     return fixedNow
+  }
+
+  /**
+   * Adds the given millis to the current time
+   */
+  fun add(millis: @ms Double) {
+    fixedNow += millis
   }
 }

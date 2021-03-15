@@ -13,4 +13,22 @@ import org.junit.jupiter.api.extension.ExtendWith
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 @ExtendWith(FixedNowProviderExtension::class)
-annotation class FixedTime(val value: @ms Double = 0.0)
+annotation class FixedTime(val value: @ms Double = defaultNow) {
+
+  companion object {
+    /**
+     * This is a selected timestamp that is set for the fixed time provider by default.
+     *
+     * It represents:
+     * * 2021-03-27T21:45:23.002 UTC
+     * * 2021-03-27T22:45:23.002+01:00[Europe/Berlin]
+     * * 2021-03-28T06:45:23.002+09:00[Asia/Tokyo]
+     *
+     * Benefits of this date:
+     * * there are different dates in different time zones
+     * * it is just a few hours before clock change to daylight saving time
+     * * it has 2.5 milliseconds
+     */
+    const val defaultNow: @ms Double = 1616881523002.5 //2021-03-27T21:45:23.002 UTC
+  }
+}
