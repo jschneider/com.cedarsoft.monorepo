@@ -1,6 +1,9 @@
 package com.cedarsoft.common.kotlin.lang
 
+import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.math.pow
+import kotlin.math.sqrt
 import kotlin.random.Random
 
 /**
@@ -53,4 +56,14 @@ data class RandomWeights<T>(val weightsMap: Map<T, Double>) {
       return weights.map { (it + min) + 1 }
     }
   }
+}
+
+/**
+ * Normal distribution.
+ * Returns a value around the given center with the given sigma
+ *
+ * Returns random values around [center]. 95% of these values are within the range of 4 sigma (-2/+2) around the center
+ */
+fun randomNormal(center: Double, sigma: Double): Double {
+  return center + (sigma * sqrt(-2.0 * kotlin.math.log(random.nextDouble(), 10.0)) * cos(2.0 * PI * random.nextDouble()))
 }

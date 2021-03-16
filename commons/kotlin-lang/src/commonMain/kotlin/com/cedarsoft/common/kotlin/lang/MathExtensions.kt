@@ -357,3 +357,72 @@ val Double.niceStr: String get() = if (almostEquals(this.toLong().toDouble(), th
 
 @PublishedApi
 internal fun floorCeil(v: Double): Double = if (v < 0.0) ceil(v) else floor(v)
+
+
+/**
+ * Returns the fallback value if this is NaN
+ */
+infix fun Double.ifNaN(fallback: Double): Double {
+  return if (this.isNaN()) {
+    fallback
+  } else this
+}
+
+/**
+ * Returns the fallback value if this [Double.ifInfinite] returns true
+ */
+infix fun Double.ifInfinite(fallback: Double): Double {
+  return if (this.isInfinite()) {
+    fallback
+  } else this
+}
+
+/**
+ * Returns 0.0 if this is NaN
+ */
+inline fun Double.or0ifNaN(): Double {
+  return ifNaN(0.0)
+}
+
+/**
+ * Returns null if this is 0.0
+ */
+inline fun Double.orNullif0(): Double? {
+  if (this == 0.0) {
+    return null
+  }
+
+  return this
+}
+
+/**
+ * Returns 1.0 if this is NaN
+ */
+inline fun Double.or1ifNaN(): Double {
+  return ifNaN(1.0)
+}
+
+/**
+ * Returns 1.0 if this is infinite
+ */
+inline fun Double.or1ifInfinite(): Double {
+  return ifInfinite(1.0)
+}
+
+/**
+ * Returns true if the double is negative
+ */
+inline fun Double.isNegative(): Boolean {
+  return this < 0.0
+}
+
+inline fun Double.isPositive(): Boolean {
+  return this > 0.0
+}
+
+/**
+ * Returns true if this is positive or zero
+ */
+inline fun Double.isPositiveOrZero(): Boolean {
+  return this >= 0.0
+}
