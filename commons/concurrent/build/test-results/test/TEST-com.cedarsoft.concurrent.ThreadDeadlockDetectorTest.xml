@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.ThreadDeadlockDetectorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-16T03:05:08" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.196">
+<testsuite name="com.cedarsoft.concurrent.ThreadDeadlockDetectorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-17T03:05:21" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.191">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.concurrent.ThreadDeadlockDetectorTest" time="0.196"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.concurrent.ThreadDeadlockDetectorTest" time="0.191"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
