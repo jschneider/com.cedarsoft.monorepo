@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.concurrent.CoAsyncTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-03-18T03:04:52" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.536">
+<testsuite name="com.cedarsoft.commons.concurrent.CoAsyncTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-03-19T03:04:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.064">
   <properties/>
-  <testcase name="testDelay()" classname="com.cedarsoft.commons.concurrent.CoAsyncTest" time="1.278"/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.concurrent.CoAsyncTest" time="0.249"/>
+  <testcase name="testDelay()" classname="com.cedarsoft.commons.concurrent.CoAsyncTest" time="0.855"/>
+  <testcase name="testIt()" classname="com.cedarsoft.commons.concurrent.CoAsyncTest" time="0.205"/>
   <testcase name="testArrayBroadcastChannel()" classname="com.cedarsoft.commons.concurrent.CoAsyncTest" time="0.001">
     <skipped/>
   </testcase>
