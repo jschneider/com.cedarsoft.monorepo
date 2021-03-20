@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.SleepTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-03-19T03:04:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.029">
+<testsuite name="com.cedarsoft.commons.SleepTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-03-20T03:04:59" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.024">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.SleepTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.commons.SleepTest" time="0.008">
     <skipped/>
   </testcase>
-  <testcase name="testInterr()" classname="com.cedarsoft.commons.SleepTest" time="0.028"/>
+  <testcase name="testInterr()" classname="com.cedarsoft.commons.SleepTest" time="0.014"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
