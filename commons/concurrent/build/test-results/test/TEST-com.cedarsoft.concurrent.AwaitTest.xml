@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.AwaitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-21T03:06:07" hostname="runner-kggansxr-project-47-concurrent-0" time="0.12">
+<testsuite name="com.cedarsoft.concurrent.AwaitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-22T03:05:17" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.124">
   <properties/>
-  <testcase name="checkThreadsLeft()" classname="com.cedarsoft.concurrent.AwaitTest" time="0.12"/>
+  <testcase name="checkThreadsLeft()" classname="com.cedarsoft.concurrent.AwaitTest" time="0.124"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

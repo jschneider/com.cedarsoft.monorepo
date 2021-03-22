@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.test.RoleSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-21T03:07:19" hostname="runner-kggansxr-project-47-concurrent-0" time="1.807">
+<testsuite name="com.cedarsoft.serialization.stax.test.RoleSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-22T03:05:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.044">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.test.Role@7}" classname="com.cedarsoft.serialization.stax.test.RoleSerializerTest" time="1.807"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.test.Role@7}" classname="com.cedarsoft.serialization.stax.test.RoleSerializerTest" time="0.044"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
