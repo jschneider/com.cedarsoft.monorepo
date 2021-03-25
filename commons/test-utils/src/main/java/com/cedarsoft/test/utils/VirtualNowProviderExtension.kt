@@ -1,7 +1,7 @@
 package com.cedarsoft.test.utils
 
-import com.cedarsoft.common.time.FixedNowProvider
 import com.cedarsoft.common.time.NowProvider
+import com.cedarsoft.common.time.VirtualNowProvider
 import com.cedarsoft.common.time.nowProvider
 import org.junit.jupiter.api.extension.AfterAllCallback
 import org.junit.jupiter.api.extension.AfterEachCallback
@@ -15,18 +15,18 @@ import java.lang.reflect.Parameter
 import javax.annotation.Nonnull
 
 /**
- * Extension that provides the fixed now provider as parameter.
- * Use [FixedTime] at the class/method and add [FixedNowProvider] to the test method parameters
+ * Extension that provides the virtual now provider as parameter.
+ * Use [VirtualTime] at the class/method and add [VirtualNowProvider] to the test method parameters
  */
-class FixedNowProviderExtension : AbstractResourceProvidingExtension<FixedNowProvider>(FixedNowProvider::class.java), BeforeEachCallback, AfterEachCallback, BeforeAllCallback, AfterAllCallback {
+class VirtualNowProviderExtension : AbstractResourceProvidingExtension<VirtualNowProvider>(VirtualNowProvider::class.java), BeforeEachCallback, AfterEachCallback, BeforeAllCallback, AfterAllCallback {
 
-  private val configuringSupport: ConfiguringSupport<NowProvider, FixedTime> = ConfiguringSupport(NowProvider::class.java, FixedTime::class.java, "fixedTime", object : ConfigurationCallback<NowProvider, FixedTime> {
+  private val configuringSupport: ConfiguringSupport<NowProvider, VirtualTime> = ConfiguringSupport(NowProvider::class.java, VirtualTime::class.java, "virtualTime", object : ConfigurationCallback<NowProvider, VirtualTime> {
     override fun getOriginalValue(): NowProvider {
       return nowProvider
     }
 
-    override fun extract(annotation: FixedTime): NowProvider? {
-      return FixedNowProvider(annotation.value)
+    override fun extract(annotation: VirtualTime): NowProvider? {
+      return VirtualNowProvider(annotation.value)
     }
 
     override fun applyValue(value: NowProvider) {
@@ -52,8 +52,8 @@ class FixedNowProviderExtension : AbstractResourceProvidingExtension<FixedNowPro
   }
 
   @Nonnull
-  override fun createResource(extensionContext: ExtensionContext): FixedNowProvider {
-    return nowProvider as? FixedNowProvider ?: throw IllegalStateException("Invalid instance of nowProvider. Expected <FixedNowProvider> but was <$nowProvider>")
+  override fun createResource(extensionContext: ExtensionContext): VirtualNowProvider {
+    return nowProvider as? VirtualNowProvider ?: throw IllegalStateException("Invalid instance of nowProvider. Expected <VirtualNowProvider> but was <$nowProvider>")
   }
 
   @Throws(ParameterResolutionException::class)
@@ -62,15 +62,15 @@ class FixedNowProviderExtension : AbstractResourceProvidingExtension<FixedNowPro
       return true
     }
 
-    return parameterContext.parameter.isAnnotationPresent(FixedTime::class.java)
+    return parameterContext.parameter.isAnnotationPresent(VirtualTime::class.java)
   }
 
   @Nonnull
   @Throws(ParameterResolutionException::class, IOException::class)
-  override fun convertResourceForParameter(@Nonnull parameter: Parameter, @Nonnull resource: FixedNowProvider): Any {
+  override fun convertResourceForParameter(@Nonnull parameter: Parameter, @Nonnull resource: VirtualNowProvider): Any {
     return resource
   }
 
-  override fun cleanup(@Nonnull resource: FixedNowProvider) {
+  override fun cleanup(@Nonnull resource: VirtualNowProvider) {
   }
 }

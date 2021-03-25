@@ -51,7 +51,6 @@ object ScreenSizeUtils {
    */
   @JvmStatic
   val screenSize: Dimension
-    @Throws(HeadlessException::class)
     get() {
       val graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment()
       val screenDevices = graphicsEnvironment.screenDevices

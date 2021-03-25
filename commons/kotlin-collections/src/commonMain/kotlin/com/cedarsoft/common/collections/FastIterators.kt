@@ -102,11 +102,11 @@ inline fun DoubleArray.fastForEachIndexed(callback: (index: Int, value: Double) 
   }
 }
 
-inline fun DoubleArray.fastForEachIndexedReverse(callback: (index: Int, value: Double) -> Unit) {
+inline fun DoubleArray.fastForEachIndexedReverse(callback: (index: Int, value: Double, isFirst: Boolean) -> Unit) {
   val currentSize = size
 
   for (i in (currentSize - 1) downTo 0) {
-    callback(i, this[i])
+    callback(i, this[i], i == currentSize - 1)
   }
 }
 

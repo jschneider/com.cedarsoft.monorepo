@@ -22,12 +22,12 @@ expect object ClockNowProvider : NowProvider {
 }
 
 /**
- * Implementation that returns a fixed value - should only be used for testing purposes.
+ * Implementation that returns a virtual value - should only be used for testing purposes.
  *
  *
  * ATTENTION: It is required to reset the original [NowProvider] after finishing the unit test by calling [resetNowProvider].
  *
- * This is done automatically if the annotation @FixedTime is used for a test
+ * This is done automatically if the annotation @VirtualTime is used for a test
  *
  * Example code to be used in the unit tests
  * ```
@@ -39,24 +39,24 @@ expect object ClockNowProvider : NowProvider {
  *  }
  *
  *  @Test
- *  fun testMethodWithParameter(nowProvider: FixedNowProvider) {
+ *  fun testMethodWithParameter(nowProvider: VirtualNowProvider) {
  *    [...]
  *  }
  * }
  * ```
  */
-class FixedNowProvider(
-  var fixedNow: @ms Double
+class VirtualNowProvider(
+  var virtualNow: @ms Double
 ) : NowProvider {
 
   override fun nowMillis(): Double {
-    return fixedNow
+    return virtualNow
   }
 
   /**
    * Adds the given millis to the current time
    */
   fun add(millis: @ms Double) {
-    fixedNow += millis
+    virtualNow += millis
   }
 }

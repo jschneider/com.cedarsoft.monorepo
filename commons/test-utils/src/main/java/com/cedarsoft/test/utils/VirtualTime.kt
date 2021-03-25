@@ -6,14 +6,14 @@ import org.junit.jupiter.api.extension.ExtendWith
 /**
  * Sets the time returned by nowMillis to the given fixed value.
  *
- * If there is a parameter `nowProvider: FixedNowProvider` added to the test methods, the current instance of [com.cedarsoft.common.time.FixedNowProvider] is assigned.
+ * If there is a parameter `nowProvider: FixedNowProvider` added to the test methods, the current instance of [com.cedarsoft.common.time.VirtualNowProvider] is assigned.
  *
  */
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
-@ExtendWith(FixedNowProviderExtension::class)
-annotation class FixedTime(val value: @ms Double = defaultNow) {
+@ExtendWith(VirtualNowProviderExtension::class)
+annotation class VirtualTime(val value: @ms Double = defaultNow) {
 
   companion object {
     /**

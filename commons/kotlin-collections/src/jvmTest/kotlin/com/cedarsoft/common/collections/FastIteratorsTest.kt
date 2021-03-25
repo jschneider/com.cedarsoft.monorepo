@@ -16,7 +16,7 @@ class FastIteratorsKtTest {
 
     var callCount = 0
 
-    list.fastForEachIndexedReverse { index, value ->
+    list.fastForEachIndexedReverse { index, value, _ ->
       callCount++
       assertThat(index, "for index $index").isEqualTo(list.size - callCount)
       assertThat(value, "for index $index").isEqualTo((list.size - callCount) * 10.0)

@@ -1,15 +1,18 @@
 package com.cedarsoft.commons.concurrent
 
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.launch
 
 /**
  * Async implementation backed by coroutines
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@ExperimentalCoroutinesApi
 class CoAsync {
+  /**
+   * The channel that holds the runnables that are executed
+   */
   private val channel = ConflatedBroadcastChannel<suspend () -> Unit>()
 
   /**

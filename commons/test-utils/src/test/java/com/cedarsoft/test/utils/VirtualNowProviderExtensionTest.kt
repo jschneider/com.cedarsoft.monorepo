@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test
 /**
  *
  */
-class FixedNowProviderExtensionTest {
-  @FixedTime(5000.0)
+class VirtualNowProviderExtensionTest {
+  @VirtualTime(5000.0)
   @Test
   internal fun testIt() {
     assertThat(nowMillis()).isEqualTo(5000.0)
