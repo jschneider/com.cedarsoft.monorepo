@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-03-25T03:05:57" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.003">
+<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-03-26T03:06:15" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.008">
   <properties/>
-  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
+  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.002">
     <skipped/>
   </testcase>
   <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
@@ -10,7 +10,7 @@
   <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.002">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
