@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.exceptions.MessagesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-26T03:05:46" hostname="runner-pgnkb89--project-47-concurrent-0" time="0.823">
+<testsuite name="com.cedarsoft.exceptions.MessagesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-27T03:04:57" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.011">
   <properties/>
-  <testcase name="testBundles()" classname="com.cedarsoft.exceptions.MessagesTest" time="0.823"/>
+  <testcase name="testBundles()" classname="com.cedarsoft.exceptions.MessagesTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
