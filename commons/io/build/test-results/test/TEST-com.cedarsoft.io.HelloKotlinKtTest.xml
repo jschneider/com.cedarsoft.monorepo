@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.HelloKotlinKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-27T03:05:08" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.022">
+<testsuite name="com.cedarsoft.io.HelloKotlinKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-28T02:05:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.043">
   <properties/>
-  <testcase name="name" classname="com.cedarsoft.io.HelloKotlinKtTest" time="0.022"/>
+  <testcase name="name" classname="com.cedarsoft.io.HelloKotlinKtTest" time="0.043"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
