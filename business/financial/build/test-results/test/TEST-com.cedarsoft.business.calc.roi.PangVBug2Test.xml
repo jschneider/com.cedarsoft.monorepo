@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangVBug2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-28T02:05:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.002">
+<testsuite name="com.cedarsoft.business.calc.roi.PangVBug2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-29T02:05:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.003">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVBug2Test" time="0.002"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVBug2Test" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
