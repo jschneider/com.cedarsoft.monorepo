@@ -19,7 +19,8 @@ import javafx.stage.Stage
 import javafx.stage.Window
 import javafx.util.Duration
 import java.io.PrintStream
-import java.util.Optional
+import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
@@ -385,4 +386,38 @@ fun Node.root(): Node {
  */
 fun BooleanProperty.toggle() {
   this.value = !this.value
+}
+
+/**
+ * This method returns true if the JavaFX platform has been initialized, false otherwise.
+ *
+ * Attention! Might return true while [isFxPlatformStopped] might *also* return true
+ */
+fun isFxPlatformInitialized(): Boolean {
+  val field = com.sun.javafx.application.PlatformImpl::class.java.getDeclaredField("initialized")
+  field.isAccessible = true
+  return (field.get(null) as AtomicBoolean).get()
+}
+
+fun isFxPlatformStopped(): Boolean {
+  val field = com.sun.javafx.application.PlatformImpl::class.java.getDeclaredField("platformExit")
+  field.isAccessible = true
+  return (field.get(null) as AtomicBoolean).get()
+}
+
+/**
+ * Returns true if JavaFX platform has been initialized but *not* been stopped
+ */
+fun isFxPlatformActive(): Boolean {
+  return isFxPlatformInitialized() && !isFxPlatformStopped()
+}
+
+/**
+ * Returns true if the JavaFX application thread is running
+ */
+fun isFxApplicationThreadRunning(): Boolean {
+  val activeThreads = Thread.getAllStackTraces().keys
+  return activeThreads.any {
+    it.name == "JavaFX Application Thread"
+  }
 }

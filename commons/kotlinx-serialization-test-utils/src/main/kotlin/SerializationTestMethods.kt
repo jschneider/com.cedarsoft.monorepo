@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.serialization
 
-import com.cedarsoft.test.utils.*
+import com.cedarsoft.test.utils.JsonUtils
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.cbor.Cbor
@@ -11,7 +11,11 @@ import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-fun <T> roundTrip(objectToSerialize: T, expectedJson: String, serializer: KSerializer<T>) {
+fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJsonProvider: () -> String) {
+  roundTrip(objectToSerialize, serializer, expectedJsonProvider())
+}
+
+fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson: String) {
   val encoder = Json {
     prettyPrint = false
   }

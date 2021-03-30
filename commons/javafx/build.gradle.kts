@@ -7,6 +7,12 @@ plugins {
   kotlinJvm
 }
 
+java {
+  registerFeature("coroutines") {
+    usingSourceSet(sourceSets["main"])
+  }
+}
+
 dependencies {
   api(project(Projects.dependencies_sets_kotlin))
 
@@ -21,6 +27,10 @@ dependencies {
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_concurrent))
 
+
+  "coroutinesApi"(KotlinX.coroutines.core)
+  "coroutinesApi"(KotlinX.coroutines.javaFx)
+
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_javafx_test_utils))
@@ -32,4 +42,6 @@ dependencies {
   testImplementation(Libs.controlsfx)
   testImplementation(Libs.tilesFx)
   testImplementation(Libs.vworkflowsFx)
+  testImplementation(KotlinX.coroutines.core)
+  testImplementation(KotlinX.coroutines.javaFx)
 }
