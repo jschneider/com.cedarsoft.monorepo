@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-30T02:08:19" hostname="runner-kggansxr-project-47-concurrent-0" time="0.004">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-31T02:08:41" hostname="runner-kggansxr-project-47-concurrent-0" time="0.005">
   <properties/>
-  <testcase name="[1] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerVersionTest" time="0.004"/>
+  <testcase name="[1] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerVersionTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

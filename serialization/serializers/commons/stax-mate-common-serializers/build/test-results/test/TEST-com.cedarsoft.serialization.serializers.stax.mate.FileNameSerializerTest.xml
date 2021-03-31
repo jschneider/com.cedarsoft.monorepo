@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-30T02:08:17" hostname="runner-kggansxr-project-47-concurrent-0" time="0.1">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-31T02:08:39" hostname="runner-kggansxr-project-47-concurrent-0" time="0.175">
   <properties/>
-  <testcase name="[1] entry=Entry{object=a,pdf}" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.088"/>
-  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.005"/>
-  <testcase name="testDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.004"/>
+  <testcase name="[1] entry=Entry{object=a,pdf}" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.14"/>
+  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.014"/>
+  <testcase name="testDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.FileNameSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
