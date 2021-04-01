@@ -35,7 +35,6 @@ class JavaFxTimerTest {
 
     Awaitility.await()
       .pollDelay(10, TimeUnit.MILLISECONDS)
-      .atMost(Duration.ofMillis(100))
       .until {
         called
       }
