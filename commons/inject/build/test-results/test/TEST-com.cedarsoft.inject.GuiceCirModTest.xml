@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.inject.GuiceCirModTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-01T02:05:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.352">
+<testsuite name="com.cedarsoft.inject.GuiceCirModTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-02T02:06:44" hostname="runner-kggansxr-project-47-concurrent-0" time="0.144">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.inject.GuiceCirModTest" time="2.352"/>
+  <testcase name="testIt()" classname="com.cedarsoft.inject.GuiceCirModTest" time="0.144"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

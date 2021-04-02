@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.ResolutionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-04-01T02:05:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.043">
+<testsuite name="com.cedarsoft.image.ResolutionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-04-02T02:06:40" hostname="runner-kggansxr-project-47-concurrent-0" time="0.054">
   <properties/>
-  <testcase name="testComparable()" classname="com.cedarsoft.image.ResolutionTest" time="0.02"/>
-  <testcase name="testNikon()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
-  <testcase name="testIt()" classname="com.cedarsoft.image.ResolutionTest" time="0.008"/>
-  <testcase name="testAspectRatio()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
+  <testcase name="testComparable()" classname="com.cedarsoft.image.ResolutionTest" time="0.003"/>
+  <testcase name="testNikon()" classname="com.cedarsoft.image.ResolutionTest" time="0.009"/>
+  <testcase name="testIt()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
+  <testcase name="testAspectRatio()" classname="com.cedarsoft.image.ResolutionTest" time="0.002"/>
   <testcase name="testCanonRes()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
   <testcase name="testSelect()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
