@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.KotlinJavaParamNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-02T02:06:11" hostname="runner-kggansxr-project-47-concurrent-0" time="4.439">
+<testsuite name="com.cedarsoft.commons.KotlinJavaParamNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:05:35" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.804">
   <properties/>
-  <testcase name="testKotlinParamName$commons()" classname="com.cedarsoft.commons.KotlinJavaParamNamesTest" time="4.418"/>
+  <testcase name="testKotlinParamName$commons()" classname="com.cedarsoft.commons.KotlinJavaParamNamesTest" time="2.77"/>
   <testcase name="testJavaParams$commons()" classname="com.cedarsoft.commons.KotlinJavaParamNamesTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

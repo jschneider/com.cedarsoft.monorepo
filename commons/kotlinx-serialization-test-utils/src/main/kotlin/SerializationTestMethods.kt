@@ -11,20 +11,25 @@ import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJsonProvider: () -> String) {
+fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJsonProvider: () -> String?) {
   roundTrip(objectToSerialize, serializer, expectedJsonProvider())
 }
 
-fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson: String) {
+/**
+ * Tests the round trip. If the [expectedJson] is null, the resulting JSON will not be checked
+ */
+fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson: String?) {
   val encoder = Json {
     prettyPrint = false
   }
 
   val json = encoder.encodeToString(serializer, objectToSerialize)
 
-  println("JSON length: ${json.toByteArray().size}")
+  //println("JSON length: ${json.toByteArray().size}")
 
-  JsonUtils.assertJsonEquals(expectedJson, json)
+  expectedJson?.let {
+    JsonUtils.assertJsonEquals(expectedJson, json)
+  }
 
   val deserialized = Json.decodeFromString(serializer, json)
   assertThat(deserialized).isEqualTo(objectToSerialize)
@@ -33,7 +38,7 @@ fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson
 fun <T> roundTripCBOR(objectToSerialize: T, expectedHex: String, serializer: KSerializer<T>) {
   val bytes = Cbor.encodeToByteArray(serializer, objectToSerialize)
 
-  println("CBOR length: ${bytes.size}")
+  //println("CBOR length: ${bytes.size}")
   //assertThat(bytes.hex).isEqualTo(expectedHex)
 
   val deserialized = Cbor.decodeFromByteArray(serializer, bytes)
@@ -46,7 +51,7 @@ fun <T> roundTripProtoBuf(objectToSerialize: T, expectedHex: String, serializer:
 
   val bytes = protoBuf.encodeToByteArray(serializer, objectToSerialize)
 
-  println("ProtoBuf length: ${bytes.size}")
+  //println("ProtoBuf length: ${bytes.size}")
   //assertThat(bytes.hex).isEqualTo(expectedHex)
 
   val deserialized = protoBuf.decodeFromByteArray(serializer, bytes)
@@ -66,7 +71,7 @@ fun <T> roundTripList(vararg objectsToSerialize: T, expectedJson: String, serial
   val objectsToSerializeList: List<T> = objectsToSerialize.toList()
   val json = encoder.encodeToString(listSerializer, objectsToSerializeList)
 
-  println("JSON length: ${json.toByteArray().size}")
+  //println("JSON length: ${json.toByteArray().size}")
 
   JsonUtils.assertJsonEquals(expectedJson, json)
 

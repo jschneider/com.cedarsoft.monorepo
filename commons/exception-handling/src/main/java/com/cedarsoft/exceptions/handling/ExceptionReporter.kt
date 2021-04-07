@@ -30,6 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling
 
+import com.cedarsoft.annotations.AnyThread
 import com.cedarsoft.annotations.UiThread
 
 /**
@@ -41,6 +42,6 @@ fun interface ExceptionReporter {
   /**
    * Reports the exception
    */
-  @UiThread
+  @AnyThread
   fun report(throwable: Throwable)
 }

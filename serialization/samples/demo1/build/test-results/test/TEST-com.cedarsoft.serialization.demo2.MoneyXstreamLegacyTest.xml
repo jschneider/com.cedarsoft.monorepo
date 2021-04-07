@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-02T02:08:04" hostname="runner-kggansxr-project-47-concurrent-0" time="0.166">
+<testsuite name="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.128">
   <properties/>
-  <testcase name="testCustomConverter()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.098"/>
-  <testcase name="testFromXml()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.025"/>
-  <testcase name="testFromXmlLegacyFormat()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.023"/>
-  <testcase name="testManual()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.017"/>
+  <testcase name="testCustomConverter()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.067"/>
+  <testcase name="testFromXml()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.012"/>
+  <testcase name="testFromXmlLegacyFormat()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.019"/>
+  <testcase name="testManual()" classname="com.cedarsoft.serialization.demo2.MoneyXstreamLegacyTest" time="0.021"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Security framework of XStream not explicitly initialized, using predefined black list on your own risk.
 Security framework of XStream not explicitly initialized, using predefined black list on your own risk.

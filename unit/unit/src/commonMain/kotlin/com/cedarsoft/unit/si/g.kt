@@ -48,6 +48,7 @@ import com.cedarsoft.unit.prefix.milli
 @Mass
 @Symbol(g.SYMBOL)
 @Name("gram")
+@SiDerivedUnit
 @milli(kg::class)
 annotation class g {
   companion object {

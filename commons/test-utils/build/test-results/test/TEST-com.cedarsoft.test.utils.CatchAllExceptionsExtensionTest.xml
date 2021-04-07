@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-04-02T02:07:13" hostname="runner-kggansxr-project-47-concurrent-0" time="0.025">
+<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-04-07T02:05:57" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
   <properties/>
   <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.013">
+  <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
+  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">

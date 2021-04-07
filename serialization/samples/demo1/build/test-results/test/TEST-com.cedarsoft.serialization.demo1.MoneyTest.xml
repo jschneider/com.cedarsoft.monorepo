@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.demo1.MoneyTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-04-02T02:07:59" hostname="runner-kggansxr-project-47-concurrent-0" time="4.08">
+<testsuite name="com.cedarsoft.serialization.demo1.MoneyTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.268">
   <properties/>
-  <testcase name="testPrecision()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="1.855"/>
-  <testcase name="testXStreamAttribute()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="1.213"/>
-  <testcase name="testXStream()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.107"/>
-  <testcase name="testManual()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.105"/>
-  <testcase name="testSimple()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.767"/>
+  <testcase name="testPrecision()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.003"/>
+  <testcase name="testXStreamAttribute()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.075"/>
+  <testcase name="testXStream()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.076"/>
+  <testcase name="testManual()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.046"/>
+  <testcase name="testSimple()" classname="com.cedarsoft.serialization.demo1.MoneyTest" time="0.058"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Security framework of XStream not explicitly initialized, using predefined black list on your own risk.
 Security framework of XStream not explicitly initialized, using predefined black list on your own risk.
