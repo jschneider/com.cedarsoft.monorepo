@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.crypt.ExpiredCertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:05:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.403">
+<testsuite name="com.cedarsoft.crypt.ExpiredCertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-08T02:04:40" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.361">
   <properties/>
-  <testcase name="testDate()" classname="com.cedarsoft.crypt.ExpiredCertTest" time="0.403"/>
+  <testcase name="testDate()" classname="com.cedarsoft.crypt.ExpiredCertTest" time="0.361"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
