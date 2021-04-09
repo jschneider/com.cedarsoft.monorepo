@@ -72,7 +72,7 @@ public class DefaultNewestOnlyJobManagerTest {
 
   @Test
   public void onlyYoungestJobIsExecuted() throws Exception {
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
+    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
       DefaultNewestOnlyJobManager jobManager = new DefaultNewestOnlyJobManager(executorService, 1);
 
       for (int i = 0; i < 10; i++) {
