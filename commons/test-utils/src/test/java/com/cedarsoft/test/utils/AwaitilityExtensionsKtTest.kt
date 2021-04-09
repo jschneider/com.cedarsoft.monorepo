@@ -14,15 +14,14 @@ internal class AwaitilityExtensionsKtTest {
   @Test
   internal fun testIt() {
     val atomicBoolean = AtomicBoolean(true)
-    Awaitility.await().untilAtomicIsTrue(atomicBoolean)
+    Awaitility.await().atMost(30, TimeUnit.SECONDS).untilAtomicIsTrue(atomicBoolean)
   }
 
   @Test
   internal fun testTimeout() {
     val atomicBoolean = AtomicBoolean(false)
     try {
-      Awaitility
-        .await()
+      Awaitility.await().atMost(30, TimeUnit.SECONDS)
         .atMost(101, TimeUnit.MILLISECONDS)
         .untilAtomicIsTrue(atomicBoolean)
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.BindingsGcTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-04-09T02:05:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.005">
+<testsuite name="com.cedarsoft.commons.javafx.BindingsGcTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-04-09T15:42:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.005">
   <properties/>
-  <testcase name="testBindingWithTextFieldStringProperty()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.001">
+  <testcase name="testBindingWithTextFieldStringProperty()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testBindingWithTextField()" classname="com.cedarsoft.commons.javafx.BindingsGcTest" time="0.001">

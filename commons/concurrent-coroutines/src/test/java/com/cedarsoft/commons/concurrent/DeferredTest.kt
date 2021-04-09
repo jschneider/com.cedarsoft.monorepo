@@ -6,6 +6,7 @@ import com.cedarsoft.test.utils.untilAtomicIsTrue
 import kotlinx.coroutines.*
 import org.awaitility.Awaitility
 import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -32,6 +33,6 @@ class DeferredTest {
     (s as CompletableDeferred).complete("asdf")
     assertThat(s.getCompleted()).isEqualTo("asdf")
 
-    Awaitility.await().untilAtomicIsTrue(awaitComplete)
+    Awaitility.await().atMost(30, TimeUnit.SECONDS).untilAtomicIsTrue(awaitComplete)
   }
 }

@@ -2,7 +2,7 @@ package com.cedarsoft.commons.concurrent
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.test.utils.*
+import com.cedarsoft.test.utils.untilAtomicIsTrue
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import org.awaitility.Awaitility
@@ -10,6 +10,7 @@ import org.hamcrest.CoreMatchers
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -68,7 +69,7 @@ class CoAsyncTest {
       }
 
       job.join()
-      Awaitility.await().untilAtomic(calledFor, CoreMatchers.`is`(70_000))
+      Awaitility.await().atMost(30, TimeUnit.SECONDS).untilAtomic(calledFor, CoreMatchers.`is`(70_000))
       assertThat(finished.get()).isTrue()
       assertThat(calledFor.get()).isEqualTo(70000)
       assertThat(runCount.get()).isLessThan(70000 - 1)
@@ -104,8 +105,8 @@ class CoAsyncTest {
       }
 
       job.join()
-      Awaitility.await().untilAtomicIsTrue(finishedAdding)
-      Awaitility.await().untilAtomicIsTrue(finishedRun)
+      Awaitility.await().atMost(30, TimeUnit.SECONDS).untilAtomicIsTrue(finishedAdding)
+      Awaitility.await().atMost(30, TimeUnit.SECONDS).untilAtomicIsTrue(finishedRun)
 
       assertThat(calledFor.get()).isEqualTo(30)
       assertThat(runCount.get()).isLessThan(3)

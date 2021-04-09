@@ -12,7 +12,6 @@ import javafx.event.EventHandler
 import jfxtras.util.PlatformUtil
 import org.awaitility.Awaitility
 import org.junit.jupiter.api.Test
-import java.time.Duration
 import java.util.concurrent.TimeUnit
 import kotlin.time.milliseconds
 
@@ -33,7 +32,7 @@ class JavaFxTimerTest {
       //wait to ensure the event has been processed
     }
 
-    Awaitility.await()
+    Awaitility.await().atMost(30, TimeUnit.SECONDS)
       .pollDelay(10, TimeUnit.MILLISECONDS)
       .until {
         called

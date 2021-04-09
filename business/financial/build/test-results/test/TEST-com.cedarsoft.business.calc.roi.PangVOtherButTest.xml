@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangVOtherButTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-09T02:04:55" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
+<testsuite name="com.cedarsoft.business.calc.roi.PangVOtherButTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-09T15:42:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
   <properties/>
   <testcase name="testSum()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.001"/>
   <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVOtherButTest" time="0.002"/>

@@ -31,7 +31,6 @@
 package com.cedarsoft.concurrent;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.awaitility.Awaitility.await;
 
 import java.time.Duration;
 import java.util.concurrent.ExecutorService;
@@ -41,6 +40,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.annotation.Nonnull;
 
+import org.awaitility.Awaitility;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.*;
 
@@ -108,7 +108,7 @@ public class DefaultNewestOnlyJobManagerTest {
       assertThat(executed.get()).isFalse();
 
       jobManager.startWorkers();
-      await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
+      Awaitility.await().atMost(30, TimeUnit.SECONDS).pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
     });
   }
 
@@ -132,6 +132,6 @@ public class DefaultNewestOnlyJobManagerTest {
       }
     });
 
-    await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
+    Awaitility.await().atMost(30, TimeUnit.SECONDS).pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
   }
 }

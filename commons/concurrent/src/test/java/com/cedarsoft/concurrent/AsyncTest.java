@@ -39,6 +39,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.awaitility.Awaitility;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.*;
@@ -80,7 +81,7 @@ public class AsyncTest {
         throw new IllegalArgumentException("Uups");
       });
 
-      await().timeout(10, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
+      await().timeout(30, TimeUnit.SECONDS).untilAtomic(caught, new IsNot<>(new IsNull<>()));
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(defaultUncaughtExceptionHandler);
     }
@@ -98,14 +99,14 @@ public class AsyncTest {
       public void run() {
         firstJobStarted.set(true);
 
-        await()
+        Awaitility.await().atMost(30, TimeUnit.SECONDS)
           .pollDelay(10, TimeUnit.MILLISECONDS)
           .until(otherJobsAdded::get);
       }
     });
 
     //Ensure the first stop has been started
-    await()
+    Awaitility.await().atMost(30, TimeUnit.SECONDS)
       .pollDelay(10, TimeUnit.MILLISECONDS)
       .until(firstJobStarted::get);
 
@@ -133,6 +134,6 @@ public class AsyncTest {
     //finish first job
     otherJobsAdded.set(true);
 
-    await().pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
+    Awaitility.await().atMost(30, TimeUnit.SECONDS).pollDelay(10, TimeUnit.MILLISECONDS).until(executed::get);
   }
 }
