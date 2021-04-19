@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.ParamTestTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-18T02:05:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.093">
+<testsuite name="com.cedarsoft.test.utils.ParamTestTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-19T02:07:43" hostname="runner-kggansxr-project-47-concurrent-0" time="0.939">
   <properties/>
-  <testcase name="[1] candidate=1, val=1" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.059"/>
-  <testcase name="[2] candidate=2, val=2" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.007"/>
-  <testcase name="[3] candidate=3, val=3" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.001"/>
+  <testcase name="[1] candidate=1, val=1" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.885"/>
+  <testcase name="[2] candidate=2, val=2" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.036"/>
+  <testcase name="[3] candidate=3, val=3" classname="com.cedarsoft.test.utils.ParamTestTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
