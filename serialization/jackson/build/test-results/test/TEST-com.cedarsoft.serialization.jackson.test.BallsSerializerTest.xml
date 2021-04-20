@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.BallsSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-19T02:08:05" hostname="runner-kggansxr-project-47-concurrent-0" time="0.017">
+<testsuite name="com.cedarsoft.serialization.jackson.test.BallsSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-20T02:07:55" hostname="runner-kggansxr-project-47-concurrent-0" time="0.019">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[com.cedarsoft.serialization.jackson.test.Ball$TennisBall@7, com.cedarsoft.serialization.jackson.test.Ball$BasketBall@2dd434]}" classname="com.cedarsoft.serialization.jackson.test.BallsSerializerTest" time="0.017"/>
+  <testcase name="[1] entry=Entry{object=[com.cedarsoft.serialization.jackson.test.Ball$TennisBall@7, com.cedarsoft.serialization.jackson.test.Ball$BasketBall@2dd434]}" classname="com.cedarsoft.serialization.jackson.test.BallsSerializerTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
