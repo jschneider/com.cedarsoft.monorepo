@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.concurrent.DeferredTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-20T02:06:36" hostname="runner-kggansxr-project-47-concurrent-0" time="0.433">
+<testsuite name="com.cedarsoft.commons.concurrent.DeferredTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-21T02:05:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.17">
   <properties/>
-  <testcase name="name()" classname="com.cedarsoft.commons.concurrent.DeferredTest" time="0.433"/>
+  <testcase name="name()" classname="com.cedarsoft.commons.concurrent.DeferredTest" time="0.17"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
