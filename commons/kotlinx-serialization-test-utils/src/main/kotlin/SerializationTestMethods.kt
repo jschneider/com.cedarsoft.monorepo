@@ -5,21 +5,25 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.cbor.Cbor
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.EmptySerializersModule
+import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.protobuf.ProtoBuf
+import kotlinx.serialization.serializer
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJsonProvider: () -> String?) {
-  roundTrip(objectToSerialize, serializer, expectedJsonProvider())
+inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), serializersModule: SerializersModule = EmptySerializersModule, expectedJsonProvider: () -> String?) {
+  roundTrip(objectToSerialize, serializer, serializersModule, expectedJsonProvider())
 }
 
 /**
  * Tests the round trip. If the [expectedJson] is null, the resulting JSON will not be checked
  */
-fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson: String?) {
+fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, serializersModule: SerializersModule = EmptySerializersModule, expectedJson: String?) {
   val encoder = Json {
+    this.serializersModule = serializersModule
     prettyPrint = false
   }
 
@@ -31,7 +35,7 @@ fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, expectedJson
     JsonUtils.assertJsonEquals(expectedJson, json)
   }
 
-  val deserialized = Json.decodeFromString(serializer, json)
+  val deserialized = encoder.decodeFromString(serializer, json)
   assertThat(deserialized).isEqualTo(objectToSerialize)
 }
 
