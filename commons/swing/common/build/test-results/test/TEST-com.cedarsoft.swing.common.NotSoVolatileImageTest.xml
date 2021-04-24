@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.common.NotSoVolatileImageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-23T02:06:08" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.208">
+<testsuite name="com.cedarsoft.swing.common.NotSoVolatileImageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-24T02:06:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.3">
   <properties/>
-  <testcase name="basic()" classname="com.cedarsoft.swing.common.NotSoVolatileImageTest" time="0.208"/>
+  <testcase name="basic()" classname="com.cedarsoft.swing.common.NotSoVolatileImageTest" time="0.3"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
