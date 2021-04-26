@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-04-25T02:05:51" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.01">
+<testsuite name="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-04-26T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.008">
+  <testcase name="ignoredAssertion()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.009">
     <skipped/>
   </testcase>
-  <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
+  <testcase name="successfulTest()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
+  <testcase name="testFailing()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.CatchAllExceptionsExtensionTest" time="0.001">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
