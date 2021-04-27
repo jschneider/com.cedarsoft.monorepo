@@ -48,6 +48,16 @@ fun Int.toRadians(): @rad Double {
   return this / 180.0 * PI
 }
 
+val Double.percent: @pct Double
+  get() {
+    return this / 100.0
+  }
+
+val Int.percent: @pct Double
+  get() {
+    return this / 100.0
+  }
+
 inline fun Double.isCloseTo(targetValue: Double, epsilon: Double = 0.0001): Boolean {
   return isEquivalent(this, targetValue, epsilon)
 }

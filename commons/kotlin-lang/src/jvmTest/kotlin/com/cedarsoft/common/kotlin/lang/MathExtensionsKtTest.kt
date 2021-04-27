@@ -8,6 +8,13 @@ import kotlin.math.PI
 
 class MathExtensionsKtTest {
   @Test
+  fun testPercent() {
+    assertThat(4.0.percent).isEqualTo(0.04)
+    assertThat(4.01.percent).isEqualTo(0.0401)
+    assertThat(4.percent).isEqualTo(0.04)
+  }
+
+  @Test
   fun testBetween() {
     assertThat(7.0.betweenInclusive(1.0, 7.0)).isTrue()
     assertThat(7.0.betweenInclusive(1.0, 7.1)).isTrue()
