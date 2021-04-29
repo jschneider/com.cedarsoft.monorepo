@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.BaseNameAwareFileNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-28T02:05:21" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.137">
+<testsuite name="com.cedarsoft.file.BaseNameAwareFileNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-29T02:05:53" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.212">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.file.BaseNameAwareFileNamesTest" time="0.131"/>
-  <testcase name="testDuplicate()" classname="com.cedarsoft.file.BaseNameAwareFileNamesTest" time="0.003"/>
+  <testcase name="testIt()" classname="com.cedarsoft.file.BaseNameAwareFileNamesTest" time="0.192"/>
+  <testcase name="testDuplicate()" classname="com.cedarsoft.file.BaseNameAwareFileNamesTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
