@@ -1,9 +1,10 @@
 package com.cedarsoft.version
 
+import assertk.*
+import assertk.assertions.*
 import com.cedarsoft.version.Version.Companion.parse
 import com.cedarsoft.version.Version.Companion.valueOf
 import com.cedarsoft.version.Version.Companion.verifyMatch
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -15,21 +16,25 @@ import org.junit.jupiter.api.Test
  */
 class VersionTest {
   @Test
-  @Throws(Exception::class)
-  fun testSmapper() {
-    Assertions.assertThat(valueOf(1, 0, 0).smallerThan(valueOf(2, 0, 0))).isTrue
-    Assertions.assertThat(valueOf(3, 1, 0, "SNAPSHOT").smallerThan(valueOf(2, 0, 0))).isFalse
-    Assertions.assertThat(valueOf(2, 0, 0).smallerThan(valueOf(3, 1, 0, "SNAPSHOT"))).isTrue
-    Assertions.assertThat(valueOf(3, 0, 0).smallerThan(valueOf(3, 1, 0, "SNAPSHOT"))).isTrue
+  fun testIsSnapshot() {
+    assertThat(Version.of(1, 2, 3).isSnapshot).isFalse()
+    assertThat(Version.of(1, 2, 3, "SNAPSHOT").isSnapshot).isTrue()
   }
 
   @Test
-  @Throws(Exception::class)
+  fun testSmapper() {
+    assertThat(valueOf(1, 0, 0).smallerThan(valueOf(2, 0, 0))).isTrue()
+    assertThat(valueOf(3, 1, 0, "SNAPSHOT").smallerThan(valueOf(2, 0, 0))).isFalse()
+    assertThat(valueOf(2, 0, 0).smallerThan(valueOf(3, 1, 0, "SNAPSHOT"))).isTrue()
+    assertThat(valueOf(3, 0, 0).smallerThan(valueOf(3, 1, 0, "SNAPSHOT"))).isTrue()
+  }
+
+  @Test
   fun parseLongNumber() {
     val version = parse("0.0.110")
-    Assertions.assertThat(version.major).isEqualTo(0)
-    Assertions.assertThat(version.minor).isEqualTo(0)
-    Assertions.assertThat(version.build).isEqualTo(110)
+    assertThat(version.major).isEqualTo(0)
+    assertThat(version.minor).isEqualTo(0)
+    assertThat(version.build).isEqualTo(110)
   }
 
   @Test
@@ -84,10 +89,9 @@ class VersionTest {
   }
 
   @Test
-  @Throws(Exception::class)
   fun withMethods() {
     val version = valueOf(1, 2, 3)
-    Assertions.assertThat(version.withSuffix("daSuffix").suffix).isEqualTo("daSuffix")
+    assertThat(version.withSuffix("daSuffix").suffix).isEqualTo("daSuffix")
   }
 
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.execution.JavaCommandBuilderTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-01T02:05:35" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.694">
+<testsuite name="com.cedarsoft.execution.JavaCommandBuilderTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-02T02:05:42" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.39">
   <properties/>
-  <testcase name="testAll()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.659"/>
-  <testcase name="testArguments()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.007"/>
-  <testcase name="testClasspath()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.005"/>
-  <testcase name="testVmProperties()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.008"/>
+  <testcase name="testAll()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.385"/>
+  <testcase name="testArguments()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.001"/>
+  <testcase name="testClasspath()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.001"/>
+  <testcase name="testVmProperties()" classname="com.cedarsoft.execution.JavaCommandBuilderTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
