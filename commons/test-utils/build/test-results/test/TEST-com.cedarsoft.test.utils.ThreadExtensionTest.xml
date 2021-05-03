@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-05-02T02:06:15" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.005">
+<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-05-03T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.001">
+  <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testFailing()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
