@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-04T02:06:30" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.737">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-06T02:06:47" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.705">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@6502d6f6" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" time="0.725"/>
-  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@57cda13c" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" time="0.004"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@52949753" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" time="0.681"/>
+  <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@6511211b" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerVersionTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
