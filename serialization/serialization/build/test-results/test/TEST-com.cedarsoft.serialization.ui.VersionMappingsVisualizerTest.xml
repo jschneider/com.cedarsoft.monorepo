@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.ui.VersionMappingsVisualizerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-06T02:06:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.041">
+<testsuite name="com.cedarsoft.serialization.ui.VersionMappingsVisualizerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-07T02:08:27" hostname="runner-kggansxr-project-47-concurrent-0" time="0.104">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.ui.VersionMappingsVisualizerTest" time="0.041"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.ui.VersionMappingsVisualizerTest" time="0.104"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
