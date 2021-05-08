@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.crypt.HashTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-05-07T02:07:17" hostname="runner-kggansxr-project-47-concurrent-0" time="0.483">
+<testsuite name="com.cedarsoft.crypt.HashTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-05-08T02:05:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.31">
   <properties/>
-  <testcase name="testDigestTest()" classname="com.cedarsoft.crypt.HashTest" time="0.146"/>
-  <testcase name="testSerialization()" classname="com.cedarsoft.crypt.HashTest" time="0.026"/>
-  <testcase name="testAlgos()" classname="com.cedarsoft.crypt.HashTest" time="0.05"/>
-  <testcase name="testRound()" classname="com.cedarsoft.crypt.HashTest" time="0.207"/>
-  <testcase name="testToString()" classname="com.cedarsoft.crypt.HashTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.crypt.HashTest" time="0.031"/>
-  <testcase name="testString()" classname="com.cedarsoft.crypt.HashTest" time="0.003"/>
+  <testcase name="testDigestTest()" classname="com.cedarsoft.crypt.HashTest" time="0.097"/>
+  <testcase name="testSerialization()" classname="com.cedarsoft.crypt.HashTest" time="0.006"/>
+  <testcase name="testAlgos()" classname="com.cedarsoft.crypt.HashTest" time="0.059"/>
+  <testcase name="testRound()" classname="com.cedarsoft.crypt.HashTest" time="0.131"/>
+  <testcase name="testToString()" classname="com.cedarsoft.crypt.HashTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.crypt.HashTest" time="0.004"/>
+  <testcase name="testString()" classname="com.cedarsoft.crypt.HashTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

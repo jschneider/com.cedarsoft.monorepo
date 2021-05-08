@@ -18,12 +18,11 @@ package com.cedarsoft.unit.other
 import com.cedarsoft.unit.Name
 import com.cedarsoft.unit.Symbol
 import com.cedarsoft.unit.Unit
-import com.cedarsoft.unit.quantity.Fraction
 
 /**
- * Represents a percentage as double (1.0 ≙ 100%, 0.05 ≙ 5%)
+ * Represents a percentage as int value (100 ≙ 100%, 5 ≙ 5%)
  *
- * @see pct100
+ * @see pct
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -46,12 +45,10 @@ import com.cedarsoft.unit.quantity.Fraction
 @MustBeDocumented
 @Suppress("ClassName")
 @Unit
-@Fraction
 @Name("percentage")
-@Symbol(pct.SYMBOL)
-annotation class pct {
+@Symbol(pct100.SYMBOL)
+annotation class pct100 {
   companion object {
     const val SYMBOL: String = "%"
   }
-
 }
