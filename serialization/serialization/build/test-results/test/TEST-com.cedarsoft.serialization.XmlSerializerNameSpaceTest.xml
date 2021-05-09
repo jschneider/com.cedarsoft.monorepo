@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-08T02:06:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.026">
+<testsuite name="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-09T02:06:33" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.012">
   <properties/>
-  <testcase name="testParseVersion()" classname="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" time="0.004"/>
-  <testcase name="testVersion()" classname="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" time="0.02"/>
+  <testcase name="testParseVersion()" classname="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" time="0.0"/>
+  <testcase name="testVersion()" classname="com.cedarsoft.serialization.XmlSerializerNameSpaceTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

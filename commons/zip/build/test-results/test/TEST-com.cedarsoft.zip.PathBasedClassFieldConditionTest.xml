@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.zip.PathBasedClassFieldConditionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-08T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.059">
+<testsuite name="com.cedarsoft.zip.PathBasedClassFieldConditionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-09T02:06:24" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.009">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.zip.PathBasedClassFieldConditionTest" time="0.059"/>
+  <testcase name="testIt()" classname="com.cedarsoft.zip.PathBasedClassFieldConditionTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

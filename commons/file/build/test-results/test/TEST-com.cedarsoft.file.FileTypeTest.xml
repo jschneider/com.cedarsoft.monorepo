@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-05-08T02:06:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.342">
+<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-05-09T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.295">
   <properties/>
-  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.064"/>
-  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
-  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.003"/>
-  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.219"/>
-  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.006"/>
-  <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.0"/>
+  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.073"/>
+  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.008"/>
+  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
+  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.191"/>
+  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
+  <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
   <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
   <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
   <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
