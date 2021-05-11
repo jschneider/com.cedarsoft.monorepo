@@ -27,8 +27,5 @@ class CoroutinesTest {
       assertThat(Thread.currentThread().name).startsWith("asdf")
       assertThat(runInner).isTrue()
     }
-
-
-    println("done")
   }
 }

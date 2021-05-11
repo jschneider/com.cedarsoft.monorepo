@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.SplitHashTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-10T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.621">
+<testsuite name="com.cedarsoft.photos.SplitHashTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-11T02:05:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.644">
   <properties/>
-  <testcase name="basic()" classname="com.cedarsoft.photos.SplitHashTest" time="0.621"/>
+  <testcase name="basic()" classname="com.cedarsoft.photos.SplitHashTest" time="0.644"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
