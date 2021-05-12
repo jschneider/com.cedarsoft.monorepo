@@ -181,3 +181,15 @@ fun String.containsAll(elements: Iterable<String>, ignoreCase: Boolean = false):
     this.contains(it, ignoreCase)
   }
 }
+
+/**
+ * Returns a string that is save to be used as file name
+ */
+fun String.encodeForFileName(): String {
+  return InvalidForFileName.replace(this, "_")
+}
+
+/**
+ * Regex that contains invalid elements for a file name
+ */
+private val InvalidForFileName: Regex = Regex("[:\\\\/*\"?|<>']")
