@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.FooTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-13T02:07:02" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.104">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.FooTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-14T02:06:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.132">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@2cbd3d30}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.048"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@612d4011}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.053"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@3659b0b1}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.072"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@792508e6}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.058"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
