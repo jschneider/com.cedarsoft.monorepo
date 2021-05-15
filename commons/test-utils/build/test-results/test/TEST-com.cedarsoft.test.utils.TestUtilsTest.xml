@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.TestUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-14T02:06:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.01">
+<testsuite name="com.cedarsoft.test.utils.TestUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-15T02:08:33" hostname="runner-kggansxr-project-47-concurrent-0" time="0.015">
   <properties/>
-  <testcase name="testCleanupNull()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.0"/>
-  <testcase name="testCleanup()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.001"/>
+  <testcase name="testCleanupNull()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.01"/>
+  <testcase name="testCleanup()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
