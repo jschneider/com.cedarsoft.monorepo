@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-15T02:09:00" hostname="runner-kggansxr-project-47-concurrent-0" time="0.131">
+<testsuite name="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-16T02:06:30" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.049">
   <properties/>
-  <testcase name="testReadCompatible()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" time="0.072"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" time="0.058"/>
+  <testcase name="testReadCompatible()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" time="0.003"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonCompatibleTest" time="0.045"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

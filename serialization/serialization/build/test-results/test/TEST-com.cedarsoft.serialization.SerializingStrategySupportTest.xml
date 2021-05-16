@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.SerializingStrategySupportTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-15T02:08:55" hostname="runner-kggansxr-project-47-concurrent-0" time="3.431">
+<testsuite name="com.cedarsoft.serialization.SerializingStrategySupportTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-16T02:06:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.613">
   <properties/>
-  <testcase name="festFind3()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="3.363"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.011"/>
-  <testcase name="testVersionMappings()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.034"/>
-  <testcase name="festFind()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.002"/>
-  <testcase name="testVerify()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.002"/>
+  <testcase name="festFind3()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="2.564"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.021"/>
+  <testcase name="testVersionMappings()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.014"/>
+  <testcase name="festFind()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.001"/>
+  <testcase name="testVerify()" classname="com.cedarsoft.serialization.SerializingStrategySupportTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
