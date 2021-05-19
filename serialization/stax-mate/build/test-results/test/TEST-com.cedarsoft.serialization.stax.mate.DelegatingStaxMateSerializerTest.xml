@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-18T02:06:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.165">
+<testsuite name="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-19T02:06:51" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.342">
   <properties/>
-  <testcase name="[1] entry=Entry{object=1}" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="1.002"/>
-  <testcase name="testVis()" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="0.04"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="0.113"/>
+  <testcase name="[1] entry=Entry{object=1}" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="1.181"/>
+  <testcase name="testVis()" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="0.044"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.stax.mate.DelegatingStaxMateSerializerTest" time="0.097"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
