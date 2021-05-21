@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.crypt.SignatureTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-20T02:05:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.138">
+<testsuite name="com.cedarsoft.crypt.SignatureTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-21T02:05:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.18">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.crypt.SignatureTest" time="0.138"/>
+  <testcase name="testIt()" classname="com.cedarsoft.crypt.SignatureTest" time="0.18"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
