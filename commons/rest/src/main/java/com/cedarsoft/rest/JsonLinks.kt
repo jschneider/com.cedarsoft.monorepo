@@ -4,7 +4,6 @@ import com.cedarsoft.guava.toImmutable
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.google.common.collect.ImmutableMap
-import kotlin.collections.associateBy
 
 /**
  * Contains some links
@@ -26,9 +25,45 @@ constructor(
 
   constructor(type: String, link: String, type2: String, link2: String) : this(ImmutableMap.of<String, String>(type, link, type2, link2))
 
-  constructor(type: String, link: String, type2: String, link2: String, type3: String, link3: String) : this(ImmutableMap.of<String, String>(type, link, type2, link2, type3, link3))
+  constructor(
+    type: String,
+    link: String,
+    type2: String,
+    link2: String,
+    type3: String,
+    link3: String
+  ) : this(
+    ImmutableMap.of<String, String>(
+      type,
+      link,
+      type2,
+      link2,
+      type3,
+      link3
+    )
+  )
 
-  constructor(type: String, link: String, type2: String, link2: String, type3: String, link3: String, type4: String, link4: String) : this(ImmutableMap.of<String, String>(type, link, type2, link2, type3, link3, type4, link4))
+  constructor(
+    type: String,
+    link: String,
+    type2: String,
+    link2: String,
+    type3: String,
+    link3: String,
+    type4: String,
+    link4: String
+  ) : this(
+    ImmutableMap.of<String, String>(
+      type,
+      link,
+      type2,
+      link2,
+      type3,
+      link3,
+      type4,
+      link4
+    )
+  )
 }
 
 private fun Array<out JsonLink>.asMap(): ImmutableMap<String, String> {

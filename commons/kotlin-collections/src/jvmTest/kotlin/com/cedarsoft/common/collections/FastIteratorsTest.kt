@@ -2,6 +2,8 @@ package com.cedarsoft.common.collections
 
 import assertk.*
 import assertk.assertions.*
+import com.cedarsoft.common.kotlin.lang.fastFor
+import com.cedarsoft.common.kotlin.lang.join
 import org.junit.jupiter.api.Test
 
 /**

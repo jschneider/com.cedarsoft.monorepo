@@ -41,9 +41,7 @@ import com.cedarsoft.exceptions.handling.notification.Notification
 import com.cedarsoft.version.Version
 import com.google.common.collect.ImmutableMap
 import javafx.application.Platform
-import org.slf4j.LoggerFactory
 import java.io.IOException
-import java.util.HashMap
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -51,8 +49,8 @@ import java.util.concurrent.atomic.AtomicBoolean
  */
 open class FxExceptionHandler @JvmOverloads constructor(
   private val notificationService: FxNotificationService,
-  private val applicationVersion: Version,
-  private val exceptionReporter: ExceptionReporter,
+  val applicationVersion: Version,
+  val exceptionReporter: ExceptionReporter,
   exceptionTypeHandlers: Map<Class<out Throwable>, ExceptionTypeHandler> = HashMap()
 ) :
   ExceptionHandler() {
@@ -179,9 +177,5 @@ open class FxExceptionHandler @JvmOverloads constructor(
   @FunctionalInterface
   interface ExceptionTypeHandler {
     fun handle(exceptionHandler: FxExceptionHandler, thread: Thread, throwable: Throwable, original: Throwable)
-  }
-
-  companion object {
-    private val LOG = LoggerFactory.getLogger(FxExceptionHandler::class.java.name)
   }
 }

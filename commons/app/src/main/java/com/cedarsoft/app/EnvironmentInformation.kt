@@ -33,7 +33,6 @@ package com.cedarsoft.app
 
 
 import java.net.InetAddress
-import java.net.UnknownHostException
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -42,55 +41,48 @@ import java.time.format.DateTimeFormatter
 
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-class EnvironmentInformation {
-  companion object {
-    /**
-     * Returns the host name
-     */
-    @JvmStatic
-    val hostName: String
-      get() {
-        try {
-          return InetAddress.getLocalHost().hostName
-        } catch (e: UnknownHostException) {
-          throw RuntimeException(e)
-        }
-      }
-
-    /**
-     * Returns the current user name
-     */
-    @JvmStatic
-    val userName: String
-      get() = System.getProperty("user.name")
-
-
-    /**
-     * Creates host description string
-     */
-    fun createHostDescription(): String {
-      return "Local Date: " + DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.now()) + "\n" +
-        "User: " + System.getProperty("user.name") + "\n" +
-        "Host Name: " + hostName + "\n"
+object EnvironmentInformation {
+  /**
+   * Returns the host name
+   */
+  @JvmStatic
+  val hostName: String
+    get() {
+      return InetAddress.getLocalHost().hostName
     }
 
-    /**
-     * Returns a string that describes the environment
-     */
-    fun createEnvironmentDescription(): String {
-      val builder = StringBuilder()
+  /**
+   * Returns the current user name
+   */
+  @JvmStatic
+  val userName: String
+    get() = System.getProperty("user.name")
 
-      val properties = System.getProperties()
-      val enumeration = properties.propertyNames()
-      while (enumeration.hasMoreElements()) {
-        val propertyKey = enumeration.nextElement()
-        val value = properties[propertyKey]
 
-        builder.append(propertyKey).append(": ").append(value).append("\n")
-      }
+  /**
+   * Creates host description string
+   */
+  fun createHostDescription(): String {
+    return "Local Date: " + DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.now()) + "\n" +
+      "User: " + System.getProperty("user.name") + "\n" +
+      "Host Name: " + hostName + "\n"
+  }
 
-      return builder.toString()
+  /**
+   * Returns a string that describes the environment
+   */
+  fun createEnvironmentDescription(): String {
+    val builder = StringBuilder()
+
+    val properties = System.getProperties()
+    val enumeration = properties.propertyNames()
+    while (enumeration.hasMoreElements()) {
+      val propertyKey = enumeration.nextElement()
+      val value = properties[propertyKey]
+
+      builder.append(propertyKey).append(": ").append(value).append("\n")
     }
 
+    return builder.toString()
   }
 }

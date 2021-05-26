@@ -26,7 +26,8 @@ dependencies {
   testImplementation(project(Projects.open_serialization_serialization_test_utils))
   testImplementation(project(Projects.open_commons_test_utils))
 
-  testImplementation(Libs.neo4jKernel)
-  testImplementation(Libs.neo4jHarness)
-  testImplementation(Libs.orgNeo4jCommunityItTestSupport)
+  testImplementation(Libs.neo4j_kernel)
+  testImplementation(Libs.neo4j_kernel)
+  testImplementation(Libs.neo4j_harness)
+  testImplementation(Libs.it_test_support)
 }

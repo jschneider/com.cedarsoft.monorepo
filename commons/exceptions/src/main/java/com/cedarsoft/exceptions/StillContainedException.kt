@@ -42,7 +42,7 @@ class StillContainedException
  *
  * Constructor for StillContainedException.
  *
- * @param object a Object object.
+ * @param `object` a Object object.
  */
   (
   /**
@@ -51,5 +51,5 @@ class StillContainedException
    *
    * @return a Object object.
    */
-  val `object`: Any
-) : RuntimeException("The object <$`object`> is still contained")
+  val element: Any
+) : RuntimeException("The object <$element> is still contained")

@@ -45,7 +45,6 @@ import com.fasterxml.jackson.core.JsonToken
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import java.util.ArrayList
 import javax.annotation.WillNotClose
 
 /**
@@ -58,7 +57,7 @@ protected constructor(
   formatVersionRange: VersionRange
 ) : AbstractStreamSerializer<T, JsonGenerator, JsonParser>(formatVersionRange), JacksonSerializer<T> {
 
-  override val isObjectType = true
+  override val isObjectType: Boolean = true
 
   @Throws(SerializationException::class)
   override fun verifyType(type: String) {
@@ -405,16 +404,6 @@ protected constructor(
     serializeTo.writeStringField(propertyName, enumValue.name)
   }
 
-  @Throws(IOException::class)
-  fun serializeEnum(enumValue: Enum<*>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
-    serializeTo.writeStringField(propertyName, enumValue.name)
-  }
-
-  @Throws(IOException::class)
-  fun serializeEnum(enumValue: Enum<*>, type: Class<*>, propertyName: String, serializeTo: JsonGenerator, formatVersion: Version) {
-    serializeTo.writeStringField(propertyName, enumValue.name)
-  }
-
   /**
    * Deserializes the enumeration
    * @param enumClass    the enum class
@@ -432,13 +421,8 @@ protected constructor(
   }
 
   @Throws(IOException::class)
-  fun <A : Enum<A>> deserializeEnum(enumClass: Class<A>, formatVersion: Version, parser: JsonParser): A {
-    return deserializeEnum(enumClass, parser)
-  }
-
-  @Throws(IOException::class)
   fun <A : Enum<A>> deserializeEnum(enumClass: Class<A>, parser: JsonParser): A {
-    return java.lang.Enum.valueOf<A>(enumClass, parser.text)
+    return java.lang.Enum.valueOf(enumClass, parser.text)
   }
 
   @Deprecated("")
@@ -449,13 +433,9 @@ protected constructor(
   }
 
   companion object {
-    @JvmField
-    val FIELD_NAME_DEFAULT_TEXT = "$"
-    @JvmField
-    val PROPERTY_TYPE = "@type"
-    @JvmField
-    val PROPERTY_VERSION = "@version"
-    @JvmField
-    val PROPERTY_SUB_TYPE = "@subtype"
+    const val FIELD_NAME_DEFAULT_TEXT: String = "$"
+    const val PROPERTY_TYPE: String = "@type"
+    const val PROPERTY_VERSION: String = "@version"
+    const val PROPERTY_SUB_TYPE: String = "@subtype"
   }
 }

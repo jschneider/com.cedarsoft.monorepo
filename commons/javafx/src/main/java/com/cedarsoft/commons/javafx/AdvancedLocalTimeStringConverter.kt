@@ -11,7 +11,7 @@ class AdvancedLocalTimeStringConverter : LocalTimeStringConverter() {
   override fun fromString(value: String?): LocalTime? {
     return try {
       super.fromString(value)
-    } catch (e: Exception) {
+    } catch (ignore: Exception) {
       null
     }
   }

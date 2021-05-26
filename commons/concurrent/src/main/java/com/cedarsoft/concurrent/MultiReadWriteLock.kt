@@ -31,8 +31,6 @@
 
 package com.cedarsoft.concurrent
 
-import java.util.ArrayList
-import java.util.Arrays
 import java.util.concurrent.locks.Lock
 import java.util.concurrent.locks.ReadWriteLock
 
@@ -59,7 +57,7 @@ constructor(locks: Iterable<ReadWriteLock>) : ReadWriteLock {
    *
    * @param locks a ReadWriteLock object.
    */
-  constructor(vararg locks: ReadWriteLock) : this(Arrays.asList<ReadWriteLock>(*locks)) {}
+  constructor(vararg locks: ReadWriteLock) : this(locks.asList())
 
   init {
     val readLocks = ArrayList<Lock>()

@@ -40,5 +40,5 @@ class NotificationException(
   val title: String,
   message: String
 ) : RuntimeException(message, cause) {
-  constructor(title: String, message: String) : this(null, title, message) {}
+  constructor(title: String, message: String) : this(null, title, message)
 }

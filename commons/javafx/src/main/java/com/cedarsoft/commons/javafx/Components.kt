@@ -2,7 +2,10 @@ package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.commons.javafx.combo.ItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.combo.ListViewListCellCallbackForItemThatMayBeDisabled
-import com.cedarsoft.commons.javafx.properties.*
+import com.cedarsoft.commons.javafx.properties.BooleanPropertyWithWritableState
+import com.cedarsoft.commons.javafx.properties.DoublePropertyWithWritableState
+import com.cedarsoft.commons.javafx.properties.IntegerPropertyWithWritableState
+import com.cedarsoft.commons.javafx.properties.PropertyWithWritableState
 import com.cedarsoft.unit.other.px
 import com.google.common.collect.ImmutableList
 import com.sun.javafx.binding.BidirectionalBinding
@@ -606,7 +609,7 @@ object Components {
   fun <E : Enum<E>> textFieldEnumReadOnly(enumProperty: ObservableValue<E>): TextField {
     val textField = TextField()
     textField.isEditable = false
-    textField.textProperty().bind(Bindings.createStringBinding(Callable { EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.value) }, enumProperty))
+    textField.textProperty().bind(Bindings.createStringBinding({ EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.value) }, enumProperty))
 
     //Avoid premature gc of the property
     textField.properties["observableBoundToText"] = enumProperty
@@ -732,7 +735,11 @@ object Components {
 
   @JvmStatic
   @JvmOverloads
-  fun textFieldDoubleDelayed(doubleProperty: DoublePropertyWithWritableState, filter: Predicate<Double> = Predicate { _ -> true }, converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+  fun textFieldDoubleDelayed(
+    doubleProperty: DoublePropertyWithWritableState,
+    filter: Predicate<Double> = Predicate { _ -> true },
+    converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()
+  ): TextField {
     return textFieldDoubleDelayed(doubleProperty.property, filter, converter).also {
       it.disableProperty().bind(doubleProperty.writableProperty.not())
     }

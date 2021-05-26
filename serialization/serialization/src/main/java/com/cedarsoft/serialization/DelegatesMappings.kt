@@ -40,7 +40,6 @@ import com.cedarsoft.version.Version
 import com.cedarsoft.version.VersionMismatchException
 import com.cedarsoft.version.VersionRange
 import java.io.IOException
-import java.util.HashMap
 import java.util.SortedSet
 import javax.annotation.Nonnull
 
@@ -60,9 +59,9 @@ class DelegatesMappings<S : Any, D : Any, O : Any, I : Any>(versionRange: Versio
   }
 
   @Throws(IOException::class)
-  fun <T : Any> serialize(objectSerialize: T, type: Class<T>, outputElement: S, formatVersion: Version?) {
+  fun <T : Any> serialize(objectSerialize: T, type: Class<T>, outputElement: S, formatVersion: Version) {
     val serializer = getSerializer(type)
-    serializer.serialize(outputElement, objectSerialize, versionMappings.resolveVersion(type, formatVersion!!))
+    serializer.serialize(outputElement, objectSerialize, versionMappings.resolveVersion(type, formatVersion))
   }
 
 
@@ -74,9 +73,10 @@ class DelegatesMappings<S : Any, D : Any, O : Any, I : Any>(versionRange: Versio
 
 
   @Throws(IOException::class)
-  fun <T : Any> deserialize(type: Class<T>, formatVersion: Version?, deserializeFrom: D): T {
+  fun <T : Any> deserialize(type: Class<T>, formatVersion: Version, deserializeFrom: D): T {
     val serializer = getSerializer(type)
-    return serializer.deserialize(deserializeFrom, versionMappings.resolveVersion(type, formatVersion!!)) as T
+    val deserialized = serializer.deserialize(deserializeFrom, versionMappings.resolveVersion(type, formatVersion))
+    return deserialized as T
   }
 
   /**
@@ -102,8 +102,8 @@ class DelegatesMappings<S : Any, D : Any, O : Any, I : Any>(versionRange: Versio
     get() = versionMappings.getMappings()
 
 
-  fun <T : Any> resolveVersion(key: Class<out T>, version: Version?): Version {
-    return versionMappings.resolveVersion(key, version!!)
+  fun <T : Any> resolveVersion(key: Class<out T>, version: Version): Version {
+    return versionMappings.resolveVersion(key, version)
   }
 
   fun getMapping(key: Class<*>): VersionMapping {

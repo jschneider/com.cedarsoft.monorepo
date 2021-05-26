@@ -44,7 +44,7 @@ data class Array2<TGen>(val width: Int, val height: Int, val data: Array<TGen>) 
           }
         }
         .filter { it.isNotEmpty() }
-      val width = lines.map { it.length }.max() ?: 0
+      val width = lines.map { it.length }.maxOrNull() ?: 0
       val height = lines.size
 
       return Array2<TGen>(width, height) { n ->
@@ -141,7 +141,7 @@ data class Array2<TGen>(val width: Int, val height: Int, val data: Array<TGen>) 
 
   fun toStringList(charMap: (TGen) -> Char, margin: String = ""): List<String> {
     return (0 until height).map { y ->
-      margin + String(CharArray(width) { x -> charMap(this[x, y]) })
+      margin + CharArray(width) { x -> charMap(this[x, y]) }.concatToString()
     }
   }
 
@@ -192,7 +192,7 @@ data class IntArray2(val width: Int, val height: Int, val data: IntArray) : Iter
           }
         }
         .filter { it.isNotEmpty() }
-      val width = lines.map { it.length }.max() ?: 0
+      val width = lines.map { it.length }.maxOrNull() ?: 0
       val height = lines.size
 
       return IntArray2(width, height) { n ->
@@ -289,7 +289,7 @@ data class IntArray2(val width: Int, val height: Int, val data: IntArray) : Iter
 
   fun toStringList(charMap: (Int) -> Char, margin: String = ""): List<String> {
     return (0 until height).map { y ->
-      margin + String(CharArray(width) { x -> charMap(this[x, y]) })
+      margin + CharArray(width) { x -> charMap(this[x, y]) }.concatToString()
     }
   }
 
@@ -340,7 +340,7 @@ data class DoubleArray2(val width: Int, val height: Int, val data: DoubleArray) 
           }
         }
         .filter { it.isNotEmpty() }
-      val width = lines.map { it.length }.max() ?: 0
+      val width = lines.map { it.length }.maxOrNull() ?: 0
       val height = lines.size
 
       return DoubleArray2(width, height) { n ->
@@ -437,7 +437,7 @@ data class DoubleArray2(val width: Int, val height: Int, val data: DoubleArray) 
 
   fun toStringList(charMap: (Double) -> Char, margin: String = ""): List<String> {
     return (0 until height).map { y ->
-      margin + String(CharArray(width) { x -> charMap(this[x, y]) })
+      margin + CharArray(width) { x -> charMap(this[x, y]) }.concatToString()
     }
   }
 
@@ -488,7 +488,7 @@ data class FloatArray2(val width: Int, val height: Int, val data: FloatArray) : 
           }
         }
         .filter { it.isNotEmpty() }
-      val width = lines.map { it.length }.max() ?: 0
+      val width = lines.map { it.length }.maxOrNull() ?: 0
       val height = lines.size
 
       return FloatArray2(width, height) { n ->
@@ -585,7 +585,7 @@ data class FloatArray2(val width: Int, val height: Int, val data: FloatArray) : 
 
   fun toStringList(charMap: (Float) -> Char, margin: String = ""): List<String> {
     return (0 until height).map { y ->
-      margin + String(CharArray(width) { x -> charMap(this[x, y]) })
+      margin + CharArray(width) { x -> charMap(this[x, y]) }.concatToString()
     }
   }
 

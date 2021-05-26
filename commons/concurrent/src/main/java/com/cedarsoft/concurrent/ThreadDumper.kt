@@ -30,7 +30,6 @@
  */
 package com.cedarsoft.concurrent
 
-import java.io.IOException
 import java.io.StringWriter
 import java.io.Writer
 import java.lang.management.ManagementFactory
@@ -61,14 +60,9 @@ object ThreadDumper {
 
   @JvmStatic
   fun dumpThreads(threadInfos: Array<ThreadInfo>): String {
-    try {
-      val writer = StringWriter()
-      dumpThreads(threadInfos, writer)
-      return writer.toString()
-    } catch (e: IOException) {
-      throw RuntimeException(e)
-    }
-
+    val writer = StringWriter()
+    dumpThreads(threadInfos, writer)
+    return writer.toString()
   }
 
   /**

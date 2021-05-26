@@ -97,9 +97,9 @@ constructor(
     val serializer = getSerializer(type)
     val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
-    for (`object` in objects) {
+    for (current in objects) {
       serializeTo.writeStartElement(elementName)
-      serializer.serialize(serializeTo, `object`, resolvedVersion)
+      serializer.serialize(serializeTo, current, resolvedVersion)
       serializeTo.writeEndElement()
     }
   }
@@ -109,9 +109,9 @@ constructor(
     val serializer = getSerializer(type)
     val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
-    for (`object` in objects) {
+    for (current in objects) {
       serializeTo.writeStartElement(serializer.defaultElementName)
-      serializer.serialize(serializeTo, `object`, resolvedVersion)
+      serializer.serialize(serializeTo, current, resolvedVersion)
       serializeTo.writeEndElement()
     }
   }

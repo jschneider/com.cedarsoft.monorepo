@@ -138,8 +138,8 @@ public class DelegatingStaxMateSerializerTest extends AbstractXmlSerializerTest2
                                                                                                                                                                           }, new ToString<SerializingStrategy<? extends Number, SMOutputElement, XMLStreamReader, OutputStream, InputStream>>() {
       @Nonnull
       @Override
-      public String convert( @Nonnull SerializingStrategy<? extends Number, SMOutputElement, XMLStreamReader, OutputStream, InputStream> object ) {
-        return object.getId();
+      public String convert(@Nonnull SerializingStrategy<? extends Number, SMOutputElement, XMLStreamReader, OutputStream, InputStream> toConvert) {
+        return toConvert.getId();
       }
     }
     );

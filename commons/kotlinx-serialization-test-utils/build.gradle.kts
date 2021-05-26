@@ -9,17 +9,17 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_commons_guava))
 
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   api(project(Projects.dependencies_sets_test_basics))
 
   api(Libs.guava)
-  compileOnlyApi(Libs.javaxAnnotationApi)
-  api(Libs.kotlinxCoroutinesJdk8)
+  compileOnlyApi(Libs.javax_annotation_api)
+  api(KotlinX.coroutines.jdk8)
   api(KotlinX.serialization.json)
   api(KotlinX.serialization.protobuf)
   api(KotlinX.serialization.cbor)

@@ -34,7 +34,6 @@ package com.cedarsoft.crypt
 
 import com.google.common.collect.ImmutableList
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import java.util.Collections
 
 /**
@@ -60,12 +59,7 @@ constructor(val expectedLength: Int, vararg alternativeNames: String) {
    */
   val messageDigest: MessageDigest
     get() {
-      try {
-        return MessageDigest.getInstance(alternativeNames[0])
-      } catch (e: NoSuchAlgorithmException) {
-        throw RuntimeException(e)
-      }
-
+      return MessageDigest.getInstance(alternativeNames[0])
     }
 
   /**
@@ -92,7 +86,7 @@ constructor(val expectedLength: Int, vararg alternativeNames: String) {
           return algorithm
         }
       }
-      throw IllegalArgumentException("No Alogirthm found for $algorithmString")
+      throw IllegalArgumentException("No algorithm found for $algorithmString")
     }
   }
 }

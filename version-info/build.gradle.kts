@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """Version-Info for the repository"""
 
 plugins {
@@ -23,50 +25,53 @@ kotlin {
       dependsOn(versionInformationSources)
 
       dependencies {
+        api(Kotlin.stdlib.common)
       }
     }
 
     val commonTest by getting {
       dependencies {
-        implementation(Libs.kotlinTestCommon)
-        implementation(Libs.kotlinTestAnnotationsCommon)
+        implementation(Libs.kotlin_test_common)
+        implementation(Libs.kotlin_test_annotations_common)
       }
     }
 
     jvm().compilations["main"].defaultSourceSet {
       dependencies {
+        api(Kotlin.stdlib.jdk8)
         //implementation(Libs.kotlinx_coroutines_core)
 
         api(project(Projects.dependencies_sets_annotations))
-        api(project(Projects.dependencies_sets_kotlin))
+        api(project(Projects.dependencies_sets_kotlin_jvm))
         api(project(Projects.open_annotations))
       }
     }
 
     jvm().compilations["test"].defaultSourceSet {
       dependencies {
-        implementation(Libs.kotlinTest)
-        implementation(Libs.kotlinTestJunit)
+        implementation(Libs.kotlin_test)
+        implementation(Libs.kotlin_test_junit)
 
         implementation(project(Projects.dependencies_sets_kotlin_test))
 
-        implementation(Libs.commonsIo)
-        implementation(Libs.mockitoCore)
-        implementation(Libs.assertjCore)
-        implementation(Libs.commonsMath3)
-        implementation(Libs.mockitoKotlin)
-        implementation(Libs.logbackClassic)
+        implementation(commons_io)
+        implementation(Libs.mockito_core)
+        implementation(Libs.assertj_core)
+        implementation(Libs.commons_math3)
+        implementation(Libs.mockito_kotlin)
+        implementation(Libs.logback_classic)
         implementation(Libs.awaitility)
       }
     }
 
     js().compilations["main"].defaultSourceSet {
       dependencies {
+        api(project(Projects.dependencies_sets_kotlin_js))
       }
     }
     js().compilations["test"].defaultSourceSet {
       dependencies {
-        implementation(Libs.kotlinTestJs)
+        implementation(Libs.kotlin_test_js)
       }
     }
   }

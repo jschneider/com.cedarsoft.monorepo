@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """File Container related stuff"""
 
 
@@ -9,14 +11,14 @@ plugins {
 
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   api(project(Projects.open_commons_version))
   api(project(Projects.open_commons_io))
 
   api(Libs.guava)
-  api(Libs.commonsCodec)
-  api(Libs.commonsCompress)
-  api(Libs.commonsIo)
+  api(Libs.commons_codec)
+  api(Libs.commons_compress)
+  api(commons_io)
 
   testImplementation(project(Projects.dependencies_sets_test_basics))
 }

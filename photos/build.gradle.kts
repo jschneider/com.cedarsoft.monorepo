@@ -12,7 +12,7 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   api(Libs.guice)
   api(project(Projects.open_commons_io))
   api(project(Projects.open_commons_image))
@@ -23,15 +23,15 @@ dependencies {
   api(project(Projects.open_commons_exceptions))
   api(Libs.im4java)
   api(Libs.jsr305)
-  api(Libs.javaxInject)
+  api(Libs.javax_inject)
   compileOnlyApi(project(Projects.open_annotations))
 
 
   //
   // Test Deps
   //
-  testImplementation(Libs.commonsLang3)
+  testImplementation(Libs.commons_lang3)
   testImplementation(Libs.easymock)
-  testImplementation(Libs.mockitoCore)
+  testImplementation(Libs.mockito_core)
   testImplementation(project(Projects.open_commons_test_utils))
 }

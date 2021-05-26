@@ -1,3 +1,6 @@
+import Libs.commons_io
+import Libs.jackson_databind
+
 description = """Serialization - Test Utils"""
 
 
@@ -15,16 +18,16 @@ dependencies {
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_commons_test_utils))
 
-  api(Libs.staxMate)
-  api(Libs.woodstoxCoreAsl)
-  api(Libs.commonsLang3)
-  api(Libs.commonsIo)
-  api(Libs.mockitoCore)
-  api(Libs.easyMockClassExtension)
+  api(Libs.staxmate)
+  api(Libs.woodstox_core_asl)
+  api(Libs.commons_lang3)
+  api(commons_io)
+  api(Libs.mockito_core)
+  api(Libs.easymockclassextension)
   api(Libs.easymock)
-  api(Libs.assertjCore)
-  api(Libs.festReflect)
+  api(Libs.assertj_core)
+  api(Libs.fest_reflect)
   api(Libs.junit)
-  api(Libs.jackson.databind)
+  api(jackson_databind)
   api(Libs.xmlunit)
 }

@@ -64,7 +64,7 @@ data class Extension(
    *
    * @param extension a String object.
    */
-  constructor(extension: String) : this(DEFAULT_DELIMITER, extension) {}
+  constructor(extension: String) : this(DEFAULT_DELIMITER, extension)
 
   /**
    *

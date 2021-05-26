@@ -8,9 +8,9 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
 
   testImplementation(project(Projects.dependencies_sets_test_basics))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.commonsCodec)
+  testImplementation(Libs.commons_codec)
 }

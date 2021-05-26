@@ -1,3 +1,6 @@
+import Libs.jackson_core
+import Libs.jackson_databind
+
 description = """Serialization - Jackson"""
 
 
@@ -12,13 +15,13 @@ dependencies {
   // Compile Deps
   //
   api(project(Projects.open_serialization_serialization))
-  api(Libs.jackson.core)
+  api(jackson_core)
 
   //
   // Test Deps
   //
   testImplementation(project(Projects.open_serialization_serialization_test_utils))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.jackson.databind)
+  testImplementation(jackson_databind)
   testImplementation(Libs.guice)
 }

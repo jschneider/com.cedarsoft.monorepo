@@ -33,6 +33,7 @@ package com.cedarsoft.commons;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
@@ -46,7 +47,7 @@ public class ThreadUtilsTest {
   public void testIt() {
     ThreadUtils.assertNotEventDispatchThread();
 
-    Assertions.assertThrows(IllegalThreadStateException.class, () -> {
+    Assertions.assertThrows(InvocationTargetException.class, () -> {
       ThreadUtils.invokeInEventDispatchThread(new Runnable() {
         @Override
         public void run() {
@@ -84,15 +85,15 @@ public class ThreadUtilsTest {
   public void testOther() throws ExecutionException, InterruptedException {
     final boolean[] called = {false};
 
-    assertEquals( "asdf", ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+    assertEquals("asdf", ThreadUtils.invokeInOtherThread(new Callable<Object>() {
       @Override
       public Object call() throws Exception {
         called[0] = true;
-        assertFalse( ThreadUtils.isEventDispatchThread() );
+        assertFalse(ThreadUtils.isEventDispatchThread());
         ThreadUtils.assertNotEventDispatchThread();
         return "asdf";
       }
-    } ) );
+    }));
 
     assertTrue( called[0] );
   }

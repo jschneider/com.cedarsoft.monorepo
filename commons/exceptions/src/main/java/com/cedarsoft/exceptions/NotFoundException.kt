@@ -42,7 +42,7 @@ class NotFoundException : RuntimeException {
    *
    * Constructor for NotFoundException.
    */
-  constructor() {}
+  constructor()
 
   /**
    *
@@ -50,7 +50,7 @@ class NotFoundException : RuntimeException {
    *
    * @param message a String object.
    */
-  constructor(message: String) : super(message) {}
+  constructor(message: String) : super(message)
 
   /**
    *
@@ -59,7 +59,7 @@ class NotFoundException : RuntimeException {
    * @param message a String object.
    * @param cause   a Throwable object.
    */
-  constructor(message: String, cause: Throwable) : super(message, cause) {}
+  constructor(message: String, cause: Throwable) : super(message, cause)
 
   /**
    *
@@ -67,5 +67,5 @@ class NotFoundException : RuntimeException {
    *
    * @param cause a Throwable object.
    */
-  constructor(cause: Throwable) : super(cause) {}
+  constructor(cause: Throwable) : super(cause)
 }

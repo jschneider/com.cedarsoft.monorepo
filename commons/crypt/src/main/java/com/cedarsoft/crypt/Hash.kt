@@ -34,7 +34,6 @@ package com.cedarsoft.crypt
 import org.apache.commons.codec.DecoderException
 import org.apache.commons.codec.binary.Hex
 import java.io.Serializable
-import java.util.Arrays
 
 /**
  * Represents a hash value
@@ -60,28 +59,18 @@ class Hash(
   }
 
   override fun equals(other: Any?): Boolean {
-    if (this === other) {
-      return true
-    }
-    if (other == null || javaClass != other.javaClass) {
-      return false
-    }
+    if (this === other) return true
+    if (other !is Hash) return false
 
-    val hash = other as Hash?
+    if (algorithm != other.algorithm) return false
+    if (!value.contentEquals(other.value)) return false
 
-    if (algorithm != hash!!.algorithm) {
-      return false
-    }
-    return if (!Arrays.equals(value, hash.value)) {
-      false
-    } else true
-
+    return true
   }
 
   override fun hashCode(): Int {
-    var result: Int
-    result = algorithm.hashCode()
-    result = 31 * result + Arrays.hashCode(value)
+    var result = algorithm.hashCode()
+    result = 31 * result + value.contentHashCode()
     return result
   }
 

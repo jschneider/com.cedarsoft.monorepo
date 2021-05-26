@@ -13,9 +13,9 @@ dependencies {
   //
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_serialization_stax))
-  api(Libs.staxMate)
-  api(Libs.woodstoxCoreAsl)
-  api(Libs.commonsLang3)
+  api(Libs.staxmate)
+  api(Libs.woodstox_core_asl)
+  api(Libs.commons_lang3)
   api(Libs.jettison)
 
 

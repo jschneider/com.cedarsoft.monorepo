@@ -117,7 +117,7 @@ private constructor(
     var bestExtension: Extension? = null
 
     for (extension in extensions) {
-      val index = fileName.toLowerCase().indexOf(extension.combined)
+      val index = fileName.toLowerCase(Locale.ENGLISH).indexOf(extension.combined)
       if (index < 0) {
         continue
       }
@@ -132,8 +132,9 @@ private constructor(
     if (bestBase == null) {
       throw IllegalArgumentException("Cannot get base for $fileName")
     }
+    require(bestExtension != null) { "bestExtension must not be null" }
 
-    return FileName(bestBase, bestExtension!!)
+    return FileName(bestBase, bestExtension)
   }
 
   fun getExtension(fileName: String): Extension {

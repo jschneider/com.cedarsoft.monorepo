@@ -75,7 +75,7 @@ class NotificationService {
     val frame = SwingHelper.getFrameSafe() ?: throw IllegalArgumentException("No frame found")
     val mainFrameComponent = frame.contentPane as JComponent
 
-    val balloonTip = object : CustomBalloonTip(mainFrameComponent, JPanel(), Rectangle(10, 10), STYLE, BottomRightPositioner(mainFrameComponent), BalloonTip.getDefaultCloseButton()) {
+    val balloonTip = object : CustomBalloonTip(mainFrameComponent, JPanel(), Rectangle(10, 10), Style, BottomRightPositioner(mainFrameComponent), BalloonTip.getDefaultCloseButton()) {
       override fun closeBalloon() {
         super.closeBalloon()
         notificationVisible = false
@@ -84,7 +84,7 @@ class NotificationService {
         val nextNotification = notificationQueue.poll() ?: return
 
         //Wait for 1200 ms until the notification is shown
-        val timer = Timer(1200) { _ -> showNotification(nextNotification) }
+        val timer = Timer(1200) { showNotification(nextNotification) }
         timer.isRepeats = false
         timer.start()
       }
@@ -114,13 +114,13 @@ class NotificationService {
 
 
     notificationVisible = true
-    TimingUtils.showTimedBalloon(balloonTip, VISIBILITY_TIME)
+    TimingUtils.showTimedBalloon(balloonTip, VisibilityTime)
   }
 
   /**
    * Positions the balloon at the bottom right
    */
-  private class BottomRightPositioner internal constructor(private val mainFrameComponent: JComponent) : BalloonTipPositioner() {
+  private class BottomRightPositioner(private val mainFrameComponent: JComponent) : BalloonTipPositioner() {
 
     override fun getTipLocation(): Point {
       throw UnsupportedOperationException("not available")
@@ -142,8 +142,8 @@ class NotificationService {
 
   companion object {
     @ms
-    val VISIBILITY_TIME = 15000
-    private val STYLE = ToolTipBalloonStyle(Color(255, 251, 192), Color.GRAY)
+    val VisibilityTime: Int = 15000
+    private val Style = ToolTipBalloonStyle(Color(255, 251, 192), Color.GRAY)
   }
 
 }

@@ -1,5 +1,6 @@
 package com.cedarsoft.test.utils
 
+import com.cedarsoft.common.kotlin.lang.fastFor
 import kotlin.system.measureTimeMillis
 
 /**
@@ -8,7 +9,7 @@ import kotlin.system.measureTimeMillis
  */
 fun forceGc(gcSuccessful: (() -> Boolean)) {
   measureTimeMillis {
-    for (i in 1..20) {
+    20.fastFor {
       System.gc()
 
       if (gcSuccessful.invoke()) {
@@ -26,7 +27,7 @@ fun forceGc(gcSuccessful: (() -> Boolean)) {
  */
 fun gc() {
   measureTimeMillis {
-    for (i in 1..20) {
+    20.fastFor {
       System.gc()
     }
   }.also { println("Took $it ms") }

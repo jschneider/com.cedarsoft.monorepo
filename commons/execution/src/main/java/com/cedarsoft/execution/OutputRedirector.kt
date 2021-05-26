@@ -31,7 +31,6 @@
 
 package com.cedarsoft.execution
 
-import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
@@ -41,7 +40,7 @@ import java.io.OutputStream
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class OutputRedirector(
-  private val `in`: InputStream,
+  private val inputStream: InputStream,
   private val out: ByteSink
 ) : Runnable {
 
@@ -50,32 +49,28 @@ class OutputRedirector(
    *
    * @return the waiting period
    */
-  var waitingPeriod = 100
+  var waitingPeriod: Int = 100
 
-  var bufferSize = 1024
+  var bufferSize: Int = 1024
 
   /**
    * Redirect the given input stream to the output stream
    *
-   * @param in  the input stream
+   * @param `in`  the input stream
    * @param out the output stream
    */
-  constructor(`in`: InputStream, out: OutputStream) : this(`in`, OutputStreamByteSink(out)) {}
+  constructor(inputStream: InputStream, out: OutputStream) : this(inputStream, OutputStreamByteSink(out))
 
   override fun run() {
-    try {
-      val buffer = ByteArray(bufferSize)
+    val buffer = ByteArray(bufferSize)
 
-      while (!Thread.interrupted()) {
-        val readBytes: Int = `in`.read(buffer)
-        if (readBytes < 0) {
-          return
-        }
-
-        out.take(buffer, readBytes)
+    while (!Thread.interrupted()) {
+      val readBytes: Int = inputStream.read(buffer)
+      if (readBytes < 0) {
+        return
       }
-    } catch (e: IOException) {
-      throw RuntimeException(e)
+
+      out.take(buffer, readBytes)
     }
   }
 

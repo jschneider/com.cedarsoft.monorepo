@@ -8,8 +8,6 @@ import com.google.inject.Singleton
 import com.google.inject.binder.AnnotatedBindingBuilder
 import com.google.inject.binder.LinkedBindingBuilder
 import com.google.inject.binder.ScopedBindingBuilder
-import java.util.ArrayList
-import javax.inject.Inject
 import javax.inject.Provider
 
 
@@ -18,12 +16,11 @@ import javax.inject.Provider
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
-open class GuiceInjectorBuilder() {
+open class GuiceInjectorBuilder {
   private val collected = ArrayList<Module>()
 
   fun module(config: Binder.() -> Any?): Module {
-    return Module {
-      binder ->
+    return Module { binder ->
       binder.config()
     }
   }
@@ -41,20 +38,20 @@ open class GuiceInjectorBuilder() {
   }
 }
 
-fun ScopedBindingBuilder.asSingleton() = `in`(Singleton::class.java)
+fun ScopedBindingBuilder.asSingleton(): Unit = `in`(Singleton::class.java)
 
-inline fun <reified T> Binder.bind() = bind(T::class.java)!!
+inline fun <reified T> Binder.bind(): AnnotatedBindingBuilder<T> = bind(T::class.java)!!
 
-inline fun <reified T> AnnotatedBindingBuilder<in T>.to() = to(T::class.java)!!
+inline fun <reified T> AnnotatedBindingBuilder<in T>.to(): ScopedBindingBuilder = to(T::class.java)!!
 
-inline fun <reified T> AnnotatedBindingBuilder<in T>.toSingleton() = to(T::class.java)!!.asSingleton()
+inline fun <reified T> AnnotatedBindingBuilder<in T>.toSingleton(): Unit = to(T::class.java)!!.asSingleton()
 
-inline fun <reified T> Injector.getInstance() = getInstance(T::class.java)!!
+inline fun <reified T> Injector.getInstance(): T = getInstance(T::class.java)!!
 
-inline fun <reified T> Injector.getProvider() = getProvider(T::class.java)!!
+inline fun <reified T> Injector.getProvider(): Provider<T> = getProvider(T::class.java)!!
 
 
 inline fun <reified T> Binder.getProvider(): com.google.inject.Provider<T> = getProvider(T::class.java)
 
 
-inline fun <T, reified S : Provider<out T>> LinkedBindingBuilder<T>.toProvider() = toProvider(S::class.java)
+inline fun <T, reified S : Provider<out T>> LinkedBindingBuilder<T>.toProvider(): ScopedBindingBuilder = toProvider(S::class.java)

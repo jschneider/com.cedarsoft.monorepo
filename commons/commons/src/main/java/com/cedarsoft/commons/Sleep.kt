@@ -48,10 +48,6 @@ object Sleep {
 
   @JvmStatic
   fun now(millis: Long) {
-    try {
-      Thread.sleep(millis)
-    } catch (e: InterruptedException) {
-      throw RuntimeException(e)
-    }
+    Thread.sleep(millis)
   }
 }

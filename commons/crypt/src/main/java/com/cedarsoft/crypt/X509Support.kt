@@ -70,8 +70,7 @@ open class X509Support
    *
    * @param certificate the certificate
    */
-  constructor(certificate: URL) : this(certificate, null) {
-  }
+  constructor(certificate: URL) : this(certificate, null)
 
   /**
    * Creates a new X509 support
@@ -80,8 +79,7 @@ open class X509Support
    * @param privateKey  the private key (if available)
    */
   @Inject
-  constructor(@CertificateUrl certificate: URL, @PrivateKeyUrl privateKey: URL?) : this(readCertificate(certificate), readPrivateKey(privateKey)) {
-  }
+  constructor(@CertificateUrl certificate: URL, @PrivateKeyUrl privateKey: URL?) : this(readCertificate(certificate), readPrivateKey(privateKey))
 
   /**
    * Returns whether the private key is available
@@ -163,8 +161,8 @@ open class X509Support
   }
 
   companion object {
-    const val RSA = "RSA"
-    const val SHA_256_WITH_RSA = "SHA256withRSA"
+    const val RSA: String = "RSA"
+    const val SHA_256_WITH_RSA: String = "SHA256withRSA"
     private const val X_509_CERTIFICATE_TYPE = "X.509"
 
     /**

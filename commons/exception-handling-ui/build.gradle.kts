@@ -9,7 +9,7 @@ plugins {
 
 dependencies {
   compileOnlyApi(project(Projects.open_annotations))
-  compileOnlyApi(Libs.comIntellijAnnotations)
+  compileOnlyApi(Libs.annotations)
 
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_exception_handling))
@@ -17,18 +17,18 @@ dependencies {
 
   api(project(Projects.open_commons_swing_common))
 
-  api(Libs.miglayoutSwing)
-  api(Libs.miglayoutJavafx)
+  api(Libs.miglayout_swing)
+  api(Libs.miglayout_javafx)
   api(project(Projects.open_commons_version))
   api(project(Projects.open_commons_javafx))
 
   api(Libs.controlsfx)
-  api(Libs.fontAwesomeFx)
-  api(Libs.slf4jApi)
+  api(Libs.fontawesomefx)
+  api(Libs.slf4j_api)
   api(Libs.guava)
   api(Libs.balloontip)
 
 
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.testfxJunit5)
+  testImplementation(Libs.testfx_junit5)
 }

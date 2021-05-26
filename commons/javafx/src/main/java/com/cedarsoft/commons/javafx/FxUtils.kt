@@ -19,7 +19,8 @@ import javafx.stage.Stage
 import javafx.stage.Window
 import javafx.util.Duration
 import java.io.PrintStream
-import java.util.*
+import java.util.Locale
+import java.util.Optional
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -81,23 +82,18 @@ object FxUtils {
   @JvmStatic
   val stages: List<Stage>
     get() {
-      try {
-        if (isJdk8) {
-          val stageHelper = Class.forName("com.sun.javafx.stage.StageHelper")
-          return stageHelper.getDeclaredMethod("getStages").invoke(null) as List<Stage>
-        }
-
-        //Code for JDK 11
-        val windows = Stage::class.java.getMethod("getWindows").invoke(null) as List<Window>
-
-        return windows.stream()
-          .filter { window -> window is Stage }
-          .map { window -> window as Stage }
-          .collect(ImmutableList.toImmutableList())
-
-      } catch (e: Exception) {
-        throw RuntimeException(e)
+      if (isJdk8) {
+        val stageHelper = Class.forName("com.sun.javafx.stage.StageHelper")
+        return stageHelper.getDeclaredMethod("getStages").invoke(null) as List<Stage>
       }
+
+      //Code for JDK 11
+      val windows = Stage::class.java.getMethod("getWindows").invoke(null) as List<Window>
+
+      return windows.stream()
+        .filter { window -> window is Stage }
+        .map { window -> window as Stage }
+        .collect(ImmutableList.toImmutableList())
     }
 
   /**
@@ -323,7 +319,7 @@ object FxUtils {
 
     var parent: Node? = child.parent
     while (parent != null) {
-      parentsBuilder.add(parent!!)
+      parentsBuilder.add(parent)
       if (parent === lastParent) {
         return parentsBuilder.build()
       }
@@ -344,6 +340,7 @@ fun Color.toRGBHex(): String {
   }
 
   return String.format(
+    Locale.ENGLISH,
     "#%02X%02X%02X",
     (red * 255).toInt(),
     (green * 255).toInt(),
@@ -353,6 +350,7 @@ fun Color.toRGBHex(): String {
 
 fun Color.toRGBAHex(): String {
   return String.format(
+    Locale.ENGLISH,
     "#%02X%02X%02X%02X",
     (red * 255).toInt(),
     (green * 255).toInt(),

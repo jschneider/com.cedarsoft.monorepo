@@ -68,7 +68,7 @@ public class MultiLockTest {
   public void testBasic() throws ExecutionException, InterruptedException {
     multiLock.lock();
 
-    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
+    ThreadUtils.invokeInOtherThread(new Callable<Object>() {
       @Override
       @Nullable
       public Object call() throws Exception {

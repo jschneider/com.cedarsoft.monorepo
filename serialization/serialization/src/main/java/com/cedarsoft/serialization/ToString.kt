@@ -41,11 +41,11 @@ interface ToString<T> {
   /**
    * Returns the string representation
    *
-   * @param object the object
+   * @param `object` the object
    * @return the string representation
    */
   @Nonnull
-  fun convert(@Nonnull `object`: T): String
+  fun convert(@Nonnull toConvert: T): String
 
   companion object {
     /**
@@ -53,8 +53,8 @@ interface ToString<T> {
      */
     operator fun <T> invoke(toString: (T) -> String): ToString<T> {
       return object : ToString<T> {
-        override fun convert(`object`: T): String {
-          return toString(`object`)
+        override fun convert(toConvert: T): String {
+          return toString(toConvert)
         }
       }
     }
@@ -65,8 +65,8 @@ interface ToString<T> {
  * Uses "toString"
  */
 class DefaultToString<T> : ToString<T> {
-  override fun convert(`object`: T): String {
-    return `object`.toString()
+  override fun convert(toConvert: T): String {
+    return toConvert.toString()
   }
 }
 

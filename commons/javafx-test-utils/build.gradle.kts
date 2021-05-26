@@ -18,7 +18,7 @@ dependencies {
   api(Libs.fxyz3d) {
     exclude("org.slf4j", module = "slf4j-simple")
   }
-  api(Libs.testfxJunit5)
+  api(Libs.testfx_junit5)
 
 
   api(project(Projects.dependencies_sets_kotlin_test))

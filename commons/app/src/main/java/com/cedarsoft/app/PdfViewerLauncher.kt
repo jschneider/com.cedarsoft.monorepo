@@ -32,8 +32,6 @@
 package com.cedarsoft.app
 
 
-import javax.swing.JOptionPane
-
 /**
  *
  * PdfViewerLauncher class.
@@ -41,8 +39,6 @@ import javax.swing.JOptionPane
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object PdfViewerLauncher {
-  private const val ERR_MSG = "Error attempting to launch pdf viewer"
-
   @JvmStatic
   val osName: String
     get() = System.getProperty("os.name")
@@ -55,18 +51,23 @@ object PdfViewerLauncher {
   @JvmStatic
   fun openFile(file: String) {
     val osName = osName
-    try {
-      if (osName.startsWith("Mac OS")) {
+
+    when {
+      osName.startsWith("Mac OS") -> {
         throw UnsupportedOperationException("Not implemented for Mac OS yet")
         //        Class<?> fileMgr = Class.forName( "com.apple.eio.FileManager" );
         //        Method openFile = fileMgr.getDeclaredMethod( "openFile", new Class[]{String.class} );
         //        openFile.invoke( null, file );
-      } else if (osName.startsWith("Windows")) {
+      }
+      osName.startsWith("Windows") -> {
         Runtime.getRuntime().exec("start \"$file\"")
-      } else {
+      }
+      else -> {
         //assume Unix or Linux
         val bins = arrayOf("acroread", "evince")
+
         var browser: String? = null
+
         var count = 0
         while (count < bins.size && browser == null) {
           if (Runtime.getRuntime().exec(arrayOf("which", bins[count])).waitFor() == 0) {
@@ -74,14 +75,13 @@ object PdfViewerLauncher {
           }
           count++
         }
+
         if (browser == null) {
-          throw Exception("Could not find pdf viewer")
-        } else {
-          Runtime.getRuntime().exec(arrayOf(browser, file))
+          throw IllegalStateException("Could not find pdf viewer")
         }
+
+        Runtime.getRuntime().exec(arrayOf(browser, file))
       }
-    } catch (e: Exception) {
-      JOptionPane.showMessageDialog(null, ERR_MSG + ":\n" + e.localizedMessage)
     }
 
   }

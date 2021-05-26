@@ -32,7 +32,6 @@ package com.cedarsoft.serialization
 
 import com.cedarsoft.version.Version
 import com.cedarsoft.version.VersionRange
-import java.util.ArrayList
 import java.util.Collections
 import javax.annotation.Nonnull
 
@@ -47,10 +46,10 @@ import javax.annotation.Nonnull
  * @param <D> as defined in SerializingStrategy
  * @param <S> as defined in SerializingStrategy
  */
-class SerializingStrategySupport<T : Any, S : Any, D : Any, O : Any, I : Any>(versionRange: VersionRange?) {
+class SerializingStrategySupport<T : Any, S : Any, D : Any, O : Any, I : Any>(versionRange: VersionRange) {
   private val strategies: MutableList<SerializingStrategy<out T, S, D, O, I>> = ArrayList()
 
-  val versionMappings: VersionMappings<SerializingStrategy<out T, S, D, O, I>> = VersionMappings(versionRange!!)
+  val versionMappings: VersionMappings<SerializingStrategy<out T, S, D, O, I>> = VersionMappings(versionRange)
 
   /**
    * Returns the strategy for the given id.
@@ -106,8 +105,8 @@ class SerializingStrategySupport<T : Any, S : Any, D : Any, O : Any, I : Any>(ve
   }
 
   @Nonnull
-  fun resolveVersion(@Nonnull key: SerializingStrategy<out T, S, D, O, I>, @Nonnull version: Version?): Version {
-    return versionMappings.resolveVersion(key, version!!)
+  fun resolveVersion(@Nonnull key: SerializingStrategy<out T, S, D, O, I>, @Nonnull version: Version): Version {
+    return versionMappings.resolveVersion(key, version)
   }
 
   /**

@@ -32,9 +32,7 @@
 package com.cedarsoft.crypt
 
 
-import java.io.BufferedInputStream
 import java.io.File
-import java.io.FileInputStream
 import java.io.IOException
 import java.io.InputStream
 import java.net.URL
@@ -99,11 +97,8 @@ object HashCalculator {
   @JvmStatic
   @Throws(IOException::class)
   fun calculate(messageDigest: MessageDigest, file: File): Hash {
-    val `in` = BufferedInputStream(FileInputStream(file))
-    try {
-      return calculate(messageDigest, `in`)
-    } finally {
-      `in`.close()
+    file.inputStream().buffered().use {
+      return calculate(messageDigest, it)
     }
   }
 

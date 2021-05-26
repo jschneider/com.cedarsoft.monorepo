@@ -37,7 +37,6 @@ import com.cedarsoft.version.VersionException
 import com.cedarsoft.version.VersionMismatchException
 import com.cedarsoft.version.VersionRange
 import java.util.Collections
-import java.util.HashMap
 import java.util.SortedSet
 import java.util.TreeSet
 
@@ -92,9 +91,9 @@ class VersionMappings<T : Any>
   }
 
 
-  fun addMapping(key: T, targetVersionRange: VersionRange?): VersionMapping {
+  fun addMapping(key: T, targetVersionRange: VersionRange): VersionMapping {
     require(!mappings.containsKey(key)) { "An entry for the key <$key> has still been added" }
-    val mapping = VersionMapping(versionRange, targetVersionRange!!)
+    val mapping = VersionMapping(versionRange, targetVersionRange)
     mappings[key] = mapping
     return mapping
   }
@@ -120,7 +119,7 @@ class VersionMappings<T : Any>
     }
 
 
-  fun add(key: T, targetVersionRange: VersionRange?): VersionMapping {
+  fun add(key: T, targetVersionRange: VersionRange): VersionMapping {
     return addMapping(key, targetVersionRange)
   }
 

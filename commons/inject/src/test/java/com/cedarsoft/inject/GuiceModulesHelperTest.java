@@ -34,6 +34,7 @@ package com.cedarsoft.inject;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.*;
@@ -85,26 +86,26 @@ public class GuiceModulesHelperTest {
 
   @Test
   public void testAssertMini4() throws Exception {
-    assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Arrays.asList(new Module2()), Object.class));
+    assertThrows(AssertionError.class, () -> GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module2()), Object.class));
   }
 
   @Test
   public void testAssertMini2() throws Exception {
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class, Object.class );
+    GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module1()), MyObject.class, Object.class);
   }
 
   @Test
   public void testAssertMini3() throws Exception {
     //    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class, Object.class );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), MyObject.class );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), Object.class, MyObject.class );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), new Key<MyObject>() {
+    GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module1()), MyObject.class);
+    GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module1()), Object.class, MyObject.class);
+    GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module1()), new Key<MyObject>() {
     }, new Key<Object>() {
-    } );
-    GuiceModulesHelper.assertMinimizeNotPossible( Arrays.asList( new Module1() ), new Key<Object>() {
+    });
+    GuiceModulesHelper.assertMinimizeNotPossible(Collections.singletonList(new Module1()), new Key<Object>() {
     }, new Key<MyObject>() {
     }, new Key<Object>() {
-    } );
+    });
   }
 
   public static class Module1 extends AbstractModule {

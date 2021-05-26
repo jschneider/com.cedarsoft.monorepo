@@ -33,7 +33,6 @@ package com.cedarsoft.execution
 
 import java.io.IOException
 import java.io.OutputStream
-import java.util.ArrayList
 
 /**
  * Executes a process and notifies execution listeners whenever the process has finished
@@ -64,10 +63,9 @@ class Executor(
    * @param processBuilder a ProcessBuilder object.
    */
   @Deprecated("")
-  constructor(processBuilder: ProcessBuilder) : this(processBuilder, OutputStreamByteSink(System.out), OutputStreamByteSink(System.err)) {
-  }
+  constructor(processBuilder: ProcessBuilder) : this(processBuilder, OutputStreamByteSink(System.out), OutputStreamByteSink(System.err))
 
-  constructor(processBuilder: ProcessBuilder, targetOut: OutputStream, targetErr: OutputStream) : this(processBuilder, OutputStreamByteSink(targetOut), OutputStreamByteSink(targetErr)) {}
+  constructor(processBuilder: ProcessBuilder, targetOut: OutputStream, targetErr: OutputStream) : this(processBuilder, OutputStreamByteSink(targetOut), OutputStreamByteSink(targetErr))
 
   /**
    *
@@ -96,13 +94,12 @@ class Executor(
   }
 
   /**
-   *
    * redirectStreams
    *
    * @param process a Process object.
    * @return the redirecting threads (or an empty array)
    */
-  protected fun redirectStreams(process: Process): Array<Thread> {
+  fun redirectStreams(process: Process): Array<Thread> {
     return OutputRedirector.redirect(process, targetOut, targetErr)
   }
 
@@ -114,11 +111,7 @@ class Executor(
    */
   fun executeAsync(): Thread {
     val thread = Thread {
-      try {
-        execute()
-      } catch (e: Exception) {
-        throw RuntimeException(e)
-      }
+      execute()
     }
     thread.start()
     return thread

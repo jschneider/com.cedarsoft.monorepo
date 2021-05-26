@@ -74,8 +74,8 @@ public class BallSerializerTest extends AbstractJsonSerializerTest2<Ball> {
                     "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, OutputStream, InputStream>>() {
       @Nonnull
       @Override
-      public String convert( @Nonnull SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, OutputStream, InputStream> object ) {
-        return object.getId();
+      public String convert(@Nonnull SerializingStrategy<? extends Ball, JsonGenerator, JsonParser, OutputStream, InputStream> toConvert) {
+        return toConvert.getId();
       }
     } ) );
   }

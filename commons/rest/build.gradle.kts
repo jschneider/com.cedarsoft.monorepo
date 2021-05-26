@@ -1,3 +1,9 @@
+import Libs.jackson_annotations
+import Libs.jackson_datatype_guava
+import Libs.jackson_datatype_jdk8
+import Libs.jackson_datatype_jsr310
+import Libs.jackson_module_parameter_names
+
 description = """REST"""
 
 
@@ -8,18 +14,18 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   api(project(Projects.open_commons_guava))
 
-  api(Libs.kotlinReflect)
+  api(Libs.kotlin_reflect)
 
   api(Libs.guava)
-  compileOnlyApi(Libs.jackson.annotations)
-  api(Libs.jackson.datatypeJdk8)
-  api(Libs.jackson.datatypeJsr310)
-  api(Libs.jackson.datatypeGuava)
-  api(Libs.jackson.moduleParameterNames)
-  api(Libs.jacksonModuleKotlin)
+  compileOnlyApi(jackson_annotations)
+  api(jackson_datatype_jdk8)
+  api(jackson_datatype_jsr310)
+  api(jackson_datatype_guava)
+  api(jackson_module_parameter_names)
+  api(Libs.jackson_module_kotlin)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

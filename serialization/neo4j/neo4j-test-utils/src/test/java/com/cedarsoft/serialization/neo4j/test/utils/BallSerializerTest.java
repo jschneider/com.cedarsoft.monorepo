@@ -71,8 +71,8 @@ public class BallSerializerTest extends AbstractNeo4jSerializerTest2<Ball> {
                     "--------------------------------\n", VersionMappingsVisualizer.toString( getSerializer().getSerializingStrategySupport().getVersionMappings(), new ToString<SerializingStrategy<? extends Ball, Node, Node, Node, Node>>() {
       @Nonnull
       @Override
-      public String convert( @Nonnull SerializingStrategy<? extends Ball, Node, Node, Node, Node> object ) {
-        return object.getId();
+      public String convert(@Nonnull SerializingStrategy<? extends Ball, Node, Node, Node, Node> toConvert) {
+        return toConvert.getId();
       }
     } ) );
   }

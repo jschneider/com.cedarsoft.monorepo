@@ -33,8 +33,8 @@ package com.cedarsoft.execution
 
 
 import java.io.File
-import java.util.ArrayList
 import java.util.Collections
+import java.util.Locale
 
 /**
  * Class that is able to start a new java process
@@ -80,13 +80,14 @@ constructor(
       }
 
       val classPath = stringBuilder.toString()
-      if (classPath.contains(" ")) {
-        if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
-          System.err.println("WARNING: Be carefull! Added \" to the classpath. May be incompatible!")
+
+      return if (classPath.contains(" ")) {
+        if (!System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("windows")) {
+          System.err.println("WARNING: Be careful! Added \" to the classpath. May be incompatible!")
         }
-        return '\"'.toString() + classPath + '\"'.toString()
+        '\"'.toString() + classPath + '\"'.toString()
       } else {
-        return classPath
+        classPath
       }
     }
 

@@ -117,8 +117,8 @@ protected constructor(
   @Throws(Exception::class)
   fun <A : Any> serializeWithRelationships(objects: Iterable<A>, type: Class<A>, node: Node, relationshipType: RelationshipType, formatVersion: Version) {
     var index = 0
-    for (`object` in objects) {
-      serializeWithRelationship(`object`, type, node, relationshipType, formatVersion, index)
+    for (currentObject in objects) {
+      serializeWithRelationship(currentObject, type, node, relationshipType, formatVersion, index)
       index++
     }
   }

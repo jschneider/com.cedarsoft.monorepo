@@ -36,8 +36,8 @@ import java.io.File
  * Created from http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
  */
 object WindowsUtil {
-  val APP_DATA_HOME: String = "APPDATA"
-  val LOCAL_APP_DATA_HOME: String = "LOCALAPPDATA"
+  const val APP_DATA_HOME: String = "APPDATA"
+  const val LOCAL_APP_DATA_HOME: String = "LOCALAPPDATA"
 
   /**
    * Returns the app data home dir

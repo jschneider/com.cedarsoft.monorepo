@@ -36,11 +36,14 @@ import java.util.concurrent.atomic.AtomicInteger
 /**
  * Thread factory that takes a name
  */
-class NamedThreadFactory(private val delegate: ThreadFactory, name: String) : ThreadFactory {
+class NamedThreadFactory(
+  private val delegate: ThreadFactory,
+  name: String
+) : ThreadFactory {
   private val threadNumber = AtomicInteger(1)
   private val prefix: String = "$name-"
 
-  constructor(name: String) : this(ThreadFactory { r -> Thread(r) }, name) {}
+  constructor(name: String) : this(ThreadFactory { r -> Thread(r) }, name)
 
   override fun newThread(r: Runnable): Thread {
     val thread = delegate.newThread(r)

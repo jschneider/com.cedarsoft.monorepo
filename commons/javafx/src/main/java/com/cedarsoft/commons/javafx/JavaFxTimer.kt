@@ -44,12 +44,10 @@ object JavaFxTimer {
   /**
    * Returns the time line or null if the action has been scheduled immediately
    */
-  @JvmStatic
   fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
     return delay(delay.toJavaFx(), run)
   }
 
-  @JvmStatic
   fun delay(delay: kotlin.time.Duration, run: Runnable): Timeline {
     return delay(delay, run::run)
   }

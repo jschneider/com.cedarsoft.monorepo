@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """App stuff"""
 
 
@@ -9,17 +11,17 @@ plugins {
 
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
   compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_commons_xml_commons))
   api(project(Projects.open_commons_version))
 
   api(Libs.guava)
-  api(Libs.commonsIo)
-  api(Libs.commonsLogging)
+  api(commons_io)
+  api(Libs.commons_logging)
   api(Libs.log4j)
 
   testImplementation(project(Projects.dependencies_sets_test_basics))
   testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(Libs.commonsCodec)
+  testImplementation(Libs.commons_codec)
 }

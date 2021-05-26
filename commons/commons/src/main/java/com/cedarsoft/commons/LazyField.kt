@@ -38,7 +38,7 @@ package com.cedarsoft.commons
 class LazyField<out T>
 constructor(private val instanceFactory: InstanceFactory<T>) {
 
-  val lazyInstance = lazy {
+  val lazyInstance: Lazy<T> = lazy {
     instanceFactory.create()
   }
 

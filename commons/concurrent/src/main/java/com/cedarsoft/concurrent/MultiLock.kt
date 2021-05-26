@@ -31,8 +31,6 @@
 
 package com.cedarsoft.concurrent
 
-import java.util.ArrayList
-import java.util.Arrays
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.locks.Condition
 import java.util.concurrent.locks.Lock
@@ -61,7 +59,7 @@ constructor(
    *
    * @param locks a Lock object.
    */
-  constructor(vararg locks: Lock) : this(Arrays.asList<Lock>(*locks)) {}
+  constructor(vararg locks: Lock) : this(locks.asList())
 
   init {
     this.locks.addAll(locks)

@@ -32,6 +32,7 @@ package com.cedarsoft.concurrent
 
 import com.cedarsoft.annotations.NonUiThread
 import com.cedarsoft.annotations.UiThread
+import com.cedarsoft.common.kotlin.lang.fastFor
 import java.util.concurrent.BlockingDeque
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -86,7 +87,7 @@ class DefaultNewestOnlyJobManager @JvmOverloads constructor(
   @PostConstruct
   fun startWorkers() {
     //Start the worker threads
-    for (i in 0 until workerCount) {
+    workerCount.fastFor {
       executorService.execute(Worker())
     }
   }

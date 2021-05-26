@@ -14,7 +14,7 @@ java {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin))
+  api(project(Projects.dependencies_sets_kotlin_jvm))
 
   compileOnlyApi(project(Projects.open_annotations))
 
@@ -34,14 +34,14 @@ dependencies {
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_javafx_test_utils))
-  testImplementation(Libs.miglayoutJavafx)
-  testImplementation(Libs.jfxtrasAll)
-  testImplementation(Libs.fxGraphics2d)
+  testImplementation(Libs.miglayout_javafx)
+  testImplementation(Libs.jfxtras_all)
+  testImplementation(Libs.fxgraphics2d)
   testImplementation(Libs.jfoenix)
-  testImplementation(Libs.fontAwesomeFx)
+  testImplementation(Libs.fontawesomefx)
   testImplementation(Libs.controlsfx)
-  testImplementation(Libs.tilesFx)
-  testImplementation(Libs.vworkflowsFx)
+  testImplementation(Libs.tilesfx)
+  testImplementation(Libs.vworkflows_fx)
   testImplementation(KotlinX.coroutines.core)
   testImplementation(KotlinX.coroutines.javaFx)
 }

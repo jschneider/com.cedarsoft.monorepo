@@ -36,9 +36,9 @@ package com.cedarsoft.app
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class InvalidPasswordException : Exception {
-  constructor() {}
+  constructor() : super()
 
-  constructor(message: String) : super(message) {}
+  constructor(message: String) : super(message)
 
-  constructor(message: String, cause: Throwable) : super(message, cause) {}
+  constructor(message: String, cause: Throwable) : super(message, cause)
 }

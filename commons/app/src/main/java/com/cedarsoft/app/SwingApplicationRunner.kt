@@ -63,13 +63,10 @@ class SwingApplicationRunner(
       application.updateSplash(splash)
     })
 
-    mainFrame = application.createFrame()
-
-    SwingUtilities.invokeLater {
-      try {
-        showFrame(mainFrame!!)
-      } catch (e: Exception) {
-        throw RuntimeException(e)
+    application.createFrame().let {
+      mainFrame = it
+      SwingUtilities.invokeLater {
+        showFrame(it)
       }
     }
   }

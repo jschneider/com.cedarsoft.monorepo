@@ -13,7 +13,7 @@ dependencies {
 
   api(project(Projects.open_commons_exceptions))
 
-  api(Libs.slf4jApi)
+  api(Libs.slf4j_api)
   api(Libs.guava)
 
   testImplementation(project(Projects.open_commons_test_utils))

@@ -94,7 +94,7 @@ object ThreadUtils {
    */
   @JvmStatic
   @Throws(ExecutionException::class, InterruptedException::class)
-  fun <T> inokeInOtherThread(@Nonnull callable: Callable<T>?): T? {
+  fun <T> invokeInOtherThread(@Nonnull callable: Callable<T>?): T? {
     val executor = Executors.newSingleThreadExecutor()
     return try {
       val future = executor.submit(callable)
@@ -115,17 +115,7 @@ object ThreadUtils {
     if (isEventDispatchThread) {
       runnable.run()
     } else {
-      try {
-        SwingUtilities.invokeAndWait(runnable)
-      } catch (e: InterruptedException) {
-        throw RuntimeException(e)
-      } catch (e: InvocationTargetException) {
-        val targetException = e.targetException
-        if (targetException is RuntimeException) {
-          throw targetException
-        }
-        throw RuntimeException(targetException)
-      }
+      SwingUtilities.invokeAndWait(runnable)
     }
   }
 

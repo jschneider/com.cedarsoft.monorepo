@@ -71,7 +71,7 @@ protected constructor(
 
   /**
    * Serializes the given object into a sub element of serializeTo
-   * @param object        the object that is serialized
+   * @param `object`        the object that is serialized
    * @param type          the type
    * @param subElementName  the name of the sub element
    * @param serializeTo   the parent element
@@ -81,9 +81,9 @@ protected constructor(
    * @throws IOException if there is an io problem
   </A> */
   @Throws(XMLStreamException::class, IOException::class)
-  fun <A : Any> serialize(`object`: A, type: Class<A>, subElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
+  fun <A : Any> serialize(objectToSerialize: A, type: Class<A>, subElementName: String, serializeTo: SMOutputElement, formatVersion: Version) {
     val element = serializeTo.addElement(serializeTo.namespace, subElementName)
-    serialize(`object`, type, element, formatVersion)
+    serialize(objectToSerialize, type, element, formatVersion)
   }
 
   /**
@@ -101,9 +101,9 @@ protected constructor(
     val serializer = getSerializer(type)
     val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
-    for (`object` in objects) {
+    for (current in objects) {
       val doorElement = serializeTo.addElement(serializeTo.namespace, elementName)
-      serializer.serialize(doorElement, `object`, resolvedVersion)
+      serializer.serialize(doorElement, current, resolvedVersion)
     }
   }
 
@@ -112,9 +112,9 @@ protected constructor(
     val serializer = getSerializer(type)
     val resolvedVersion = delegatesMappings.resolveVersion(type, formatVersion)
 
-    for (`object` in objects) {
+    for (current in objects) {
       val doorElement = serializeTo.addElement(serializeTo.namespace, serializer.defaultElementName)
-      serializer.serialize(doorElement, `object`, resolvedVersion)
+      serializer.serialize(doorElement, current, resolvedVersion)
     }
   }
 

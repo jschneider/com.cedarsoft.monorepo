@@ -32,28 +32,14 @@
 package com.cedarsoft.file
 
 
-import java.io.Serializable
-
 /**
  * A base name of a file
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-data class BaseName
-/**
- * Creates a new base name
- *
- * @param name the name
- */
-  (
-  /**
-   *
-   * Getter for the field `name`.
-   *
-   * @return a String object.
-   */
+data class BaseName(
   val name: String
-) : Comparable<BaseName>, Serializable {
+) : Comparable<BaseName> {
 
   override fun toString(): String {
     return name

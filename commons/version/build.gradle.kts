@@ -17,13 +17,14 @@ kotlin {
   sourceSets {
     val commonMain by getting {
       dependencies {
+        api(Kotlin.stdlib.common)
       }
     }
 
     val commonTest by getting {
       dependencies {
-        implementation(Libs.kotlinTestCommon)
-        implementation(Libs.kotlinTestAnnotationsCommon)
+        implementation(Libs.kotlin_test_common)
+        implementation(Libs.kotlin_test_annotations_common)
       }
     }
 
@@ -32,15 +33,15 @@ kotlin {
         //implementation(Libs.kotlinx_coroutines_core)
 
         api(project(Projects.dependencies_sets_annotations))
-        api(project(Projects.dependencies_sets_kotlin))
+        api(project(Projects.dependencies_sets_kotlin_jvm))
         api(project(Projects.open_annotations))
       }
     }
 
     jvm().compilations["test"].defaultSourceSet {
       dependencies {
-        implementation(Libs.kotlinTest)
-        implementation(Libs.kotlinTestJunit)
+        implementation(Libs.kotlin_test)
+        implementation(Libs.kotlin_test_junit)
 
         implementation(project(Projects.dependencies_sets_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))

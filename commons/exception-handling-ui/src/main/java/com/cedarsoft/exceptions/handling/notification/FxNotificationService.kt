@@ -117,8 +117,8 @@ class FxNotificationService {
   }
 
   companion object {
-    @ms
-    val VISIBILITY_TIME = 15000
-    private val STYLE = ToolTipBalloonStyle(Color(255, 251, 192), Color.GRAY)
+    const val VISIBILITY_TIME: @ms Int = 15000
+
+    val STYLE: ToolTipBalloonStyle = ToolTipBalloonStyle(Color(255, 251, 192), Color.GRAY)
   }
 }

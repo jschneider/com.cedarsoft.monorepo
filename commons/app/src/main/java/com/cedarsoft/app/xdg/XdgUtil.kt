@@ -51,13 +51,13 @@ object XdgUtil {
    * The base directory relative to which user specific data files should be stored.
    * If $XDG_DATA_HOME is either not set or empty, a default equal to $HOME/.local/share should be used.
    */
-  val XDG_DATA_HOME = "XDG_DATA_HOME"
+  const val XDG_DATA_HOME: String = "XDG_DATA_HOME"
 
   /**
    * The base directory relative to which user specific configuration files should be stored.
    * If $XDG_CONFIG_HOME is either not set or empty, a default equal to $HOME/.config should be used.
    */
-  val XDG_CONFIG_HOME = "XDG_CONFIG_HOME"
+  const val XDG_CONFIG_HOME: String = "XDG_CONFIG_HOME"
 
   /**
    * The preference-ordered set of base directories to search for data files in addition to
@@ -66,7 +66,7 @@ object XdgUtil {
    *
    * If $XDG_DATA_DIRS is either not set or empty, a value equal to /usr/local/share/:/usr/share/ should be used.
    */
-  val XDG_DATA_DIRS = "XDG_DATA_DIRS"
+  const val XDG_DATA_DIRS: String = "XDG_DATA_DIRS"
 
   /**
    * The preference-ordered set of base directories to search for configuration
@@ -81,18 +81,19 @@ object XdgUtil {
    * The base directory defined by $XDG_CONFIG_HOME is considered more important than any of the base directories defined by $XDG_CONFIG_DIRS.
 
    */
-  val XDG_CONFIG_DIRS = "XDG_CONFIG_DIRS"
+  const val XDG_CONFIG_DIRS: String = "XDG_CONFIG_DIRS"
+
   /**
    * The base directory relative to which user specific non-essential data files should be stored.
    * If $XDG_CACHE_HOME is either not set or empty, a default equal to $HOME/.cache should be used.
    */
-  val XDG_CACHE_HOME = "XDG_CACHE_HOME"
+  const val XDG_CACHE_HOME: String = "XDG_CACHE_HOME"
 
   /**
    * The base directory relative to which user-specific non-essential runtime files and other file objects (such as sockets, named pipes, ...) should be stored.
    * The directory MUST be owned by the user, and he MUST be the only one having read and write access to it. Its Unix access mode MUST be 0700.
    */
-  val XDG_RUNTIME_DIR = "XDG_RUNTIME_DIR"
+  const val XDG_RUNTIME_DIR: String = "XDG_RUNTIME_DIR"
 
   /**
    * Returns the data home dir

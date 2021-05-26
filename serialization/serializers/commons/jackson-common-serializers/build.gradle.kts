@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """Serialzation - Jackson Common Serializers"""
 
 
@@ -13,14 +15,14 @@ dependencies {
   //
   api(project(Projects.open_serialization_serialization))
   api(project(Projects.open_serialization_jackson))
-  api(Libs.commonsIo)
+  api(commons_io)
   api(project(Projects.open_commons_xml_commons))
 
   api(project(Projects.open_commons_app))
   api(project(Projects.open_commons_license))
   api(project(Projects.open_commons_file))
   api(project(Projects.open_commons_crypt))
-  api(Libs.jodaTime)
+  api(Libs.joda_time)
 
   //
   // Test Deps

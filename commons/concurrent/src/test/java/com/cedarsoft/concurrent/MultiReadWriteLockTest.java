@@ -64,19 +64,19 @@ public class MultiReadWriteLockTest {
 
     multiLock.writeLock().lock();
 
-    ThreadUtils.inokeInOtherThread( new Callable<Object>() {
+    ThreadUtils.invokeInOtherThread(new Callable<Object>() {
       @Override
       @Nullable
       public Object call() throws Exception {
-        assertFalse( lock.readLock().tryLock() );
-        assertFalse( lock.writeLock().tryLock() );
+        assertFalse(lock.readLock().tryLock());
+        assertFalse(lock.writeLock().tryLock());
         return null;
       }
-    } );
+    });
 
     multiLock.writeLock().unlock();
 
-    ThreadUtils.inokeInOtherThread(new Callable<Object>() {
+    ThreadUtils.invokeInOtherThread(new Callable<Object>() {
       @Override
       @Nullable
       public Object call() throws Exception {

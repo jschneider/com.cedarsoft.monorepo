@@ -90,9 +90,9 @@ internal fun bindText(source: JTextComponent, target: Property<String>) {
   target.setIfDifferent(source.text)
 }
 
-private fun bindText(source: AbstractButton, target: Property<String>) {
+internal fun bindText(source: AbstractButton, target: Property<String>) {
   source.addPropertyChangeListener {
-    if (it.propertyName == javax.swing.AbstractButton.TEXT_CHANGED_PROPERTY) {
+    if (it.propertyName == AbstractButton.TEXT_CHANGED_PROPERTY) {
       target.setIfDifferent(source.text)
     }
   }

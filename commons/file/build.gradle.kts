@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """File related stuff"""
 
 
@@ -11,7 +13,7 @@ dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
   api(project(Projects.open_commons_commons))
 
-  api(Libs.commonsIo)
+  api(commons_io)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

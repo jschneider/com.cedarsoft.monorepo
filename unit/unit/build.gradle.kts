@@ -1,3 +1,5 @@
+import Libs.commons_io
+
 description = """Unit"""
 
 group = "com.cedarsoft"
@@ -19,6 +21,7 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
+        api(Kotlin.stdlib.common)
       }
     }
     //commonTest {
@@ -30,27 +33,29 @@ kotlin {
 
     named("jvmMain") {
       dependencies {
-        api(project(Projects.dependencies_sets_annotations))
-        api(project(Projects.dependencies_sets_kotlin))
+        api(project(Projects.dependencies_sets_kotlin_jvm))
         api(project(Projects.open_annotations))
       }
     }
 
     named("jvmTest") {
       dependencies {
-        implementation(Libs.kotlinTest)
-        implementation(Libs.kotlinTestJunit)
+        api(project(Projects.dependencies_sets_kotlin_jvm))
+
+        implementation(Libs.kotlin_test)
+        implementation(Libs.kotlin_test_junit)
 
         implementation(project(Projects.dependencies_sets_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
 
-        implementation(Libs.commonsIo)
-        implementation(Libs.assertjCore)
+        implementation(commons_io)
+        implementation(Libs.assertj_core)
 
       }
     }
     named("jsMain") {
       dependencies {
+        api(project(Projects.dependencies_sets_kotlin_js))
       }
     }
     //named("jsTest") {

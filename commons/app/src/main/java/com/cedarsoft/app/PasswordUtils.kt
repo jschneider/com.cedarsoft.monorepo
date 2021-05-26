@@ -34,7 +34,6 @@ package com.cedarsoft.app
 
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 /**
  *
@@ -46,12 +45,8 @@ object PasswordUtils {
   @JvmStatic
   fun calculateMD5Hash(password: String): ByteArray {
     val bytes = password.toByteArray(StandardCharsets.UTF_8)
-    try {
-      val messageDigest = MessageDigest.getInstance("MD5")
-      return messageDigest.digest(bytes)
-    } catch (e: NoSuchAlgorithmException) {
-      throw RuntimeException(e)
-    }
+    val messageDigest = MessageDigest.getInstance("MD5")
+    return messageDigest.digest(bytes)
   }
 
   @JvmStatic
@@ -61,11 +56,11 @@ object PasswordUtils {
     }
 
     val actual = calculateMD5Hash(password)
-    try {
+    return try {
       validatePasswordHash(expectedHash, actual)
-      return true
+      true
     } catch (ignore: InvalidPasswordException) {
-      return false
+      false
     }
   }
 

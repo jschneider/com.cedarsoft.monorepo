@@ -31,8 +31,6 @@
 
 package com.cedarsoft.crypt
 
-import java.util.Arrays
-
 /**
  * Represents a signature
  *
@@ -55,13 +53,11 @@ class Signature(bytes: ByteArray) {
     if (this === other) return true
     if (other !is Signature) return false
 
-    val signature = other as Signature?
-
-    return Arrays.equals(bytes, signature!!.bytes)
+    return bytes.contentEquals(other.bytes)
   }
 
   override fun hashCode(): Int {
-    return Arrays.hashCode(bytes)
+    return bytes.contentHashCode()
   }
 
   companion object {
@@ -69,6 +65,6 @@ class Signature(bytes: ByteArray) {
      * Null signature
      */
     @JvmStatic
-    val NULL = Signature(ByteArray(0))
+    val NULL: Signature = Signature(ByteArray(0))
   }
 }

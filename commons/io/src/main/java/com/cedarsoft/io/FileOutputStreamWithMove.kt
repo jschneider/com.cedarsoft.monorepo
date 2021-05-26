@@ -52,7 +52,7 @@ constructor(private val file: File) : FilterOutputStream(null) {
     /**
      * The suffix for the tmp file
      */
-    val SUFFIX_TMP = ".tmp"
+    const val SUFFIX_TMP: String = ".tmp"
   }
 }
 

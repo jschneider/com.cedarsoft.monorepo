@@ -38,7 +38,10 @@ import com.cedarsoft.version.Version
 
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-data class ApplicationInformation(val name: String, val version: Version) {
+data class ApplicationInformation(
+  val name: String,
+  val version: Version
+) {
   override fun toString(): String {
     return "$name ($version)"
   }

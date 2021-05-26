@@ -35,7 +35,6 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.util.ArrayList
 
 /**
  * This rule catches exceptions on all threads and fails the test if such exceptions are caught
@@ -61,9 +60,7 @@ class CatchAllExceptionsExtension : BeforeEachCallback, AfterEachCallback {
     oldHandler = Thread.getDefaultUncaughtExceptionHandler()
     Thread.setDefaultUncaughtExceptionHandler { t, e ->
       caught.add(e)
-      if (oldHandler != null) {
-        oldHandler!!.uncaughtException(t, e)
-      }
+      oldHandler?.uncaughtException(t, e)
     }
   }
 

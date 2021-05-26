@@ -40,7 +40,6 @@ import com.jidesoft.dialog.ButtonPanel
 import net.miginfocom.swing.MigLayout
 import java.awt.Dimension
 import java.awt.event.ActionEvent
-import java.util.ArrayList
 import javax.swing.AbstractAction
 import javax.swing.Action
 import javax.swing.JComponent
@@ -56,9 +55,9 @@ import javax.swing.text.JTextComponent
  */
 class InternalExceptionDialog(
   parent: JFrame?,
-  private val throwable: Throwable,
-  private val exceptionReporter: ExceptionReporter?,
-  private val applicationVersion: Version
+  val throwable: Throwable,
+  val exceptionReporter: ExceptionReporter?,
+  val applicationVersion: Version
 ) : AbstractDialog(parent) {
 
   @UiThread
