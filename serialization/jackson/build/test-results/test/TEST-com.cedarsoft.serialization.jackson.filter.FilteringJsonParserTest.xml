@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-26T02:06:59" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.806">
+<testsuite name="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-27T02:05:45" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.965">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" time="0.018"/>
-  <testcase name="testListener()" classname="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" time="1.785"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" time="0.011"/>
+  <testcase name="testListener()" classname="com.cedarsoft.serialization.jackson.filter.FilteringJsonParserTest" time="1.949"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
