@@ -1,5 +1,7 @@
 package com.cedarsoft.common.kotlin.lang
 
+import com.cedarsoft.unit.other.Inclusive
+
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
@@ -80,7 +82,7 @@ fun String.parseInt(): Int = when {
   this.startsWith("0x", ignoreCase = true) -> this.substring(2).toLong(16).toInt()
   this.startsWith("0o", ignoreCase = true) -> this.substring(2).toLong(8).toInt()
   this.startsWith("0b", ignoreCase = true) -> this.substring(2).toLong(2).toInt()
-  else                                     -> this.toInt()
+  else -> this.toInt()
 }
 
 //val String.quoted: String get() = this.quote()
@@ -91,17 +93,17 @@ fun String.escape(): String {
   for (n in 0 until this.length) {
     val c = this[n]
     when (c) {
-      '\\'                  -> out.append("\\\\")
-      '"'                   -> out.append("\\\"")
-      '\n'                  -> out.append("\\n")
-      '\r'                  -> out.append("\\r")
-      '\t'                  -> out.append("\\t")
+      '\\' -> out.append("\\\\")
+      '"' -> out.append("\\\"")
+      '\n' -> out.append("\\n")
+      '\r' -> out.append("\\r")
+      '\t' -> out.append("\\t")
       in '\u0000'..'\u001f' -> {
         out.append("\\x")
         out.append(Hex.encodeCharLower(c.toInt().extract(4, 4)))
         out.append(Hex.encodeCharLower(c.toInt().extract(0, 4)))
       }
-      else                  -> out.append(c)
+      else -> out.append(c)
     }
   }
   return out.toString()
@@ -113,7 +115,7 @@ fun String.uescape(): String {
     val c = this[n]
     when (c) {
       '\\' -> out.append("\\\\")
-      '"'  -> out.append("\\\"")
+      '"' -> out.append("\\\"")
       '\n' -> out.append("\\n")
       '\r' -> out.append("\\r")
       '\t' -> out.append("\\t")
@@ -141,11 +143,11 @@ fun String.unescape(): String {
         val c2 = this[n++]
         when (c2) {
           '\\' -> out.append('\\')
-          '"'  -> out.append('\"')
-          'n'  -> out.append('\n')
-          'r'  -> out.append('\r')
-          't'  -> out.append('\t')
-          'u'  -> {
+          '"' -> out.append('\"')
+          'n' -> out.append('\n')
+          'r' -> out.append('\r')
+          't' -> out.append('\t')
+          'u' -> {
             val chars = this.substring(n, n + 4)
             n += 4
             out.append(chars.toInt(16).toChar())
@@ -193,3 +195,71 @@ fun String.encodeForFileName(): String {
  * Regex that contains invalid elements for a file name
  */
 private val InvalidForFileName: Regex = Regex("[:\\\\/*\"?|<>']")
+
+
+/**
+ * Wraps a single line of text into multiple lines. Words are identified by [wrapOn]
+ * Leading and trailing spaces for each line as stripped
+ */
+fun String.wrap(
+  /**
+   * The max length of a line
+   */
+  maxLineLength: Int = 80,
+  /**
+   * Wrap on this string - usually an space
+   */
+  wrapOn: Char = ' '
+): List<String> {
+  require(maxLineLength > 1) {
+    "Invalid wrap length: $maxLineLength"
+  }
+
+
+  //The collected lines
+  val lines = mutableListOf<String>()
+
+  //The start index of the current line
+  @Inclusive var currentLineStartIndex = 0
+
+  //Iterate while there chars left
+  while (currentLineStartIndex <= lastIndex) {
+    //check if this
+
+    @Inclusive val currentLineMaxEndIndex = (currentLineStartIndex + maxLineLength - 1)
+
+    //Check if this is the last line, just add the complete line
+    if (currentLineMaxEndIndex >= lastIndex) {
+      //last line, just take everything
+      lines.add(substring(currentLineStartIndex))
+      break
+    }
+
+    //Find the last wrap index (if there is one)
+    val wrapIndex: Int = lastIndexOf(wrapOn, currentLineMaxEndIndex)
+
+    //Check if there has been a valid wrap index found
+    if (wrapIndex > currentLineStartIndex) {
+      //We found a valid index to wrap
+
+      //Add the line
+      lines.add(substring(currentLineStartIndex, wrapIndex))
+
+      //Prepare for the next line, skip the char with the wrap string
+      currentLineStartIndex = wrapIndex + 1
+    } else {
+      //Take the complete line
+      lines.add(substring(currentLineStartIndex, currentLineMaxEndIndex + 1))
+
+      //Prepare for the next line, skip the char with the wrap string
+      currentLineStartIndex = currentLineMaxEndIndex + 1
+
+      //check if the next char is - by coincidence - the wrapOn char, wrap if this is the case
+      if (currentLineStartIndex <= lastIndex && get(currentLineStartIndex) == wrapOn) {
+        currentLineStartIndex++
+      }
+    }
+  }
+
+  return lines
+}
