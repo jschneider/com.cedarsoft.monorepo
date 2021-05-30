@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.MultiReadWriteLockTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-29T02:05:31" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.427">
+<testsuite name="com.cedarsoft.concurrent.MultiReadWriteLockTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-30T02:05:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.546">
   <properties/>
-  <testcase name="testEmpty()" classname="com.cedarsoft.concurrent.MultiReadWriteLockTest" time="0.358"/>
-  <testcase name="testWriteLock()" classname="com.cedarsoft.concurrent.MultiReadWriteLockTest" time="0.066"/>
+  <testcase name="testEmpty()" classname="com.cedarsoft.concurrent.MultiReadWriteLockTest" time="0.459"/>
+  <testcase name="testWriteLock()" classname="com.cedarsoft.concurrent.MultiReadWriteLockTest" time="0.085"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
