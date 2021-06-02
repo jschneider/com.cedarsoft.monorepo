@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-06-01T02:06:08" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.411">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-06-02T02:06:33" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.401">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.266"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.256"/>
   <testcase name="testPerformanceSerialization()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.0">
     <skipped/>
   </testcase>
