@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.MoneyApiTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-12T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.06">
+<testsuite name="com.cedarsoft.test.io2.MoneyApiTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-13T02:09:06" hostname="runner-kggansxr-project-47-concurrent-0" time="0.064">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.io2.MoneyApiTest$MyObject@31aeb}" classname="com.cedarsoft.test.io2.MoneyApiTest" time="0.059"/>
-  <testcase name="testWrongMapping()" classname="com.cedarsoft.test.io2.MoneyApiTest" time="0.001"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.io2.MoneyApiTest$MyObject@31aeb}" classname="com.cedarsoft.test.io2.MoneyApiTest" time="0.058"/>
+  <testcase name="testWrongMapping()" classname="com.cedarsoft.test.io2.MoneyApiTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
