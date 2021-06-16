@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-06-15T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.201">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-06-16T02:06:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.172">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.054"/>
-  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.051"/>
-  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.051"/>
-  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.029"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.058"/>
+  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.022"/>
+  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.037"/>
+  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.039"/>
   <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
