@@ -1,29 +1,67 @@
-
-
 description = """Kotlinx Serialization serializers"""
 
 
 plugins {
-  // Apply the java-library plugin to add support for Java Library
-  `java-library`
-  kotlinJvm
+  kotlinMultiPlatform
   kotlinxSerialization
 }
 
-dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
-  api(project(Projects.open_commons_concurrent))
-  api(project(Projects.open_commons_guava))
+kotlin {
+  jvm()
+  js {
+    browser {
+    }
+  }
 
-  api(Libs.guava)
-  compileOnlyApi(Libs.javax_annotation_api)
-  api(KotlinX.coroutines.jdk8)
-  api(KotlinX.serialization.json)
-  api(KotlinX.serialization.protobuf)
+  sourceSets {
+    val commonMain by getting {
+      dependencies {
+        api(Kotlin.stdlib.common)
+        api(KotlinX.serialization.core)
+      }
+    }
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
-  testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(project(Projects.open_commons_commons))
-  testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
+    val commonTest by getting {
+      dependencies {
+        implementation(Libs.kotlin_test_common)
+        implementation(Libs.kotlin_test_annotations_common)
+      }
+    }
+
+    jvm().compilations["main"].defaultSourceSet {
+      dependencies {
+        api(Libs.javax_annotation_api)
+
+        api(project(Projects.dependencies_sets_annotations))
+        api(project(Projects.dependencies_sets_kotlin_jvm))
+        api(project(Projects.open_annotations))
+
+
+        api(project(Projects.open_commons_concurrent))
+        api(project(Projects.open_commons_guava))
+
+        api(Libs.guava)
+        api(KotlinX.coroutines.jdk8)
+        api(KotlinX.serialization.json)
+        api(KotlinX.serialization.protobuf)
+
+      }
+    }
+
+    jvm().compilations["test"].defaultSourceSet {
+      dependencies {
+        implementation(project(Projects.dependencies_sets_kotlin_test))
+        implementation(project(Projects.open_commons_test_utils))
+        implementation(project(Projects.open_commons_commons))
+
+        implementation(Libs.awaitility)
+        implementation(Libs.logback_classic)
+
+        implementation(Libs.kotlin_test)
+        implementation(Libs.kotlin_test_junit)
+      }
+    }
+  }
 }
+
+

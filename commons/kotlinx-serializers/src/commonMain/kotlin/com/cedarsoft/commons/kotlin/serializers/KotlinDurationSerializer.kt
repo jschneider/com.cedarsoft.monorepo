@@ -7,21 +7,28 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import java.time.Duration
+import kotlin.time.Duration
 
 /**
- * Serializer for Duration
+ * Serializer for Duration.
+ *
+ * Use like this:
+ * ```
+ * @file: UseSerializers(KotlinDurationSerializer::class)
+ * ```
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = Duration::class)
-object DurationSerializer : KSerializer<Duration> {
-  override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Duration", PrimitiveKind.STRING)
+object KotlinDurationSerializer : KSerializer<Duration> {
+  override val descriptor: SerialDescriptor
+    get() = PrimitiveSerialDescriptor(Duration::class.simpleName!!, PrimitiveKind.LONG)
 
-  override fun serialize(encoder: Encoder, obj: Duration) {
-    encoder.encodeString(obj.toString())
+  override fun serialize(encoder: Encoder, value: Duration) {
+    encoder.encodeLong(value.inWholeNanoseconds)
   }
 
   override fun deserialize(decoder: Decoder): Duration {
-    return Duration.parse(decoder.decodeString())
+    val decodeLong = decoder.decodeLong()
+    return Duration.nanoseconds(decodeLong)
   }
 }

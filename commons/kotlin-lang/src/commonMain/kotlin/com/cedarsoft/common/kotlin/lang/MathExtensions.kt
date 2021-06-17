@@ -48,11 +48,19 @@ fun Int.toRadians(): @rad Double {
   return this / 180.0 * PI
 }
 
+/**
+ * Converts the double value to a percentage (by dividing by 100.0)
+ * 1.0 -> 1% = 0.01
+ */
 val Double.percent: @pct Double
   get() {
     return this / 100.0
   }
 
+/**
+ * Converts the int value to a percentage (by dividing by 100.0)
+ * 1 -> 1% = 0.01
+ */
 val Int.percent: @pct Double
   get() {
     return this / 100.0
@@ -89,6 +97,8 @@ fun Double.sinh(): Double = kotlin.math.sinh(this)
 fun Double.cosh(): Double = kotlin.math.cosh(this)
 fun Double.tanh(): Double = kotlin.math.tanh(this)
 fun Double.expm1(): Double = kotlin.math.expm1(this)
+
+fun Int.abs(): Int = kotlin.math.abs(this)
 
 /**
  * Ensures that this integer value lies between 0 (inclusive) and limit (exclusive).
