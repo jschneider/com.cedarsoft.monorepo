@@ -1,26 +1,65 @@
-
-
 description = """Concurrent stuff - with coroutines"""
 
-
 plugins {
-  // Apply the java-library plugin to add support for Java Library
-  `java-library`
-  kotlinJvm
+  kotlinMultiPlatform
 }
 
-dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+repositories {
+  mavenCentral()
+}
 
-  compileOnlyApi(project(Projects.open_annotations))
-  api(project(Projects.open_unit_unit))
-  api(project(Projects.open_commons_concurrent))
+kotlin {
+  jvm()
+  js {
+    nodejs() {
+    }
+  }
 
-  api(KotlinX.coroutines.jdk8)
+  sourceSets {
+    val commonMain by getting {
+      dependencies {
+        api(Kotlin.stdlib.common)
+        api(KotlinX.coroutines.core)
+      }
+    }
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
-  testImplementation(project(Projects.open_commons_test_utils))
-  testImplementation(project(Projects.open_commons_commons))
-  testImplementation(Libs.awaitility)
-  testImplementation(Libs.logback_classic)
+    val commonTest by getting {
+      dependencies {
+        implementation(Libs.kotlin_test_common)
+        implementation(Libs.kotlin_test_annotations_common)
+      }
+    }
+
+    jvm().compilations["main"].defaultSourceSet {
+      dependencies {
+        api(project(Projects.open_annotations))
+
+        api(project(Projects.dependencies_sets_kotlin_jvm))
+        api(project(Projects.open_annotations))
+        api(project(Projects.open_unit_unit))
+        api(project(Projects.open_commons_concurrent))
+
+        api(KotlinX.coroutines.jdk8)
+      }
+    }
+
+    jvm().compilations["test"].defaultSourceSet {
+      dependencies {
+        implementation(project(Projects.open_commons_commons))
+        implementation(Libs.awaitility)
+        implementation(Libs.logback_classic)
+
+        implementation(Libs.kotlin_test)
+        implementation(Libs.kotlin_test_junit)
+
+        implementation(project(Projects.dependencies_sets_kotlin_test))
+        implementation(project(Projects.open_commons_test_utils))
+        implementation(project(Projects.open_commons_javafx_test_utils))
+
+        implementation(Libs.commons_io)
+        implementation(Libs.assertj_core)
+
+      }
+    }
+  }
 }

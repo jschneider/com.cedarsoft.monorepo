@@ -1,8 +1,7 @@
 package com.cedarsoft.commons.concurrent
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.*
 
 /**
  * Async implementation backed by coroutines
@@ -16,19 +15,32 @@ class CoAsync {
   private val channel = ConflatedBroadcastChannel<suspend () -> Unit>()
 
   /**
+   * The job that is created on launch
+   */
+  private var launch: Job? = null
+
+  /**
    * Starts the async
    */
-  fun start(scope: CoroutineScope): CoAsync {
-    scope.launch {
+  fun start(scope: CoroutineScope): Job {
+    return scope.launch() {
       val subscription = channel.openSubscription()
 
       while (!subscription.isClosedForReceive) {
         val runnable = subscription.receive()
-        runnable()
-      }
-    }
 
-    return this
+        //Launch in
+        launch(Dispatchers.Unconfined + SupervisorJob()) {
+          runnable()
+        }.join()
+      }
+    }.also {
+      this.launch = it
+    }
+  }
+
+  suspend fun dispose() {
+    launch?.cancelAndJoin()
   }
 
   suspend fun last(runnable: suspend () -> Unit) {

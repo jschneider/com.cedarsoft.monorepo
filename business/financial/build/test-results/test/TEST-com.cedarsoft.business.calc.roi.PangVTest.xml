@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangVTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-17T02:06:57" hostname="runner-kggansxr-project-47-concurrent-0" time="0.007">
+<testsuite name="com.cedarsoft.business.calc.roi.PangVTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-19T02:05:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.028">
   <properties/>
-  <testcase name="testValid()" classname="com.cedarsoft.business.calc.roi.PangVTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVTest" time="0.002"/>
+  <testcase name="testValid()" classname="com.cedarsoft.business.calc.roi.PangVTest" time="0.008"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.calc.roi.PangVTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,5 +1,3 @@
-import Libs.commons_io
-
 description = """App stuff"""
 
 
@@ -17,7 +15,7 @@ dependencies {
   api(project(Projects.open_commons_version))
 
   api(Libs.guava)
-  api(commons_io)
+  api(Libs.commons_io)
   api(Libs.commons_logging)
   api(Libs.log4j)
 
