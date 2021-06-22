@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.app.ScreenSizeUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-21T02:05:14" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.082">
+<testsuite name="com.cedarsoft.app.ScreenSizeUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-22T02:05:34" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.066">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.app.ScreenSizeUtilsTest" time="0.082"/>
+  <testcase name="testIt()" classname="com.cedarsoft.app.ScreenSizeUtilsTest" time="0.066"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
