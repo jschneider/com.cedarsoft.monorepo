@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.app.ApplicationHomeAccessFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-22T02:05:33" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.461">
+<testsuite name="com.cedarsoft.app.ApplicationHomeAccessFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T02:05:38" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.746">
   <properties/>
-  <testcase name="testName(TemporaryFolder)" classname="com.cedarsoft.app.ApplicationHomeAccessFactoryTest" time="0.461"/>
+  <testcase name="testName(TemporaryFolder)" classname="com.cedarsoft.app.ApplicationHomeAccessFactoryTest" time="0.746"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
