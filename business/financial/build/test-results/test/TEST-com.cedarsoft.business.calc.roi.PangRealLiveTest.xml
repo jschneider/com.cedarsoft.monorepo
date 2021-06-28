@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangRealLiveTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-06-27T02:05:22" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.054">
+<testsuite name="com.cedarsoft.business.calc.roi.PangRealLiveTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-06-28T02:05:27" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="testDocumentation()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.025"/>
-  <testcase name="testMeinHovelChristine()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.009"/>
-  <testcase name="testNeaefelt()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.01"/>
+  <testcase name="testDocumentation()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.008"/>
+  <testcase name="testMeinHovelChristine()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.002"/>
+  <testcase name="testNeaefelt()" classname="com.cedarsoft.business.calc.roi.PangRealLiveTest" time="0.002"/>
   <system-out><![CDATA[Result: 9.9586%
 Result: 5.4985%
 ]]></system-out>
