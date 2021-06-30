@@ -51,6 +51,7 @@ import javafx.scene.control.ToggleGroup
 import javafx.scene.control.Tooltip
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
+import javafx.scene.layout.Pane
 import javafx.scene.layout.Region
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
@@ -71,6 +72,21 @@ import kotlin.streams.toList
  */
 object Components {
   private const val ENUM_VALUE: String = "enumValue"
+
+  /**
+   * Creates an empty pane with the size 0/0
+   */
+  @JvmStatic
+  fun empty(): Pane {
+    return Pane().also {
+      it.prefWidth = 0.0
+      it.prefHeight = 0.0
+      it.maxWidth = 0.0
+      it.maxHeight = 0.0
+      it.minWidth = 0.0
+      it.minHeight = 0.0
+    }
+  }
 
   @JvmStatic
   fun hbox(@px spacing: Int, vararg nodes: Node): HBox {
