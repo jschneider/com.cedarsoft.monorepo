@@ -188,7 +188,15 @@ public class BindingsHelper {
 
   @Nonnull
   public static StringBinding bindFormattedNumber(@Nonnull ObservableValue<Number> property, @Nonnull NumberFormat numberFormat) {
-    return Bindings.createStringBinding(() -> numberFormat.format(property.getValue()), property);
+    return Bindings.createStringBinding(() -> {
+      Number value = property.getValue();
+
+      if (Double.isNaN(value.doubleValue())) {
+        return "-";
+      }
+
+      return numberFormat.format(value);
+    }, property);
   }
 
   /**

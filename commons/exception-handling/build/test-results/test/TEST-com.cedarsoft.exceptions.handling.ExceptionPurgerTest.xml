@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.exceptions.handling.ExceptionPurgerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-30T02:07:10" hostname="runner-kggansxr-project-47-concurrent-0" time="1.19">
+<testsuite name="com.cedarsoft.exceptions.handling.ExceptionPurgerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-01T02:05:17" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.598">
   <properties/>
-  <testcase name="purgeTest()" classname="com.cedarsoft.exceptions.handling.ExceptionPurgerTest" time="1.19"/>
+  <testcase name="purgeTest()" classname="com.cedarsoft.exceptions.handling.ExceptionPurgerTest" time="0.598"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
