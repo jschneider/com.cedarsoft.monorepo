@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.ResolutionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-07-01T02:05:40" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.033">
+<testsuite name="com.cedarsoft.image.ResolutionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-07-02T02:05:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.039">
   <properties/>
-  <testcase name="testComparable()" classname="com.cedarsoft.image.ResolutionTest" time="0.019"/>
+  <testcase name="testComparable()" classname="com.cedarsoft.image.ResolutionTest" time="0.023"/>
   <testcase name="testNikon()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
-  <testcase name="testIt()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.image.ResolutionTest" time="0.0"/>
   <testcase name="testAspectRatio()" classname="com.cedarsoft.image.ResolutionTest" time="0.001"/>
   <testcase name="testCanonRes()" classname="com.cedarsoft.image.ResolutionTest" time="0.0"/>
-  <testcase name="testSelect()" classname="com.cedarsoft.image.ResolutionTest" time="0.0"/>
+  <testcase name="testSelect()" classname="com.cedarsoft.image.ResolutionTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

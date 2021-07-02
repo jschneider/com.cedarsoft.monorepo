@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.VersionMappingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-07-01T02:06:03" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.636">
+<testsuite name="com.cedarsoft.serialization.VersionMappingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-07-02T02:06:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.595">
   <properties/>
-  <testcase name="testWriteVersion2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.168"/>
-  <testcase name="testBasic()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
-  <testcase name="testFluentTypicalFaults2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.436"/>
+  <testcase name="testWriteVersion2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.163"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.018"/>
+  <testcase name="testFluentTypicalFaults2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.38"/>
   <testcase name="testWriteVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
-  <testcase name="testFluentTypicalFaults()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
-  <testcase name="testDelegateWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.01"/>
-  <testcase name="testVerify()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.0"/>
+  <testcase name="testFluentTypicalFaults()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.005"/>
+  <testcase name="testDelegateWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
+  <testcase name="testVerify()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.011"/>
   <testcase name="testMyWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
-  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
+  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
