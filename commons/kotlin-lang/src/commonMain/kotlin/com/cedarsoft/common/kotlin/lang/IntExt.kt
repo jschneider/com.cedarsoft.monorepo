@@ -1,9 +1,11 @@
 package com.cedarsoft.common.kotlin.lang
 
+import com.cedarsoft.unit.other.Exclusive
+
 /**
  * A for loop that starts from 0 until this (exclusive)
  */
-inline fun Int.fastFor(callback: (index: Int) -> Unit) {
+inline fun @Exclusive Int.fastFor(callback: (index: Int) -> Unit) {
   for (i in 0 until this) {
     callback(i)
   }
