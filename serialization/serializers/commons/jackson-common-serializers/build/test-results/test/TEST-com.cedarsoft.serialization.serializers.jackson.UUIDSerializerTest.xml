@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-04T02:06:27" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.003">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-05T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.007">
   <properties/>
-  <testcase name="[1] entry=Entry{object=e7fa0223-be35-4c8b-a205-788d4b0db1cb}" classname="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerTest" time="0.003"/>
+  <testcase name="[1] entry=Entry{object=e7fa0223-be35-4c8b-a205-788d4b0db1cb}" classname="com.cedarsoft.serialization.serializers.jackson.UUIDSerializerTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING. Could not add type information due to com.fasterxml.jackson.databind.node.TextNode cannot be cast to com.fasterxml.jackson.databind.node.ContainerNode
 ]]></system-err>

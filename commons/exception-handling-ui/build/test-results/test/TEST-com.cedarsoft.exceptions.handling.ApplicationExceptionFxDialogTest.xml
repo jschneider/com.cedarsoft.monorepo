@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-07-04T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.015">
+<testsuite name="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-07-05T02:05:59" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="testAppFxExceptionDialog$exception_handling_ui()" classname="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" time="0.015">
+  <testcase name="testAppFxExceptionDialog$exception_handling_ui()" classname="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" time="0.023">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
