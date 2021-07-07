@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-06T02:06:47" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.011">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerVersionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-07T02:06:31" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.003">
   <properties/>
-  <testcase name="[1] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerVersionTest" time="0.011"/>
+  <testcase name="[1] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerVersionTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
