@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.NumberSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-07-08T02:06:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.008">
+<testsuite name="com.cedarsoft.serialization.jackson.NumberSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-07-09T02:06:42" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.036">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="[3] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.0"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="[3] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
   <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="testInt()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
+  <testcase name="testInt()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
   <testcase name="testDouble()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
   <testcase name="testDouble2()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
