@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-07-09T02:06:25" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.004">
+<testsuite name="com.cedarsoft.test.utils.ThreadExtensionTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2021-07-10T02:06:32" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.001">
   <properties/>
   <testcase name="testThreadRule()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
@@ -7,7 +7,7 @@
   <testcase name="testFailing()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testMulti()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.001">
+  <testcase name="testMulti()" classname="com.cedarsoft.test.utils.ThreadExtensionTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
