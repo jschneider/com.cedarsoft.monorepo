@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-07-10T02:06:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.017">
+<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-07-11T02:09:18" hostname="runner-kggansxr-project-47-concurrent-0" time="0.037">
   <properties/>
-  <testcase name="testReflection()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.007">
+  <testcase name="testReflection()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.022">
     <skipped/>
   </testcase>
-  <testcase name="testNames()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testNames()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testSpeed()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.002">
+  <testcase name="testSpeed()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testArea()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
+  <testcase name="testArea()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="testConvert()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testReflCm()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
+  <testcase name="testReflCm()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testSymbol()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
+  <testcase name="testSymbol()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
