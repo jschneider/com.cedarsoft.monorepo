@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-07-20T02:09:06" hostname="runner-kggansxr-project-47-concurrent-0" time="0.053">
+<testsuite name="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-07-21T02:08:40" hostname="runner-kggansxr-project-47-concurrent-0" time="0.065">
   <properties/>
-  <testcase name="testNotParam()" classname="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" time="0.033"/>
-  <testcase name="testIt(VirtualNowProvider)" classname="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" time="0.005"/>
+  <testcase name="testNotParam()" classname="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" time="0.058"/>
+  <testcase name="testIt(VirtualNowProvider)" classname="com.cedarsoft.test.utils.WithVirtualNowProviderExtensionTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

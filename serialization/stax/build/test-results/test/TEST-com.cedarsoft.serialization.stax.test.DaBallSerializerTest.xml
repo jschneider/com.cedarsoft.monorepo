@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-20T02:09:31" hostname="runner-kggansxr-project-47-concurrent-0" time="0.598">
+<testsuite name="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-21T02:09:06" hostname="runner-kggansxr-project-47-concurrent-0" time="0.679">
   <properties/>
-  <testcase name="testNs2()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.022"/>
-  <testcase name="testInvalidNamespaceVersion()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.379"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.168"/>
-  <testcase name="testInvalidNamespace()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.019"/>
-  <testcase name="testMissing()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.003"/>
+  <testcase name="testNs2()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.009"/>
+  <testcase name="testInvalidNamespaceVersion()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.382"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.245"/>
+  <testcase name="testInvalidNamespace()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.015"/>
+  <testcase name="testMissing()" classname="com.cedarsoft.serialization.stax.test.DaBallSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
