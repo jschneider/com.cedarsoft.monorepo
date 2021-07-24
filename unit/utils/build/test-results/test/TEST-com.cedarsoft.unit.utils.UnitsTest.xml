@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.unit.utils.UnitsTest" tests="7" skipped="7" failures="0" errors="0" timestamp="2021-07-23T02:06:35" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.007">
+<testsuite name="com.cedarsoft.unit.utils.UnitsTest" tests="7" skipped="7" failures="0" errors="0" timestamp="2021-07-24T02:06:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.006">
   <properties/>
-  <testcase name="testDefinition()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.0">
+  <testcase name="testDefinition()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testName()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.0">
+  <testcase name="testName()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="testDerivedFrom()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.001">
+  <testcase name="testDerivedFrom()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testDerived()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.001">
+  <testcase name="testDerived()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testIsUnit()" classname="com.cedarsoft.unit.utils.UnitsTest" time="0.0">
