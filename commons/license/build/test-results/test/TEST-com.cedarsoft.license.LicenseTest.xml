@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.license.LicenseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-07-25T02:05:46" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.821">
+<testsuite name="com.cedarsoft.license.LicenseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-07-26T02:08:46" hostname="runner-kggansxr-project-47-concurrent-0" time="0.723">
   <properties/>
-  <testcase name="testUrl()" classname="com.cedarsoft.license.LicenseTest" time="0.164"/>
-  <testcase name="testToString()" classname="com.cedarsoft.license.LicenseTest" time="0.611"/>
-  <testcase name="testResolve()" classname="com.cedarsoft.license.LicenseTest" time="0.003"/>
-  <testcase name="testEquals()" classname="com.cedarsoft.license.LicenseTest" time="0.004"/>
+  <testcase name="testUrl()" classname="com.cedarsoft.license.LicenseTest" time="0.195"/>
+  <testcase name="testToString()" classname="com.cedarsoft.license.LicenseTest" time="0.497"/>
+  <testcase name="testResolve()" classname="com.cedarsoft.license.LicenseTest" time="0.009"/>
+  <testcase name="testEquals()" classname="com.cedarsoft.license.LicenseTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
