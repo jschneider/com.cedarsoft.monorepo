@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileCopyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-26T02:08:00" hostname="runner-kggansxr-project-47-concurrent-0" time="0.077">
+<testsuite name="com.cedarsoft.file.FileCopyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-27T02:07:34" hostname="runner-kggansxr-project-47-concurrent-0" time="0.038">
   <properties/>
-  <testcase name="testCopySimple()" classname="com.cedarsoft.file.FileCopyTest" time="0.077"/>
+  <testcase name="testCopySimple()" classname="com.cedarsoft.file.FileCopyTest" time="0.038"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

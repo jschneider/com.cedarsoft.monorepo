@@ -1,6 +1,8 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.commons.javafx.properties.*
+import com.cedarsoft.commons.javafx.properties.getValue
+import com.cedarsoft.dispose.Disposable
+import com.cedarsoft.dispose.DisposeSupport
 import com.cedarsoft.unit.other.px
 import com.cedarsoft.unit.si.ns
 import javafx.animation.AnimationTimer
@@ -22,7 +24,7 @@ import javafx.scene.text.TextAlignment
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Deprecated("Use classes from algorithms instead")
-abstract class AbstractFxCanvas protected constructor() : Canvas() {
+abstract class AbstractFxCanvas protected constructor() : Canvas(), Disposable {
   /**
    * Is set to true if a repaint is required
    */
@@ -50,6 +52,7 @@ abstract class AbstractFxCanvas protected constructor() : Canvas() {
    */
   private val snapYValuesToPixel = SimpleBooleanProperty(true)
 
+  protected val disposeSupport: DisposeSupport = DisposeSupport()
 
   val isSnapXValuesToPixel: Boolean
     get() = snapXValuesToPixel.get()
@@ -93,7 +96,16 @@ abstract class AbstractFxCanvas protected constructor() : Canvas() {
           paint(graphicsContext2D)
         }
       }
-    }.start()
+    }.also {
+      disposeSupport.onDispose {
+        it.stop()
+      }
+      it.start()
+    }
+  }
+
+  override fun dispose() {
+    disposeSupport.dispose()
   }
 
   fun registerDirtyListener(property: Observable) {

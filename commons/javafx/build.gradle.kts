@@ -7,8 +7,10 @@ plugins {
   kotlinJvm
 }
 
+val coroutinesFeatureName = "coroutines"
+
 java {
-  registerFeature("coroutines") {
+  registerFeature(coroutinesFeatureName) {
     usingSourceSet(sourceSets["main"])
   }
 }
@@ -19,6 +21,7 @@ dependencies {
   compileOnlyApi(project(Projects.open_annotations))
 
   api(project(Projects.open_commons_concurrent))
+  api(project(Projects.open_commons_disposable))
   api(project(Projects.open_unit_unit))
 
   api(Libs.guava)
@@ -28,8 +31,8 @@ dependencies {
   api(project(Projects.open_commons_concurrent))
 
 
-  "coroutinesApi"(KotlinX.coroutines.core)
-  "coroutinesApi"(KotlinX.coroutines.javaFx)
+  "${coroutinesFeatureName}Api"(KotlinX.coroutines.core)
+  "${coroutinesFeatureName}Api"(KotlinX.coroutines.javaFx)
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

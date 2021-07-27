@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.test.CustomerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-07-26T02:08:24" hostname="runner-kggansxr-project-47-concurrent-0" time="1.015">
+<testsuite name="com.cedarsoft.commons.test.CustomerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-07-27T02:08:14" hostname="runner-kggansxr-project-47-concurrent-0" time="0.785">
   <properties/>
-  <testcase name="testList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.416"/>
-  <testcase name="testListeners()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.028"/>
-  <testcase name="testSimpleBinding()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.014"/>
-  <testcase name="testLazyObsList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.02"/>
-  <testcase name="testBasics()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.518"/>
-  <testcase name="testAddressValid()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.005"/>
+  <testcase name="testList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.334"/>
+  <testcase name="testListeners()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.011"/>
+  <testcase name="testSimpleBinding()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.004"/>
+  <testcase name="testLazyObsList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.018"/>
+  <testcase name="testBasics()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.396"/>
+  <testcase name="testAddressValid()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.011"/>
   <system-out><![CDATA[add
-Change... { [com.cedarsoft.commons.test.Customer$Address@61d8ed9f] added at 0 }
-next <[com.cedarsoft.commons.test.Customer$Address@61d8ed9f]> and removed <[]>
+Change... { [com.cedarsoft.commons.test.Customer$Address@34904c94] added at 0 }
+next <[com.cedarsoft.commons.test.Customer$Address@34904c94]> and removed <[]>
 add
-Change... { [com.cedarsoft.commons.test.Customer$Address@79768652] added at 1 }
-next <[com.cedarsoft.commons.test.Customer$Address@79768652]> and removed <[]>
+Change... { [com.cedarsoft.commons.test.Customer$Address@55e25bc] added at 1 }
+next <[com.cedarsoft.commons.test.Customer$Address@55e25bc]> and removed <[]>
 addAll
-Change... { [com.cedarsoft.commons.test.Customer$Address@1b38bf90, com.cedarsoft.commons.test.Customer$Address@4e5d1753, com.cedarsoft.commons.test.Customer$Address@68cfaf12] added at 2 }
-next <[com.cedarsoft.commons.test.Customer$Address@1b38bf90, com.cedarsoft.commons.test.Customer$Address@4e5d1753, com.cedarsoft.commons.test.Customer$Address@68cfaf12]> and removed <[]>
+Change... { [com.cedarsoft.commons.test.Customer$Address@326944d0, com.cedarsoft.commons.test.Customer$Address@a046212, com.cedarsoft.commons.test.Customer$Address@3cc66b2a] added at 2 }
+next <[com.cedarsoft.commons.test.Customer$Address@326944d0, com.cedarsoft.commons.test.Customer$Address@a046212, com.cedarsoft.commons.test.Customer$Address@3cc66b2a]> and removed <[]>
 setting name
 Invalidated
 Changed from <> to <New Name>
