@@ -263,3 +263,11 @@ fun String.wrap(
 
   return lines
 }
+
+
+/**
+ * Returns a checkbox char
+ */
+fun Boolean.toCheckboxChar(): String {
+  return if (this) "\u2611" else "\u2610"
+}
