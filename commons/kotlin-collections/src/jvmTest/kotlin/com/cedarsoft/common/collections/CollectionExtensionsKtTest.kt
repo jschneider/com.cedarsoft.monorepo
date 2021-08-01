@@ -5,9 +5,15 @@ import assertk.assertions.*
 import com.cedarsoft.common.kotlin.lang.consumeUntil
 import com.cedarsoft.common.kotlin.lang.consumeWhile
 import com.cedarsoft.common.kotlin.lang.getModulo
+import com.cedarsoft.common.kotlin.lang.withNullAtFirst
 import org.junit.jupiter.api.Test
 
 class CollectionExtensionsKtTest {
+  @Test
+  fun name() {
+    assertThat(listOf(1, 2, 3).withNullAtFirst()).containsExactly(null, 1, 2, 3)
+  }
+
   @Test
   fun testConsumeUntil2() {
     val list = listOf(1, 2, 3, 4, 5)

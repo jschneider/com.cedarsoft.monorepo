@@ -109,3 +109,15 @@ fun <T> MutableList<T>.deleteFromStartUntilMaxSize(maxSize: Int) {
 fun <E> MutableList<E>.setLast(element: E) {
   this[lastIndex] = element
 }
+
+/**
+ * Returns a new list containing:
+ * * null
+ * * all elements from this
+ */
+fun <E> List<E>.withNullAtFirst(): List<E?> {
+  return buildList {
+    add(null)
+    addAll(this@withNullAtFirst)
+  }
+}
