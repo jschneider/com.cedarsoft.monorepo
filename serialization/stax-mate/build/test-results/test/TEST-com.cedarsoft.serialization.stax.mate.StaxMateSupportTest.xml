@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-03T02:06:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.032">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-04T02:06:05" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.039">
   <properties/>
-  <testcase name="testFactories()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.015"/>
+  <testcase name="testFactories()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.029"/>
   <testcase name="testEventNames()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
-  <testcase name="testStaxMateChangeAfter()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.002"/>
-  <testcase name="testFactories2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.002"/>
+  <testcase name="testStaxMateChangeAfter()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
+  <testcase name="testFactories2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.005"/>
   <testcase name="testStaxMateChangeBefore()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
   <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateSupportTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.CypherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-03T02:06:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="7.893">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.CypherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-04T02:06:14" hostname="runner-cs1zem-v-project-47-concurrent-0" time="7.607">
   <properties/>
-  <testcase name="testCypher1()" classname="com.cedarsoft.serialization.neo4j.test.utils.CypherTest" time="7.893"/>
+  <testcase name="testCypher1()" classname="com.cedarsoft.serialization.neo4j.test.utils.CypherTest" time="7.607"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
