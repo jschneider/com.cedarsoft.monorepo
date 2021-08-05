@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.container.ContainerEntryDescriptorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-04T02:05:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.124">
+<testsuite name="com.cedarsoft.container.ContainerEntryDescriptorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-05T02:07:18" hostname="runner-kggansxr-project-47-concurrent-0" time="0.066">
   <properties/>
-  <testcase name="testPathParse$container()" classname="com.cedarsoft.container.ContainerEntryDescriptorTest" time="0.124"/>
+  <testcase name="testPathParse$container()" classname="com.cedarsoft.container.ContainerEntryDescriptorTest" time="0.066"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
