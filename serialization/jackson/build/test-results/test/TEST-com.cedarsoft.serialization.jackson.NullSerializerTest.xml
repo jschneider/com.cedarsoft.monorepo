@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.NullSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-05T02:09:22" hostname="runner-kggansxr-project-47-concurrent-0" time="0.01">
+<testsuite name="com.cedarsoft.serialization.jackson.NullSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-06T02:06:02" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.007">
   <properties/>
-  <testcase name="testStep()" classname="com.cedarsoft.serialization.jackson.NullSerializerTest" time="0.001"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.NullSerializerTest" time="0.008"/>
+  <testcase name="testStep()" classname="com.cedarsoft.serialization.jackson.NullSerializerTest" time="0.004"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.NullSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
