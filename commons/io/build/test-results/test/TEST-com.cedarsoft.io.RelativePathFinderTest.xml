@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-08-07T02:05:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.054">
+<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:07:51" hostname="runner-kggansxr-project-47-concurrent-0" time="0.27">
   <properties/>
-  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.004"/>
-  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
-  <testcase name="testGetRelativePath2()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.002"/>
-  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
-  <testcase name="testDirectParent()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.002"/>
-  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.013"/>
-  <testcase name="testGetRelativePathWin()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
+  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.153"/>
+  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.019"/>
+  <testcase name="testGetRelativePath2()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
+  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.005"/>
+  <testcase name="testDirectParent()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.008"/>
+  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
+  <testcase name="testGetRelativePathWin()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

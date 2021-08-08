@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.zip.ZipCreatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-07T02:06:02" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.954">
+<testsuite name="com.cedarsoft.zip.ZipCreatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:08:49" hostname="runner-kggansxr-project-47-concurrent-0" time="0.997">
   <properties/>
-  <testcase name="testIt(TemporaryFolder)" classname="com.cedarsoft.zip.ZipCreatorTest" time="0.933"/>
-  <testcase name="testCondition(TemporaryFolder)" classname="com.cedarsoft.zip.ZipCreatorTest" time="0.015"/>
+  <testcase name="testIt(TemporaryFolder)" classname="com.cedarsoft.zip.ZipCreatorTest" time="0.895"/>
+  <testcase name="testCondition(TemporaryFolder)" classname="com.cedarsoft.zip.ZipCreatorTest" time="0.098"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
