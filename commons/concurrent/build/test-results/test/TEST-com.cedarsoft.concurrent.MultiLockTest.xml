@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.MultiLockTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:06:58" hostname="runner-kggansxr-project-47-concurrent-0" time="0.024">
+<testsuite name="com.cedarsoft.concurrent.MultiLockTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:08:14" hostname="runner-kggansxr-project-47-concurrent-0" time="0.011">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.concurrent.MultiLockTest" time="0.024"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.concurrent.MultiLockTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

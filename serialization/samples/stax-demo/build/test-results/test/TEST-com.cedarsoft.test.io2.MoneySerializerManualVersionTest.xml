@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:09:30" hostname="runner-kggansxr-project-47-concurrent-0" time="1.652">
+<testsuite name="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:10:47" hostname="runner-kggansxr-project-47-concurrent-0" time="1.605">
   <properties/>
-  <testcase name="testCurrentFormat()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.795"/>
-  <testcase name="testCurrent()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.794"/>
-  <testcase name="testOldFormat()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.055"/>
+  <testcase name="testCurrentFormat()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.64"/>
+  <testcase name="testCurrent()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.845"/>
+  <testcase name="testOldFormat()" classname="com.cedarsoft.test.io2.MoneySerializerManualVersionTest" time="0.099"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

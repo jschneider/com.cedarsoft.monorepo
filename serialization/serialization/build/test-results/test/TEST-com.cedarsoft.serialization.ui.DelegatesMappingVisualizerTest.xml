@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.ui.DelegatesMappingVisualizerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:09:01" hostname="runner-kggansxr-project-47-concurrent-0" time="0.332">
+<testsuite name="com.cedarsoft.serialization.ui.DelegatesMappingVisualizerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:10:18" hostname="runner-kggansxr-project-47-concurrent-0" time="0.751">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.ui.DelegatesMappingVisualizerTest" time="0.332"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.ui.DelegatesMappingVisualizerTest" time="0.751"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

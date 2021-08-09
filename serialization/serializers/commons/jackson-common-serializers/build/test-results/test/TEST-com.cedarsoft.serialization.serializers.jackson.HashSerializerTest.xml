@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.HashSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:09:45" hostname="runner-kggansxr-project-47-concurrent-0" time="2.111">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.HashSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:11:04" hostname="runner-kggansxr-project-47-concurrent-0" time="2.665">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[MD5: 48415348]}" classname="com.cedarsoft.serialization.serializers.jackson.HashSerializerTest" time="2.111"/>
+  <testcase name="[1] entry=Entry{object=[MD5: 48415348]}" classname="com.cedarsoft.serialization.serializers.jackson.HashSerializerTest" time="2.665"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

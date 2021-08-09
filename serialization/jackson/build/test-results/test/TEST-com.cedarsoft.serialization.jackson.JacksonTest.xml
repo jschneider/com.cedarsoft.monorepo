@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.JacksonTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:09:08" hostname="runner-kggansxr-project-47-concurrent-0" time="0.05">
+<testsuite name="com.cedarsoft.serialization.jackson.JacksonTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:10:26" hostname="runner-kggansxr-project-47-concurrent-0" time="0.058">
   <properties/>
-  <testcase name="testOnlyText()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.002"/>
-  <testcase name="testArray()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.001"/>
-  <testcase name="testBasic()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.001"/>
-  <testcase name="testNull()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.007"/>
-  <testcase name="testRawArray()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.006"/>
+  <testcase name="testOnlyText()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.003"/>
+  <testcase name="testArray()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.002"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.014"/>
+  <testcase name="testNull()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.019"/>
+  <testcase name="testRawArray()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.003"/>
   <testcase name="testBasic2()" classname="com.cedarsoft.serialization.jackson.JacksonTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

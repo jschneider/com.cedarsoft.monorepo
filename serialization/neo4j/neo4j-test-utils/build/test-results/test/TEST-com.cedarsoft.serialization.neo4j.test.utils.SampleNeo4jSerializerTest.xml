@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-08-08T02:10:06" hostname="runner-kggansxr-project-47-concurrent-0" time="0.607">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2021-08-09T02:11:26" hostname="runner-kggansxr-project-47-concurrent-0" time="0.918">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.36"/>
-  <testcase name="testPerformanceSerialization()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.001">
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.595"/>
+  <testcase name="testPerformanceSerialization()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testWrongLabel()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.244"/>
+  <testcase name="testWrongLabel()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.32"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

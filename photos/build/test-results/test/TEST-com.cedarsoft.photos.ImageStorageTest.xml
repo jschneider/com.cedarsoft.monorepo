@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.ImageStorageTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-08T02:06:23" hostname="runner-kggansxr-project-47-concurrent-0" time="1.553">
+<testsuite name="com.cedarsoft.photos.ImageStorageTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-09T02:07:37" hostname="runner-kggansxr-project-47-concurrent-0" time="1.217">
   <properties/>
-  <testcase name="delete()" classname="com.cedarsoft.photos.ImageStorageTest" time="1.495"/>
-  <testcase name="basic()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.028"/>
-  <testcase name="dataFile()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.026"/>
+  <testcase name="delete()" classname="com.cedarsoft.photos.ImageStorageTest" time="1.156"/>
+  <testcase name="basic()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.025"/>
+  <testcase name="dataFile()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.029"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
