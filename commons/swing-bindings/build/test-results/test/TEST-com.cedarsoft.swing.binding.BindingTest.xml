@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.binding.BindingTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-11T02:05:55" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.305">
+<testsuite name="com.cedarsoft.swing.binding.BindingTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-12T02:06:11" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.246">
   <properties/>
-  <testcase name="testTextField$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.015"/>
-  <testcase name="testTextFieldText$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.198"/>
-  <testcase name="testCombo$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.065"/>
-  <testcase name="testVisible$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.023"/>
+  <testcase name="testTextField$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.005"/>
+  <testcase name="testTextFieldText$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.153"/>
+  <testcase name="testCombo$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.068"/>
+  <testcase name="testVisible$swing_bindings()" classname="com.cedarsoft.swing.binding.BindingTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
