@@ -2,6 +2,7 @@ package com.cedarsoft.commons.kotlin.bytearray
 
 import com.cedarsoft.common.kotlin.lang.reinterpretAsFloat
 import com.cedarsoft.common.kotlin.lang.reinterpretAsInt
+import kotlin.jvm.JvmInline
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -90,9 +91,9 @@ inline fun FloatArray.fill(value: Float, start: Int = 0, end: Int = this.size): 
 inline fun DoubleArray.fill(value: Double, start: Int = 0, end: Int = this.size): Unit = arrayfill(this, value, start, end)
 
 
-
 /** View of [bytes] [ByteArray] reinterpreted as [Int] */
-inline class UByteArrayInt(val bytes: ByteArray) {
+@JvmInline
+value class UByteArrayInt(val bytes: ByteArray) {
   val size: Int get() = bytes.size
   operator fun get(index: Int) = bytes[index].toInt() and 0xFF
   operator fun set(index: Int, value: Int) = run { bytes[index] = value.toByte() }
@@ -107,7 +108,8 @@ fun ByteArray.asUByteArrayInt() = UByteArrayInt(this)
 fun UByteArrayInt.asByteArray() = this.bytes
 
 /** View of [base] [IntArray] reinterpreted as [Float] */
-inline class FloatArrayFromIntArray(val base: IntArray) {
+@JvmInline
+value class FloatArrayFromIntArray(val base: IntArray) {
   operator fun get(i: Int) = base[i].reinterpretAsFloat()
   operator fun set(i: Int, v: Float) = run { base[i] = v.reinterpretAsInt() }
 }

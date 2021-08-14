@@ -1,3 +1,4 @@
+@file:Suppress("UNUSED_VARIABLE")
 description = """Kotlinx Collections - Multiplatform"""
 
 plugins {

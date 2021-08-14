@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.kotlin.bytearray
 
+import kotlin.jvm.JvmInline
 import kotlin.math.max
 
 /**
@@ -80,7 +81,8 @@ class ByteArrayBuilder(var data: ByteArray, size: Int = data.size, val allowGrow
   fun toByteArray(): ByteArray = data.copyOf(_size)
 }
 
-inline class ByteArrayBuilderLE(val bab: ByteArrayBuilder)
+@JvmInline
+value class ByteArrayBuilderLE(val bab: ByteArrayBuilder)
 
 val ByteArrayBuilderLE.size get() = bab.size
 fun ByteArrayBuilderLE.append(array: ByteArray, offset: Int = 0, len: Int = array.size - offset) = bab.append(array, offset, len)
@@ -97,7 +99,8 @@ fun ByteArrayBuilderLE.f64(v: Double) = bab.f64LE(v)
 fun ByteArrayBuilderLE.clear() = bab.clear()
 fun ByteArrayBuilderLE.toByteArray(): ByteArray = bab.toByteArray()
 
-inline class ByteArrayBuilderBE(val bab: ByteArrayBuilder)
+@JvmInline
+value class ByteArrayBuilderBE(val bab: ByteArrayBuilder)
 
 val ByteArrayBuilderBE.size get() = bab.size
 fun ByteArrayBuilderBE.append(array: ByteArray, offset: Int = 0, len: Int = array.size - offset) = bab.append(array, offset, len)

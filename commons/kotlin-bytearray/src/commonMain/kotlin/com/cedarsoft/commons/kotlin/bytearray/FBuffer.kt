@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.kotlin.bytearray
 
+import kotlin.jvm.JvmInline
+
 /**
  * FastBuffer holding a chunk of [mem] memory
  */
@@ -131,7 +133,8 @@ class FBuffer private constructor(val mem: MemBuffer, val size: Int = mem.size) 
     copyAligned(this, srcPos, dst, dstPos, len)
 }
 
-inline class Uint8Buffer(val b: Int8Buffer) {
+@JvmInline
+value class Uint8Buffer(val b: Int8Buffer) {
   companion object
 
   val size: Int get() = b.size
@@ -139,7 +142,8 @@ inline class Uint8Buffer(val b: Int8Buffer) {
   operator fun set(index: Int, value: Int): Unit = run { b[index] = value.toByte() }
 }
 
-inline class Uint16Buffer(val b: Int16Buffer) {
+@JvmInline
+value class Uint16Buffer(val b: Int16Buffer) {
   companion object
 
   val size: Int get() = b.size

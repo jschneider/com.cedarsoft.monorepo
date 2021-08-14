@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.kotlin.bytearray
 
+import kotlin.jvm.JvmInline
+
 class ByteArrayReader(val data: ByteArray, val start: Int, val size: Int = 0) {
   private var offset = start
   val remaining get() = size - offset
@@ -43,7 +45,8 @@ class ByteArrayReader(val data: ByteArray, val start: Int, val size: Int = 0) {
   fun f64BE() = move(8) { readF64BE(it) }
 }
 
-inline class ByteArrayReaderLE(val bar: ByteArrayReader)
+@JvmInline
+value class ByteArrayReaderLE(val bar: ByteArrayReader)
 
 val ByteArrayReaderLE.size get() = bar.size
 val ByteArrayReaderLE.remaining get() = bar.remaining
@@ -59,7 +62,8 @@ fun ByteArrayReaderLE.s32() = bar.s32LE()
 fun ByteArrayReaderLE.f32() = bar.f32LE()
 fun ByteArrayReaderLE.f64() = bar.f64LE()
 
-inline class ByteArrayReaderBE(val bar: ByteArrayReader)
+@JvmInline
+value class ByteArrayReaderBE(val bar: ByteArrayReader)
 
 val ByteArrayReaderBE.size get() = bar.size
 val ByteArrayReaderBE.remaining get() = bar.remaining

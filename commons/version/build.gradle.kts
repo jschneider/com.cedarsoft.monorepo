@@ -1,3 +1,4 @@
+@file:Suppress("UNUSED_VARIABLE")
 plugins {
   kotlinMultiPlatform
   assertkGenerator

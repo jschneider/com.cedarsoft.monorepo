@@ -1,3 +1,4 @@
+@file:Suppress("UNUSED_VARIABLE")
 description = """Concurrent stuff - with coroutines"""
 
 plugins {

@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_VARIABLE")
+
 import Libs.commons_io
 
 description = """Version-Info for the repository"""
@@ -115,3 +117,7 @@ task("createVersionConstants") {
     println("Wrote version info to : ${targetFile.absolutePath}")
   }
 }
+
+//Ensure createVersionConstants is added as dependency
+tasks.findByName("jvmSourcesJar")?.dependsOn("createVersionConstants")
+tasks.findByName("compileKotlinMetadata")?.dependsOn("createVersionConstants")

@@ -2,6 +2,7 @@ package com.cedarsoft.common.collections
 
 import com.cedarsoft.unit.other.Exclusive
 import com.cedarsoft.unit.other.Inclusive
+import kotlin.jvm.JvmInline
 
 inline fun mapWhileInt(cond: (index: Int) -> Boolean, gen: (Int) -> Int): IntArray = IntArrayList().apply { while (cond(this.size)) this += gen(this.size) }.toIntArray()
 inline fun mapWhileFloat(cond: (index: Int) -> Boolean, gen: (Int) -> Float): FloatArray = FloatArrayList().apply { while (cond(this.size)) this += gen(this.size) }.toFloatArray()
@@ -103,7 +104,8 @@ inline fun genericBinarySearch(
   return invalid(fromIndex, toIndex, low, high)
 }
 
-inline class BSearchResult(val raw: Int) {
+@JvmInline
+value class BSearchResult(val raw: Int) {
   val found: Boolean get() = raw >= 0
   val index: Int get() = if (found) raw else -1
   val nearIndex: Int get() = if (found) raw else -raw - 1
