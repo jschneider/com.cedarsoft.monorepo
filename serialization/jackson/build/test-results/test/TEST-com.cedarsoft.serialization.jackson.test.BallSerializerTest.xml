@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-15T02:06:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.047">
+<testsuite name="com.cedarsoft.serialization.jackson.test.BallSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-16T02:06:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.026">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.01"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.011"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Ball$TennisBall@7}" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.002"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.jackson.test.Ball$BasketBall@2dd434}" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.008"/>
   <testcase name="testVersion()" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.001"/>
-  <testcase name="testAsccii()" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.01"/>
+  <testcase name="testAsccii()" classname="com.cedarsoft.serialization.jackson.test.BallSerializerTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

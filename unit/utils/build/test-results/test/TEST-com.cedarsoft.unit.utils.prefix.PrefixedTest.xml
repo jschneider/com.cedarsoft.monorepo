@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.unit.utils.prefix.PrefixedTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-08-15T02:06:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.017">
+<testsuite name="com.cedarsoft.unit.utils.prefix.PrefixedTest" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-08-16T02:06:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.007">
   <properties/>
-  <testcase name="testFactor2()" classname="com.cedarsoft.unit.utils.prefix.PrefixedTest" time="0.001">
+  <testcase name="testFactor2()" classname="com.cedarsoft.unit.utils.prefix.PrefixedTest" time="0.004">
     <skipped/>
   </testcase>
-  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.prefix.PrefixedTest" time="0.002">
+  <testcase name="testIt()" classname="com.cedarsoft.unit.utils.prefix.PrefixedTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testIsPrefixed()" classname="com.cedarsoft.unit.utils.prefix.PrefixedTest" time="0.0">
