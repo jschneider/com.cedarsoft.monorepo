@@ -70,6 +70,10 @@ inline fun Double.isCloseTo(targetValue: Double, epsilon: Double = 0.0001): Bool
   return isEquivalent(this, targetValue, epsilon)
 }
 
+fun Double.isNotCloseTo(targetValue: Double, epsilon: Double = 0.0001): Boolean {
+  return !isCloseTo(targetValue, epsilon)
+}
+
 /**
  * Normalizes a value for the given base.
  * Returns the percentage of this relative to the given base
