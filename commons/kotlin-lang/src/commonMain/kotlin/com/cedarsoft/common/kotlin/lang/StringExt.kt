@@ -264,6 +264,12 @@ fun String.wrap(
   return lines
 }
 
+/**
+ * Returns this if this is not null. Returns [ifNull] if this is null.
+ */
+fun String?.ifNull(ifNull: String): String {
+  return this ?: ifNull
+}
 
 /**
  * Returns a checkbox char

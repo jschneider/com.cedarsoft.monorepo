@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.javafx
 
+import com.cedarsoft.charting.annotations.JavaFriendly
 import com.cedarsoft.commons.javafx.combo.ItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.combo.ListViewListCellCallbackForItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.properties.BooleanPropertyWithWritableState
@@ -556,6 +557,14 @@ object Components {
       onAction(it)
     }
     return link
+  }
+
+  @JavaFriendly
+  @JvmStatic
+  fun link(text: String, onAction: Consumer<ActionEvent>): Hyperlink {
+    return link(text) {
+      onAction.accept(it)
+    }
   }
 
   @JvmStatic

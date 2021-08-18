@@ -13,3 +13,7 @@ fun Duration.formatHourMinutes(): String {
 
   return "${hours}:${remainingMinutes.toString().padStart(2, '0')}"
 }
+
+fun Duration.formatMinutes(): String {
+  return "$inWholeMinutes min"
+}
