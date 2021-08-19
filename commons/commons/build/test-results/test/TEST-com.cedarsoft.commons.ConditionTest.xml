@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.ConditionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-18T02:05:30" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.002">
+<testsuite name="com.cedarsoft.commons.ConditionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-19T02:07:03" hostname="runner-kggansxr-project-47-concurrent-0" time="0.022">
   <properties/>
-  <testcase name="testConstants()" classname="com.cedarsoft.commons.ConditionTest" time="0.002"/>
+  <testcase name="testConstants()" classname="com.cedarsoft.commons.ConditionTest" time="0.022"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

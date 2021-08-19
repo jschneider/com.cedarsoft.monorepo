@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-18T02:06:05" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.209">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-08-19T02:09:30" hostname="runner-kggansxr-project-47-concurrent-0" time="0.331">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.038"/>
-  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.06"/>
-  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.028"/>
-  <testcase name="[4] entry=Entry{object=1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.036"/>
-  <testcase name="[5] entry=Entry{object=-1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.031"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.001"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.054"/>
+  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.056"/>
+  <testcase name="[3] entry=Entry{object=-123.5}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.072"/>
+  <testcase name="[4] entry=Entry{object=1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.061"/>
+  <testcase name="[5] entry=Entry{object=-1.7976931348623157E308}" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.04"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.NumberSerializerTest" time="0.018"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
