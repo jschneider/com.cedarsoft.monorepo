@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-19T02:08:50" hostname="runner-kggansxr-project-47-concurrent-0" time="0.052">
+<testsuite name="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-20T02:05:58" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.342">
   <properties/>
-  <testcase name="testWrong()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.025"/>
-  <testcase name="testNone()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.003"/>
-  <testcase name="testOnly()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.007"/>
+  <testcase name="testWrong()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.281"/>
+  <testcase name="testNone()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.034"/>
+  <testcase name="testOnly()" classname="com.cedarsoft.test.utils.matchers.ContainsOnlyFilesMatcherTest" time="0.024"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

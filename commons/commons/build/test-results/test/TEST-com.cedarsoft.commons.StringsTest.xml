@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.StringsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-19T02:07:03" hostname="runner-kggansxr-project-47-concurrent-0" time="0.235">
+<testsuite name="com.cedarsoft.commons.StringsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-20T02:05:39" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.171">
   <properties/>
-  <testcase name="testCut()" classname="com.cedarsoft.commons.StringsTest" time="0.005"/>
-  <testcase name="testQuote()" classname="com.cedarsoft.commons.StringsTest" time="0.222"/>
-  <testcase name="testMaxLengt()" classname="com.cedarsoft.commons.StringsTest" time="0.004"/>
+  <testcase name="testCut()" classname="com.cedarsoft.commons.StringsTest" time="0.021"/>
+  <testcase name="testQuote()" classname="com.cedarsoft.commons.StringsTest" time="0.146"/>
+  <testcase name="testMaxLengt()" classname="com.cedarsoft.commons.StringsTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io.MoneySerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-19T02:09:47" hostname="runner-kggansxr-project-47-concurrent-0" time="0.089">
+<testsuite name="com.cedarsoft.test.io.MoneySerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-20T02:06:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.045">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Money@4af}" classname="com.cedarsoft.test.io.MoneySerializerTest" time="0.089"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Money@4af}" classname="com.cedarsoft.test.io.MoneySerializerTest" time="0.045"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

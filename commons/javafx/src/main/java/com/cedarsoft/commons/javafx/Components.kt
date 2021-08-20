@@ -58,6 +58,7 @@ import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
+import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
 import javafx.util.StringConverter
 import javafx.util.converter.NumberStringConverter
@@ -249,6 +250,15 @@ object Components {
   @JvmOverloads
   fun label(text: String = ""): Label {
     return minWidth2prefLabel(text)
+  }
+
+  @JvmStatic
+  @JvmOverloads
+  fun labelBold(text: String = ""): Label {
+    return minWidth2prefLabel(text).also {
+      val currentFont = it.font
+      it.font = Font.font(currentFont.name, FontWeight.BOLD, currentFont.size)
+    }
   }
 
   /**
