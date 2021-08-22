@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.exceptions.ApplicationExceptionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-21T02:07:25" hostname="runner-kggansxr-project-47-concurrent-0" time="0.87">
+<testsuite name="com.cedarsoft.exceptions.ApplicationExceptionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-22T02:07:01" hostname="runner-kggansxr-project-47-concurrent-0" time="0.371">
   <properties/>
-  <testcase name="testDefaultLocale()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.834"/>
-  <testcase name="testSetup()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.018"/>
-  <testcase name="testLocales()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.003"/>
+  <testcase name="testDefaultLocale()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.355"/>
+  <testcase name="testSetup()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.004"/>
+  <testcase name="testLocales()" classname="com.cedarsoft.exceptions.ApplicationExceptionTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-21T02:08:59" hostname="runner-kggansxr-project-47-concurrent-0" time="0.148">
+<testsuite name="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-22T02:08:44" hostname="runner-kggansxr-project-47-concurrent-0" time="0.119">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" time="0.148"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" time="0.119"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

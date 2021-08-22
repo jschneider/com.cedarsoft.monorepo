@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.InterestCalculatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-21T02:07:02" hostname="runner-kggansxr-project-47-concurrent-0" time="0.126">
+<testsuite name="com.cedarsoft.business.calc.InterestCalculatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-22T02:06:37" hostname="runner-kggansxr-project-47-concurrent-0" time="0.161">
   <properties/>
-  <testcase name="testEinfach()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.038"/>
-  <testcase name="testOtherPayments()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.005"/>
-  <testcase name="testSum()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.021"/>
-  <testcase name="testOther()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.02"/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.005"/>
-  <testcase name="testTwoMonths()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.005"/>
-  <testcase name="testZinsesZins()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.002"/>
-  <testcase name="testMultiply()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.003"/>
-  <testcase name="testSumCal()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.005"/>
+  <testcase name="testEinfach()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.04"/>
+  <testcase name="testOtherPayments()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.008"/>
+  <testcase name="testSum()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.007"/>
+  <testcase name="testOther()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.003"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.003"/>
+  <testcase name="testTwoMonths()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.004"/>
+  <testcase name="testZinsesZins()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.004"/>
+  <testcase name="testMultiply()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.002"/>
+  <testcase name="testSumCal()" classname="com.cedarsoft.business.calc.InterestCalculatorTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
