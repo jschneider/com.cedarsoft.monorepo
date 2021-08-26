@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.demo2.MoneyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-25T02:06:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.669">
+<testsuite name="com.cedarsoft.serialization.demo2.MoneyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-26T02:06:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.266">
   <properties/>
-  <testcase name="testXStreamAttribute()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="1.201"/>
-  <testcase name="testXStream()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="0.85"/>
-  <testcase name="testSimple()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="0.615"/>
+  <testcase name="testXStreamAttribute()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="0.795"/>
+  <testcase name="testXStream()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="0.834"/>
+  <testcase name="testSimple()" classname="com.cedarsoft.serialization.demo2.MoneyTest" time="0.611"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Security framework of XStream not explicitly initialized, using predefined black list on your own risk.
 Security framework of XStream not explicitly initialized, using predefined black list on your own risk.
