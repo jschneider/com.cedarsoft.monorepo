@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-27T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.573">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-28T02:06:10" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.734">
   <properties/>
-  <testcase name="[1] entry=Entry{object=Public Domain (PUBLIC_DOMAIN)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.445"/>
-  <testcase name="[2] entry=Entry{object=All rights reserved (ALL_RIGHTS_RESERVED)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.053"/>
-  <testcase name="[3] entry=Entry{object=Unknown (UNKNOWN)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.054"/>
+  <testcase name="[1] entry=Entry{object=Public Domain (PUBLIC_DOMAIN)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.581"/>
+  <testcase name="[2] entry=Entry{object=All rights reserved (ALL_RIGHTS_RESERVED)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.076"/>
+  <testcase name="[3] entry=Entry{object=Unknown (UNKNOWN)}" classname="com.cedarsoft.serialization.serializers.stax.mate.LicenseSerializerTest" time="0.061"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
