@@ -17,7 +17,6 @@ dependencies {
   api(project(Projects.open_serialization_stax_mate))
   api(commons_io)
   api(project(Projects.open_commons_xml_commons))
-  api(Libs.xstream)
 
   //
   // Test Deps

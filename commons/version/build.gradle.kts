@@ -1,7 +1,6 @@
 @file:Suppress("UNUSED_VARIABLE")
 plugins {
   kotlinMultiPlatform
-  assertkGenerator
 }
 
 repositories {
@@ -50,14 +49,4 @@ kotlin {
       }
     }
   }
-}
-
-assertkGenerator {
-  packageName.set("com.cedarsoft.version")
-  fileName.set("VersionAssertions.kt")
-  filesUnderTest.set(
-    project.files(
-      "src/commonMain/kotlin/com/cedarsoft/version/Version.kt"
-    )
-  )
 }
