@@ -164,7 +164,7 @@ constructor(
    * @return a boolean.
    */
   fun sameOrSmallerThan(version: Version): Boolean {
-    return this.compareTo(version) <= 0
+    return this <= version
   }
 
   /**
@@ -175,7 +175,7 @@ constructor(
    * @return a boolean.
    */
   fun smallerThan(version: Version): Boolean {
-    return this.compareTo(version) < 0
+    return this < version
   }
 
   /**
@@ -186,7 +186,7 @@ constructor(
    * @return a boolean.
    */
   fun sameOrGreaterThan(version: Version): Boolean {
-    return this.compareTo(version) >= 0
+    return this >= version
   }
 
   /**
@@ -197,7 +197,7 @@ constructor(
    * @return a boolean.
    */
   fun greaterThan(version: Version): Boolean {
-    return this.compareTo(version) > 0
+    return this > version
   }
 
   /**
@@ -233,13 +233,13 @@ constructor(
       val major = version.substring(0, indexDot0).toInt()
       val minor = version.substring(indexDot0 + 1, indexDot1).toInt()
 
-      if (indexMinus == -1) {
+      return if (indexMinus == -1) {
         val build = version.substring(indexDot1 + 1).toInt()
-        return Version(major, minor, build)
+        Version(major, minor, build)
       } else {
         val build = version.substring(indexDot1 + 1, indexMinus).toInt()
         val suffix = version.substring(indexMinus + 1)
-        return Version(major, minor, build, suffix)
+        Version(major, minor, build, suffix)
       }
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-31T02:06:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.322">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-01T02:06:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.145">
   <properties/>
-  <testcase name="testNs2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" time="0.319"/>
-  <testcase name="testNs()" classname="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" time="0.002"/>
+  <testcase name="testNs2()" classname="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" time="0.14"/>
+  <testcase name="testNs()" classname="com.cedarsoft.serialization.stax.mate.StaxMateMultiNamespaceTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
