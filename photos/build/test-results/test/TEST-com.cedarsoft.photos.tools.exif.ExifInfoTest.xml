@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfoTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-09-04T02:05:58" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.402">
+<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfoTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-09-05T02:05:31" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.373">
   <properties/>
-  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.139"/>
-  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.05"/>
-  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.022"/>
-  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.072"/>
-  <testcase name="testImNu()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.025"/>
-  <testcase name="testLens()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.049"/>
-  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.012"/>
-  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.011"/>
+  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.246"/>
+  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.007"/>
+  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.007"/>
+  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.041"/>
+  <testcase name="testImNu()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.011"/>
+  <testcase name="testLens()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.004"/>
+  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.003"/>
+  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
