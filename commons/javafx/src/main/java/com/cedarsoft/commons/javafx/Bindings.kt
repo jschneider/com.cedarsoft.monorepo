@@ -2,7 +2,9 @@ package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.dispose.Disposable
 import javafx.beans.binding.Bindings
+import javafx.beans.binding.BooleanBinding
 import javafx.beans.binding.StringBinding
+import javafx.beans.property.ObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.beans.value.ObservableValue
 import javafx.collections.ListChangeListener
@@ -82,4 +84,28 @@ fun <T1, T2, R> ObservableValue<T1>.map(other: ObservableValue<T2>, conversion: 
   return Bindings.createObjectBinding({
     conversion(this.value, other.value)
   }, this, other)
+}
+
+
+/**
+ * Returns a boolean binding that contains "true" if the value of this property is equal to [expectedValue]
+ */
+fun <T, R> ObservableValue<T>.isEqualTo(expectedValue: T): BooleanBinding {
+  return Bindings.createBooleanBinding(Callable {
+    getValue() == expectedValue
+  }, this)
+}
+
+
+/**
+ * Sets the *next* value.
+ *
+ * Should only be used for tests
+ */
+inline fun <reified T : Enum<T>> ObjectProperty<T>.next(values: Array<T> = enumValues()) {
+  val currentOrdinal = value.ordinal
+  val nextIndex = (currentOrdinal + 1) % values.size
+
+  val nextValue = values[nextIndex]
+  this.value = nextValue
 }

@@ -307,6 +307,13 @@ object Components {
   }
 
   @JvmStatic
+  fun headline2(headline: ObservableValue<String>): Label {
+    val label = label(headline)
+    label.styleClass.add("headline-2")
+    return label
+  }
+
+  @JvmStatic
   fun checkBox(text: String, selected: BooleanPropertyWithWritableState): CheckBox {
     return checkBox(text, selected.property).also {
       it.disableProperty().bind(selected.writableProperty.not())
