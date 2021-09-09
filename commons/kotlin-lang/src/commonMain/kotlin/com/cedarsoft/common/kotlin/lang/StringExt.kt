@@ -272,6 +272,13 @@ fun String?.ifNull(ifNull: String): String {
 }
 
 /**
+ * Returns this char sequence if it is not null, not empty, and doesn't consist solely of whitespace characters, or the result of calling defaultValue function otherwise.
+ */
+fun String?.ifNullOrBlank(defaultValue: () -> String): String {
+  return if (isNullOrBlank()) defaultValue() else this
+}
+
+/**
  * Returns a checkbox char
  */
 fun Boolean.toCheckboxChar(): String {

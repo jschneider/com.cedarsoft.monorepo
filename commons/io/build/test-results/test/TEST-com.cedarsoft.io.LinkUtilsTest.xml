@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.LinkUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-08T02:05:54" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.104">
+<testsuite name="com.cedarsoft.io.LinkUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-09T02:06:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.089">
   <properties/>
-  <testcase name="testCreation(TemporaryFolder)" classname="com.cedarsoft.io.LinkUtilsTest" time="0.103"/>
-  <testcase name="testLinkTypes()" classname="com.cedarsoft.io.LinkUtilsTest" time="0.001"/>
+  <testcase name="testCreation(TemporaryFolder)" classname="com.cedarsoft.io.LinkUtilsTest" time="0.082"/>
+  <testcase name="testLinkTypes()" classname="com.cedarsoft.io.LinkUtilsTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
