@@ -6,19 +6,10 @@ import org.junit.jupiter.api.Test
 
 class StringExtKtTest {
   @Test
-  fun testNotNulLBlank() {
-    val nullString: String? = null
-    nullString.notNullOrBlank { fail("must not be called") }
-
-    var called = false
-
-    "asdf".notNullOrBlank {
-      assertThat(called).isFalse()
-      assertThat(it).isEqualTo("asdf")
-      called = true
-    }
-
-    assertThat(called).isTrue()
+  fun testTakeIfNotBlank() {
+    assertThat("asdf".nullIfBlank()).isEqualTo("asdf")
+    assertThat((null as String?).nullIfBlank()).isNull()
+    assertThat(("  ").nullIfBlank()).isNull()
   }
 
   @Test

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.binding.JavaBindingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-11T02:05:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.585">
+<testsuite name="com.cedarsoft.swing.binding.JavaBindingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-12T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.318">
   <properties/>
-  <testcase name="testTextBinding()" classname="com.cedarsoft.swing.binding.JavaBindingTest" time="1.201"/>
-  <testcase name="testCombo()" classname="com.cedarsoft.swing.binding.JavaBindingTest" time="0.381"/>
+  <testcase name="testTextBinding()" classname="com.cedarsoft.swing.binding.JavaBindingTest" time="1.018"/>
+  <testcase name="testCombo()" classname="com.cedarsoft.swing.binding.JavaBindingTest" time="0.299"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-09-11T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.111">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-09-12T02:06:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.062">
   <properties/>
-  <testcase name="testProcssingInstructions()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.045"/>
-  <testcase name="testStaxMateJson()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.023"/>
+  <testcase name="testProcssingInstructions()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.02"/>
+  <testcase name="testStaxMateJson()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.015"/>
   <testcase name="testStaxMateRead()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.003"/>
-  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.039"/>
+  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.021"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

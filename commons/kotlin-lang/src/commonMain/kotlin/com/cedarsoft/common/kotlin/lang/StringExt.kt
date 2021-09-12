@@ -1,8 +1,6 @@
 package com.cedarsoft.common.kotlin.lang
 
 import com.cedarsoft.unit.other.Inclusive
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -276,32 +274,33 @@ fun String?.ifNull(ifNull: String): String {
 /**
  * Returns this char sequence if it is not null, not empty, and doesn't consist solely of whitespace characters, or the result of calling defaultValue function otherwise.
  */
-inline fun String?.ifNullOrBlank(defaultValue: () -> String): String {
+inline fun String?.ifBlank(defaultValue: () -> String): String {
   return if (isNullOrBlank()) defaultValue() else this
 }
 
 /**
- * Runs the action if the string is not null or blank
+ * Returns the given default value if this is null or blank
  */
-inline fun String?.notNullOrBlank(action: (String) -> Unit) {
-  contract {
-    callsInPlace(action, InvocationKind.AT_MOST_ONCE)
-  }
-
-  if (!this.isNullOrBlank()) {
-    action(this)
-  }
+fun String?.ifBlank(defaultValue: String): String {
+  return if (isNullOrBlank()) defaultValue else this
 }
 
 /**
  * Returns this string or null if this string is empty
  */
-fun String.nullIfEmpty(): String? {
-  if (this.isEmpty()) {
-    return null
+fun String?.nullIfEmpty(): String? {
+  return this.takeIf {
+    it != null && it.isNotEmpty()
   }
+}
 
-  return this
+/**
+ * Returns this string or null if this string is blank
+ */
+fun String?.nullIfBlank(): String? {
+  return this.takeIf {
+    it != null && it.isNotBlank()
+  }
 }
 
 /**
