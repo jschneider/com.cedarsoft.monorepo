@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.test.CustomerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-09-12T02:06:47" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.295">
+<testsuite name="com.cedarsoft.commons.test.CustomerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-09-13T02:06:22" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.339">
   <properties/>
-  <testcase name="testList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.142"/>
-  <testcase name="testListeners()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.004"/>
+  <testcase name="testList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.202"/>
+  <testcase name="testListeners()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.006"/>
   <testcase name="testSimpleBinding()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.001"/>
   <testcase name="testLazyObsList()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.001"/>
-  <testcase name="testBasics()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.134"/>
-  <testcase name="testAddressValid()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.009"/>
+  <testcase name="testBasics()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.112"/>
+  <testcase name="testAddressValid()" classname="com.cedarsoft.commons.test.CustomerTest" time="0.003"/>
   <system-out><![CDATA[add
 Change... { [com.cedarsoft.commons.test.Customer$Address@308be1a3] added at 0 }
 next <[com.cedarsoft.commons.test.Customer$Address@308be1a3]> and removed <[]>

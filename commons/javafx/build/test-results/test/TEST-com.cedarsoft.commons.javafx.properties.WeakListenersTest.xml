@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.properties.WeakListenersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-12T02:06:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.724">
+<testsuite name="com.cedarsoft.commons.javafx.properties.WeakListenersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-13T02:06:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.829">
   <properties/>
-  <testcase name="testConsume$javafx()" classname="com.cedarsoft.commons.javafx.properties.WeakListenersTest" time="0.724"/>
+  <testcase name="testConsume$javafx()" classname="com.cedarsoft.commons.javafx.properties.WeakListenersTest" time="0.829"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

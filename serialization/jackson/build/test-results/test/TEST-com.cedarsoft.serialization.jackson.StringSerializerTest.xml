@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.StringSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-09-12T02:06:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.678">
+<testsuite name="com.cedarsoft.serialization.jackson.StringSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-09-13T02:05:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.669">
   <properties/>
-  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.242"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.397"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.002"/>
+  <testcase name="[1] entry=Entry{object=asdf}" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.269"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.358"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.StringSerializerTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
