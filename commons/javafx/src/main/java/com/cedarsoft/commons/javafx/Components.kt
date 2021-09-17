@@ -1066,6 +1066,16 @@ object Components {
       it.valueProperty().bindBidirectional(property)
     }
   }
+
+
+  /**
+   * Wraps the node in a scroll pane
+   */
+  @JvmStatic
+  @JavaFriendly
+  fun inScrollPane(content: Node): ScrollPane {
+    return content.inScrollPane()
+  }
 }
 
 /**
