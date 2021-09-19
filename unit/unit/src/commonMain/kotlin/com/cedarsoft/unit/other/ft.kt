@@ -61,7 +61,7 @@ annotation class ft {
      * The ratio used to convert mm to feet
      *
      *  * mm / MM_FEET_RATIO == ft
-     *  *  1 ft = MM_FEET_RATIO * mm
+     *  *  1 ft = MM_FEET_RATIO * 1 mm
      *
      */
     const val MM_FEET_RATIO: Double = 304.8

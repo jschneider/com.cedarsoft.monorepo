@@ -6,6 +6,7 @@ import javafx.beans.binding.BooleanBinding
 import javafx.beans.binding.StringBinding
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.StringProperty
+import javafx.beans.value.ObservableBooleanValue
 import javafx.beans.value.ObservableValue
 import javafx.collections.ListChangeListener
 import javafx.collections.ObservableList
@@ -77,6 +78,12 @@ fun <T, R> ObservableValue<T>.map(conversion: (T) -> R): ObservableValue<R> {
   }, this)
 }
 
+fun <T> ObservableValue<T>.mapToBool(conversion: (T) -> Boolean): ObservableBooleanValue {
+  return Bindings.createBooleanBinding({
+    conversion(this.value)
+  }, this)
+}
+
 /**
  * Creates a binding combining two observable values
  */
@@ -84,6 +91,18 @@ fun <T1, T2, R> ObservableValue<T1>.map(other: ObservableValue<T2>, conversion: 
   return Bindings.createObjectBinding({
     conversion(this.value, other.value)
   }, this, other)
+}
+
+fun <T1, T2, T3, R> ObservableValue<T1>.map(other1: ObservableValue<T2>, other2: ObservableValue<T3>, conversion: (T1, T2, T3) -> R): ObservableValue<R> {
+  return Bindings.createObjectBinding({
+    conversion(this.value, other1.value, other2.value)
+  }, this, other1, other2)
+}
+
+fun <T1, T2, T3, T4, R> ObservableValue<T1>.map(other1: ObservableValue<T2>, other2: ObservableValue<T3>, other3: ObservableValue<T4>, conversion: (T1, T2, T3, T4) -> R): ObservableValue<R> {
+  return Bindings.createObjectBinding({
+    conversion(this.value, other1.value, other2.value, other3.value)
+  }, this, other1, other2, other3)
 }
 
 
