@@ -39,6 +39,11 @@ public class DelayedTextFieldBinding<T> {
   public DelayedTextFieldBinding(@Nonnull TextField textField, @Nonnull Property<T> property, @Nonnull StringConverter<T> converter) {
     this.textField = textField;
     this.property = property;
+
+    if (property.isBound()) {
+      throw new IllegalStateException("property must not be bound");
+    }
+
     this.converter = converter;
 
     //Set initial value
