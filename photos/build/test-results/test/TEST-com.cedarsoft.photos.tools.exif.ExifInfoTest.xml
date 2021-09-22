@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfoTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-09-21T02:06:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.396">
+<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfoTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-09-22T02:05:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.397">
   <properties/>
-  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.168"/>
-  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.025"/>
-  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.026"/>
-  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.115"/>
-  <testcase name="testImNu()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.003"/>
+  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.19"/>
+  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.026"/>
+  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.028"/>
+  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.101"/>
+  <testcase name="testImNu()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.007"/>
   <testcase name="testLens()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.003"/>
-  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.021"/>
-  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.018"/>
+  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.011"/>
+  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfoTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

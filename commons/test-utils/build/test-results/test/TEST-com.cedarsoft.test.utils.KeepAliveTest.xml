@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.KeepAliveTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-09-21T02:06:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.0">
+<testsuite name="com.cedarsoft.test.utils.KeepAliveTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-09-22T02:06:14" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="testTestIt()" classname="com.cedarsoft.test.utils.KeepAliveTest" time="0.0">
+  <testcase name="testTestIt()" classname="com.cedarsoft.test.utils.KeepAliveTest" time="0.001">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

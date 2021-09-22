@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.SystemOutExtensionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-09-21T02:06:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.561">
+<testsuite name="com.cedarsoft.test.utils.SystemOutExtensionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-09-22T02:06:13" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.511">
   <properties/>
-  <testcase name="testErr(SystemOutExtension)" classname="com.cedarsoft.test.utils.SystemOutExtensionTest" time="0.547"/>
-  <testcase name="testOut2(SystemOutExtension)" classname="com.cedarsoft.test.utils.SystemOutExtensionTest" time="0.001"/>
+  <testcase name="testErr(SystemOutExtension)" classname="com.cedarsoft.test.utils.SystemOutExtensionTest" time="0.477"/>
+  <testcase name="testOut2(SystemOutExtension)" classname="com.cedarsoft.test.utils.SystemOutExtensionTest" time="0.008"/>
   <testcase name="testIt(SystemOutExtension)" classname="com.cedarsoft.test.utils.SystemOutExtensionTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
