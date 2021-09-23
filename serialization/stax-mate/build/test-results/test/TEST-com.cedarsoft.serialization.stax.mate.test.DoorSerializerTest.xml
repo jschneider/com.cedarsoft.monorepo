@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.DoorSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-22T02:06:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.015">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.DoorSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-23T02:06:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.038">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Door@5b0d401}" classname="com.cedarsoft.serialization.stax.mate.test.DoorSerializerTest" time="0.015"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Door@5b0d401}" classname="com.cedarsoft.serialization.stax.mate.test.DoorSerializerTest" time="0.038"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
