@@ -14,11 +14,6 @@ import org.apache.commons.lang3.StringUtils
 import java.util.concurrent.Callable
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
- */
-
-
-/**
  * Returns a string binding with a max length for a string property
  */
 fun StringProperty.maxLength(maxLength: Int): StringBinding {

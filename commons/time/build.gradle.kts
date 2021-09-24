@@ -11,7 +11,8 @@ dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_annotations))
   compileOnlyApi(project(Projects.open_annotations))
   api(project(Projects.open_unit_unit))
-  api(Libs.commons_lang3)
+  implementation(Libs.commons_lang3)
+  implementation(project(Projects.open_commons_kotlin_lang))
 
   testImplementation(project(Projects.dependencies_sets_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))

@@ -24,7 +24,8 @@ dependencies {
   api(project(Projects.open_commons_disposable))
   api(project(Projects.open_unit_unit))
 
-  api(Libs.guava)
+  implementation(Libs.guava)
+  implementation(Libs.commons_lang3)
 
   api(project(Projects.open_commons_time))
   api(project(Projects.open_unit_unit))
