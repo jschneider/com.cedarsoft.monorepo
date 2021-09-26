@@ -152,7 +152,7 @@ object Toast {
   }
 
   private fun show(type: ToastType, message: String, title: String? = null, options: ToastOptions? = null) {
-    println("SHowing Toast!!!!!!!")
+    println("Showing Toast!!!!!!!")
 
     if (options != null) {
       toastr[type.type](message, title, options.toJs())

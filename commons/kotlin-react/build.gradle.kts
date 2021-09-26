@@ -40,14 +40,14 @@ dependencies {
   //implementation("org.jetbrains.kotlin-wrappers:kotlin-css")
   //implementation("org.jetbrains.kotlin-wrappers:kotlin-extensions")
 
-  implementation(npm("react", "17.0.2"))
-  //implementation(npm("react-dom", "17.0.2"))
-  //implementation(npm("react-is", "17.0.2"))
+  implementation(npm("react", "_"))
+  //implementation(npm("react-dom", "_"))
+  //implementation(npm("react-is", "_"))
 
-  //implementation(npm("styled-components", "~5.3.0"))
+  //implementation(npm("styled-components", "_"))
 
-  implementation(npm("toastr", "^2.1.4"))
-  //implementation(npm("formik", "^2.2.9"))
+  implementation(npm("toastr", "_"))
+  //implementation(npm("formik", "_"))
 }
 
 /**
