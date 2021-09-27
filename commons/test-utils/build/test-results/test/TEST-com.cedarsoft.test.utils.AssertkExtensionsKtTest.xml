@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AssertkExtensionsKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-26T02:06:10" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.299">
+<testsuite name="com.cedarsoft.test.utils.AssertkExtensionsKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-27T02:06:21" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.689">
   <properties/>
-  <testcase name="testNaN()" classname="com.cedarsoft.test.utils.AssertkExtensionsKtTest" time="0.098"/>
-  <testcase name="testAssertFirst()" classname="com.cedarsoft.test.utils.AssertkExtensionsKtTest" time="0.198"/>
+  <testcase name="testNaN()" classname="com.cedarsoft.test.utils.AssertkExtensionsKtTest" time="0.329"/>
+  <testcase name="testAssertFirst()" classname="com.cedarsoft.test.utils.AssertkExtensionsKtTest" time="0.342"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
