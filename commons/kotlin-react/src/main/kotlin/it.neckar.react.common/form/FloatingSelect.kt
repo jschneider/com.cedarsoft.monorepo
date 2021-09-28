@@ -46,8 +46,9 @@ fun <T : HasUuid> RBuilder.floatingSelect(
 ) {
   this.floatingSelect(
     valueAndSetter = valueAndSetter,
-    idProvider = useCallback { t ->
-      (t as HasUuid).uuid.toString()
+    idProvider = {
+      //Do *NOT* use callback, since this method may be called from another component within a condition
+      (it as HasUuid).uuid.toString()
     },
     formatter = formatter,
     availableOptions = availableOptions,
@@ -69,7 +70,10 @@ fun <T> RBuilder.floatingSelectNullable(
 ) {
   floatingSelectNullable(
     selectedValue = valueAndSetter.value,
-    onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
+    onChange = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      valueAndSetter.setter.invoke(it)
+    },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
     idProvider = idProvider,
@@ -90,7 +94,8 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
 ) {
   floatingSelectNullable(
     valueAndSetter = valueAndSetter,
-    idProvider = useCallback {
+    idProvider = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
       (it as HasUuid).uuid.toString()
     },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
@@ -112,10 +117,16 @@ fun <E : Enum<E>> RBuilder.floatingSelectEnum(
 ) {
   floatingSelect(
     selectedValue = valueAndSetter.value,
-    onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
+    onChange = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      valueAndSetter.setter.invoke(it)
+    },
     availableOptions = availableOptions,
     formatter = formatter,
-    idProvider = useCallback { it.name },
+    idProvider = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      it.name
+    },
     fieldName = fieldName,
     title = title,
     config = config
