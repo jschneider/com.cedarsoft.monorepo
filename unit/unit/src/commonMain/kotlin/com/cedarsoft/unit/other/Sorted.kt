@@ -23,6 +23,10 @@ package com.cedarsoft.unit.other
 )
 @MustBeDocumented
 annotation class Sorted(
-  val value: Order = Order.ASC
+  val value: Order = Order.ASC,
+  /**
+   * Describes the sorting criteria
+   */
+  val by: String = ""
 )
 
