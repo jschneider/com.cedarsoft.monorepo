@@ -8,6 +8,22 @@ import kotlin.math.PI
 
 class MathExtensionsKtTest {
   @Test
+  fun testMaxNullable() {
+    assertThat(1.0.coerceAtLeastOrNull(12.0)).isEqualTo(12.0)
+    assertThat(1.0.coerceAtLeastOrNull(null)).isEqualTo(1.0)
+    assertThat((null as Double?).coerceAtLeastOrNull(12.0)).isEqualTo(12.0)
+    assertThat((null as Double?).coerceAtLeastOrNull(1.0)).isEqualTo(1.0)
+    assertThat((null as Double?).coerceAtLeastOrNull(null)).isEqualTo(null)
+  }
+
+  @Test
+  fun ceilTo10() {
+    assertThat(12.0.roundDecimalPlaces(-1)).isEqualTo(10.0)
+    assertThat(20.0.ceilDecimalPlaces(-1)).isEqualTo(20.0)
+    assertThat(99.0.roundDecimalPlaces(-1)).isEqualTo(100.0)
+  }
+
+  @Test
   fun testPercent() {
     assertThat(4.0.percent).isEqualTo(0.04)
     assertThat(4.01.percent).isEqualTo(0.0401)

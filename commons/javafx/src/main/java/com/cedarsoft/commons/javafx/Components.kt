@@ -568,6 +568,16 @@ object Components {
   }
 
   @JvmStatic
+  fun button(text: String?, disabled: ObservableValue<Boolean>, onAction: (ActionEvent) -> Unit): Button {
+    val button = Button(text)
+    button.onAction = EventHandler {
+      onAction(it)
+    }
+    button.disableProperty().bind(disabled)
+    return button
+  }
+
+  @JvmStatic
   fun link(text: String, onAction: (ActionEvent) -> Unit): Hyperlink {
     val link = Hyperlink(text)
     link.onAction = EventHandler {

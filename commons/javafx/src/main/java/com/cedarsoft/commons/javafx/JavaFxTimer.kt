@@ -58,10 +58,11 @@ object JavaFxTimer {
   }
 
   @JvmStatic
-  fun repeat(delay: Duration, run: Runnable) {
+  fun repeat(delay: Duration, run: Runnable): Timeline {
     val timeline = Timeline(KeyFrame(delay, { run.run() }))
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
+    return timeline
   }
 
   /**

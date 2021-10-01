@@ -393,6 +393,15 @@ infix fun Double.ifNaN(fallback: Double): Double {
 }
 
 /**
+ * Executes the action if this is a finite value
+ */
+inline fun Double.letIfFinite(action: (Double) -> Unit) {
+  if (this.isFinite()) {
+    action(this)
+  }
+}
+
+/**
  * Returns the fallback value if this [Double.ifInfinite] returns true
  */
 infix fun Double.ifInfinite(fallback: Double): Double {
@@ -449,4 +458,19 @@ inline fun Double.isPositive(): Boolean {
  */
 inline fun Double.isPositiveOrZero(): Boolean {
   return this >= 0.0
+}
+
+/**
+ * Returns the max value or null if all values a null
+ */
+fun Double?.coerceAtLeastOrNull(other: Double?): Double? {
+  if (this == null) {
+    return other
+  }
+
+  if (other == null) {
+    return this
+  }
+
+  return this.coerceAtLeast(other)
 }
