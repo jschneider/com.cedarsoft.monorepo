@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-01T02:05:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.358">
+<testsuite name="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-02T02:05:42" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.992">
   <properties/>
-  <testcase name="testFailing()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.609"/>
-  <testcase name="testBasic()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.728"/>
+  <testcase name="testFailing()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.4"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.59"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

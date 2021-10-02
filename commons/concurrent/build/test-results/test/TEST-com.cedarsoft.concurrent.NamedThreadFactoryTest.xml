@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.concurrent.NamedThreadFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-01T02:05:51" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.05">
+<testsuite name="com.cedarsoft.concurrent.NamedThreadFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-02T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.064">
   <properties/>
-  <testcase name="simple()" classname="com.cedarsoft.concurrent.NamedThreadFactoryTest" time="0.05"/>
+  <testcase name="simple()" classname="com.cedarsoft.concurrent.NamedThreadFactoryTest" time="0.064"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
