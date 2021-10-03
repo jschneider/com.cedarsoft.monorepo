@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-02T02:06:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.029">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-03T02:06:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.057">
   <properties/>
-  <testcase name="[1] entry=Entry{object=java.awt.Color[r=100,g=42,b=130]}" classname="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerTest" time="0.029"/>
+  <testcase name="[1] entry=Entry{object=java.awt.Color[r=100,g=42,b=130]}" classname="com.cedarsoft.serialization.serializers.stax.mate.ColorSerializerTest" time="0.057"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
