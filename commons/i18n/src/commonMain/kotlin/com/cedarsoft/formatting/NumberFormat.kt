@@ -60,6 +60,8 @@ val percentageFormat2digits: CachedFormatter = PercentageFormatter(decimalFormat
 
 val percentageFormat0digits: CachedFormatter = PercentageFormatter(intFormat).cached()
 
+val percentageFormat1digits: CachedFormatter = PercentageFormatter(decimalFormat1digit).cached()
+
 /**
  * Returns the percentage format for the given number of decimals
  */

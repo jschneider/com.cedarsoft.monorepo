@@ -3,10 +3,7 @@ package com.cedarsoft.commons.javafx
 import com.cedarsoft.charting.annotations.JavaFriendly
 import com.cedarsoft.commons.javafx.combo.ItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.combo.ListViewListCellCallbackForItemThatMayBeDisabled
-import com.cedarsoft.commons.javafx.properties.BooleanPropertyWithWritableState
-import com.cedarsoft.commons.javafx.properties.DoublePropertyWithWritableState
-import com.cedarsoft.commons.javafx.properties.IntegerPropertyWithWritableState
-import com.cedarsoft.commons.javafx.properties.PropertyWithWritableState
+import com.cedarsoft.commons.javafx.properties.*
 import com.cedarsoft.unit.other.px
 import com.google.common.collect.ImmutableList
 import com.sun.javafx.binding.BidirectionalBinding
@@ -985,6 +982,11 @@ object Components {
   @JvmStatic
   fun checkboxTriState(label: String, callback: TriStateCheckBox.Callback, allSelectedProperty: ReadOnlyBooleanProperty, noneSelectedProperty: ReadOnlyBooleanProperty): CheckBox {
     return checkboxTriState(label, callback, TriStateCheckBox.createStateProperty(allSelectedProperty, noneSelectedProperty))
+  }
+
+
+  fun slider(valueProperty: Property<Number>, range: IntRange): Slider {
+    return slider(valueProperty, range.first.toDouble(), range.last.toDouble(), range.step.toDouble())
   }
 
   @JvmStatic
