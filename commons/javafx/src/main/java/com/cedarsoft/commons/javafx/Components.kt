@@ -441,6 +441,14 @@ object Components {
     return arrayOf(radioButtonTrue, radioButtonFalse)
   }
 
+  /**
+   * Uses all enum values
+   */
+  @JvmStatic
+  inline fun <reified E : Enum<E>> comboBox(enumProperty: Property<E>): ComboBox<E> {
+    return comboBox(enumProperty, enumValues())
+  }
+
   @JvmStatic
   fun <E : Enum<E>> comboBox(enumProperty: Property<E>, values: Array<E>): ComboBox<E> {
     val comboBox = ComboBox(FXCollections.observableArrayList(*values))
@@ -984,6 +992,13 @@ object Components {
     return checkboxTriState(label, callback, TriStateCheckBox.createStateProperty(allSelectedProperty, noneSelectedProperty))
   }
 
+  fun sliderWithTextField(valueProperty: DoubleProperty, minValue: Double, maxValue: Double, step: Double): HBox {
+    return hbox(
+      5,
+      slider(valueProperty, minValue, maxValue, step),
+      textFieldDoubleDelayed(valueProperty)
+    )
+  }
 
   fun slider(valueProperty: Property<Number>, range: IntRange): Slider {
     return slider(valueProperty, range.first.toDouble(), range.last.toDouble(), range.step.toDouble())
@@ -1098,4 +1113,12 @@ fun Node.inScrollPane(): ScrollPane {
     it.isFitToHeight = true
     it.isFitToWidth = true
   }
+}
+
+/**
+ * Binds the max property
+ */
+fun Slider.withMax(max: ObservableValue<Number>): Slider {
+  this.maxProperty().bind(max)
+  return this
 }
