@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-07T02:06:22" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.03">
+<testsuite name="com.cedarsoft.test.io2.ExtraSerializerVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-08T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.009">
   <properties/>
-  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@57d7c511" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.01"/>
+  <testcase name="[1] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@57d7c511" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.003"/>
   <testcase name="[2] entry=com.cedarsoft.serialization.test.utils.AbstractXmlVersionTest2$XmlVersionEntry@811d8d6" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.003"/>
   <testcase name="testAsciiArt()" classname="com.cedarsoft.test.io2.ExtraSerializerVersionTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
