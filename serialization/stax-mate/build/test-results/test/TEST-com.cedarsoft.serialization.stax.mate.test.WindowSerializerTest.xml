@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.WindowSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-10T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.049">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.WindowSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-12T02:06:19" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.058">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Window@43ca927f}" classname="com.cedarsoft.serialization.stax.mate.test.WindowSerializerTest" time="0.049"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Window@43ca927f}" classname="com.cedarsoft.serialization.stax.mate.test.WindowSerializerTest" time="0.058"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
