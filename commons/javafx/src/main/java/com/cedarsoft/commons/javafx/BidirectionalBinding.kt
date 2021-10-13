@@ -5,7 +5,6 @@ import javafx.beans.property.BooleanProperty
 import javafx.beans.property.Property
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import javax.annotation.Nonnull
 
 /**
  * Helper methods for bidirectional bindings
@@ -24,10 +23,10 @@ object BidirectionalBinding {
    */
   @JvmStatic
   fun <A, B> bindBidirectional(
-    @Nonnull propertyA: ObservableValue<A>,
-    @Nonnull propertyB: ObservableValue<B>,
-    @Nonnull updateFromAToB: ChangeListener<A>,
-    @Nonnull updateFromBToA: ChangeListener<B>,
+    propertyA: ObservableValue<A>,
+    propertyB: ObservableValue<B>,
+    updateFromAToB: ChangeListener<A>,
+    updateFromBToA: ChangeListener<B>,
     vararg additionalDependencies: ObservableValue<out Any>
   ) {
     propertyA.addListener(FlaggedChangeListener(updateFromAToB))
@@ -49,8 +48,8 @@ object BidirectionalBinding {
    */
   @JvmStatic
   fun <E : Enum<E>> bindBidirectional(
-    @Nonnull propertyA: BooleanProperty,
-    @Nonnull propertyB: Property<E>,
+    propertyA: BooleanProperty,
+    propertyB: Property<E>,
     /**
      * The enum value that represents true
      */
@@ -63,11 +62,11 @@ object BidirectionalBinding {
   ) {
 
     bindBidirectional(propertyA, propertyB,
-                      ChangeListener { _, _, newValue ->
-                        propertyB.value = if (newValue) trueValue else falseValue
-                      }, { _, _, newValue ->
-                        propertyA.value = newValue == trueValue
-                      }, *additionalDependencies
+      ChangeListener { _, _, newValue ->
+        propertyB.value = if (newValue) trueValue else falseValue
+      }, { _, _, newValue ->
+        propertyA.value = newValue == trueValue
+      }, *additionalDependencies
     )
   }
 
@@ -76,10 +75,10 @@ object BidirectionalBinding {
    */
   @JvmStatic
   fun <A, B> bindBidirectional(
-    @Nonnull propertyA: PropertyWithWritableState<A>,
-    @Nonnull propertyB: PropertyWithWritableState<B>,
-    @Nonnull updateFromAToB: ChangeListener<A>,
-    @Nonnull updateFromBToA: ChangeListener<B>,
+    propertyA: PropertyWithWritableState<A>,
+    propertyB: PropertyWithWritableState<B>,
+    updateFromAToB: ChangeListener<A>,
+    updateFromBToA: ChangeListener<B>,
     vararg additionalDependencies: ObservableValue<out Any>
   ) {
     bindBidirectional(propertyA.property, propertyB.property, updateFromAToB, updateFromBToA, *additionalDependencies)
@@ -110,4 +109,25 @@ object BidirectionalBinding {
       }
     }
   }
+}
+
+
+/**
+ * Binds bidirectional using a factor.
+ *
+ * This double property is bound *to* [other]. The factor is used to convert from other to this.
+ *
+ * ATTENTION: The value from [other] is applied to this initially (using the factor)
+ */
+fun Property<Number>.bindBidirectionalWithFactor(other: Property<Number>, otherDividedBy: Double) {
+  BidirectionalBinding.bindBidirectional(
+    propertyA = other,
+    propertyB = this,
+    updateFromAToB = { _, _, newValue ->
+      this.value = newValue.toDouble() / otherDividedBy
+    },
+    updateFromBToA = { _, _, newValue ->
+      other.value = newValue.toDouble() * otherDividedBy
+    }
+  )
 }

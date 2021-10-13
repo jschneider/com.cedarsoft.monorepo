@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-12T02:06:16" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.459">
+<testsuite name="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-13T02:05:45" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.411">
   <properties/>
-  <testcase name="testTimeout$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.34"/>
-  <testcase name="testIt$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.117"/>
+  <testcase name="testTimeout$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.284"/>
+  <testcase name="testIt$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.125"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

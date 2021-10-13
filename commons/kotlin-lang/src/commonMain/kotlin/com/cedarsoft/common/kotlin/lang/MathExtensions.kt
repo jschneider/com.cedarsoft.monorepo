@@ -135,6 +135,8 @@ fun Float.toIntFloor(): Int = floor(this).toInt()
 /** Converts [this] into [Int] rounding to the floor */
 fun Double.toIntFloor(): Int = floor(this).toInt()
 
+fun Double.toIntRound(): Int = round(this).toInt()
+
 /** Convert this [Long] into an [Int] but throws an [IllegalArgumentException] in the case that operation would produce an overflow */
 fun Long.toIntSafe(): Int = if (this in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) this.toInt() else throw IllegalArgumentException("Long doesn't fit Integer")
 

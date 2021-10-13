@@ -3,6 +3,8 @@ package com.cedarsoft.commons.javafx
 import assertk.*
 import assertk.assertions.*
 import javafx.beans.property.SimpleBooleanProperty
+import javafx.beans.property.SimpleDoubleProperty
+import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleObjectProperty
 import org.junit.jupiter.api.Test
 
@@ -40,5 +42,27 @@ class BidirectionalBindingKotlinTest {
   internal enum class MyEnum {
     True,
     False
+  }
+
+  @Test
+  fun testBinding() {
+    val doubleProp = SimpleDoubleProperty(5.0)
+    val intProp = SimpleIntegerProperty(105)
+
+    doubleProp.bindBidirectionalWithFactor(intProp, 10.0)
+
+    //initial values
+    assertThat(doubleProp.value).isEqualTo(10.5)
+    assertThat(intProp.value).isEqualTo(105)
+
+    //set int
+    intProp.value = 700
+    assertThat(intProp.value).isEqualTo(700)
+    assertThat(doubleProp.value).isEqualTo(70.0)
+
+    //set double
+    doubleProp.value = 80.0
+    assertThat(intProp.value).isEqualTo(800)
+    assertThat(doubleProp.value).isEqualTo(80.0)
   }
 }
