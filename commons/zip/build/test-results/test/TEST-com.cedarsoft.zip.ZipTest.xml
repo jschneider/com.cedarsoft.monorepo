@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.zip.ZipTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-10-13T02:05:40" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.128">
+<testsuite name="com.cedarsoft.zip.ZipTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-10-14T02:05:56" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.222">
   <properties/>
-  <testcase name="testDirectoryCanonical(File)" classname="com.cedarsoft.zip.ZipTest" time="0.098"/>
-  <testcase name="testFile(File)" classname="com.cedarsoft.zip.ZipTest" time="0.003"/>
-  <testcase name="testDirectory(File)" classname="com.cedarsoft.zip.ZipTest" time="0.01"/>
-  <testcase name="testFileCanonical(File)" classname="com.cedarsoft.zip.ZipTest" time="0.01"/>
+  <testcase name="testDirectoryCanonical(File)" classname="com.cedarsoft.zip.ZipTest" time="0.147"/>
+  <testcase name="testFile(File)" classname="com.cedarsoft.zip.ZipTest" time="0.006"/>
+  <testcase name="testDirectory(File)" classname="com.cedarsoft.zip.ZipTest" time="0.002"/>
+  <testcase name="testFileCanonical(File)" classname="com.cedarsoft.zip.ZipTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
