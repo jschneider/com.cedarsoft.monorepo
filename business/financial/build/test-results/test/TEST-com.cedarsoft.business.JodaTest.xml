@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-10-16T02:05:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.125">
+<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-10-17T02:05:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.221">
   <properties/>
-  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.051"/>
-  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.007"/>
-  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.005"/>
+  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.088"/>
+  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.028"/>
+  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.017"/>
   <testcase name="testBasic()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
   <testcase name="testNames()" classname="com.cedarsoft.business.JodaTest" time="0.005"/>
-  <testcase name="testRound()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
+  <testcase name="testRound()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
   <testcase name="testPeriode()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
-  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.017"/>
-  <testcase name="testNoLeap()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.JodaTest" time="0.004"/>
+  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.035"/>
+  <testcase name="testNoLeap()" classname="com.cedarsoft.business.JodaTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
