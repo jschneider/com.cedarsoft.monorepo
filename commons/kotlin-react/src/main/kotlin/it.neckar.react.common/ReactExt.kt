@@ -238,8 +238,8 @@ inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.validIf(invalidCheck:
 /**
  * Adds the given class if the given check returns true
  */
-inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.addClassIf(className: String, check: () -> Boolean) {
-  if (check()) {
+inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.addClassIf(className: String, check: () -> Boolean?) {
+  if (check() == true) {
     attrs {
       addClass(className)
     }

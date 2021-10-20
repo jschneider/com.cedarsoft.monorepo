@@ -3,6 +3,8 @@ package it.neckar.react.common
 import kotlinx.html.BUTTON
 import kotlinx.html.ButtonType
 import kotlinx.html.id
+import kotlinx.html.js.onClickFunction
+import org.w3c.dom.events.Event
 import react.*
 import react.dom.*
 
@@ -64,7 +66,15 @@ val modal: FunctionComponent<ModalProps> = fc("modal") { props ->
       attrs["data-bs-backdrop"] = "static"
     }
 
-    div(classes = "modal-dialog modal-dialog-scrollable ${props.size?.cssClass ?: ""}") {
+    div(classes = "modal-dialog modal-dialog-scrollable") {
+      props.size?.cssClass?.let {
+        attrs {
+          addClass(it)
+        }
+      }
+
+      addClassIf("modal-dialog-centered") { props.modalCentered }
+
       div(classes = "modal-content") {
         div(classes = "modal-header") {
           props.title?.let { title ->
@@ -76,23 +86,25 @@ val modal: FunctionComponent<ModalProps> = fc("modal") { props ->
           button(classes = "btn-close") {
             attrs {
               type = ButtonType.button
+              onClickFunction = props.onCloseFunction
             }
 
             attrs["data-bs-dismiss"] = "modal"
           }
         }
 
-        div(classes = "modal-body") {
+        div(classes = "modal-body ${if (props.textCentered == true) "text-center" else ""}") {
           props.children()
         }
 
         div(classes = "modal-footer") {
           button(classes = "btn btn-primary") {
-            +"Schließen"
+            +(props.buttonText ?: "Schließen")
 
             attrs["data-bs-dismiss"] = "modal"
             attrs {
               type = ButtonType.button
+              onClickFunction = props.onCloseFunction
             }
           }
         }
@@ -107,6 +119,12 @@ external interface ModalProps : PropsWithChildren {
 
   var size: ModalSize?
   var staticBackdrop: Boolean?
+
+  var modalCentered: Boolean?
+  var textCentered: Boolean?
+
+  var buttonText: String?
+  var onCloseFunction: (Event) -> Unit
 }
 
 enum class ModalSize(val cssClass: String?) {

@@ -13,7 +13,7 @@ import react.dom.*
  */
 fun <T> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
-  idProvider: (Any?) -> String,
+  idProvider: (T?) -> String,
   formatter: (T) -> String,
   availableOptions: List<T>,
 
@@ -60,7 +60,7 @@ fun <T : HasUuid> RBuilder.floatingSelect(
 
 fun <T> RBuilder.floatingSelectNullable(
   valueAndSetter: StateInstance<T?>,
-  idProvider: (Any?) -> String,
+  idProvider: (T?) -> String,
   formatter: (T?) -> String,
   availableOptionsWithoutNull: List<T>,
 
@@ -145,6 +145,10 @@ fun <T> RBuilder.floatingSelect(
   title: String,
   config: ((RDOMBuilder<SELECT>) -> Unit)? = null,
 ): Unit = child(floatingSelect) {
+  require(availableOptions.isNotEmpty()) {
+    "availableOptions must not be empty"
+  }
+
   attrs {
     this.selectedValue = selectedValue
     this.onChange = onChange as OnChange<Any?>
@@ -199,7 +203,11 @@ val floatingSelect: FunctionComponent<FloatingSelectProps> = fc("floatingSelect"
   val selectedValue = props.selectedValue
 
   require(availableOptions.contains(selectedValue)) {
-    "selected value (${selectedValue.toString()}) must be in list of available options."
+    buildString {
+      append("selected value (${selectedValue.toString()}) must be in list of available options.\n")
+      append("Available options: \n")
+      append(availableOptions.joinToString("\n"))
+    }
   }
 
   div("form-floating") {

@@ -18,7 +18,7 @@ interface DateTimeFormat {
 /**
  * Formats a date in accordance to the ISO format 8601
  */
-val dataFormatIso8601: CachedDateTimeFormatter = DataFormatIso8601().cached()
+val dataFormatIso8601: CachedDateTimeFormatter = DateFormatIso8601().cached()
 
 /**
  * Formats a date as a UTC date (locale independent)
@@ -73,7 +73,7 @@ val dateTimeFormatShortWithMillis: CachedDateTimeFormatter = DateTimeFormatShort
 /**
  * Formats a date in accordance to the ISO format 8601
  */
-expect class DataFormatIso8601() : DateTimeFormat
+expect class DateFormatIso8601() : DateTimeFormat
 
 /**
  * Formats a date as a UTC date (locale independent)

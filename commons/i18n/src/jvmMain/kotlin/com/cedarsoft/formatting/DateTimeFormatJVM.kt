@@ -14,7 +14,7 @@ import java.time.format.FormatStyle
  */
 private val utcDateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSS")
 
-actual class DataFormatIso8601 : DateTimeFormat {
+actual class DateFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     return DateUtils.toZonedDateTime(timestamp.toLong(), i18nConfiguration.timeZone.toZoneId()).format(DateTimeFormatter.ISO_DATE_TIME)
   }

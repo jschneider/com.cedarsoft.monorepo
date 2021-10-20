@@ -8,7 +8,7 @@ import kotlin.js.Date
 /**
  * The formatted date is always UTC.
  */
-actual class DataFormatIso8601 : DateTimeFormat {
+actual class DateFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     return Date(timestamp).toISOString()
