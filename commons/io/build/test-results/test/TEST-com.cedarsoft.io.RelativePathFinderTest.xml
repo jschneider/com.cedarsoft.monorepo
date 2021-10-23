@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-10-22T02:06:02" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.057">
+<testsuite name="com.cedarsoft.io.RelativePathFinderTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-10-23T02:05:52" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.037">
   <properties/>
-  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.013"/>
-  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
+  <testcase name="testBug()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.003"/>
+  <testcase name="testFile()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.009"/>
   <testcase name="testGetRelativePath2()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
-  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.01"/>
+  <testcase name="testGetRelativePath3()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.002"/>
   <testcase name="testDirectParent()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
-  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.012"/>
+  <testcase name="testGetRelativePath()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
   <testcase name="testGetRelativePathWin()" classname="com.cedarsoft.io.RelativePathFinderTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

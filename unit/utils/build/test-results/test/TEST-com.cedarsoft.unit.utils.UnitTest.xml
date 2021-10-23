@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-10-22T02:06:15" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.005">
+<testsuite name="com.cedarsoft.unit.utils.UnitTest" tests="8" skipped="8" failures="0" errors="0" timestamp="2021-10-23T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="testReflection()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testReflection()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testNames()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
@@ -16,13 +16,13 @@
   <testcase name="testIt()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testConvert()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testConvert()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
   <testcase name="testReflCm()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testSymbol()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.001">
+  <testcase name="testSymbol()" classname="com.cedarsoft.unit.utils.UnitTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
