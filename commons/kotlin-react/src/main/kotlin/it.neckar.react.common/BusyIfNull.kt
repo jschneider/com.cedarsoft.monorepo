@@ -5,7 +5,7 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 /**
- * Shows a busy indicator if the property
+ * Shows a busy indicator if the property is null
  */
 fun <T> RBuilder.busyIfNull(value: T?, handler: RElementBuilder<*>.(T) -> Unit) {
   contract {
