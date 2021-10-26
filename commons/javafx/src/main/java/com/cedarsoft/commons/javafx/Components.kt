@@ -1103,6 +1103,13 @@ object Components {
   fun inScrollPane(content: Node): ScrollPane {
     return content.inScrollPane()
   }
+
+  /**
+   * Adds the given elements within a stacked pane
+   */
+  fun stacked(vararg children: Node): StackPane {
+    return StackPane(*children)
+  }
 }
 
 /**
