@@ -141,14 +141,18 @@ fun RBuilder.inputField(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<String>,
+
   fieldName: String,
   title: String,
+
   /**
    * The (optional) placeholder - if no placeholder is provided, the title is used
    */
   placeHolder: String? = null,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-) {
+
+  ) {
   inputField(
     value = valueAndSetter.value,
     onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
@@ -295,7 +299,8 @@ fun RBuilder.inputField(
    * Configuration for the input field
    */
   config: (RDOMBuilder<INPUT>.() -> Unit)?,
-): Unit = child(inputField) {
+
+  ): Unit = child(inputField) {
 
   ensureSameCallback(onChange, fieldName)
 
@@ -373,14 +378,18 @@ fun RBuilder.inputArea(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<String>,
+
   fieldName: String,
   title: String,
+
   /**
    * The (optional) placeholder - if no placeholder is provided, the title is used
    */
   placeHolder: String? = null,
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
-) {
+
+  ) {
   child(inputArea) {
     attrs {
       this.value = valueAndSetter.value
@@ -409,6 +418,10 @@ val inputArea: FunctionComponent<TextInputProps> = fc("inputArea") { props ->
       onChangeFunction = useCallback(onChange) { event ->
         val element = event.target as HTMLTextAreaElement
         onChange(element.value)
+      }
+
+      onKeyDown = useCallback { keyboardEvent ->
+        keyboardEvent.stopPropagation()
       }
     }
 

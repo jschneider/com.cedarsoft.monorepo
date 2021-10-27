@@ -18,12 +18,15 @@ fun RBuilder.floatingInputField(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<String>,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-): Unit = child(floatingInputField) {
+
+  ): Unit = child(floatingInputField) {
   attrs {
     this.value = valueAndSetter.value
     this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) }
@@ -41,12 +44,15 @@ fun RBuilder.floatingReadOnlyInputField(
    * Must be created with a useState hook
    */
   value: String,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-): Unit = child(floatingInputField) {
+
+  ): Unit = child(floatingInputField) {
   attrs {
     this.value = value
     this.onChange = useCallback { throw UnsupportedOperationException("can not change value for read only input field") }
@@ -69,12 +75,15 @@ fun RBuilder.floatingIntInputField(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<Int>,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-): Unit = child(floatingInputField) {
+
+  ): Unit = child(floatingInputField) {
   attrs {
     this.value = valueAndSetter.value.toString()
     this.onChange = valueAndSetter.asOnChangeForInt()
@@ -97,13 +106,17 @@ fun RBuilder.floatingIntInputField(
    * Must be created with a useState hook
    */
   value: Int,
+
   onChange: (Int) -> Unit,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-): Unit = child(floatingInputField) {
+
+  ): Unit = child(floatingInputField) {
   attrs {
     this.value = value.toString()
     this.onChange = useCallback(onChange) { s ->
@@ -130,13 +143,17 @@ fun RBuilder.floatingDoubleInputField(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<Double>,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   numberOfDecimals: Int = 2,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-) {
+
+  ) {
   floatingDoubleInputField(
     value = valueAndSetter.value,
     onChange = valueAndSetter.asOnChangeForDouble(),//useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) },
@@ -151,14 +168,19 @@ fun RBuilder.floatingDoubleInputField(
 
 fun RBuilder.floatingDoubleInputField(
   value: Double,
+
   onChange: (String) -> Unit,
+
   fieldName: String,
   title: String,
   placeHolder: String?,
+
   numberOfDecimals: Int = 2,
+
   divConfig: (RDOMBuilder<DIV>.() -> Unit)?,
-  config: (RDOMBuilder<INPUT>.() -> Unit)?
-): Unit = child(floatingInputField) {
+  config: (RDOMBuilder<INPUT>.() -> Unit)?,
+
+  ): Unit = child(floatingInputField) {
 
   attrs {
     this.value = value.format(numberOfDecimals, 0, 1, false, I18nConfiguration.US) //always format with US, since the input field expects "." as separator

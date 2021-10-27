@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AssertUtilsTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-10-26T02:05:55" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.323">
+<testsuite name="com.cedarsoft.test.utils.AssertUtilsTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-10-27T02:06:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.97">
   <properties/>
-  <testcase name="testXml2WhiteSpaces()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.473"/>
-  <testcase name="testXml()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.051"/>
-  <testcase name="testXml2()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.038"/>
-  <testcase name="testJsonEquals()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="1.443"/>
-  <testcase name="testJsonFormat()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.045"/>
-  <testcase name="testJsonNotEquals()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.003"/>
-  <testcase name="testGuessPath()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.021"/>
-  <testcase name="testFileByHash(TemporaryFolder)" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.03"/>
-  <testcase name="testJsonNotFormatable()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.003"/>
-  <testcase name="testAssertWithResource()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.023"/>
-  <testcase name="testXml2WComments()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.043"/>
-  <testcase name="testFormat()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.118"/>
-  <testcase name="testGuessPath2()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.021"/>
+  <testcase name="testXml2WhiteSpaces()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.63"/>
+  <testcase name="testXml()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.087"/>
+  <testcase name="testXml2()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.059"/>
+  <testcase name="testJsonEquals()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.987"/>
+  <testcase name="testJsonFormat()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.011"/>
+  <testcase name="testJsonNotEquals()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.005"/>
+  <testcase name="testGuessPath()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.005"/>
+  <testcase name="testFileByHash(TemporaryFolder)" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.011"/>
+  <testcase name="testJsonNotFormatable()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.004"/>
+  <testcase name="testAssertWithResource()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.003"/>
+  <testcase name="testXml2WComments()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.035"/>
+  <testcase name="testFormat()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.103"/>
+  <testcase name="testGuessPath2()" classname="com.cedarsoft.test.utils.AssertUtilsTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[[Fatal Error] :1:1: Content is not allowed in prolog.
 [Fatal Error] :1:1: Content is not allowed in prolog.

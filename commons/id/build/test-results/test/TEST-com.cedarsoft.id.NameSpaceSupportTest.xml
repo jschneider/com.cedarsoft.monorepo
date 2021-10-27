@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.id.NameSpaceSupportTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-26T02:05:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.21">
+<testsuite name="com.cedarsoft.id.NameSpaceSupportTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-27T02:05:47" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.155">
   <properties/>
-  <testcase name="testCamel()" classname="com.cedarsoft.id.NameSpaceSupportTest" time="0.165"/>
-  <testcase name="testToUri()" classname="com.cedarsoft.id.NameSpaceSupportTest" time="0.007"/>
+  <testcase name="testCamel()" classname="com.cedarsoft.id.NameSpaceSupportTest" time="0.132"/>
+  <testcase name="testToUri()" classname="com.cedarsoft.id.NameSpaceSupportTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

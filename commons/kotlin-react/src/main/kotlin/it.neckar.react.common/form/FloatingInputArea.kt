@@ -15,10 +15,14 @@ fun RBuilder.floatingInputArea(
    * Must be created with a useState hook
    */
   valueAndSetter: StateInstance<String>,
+
   fieldName: String,
   title: String,
+  placeHolder: String? = null,
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
-): Unit = child(floatingInputArea) {
+
+  ): Unit = child(floatingInputArea) {
   attrs {
     this.valueAndSetter = valueAndSetter
     this.fieldName = fieldName

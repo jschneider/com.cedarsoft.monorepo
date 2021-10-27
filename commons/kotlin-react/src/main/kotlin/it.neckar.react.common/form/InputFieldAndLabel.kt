@@ -9,22 +9,22 @@ import react.dom.*
 
 fun RBuilder.inputFieldAndLabel(
   /**
-   * The value and setter for the value.
-   * Must be created with a useState hook
-   */
-  /**
    * The current value
    */
   value: String,
+
   /**
    * Is called on change
    */
   onChange: OnChange<String>,
+
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
-): Unit = child(inputFieldAndLabel) {
+
+  ): Unit = child(inputFieldAndLabel) {
   attrs {
     this.value = value
     this.onChange = onChange
@@ -43,7 +43,7 @@ val inputFieldAndLabel: FunctionComponent<InputFieldAndLabelProps> = fc("inputFi
     onChange = props.onChange,
     fieldName = props.fieldName,
     title = props.title,
-    classes = "form-control"
+    classes = "form-control",
   ) {
     attrs {
       id = uniqueId
