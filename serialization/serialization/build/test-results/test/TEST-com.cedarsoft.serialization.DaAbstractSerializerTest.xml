@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-10-27T02:06:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.036">
+<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-10-28T02:06:32" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.063">
   <properties/>
-  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.016"/>
+  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.027"/>
   <testcase name="testSeria()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.005"/>
   <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.002"/>
   <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>

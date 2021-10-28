@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-10-27T02:06:18" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.11">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-10-28T02:06:40" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.15">
   <properties/>
-  <testcase name="[1] entry=Entry{object=,jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.021"/>
-  <testcase name="[2] entry=Entry{object=.jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.038"/>
+  <testcase name="[1] entry=Entry{object=,jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.039"/>
+  <testcase name="[2] entry=Entry{object=.jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.041"/>
   <testcase name="[3] entry=Entry{object=-jpg}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.022"/>
-  <testcase name="[4] entry=Entry{object=,cr2}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.017"/>
-  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.001"/>
+  <testcase name="[4] entry=Entry{object=,cr2}" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.036"/>
+  <testcase name="testMissingDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.007"/>
   <testcase name="testDelimiter()" classname="com.cedarsoft.serialization.serializers.stax.mate.ExtensionSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

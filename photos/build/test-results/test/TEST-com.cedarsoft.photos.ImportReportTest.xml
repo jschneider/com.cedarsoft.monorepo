@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.ImportReportTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-27T02:05:41" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.082">
+<testsuite name="com.cedarsoft.photos.ImportReportTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-28T02:06:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.081">
   <properties/>
-  <testcase name="log()" classname="com.cedarsoft.photos.ImportReportTest" time="0.011"/>
-  <testcase name="basic()" classname="com.cedarsoft.photos.ImportReportTest" time="0.061"/>
-  <testcase name="builder()" classname="com.cedarsoft.photos.ImportReportTest" time="0.006"/>
+  <testcase name="log()" classname="com.cedarsoft.photos.ImportReportTest" time="0.007"/>
+  <testcase name="basic()" classname="com.cedarsoft.photos.ImportReportTest" time="0.051"/>
+  <testcase name="builder()" classname="com.cedarsoft.photos.ImportReportTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Oct 27, 2021 2:05:41 AM com.cedarsoft.photos.ImportReportTest log
+  <system-err><![CDATA[Oct 28, 2021 2:06:09 AM com.cedarsoft.photos.ImportReportTest log
 WARNING: asdf
 ]]></system-err>
 </testsuite>
