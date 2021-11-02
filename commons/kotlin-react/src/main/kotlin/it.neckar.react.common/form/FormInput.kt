@@ -99,7 +99,7 @@ val checkbox: FunctionComponent<CheckboxProps> = fc("checkbox") { props ->
       +props.title
 
       attrs {
-        htmlForFixed = uniqueId
+        htmlFor = uniqueId
       }
     }
   }

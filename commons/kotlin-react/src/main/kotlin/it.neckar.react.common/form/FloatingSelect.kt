@@ -231,7 +231,7 @@ val floatingSelect: FunctionComponent<FloatingSelectProps> = fc("floatingSelect"
       +props.title
 
       attrs {
-        htmlForFixed = uniqueId
+        htmlFor = uniqueId
       }
     }
   }

@@ -59,7 +59,7 @@ val inputFieldAndLabel: FunctionComponent<InputFieldAndLabelProps> = fc("inputFi
     +props.title
 
     attrs {
-      htmlForFixed = uniqueId
+      htmlFor = uniqueId
     }
   }
 }

@@ -77,6 +77,7 @@ val <T> StateInstance<T>.setter: StateSetter<T>
 /**
  * Sets the correct html for fixed
  */
+@Deprecated("No longer required, is fixed in Kotlin")
 var RDOMBuilder<LABEL>.htmlForFixed: String
   @Deprecated("write only", level = DeprecationLevel.HIDDEN)
   get() {
@@ -90,6 +91,7 @@ var RDOMBuilder<LABEL>.htmlForFixed: String
 /**
  * Sets the correct html for fixed
  */
+@Deprecated("No longer required, is fixed in Kotlin")
 var LABEL.htmlForFixed: String
   @Deprecated("write only", level = DeprecationLevel.HIDDEN)
   get() {
