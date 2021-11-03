@@ -15,6 +15,7 @@ fun <T> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
   idProvider: (T?) -> String,
   formatter: (T) -> String,
+  optionClasses: (T) -> Set<String> = { emptySet() },
   availableOptions: List<T>,
 
   fieldName: String,
@@ -26,6 +27,7 @@ fun <T> RBuilder.floatingSelect(
     onChange = { valueAndSetter.setter.invoke(it) },
     availableOptions = availableOptions,
     formatter = formatter,
+    optionClasses = optionClasses,
     idProvider = idProvider,
     fieldName = fieldName,
     title = title,
@@ -39,6 +41,7 @@ fun <T> RBuilder.floatingSelect(
 fun <T : HasUuid> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
   formatter: (T) -> String,
+  optionClasses: (T) -> Set<String> = { emptySet() },
   availableOptions: List<T>,
   fieldName: String,
   title: String,
@@ -51,6 +54,7 @@ fun <T : HasUuid> RBuilder.floatingSelect(
       (it as HasUuid).uuid.toString()
     },
     formatter = formatter,
+    optionClasses = optionClasses,
     availableOptions = availableOptions,
     fieldName = fieldName,
     title = title,
@@ -62,6 +66,7 @@ fun <T> RBuilder.floatingSelectNullable(
   valueAndSetter: StateInstance<T?>,
   idProvider: (T?) -> String,
   formatter: (T?) -> String,
+  optionClasses: (T?) -> Set<String> = { emptySet() },
   availableOptionsWithoutNull: List<T>,
 
   fieldName: String,
@@ -76,6 +81,7 @@ fun <T> RBuilder.floatingSelectNullable(
     },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
+    optionClasses = optionClasses,
     idProvider = idProvider,
     fieldName = fieldName,
     title = title,
@@ -86,6 +92,7 @@ fun <T> RBuilder.floatingSelectNullable(
 fun <T : HasUuid> RBuilder.floatingSelectNullable(
   valueAndSetter: StateInstance<T?>,
   formatter: (T?) -> String,
+  optionClasses: (T?) -> Set<String> = { emptySet() },
   availableOptionsWithoutNull: List<T>,
 
   fieldName: String,
@@ -100,6 +107,7 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
     },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
+    optionClasses = optionClasses,
     fieldName = fieldName,
     title = title,
     config = config
@@ -109,6 +117,7 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
 fun <E : Enum<E>> RBuilder.floatingSelectEnum(
   valueAndSetter: StateInstance<E>,
   formatter: (E) -> String,
+  optionClasses: (E) -> Set<String> = { emptySet() },
   availableOptions: List<E>,
 
   fieldName: String,
@@ -123,6 +132,7 @@ fun <E : Enum<E>> RBuilder.floatingSelectEnum(
     },
     availableOptions = availableOptions,
     formatter = formatter,
+    optionClasses = optionClasses,
     idProvider = {
       //Do *NOT* use callback since this method may be called from another component within a condition
       it.name
@@ -138,6 +148,7 @@ fun <T> RBuilder.floatingSelect(
   onChange: OnChange<T>,
   availableOptions: List<T>,
   formatter: (T) -> String,
+  optionClasses: (T) -> Set<String> = { emptySet() },
 
   idProvider: (T) -> String,
 
@@ -153,6 +164,7 @@ fun <T> RBuilder.floatingSelect(
     this.selectedValue = selectedValue
     this.onChange = onChange as OnChange<Any?>
     this.formatter = formatter as (Any?) -> String
+    this.optionClasses = optionClasses as (Any?) -> Set<String>
     this.idProvider = idProvider as (Any?) -> String
     this.availableOptions = availableOptions as List<Any>
     this.fieldName = fieldName
@@ -171,6 +183,7 @@ fun <T> RBuilder.floatingSelectNullable(
   onChange: OnChange<T?>,
   availableOptionsWithoutNull: List<T>,
   formatter: (T?) -> String,
+  optionClasses: (T?) -> Set<String> = { emptySet() },
 
   idProvider: (T) -> String,
 
@@ -182,6 +195,7 @@ fun <T> RBuilder.floatingSelectNullable(
     this.selectedValue = selectedValue
     this.onChange = onChange as OnChange<Any?>
     this.formatter = formatter as (Any?) -> String
+    this.optionClasses = optionClasses as (Any?) -> Set<String>
     this.idProvider = idProvider as (Any?) -> String
 
     val optionsIncludingNull = useMemo(availableOptionsWithoutNull) {
@@ -216,6 +230,7 @@ val floatingSelect: FunctionComponent<FloatingSelectProps> = fc("floatingSelect"
       onChange = props.onChange,
       availableOptions = availableOptions,
       formatter = props.formatter,
+      optionClasses = props.optionClasses,
       idProvider = props.idProvider,
       fieldName = props.fieldName,
       title = props.title
@@ -243,10 +258,10 @@ external interface FloatingSelectProps : Props {
    */
   var selectedValue: Any?
   var formatter: (Any?) -> String
+  var optionClasses: (Any?) -> Set<String>
 
   var onChange: OnChange<Any?>
   var availableOptions: List<Any?>
-
   var idProvider: (Any?) -> String
 
   var fieldName: String
