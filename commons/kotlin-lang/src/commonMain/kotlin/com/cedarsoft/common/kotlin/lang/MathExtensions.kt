@@ -420,6 +420,13 @@ inline fun Double.or0ifNaN(): Double {
 }
 
 /**
+ * Returns NaN if this is null
+ */
+inline fun Double?.orNanIfNull(): Double {
+  return this ?: Double.NaN
+}
+
+/**
  * Returns null if this is 0.0
  */
 inline fun Double.orNullif0(): Double? {

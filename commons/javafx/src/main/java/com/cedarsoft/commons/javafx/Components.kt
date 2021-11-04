@@ -19,6 +19,7 @@ import javafx.beans.property.ReadOnlyBooleanProperty
 import javafx.beans.property.ReadOnlyFloatProperty
 import javafx.beans.property.ReadOnlyLongProperty
 import javafx.beans.value.ObservableDoubleValue
+import javafx.beans.value.ObservableNumberValue
 import javafx.beans.value.ObservableObjectValue
 import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
@@ -50,6 +51,7 @@ import javafx.scene.control.Tooltip
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
+import javafx.scene.layout.Priority
 import javafx.scene.layout.Region
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
@@ -59,6 +61,7 @@ import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
 import javafx.util.StringConverter
 import javafx.util.converter.NumberStringConverter
+import java.text.NumberFormat
 import java.util.Arrays
 import java.util.concurrent.Callable
 import java.util.function.Consumer
@@ -774,12 +777,23 @@ object Components {
 
   @JvmStatic
   fun textFieldDoubleDelayed(doubleProperty: DoubleProperty, converter: NumberStringConverterForFloatingPointNumbers): TextField {
-    return textFieldDoubleDelayed(doubleProperty, Predicate { _ -> true }, converter)
+    return textFieldDoubleDelayed(doubleProperty, { _ -> true }, converter)
+  }
+
+  fun textFieldDoubleDelayed(doubleProperty: DoubleProperty, decimals: Int = 2): TextField {
+    val numberFormat = NumberFormat.getNumberInstance().also {
+      it.maximumFractionDigits = decimals
+      it.minimumFractionDigits = decimals
+    }
+    return textFieldDoubleDelayed(doubleProperty, { _ -> true }, NumberStringConverterForFloatingPointNumbers(numberFormat))
   }
 
   @JvmStatic
   @JvmOverloads
-  fun textFieldDoubleDelayed(doubleProperty: DoubleProperty, filter: Predicate<Double> = Predicate { _ -> true }, converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+  fun textFieldDoubleDelayed(
+    doubleProperty: DoubleProperty, filter: Predicate<Double> = Predicate { _ -> true },
+    converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()
+  ): TextField {
     val textField = textFieldDelayed(doubleProperty, converter)
     textField.alignmentProperty().set(Pos.CENTER_RIGHT)
     applyDoubleFormatter(textField, doubleProperty, filter, converter)
@@ -992,7 +1006,19 @@ object Components {
     return checkboxTriState(label, callback, TriStateCheckBox.createStateProperty(allSelectedProperty, noneSelectedProperty))
   }
 
-  fun sliderWithTextField(valueProperty: DoubleProperty, minValue: Double, maxValue: Double, step: Double): HBox {
+  /**
+   * Creates a slider and text field
+   */
+  fun sliderWithTextField(valueProperty: DoubleProperty, minValue: ObservableNumberValue, maxValue: ObservableNumberValue, step: Double? = null, decimals: Int = 2): HBox {
+    val valueSlider = slider(valueProperty, minValue, maxValue, step)
+    val valueTextField = textFieldDoubleDelayed(valueProperty, decimals)
+
+    HBox.setHgrow(valueSlider, Priority.ALWAYS)
+
+    return hbox(5, valueSlider, valueTextField)
+  }
+
+  fun sliderWithTextField(valueProperty: DoubleProperty, minValue: Double, maxValue: Double, step: Double? = null): HBox {
     return hbox(
       5,
       slider(valueProperty, minValue, maxValue, step),
@@ -1005,31 +1031,40 @@ object Components {
   }
 
   @JvmStatic
-  fun slider(valueProperty: Property<Number>, minValue: Double, maxValue: Double, step: Double): Slider {
-    //check for plausibility of step size
-    val tickCount = (maxValue - minValue) / step
-    require(tickCount <= 10_000) {
-      "Step too small. Was $step but results in $tickCount ticks for min: $minValue - max: $maxValue"
+  fun slider(valueProperty: Property<Number>, minValue: ObservableNumberValue, maxValue: ObservableNumberValue, step: Double? = null): Slider {
+    return slider(valueProperty, minValue.doubleValue(), maxValue.doubleValue(), step).also {
+      it.minProperty().bind(minValue)
+      it.maxProperty().bind(maxValue)
     }
+  }
 
+  @JvmStatic
+  fun slider(valueProperty: Property<Number>, minValue: Double, maxValue: Double, step: Double? = null): Slider {
     val slider = Slider()
     slider.min = minValue
     slider.max = maxValue
-    slider.majorTickUnit = step
-    slider.minorTickCount = 10
-    slider.isSnapToTicks = true // skip double values
 
-    com.cedarsoft.commons.javafx.BidirectionalBinding.bindBidirectional(
-      valueProperty,
-      slider.valueProperty(),
-      { _, _, newValue ->
-        // property -> slider
-        slider.valueProperty().set(findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step))
-      },
-      { _, _, newValue ->
-        // slider -> property
-        valueProperty.setValue(findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step))
-      })
+    //check for plausibility of step size
+    if (step != null) {
+      val tickCount = (maxValue - minValue) / step
+      require(tickCount <= 10_000) {
+        "Step too small. Was $step but results in $tickCount ticks for min: $minValue - max: $maxValue"
+      }
+
+      slider.majorTickUnit = step
+      slider.minorTickCount = 10
+      slider.isSnapToTicks = true // skip double values
+    }
+
+    bindBidirectional(valueProperty, slider.valueProperty()) {
+      a2b = { newValue ->
+        findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step)
+      }
+      b2a = { newValue ->
+        findClosestStepForValue(newValue.toDouble(), slider.min, slider.max, step)
+      }
+    }
+
     return slider
   }
 
@@ -1066,7 +1101,11 @@ object Components {
   }
 
   @JvmStatic
-  fun findClosestStepForValue(value: Double, min: Double, max: Double, step: Double): Double {
+  fun findClosestStepForValue(value: Double, min: Double, max: Double, step: Double?): Double {
+    if (step == null) {
+      return value.coerceIn(min, max)
+    }
+
     var nextStep = value / step * step
     if (nextStep < min) {
       nextStep = min

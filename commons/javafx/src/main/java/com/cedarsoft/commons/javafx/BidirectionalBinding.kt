@@ -14,6 +14,37 @@ object BidirectionalBinding {
    * Registers the given change listeners to the corresponding property.
    * Avoids reoccurring events by wrapping the change listener.
    *
+   * <u>Beware that the order matters:</u><br></br>
+   * this method copies the value from propertyA to propertyB initially by calling updateB!
+   *
+   * @param a2b converts values from A to B on changes to [propertyA]
+   * @param b2a converts values from B to A on changes to [propertyB]
+   */
+  @JvmStatic
+  fun <A, B> bindBidirectional(
+    propertyA: Property<A>,
+    propertyB: Property<B>,
+    a2b: (newValue: A) -> B,
+    b2a: (newValue: B) -> A,
+    vararg additionalDependencies: ObservableValue<out Any>
+  ) {
+    bindBidirectional(
+      propertyA = propertyA,
+      propertyB = propertyB,
+      updateFromAToB = { _, _, newValue ->
+        propertyB.value = a2b(newValue)
+      },
+      updateFromBToA = { _, _, newValue ->
+        propertyA.value = b2a(newValue)
+      },
+      *additionalDependencies
+    )
+  }
+
+  /**
+   * Registers the given change listeners to the corresponding property.
+   * Avoids reoccurring events by wrapping the change listener.
+   *
    *
    * <u>Beware that the order matters:</u><br></br>
    * this method copies the value from propertyA to propertyB initially by calling updateB!
@@ -109,6 +140,45 @@ object BidirectionalBinding {
       }
     }
   }
+
+
+  /**
+   * Bidirectional builder
+   */
+  class Builder<A, B>(
+    val propertyA: Property<A>,
+    val propertyB: Property<B>,
+  ) {
+    var a2b: ((newValue: A) -> B)? = null
+    var b2a: ((newValue: B) -> A)? = null
+
+    fun build() {
+      bindBidirectional(
+        propertyA ?: throw IllegalStateException("propertyA required"),
+        propertyB ?: throw IllegalStateException("propertyB required"),
+        a2b ?: throw IllegalStateException("a2b required"),
+        b2a ?: throw IllegalStateException("b2a required")
+      )
+    }
+  }
+}
+
+/**
+ * Creates a new bidirectional binding.
+ *
+ * It is required to set
+ * * [BidirectionalBinding.Builder.a2b]
+ * * [BidirectionalBinding.Builder.b2a]
+ * in [config]
+ */
+fun <A, B> bindBidirectional(
+  propertyA: Property<A>,
+  propertyB: Property<B>,
+  config: BidirectionalBinding.Builder<A, B>.() -> Unit
+) {
+  BidirectionalBinding.Builder<A, B>(propertyA, propertyB)
+    .also(config)
+    .build()
 }
 
 
@@ -131,3 +201,4 @@ fun Property<Number>.bindBidirectionalWithFactor(other: Property<Number>, otherD
     }
   )
 }
+

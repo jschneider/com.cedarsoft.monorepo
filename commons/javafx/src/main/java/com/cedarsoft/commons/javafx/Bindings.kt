@@ -1,8 +1,11 @@
 package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.dispose.Disposable
+import com.cedarsoft.formatting.CachedFormatter
+import com.cedarsoft.formatting.decimalFormat
 import javafx.beans.binding.Bindings
 import javafx.beans.binding.BooleanBinding
+import javafx.beans.binding.DoubleBinding
 import javafx.beans.binding.ObjectBinding
 import javafx.beans.binding.StringBinding
 import javafx.beans.property.ObjectProperty
@@ -80,6 +83,21 @@ fun <T> ObservableValue<T>.mapToBool(conversion: (T) -> Boolean): BooleanBinding
 }
 
 /**
+ * Maps the values of a property to a double
+ */
+fun <T> ObservableValue<T>.mapToDouble(conversion: (T) -> Double): DoubleBinding {
+  return Bindings.createDoubleBinding({
+    conversion(this.value)
+  }, this)
+}
+
+fun <T1, T2> ObservableValue<T1>.mapToDouble(other: ObservableValue<T2>, conversion: (T1, T2) -> Double): DoubleBinding {
+  return Bindings.createDoubleBinding({
+    conversion(this.value, other.value)
+  }, this, other)
+}
+
+/**
  * Creates a binding combining two observable values
  */
 fun <T1, T2, R> ObservableValue<T1>.map(other: ObservableValue<T2>, conversion: (T1, T2) -> R): ObjectBinding<R> {
@@ -100,6 +118,23 @@ fun <T1, T2, T3, T4, R> ObservableValue<T1>.map(other1: ObservableValue<T2>, oth
   }, this, other1, other2, other3)
 }
 
+/**
+ * Maps a number to a formatted string using the given formatter
+ */
+fun ObservableValue<Number>.formatted(formatter: CachedFormatter = decimalFormat): ObjectBinding<String> = map {
+  formatter.format(it.toDouble())
+}
+
+/**
+ * Formats a nullable property.
+ */
+fun ObservableValue<Double?>.formattedOrIfNull(valueIfNull: String, formatter: CachedFormatter = decimalFormat): ObjectBinding<String> = map {
+  if (it == null) {
+    valueIfNull
+  } else {
+    formatter.format(it.toDouble())
+  }
+}
 
 /**
  * Returns a boolean binding that contains "true" if the value of this property is equal to [expectedValue]

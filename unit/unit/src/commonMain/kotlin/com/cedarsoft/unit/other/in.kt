@@ -64,7 +64,7 @@ annotation class `in` {
     const val FEET_RATIO: Int = 12
 
     /**
-     * Conversion to cm: n * MM_RATIO
+     * Conversion to mm: n * MM_RATIO
      */
     const val MM_RATIO: Double = 25.4
 

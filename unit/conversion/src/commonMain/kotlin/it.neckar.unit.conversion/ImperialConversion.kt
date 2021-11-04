@@ -2,12 +2,14 @@ package it.neckar.unit.conversion
 
 import com.cedarsoft.unit.other.CubicFoot
 import com.cedarsoft.unit.other.UsGallon
+import com.cedarsoft.unit.other.`in`
 import com.cedarsoft.unit.other.ft
 import com.cedarsoft.unit.other.ft.Companion.MM_FEET_RATIO
 import com.cedarsoft.unit.si.L
 import com.cedarsoft.unit.si.degC
 import com.cedarsoft.unit.si.degF
 import com.cedarsoft.unit.si.m
+import com.cedarsoft.unit.si.mm
 
 
 /**
@@ -43,5 +45,16 @@ object ImperialConversion {
    */
   fun meter2foot(meter: @m Double): @ft Double {
     return meter / 1000.0 * MM_FEET_RATIO
+  }
+
+  /**
+   * Converts mm to inch
+   */
+  fun mm2inch(mm: @mm Double): @`in` Double {
+    return mm / `in`.MM_RATIO
+  }
+
+  fun inch2mm(inch: @`in` Double): @mm Double {
+    return inch * `in`.MM_RATIO
   }
 }

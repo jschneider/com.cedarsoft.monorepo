@@ -57,8 +57,8 @@ annotation class UsGallon {
     /**
      * The ratio used to convert litres to US gallons
      *
-     *  * US Gallon / US_GALLON_LITRE_RATIO == litre
-     *  * 1 US gal = US_GALLON_LITRE_RATIO * 1 litre
+     *  * UsGallon == Liter / US_GALLON_LITRE_RATIO
+     *  * Lister = UsGallon * US_GALLON_LITRE_RATIO
      */
     const val US_GALLON_LITRE_RATIO: Double = 3.785_411_784
 

@@ -10,6 +10,9 @@ class Cache<K, V>
 @Deprecated("use cache() method instead to allow use for better", level = DeprecationLevel.WARNING)
 @JvmOverloads constructor(
   maxSize: Int = 16,
+  /**
+   * Is called when an element is removed from the cache
+   */
   free: (K, V) -> Unit = { _, _ -> }
 ) {
 
@@ -91,10 +94,10 @@ class Cache<K, V>
    * Note that the operation is not guaranteed to be atomic.
    */
   inline fun getOrStore(key: K, provider: () -> V): V {
-    return map.getOrPut(key, {
+    return map.getOrPut(key) {
       cacheMissCounter++
       provider()
-    })
+    }
   }
 
   /**
@@ -115,22 +118,40 @@ class Cache<K, V>
   override fun toString(): String {
     return map.toString()
   }
+
+  /**
+   * Marks the entry with the given [key] as new
+   */
+  fun markAsNew(key: K) {
+    map.markAsNew(key)
+  }
 }
 
 /**
  * Creates a new cache. Use this method when creating a cache to allow registration of observers
+ *
+ * [freed] is called whenever an element has been removed from the cache
  */
 @Suppress("DEPRECATION")
-fun <K, V> cache(description: String, maxSize: Int): Cache<K, V> {
+@JvmOverloads
+fun <K, V> cache(
+  description: String,
+  maxSize: Int,
+  /**
+   * Is called when an element has been removed from the cache
+   */
+  freed: (K, V) -> Unit = { _, _ -> }
+): Cache<K, V> {
   return cacheStatsHandler.let {
     if (it != null) {
       Cache<K, V>(maxSize) { k, v ->
         it.freed(description, k, v)
+        freed(k, v)
       }.also { cache ->
         it.cacheCreated(description, cache)
       }
     } else {
-      Cache(maxSize)
+      Cache(maxSize, freed)
     }
   }
 }

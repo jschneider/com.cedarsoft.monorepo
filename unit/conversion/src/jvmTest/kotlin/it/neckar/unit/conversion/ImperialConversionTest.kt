@@ -36,4 +36,12 @@ class ImperialConversionTest {
   fun testMeterFoot() {
     assertThat(ImperialConversion.meter2foot(1.0)).isCloseTo(0.3048, 0.0001)
   }
+
+  @Test
+  fun testInches() {
+    assertThat(ImperialConversion.inch2mm(17.0)).isCloseTo(431.8, 0.000001)
+
+    assertThat(ImperialConversion.mm2inch(1.0)).isCloseTo(0.0393701, 0.000001)
+    assertThat(ImperialConversion.mm2inch(11.0)).isCloseTo(0.433071, 0.000001)
+  }
 }

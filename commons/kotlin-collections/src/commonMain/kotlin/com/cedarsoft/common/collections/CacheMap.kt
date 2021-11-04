@@ -3,14 +3,25 @@ package com.cedarsoft.common.collections
 open class CacheMap<K, V> private constructor(
   private val map: LinkedHashMap<K, V> = LinkedHashMap(),
   val maxSize: Int = 16,
-  val free: (K, V) -> Unit = { k, v -> }
+  val free: (K, V) -> Unit = { _, _ -> }
 ) : MutableMap<K, V> by map {
   constructor(
     maxSize: Int = 16,
-    free: (K, V) -> Unit = { k, v -> }
+    free: (K, V) -> Unit = { _, _ -> }
   ) : this(LinkedHashMap(), maxSize, free)
 
   override val size: Int get() = map.size
+
+  /**
+   * Marks the entry with the given [key] as new
+   */
+  fun markAsNew(key: K) {
+    // do not call 'free' here
+    val value = map.remove(key)
+    value?.let {
+      map[key] = value
+    }
+  }
 
   override fun remove(key: K): V? {
     val value = map.remove(key)
@@ -24,7 +35,7 @@ open class CacheMap<K, V> private constructor(
 
     val oldValue = map[key]
     if (oldValue != value) {
-      remove(key) // refresh if exists
+      remove(key) // remove entry first to force a refresh when the new value is put into the map
       map[key] = value
     }
     return oldValue
