@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-04T03:05:54" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.021">
+<testsuite name="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-05T03:06:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.064">
   <properties/>
-  <testcase name="testTmpFile(File)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.008"/>
-  <testcase name="testTempFolder(TemporaryFolder)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.005"/>
-  <testcase name="testTmpFolder(File)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.003"/>
+  <testcase name="testTmpFile(File)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.026"/>
+  <testcase name="testTempFolder(TemporaryFolder)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.002"/>
+  <testcase name="testTmpFolder(File)" classname="com.cedarsoft.test.utils.TemporaryFolderExtensionTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

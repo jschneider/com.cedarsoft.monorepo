@@ -1,5 +1,6 @@
 package it.neckar.react.common
 
+import it.neckar.react.common.form.*
 import kotlinext.js.Object
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HTMLTag
@@ -77,7 +78,6 @@ val <T> StateInstance<T>.setter: StateSetter<T>
 /**
  * Sets the correct html for fixed
  */
-@Deprecated("No longer required, is fixed in Kotlin")
 var RDOMBuilder<LABEL>.htmlForFixed: String
   @Deprecated("write only", level = DeprecationLevel.HIDDEN)
   get() {
@@ -91,7 +91,6 @@ var RDOMBuilder<LABEL>.htmlForFixed: String
 /**
  * Sets the correct html for fixed
  */
-@Deprecated("No longer required, is fixed in Kotlin")
 var LABEL.htmlForFixed: String
   @Deprecated("write only", level = DeprecationLevel.HIDDEN)
   get() {
@@ -144,15 +143,15 @@ fun CommonAttributeGroupFacade.addClasses(newClasses: String) {
  * Converts a setter to an onChange listener.
  * Does not set values that can not be parsed!
  */
-fun StateInstance<Int>.asOnChangeForInt(): (String) -> Unit {
-  return useCallback(setter) {
+fun StateInstance<Int>.asOnChangeForInt(numberConstraint: NumberConstraint): (String) -> Unit {
+  return useCallback(setter, numberConstraint) {
     if (it.isEmpty()) {
       //setter(0)
       return@useCallback
     }
 
     it.toIntOrNull()?.let { parsedInt ->
-      setter(parsedInt)
+      setter(numberConstraint.constraint(parsedInt))
     }
   }
 }
@@ -161,7 +160,7 @@ fun StateInstance<Int>.asOnChangeForInt(): (String) -> Unit {
  * Converts a setter to an onChange listener.
  * Does not set values that can not be parsed!
  */
-fun StateInstance<Double>.asOnChangeForDouble(): (String) -> Unit {
+fun StateInstance<Double>.asOnChangeForDouble(numberConstraint: NumberConstraint): (String) -> Unit {
   return useCallback(setter) {
     if (it.isEmpty()) {
       //do *not* set a value, since it is empty
@@ -169,7 +168,7 @@ fun StateInstance<Double>.asOnChangeForDouble(): (String) -> Unit {
     }
 
     it.toDoubleOrNull()?.let { parsedDouble ->
-      setter(parsedDouble)
+      setter(numberConstraint.constraint(parsedDouble))
     }
   }
 }

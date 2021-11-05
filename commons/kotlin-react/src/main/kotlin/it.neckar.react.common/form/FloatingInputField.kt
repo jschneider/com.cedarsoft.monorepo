@@ -79,6 +79,7 @@ fun RBuilder.floatingIntInputField(
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+  numberConstraint: NumberConstraint = Unconstraint,
 
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
@@ -86,7 +87,7 @@ fun RBuilder.floatingIntInputField(
   ): Unit = child(floatingInputField) {
   attrs {
     this.value = valueAndSetter.value.toString()
-    this.onChange = valueAndSetter.asOnChangeForInt()
+    this.onChange = valueAndSetter.asOnChangeForInt(numberConstraint)
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
@@ -95,6 +96,8 @@ fun RBuilder.floatingIntInputField(
       it.attrs {
         type = InputType.number
       }
+
+      it.configure(numberConstraint)
       config?.invoke(it)
     }
   }
@@ -112,6 +115,7 @@ fun RBuilder.floatingIntInputField(
   fieldName: String,
   title: String,
   placeHolder: String? = null,
+  numberConstraint: NumberConstraint = Unconstraint,
 
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
@@ -121,7 +125,7 @@ fun RBuilder.floatingIntInputField(
     this.value = value.toString()
     this.onChange = useCallback(onChange) { s ->
       s.toIntOrNull()?.let { parsedInt ->
-        onChange(parsedInt)
+        onChange(numberConstraint.constraint(parsedInt))
       }
     }
     this.fieldName = fieldName
@@ -132,6 +136,7 @@ fun RBuilder.floatingIntInputField(
       it.attrs {
         type = InputType.number
       }
+      it.configure(numberConstraint)
       config?.invoke(it)
     }
   }
@@ -150,19 +155,24 @@ fun RBuilder.floatingDoubleInputField(
 
   numberOfDecimals: Int = 2,
 
+  numberConstraint: NumberConstraint = Unconstraint,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
   ) {
   floatingDoubleInputField(
     value = valueAndSetter.value,
-    onChange = valueAndSetter.asOnChangeForDouble(),//useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) },
+    onChange = valueAndSetter.asOnChangeForDouble(numberConstraint),//useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) },
     fieldName = fieldName,
     title = title,
     placeHolder = placeHolder,
     numberOfDecimals = numberOfDecimals,
     divConfig = divConfig,
-    config = config
+    config = {
+      config?.let { it() }
+      configure(numberConstraint)
+    }
   )
 }
 

@@ -55,7 +55,7 @@ val floatingInputArea: FunctionComponent<FloatingInputAreaProps> = fc("floatingI
       +props.title
 
       attrs {
-        htmlFor = uniqueId
+        htmlForFixed = uniqueId
       }
     }
   }

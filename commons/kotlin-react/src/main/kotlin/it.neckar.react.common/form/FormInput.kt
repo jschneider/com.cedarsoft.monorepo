@@ -99,7 +99,7 @@ val checkbox: FunctionComponent<CheckboxProps> = fc("checkbox") { props ->
       +props.title
 
       attrs {
-        htmlFor = uniqueId
+        htmlForFixed = uniqueId
       }
     }
   }
@@ -178,6 +178,7 @@ fun RBuilder.intInput(
     onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
+    numberConstraint = Unconstraint,
     config = config,
   )
 }
@@ -191,12 +192,13 @@ fun RBuilder.intInput(
   onChange: (Int) -> Unit,
   fieldName: String,
   title: String,
+  numberConstraint: NumberConstraint,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   inputField(
     value = value.toString(),
     onChange = useCallback(onChange) {
-      onChange.invoke(it.parseInt())
+      onChange.invoke(numberConstraint.constraint(it.parseInt()))
     },
     fieldName = fieldName,
     title = title,
@@ -205,6 +207,7 @@ fun RBuilder.intInput(
       type = InputType.number
     }
 
+    configure(numberConstraint)
     config?.invoke(this)
   }
 }
@@ -222,11 +225,13 @@ fun RBuilder.doubleInput(
   title: String,
   numberOfDecimals: Int = 2,
   placeHolder: String? = null,
+  numberConstraint: NumberConstraint,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   inputField(
     value = valueAndSetter.value.format(numberOfDecimals, false, I18nConfiguration.US),
-    onChange = valueAndSetter.asOnChangeForDouble(),
+    onChange = valueAndSetter.asOnChangeForDouble(numberConstraint),
     fieldName = fieldName,
     title = title,
     placeHolder = placeHolder,
@@ -235,6 +240,7 @@ fun RBuilder.doubleInput(
       type = InputType.number
     }
 
+    configure(numberConstraint)
     config?.invoke(this)
   }
 }
@@ -470,10 +476,32 @@ external interface TextInputProps : Props {
   var config: ((RDOMBuilder<*>) -> Unit)?
 }
 
+/**
+ * Configure the input for the given number constraint
+ */
+fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
+  when (numberConstraint) {
+    Unconstraint -> {
+    }
+    ZeroOrPositive -> {
+      zeroOrPositiveValues()
+    }
+  }
+}
 
 /**
  * Sets the min value to "0"
  */
-inline fun INPUT.onlyPositiveValues() {
+inline fun INPUT.zeroOrPositiveValues() {
   min = "0"
 }
+
+/**
+ * Only support positive values
+ */
+inline fun RDOMBuilder<INPUT>.zeroOrPositiveValues() {
+  attrs {
+    zeroOrPositiveValues()
+  }
+}
+
