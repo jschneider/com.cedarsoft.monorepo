@@ -13,7 +13,7 @@ import react.dom.*
  */
 fun <T> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
-  idProvider: (T?) -> String,
+  idProvider: (T) -> String,
   formatter: (T) -> String,
   optionClasses: (T) -> Set<String> = { emptySet() },
   availableOptions: List<T>,
