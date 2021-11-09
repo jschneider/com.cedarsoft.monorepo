@@ -10,13 +10,16 @@ import java.util.Locale
  * @author Christian Erbelding ([ce@cedarsoft.com](mailto:ce@cedarsoft.com))
  */
 class NumberStringConverterForFloatingPointNumbers(
-  private val doubleNumberFormat: NumberFormat
+  private val doubleNumberFormat: () -> NumberFormat
 ) : NumberStringConverter() {
+
+  constructor(doubleNumberFormat: NumberFormat) : this({ doubleNumberFormat })
+
   @JvmOverloads
   constructor(locale: Locale = Locale.getDefault()) : this(NumberFormat.getNumberInstance(locale))
 
   override fun getNumberFormat(): NumberFormat {
-    return doubleNumberFormat
+    return doubleNumberFormat()
   }
 
   override fun fromString(value: String): Number {

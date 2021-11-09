@@ -8,6 +8,7 @@ import com.cedarsoft.unit.other.px
 import com.google.common.collect.ImmutableList
 import com.sun.javafx.binding.BidirectionalBinding
 import javafx.beans.binding.Bindings
+import javafx.beans.binding.IntegerBinding
 import javafx.beans.binding.IntegerExpression
 import javafx.beans.binding.LongExpression
 import javafx.beans.property.DoubleProperty
@@ -780,6 +781,25 @@ object Components {
     return textFieldDoubleDelayed(doubleProperty, { _ -> true }, converter)
   }
 
+  /**
+   * ATTENTION!
+   * Changes to [decimals] do *not* trigger a rerender!
+   */
+  @JvmStatic
+  fun textFieldDoubleDelayed(doubleProperty: DoubleProperty, decimals: IntegerBinding): TextField {
+    val numberForBinding = decimals.map { decimalsCount ->
+      val numberFormat = NumberFormat.getNumberInstance().also {
+        it.maximumFractionDigits = decimalsCount.toInt()
+        it.minimumFractionDigits = decimalsCount.toInt()
+      }
+      numberFormat
+    }
+
+    return textFieldDoubleDelayed(doubleProperty, { _ -> true }, NumberStringConverterForFloatingPointNumbers() {
+      numberForBinding.value
+    })
+  }
+
   fun textFieldDoubleDelayed(doubleProperty: DoubleProperty, decimals: Int = 2): TextField {
     val numberFormat = NumberFormat.getNumberInstance().also {
       it.maximumFractionDigits = decimals
@@ -791,7 +811,8 @@ object Components {
   @JvmStatic
   @JvmOverloads
   fun textFieldDoubleDelayed(
-    doubleProperty: DoubleProperty, filter: Predicate<Double> = Predicate { _ -> true },
+    doubleProperty: DoubleProperty,
+    filter: Predicate<Double> = Predicate { _ -> true },
     converter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()
   ): TextField {
     val textField = textFieldDelayed(doubleProperty, converter)

@@ -6,6 +6,7 @@ import com.cedarsoft.formatting.decimalFormat
 import javafx.beans.binding.Bindings
 import javafx.beans.binding.BooleanBinding
 import javafx.beans.binding.DoubleBinding
+import javafx.beans.binding.IntegerBinding
 import javafx.beans.binding.ObjectBinding
 import javafx.beans.binding.StringBinding
 import javafx.beans.property.ObjectProperty
@@ -80,6 +81,18 @@ fun <T> ObservableValue<T>.mapToBool(conversion: (T) -> Boolean): BooleanBinding
   return Bindings.createBooleanBinding({
     conversion(this.value)
   }, this)
+}
+
+fun <T> ObservableValue<T>.mapToInt(conversion: (T) -> Int): IntegerBinding {
+  return Bindings.createIntegerBinding({
+    conversion(this.value)
+  }, this)
+}
+
+fun <T1, T2> ObservableValue<T1>.mapToInt(other: ObservableValue<T2>, conversion: (T1, T2) -> Int): IntegerBinding {
+  return Bindings.createIntegerBinding({
+    conversion(this.value, other.value)
+  }, this, other)
 }
 
 /**
