@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.JavaFxTimerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-10T03:06:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.786">
+<testsuite name="com.cedarsoft.commons.javafx.JavaFxTimerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-10T11:20:44" hostname="runner-ioxloixu-project-47-concurrent-0" time="1.604">
   <properties/>
-  <testcase name="testDelay()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="0.361"/>
-  <testcase name="testEmptyTimeLine()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="0.214"/>
-  <testcase name="testEmptyTimeline()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="0.211"/>
+  <testcase name="testDelay()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="1.164"/>
+  <testcase name="testEmptyTimeLine()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="0.217"/>
+  <testcase name="testEmptyTimeline()" classname="com.cedarsoft.commons.javafx.JavaFxTimerTest" time="0.221"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
