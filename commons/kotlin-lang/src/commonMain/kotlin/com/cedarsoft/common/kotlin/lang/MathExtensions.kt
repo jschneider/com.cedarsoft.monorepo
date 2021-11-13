@@ -82,6 +82,16 @@ inline fun Double.normalize(base: Double): @pct Double {
   return 1.0 / base * this
 }
 
+/**
+ * Returns true if the double is event, false otherwise
+ */
+inline fun Double.isEven(): Boolean {
+  return this % 2 == 0.0
+}
+
+inline fun Double.isOdd(): Boolean {
+  return (this % 2).abs() == 1.0
+}
 
 fun Double.sin(): Double = kotlin.math.sin(this)
 fun Double.cos(): Double = kotlin.math.cos(this)

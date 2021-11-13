@@ -8,6 +8,32 @@ import kotlin.math.PI
 
 class MathExtensionsKtTest {
   @Test
+  fun testEven() {
+    assertThat(1.0.isEven()).isFalse()
+    assertThat(2.0.isEven()).isTrue()
+    assertThat(3.0.isEven()).isFalse()
+    assertThat(4.0.isEven()).isTrue()
+    assertThat(4.00000000001.isEven()).isFalse()
+    assertThat(0.0.isEven()).isTrue()
+
+    assertThat((-1.0).isEven()).isFalse()
+    assertThat((-2.0).isEven()).isTrue()
+  }
+
+  @Test
+  fun testOdd() {
+    assertThat(1.0.isOdd()).isTrue()
+    assertThat(2.0.isOdd()).isFalse()
+    assertThat(3.0.isOdd()).isTrue()
+    assertThat(4.0.isOdd()).isFalse()
+    assertThat(4.00000000001.isOdd()).isFalse()
+    assertThat(0.0.isOdd()).isFalse()
+
+    assertThat((-1.0).isOdd()).isTrue()
+    assertThat((-2.0).isOdd()).isFalse()
+  }
+
+  @Test
   fun testMaxNullable() {
     assertThat(1.0.coerceAtLeastOrNull(12.0)).isEqualTo(12.0)
     assertThat(1.0.coerceAtLeastOrNull(null)).isEqualTo(1.0)
