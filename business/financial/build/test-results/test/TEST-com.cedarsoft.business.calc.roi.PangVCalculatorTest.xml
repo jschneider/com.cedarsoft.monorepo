@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.roi.PangVCalculatorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-13T03:09:33" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.02">
+<testsuite name="com.cedarsoft.business.calc.roi.PangVCalculatorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-14T03:09:04" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.019">
   <properties/>
-  <testcase name="testSimpleTest()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.003"/>
+  <testcase name="testSimpleTest()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.001"/>
   <testcase name="testValue()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.002"/>
-  <testcase name="testCashValue()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.002"/>
+  <testcase name="testCashValue()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.001"/>
   <testcase name="testImpossible()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.002"/>
-  <testcase name="testNegative()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.004"/>
+  <testcase name="testNegative()" classname="com.cedarsoft.business.calc.roi.PangVCalculatorTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

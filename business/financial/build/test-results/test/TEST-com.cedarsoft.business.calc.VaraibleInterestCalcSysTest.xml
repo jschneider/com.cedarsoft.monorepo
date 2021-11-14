@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-11-13T03:09:32" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.613">
+<testsuite name="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-11-14T03:09:03" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.435">
   <properties/>
-  <testcase name="testOneYearBig()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.322"/>
+  <testcase name="testOneYearBig()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.139"/>
   <testcase name="testInterestRates2()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.001"/>
-  <testcase name="testOneYear()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.007"/>
-  <testcase name="testOneMonth()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.003"/>
-  <testcase name="testBug()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.011"/>
-  <testcase name="testMonth()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.006"/>
-  <testcase name="testSetup()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.001"/>
-  <testcase name="testTime()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.01"/>
-  <testcase name="testAddition()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.186"/>
-  <testcase name="testOneYearCompount()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.003"/>
-  <testcase name="testInterestRates()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.012"/>
-  <testcase name="testConstant()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.017"/>
+  <testcase name="testOneYear()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.002"/>
+  <testcase name="testOneMonth()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.002"/>
+  <testcase name="testBug()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.009"/>
+  <testcase name="testMonth()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.001"/>
+  <testcase name="testSetup()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.004"/>
+  <testcase name="testTime()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.001"/>
+  <testcase name="testAddition()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.237"/>
+  <testcase name="testOneYearCompount()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.004"/>
+  <testcase name="testInterestRates()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.001"/>
+  <testcase name="testConstant()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.005"/>
   <testcase name="testChangingMonths()" classname="com.cedarsoft.business.calc.VaraibleInterestCalcSysTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
