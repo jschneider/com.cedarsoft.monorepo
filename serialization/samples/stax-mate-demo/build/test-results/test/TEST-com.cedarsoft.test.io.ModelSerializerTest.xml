@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io.ModelSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-15T03:10:21" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.117">
+<testsuite name="com.cedarsoft.test.io.ModelSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-16T03:09:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.16">
   <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Model@95abf51e}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.023"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.test.Model@8e6}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.033"/>
-  <testcase name="[3] entry=Entry{object=com.cedarsoft.test.Model@1489b7cb}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.04"/>
-  <testcase name="[4] entry=Entry{object=com.cedarsoft.test.Model@a45467b7}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.017"/>
+  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Model@95abf51e}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.039"/>
+  <testcase name="[2] entry=Entry{object=com.cedarsoft.test.Model@8e6}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.028"/>
+  <testcase name="[3] entry=Entry{object=com.cedarsoft.test.Model@1489b7cb}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.038"/>
+  <testcase name="[4] entry=Entry{object=com.cedarsoft.test.Model@a45467b7}" classname="com.cedarsoft.test.io.ModelSerializerTest" time="0.038"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

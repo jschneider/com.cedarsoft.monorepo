@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-15T03:09:44" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.125">
+<testsuite name="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-16T03:09:27" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.08">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.031"/>
-  <testcase name="testEmpty()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.039"/>
-  <testcase name="testList()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.014"/>
-  <testcase name="testNontExistent()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.012"/>
-  <testcase name="testSubDir()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.005"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.021"/>
+  <testcase name="testEmpty()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.023"/>
+  <testcase name="testList()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.013"/>
+  <testcase name="testNontExistent()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.003"/>
+  <testcase name="testSubDir()" classname="com.cedarsoft.test.utils.matchers.ContainsFileMatcherTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
