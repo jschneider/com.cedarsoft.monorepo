@@ -1,34 +1,27 @@
 package com.cedarsoft.io
 
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.FilterOutputStream
-import java.io.IOException
 import java.nio.file.Files
 
 /**
  * Writes to a temporary file and moves to the target file name on [close]
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-class FileOutputStreamWithMove @Throws(FileNotFoundException::class)
-constructor(private val file: File) : FilterOutputStream(null) {
+class FileOutputStreamWithMove constructor(val file: File) : FilterOutputStream(null) {
   /**
    * Whether the stream has been closed already
    */
   private var closed: Boolean = false
+
   /**
    * The tmp file that is written first
    */
-  val tmpFile: File
+  val tmpFile: File = File(file.parent, file.name + SUFFIX_TMP + "_" + System.nanoTime()).also {
+    it.deleteOnExit()
 
-  init {
-    tmpFile = File(file.parent, file.name + SUFFIX_TMP + "_" + System.nanoTime())
-    tmpFile.deleteOnExit()
-
-    this.out = tmpFile.outputStream().buffered()
+    this.out = it.outputStream().buffered()
   }
 
-  @Throws(IOException::class)
   override fun close() {
     super.close()
 

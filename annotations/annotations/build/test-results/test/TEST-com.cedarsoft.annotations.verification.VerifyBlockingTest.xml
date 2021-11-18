@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.annotations.verification.VerifyBlockingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-17T03:09:45" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.185">
+<testsuite name="com.cedarsoft.annotations.verification.VerifyBlockingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-18T03:09:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.13">
   <properties/>
-  <testcase name="testItShouldFail()" classname="com.cedarsoft.annotations.verification.VerifyBlockingTest" time="1.159"/>
-  <testcase name="testItShouldWork()" classname="com.cedarsoft.annotations.verification.VerifyBlockingTest" time="0.023"/>
+  <testcase name="testItShouldFail()" classname="com.cedarsoft.annotations.verification.VerifyBlockingTest" time="1.113"/>
+  <testcase name="testItShouldWork()" classname="com.cedarsoft.annotations.verification.VerifyBlockingTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

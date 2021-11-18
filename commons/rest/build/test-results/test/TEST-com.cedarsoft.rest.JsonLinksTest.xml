@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.rest.JsonLinksTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-17T03:10:02" hostname="runner-cs1zem-v-project-47-concurrent-0" time="7.821">
+<testsuite name="com.cedarsoft.rest.JsonLinksTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-11-18T03:10:11" hostname="runner-cs1zem-v-project-47-concurrent-0" time="6.851">
   <properties/>
-  <testcase name="testParse$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="7.702"/>
-  <testcase name="testWithLinksApi$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.029"/>
-  <testcase name="testWithLinks$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.051"/>
-  <testcase name="testJackson()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.024"/>
+  <testcase name="testParse$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="6.61"/>
+  <testcase name="testWithLinksApi$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.071"/>
+  <testcase name="testWithLinks$rest()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.084"/>
+  <testcase name="testJackson()" classname="com.cedarsoft.rest.JsonLinksTest" time="0.057"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
