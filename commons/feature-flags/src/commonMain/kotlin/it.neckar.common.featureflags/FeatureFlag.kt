@@ -51,6 +51,11 @@ data class FeatureFlag(
     val slowServer: FeatureFlag = FeatureFlag("slowServer", "Delay responses on the server")
 
     /**
+     * Enable / disable testing
+     */
+    val testing: FeatureFlag = FeatureFlag("testing", "Testing - non production")
+
+    /**
      * Contains the available feature flags
      */
     val available: List<FeatureFlag> = listOf(alpha)
