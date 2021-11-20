@@ -30,3 +30,22 @@ object ZeroOrPositive : NumberConstraint {
     return value.coerceAtLeast(0.0)
   }
 }
+
+class CustomIntegerConstraint(
+  private val lowerConstraint: Int,
+  private val upperConstraint: Int,
+) : NumberConstraint {
+  init {
+    require(lowerConstraint < upperConstraint) {
+      "Lower constraint $lowerConstraint needs to be lower that upper constraint $upperConstraint but was not!"
+    }
+  }
+
+  override fun constraint(value: Int): Int {
+    return value.coerceIn(lowerConstraint, upperConstraint)
+  }
+
+  override fun constraint(value: Double): Double {
+    return constraint(value.toInt()).toDouble()
+  }
+}

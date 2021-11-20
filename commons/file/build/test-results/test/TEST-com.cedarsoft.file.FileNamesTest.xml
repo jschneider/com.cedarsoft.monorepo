@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-19T03:09:16" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.142">
+<testsuite name="com.cedarsoft.file.FileNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:09:29" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.114">
   <properties/>
-  <testcase name="testIt2()" classname="com.cedarsoft.file.FileNamesTest" time="0.136"/>
-  <testcase name="testIt()" classname="com.cedarsoft.file.FileNamesTest" time="0.003"/>
+  <testcase name="testIt2()" classname="com.cedarsoft.file.FileNamesTest" time="0.111"/>
+  <testcase name="testIt()" classname="com.cedarsoft.file.FileNamesTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

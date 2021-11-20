@@ -481,11 +481,10 @@ external interface TextInputProps : Props {
  */
 fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
   when (numberConstraint) {
-    Unconstraint -> {
-    }
     ZeroOrPositive -> {
       zeroOrPositiveValues()
     }
+    else -> {}
   }
 }
 

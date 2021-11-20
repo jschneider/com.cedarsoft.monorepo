@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.VersionMappingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-19T03:09:35" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.069">
+<testsuite name="com.cedarsoft.serialization.VersionMappingTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:09:46" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.049">
   <properties/>
-  <testcase name="testWriteVersion2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.009"/>
+  <testcase name="testWriteVersion2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.006"/>
   <testcase name="testBasic()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
-  <testcase name="testFluentTypicalFaults2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.011"/>
-  <testcase name="testWriteVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.006"/>
+  <testcase name="testFluentTypicalFaults2()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.009"/>
+  <testcase name="testWriteVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
   <testcase name="testFluentTypicalFaults()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
-  <testcase name="testDelegateWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.003"/>
+  <testcase name="testDelegateWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.004"/>
   <testcase name="testVerify()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
   <testcase name="testMyWrongVersion()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
-  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.001"/>
+  <testcase name="testDuplicate()" classname="com.cedarsoft.serialization.VersionMappingTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
