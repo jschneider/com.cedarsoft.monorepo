@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:09:56" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.163">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-21T03:09:29" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.186">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.048"/>
-  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.025"/>
-  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.039"/>
-  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.025"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.001"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.035"/>
+  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.034"/>
+  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.018"/>
+  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.092"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:10:14" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.043">
+<testsuite name="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-21T03:09:42" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.045">
   <properties/>
-  <testcase name="testBinding()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" time="0.038"/>
-  <testcase name="testBooleanEnum()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" time="0.004"/>
+  <testcase name="testBinding()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" time="0.036"/>
+  <testcase name="testBooleanEnum()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingKotlinTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

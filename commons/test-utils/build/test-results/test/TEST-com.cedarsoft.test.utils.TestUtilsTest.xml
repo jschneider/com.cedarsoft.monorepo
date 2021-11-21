@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.TestUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:09:40" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.002">
+<testsuite name="com.cedarsoft.test.utils.TestUtilsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-21T03:09:17" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.001">
   <properties/>
   <testcase name="testCleanupNull()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.0"/>
   <testcase name="testCleanup()" classname="com.cedarsoft.test.utils.TestUtilsTest" time="0.001"/>

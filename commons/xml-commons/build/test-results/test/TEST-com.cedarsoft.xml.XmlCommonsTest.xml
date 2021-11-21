@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.xml.XmlCommonsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-20T03:09:39" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.588">
+<testsuite name="com.cedarsoft.xml.XmlCommonsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-21T03:09:13" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.734">
   <properties/>
-  <testcase name="testParse()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.185"/>
-  <testcase name="testFormat()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.369"/>
-  <testcase name="testOutDom()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.011"/>
+  <testcase name="testParse()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.177"/>
+  <testcase name="testFormat()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.51"/>
+  <testcase name="testOutDom()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.01"/>
   <testcase name="testOutStream()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.014"/>
   <testcase name="testOutWriter()" classname="com.cedarsoft.xml.XmlCommonsTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
