@@ -407,7 +407,7 @@ object Components {
    */
   @JvmStatic
   fun <E : Enum<E>> radioButton(enumProperty: Property<E>, value: E): RadioButton {
-    val radioButton = RadioButton(EnumTranslatorUtil.getEnumTranslator().translate(value))
+    val radioButton = RadioButton(EnumTranslatorUtil.translate(value))
     radioButton.minWidth = Region.USE_PREF_SIZE
     enumProperty.addListener { _, _, newValue -> radioButton.isSelected = newValue === value }
     radioButton.selectedProperty().addListener { _, _, newValue ->
@@ -516,7 +516,7 @@ object Components {
 
     choiceBox.converter = object : OneWayConverter<E>() {
       override fun format(toFormat: E): String {
-        return EnumTranslatorUtil.getEnumTranslator().translate(toFormat)
+        return EnumTranslatorUtil.translate(toFormat)
       }
     }
     return choiceBox
@@ -670,7 +670,7 @@ object Components {
   fun <E : Enum<E>> textFieldEnumReadOnly(enumProperty: ObservableValue<E>): TextField {
     val textField = TextField()
     textField.isEditable = false
-    textField.textProperty().bind(Bindings.createStringBinding({ EnumTranslatorUtil.getEnumTranslator().translate(enumProperty.value) }, enumProperty))
+    textField.textProperty().bind(Bindings.createStringBinding({ EnumTranslatorUtil.translate(enumProperty.value) }, enumProperty))
 
     //Avoid premature gc of the property
     textField.properties["observableBoundToText"] = enumProperty

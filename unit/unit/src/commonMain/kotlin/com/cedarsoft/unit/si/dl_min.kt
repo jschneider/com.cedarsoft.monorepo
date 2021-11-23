@@ -1,10 +1,14 @@
 package com.cedarsoft.unit.si
 
-
 import com.cedarsoft.unit.Name
 import com.cedarsoft.unit.Symbol
 import com.cedarsoft.unit.Unit
+import com.cedarsoft.unit.prefix.deci
+import com.cedarsoft.unit.quantity.Speed
 
+/**
+ *
+ */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,
@@ -26,7 +30,10 @@ import com.cedarsoft.unit.Unit
 @MustBeDocumented
 @Suppress("ClassName")
 @Unit
-@Name("liter per minute")
-@Symbol("L/min")
-@SiDerivedUnit(L::class)
-annotation class L_min
+@Speed
+@Name("deciliter per minute")
+@Symbol("0.1 l/min")
+@deci(L_min::class)
+annotation class dl_min
+
+

@@ -29,7 +29,7 @@ public class MessageUtil {
     try {
       return resourceBundle.getString(key);
     } catch (MissingResourceException ignore) {
-      System.err.println("Can't find resource for bundle " + resourceBundle.getBaseBundleName() + ", key " + key);
+      System.err.println("Can't find entry for key <" + key + "> in bundle " + resourceBundle.getBaseBundleName());
       return key;
     }
   }
@@ -73,7 +73,7 @@ public class MessageUtil {
     try {
       return resourceBundle.getString(key);
     } catch (MissingResourceException ignore) {
-      System.err.println("Can't find resource for bundle " + resourceBundle.getBaseBundleName() + ", key " + key + " in " + enumValue.name());
+      System.err.println("Can't find entry for key <" + enumValue.name() + "> in bundle " + resourceBundle.getBaseBundleName());
       return key;
     }
   }

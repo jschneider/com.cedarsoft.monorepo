@@ -1,10 +1,11 @@
 package com.cedarsoft.common.collections
 
+import com.cedarsoft.unit.si.K
 import kotlin.jvm.JvmOverloads
 
 
 /**
- * Use the cache map instead
+ * Wraps a [CacheMap] and provides additional features like hit counter or other custom methods
  */
 class Cache<K, V>
 @Deprecated("use cache() method instead to allow use for better", level = DeprecationLevel.WARNING)

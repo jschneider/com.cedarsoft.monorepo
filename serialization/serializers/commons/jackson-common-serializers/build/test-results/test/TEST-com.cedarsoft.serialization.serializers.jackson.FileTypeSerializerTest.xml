@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.FileTypeSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-22T03:09:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.025">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.FileTypeSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-23T03:10:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.018">
   <properties/>
-  <testcase name="[1] entry=Entry{object=FileType(id=id, contentType=contentType, isDependentType=true, extensions=[.jpg, .ccx])}" classname="com.cedarsoft.serialization.serializers.jackson.FileTypeSerializerTest" time="0.025"/>
+  <testcase name="[1] entry=Entry{object=FileType(id=id, contentType=contentType, isDependentType=true, extensions=[.jpg, .ccx])}" classname="com.cedarsoft.serialization.serializers.jackson.FileTypeSerializerTest" time="0.018"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
