@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.NumberSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-11-24T03:09:53" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.027">
+<testsuite name="com.cedarsoft.serialization.jackson.NumberSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-11-25T03:09:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
-  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="[3] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="testInt()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="testDouble()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.001"/>
-  <testcase name="testDouble2()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.0"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.004"/>
+  <testcase name="[2] entry=Entry{object=123.5}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="[3] entry=Entry{object=123.0}" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.0"/>
+  <testcase name="testInt()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="testDouble()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
+  <testcase name="testDouble2()" classname="com.cedarsoft.serialization.jackson.NumberSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

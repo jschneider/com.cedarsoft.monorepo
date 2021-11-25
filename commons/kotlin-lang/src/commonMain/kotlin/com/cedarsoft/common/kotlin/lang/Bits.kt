@@ -20,29 +20,23 @@ inline fun Int.reinterpretAsFloat() = Float.fromBits(this)
 /** Returns the float representation of [this] memory bits */
 inline fun Long.reinterpretAsDouble() = Double.fromBits(this)
 
-/** Rotates [this]  [bits] bits to the left */
-@ExperimentalStdlibApi
-fun UInt.rotateLeft(bits: Int): UInt = this.rotateLeftKotlin(bits)
-
-/** Rotates [this]  [bits] bits to the left */
-@ExperimentalStdlibApi
-fun Int.rotateLeft(bits: Int): Int = this.rotateLeftKotlin(bits)
-
-/** Rotates [this]  [bits] bits to the left */
-@ExperimentalStdlibApi
-fun Long.rotateLeft(bits: Int): Long = this.rotateLeftKotlin(bits)
-
-/** Rotates [this]  [bits] bits to the right */
-@ExperimentalStdlibApi
-fun UInt.rotateRight(bits: Int): UInt = this.rotateRightKotlin(bits)
-
-/** Rotates [this]  [bits] bits to the right */
-@ExperimentalStdlibApi
-fun Int.rotateRight(bits: Int): Int = this.rotateRightKotlin(bits)
-
-/** Rotates [this]  [bits] bits to the right */
-@ExperimentalStdlibApi
-fun Long.rotateRight(bits: Int): Long = this.rotateRightKotlin(bits)
+///** Rotates [this]  [bits] bits to the left */
+//fun UInt.rotateLeft(bits: Int): UInt = this.rotateLeftKotlin(bits)
+//
+///** Rotates [this]  [bits] bits to the left */
+//fun Int.rotateLeft(bits: Int): Int = this.rotateLeftKotlin(bits)
+//
+///** Rotates [this]  [bits] bits to the left */
+//fun Long.rotateLeft(bits: Int): Long = this.rotateLeftKotlin(bits)
+//
+///** Rotates [this]  [bits] bits to the right */
+//fun UInt.rotateRight(bits: Int): UInt = this.rotateRightKotlin(bits)
+//
+///** Rotates [this]  [bits] bits to the right */
+//fun Int.rotateRight(bits: Int): Int = this.rotateRightKotlin(bits)
+//
+///** Rotates [this]  [bits] bits to the right */
+//fun Long.rotateRight(bits: Int): Long = this.rotateRightKotlin(bits)
 
 /** Reverses the bytes of [this] [Short]: AABB -> BBAA */
 fun Short.reverseBytes(): Short {

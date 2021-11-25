@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.properties.KotlinFxPropertiesJavaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-24T03:10:15" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.087">
+<testsuite name="com.cedarsoft.commons.javafx.properties.KotlinFxPropertiesJavaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-25T03:10:10" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.19">
   <properties/>
-  <testcase name="name()" classname="com.cedarsoft.commons.javafx.properties.KotlinFxPropertiesJavaTest" time="0.087"/>
+  <testcase name="name()" classname="com.cedarsoft.commons.javafx.properties.KotlinFxPropertiesJavaTest" time="0.19"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
