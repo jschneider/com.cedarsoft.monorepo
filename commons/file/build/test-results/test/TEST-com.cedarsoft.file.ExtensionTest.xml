@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.ExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-25T03:09:31" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.017">
+<testsuite name="com.cedarsoft.file.ExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-26T03:09:55" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.022">
   <properties/>
-  <testcase name="testEmpty" classname="com.cedarsoft.file.ExtensionTest" time="0.011"/>
-  <testcase name="testDefault" classname="com.cedarsoft.file.ExtensionTest" time="0.001"/>
+  <testcase name="testEmpty" classname="com.cedarsoft.file.ExtensionTest" time="0.021"/>
+  <testcase name="testDefault" classname="com.cedarsoft.file.ExtensionTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
