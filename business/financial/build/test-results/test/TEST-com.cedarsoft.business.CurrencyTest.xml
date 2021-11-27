@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.CurrencyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-26T03:09:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.087">
+<testsuite name="com.cedarsoft.business.CurrencyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-27T03:09:46" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.108">
   <properties/>
-  <testcase name="testCurrency()" classname="com.cedarsoft.business.CurrencyTest" time="0.087"/>
+  <testcase name="testCurrency()" classname="com.cedarsoft.business.CurrencyTest" time="0.108"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
