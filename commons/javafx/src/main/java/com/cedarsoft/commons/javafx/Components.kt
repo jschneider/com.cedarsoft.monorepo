@@ -1122,6 +1122,19 @@ object Components {
   }
 
   @JvmStatic
+  fun imageViewHolderWithBoundedWidthAndHeight(imageView: ImageView): Node {
+    imageView.minWidth(1.0)
+    imageView.isPreserveRatio = true
+
+    val imageViewStackPane = StackPane()
+    imageViewStackPane.children.add(imageView)
+    imageViewStackPane.minWidth = 1.0
+    imageView.fitWidthProperty().bind(imageViewStackPane.widthProperty())
+    imageView.fitHeightProperty().bind(imageViewStackPane.heightProperty())
+    return imageViewStackPane
+  }
+
+  @JvmStatic
   fun findClosestStepForValue(value: Double, min: Double, max: Double, step: Double?): Double {
     if (step == null) {
       return value.coerceIn(min, max)

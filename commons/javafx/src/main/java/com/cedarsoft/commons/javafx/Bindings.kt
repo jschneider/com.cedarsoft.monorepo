@@ -10,6 +10,7 @@ import javafx.beans.binding.IntegerBinding
 import javafx.beans.binding.ObjectBinding
 import javafx.beans.binding.StringBinding
 import javafx.beans.property.ObjectProperty
+import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.beans.value.ObservableValue
 import javafx.collections.ListChangeListener
@@ -170,4 +171,55 @@ inline fun <reified T : Enum<T>> ObjectProperty<T>.next(values: Array<T> = enumV
 
   val nextValue = values[nextIndex]
   this.value = nextValue
+}
+
+
+/**
+ * Nested  binding for observable value.
+ *
+ * Can be used like this:
+ * ```
+ * val name = OuterClass("daName").inner
+ *  .select {
+ *    it.name
+ * }
+ *
+ * class OuterClass(name: String) {
+ *  val inner: ObservableValue<InnerClass> = SimpleObjectProperty(InnerClass())
+ * }
+ *
+ * class InnerClass {
+ *  val name: ObservableString = SimpleStringProperty("initial name")
+ * }
+ * ```
+ *
+ * The `name` value is updated whenever the `inner` property is changed *and* the `name` property
+ * change of the referenced object
+ */
+fun <T, N> ObservableValue<T>.select(extractNested: (T) -> ObservableValue<N>): ObservableValue<N> {
+  //The currently nested value
+  var currentNested: ObservableValue<N> = extractNested(value)
+
+  //Holds the nested value
+  val nestedObservableObject = SimpleObjectProperty(currentNested.value)
+
+  //Register the value change listener
+  val nestedValueListener: (N) -> Unit = { newValue ->
+    nestedObservableObject.value = newValue
+  }
+
+  var disposable = currentNested.consumeImmediately(nestedValueListener)
+
+  //Update the nested
+  consumeImmediately { newValue ->
+    //Unregister from the old nested
+    disposable.dispose()
+
+    currentNested = extractNested(newValue)
+    nestedObservableObject.value = currentNested.value
+
+    disposable = currentNested.consumeImmediately(nestedValueListener)
+  }
+
+  return nestedObservableObject
 }

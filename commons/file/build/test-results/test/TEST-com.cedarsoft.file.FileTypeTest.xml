@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-27T03:09:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.368">
+<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-28T03:10:04" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.45">
   <properties/>
-  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.074"/>
-  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.05"/>
+  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.119"/>
+  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
   <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
-  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.192"/>
-  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.006"/>
+  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.245"/>
+  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
   <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
-  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
-  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
-  <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.003"/>
+  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.009"/>
+  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
+  <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
