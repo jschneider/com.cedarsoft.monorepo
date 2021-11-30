@@ -111,6 +111,10 @@ object FontAwesome {
   fun RBuilder.faUser() {
     i(classes = FontAwesomeIcons.user) {}
   }
+
+  fun RBuilder.faAddUser() {
+    i(classes = FontAwesomeIcons.addUser) {}
+  }
 }
 
 /**
@@ -136,6 +140,7 @@ object FontAwesomeIcons {
   const val phone: String = "fa fa-phone"
   const val gift: String = "fas fa-gift"
   const val user: String = "fas fa-user"
+  const val addUser: String = "fa fa-user-plus"
 
   const val horizontalArrows: String = "fas fa-arrows-alt-h"
   const val verticalArrows: String = "fas fa-arrows-alt-v"

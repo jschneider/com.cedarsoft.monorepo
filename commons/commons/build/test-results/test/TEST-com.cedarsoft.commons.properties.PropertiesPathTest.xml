@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.properties.PropertiesPathTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-29T03:09:12" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.069">
+<testsuite name="com.cedarsoft.commons.properties.PropertiesPathTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-11-30T03:10:03" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.097">
   <properties/>
-  <testcase name="testEquals()" classname="com.cedarsoft.commons.properties.PropertiesPathTest" time="0.041"/>
-  <testcase name="testPresentation()" classname="com.cedarsoft.commons.properties.PropertiesPathTest" time="0.013"/>
+  <testcase name="testEquals()" classname="com.cedarsoft.commons.properties.PropertiesPathTest" time="0.054"/>
+  <testcase name="testPresentation()" classname="com.cedarsoft.commons.properties.PropertiesPathTest" time="0.042"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

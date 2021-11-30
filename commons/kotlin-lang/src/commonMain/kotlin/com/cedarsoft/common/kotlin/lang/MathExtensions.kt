@@ -430,6 +430,13 @@ inline fun Double.or0ifNaN(): Double {
 }
 
 /**
+ * Returns 0.0 if this is Nan or infinite
+ */
+inline fun Double.or0ifNanOrInfinite(): Double {
+  return ifNaN(0.0).ifInfinite(0.0)
+}
+
+/**
  * Returns NaN if this is null
  */
 inline fun Double?.orNanIfNull(): Double {
