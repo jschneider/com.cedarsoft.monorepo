@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-12-02T03:09:10" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.344">
+<testsuite name="com.cedarsoft.business.JodaTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-12-03T03:09:14" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.379">
   <properties/>
-  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.192"/>
-  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.052"/>
-  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.008"/>
+  <testcase name="testLeapYear()" classname="com.cedarsoft.business.JodaTest" time="0.182"/>
+  <testcase name="testPeriodeLikePangV()" classname="com.cedarsoft.business.JodaTest" time="0.035"/>
+  <testcase name="testDaysOnly()" classname="com.cedarsoft.business.JodaTest" time="0.01"/>
   <testcase name="testBasic()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
-  <testcase name="testNames()" classname="com.cedarsoft.business.JodaTest" time="0.015"/>
+  <testcase name="testNames()" classname="com.cedarsoft.business.JodaTest" time="0.014"/>
   <testcase name="testRound()" classname="com.cedarsoft.business.JodaTest" time="0.003"/>
-  <testcase name="testPeriode()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
-  <testcase name="testIt()" classname="com.cedarsoft.business.JodaTest" time="0.002"/>
-  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.034"/>
+  <testcase name="testPeriode()" classname="com.cedarsoft.business.JodaTest" time="0.004"/>
+  <testcase name="testIt()" classname="com.cedarsoft.business.JodaTest" time="0.001"/>
+  <testcase name="testPeriode2()" classname="com.cedarsoft.business.JodaTest" time="0.088"/>
   <testcase name="testNoLeap()" classname="com.cedarsoft.business.JodaTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -56,8 +56,8 @@ object BidirectionalBinding {
   fun <A, B> bindBidirectional(
     propertyA: ObservableValue<A>,
     propertyB: ObservableValue<B>,
-    updateFromAToB: ChangeListener<A>,
-    updateFromBToA: ChangeListener<B>,
+    updateFromAToB: ChangeListener<in A>,
+    updateFromBToA: ChangeListener<in B>,
     vararg additionalDependencies: ObservableValue<out Any>
   ) {
     propertyA.addListener(FlaggedChangeListener(updateFromAToB))

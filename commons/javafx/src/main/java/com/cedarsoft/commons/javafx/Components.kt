@@ -70,6 +70,7 @@ import java.util.function.Predicate
 import java.util.stream.Stream
 import kotlin.streams.toList
 
+
 /**
  * Helper stuff for the components
  */
@@ -328,25 +329,48 @@ object Components {
     return checkBox
   }
 
+  @Deprecated("use radioButtons instead")
   @JvmStatic
   fun <T> createRadioButtons(property: Property<T>, values: Collection<T>): HBox {
     return createRadioButtons<T>(null, property, values.stream())
   }
 
+  @Deprecated("use radioButtons instead")
   @JvmStatic
   @SafeVarargs
   fun <T> createRadioButtons(property: Property<T>, vararg values: T): HBox {
     return createRadioButtons<T>(null, property, Arrays.stream<T>(values))
   }
 
+  @Deprecated("use radioButtons instead")
   @JvmStatic
   @SafeVarargs
   fun <T> createRadioButtons(label: String?, property: Property<T>, vararg values: T): HBox {
     return createRadioButtons(label, property, Arrays.stream<T>(values))
   }
 
+  @Deprecated("use radioButtons instead")
   @JvmStatic
   fun <T> createRadioButtons(label: String?, property: Property<T>, values: Stream<out T>): HBox {
+    val buttons = createRadioButtonsElements(property, values)
+
+    val hBox = HBox()
+    if (label != null) {
+      hBox.children.add(Label(label))
+    }
+    hBox.children.addAll(buttons)
+    return hBox
+  }
+
+  @Deprecated("use radioButtons instead")
+  @JvmStatic
+  fun <T> createRadioButtonsElements(property: Property<T>, values: List<out T>): List<RadioButton> {
+    return createRadioButtonsElements(property, values.stream())
+  }
+
+  @Deprecated("use radioButtons instead")
+  @JvmStatic
+  fun <T> createRadioButtonsElements(property: Property<T>, values: Stream<out T>): List<RadioButton> {
     val toggleGroup = ToggleGroup()
 
     val buttons = values
@@ -371,13 +395,7 @@ object Components {
       selectButton<T>(toggleGroup, initialValue)
     }
 
-
-    val hBox = HBox()
-    if (label != null) {
-      hBox.children.add(Label(label))
-    }
-    hBox.children.addAll(buttons)
-    return hBox
+    return buttons
   }
 
   @JvmStatic
@@ -462,8 +480,19 @@ object Components {
   }
 
   @JvmStatic
-  fun <T> comboBox(property: Property<T>, values: List<T>, converter: (T) -> String): ComboBox<T> {
-    val comboBox = ComboBox(FXCollections.observableArrayList(values))
+  fun <T> comboBox(property: Property<T>, values: Array<T>, converter: (T) -> String = { t -> t.toString() }): ComboBox<T> {
+    return comboBox(property, FXCollections.observableArrayList(values.asList()), converter)
+  }
+
+  @JvmStatic
+  fun <T> comboBox(property: Property<T>, values: List<T>, converter: (T) -> String = { t -> t.toString() }): ComboBox<T> {
+    return comboBox(property, FXCollections.observableArrayList(values), converter)
+  }
+
+  @JvmOverloads
+  @JvmStatic
+  fun <T> comboBox(property: Property<T>, values: ObservableList<T>, converter: (T) -> String = { t -> t.toString() }): ComboBox<T> {
+    val comboBox = ComboBox(values)
     comboBox.valueProperty().bindBidirectional(property)
     comboBox.formatUsingConverter(converter)
     return comboBox
@@ -983,6 +1012,22 @@ object Components {
   fun spinner(valueProperty: IntegerProperty, initialValue: Int, minValue: Int, maxValue: Int): Spinner<Int> {
     val spinner = Spinner<Int>(minValue, maxValue, initialValue)
     val valueFactory = spinner.valueFactory
+
+    //Editable manually
+    spinner.isEditable = true
+
+    //It is necessary to write the value on focus lost
+    spinner.focusedProperty().consume { focused ->
+      if (!focused) {
+        if (valueFactory != null) {
+          val converter = valueFactory.converter
+          if (converter != null) {
+            val value = converter.fromString(spinner.editor.text)
+            valueFactory.value = value
+          }
+        }
+      }
+    }
 
     spinner.setOnScroll { event ->
       if (spinner.isDisabled) {
