@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.EmailSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-03T03:09:43" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.002">
+<testsuite name="com.cedarsoft.serialization.jackson.test.EmailSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-04T03:09:43" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.001">
   <properties/>
-  <testcase name="[1] entry=Entry{object=Email{mail='test@test.de'}}" classname="com.cedarsoft.serialization.jackson.test.EmailSerializerTest" time="0.002"/>
+  <testcase name="[1] entry=Entry{object=Email{mail='test@test.de'}}" classname="com.cedarsoft.serialization.jackson.test.EmailSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
