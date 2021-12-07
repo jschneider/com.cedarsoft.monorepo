@@ -46,6 +46,17 @@ open class CacheMap<K, V> private constructor(
     for (key in keys) remove(key)
   }
 
+  /**
+   * Removes all entries the provided predicate returns true for
+   */
+  fun removeIf(predicate: (K) -> Boolean) {
+    val keysToRemove = map.keys.filter(predicate)
+
+    keysToRemove.fastForEach {
+      map.remove(it)
+    }
+  }
+
   override fun toString(): String = map.toString()
 
   override fun equals(other: Any?): Boolean = (other is CacheMap<*, *>) && (this.map == other.map) && (this.free == other.free)
