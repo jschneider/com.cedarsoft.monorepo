@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.javafx.test.HeadlessVerificationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-12-07T03:29:51" hostname="runner-cs1zem-v-project-47-concurrent-0" time="2.007">
+<testsuite name="com.cedarsoft.javafx.test.HeadlessVerificationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-12-08T03:09:59" hostname="runner-ioxloixu-project-47-concurrent-0" time="1.485">
   <properties/>
-  <testcase name="testCreateJavaFX()" classname="com.cedarsoft.javafx.test.HeadlessVerificationTest" time="1.791"/>
-  <testcase name="testIt()" classname="com.cedarsoft.javafx.test.HeadlessVerificationTest" time="0.215"/>
+  <testcase name="testCreateJavaFX()" classname="com.cedarsoft.javafx.test.HeadlessVerificationTest" time="1.27"/>
+  <testcase name="testIt()" classname="com.cedarsoft.javafx.test.HeadlessVerificationTest" time="0.214"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
