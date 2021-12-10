@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.ThreadUtilsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-09T03:09:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.235">
+<testsuite name="com.cedarsoft.commons.ThreadUtilsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-10T03:09:52" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.188">
   <properties/>
-  <testcase name="testEdt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.169"/>
-  <testcase name="testOther()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.014"/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.047"/>
+  <testcase name="testEdt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.109"/>
+  <testcase name="testOther()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.019"/>
+  <testcase name="testIt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.057"/>
   <testcase name="testInvoke()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

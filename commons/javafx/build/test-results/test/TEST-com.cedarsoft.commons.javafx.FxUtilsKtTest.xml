@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.FxUtilsKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-09T03:10:36" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.09">
+<testsuite name="com.cedarsoft.commons.javafx.FxUtilsKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-10T03:10:50" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.084">
   <properties/>
-  <testcase name="test2RGB()" classname="com.cedarsoft.commons.javafx.FxUtilsKtTest" time="0.09"/>
+  <testcase name="test2RGB()" classname="com.cedarsoft.commons.javafx.FxUtilsKtTest" time="0.084"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
