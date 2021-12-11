@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateNameSpaceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-10T03:10:19" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.041">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateNameSpaceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-11T03:09:58" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.015">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.serialization.stax.mate.StaxMateNameSpaceTest" time="0.041"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.serialization.stax.mate.StaxMateNameSpaceTest" time="0.015"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

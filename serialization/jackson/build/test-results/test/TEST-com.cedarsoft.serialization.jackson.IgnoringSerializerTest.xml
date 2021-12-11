@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-12-10T03:10:12" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.652">
+<testsuite name="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-12-11T03:09:49" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.605">
   <properties/>
-  <testcase name="[1] json={}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.612"/>
+  <testcase name="[1] json={}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.538"/>
   <testcase name="[2] json=[]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
-  <testcase name="[3] json=[1,2,3,4]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.002"/>
-  <testcase name="[4] json={&quot;id&quot;:123}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.004"/>
-  <testcase name="[5] json={&quot;id&quot;:[123]}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
-  <testcase name="[6] json={&quot;id&quot;:{&quot;value&quot;:123}}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.004"/>
+  <testcase name="[3] json=[1,2,3,4]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
+  <testcase name="[4] json={&quot;id&quot;:123}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.011"/>
+  <testcase name="[5] json={&quot;id&quot;:[123]}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.002"/>
+  <testcase name="[6] json={&quot;id&quot;:{&quot;value&quot;:123}}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
   <testcase name="[7] json=&quot;&quot;" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

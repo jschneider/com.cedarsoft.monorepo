@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.TimelineSupportTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-10T03:10:51" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.242">
+<testsuite name="com.cedarsoft.commons.javafx.TimelineSupportTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-11T03:10:22" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.244">
   <properties/>
-  <testcase name="testDispose()" classname="com.cedarsoft.commons.javafx.TimelineSupportTest" time="0.242"/>
+  <testcase name="testDispose()" classname="com.cedarsoft.commons.javafx.TimelineSupportTest" time="0.244"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
