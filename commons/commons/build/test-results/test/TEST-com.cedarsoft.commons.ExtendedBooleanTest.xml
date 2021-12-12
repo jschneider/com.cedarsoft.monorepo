@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.ExtendedBooleanTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-12-11T03:09:28" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.094">
+<testsuite name="com.cedarsoft.commons.ExtendedBooleanTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-12-12T03:10:00" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.146">
   <properties/>
-  <testcase name="testBasic()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.014"/>
-  <testcase name="testTranslation2()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.01"/>
-  <testcase name="testValueOf()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.002"/>
-  <testcase name="testResourceBundles()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.014"/>
-  <testcase name="testTranslation()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.024"/>
+  <testcase name="testBasic()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.036"/>
+  <testcase name="testTranslation2()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.075"/>
+  <testcase name="testValueOf()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.012"/>
+  <testcase name="testResourceBundles()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.005"/>
+  <testcase name="testTranslation()" classname="com.cedarsoft.commons.ExtendedBooleanTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

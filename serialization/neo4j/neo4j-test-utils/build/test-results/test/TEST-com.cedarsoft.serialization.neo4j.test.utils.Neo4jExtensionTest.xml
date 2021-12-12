@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.Neo4jExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-11T03:10:31" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.185">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.Neo4jExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-12T03:11:01" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.44">
   <properties/>
-  <testcase name="testDb(GraphDatabaseService)" classname="com.cedarsoft.serialization.neo4j.test.utils.Neo4jExtensionTest" time="0.185"/>
+  <testcase name="testDb(GraphDatabaseService)" classname="com.cedarsoft.serialization.neo4j.test.utils.Neo4jExtensionTest" time="0.44"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
