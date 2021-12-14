@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-13T03:10:21" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.087">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-14T03:10:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.086">
   <properties/>
-  <testcase name="testSchemaTest()" classname="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" time="1.087"/>
+  <testcase name="testSchemaTest()" classname="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" time="1.086"/>
   <system-out><![CDATA[Users created
 The username of user 45 is user45@neo4j.org
 ]]></system-out>
