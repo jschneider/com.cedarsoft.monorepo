@@ -1,5 +1,6 @@
 package it.neckar.react.common
 
+import it.neckar.react.common.BannerOrientation.*
 import it.neckar.react.common.BannerState.*
 import kotlinx.html.DIV
 import kotlinx.html.js.onClickFunction
@@ -12,19 +13,21 @@ import react.dom.*
 fun RBuilder.notificationBanner(
   title: String,
   bannerType: BannerType,
+  bannerOrientation: BannerOrientation,
   bannerState: StateInstance<BannerState>,
   block: RDOMBuilder<DIV>.() -> Unit,
 ): Unit = child(notificationBanner) {
   attrs {
     this.title = title
     this.bannerType = bannerType
+    this.bannerOrientation = bannerOrientation
     this.bannerState = bannerState
     this.block = block
   }
 }
 
 val notificationBanner: FunctionComponent<NotificationBannerProps> = fc("notificationBanner") { props ->
-  div(classes = "alert alert-dismissible fixed-top") {
+  div(classes = "alert alert-dismissible d-none") {
     attrs {
       when (props.bannerType) {
         BannerType.Info -> addClass("alert-info")
@@ -33,8 +36,14 @@ val notificationBanner: FunctionComponent<NotificationBannerProps> = fc("notific
         BannerType.Success -> addClass("alert-success")
       }
 
-      addClassIf("d-none") {
-        props.bannerState.value == Hidden
+      addClassIf("fixed-top") {
+        props.bannerOrientation == Top
+      }
+      addClassIf("fixed-bottom") {
+        props.bannerOrientation == Bottom
+      }
+      removeClassIf("d-none") {
+        props.bannerState.value == Showing
       }
     }
 
@@ -70,6 +79,11 @@ enum class BannerType {
   Success,
 }
 
+enum class BannerOrientation {
+  Top,
+  Bottom,
+}
+
 enum class BannerState {
   Hidden,
   Showing,
@@ -79,6 +93,7 @@ enum class BannerState {
 external interface NotificationBannerProps : Props {
   var title: String
   var bannerType: BannerType
+  var bannerOrientation: BannerOrientation
   var bannerState: StateInstance<BannerState>
   var block: (RDOMBuilder<DIV>) -> Unit
 }

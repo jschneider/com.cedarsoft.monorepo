@@ -132,6 +132,13 @@ fun CommonAttributeGroupFacade.addClass(newClass: String) {
 }
 
 /**
+ * Removes an old class
+ */
+fun CommonAttributeGroupFacade.removeClass(oldClass: String) {
+  classes = classes - oldClass
+}
+
+/**
  * Adds the classes - separated by space
  */
 fun CommonAttributeGroupFacade.addClasses(newClasses: String) {
@@ -243,6 +250,17 @@ inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.addClassIf(className:
   if (check() == true) {
     attrs {
       addClass(className)
+    }
+  }
+}
+
+/**
+ * Removes the given class if the given check returns true
+ */
+inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.removeClassIf(className: String, check: () -> Boolean?) {
+  if (check() == true) {
+    attrs {
+      removeClass(className)
     }
   }
 }

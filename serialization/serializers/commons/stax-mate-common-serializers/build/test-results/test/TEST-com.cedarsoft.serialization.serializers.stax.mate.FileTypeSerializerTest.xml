@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-14T03:09:59" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.068">
+<testsuite name="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-15T03:10:14" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.051">
   <properties/>
-  <testcase name="[1] entry=Entry{object=FileType(id=TheId, contentType=application/special, isDependentType=true, extensions=[,ext, ._ext2])}" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerTest" time="0.068"/>
+  <testcase name="[1] entry=Entry{object=FileType(id=TheId, contentType=application/special, isDependentType=true, extensions=[,ext, ._ext2])}" classname="com.cedarsoft.serialization.serializers.stax.mate.FileTypeSerializerTest" time="0.051"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.BidirectionalBindingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-14T03:10:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.209">
+<testsuite name="com.cedarsoft.commons.javafx.BidirectionalBindingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-15T03:10:32" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.147">
   <properties/>
-  <testcase name="bindBidirectional()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.203"/>
-  <testcase name="testWithConverter()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.002"/>
-  <testcase name="testBuilder()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.002"/>
+  <testcase name="bindBidirectional()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.116"/>
+  <testcase name="testWithConverter()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.003"/>
+  <testcase name="testBuilder()" classname="com.cedarsoft.commons.javafx.BidirectionalBindingTest" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
