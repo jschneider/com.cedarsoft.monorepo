@@ -28,6 +28,15 @@ fun distance(deltaX: Double, deltaY: Double): Double {
 }
 
 /**
+ * Implementation from here: https://stackoverflow.com/questions/1560492/how-to-tell-whether-a-point-is-to-the-right-or-left-side-of-a-line
+ * "Left" means that if you stand on the lineStart point and look into the direction of lineEnd, the point will be on your left side
+ * If you want to know if the point is to the other side (to the "Right"), simply exchange lineStart and lineEnd
+ */
+fun pointIsLeftOfLine(lineStartX: Double, lineStartY: Double, lineEndX: Double, lineEndY: Double, pointX: Double, pointY: Double): Boolean {
+  return (lineEndX - lineStartX) * (pointY - lineStartY) > (lineEndY - lineStartY) * (pointX - lineStartX)
+}
+
+/**
  * Converts radians to degree
  */
 fun Double.toDegrees(): @deg Double {

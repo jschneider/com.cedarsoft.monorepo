@@ -101,4 +101,31 @@ class MathExtensionsKtTest {
       AssertionsForClassTypes.assertThat(toRadians).describedAs("$degrees°").isEqualTo(expectedRad)
     }
   }
+
+  @Test
+  fun testPointIsLeftOfLine() {
+    val line1 = Pair(Pair(0.0, 0.0), Pair(10.0, 10.0))
+    val line2 = Pair(Pair(10.0, -10.0), Pair(-10.0, -10.0))
+    val line3 = Pair(Pair(5.0, -10.0), Pair(-5.0, 10.0))
+
+    val point1 = Pair(0.0, 5.0)
+    val point2 = Pair(5.0, 0.0)
+    val point3 = Pair(-50.0, 0.0)
+    val point4 = Pair(0.0, 50.0)
+
+    assertThat(pointIsLeftOfLine(line1.first.first, line1.first.second, line1.second.first, line1.second.second, point1.first, point1.second)).isEqualTo(true)
+    assertThat(pointIsLeftOfLine(line1.first.first, line1.first.second, line1.second.first, line1.second.second, point2.first, point2.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line1.first.first, line1.first.second, line1.second.first, line1.second.second, point3.first, point3.second)).isEqualTo(true)
+    assertThat(pointIsLeftOfLine(line1.first.first, line1.first.second, line1.second.first, line1.second.second, point4.first, point4.second)).isEqualTo(true)
+
+    assertThat(pointIsLeftOfLine(line2.first.first, line2.first.second, line2.second.first, line2.second.second, point1.first, point1.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line2.first.first, line2.first.second, line2.second.first, line2.second.second, point2.first, point2.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line2.first.first, line2.first.second, line2.second.first, line2.second.second, point3.first, point3.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line2.first.first, line2.first.second, line2.second.first, line2.second.second, point4.first, point4.second)).isEqualTo(false)
+
+    assertThat(pointIsLeftOfLine(line3.first.first, line3.first.second, line3.second.first, line3.second.second, point1.first, point1.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line3.first.first, line3.first.second, line3.second.first, line3.second.second, point2.first, point2.second)).isEqualTo(false)
+    assertThat(pointIsLeftOfLine(line3.first.first, line3.first.second, line3.second.first, line3.second.second, point3.first, point3.second)).isEqualTo(true)
+    assertThat(pointIsLeftOfLine(line3.first.first, line3.first.second, line3.second.first, line3.second.second, point4.first, point4.second)).isEqualTo(false)
+  }
 }
