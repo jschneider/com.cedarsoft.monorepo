@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-18T03:10:34" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.275">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-19T03:09:50" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.151">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.092"/>
-  <testcase name="[2] entry=Entry{object=9223372036854775807}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.076"/>
-  <testcase name="[3] entry=Entry{object=-9223372036854775808}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.084"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.004"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.055"/>
+  <testcase name="[2] entry=Entry{object=9223372036854775807}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.047"/>
+  <testcase name="[3] entry=Entry{object=-9223372036854775808}" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.025"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.LongSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
