@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.binding.ComboBoxObservableListModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-19T03:09:35" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.739">
+<testsuite name="com.cedarsoft.swing.binding.ComboBoxObservableListModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-20T03:09:52" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.604">
   <properties/>
-  <testcase name="testInstantiationFromJava()" classname="com.cedarsoft.swing.binding.ComboBoxObservableListModelTest" time="0.739"/>
+  <testcase name="testInstantiationFromJava()" classname="com.cedarsoft.swing.binding.ComboBoxObservableListModelTest" time="0.604"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

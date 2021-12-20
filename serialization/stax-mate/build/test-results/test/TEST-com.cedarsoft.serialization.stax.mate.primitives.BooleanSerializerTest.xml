@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-19T03:09:48" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.156">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-20T03:10:04" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.138">
   <properties/>
-  <testcase name="[1] entry=Entry{object=true}" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.09"/>
-  <testcase name="[2] entry=Entry{object=false}" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.044"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.001"/>
+  <testcase name="[1] entry=Entry{object=true}" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.053"/>
+  <testcase name="[2] entry=Entry{object=false}" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.069"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.BooleanSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-19T03:09:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.013">
+<testsuite name="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-20T03:09:59" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.004">
   <properties/>
-  <testcase name="testEndObject()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.009"/>
-  <testcase name="testStartObject()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.0"/>
-  <testcase name="testSimple()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.002"/>
+  <testcase name="testEndObject()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.0"/>
+  <testcase name="testStartObject()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.001"/>
+  <testcase name="testSimple()" classname="com.cedarsoft.serialization.jackson.test.compatible.JacksonParserWrapperTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
