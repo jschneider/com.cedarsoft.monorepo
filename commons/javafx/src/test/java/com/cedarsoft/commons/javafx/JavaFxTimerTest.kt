@@ -13,7 +13,7 @@ import jfxtras.util.PlatformUtil
 import org.awaitility.Awaitility
 import org.junit.jupiter.api.Test
 import java.util.concurrent.TimeUnit
-import kotlin.time.milliseconds
+import kotlin.time.Duration.Companion.milliseconds
 
 @JavaFxTest
 class JavaFxTimerTest {

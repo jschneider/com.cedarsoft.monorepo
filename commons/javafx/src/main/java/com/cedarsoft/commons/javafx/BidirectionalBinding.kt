@@ -60,7 +60,9 @@ object BidirectionalBinding {
     updateFromBToA: ChangeListener<in B>,
     vararg additionalDependencies: ObservableValue<out Any>
   ) {
-    propertyA.addListener(FlaggedChangeListener(updateFromAToB))
+    val flaggedChangeListenerFromA2B = FlaggedChangeListener(updateFromAToB)
+
+    propertyA.addListener(flaggedChangeListenerFromA2B)
     propertyB.addListener(FlaggedChangeListener(updateFromBToA))
 
     for (additionalDependency in additionalDependencies) {
@@ -71,7 +73,7 @@ object BidirectionalBinding {
     }
 
     //Initially update property B
-    updateFromAToB.changed(propertyA, null, propertyA.value)
+    flaggedChangeListenerFromA2B.changed(propertyA, null, propertyA.value)
   }
 
   /**
@@ -128,7 +130,7 @@ object BidirectionalBinding {
      * Is set to true if a call is currently made
      */
     private var alreadyCalled = false
-    override fun changed(observable: ObservableValue<out T>, oldValue: T, newValue: T) {
+    override fun changed(observable: ObservableValue<out T>, oldValue: T?, newValue: T) {
       if (alreadyCalled) {
         return
       }

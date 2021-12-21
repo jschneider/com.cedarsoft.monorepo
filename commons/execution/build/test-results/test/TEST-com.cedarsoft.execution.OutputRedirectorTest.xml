@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.execution.OutputRedirectorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-12-20T03:09:44" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.239">
+<testsuite name="com.cedarsoft.execution.OutputRedirectorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-12-21T03:09:26" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.234">
   <properties/>
-  <testcase name="testThreaded()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.025"/>
-  <testcase name="testStreamsBuffered()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.0"/>
-  <testcase name="testBlocking()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.21"/>
+  <testcase name="testThreaded()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.023"/>
+  <testcase name="testStreamsBuffered()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.001"/>
+  <testcase name="testBlocking()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.207"/>
   <testcase name="testDefault()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.001"/>
-  <testcase name="testStreams()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.0"/>
+  <testcase name="testStreams()" classname="com.cedarsoft.execution.OutputRedirectorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
