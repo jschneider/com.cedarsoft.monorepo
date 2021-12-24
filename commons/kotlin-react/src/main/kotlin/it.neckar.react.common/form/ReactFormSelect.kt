@@ -3,7 +3,6 @@ package it.neckar.react.common.form
 import it.neckar.react.common.*
 import it.neckar.uuid.HasUuid
 import kotlinx.html.SELECT
-import kotlinx.html.classes
 import kotlinx.html.js.onChangeFunction
 import kotlinx.html.title
 import org.w3c.dom.HTMLSelectElement
@@ -21,9 +20,7 @@ fun <T : HasUuid> RBuilder.selectHasUuid(
   onChange: OnChange<T>,
 
   availableOptions: List<T>,
-  idProvider: (Any?) -> String,
   formatter: (T) -> String,
-  optionClasses: (T) -> Set<String>,
 
   fieldName: String,
   title: String,
@@ -34,7 +31,6 @@ fun <T : HasUuid> RBuilder.selectHasUuid(
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
-    this.optionClasses = optionClasses as (Any?) -> Set<String>
     this.onChange = onChange as OnChange<Any?>
     this.idProvider = { (it as HasUuid).toString() }
     this.availableOptions = availableOptions
@@ -56,7 +52,6 @@ fun <E : Enum<E>> RBuilder.selectEnum(
 
   availableOptions: List<E>,
   formatter: (E) -> String,
-  optionClasses: (E) -> Set<String>,
 
   fieldName: String,
   title: String,
@@ -67,7 +62,6 @@ fun <E : Enum<E>> RBuilder.selectEnum(
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
-    this.optionClasses = optionClasses as (Any?) -> Set<String>
     this.onChange = onChange as OnChange<Any?>
     this.idProvider = useCallback { (it as E).name }
     this.availableOptions = availableOptions
@@ -89,7 +83,6 @@ fun <T> RBuilder.select(
 
   availableOptions: List<T>,
   formatter: (T) -> String,
-  optionClasses: (T) -> Set<String>,
 
   idProvider: (T) -> String,
 
@@ -102,7 +95,6 @@ fun <T> RBuilder.select(
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
-    this.optionClasses = optionClasses as (Any?) -> Set<String>
     this.onChange = onChange as OnChange<Any?>
     this.idProvider = idProvider as (Any) -> String
     this.availableOptions = availableOptions
@@ -146,8 +138,6 @@ val select: FunctionComponent<SelectProps> = fc("select") { props ->
         attrs {
           this.label = props.formatter(availableOption)
           this.value = if (availableOption == null) NullId else idProvider(availableOption)
-          this.classes = props.optionClasses(availableOption)
-
           //Do *NOT* use selected attribute, React prefers the value attribute of the select element
           //this.selected
         }
@@ -167,7 +157,6 @@ external interface SelectProps : Props {
 
   var availableOptions: List<Any?>
   var formatter: (Any?) -> String
-  var optionClasses: (Any?) -> Set<String>
 
   /**
    * Provides a String ID for each element
