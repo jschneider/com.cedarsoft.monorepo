@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DaAbstractXmlSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-12-24T03:09:50" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.571">
+<testsuite name="com.cedarsoft.serialization.DaAbstractXmlSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-12-25T03:10:09" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.469">
   <properties/>
-  <testcase name="testNs()" classname="com.cedarsoft.serialization.DaAbstractXmlSerializerTest" time="0.566"/>
+  <testcase name="testNs()" classname="com.cedarsoft.serialization.DaAbstractXmlSerializerTest" time="0.468"/>
   <testcase name="testVerifyNsException()" classname="com.cedarsoft.serialization.DaAbstractXmlSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
