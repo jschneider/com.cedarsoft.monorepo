@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.SleepTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-12-25T03:09:49" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.027">
+<testsuite name="com.cedarsoft.commons.SleepTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2021-12-26T03:10:08" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.023">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.SleepTest" time="0.0">
+  <testcase name="testIt()" classname="com.cedarsoft.commons.SleepTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="testInterr()" classname="com.cedarsoft.commons.SleepTest" time="0.02"/>

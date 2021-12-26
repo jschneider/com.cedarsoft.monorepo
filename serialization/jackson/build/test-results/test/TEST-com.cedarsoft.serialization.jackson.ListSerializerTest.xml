@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.ListSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-25T03:10:07" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.052">
+<testsuite name="com.cedarsoft.serialization.jackson.ListSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-26T03:10:27" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.054">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[a, b, c, 54, 234.0, 32.0, false]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.036"/>
+  <testcase name="[1] entry=Entry{object=[a, b, c, 54, 234.0, 32.0, false]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.031"/>
   <testcase name="[2] entry=Entry{object=[a, b, c]}" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.012"/>
   <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.ListSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
