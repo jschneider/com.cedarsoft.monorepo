@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.common.ColorToolsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-27T03:10:10" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.415">
+<testsuite name="com.cedarsoft.swing.common.ColorToolsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:10:07" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.331">
   <properties/>
-  <testcase name="bounds()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.09"/>
-  <testcase name="parseRgb()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.274"/>
-  <testcase name="rgb2string()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.027"/>
+  <testcase name="bounds()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.065"/>
+  <testcase name="parseRgb()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.219"/>
+  <testcase name="rgb2string()" classname="com.cedarsoft.swing.common.ColorToolsTest" time="0.044"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

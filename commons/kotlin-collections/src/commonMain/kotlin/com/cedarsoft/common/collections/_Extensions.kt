@@ -104,9 +104,24 @@ inline fun genericBinarySearch(
   return invalid(fromIndex, toIndex, low, high)
 }
 
+/**
+ * Result of a binary search
+ */
 @JvmInline
 value class BSearchResult(val raw: Int) {
+  /**
+   * Returns true if an exact result has been found
+   */
   val found: Boolean get() = raw >= 0
+
+  /**
+   * Returns the exact index if found, -1 if not found
+   */
   val index: Int get() = if (found) raw else -1
+
+  /**
+   * Returns the near index.
+   * This index can/should be used to insert an element
+   */
   val nearIndex: Int get() = if (found) raw else -raw - 1
 }

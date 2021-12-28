@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.inject.GuiceModulesHelperTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-12-27T03:09:48" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.831">
+<testsuite name="com.cedarsoft.inject.GuiceModulesHelperTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:09:51" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.798">
   <properties/>
-  <testcase name="testFail()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.018"/>
-  <testcase name="testAssertMini2()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.01"/>
-  <testcase name="testAssertMini3()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.056"/>
-  <testcase name="testAssertMini4()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.602"/>
-  <testcase name="testMinimization2()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.039"/>
-  <testcase name="testMinimization3()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.039"/>
-  <testcase name="testMinimization()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.006"/>
-  <testcase name="testAssertMini()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.024"/>
+  <testcase name="testFail()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.005"/>
+  <testcase name="testAssertMini2()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.016"/>
+  <testcase name="testAssertMini3()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.058"/>
+  <testcase name="testAssertMini4()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.583"/>
+  <testcase name="testMinimization2()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.042"/>
+  <testcase name="testMinimization3()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.028"/>
+  <testcase name="testMinimization()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.009"/>
+  <testcase name="testAssertMini()" classname="com.cedarsoft.inject.GuiceModulesHelperTest" time="0.043"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

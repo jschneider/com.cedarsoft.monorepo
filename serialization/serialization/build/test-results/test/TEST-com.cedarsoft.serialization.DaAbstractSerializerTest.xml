@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-12-27T03:10:06" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.03">
+<testsuite name="com.cedarsoft.serialization.DaAbstractSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:10:03" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.09">
   <properties/>
-  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.017"/>
+  <testcase name="testIt2()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.035"/>
   <testcase name="testSeria()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.004"/>
-  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
+  <testcase name="testWritable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.013"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.0"/>
   <testcase name="testReadable()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
   <testcase name="testDeserialize()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
   <testcase name="testVerify()" classname="com.cedarsoft.serialization.DaAbstractSerializerTest" time="0.001"/>
