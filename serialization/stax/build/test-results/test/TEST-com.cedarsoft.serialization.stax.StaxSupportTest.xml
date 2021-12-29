@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.StaxSupportTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:10:02" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.08">
+<testsuite name="com.cedarsoft.serialization.stax.StaxSupportTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-29T03:09:38" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.095">
   <properties/>
-  <testcase name="testEventNames()" classname="com.cedarsoft.serialization.stax.StaxSupportTest" time="0.08"/>
+  <testcase name="testEventNames()" classname="com.cedarsoft.serialization.stax.StaxSupportTest" time="0.095"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

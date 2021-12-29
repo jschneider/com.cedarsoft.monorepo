@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.ThreadUtilsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:09:37" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.284">
+<testsuite name="com.cedarsoft.commons.ThreadUtilsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-29T03:09:14" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.208">
   <properties/>
-  <testcase name="testEdt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.237"/>
-  <testcase name="testOther()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.018"/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.021"/>
-  <testcase name="testInvoke()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.005"/>
+  <testcase name="testEdt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.144"/>
+  <testcase name="testOther()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.02"/>
+  <testcase name="testIt()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.039"/>
+  <testcase name="testInvoke()" classname="com.cedarsoft.commons.ThreadUtilsTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

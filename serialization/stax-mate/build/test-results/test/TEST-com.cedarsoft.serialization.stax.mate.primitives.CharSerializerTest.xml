@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-28T03:10:07" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.072">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-29T03:09:44" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.079">
   <properties/>
   <testcase name="[1] entry=Entry{object={}" classname="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" time="0.031"/>
-  <testcase name="[2] entry=Entry{object=ﾅ}" classname="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" time="0.024"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" time="0.016"/>
+  <testcase name="[2] entry=Entry{object=ﾅ}" classname="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" time="0.027"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.CharSerializerTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
