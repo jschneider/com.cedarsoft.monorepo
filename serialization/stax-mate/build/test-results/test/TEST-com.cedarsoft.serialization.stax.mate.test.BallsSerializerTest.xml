@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallsSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-29T03:09:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.061">
+<testsuite name="com.cedarsoft.serialization.stax.mate.test.BallsSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-30T03:09:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.032">
   <properties/>
-  <testcase name="[1] entry=Entry{object=[com.cedarsoft.serialization.stax.mate.test.Ball$TennisBall@7, com.cedarsoft.serialization.stax.mate.test.Ball$BasketBall@2dd434]}" classname="com.cedarsoft.serialization.stax.mate.test.BallsSerializerTest" time="0.061"/>
+  <testcase name="[1] entry=Entry{object=[com.cedarsoft.serialization.stax.mate.test.Ball$TennisBall@7, com.cedarsoft.serialization.stax.mate.test.Ball$BasketBall@2dd434]}" classname="com.cedarsoft.serialization.stax.mate.test.BallsSerializerTest" time="0.032"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

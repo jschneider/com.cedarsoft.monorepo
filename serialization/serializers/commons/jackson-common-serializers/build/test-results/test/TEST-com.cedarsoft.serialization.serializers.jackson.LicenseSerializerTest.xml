@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-29T03:10:13" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.013">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-12-30T03:09:57" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.047">
   <properties/>
-  <testcase name="[1] entry=Entry{object=GNU General Public License 3.0 (GPLv3)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.003"/>
-  <testcase name="[2] entry=Entry{object=daName (daId)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.002"/>
-  <testcase name="[3] entry=Entry{object=CC Attribution Non-Commercial Share Alike (CC-BY-NC-SA)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.007"/>
+  <testcase name="[1] entry=Entry{object=GNU General Public License 3.0 (GPLv3)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.015"/>
+  <testcase name="[2] entry=Entry{object=daName (daId)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.015"/>
+  <testcase name="[3] entry=Entry{object=CC Attribution Non-Commercial Share Alike (CC-BY-NC-SA)}" classname="com.cedarsoft.serialization.serializers.jackson.LicenseSerializerTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
