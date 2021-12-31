@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.swing.common.ImageComponentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-30T03:09:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.22">
+<testsuite name="com.cedarsoft.swing.common.ImageComponentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-31T03:09:46" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.133">
   <properties/>
-  <testcase name="testDefault()" classname="com.cedarsoft.swing.common.ImageComponentTest" time="0.22"/>
+  <testcase name="testDefault()" classname="com.cedarsoft.swing.common.ImageComponentTest" time="0.133"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
