@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfo3Test" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-12-31T03:09:06" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.049">
+<testsuite name="com.cedarsoft.photos.tools.exif.ExifInfo3Test" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-01T03:09:48" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.056">
   <properties/>
-  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.002"/>
-  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.002"/>
-  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.009"/>
-  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.003"/>
-  <testcase name="testLens()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.001"/>
-  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.002"/>
-  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.001"/>
+  <testcase name="testIso()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.003"/>
+  <testcase name="testExposure()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.021"/>
+  <testcase name="testCrop()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.001"/>
+  <testcase name="testDate()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.002"/>
+  <testcase name="testLens()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.002"/>
+  <testcase name="testCamera()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.005"/>
+  <testcase name="testAperture()" classname="com.cedarsoft.photos.tools.exif.ExifInfo3Test" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
