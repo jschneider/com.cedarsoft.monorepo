@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.time.DateUtilsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-01T03:10:05" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.104">
+<testsuite name="com.cedarsoft.commons.time.DateUtilsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-02T03:09:52" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.075">
   <properties/>
-  <testcase name="duration()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.035"/>
+  <testcase name="duration()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.024"/>
   <testcase name="format()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.005"/>
-  <testcase name="formatHourMinute()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.035"/>
-  <testcase name="durationWorldsNotFollowing()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.002"/>
-  <testcase name="humanReadableDuration()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.017"/>
+  <testcase name="formatHourMinute()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.004"/>
+  <testcase name="durationWorldsNotFollowing()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.005"/>
+  <testcase name="humanReadableDuration()" classname="com.cedarsoft.commons.time.DateUtilsTest" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
