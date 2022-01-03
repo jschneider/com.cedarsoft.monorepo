@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-02T03:09:42" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.279">
+<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-03T03:09:43" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.408">
   <properties/>
-  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.073"/>
+  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.147"/>
   <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
-  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.012"/>
-  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.149"/>
-  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.0"/>
-  <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.0"/>
-  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
-  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
+  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.006"/>
+  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.213"/>
+  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.009"/>
+  <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
+  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
+  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.007"/>
   <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

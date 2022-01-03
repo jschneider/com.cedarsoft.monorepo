@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.AspectRatioTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-02T03:09:37" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.058">
+<testsuite name="com.cedarsoft.image.AspectRatioTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-03T03:09:35" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.101">
   <properties/>
-  <testcase name="testPaperFormats()" classname="com.cedarsoft.image.AspectRatioTest" time="0.058"/>
+  <testcase name="testPaperFormats()" classname="com.cedarsoft.image.AspectRatioTest" time="0.101"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
