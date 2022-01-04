@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-03T03:10:06" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.167">
+<testsuite name="com.cedarsoft.serialization.stax.mate.StaxMateTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-04T03:10:12" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.196">
   <properties/>
-  <testcase name="testProcssingInstructions()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.067"/>
-  <testcase name="testStaxMateJson()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.031"/>
-  <testcase name="testStaxMateRead()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.012"/>
-  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.054"/>
+  <testcase name="testProcssingInstructions()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.071"/>
+  <testcase name="testStaxMateJson()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.021"/>
+  <testcase name="testStaxMateRead()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.003"/>
+  <testcase name="testStaxMate()" classname="com.cedarsoft.serialization.stax.mate.StaxMateTest" time="0.095"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
