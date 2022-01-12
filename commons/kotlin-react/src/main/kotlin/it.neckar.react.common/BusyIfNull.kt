@@ -23,7 +23,7 @@ fun <T> RBuilder.busyIfNull(value: T?, handler: RElementBuilder<*>.(T) -> Unit) 
   }
 }
 
-val busyIfNull: FunctionComponent<BusyIfNullProps> = fc("busyIfNull") { props ->
+val busyIfNull: FC<BusyIfNullProps> = fc("busyIfNull") { props ->
   if (props.busy == true) {
     busyIndicator()
   } else {

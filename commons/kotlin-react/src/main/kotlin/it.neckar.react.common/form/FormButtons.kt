@@ -21,7 +21,7 @@ fun RBuilder.formButtons(
   }
 }
 
-val formButtons: FunctionComponent<FormButtonsProps> = fc("formButtons") { props ->
+val formButtons: FC<FormButtonsProps> = fc("formButtons") { props ->
   div(classes = "btn-group mt-3 ") {
     attrs {
       role = "group"

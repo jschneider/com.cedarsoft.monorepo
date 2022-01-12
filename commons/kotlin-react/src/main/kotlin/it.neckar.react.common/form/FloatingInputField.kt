@@ -210,7 +210,7 @@ fun RBuilder.floatingDoubleInputField(
   }
 }
 
-val floatingInputField: FunctionComponent<FloatingInputFieldProps> = fc("floatingInputField") { props ->
+val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") { props ->
   div("form-floating") {
     attrs {
       props.divConfig?.invoke(this@div)

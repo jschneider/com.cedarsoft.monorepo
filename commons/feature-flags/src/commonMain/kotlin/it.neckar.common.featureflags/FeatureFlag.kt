@@ -56,6 +56,11 @@ data class FeatureFlag(
     val testing: FeatureFlag = FeatureFlag("testing", "Testing - non production")
 
     /**
+     * Disables the version check on the server and client
+     */
+    val disableVersionCheck: FeatureFlag = FeatureFlag("disableVersionCheck", "Disable the version check for client and/or server")
+
+    /**
      * Contains the available feature flags
      */
     val available: List<FeatureFlag> = listOf(alpha)

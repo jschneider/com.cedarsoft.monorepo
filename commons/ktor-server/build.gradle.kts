@@ -15,6 +15,9 @@ dependencies {
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_commons_guava))
   api(project(Projects.open_commons_kotlinx_serializers))
+  api(project(Projects.open_commons_feature_flags))
+  api(project(Projects.open_commons_kotlin_lang))
+  api(project(Projects.open_commons_kotlin_collections))
 
 
   api(Libs.guava)

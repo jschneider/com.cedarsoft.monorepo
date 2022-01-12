@@ -21,6 +21,7 @@ kotlin {
       dependencies {
         api(Kotlin.stdlib.common)
         api(KotlinX.coroutines.core)
+        api(project(Projects.open_unit_unit))
       }
     }
 

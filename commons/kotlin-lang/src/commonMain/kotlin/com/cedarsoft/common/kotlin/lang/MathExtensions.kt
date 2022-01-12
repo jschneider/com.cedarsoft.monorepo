@@ -509,3 +509,41 @@ fun Double?.coerceAtLeastOrNull(other: Double?): Double? {
 
   return this.coerceAtLeast(other)
 }
+
+/**
+ * Returns the magnitude of this number.
+ *
+ * * 0.0 -> 0
+ * * 1.0 -> 1
+ * * 1.0 -> 1
+ * * 2.0 -> 1
+ * * 10.0 -> 2
+ * * 20.0 -> 2
+ * * 0.1 -> -1
+ * * 0.2 -> -1
+ *
+ * 10^mag is always >= this
+ */
+fun Double.findMagnitude(): Int {
+  require(this.isPositive()) { "Only supported for positive values but was $this" }
+
+  return log10(this).toIntFloor()
+}
+
+fun Double.findMagnitudeValue(): Double {
+  return 10.0.pow(this.findMagnitude())
+}
+
+/**
+ * Returns the magnitude ceil.
+ * 10^mag is always >= this
+ */
+fun Double.findMagnitudeCeil(): Int {
+  require(this.isPositive()) { "Only supported for positive values but was $this" }
+
+  return log10(this).toIntCeil()
+}
+
+fun Double.findMagnitudeValueCeil(): Double {
+  return 10.0.pow(this.findMagnitudeCeil())
+}

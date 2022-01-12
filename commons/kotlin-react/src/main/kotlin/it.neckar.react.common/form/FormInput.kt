@@ -71,7 +71,7 @@ fun RBuilder.checkbox(
   )
 }
 
-val checkbox: FunctionComponent<CheckboxProps> = fc("checkbox") { props ->
+val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
   val uniqueId = uniqueIdMemo("checkbox")
 
   div(classes = "form-check") {
@@ -331,7 +331,7 @@ fun RBuilder.inputField(
 /**
  * an input field
  */
-val inputField: FunctionComponent<TextInputProps> = fc("inputField") { props ->
+val inputField: FC<TextInputProps> = fc("inputField") { props ->
   input(name = props.fieldName, classes = props.classes) {
     //Contains the string from the model.
     //This state is used to identify changes to the model
@@ -411,7 +411,7 @@ fun RBuilder.inputArea(
 /**
  * Creates a text area
  */
-val inputArea: FunctionComponent<TextInputProps> = fc("inputArea") { props ->
+val inputArea: FC<TextInputProps> = fc("inputArea") { props ->
   textarea(classes = "form-control") {
     attrs {
       name = props.fieldName

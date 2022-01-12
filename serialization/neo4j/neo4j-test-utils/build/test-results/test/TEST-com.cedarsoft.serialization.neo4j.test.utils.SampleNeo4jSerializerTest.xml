@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2022-01-04T03:10:46" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.948">
+<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2022-01-12T03:10:28" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.171">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.628"/>
+  <testcase name="testIt()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.832"/>
   <testcase name="testPerformanceSerialization()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testWrongLabel()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.317"/>
+  <testcase name="testWrongLabel()" classname="com.cedarsoft.serialization.neo4j.test.utils.SampleNeo4jSerializerTest" time="0.338"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

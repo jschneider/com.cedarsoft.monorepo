@@ -109,7 +109,7 @@ fun <T> RBuilder.select(
  */
 const val NullId: String = "___null-identifier___"
 
-val select: FunctionComponent<SelectProps> = fc("select") { props ->
+val select: FC<SelectProps> = fc("select") { props ->
   val idProvider = props.idProvider
 
   select(classes = "form-select") {

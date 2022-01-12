@@ -35,7 +35,7 @@ fun RBuilder.inputFieldAndLabel(
   }
 }
 
-val inputFieldAndLabel: FunctionComponent<InputFieldAndLabelProps> = fc("inputFieldAndLabel") { props ->
+val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   inputField(

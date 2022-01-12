@@ -121,3 +121,13 @@ fun <E> List<E>.withNullAtFirst(): List<E?> {
     addAll(this@withNullAtFirst)
   }
 }
+
+/**
+ * Returns a new list with the given elements at the given position (set)
+ */
+fun <E> List<E>.withElementAt(index: Int, element: E): List<E> {
+  return buildList {
+    addAll(this@withElementAt)
+    this[index] = element
+  }
+}

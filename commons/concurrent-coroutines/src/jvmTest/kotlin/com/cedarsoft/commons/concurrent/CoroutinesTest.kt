@@ -3,6 +3,7 @@ package com.cedarsoft.commons.concurrent
 import assertk.*
 import assertk.assertions.*
 import kotlinx.coroutines.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 /**
@@ -26,6 +27,17 @@ class CoroutinesTest {
 
       assertThat(Thread.currentThread().name).startsWith("asdf")
       assertThat(runInner).isTrue()
+    }
+  }
+
+  @Disabled("Does not run, only as compile time check")
+  @Test
+  fun test() = runBlocking {
+    withTimeout(1300L) {
+      repeat(1000) { i ->
+        println("I'm sleeping $i ...")
+        delay(500L)
+      }
     }
   }
 }

@@ -22,7 +22,7 @@ fun RBuilder.linkAction(
   }
 }
 
-val linkAction: FunctionComponent<LinkActionProps> = fc("linkAction") { props ->
+val linkAction: FC<LinkActionProps> = fc("linkAction") { props ->
   a("#") {
     props.label?.let {
       +it

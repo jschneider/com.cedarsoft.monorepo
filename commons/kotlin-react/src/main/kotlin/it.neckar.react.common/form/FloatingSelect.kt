@@ -39,17 +39,20 @@ fun <T> RBuilder.floatingSelect(
 fun <T : HasUuid> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
   formatter: (T) -> String,
-  optionClasses: (T) -> Set<String> = { emptySet() },
   availableOptions: List<T>,
   fieldName: String,
   title: String,
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
-  this.floatingSelect(
-    valueAndSetter = valueAndSetter,
+  floatingSelect(
+    selectedValue = valueAndSetter.value,
+    onChange = { valueAndSetter.setter.invoke(it) },
     formatter = formatter,
-    optionClasses = optionClasses,
     availableOptions = availableOptions,
+    idProvider = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      (it as HasUuid).uuid.toString()
+    },
     fieldName = fieldName,
     title = title,
     config = config
@@ -191,7 +194,7 @@ fun <T> RBuilder.floatingSelectNullable(
   }
 }
 
-val floatingSelect: FunctionComponent<FloatingSelectProps> = fc("floatingSelect") { props ->
+val floatingSelect: FC<FloatingSelectProps> = fc("floatingSelect") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   //Enforce calling onChange if the current value is *not* in available options

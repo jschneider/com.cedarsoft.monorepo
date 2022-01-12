@@ -8,6 +8,36 @@ import kotlin.math.PI
 
 class MathExtensionsKtTest {
   @Test
+  fun testFindMagnitude() {
+    assertThat(1.0.findMagnitude()).isEqualTo(0)
+    assertThat(10.0.findMagnitude()).isEqualTo(1)
+    assertThat(100.0.findMagnitude()).isEqualTo(2)
+    assertThat(1000.0.findMagnitude()).isEqualTo(3)
+    assertThat(0.1.findMagnitude()).isEqualTo(-1)
+    assertThat(0.01.findMagnitude()).isEqualTo(-2)
+    assertThat(0.001.findMagnitude()).isEqualTo(-3)
+
+    assertThat(2.0.findMagnitude()).isEqualTo(0)
+    assertThat(20.0.findMagnitude()).isEqualTo(1)
+    assertThat(0.2.findMagnitude()).isEqualTo(-1)
+  }
+
+  @Test
+  fun findMagnitudeCeil() {
+    assertThat(1.0.findMagnitudeCeil()).isEqualTo(0)
+    assertThat(10.0.findMagnitudeCeil()).isEqualTo(1)
+    assertThat(100.0.findMagnitudeCeil()).isEqualTo(2)
+    assertThat(1000.0.findMagnitudeCeil()).isEqualTo(3)
+    assertThat(0.1.findMagnitudeCeil()).isEqualTo(-1)
+    assertThat(0.01.findMagnitudeCeil()).isEqualTo(-2)
+    assertThat(0.001.findMagnitudeCeil()).isEqualTo(-3)
+
+    assertThat(2.0.findMagnitudeCeil()).isEqualTo(1)
+    assertThat(20.0.findMagnitudeCeil()).isEqualTo(2)
+    assertThat(0.2.findMagnitudeCeil()).isEqualTo(0)
+  }
+
+  @Test
   fun testEven() {
     assertThat(1.0.isEven()).isFalse()
     assertThat(2.0.isEven()).isTrue()

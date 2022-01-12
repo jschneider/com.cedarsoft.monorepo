@@ -19,7 +19,7 @@ fun RBuilder.linkButton(
   }
 }
 
-val linkButton: FunctionComponent<LinkButtonProps> = fc("linkButton") { props ->
+val linkButton: FC<LinkButtonProps> = fc("linkButton") { props ->
   button(classes = "btn btn-link") {
     props.label?.let {
       +it

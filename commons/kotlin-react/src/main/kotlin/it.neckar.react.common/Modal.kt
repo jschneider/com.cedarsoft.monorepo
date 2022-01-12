@@ -24,7 +24,7 @@ fun RBuilder.modalButton(
   }
 }
 
-val modalButton: FunctionComponent<ModalButtonProps> = fc("modalButton") { props ->
+val modalButton: FC<ModalButtonProps> = fc("modalButton") { props ->
   button(classes = props.classes) {
     props.block(this)
 
@@ -56,7 +56,7 @@ fun RBuilder.modal(
   })
 }
 
-val modal: FunctionComponent<ModalProps> = fc("modal") { props ->
+val modal: FC<ModalProps> = fc("modal") { props ->
   div(classes = "modal fade") {
     attrs {
       id = props.id

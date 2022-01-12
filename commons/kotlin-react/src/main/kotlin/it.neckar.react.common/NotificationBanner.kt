@@ -1,7 +1,6 @@
 package it.neckar.react.common
 
-import it.neckar.react.common.BannerOrientation.*
-import it.neckar.react.common.BannerState.*
+import it.neckar.react.common.BannerPlacement.*
 import kotlinx.html.DIV
 import kotlinx.html.js.onClickFunction
 import react.*
@@ -13,21 +12,21 @@ import react.dom.*
 fun RBuilder.notificationBanner(
   title: String,
   bannerType: BannerType,
-  bannerOrientation: BannerOrientation,
-  bannerState: StateInstance<BannerState>,
+  bannerPlacement: BannerPlacement,
+  onClose: (() -> Unit)? = null,
   block: RDOMBuilder<DIV>.() -> Unit,
 ): Unit = child(notificationBanner) {
   attrs {
     this.title = title
     this.bannerType = bannerType
-    this.bannerOrientation = bannerOrientation
-    this.bannerState = bannerState
+    this.bannerPlacement = bannerPlacement
+    this.onClose = onClose
     this.block = block
   }
 }
 
-val notificationBanner: FunctionComponent<NotificationBannerProps> = fc("notificationBanner") { props ->
-  div(classes = "alert alert-dismissible d-none") {
+val notificationBanner: FC<NotificationBannerProps> = fc("notificationBanner") { props ->
+  div(classes = "alert alert-dismissible") {
     attrs {
       when (props.bannerType) {
         BannerType.Info -> addClass("alert-info")
@@ -36,18 +35,13 @@ val notificationBanner: FunctionComponent<NotificationBannerProps> = fc("notific
         BannerType.Success -> addClass("alert-success")
       }
 
-      addClassIf("fixed-top") {
-        props.bannerOrientation == Top
-      }
-      addClassIf("fixed-bottom") {
-        props.bannerOrientation == Bottom
-      }
-      removeClassIf("d-none") {
-        props.bannerState.value == Showing
+      when (props.bannerPlacement) {
+        Top -> addClass("fixed-top")
+        Bottom -> addClass("fixed-bottom")
       }
     }
 
-    div {
+    div("mb-2") {
       when (props.bannerType) {
         BannerType.Info -> i(classes = "fas fa-info-circle") {}
         BannerType.Warning -> i(classes = "fas fa-exclamation-triangle") {}
@@ -55,20 +49,20 @@ val notificationBanner: FunctionComponent<NotificationBannerProps> = fc("notific
         BannerType.Success -> i(classes = "fas fa-check-circle") {}
       }
 
-      strong(classes = "mx-1 alert-heading") {
+      strong(classes = "mx-2 alert-heading") {
         +props.title
       }
     }
 
-    props.block(this)
-
-    button(classes = "btn-close") {
-      attrs {
-        onClickFunction = {
-          props.bannerState.setter(Hidden)
+    props.onClose?.let { onClose ->
+      button(classes = "btn-close") {
+        attrs {
+          onClickFunction = { onClose() }
         }
       }
     }
+
+    props.block(this)
   }
 }
 
@@ -79,21 +73,16 @@ enum class BannerType {
   Success,
 }
 
-enum class BannerOrientation {
+enum class BannerPlacement {
   Top,
   Bottom,
-}
-
-enum class BannerState {
-  Hidden,
-  Showing,
 }
 
 
 external interface NotificationBannerProps : Props {
   var title: String
   var bannerType: BannerType
-  var bannerOrientation: BannerOrientation
-  var bannerState: StateInstance<BannerState>
+  var bannerPlacement: BannerPlacement
+  var onClose: (() -> Unit)?
   var block: (RDOMBuilder<DIV>) -> Unit
 }

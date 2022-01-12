@@ -32,7 +32,7 @@ fun RBuilder.floatingInputArea(
   }
 }
 
-val floatingInputArea: FunctionComponent<FloatingInputAreaProps> = fc("floatingInputArea") { props ->
+val floatingInputArea: FC<FloatingInputAreaProps> = fc("floatingInputArea") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   div("form-floating") {

@@ -28,7 +28,7 @@ fun RBuilder.actionButton(
   }
 }
 
-val actionButton: FunctionComponent<ActionButtonProps> = fc("actionButton") { props ->
+val actionButton: FC<ActionButtonProps> = fc("actionButton") { props ->
   val busy = props.busy
 
   button(classes = props.classes) {
