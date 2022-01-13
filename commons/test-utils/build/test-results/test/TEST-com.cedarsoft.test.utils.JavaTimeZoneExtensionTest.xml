@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.JavaTimeZoneExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-12T03:09:50" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.067">
+<testsuite name="com.cedarsoft.test.utils.JavaTimeZoneExtensionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-13T03:09:08" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.058">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.JavaTimeZoneExtensionTest" time="0.062"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.JavaTimeZoneExtensionTest" time="0.054"/>
   <testcase name="testBerlin()" classname="com.cedarsoft.test.utils.JavaTimeZoneExtensionTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
