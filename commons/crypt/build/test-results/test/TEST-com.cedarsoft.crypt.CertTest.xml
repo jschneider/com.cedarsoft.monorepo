@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.crypt.CertTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-13T03:08:29" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.796">
+<testsuite name="com.cedarsoft.crypt.CertTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-14T03:09:17" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.683">
   <properties/>
-  <testcase name="testKey()" classname="com.cedarsoft.crypt.CertTest" time="0.637"/>
-  <testcase name="testCert()" classname="com.cedarsoft.crypt.CertTest" time="0.007"/>
-  <testcase name="testSign()" classname="com.cedarsoft.crypt.CertTest" time="0.136"/>
-  <testcase name="testSupport()" classname="com.cedarsoft.crypt.CertTest" time="0.012"/>
+  <testcase name="testKey()" classname="com.cedarsoft.crypt.CertTest" time="0.595"/>
+  <testcase name="testCert()" classname="com.cedarsoft.crypt.CertTest" time="0.002"/>
+  <testcase name="testSign()" classname="com.cedarsoft.crypt.CertTest" time="0.08"/>
+  <testcase name="testSupport()" classname="com.cedarsoft.crypt.CertTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

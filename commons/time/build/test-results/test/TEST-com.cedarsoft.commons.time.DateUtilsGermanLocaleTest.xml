@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.time.DateUtilsGermanLocaleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-13T03:09:03" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.562">
+<testsuite name="com.cedarsoft.commons.time.DateUtilsGermanLocaleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-14T03:09:51" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.526">
   <properties/>
-  <testcase name="words()" classname="com.cedarsoft.commons.time.DateUtilsGermanLocaleTest" time="0.562"/>
+  <testcase name="words()" classname="com.cedarsoft.commons.time.DateUtilsGermanLocaleTest" time="0.526"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
