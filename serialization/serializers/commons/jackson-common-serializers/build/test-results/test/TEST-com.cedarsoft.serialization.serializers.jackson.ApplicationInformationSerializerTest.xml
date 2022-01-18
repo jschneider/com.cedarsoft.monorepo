@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-17T03:10:28" hostname="runner-ioxloixu-project-47-concurrent-0" time="1.104">
+<testsuite name="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-18T03:09:48" hostname="runner-ioxloixu-project-47-concurrent-0" time="1.112">
   <properties/>
-  <testcase name="[1] entry=Entry{object=name (1.2.3)}" classname="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerTest" time="1.104"/>
+  <testcase name="[1] entry=Entry{object=name (1.2.3)}" classname="com.cedarsoft.serialization.serializers.jackson.ApplicationInformationSerializerTest" time="1.112"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

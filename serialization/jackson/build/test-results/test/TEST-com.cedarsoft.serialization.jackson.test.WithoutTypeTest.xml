@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-17T03:10:01" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.007">
+<testsuite name="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-18T03:09:21" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.006">
   <properties/>
   <testcase name="testNonObjectType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.001"/>
   <testcase name="testWithoutType()" classname="com.cedarsoft.serialization.jackson.test.WithoutTypeTest" time="0.004"/>

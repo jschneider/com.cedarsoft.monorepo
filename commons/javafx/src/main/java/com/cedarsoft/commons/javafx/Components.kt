@@ -43,6 +43,7 @@ import javafx.scene.control.ScrollPane
 import javafx.scene.control.Slider
 import javafx.scene.control.Spinner
 import javafx.scene.control.SpinnerValueFactory
+import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.control.TextFormatter
 import javafx.scene.control.Toggle
@@ -637,6 +638,20 @@ object Components {
     val button = ToggleButton(text)
     button.selectedProperty().bindBidirectional(selected)
     return button
+  }
+
+  @JvmStatic
+  fun textArea(text: Property<String>): TextArea {
+    val textArea = TextArea()
+    textArea.textProperty().bindBidirectional(text)
+    return textArea
+  }
+
+  @JvmStatic
+  fun textArea(text: String): TextArea {
+    val textArea = TextArea()
+    textArea.textProperty().set(text)
+    return textArea
   }
 
   @JvmStatic

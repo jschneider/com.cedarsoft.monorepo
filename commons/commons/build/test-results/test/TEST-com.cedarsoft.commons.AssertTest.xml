@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.AssertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-17T03:09:38" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.058">
+<testsuite name="com.cedarsoft.commons.AssertTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-18T03:08:58" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.115">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.commons.AssertTest" time="0.058"/>
+  <testcase name="testIt()" classname="com.cedarsoft.commons.AssertTest" time="0.115"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

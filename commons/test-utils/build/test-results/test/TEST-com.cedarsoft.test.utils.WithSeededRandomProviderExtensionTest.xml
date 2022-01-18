@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-17T03:10:00" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.03">
+<testsuite name="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-18T03:09:20" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.011">
   <properties/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" time="0.03"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.WithSeededRandomProviderExtensionTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
