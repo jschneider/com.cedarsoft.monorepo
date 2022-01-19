@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.javafx.OverrideBindingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-18T03:10:02" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.019">
+<testsuite name="com.cedarsoft.commons.javafx.OverrideBindingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-19T03:11:20" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.033">
   <properties/>
-  <testcase name="testOverrideBinding()" classname="com.cedarsoft.commons.javafx.OverrideBindingTest" time="0.019"/>
+  <testcase name="testOverrideBinding()" classname="com.cedarsoft.commons.javafx.OverrideBindingTest" time="0.033"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
