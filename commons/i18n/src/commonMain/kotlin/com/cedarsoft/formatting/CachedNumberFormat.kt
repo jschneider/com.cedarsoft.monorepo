@@ -4,13 +4,13 @@ import com.cedarsoft.common.collections.cache
 import com.cedarsoft.i18n.I18nConfiguration
 
 /**
- * A formatter that returns cached values.
+ * A format that returns cached values.
  *
- * This is a tagging interface to ensure a cached formatter is used
+ * This is a tagging interface to ensure a cached format is used
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface CachedFormatter : NumberFormat {
+interface CachedNumberFormat : NumberFormat {
   /**
    * Returns the current cache size
    */
@@ -18,10 +18,10 @@ interface CachedFormatter : NumberFormat {
 }
 
 /**
- * A formatter that caches the results
+ * A format that caches the results
  */
-class DefaultCachedFormatter internal constructor(
-  val formatter: NumberFormat,
+class DefaultCachedFormat internal constructor(
+  val format: NumberFormat,
   /**
    * The maximum size of the cache
    */
@@ -33,16 +33,16 @@ class DefaultCachedFormatter internal constructor(
    */
   val hashFunction: (value: Double, i18nConfiguration: I18nConfiguration) -> Int = defaultHashFunction
 
-) : CachedFormatter {
+) : CachedNumberFormat {
 
   init {
-    require(formatter !is CachedFormatter) { "cannot cache an already cached number format" }
+    require(format !is CachedNumberFormat) { "cannot cache an already cached number format" }
   }
 
   /**
    * The cache for the "normal" formatted strings
    */
-  private val formatCache = cache<Int, String>("DefaultCachedFormatter", cacheSize)
+  private val formatCache = cache<Int, String>("DefaultCachedFormat", cacheSize)
 
   /**
    * Returns the size of the cache
@@ -55,12 +55,12 @@ class DefaultCachedFormatter internal constructor(
     val key = hashFunction(value, i18nConfiguration)
 
     return formatCache.getOrStore(key) {
-      formatter.format(value, i18nConfiguration)
+      format.format(value, i18nConfiguration)
     }
   }
 
   override val precision: Double
-    get() = formatter.precision
+    get() = format.precision
 
   companion object {
     /**
@@ -82,26 +82,26 @@ fun NumberFormat.cached(
    * Can be used to create a unique hash for other (external) factors: For example a unit
    */
   additionalHashFunction: (() -> Int)? = null
-): CachedFormatter {
+): CachedNumberFormat {
   //Create a custom hash function - only if a additionalHashFunction is provided
   val hashFunction = additionalHashFunction?.let {
     //Create a custom hash function
     { value, i18nConfiguration ->
-      DefaultCachedFormatter.defaultHashFunction(value, i18nConfiguration) + additionalHashFunction()
+      DefaultCachedFormat.defaultHashFunction(value, i18nConfiguration) + additionalHashFunction()
     }
-  } ?: DefaultCachedFormatter.defaultHashFunction //Fallback to the default hash function
+  } ?: DefaultCachedFormat.defaultHashFunction //Fallback to the default hash function
 
-  return DefaultCachedFormatter(this, cacheSize = cacheSize, hashFunction = hashFunction)
+  return DefaultCachedFormat(this, cacheSize = cacheSize, hashFunction = hashFunction)
 }
 
 /**
  * Helper method to avoid unnecessary calls to cached
  */
-@Deprecated("Do not cache a cached formatter", ReplaceWith("this"), level = DeprecationLevel.ERROR)
-fun CachedFormatter.cached(
+@Deprecated("Do not cache a cached format", ReplaceWith("this"), level = DeprecationLevel.ERROR)
+fun CachedNumberFormat.cached(
   cacheSize: Int = 500,
   hashFunction: (value: Double, i18nConfiguration: I18nConfiguration) -> Int = { _, _ -> throw UnsupportedOperationException("must not be called!") }
-): CachedFormatter {
+): CachedNumberFormat {
   return this
 }
 

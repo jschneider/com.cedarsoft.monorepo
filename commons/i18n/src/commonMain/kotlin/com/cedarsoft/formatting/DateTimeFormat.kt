@@ -18,57 +18,57 @@ interface DateTimeFormat {
 /**
  * Formats a date in accordance to the ISO format 8601
  */
-val dataFormatIso8601: CachedDateTimeFormatter = DateFormatIso8601().cached()
+val dataFormatIso8601: CachedDateTimeFormat = DateFormatIso8601().cached()
 
 /**
  * Formats a date as a UTC date (locale independent)
  */
-val dateFormatUTC: CachedDateTimeFormatter = DateFormatUTC().cached()
+val dateFormatUTC: CachedDateTimeFormat = DateFormatUTC().cached()
 
 /**
  * A formatted date (time only)
  */
-val timeFormat: CachedDateTimeFormatter = TimeFormat().cached()
+val timeFormat: CachedDateTimeFormat = TimeFormat().cached()
 
 /**
  * A formatted time including milli seconds
  */
-val timeFormatWithMillis: CachedDateTimeFormatter = TimeFormatWithMillis().cached()
+val timeFormatWithMillis: CachedDateTimeFormat = TimeFormatWithMillis().cached()
 
 /**
- * A formatter for a date (without time)
+ * A format for a date (without time)
  */
-val dateFormat: CachedDateTimeFormatter = DateFormat().cached()
+val dateFormat: CachedDateTimeFormat = DateFormat().cached()
 
 /**
  * Prints the year and months
  */
-val yearMonthFormat: CachedDateTimeFormatter = YearMonthFormat().cached()
+val yearMonthFormat: CachedDateTimeFormat = YearMonthFormat().cached()
 
 /**
  * Formats the second and milli second
  */
-val secondMillisFormat: CachedDateTimeFormatter = SecondMillisFormat().cached()
+val secondMillisFormat: CachedDateTimeFormat = SecondMillisFormat().cached()
 
 /**
- * A formatter for a date and a time
+ * A format for a date and a time
  */
-val dateTimeFormat: CachedDateTimeFormatter = DefaultDateTimeFormat().cached()
+val dateTimeFormat: CachedDateTimeFormat = DefaultDateTimeFormat().cached()
 
 /**
- * A formatter for a date and a time (short date format)
+ * A format for a date and a time (short date format)
  */
-val dateTimeFormatShort: CachedDateTimeFormatter = DateTimeFormatShort().cached()
+val dateTimeFormatShort: CachedDateTimeFormat = DateTimeFormatShort().cached()
 
 /**
- * A formatter for a date and a time with millis
+ * A format for a date and a time with millis
  */
-val dateTimeFormatWithMillis: CachedDateTimeFormatter = DateTimeFormatWithMillis().cached()
+val dateTimeFormatWithMillis: CachedDateTimeFormat = DateTimeFormatWithMillis().cached()
 
 /**
- * A formatter for a date and a time with millis (short date format)
+ * A format for a date and a time with millis (short date format)
  */
-val dateTimeFormatShortWithMillis: CachedDateTimeFormatter = DateTimeFormatShortWithMillis().cached()
+val dateTimeFormatShortWithMillis: CachedDateTimeFormat = DateTimeFormatShortWithMillis().cached()
 
 /**
  * Formats a date in accordance to the ISO format 8601
@@ -91,12 +91,12 @@ expect class TimeFormat() : DateTimeFormat
 expect class TimeFormatWithMillis() : DateTimeFormat
 
 /**
- * A formatter for a date (without time)
+ * A format for a date (without time)
  */
 expect class DateFormat() : DateTimeFormat
 
 /**
- * A formatter that formats a date - but only prints the month and year
+ * A format that formats a date - but only prints the month and year
  */
 expect class YearMonthFormat() : DateTimeFormat
 
@@ -106,22 +106,22 @@ expect class YearMonthFormat() : DateTimeFormat
 expect class SecondMillisFormat() : DateTimeFormat
 
 /**
- * A formatter for a date and a time
+ * A format for a date and a time
  */
 expect class DefaultDateTimeFormat() : DateTimeFormat
 
 /**
- * A formatter for a date and a time (short date format)
+ * A format for a date and a time (short date format)
  */
 expect class DateTimeFormatShort() : DateTimeFormat
 
 /**
- * A formatter for a date and a time with millis
+ * A format for a date and a time with millis
  */
 expect class DateTimeFormatWithMillis() : DateTimeFormat
 
 /**
- * A formatter for a date and a time with millis (short date format)
+ * A format for a date and a time with millis (short date format)
  */
 expect class DateTimeFormatShortWithMillis() : DateTimeFormat
 

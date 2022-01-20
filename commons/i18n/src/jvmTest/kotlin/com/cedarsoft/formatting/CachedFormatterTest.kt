@@ -14,7 +14,7 @@ class CachedFormatterTest {
     val i18nConfiguration = I18nConfiguration.Germany
     var currentOffset = 17.0
 
-    val numberFormat = OffsetFormatter(DecimalFormat(1, 1).cached(2)) { currentOffset }
+    val numberFormat = OffsetFormat(DecimalFormat(1, 1).cached(2)) { currentOffset }
 
     assertThat(numberFormat.currentCacheSize).isEqualTo(0)
     assertThat(numberFormat.format(1.0, i18nConfiguration)).isEqualTo("18,0")

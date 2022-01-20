@@ -886,7 +886,7 @@ object Components {
    */
   @JvmStatic
   fun applyDoubleFormatter(textField: TextField, doubleProperty: DoubleProperty, filter: Predicate<Double>, converter: NumberStringConverterForFloatingPointNumbers) {
-    textField.textFormatter = TextFormatter(converter, doubleProperty.get(), DoubleTextFormatterFilter(converter, filter))
+    textField.textFormatter = TextFormatter(converter, doubleProperty.get(), DoubleTextFormatFilter(converter, filter))
 
     //Avoid premature gc of the property
     textField.properties["observableBoundToText"] = doubleProperty

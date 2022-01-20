@@ -80,7 +80,7 @@ actual class DateTimeFormatShortWithMillis : DateTimeFormat {
 }
 
 /**
- * A formatter that formats a date - but only prints the month and year
+ * A format that formats a date - but only prints the month and year
  */
 actual class YearMonthFormat actual constructor() : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {

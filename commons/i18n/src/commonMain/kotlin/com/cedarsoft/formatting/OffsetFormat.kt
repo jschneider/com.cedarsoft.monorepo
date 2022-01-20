@@ -6,19 +6,19 @@ import com.cedarsoft.i18n.I18nConfiguration
 /**
  * Formats a value adding an offset to it
  */
-class OffsetFormatter(
+class OffsetFormat(
   /**
    * The delegate that is used to format the offset value
    */
-  val delegate: CachedFormatter,
+  val delegate: CachedNumberFormat,
   /**
    * Provides the offset that is added to the value before formatting using the delegate
    */
   val offsetProvider: () -> Double
-) : CachedFormatter {
+) : CachedNumberFormat {
   @JavaFriendly
   constructor(
-    delegate: CachedFormatter,
+    delegate: CachedNumberFormat,
     offsetProvider: OffsetProvider
   ) : this(delegate, offsetProvider::offset)
 

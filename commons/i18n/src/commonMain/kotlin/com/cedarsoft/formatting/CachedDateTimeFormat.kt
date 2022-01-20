@@ -5,13 +5,13 @@ import com.cedarsoft.i18n.I18nConfiguration
 import kotlin.jvm.JvmOverloads
 
 /**
- * A formatter that returns cached values.
+ * A format that returns cached values.
  *
  * This interface should be used at declarations (e.g. in Styles) to ensure a cache is used
  *
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-interface CachedDateTimeFormatter : DateTimeFormat {
+interface CachedDateTimeFormat : DateTimeFormat {
   /**
    * Returns the current cache size
    */
@@ -19,25 +19,24 @@ interface CachedDateTimeFormatter : DateTimeFormat {
 }
 
 /**
- * A formatter that caches the results
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
+ * A format that caches the results
  */
-class DefaultCachedDateTimeFormatter @JvmOverloads constructor(
-  val formatter: DateTimeFormat,
+class DefaultCachedDateTimeFormat @JvmOverloads constructor(
+  val format: DateTimeFormat,
   /**
    * The maximum size of the cache
    */
   val cacheSize: Int = 500
-) : CachedDateTimeFormatter {
+) : CachedDateTimeFormat {
 
   init {
-    require(formatter !is CachedFormatter) { "cannot cache an already cached dateTime format" }
+    require(format !is CachedNumberFormat) { "cannot cache an already cached dateTime format" }
   }
 
   /**
    * The cache for the "normal" formatted strings
    */
-  private val formatCache = cache<Int, String>("DefaultCachedDateTimeFormatter", cacheSize)
+  private val formatCache = cache<Int, String>("DefaultCachedDateTimeFormat", cacheSize)
 
   /**
    * Returns the size of the cache
@@ -49,7 +48,7 @@ class DefaultCachedDateTimeFormatter @JvmOverloads constructor(
     val key = 31 * timestamp.hashCode() + 17 * i18nConfiguration.hashCode()
 
     return formatCache.getOrStore(key) {
-      formatter.format(timestamp, i18nConfiguration)
+      format.format(timestamp, i18nConfiguration)
     }
   }
 }
@@ -57,7 +56,7 @@ class DefaultCachedDateTimeFormatter @JvmOverloads constructor(
 /**
  * Caches the results of the dateTime format
  */
-fun DateTimeFormat.cached(cacheSize: Int = 100): CachedDateTimeFormatter {
-  return DefaultCachedDateTimeFormatter(this, cacheSize = cacheSize)
+fun DateTimeFormat.cached(cacheSize: Int = 100): CachedDateTimeFormat {
+  return DefaultCachedDateTimeFormat(this, cacheSize = cacheSize)
 }
 

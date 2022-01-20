@@ -9,16 +9,16 @@ object DecimalFormatsCache {
   /**
    * Cache for decimal formats
    */
-  private val cache = cache<Int, CachedFormatter>("DecimalFormatsCache", 50)
+  private val cache = cache<Int, CachedNumberFormat>("DecimalFormatsCache", 50)
 
   /**
    * Returns a (cached) decimal format with a fixed number of decimals
    */
-  fun get(numberOfDecimals: Int): CachedFormatter {
+  fun get(numberOfDecimals: Int): CachedNumberFormat {
     return get(numberOfDecimals, numberOfDecimals)
   }
 
-  fun get(numberOfDecimals: Int, useGrouping: Boolean = true): CachedFormatter {
+  fun get(numberOfDecimals: Int, useGrouping: Boolean = true): CachedNumberFormat {
     return get(numberOfDecimals, numberOfDecimals, 1, useGrouping)
   }
 
@@ -39,7 +39,7 @@ object DecimalFormatsCache {
      * Whether to use grouping or not
      */
     useGrouping: Boolean = true
-  ): CachedFormatter {
+  ): CachedNumberFormat {
     val hashCode = calculateHashCode(maximumFractionDigits, minimumFractionDigits, minimumIntegerDigits, useGrouping)
 
     return cache.getOrStore(hashCode) {

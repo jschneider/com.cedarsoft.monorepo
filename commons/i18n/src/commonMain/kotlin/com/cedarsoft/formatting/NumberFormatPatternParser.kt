@@ -7,12 +7,12 @@ import com.cedarsoft.common.collections.cache
 /**
  * Maps patterns to [DecimalFormat] instances
  */
-private val decimalFormatFromPatternCache: Cache<String, CachedFormatter> = cache("decimalFormatCache", 100)
+private val decimalFormatFromPatternCache: Cache<String, CachedNumberFormat> = cache("decimalFormatCache", 100)
 
 /**
  * Parses the given [pattern] and returns a [DecimalFormat].
  */
-fun decimalFormatFromPattern(pattern: String): CachedFormatter {
+fun decimalFormatFromPattern(pattern: String): CachedNumberFormat {
   return decimalFormatFromPatternCache.getOrStore(pattern) {
     NumberFormatPatternParser.parsePattern(pattern).let {
       decimalFormat(

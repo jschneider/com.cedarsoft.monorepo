@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-19T03:10:49" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.135">
+<testsuite name="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-20T03:10:00" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.076">
   <properties/>
-  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.028"/>
-  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.027"/>
-  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.03"/>
-  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.032"/>
-  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.003"/>
+  <testcase name="[1] entry=Entry{object=123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.025"/>
+  <testcase name="[2] entry=Entry{object=-123}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.016"/>
+  <testcase name="[3] entry=Entry{object=32767}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.016"/>
+  <testcase name="[4] entry=Entry{object=-32768}" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.014"/>
+  <testcase name="testNotClose()" classname="com.cedarsoft.serialization.stax.mate.primitives.ShortSerializerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

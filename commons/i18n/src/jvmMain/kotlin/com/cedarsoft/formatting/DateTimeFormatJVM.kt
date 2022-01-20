@@ -76,16 +76,16 @@ actual class DateTimeFormatShortWithMillis : DateTimeFormat {
 }
 
 /**
- * A formatter that formats a date - but only prints the month and year
+ * A format that formats a date - but only prints the month and year
  */
 actual class YearMonthFormat actual constructor() : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     val dateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(timestamp.toLong()), i18nConfiguration.timeZone.toZoneId())
-    return monthYearFormatter.withLocale(i18nConfiguration.formatLocale.convert()).format(dateTime)
+    return monthYearFormat.withLocale(i18nConfiguration.formatLocale.convert()).format(dateTime)
   }
 
   companion object {
-    val monthYearFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+    val monthYearFormat: DateTimeFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
   }
 }
 

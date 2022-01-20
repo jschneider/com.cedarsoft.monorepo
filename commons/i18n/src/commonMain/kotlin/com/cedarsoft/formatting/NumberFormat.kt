@@ -5,7 +5,7 @@ import com.cedarsoft.i18n.I18nConfiguration
 import com.cedarsoft.unit.currency.EUR
 
 /**
- * Formatter for numbers
+ * Format for numbers
  */
 interface NumberFormat {
   /**
@@ -29,50 +29,50 @@ interface NumberFormat {
 }
 
 /**
- * A cached formatter that can be used to format decimals
+ * A cached format that can be used to format decimals
  */
-val decimalFormat: CachedFormatter = DecimalFormatsCache.get(2, 0)
+val decimalFormat: CachedNumberFormat = DecimalFormatsCache.get(2, 0)
 
 /**
  * Formats integer values
  */
-val intFormat: CachedFormatter = DecimalFormatsCache.get(0)
+val intFormat: CachedNumberFormat = DecimalFormatsCache.get(0)
 
 /**
- * A decimal formatter with one fraction digits
+ * A decimal format with one fraction digits
  */
-val decimalFormat1digit: CachedFormatter = DecimalFormatsCache.get(1, 1)
+val decimalFormat1digit: CachedNumberFormat = DecimalFormatsCache.get(1, 1)
 
 /**
- * A decimal formatter with two fraction digits
+ * A decimal format with two fraction digits
  */
-val decimalFormat2digits: CachedFormatter = DecimalFormatsCache.get(2, 2)
+val decimalFormat2digits: CachedNumberFormat = DecimalFormatsCache.get(2, 2)
 
 /**
  * Formats a percentage with up to two fraction digits
  */
-val percentageFormat: CachedFormatter = PercentageFormatter(decimalFormat2digits).cached()
+val percentageFormat: CachedNumberFormat = PercentageFormat(decimalFormat2digits).cached()
 
 /**
  * Formats a percentage with exactly two fraction digits
  */
-val percentageFormat2digits: CachedFormatter = PercentageFormatter(decimalFormat2digits).cached()
+val percentageFormat2digits: CachedNumberFormat = PercentageFormat(decimalFormat2digits).cached()
 
-val percentageFormat0digits: CachedFormatter = PercentageFormatter(intFormat).cached()
+val percentageFormat0digits: CachedNumberFormat = PercentageFormat(intFormat).cached()
 
-val percentageFormat1digits: CachedFormatter = PercentageFormatter(decimalFormat1digit).cached()
+val percentageFormat1digits: CachedNumberFormat = PercentageFormat(decimalFormat1digit).cached()
 
 /**
  * Returns the percentage format for the given number of decimals
  */
-fun percentageFormat(numberOfDecimals: Int, useGrouping: Boolean = true): CachedFormatter {
+fun percentageFormat(numberOfDecimals: Int, useGrouping: Boolean = true): CachedNumberFormat {
   return PercentageFormatsCache.get(numberOfDecimals, useGrouping)
 }
 
 /**
  * Returns a cached decimal format for the given number of decimals
  */
-fun decimalFormat(numberOfDecimals: Int, useGrouping: Boolean = true): CachedFormatter {
+fun decimalFormat(numberOfDecimals: Int, useGrouping: Boolean = true): CachedNumberFormat {
   return DecimalFormatsCache.get(numberOfDecimals, useGrouping = useGrouping)
 }
 
@@ -96,7 +96,7 @@ fun decimalFormat(
    * Whether to use grouping or not
    */
   useGrouping: Boolean = true
-): CachedFormatter {
+): CachedNumberFormat {
   return DecimalFormatsCache.get(maximumFractionDigits, minimumFractionDigits, minimumIntegerDigits, useGrouping)
 }
 
@@ -215,7 +215,7 @@ expect class DecimalFormat internal constructor(
 ) : NumberFormat, DecimalFormatDescriptor
 
 /**
- * Formatter that prints exponential
+ * Format that prints exponential
  */
 expect class ExponentialFormat(
   /**

@@ -8,8 +8,8 @@ import com.cedarsoft.i18n.I18nConfiguration
  * using the delegate. Appends a percentage sign ("%").
  * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-@Deprecated("use asPercentageFormatter - as soon as precision has been removed!")
-class PercentageFormatter(val delegate: NumberFormat) : NumberFormat {
+@Deprecated("use asPercentageFormat - as soon as precision has been removed!")
+class PercentageFormat(val delegate: NumberFormat) : NumberFormat {
   override fun format(value: Double, i18nConfiguration: I18nConfiguration): String {
     return delegate.format(value * 100.0, i18nConfiguration) + " %"
   }
@@ -21,6 +21,6 @@ class PercentageFormatter(val delegate: NumberFormat) : NumberFormat {
 /**
  * Uses this as
  */
-fun NumberFormat.asPercentageFormatter(): WithUnitFormat {
+fun NumberFormat.asPercentageFormat(): WithUnitFormat {
   return this.withConversion { it * 100.0 }.appendUnit("%")
 }

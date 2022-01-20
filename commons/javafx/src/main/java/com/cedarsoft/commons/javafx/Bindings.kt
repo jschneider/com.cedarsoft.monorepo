@@ -1,7 +1,7 @@
 package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.dispose.Disposable
-import com.cedarsoft.formatting.CachedFormatter
+import com.cedarsoft.formatting.CachedNumberFormat
 import com.cedarsoft.formatting.decimalFormat
 import javafx.beans.binding.Bindings
 import javafx.beans.binding.BooleanBinding
@@ -133,20 +133,20 @@ fun <T1, T2, T3, T4, R> ObservableValue<T1>.map(other1: ObservableValue<T2>, oth
 }
 
 /**
- * Maps a number to a formatted string using the given formatter
+ * Maps a number to a formatted string using the given format
  */
-fun ObservableValue<Number>.formatted(formatter: CachedFormatter = decimalFormat): ObjectBinding<String> = map {
-  formatter.format(it.toDouble())
+fun ObservableValue<Number>.formatted(format: CachedNumberFormat = decimalFormat): ObjectBinding<String> = map {
+  format.format(it.toDouble())
 }
 
 /**
  * Formats a nullable property.
  */
-fun ObservableValue<Double?>.formattedOrIfNull(valueIfNull: String, formatter: CachedFormatter = decimalFormat): ObjectBinding<String> = map {
+fun ObservableValue<Double?>.formattedOrIfNull(valueIfNull: String, format: CachedNumberFormat = decimalFormat): ObjectBinding<String> = map {
   if (it == null) {
     valueIfNull
   } else {
-    formatter.format(it.toDouble())
+    format.format(it.toDouble())
   }
 }
 
