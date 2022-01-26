@@ -87,7 +87,6 @@ fun <T> RBuilder.floatingSelectNullable(
 fun <T : HasUuid> RBuilder.floatingSelectNullable(
   valueAndSetter: StateInstance<T?>,
   formatter: (T?) -> String,
-  optionClasses: (T?) -> Set<String> = { emptySet() },
   availableOptionsWithoutNull: List<T>,
 
   fieldName: String,
@@ -95,10 +94,14 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelectNullable(
-    valueAndSetter = valueAndSetter,
+    selectedValue = valueAndSetter.value,
+    onChange = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      valueAndSetter.setter.invoke(it)
+    },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
-    optionClasses = optionClasses,
+    idProvider = { it.uuid.toString() },
     fieldName = fieldName,
     title = title,
     config = config

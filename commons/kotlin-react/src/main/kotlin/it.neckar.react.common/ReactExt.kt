@@ -244,10 +244,37 @@ inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.validIf(invalidCheck:
 }
 
 /**
+ * Sets the bootstrap validation related classes:
+ * * "invalid"
+ * * "is-valid"
+ */
+inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.validationStyle(validationState: () -> ValidationState) {
+  contract {
+    callsInPlace(validationState, InvocationKind.EXACTLY_ONCE)
+  }
+
+  attrs {
+    when (validationState()) {
+      ValidationState.Valid -> addClass("is-valid")
+      ValidationState.Invalid -> addClass("is-invalid")
+      else -> {}
+    }
+  }
+}
+
+/**
  * Adds the given class if the given check returns true
  */
 inline fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.addClassIf(className: String, check: () -> Boolean?) {
-  if (check() == true) {
+  contract {
+    callsInPlace(check, InvocationKind.EXACTLY_ONCE)
+  }
+
+  addClassIf(className, check())
+}
+
+fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.addClassIf(className: String, addClass: Boolean?) {
+  if (addClass == true) {
     attrs {
       addClass(className)
     }
@@ -315,4 +342,13 @@ inline fun <T : Any> useMemoCompare(
     previousDepsRef.current = dependencies
     previousValueRef.current = updatedValue
   }
+}
+
+enum class ValidationState {
+  /**
+   * Has not been validated (e.g. is empty)
+   */
+  NotValidated,
+  Valid,
+  Invalid,
 }

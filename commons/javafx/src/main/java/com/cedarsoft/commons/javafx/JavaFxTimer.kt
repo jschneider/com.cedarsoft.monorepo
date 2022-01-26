@@ -70,7 +70,7 @@ object JavaFxTimer {
    */
   fun repeat(delay: Duration, run: () -> Unit): Timeline {
     require(delay.toMillis() >= 16.0) {
-      "A delay of at least 16 ms is required because of limitations of the JavaFX timer resolution"
+      "A delay of at least 16 ms is required because of limitations of the JavaFX timer resolution but was ${delay.toMillis()} ms"
     }
 
     val timeline = Timeline(KeyFrame(delay, { run() }))

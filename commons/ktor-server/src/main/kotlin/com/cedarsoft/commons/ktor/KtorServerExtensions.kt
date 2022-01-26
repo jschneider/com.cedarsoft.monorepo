@@ -3,7 +3,7 @@ package com.cedarsoft.commons.ktor
 import com.cedarsoft.common.collections.fastForEach
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.plugins.*
+import io.ktor.server.plugins.callloging.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
