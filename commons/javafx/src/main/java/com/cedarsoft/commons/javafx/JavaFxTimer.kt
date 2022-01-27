@@ -89,6 +89,7 @@ object JavaFxTimer {
   /**
    * Similar to SwingUtilities#invokeAndWait
    */
+  @JvmStatic
   fun runAndWait(runnable: Runnable) {
     runAndWait(runnable::run)
   }
@@ -110,6 +111,7 @@ object JavaFxTimer {
    *
    * @return the result of the [callable]
    */
+  @JvmStatic
   fun <V> runAndWait(callable: Callable<V>): V {
     if (Platform.isFxApplicationThread()) {
       return callable.call()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.common.time.DurationExtKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-26T03:10:25" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.244">
+<testsuite name="com.cedarsoft.common.time.DurationExtKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-27T03:11:30" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.346">
   <properties/>
-  <testcase name="testFormat()" classname="com.cedarsoft.common.time.DurationExtKtTest" time="0.244"/>
+  <testcase name="testFormat()" classname="com.cedarsoft.common.time.DurationExtKtTest" time="0.346"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

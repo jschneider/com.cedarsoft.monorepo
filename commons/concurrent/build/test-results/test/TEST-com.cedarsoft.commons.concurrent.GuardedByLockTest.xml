@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.concurrent.GuardedByLockTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-26T03:09:36" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.184">
+<testsuite name="com.cedarsoft.commons.concurrent.GuardedByLockTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-27T03:10:40" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.078">
   <properties/>
-  <testcase name="testSimple$concurrent()" classname="com.cedarsoft.commons.concurrent.GuardedByLockTest" time="0.184"/>
+  <testcase name="testSimple$concurrent()" classname="com.cedarsoft.commons.concurrent.GuardedByLockTest" time="0.078"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
