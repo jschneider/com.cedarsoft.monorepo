@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.javafx
 
+import com.cedarsoft.annotations.NonBlocking
 import com.sun.javafx.tk.Toolkit
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
@@ -60,6 +61,36 @@ object JavaFxTimer {
   @JvmStatic
   fun repeat(delay: Duration, run: Runnable): Timeline {
     val timeline = Timeline(KeyFrame(delay, { run.run() }))
+    timeline.cycleCount = Animation.INDEFINITE
+    timeline.play()
+    return timeline
+  }
+
+  /**
+   * Repeats the action - as long as true is returned by the callable
+   */
+  @JvmStatic
+  @NonBlocking
+  fun repeatWhile(delay: Duration, run: Callable<Boolean>): Timeline {
+    return repeatWhile(delay) {
+      run.call()
+    }
+  }
+
+  /**
+   * Repeats the action - as long as true is returned by [run]
+   */
+  @NonBlocking
+  fun repeatWhile(delay: Duration, run: () -> Boolean): Timeline {
+    val timeline = Timeline()
+
+    timeline.keyFrames.add(KeyFrame(delay, {
+      val shallContinue = run()
+      if (!shallContinue) {
+        timeline.stop()
+      }
+    }))
+
     timeline.cycleCount = Animation.INDEFINITE
     timeline.play()
     return timeline

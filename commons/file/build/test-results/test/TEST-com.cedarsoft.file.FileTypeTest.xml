@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-27T03:10:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.171">
+<testsuite name="com.cedarsoft.file.FileTypeTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-28T03:09:28" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.234">
   <properties/>
-  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.042"/>
-  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.004"/>
-  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
-  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.078"/>
-  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
+  <testcase name="testDependentFiles()" classname="com.cedarsoft.file.FileTypeTest" time="0.037"/>
+  <testcase name="testInva()" classname="com.cedarsoft.file.FileTypeTest" time="0.001"/>
+  <testcase name="testContentType()" classname="com.cedarsoft.file.FileTypeTest" time="0.008"/>
+  <testcase name="testGetBase()" classname="com.cedarsoft.file.FileTypeTest" time="0.129"/>
+  <testcase name="testFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.012"/>
   <testcase name="testDefaultExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.0"/>
-  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.006"/>
-  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.015"/>
-  <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.007"/>
+  <testcase name="testGetExtension()" classname="com.cedarsoft.file.FileTypeTest" time="0.0"/>
+  <testcase name="testGetFileName()" classname="com.cedarsoft.file.FileTypeTest" time="0.007"/>
+  <testcase name="testGetDelimiter()" classname="com.cedarsoft.file.FileTypeTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
