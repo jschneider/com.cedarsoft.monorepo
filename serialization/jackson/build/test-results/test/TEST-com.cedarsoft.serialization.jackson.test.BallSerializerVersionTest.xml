@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-29T03:10:22" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.047">
+<testsuite name="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-30T03:10:09" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.052">
   <properties/>
-  <testcase name="[1] entry=Entry for &lt;1.1.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.003"/>
-  <testcase name="[2] entry=Entry for &lt;1.1.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.002"/>
-  <testcase name="[3] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.009"/>
-  <testcase name="[4] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.002"/>
+  <testcase name="[1] entry=Entry for &lt;1.1.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.032"/>
+  <testcase name="[2] entry=Entry for &lt;1.1.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.003"/>
+  <testcase name="[3] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.003"/>
+  <testcase name="[4] entry=Entry for &lt;1.0.0&gt;" classname="com.cedarsoft.serialization.jackson.test.BallSerializerVersionTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
