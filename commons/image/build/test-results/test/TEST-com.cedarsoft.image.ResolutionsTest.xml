@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.image.ResolutionsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-31T03:10:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.655">
+<testsuite name="com.cedarsoft.image.ResolutionsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-01T03:09:45" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.379">
   <properties/>
-  <testcase name="testSizes()" classname="com.cedarsoft.image.ResolutionsTest" time="0.011"/>
-  <testcase name="testNone()" classname="com.cedarsoft.image.ResolutionsTest" time="0.622"/>
-  <testcase name="testScreenResolutions()" classname="com.cedarsoft.image.ResolutionsTest" time="0.001"/>
-  <testcase name="testSorting()" classname="com.cedarsoft.image.ResolutionsTest" time="0.006"/>
-  <testcase name="testConstructor()" classname="com.cedarsoft.image.ResolutionsTest" time="0.001"/>
+  <testcase name="testSizes()" classname="com.cedarsoft.image.ResolutionsTest" time="0.006"/>
+  <testcase name="testNone()" classname="com.cedarsoft.image.ResolutionsTest" time="0.35"/>
+  <testcase name="testScreenResolutions()" classname="com.cedarsoft.image.ResolutionsTest" time="0.003"/>
+  <testcase name="testSorting()" classname="com.cedarsoft.image.ResolutionsTest" time="0.008"/>
+  <testcase name="testConstructor()" classname="com.cedarsoft.image.ResolutionsTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

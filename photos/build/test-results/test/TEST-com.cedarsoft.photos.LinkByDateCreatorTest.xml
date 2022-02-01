@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.LinkByDateCreatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-31T03:10:34" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.01">
+<testsuite name="com.cedarsoft.photos.LinkByDateCreatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-01T03:09:29" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.005">
   <properties/>
-  <testcase name="suffx()" classname="com.cedarsoft.photos.LinkByDateCreatorTest" time="0.01"/>
+  <testcase name="suffx()" classname="com.cedarsoft.photos.LinkByDateCreatorTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
