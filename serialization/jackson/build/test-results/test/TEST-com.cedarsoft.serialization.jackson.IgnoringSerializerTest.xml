@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-02-01T03:09:55" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.907">
+<testsuite name="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-02-02T03:10:19" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.261">
   <properties/>
-  <testcase name="[1] json={}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.795"/>
-  <testcase name="[2] json=[]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.013"/>
-  <testcase name="[3] json=[1,2,3,4]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.005"/>
-  <testcase name="[4] json={&quot;id&quot;:123}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.02"/>
-  <testcase name="[5] json={&quot;id&quot;:[123]}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.008"/>
-  <testcase name="[6] json={&quot;id&quot;:{&quot;value&quot;:123}}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.01"/>
-  <testcase name="[7] json=&quot;&quot;" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.005"/>
+  <testcase name="[1] json={}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="1.145"/>
+  <testcase name="[2] json=[]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.004"/>
+  <testcase name="[3] json=[1,2,3,4]" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.015"/>
+  <testcase name="[4] json={&quot;id&quot;:123}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.019"/>
+  <testcase name="[5] json={&quot;id&quot;:[123]}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
+  <testcase name="[6] json={&quot;id&quot;:{&quot;value&quot;:123}}" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.016"/>
+  <testcase name="[7] json=&quot;&quot;" classname="com.cedarsoft.serialization.jackson.IgnoringSerializerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

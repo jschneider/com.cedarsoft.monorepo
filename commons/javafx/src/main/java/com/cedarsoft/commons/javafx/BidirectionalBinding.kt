@@ -41,6 +41,33 @@ object BidirectionalBinding {
     )
   }
 
+  @JvmStatic
+  fun <A, B> bindBidirectional(
+    propertyA: Property<A>,
+    propertyB: Property<B>,
+    a2b: (newValue: A) -> B,
+    b2a: (newValue: B) -> A,
+    updatesActiveA2B: () -> Boolean,
+    updatesActiveB2A: () -> Boolean,
+    vararg additionalDependencies: ObservableValue<out Any>
+  ) {
+    bindBidirectional(
+      propertyA = propertyA,
+      propertyB = propertyB,
+      updateFromAToB = { _, _, newValue ->
+        if (updatesActiveA2B()) {
+          propertyB.value = a2b(newValue)
+        }
+      },
+      updateFromBToA = { _, _, newValue ->
+        if (updatesActiveB2A()) {
+          propertyA.value = b2a(newValue)
+        }
+      },
+      *additionalDependencies
+    )
+  }
+
   /**
    * Registers the given change listeners to the corresponding property.
    * Avoids reoccurring events by wrapping the change listener.

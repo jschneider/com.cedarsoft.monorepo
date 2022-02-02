@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.SkipTypeInfoSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-01T03:10:00" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.002">
+<testsuite name="com.cedarsoft.serialization.jackson.test.SkipTypeInfoSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-02T03:10:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.002">
   <properties/>
   <testcase name="testIt()" classname="com.cedarsoft.serialization.jackson.test.SkipTypeInfoSerializerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
