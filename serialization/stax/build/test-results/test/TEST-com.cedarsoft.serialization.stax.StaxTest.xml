@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.StaxTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-02-02T03:10:23" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.372">
+<testsuite name="com.cedarsoft.serialization.stax.StaxTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:10:05" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.953">
   <properties/>
-  <testcase name="testBug()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.246"/>
-  <testcase name="testWrite()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.537"/>
-  <testcase name="testStax()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.308"/>
-  <testcase name="testCurrentNamespace()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.117"/>
-  <testcase name="testNameSpace()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.104"/>
-  <testcase name="testIterator()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.047"/>
+  <testcase name="testBug()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.107"/>
+  <testcase name="testWrite()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.43"/>
+  <testcase name="testStax()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.242"/>
+  <testcase name="testCurrentNamespace()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.096"/>
+  <testcase name="testNameSpace()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.054"/>
+  <testcase name="testIterator()" classname="com.cedarsoft.serialization.stax.StaxTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

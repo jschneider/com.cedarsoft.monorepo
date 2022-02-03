@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.execution.ExecutorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-02T03:09:57" hostname="runner-cs1zem-v-project-47-concurrent-0" time="3.388">
+<testsuite name="com.cedarsoft.execution.ExecutorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:09:46" hostname="runner-ioxloixu-project-47-concurrent-0" time="4.395">
   <properties/>
-  <testcase name="testAsync()" classname="com.cedarsoft.execution.ExecutorTest" time="0.406"/>
-  <testcase name="testIt()" classname="com.cedarsoft.execution.ExecutorTest" time="1.608"/>
-  <testcase name="testOutputRedirector()" classname="com.cedarsoft.execution.ExecutorTest" time="0.446"/>
-  <testcase name="testOutput()" classname="com.cedarsoft.execution.ExecutorTest" time="0.572"/>
-  <testcase name="testStreams()" classname="com.cedarsoft.execution.ExecutorTest" time="0.34"/>
+  <testcase name="testAsync()" classname="com.cedarsoft.execution.ExecutorTest" time="0.41"/>
+  <testcase name="testIt()" classname="com.cedarsoft.execution.ExecutorTest" time="2.674"/>
+  <testcase name="testOutputRedirector()" classname="com.cedarsoft.execution.ExecutorTest" time="0.342"/>
+  <testcase name="testOutput()" classname="com.cedarsoft.execution.ExecutorTest" time="0.654"/>
+  <testcase name="testStreams()" classname="com.cedarsoft.execution.ExecutorTest" time="0.308"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.XmlUnitTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-02T03:10:24" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.25">
+<testsuite name="com.cedarsoft.test.utils.XmlUnitTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:10:07" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.164">
   <properties/>
-  <testcase name="testEmpty()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.015"/>
-  <testcase name="testIt()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.101"/>
-  <testcase name="testWhitespaces()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.131"/>
+  <testcase name="testEmpty()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.003"/>
+  <testcase name="testIt()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.094"/>
+  <testcase name="testWhitespaces()" classname="com.cedarsoft.test.utils.XmlUnitTest" time="0.064"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
