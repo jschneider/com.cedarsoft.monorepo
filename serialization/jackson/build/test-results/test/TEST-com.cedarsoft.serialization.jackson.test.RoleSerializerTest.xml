@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.RoleSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:10:08" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.003">
+<testsuite name="com.cedarsoft.serialization.jackson.test.RoleSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-04T03:09:53" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.004">
   <properties/>
-  <testcase name="[1] entry=Entry{object=Role{id=7, description='nobody'}}" classname="com.cedarsoft.serialization.jackson.test.RoleSerializerTest" time="0.003"/>
+  <testcase name="[1] entry=Entry{object=Role{id=7, description='nobody'}}" classname="com.cedarsoft.serialization.jackson.test.RoleSerializerTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

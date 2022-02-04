@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.license.LicenseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:09:56" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.451">
+<testsuite name="com.cedarsoft.license.LicenseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-02-04T03:09:42" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.546">
   <properties/>
-  <testcase name="testUrl()" classname="com.cedarsoft.license.LicenseTest" time="0.002"/>
-  <testcase name="testToString()" classname="com.cedarsoft.license.LicenseTest" time="0.427"/>
-  <testcase name="testResolve()" classname="com.cedarsoft.license.LicenseTest" time="0.009"/>
+  <testcase name="testUrl()" classname="com.cedarsoft.license.LicenseTest" time="0.013"/>
+  <testcase name="testToString()" classname="com.cedarsoft.license.LicenseTest" time="0.514"/>
+  <testcase name="testResolve()" classname="com.cedarsoft.license.LicenseTest" time="0.004"/>
   <testcase name="testEquals()" classname="com.cedarsoft.license.LicenseTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

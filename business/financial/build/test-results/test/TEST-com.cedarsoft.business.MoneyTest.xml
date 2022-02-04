@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.business.MoneyTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-02-03T03:09:40" hostname="runner-ioxloixu-project-47-concurrent-0" time="0.661">
+<testsuite name="com.cedarsoft.business.MoneyTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-02-04T03:09:26" hostname="runner-ioxloixu-project-47-concurrent-0" time="1.191">
   <properties/>
-  <testcase name="testGetUnits()" classname="com.cedarsoft.business.MoneyTest" time="0.001"/>
-  <testcase name="testAdd()" classname="com.cedarsoft.business.MoneyTest" time="0.632"/>
+  <testcase name="testGetUnits()" classname="com.cedarsoft.business.MoneyTest" time="0.007"/>
+  <testcase name="testAdd()" classname="com.cedarsoft.business.MoneyTest" time="1.134"/>
   <testcase name="testDiv()" classname="com.cedarsoft.business.MoneyTest" time="0.001"/>
-  <testcase name="testMax()" classname="com.cedarsoft.business.MoneyTest" time="0.0"/>
+  <testcase name="testMax()" classname="com.cedarsoft.business.MoneyTest" time="0.007"/>
   <testcase name="testCalc2()" classname="com.cedarsoft.business.MoneyTest" time="0.0"/>
-  <testcase name="testCalc()" classname="com.cedarsoft.business.MoneyTest" time="0.002"/>
-  <testcase name="testGetUnit()" classname="com.cedarsoft.business.MoneyTest" time="0.0"/>
-  <testcase name="testDoubleConstructor()" classname="com.cedarsoft.business.MoneyTest" time="0.0"/>
-  <testcase name="testDecimal()" classname="com.cedarsoft.business.MoneyTest" time="0.002"/>
-  <testcase name="testEquals()" classname="com.cedarsoft.business.MoneyTest" time="0.0"/>
-  <testcase name="testEstimatedValue()" classname="com.cedarsoft.business.MoneyTest" time="0.001"/>
+  <testcase name="testCalc()" classname="com.cedarsoft.business.MoneyTest" time="0.005"/>
+  <testcase name="testGetUnit()" classname="com.cedarsoft.business.MoneyTest" time="0.002"/>
+  <testcase name="testDoubleConstructor()" classname="com.cedarsoft.business.MoneyTest" time="0.001"/>
+  <testcase name="testDecimal()" classname="com.cedarsoft.business.MoneyTest" time="0.003"/>
+  <testcase name="testEquals()" classname="com.cedarsoft.business.MoneyTest" time="0.001"/>
+  <testcase name="testEstimatedValue()" classname="com.cedarsoft.business.MoneyTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
