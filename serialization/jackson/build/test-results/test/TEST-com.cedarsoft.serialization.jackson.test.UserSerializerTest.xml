@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.UserSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-07T03:10:44" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.034">
+<testsuite name="com.cedarsoft.serialization.jackson.test.UserSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-08T03:10:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.013">
   <properties/>
-  <testcase name="[1] entry=Entry{object=User{name='Max Mustermann', roles=[Role{id=1, description='Nobody'}, Role{id=0, description='Admin'}], emails=[Email{mail='test@test.de'}, Email{mail='other@test.de'}], userDetails=UserDetails{registrationDate=2351351, lastLogin=36351531153, passwordHash=[54, 56, 54, 49, 55, 51, 54, 56]}}}" classname="com.cedarsoft.serialization.jackson.test.UserSerializerTest" time="0.024"/>
-  <testcase name="[2] entry=Entry{object=User{name='Max Mustermann', roles=[Role{id=1, description='Nobody'}, Role{id=0, description='Admin'}], emails=[Email{mail='test@test.de'}, Email{mail='other@test.de'}], userDetails=UserDetails{registrationDate=0, lastLogin=0, passwordHash=[]}}}" classname="com.cedarsoft.serialization.jackson.test.UserSerializerTest" time="0.008"/>
+  <testcase name="[1] entry=Entry{object=User{name='Max Mustermann', roles=[Role{id=1, description='Nobody'}, Role{id=0, description='Admin'}], emails=[Email{mail='test@test.de'}, Email{mail='other@test.de'}], userDetails=UserDetails{registrationDate=2351351, lastLogin=36351531153, passwordHash=[54, 56, 54, 49, 55, 51, 54, 56]}}}" classname="com.cedarsoft.serialization.jackson.test.UserSerializerTest" time="0.004"/>
+  <testcase name="[2] entry=Entry{object=User{name='Max Mustermann', roles=[Role{id=1, description='Nobody'}, Role{id=0, description='Admin'}], emails=[Email{mail='test@test.de'}, Email{mail='other@test.de'}], userDetails=UserDetails{registrationDate=0, lastLogin=0, passwordHash=[]}}}" classname="com.cedarsoft.serialization.jackson.test.UserSerializerTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
