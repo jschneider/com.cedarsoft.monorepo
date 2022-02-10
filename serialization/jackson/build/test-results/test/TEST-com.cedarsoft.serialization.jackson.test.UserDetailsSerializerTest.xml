@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.jackson.test.UserDetailsSerializerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:16:02" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.01">
-  <properties/>
-  <testcase name="[1] entry=Entry{object=UserDetails{registrationDate=73511399, lastLogin=73511333, passwordHash=[90, 54, 93, -17, 107, 89, -80, -42, 114, 15, -20, -99, 126, -92, 76, -103, -55, 110, -124, 104, -59, 92, -61, 26, 19, 121, -128, -125, -126, -123, -54, -121, 18, 32, 18, 50, -75, -63, -19, 10, -63, 57, 47, -96, 18, 8, 61, 31, -105, 85, 50, 12, 118, -97, -25, 24, -27, 7, 95, 70, 49, 77, -42, 35]}}" classname="com.cedarsoft.serialization.jackson.test.UserDetailsSerializerTest" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

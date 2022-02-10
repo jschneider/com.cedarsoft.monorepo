@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:15:10" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.66">
-  <properties/>
-  <testcase name="testFailing()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.285"/>
-  <testcase name="testBasic()" classname="com.cedarsoft.container.builder.ContainerFormatVersionHelperTest" time="0.375"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

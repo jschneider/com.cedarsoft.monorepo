@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:17:10" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.33">
-  <properties/>
-  <testcase name="testSchemaTest()" classname="com.cedarsoft.serialization.neo4j.test.utils.SchemaTest" time="0.33"/>
-  <system-out><![CDATA[Users created
-The username of user 45 is user45@neo4j.org
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.commons.KotlinJavaParamNamesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:15:34" hostname="runner-ioxloixu-project-47-concurrent-1" time="2.331">
-  <properties/>
-  <testcase name="testKotlinParamName$commons()" classname="com.cedarsoft.commons.KotlinJavaParamNamesTest" time="2.297"/>
-  <testcase name="testJavaParams$commons()" classname="com.cedarsoft.commons.KotlinJavaParamNamesTest" time="0.022"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

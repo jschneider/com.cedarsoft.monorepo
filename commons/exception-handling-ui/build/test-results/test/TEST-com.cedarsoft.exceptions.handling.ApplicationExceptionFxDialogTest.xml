@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2022-02-10T17:16:22" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.0">
-  <properties/>
-  <testcase name="testAppFxExceptionDialog$exception_handling_ui()" classname="com.cedarsoft.exceptions.handling.ApplicationExceptionFxDialogTest" time="0.0">
-    <skipped/>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

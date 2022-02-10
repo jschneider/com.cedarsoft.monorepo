@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:16:02" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.408">
-  <properties/>
-  <testcase name="testTimeout$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.277"/>
-  <testcase name="testIt$test_utils()" classname="com.cedarsoft.test.utils.AwaitilityExtensionsKtTest" time="0.128"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

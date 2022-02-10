@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io.ExtraSerializerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:16:54" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.112">
-  <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.Extra@386a39e1}" classname="com.cedarsoft.test.io.ExtraSerializerTest" time="0.095"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.test.Extra@3f484e08}" classname="com.cedarsoft.test.io.ExtraSerializerTest" time="0.016"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

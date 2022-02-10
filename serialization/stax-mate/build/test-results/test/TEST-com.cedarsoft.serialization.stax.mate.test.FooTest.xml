@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.serialization.stax.mate.test.FooTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:16:43" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.065">
-  <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@dcdca88b}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.02"/>
-  <testcase name="[2] entry=Entry{object=com.cedarsoft.serialization.stax.mate.test.Foo@39e08173}" classname="com.cedarsoft.serialization.stax.mate.test.FooTest" time="0.031"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

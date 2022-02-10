@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.test.io2.MoneyApiTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-10T17:16:56" hostname="runner-ioxloixu-project-47-concurrent-1" time="0.036">
-  <properties/>
-  <testcase name="[1] entry=Entry{object=com.cedarsoft.test.io2.MoneyApiTest$MyObject@31aeb}" classname="com.cedarsoft.test.io2.MoneyApiTest" time="0.036"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
