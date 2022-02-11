@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cedarsoft.file.FileCopyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-11T03:10:29" hostname="runner-cs1zem-v-project-47-concurrent-0" time="0.011">
+  <properties/>
+  <testcase name="testCopySimple()" classname="com.cedarsoft.file.FileCopyTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
