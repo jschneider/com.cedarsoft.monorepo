@@ -1,7 +1,7 @@
 package it.neckar.react.common
 
 import it.neckar.react.common.form.*
-import kotlinext.js.Object
+import kotlinx.js.Object
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HTMLTag
 import kotlinx.html.LABEL

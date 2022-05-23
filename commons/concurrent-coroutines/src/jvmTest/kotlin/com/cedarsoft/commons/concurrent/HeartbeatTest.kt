@@ -18,7 +18,7 @@ class HeartbeatTest {
       val latency = random.nextLong(150)
       delay(latency)
       if (latency > 100.0) {
-        TimedOut
+        ConnectionFailure
       } else {
         Alive(latency.toDouble())
       }

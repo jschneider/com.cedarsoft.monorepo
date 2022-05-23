@@ -29,7 +29,7 @@ class DateTimeFormatTest {
 
   @Test
   fun testDateFormatUTC() {
-    val format = DateFormatUTC()
+    val format = DateTimeFormatUTC()
     val timestamp = 900000000000.0 // Thu Jul 09 1998 18:00:00 GMT+0200 (Central European Summer Time)
     assertThat(format.format(timestamp, I18nConfiguration.US_UTC)).isEqualTo("1998-07-09T16:00:00.000");
     assertThat(format.format(timestamp, I18nConfiguration.GermanyUTC)).isEqualTo("1998-07-09T16:00:00.000");

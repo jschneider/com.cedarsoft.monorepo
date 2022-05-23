@@ -18,6 +18,16 @@ import javafx.collections.ObservableList
 import org.apache.commons.lang3.StringUtils
 import java.util.concurrent.Callable
 
+fun <T : Enum<T>> ObservableValue<Boolean>.toEnum(valueForTrue: T, valueForFalse: T): ObjectBinding<T> {
+  return this.map {
+    if (it) {
+      valueForTrue
+    } else {
+      valueForFalse
+    }
+  }
+}
+
 /**
  * Returns a string binding with a max length for a string property
  */
@@ -109,6 +119,12 @@ fun <T1, T2> ObservableValue<T1>.mapToDouble(other: ObservableValue<T2>, convers
   return Bindings.createDoubleBinding({
     conversion(this.value, other.value)
   }, this, other)
+}
+
+fun <T1, T2, T3> ObservableValue<T1>.mapToDouble(other1: ObservableValue<T2>, other2: ObservableValue<T3>, conversion: (T1, T2, T3) -> Double): DoubleBinding {
+  return Bindings.createDoubleBinding({
+    conversion(this.value, other1.value, other2.value)
+  }, this, other1, other2)
 }
 
 /**

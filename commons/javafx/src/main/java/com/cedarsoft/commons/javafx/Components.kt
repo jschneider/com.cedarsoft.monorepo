@@ -46,7 +46,6 @@ import javafx.scene.control.SpinnerValueFactory
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.control.TextFormatter
-import javafx.scene.control.Toggle
 import javafx.scene.control.ToggleButton
 import javafx.scene.control.ToggleGroup
 import javafx.scene.control.Tooltip
@@ -65,7 +64,6 @@ import javafx.util.StringConverter
 import javafx.util.converter.NumberStringConverter
 import java.text.NumberFormat
 import java.util.Arrays
-import java.util.concurrent.Callable
 import java.util.function.Consumer
 import java.util.function.Predicate
 import java.util.stream.Stream
@@ -194,7 +192,7 @@ object Components {
   @JvmStatic
   fun labelToString(binding: ObservableValue<*>): Label {
     val label = Label()
-    label.textProperty().bind(Bindings.createStringBinding(Callable { binding.value.toString() }, binding))
+    label.textProperty().bind(Bindings.createStringBinding({ binding.value.toString() }, binding))
     return label
   }
 
@@ -204,7 +202,7 @@ object Components {
   @JvmStatic
   fun <T> labelToString(binding: ObservableValue<T>, converter: (T) -> String): Label {
     val label = Label()
-    label.textProperty().bind(Bindings.createStringBinding(Callable { converter.invoke(binding.value) }, binding))
+    label.textProperty().bind(Bindings.createStringBinding({ converter.invoke(binding.value) }, binding))
     return label
   }
 
@@ -250,9 +248,18 @@ object Components {
    * Creates a label with min width set to pref
    */
   @JvmStatic
-  @JvmOverloads
   fun label(text: String = ""): Label {
     return minWidth2prefLabel(text)
+  }
+
+  /**
+   * Label with multi line support
+   */
+  @JvmStatic
+  fun labelMultiline(text: String = ""): Label {
+    return Label(text).also {
+      it.isWrapText = true
+    }
   }
 
   @JvmStatic
@@ -292,7 +299,7 @@ object Components {
     val label = Label()
     label.styleClass.add(styleClass)
     label.textProperty().bind(binding)
-    return label
+    return minWidth2pref(label)
   }
 
   @JvmStatic
@@ -404,7 +411,7 @@ object Components {
     toggleGroup.toggles
       .stream()
       .filter { radioButton -> radioButton.properties[ENUM_VALUE] == value }
-      .forEach(Consumer<Toggle> { toggleGroup.selectToggle(it) })
+      .forEach({ toggleGroup.selectToggle(it) })
   }
 
   /**
@@ -781,7 +788,7 @@ object Components {
 
   @JvmStatic
   fun textFieldFloatDelayed(floatProperty: FloatProperty, converter: NumberStringConverter): TextField {
-    return textFieldFloatDelayed(floatProperty, Predicate { _ -> true }, converter)
+    return textFieldFloatDelayed(floatProperty, { _ -> true }, converter)
   }
 
   @JvmStatic
@@ -807,7 +814,7 @@ object Components {
 
   @JvmStatic
   @JvmOverloads
-  fun textFieldDoubleReadonly(observableValue: ObservableDoubleValue, floatConverter: NumberStringConverterForFloatingPointNumbers = NumberStringConverterForFloatingPointNumbers()): TextField {
+  fun textFieldDoubleReadonly(observableValue: ObservableDoubleValue, floatConverter: StringConverter<Number> = NumberStringConverterForFloatingPointNumbers()): TextField {
     val textField = TextField()
     textField.alignmentProperty().set(Pos.TOP_RIGHT)
     observableValue.addListener { _, _, newValue -> textField.text = floatConverter.toString(newValue) }
@@ -894,7 +901,7 @@ object Components {
 
   @JvmStatic
   fun textFieldIntegerDelayed(integerProperty: IntegerProperty, converter: NumberStringConverter): TextField {
-    return textFieldIntegerDelayed(integerProperty, Predicate { _ -> true }, converter)
+    return textFieldIntegerDelayed(integerProperty, { _ -> true }, converter)
   }
 
   @JvmStatic
@@ -956,7 +963,7 @@ object Components {
 
   @JvmStatic
   fun textFieldLongDelayed(longProperty: LongProperty, numberStringConverter: NumberStringConverter): TextField {
-    return textFieldLongDelayed(longProperty, Predicate { _ -> true }, numberStringConverter)
+    return textFieldLongDelayed(longProperty, { _ -> true }, numberStringConverter)
   }
 
   @JvmStatic

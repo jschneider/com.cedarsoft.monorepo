@@ -8,7 +8,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
   //No dependency to dependencies_sets_tornadofx --> to avoid circular deps
 
   api(Libs.kotlin_reflect)
@@ -23,7 +23,7 @@ dependencies {
 
   api(project(Projects.open_commons_time))
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_javafx_test_utils))
   testImplementation(Libs.controlsfx)

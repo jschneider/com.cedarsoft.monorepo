@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cedarsoft.photos.ImageStorageTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-11T03:10:26" hostname="runner-cs1zem-v-project-47-concurrent-0" time="1.387">
-  <properties/>
-  <testcase name="delete()" classname="com.cedarsoft.photos.ImageStorageTest" time="1.352"/>
-  <testcase name="basic()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.012"/>
-  <testcase name="dataFile()" classname="com.cedarsoft.photos.ImageStorageTest" time="0.012"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

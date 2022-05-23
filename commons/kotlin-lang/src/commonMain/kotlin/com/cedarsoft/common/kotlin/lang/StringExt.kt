@@ -185,7 +185,7 @@ fun String.containsAll(elements: Iterable<String>, ignoreCase: Boolean = false):
 }
 
 /**
- * Returns a string that is save to be used as file name
+ * Returns a string that is safe to be used as file name
  */
 fun String.encodeForFileName(): String {
   return InvalidForFileName.replace(this, "_")
@@ -309,3 +309,24 @@ fun String?.nullIfBlank(): String? {
 fun Boolean.toCheckboxChar(): String {
   return if (this) "\u2611" else "\u2610"
 }
+
+fun String.inCurlyBraces(): String {
+  return "{$this}"
+}
+
+
+/**
+ * Shortens the string to [maxLength]; in such case, appends the [ellipsis] (typically "…" ).
+ *
+ * For example, returns "ABCD…" when called for "ABCDEFHG".(5, "…")
+ */
+fun String.restrictLengthWithEllipsis(maxLength: Int, ellipsis: String = "…"): String =
+  if (this.length <= maxLength) this
+  else this.substring(0, maxLength - ellipsis.length) + ellipsis
+
+/**
+ * Returns true if the string starts with a latin letter a-z or A-Z
+ */
+fun String.startsWithLetter(): Boolean = this.contains(regexStartsWithLetter)
+
+private val regexStartsWithLetter = "^[a-zA-Z]".toRegex()

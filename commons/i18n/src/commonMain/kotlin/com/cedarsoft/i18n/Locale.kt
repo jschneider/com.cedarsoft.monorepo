@@ -14,5 +14,6 @@ data class Locale(val locale: String) {
   companion object {
     val US: Locale = Locale("en-US")
     val Germany: Locale = Locale("de-DE")
+    val France: Locale = Locale("fr-FR")
   }
 }

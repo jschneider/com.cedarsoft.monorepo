@@ -2,7 +2,9 @@ package com.cedarsoft.commons.javafx
 
 import assertk.*
 import assertk.assertions.*
+import com.cedarsoft.common.time.VirtualNowProvider
 import com.cedarsoft.javafx.test.JavaFxTest
+import com.cedarsoft.test.utils.VirtualTime
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -17,6 +19,68 @@ import kotlin.time.Duration.Companion.milliseconds
 
 @JavaFxTest
 class JavaFxTimerTest {
+
+  @VirtualTime(5000.0)
+  @Test
+  fun testSimple(nowProvider: VirtualNowProvider) {
+    assertThat(nowProvider).isInstanceOf(VirtualNowProvider::class)
+
+    assertThat(Platform.isFxApplicationThread()).isFalse()
+
+    var called = false
+    JavaFxTimer.delay(10.milliseconds) {
+      assertThat(called).isFalse()
+      called = true
+    }
+
+    nowProvider.add(20.0)
+    assertThat(nowProvider.nowMillis()).isEqualTo(5020.0)
+
+    assertThat(called).isFalse()
+    JavaFxTimer.waitForPaintPulse()
+    Awaitility.await().atMost(30, TimeUnit.SECONDS)
+      .pollDelay(10, TimeUnit.MILLISECONDS)
+      .until {
+        called
+      }
+    assertThat(called).isTrue()
+  }
+
+  @VirtualTime(5000.0)
+  @Test
+  fun testDelayNotImmediately(nowProvider: VirtualNowProvider) {
+    assertThat(Platform.isFxApplicationThread()).isFalse()
+
+    var called = false
+
+    JavaFxTimer.delay(10.milliseconds) {
+      assertThat(called).isFalse()
+      called = true
+    }
+
+    assertThat(called).isFalse()
+    JavaFxTimer.waitForPaintPulse()
+    assertThat(called).isFalse()
+
+    nowProvider.add(9.0)
+
+    assertThat(called).isFalse()
+    JavaFxTimer.waitForPaintPulse()
+    assertThat(called).isFalse()
+
+    nowProvider.add(1.0)
+    assertThat(nowProvider.nowMillis()).isEqualTo(5010.0)
+
+    assertThat(called).isFalse()
+    JavaFxTimer.waitForPaintPulse()
+    Awaitility.await().atMost(30, TimeUnit.SECONDS)
+      .pollDelay(10, TimeUnit.MILLISECONDS)
+      .until {
+        called
+      }
+    assertThat(called).isTrue()
+  }
+
   @Test
   fun testDelay() {
     assertThat(Platform.isFxApplicationThread()).isFalse()
@@ -28,9 +92,8 @@ class JavaFxTimerTest {
       called = true
     }
 
-    PlatformUtil.runAndWait {
-      //wait to ensure the event has been processed
-    }
+    //wait to ensure the event has been processed
+    JavaFxTimer.waitForPaintPulse()
 
     Awaitility.await().atMost(30, TimeUnit.SECONDS)
       .pollDelay(10, TimeUnit.MILLISECONDS)

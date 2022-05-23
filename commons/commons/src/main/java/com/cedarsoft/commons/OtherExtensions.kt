@@ -1,5 +1,6 @@
 package com.cedarsoft.commons
 
+import com.cedarsoft.common.kotlin.lang.startsWithLetter
 import java.net.URL
 import java.util.Optional
 import java.util.Properties

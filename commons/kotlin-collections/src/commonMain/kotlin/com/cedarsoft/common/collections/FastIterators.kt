@@ -321,3 +321,80 @@ inline fun DoubleArrayList.fastForEachIndexed(callback: (index: Int, value: Doub
     n++
   }
 }
+
+inline fun <T> List<T>.fastForEachWithIndex(callback: (index: Int, value: T) -> Unit) {
+  var n = 0
+  while (n < size) {
+    callback(n, this[n])
+    n++
+  }
+}
+
+inline fun <T> Array<T>.fastForEachWithIndex(callback: (index: Int, value: T) -> Unit) {
+  var n = 0
+  while (n < size) {
+    callback(n, this[n])
+    n++
+  }
+}
+
+inline fun <T> List<T>.fastForEachReverse(callback: (T) -> Unit) {
+  var n = 0
+  while (n < size) {
+    callback(this[size - n - 1])
+    n++
+  }
+}
+
+inline fun <T> ArrayList<T>.fastIterateRemove(callback: (T) -> Boolean): ArrayList<T> {
+  var n = 0
+  var m = 0
+  while (n < size) {
+    if (m >= 0 && m != n) this[m] = this[n]
+    if (callback(this[n])) m--
+    n++
+    m++
+  }
+  while (this.size > m) this.removeAt(this.size - 1)
+  return this
+}
+
+/**
+ * Returns the max value - but always at least [minimumValue].
+ *
+ * If the list is empty the [minimumValue] is returned
+ */
+inline fun <T> List<T>.fastMaxBy(minimumValue: Double, callback: (value: T) -> Double): Double {
+  val currentSize = size
+  if (currentSize == 0) {
+    return minimumValue
+  }
+
+  var max = minimumValue
+  var n = 0
+  while (n < currentSize) {
+    max = callback(this[n++]).coerceAtLeast(max)
+  }
+
+  return max
+}
+
+/**
+ * Returns the max value - but always at least [minimumValue].
+ *
+ * If the list is empty the [minimumValue] is returned
+ */
+inline fun <T> Array<T>.fastMaxBy(minimumValue: Double, callback: (value: T) -> Double): Double {
+  val currentSize = size
+  if (currentSize == 0) {
+    return minimumValue
+  }
+
+  var max = minimumValue
+  var n = 0
+  while (n < currentSize) {
+    max = callback(this[n++]).coerceAtLeast(max)
+  }
+
+  return max
+}

@@ -19,7 +19,7 @@ class ApplicationExceptionFxDialogTest : ApplicationTest() {
   override fun start(stage: Stage?) {
     super.start(stage)
 
-    val exception = MyTestException(MyTestException.TestExceptionDetails.ERROR_1, "asdf")
+    val exception = MyTestException(MyTestException.TestExceptionDetails.ERROR_1, mapOf("myParam" to "daValueForMyParam"))
 
     ApplicationExceptionFxDialog(exception).show()
   }

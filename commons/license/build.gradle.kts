@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-  compileOnlyApi(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
 }

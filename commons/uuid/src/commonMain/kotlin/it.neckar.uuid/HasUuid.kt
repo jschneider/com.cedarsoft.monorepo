@@ -33,19 +33,37 @@ fun <T : HasUuid> List<T>.withReplaced(updatedElement: T): List<T> {
   return withReplaced(updatedElement.uuid, updatedElement)
 }
 
-fun <T : HasUuid> List<T>.withReplaced(uuid: Uuid, updatedElement: T): List<T> {
-  //find the index of the existing element
-  val index = indexOfFirst {
-    it.uuid == uuid
-  }
-
-  if (index < 0) {
-    throw IllegalArgumentException("No index found for ${updatedElement.uuid}")
-  }
-
+fun <T : HasUuid> List<T>.withReplaced(updatedElements: List<T>): List<T> {
   return this.toMutableList()
-    .also {
-      it[index] = updatedElement
+    .also { mutableList ->
+      updatedElements.forEach { updatedElement ->
+        //find the index of the existing element
+        val index = indexOfFirst {
+          it.uuid == updatedElement.uuid
+        }
+
+        if (index < 0) {
+          throw IllegalArgumentException("No index found for ${updatedElement.uuid}")
+        }
+
+        mutableList[index] = updatedElement
+      }
+    }
+}
+
+fun <T : HasUuid> List<T>.withReplaced(uuid: Uuid, updatedElement: T): List<T> {
+  return this.toMutableList()
+    .also { mutableList ->
+      //find the index of the existing element
+      val index = indexOfFirst {
+        it.uuid == uuid
+      }
+
+      if (index < 0) {
+        throw IllegalArgumentException("No index found for ${updatedElement.uuid}")
+      }
+
+      mutableList[index] = updatedElement
     }
 }
 

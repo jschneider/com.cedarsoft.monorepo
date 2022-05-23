@@ -4,9 +4,8 @@ import com.cedarsoft.common.collections.fastForEach
 
 /**
  * Holds actions that may be called upon dispose
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
-class DisposeSupport : Disposable, OnDispose {
+class DisposeSupport(val mode: Mode = Mode.SingleDispose) : Disposable, OnDispose {
   /**
    * The actions that are executed on dispose
    */
@@ -41,9 +40,28 @@ class DisposeSupport : Disposable, OnDispose {
     disposed = true
   }
 
+  /**
+   * Throws an exception, if has already been disposed.
+   * Only relevant if the [mode] is set to [Mode.SingleDispose]
+   */
   private fun verifyNotDisposed() {
-    check(!disposed) {
-      "Already disposed"
+    if (mode == Mode.SingleDispose) {
+      check(!disposed) {
+        "Already disposed"
+      }
     }
   }
+
+  enum class Mode {
+    SingleDispose,
+    MultiDispose,
+  }
+}
+
+/**
+ * Registers this disposable at the given dispose support
+ */
+fun <T : Disposable> T.alsoRegisterAt(disposeSupport: DisposeSupport): T {
+  disposeSupport.onDispose(this)
+  return this
 }

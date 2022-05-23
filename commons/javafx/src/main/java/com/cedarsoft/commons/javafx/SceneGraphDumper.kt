@@ -2,6 +2,8 @@ package com.cedarsoft.commons.javafx
 
 import javafx.scene.Node
 import javafx.scene.Parent
+import javafx.scene.control.Labeled
+import javafx.scene.control.TextInputControl
 import javafx.scene.layout.Region
 
 
@@ -31,14 +33,32 @@ fun Node.dumpSceneGraph(): String {
     visitSceneGraph { node, level ->
       val indents = " ".repeat(level)
 
-      append("$indents${node.javaClass.name} -StyleClass: ${node.styleClass} -Style: ${node.style} -LayoutBounds: ${node.layoutBounds} -LayoutBoundsInParent: ${node.boundsInParent}")
+      val propertiesAsString = node.properties
+        .filter { it.key != "javafx.scene.control.Tooltip" }
+        .map { "${it.key}: ${it.value}" }.joinToString(", ")
+
+      append("$indents${node.javaClass.name}" +
+        "\n$indents -StyleClass: ${node.styleClass}" +
+        "\n$indents -Style: ${node.style}" +
+        "\n$indents -LayoutBounds: ${node.layoutBounds}" +
+        "\n$indents -LayoutBoundsInParent: ${node.boundsInParent}")
 
       if (node is Region) {
         val insets = node.insets
         val padding = node.padding
-        append(" -Insets: $insets -Padding: $padding")
+        append("\n$indents -Insets: \n$insets -Padding: $padding")
       }
 
+      if (node is Labeled) {
+        append("\n$indents -Text: ${node.text}")
+        append("\n$indents -Font: ${node.font}")
+      }
+
+      if(node is TextInputControl){
+        append("\n$indents -Text: ${node.text}")
+        append("\n$indents -Font: ${node.font}")
+      }
+      append("\n$indents -Properties: $propertiesAsString")
       appendLine()
     }
   }

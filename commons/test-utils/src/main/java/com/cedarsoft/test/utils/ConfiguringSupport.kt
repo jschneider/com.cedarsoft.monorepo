@@ -90,7 +90,7 @@ class ConfiguringSupport<T, A : Annotation>(
     context.getStore(ExtensionContext.Namespace.GLOBAL)[createStoreKey(scope), storedObjectType]?.let { callback.applyValue(it) }
   }
 
-  private fun createStoreKey(scope: Scope): String? {
+  private fun createStoreKey(scope: Scope): String {
     return "${scope.name}.$key"
   }
 

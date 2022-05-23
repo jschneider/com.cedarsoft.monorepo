@@ -14,21 +14,12 @@ object FeatureFlagsSupport {
 
   init {
     //Initialize feature set
-
-    flags = when {
-      //Fallback for compatibility reasons
-      getUrlParameter("alpha") == "true" -> {
-        FeatureFlags.alpha
-      }
-      else -> {
-        /**
-         * Parse feature flags URL
-         */
-        getUrlParameter("featureFlags")?.let {
-          FeatureFlags.decodeFromString(it)
-        } ?: FeatureFlags.empty
-      }
-    }
+    /**
+     * Parse feature flags URL
+     */
+    flags = getUrlParameter("featureFlags")?.let {
+      FeatureFlags.decodeFromString(it)
+    } ?: FeatureFlags.empty
   }
 }
 

@@ -37,11 +37,6 @@ data class FeatureFlags(
      */
     val empty: FeatureFlags = FeatureFlags(emptySet())
 
-    /**
-     * Contains a list of well known features for the alpha version
-     */
-    val alpha: FeatureFlags = FeatureFlags(FeatureFlag.alpha)
-
 
     /**
      * Parses the feature flags from a string created by [asString]

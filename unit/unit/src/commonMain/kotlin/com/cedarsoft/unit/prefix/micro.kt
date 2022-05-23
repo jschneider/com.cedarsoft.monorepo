@@ -15,6 +15,7 @@
  */
 package com.cedarsoft.unit.prefix
 
+import com.cedarsoft.unit.Symbol
 import kotlin.reflect.KClass
 
 /**
@@ -40,11 +41,16 @@ import kotlin.reflect.KClass
 )
 @MustBeDocumented
 @Suppress("ClassName")
-@Prefix(0.0001)
+@Prefix(0.000_001)
+@Symbol(micro.SYMBOL)
 annotation class micro(
   /**
    * The base unit
    * @return the base unit
    */
   val value: KClass<out Annotation>
-)
+) {
+  companion object {
+    const val SYMBOL: String = "μ"
+  }
+}

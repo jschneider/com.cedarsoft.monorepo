@@ -8,16 +8,16 @@ import org.junit.jupiter.api.Test
 class FeatureFlagsTest {
   @Test
   fun testToString() {
-    val flags = FeatureFlags(FeatureFlag.alpha, FeatureFlag("another"))
+    val flags = FeatureFlags(FeatureFlag.slowUi, FeatureFlag("another"))
 
     val string = flags.encodeToString()
-    assertThat(string).isEqualTo("alpha,another")
+    assertThat(string).isEqualTo("slowUI,another")
     assertThat(FeatureFlags.decodeFromString(string)).isEqualTo(flags)
   }
 
   @Test
   fun testEqualsNoDescription() {
-    assertThat(FeatureFlag.alpha).isEqualTo(FeatureFlag(FeatureFlag.alpha.key))
+    assertThat(FeatureFlag.slowUi).isEqualTo(FeatureFlag(FeatureFlag.slowUi.key))
   }
 
   @Test

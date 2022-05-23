@@ -15,7 +15,7 @@
  */
 package com.cedarsoft.unit.prefix
 
-import com.cedarsoft.unit.si.SIBaseUnit
+import com.cedarsoft.unit.Symbol
 import kotlin.reflect.KClass
 
 /**
@@ -41,6 +41,7 @@ import kotlin.reflect.KClass
 )
 @MustBeDocumented
 @Suppress("ClassName")
+@Symbol(milli.SYMBOL)
 @Prefix(0.001)
 annotation class milli(
   /**
@@ -48,4 +49,8 @@ annotation class milli(
    * @return the base unit
    */
   val value: KClass<out Annotation>
-)
+) {
+  companion object {
+    const val SYMBOL: String = "m"
+  }
+}

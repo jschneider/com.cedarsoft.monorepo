@@ -10,9 +10,9 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
   api(commons_io)
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
 }

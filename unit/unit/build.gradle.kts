@@ -33,19 +33,19 @@ kotlin {
 
     named("jvmMain") {
       dependencies {
-        api(project(Projects.dependencies_sets_kotlin_jvm))
+        api(project(Projects.dependencies_sets_jvm_kotlin))
         api(project(Projects.open_annotations))
       }
     }
 
     named("jvmTest") {
       dependencies {
-        api(project(Projects.dependencies_sets_kotlin_jvm))
+        api(project(Projects.dependencies_sets_jvm_kotlin))
 
         implementation(Libs.kotlin_test)
         implementation(Libs.kotlin_test_junit)
 
-        implementation(project(Projects.dependencies_sets_kotlin_test))
+        implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
 
         implementation(commons_io)
@@ -55,7 +55,7 @@ kotlin {
     }
     named("jsMain") {
       dependencies {
-        api(project(Projects.dependencies_sets_kotlin_js))
+        api(project(Projects.dependencies_sets_js_kotlin))
       }
     }
     //named("jsTest") {

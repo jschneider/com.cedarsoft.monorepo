@@ -1,6 +1,6 @@
 package com.cedarsoft.formatting
 
-import com.cedarsoft.charting.algorithms.time.TimeConstants
+import com.cedarsoft.time.TimeConstants
 import com.cedarsoft.common.kotlin.lang.toIntFloor
 import com.cedarsoft.i18n.I18nConfiguration
 import com.cedarsoft.unit.si.ms
@@ -16,14 +16,24 @@ interface DateTimeFormat {
 }
 
 /**
- * Formats a date in accordance to the ISO format 8601
+ * Formats a date and time in accordance to the ISO format 8601
  */
-val dataFormatIso8601: CachedDateTimeFormat = DateFormatIso8601().cached()
+val dateTimeFormatIso8601: CachedDateTimeFormat = DateTimeFormatIso8601().cached()
+
+/**
+ * Formats only the date according to ISO 8601
+ */
+val dateFormatIso8601: CachedDateTimeFormat = DateFormatIso8601().cached()
+
+/**
+ * Formats only the (local!) time according to ISO 8601.
+ */
+val timeFormatIso8601: CachedDateTimeFormat = TimeFormatIso8601().cached()
 
 /**
  * Formats a date as a UTC date (locale independent)
  */
-val dateFormatUTC: CachedDateTimeFormat = DateFormatUTC().cached()
+val dateTimeFormatUTC: CachedDateTimeFormat = DateTimeFormatUTC().cached()
 
 /**
  * A formatted date (time only)
@@ -31,7 +41,7 @@ val dateFormatUTC: CachedDateTimeFormat = DateFormatUTC().cached()
 val timeFormat: CachedDateTimeFormat = TimeFormat().cached()
 
 /**
- * A formatted time including milli seconds
+ * A formatted time including milliseconds
  */
 val timeFormatWithMillis: CachedDateTimeFormat = TimeFormatWithMillis().cached()
 
@@ -71,14 +81,18 @@ val dateTimeFormatWithMillis: CachedDateTimeFormat = DateTimeFormatWithMillis().
 val dateTimeFormatShortWithMillis: CachedDateTimeFormat = DateTimeFormatShortWithMillis().cached()
 
 /**
- * Formats a date in accordance to the ISO format 8601
+ * Formats a date-time in accordance to the ISO format 8601
  */
+expect class DateTimeFormatIso8601() : DateTimeFormat
+
 expect class DateFormatIso8601() : DateTimeFormat
+
+expect class TimeFormatIso8601() : DateTimeFormat
 
 /**
  * Formats a date as a UTC date (locale independent)
  */
-expect class DateFormatUTC() : DateTimeFormat
+expect class DateTimeFormatUTC() : DateTimeFormat
 
 /**
  * A formatted date (time only)
@@ -139,7 +153,7 @@ fun @ms Double.formatUtc(): String {
   }
 
   return try {
-    dateFormatUTC.format(this, I18nConfiguration.GermanyUTC)
+    dateTimeFormatUTC.format(this, I18nConfiguration.GermanyUTC)
   } catch (e: Throwable) {
     "---${this}---[$e]"
   }

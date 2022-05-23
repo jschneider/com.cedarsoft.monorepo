@@ -1,12 +1,14 @@
 package com.cedarsoft.commons.kotlin.bytearray
 
+import com.cedarsoft.common.collections.fastForEach
+
 inline operator fun ByteArray.set(o: Int, v: Int) = run { this[o] = v.toByte() }
 inline operator fun ByteArray.set(o: Int, v: Long) = run { this[o] = v.toByte() }
 
 private inline fun <TArray> _join(items: List<TArray>, build: (Int) -> TArray, size: (TArray) -> Int, arraycopy: (TArray, Int, TArray, Int, Int) -> Unit): TArray {
   val out = build(items.sumBy { size(it) })
   var pos = 0
-  items.fastForEach { c ->
+  items.fastForEach { c: TArray ->
     arraycopy(c, 0, out, pos, size(c))
     pos += size(c)
   }

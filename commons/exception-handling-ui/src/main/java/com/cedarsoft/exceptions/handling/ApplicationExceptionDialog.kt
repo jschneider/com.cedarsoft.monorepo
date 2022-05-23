@@ -31,6 +31,7 @@
 package com.cedarsoft.exceptions.handling
 
 import com.cedarsoft.exceptions.ApplicationException
+import com.cedarsoft.i18n.DefaultI18nConfiguration
 import com.cedarsoft.swing.common.dialog.AbstractDialog
 import com.cedarsoft.swing.common.dialog.ComponentSizeStorage
 import com.jidesoft.dialog.BannerPanel
@@ -52,8 +53,8 @@ class ApplicationExceptionDialog(
 ) : AbstractDialog(parent, preferences) {
 
   override fun createBannerPanel(): JComponent {
-    val bannerPanel = BannerPanel(e.errorCode.toString(), e.title)
-    title = e.title + " (" + e.errorCode + ")"
+    val bannerPanel = BannerPanel(e.errorCode.toString(), e.getTitle(DefaultI18nConfiguration))
+    title = e.getTitle(DefaultI18nConfiguration) + " (" + e.errorCode + ")"
     return bannerPanel
   }
 
@@ -66,7 +67,7 @@ class ApplicationExceptionDialog(
       }
     }
 
-    val styledLabel = StyledLabel(e.localizedMessage)
+    val styledLabel = StyledLabel(e.getLocalizedMessage(DefaultI18nConfiguration))
     panel.add(styledLabel)
 
     styledLabel.verticalAlignment = SwingConstants.TOP

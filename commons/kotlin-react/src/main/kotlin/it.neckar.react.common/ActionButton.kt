@@ -13,17 +13,23 @@ fun RBuilder.actionButton(
    *
    */
   icon: String,
+
   classes: String = "btn btn-primary",
   /**
    * If set to true, the button will be disabled and a spinner icon is shown instead of the provided icon
    */
   busy: Boolean = false,
-  action: suspend () -> Unit
-): Unit = child(actionButton) {
+
+  text: String? = null,
+
+  action: suspend () -> Unit,
+
+  ): Unit = child(actionButton) {
   attrs {
     this.icon = icon
     this.classes = classes
     this.busy = busy
+    this.text = text
     this.action = action
   }
 }
@@ -42,6 +48,12 @@ val actionButton: FC<ActionButtonProps> = fc("actionButton") { props ->
         }
       }
     }
+
+    props.text?.let {
+      b("ms-2") {
+        +it
+      }
+    }
   }
 }
 
@@ -51,6 +63,8 @@ external interface ActionButtonProps : Props {
   var icon: String
 
   var busy: Boolean
+
+  var text: String?
 
   var action: suspend () -> Unit
 }

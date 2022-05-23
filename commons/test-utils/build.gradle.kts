@@ -16,10 +16,10 @@ plugins {
 }
 
 dependencies {
-  compileOnlyApi(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
 
-  api(project(Projects.dependencies_sets_kotlin_jvm))
-  api(project(Projects.dependencies_sets_test_basics))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
+  api(project(Projects.dependencies_sets_jvm_test_basics))
 
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_kotlin_lang))
@@ -45,5 +45,5 @@ dependencies {
   api(Libs.awaitility)
 
   //Test stuff
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
 }

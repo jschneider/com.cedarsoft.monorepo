@@ -13,7 +13,7 @@ import kotlinx.serialization.serializer
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
+ * Tests serialization round trip
  */
 inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), serializersModule: SerializersModule = EmptySerializersModule, expectedJsonProvider: () -> String?) {
   roundTrip(objectToSerialize, serializer, serializersModule, expectedJsonProvider())

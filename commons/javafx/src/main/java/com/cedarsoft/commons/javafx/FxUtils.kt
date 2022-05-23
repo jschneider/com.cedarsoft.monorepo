@@ -123,9 +123,11 @@ object FxUtils {
   private fun dump(node: Node, out: PrintStream, depth: Int) {
     out.println(Strings.repeat("  ", depth) + node + " #" + node.id)
 
-    val parent = node as Parent
-    parent.childrenUnmodifiable
-      .forEach { child -> dump(child, out, depth + 1) }
+    if (node is Parent) {
+      val parent = node as Parent
+      parent.childrenUnmodifiable
+        .forEach { child -> dump(child, out, depth + 1) }
+    }
   }
 
   /**

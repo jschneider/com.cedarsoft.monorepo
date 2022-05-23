@@ -33,11 +33,6 @@ data class FeatureFlag(
 
   companion object {
     /**
-     * Marker for alpha version. Should not be used directly. Instead, create other feature flags
-     */
-    val alpha: FeatureFlag = FeatureFlag("alpha", "Marker for the alpha feature")
-
-    /**
      * Simulate a delay in UI actions.
      * This feature can be used to test busy indicators.
      *
@@ -61,9 +56,14 @@ data class FeatureFlag(
     val disableVersionCheck: FeatureFlag = FeatureFlag("disableVersionCheck", "Disable the version check for client and/or server")
 
     /**
+     * Forces the version check to fail
+     */
+    val forceFailVersionCheck: FeatureFlag = FeatureFlag("forceFailVersionCheck", "Force to fail the version check")
+
+    /**
      * Contains the available feature flags
      */
-    val available: List<FeatureFlag> = listOf(alpha)
+    val available: List<FeatureFlag> = listOf(slowUi, slowServer, testing, disableVersionCheck)
 
     /**
      * Returns the feature flag for the given key

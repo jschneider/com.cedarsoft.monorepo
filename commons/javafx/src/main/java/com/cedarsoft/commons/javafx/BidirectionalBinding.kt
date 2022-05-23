@@ -2,9 +2,12 @@ package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.commons.javafx.properties.*
 import javafx.beans.property.BooleanProperty
+import javafx.beans.property.DoubleProperty
+import javafx.beans.property.IntegerProperty
 import javafx.beans.property.Property
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
+import kotlin.math.roundToInt
 
 /**
  * Helper methods for bidirectional bindings
@@ -148,6 +151,15 @@ object BidirectionalBinding {
   }
 
   /**
+   * Binds the properties to each other. Conversion is done using rounding!
+   *
+   * Copies the value from [propertyA] to [propertyB] initially
+   */
+  fun bindBidirectionalWithRounding(propertyA: IntegerProperty, propertyB: DoubleProperty) {
+    bindBidirectional(propertyA, propertyB, { it.toDouble() }, { it.toDouble().roundToInt() })
+  }
+
+  /**
    * Flagged change listener that avoids cycles
    */
   internal class FlaggedChangeListener<T> internal constructor(
@@ -231,3 +243,6 @@ fun Property<Number>.bindBidirectionalWithFactor(other: Property<Number>, otherD
   )
 }
 
+fun DoubleProperty.bindBidirectionalWithRounding(other: IntegerProperty) {
+  BidirectionalBinding.bindBidirectionalWithRounding(other, this)
+}

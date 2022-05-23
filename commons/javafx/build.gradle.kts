@@ -16,7 +16,7 @@ java {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
 
   compileOnlyApi(project(Projects.open_annotations))
 
@@ -36,7 +36,7 @@ dependencies {
   "${coroutinesFeatureName}Api"(KotlinX.coroutines.core)
   "${coroutinesFeatureName}Api"(KotlinX.coroutines.javaFx)
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
   testImplementation(project(Projects.open_commons_javafx_test_utils))
   testImplementation(Libs.miglayout_javafx)

@@ -14,13 +14,25 @@ import java.time.format.FormatStyle
  */
 private val utcDateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSS")
 
-actual class DateFormatIso8601 : DateTimeFormat {
+actual class DateTimeFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     return DateUtils.toZonedDateTime(timestamp.toLong(), i18nConfiguration.timeZone.toZoneId()).format(DateTimeFormatter.ISO_DATE_TIME)
   }
 }
 
-actual class DateFormatUTC : DateTimeFormat {
+actual class DateFormatIso8601 : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    return DateUtils.toZonedDateTime(timestamp.toLong(), i18nConfiguration.timeZone.toZoneId()).format(DateTimeFormatter.ISO_LOCAL_DATE)
+  }
+}
+
+actual class TimeFormatIso8601 : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    return DateUtils.toZonedDateTime(timestamp.toLong(), i18nConfiguration.timeZone.toZoneId()).format(DateTimeFormatter.ISO_LOCAL_TIME)
+  }
+}
+
+actual class DateTimeFormatUTC : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     return DateUtils.toOffsetDateTime(timestamp.toLong(), i18nConfiguration.timeZone.toZoneId()).withOffsetSameInstant(ZoneOffset.UTC).format(utcDateTimeFormat)
   }

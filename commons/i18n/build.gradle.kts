@@ -39,9 +39,6 @@ kotlin {
       dependencies {
         api(Kotlin.stdlib.jdk8)
         //implementation(Libs.kotlinx_coroutines_core)
-
-        api(project(Projects.dependencies_sets_annotations))
-        api(project(Projects.dependencies_sets_kotlin_jvm))
         api(project(Projects.open_annotations))
         api(project(Projects.open_commons_time))
       }
@@ -52,7 +49,7 @@ kotlin {
         implementation(Libs.kotlin_test)
         implementation(Libs.kotlin_test_junit)
 
-        implementation(project(Projects.dependencies_sets_kotlin_test))
+        implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
         implementation(project(Projects.open_commons_kotlinx_serialization_test_utils))
 
         implementation(commons_io)
@@ -67,7 +64,7 @@ kotlin {
 
     js().compilations["main"].defaultSourceSet {
       dependencies {
-        api(project(Projects.dependencies_sets_kotlin_js))
+        api(project(Projects.dependencies_sets_js_kotlin))
       }
     }
     js().compilations["test"].defaultSourceSet {

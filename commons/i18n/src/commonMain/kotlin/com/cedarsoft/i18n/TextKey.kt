@@ -1,12 +1,13 @@
 package com.cedarsoft.i18n
 
+import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmField
 import kotlin.jvm.JvmStatic
 
 /**
  * A unique key to identify a certain piece of text
  */
-@kotlinx.serialization.Serializable
+@Serializable
 class TextKey(
   /**
    * The key
@@ -40,8 +41,12 @@ class TextKey(
      * Creates a new text key with the given default text that is also used as key
      */
     @JvmStatic
-    fun simple(fallbackText: String): TextKey {
-      return TextKey(fallbackText, fallbackText)
+    fun simple(keyAndFallbackText: String): TextKey {
+      return TextKey(keyAndFallbackText, keyAndFallbackText)
+    }
+
+    operator fun invoke(keyAndFallbackText: String): TextKey {
+      return simple(keyAndFallbackText)
     }
 
     /**

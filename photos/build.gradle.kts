@@ -12,7 +12,7 @@ dependencies {
   //
   // Compile Deps
   //
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
   api(Libs.guice)
   api(project(Projects.open_commons_io))
   api(project(Projects.open_commons_image))

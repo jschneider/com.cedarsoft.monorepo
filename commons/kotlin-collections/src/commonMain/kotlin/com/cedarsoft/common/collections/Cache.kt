@@ -27,6 +27,10 @@ class Cache<K, V>
       return map.maxSize
     }
 
+  fun updateMaxSize(newMaxSize: Int) {
+    map.updateMaxSize(newMaxSize)
+  }
+
   val size: Int
     get() = map.size
 

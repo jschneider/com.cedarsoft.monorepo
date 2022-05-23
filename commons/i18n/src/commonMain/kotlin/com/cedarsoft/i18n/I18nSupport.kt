@@ -82,3 +82,10 @@ var DefaultI18nConfiguration: I18nConfiguration = I18nConfiguration(
 fun updateDefaultI18nConfiguration(i18nConfiguration: I18nConfiguration) {
   DefaultI18nConfiguration = i18nConfiguration
 }
+
+/**
+ * Sets this configuration as default
+ */
+fun I18nConfiguration.setAsDefault() {
+  updateDefaultI18nConfiguration(this)
+}

@@ -11,6 +11,36 @@ import org.junit.jupiter.api.Test
  */
 class FastIteratorsKtTest {
   @Test
+  fun testFastMaxOfArray() {
+    val list = Array(10) { "a".repeat(it) }
+
+    assertThat(
+      list.maxOf {
+        it.length
+      }).isEqualTo(9)
+
+    assertThat(
+      list.fastMaxBy(-1.0) {
+        it.length.toDouble()
+      }).isEqualTo(9.0)
+  }
+
+  @Test
+  fun testFastMaxOfList() {
+    val list = List(10) { "a".repeat(it) }
+
+    assertThat(
+      list.maxOf {
+        it.length
+      }).isEqualTo(9)
+
+    assertThat(
+      list.fastMaxBy(-1.0) {
+        it.length.toDouble()
+      }).isEqualTo(9.0)
+  }
+
+  @Test
   fun testReverse() {
     val list = DoubleArray(10) { it * 10.0 }
 

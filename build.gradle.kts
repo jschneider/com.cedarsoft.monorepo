@@ -8,8 +8,6 @@ subprojects {
   }
 
   if (false) {
-    TODO("Temorary disabled since there is a duplicate task with sourcesJar")
-
     //Relevant for publishing to Maven Central
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
@@ -63,7 +61,7 @@ subprojects {
 
               versionMapping {
                 usage("java-api") {
-                  fromResolutionOf("runtimeClasspath")
+                  fromResolutionResult()
                 }
                 usage("java-runtime") {
                   fromResolutionResult()

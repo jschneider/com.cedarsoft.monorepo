@@ -14,7 +14,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
   api(project(Projects.open_commons_guava))
 
   api(Libs.kotlin_reflect)
@@ -27,6 +27,6 @@ dependencies {
   api(jackson_module_parameter_names)
   api(Libs.jackson_module_kotlin)
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
 }

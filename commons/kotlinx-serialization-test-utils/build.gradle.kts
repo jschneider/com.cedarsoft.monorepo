@@ -9,13 +9,13 @@ plugins {
 }
 
 dependencies {
-  api(project(Projects.dependencies_sets_kotlin_jvm))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_commons_guava))
 
-  compileOnlyApi(project(Projects.dependencies_sets_annotations))
-  api(project(Projects.dependencies_sets_kotlin_jvm))
-  api(project(Projects.dependencies_sets_test_basics))
+  compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
+  api(project(Projects.dependencies_sets_jvm_kotlin))
+  api(project(Projects.dependencies_sets_jvm_test_basics))
 
   api(Libs.guava)
   compileOnlyApi(Libs.javax_annotation_api)
@@ -24,7 +24,7 @@ dependencies {
   api(KotlinX.serialization.protobuf)
   api(KotlinX.serialization.cbor)
 
-  api(project(Projects.dependencies_sets_kotlin_test))
+  api(project(Projects.dependencies_sets_jvm_kotlin_test))
   api(project(Projects.open_commons_test_utils))
   api(project(Projects.open_commons_commons))
 }

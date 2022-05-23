@@ -1,77 +1,75 @@
 package com.cedarsoft.commons.javafx
 
 import com.cedarsoft.annotations.NonBlocking
+import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.common.time.nowMillis
+import com.cedarsoft.dispose.Disposable
+import com.cedarsoft.unit.si.ms
+import com.cedarsoft.unit.si.ns
 import com.sun.javafx.tk.Toolkit
-import javafx.animation.Animation
-import javafx.animation.KeyFrame
-import javafx.animation.Timeline
+import javafx.animation.AnimationTimer
 import javafx.application.Platform
 import javafx.util.Duration
 import java.util.concurrent.Callable
 import java.util.concurrent.FutureTask
+import kotlin.time.DurationUnit
 
 
 /**
  * A class for timers executed on the JavaFX Application Thread.
- *
- * @author Christian Erbelding ([ce@cedarsoft.com](mailto:ce@cedarsoft.com))
  */
 object JavaFxTimer {
   /**
    * Calls the given runnable on the JavaFX Application Thread after the given delay.
    */
+  @Deprecated("Use delay instead", ReplaceWith("delay(delay, run)", "com.cedarsoft.commons.javafx.JavaFxTimer.delay"))
   @JvmStatic
-  fun start(delay: Duration, run: Runnable): Timeline {
-    val timeline = Timeline(KeyFrame(delay, { run.run() }))
-    timeline.play()
-    return timeline
+  fun start(delay: Duration, run: Runnable): Disposable {
+    return delay(delay, run)
   }
 
   /**
    * Calls the given lambda after the delay once
    */
   @JvmStatic
-  fun delay(delay: Duration, run: () -> Unit): Timeline {
+  fun delay(delay: Duration, run: () -> Unit): Disposable {
     if (delay.toMillis() == 0.0) {
       Platform.runLater(run)
-      return Timeline() //return an empty timeline that is stopped
+      return Disposable.noop
     }
 
-    val timeline = Timeline(KeyFrame(delay, { run() }))
-    timeline.play()
-    return timeline
+    return repeatWhile(delay) {
+      run()
+      Continuation.Stop
+    }
   }
 
   /**
-   * Returns the time line or null if the action has been scheduled immediately
+   * Returns the animation timer or null if the action has been scheduled immediately
    */
-  fun delay(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
+  fun delay(delay: kotlin.time.Duration, run: () -> Unit): Disposable {
     return delay(delay.toJavaFx(), run)
   }
 
-  fun delay(delay: kotlin.time.Duration, run: Runnable): Timeline {
+  @JvmStatic
+  @JavaFriendly
+  fun delay(delay: kotlin.time.Duration, run: Runnable): Disposable {
     return delay(delay, run::run)
   }
 
   @JvmStatic
-  fun delay(delay: Duration, run: Runnable): Timeline {
+  @JavaFriendly
+  fun delay(delay: Duration, run: Runnable): Disposable {
     return delay(delay, run::run)
-  }
-
-  @JvmStatic
-  fun repeat(delay: Duration, run: Runnable): Timeline {
-    val timeline = Timeline(KeyFrame(delay, { run.run() }))
-    timeline.cycleCount = Animation.INDEFINITE
-    timeline.play()
-    return timeline
   }
 
   /**
    * Repeats the action - as long as true is returned by the callable
    */
   @JvmStatic
+  @JavaFriendly
   @NonBlocking
-  fun repeatWhile(delay: Duration, run: Callable<Boolean>): Timeline {
+  fun repeatWhile(delay: Duration, run: Callable<Continuation>): Disposable {
     return repeatWhile(delay) {
       run.call()
     }
@@ -81,39 +79,61 @@ object JavaFxTimer {
    * Repeats the action - as long as true is returned by [run]
    */
   @NonBlocking
-  fun repeatWhile(delay: Duration, run: () -> Boolean): Timeline {
-    val timeline = Timeline()
-
-    timeline.keyFrames.add(KeyFrame(delay, {
-      val shallContinue = run()
-      if (!shallContinue) {
-        timeline.stop()
-      }
-    }))
-
-    timeline.cycleCount = Animation.INDEFINITE
-    timeline.play()
-    return timeline
-  }
-
-  /**
-   * Repeats the given lambda every [delay]
-   */
-  fun repeat(delay: Duration, run: () -> Unit): Timeline {
-    require(delay.toMillis() >= 16.0) {
-      "A delay of at least 16 ms is required because of limitations of the JavaFX timer resolution but was ${delay.toMillis()} ms"
+  fun repeatWhile(delay: Duration, run: () -> Continuation): Disposable {
+    require(delay.toMillis() >= 1.0) {
+      "A delay of at least 1 ms is required"
     }
 
-    val timeline = Timeline(KeyFrame(delay, { run() }))
-    timeline.cycleCount = Animation.INDEFINITE
-    timeline.play()
-    return timeline
+    return object : AnimationTimer() {
+      var lastRun: @ms Double = nowMillis() //set initially to now
+
+      override fun handle(_nowNanos: @ns Long) {
+        @ms val nowInMillis = nowMillis()
+        @ms val elapsedTimeSinceLastRun = nowInMillis - lastRun
+        if (elapsedTimeSinceLastRun < delay.toMillis()) {
+          return
+        }
+
+        lastRun = nowInMillis
+
+        when (run()) {
+          Continuation.Continue -> {} //do nothing, just continue
+          Continuation.Stop -> stop()
+        }
+      }
+    }.let {
+      it.start()
+      Disposable {
+        it.stop()
+      }
+    }
+  }
+
+  @JavaFriendly
+  @JvmStatic
+  @NonBlocking
+  fun repeat(delay: Duration, run: Runnable): Disposable {
+    return repeat(delay) {
+      run.run()
+    }
   }
 
   /**
-   * Repeats the given lambda every [delay]
+   * Repeats the given lambda every [delay] (if possible).
+   * Never executes the actions *before* [delay], but sometimes later
    */
-  fun repeat(delay: kotlin.time.Duration, run: () -> Unit): Timeline {
+  fun repeat(delay: Duration, run: () -> Unit): Disposable {
+    return repeatWhile(delay) {
+      run()
+      Continuation.Continue
+    }
+  }
+
+  /**
+   * Repeats the given lambda every [delay] (if possible).
+   * Never executes the actions *before* [delay], but sometimes later
+   */
+  fun repeat(delay: kotlin.time.Duration, run: () -> Unit): Disposable {
     return repeat(delay.toJavaFx(), run)
   }
 
@@ -165,4 +185,31 @@ object JavaFxTimer {
 /**
  * Converts a Kotlin duration to a JavaFX duration
  */
-fun kotlin.time.Duration.toJavaFx(): Duration = Duration.millis(inMilliseconds)
+fun kotlin.time.Duration.toJavaFx(): Duration = Duration.millis(toDouble(DurationUnit.MILLISECONDS))
+
+enum class Continuation {
+  Continue,
+  Stop;
+
+  companion object {
+    @JvmStatic
+    fun continueIf(shallContinue: Boolean): Continuation {
+      return when (shallContinue) {
+        true -> Continue
+        false -> Stop
+      }
+    }
+
+    fun continueIf(shallContinue: () -> Boolean): Continuation {
+      return continueIf(shallContinue())
+    }
+
+    @JvmStatic
+    fun stopIf(shallStop: Boolean): Continuation {
+      return when (shallStop) {
+        true -> Stop
+        false -> Continue
+      }
+    }
+  }
+}

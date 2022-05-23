@@ -17,7 +17,7 @@ class Heartbeat(
    * The timeout for each check. If the check takes longer than this
    * timeout, it is cancelled and [Dead] emitted.
    */
-  val timeout: @ms Long = 500,
+  val timeout: @ms Long = 1000,
   /**
    * Will be called regularly.
    * Returns the HeartbeatState
@@ -48,7 +48,7 @@ class Heartbeat(
 
         //Timeout reached
         if (result == null) {
-          emit(TimedOut)
+          emit(ConnectionFailure)
         }
 
         //delay
@@ -65,9 +65,17 @@ sealed interface HeartbeatState {
   /**
    * Returns true if this is a success
    */
-  val isSuccess: Boolean
+  val isServiceAvailable: Boolean
     get() {
       return this is Alive
+    }
+
+  /**
+   * Returns true if there is a version mismatch
+   */
+  val isVersionMismatch: Boolean
+    get() {
+      return this == VersionMismatch
     }
 }
 
@@ -75,29 +83,29 @@ sealed interface HeartbeatState {
  * The connection is alive
  */
 @JvmInline
-value class Alive(val latency: @ms Double) : HeartbeatState {
-}
+value class Alive(val latency: @ms Double) : HeartbeatState
 
 /**
  * No response - the connection is dead
  */
-abstract class Dead : HeartbeatState {
-}
+abstract class Dead : HeartbeatState
 
 /**
- * The connection has timed out
+ * Connection failed (or timed out)
  */
-object TimedOut : Dead() {
-}
+object ConnectionFailure : Dead()
 
 /**
- * The response was invalid
+ * The client/server version do not match. The client should be updated.
  */
-object InvalidResponse : Dead() {
-}
+object VersionMismatch : Dead()
+
+/**
+ * The server responded with a non success status code (>=400)
+ */
+data class ErrorResponse(val status: Int, val message: String?) : Dead()
 
 /**
  * An exception has occurred
  */
-data class ExceptionOccurred(val exception: Throwable) : Dead() {
-}
+data class ExceptionOccurred(val exception: Throwable) : Dead()

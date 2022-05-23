@@ -32,16 +32,19 @@
 package com.cedarsoft.business;
 
 
-import javax.annotation.Nonnull;
-
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Currency;
 import java.util.Locale;
 
+import javax.annotation.Nonnull;
+
 /**
  * Simple money implementation that is backed up by a long.
+ * <p>
+ * Do not use anymore: There is a newer Kotlin implementation.
  */
+@Deprecated
 public final class Money extends AbstractMoney {
   @Nonnull
 

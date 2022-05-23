@@ -45,8 +45,6 @@ import javax.xml.stream.XMLStreamWriter
  *
  */
 class StaxTestSerializerTest : AbstractXmlSerializerTest2<Int>() {
-  @Nonnull
-  @Throws(Exception::class)
   override fun getSerializer(): StreamSerializer<Int> {
     return StaxIntegerSerializer()
   }

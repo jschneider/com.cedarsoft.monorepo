@@ -30,20 +30,23 @@
  */
 package com.cedarsoft.exceptions.handling;
 
-import com.cedarsoft.exceptions.ApplicationException;
-import com.cedarsoft.exceptions.ErrorCode;
-import javax.annotation.concurrent.Immutable;
+
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Locale;
+import javax.annotation.concurrent.Immutable;
+
+import org.jetbrains.annotations.NotNull;
+
+import com.cedarsoft.exceptions.ApplicationException;
+import com.cedarsoft.exceptions.ErrorCode;
+import com.cedarsoft.i18n.I18nConfiguration;
 
 public class MyTestException extends ApplicationException {
-  @Nonnull
-  public static final ErrorCode.Prefix PREFIX = new ErrorCode.Prefix("TD");
-
-  public MyTestException(@Nonnull TestExceptionDetails exceptionDetails, @Nonnull Object... messageArguments) {
-    super(exceptionDetails, messageArguments);
+  public MyTestException(@SuppressWarnings("TypeMayBeWeakened") @Nonnull TestExceptionDetails exceptionDetails,
+                         @Nullable Map<String, ?> parameters) {
+    super(exceptionDetails, parameters);
   }
 
   /**
@@ -53,40 +56,22 @@ public class MyTestException extends ApplicationException {
   public enum TestExceptionDetails implements Details {
     ERROR_1(701),
     ERROR_2(702);
-    public static final String CATEGORY_TITLE = "title";
 
     @Nonnull
     private final ErrorCode errorCode;
 
     TestExceptionDetails(int errorCode) {
-      this(new ErrorCode(PREFIX, errorCode));
+      this(ErrorCode.create("TD", errorCode));
     }
 
     TestExceptionDetails(@Nonnull ErrorCode errorCode) {
       this.errorCode = errorCode;
     }
 
-    @Nonnull
-    @Override
-    public String getLocalizedMessage(@Nullable Object... messageArguments) {
-      return "A very long localized messages with a new line:\nThis is the next line!\nAnd another\n\nTwo new lines before";
-    }
 
     @Nonnull
     @Override
-    public String getLocalizedMessage(@Nonnull Locale locale, @Nullable Object... messageArguments) {
-      return getLocalizedMessage();
-    }
-
-    @Nonnull
-    @Override
-    public String getTitle(@Nullable Object... messageArguments) {
-      return "da title";
-    }
-
-    @Nonnull
-    @Override
-    public String getTitle(@Nonnull Locale locale, @Nullable Object... messageArguments) {
+    public String getTitle(@Nonnull I18nConfiguration i18nConfiguration, @Nullable Map<String, ?> parameters) {
       return "da title";
     }
 
@@ -94,6 +79,12 @@ public class MyTestException extends ApplicationException {
     @Override
     public ErrorCode getErrorCode() {
       return errorCode;
+    }
+
+    @NotNull
+    @Override
+    public String getLocalizedMessage(@Nonnull I18nConfiguration i18nConfiguration, @org.jetbrains.annotations.Nullable Map<String, ?> parameters) {
+      return "A very long localized messages with a new line:\nThis is the next line!\nAnd another\n\nTwo new lines before";
     }
   }
 }

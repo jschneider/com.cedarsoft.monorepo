@@ -10,11 +10,11 @@ plugins {
 }
 
 dependencies {
-  compileOnlyApi(project(Projects.dependencies_sets_annotations))
+  compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
   api(project(Projects.open_commons_commons))
 
   api(commons_io)
 
-  testImplementation(project(Projects.dependencies_sets_kotlin_test))
+  testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
 }

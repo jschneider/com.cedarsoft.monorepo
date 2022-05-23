@@ -30,8 +30,20 @@ class DateFormatTest {
 
   @Test
   fun testIsoFormat() {
-    assertThat(dataFormatIso8601.format(time.toDoubleMillis(), germanTokyo)).isEqualTo("2019-01-07T19:11:59.123+09:00[Asia/Tokyo]")
-    assertThat(dataFormatIso8601.format(time.toDoubleMillis(), englishTokyo)).isEqualTo("2019-01-07T19:11:59.123+09:00[Asia/Tokyo]")
+    assertThat(dateTimeFormatIso8601.format(time.toDoubleMillis(), germanTokyo)).isEqualTo("2019-01-07T19:11:59.123+09:00[Asia/Tokyo]")
+    assertThat(dateTimeFormatIso8601.format(time.toDoubleMillis(), englishTokyo)).isEqualTo("2019-01-07T19:11:59.123+09:00[Asia/Tokyo]")
+  }
+
+  @Test
+  fun testIsoDate() {
+    assertThat(dateFormatIso8601.format(time.toDoubleMillis(), germanTokyo)).isEqualTo("2019-01-07")
+    assertThat(dateFormatIso8601.format(time.toDoubleMillis(), englishTokyo)).isEqualTo("2019-01-07")
+  }
+
+  @Test
+  fun testIsoTime() {
+    assertThat(timeFormatIso8601.format(time.toDoubleMillis(), germanTokyo)).isEqualTo("19:11:59.123")
+    assertThat(timeFormatIso8601.format(time.toDoubleMillis(), englishTokyo)).isEqualTo("19:11:59.123")
   }
 
   @Test

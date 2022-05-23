@@ -9,8 +9,6 @@ import org.junit.jupiter.api.extension.BeforeAllCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.api.extension.ParameterContext
-import org.junit.jupiter.api.extension.ParameterResolutionException
-import java.io.IOException
 import java.lang.reflect.Parameter
 import javax.annotation.Nonnull
 
@@ -20,19 +18,24 @@ import javax.annotation.Nonnull
  */
 class VirtualNowProviderExtension : AbstractResourceProvidingExtension<VirtualNowProvider>(VirtualNowProvider::class.java), BeforeEachCallback, AfterEachCallback, BeforeAllCallback, AfterAllCallback {
 
-  private val configuringSupport: ConfiguringSupport<NowProvider, VirtualTime> = ConfiguringSupport(NowProvider::class.java, VirtualTime::class.java, "virtualTime", object : ConfigurationCallback<NowProvider, VirtualTime> {
-    override fun getOriginalValue(): NowProvider {
-      return nowProvider
-    }
+  private val configuringSupport: ConfiguringSupport<NowProvider, VirtualTime> = ConfiguringSupport(
+    NowProvider::class.java,
+    VirtualTime::class.java,
+    "virtualTime",
+    object : ConfigurationCallback<NowProvider, VirtualTime> {
+      override fun getOriginalValue(): NowProvider {
+        return nowProvider
+      }
 
-    override fun extract(annotation: VirtualTime): NowProvider? {
-      return VirtualNowProvider(annotation.value)
-    }
+      override fun extract(annotation: VirtualTime): NowProvider? {
+        return VirtualNowProvider(annotation.value)
+      }
 
-    override fun applyValue(value: NowProvider) {
-      nowProvider = value
+      override fun applyValue(value: NowProvider) {
+        nowProvider = value
+      }
     }
-  })
+  )
 
 
   override fun beforeAll(extensionContext: ExtensionContext) {
@@ -51,12 +54,10 @@ class VirtualNowProviderExtension : AbstractResourceProvidingExtension<VirtualNo
     configuringSupport.afterEach(extensionContext)
   }
 
-  @Nonnull
   override fun createResource(extensionContext: ExtensionContext): VirtualNowProvider {
     return nowProvider as? VirtualNowProvider ?: throw IllegalStateException("Invalid instance of nowProvider. Expected <VirtualNowProvider> but was <$nowProvider>")
   }
 
-  @Throws(ParameterResolutionException::class)
   override fun supportsParameter(parameterContext: ParameterContext, extensionContext: ExtensionContext): Boolean {
     if (super.supportsParameter(parameterContext, extensionContext)) {
       return true
@@ -65,8 +66,6 @@ class VirtualNowProviderExtension : AbstractResourceProvidingExtension<VirtualNo
     return parameterContext.parameter.isAnnotationPresent(VirtualTime::class.java)
   }
 
-  @Nonnull
-  @Throws(ParameterResolutionException::class, IOException::class)
   override fun convertResourceForParameter(@Nonnull parameter: Parameter, @Nonnull resource: VirtualNowProvider): Any {
     return resource
   }

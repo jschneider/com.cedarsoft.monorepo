@@ -27,6 +27,11 @@ class ImperialConversionTest {
   }
 
   @Test
+  fun testUsGAlFtsBug() {
+    assertThat(ImperialConversion.litre2usGallon(9.7)).isCloseTo(2.56246, 0.0001)
+  }
+
+  @Test
   fun testCubicFeet() {
     assertThat(ImperialConversion.litre2cubicFoot(1.0)).isCloseTo(0.035314724, 0.0001)
     assertThat(ImperialConversion.cubicFoot2litre(1.0)).isCloseTo(28.316846592, 0.0001)

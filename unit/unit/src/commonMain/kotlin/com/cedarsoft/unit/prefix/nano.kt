@@ -17,9 +17,6 @@ package com.cedarsoft.unit.prefix
 
 import kotlin.reflect.KClass
 
-/**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
- */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,
@@ -40,7 +37,7 @@ import kotlin.reflect.KClass
 )
 @MustBeDocumented
 @Suppress("ClassName")
-@Prefix(0.00001)
+@Prefix(0.000_000_001)
 annotation class nano(
   /**
    * The base unit

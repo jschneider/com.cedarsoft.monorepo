@@ -1,5 +1,6 @@
 package com.cedarsoft.formatting
 
+import com.cedarsoft.charting.annotations.PositiveOrZero
 import com.cedarsoft.common.collections.cache
 import com.cedarsoft.i18n.I18nConfiguration
 import com.cedarsoft.time.TimeZone
@@ -8,17 +9,46 @@ import kotlin.js.Date
 /**
  * The formatted date is always UTC.
  */
-actual class DateFormatIso8601 : DateTimeFormat {
+actual class DateTimeFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     return Date(timestamp).toISOString()
   }
 }
 
+actual class DateFormatIso8601 : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    val date = Date(timestamp)
+    return "${date.getFullYear()}-${date.getMonth().formatWithLeadingZeros2()}-${date.getDay().formatWithLeadingZeros2()}"
+  }
+}
+
+actual class TimeFormatIso8601 : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    val date = Date(timestamp)
+    return "${date.getHours().formatWithLeadingZeros2()}:${date.getMinutes().formatWithLeadingZeros2()}:${date.getSeconds().formatWithLeadingZeros2()}:"
+  }
+}
+
+/**
+ * ATTENTION! This method must only be used for positive values
+ */
+private fun @PositiveOrZero Int.formatWithLeadingZeros2(): String {
+  if (this == 0) {
+    return "00"
+  }
+
+  if (this < 10) {
+    return "0$this"
+  }
+
+  return this.toString()
+}
+
 /**
  * The formatted date is always UTC.
  */
-actual class DateFormatUTC : DateTimeFormat {
+actual class DateTimeFormatUTC : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     return Date(timestamp).toISOString()

@@ -29,4 +29,11 @@ class WithVirtualNowProviderExtensionTest {
 
     assertThat(nowMillis()).isEqualTo(5000.0)
   }
+
+  @Test
+  fun testTimeNotUpdatingDelayed() {
+    assertThat(nowMillis()).isEqualTo(5000.0)
+    Thread.sleep(10)
+    assertThat(nowMillis()).isEqualTo(5000.0)
+  }
 }

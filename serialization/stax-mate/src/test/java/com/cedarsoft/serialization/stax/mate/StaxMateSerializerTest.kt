@@ -87,17 +87,17 @@ class StaxMateSerializerTest : AbstractXmlSerializerTest2<String>() {
 
   @Test
   fun testNoVersion() {
-    Assertions.assertThrows(VersionException::class.java) { serializer.deserialize(ByteArrayInputStream("<aString>asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
+    Assertions.assertThrows(VersionException::class.java) { getSerializer().deserialize(ByteArrayInputStream("<aString>asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
   }
 
   @Test
   fun testWrongVersion() {
-    Assertions.assertThrows(VersionMismatchException::class.java) { serializer.deserialize(ByteArrayInputStream("<aString xmlns=\"http://www.lang.java/String/0.9.9\">asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
+    Assertions.assertThrows(VersionMismatchException::class.java) { getSerializer().deserialize(ByteArrayInputStream("<aString xmlns=\"http://www.lang.java/String/0.9.9\">asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
   }
 
   @Test
   fun testWrongNamespaceVersion() {
-    Assertions.assertThrows(SerializationException::class.java) { serializer.deserialize(ByteArrayInputStream("<aString xmlns=\"http://www.lang.invalid.java/String/1.5.3\">asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
+    Assertions.assertThrows(SerializationException::class.java) { getSerializer().deserialize(ByteArrayInputStream("<aString xmlns=\"http://www.lang.invalid.java/String/1.5.3\">asdf</aString>".toByteArray(StandardCharsets.UTF_8))) }
   }
 
   companion object {

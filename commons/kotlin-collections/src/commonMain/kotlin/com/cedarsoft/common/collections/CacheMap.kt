@@ -2,7 +2,7 @@ package com.cedarsoft.common.collections
 
 open class CacheMap<K, V> private constructor(
   private val map: LinkedHashMap<K, V> = LinkedHashMap(),
-  val maxSize: Int = 16,
+  maxSize: Int = 16,
   val free: (K, V) -> Unit = { _, _ -> }
 ) : MutableMap<K, V> by map {
   constructor(
@@ -11,6 +11,15 @@ open class CacheMap<K, V> private constructor(
   ) : this(LinkedHashMap(), maxSize, free)
 
   override val size: Int get() = map.size
+
+  var maxSize: Int = maxSize
+    private set
+  fun updateMaxSize(newMaxSize: Int) {
+    this.maxSize = newMaxSize
+
+    //Reduce the size of the map
+    while (size >= maxSize) remove(map.keys.first())
+  }
 
   /**
    * Marks the entry with the given [key] as new
@@ -31,7 +40,7 @@ open class CacheMap<K, V> private constructor(
 
   override fun putAll(from: Map<out K, V>) = run { for ((k, v) in from) put(k, v) }
   override fun put(key: K, value: V): V? {
-    if (size >= maxSize && !map.containsKey(key)) remove(map.keys.first())
+    while (size >= maxSize && !map.containsKey(key)) remove(map.keys.first())
 
     val oldValue = map[key]
     if (oldValue != value) {

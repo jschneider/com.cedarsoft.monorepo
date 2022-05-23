@@ -19,14 +19,15 @@ Documentation and projects available at [cedarsoft.org]
 
 # Release Notes
 
-## 8.9.4 (???)
+## 9.0.0 (2022-02-10)
+* Convert
 * JavaFX Utils updates
 * Dependencies updates
 * Units is now a multi platform project
 
 ## 8.9.3 (2019-08-02)
 * Update serializers group ids
-* Dependencies updates 
+* Dependencies updates
 
 ## 8.9.2 (2019-07-22)
 * Rerelease with updated gradle dependencies
@@ -38,25 +39,25 @@ Documentation and projects available at [cedarsoft.org]
 
 ## 8.9.0 (2019-07-16)
 * Swing with JavaFX properties: Bindings for background and foreground
-* JavaFX: 
+* JavaFX:
     * Formatter improved
     * Progress indicator bar
     * Improve bidirectional bindings
     * RoundedAxisTickCaluculator added
     * Canvas Holder improvements
-* Dependcy updates (especially Kotlin to 1.3.40)    
+* Dependcy updates (especially Kotlin to 1.3.40)
 * Kotlin:
     * introduced GuardedProperty
     * CoAsync: Async with Kotlin Coroutines
-    * Improved test utilities    
+    * Improved test utilities
     * Serializers module added for kotlinx.serialization
     * KotlinAwait implemented
 * Serialization
     * additional serializers for default classes added
-    * 
+    *
 * Test-Utils
     * Updated / fixed Json helper
-            
+
 
 ## 8.8.0 (2019-03-19)
 * Swing with JavaFX properties: Additional bindings

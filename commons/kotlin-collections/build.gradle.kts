@@ -33,8 +33,8 @@ kotlin {
 
     jvm().compilations["main"].defaultSourceSet {
       dependencies {
-        api(project(Projects.dependencies_sets_annotations))
-        api(project(Projects.dependencies_sets_kotlin_jvm))
+        api(project(Projects.dependencies_sets_jvm_annotations))
+        api(project(Projects.dependencies_sets_jvm_kotlin))
         api(project(Projects.open_annotations))
       }
     }
@@ -44,7 +44,7 @@ kotlin {
         implementation(Libs.kotlin_test)
         implementation(Libs.kotlin_test_junit)
 
-        implementation(project(Projects.dependencies_sets_kotlin_test))
+        implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
         implementation(project(Projects.open_commons_javafx_test_utils))
       }

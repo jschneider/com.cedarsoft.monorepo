@@ -37,6 +37,7 @@
 package com.cedarsoft.exceptions.handling
 
 import com.cedarsoft.exceptions.ApplicationException
+import com.cedarsoft.i18n.DefaultI18nConfiguration
 import javafx.application.Platform
 import javafx.scene.control.Alert
 import javafx.scene.control.Label
@@ -56,9 +57,9 @@ class ApplicationExceptionFxDialog(
   init {
     alertType = AlertType.WARNING
 
-    title = e.title + " (" + e.errorCode + ")"
-    headerText = e.title + " (" + e.errorCode + ")"
-    contentText = e.localizedMessage
+    title = e.getTitle() + " (" + e.errorCode + ")"
+    headerText = e.getTitle() + " (" + e.errorCode + ")"
+    contentText = e.getLocalizedMessage()
     isResizable = true
 
     dialogPane.prefWidth = 500.0

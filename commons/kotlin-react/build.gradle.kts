@@ -63,3 +63,8 @@ afterEvaluate {
     versions.webpackDevServer.version = "4.0.0"
   }
 }
+
+tasks.withType<GenerateModuleMetadata> {
+  suppressedValidationErrors.add("enforced-platform")
+}
+

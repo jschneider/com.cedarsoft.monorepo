@@ -41,7 +41,7 @@ import javax.annotation.Nonnull
 /**
  *
  */
-class BallSerializerTest : AbstractXmlSerializerTest2<Ball?>() {
+class BallSerializerTest : AbstractXmlSerializerTest2<Ball>() {
   @Nonnull
   @Throws(Exception::class)
   override fun getSerializer(): BallSerializer {
@@ -51,7 +51,7 @@ class BallSerializerTest : AbstractXmlSerializerTest2<Ball?>() {
   @Test
   @Throws(Exception::class)
   fun testAsccii() {
-    Assertions.assertEquals(2, serializer.serializingStrategySupport.versionMappings.getMappings().size)
+    Assertions.assertEquals(2, getSerializer().serializingStrategySupport.versionMappings.getMappings().size)
 
     Assertions.assertEquals(
       """
@@ -63,7 +63,7 @@ class BallSerializerTest : AbstractXmlSerializerTest2<Ball?>() {
         |
         """.trimMargin(),
       VersionMappingsVisualizer.toString(
-        serializer.serializingStrategySupport.versionMappings
+        getSerializer().serializingStrategySupport.versionMappings
       ) {
         it.id
       }
@@ -73,7 +73,7 @@ class BallSerializerTest : AbstractXmlSerializerTest2<Ball?>() {
   @Test
   @Throws(Exception::class)
   fun testVersion() {
-    val serializer = serializer
+    val serializer = getSerializer()
     Assertions.assertTrue(serializer.isVersionReadable(valueOf(1, 0, 0)))
     Assertions.assertFalse(serializer.isVersionReadable(valueOf(1, 2, 1)))
     Assertions.assertFalse(serializer.isVersionReadable(valueOf(0, 9, 9)))

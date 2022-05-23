@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 class VersionInformationTest {
   @Test
   fun testIt() {
-    assertThat(VersionInformation.version).startsWith("8.")
+    assertThat(VersionInformation.version).startsWith("9.")
     assertThat(VersionInformation.gitCommit).isNotNull()
     assertThat(VersionInformation.buildDateDay).isNotNull()
     assertThat(VersionInformation.versionAsStringVerbose).contains(VersionInformation.version)

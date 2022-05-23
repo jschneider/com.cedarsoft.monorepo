@@ -9,7 +9,7 @@ object VersionInformation {
   /**
    * The version number (main version number of the repository)
    */
-  val version: String = VersionConstants.monorepoVersion
+  const val version: String = VersionConstants.monorepoVersion
 
   /**
    * Returns true if the current version is a snapshot
@@ -20,9 +20,9 @@ object VersionInformation {
   /**
    * The build date (only day - not the time)
    */
-  val buildDateDay: String = VersionConstants.buildDateDay
+  const val buildDateDay: String = VersionConstants.buildDateDay
 
-  val gitCommit: String = VersionConstants.gitCommit
+  const val gitCommit: String = VersionConstants.gitCommit
 
   /**
    * Verbose version string that contains the git information

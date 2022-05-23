@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 class VirtualNowProviderExtensionTest {
   @VirtualTime(5000.0)
   @Test
-  internal fun testIt() {
+  fun testIt() {
     assertThat(nowMillis()).isEqualTo(5000.0)
   }
 }
