@@ -7,7 +7,7 @@ subprojects {
     return@subprojects
   }
 
-  if (false) {
+  if (true) {
     //Relevant for publishing to Maven Central
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
