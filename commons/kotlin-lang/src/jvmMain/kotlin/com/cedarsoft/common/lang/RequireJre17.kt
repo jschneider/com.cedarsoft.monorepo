@@ -1,11 +1,11 @@
 package com.cedarsoft.common.lang
 
 /**
- * Throws an exception, if the current JVM is nut running with Java 16
+ * Throws an exception, if the current JVM is nut running with Java 17
  */
-fun requireJre16() {
+fun requireJre17() {
   val jreVersion = System.getProperty("java.version")
-  require(jreVersion.startsWith("16.")) {
+  require(jreVersion.startsWith("17.")) {
     "Invalid JRE version: <$jreVersion>"
   }
 }
