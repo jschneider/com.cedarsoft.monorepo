@@ -36,7 +36,6 @@ import org.mockito.MockitoAnnotations;
 /**
  * Simple template for mockito.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public abstract class MockitoTemplate {
 

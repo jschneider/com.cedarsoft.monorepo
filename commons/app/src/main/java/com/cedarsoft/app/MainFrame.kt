@@ -34,7 +34,6 @@ import javax.inject.Qualifier
 
 /**
  * Annotates the main frame of an application
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)

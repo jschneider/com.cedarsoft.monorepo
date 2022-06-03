@@ -41,7 +41,6 @@ import java.lang.annotation.Target;
 
 /**
  * Annotated methods/classes must only be called from background/non-ui threads
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
 @Retention( RetentionPolicy.RUNTIME )

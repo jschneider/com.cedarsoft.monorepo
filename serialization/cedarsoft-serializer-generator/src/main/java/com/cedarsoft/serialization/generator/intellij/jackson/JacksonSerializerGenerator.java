@@ -40,7 +40,6 @@ import javax.annotation.Nonnull;
 /**
  * A simple class that generates a jackson serializer
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class JacksonSerializerGenerator extends AbstractSerializerGenerator {
   public JacksonSerializerGenerator( @Nonnull Project project ) {

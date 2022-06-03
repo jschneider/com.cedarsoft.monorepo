@@ -43,7 +43,6 @@ import java.awt.image.RenderedImage;
 /**
  * <p>ImageConverter class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageConverter {
   /**

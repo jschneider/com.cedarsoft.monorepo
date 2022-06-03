@@ -5,7 +5,6 @@ import com.cedarsoft.unit.other.px
  * Marks values that are related to the window origin (visible area).
  * The window is zoomed and translated
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

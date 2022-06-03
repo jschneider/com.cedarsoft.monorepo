@@ -12,7 +12,6 @@ import kotlin.reflect.KProperty
 
 /**
  * Extension methods to allow simplified JavaFX properties
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 operator fun <T> ObservableValue<T>.getValue(thisRef: Any, property: KProperty<*>) = value
 

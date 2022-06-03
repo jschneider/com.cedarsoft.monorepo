@@ -39,8 +39,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 /**
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- */
+GlobalTilesCache */
 public class MeshGeneratorDemo extends Application {
 
   @px

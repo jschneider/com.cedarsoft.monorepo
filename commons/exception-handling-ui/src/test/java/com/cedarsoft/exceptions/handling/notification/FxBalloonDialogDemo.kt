@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 fun main(args: Array<String>) {
   launch(FxBalloonDialogDemo::class.java)

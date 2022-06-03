@@ -38,7 +38,6 @@ import java.io.Serializable
 /**
  * Represents a hash value
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class Hash(
   val algorithm: Algorithm,

@@ -39,7 +39,6 @@ import kotlin.jvm.JvmStatic
  *
  * VersionRange class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class VersionRange
 /**

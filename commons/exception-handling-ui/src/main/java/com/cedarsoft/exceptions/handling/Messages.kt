@@ -38,7 +38,6 @@ import java.util.MissingResourceException
 import java.util.ResourceBundle
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object Messages {
   private val LOG = LoggerFactory.getLogger(Messages::class.java.name)

@@ -36,7 +36,6 @@ import java.net.URL;
 /**
  * Offers utility methods to load icons
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class IconUtils {
   /**

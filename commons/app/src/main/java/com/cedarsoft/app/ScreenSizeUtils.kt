@@ -39,7 +39,6 @@ import java.awt.HeadlessException
  *
  * ScreenSizeUtils class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object ScreenSizeUtils {
   /**

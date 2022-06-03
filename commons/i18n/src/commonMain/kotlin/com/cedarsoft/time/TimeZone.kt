@@ -2,7 +2,6 @@ package com.cedarsoft.time
 
 /**
  * Represents a time zone
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class TimeZone(val zoneId: String) {
   init {

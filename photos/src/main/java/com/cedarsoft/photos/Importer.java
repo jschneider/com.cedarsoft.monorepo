@@ -48,7 +48,6 @@ import java.util.Set;
  * Imports photos from a given directory.
  * Creates hard links
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Importer {
   @Nonnull

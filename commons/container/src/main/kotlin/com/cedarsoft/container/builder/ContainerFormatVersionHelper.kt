@@ -6,7 +6,6 @@ import com.google.common.io.ByteStreams
 
 /**
  * Version number support for container
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 object ContainerFormatVersionHelper {
   /**

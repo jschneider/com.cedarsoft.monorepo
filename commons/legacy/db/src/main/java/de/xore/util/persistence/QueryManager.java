@@ -42,8 +42,7 @@ import java.util.Properties;
  * Date: 14.04.2005<br>
  * Time: 14:38:17<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public abstract class QueryManager<T> {
   protected DatabaseConnector<T> connector;

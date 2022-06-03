@@ -25,7 +25,6 @@ import com.cedarsoft.unit.si.s
 /**
  * Frames per second
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

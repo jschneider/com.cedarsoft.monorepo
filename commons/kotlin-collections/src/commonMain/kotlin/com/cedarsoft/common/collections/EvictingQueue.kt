@@ -3,7 +3,6 @@ package com.cedarsoft.common.collections
 /**
  * A queue which automatically evicts elements from the head of the queue when
  * attempting to add new elements onto the queue and it is full
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class EvictingQueue<E>(
   val maxSize: Int

@@ -55,7 +55,6 @@ import java.awt.event.ActionEvent;
 /**
  * Abstract base class for dialogs
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractDialog extends StandardDialog {
   @px

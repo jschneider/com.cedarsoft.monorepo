@@ -33,7 +33,6 @@ package com.cedarsoft.commons
 /**
  * Utility method for string operations
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object Strings {
   /**

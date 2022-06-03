@@ -50,7 +50,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.io.Files;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractInstrumentationMojo extends AbstractMojo {
   /**

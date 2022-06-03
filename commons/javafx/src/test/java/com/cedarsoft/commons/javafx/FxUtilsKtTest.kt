@@ -6,7 +6,6 @@ import javafx.scene.paint.Color
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class FxUtilsKtTest {
   @Test

@@ -40,7 +40,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Fx3dRunner extends Application {
   public static void main(String[] args) {

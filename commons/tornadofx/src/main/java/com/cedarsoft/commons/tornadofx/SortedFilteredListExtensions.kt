@@ -7,7 +7,6 @@ import tornadofx.*
 import java.util.concurrent.Callable
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 /**

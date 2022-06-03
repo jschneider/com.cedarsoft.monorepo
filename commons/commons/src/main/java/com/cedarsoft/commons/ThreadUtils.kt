@@ -41,7 +41,6 @@ import javax.swing.SwingUtilities
 /**
  * Offers static thread utils
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object ThreadUtils {
   /**

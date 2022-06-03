@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ReflectionToString {
   private ReflectionToString() {

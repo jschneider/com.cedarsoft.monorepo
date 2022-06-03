@@ -47,7 +47,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BitSetSerializer extends AbstractJacksonSerializer<BitSet> {
   public BitSetSerializer() {

@@ -34,7 +34,6 @@ import java.io.File
 import java.io.IOException
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object FileUtils {
   /**

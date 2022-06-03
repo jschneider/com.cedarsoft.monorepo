@@ -34,8 +34,7 @@ package de.xore.util.persistence;
 /**
  * <p> Date: 19.04.2005<br> Time: 20:15:45<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public enum DatabaseType {
   MYSQL( "com.mysql.jdbc.Driver" ),

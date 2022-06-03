@@ -39,7 +39,6 @@ import javax.swing.SwingUtilities
 import javax.swing.WindowConstants
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class SwingApplicationRunner(
   val application: Application

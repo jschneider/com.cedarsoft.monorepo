@@ -6,7 +6,6 @@ import java.time.Duration
 
 /**
  * Returns null instead of throwing an exception
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class DurationStringConverter : StringConverter<Duration>() {
   override fun toString(duration: Duration?): String {

@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class GuavaSerializationTest : AbstractSerializationTest() {
   @Test

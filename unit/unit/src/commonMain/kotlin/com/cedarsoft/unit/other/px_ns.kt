@@ -25,7 +25,6 @@ import com.cedarsoft.unit.si.ns
 /**
  * Pixels per nanosecond
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

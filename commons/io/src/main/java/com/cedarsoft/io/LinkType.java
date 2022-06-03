@@ -34,7 +34,6 @@ package com.cedarsoft.io;
 /**
  * <p>LinkType class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum LinkType {
   SYMBOLIC,

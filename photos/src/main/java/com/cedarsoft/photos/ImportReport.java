@@ -43,7 +43,6 @@ import java.util.logging.Logger;
 /**
  * Contains the report for imported files
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ImportReport {
   private static final Logger LOG = Logger.getLogger(ImportReport.class.getName());

@@ -33,7 +33,6 @@ package com.cedarsoft.swing.components.timeline;
 import javax.annotation.Nonnull;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ConstantBarValues implements TimelineModel.BarValues {
   private final double critical;

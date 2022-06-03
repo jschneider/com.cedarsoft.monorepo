@@ -50,7 +50,6 @@ import javax.annotation.Nullable;
 /**
  * Resolver for serializers for a given type.
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class StaxMateSerializerResolver implements SerializerResolver {
   @Nonnull

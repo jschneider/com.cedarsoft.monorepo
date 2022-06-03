@@ -44,7 +44,6 @@ import com.cedarsoft.test.utils.WithTempFiles;
 import com.google.common.io.Files;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @WithTempFiles
 public class FileOutputStreamWithMoveTest {

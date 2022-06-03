@@ -21,7 +21,6 @@ import com.cedarsoft.unit.Name
 import com.cedarsoft.unit.Symbol
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

@@ -4,7 +4,6 @@ import com.cedarsoft.unit.other.pct
 /**
  * The domain values as percentage within their value range
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

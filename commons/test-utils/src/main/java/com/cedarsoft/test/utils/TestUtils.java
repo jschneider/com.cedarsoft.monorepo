@@ -46,7 +46,6 @@ import java.lang.reflect.Modifier;
 /**
  * <p>TestUtils class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class TestUtils {
   private TestUtils() {

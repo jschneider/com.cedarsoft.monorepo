@@ -39,7 +39,6 @@ import java.util.Locale
 /**
  * Class that is able to start a new java process
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class JavaCommandBuilder
 constructor(

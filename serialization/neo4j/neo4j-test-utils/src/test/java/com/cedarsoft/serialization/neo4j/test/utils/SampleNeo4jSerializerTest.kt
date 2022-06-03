@@ -42,7 +42,6 @@ import org.neo4j.graphdb.Node
 import javax.annotation.Nonnull
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class SampleNeo4jSerializerTest : AbstractNeo4JTest() {
   @Test

@@ -42,7 +42,6 @@ import kotlin.concurrent.write
  * Abstract base class for async execution of scheduled runnables.
  * Only the latest runnable is executed
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractAsync {
   private val lock = ReentrantReadWriteLock()

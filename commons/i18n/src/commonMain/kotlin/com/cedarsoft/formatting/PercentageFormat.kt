@@ -6,7 +6,6 @@ import com.cedarsoft.i18n.I18nConfiguration
  * Formats a percentage value using a delegate.
  * Multiplies the given value with 100 and formats the value
  * using the delegate. Appends a percentage sign ("%").
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Deprecated("use asPercentageFormat - as soon as precision has been removed!")
 class PercentageFormat(val delegate: NumberFormat) : NumberFormat {

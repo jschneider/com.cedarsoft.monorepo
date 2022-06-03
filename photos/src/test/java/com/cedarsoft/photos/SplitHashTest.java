@@ -38,7 +38,6 @@ import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class SplitHashTest {
   @Test

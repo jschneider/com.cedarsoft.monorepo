@@ -2,7 +2,6 @@ package com.cedarsoft.common.collections
 
 /**
  * A weak map implementation for JS/JVM - with weak *keys*
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 expect class WeakMap<K : Any, V>() {
   /**

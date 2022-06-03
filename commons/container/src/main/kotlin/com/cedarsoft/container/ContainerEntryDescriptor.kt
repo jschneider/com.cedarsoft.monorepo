@@ -4,7 +4,6 @@ import com.cedarsoft.version.Version
 
 /**
  * Identifies an entry within the container
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class ContainerEntryDescriptor(
   /**

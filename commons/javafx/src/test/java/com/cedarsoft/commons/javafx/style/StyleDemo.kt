@@ -9,7 +9,6 @@ import javafx.stage.Stage
 import org.tbee.javafx.scene.layout.MigPane
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 fun main(args: Array<String>) {
   launch(StyleDemo::class.java, *args)

@@ -46,7 +46,6 @@ import com.cedarsoft.serialization.test.utils.AbstractXmlSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class IntegerSerializerTest extends AbstractXmlSerializerTest2<Integer> {
   @Nonnull

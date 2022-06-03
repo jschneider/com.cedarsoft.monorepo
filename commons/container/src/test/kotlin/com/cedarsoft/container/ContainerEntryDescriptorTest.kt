@@ -6,7 +6,6 @@ import com.cedarsoft.version.Version
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class ContainerEntryDescriptorTest {
   @Test

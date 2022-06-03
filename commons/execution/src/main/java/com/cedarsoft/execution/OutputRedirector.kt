@@ -37,7 +37,6 @@ import java.io.OutputStream
 /**
  * Redirects a stream into another
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class OutputRedirector(
   private val inputStream: InputStream,

@@ -45,7 +45,6 @@ import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractTimelineModel implements TimelineModel {
   @Nonnull

@@ -41,7 +41,6 @@ import java.io.IOException;
 
 /**
  * The type Email serializer.
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class EmailSerializer extends AbstractNeo4jSerializer<Email> {
   /**

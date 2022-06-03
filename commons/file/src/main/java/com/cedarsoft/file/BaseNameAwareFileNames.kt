@@ -39,7 +39,6 @@ import java.util.TreeMap
  *
  * BaseNameAwareFileNames class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class BaseNameAwareFileNames {
   private val entries = TreeMap<BaseName, FileNames>()

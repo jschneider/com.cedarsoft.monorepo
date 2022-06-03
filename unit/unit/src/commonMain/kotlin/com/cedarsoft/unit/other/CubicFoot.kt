@@ -24,7 +24,6 @@ import com.cedarsoft.unit.quantity.Length
 import com.cedarsoft.unit.si.L
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

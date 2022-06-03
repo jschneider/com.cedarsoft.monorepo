@@ -48,7 +48,6 @@ import java.util.logging.Logger;
 /**
  * Contains an image and a volatile image that is recreated if necessary
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NotSoVolatileImage {
   private static final Logger LOG = Logger.getLogger(NotSoVolatileImage.class.getName());

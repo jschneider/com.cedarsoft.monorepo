@@ -49,7 +49,6 @@ import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(CatchAllExceptionsExtension.class)
 public class CustomThreadTest {

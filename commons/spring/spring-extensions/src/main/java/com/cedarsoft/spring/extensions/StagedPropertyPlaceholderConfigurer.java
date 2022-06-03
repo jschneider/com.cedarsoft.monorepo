@@ -46,7 +46,6 @@ import java.util.Properties;
  * The system property {@link #STAGE_KEY} is used as prefix for the given properties file.
  * If the property is not set, the default value "dev" is used.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StagedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
   /**

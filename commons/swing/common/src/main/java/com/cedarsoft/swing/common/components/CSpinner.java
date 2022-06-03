@@ -38,7 +38,6 @@ import java.awt.Component;
 import java.awt.Cursor;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CSpinner extends JSpinner {
   public CSpinner(SpinnerModel model) {

@@ -33,7 +33,6 @@ package com.cedarsoft.app
 
 /**
  * Represents an invalid password
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class InvalidPasswordException : Exception {
   constructor() : super()

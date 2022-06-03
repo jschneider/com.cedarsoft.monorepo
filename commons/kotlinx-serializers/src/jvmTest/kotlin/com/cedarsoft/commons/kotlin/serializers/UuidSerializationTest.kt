@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test
 import java.util.UUID
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class UuidSerializationTest : AbstractSerializationTest() {
   @Test

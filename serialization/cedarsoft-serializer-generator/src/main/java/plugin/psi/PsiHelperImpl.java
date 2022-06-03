@@ -57,7 +57,6 @@ import javax.annotation.Nonnull;
 import static com.intellij.ide.util.EditSourceUtil.getDescriptor;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class PsiHelperImpl implements PsiHelper {
   @Nullable

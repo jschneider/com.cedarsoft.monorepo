@@ -29,7 +29,6 @@ import com.cedarsoft.unit.si.m;
 import com.cedarsoft.unit.si.mm;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 public class PrefixedTest {

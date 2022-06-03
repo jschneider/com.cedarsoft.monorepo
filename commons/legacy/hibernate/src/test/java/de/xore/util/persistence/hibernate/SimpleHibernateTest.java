@@ -41,8 +41,7 @@ import org.hibernate.Session;
  * Date: 21.06.2006<br>
  * Time: 22:07:43<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class SimpleHibernateTest extends TestCase {
   public void testDummy() {

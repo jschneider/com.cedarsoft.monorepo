@@ -1,7 +1,6 @@
 package com.cedarsoft.app
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal fun main(args: Array<String>) {
   println("Hostname: ${EnvironmentInformation.hostName}")

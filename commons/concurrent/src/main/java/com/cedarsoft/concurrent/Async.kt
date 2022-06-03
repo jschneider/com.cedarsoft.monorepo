@@ -37,7 +37,6 @@ import javax.annotation.concurrent.ThreadSafe
 /**
  * Only the last call is executed
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @ThreadSafe
 class Async(private val executor: Executor) : AbstractAsync() {

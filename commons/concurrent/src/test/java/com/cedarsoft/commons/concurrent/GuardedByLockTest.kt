@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import java.util.concurrent.locks.ReentrantReadWriteLock
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class GuardedByLockTest {
   @Test

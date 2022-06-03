@@ -42,7 +42,6 @@ import com.cedarsoft.serialization.test.utils.Entry;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BallsSerializerTest extends AbstractJsonSerializerTest2<List<? extends Ball>> {
   @Nonnull

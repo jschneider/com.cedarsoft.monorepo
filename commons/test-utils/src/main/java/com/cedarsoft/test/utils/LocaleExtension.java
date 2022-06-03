@@ -39,7 +39,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Rule that sets the TimeZone
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class LocaleExtension extends AbstractConfiguringExtension<Locale, WithLocale> {
   public LocaleExtension() {

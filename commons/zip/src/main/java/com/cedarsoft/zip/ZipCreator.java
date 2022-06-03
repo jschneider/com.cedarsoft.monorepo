@@ -50,7 +50,6 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 /**
  * Helper class that creates zip files
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ZipCreator {
   static final int BUFFER_SIZE = 2048;

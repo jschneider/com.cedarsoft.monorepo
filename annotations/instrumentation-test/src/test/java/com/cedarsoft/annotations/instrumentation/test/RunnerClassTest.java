@@ -38,7 +38,6 @@ import org.junit.jupiter.api.extension.*;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(CatchAllExceptionsExtension.class)
 public class RunnerClassTest {

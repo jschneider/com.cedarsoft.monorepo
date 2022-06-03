@@ -37,7 +37,6 @@ import javax.annotation.Nonnull;
  * A workflow definition.
  * A workflow definition is used to create a specific workflow for a given object.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class WorkflowDefinition<T> {
   @Nonnull

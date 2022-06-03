@@ -20,7 +20,6 @@ import com.cedarsoft.unit.prefix.Prefix
 import kotlin.reflect.KClass
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

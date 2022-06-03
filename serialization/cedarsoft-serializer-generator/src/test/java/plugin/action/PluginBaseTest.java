@@ -38,7 +38,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class PluginBaseTest extends LightCodeInsightFixtureTestCase {
   @NotNull

@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
 /**
  * Utils classes for annotation related stuff
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class AnnotationUtils {
   private AnnotationUtils() {

@@ -52,7 +52,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class StaxMateSerializerTestsGeneratorTest extends MultiFileTestCase {
   @Override

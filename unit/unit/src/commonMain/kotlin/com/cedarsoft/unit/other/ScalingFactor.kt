@@ -21,7 +21,6 @@ package com.cedarsoft.unit.other
 /**
  * Marks factors for scaling stuff (e.g. the UI)
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

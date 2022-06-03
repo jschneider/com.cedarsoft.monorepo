@@ -35,7 +35,6 @@ import com.google.common.base.Preconditions;
 import javax.annotation.Nonnull;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ObjectWithNull {
   @Nonnull

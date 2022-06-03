@@ -62,8 +62,7 @@ import java.util.Enumeration;
  * <p>
  * Date: 20.12.2003<br> Time: 16:55:59<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public abstract class LayoutServlet extends VelocityServlet {
   @Nonnull

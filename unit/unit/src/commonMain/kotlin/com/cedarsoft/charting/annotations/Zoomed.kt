@@ -7,7 +7,6 @@ import com.cedarsoft.unit.other.px
  *
  * Values are useful to calculate lengths for relative movements/calculations
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

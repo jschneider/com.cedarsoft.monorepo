@@ -40,7 +40,6 @@ import java.util.zip.ZipEntry;
 /**
  * Condition for class files that is based on a path prefix.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class PathBasedClassFieldCondition implements ZipExtractor.Condition {
   @Nonnull

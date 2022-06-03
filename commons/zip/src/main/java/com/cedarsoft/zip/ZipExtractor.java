@@ -47,7 +47,6 @@ import java.util.zip.ZipInputStream;
 /**
  * Extracts ZIP files
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ZipExtractor {
   private static final int BUFFER_LENGTH = 1024;

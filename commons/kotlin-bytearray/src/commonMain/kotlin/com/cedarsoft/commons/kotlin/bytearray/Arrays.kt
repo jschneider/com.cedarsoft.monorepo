@@ -5,7 +5,6 @@ import com.cedarsoft.common.kotlin.lang.reinterpretAsInt
 import kotlin.jvm.JvmInline
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 /** Copies [size] elements of [src] starting at [srcPos] into [dst] at [dstPos]  */

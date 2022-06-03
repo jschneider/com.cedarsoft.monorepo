@@ -1,7 +1,6 @@
 package com.cedarsoft.common.collections
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 import kotlin.test.Test

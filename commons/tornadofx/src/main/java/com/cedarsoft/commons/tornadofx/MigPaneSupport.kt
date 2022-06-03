@@ -13,7 +13,6 @@ import tornadofx.*
 /**
  * Contains helper classes for mig pane
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 /**

@@ -44,6 +44,5 @@ import javax.xml.stream.XMLStreamReader
  * This is especially true for PluggableSerializers.
  * @param <T> the type
  * @param <S> the object to serialize to
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface StaxBasedSerializer<T : Any, S : Any> : PluggableSerializer<T, S, XMLStreamReader, OutputStream, InputStream>

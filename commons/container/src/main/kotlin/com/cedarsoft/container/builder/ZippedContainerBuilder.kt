@@ -8,7 +8,6 @@ import java.io.OutputStream
 
 /**
  * A container that creates a zip file
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class ZippedContainerBuilder(val out: OutputStream) : ContainerBuilder {
   private val zipOut = ZipArchiveOutputStream(out)

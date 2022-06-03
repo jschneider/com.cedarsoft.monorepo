@@ -11,7 +11,6 @@ import java.math.BigInteger
 
 /**
  * Serializer for BigInteger
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = BigInteger::class)
 object BigIntegerSerializer : KSerializer<BigInteger> {

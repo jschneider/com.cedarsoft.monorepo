@@ -45,7 +45,6 @@ import java.util.HashMap
 
 /**
  * Abstract base class for neo4j serializers
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractNeo4jSerializer<T : Any>
 protected constructor(

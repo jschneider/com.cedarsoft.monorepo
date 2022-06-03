@@ -3,8 +3,7 @@ package com.cedarsoft.commons.javafx.time;
 import com.cedarsoft.unit.si.s;
 
 /**
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- */
+GlobalTilesCache */
 public enum TimeDiagramLength {
   SECONDS_15(15),
   SECONDS_30(30),

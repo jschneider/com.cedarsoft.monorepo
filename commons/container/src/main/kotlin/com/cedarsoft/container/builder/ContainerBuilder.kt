@@ -10,7 +10,6 @@ typealias EntryContentProvider = (OutputStream) -> Unit
 
 /**
  * Creates a new container file
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface ContainerBuilder : AutoCloseable {
 

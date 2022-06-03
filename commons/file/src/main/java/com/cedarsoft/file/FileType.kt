@@ -40,7 +40,6 @@ import java.util.Locale
  *
  * FileType class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class FileType
 private constructor(

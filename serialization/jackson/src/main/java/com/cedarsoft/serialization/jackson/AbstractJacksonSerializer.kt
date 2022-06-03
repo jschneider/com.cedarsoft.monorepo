@@ -49,7 +49,6 @@ import javax.annotation.WillNotClose
 
 /**
  * @param <T> the type
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractJacksonSerializer<T : Any>
 protected constructor(

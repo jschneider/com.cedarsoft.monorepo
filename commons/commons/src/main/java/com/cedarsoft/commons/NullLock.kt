@@ -39,7 +39,6 @@ import java.util.concurrent.locks.ReadWriteLock
 /**
  * An Null-Lock that does nothing
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  * @noinspection Singleton
  */
 class NullLock private constructor() : Lock, ReadWriteLock {

@@ -23,7 +23,6 @@ import com.cedarsoft.unit.Symbol
 /**
  * Device independent pixel (usually abbreviated with dip or dp)
  *
- * @author Christian Erbelding ([ce@cedarsoft.com](mailto:ce@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

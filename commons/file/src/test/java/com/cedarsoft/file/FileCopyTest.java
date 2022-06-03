@@ -51,8 +51,7 @@ import com.cedarsoft.test.utils.WithTempFiles;
  * Date: 25.08.2006<br>
  * Time: 17:07:01<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 @WithTempFiles
 public class FileCopyTest {

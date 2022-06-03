@@ -4,7 +4,6 @@ import javafx.scene.canvas.GraphicsContext
 
 /**
  * Saves the state of the gc and restores it afterwards
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class WithSavedGc(
   val gc: GraphicsContext

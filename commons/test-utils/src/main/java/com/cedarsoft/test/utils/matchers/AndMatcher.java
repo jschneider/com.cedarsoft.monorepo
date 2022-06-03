@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class AndMatcher<T> implements Predicate<T> {
   private final List<Predicate<? super T>> matchers;

@@ -11,7 +11,6 @@ import com.cedarsoft.unit.si.s
 
 /**
  * Represents a *relative* time
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

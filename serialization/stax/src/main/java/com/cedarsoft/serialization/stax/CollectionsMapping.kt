@@ -35,7 +35,6 @@ package com.cedarsoft.serialization.stax
 import java.util.HashMap
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class CollectionsMapping {
   private val entries = HashMap<String, Entry<*>>()

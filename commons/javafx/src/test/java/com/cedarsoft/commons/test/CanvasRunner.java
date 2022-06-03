@@ -55,7 +55,6 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CanvasRunner extends Application {
   public static void main(String[] args) {

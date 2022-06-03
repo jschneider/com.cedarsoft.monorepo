@@ -33,7 +33,6 @@ package com.cedarsoft.commons
 /**
  * Represents a field that is instantiated on first access
 
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class LazyField<out T>
 constructor(private val instanceFactory: InstanceFactory<T>) {

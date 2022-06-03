@@ -32,7 +32,6 @@ import java.util.List;
 /**
  * Helper class for Units
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Units {
   private Units() {

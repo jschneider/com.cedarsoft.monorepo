@@ -47,7 +47,6 @@ import java.util.Random;
 /**
  * <p>LinkUtils class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class LinkUtils {
   /**

@@ -18,7 +18,6 @@ package com.cedarsoft.unit
 /**
  * Represents a definition of a unit
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

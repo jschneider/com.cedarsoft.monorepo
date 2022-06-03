@@ -43,7 +43,6 @@ import java.util.concurrent.CopyOnWriteArraySet
  *
  * ThreadDeadlockDetector class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class ThreadDeadlockDetector
 /**

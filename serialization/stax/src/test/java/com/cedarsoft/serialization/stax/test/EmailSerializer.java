@@ -41,7 +41,6 @@ import com.cedarsoft.version.Version;
 import com.cedarsoft.version.VersionRange;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class EmailSerializer extends AbstractStaxSerializer<Email> {
 

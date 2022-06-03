@@ -40,7 +40,6 @@ import com.cedarsoft.serialization.test.performance.jaxb.FileType;
 import com.google.gson.Gson;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class GsonTest {
 

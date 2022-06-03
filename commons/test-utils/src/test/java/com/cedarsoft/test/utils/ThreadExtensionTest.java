@@ -36,7 +36,6 @@ import org.junit.jupiter.api.extension.*;
 import static org.assertj.core.api.Fail.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 @ExtendWith(ThreadExtension.class)

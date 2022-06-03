@@ -16,7 +16,6 @@
 package com.cedarsoft.unit.exponential
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

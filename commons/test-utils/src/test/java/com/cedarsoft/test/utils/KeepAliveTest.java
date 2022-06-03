@@ -43,7 +43,6 @@ import org.junit.jupiter.api.extension.*;
 import com.google.common.io.ByteStreams;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(ThreadExtension.class)
 @ExtendWith(CatchAllExceptionsExtension.class)

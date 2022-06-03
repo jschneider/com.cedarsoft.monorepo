@@ -56,7 +56,6 @@ import javax.swing.Timer
 
 /**
  * Shows notifications in a popup
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @ThreadSafe
 class NotificationService {

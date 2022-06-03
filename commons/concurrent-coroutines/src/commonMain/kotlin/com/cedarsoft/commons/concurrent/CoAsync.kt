@@ -6,7 +6,6 @@ import kotlinx.coroutines.channels.*
 /**
  * Async implementation backed by coroutines
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class CoAsync {
   /**

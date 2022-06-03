@@ -44,7 +44,6 @@ import java.lang.annotation.Target;
  * Methods annotated with this annotation can be called from any thread (UI thread or not).
  * They return fast.
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

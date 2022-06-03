@@ -40,7 +40,6 @@ import com.cedarsoft.annotations.NonBlocking;
 import com.cedarsoft.annotations.verification.NotStuckVerifier;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NonBlockingTest {
   @Nullable

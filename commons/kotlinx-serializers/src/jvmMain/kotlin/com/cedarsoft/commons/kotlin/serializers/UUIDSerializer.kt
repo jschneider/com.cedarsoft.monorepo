@@ -11,7 +11,6 @@ import java.util.UUID
 
 /**
  * Serializer for UUID
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = UUID::class)
 object UUIDSerializer : KSerializer<UUID> {

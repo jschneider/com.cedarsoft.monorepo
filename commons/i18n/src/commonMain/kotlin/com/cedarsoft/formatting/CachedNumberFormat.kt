@@ -8,7 +8,6 @@ import com.cedarsoft.i18n.I18nConfiguration
  *
  * This is a tagging interface to ensure a cached format is used
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface CachedNumberFormat : NumberFormat {
   /**

@@ -21,7 +21,6 @@ package com.cedarsoft.unit.other
 /**
  * Marks value that have not been scaled
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

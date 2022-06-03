@@ -35,6 +35,5 @@ import org.neo4j.graphdb.Node
 
 /**
  * Represents a neo4j serializing strategy
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface Neo4jSerializingStrategy<T : Any> : SerializingStrategy<T, Node, Node, Node, Node>

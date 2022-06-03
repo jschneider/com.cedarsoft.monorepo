@@ -37,7 +37,6 @@ import kotlin.jvm.JvmOverloads
  *
  * UnsupportedVersionRangeException class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class UnsupportedVersionRangeException
 /**

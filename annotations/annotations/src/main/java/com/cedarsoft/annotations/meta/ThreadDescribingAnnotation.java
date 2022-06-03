@@ -41,7 +41,6 @@ import javax.annotation.Nonnull;
 /**
  * Used to mark annotations that describe threads
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

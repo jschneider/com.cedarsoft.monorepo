@@ -66,7 +66,6 @@ import com.intellij.psi.codeStyle.VariableKind;
 import com.intellij.psi.search.PsiShortNamesCache;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractSerializerGenerator implements SerializerGenerator {
   @Nonnull

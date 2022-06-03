@@ -37,7 +37,6 @@ import javax.annotation.Nonnull
 /**
  * An extended type of Boolean that has a third option: [.UNKNOWN].
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 enum class ExtendedBoolean {
   Unknown,

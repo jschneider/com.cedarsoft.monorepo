@@ -39,7 +39,6 @@ import com.google.common.io.ByteStreams;
 import javax.annotation.Nonnull;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NonNullAnnotationTransformer extends DefaultNonNullAnnotationTransformer {
   public NonNullAnnotationTransformer() throws IOException {

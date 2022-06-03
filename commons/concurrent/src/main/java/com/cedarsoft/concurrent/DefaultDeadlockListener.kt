@@ -37,7 +37,6 @@ import java.io.PrintStream
  *
  * DefaultDeadlockListener class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class DefaultDeadlockListener
 @JvmOverloads constructor(

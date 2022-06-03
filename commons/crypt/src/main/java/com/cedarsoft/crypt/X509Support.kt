@@ -47,7 +47,6 @@ import javax.inject.Inject
 /**
  * X509 Support
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 open class X509Support
 /**

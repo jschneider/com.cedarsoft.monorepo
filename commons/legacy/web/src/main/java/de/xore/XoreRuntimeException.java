@@ -49,8 +49,7 @@ package de.xore;
  * <p>
  * Date: 09.04.2004<br> Time: 00:58:08<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public class XoreRuntimeException extends RuntimeException {
   public XoreRuntimeException() {

@@ -35,7 +35,6 @@ import javax.annotation.Nonnull;
 import com.cedarsoft.annotations.NonUiThread;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Combined {
   @Nonnull

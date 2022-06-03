@@ -34,7 +34,6 @@ package com.cedarsoft.version
 /**
  * Common exception for all kinds of version related problems
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 open class VersionException : RuntimeException {
   /**

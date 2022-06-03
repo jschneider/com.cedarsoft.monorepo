@@ -42,8 +42,7 @@ import javax.persistence.Id;
  * Date: 24.06.2006<br>
  * Time: 14:17:47<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 @Entity()
 public class UserMock {

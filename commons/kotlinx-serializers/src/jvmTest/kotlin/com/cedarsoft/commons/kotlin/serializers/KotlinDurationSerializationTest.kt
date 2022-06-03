@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import kotlin.time.Duration
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class KotlinDurationSerializationTest : AbstractSerializationTest() {
   @Test

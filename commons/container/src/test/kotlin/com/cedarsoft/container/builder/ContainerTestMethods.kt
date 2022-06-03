@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream
 
 /**
  * Common container related test methods
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 fun testContainer(config: ContainerTestConfiguration.() -> Unit) {
   val configuration = ContainerTestConfiguration().also(config)

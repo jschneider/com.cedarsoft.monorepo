@@ -38,7 +38,6 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractTreeModel implements TreeModel {
   @Nonnull

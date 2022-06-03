@@ -48,7 +48,6 @@ import org.junit.jupiter.api.extension.*;
 import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(ThreadExtension.class)
 public class AsyncTest {

@@ -38,7 +38,6 @@ import javax.annotation.Nonnull;
 /**
  * Offers methods related to DI
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Modules {
   private Modules() {

@@ -40,7 +40,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class LinkByDateCreatorRunner {
   private static final Logger LOG = Logger.getLogger(LinkByDateCreatorRunner.class.getName());

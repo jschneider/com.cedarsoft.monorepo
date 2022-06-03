@@ -12,7 +12,6 @@ import java.util.concurrent.Callable
 
 /**
  * Extension methods for Date and time related stuff
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 /**

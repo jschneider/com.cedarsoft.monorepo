@@ -40,7 +40,6 @@ import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
 import com.cedarsoft.test.utils.ThreadExtension;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(ThreadExtension.class)
 @ExtendWith(CatchAllExceptionsExtension.class)

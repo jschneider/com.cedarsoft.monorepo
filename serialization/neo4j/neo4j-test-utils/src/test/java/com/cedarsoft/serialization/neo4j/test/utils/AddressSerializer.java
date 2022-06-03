@@ -40,7 +40,6 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 
 /**
-* @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
 */
 public class AddressSerializer extends AbstractNeo4jSerializer<Address> {
   /**

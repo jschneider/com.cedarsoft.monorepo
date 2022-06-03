@@ -36,7 +36,6 @@ import javax.annotation.Nonnull;
 /**
  * This enum represents typical resolutions.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public enum DPI {
   DPI_300( 300 ),

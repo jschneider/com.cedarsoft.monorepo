@@ -58,8 +58,7 @@ import java.util.List;
  * <p>
  * <p> Date: 19.04.2005<br> Time: 22:34:09<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public class HibernateDatabaseConnector implements DatabaseConnector<Session> {
   @Nonnull

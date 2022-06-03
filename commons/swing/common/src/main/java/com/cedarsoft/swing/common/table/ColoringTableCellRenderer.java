@@ -39,7 +39,6 @@ import java.awt.Component;
 import java.awt.Font;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ColoringTableCellRenderer implements TableCellRenderer {
   @Nullable

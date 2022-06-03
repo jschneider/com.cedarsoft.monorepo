@@ -36,7 +36,6 @@ import java.util.Locale;
 /**
  * Contains the strings for duration formatting
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public enum DurationI18n {
   ENGLISH(Locale.ENGLISH, "days", "hours", "minutes", "seconds", "day", "hour", "minute", "second"),

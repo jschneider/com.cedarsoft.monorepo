@@ -40,7 +40,6 @@ import org.junit.jupiter.api.Test;
 import com.cedarsoft.test.utils.WithLocale;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @WithLocale("en_US")
 public class DateUtilsTest {

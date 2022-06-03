@@ -9,7 +9,6 @@ import java.lang.System.gc
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class WeakListenersTest {
   var foo: Foo = Foo()

@@ -6,7 +6,6 @@ import com.cedarsoft.unit.other.px
  * Marked values represent content area in pixels without zoom or translation.
  * This is *not* the window / window (missing zoom and translation).
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

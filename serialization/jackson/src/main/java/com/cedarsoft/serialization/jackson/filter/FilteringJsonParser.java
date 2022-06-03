@@ -45,7 +45,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * This is a special class that filters out specific fields
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class FilteringJsonParser extends JsonParserDelegate {
   @Nonnull

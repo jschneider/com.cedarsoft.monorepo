@@ -11,7 +11,6 @@ import org.junit.jupiter.api.extension.*;
 /**
  * Run tests only on Linux
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(DisableIfNotLinuxCondition.class)
 @Target({ElementType.TYPE, ElementType.METHOD})

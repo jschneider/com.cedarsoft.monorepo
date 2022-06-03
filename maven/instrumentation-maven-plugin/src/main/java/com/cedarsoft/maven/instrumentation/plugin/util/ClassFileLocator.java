@@ -30,7 +30,6 @@ import javassist.ClassPool;
 import javassist.LoaderClassPath;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public final class ClassFileLocator {
   @Nonnull

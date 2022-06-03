@@ -5,7 +5,6 @@ import javafx.beans.property.ReadOnlyListWrapper
 import javafx.collections.ObservableList
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 /**

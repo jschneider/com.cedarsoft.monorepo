@@ -13,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 /**
  * Helper class that offers dragging related calculations
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class FXDragSupport<T extends Node> {
 

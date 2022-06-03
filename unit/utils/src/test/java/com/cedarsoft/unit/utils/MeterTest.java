@@ -22,7 +22,6 @@ import org.junit.jupiter.api.*;
 import com.cedarsoft.unit.si.m;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class MeterTest {
   @Disabled

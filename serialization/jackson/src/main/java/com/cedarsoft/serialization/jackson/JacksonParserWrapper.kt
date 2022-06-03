@@ -51,7 +51,6 @@ import java.math.BigInteger
 
 /**
  * Wrapper class for jackson
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class JacksonParserWrapper(val parser: JsonParser) {
 

@@ -6,8 +6,7 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.chart.NumberAxis;
 
 /**
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- * @see AxisConfigurer
+GlobalTilesCache * @see AxisConfigurer
  */
 public class AxisTickConfigurer {
 

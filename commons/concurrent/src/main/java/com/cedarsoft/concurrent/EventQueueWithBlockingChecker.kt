@@ -40,7 +40,6 @@ import java.util.TimerTask
 /**
  * Event queue that checks if the EDT is blocked
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class EventQueueWithBlockingChecker
 private constructor() : EventQueue() {

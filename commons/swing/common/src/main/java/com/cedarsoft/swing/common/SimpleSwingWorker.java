@@ -39,7 +39,6 @@ import java.util.concurrent.ExecutionException;
 /**
  * Simple swing worker implementation
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class SimpleSwingWorker<T> extends SwingWorker<T, Void> {
   @UiThread

@@ -44,7 +44,6 @@ import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.version.Version;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UUIDSerializerVersionTest extends AbstractJsonVersionTest2<UUID> {
   @Nonnull

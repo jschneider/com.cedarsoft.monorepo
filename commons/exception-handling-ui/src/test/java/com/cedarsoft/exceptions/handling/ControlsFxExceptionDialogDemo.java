@@ -35,7 +35,6 @@ import javafx.stage.Stage;
 import org.controlsfx.dialog.ExceptionDialog;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ControlsFxExceptionDialogDemo extends Application {
   @Override

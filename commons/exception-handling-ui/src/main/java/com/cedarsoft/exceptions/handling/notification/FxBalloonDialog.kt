@@ -21,7 +21,6 @@ import java.util.concurrent.Callable
 
 /**
  * Java fx based notification balloon
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class FxBalloonDialog(notification: Notification) : Dialog<ButtonType>() {
   init {

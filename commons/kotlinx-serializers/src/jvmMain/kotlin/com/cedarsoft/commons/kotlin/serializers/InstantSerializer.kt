@@ -11,7 +11,6 @@ import java.time.Instant
 
 /**
  * Serializer for Duration
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = Instant::class)
 object InstantSerializer : KSerializer<Instant> {

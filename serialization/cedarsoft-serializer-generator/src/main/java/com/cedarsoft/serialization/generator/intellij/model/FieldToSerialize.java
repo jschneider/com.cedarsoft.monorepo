@@ -45,7 +45,6 @@ import javax.annotation.Nonnull;
 /**
  * Describes a field that has been serialized
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class FieldToSerialize {
   @Nonnull

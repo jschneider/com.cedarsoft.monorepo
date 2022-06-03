@@ -2,7 +2,6 @@ package com.cedarsoft.charting.annotations
 
 /**
  * Marks absolute values (as in *non* negative)
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

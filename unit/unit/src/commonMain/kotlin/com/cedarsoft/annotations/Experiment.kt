@@ -2,7 +2,6 @@ package com.cedarsoft.annotations
 
 /**
  * Marks class that are part of a Proof-of-Concept implementation
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

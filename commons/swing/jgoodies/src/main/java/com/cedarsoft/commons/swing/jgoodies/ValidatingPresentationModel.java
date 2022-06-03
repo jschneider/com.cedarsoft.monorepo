@@ -43,7 +43,6 @@ import javax.annotation.Nullable;
 /**
  * Presentation model that supports validation
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ValidatingPresentationModel<B> extends PresentationModel<B> {
   @Nullable

@@ -38,8 +38,7 @@ import junit.framework.TestCase;
  * Date: 15.09.2006<br>
  * Time: 22:08:53<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class HtmlEncoderTest extends TestCase {
   public void testUnicode() {

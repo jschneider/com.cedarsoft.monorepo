@@ -2,7 +2,6 @@ package com.cedarsoft.common.collections
 
 /**
  * Simple implementation of a linked list
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class LinkedList<T> {
   /**

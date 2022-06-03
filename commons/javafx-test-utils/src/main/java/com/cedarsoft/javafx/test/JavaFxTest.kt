@@ -8,7 +8,6 @@ import org.testfx.framework.junit5.ApplicationExtension
 
 /**
  * Marks a test as a JavaFX test that is run using [ApplicationExtension]
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @DisableIfHeadless
 @ExtendWith(ApplicationExtension::class)

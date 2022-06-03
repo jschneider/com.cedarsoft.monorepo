@@ -18,7 +18,6 @@ package com.cedarsoft.unit
 /**
  * This annotation marks other annotations as Unit
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

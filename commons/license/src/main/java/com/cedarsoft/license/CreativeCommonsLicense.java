@@ -40,7 +40,6 @@ import java.util.Locale;
 /**
  * <p>CreativeCommonsLicense class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class CreativeCommonsLicense extends License {
 

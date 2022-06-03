@@ -34,7 +34,6 @@ import java.io.File
 
 /**
  * Simple implementation that just holds the dirs as fields
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class StaticApplicationHomeAccess(
   override val applicationName: String,

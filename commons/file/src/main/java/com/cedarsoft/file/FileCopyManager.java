@@ -43,7 +43,6 @@ import java.nio.channels.FileChannel;
 /**
  * Offers utility methods for file copying
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileCopyManager {
   private FileCopyManager() {

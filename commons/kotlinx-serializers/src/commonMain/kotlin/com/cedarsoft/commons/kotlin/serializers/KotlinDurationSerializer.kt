@@ -16,7 +16,6 @@ import kotlin.time.Duration
  * ```
  * @file: UseSerializers(KotlinDurationSerializer::class)
  * ```
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = Duration::class)
 object KotlinDurationSerializer : KSerializer<Duration> {

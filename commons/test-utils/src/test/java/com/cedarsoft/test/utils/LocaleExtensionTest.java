@@ -7,7 +7,6 @@ import java.util.Locale;
 import org.junit.jupiter.api.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @WithLocale("ja_JP")
 public class LocaleExtensionTest {

@@ -54,8 +54,7 @@ import java.util.Calendar;
  * <p>
  * Date: 11.05.2004<br> Time: 16:19:10<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public class XoreVelocityFormatter extends VelocityFormatter {
   private HttpServletResponse response;

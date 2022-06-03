@@ -44,7 +44,6 @@ import java.lang.Class;
  * Date: Jul 1, 2007<br>
  * Time: 6:39:21 PM<br>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ConfigurationFactory implements FactoryBean {

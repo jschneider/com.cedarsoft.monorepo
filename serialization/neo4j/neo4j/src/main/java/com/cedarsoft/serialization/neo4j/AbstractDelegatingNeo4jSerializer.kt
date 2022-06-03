@@ -42,7 +42,6 @@ import java.io.IOException
 
 /**
  * Abstract base class for all neo4j serializers
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 open class AbstractDelegatingNeo4jSerializer<T : Any>
 protected constructor(

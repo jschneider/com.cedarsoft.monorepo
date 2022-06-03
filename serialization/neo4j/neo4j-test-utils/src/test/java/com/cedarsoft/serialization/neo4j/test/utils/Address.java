@@ -34,7 +34,6 @@ import javax.annotation.Nonnull;
 
 /**
  * The type Address.
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Address {
   @Nonnull

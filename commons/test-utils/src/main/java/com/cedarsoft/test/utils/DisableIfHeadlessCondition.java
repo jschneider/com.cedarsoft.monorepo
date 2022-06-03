@@ -12,7 +12,6 @@ import static org.junit.platform.commons.util.AnnotationUtils.*;
 /**
  * Disables tests when running headless
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DisableIfHeadlessCondition implements ExecutionCondition {
   @Nonnull

@@ -6,7 +6,6 @@ import com.cedarsoft.unit.other.pct
  * The value as percentage within the content area.
  * Respects the orientation of the axis [com.cedarsoft.charting.algorithms.AxisOrientationX] and [com.cedarsoft.charting.algorithms.AxisOrientationY]
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

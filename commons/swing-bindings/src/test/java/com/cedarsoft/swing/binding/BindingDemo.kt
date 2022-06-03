@@ -24,7 +24,6 @@ import javax.swing.SpinnerNumberModel
 import javax.swing.SwingWorker
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Disabled
 object BindingDemo {

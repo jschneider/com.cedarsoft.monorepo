@@ -36,7 +36,6 @@ package com.cedarsoft.app
  *
  * PdfViewerLauncher class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object PdfViewerLauncher {
   @JvmStatic

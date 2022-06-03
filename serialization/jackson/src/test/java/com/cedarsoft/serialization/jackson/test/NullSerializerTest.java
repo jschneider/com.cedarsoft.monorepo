@@ -58,7 +58,6 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.google.inject.Guice;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NullSerializerTest {
   @Test

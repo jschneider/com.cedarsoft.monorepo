@@ -47,7 +47,6 @@ import java.io.InputStream;
 import java.text.MessageFormat;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DefaultNonNullAnnotationTransformer extends AbstractAnnotationTransformer {
   @Nonnull

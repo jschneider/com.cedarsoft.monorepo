@@ -42,7 +42,6 @@ import javax.swing.JPanel;
 /**
  * Abstract base class for JGoodies binding and validation related components
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class ValidatingComponent<T> {
   @Nonnull

@@ -5,7 +5,6 @@ import com.cedarsoft.unit.other.pct
 /**
  * A value (in percentage of the tile size) relative to a tile origin
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

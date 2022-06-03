@@ -41,7 +41,6 @@ import java.util.Collections
  *
  * OfficeLauncher class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object OfficeLauncher {
   const val OPEN_OFFICE_WINDOWS_2_3 = "c:\\Programme\\Openoffice.org 2.3\\program\\soffice.exe"

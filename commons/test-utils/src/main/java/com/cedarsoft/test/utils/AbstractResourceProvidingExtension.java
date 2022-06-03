@@ -14,7 +14,6 @@ import org.junit.jupiter.api.extension.*;
 /**
  * Abstract base class for extensions that provide a resource
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractResourceProvidingExtension<T> implements ParameterResolver, AfterTestExecutionCallback, TestInstancePostProcessor {
   @Nonnull

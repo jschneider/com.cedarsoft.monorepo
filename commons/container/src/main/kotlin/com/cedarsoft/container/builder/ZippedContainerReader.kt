@@ -13,7 +13,6 @@ typealias EntryConsumer = (descriptor: ContainerEntryDescriptor, inputStream: In
 /**
  * Reads a container
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class ZippedContainerReader(val inputStream: InputStream) : AutoCloseable {
   /**

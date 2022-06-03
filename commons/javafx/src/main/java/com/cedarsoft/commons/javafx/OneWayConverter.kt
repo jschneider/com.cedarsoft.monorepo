@@ -4,7 +4,6 @@ import javafx.util.StringConverter
 
 /**
  * Base class for converters that only implement the toString method
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class OneWayConverter<T> : StringConverter<T>() {
   override fun fromString(string: String?): T {

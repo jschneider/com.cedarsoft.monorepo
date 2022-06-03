@@ -43,7 +43,6 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class StringSerializer extends AbstractStaxMateSerializer<String> {
   @Inject

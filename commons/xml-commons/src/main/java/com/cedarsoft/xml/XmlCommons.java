@@ -61,7 +61,6 @@ import java.io.Writer;
 /**
  * Common xml methods
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class XmlCommons {
   private XmlCommons() {

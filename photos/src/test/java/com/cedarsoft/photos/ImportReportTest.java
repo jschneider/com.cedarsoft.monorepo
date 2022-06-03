@@ -43,7 +43,6 @@ import com.cedarsoft.crypt.Hash;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ImportReportTest {
   private static final Logger LOG = Logger.getLogger(ImportReportTest.class.getName());

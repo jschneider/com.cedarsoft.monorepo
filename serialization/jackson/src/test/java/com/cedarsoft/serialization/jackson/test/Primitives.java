@@ -31,7 +31,6 @@
 package com.cedarsoft.serialization.jackson.test;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Primitives{
   private final int foo1;

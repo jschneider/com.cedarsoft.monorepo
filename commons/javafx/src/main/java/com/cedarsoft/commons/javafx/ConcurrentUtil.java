@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 /**
  * Provides methods that support concurrency.
  *
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- */
+GlobalTilesCache */
 public class ConcurrentUtil {
 
   private ConcurrentUtil() {

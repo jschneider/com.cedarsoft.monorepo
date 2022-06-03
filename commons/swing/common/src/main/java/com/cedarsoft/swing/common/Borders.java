@@ -39,7 +39,6 @@ import java.awt.Color;
 /**
  * Contains commonly used borders
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Borders {
   public static final int TWO = UiScaler.scale(2);

@@ -41,7 +41,6 @@ import java.io.IOException;
 /**
  * Converts to new backend file format
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ConvertToNewDirLayoutRunner {
   public static void main(String[] args) throws IOException, InterruptedException {

@@ -37,7 +37,6 @@ import com.cedarsoft.annotations.NonUiThread;
 import com.cedarsoft.annotations.UiThread;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class RunnerClass {
   @CustomThreadAnnotation

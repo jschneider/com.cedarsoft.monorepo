@@ -2,7 +2,6 @@ package com.cedarsoft.common.collections
 
 /**
  * A weak hash map implementation for JS
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 @JsName("WeakMap")

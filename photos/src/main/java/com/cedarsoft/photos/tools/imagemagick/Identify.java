@@ -44,7 +44,6 @@ import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 import com.google.common.base.Splitter;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Identify extends AbstractCommandLineTool {
   public Identify(@Nonnull File bin) throws CmdLineToolNotAvailableException {

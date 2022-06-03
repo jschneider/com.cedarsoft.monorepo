@@ -4,7 +4,6 @@ import org.assertj.core.api.Java6Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class Array2Test {
   @Test

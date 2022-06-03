@@ -2,7 +2,6 @@ package com.cedarsoft.charting.annotations
 
 /**
  * Marks values that are always positive or zero (>=0)
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

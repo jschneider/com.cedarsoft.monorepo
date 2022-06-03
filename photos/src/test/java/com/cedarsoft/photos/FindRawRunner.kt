@@ -9,7 +9,6 @@ import java.lang.IllegalArgumentException
 
 /**
  * Finds the corresponding raw files for jpgs within a directory
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 fun main(args: Array<String>) {

@@ -9,7 +9,6 @@ import kotlin.jvm.JvmOverloads
  *
  * This interface should be used at declarations (e.g. in Styles) to ensure a cache is used
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface CachedDateTimeFormat : DateTimeFormat {
   /**

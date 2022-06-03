@@ -39,7 +39,6 @@ import java.util.concurrent.locks.Lock
  * USE WITH CARE!!!
  * May easily result in dead locks
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class MultiLock
 /**

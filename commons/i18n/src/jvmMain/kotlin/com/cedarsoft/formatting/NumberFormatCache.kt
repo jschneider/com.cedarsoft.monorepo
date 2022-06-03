@@ -6,7 +6,6 @@ import java.text.NumberFormat
 
 /**
  * A cache for number formats for a locale
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class NumberFormatCache(
   val description: String,

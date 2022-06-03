@@ -36,7 +36,6 @@ import javax.annotation.Nonnull;
 /**
  * An action
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface Action<T> {
   /**

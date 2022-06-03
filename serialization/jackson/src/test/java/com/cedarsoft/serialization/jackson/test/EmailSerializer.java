@@ -44,7 +44,6 @@ import javax.inject.Inject;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class EmailSerializer extends AbstractJacksonSerializer<Email> {
   @Inject

@@ -7,8 +7,7 @@ import javafx.beans.property.Property;
 import javafx.scene.chart.NumberAxis;
 
 /**
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- * @see AxisTickConfigurer
+GlobalTilesCache * @see AxisTickConfigurer
  */
 public class AxisConfigurer {
 

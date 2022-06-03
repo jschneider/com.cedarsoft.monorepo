@@ -9,7 +9,6 @@ import assertk.fail
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class DoubleArrayListTest {
   @Test

@@ -9,7 +9,6 @@ import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ParamTestTest {

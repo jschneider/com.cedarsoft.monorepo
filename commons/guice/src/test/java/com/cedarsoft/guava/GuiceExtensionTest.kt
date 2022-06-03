@@ -8,7 +8,6 @@ import java.util.logging.Logger
 
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class GuiceExtensionTest {
   fun configureInjections(test: Boolean) = GuiceInjectorBuilder.injector {

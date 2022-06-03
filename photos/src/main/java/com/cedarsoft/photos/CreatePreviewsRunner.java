@@ -43,7 +43,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CreatePreviewsRunner {
   public static void main(String[] args) throws IOException {

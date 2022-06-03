@@ -58,7 +58,6 @@ import java.util.Collection;
 /**
  * <p>AssertUtils class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class AssertUtils {
   private AssertUtils() {

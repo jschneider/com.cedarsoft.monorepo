@@ -27,7 +27,6 @@ import com.cedarsoft.unit.si.m2;
 import com.cedarsoft.unit.si.mm;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UsageSample {
   @Test

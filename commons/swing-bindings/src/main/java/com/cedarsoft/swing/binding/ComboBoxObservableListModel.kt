@@ -10,7 +10,6 @@ import javax.swing.event.ListDataListener
 
 /**
  * A combo box model that is backed by an observable list
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class ComboBoxObservableListModel<T>() : ComboBoxModel<T> {
 

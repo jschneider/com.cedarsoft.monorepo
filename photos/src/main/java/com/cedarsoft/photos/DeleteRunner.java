@@ -40,7 +40,6 @@ import java.io.IOException;
 import static com.cedarsoft.photos.ImageStorage.ALGORITHM;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DeleteRunner {
   public static void main(String[] args) throws IOException {

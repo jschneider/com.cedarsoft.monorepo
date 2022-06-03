@@ -5,7 +5,6 @@ import org.junit.jupiter.api.*;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ComboBoxObservableListModelTest {
   @Test

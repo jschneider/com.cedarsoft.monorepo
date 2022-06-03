@@ -56,8 +56,7 @@ import java.util.Properties;
  * <p>
  * Date: 21.01.2004<br> Time: 00:27:29<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
- *         Systems</a>
+GlobalTilesCache *         Systems</a>
  */
 public class HibernateQueryManager extends QueryManager<Session> {
   public HibernateQueryManager( @Nonnull HibernateDatabaseConnector connector ) {

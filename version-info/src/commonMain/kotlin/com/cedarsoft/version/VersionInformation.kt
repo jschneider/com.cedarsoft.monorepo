@@ -3,7 +3,6 @@ package com.cedarsoft.version
 /**
  * Application related information
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object VersionInformation {
   /**

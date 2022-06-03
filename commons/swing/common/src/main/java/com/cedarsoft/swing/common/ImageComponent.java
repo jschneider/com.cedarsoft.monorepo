@@ -47,7 +47,6 @@ import java.util.List;
 /**
  * The image component is able to render images
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class ImageComponent extends JComponent {
   @Nonnull

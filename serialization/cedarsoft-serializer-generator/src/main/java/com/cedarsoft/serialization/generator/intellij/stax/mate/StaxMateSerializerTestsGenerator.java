@@ -59,7 +59,6 @@ import java.util.Locale;
 /**
  * A simple class that generates a jackson serializer
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class StaxMateSerializerTestsGenerator implements SerializerTestsGenerator {
   @Nonnull

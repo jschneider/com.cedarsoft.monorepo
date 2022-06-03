@@ -43,7 +43,6 @@ import java.security.MessageDigest
  *
  * HashCalculator class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object HashCalculator {
 

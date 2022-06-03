@@ -62,7 +62,6 @@ import java.util.Locale;
 /**
  * A simple class that generates a jackson serializer test
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class JacksonSerializerTestsGenerator implements SerializerTestsGenerator {
   @Nonnull

@@ -2,7 +2,6 @@ package com.cedarsoft.charting.annotations
 
 /**
  * Marks values that is a real number - but *not* [Double.NaN] or [Double.POSITIVE_INFINITY] or [Double.NEGATIVE_INFINITY]
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

@@ -13,7 +13,6 @@ import javax.inject.Provider
 
 /**
  * Contains extension methods for Guice
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 open class GuiceInjectorBuilder {

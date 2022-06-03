@@ -45,7 +45,6 @@ import java.util.Map;
  * This manager manages several StringConverters and offers several convinience methods
  * to serialize/deserialization
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class StringConverterManager {
   private final Map<Class<?>, StringConverter<?>> converterMap = new HashMap<Class<?>, StringConverter<?>>();

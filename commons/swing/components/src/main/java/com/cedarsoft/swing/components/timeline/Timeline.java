@@ -52,7 +52,6 @@ import com.cedarsoft.unit.other.px;
 /**
  * A timeline
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Timeline extends JComponent {
   public static final Color COLOR_VISIBLE_AREA = new Color(255, 251, 13, 50);

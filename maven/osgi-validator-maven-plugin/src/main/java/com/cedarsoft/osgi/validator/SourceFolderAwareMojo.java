@@ -41,7 +41,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class SourceFolderAwareMojo extends AbstractMojo {
   /**

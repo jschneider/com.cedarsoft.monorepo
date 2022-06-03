@@ -39,7 +39,6 @@ import java.util.Collections
 /**
  * Represents an algorithm
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 enum class Algorithm
 /**

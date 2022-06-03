@@ -3,7 +3,6 @@ package com.cedarsoft.common.kotlin.lang
 import com.cedarsoft.unit.other.Inclusive
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 operator fun String.Companion.invoke(arrays: IntArray, offset: Int = 0, size: Int = arrays.size - offset): String {

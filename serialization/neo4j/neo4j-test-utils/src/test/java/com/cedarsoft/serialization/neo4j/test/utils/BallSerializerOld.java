@@ -43,7 +43,6 @@ import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BallSerializerOld extends AbstractDelegatingNeo4jSerializer<Ball> {
   public BallSerializerOld() {

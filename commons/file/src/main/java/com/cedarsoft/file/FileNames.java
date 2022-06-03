@@ -40,7 +40,6 @@ import java.util.List;
 /**
  * Represents a list of file names
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class FileNames {
   @Nonnull

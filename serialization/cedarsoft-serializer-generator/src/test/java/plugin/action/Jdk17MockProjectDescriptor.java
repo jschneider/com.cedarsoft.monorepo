@@ -35,7 +35,6 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor;
 
 /**
-* @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
 */
 public class Jdk17MockProjectDescriptor extends DefaultLightProjectDescriptor {
   @Override

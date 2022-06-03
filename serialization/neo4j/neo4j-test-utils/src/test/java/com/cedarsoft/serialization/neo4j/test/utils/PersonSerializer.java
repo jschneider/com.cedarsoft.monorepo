@@ -44,7 +44,6 @@ import com.cedarsoft.version.VersionRange;
 
 /**
  * The type Person serializer.
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class PersonSerializer extends AbstractNeo4jSerializer<Person> {
   /**

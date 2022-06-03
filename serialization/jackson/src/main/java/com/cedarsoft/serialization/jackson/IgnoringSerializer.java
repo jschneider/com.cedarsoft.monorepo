@@ -46,7 +46,6 @@ import com.fasterxml.jackson.core.JsonToken;
  * Attention: Does not yet work with StringValues! Use StringSerializer for those cases.
  *
  * Simply ignores the object/array
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class IgnoringSerializer extends AbstractJacksonSerializer<Void> {
   @Inject

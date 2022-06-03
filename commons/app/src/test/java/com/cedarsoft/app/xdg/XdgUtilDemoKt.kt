@@ -4,7 +4,6 @@ import com.google.common.base.StandardSystemProperty
 import org.junit.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class XdgUtilDemoKt {
   @Test

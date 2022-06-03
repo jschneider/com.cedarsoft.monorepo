@@ -41,7 +41,6 @@ import com.cedarsoft.serialization.jackson.SkipTypeInfoSerializer;
 import com.cedarsoft.test.utils.JsonUtils;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class SkipTypeInfoSerializerTest {
   @Test

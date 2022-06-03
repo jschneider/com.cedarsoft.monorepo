@@ -83,7 +83,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class GenerateSerializerAction extends AnAction {
   @Override

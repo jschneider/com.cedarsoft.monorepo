@@ -41,7 +41,6 @@ import com.cedarsoft.xml.XmlCommons;
 /**
  * Reproduces https://github.com/jschneider/com.cedarsoft.serialization/issues/2
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class XalanBugTest {
   @Test

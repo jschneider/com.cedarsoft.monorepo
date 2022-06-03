@@ -3,7 +3,6 @@ package com.cedarsoft.common.collections
 /**
  * Contains extensions for KDS classes
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 fun IntArray2.Companion.invokeRows(rows: Array<IntArray>): IntArray2 {

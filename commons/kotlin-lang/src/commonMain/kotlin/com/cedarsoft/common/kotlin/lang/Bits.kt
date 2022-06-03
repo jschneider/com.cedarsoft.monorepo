@@ -1,7 +1,6 @@
 package com.cedarsoft.common.kotlin.lang
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 

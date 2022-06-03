@@ -41,7 +41,6 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ImageFinder {
   private static final Logger LOG = Logger.getLogger(ImageFinder.class.getName());

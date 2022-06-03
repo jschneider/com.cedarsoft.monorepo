@@ -11,7 +11,6 @@ import java.time.Period
 
 /**
  * Serializer for Period
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = Period::class)
 object PeriodSerializer : KSerializer<Period> {

@@ -46,7 +46,6 @@ import java.util.List;
 /**
  * Represents the license of the image
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @noinspection ClassReferencesSubclass
  */
 public class License {

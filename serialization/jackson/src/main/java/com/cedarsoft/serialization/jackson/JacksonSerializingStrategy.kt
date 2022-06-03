@@ -44,6 +44,5 @@ import java.io.OutputStream
  *
  * @param <T> the type
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface JacksonSerializingStrategy<T : Any> : SerializingStrategy<T, JsonGenerator, JsonParser, OutputStream, InputStream>, StreamSerializer<T>

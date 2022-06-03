@@ -40,7 +40,6 @@ import com.cedarsoft.test.utils.TemporaryFolder;
 import com.cedarsoft.test.utils.WithTempFiles;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @WithTempFiles
 public class ApplicationHomeAccessFactoryTest {

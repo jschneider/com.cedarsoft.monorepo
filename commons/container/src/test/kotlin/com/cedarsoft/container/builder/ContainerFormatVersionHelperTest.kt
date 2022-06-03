@@ -9,7 +9,6 @@ import org.assertj.core.api.Java6Assertions.fail
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class ContainerFormatVersionHelperTest {
   @Test

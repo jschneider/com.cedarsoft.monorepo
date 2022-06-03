@@ -67,7 +67,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class GenerateSerializerDialog extends DialogWrapper {
   @Nonnull

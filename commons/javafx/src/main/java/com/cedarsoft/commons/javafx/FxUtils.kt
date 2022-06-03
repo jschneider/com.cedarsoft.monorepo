@@ -24,7 +24,6 @@ import java.util.Optional
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object FxUtils {
   /**

@@ -38,7 +38,6 @@ import javax.swing.text.JTextComponent
  * The order of the arguments (for non bidirectional) bindings is relevant:
  * "The first parameter is bound to the second parameter"
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object Binding
 

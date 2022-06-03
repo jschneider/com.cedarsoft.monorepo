@@ -44,7 +44,6 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Contains helper methods to avoid memory leaks
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class MemoryLeakWorkarounds {
   @NonUiThread

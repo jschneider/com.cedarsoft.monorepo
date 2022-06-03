@@ -42,7 +42,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ImportRunner {
   public static void main(String[] args) throws IOException {

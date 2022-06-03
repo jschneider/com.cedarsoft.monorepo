@@ -27,7 +27,6 @@ import com.cedarsoft.unit.si.m
 /**
  * Feet
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

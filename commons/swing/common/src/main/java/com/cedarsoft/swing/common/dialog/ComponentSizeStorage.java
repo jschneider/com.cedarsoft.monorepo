@@ -45,7 +45,6 @@ import java.awt.event.ComponentEvent;
 /**
  * Supports storage of sizes of components
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ComponentSizeStorage {
   @Nonnull

@@ -41,7 +41,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Immutable
 public class ImageStorage {

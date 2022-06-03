@@ -44,7 +44,6 @@ import org.neo4j.graphdb.index.Index;
 import org.neo4j.jmx.JmxUtils;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BasicNeo4JTest extends AbstractNeo4JTest {
   @Disabled

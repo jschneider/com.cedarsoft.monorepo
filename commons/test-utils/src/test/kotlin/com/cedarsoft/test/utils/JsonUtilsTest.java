@@ -6,7 +6,6 @@ import org.junit.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class JsonUtilsTest {
   @Test

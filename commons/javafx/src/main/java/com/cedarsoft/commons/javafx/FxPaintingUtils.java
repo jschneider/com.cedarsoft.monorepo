@@ -14,7 +14,6 @@ import javafx.scene.paint.ImagePattern;
 /**
  * Helper methods for fx painting
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class FxPaintingUtils {
   private FxPaintingUtils() {

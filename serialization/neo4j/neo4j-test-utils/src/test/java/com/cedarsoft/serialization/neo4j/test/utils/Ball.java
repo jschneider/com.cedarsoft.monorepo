@@ -33,7 +33,6 @@ package com.cedarsoft.serialization.neo4j.test.utils;
 import javax.annotation.Nonnull;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public interface Ball {
   class TennisBall implements Ball {

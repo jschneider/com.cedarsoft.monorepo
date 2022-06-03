@@ -7,7 +7,6 @@ import tornadofx.*
 
 /**
  * Indicator that visualizes the filter state
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class FilterStateIndicator(
   val filterStateProperty: ObjectBinding<FilterState>

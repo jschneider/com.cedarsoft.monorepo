@@ -37,8 +37,7 @@ package de.xore.util.persistence;
  * Date: 21.06.2006<br>
  * Time: 23:07:32<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class DatabaseException extends RuntimeException {
   public DatabaseException() {

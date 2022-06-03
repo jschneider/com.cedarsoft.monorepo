@@ -34,7 +34,6 @@ package com.cedarsoft.crypt
 /**
  * Represents a signature
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class Signature(bytes: ByteArray) {
 

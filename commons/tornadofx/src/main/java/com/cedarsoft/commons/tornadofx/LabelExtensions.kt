@@ -10,7 +10,6 @@ import javafx.scene.control.Label
 import tornadofx.*
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 /**

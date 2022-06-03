@@ -48,7 +48,6 @@ import java.io.OutputStream
 
 /**
  * @param <T> the type
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractDelegatingJacksonSerializer<T : Any>
 protected constructor(

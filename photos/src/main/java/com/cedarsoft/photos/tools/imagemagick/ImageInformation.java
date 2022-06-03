@@ -37,7 +37,6 @@ import javax.annotation.Nonnull;
 /**
  * Contains the image information returned from imagemagick "identify" command
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ImageInformation {
   @Nonnull

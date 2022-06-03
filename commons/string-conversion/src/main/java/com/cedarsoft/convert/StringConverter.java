@@ -37,7 +37,6 @@ import javax.annotation.Nonnull;
 /**
  * A string converter is able to convert objects to string representations and vice versa.
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public interface StringConverter<T> {
   /**

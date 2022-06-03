@@ -50,7 +50,6 @@ import javassist.CtMethod;
 import javassist.bytecode.DuplicateMemberException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 public class JavassistTest {

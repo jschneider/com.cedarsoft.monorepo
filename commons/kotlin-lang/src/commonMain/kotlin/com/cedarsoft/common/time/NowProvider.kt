@@ -8,7 +8,6 @@ import com.cedarsoft.unit.si.ms
 interface NowProvider {
   /**
    * Provides the current time in millis
-   * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
    */
   fun nowMillis(): Double
 }

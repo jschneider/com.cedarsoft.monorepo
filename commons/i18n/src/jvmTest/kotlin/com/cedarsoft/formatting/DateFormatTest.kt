@@ -11,7 +11,6 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class DateFormatTest {
   val time: ZonedDateTime = ZonedDateTime.of(2019, 1, 7, 19, 11, 59, 123123123, ZoneId.of("Asia/Tokyo"))

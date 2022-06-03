@@ -38,7 +38,6 @@ import kotlin.jvm.JvmStatic
 /**
  * A version
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class Version
 /**

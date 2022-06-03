@@ -14,7 +14,6 @@ import static org.apiguardian.api.API.Status.STABLE;
 /**
  * Disables tests when run headless
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ExtendWith(DisableIfHeadlessCondition.class)
 @Target({ElementType.TYPE, ElementType.METHOD})

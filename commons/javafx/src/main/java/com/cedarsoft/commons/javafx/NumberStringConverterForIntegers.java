@@ -10,8 +10,7 @@ import javafx.util.converter.NumberStringConverter;
 /**
  * A {@link NumberStringConverter} for integer and long values.
  *
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- */
+GlobalTilesCache */
 public class NumberStringConverterForIntegers extends NumberStringConverter {
   @Nonnull
   private final NumberFormat integerNumberFormat; // works for Integers _and_ Longs

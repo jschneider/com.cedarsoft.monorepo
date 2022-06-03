@@ -43,7 +43,6 @@ import com.cedarsoft.test.utils.JsonUtils;
 import com.fasterxml.jackson.core.JsonParseException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class WithoutTypeTest {
   @Test

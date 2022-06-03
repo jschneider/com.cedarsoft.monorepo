@@ -37,7 +37,6 @@ import java.io.File
 /**
  * Represents a file name
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class FileName(
   /**

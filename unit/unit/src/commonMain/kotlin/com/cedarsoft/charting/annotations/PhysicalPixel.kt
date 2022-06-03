@@ -3,7 +3,6 @@ package com.cedarsoft.charting.annotations
 /**
  * A pixel value that corresponds to *real* pixels on the screen
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

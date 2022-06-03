@@ -27,7 +27,6 @@ import com.cedarsoft.unit.quantity.Length
  * AM1: zenith at sea level
  * AM1.5: 48°
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

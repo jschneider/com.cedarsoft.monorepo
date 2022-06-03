@@ -36,7 +36,6 @@ import com.cedarsoft.annotations.UiThread
 /**
  * Reports exceptions to a bug tracker
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 fun interface ExceptionReporter {
   /**

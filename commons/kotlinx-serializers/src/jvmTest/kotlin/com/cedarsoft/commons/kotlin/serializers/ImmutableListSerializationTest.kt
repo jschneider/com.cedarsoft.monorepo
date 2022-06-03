@@ -5,7 +5,6 @@ import kotlinx.serialization.builtins.serializer
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class ImmutableListSerializationTest : AbstractSerializationTest() {
   @Test

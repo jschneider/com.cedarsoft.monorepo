@@ -40,7 +40,6 @@ import java.lang.String;
 /**
  * Resolves the relative path
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class RelativePathFinder {
   private static final char BACKSLASH = '\\';

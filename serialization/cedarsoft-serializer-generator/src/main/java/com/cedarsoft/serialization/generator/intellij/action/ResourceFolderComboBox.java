@@ -84,7 +84,6 @@ import com.intellij.util.containers.ContainerUtil;
 
 /**
  * Offers resource folders
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class ResourceFolderComboBox extends ComboboxWithBrowseButton {
   private static final String LEAVE_IN_SAME_SOURCE_ROOT = "Leave in same source root";

@@ -13,7 +13,6 @@ import org.junit.jupiter.params.provider.*;
 /**
  * Marks parameterized tests that are filled with methods/fields of a given type
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -36,7 +36,6 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UserDetails {
   private long registrationDate;

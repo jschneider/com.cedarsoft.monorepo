@@ -38,7 +38,6 @@ import javax.annotation.concurrent.ThreadSafe
  * Job manager that only executes the newest job for a key.
  * Old jobs are automatically discarded.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @ThreadSafe
 interface NewestOnlyJobsManager {

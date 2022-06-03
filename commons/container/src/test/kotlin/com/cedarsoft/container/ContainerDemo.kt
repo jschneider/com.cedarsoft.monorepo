@@ -11,7 +11,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class ContainerDemo {
   @Test

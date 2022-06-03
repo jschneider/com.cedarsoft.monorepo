@@ -36,7 +36,6 @@ import com.cedarsoft.version.Version
 /**
  * Information about an application
 
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class ApplicationInformation(
   val name: String,

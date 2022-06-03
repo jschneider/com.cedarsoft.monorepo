@@ -11,7 +11,6 @@ import java.time.LocalTime
 import java.time.Period
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class JavaDateTimeSerializerTest {
   @Test

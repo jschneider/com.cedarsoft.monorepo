@@ -47,7 +47,6 @@ import javax.swing.Timer
 /**
  * Keeps references to the threads that have been created
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class AccountingThreadService(
   /**

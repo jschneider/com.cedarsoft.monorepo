@@ -21,7 +21,6 @@ import org.junit.jupiter.params.support.*;
 /**
  * Extracts test data from fields
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ByTypeArgumentsProvider implements ArgumentsProvider, AnnotationConsumer<ByTypeSource> {
 

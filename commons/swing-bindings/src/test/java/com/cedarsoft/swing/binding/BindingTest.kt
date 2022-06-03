@@ -9,7 +9,6 @@ import javax.swing.JTextField
 import javax.swing.SwingUtilities
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 internal class BindingTest {
   @Test

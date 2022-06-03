@@ -4,7 +4,6 @@ import com.cedarsoft.unit.other.px
 /**
  * A value (in pixels) relative to the origin of a tile
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

@@ -6,7 +6,6 @@ import com.cedarsoft.unit.other.px
  * Marks values that are related to the paintable origin.
  * The value is zoomed and translated
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

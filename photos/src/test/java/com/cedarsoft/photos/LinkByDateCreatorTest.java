@@ -35,7 +35,6 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class LinkByDateCreatorTest {
   @Test

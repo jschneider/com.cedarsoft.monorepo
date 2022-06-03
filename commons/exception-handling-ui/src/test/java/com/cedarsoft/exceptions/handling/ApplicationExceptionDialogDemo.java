@@ -36,7 +36,6 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import org.junit.jupiter.api.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 public class ApplicationExceptionDialogDemo {

@@ -13,7 +13,6 @@ import javafx.scene.control.CheckBox;
 /**
  * Helper class that supports a tri state checkbox
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class TriStateCheckBox {
   @Nonnull

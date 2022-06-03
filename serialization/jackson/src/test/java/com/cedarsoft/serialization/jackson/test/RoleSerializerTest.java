@@ -38,7 +38,6 @@ import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class RoleSerializerTest extends AbstractJsonSerializerTest2<Role> {
   @Nonnull

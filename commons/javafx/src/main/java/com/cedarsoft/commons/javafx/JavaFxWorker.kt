@@ -12,7 +12,6 @@ import javax.annotation.Nonnull
  * Similar to a simple SwingWorker.
  * Must not return "null". Instead, use [java.util.Optional]
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class JavaFxWorker<T> : Task<T>() {
   @Throws(Exception::class)

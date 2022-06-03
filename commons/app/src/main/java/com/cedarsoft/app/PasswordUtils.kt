@@ -39,7 +39,6 @@ import java.security.MessageDigest
  *
  * PasswordUtils class.
 
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object PasswordUtils {
   @JvmStatic

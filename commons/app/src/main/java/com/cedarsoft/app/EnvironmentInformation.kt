@@ -39,7 +39,6 @@ import java.time.format.DateTimeFormatter
 /**
  * Offers information about the environment
 
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object EnvironmentInformation {
   /**

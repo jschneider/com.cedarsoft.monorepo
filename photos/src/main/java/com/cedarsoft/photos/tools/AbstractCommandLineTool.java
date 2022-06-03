@@ -48,7 +48,6 @@ import java.util.List;
 /**
  * Abstract base class for command line tools
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Immutable
 public abstract class AbstractCommandLineTool {

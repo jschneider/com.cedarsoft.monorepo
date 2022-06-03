@@ -9,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtensionContext
 /**
  * Abstract base class for extensions that configure stuff and revert it after the tests
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractConfiguringExtension<T, A : Annotation> protected constructor(
   storedObjectType: Class<T>,

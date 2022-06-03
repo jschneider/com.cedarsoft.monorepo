@@ -18,7 +18,6 @@ import com.cedarsoft.unit.si.ms;
 /**
  * Represents a range between two date times
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Immutable
 public class DateTimeRange {

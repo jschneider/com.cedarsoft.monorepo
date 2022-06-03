@@ -34,7 +34,6 @@ package com.cedarsoft.execution
 /**
  * Listener that is notified about the execution of a process
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface ExecutionListener {
 

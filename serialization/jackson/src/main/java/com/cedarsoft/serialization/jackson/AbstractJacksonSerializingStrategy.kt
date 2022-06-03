@@ -35,7 +35,6 @@ import com.cedarsoft.version.VersionRange
 
 /**
  * @param <T> the type
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractJacksonSerializingStrategy<T : Any>
 protected constructor(

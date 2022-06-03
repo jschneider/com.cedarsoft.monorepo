@@ -63,7 +63,6 @@ import com.cedarsoft.unit.si.s;
 
 /**
  * Date related utils
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DateUtils {
   /**

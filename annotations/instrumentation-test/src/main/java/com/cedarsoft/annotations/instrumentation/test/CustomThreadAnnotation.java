@@ -39,7 +39,6 @@ import java.lang.annotation.Target;
 import com.cedarsoft.annotations.meta.ThreadDescribingAnnotation;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

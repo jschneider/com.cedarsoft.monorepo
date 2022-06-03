@@ -42,7 +42,6 @@ import javax.xml.stream.XMLStreamReader
 import javax.xml.stream.XMLStreamWriter
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object PerformanceRunner {
   const val COUNT = 100000

@@ -40,7 +40,6 @@ import java.util.List;
 /**
  * Generates a serializer test
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public interface SerializerTestsGenerator {
   /**

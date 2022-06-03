@@ -42,7 +42,6 @@ import kotlin.random.Random
 /**
  * Rule that sets the TimeZone
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class WithSeededRandomProviderExtension : AbstractConfiguringExtension<Random, RandomWithSeed>(
   Random::class.java,

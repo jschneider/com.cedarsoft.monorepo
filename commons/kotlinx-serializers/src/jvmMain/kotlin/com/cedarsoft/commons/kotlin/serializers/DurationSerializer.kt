@@ -16,7 +16,6 @@ import java.time.Duration
  * ```
  * @file: UseSerializers(DurationSerializer::class)
  * ```
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = Duration::class)
 object DurationSerializer : KSerializer<Duration> {

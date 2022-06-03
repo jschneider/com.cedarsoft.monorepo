@@ -41,7 +41,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ExtractExifsRunner {
   public static void main(String[] args) throws IOException {

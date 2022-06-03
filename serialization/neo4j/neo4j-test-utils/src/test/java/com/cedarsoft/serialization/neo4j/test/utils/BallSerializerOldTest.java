@@ -36,7 +36,6 @@ import com.cedarsoft.serialization.neo4j.AbstractNeo4jSerializer;
 import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BallSerializerOldTest extends AbstractNeo4jSerializerTest2<Ball> {
   @Nonnull

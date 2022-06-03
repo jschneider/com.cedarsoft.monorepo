@@ -42,7 +42,6 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Immutable
 public class ExifHelper {

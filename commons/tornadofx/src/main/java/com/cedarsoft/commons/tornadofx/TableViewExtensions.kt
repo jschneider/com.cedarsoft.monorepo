@@ -4,7 +4,6 @@ import javafx.collections.ListChangeListener
 import javafx.scene.control.TableView
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 
 /**

@@ -42,7 +42,6 @@ import java.io.OutputStream
  * @param <T> the type of object this serializer is able to (de)serialize
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractStreamSerializer<T : Any, S : Any, D : Any>
 /**

@@ -21,7 +21,6 @@ package com.cedarsoft.unit.si
 /**
  * Represents one of the seven SI Base units
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

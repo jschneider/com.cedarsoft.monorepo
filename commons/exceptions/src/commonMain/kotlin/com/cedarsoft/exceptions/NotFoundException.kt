@@ -35,7 +35,6 @@ package com.cedarsoft.exceptions
  *
  * NotFoundException class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class NotFoundException : RuntimeException {
   /**

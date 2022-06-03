@@ -46,7 +46,6 @@ import javax.swing.SwingUtilities
  * Therefore not for every change a new event is generated which might
  * overload the UI thread.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @ThreadSafe
 class SwingAsync : AbstractAsync() {

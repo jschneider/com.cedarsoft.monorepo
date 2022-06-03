@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @WithTempFiles
 internal class FileUtilsTest {

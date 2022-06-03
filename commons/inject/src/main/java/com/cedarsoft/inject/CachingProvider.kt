@@ -39,7 +39,6 @@ import kotlin.concurrent.withLock
 /**
  * A provider that caches the value it has created the first time
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class CachingProvider<T>(
   private val provider: Provider<T>

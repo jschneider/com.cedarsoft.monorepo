@@ -36,8 +36,7 @@ package de.xore.utils;
  * Date: 08.07.2006<br>
  * Time: 20:26:59<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  */
 public class StringUtils {
   private StringUtils() {

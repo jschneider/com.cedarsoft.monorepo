@@ -57,8 +57,7 @@
 // * <p>
 // * Date: 23.12.2003<br> Time: 20:00:58<br>
 // *
-// * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> - <a href="http://www.xore.de">Xore
-// *         Systems</a>
+GlobalTilesCache// *         Systems</a>
 // */
 //public abstract class XoreServlet extends LayoutServlet {
 //  private static final Category CAT = Category.getInstance( XoreServlet.class );

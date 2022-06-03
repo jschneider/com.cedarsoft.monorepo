@@ -39,7 +39,6 @@ import org.junit.jupiter.api.*;
 import com.cedarsoft.version.Version;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 public class InternalExceptionDialogDemo {

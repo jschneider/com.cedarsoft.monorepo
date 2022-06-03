@@ -38,7 +38,6 @@ import java.util.Locale
  * An extension of a file.
  * The case does *not* matter(!)
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class Extension(
   /**

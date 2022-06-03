@@ -44,7 +44,6 @@ import net.miginfocom.layout.LC;
 import org.tbee.javafx.scene.layout.MigPane;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class JavaFxRunner extends Application {
   public static void main(String[] args) {

@@ -43,7 +43,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * Represents a state within the workflow
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 public class State<T> {
   @Nonnull

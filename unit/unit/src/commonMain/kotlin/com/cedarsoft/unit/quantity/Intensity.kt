@@ -17,7 +17,6 @@ package com.cedarsoft.unit.quantity
 
 /**
  * Intensity: Power incident on a surface
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

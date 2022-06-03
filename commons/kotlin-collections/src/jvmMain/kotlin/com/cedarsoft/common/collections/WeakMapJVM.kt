@@ -4,7 +4,6 @@ import java.util.WeakHashMap
 
 /**
  * A weak map implementation for JS/JVM with weak *keys*
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 actual class WeakMap<K : Any, V> {
   val backingMap: WeakHashMap<K, V> = WeakHashMap()

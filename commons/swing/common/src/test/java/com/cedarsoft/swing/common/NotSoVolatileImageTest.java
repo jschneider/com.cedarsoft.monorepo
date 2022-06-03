@@ -39,7 +39,6 @@ import java.awt.Image;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class NotSoVolatileImageTest {
   @DisableIfHeadless

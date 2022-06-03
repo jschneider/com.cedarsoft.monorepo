@@ -38,7 +38,6 @@ import java.util.concurrent.locks.ReadWriteLock
  *
  * MultiReadWriteLock class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class MultiReadWriteLock
 /**

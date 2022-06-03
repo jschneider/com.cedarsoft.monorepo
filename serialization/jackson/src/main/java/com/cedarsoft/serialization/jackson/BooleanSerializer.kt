@@ -40,7 +40,6 @@ import java.io.IOException
 import javax.inject.Inject
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class BooleanSerializer
 @Inject constructor() : AbstractJacksonSerializer<Boolean>("boolean", VersionRange.single(1, 0, 0)) {

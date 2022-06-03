@@ -39,7 +39,6 @@ import com.cedarsoft.version.VersionRange
  * @param <T> the type of object this serializer is able to (de)serialize
  * @param <S> the object to serialize to
  * @param <D> the object to deserialize from
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 abstract class AbstractNameSpaceBasedSerializer<T : Any, S : Any, D : Any> protected constructor(
   /**

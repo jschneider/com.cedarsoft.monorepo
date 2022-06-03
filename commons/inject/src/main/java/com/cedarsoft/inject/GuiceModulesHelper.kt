@@ -41,7 +41,6 @@ import javax.annotation.Nonnull
  *
  * GuiceModulesHelper class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object GuiceModulesHelper {
   /**

@@ -7,7 +7,6 @@ import com.cedarsoft.unit.other.px
  *
  * Such code might seem unnecessary but simplifies Java calls into Kotlin code.
  *
- * @author Christian Erbelding ([ce@cedarsoft.com](mailto:ce@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

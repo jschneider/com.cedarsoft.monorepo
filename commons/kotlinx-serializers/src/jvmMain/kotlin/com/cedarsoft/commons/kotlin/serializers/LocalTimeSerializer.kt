@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter
 
 /**
  * Serializer for LocalTime
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = LocalTime::class)
 object LocalTimeSerializer : KSerializer<LocalTime> {

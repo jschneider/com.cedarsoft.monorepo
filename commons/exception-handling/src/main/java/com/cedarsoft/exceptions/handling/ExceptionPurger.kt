@@ -39,7 +39,6 @@ import java.util.concurrent.ExecutionException
 /**
  * This is a utility class that is able to work with nested exceptions.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object ExceptionPurger {
   /**

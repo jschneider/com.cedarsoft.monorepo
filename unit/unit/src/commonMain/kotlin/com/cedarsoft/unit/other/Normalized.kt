@@ -18,7 +18,6 @@ package com.cedarsoft.unit.other
 /**
  * Marks value that have been normalized
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

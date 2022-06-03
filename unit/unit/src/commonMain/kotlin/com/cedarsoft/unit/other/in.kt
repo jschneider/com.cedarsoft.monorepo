@@ -27,7 +27,6 @@ import com.cedarsoft.unit.si.m
 /**
  * Inch
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)

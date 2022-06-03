@@ -39,7 +39,6 @@ import org.neo4j.test.TestGraphDatabaseFactory;
 import com.ecyrd.speed4j.StopWatch;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class PerformanceTest {
   private GraphDatabaseService graphDb;

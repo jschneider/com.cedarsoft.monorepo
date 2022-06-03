@@ -7,7 +7,6 @@ import java.util.Locale
 /**
  * A [NumberStringConverter] for floating point values only.
  *
- * @author Christian Erbelding ([ce@cedarsoft.com](mailto:ce@cedarsoft.com))
  */
 class NumberStringConverterForFloatingPointNumbers(
   private val doubleNumberFormat: () -> NumberFormat

@@ -31,7 +31,6 @@
 package com.cedarsoft.serialization.neo4j.test;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 import org.neo4j.graphdb.GraphDatabaseService;

@@ -44,7 +44,6 @@ import com.cedarsoft.serialization.ui.VersionMappingsVisualizer;
 import com.cedarsoft.version.Version;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BallSerializerTest extends AbstractNeo4jSerializerTest2<Ball> {
   @Nonnull

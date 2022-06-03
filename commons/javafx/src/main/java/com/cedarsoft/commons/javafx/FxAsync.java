@@ -49,7 +49,6 @@ import javafx.application.Platform;
  * Therefore not for every change a new event is generated which might
  * overload the UI thread.
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @ThreadSafe
 public class FxAsync extends AbstractAsync {

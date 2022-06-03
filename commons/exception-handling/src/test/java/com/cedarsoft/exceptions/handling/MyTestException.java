@@ -50,7 +50,6 @@ public class MyTestException extends ApplicationException {
   }
 
   /**
-   * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
    */
   @Immutable
   public enum TestExceptionDetails implements Details {

@@ -37,7 +37,6 @@ import kotlin.jvm.JvmOverloads
  *
  * UnsupportedVersionException class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class UnsupportedVersionException
 /**

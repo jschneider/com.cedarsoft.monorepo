@@ -35,7 +35,6 @@ import java.lang.management.ManagementFactory
 /**
  * Offers access to helper methods related to running in IDE
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object IdeTools {
   /**

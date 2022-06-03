@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane
 import javafx.stage.Stage
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 fun main() {
   launch(CanvasMultipleTabsVisibleDemo::class.java)

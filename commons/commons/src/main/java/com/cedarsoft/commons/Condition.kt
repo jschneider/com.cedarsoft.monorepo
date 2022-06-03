@@ -34,7 +34,6 @@ package com.cedarsoft.commons
 /**
  * A condition.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface Condition {
   /**

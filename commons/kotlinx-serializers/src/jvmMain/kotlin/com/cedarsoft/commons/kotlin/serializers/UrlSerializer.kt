@@ -11,7 +11,6 @@ import java.net.URL
 
 /**
  * Serializer for URL
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = URL::class)
 object UrlSerializer : KSerializer<URL> {

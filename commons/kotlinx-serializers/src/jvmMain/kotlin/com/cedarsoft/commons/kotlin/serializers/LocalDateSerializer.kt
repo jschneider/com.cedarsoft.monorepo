@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter
 
 /**
  * Serializer for LocalDate
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Serializer(forClass = LocalDate::class)
 object LocalDateSerializer : KSerializer<LocalDate> {

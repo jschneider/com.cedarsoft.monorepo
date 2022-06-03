@@ -38,7 +38,6 @@ import com.google.common.base.MoreObjects;
 
 /**
  * The type Email.
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Email {
   @Nonnull

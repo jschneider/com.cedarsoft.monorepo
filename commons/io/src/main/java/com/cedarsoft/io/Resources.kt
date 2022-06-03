@@ -2,7 +2,6 @@ package com.cedarsoft.io
 
 /**
  * Handles multiple [AutoCloseable]s
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 class Resources : AutoCloseable {
   private val resources: MutableList<AutoCloseable> = mutableListOf()

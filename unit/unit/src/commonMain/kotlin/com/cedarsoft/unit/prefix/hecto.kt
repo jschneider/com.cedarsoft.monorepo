@@ -18,7 +18,6 @@ package com.cedarsoft.unit.prefix
 import kotlin.reflect.KClass
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

@@ -41,7 +41,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CollectionSerializer<T> extends AbstractJacksonSerializer<List<? extends T>> {
   @Nonnull

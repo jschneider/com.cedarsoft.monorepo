@@ -47,7 +47,6 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.CycleDetectingLockFactory;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Disabled
 public class CycleDetectingLockFactoryDemo {

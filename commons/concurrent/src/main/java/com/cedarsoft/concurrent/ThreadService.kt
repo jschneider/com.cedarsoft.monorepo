@@ -39,7 +39,6 @@ import javax.swing.Timer
 /**
  * Creates threads/timers/executors and stuff
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface ThreadService : ThreadFactory {
   /**

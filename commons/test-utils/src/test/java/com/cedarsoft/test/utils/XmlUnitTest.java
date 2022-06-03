@@ -43,7 +43,6 @@ import org.xml.sax.SAXException;
 /**
  * <p>XmlUnitTest class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @SuppressWarnings("TryFailThrowable")
 public class XmlUnitTest {

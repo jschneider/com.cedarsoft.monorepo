@@ -40,7 +40,6 @@ import com.cedarsoft.serialization.test.utils.AbstractSerializerTest2;
 import com.cedarsoft.serialization.test.utils.Entry;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class UUIDSerializerTest extends AbstractJsonSerializerTest2<UUID> {
   @Nonnull

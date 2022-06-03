@@ -42,8 +42,7 @@ import java.io.Serializable;
  * Date: 19.05.2005<br>
  * Time: 00:01:00<br>
  *
- * @author <a href="http://johannes-schneider.info">Johannes Schneider</a> -
- *         <a href="http://www.xore.de">Xore Systems</a>
+GlobalTilesCache *         <a href="http://www.xore.de">Xore Systems</a>
  *         <p>
  *         <p>
  *         T: The session, e.g. org.hibernate.Session

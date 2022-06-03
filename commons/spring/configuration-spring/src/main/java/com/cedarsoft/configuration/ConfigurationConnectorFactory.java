@@ -47,7 +47,6 @@ import java.lang.String;
  * Date: Jul 5, 2007<br>
  * Time: 1:30:53 PM<br>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Deprecated
 public class ConfigurationConnectorFactory<T> implements FactoryBean {

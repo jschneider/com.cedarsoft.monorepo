@@ -44,7 +44,6 @@ import com.cedarsoft.image.Resolution;
 import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class IdentifyDemo {
   @Test

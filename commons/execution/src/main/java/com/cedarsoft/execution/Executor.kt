@@ -37,7 +37,6 @@ import java.io.OutputStream
 /**
  * Executes a process and notifies execution listeners whenever the process has finished
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class Executor(
   private val processBuilder: ProcessBuilder,

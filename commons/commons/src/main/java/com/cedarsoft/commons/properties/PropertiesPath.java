@@ -43,7 +43,6 @@ import java.util.List;
 /**
  * <p>PropertiesPath class.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  */
 @Immutable
 public class PropertiesPath {

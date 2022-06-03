@@ -2,7 +2,6 @@ package com.cedarsoft.annotations
 
 /**
  * Marks code that should only be used internally and never from external
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

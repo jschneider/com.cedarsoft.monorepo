@@ -50,7 +50,6 @@ import java.text.Format;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ComponentFactory {
   private ComponentFactory() {

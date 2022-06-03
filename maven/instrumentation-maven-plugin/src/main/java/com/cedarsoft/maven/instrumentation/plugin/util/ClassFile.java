@@ -40,7 +40,6 @@ import javassist.ClassPool;
 import javassist.CtClass;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ClassFile {
   @Nonnull

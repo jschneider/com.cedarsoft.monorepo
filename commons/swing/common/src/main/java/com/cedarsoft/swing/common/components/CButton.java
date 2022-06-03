@@ -36,7 +36,6 @@ import javax.swing.JButton;
 import java.awt.Cursor;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CButton extends JButton {
   public CButton(Action a) {

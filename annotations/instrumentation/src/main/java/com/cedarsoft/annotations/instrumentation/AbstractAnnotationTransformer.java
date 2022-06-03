@@ -49,7 +49,6 @@ import javassist.bytecode.AccessFlag;
 import javassist.bytecode.DuplicateMemberException;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public abstract class AbstractAnnotationTransformer implements ClassFileTransformer {
   @Override

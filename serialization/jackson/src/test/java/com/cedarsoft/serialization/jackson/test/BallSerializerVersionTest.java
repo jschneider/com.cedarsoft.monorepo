@@ -45,7 +45,6 @@ import java.io.OutputStream;
 import static org.junit.Assert.*;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class BallSerializerVersionTest extends AbstractJsonVersionTest2<Ball> {
   @Nonnull

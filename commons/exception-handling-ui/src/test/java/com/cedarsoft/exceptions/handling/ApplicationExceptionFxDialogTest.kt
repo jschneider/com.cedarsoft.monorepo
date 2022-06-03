@@ -11,7 +11,6 @@ import org.testfx.framework.junit5.ApplicationTest
 import org.testfx.util.WaitForAsyncUtils
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @DisableIfHeadless
 class ApplicationExceptionFxDialogTest : ApplicationTest() {

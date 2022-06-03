@@ -35,7 +35,6 @@ package com.cedarsoft.file
 /**
  * A base name of a file
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 data class BaseName(
   val name: String

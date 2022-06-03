@@ -21,7 +21,6 @@ import javafx.scene.text.TextAlignment
  *
  * Subclasses must call [.paint] whenever the model is updated
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Deprecated("Use classes from algorithms instead")
 abstract class AbstractFxCanvas protected constructor() : Canvas(), Disposable {

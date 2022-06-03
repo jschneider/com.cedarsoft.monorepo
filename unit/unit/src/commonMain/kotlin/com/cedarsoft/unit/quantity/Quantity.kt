@@ -21,7 +21,6 @@ package com.cedarsoft.unit.quantity
 /**
  * Used to mark quantities (as length, frequency...)
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(

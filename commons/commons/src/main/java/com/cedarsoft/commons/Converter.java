@@ -36,7 +36,6 @@ import javax.annotation.Nonnull;
 /**
  * <p>Converter interface.</p>
  *
- * @author Johannes Schneider (<a href=mailto:js@cedarsoft.com>js@cedarsoft.com</a>)
  * @param <T> the type that is converted
  * @param <C> the target type this converts to
  */

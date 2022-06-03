@@ -3,7 +3,6 @@ package com.cedarsoft.commons.javafx
 import javafx.scene.control.TreeItem
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 /**

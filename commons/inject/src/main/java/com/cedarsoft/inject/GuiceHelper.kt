@@ -40,7 +40,6 @@ import java.lang.reflect.Type
  *
  * GuiceHelper class.
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object GuiceHelper {
   /**

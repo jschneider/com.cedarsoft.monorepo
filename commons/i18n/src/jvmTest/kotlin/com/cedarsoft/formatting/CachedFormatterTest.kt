@@ -6,7 +6,6 @@ import com.cedarsoft.i18n.I18nConfiguration
 import org.junit.jupiter.api.Test
 
 /**
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class CachedFormatterTest {
   @Test

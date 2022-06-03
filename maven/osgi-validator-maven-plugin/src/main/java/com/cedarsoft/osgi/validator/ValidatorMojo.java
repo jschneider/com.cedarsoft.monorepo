@@ -64,7 +64,6 @@ import java.util.jar.Manifest;
  * This plugin verifies whether the groupId and artifactId are reflected by the package names.
  * This ensures that no duplicate packages can be exported.
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 @Mojo( name = "validate", defaultPhase = LifecyclePhase.VALIDATE )
 public class ValidatorMojo extends SourceFolderAwareMojo {

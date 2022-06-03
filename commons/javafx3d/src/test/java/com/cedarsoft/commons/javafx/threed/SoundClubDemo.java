@@ -43,15 +43,14 @@ import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
 /**
- * @author Christian Erbelding (<a href="mailto:ce@cedarsoft.com">ce@cedarsoft.com</a>)
- */
+GlobalTilesCache */
 public class SoundClubDemo extends Application {
 
   private static final int GRID_CELL_WIDTH = 40;
   private static final int GRID_CELL_DEPTH = 40;
   private static final int GRID_CELL_COUNT_X = 10;
   private static final int GRID_CELL_COUNT_Z = 20;
-  
+
   private static final Color ORANGE = Color.rgb(220, 120, 40);
   private static final Color BLUE = Color.rgb(8, 80, 121, 0.35);
   private static final Color SOUND_CLUB_LINE_COLOR = Color.rgb(8, 80, 121);
@@ -105,7 +104,7 @@ public class SoundClubDemo extends Application {
     Shape3D detectionRod = createDetectionRod();
 
     MeshView soundClub = createSoundClub();
-    
+
     Shape3D innerSoundClub = createInnerSoundClub();
 
     Node soundClubLines = createSoundClubLines((TriangleMesh) soundClub.getMesh());
@@ -115,10 +114,10 @@ public class SoundClubDemo extends Application {
     Node innerSoundClubShadow = createInnerSoundClubShadow(GRID_Y_OFFSET);
 
     root.getChildren().addAll(innerSoundClubShadow, soundClubShadow, sensorBox, detectionRod, detectionBox, innerSoundClub, soundClub, soundClubLines);
-    
+
     Collection<? extends LightBase> lights = createLights(GRID_Y_OFFSET);
     root.getChildren().addAll(lights);
-    
+
     for (LightBase light : lights) {
       light.getScope().setAll(sensorBox, detectionRod, soundClub, innerSoundClub, detectionBox, innerSoundClubShadow, soundClubShadow);
     }
@@ -192,7 +191,7 @@ public class SoundClubDemo extends Application {
 
     return meshView;
   }
-  
+
   @Nonnull
   private static Shape3D createInnerSoundClub() {
     double[] xCoordinates = Arrays.copyOf(SOUND_CLUB_X_COORDINATES, SOUND_CLUB_X_COORDINATES.length);
@@ -242,7 +241,7 @@ public class SoundClubDemo extends Application {
       xCoordinates[i] *= 0.15;
       yCoordinates[i] *= 1.6;
     }
-    
+
     return createShadow(yPos - 0.15f, xCoordinates, yCoordinates, Color.rgb(220, 120, 40, 0.65));
   }
 
@@ -288,7 +287,7 @@ public class SoundClubDemo extends Application {
 
     return meshView;
   }
-  
+
   /**
    * Vertices are supposed to be in counter-clockwise order.
    */
@@ -334,13 +333,13 @@ public class SoundClubDemo extends Application {
 
     return gridNodes;
   }
-  
+
   @Nonnull
   private static Collection<? extends Node> createGridXZLabels(final float yPos) {
     Collection<Node> labels = new ArrayList<>();
 
     final int halfCellCountX = GRID_CELL_COUNT_X / 2;
-    
+
     final int maxZValue = 6400; // FIXME correct value from sensor
     final double zCellsPerLabel = 5.0 / 2.0; // a label every 2.5 cells
     final double totalDepth = GRID_CELL_COUNT_Z * GRID_CELL_DEPTH;

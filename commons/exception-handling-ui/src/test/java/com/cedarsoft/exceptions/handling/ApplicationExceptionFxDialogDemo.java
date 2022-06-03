@@ -34,7 +34,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class ApplicationExceptionFxDialogDemo extends Application {
   @Override

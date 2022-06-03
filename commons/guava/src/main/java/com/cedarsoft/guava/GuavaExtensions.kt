@@ -6,7 +6,6 @@ import com.google.common.collect.ImmutableSet
 
 /**
  * Contains extension methods for guava collections
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 
 /**

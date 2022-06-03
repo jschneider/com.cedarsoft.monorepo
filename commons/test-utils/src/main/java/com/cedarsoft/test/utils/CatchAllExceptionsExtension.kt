@@ -39,7 +39,6 @@ import java.io.StringWriter
 /**
  * This rule catches exceptions on all threads and fails the test if such exceptions are caught
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 class CatchAllExceptionsExtension : BeforeEachCallback, AfterEachCallback {
   private var oldHandler: Thread.UncaughtExceptionHandler? = null

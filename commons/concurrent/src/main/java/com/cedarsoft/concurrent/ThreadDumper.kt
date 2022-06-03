@@ -39,7 +39,6 @@ import java.util.Arrays
 /**
  * Dumps threads
  *
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object ThreadDumper {
 

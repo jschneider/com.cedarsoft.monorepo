@@ -38,7 +38,6 @@ import java.io.File
 /**
  * Offers access to the application home dir.
 
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 interface ApplicationHomeAccess {
   /**
@@ -64,7 +63,6 @@ interface ApplicationHomeAccess {
 
 /**
  * Factory for application home access
- * @author Johannes Schneider ([js@cedarsoft.com](mailto:js@cedarsoft.com))
  */
 object ApplicationHomeAccessFactory {
   @JvmStatic

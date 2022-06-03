@@ -13,7 +13,6 @@ import org.junit.jupiter.api.extension.*;
 /**
  * Tests are disabled on non linux OS (windows)
  *
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DisableIfNotLinuxCondition implements ExecutionCondition {
   @Nonnull

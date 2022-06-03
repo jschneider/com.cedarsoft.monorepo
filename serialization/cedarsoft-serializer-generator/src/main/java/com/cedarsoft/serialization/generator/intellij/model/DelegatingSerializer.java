@@ -36,7 +36,6 @@ import com.intellij.psi.PsiType;
 import javax.annotation.Nonnull;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class DelegatingSerializer {
   @Nonnull

@@ -36,7 +36,6 @@ import javax.swing.JCheckBox;
 import java.awt.Cursor;
 
 /**
- * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class CCheckbox extends JCheckBox {
   public CCheckbox() {
