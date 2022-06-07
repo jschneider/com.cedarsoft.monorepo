@@ -16,6 +16,9 @@
 package com.cedarsoft.unit.quantity
 
 /**
+ *
+ * Represents a time value
+ *
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
