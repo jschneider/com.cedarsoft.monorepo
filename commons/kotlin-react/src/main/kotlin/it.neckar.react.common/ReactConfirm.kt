@@ -10,3 +10,9 @@ fun confirm(message: String, action: () -> Unit) {
     action()
   }
 }
+
+suspend fun suspendConfirm(message: String, action: suspend () -> Unit) {
+  if (window.confirm(message)) {
+    action()
+  }
+}

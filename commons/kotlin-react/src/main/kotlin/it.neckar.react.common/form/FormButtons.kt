@@ -13,7 +13,7 @@ import react.dom.*
  */
 fun RBuilder.formButtons(
   cancelAction: (Event) -> Unit,
-  okAction: (Event) -> Unit
+  okAction: (Event) -> Unit,
 ): Unit = child(formButtons) {
   attrs {
     this.cancelAction = cancelAction

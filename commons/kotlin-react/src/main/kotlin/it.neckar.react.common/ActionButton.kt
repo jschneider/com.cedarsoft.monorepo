@@ -14,13 +14,14 @@ fun RBuilder.actionButton(
    */
   icon: String,
 
+  text: String? = null,
+
   classes: String = "btn btn-primary",
+
   /**
    * If set to true, the button will be disabled and a spinner icon is shown instead of the provided icon
    */
   busy: Boolean = false,
-
-  text: String? = null,
 
   action: suspend () -> Unit,
 
