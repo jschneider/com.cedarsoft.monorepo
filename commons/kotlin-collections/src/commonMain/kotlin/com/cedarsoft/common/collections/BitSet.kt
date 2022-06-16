@@ -1,10 +1,18 @@
 package com.cedarsoft.common.collections
 
+import com.cedarsoft.common.collections.*
+import kotlin.collections.Collection
+import kotlin.collections.Iterator
+import kotlin.collections.any
+import kotlin.collections.contentEquals
+import kotlin.collections.contentHashCode
+import kotlin.collections.map
+
 /**
  * Fixed size [BitSet]. Similar to a [BooleanArray] but tightly packed to reduce memory usage.
  */
 class BitSet(override val size: Int) : Collection<Boolean> {
-  val data = IntArray(size divCeil 4)
+  val data: IntArray = IntArray(size divCeil 32)
 
   private fun part(index: Int) = index ushr 5
   private fun bit(index: Int) = index and 0x1f
@@ -27,9 +35,9 @@ class BitSet(override val size: Int) : Collection<Boolean> {
 
   override fun contains(element: Boolean): Boolean = (0 until size).any { this[it] == element }
   override fun containsAll(elements: Collection<Boolean>): Boolean = when {
-    elements.contains(true) && !this.contains(true)   -> false
+    elements.contains(true) && !this.contains(true) -> false
     elements.contains(false) && !this.contains(false) -> false
-    else                                              -> true
+    else -> true
   }
 
   override fun isEmpty(): Boolean = size == 0

@@ -1,6 +1,7 @@
 package com.cedarsoft.common.collections
 
 import com.cedarsoft.common.kotlin.lang.wrapAround
+import com.cedarsoft.unit.other.Slow
 
 /**
  *
@@ -61,4 +62,15 @@ fun emptyFloatArray(): FloatArray = emptyArrayOfFloats
  */
 inline fun <reified T> T?.arrayOfNotNull(): Array<T> {
   return if (this != null) arrayOf(this) else emptyArray()
+}
+
+
+/**
+ * Converts the int array to a double array
+ */
+@Slow
+fun IntArray.asDoubles(): DoubleArray {
+  return map {
+    it.toDouble()
+  }.toDoubleArray()
 }

@@ -5,11 +5,6 @@ import com.google.common.io.Files
 import java.io.File
 
 
-if (true) {
-  throw UnsupportedOperationException("Achtung! Noch nicht für das neue Modul angepasst!!!!!!!")
-}
-
-
 println("Cloning kds repository")
 
 val projectDir = File(".")
@@ -28,7 +23,7 @@ println(process.inputStream.readBytes().toString(Charsets.UTF_8))
 println(process.errorStream.readBytes().toString(Charsets.UTF_8))
 
 
-val targetPackageDir = File(projectDir, "src/commonMain/kotlin/com/cedarsoft/kds")
+val targetPackageDir = File(projectDir, "src/commonMain/kotlin/com/cedarsoft/common/collections")
 
 
 val sourceFilesToCopy = listOf(
@@ -73,6 +68,6 @@ fun String.processForCedarsoft(): String {
 }
 
 fun String.fixPackages(): String {
-  return replace("com.soywiz.kds.internal", "com.cedarsoft.kds")
-    .replace("com.soywiz.kds", "com.cedarsoft.kds")
+  return replace("com.soywiz.kds.internal", "com.cedarsoft.common.collections")
+    .replace("com.soywiz.kds", "com.cedarsoft.common.collections")
 }

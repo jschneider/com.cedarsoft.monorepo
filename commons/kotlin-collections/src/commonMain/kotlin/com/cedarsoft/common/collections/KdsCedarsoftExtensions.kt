@@ -52,8 +52,8 @@ fun IntArray2.withHeight(newHeight: Int): IntArray2 {
 /**
  * Returns an empty IntArray2
  */
-fun IntArray2.Companion.empty(): IntArray2 {
-  return IntArray2(0, 0, 0)
+fun IntArray2.Companion.empty(width: Int, height: Int): IntArray2 {
+  return IntArray2(width, height, 0)
 }
 
 /**
@@ -89,6 +89,24 @@ fun FloatArrayList(initialSize: Int = 7, fill: (Int) -> Float): FloatArrayList {
   return FloatArrayList(initialSize).also {
     for (i in 0 until initialSize) {
       it.add(fill(i))
+    }
+  }
+}
+
+fun DoubleArray2.Companion.invokeCols(cols: Array<DoubleArray>): DoubleArray2 {
+  val width = cols.size
+  val height = cols[0].size
+  val anyCell = cols[0][0]
+  return (DoubleArray2(width, height) { anyCell }).apply { setCols(cols) }
+}
+
+fun DoubleArray2.setCols(cols: Array<DoubleArray>) {
+  var n = 0
+  for (x in cols.indices) {
+    val column = cols[x]
+    for (y in column.indices) {
+      val value = column[y]
+      this[x, y] = value
     }
   }
 }

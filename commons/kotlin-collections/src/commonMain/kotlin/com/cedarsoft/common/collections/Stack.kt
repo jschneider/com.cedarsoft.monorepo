@@ -18,7 +18,10 @@ class TGenStack<TGen>() : Collection<TGen> {
     for (item in items) push(item)
   }
 
-  fun push(v: TGen) = run { items.add(v) }
+  fun push(v: TGen) {
+    items.add(v)
+  }
+
   fun pop(): TGen = items.removeAt(items.size - 1)
   fun peek(): TGen? = items.lastOrNull()
 

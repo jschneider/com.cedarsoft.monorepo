@@ -17,13 +17,17 @@ class Pool<T>(private val reset: (T) -> Unit = {}, preallocate: Int = 0, private
   private val items = Stack<T>()
   private var lastId = 0
 
+  val totalAllocatedItems get() = lastId
+  val totalItemsInUse get() = totalAllocatedItems - itemsInPool
   val itemsInPool: Int get() = items.size
 
   init {
     for (n in 0 until preallocate) items.push(gen(lastId++))
   }
 
-  fun alloc(): T = if (items.isNotEmpty()) items.pop() else gen(lastId++)
+  fun alloc(): T {
+    return if (items.isNotEmpty()) items.pop() else gen(lastId++)
+  }
 
   interface Poolable {
     fun reset()
@@ -34,9 +38,15 @@ class Pool<T>(private val reset: (T) -> Unit = {}, preallocate: Int = 0, private
     items.push(element)
   }
 
-  fun free(vararg elements: T) = run { for (element in elements) free(element) }
+  fun free(vararg elements: T) {
+    elements.fastForEach { free(it) }
+  }
 
-  fun free(elements: Iterable<T>) = run { for (element in elements) free(element) }
+  fun free(elements: Iterable<T>) {
+    for (element in elements) free(element)
+  }
+
+  inline operator fun <R> invoke(callback: (T) -> R): R = alloc(callback)
 
   inline fun <R> alloc(callback: (T) -> R): R {
     val temp = alloc()
@@ -55,7 +65,6 @@ class Pool<T>(private val reset: (T) -> Unit = {}, preallocate: Int = 0, private
       free(temp)
     }
   }
-
 
   override fun hashCode(): Int = items.hashCode()
   override fun equals(other: Any?): Boolean = (other is Pool<*>) && this.items == other.items && this.itemsInPool == other.itemsInPool

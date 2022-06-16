@@ -2,7 +2,18 @@
 
 package com.cedarsoft.common.collections
 
-import kotlin.contracts.*
+import com.cedarsoft.common.collections.*
+import com.cedarsoft.common.kotlin.lang.fastCastTo
+import kotlin.collections.Iterable
+import kotlin.collections.Map
+import kotlin.collections.associateWith
+import kotlin.collections.component1
+import kotlin.collections.component2
+import kotlin.collections.copyOf
+import kotlin.collections.indices
+import kotlin.collections.iterator
+import kotlin.contracts.ExperimentalContracts
+import kotlin.math.max
 
 private fun _mask(value: Int, mask: Int) = (value + ((value ushr 8) and 0xFF) + ((value ushr 16) and 0xFF) + ((value shr 24) and 0xFF)) and mask
 
@@ -12,7 +23,7 @@ private fun _hash2(key: Int, mask: Int) = _mask(key * 0x4d2fa52d, mask)
 private fun _hash3(key: Int, mask: Int) = _mask((key * 0x1194e069), mask)
 
 class IntMap<T> internal constructor(private var nbits: Int, private val loadFactor: Double, dummy: Boolean = false) {
-  constructor(initialCapacity: Int = 16, loadFactor: Double = 0.75) : this(kotlin.math.max(4, ilog2Ceil(initialCapacity)), loadFactor, true)
+  constructor(initialCapacity: Int = 16, loadFactor: Double = 0.75) : this(max(4, ilog2Ceil(initialCapacity)), loadFactor, true)
 
   companion object {
     @PublishedApi
@@ -124,7 +135,7 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
     retry@ while (true) {
       val index = _getKeyIndex(key)
       when {
-        index < 0             -> {
+        index < 0 -> {
           if (key == 0) {
             hasZero = true
             zeroValue = value
@@ -144,7 +155,7 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
           continue@retry
         }
         (index == ZERO_INDEX) -> return zeroValue.apply { zeroValue = value }
-        else                  -> return _values[index].apply { _values[index] = value }
+        else -> return _values[index].apply { _values[index] = value }
       }
     }
   }
@@ -206,13 +217,13 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
 
     private fun currentKey(): Int = when (index) {
       ZERO_INDEX, EOF -> 0
-      else            -> map._keys[index]
+      else -> map._keys[index]
     }
 
     private fun currentValue(): T? = when (index) {
       ZERO_INDEX -> map.zeroValue
-      EOF        -> null
-      else       -> map._values[index]
+      EOF -> null
+      else -> map._values[index]
     }
 
     private fun nextNonEmptyIndex(keys: IntArray, offset: Int): Int {
@@ -238,7 +249,7 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
       callback(
         when (index) {
           ZERO_INDEX, EOF -> 0
-          else            -> _keys[index]
+          else -> _keys[index]
         }
       )
       index = nextNonEmptyIndex(_keys, if (index == ZERO_INDEX) 0 else (index + 1))
@@ -368,7 +379,7 @@ class IntFloatMap {
 */
 
 class IntIntMap internal constructor(private var nbits: Int, private val loadFactor: Double, dummy: Boolean) {
-  constructor(initialCapacity: Int = 16, loadFactor: Double = 0.75) : this(kotlin.math.max(4, ilog2Ceil(initialCapacity)), loadFactor, true)
+  constructor(initialCapacity: Int = 16, loadFactor: Double = 0.75) : this(max(4, ilog2Ceil(initialCapacity)), loadFactor, true)
 
   companion object {
     @PublishedApi
@@ -478,7 +489,7 @@ class IntIntMap internal constructor(private var nbits: Int, private val loadFac
     retry@ while (true) {
       val index = _getKeyIndex(key)
       when {
-        index < 0             -> {
+        index < 0 -> {
           if (key == 0) {
             hasZero = true
             zeroValue = value
@@ -498,7 +509,7 @@ class IntIntMap internal constructor(private var nbits: Int, private val loadFac
           continue@retry
         }
         (index == ZERO_INDEX) -> return zeroValue.apply { zeroValue = value }
-        else                  -> return _values[index].apply { _values[index] = value }
+        else -> return _values[index].apply { _values[index] = value }
       }
     }
   }
@@ -540,13 +551,13 @@ class IntIntMap internal constructor(private var nbits: Int, private val loadFac
 
     private fun currentKey(): Int = when (index) {
       ZERO_INDEX, EOF -> 0
-      else            -> map._keys[index]
+      else -> map._keys[index]
     }
 
     private fun currentValue(): Int = when (index) {
       ZERO_INDEX -> map.zeroValue
-      EOF        -> 0
-      else       -> map._values[index]
+      EOF -> 0
+      else -> map._values[index]
     }
 
     private fun nextNonEmptyIndex(keys: IntArray, offset: Int): Int {
@@ -571,7 +582,7 @@ class IntIntMap internal constructor(private var nbits: Int, private val loadFac
       callback(
         when (index) {
           IntMap.ZERO_INDEX, IntMap.EOF -> 0
-          else                          -> _keys[index]
+          else -> _keys[index]
         }
       )
       index = nextNonEmptyIndex(_keys, if (index == IntMap.ZERO_INDEX) 0 else (index + 1))
@@ -599,4 +610,10 @@ class IntIntMap internal constructor(private var nbits: Int, private val loadFac
   }
 }
 
-fun <T> IntMap<T>.toMap(): Map<Int, T> = keys.associateWith { this[it] as T }
+fun <T> IntMap<T>.toMap(): Map<Int, T> = keys.associateWith { this[it].fastCastTo<T>() }
+
+fun <T> intMapOf(vararg pairs: Pair<Int, T>) = IntMap<T>(pairs.size).also { map ->
+  pairs.fastForEach {
+    map[it.first] = it.second
+  }
+}

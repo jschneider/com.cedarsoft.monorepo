@@ -3,11 +3,24 @@ package com.cedarsoft.common.collections
 import com.cedarsoft.unit.other.Exclusive
 import com.cedarsoft.unit.other.Inclusive
 import kotlin.jvm.JvmInline
+import kotlin.math.max
+import kotlin.math.min
 
+inline fun count(cond: (index: Int) -> Boolean): Int {
+  var counter = 0
+  while (cond(counter)) counter++
+  return counter
+}
+
+inline fun <reified T> mapWhile(cond: (index: Int) -> Boolean, gen: (Int) -> T): List<T> = arrayListOf<T>().apply { while (cond(this.size)) this += gen(this.size) }
+inline fun <reified T> mapWhileArray(cond: (index: Int) -> Boolean, gen: (Int) -> T): Array<T> = mapWhile(cond, gen).toTypedArray()
 inline fun mapWhileInt(cond: (index: Int) -> Boolean, gen: (Int) -> Int): IntArray = IntArrayList().apply { while (cond(this.size)) this += gen(this.size) }.toIntArray()
 inline fun mapWhileFloat(cond: (index: Int) -> Boolean, gen: (Int) -> Float): FloatArray = FloatArrayList().apply { while (cond(this.size)) this += gen(this.size) }.toFloatArray()
 inline fun mapWhileDouble(cond: (index: Int) -> Boolean, gen: (Int) -> Double): DoubleArray = DoubleArrayList().apply { while (cond(this.size)) this += gen(this.size) }.toDoubleArray()
 
+fun <T> List<T>.getCyclic(index: Int) = this[index umod this.size]
+fun <T> List<T>.getCyclicOrNull(index: Int) = this.getOrNull(index umod this.size)
+fun <T> Array<T>.getCyclic(index: Int) = this[index umod this.size]
 fun IntArrayList.getCyclic(index: Int) = this.getAt(index umod this.size)
 fun FloatArrayList.getCyclic(index: Int) = this.getAt(index umod this.size)
 fun DoubleArrayList.getCyclic(index: Int) = this.getAt(index umod this.size)
@@ -71,7 +84,7 @@ inline fun genericBinarySearchResult(fromIndex: Int, toIndex: Int, check: (value
  *
  */
 inline fun genericBinarySearchLeft(fromIndex: @Inclusive Int, toIndex: @Exclusive Int, check: (value: Int) -> Int): Int =
-  genericBinarySearch(fromIndex, toIndex, invalid = { from, to, low, high -> kotlin.math.min(low, high).coerceIn(from, to - 1) }, check = check)
+  genericBinarySearch(fromIndex, toIndex, invalid = { from, to, low, high -> min(low, high).coerceIn(from, to - 1) }, check = check)
 
 /**
  * Returns the exact index or the *right* index if there is no exact match.
@@ -80,7 +93,7 @@ inline fun genericBinarySearchLeft(fromIndex: @Inclusive Int, toIndex: @Exclusiv
  * Only returns different values for hits *between* two values
  */
 inline fun genericBinarySearchRight(fromIndex: @Inclusive Int, toIndex: @Exclusive Int, check: (value: Int) -> Int): Int =
-  genericBinarySearch(fromIndex, toIndex, invalid = { from, to, low, high -> kotlin.math.max(low, high).coerceIn(from, to - 1) }, check = check)
+  genericBinarySearch(fromIndex, toIndex, invalid = { from, to, low, high -> max(low, high).coerceIn(from, to - 1) }, check = check)
 
 inline fun genericBinarySearch(
   fromIndex: Int,
