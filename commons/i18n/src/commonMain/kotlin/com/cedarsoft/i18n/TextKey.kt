@@ -45,6 +45,9 @@ class TextKey(
       return TextKey(keyAndFallbackText, keyAndFallbackText)
     }
 
+    /**
+     * Creates a text key where the key and fallback text are set to the provided value
+     */
     operator fun invoke(keyAndFallbackText: String): TextKey {
       return simple(keyAndFallbackText)
     }

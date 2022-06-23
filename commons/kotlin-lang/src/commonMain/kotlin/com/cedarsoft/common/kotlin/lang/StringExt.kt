@@ -329,3 +329,11 @@ fun String.restrictLengthWithEllipsis(maxLength: Int, ellipsis: String = "…"):
 fun String.startsWithLetter(): Boolean = this.contains(regexStartsWithLetter)
 
 private val regexStartsWithLetter = "^[a-zA-Z]".toRegex()
+
+
+/**
+ * Returns true if all lines are blank
+ */
+fun List<String>.allBlank(): Boolean {
+  return all { it.isBlank() }
+}
