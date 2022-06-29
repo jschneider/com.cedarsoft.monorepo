@@ -58,3 +58,13 @@ fun <E> Assert<List<E>>.last(f: (Assert<E>) -> Unit): Unit = given { actual ->
     f(assertThat(lastElement, name = "${name ?: ""}${show(lastElement, "[]")}"))
   }
 }
+
+fun Assert<DoubleArray>.isCloseTo(expected: DoubleArray, delta: Double): Unit = given {
+  this.hasSize(expected.size)
+
+  it.withIndex().forEach { (index, currentValue) ->
+    val expectedValue = expected[index]
+    assertThat(currentValue).isCloseTo(expectedValue, delta)
+  }
+}
+

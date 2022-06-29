@@ -7,7 +7,7 @@ plugins {
   kotlinJvm
 }
 
-val coroutinesFeatureName = "coroutines"
+val coroutinesFeatureName: String = "coroutines"
 
 java {
   registerFeature(coroutinesFeatureName) {

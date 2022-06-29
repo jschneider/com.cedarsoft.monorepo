@@ -1,14 +1,11 @@
 package com.cedarsoft.commons.serialization
 
-import com.cedarsoft.common.kotlin.lang.hex
 import com.cedarsoft.test.utils.JsonUtils
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.cbor.Cbor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.protobuf.ProtoBuf
 import kotlinx.serialization.serializer
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 
@@ -37,33 +34,6 @@ fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, serializersM
   }
 
   val deserialized = encoder.decodeFromString(serializer, json)
-  assertThat(deserialized).isEqualTo(objectToSerialize)
-}
-
-fun <T> roundTripCBOR(objectToSerialize: T, expectedHex: String?, serializer: KSerializer<T>) {
-  val bytes = Cbor.encodeToByteArray(serializer, objectToSerialize)
-
-  //println("CBOR length: ${bytes.size}")
-  if (expectedHex != null) {
-    assertThat(bytes.hex).isEqualTo(expectedHex)
-  }
-
-  val deserialized = Cbor.decodeFromByteArray(serializer, bytes)
-  assertThat(deserialized).isEqualTo(objectToSerialize)
-}
-
-fun <T> roundTripProtoBuf(objectToSerialize: T, expectedHex: String?, serializer: KSerializer<T>) {
-  val protoBuf = ProtoBuf {
-  }
-
-  val bytes = protoBuf.encodeToByteArray(serializer, objectToSerialize)
-
-  //println("ProtoBuf length: ${bytes.size}")
-  if (expectedHex != null) {
-    assertThat(bytes.hex).isEqualTo(expectedHex)
-  }
-
-  val deserialized = protoBuf.decodeFromByteArray(serializer, bytes)
   assertThat(deserialized).isEqualTo(objectToSerialize)
 }
 
