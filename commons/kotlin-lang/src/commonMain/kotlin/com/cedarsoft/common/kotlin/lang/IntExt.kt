@@ -37,3 +37,10 @@ inline fun <V> Int.fastMap(mapper: (value: Int) -> V): List<V> {
   }
   return targetList
 }
+
+/**
+ * Returns true if the bit at the given index has been set
+ */
+inline fun Int.isBitSet(index: Int): Boolean {
+  return this and (1 shl index) != 0
+}

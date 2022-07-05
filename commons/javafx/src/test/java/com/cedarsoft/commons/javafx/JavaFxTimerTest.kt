@@ -36,7 +36,6 @@ class JavaFxTimerTest {
     nowProvider.add(20.0)
     assertThat(nowProvider.nowMillis()).isEqualTo(5020.0)
 
-    assertThat(called).isFalse()
     JavaFxTimer.waitForPaintPulse()
     Awaitility.await().atMost(30, TimeUnit.SECONDS)
       .pollDelay(10, TimeUnit.MILLISECONDS)
@@ -71,7 +70,6 @@ class JavaFxTimerTest {
     nowProvider.add(1.0)
     assertThat(nowProvider.nowMillis()).isEqualTo(5010.0)
 
-    assertThat(called).isFalse()
     JavaFxTimer.waitForPaintPulse()
     Awaitility.await().atMost(30, TimeUnit.SECONDS)
       .pollDelay(10, TimeUnit.MILLISECONDS)

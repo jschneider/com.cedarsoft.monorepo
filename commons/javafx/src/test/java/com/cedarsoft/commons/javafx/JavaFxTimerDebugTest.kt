@@ -4,8 +4,10 @@ import assertk.*
 import assertk.assertions.*
 import com.cedarsoft.javafx.test.JavaFxTest
 import javafx.animation.AnimationTimer
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
+@Disabled
 @JavaFxTest
 class JavaFxTimerDebugTest {
   @Test
