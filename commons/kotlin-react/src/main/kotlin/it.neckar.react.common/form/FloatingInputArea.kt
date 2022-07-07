@@ -1,6 +1,7 @@
 package it.neckar.react.common.form
 
 import it.neckar.react.common.*
+import it.neckar.react.common.form.EditableStatus.*
 import kotlinx.html.TEXTAREA
 import kotlinx.html.id
 import react.*
@@ -20,6 +21,8 @@ fun RBuilder.floatingInputArea(
   title: String,
   placeHolder: String? = null,
 
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
   ): Unit = child(floatingInputArea) {
@@ -28,6 +31,7 @@ fun RBuilder.floatingInputArea(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -43,6 +47,8 @@ val floatingInputArea: FC<FloatingInputAreaProps> = fc("floatingInputArea") { pr
     ) {
       attrs {
         id = uniqueId
+        readonly = props.editableStatus == ReadOnly
+
         addClasses("form-control height-100px")
 
         //Execute the provided config if there is one
@@ -87,6 +93,8 @@ external interface FloatingInputAreaProps : Props {
    * The (optional) placeholder - if no placeholder is provided, the title is used
    */
   var placeHolder: String?
+
+  var editableStatus: EditableStatus
 
   var config: ((RDOMBuilder<TEXTAREA>) -> Unit)?
 }

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import jfxtras.util.PlatformUtil
 import org.awaitility.Awaitility
+import org.awaitility.core.ConditionTimeoutException
 import org.junit.jupiter.api.Test
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.milliseconds
@@ -48,35 +49,45 @@ class JavaFxTimerTest {
   @VirtualTime(5000.0)
   @Test
   fun testDelayNotImmediately(nowProvider: VirtualNowProvider) {
-    assertThat(Platform.isFxApplicationThread()).isFalse()
+    try {
+      assertThat(Platform.isFxApplicationThread()).isFalse()
 
-    var called = false
+      var called = false
 
-    JavaFxTimer.delay(10.milliseconds) {
-      assertThat(called).isFalse()
-      called = true
-    }
-
-    assertThat(called).isFalse()
-    JavaFxTimer.waitForPaintPulse()
-    assertThat(called).isFalse()
-
-    nowProvider.add(9.0)
-
-    assertThat(called).isFalse()
-    JavaFxTimer.waitForPaintPulse()
-    assertThat(called).isFalse()
-
-    nowProvider.add(1.0)
-    assertThat(nowProvider.nowMillis()).isEqualTo(5010.0)
-
-    JavaFxTimer.waitForPaintPulse()
-    Awaitility.await().atMost(30, TimeUnit.SECONDS)
-      .pollDelay(10, TimeUnit.MILLISECONDS)
-      .until {
-        called
+      JavaFxTimer.delay(10.milliseconds) {
+        assertThat(called).isFalse()
+        called = true
       }
-    assertThat(called).isTrue()
+
+      assertThat(called).isFalse()
+      JavaFxTimer.waitForPaintPulse()
+      assertThat(called).isFalse()
+
+      nowProvider.add(9.0)
+
+      assertThat(called).isFalse()
+      JavaFxTimer.waitForPaintPulse()
+      assertThat(called).isFalse()
+
+      nowProvider.add(1.0)
+      assertThat(nowProvider.nowMillis()).isEqualTo(5010.0)
+
+      JavaFxTimer.waitForPaintPulse()
+      Awaitility.await().atMost(30, TimeUnit.SECONDS)
+        .pollDelay(10, TimeUnit.MILLISECONDS)
+        .until {
+          called
+        }
+      assertThat(called).isTrue()
+    } catch (e: ConditionTimeoutException) {
+      println("---------- ConditionTimeoutException ----------")
+      Thread.dumpStack()
+
+      Thread.getAllStackTraces().forEach {
+        println("---- ${it.key?.name} --------")
+        println(it.value.joinToString("\n"))
+      }
+    }
   }
 
   @Test

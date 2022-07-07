@@ -431,6 +431,17 @@ infix fun Double.ifInfinite(fallback: Double): Double {
 }
 
 /**
+ * Throws an ISE if this double is not finite
+ */
+fun Double.requireFinite(): Double {
+  if (this.isFinite()) {
+    return this
+  }
+
+  throw IllegalStateException("Finite value required - but was <$this>")
+}
+
+/**
  * Returns 0.0 if this is NaN
  */
 inline fun Double.or0ifNaN(): Double {
@@ -456,6 +467,14 @@ inline fun Double?.orNanIfNull(): Double {
  */
 inline fun Double.orNullif0(): Double? {
   if (this == 0.0) {
+    return null
+  }
+
+  return this
+}
+
+inline fun Double.orNullifNan(): Double? {
+  if (this.isNaN()) {
     return null
   }
 

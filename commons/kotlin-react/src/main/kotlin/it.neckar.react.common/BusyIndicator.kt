@@ -12,11 +12,9 @@ fun RBuilder.busyIndicator(handler: BusyIndicatorProps.() -> Unit = {}): Unit = 
   }
 }
 
-val busyIndicator: FC<BusyIndicatorProps> = fc("busyIndicator") { props ->
-  i("fa fa-spinner fa-spin") {}
+val busyIndicator: FC<BusyIndicatorProps> = fc("busyIndicator") {
+  i("fa fa-spinner fa-spin my-3") {}
 }
 
-external interface BusyIndicatorProps : Props {
-  var daName: String
-}
+external interface BusyIndicatorProps : Props
 

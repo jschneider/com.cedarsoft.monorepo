@@ -4,6 +4,7 @@ import com.cedarsoft.common.kotlin.lang.parseInt
 import com.cedarsoft.formatting.format
 import com.cedarsoft.i18n.I18nConfiguration
 import it.neckar.react.common.*
+import it.neckar.react.common.form.EditableStatus.*
 import kotlinx.html.INPUT
 import kotlinx.html.InputType
 import kotlinx.html.TEXTAREA
@@ -34,6 +35,8 @@ fun RBuilder.checkbox(
    */
   title: String,
 
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
   ): Unit = child(checkbox) {
@@ -42,6 +45,7 @@ fun RBuilder.checkbox(
     this.onChange = onChange
     this.fieldName = fieldName
     this.title = title
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -60,6 +64,8 @@ fun RBuilder.checkbox(
    */
   title: String,
 
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   checkbox(
@@ -67,6 +73,7 @@ fun RBuilder.checkbox(
     onChange = { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
+    editableStatus = editableStatus,
     config = config,
   )
 }
@@ -85,6 +92,8 @@ val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
         checked = props.value
 
         type = InputType.checkBox
+
+        disabled = props.editableStatus == ReadOnly
 
         onChangeFunction = {
           val inputElement = it.target as HTMLInputElement
@@ -127,6 +136,7 @@ external interface CheckboxProps : Props {
    */
   var title: String
 
+  var editableStatus: EditableStatus
 
   var config: ((RDOMBuilder<INPUT>) -> Unit)?
 }
@@ -484,6 +494,7 @@ fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
     ZeroOrPositive -> {
       zeroOrPositiveValues()
     }
+
     else -> {}
   }
 }

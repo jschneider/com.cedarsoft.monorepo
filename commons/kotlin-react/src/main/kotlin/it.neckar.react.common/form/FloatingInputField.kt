@@ -3,6 +3,7 @@ package it.neckar.react.common.form
 import com.cedarsoft.formatting.format
 import com.cedarsoft.i18n.I18nConfiguration
 import it.neckar.react.common.*
+import it.neckar.react.common.form.EditableStatus.*
 import kotlinx.html.DIV
 import kotlinx.html.INPUT
 import kotlinx.html.InputType
@@ -23,6 +24,8 @@ fun RBuilder.floatingInputField(
   title: String,
   placeHolder: String? = null,
 
+  editableStatus: EditableStatus = Editable,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -33,6 +36,7 @@ fun RBuilder.floatingInputField(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = config
   }
@@ -49,6 +53,8 @@ fun RBuilder.floatingReadOnlyInputField(
   title: String,
   placeHolder: String? = null,
 
+  editableStatus: EditableStatus,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -59,6 +65,7 @@ fun RBuilder.floatingReadOnlyInputField(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
       it.attrs {
@@ -81,6 +88,8 @@ fun RBuilder.floatingIntInputField(
   placeHolder: String? = null,
   numberConstraint: NumberConstraint = Unconstraint,
 
+  editableStatus: EditableStatus,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -91,6 +100,7 @@ fun RBuilder.floatingIntInputField(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
       it.attrs {
@@ -117,6 +127,8 @@ fun RBuilder.floatingIntInputField(
   placeHolder: String? = null,
   numberConstraint: NumberConstraint = Unconstraint,
 
+  editableStatus: EditableStatus,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -131,6 +143,7 @@ fun RBuilder.floatingIntInputField(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
       it.attrs {
@@ -157,6 +170,8 @@ fun RBuilder.floatingDoubleInputField(
 
   numberConstraint: NumberConstraint = Unconstraint,
 
+  editableStatus: EditableStatus,
+
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -168,12 +183,12 @@ fun RBuilder.floatingDoubleInputField(
     title = title,
     placeHolder = placeHolder,
     numberOfDecimals = numberOfDecimals,
+    editableStatus = editableStatus,
     divConfig = divConfig,
-    config = {
-      config?.let { it() }
-      configure(numberConstraint)
-    }
-  )
+  ) {
+    config?.let { it() }
+    configure(numberConstraint)
+  }
 }
 
 fun RBuilder.floatingDoubleInputField(
@@ -186,6 +201,8 @@ fun RBuilder.floatingDoubleInputField(
   placeHolder: String?,
 
   numberOfDecimals: Int = 2,
+
+  editableStatus: EditableStatus,
 
   divConfig: (RDOMBuilder<DIV>.() -> Unit)?,
   config: (RDOMBuilder<INPUT>.() -> Unit)?,
@@ -200,6 +217,7 @@ fun RBuilder.floatingDoubleInputField(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
       it.attrs {
@@ -222,6 +240,7 @@ val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") {
       fieldName = props.fieldName,
       title = props.title,
       placeHolder = props.placeHolder,
+      editableStatus = props.editableStatus,
       config = props.config,
     )
   }
@@ -258,6 +277,8 @@ external interface FloatingInputFieldProps : Props {
    */
   var placeHolder: String?
 
+  var editableStatus: EditableStatus
+
   /**
    * Config for the input field
    */
@@ -268,4 +289,3 @@ external interface FloatingInputFieldProps : Props {
    */
   var divConfig: ((RDOMBuilder<DIV>) -> Unit)?
 }
-

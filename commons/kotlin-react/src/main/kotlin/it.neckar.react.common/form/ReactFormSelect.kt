@@ -1,6 +1,7 @@
 package it.neckar.react.common.form
 
 import it.neckar.react.common.*
+import it.neckar.react.common.form.EditableStatus.*
 import it.neckar.uuid.HasUuid
 import kotlinx.html.SELECT
 import kotlinx.html.js.onChangeFunction
@@ -25,9 +26,11 @@ fun <T : HasUuid> RBuilder.selectHasUuid(
   fieldName: String,
   title: String,
 
-  config: ((RDOMBuilder<SELECT>) -> Unit)?
+  editableStatus: EditableStatus,
 
-): Unit = child(select) {
+  config: ((RDOMBuilder<SELECT>) -> Unit)?,
+
+  ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
@@ -36,6 +39,7 @@ fun <T : HasUuid> RBuilder.selectHasUuid(
     this.availableOptions = availableOptions
     this.fieldName = fieldName
     this.title = title
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -56,9 +60,11 @@ fun <E : Enum<E>> RBuilder.selectEnum(
   fieldName: String,
   title: String,
 
-  config: ((RDOMBuilder<SELECT>) -> Unit)?
+  editableStatus: EditableStatus,
 
-): Unit = child(select) {
+  config: ((RDOMBuilder<SELECT>) -> Unit)?,
+
+  ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
@@ -67,6 +73,7 @@ fun <E : Enum<E>> RBuilder.selectEnum(
     this.availableOptions = availableOptions
     this.fieldName = fieldName
     this.title = title
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -89,9 +96,11 @@ fun <T> RBuilder.select(
   fieldName: String,
   title: String,
 
-  config: ((RDOMBuilder<SELECT>) -> Unit)?
+  editableStatus: EditableStatus,
 
-): Unit = child(select) {
+  config: ((RDOMBuilder<SELECT>) -> Unit)?,
+
+  ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
     this.formatter = formatter as (Any?) -> String
@@ -100,6 +109,7 @@ fun <T> RBuilder.select(
     this.availableOptions = availableOptions
     this.fieldName = fieldName
     this.title = title
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -119,6 +129,8 @@ val select: FC<SelectProps> = fc("select") { props ->
 
       val selectedValue = props.selectedValue
       value = if (selectedValue == null) NullId else idProvider(selectedValue)
+
+      disabled = props.editableStatus == ReadOnly
 
       onChangeFunction = { event ->
         val inputElement = event.target as HTMLSelectElement
@@ -166,6 +178,8 @@ external interface SelectProps : Props {
 
   var fieldName: String
   var title: String
+
+  var editableStatus: EditableStatus
 
   var config: ((RDOMBuilder<SELECT>) -> Unit)?
 }

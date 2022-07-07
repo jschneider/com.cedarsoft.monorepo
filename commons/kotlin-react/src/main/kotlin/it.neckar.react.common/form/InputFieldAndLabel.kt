@@ -22,6 +22,8 @@ fun RBuilder.inputFieldAndLabel(
   title: String,
   placeHolder: String? = null,
 
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
   ): Unit = child(inputFieldAndLabel) {
@@ -31,6 +33,7 @@ fun RBuilder.inputFieldAndLabel(
     this.fieldName = fieldName
     this.title = title
     this.placeHolder = placeHolder
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -48,6 +51,8 @@ val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") {
     attrs {
       id = uniqueId
       type = InputType.text
+
+      readonly = props.editableStatus == EditableStatus.ReadOnly
 
       //Execute the provided config if there is one
       props.config?.let {
@@ -94,6 +99,8 @@ external interface InputFieldAndLabelProps : Props {
    * The (optional) placeholder - if no placeholder is provided, the title is used
    */
   var placeHolder: String?
+
+  var editableStatus: EditableStatus
 
   var config: ((RDOMBuilder<INPUT>) -> Unit)?
 }

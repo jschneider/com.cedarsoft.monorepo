@@ -2,6 +2,7 @@ package it.neckar.react.common.form
 
 import com.cedarsoft.common.kotlin.lang.withNullAtFirst
 import it.neckar.react.common.*
+import it.neckar.react.common.form.EditableStatus.*
 import it.neckar.uuid.HasUuid
 import kotlinx.html.SELECT
 import kotlinx.html.id
@@ -19,6 +20,9 @@ fun <T> RBuilder.floatingSelect(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelect(
@@ -29,6 +33,7 @@ fun <T> RBuilder.floatingSelect(
     idProvider = idProvider,
     fieldName = fieldName,
     title = title,
+    editableStatus = editableStatus,
     config = config
   )
 }
@@ -42,6 +47,7 @@ fun <T : HasUuid> RBuilder.floatingSelect(
   availableOptions: List<T>,
   fieldName: String,
   title: String,
+  editableStatus: EditableStatus,
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelect(
@@ -55,7 +61,8 @@ fun <T : HasUuid> RBuilder.floatingSelect(
     },
     fieldName = fieldName,
     title = title,
-    config = config
+    editableStatus = editableStatus,
+    config = config,
   )
 }
 
@@ -67,6 +74,9 @@ fun <T> RBuilder.floatingSelectNullable(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelectNullable(
@@ -80,7 +90,8 @@ fun <T> RBuilder.floatingSelectNullable(
     idProvider = idProvider,
     fieldName = fieldName,
     title = title,
-    config = config
+    editableStatus = editableStatus,
+    config = config,
   )
 }
 
@@ -91,6 +102,9 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelectNullable(
@@ -104,7 +118,8 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
     idProvider = { it.uuid.toString() },
     fieldName = fieldName,
     title = title,
-    config = config
+    editableStatus = editableStatus,
+    config = config,
   )
 }
 
@@ -115,6 +130,9 @@ fun <E : Enum<E>> RBuilder.floatingSelectEnum(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus,
+
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelect(
@@ -131,7 +149,8 @@ fun <E : Enum<E>> RBuilder.floatingSelectEnum(
     },
     fieldName = fieldName,
     title = title,
-    config = config
+    editableStatus = editableStatus,
+    config = config,
   )
 }
 
@@ -145,6 +164,9 @@ fun <T> RBuilder.floatingSelect(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus = Editable,
+
   config: ((RDOMBuilder<SELECT>) -> Unit)? = null,
 ): Unit = child(floatingSelect) {
   require(availableOptions.isNotEmpty()) {
@@ -159,6 +181,7 @@ fun <T> RBuilder.floatingSelect(
     this.availableOptions = availableOptions as List<Any>
     this.fieldName = fieldName
     this.title = title
+    this.editableStatus = editableStatus
     this.config = config
   }
 }
@@ -178,6 +201,9 @@ fun <T> RBuilder.floatingSelectNullable(
 
   fieldName: String,
   title: String,
+
+  editableStatus: EditableStatus,
+
   config: ((RDOMBuilder<SELECT>) -> Unit)? = null,
 ): Unit = child(floatingSelect) {
   attrs {
@@ -193,6 +219,9 @@ fun <T> RBuilder.floatingSelectNullable(
     this.availableOptions = optionsIncludingNull as List<Any>
     this.fieldName = fieldName
     this.title = title
+
+    this.editableStatus = editableStatus
+
     this.config = config
   }
 }
@@ -220,7 +249,8 @@ val floatingSelect: FC<FloatingSelectProps> = fc("floatingSelect") { props ->
       formatter = props.formatter,
       idProvider = props.idProvider,
       fieldName = props.fieldName,
-      title = props.title
+      title = props.title,
+      editableStatus = props.editableStatus,
     ) {
       attrs {
         id = uniqueId
@@ -252,6 +282,8 @@ external interface FloatingSelectProps : Props {
 
   var fieldName: String
   var title: String
+
+  var editableStatus: EditableStatus
 
   var config: ((RDOMBuilder<SELECT>) -> Unit)?
 }
