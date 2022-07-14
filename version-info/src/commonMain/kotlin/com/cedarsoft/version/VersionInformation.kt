@@ -33,8 +33,8 @@ object VersionInformation {
 }
 
 /**
- * Returns true if the given version number string ends with "-SNAPSHOT"
+ * Returns true if the given version number string contains "-SNAPSHOT"
  */
 fun String.isSnapshot(): Boolean {
-  return this.endsWith("-SNAPSHOT")
+  return this.contains("-SNAPSHOT")
 }
