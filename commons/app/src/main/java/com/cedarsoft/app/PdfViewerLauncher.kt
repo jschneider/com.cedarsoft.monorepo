@@ -76,7 +76,7 @@ object PdfViewerLauncher {
         }
 
         if (browser == null) {
-          throw IllegalStateException("Could not find pdf viewer")
+          error("Could not find pdf viewer")
         }
 
         Runtime.getRuntime().exec(arrayOf(browser, file))

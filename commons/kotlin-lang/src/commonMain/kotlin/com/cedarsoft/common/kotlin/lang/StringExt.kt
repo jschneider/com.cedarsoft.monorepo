@@ -3,7 +3,52 @@ package com.cedarsoft.common.kotlin.lang
 import com.cedarsoft.unit.other.Inclusive
 
 /**
+ * Deletes the suffix - if there is one
  */
+fun StringBuilder.deleteSuffix(toDelete: String) {
+  if (endsWith(toDelete)) {
+    val lengthToDelete = toDelete.length
+    deleteRange(length - lengthToDelete, length)
+  }
+}
+
+/**
+ * Returns the index of the char - closes to the center of this string.
+ * This method can be used to split a string into (as equal as possible) parts.
+ */
+fun String.centerIndexOf(char: Char): Int {
+  val firstFoundIndex = this.indexOf(char)
+  if (firstFoundIndex == -1) {
+    //nothing found
+    return -1
+  }
+
+  //The currently best index
+  var currentlyBestIndex = firstFoundIndex
+
+
+  var currentIndex = firstFoundIndex
+  while (currentIndex > -1) {
+    currentIndex = this.indexOf(char, currentIndex + 1)
+
+    if (currentIndex == -1) {
+      //no char found anymore, return the currently best index
+      return currentlyBestIndex
+    }
+
+    //decide which one is the best
+    val center = this.length / 2.0
+
+    val distanceCurrent = (currentIndex - center).abs()
+    val distanceCurrentlyBest = (currentlyBestIndex - center).abs()
+
+    if (distanceCurrent < distanceCurrentlyBest) {
+      currentlyBestIndex = currentIndex
+    }
+  }
+
+  return currentlyBestIndex
+}
 
 operator fun String.Companion.invoke(arrays: IntArray, offset: Int = 0, size: Int = arrays.size - offset): String {
   val sb = StringBuilder()
@@ -12,9 +57,6 @@ operator fun String.Companion.invoke(arrays: IntArray, offset: Int = 0, size: In
   }
   return sb.toString()
 }
-
-fun String_fromIntArray(arrays: IntArray, offset: Int = 0, size: Int = arrays.size - offset): String = String(arrays, offset, size)
-fun String_fromCharArray(arrays: CharArray, offset: Int = 0, size: Int = arrays.size - offset): String = arrays.concatToString(offset, offset + size)
 
 ////////////////////////////////////
 ////////////////////////////////////

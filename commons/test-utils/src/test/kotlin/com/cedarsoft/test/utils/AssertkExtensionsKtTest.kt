@@ -6,6 +6,48 @@ import org.junit.jupiter.api.Test
 
 class AssertkExtensionsKtTest {
   @Test
+  fun testLines() {
+    assertThat(
+      """
+    a
+    b
+
+
+    c
+    d
+  """.trimIndent()
+    ).isEqualComparingLinesTrim(
+      """
+a
+b
+
+c
+d
+    """.trimIndent()
+    )
+
+    try {
+      assertThat(
+        """
+      a
+      b
+      c
+      d
+    """.trimIndent()
+      ).isEqualComparingLinesTrim(
+        """
+  a
+  b
+  cee###
+  d
+      """.trimIndent()
+      )
+      fail("Where is the exception?")
+    } catch (e: AssertionError) {
+    }
+  }
+
+  @Test
   fun testNaN() {
     assertThat {
       assertThat(70.0).isNaN()

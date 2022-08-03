@@ -68,7 +68,7 @@ public class AssertUtilsFileCompareTest {
 
   @Test
   public void testCopyFile() {
-    File dir = AssertUtils.FAILED_FILES_DIR;
+    File dir = AssertUtils.getFailedFilesDir();
     assertEquals(new File(dir, "daPath" + File.separator + "daName"), AssertUtils.createCopyFile("daPath", "daName"));
     assertEquals(new File(dir, "daPath2" + File.separator + "other" + File.separator + "daName2"), AssertUtils.createCopyFile("daPath2" + File.separator + "other", "daName2"));
   }

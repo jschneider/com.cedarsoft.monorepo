@@ -5,6 +5,7 @@ import java.util.WeakHashMap
 /**
  * A weak map implementation for JS/JVM with weak *keys*
  */
+@Suppress("MatchingDeclarationName")
 actual class WeakMap<K : Any, V> {
   val backingMap: WeakHashMap<K, V> = WeakHashMap()
 

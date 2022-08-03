@@ -31,3 +31,8 @@ dependencies {
   api(jackson_databind)
   api(Libs.xmlunit)
 }
+
+detekt {
+  //Suppress for test-utils
+  source = files()
+}

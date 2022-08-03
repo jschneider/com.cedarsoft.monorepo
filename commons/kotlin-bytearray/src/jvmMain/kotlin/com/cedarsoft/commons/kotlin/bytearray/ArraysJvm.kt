@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName", "SpellCheckingInspection")
+
 package com.cedarsoft.commons.kotlin.bytearray
 
 import java.util.Arrays

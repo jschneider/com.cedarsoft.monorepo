@@ -5,6 +5,7 @@ import java.util.WeakHashMap
 /**
  * A weak set, meaning references to elements are held weakly.
  */
+@Suppress("MatchingDeclarationName")
 actual class WeakSet<T> {
   private val backingMap: WeakHashMap<T, Boolean> = WeakHashMap()
 

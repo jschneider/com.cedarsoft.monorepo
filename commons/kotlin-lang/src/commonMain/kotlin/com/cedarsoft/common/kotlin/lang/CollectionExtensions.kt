@@ -25,6 +25,8 @@ fun <T> Array<T>.getCyclic(index: Int) = this[index umod this.size]
  * Returns the n th element from the list. Uses modulo if the index is larger than the size of the list
  */
 fun <T> List<T>.getModulo(index: Int): T {
+  require(isNotEmpty()) { "List must not be empty" }
+
   //This calculation produces a "wrap around" effect for negative indices
   return this[index.wrapAround(size)]
 }

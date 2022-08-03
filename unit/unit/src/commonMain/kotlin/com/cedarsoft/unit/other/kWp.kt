@@ -24,6 +24,7 @@ import com.cedarsoft.unit.quantity.Power
 /**
  *
  */
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

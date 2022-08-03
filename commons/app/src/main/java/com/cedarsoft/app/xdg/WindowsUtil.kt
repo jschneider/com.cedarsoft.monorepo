@@ -30,6 +30,7 @@
  */
 package com.cedarsoft.app.xdg
 
+import com.cedarsoft.common.kotlin.lang.checkNotNull
 import java.io.File
 
 /**
@@ -52,7 +53,7 @@ object WindowsUtil {
     get() = getDir(LOCAL_APP_DATA_HOME)
 
   private fun getDir(propertyName: String): File {
-    val dirName = System.getenv(propertyName) ?: throw IllegalStateException("property <$propertyName> not found")
+    val dirName = System.getenv(propertyName).checkNotNull { "property <$propertyName> not found" }
     return File(dirName)
   }
 

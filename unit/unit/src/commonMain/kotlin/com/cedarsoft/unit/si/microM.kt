@@ -10,6 +10,7 @@ import com.cedarsoft.unit.quantity.Length
 /**
  * Micrometer
  */
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

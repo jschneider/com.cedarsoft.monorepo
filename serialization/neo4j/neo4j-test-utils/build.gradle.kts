@@ -31,3 +31,8 @@ dependencies {
   //
   testImplementation(Libs.neo4j_io)
 }
+
+detekt {
+  //Suppress for test-utils
+  source = files()
+}

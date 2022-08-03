@@ -27,6 +27,7 @@ import com.cedarsoft.unit.si.s
 /**
  *
  */
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

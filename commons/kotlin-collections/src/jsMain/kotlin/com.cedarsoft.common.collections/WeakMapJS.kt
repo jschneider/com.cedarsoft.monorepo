@@ -11,6 +11,7 @@ external class WeakMapJS {
   fun get(k: dynamic): dynamic
 }
 
+@Suppress("MatchingDeclarationName")
 actual class WeakMap<K : Any, V> {
   private val backingMap = WeakMapJS()
 

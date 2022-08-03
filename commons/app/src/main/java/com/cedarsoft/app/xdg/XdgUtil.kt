@@ -30,6 +30,7 @@
  */
 package com.cedarsoft.app.xdg
 
+import com.cedarsoft.common.kotlin.lang.checkNotNull
 import java.io.File
 
 /**
@@ -38,7 +39,7 @@ import java.io.File
 object XdgUtil {
   private val homeDir: File
     get() {
-      val userHomeAsString = System.getProperty("user.home") ?: throw IllegalStateException("No property found for user.home")
+      val userHomeAsString = System.getProperty("user.home").checkNotNull { "No property found for user.home" }
 
       val home = File(userHomeAsString)
       if (!home.isDirectory) {

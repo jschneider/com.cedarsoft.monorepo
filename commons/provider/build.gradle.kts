@@ -13,11 +13,7 @@ kotlin {
   jvm()
   js {
     browser {
-      testTask {
-        useKarma {
-          useChromeHeadlessNoSandbox()
-        }
-      }
+      configureJsKarma()
     }
   }
 

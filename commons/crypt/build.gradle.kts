@@ -12,6 +12,7 @@ plugins {
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
   api(project(Projects.dependencies_sets_jvm_kotlin))
+  api(project(Projects.open_commons_kotlin_lang))
 
   api(Libs.guava)
   api(Libs.commons_codec)

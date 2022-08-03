@@ -38,7 +38,7 @@ private fun Any?.toJsonPrimitive(): JsonPrimitive {
     is Number -> JsonPrimitive(this)
     is String -> JsonPrimitive(this)
     // add custom convert
-    else -> throw Exception("Unsupported type: ${this::class}")
+    else -> throw IllegalArgumentException("Unsupported type: ${this::class}")
   }
 }
 
@@ -69,5 +69,5 @@ private fun JsonPrimitive.toAnyValue(): Any? {
   if (doubleValue != null) {
     return doubleValue
   }
-  throw Exception("Unsupported content： ${content}")
+  throw IllegalArgumentException("Unsupported content： $content")
 }

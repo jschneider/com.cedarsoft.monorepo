@@ -49,7 +49,7 @@ class WithSeededRandomProviderExtension : AbstractConfiguringExtension<Random, R
   "random",
   object : ConfigurationCallback<Random, RandomWithSeed> {
     override fun getOriginalValue(): Random {
-      return Random.Default
+      return random
     }
 
     override fun extract(annotation: RandomWithSeed): Random {

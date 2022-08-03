@@ -77,7 +77,7 @@ abstract class JavaFxWorker<T> : Task<T>() {
 
   @UiThread
   protected open fun failure(e: Throwable) {
-    throw RuntimeException(e)
+    throw e
   }
 
   /**

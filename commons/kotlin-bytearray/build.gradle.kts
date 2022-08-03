@@ -52,3 +52,8 @@ kotlin {
     }
   }
 }
+
+detekt {
+  //Contains auto imported code, ignore detekt
+  source = files()
+}

@@ -34,7 +34,6 @@ package com.cedarsoft.app
 
 import java.io.File
 import java.io.IOException
-import java.util.ArrayList
 import java.util.Collections
 
 /**
@@ -106,6 +105,6 @@ object OfficeLauncher {
         return Runtime.getRuntime().exec(arrayOf(possibleBin, file.absolutePath))
       }
     }
-    throw IllegalStateException("No Office installation found...")
+    error("No Office installation found...")
   }
 }

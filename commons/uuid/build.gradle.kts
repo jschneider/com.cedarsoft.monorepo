@@ -21,6 +21,7 @@ kotlin {
       dependencies {
         api(Kotlin.stdlib.common)
         api(KotlinX.serialization.core)
+        api(project(Projects.open_commons_kotlin_lang))
         api(Libs.uuid)
       }
     }

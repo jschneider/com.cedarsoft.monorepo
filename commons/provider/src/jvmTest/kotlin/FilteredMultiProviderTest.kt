@@ -2,8 +2,6 @@ package com.cedarsoft.commons.provider
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.commons.provider.FilteredSizedProvider
-import com.cedarsoft.commons.provider.SizedProvider
 import org.junit.jupiter.api.Test
 
 /**

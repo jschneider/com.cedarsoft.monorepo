@@ -3,6 +3,7 @@ package com.cedarsoft.test.utils
 import assertk.*
 import assertk.assertions.*
 import assertk.assertions.support.*
+import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte1.other
 import java.io.File
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -68,3 +69,21 @@ fun Assert<DoubleArray>.isCloseTo(expected: DoubleArray, delta: Double): Unit = 
   }
 }
 
+
+/**
+ * Compares all lines - trimming each line
+ */
+fun Assert<String>.isEqualComparingLinesTrim(expected: String): Unit = given { actual ->
+  val actualLines = actual.getRelevantLines().toList()
+  val expectedLines = expected.getRelevantLines().toList()
+
+  if (actualLines == expectedLines) {
+    return
+  }
+
+  fail(expected, actual)
+}
+
+private fun String.getRelevantLines() = lineSequence()
+  .map { it.trim() }
+  .filter { it.isNotBlank() }

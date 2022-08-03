@@ -21,3 +21,10 @@ fun <T> checkEquals(first: T, second: T, lazyMessage: () -> Any) {
     "${lazyMessage()}: <$first> != <$second>"
   }
 }
+
+/**
+ * Suffix notation for checkNotNull
+ */
+inline fun <T> T?.checkNotNull(lazyMessage: () -> Any): T {
+  return checkNotNull(this, lazyMessage)
+}

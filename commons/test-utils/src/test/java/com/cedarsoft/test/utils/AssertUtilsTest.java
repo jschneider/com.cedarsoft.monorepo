@@ -88,15 +88,17 @@ public class AssertUtilsTest {
   @Test
   public void testJsonNotFormatable() throws Exception {
     try {
-      JsonUtils.assertJsonEquals( ( String ) null, null );
-      fail( "Where is the Exception" );
-    } catch ( ComparisonFailure e ) {
+      JsonUtils.assertJsonEquals((String) null, null);
+      fail("Where is the Exception");
+    }
+    catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("Empty actual json");
     }
     try {
-      JsonUtils.assertJsonEquals( "affase", "asdf" );
-      fail( "Where is the Exception" );
-    } catch ( ComparisonFailure e ) {
+      JsonUtils.assertJsonEquals("affase", "asdf");
+      fail("Where is the Exception");
+    }
+    catch (AssertionError e) {
       Assertions.assertThat(e.getMessage()).contains("JSON parsing error");
     }
   }

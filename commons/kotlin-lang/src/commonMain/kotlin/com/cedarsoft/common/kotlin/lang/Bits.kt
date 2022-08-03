@@ -4,9 +4,6 @@ package com.cedarsoft.common.kotlin.lang
  */
 
 
-import kotlin.rotateLeft as rotateLeftKotlin
-import kotlin.rotateRight as rotateRightKotlin
-
 /** Returns the bits in memory of [this] float */
 inline fun Float.reinterpretAsInt() = this.toBits()
 
@@ -176,3 +173,26 @@ fun Int.unsetBits(bits: Int) = this and bits.inv()
 
 /** Returns the integer [this] with the [bits] set */
 fun Int.setBits(bits: Int) = this or bits
+
+
+/**
+ * Returns true if the bit at the given index has been set
+ */
+inline fun Int.isBitSet(index: Int): Boolean {
+  return this and (1 shl index) != 0
+}
+
+/**
+ * Returns the *index* of the first one bit.
+ *
+ * Returns -1 if no bit has been set
+ */
+fun Int.findLowestOneBit(): Int {
+  32.fastFor { index ->
+    if (isBitSet(index)) {
+      return index
+    }
+  }
+
+  return -1
+}

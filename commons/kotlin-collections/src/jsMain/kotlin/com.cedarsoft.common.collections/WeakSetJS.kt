@@ -12,6 +12,7 @@ external class WeakSetJS {
  *
  * Note: only elements of type object are supported!
  */
+@Suppress("MatchingDeclarationName")
 actual class WeakSet<T> {
   private val backingSet = WeakSetJS()
 

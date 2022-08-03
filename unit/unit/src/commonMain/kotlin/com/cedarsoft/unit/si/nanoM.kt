@@ -11,6 +11,7 @@ import com.cedarsoft.unit.quantity.Length
 /**
  * Nano meter
  */
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

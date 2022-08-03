@@ -33,6 +33,7 @@ package com.cedarsoft.app
 
 import com.cedarsoft.app.xdg.WindowsUtil
 import com.cedarsoft.app.xdg.XdgUtil
+import com.cedarsoft.common.kotlin.lang.checkNotNull
 import java.io.File
 
 /**
@@ -67,7 +68,7 @@ interface ApplicationHomeAccess {
 object ApplicationHomeAccessFactory {
   @JvmStatic
   fun create(applicationName: String): ApplicationHomeAccess {
-    val osName = System.getProperty("os.name") ?: throw IllegalStateException("Property os.name not found")
+    val osName = System.getProperty("os.name").checkNotNull { "Property os.name not found" }
 
     if (osName.contains("Linux")) {
       return createLinuxHomeAccess(applicationName)

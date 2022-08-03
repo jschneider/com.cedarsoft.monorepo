@@ -6,6 +6,38 @@ import org.junit.jupiter.api.Test
 
 class StringExtKtTest {
   @Test
+  fun testDeleteTrailing() {
+    assertThat(buildString {
+      deleteSuffix("x")
+    }).isEqualTo("")
+
+    assertThat(buildString {
+      append("Hello World!x")
+      deleteSuffix("x")
+    }).isEqualTo("Hello World!")
+
+    assertThat(buildString {
+      append("Hello World!x!")
+      deleteSuffix("x")
+    }).isEqualTo("Hello World!x!")
+
+    assertThat(buildString {
+      append("Hello World!x!")
+      deleteSuffix("!x!")
+    }).isEqualTo("Hello World")
+  }
+
+  @Test
+  fun testSplit() {
+    assertThat("asdf".centerIndexOf(' ')).isEqualTo(-1)
+    assertThat("as df".centerIndexOf(' ')).isEqualTo(2)
+    assertThat("as dffsdfsdfsdf".centerIndexOf(' ')).isEqualTo(2)
+    assertThat("0123456789 dddddd".centerIndexOf(' ')).isEqualTo(10)
+    assertThat("0 23456789 dddddd".centerIndexOf(' ')).isEqualTo(10)
+    assertThat("0 23456789 dddd d".centerIndexOf(' ')).isEqualTo(10)
+  }
+
+  @Test
   fun testTakeIfNotBlank() {
     assertThat("asdf".nullIfBlank()).isEqualTo("asdf")
     assertThat((null as String?).nullIfBlank()).isNull()

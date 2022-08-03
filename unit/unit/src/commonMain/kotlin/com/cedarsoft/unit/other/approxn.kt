@@ -23,6 +23,7 @@ import com.cedarsoft.unit.Unit
  * Approximation of a value
  *
  */
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

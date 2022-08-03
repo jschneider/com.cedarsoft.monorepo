@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName", "SpellCheckingInspection")
+
 package com.cedarsoft.commons.kotlin.bytearray
 
 actual fun <T> _arrayfill(array: Array<T>, value: T, start: Int, end: Int): Unit = run { for (n in start until end) array[n] = value }

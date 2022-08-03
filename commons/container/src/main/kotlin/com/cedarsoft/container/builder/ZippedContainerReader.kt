@@ -26,7 +26,7 @@ class ZippedContainerReader(val inputStream: InputStream) : AutoCloseable {
   }
 
   fun nextEntry(consumer: EntryConsumer) {
-    val zipEntry: ZipArchiveEntry = zipIn.nextZipEntry ?: throw IllegalStateException("No more entries available")
+    val zipEntry: ZipArchiveEntry = checkNotNull(zipIn.nextZipEntry) { "No more entries available" }
     val descriptor = ContainerEntryDescriptor.fromPath(zipEntry.name)
 
     consumer(descriptor, NonClosableInputStream(zipIn))

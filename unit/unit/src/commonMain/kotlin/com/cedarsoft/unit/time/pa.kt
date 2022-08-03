@@ -38,6 +38,7 @@ import com.cedarsoft.unit.quantity.Time
   AnnotationTarget.FILE,
   AnnotationTarget.TYPEALIAS
 )
+@Suppress("ClassName")
 @MustBeDocumented
 @Unit
 @Time

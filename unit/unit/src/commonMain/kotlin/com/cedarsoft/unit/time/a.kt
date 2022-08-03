@@ -22,6 +22,7 @@ import com.cedarsoft.unit.other.Factor
 import com.cedarsoft.unit.quantity.Time
 import com.cedarsoft.unit.si.s
 
+@Suppress("ClassName")
 @Retention(AnnotationRetention.SOURCE)
 @Target(
   AnnotationTarget.CLASS,

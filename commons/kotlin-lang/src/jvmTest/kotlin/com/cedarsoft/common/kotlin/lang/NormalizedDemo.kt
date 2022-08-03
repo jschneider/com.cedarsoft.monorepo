@@ -7,9 +7,9 @@ import kotlin.math.roundToInt
 /**
  * This demo prints the generated random normal values
  */
-@RandomWithSeed(123)
 class NormalizedDemo {
   @Test
+  @RandomWithSeed(123)
   fun testNormalPlausibility() {
     val randomValuesCount = IntArray(2000) {
       randomNormal(100.0, 10.0).roundToInt()

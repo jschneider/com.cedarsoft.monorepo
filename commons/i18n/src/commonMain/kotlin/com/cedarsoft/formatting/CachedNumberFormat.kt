@@ -96,6 +96,7 @@ fun NumberFormat.cached(
 /**
  * Helper method to avoid unnecessary calls to cached
  */
+@Suppress("UNUSED_PARAMETER")
 @Deprecated("Do not cache a cached format", ReplaceWith("this"), level = DeprecationLevel.ERROR)
 fun CachedNumberFormat.cached(
   cacheSize: Int = 500,

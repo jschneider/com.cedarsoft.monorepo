@@ -31,6 +31,7 @@
 
 package com.cedarsoft.crypt
 
+import com.cedarsoft.common.kotlin.lang.checkNotNull
 import org.apache.commons.io.IOUtils
 import java.io.DataInputStream
 import java.net.URL
@@ -153,10 +154,7 @@ open class X509Support
    * @return the private key
    */
   fun getPrivateKey(): RSAPrivateKey {
-    if (privateKey == null) {
-      throw IllegalStateException("Private key not avaible")
-    }
-    return privateKey
+    return privateKey.checkNotNull { "Private key not available" }
   }
 
   companion object {

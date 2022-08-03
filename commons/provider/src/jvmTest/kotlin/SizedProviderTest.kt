@@ -2,9 +2,6 @@ package com.cedarsoft.commons.provider
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.commons.provider.SizedProvider
-import com.cedarsoft.commons.provider.SizedProvider1
-import com.cedarsoft.commons.provider.fastForEachIndexed
 import org.junit.jupiter.api.Test
 
 class SizedProviderTest {
