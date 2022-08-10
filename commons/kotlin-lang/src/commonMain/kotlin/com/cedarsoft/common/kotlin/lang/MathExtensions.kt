@@ -1,5 +1,6 @@
 package com.cedarsoft.common.kotlin.lang
 
+import com.cedarsoft.unit.other.Inclusive
 import com.cedarsoft.unit.other.deg
 import com.cedarsoft.unit.other.pct
 import com.cedarsoft.unit.si.rad
@@ -80,6 +81,17 @@ inline fun Double.isCloseTo(targetValue: Double, epsilon: Double = 0.0001): Bool
 
 fun Double.isNotCloseTo(targetValue: Double, epsilon: Double = 0.0001): Boolean {
   return !isCloseTo(targetValue, epsilon)
+}
+
+/**
+ * Returns true if this is close to the given value - or smaller than the given value
+ */
+fun Double.isCloseToOrLessThan(compareTo: @Inclusive Double, epsilon: Double = 0.0001): Boolean {
+  if (this <= compareTo) {
+    return true
+  }
+
+  return this.isCloseTo(compareTo, epsilon)
 }
 
 /**

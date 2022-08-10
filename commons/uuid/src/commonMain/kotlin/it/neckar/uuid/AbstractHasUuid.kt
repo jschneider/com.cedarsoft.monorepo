@@ -7,7 +7,8 @@ import kotlinx.serialization.Serializable
  * required by [HasUuid].
  */
 @Serializable
-abstract class AbstractHasUuid() : HasUuid {
+abstract class AbstractHasUuid : HasUuid {
+
   final override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (other == null || this::class != other::class) return false

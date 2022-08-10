@@ -22,7 +22,7 @@ fun RBuilder.floatingInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
+  placeholder: String? = null,
 
   editableStatus: EditableStatus = Editable,
 
@@ -35,7 +35,7 @@ fun RBuilder.floatingInputField(
     this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) }
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeHolder
+    this.placeHolder = placeholder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = config

@@ -78,6 +78,41 @@ fun <E : Enum<E>> RBuilder.selectEnum(
   }
 }
 
+fun <E : Enum<E>> RBuilder.selectEnum(
+  valueAndSetter: StateInstance<E>,
+  formatter: (E) -> String,
+  availableOptions: Array<E>,
+
+  fieldName: String,
+  title: String,
+
+  additionalOnChange: ((E) -> Unit)? = null,
+
+  editableStatus: EditableStatus,
+
+  config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
+) {
+  select(
+    selectedValue = valueAndSetter.value,
+    onChange = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      valueAndSetter.setter.invoke(it)
+      additionalOnChange?.invoke(it)
+    },
+    availableOptions = availableOptions.toList(),
+    formatter = formatter,
+    idProvider = {
+      //Do *NOT* use callback since this method may be called from another component within a condition
+      it.name
+    },
+    fieldName = fieldName,
+    title = title,
+    editableStatus = editableStatus,
+    config = config,
+  )
+}
+
+
 /**
  * A select field
  */

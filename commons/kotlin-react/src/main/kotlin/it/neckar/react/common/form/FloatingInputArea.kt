@@ -21,7 +21,7 @@ fun RBuilder.floatingInputArea(
   title: String,
   placeHolder: String? = null,
 
-  editableStatus: EditableStatus,
+  editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 

@@ -21,13 +21,18 @@ fun <T> RBuilder.floatingSelect(
   fieldName: String,
   title: String,
 
+  additionalOnChange: ((T) -> Unit)? = null,
+
   editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelect(
     selectedValue = valueAndSetter.value,
-    onChange = { valueAndSetter.setter.invoke(it) },
+    onChange = {
+      valueAndSetter.setter.invoke(it)
+      additionalOnChange?.invoke(it)
+    },
     availableOptions = availableOptions,
     formatter = formatter,
     idProvider = idProvider,
@@ -45,14 +50,22 @@ fun <T : HasUuid> RBuilder.floatingSelect(
   valueAndSetter: StateInstance<T>,
   formatter: (T) -> String,
   availableOptions: List<T>,
+
   fieldName: String,
   title: String,
-  editableStatus: EditableStatus,
+
+  additionalOnChange: ((T) -> Unit)? = null,
+
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
   floatingSelect(
     selectedValue = valueAndSetter.value,
-    onChange = { valueAndSetter.setter.invoke(it) },
+    onChange = {
+      valueAndSetter.setter.invoke(it)
+      additionalOnChange?.invoke(it)
+    },
     formatter = formatter,
     availableOptions = availableOptions,
     idProvider = {
@@ -75,6 +88,8 @@ fun <T> RBuilder.floatingSelectNullable(
   fieldName: String,
   title: String,
 
+  additionalOnChange: ((T?) -> Unit)? = null,
+
   editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
@@ -84,6 +99,7 @@ fun <T> RBuilder.floatingSelectNullable(
     onChange = {
       //Do *NOT* use callback since this method may be called from another component within a condition
       valueAndSetter.setter.invoke(it)
+      additionalOnChange?.invoke(it)
     },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
@@ -103,7 +119,9 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
   fieldName: String,
   title: String,
 
-  editableStatus: EditableStatus,
+  additionalOnChange: ((T?) -> Unit)? = null,
+
+  editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<SELECT>.() -> Unit)? = null,
 ) {
@@ -111,7 +129,8 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
     selectedValue = valueAndSetter.value,
     onChange = {
       //Do *NOT* use callback since this method may be called from another component within a condition
-      valueAndSetter.setter.invoke(it)
+      valueAndSetter.setter(it)
+      additionalOnChange?.invoke(it)
     },
     availableOptionsWithoutNull = availableOptionsWithoutNull,
     formatter = formatter,
@@ -126,10 +145,12 @@ fun <T : HasUuid> RBuilder.floatingSelectNullable(
 fun <E : Enum<E>> RBuilder.floatingSelectEnum(
   valueAndSetter: StateInstance<E>,
   formatter: (E) -> String,
-  availableOptions: List<E>,
+  availableOptions: Array<E>,
 
   fieldName: String,
   title: String,
+
+  additionalOnChange: ((E) -> Unit)? = null,
 
   editableStatus: EditableStatus,
 
@@ -140,8 +161,9 @@ fun <E : Enum<E>> RBuilder.floatingSelectEnum(
     onChange = {
       //Do *NOT* use callback since this method may be called from another component within a condition
       valueAndSetter.setter.invoke(it)
+      additionalOnChange?.invoke(it)
     },
-    availableOptions = availableOptions,
+    availableOptions = availableOptions.toList(),
     formatter = formatter,
     idProvider = {
       //Do *NOT* use callback since this method may be called from another component within a condition
@@ -175,10 +197,10 @@ fun <T> RBuilder.floatingSelect(
 
   attrs {
     this.selectedValue = selectedValue
-    this.onChange = onChange as OnChange<Any?>
-    this.formatter = formatter as (Any?) -> String
-    this.idProvider = idProvider as (Any?) -> String
-    this.availableOptions = availableOptions as List<Any>
+    this.onChange = onChange.unsafeCast<OnChange<Any?>>()
+    this.formatter = formatter.unsafeCast<(Any?) -> String>()
+    this.idProvider = idProvider.unsafeCast<(Any?) -> String>()
+    this.availableOptions = availableOptions.unsafeCast<List<Any>>()
     this.fieldName = fieldName
     this.title = title
     this.editableStatus = editableStatus
@@ -208,15 +230,15 @@ fun <T> RBuilder.floatingSelectNullable(
 ): Unit = child(floatingSelect) {
   attrs {
     this.selectedValue = selectedValue
-    this.onChange = onChange as OnChange<Any?>
-    this.formatter = formatter as (Any?) -> String
-    this.idProvider = idProvider as (Any?) -> String
+    this.onChange = onChange.unsafeCast<OnChange<Any?>>()
+    this.formatter = formatter.unsafeCast<(Any?) -> String>()
+    this.idProvider = idProvider.unsafeCast<(Any?) -> String>()
 
     val optionsIncludingNull = useMemo(availableOptionsWithoutNull) {
       availableOptionsWithoutNull.withNullAtFirst()
     }
 
-    this.availableOptions = optionsIncludingNull as List<Any>
+    this.availableOptions = optionsIncludingNull.unsafeCast<List<Any>>()
     this.fieldName = fieldName
     this.title = title
 
@@ -236,7 +258,7 @@ val floatingSelect: FC<FloatingSelectProps> = fc("floatingSelect") { props ->
   require(availableOptions.contains(selectedValue)) {
     buildString {
       append("selected value (${selectedValue.toString()}) must be in list of available options.\n")
-      append("Available options: \n")
+      append("Available options:\n")
       append(availableOptions.joinToString("\n"))
     }
   }

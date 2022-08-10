@@ -69,6 +69,19 @@ interface MultiProvider<in IndexContext, out T> {
     }
 
     /**
+     * Returns the values from the list - and the fallback for all indices that are not contained in the given list.
+     * Supports empty lists
+     */
+    @JvmStatic
+    fun <IndexContext, T> forListOr(values: List<T>, fallback: T): MultiProvider<IndexContext, T> {
+      return object : MultiProvider<IndexContext, T> {
+        override fun valueAt(index: Int): T {
+          return values.getOrNull(index) ?: fallback
+        }
+      }
+    }
+
+    /**
      * Returns the values of the list or throws an exception if there is no element in the list at the requested index.
      */
     @JvmStatic

@@ -26,6 +26,17 @@ data class FeatureFlags(
     return flags.joinToString(",") { it.key }
   }
 
+  /**
+   * Creates a new [FeatureFlags] instance with the additional feature flag
+   */
+  fun withAdditional(additionalFlag: FeatureFlag): FeatureFlags {
+    return FeatureFlags(this.flags + additionalFlag)
+  }
+
+  fun isEmpty(): Boolean {
+    return flags.isEmpty()
+  }
+
   companion object {
     /**
      * The HTTP header key used for feature flags

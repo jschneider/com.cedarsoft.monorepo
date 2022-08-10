@@ -21,6 +21,13 @@ object FeatureFlagsSupport {
       FeatureFlags.decodeFromString(it)
     } ?: FeatureFlags.empty
   }
+
+  /**
+   * Adds a feature flag
+   */
+  fun add(additionalFlag: FeatureFlag) {
+    this.flags = this.flags.withAdditional(additionalFlag)
+  }
 }
 
 /**
