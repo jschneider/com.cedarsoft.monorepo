@@ -3,10 +3,8 @@ package it.neckar.react.common.rest
 import it.neckar.common.featureflags.FeatureFlag
 import it.neckar.common.featureflags.FeatureFlagsSupport
 import it.neckar.react.common.*
+import it.neckar.react.common.toast.*
 import kotlinx.coroutines.*
-import toast.Toast
-import toast.ToastOptions
-import toast.ToastPosition
 
 /**
  *

@@ -38,11 +38,11 @@ internal class JavaDateTimeSerializerTest {
   @Test
   internal fun testDuration() {
     val obj = Duration.ofMinutes(77)
-    val json = Json.encodeToString(DurationSerializer, obj)
+    val json = Json.encodeToString(JavaTimeDurationSerializer, obj)
 
     JsonUtils.assertJsonEquals("\"PT1H17M\"", json)
 
-    val parsed = Json.decodeFromString(DurationSerializer, json)
+    val parsed = Json.decodeFromString(JavaTimeDurationSerializer, json)
     assertThat(parsed).isEqualTo(obj)
   }
 

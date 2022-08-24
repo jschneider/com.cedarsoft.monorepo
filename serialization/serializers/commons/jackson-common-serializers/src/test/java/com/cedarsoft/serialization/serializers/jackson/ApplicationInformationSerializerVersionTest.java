@@ -40,13 +40,14 @@ import com.cedarsoft.serialization.test.utils.AbstractJsonVersionTest2;
 import com.cedarsoft.serialization.test.utils.VersionEntry;
 import com.cedarsoft.version.Version;
 
+@SuppressWarnings("JUnitTestCaseWithNoTests")
 public class ApplicationInformationSerializerVersionTest extends AbstractJsonVersionTest2<ApplicationInformation> {
   public static final VersionEntry ENTRY1 = ApplicationInformationSerializerVersionTest.create(Version.valueOf(1, 0, 0 ), ApplicationInformationSerializerVersionTest.class.getResource("Application_1.0.0_1.json" ) );
 
   @Nonnull
   @Override
-  protected ApplicationSerializer getSerializer() throws Exception {
-    return new ApplicationSerializer( new VersionSerializer() );
+  protected ApplicationSerializer getSerializer() {
+    return new ApplicationSerializer(new VersionSerializer());
   }
 
   @Override

@@ -31,21 +31,20 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
+import java.awt.Color;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
 import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.awt.Color;
-import java.io.IOException;
 
 /**
  *
@@ -67,23 +66,23 @@ public class ColorSerializer extends AbstractJacksonSerializer<Color> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Color objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeNumberField(PROPERTY_RED, objectToSerialize.getRed() );
-    serializeTo.writeNumberField(PROPERTY_GREEN, objectToSerialize.getGreen() );
-    serializeTo.writeNumberField(PROPERTY_BLUE, objectToSerialize.getBlue() );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull Color objectToSerialize, @Nonnull Version formatVersion) throws IOException {
+    serializeTo.writeNumberField(PROPERTY_RED, objectToSerialize.getRed());
+    serializeTo.writeNumberField(PROPERTY_GREEN, objectToSerialize.getGreen());
+    serializeTo.writeNumberField(PROPERTY_BLUE, objectToSerialize.getBlue());
   }
 
   @Nonnull
   @Override
-  public Color deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    assert isVersionReadable( formatVersion );
+  public Color deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+    assert isVersionReadable(formatVersion);
     //red
-    JacksonParserWrapper parserWrapper = new JacksonParserWrapper( deserializeFrom );
+    JacksonParserWrapper parserWrapper = new JacksonParserWrapper(deserializeFrom);
     parserWrapper.nextToken();
-    parserWrapper.verifyCurrentToken( JsonToken.FIELD_NAME );
+    parserWrapper.verifyCurrentToken(JsonToken.FIELD_NAME);
     String currentName2 = parserWrapper.getCurrentName();
 
-    if ( !PROPERTY_RED.equals( currentName2 ) ) {
+    if (!PROPERTY_RED.equals(currentName2)) {
       throw new JsonParseException(parserWrapper.getParser(), "Invalid field. Expected <" + PROPERTY_RED + "> but was <" + currentName2 + ">", parserWrapper.getCurrentLocation());
     }
     parserWrapper.nextToken();

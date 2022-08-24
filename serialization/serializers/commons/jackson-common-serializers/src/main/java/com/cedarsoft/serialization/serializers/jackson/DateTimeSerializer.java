@@ -31,21 +31,21 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.UnsupportedVersionException;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import java.io.IOException;
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
+import com.cedarsoft.version.UnsupportedVersionException;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
 
 /**
  *
@@ -57,25 +57,25 @@ public class DateTimeSerializer extends AbstractJacksonSerializer<DateTime> {
   }
 
   @Override
-  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull DateTime objectToSerialize, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    serializeTo.writeString( createFormatter().print(objectToSerialize) );
+  public void serialize(@Nonnull JsonGenerator serializeTo, @Nonnull DateTime objectToSerialize, @Nonnull Version formatVersion) throws IOException {
+    serializeTo.writeString(createFormatter().print(objectToSerialize));
   }
 
   @Nonnull
   @Override
-  public DateTime deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException, JsonProcessingException {
-    assert isVersionReadable( formatVersion );
+  public DateTime deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws UnsupportedVersionException, IOException {
+    assert isVersionReadable(formatVersion);
     String text = deserializeFrom.getText();
 
-    if ( formatVersion.equals( Version.valueOf( 0, 9, 0 ) ) ) {
-      return new DateTime( Long.parseLong( text ) );
+    if (formatVersion.equals(Version.valueOf(0, 9, 0))) {
+      return new DateTime(Long.parseLong(text));
     }
 
-    if ( formatVersion.equals( Version.valueOf( 1, 0, 0 ) ) ) {
-      return createFormatter().withOffsetParsed().parseDateTime( text );
+    if (formatVersion.equals(Version.valueOf(1, 0, 0))) {
+      return createFormatter().withOffsetParsed().parseDateTime(text);
     }
 
-    throw new UnsupportedVersionException( formatVersion, getFormatVersionRange() );
+    throw new UnsupportedVersionException(formatVersion, getFormatVersionRange());
   }
 
   @Override

@@ -35,9 +35,9 @@ dependencies {
   api(Libs.woodstox_core_asl)
   api(Libs.commons_lang3)
   api(commons_io)
-  api(Libs.mockito_core)
-  api(Libs.easymockclassextension)
-  api(Libs.easymock)
+
+  api(Libs.mockk)
+
   api(Libs.assertj_core)
   api(Libs.fest_reflect)
   api(jackson_databind)

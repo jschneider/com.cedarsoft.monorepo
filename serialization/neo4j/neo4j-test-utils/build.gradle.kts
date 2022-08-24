@@ -20,9 +20,6 @@ dependencies {
   api(Libs.neo4j_kernel)
   api(Libs.it_test_support)
   //api("org.neo4j:neo4j-shell")
-  api(Libs.mockito_core)
-  api(Libs.easymockclassextension)
-  api(Libs.easymock)
   api(Libs.assertj_core)
   api(Libs.fest_reflect)
 

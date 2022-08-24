@@ -31,18 +31,18 @@
 
 package com.cedarsoft.serialization.serializers.jackson;
 
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionException;
-import com.cedarsoft.version.VersionRange;
-import com.cedarsoft.file.BaseName;
-import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
-import java.io.IOException;
+
+import com.cedarsoft.file.BaseName;
+import com.cedarsoft.serialization.jackson.AbstractJacksonSerializer;
+import com.cedarsoft.version.Version;
+import com.cedarsoft.version.VersionRange;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class BaseNameSerializer extends AbstractJacksonSerializer<BaseName> {
   @Inject
@@ -58,8 +58,8 @@ public class BaseNameSerializer extends AbstractJacksonSerializer<BaseName> {
 
   @Nonnull
   @Override
-  public BaseName deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws VersionException, IOException, JsonProcessingException {
-    return new BaseName( deserializeFrom.getText() );
+  public BaseName deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+    return new BaseName(deserializeFrom.getText());
   }
 
   @Override

@@ -1,9 +1,7 @@
 package it.neckar.react.common
 
+import it.neckar.react.common.toast.*
 import kotlinx.coroutines.*
-import toast.Toast
-import toast.ToastOptions
-import toast.ToastPosition
 
 /**
  * App Scope - should be used as base scope

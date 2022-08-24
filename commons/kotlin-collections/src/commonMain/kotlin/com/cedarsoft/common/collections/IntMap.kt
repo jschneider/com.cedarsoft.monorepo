@@ -4,15 +4,8 @@ package com.cedarsoft.common.collections
 
 import com.cedarsoft.common.collections.*
 import com.cedarsoft.common.kotlin.lang.fastCastTo
-import kotlin.collections.Iterable
-import kotlin.collections.Map
-import kotlin.collections.associateWith
 import kotlin.collections.component1
 import kotlin.collections.component2
-import kotlin.collections.copyOf
-import kotlin.collections.indices
-import kotlin.collections.iterator
-import kotlin.contracts.ExperimentalContracts
 import kotlin.math.max
 
 private fun _mask(value: Int, mask: Int) = (value + ((value ushr 8) and 0xFF) + ((value ushr 16) and 0xFF) + ((value shr 24) and 0xFF)) and mask
@@ -242,7 +235,6 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
     return EOF
   }
 
-  @OptIn(ExperimentalContracts::class)
   inline fun fastKeyForEach(callback: (key: Int) -> Unit) {
     var index: Int = if (hasZero) ZERO_INDEX else nextNonEmptyIndex(_keys, 0)
     while (index != EOF) {
@@ -264,7 +256,6 @@ class IntMap<T> internal constructor(private var nbits: Int, private val loadFac
     fastKeyForEach { callback(it, this[it]) }
   }
 
-  @OptIn(ExperimentalContracts::class)
   inline fun fastValueForEach(callback: (value: T) -> Unit): Unit {
     fastKeyForEach { callback(this[it]!!) }
   }

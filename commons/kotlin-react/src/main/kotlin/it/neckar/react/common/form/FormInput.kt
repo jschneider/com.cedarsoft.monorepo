@@ -64,7 +64,7 @@ fun RBuilder.checkbox(
    */
   title: String,
 
-  editableStatus: EditableStatus,
+  editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {

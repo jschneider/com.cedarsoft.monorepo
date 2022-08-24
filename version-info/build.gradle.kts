@@ -96,7 +96,6 @@ kotlin {
         implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
 
         implementation(commons_io)
-        implementation(Libs.mockito_core)
         implementation(Libs.assertj_core)
         implementation(Libs.commons_math3)
         implementation(Libs.mockito_kotlin)

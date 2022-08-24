@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.javafx.style
 
+import com.cedarsoft.common.resources.getResourceSafe
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
@@ -21,7 +22,7 @@ class StyleDemo : Application() {
     root.add(Button("Hello World"))
 
     primaryStage.scene = Scene(root)
-    primaryStage.scene.stylesheets.add(javaClass.getResource("nice-style.css").toExternalForm())
+    primaryStage.scene.stylesheets.add(javaClass.getResourceSafe("nice-style.css").toExternalForm())
 
     primaryStage.show()
   }

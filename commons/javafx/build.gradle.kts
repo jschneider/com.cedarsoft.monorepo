@@ -22,6 +22,7 @@ dependencies {
 
   api(project(Projects.open_commons_concurrent))
   api(project(Projects.open_commons_disposable))
+  api(project(Projects.open_commons_kotlin_collections))
   api(project(Projects.open_commons_i18n))
   api(project(Projects.open_unit_unit))
 

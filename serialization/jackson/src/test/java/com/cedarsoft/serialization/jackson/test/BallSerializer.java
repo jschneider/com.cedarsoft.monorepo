@@ -31,6 +31,10 @@
 
 package com.cedarsoft.serialization.jackson.test;
 
+import java.io.IOException;
+
+import javax.annotation.Nonnull;
+
 import com.cedarsoft.serialization.jackson.AbstractDelegatingJacksonSerializer;
 import com.cedarsoft.serialization.jackson.AbstractJacksonSerializingStrategy;
 import com.cedarsoft.serialization.jackson.JacksonParserWrapper;
@@ -39,9 +43,6 @@ import com.cedarsoft.version.VersionException;
 import com.cedarsoft.version.VersionRange;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-
-import javax.annotation.Nonnull;
-import java.io.IOException;
 
 /**
  */
@@ -112,17 +113,18 @@ public class BallSerializer extends AbstractDelegatingJacksonSerializer<Ball> {
 
     @Nonnull
     @Override
-    public Ball.BasketBall deserialize( @Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion ) throws IOException, VersionException {
-      verifyVersionReadable( formatVersion );
+    public Ball.BasketBall deserialize(@Nonnull JsonParser deserializeFrom, @Nonnull Version formatVersion) throws IOException {
+      verifyVersionReadable(formatVersion);
 
-      JacksonParserWrapper parser = new JacksonParserWrapper( deserializeFrom );
+      JacksonParserWrapper parser = new JacksonParserWrapper(deserializeFrom);
 
       String theId;
-      if ( formatVersion.equals( Version.valueOf( 2, 0, 0 ) ) ) {
-        parser.nextFieldValue( FIELD_NAME_DEFAULT_TEXT );
+      if (formatVersion.equals(Version.valueOf(2, 0, 0))) {
+        parser.nextFieldValue(FIELD_NAME_DEFAULT_TEXT);
         theId = parser.getText();
-      } else {
-        parser.nextFieldValue( "theId" );
+      }
+      else {
+        parser.nextFieldValue("theId");
         theId = parser.getText();
       }
       parser.closeObject();

@@ -37,5 +37,10 @@ package com.cedarsoft.unit.other
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-annotation class Relative {
+annotation class Relative(
+  /**
+   * Describers what this value is relative to
+   */
+  val to: String = "",
+) {
 }

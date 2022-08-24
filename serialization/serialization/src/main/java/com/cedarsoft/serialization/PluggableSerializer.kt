@@ -31,8 +31,8 @@
 package com.cedarsoft.serialization
 
 import com.cedarsoft.version.Version
+import com.cedarsoft.version.VersionException
 import java.io.IOException
-import javax.annotation.Nonnull
 
 /**
  * This is a special serializer that is able to serialize an object to a given element.
@@ -55,7 +55,7 @@ interface PluggableSerializer<T : Any, S : Any, D : Any, O : Any, I : Any> : Ser
    * @throws java.io.IOException if there is an io problem
    */
   @Throws(IOException::class, SerializationException::class, Exception::class)
-  fun serialize(@Nonnull serializeTo: S, @Nonnull objectToSerialize: T, @Nonnull formatVersion: Version)
+  fun serialize(serializeTo: S, objectToSerialize: T, formatVersion: Version)
 
   /**
    * Deserializes the object from the given document
@@ -67,7 +67,6 @@ interface PluggableSerializer<T : Any, S : Any, D : Any, O : Any, I : Any> : Ser
    *
    * @throws java.io.IOException if there is an io problem
    */
-  @Nonnull
-  @Throws(IOException::class, SerializationException::class, Exception::class)
-  fun deserialize(@Nonnull deserializeFrom: D, @Nonnull formatVersion: Version): T
+  @Throws(IOException::class, SerializationException::class, VersionException::class, Exception::class)
+  fun deserialize(deserializeFrom: D, formatVersion: Version): T
 }

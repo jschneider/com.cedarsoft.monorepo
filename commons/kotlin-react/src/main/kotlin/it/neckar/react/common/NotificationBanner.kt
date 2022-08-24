@@ -26,7 +26,8 @@ fun RBuilder.notificationBanner(
 }
 
 val notificationBanner: FC<NotificationBannerProps> = fc("notificationBanner") { props ->
-  div(classes = "alert alert-dismissible") {
+
+div(classes = "alert alert-dismissible") {
     attrs {
       when (props.bannerType) {
         BannerType.Info -> addClass("alert-info")
@@ -64,6 +65,7 @@ val notificationBanner: FC<NotificationBannerProps> = fc("notificationBanner") {
 
     props.block(this)
   }
+
 }
 
 enum class BannerType {

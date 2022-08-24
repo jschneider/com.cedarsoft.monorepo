@@ -37,15 +37,10 @@ kotlin {
         api(project(Projects.dependencies_sets_jvm_kotlin))
         api(project(Projects.open_annotations))
 
-
         api(project(Projects.open_commons_concurrent))
-        api(project(Projects.open_commons_guava))
 
-        api(Libs.guava)
         api(KotlinX.coroutines.jdk8)
         api(KotlinX.serialization.json)
-        api(KotlinX.serialization.protobuf)
-
       }
     }
 
@@ -54,6 +49,7 @@ kotlin {
         implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
         implementation(project(Projects.open_commons_commons))
+        implementation(project(Projects.open_commons_kotlinx_serialization_test_utils))
 
         implementation(Libs.awaitility)
         implementation(Libs.logback_classic)

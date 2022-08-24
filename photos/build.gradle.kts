@@ -31,7 +31,5 @@ dependencies {
   // Test Deps
   //
   testImplementation(Libs.commons_lang3)
-  testImplementation(Libs.easymock)
-  testImplementation(Libs.mockito_core)
   testImplementation(project(Projects.open_commons_test_utils))
 }

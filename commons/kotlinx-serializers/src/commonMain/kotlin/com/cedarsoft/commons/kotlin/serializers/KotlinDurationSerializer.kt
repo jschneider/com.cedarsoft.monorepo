@@ -17,10 +17,11 @@ import kotlin.time.Duration
  * @file: UseSerializers(KotlinDurationSerializer::class)
  * ```
  */
+@Deprecated("Replace with (newly) provided kotlinx.serializer")
 @Serializer(forClass = Duration::class)
 object KotlinDurationSerializer : KSerializer<Duration> {
   override val descriptor: SerialDescriptor
-    get() = PrimitiveSerialDescriptor(Duration::class.simpleName!!, PrimitiveKind.LONG)
+    get() = PrimitiveSerialDescriptor("Duration.custom", PrimitiveKind.LONG)
 
   override fun serialize(encoder: Encoder, value: Duration) {
     encoder.encodeLong(value.inWholeNanoseconds)

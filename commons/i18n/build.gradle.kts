@@ -53,7 +53,6 @@ kotlin {
         implementation(project(Projects.open_commons_kotlinx_serialization_test_utils))
 
         implementation(commons_io)
-        implementation(Libs.mockito_core)
         implementation(Libs.assertj_core)
         implementation(Libs.commons_math3)
         implementation(Libs.mockito_kotlin)

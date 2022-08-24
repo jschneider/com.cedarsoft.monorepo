@@ -1,5 +1,6 @@
 package com.cedarsoft.commons.javafx
 
+import com.cedarsoft.common.resources.getResourceSafe
 import javafx.beans.binding.Bindings
 import javafx.event.EventHandler
 import javafx.scene.Cursor
@@ -32,7 +33,7 @@ class InfoPopup private constructor(
 
     val root = createContent(content, maxWidth)
 
-    root.stylesheets.add(javaClass.getResource("InfoPopupService.css").toExternalForm())
+    root.stylesheets.add(javaClass.getResourceSafe("InfoPopupService.css").toExternalForm())
 
     root.styleClass.add("sick-uiglv2")
     root.styleClass.add("info-popup")
@@ -51,7 +52,7 @@ class InfoPopup private constructor(
     /**
      * The info icon
      */
-    private val infoIcon = InfoPopup::class.java.getResource("info_16.png").toExternalForm()
+    private val infoIcon = InfoPopup::class.java.getResourceSafe("info_16.png").toExternalForm()
 
     /**
      * Creates the content
