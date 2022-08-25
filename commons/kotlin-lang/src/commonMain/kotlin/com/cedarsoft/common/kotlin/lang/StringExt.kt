@@ -331,7 +331,7 @@ fun String?.ifBlank(defaultValue: String): String {
  */
 fun String?.nullIfEmpty(): String? {
   return this.takeIf {
-    it != null && it.isNotEmpty()
+    !it.isNullOrEmpty()
   }
 }
 
@@ -340,7 +340,7 @@ fun String?.nullIfEmpty(): String? {
  */
 fun String?.nullIfBlank(): String? {
   return this.takeIf {
-    it != null && it.isNotBlank()
+    !it.isNullOrBlank()
   }
 }
 

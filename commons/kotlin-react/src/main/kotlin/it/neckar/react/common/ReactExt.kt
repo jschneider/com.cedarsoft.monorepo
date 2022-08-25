@@ -163,6 +163,19 @@ fun StateInstance<Int>.asOnChangeForInt(numberConstraint: NumberConstraint): (St
   }
 }
 
+fun StateInstance<Int?>.asOnChangeForInt(numberConstraint: NumberConstraint): (String?) -> Unit {
+  return useCallback(setter, numberConstraint) {
+    if (it.isNullOrEmpty()) {
+      setter(null)
+      return@useCallback
+    }
+
+    it.toIntOrNull()?.let { parsedInt ->
+      setter(numberConstraint.constraint(parsedInt))
+    }
+  }
+}
+
 /**
  * Converts a setter to an onChange listener.
  * Does not set values that can not be parsed!

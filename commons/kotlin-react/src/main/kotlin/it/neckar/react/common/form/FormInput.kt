@@ -158,7 +158,7 @@ fun RBuilder.inputField(
   /**
    * The (optional) placeholder - if no placeholder is provided, the title is used
    */
-  placeHolder: String? = null,
+  placeholder: String? = null,
 
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
@@ -168,7 +168,7 @@ fun RBuilder.inputField(
     onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
-    placeHolder = placeHolder,
+    placeholder = placeholder,
     config = config,
   )
 }
@@ -234,7 +234,7 @@ fun RBuilder.doubleInput(
   fieldName: String,
   title: String,
   numberOfDecimals: Int = 2,
-  placeHolder: String? = null,
+  placeholder: String? = null,
   numberConstraint: NumberConstraint,
 
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
@@ -244,7 +244,7 @@ fun RBuilder.doubleInput(
     onChange = valueAndSetter.asOnChangeForDouble(numberConstraint),
     fieldName = fieldName,
     title = title,
-    placeHolder = placeHolder,
+    placeholder = placeholder,
   ) {
     attrs {
       type = InputType.number
@@ -262,7 +262,7 @@ fun RBuilder.passwordField(
   valueAndSetter: StateInstance<String>,
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
+  placeholder: String? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   inputField(
@@ -270,7 +270,7 @@ fun RBuilder.passwordField(
     onChange = { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
-    placeHolder = placeHolder,
+    placeholder = placeholder,
     config = {
       attrs {
         type = InputType.password
@@ -304,7 +304,7 @@ fun RBuilder.inputField(
    * The (optional) placeholder.
    * If no placeholder is present, the title is used instead
    */
-  placeHolder: String? = null,
+  placeholder: String? = null,
 
   /**
    * The classes for the input field
@@ -321,9 +321,6 @@ fun RBuilder.inputField(
   ensureSameCallback(onChange, fieldName)
 
   attrs {
-    requireNotNull(value) {
-      "Value must not be null but was <$value>"
-    }
     require(value != undefined) {
       "Value must not be undefined but was <$value>"
     }
@@ -332,7 +329,7 @@ fun RBuilder.inputField(
     this.onChange = onChange
     this.title = title
     this.fieldName = fieldName
-    this.placeHolder = placeHolder
+    this.placeholder = placeholder
     this.classes = classes
     this.config = config as ((RDOMBuilder<*>) -> Unit)?
   }
@@ -342,6 +339,7 @@ fun RBuilder.inputField(
  * an input field
  */
 val inputField: FC<TextInputProps> = fc("inputField") { props ->
+
   input(name = props.fieldName, classes = props.classes) {
     //Contains the string from the model.
     //This state is used to identify changes to the model
@@ -363,7 +361,7 @@ val inputField: FC<TextInputProps> = fc("inputField") { props ->
     }
 
     attrs {
-      placeholder = props.placeHolder ?: props.title
+      placeholder = props.placeholder ?: props.title
       title = props.title
 
       //Always assign the value in element
@@ -383,6 +381,7 @@ val inputField: FC<TextInputProps> = fc("inputField") { props ->
 
     props.config?.invoke(this)
   }
+
 }
 
 /**
@@ -412,7 +411,7 @@ fun RBuilder.inputArea(
       this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) }
       this.title = title
       this.fieldName = fieldName
-      this.placeHolder = placeHolder
+      this.placeholder = placeHolder
       this.config = config as ((RDOMBuilder<*>) -> Unit)?
     }
   }
@@ -426,7 +425,7 @@ val inputArea: FC<TextInputProps> = fc("inputArea") { props ->
     attrs {
       name = props.fieldName
 
-      placeholder = props.placeHolder ?: props.title
+      placeholder = props.placeholder ?: props.title
       title = props.title
       value = props.value
 
@@ -478,13 +477,163 @@ external interface TextInputProps : Props {
    * The (optional) placeholder.
    * If no placeholder is set, the title is used instead
    */
-  var placeHolder: String?
+  var placeholder: String?
 
   /**
    * The configuration for the input field
    */
   var config: ((RDOMBuilder<*>) -> Unit)?
 }
+
+
+/**
+ * Creates the input field
+ */
+fun RBuilder.nullableInputField(
+  /**
+   * The current value
+   */
+  value: String?,
+  /**
+   * Is called on change
+   */
+  onChange: OnChange<String?>,
+  /**
+   * The field name
+   */
+  fieldName: String,
+  /**
+   * The title
+   */
+  title: String,
+
+  /**
+   * The (optional) placeholder.
+   * If no placeholder is present, the title is used instead
+   */
+  placeholder: String?,
+
+  /**
+   * The classes for the input field
+   */
+  classes: String = "form-control",
+
+  /**
+   * Configuration for the input field
+   */
+  config: (RDOMBuilder<INPUT>.() -> Unit)?,
+
+  ): Unit = child(nullableInputField) {
+
+  ensureSameCallback(onChange, fieldName)
+
+  attrs {
+    require(value != undefined) {
+      "Value must not be undefined but was <$value>"
+    }
+
+    this.value = value
+    this.onChange = onChange
+    this.title = title
+    this.fieldName = fieldName
+    this.placeholder = placeholder
+    this.classes = classes
+    this.config = config as ((RDOMBuilder<*>) -> Unit)?
+  }
+}
+
+/**
+ * an input field
+ */
+val nullableInputField: FC<NullableTextInputProps> = fc("nullableInputField") { props ->
+
+  input(name = props.fieldName, classes = props.classes) {
+    //Contains the string from the model.
+    //This state is used to identify changes to the model
+    //The "valueInElement" is only updated if the model has changed
+    val valueFromModel = useState(props.value)
+
+    //Contains the string that is stored within the element
+    //Is updated by user interactions
+    //Is only updated from the model, if the model changes
+    val valueInElement = useState(props.value)
+
+    //verify if there is a new value in the model
+    if (valueFromModel.value != props.value) {
+      //Remember the change to be able to compare later
+      valueFromModel.setter(props.value)
+
+      //Update the value in the element!
+      valueInElement.setter(props.value)
+    }
+
+    attrs {
+      placeholder = props.placeholder ?: props.title
+      title = props.title
+
+      //Always assign the value in element
+      valueInElement.value?.let {
+        value = it
+      }
+
+      val onChange = props.onChange
+      onChangeFunction = useCallback(onChange) {
+        val updatedValue = (it.target as HTMLInputElement).value
+
+        //Automatically update the value in element
+        valueInElement.setter(updatedValue)
+
+        //Notify the change listener - this *may* result in model changes, but sometimes does *not*
+        onChange(updatedValue)
+      }
+    }
+
+    props.config?.invoke(this)
+  }
+
+}
+
+/**
+ * Properties for nullable text input
+ */
+external interface NullableTextInputProps : Props {
+  /**
+   * The (optional) classes
+   */
+  var classes: String?
+
+  /**
+   * The initial value for the field
+   */
+  var value: String?
+
+  /**
+   * The name of the field
+   */
+  var fieldName: String
+
+  /**
+   * The setter that is called when the value has changed
+   */
+  var onChange: OnChange<String?>
+
+  /**
+   * The title
+   */
+  var title: String
+
+  /**
+   * The (optional) placeholder.
+   * If no placeholder is set, the title is used instead
+   */
+  var placeholder: String?
+
+  /**
+   * The configuration for the input field
+   */
+  var config: ((RDOMBuilder<*>) -> Unit)?
+}
+
 
 /**
  * Configure the input for the given number constraint
@@ -502,14 +651,14 @@ fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
 /**
  * Sets the min value to "0"
  */
-inline fun INPUT.zeroOrPositiveValues() {
+fun INPUT.zeroOrPositiveValues() {
   min = "0"
 }
 
 /**
  * Only support positive values
  */
-inline fun RDOMBuilder<INPUT>.zeroOrPositiveValues() {
+fun RDOMBuilder<INPUT>.zeroOrPositiveValues() {
   attrs {
     zeroOrPositiveValues()
   }

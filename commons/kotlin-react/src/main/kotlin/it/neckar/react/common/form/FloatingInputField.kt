@@ -1,5 +1,6 @@
 package it.neckar.react.common.form
 
+import com.cedarsoft.common.kotlin.lang.nullIfBlank
 import com.cedarsoft.formatting.format
 import com.cedarsoft.i18n.I18nConfiguration
 import it.neckar.react.common.*
@@ -22,7 +23,6 @@ fun RBuilder.floatingInputField(
 
   fieldName: String,
   title: String,
-  placeholder: String? = null,
 
   editableStatus: EditableStatus = Editable,
 
@@ -35,7 +35,6 @@ fun RBuilder.floatingInputField(
     this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) }
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeholder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = config
@@ -51,7 +50,6 @@ fun RBuilder.floatingReadOnlyInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
 
   editableStatus: EditableStatus,
 
@@ -64,7 +62,6 @@ fun RBuilder.floatingReadOnlyInputField(
     this.onChange = useCallback { throw UnsupportedOperationException("can not change value for read only input field") }
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeHolder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
@@ -85,7 +82,6 @@ fun RBuilder.floatingIntInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
   numberConstraint: NumberConstraint = Unconstraint,
 
   editableStatus: EditableStatus,
@@ -99,7 +95,6 @@ fun RBuilder.floatingIntInputField(
     this.onChange = valueAndSetter.asOnChangeForInt(numberConstraint)
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeHolder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
@@ -124,7 +119,6 @@ fun RBuilder.floatingIntInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
   numberConstraint: NumberConstraint = Unconstraint,
 
   editableStatus: EditableStatus,
@@ -142,13 +136,47 @@ fun RBuilder.floatingIntInputField(
     }
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeHolder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
       it.attrs {
         type = InputType.number
       }
+      it.configure(numberConstraint)
+      config?.invoke(it)
+    }
+  }
+}
+
+fun RBuilder.nullableFloatingIntInputField(
+  /**
+   * The value and setter for the value.
+   * Must be created with a useState hook
+   */
+  valueAndSetter: StateInstance<Int?>,
+
+  fieldName: String,
+  title: String,
+  numberConstraint: NumberConstraint = Unconstraint,
+
+  editableStatus: EditableStatus,
+
+  divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
+  config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+
+  ): Unit = child(nullableFloatingInputField) {
+  attrs {
+    this.value = valueAndSetter.value.toString().nullIfBlank()
+    this.onChange = valueAndSetter.asOnChangeForInt(numberConstraint)
+    this.fieldName = fieldName
+    this.title = title
+    this.editableStatus = editableStatus
+    this.divConfig = divConfig
+    this.config = {
+      it.attrs {
+        type = InputType.number
+      }
+
       it.configure(numberConstraint)
       config?.invoke(it)
     }
@@ -164,7 +192,6 @@ fun RBuilder.floatingDoubleInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String? = null,
 
   numberOfDecimals: Int = 2,
 
@@ -181,7 +208,6 @@ fun RBuilder.floatingDoubleInputField(
     onChange = valueAndSetter.asOnChangeForDouble(numberConstraint),//useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) },
     fieldName = fieldName,
     title = title,
-    placeHolder = placeHolder,
     numberOfDecimals = numberOfDecimals,
     editableStatus = editableStatus,
     divConfig = divConfig,
@@ -198,7 +224,6 @@ fun RBuilder.floatingDoubleInputField(
 
   fieldName: String,
   title: String,
-  placeHolder: String?,
 
   numberOfDecimals: Int = 2,
 
@@ -216,7 +241,6 @@ fun RBuilder.floatingDoubleInputField(
     }
     this.fieldName = fieldName
     this.title = title
-    this.placeHolder = placeHolder
     this.editableStatus = editableStatus
     this.divConfig = divConfig
     this.config = {
@@ -228,7 +252,9 @@ fun RBuilder.floatingDoubleInputField(
   }
 }
 
+
 val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") { props ->
+
   div("form-floating") {
     attrs {
       props.divConfig?.invoke(this@div)
@@ -239,12 +265,32 @@ val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") {
       onChange = props.onChange,
       fieldName = props.fieldName,
       title = props.title,
-      placeHolder = props.placeHolder,
       editableStatus = props.editableStatus,
       config = props.config,
     )
   }
+
 }
+
+val nullableFloatingInputField: FC<NullableFloatingInputFieldProps> = fc("nullableFloatingInputField") { props ->
+
+  div("form-floating") {
+    attrs {
+      props.divConfig?.invoke(this@div)
+    }
+
+    nullableInputFieldAndLabel(
+      value = props.value,
+      onChange = props.onChange,
+      fieldName = props.fieldName,
+      title = props.title,
+      editableStatus = props.editableStatus,
+      config = props.config,
+    )
+  }
+
+}
+
 
 external interface FloatingInputFieldProps : Props {
   /**
@@ -272,10 +318,44 @@ external interface FloatingInputFieldProps : Props {
    */
   var title: String
 
+  var editableStatus: EditableStatus
+
   /**
-   * The (optional) placeholder - if no placeholder is provided, the title is used
+   * Config for the input field
    */
-  var placeHolder: String?
+  var config: ((RDOMBuilder<INPUT>) -> Unit)?
+
+  /**
+   * Config for the div
+   */
+  var divConfig: ((RDOMBuilder<DIV>) -> Unit)?
+}
+
+external interface NullableFloatingInputFieldProps : Props {
+  /**
+   * The unique ID that is used to connect input field and label
+   */
+  var id: String
+
+  /**
+   * The current value
+   */
+  var value: String?
+
+  /**
+   * Is called on change
+   */
+  var onChange: OnChange<String?>
+
+  /**
+   * The name of the field
+   */
+  var fieldName: String
+
+  /**
+   * The title that is shown to the user
+   */
+  var title: String
 
   var editableStatus: EditableStatus
 

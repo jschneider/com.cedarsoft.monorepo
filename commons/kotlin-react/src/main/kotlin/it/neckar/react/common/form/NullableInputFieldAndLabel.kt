@@ -7,26 +7,26 @@ import kotlinx.html.id
 import react.*
 import react.dom.*
 
-fun RBuilder.inputFieldAndLabel(
+fun RBuilder.nullableInputFieldAndLabel(
   /**
    * The current value
    */
-  value: String,
+  value: String?,
 
   /**
    * Is called on change
    */
-  onChange: OnChange<String>,
+  onChange: OnChange<String?>,
 
   fieldName: String,
   title: String,
-  placeholder: String? = null,
+  placeholder: String?=null,
 
   editableStatus: EditableStatus,
 
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(inputFieldAndLabel) {
+  ): Unit = child(nullableInputFieldAndLabel) {
   attrs {
     this.value = value
     this.onChange = onChange
@@ -38,11 +38,12 @@ fun RBuilder.inputFieldAndLabel(
   }
 }
 
-val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") { props ->
+val nullableInputFieldAndLabel: FC<NullableInputFieldAndLabelProps> = fc("nullableInputFieldAndLabel") { props ->
 
   val uniqueId = uniqueIdMemo(props.fieldName)
 
-  inputField(
+
+  nullableInputField(
     value = props.value,
     onChange = props.onChange,
     fieldName = props.fieldName,
@@ -58,7 +59,7 @@ val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") {
 
       //Execute the provided config if there is one
       props.config?.let {
-        it(this@inputField)
+        it(this@nullableInputField)
       }
     }
   }
@@ -73,7 +74,7 @@ val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") {
 
 }
 
-external interface InputFieldAndLabelProps : Props {
+external interface NullableInputFieldAndLabelProps : Props {
   /**
    * The unique ID that is used to connect input field and label
    */
@@ -82,12 +83,12 @@ external interface InputFieldAndLabelProps : Props {
   /**
    * The current value
    */
-  var value: String
+  var value: String?
 
   /**
    * Is called on change
    */
-  var onChange: OnChange<String>
+  var onChange: OnChange<String?>
 
   /**
    * The name of the field
