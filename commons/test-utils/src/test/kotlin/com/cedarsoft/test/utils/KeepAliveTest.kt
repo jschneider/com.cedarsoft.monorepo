@@ -28,19 +28,40 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import com.cedarsoft.test.utils.ThreadExtension
+import com.google.common.io.ByteStreams
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+@ExtendWith(ThreadExtension::class)
+@ExtendWith(CatchAllExceptionsExtension::class)
+class KeepAliveTest {
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @Disabled
+  @Test
+  @Throws(Exception::class)
+  fun testTestIt() {
+    val urlConnection = URL("http://www.google.de").openConnection()
+
+    urlConnection.connect()
+
+    assertThat(urlConnection).isInstanceOf(HttpURLConnection::class.java)
+    val content = urlConnection.content
+    assertThat(content).isInstanceOf(InputStream::class.java)
+
+    val inputStream = content as InputStream
+    val bytes = ByteStreams.toByteArray(inputStream)
+    assertThat(bytes.size).isGreaterThan(10000)
+    assertThat(inputStream.available()).isEqualTo(0)
+    inputStream.close()
+  }
 }

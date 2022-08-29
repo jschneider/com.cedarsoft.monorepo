@@ -28,19 +28,24 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils.matchers
+
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
+import java.io.File
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
-
-  /**
-   * Represents a hard link
-   */
-  HARD
+class FileNameMatcherTest {
+  @Test
+  fun testIt() {
+    val matcher = FileNameMatcher.fileName("asdf")
+    assertTrue(matcher.test(File("asdf")))
+    assertFalse(matcher.test(File("asdf2")))
+    assertTrue(matcher.test(File("/asdf")))
+    assertTrue(matcher.test(File("asdf/asdf")))
+    assertFalse(matcher.test(File("asdf/asdf2")))
+  }
 }

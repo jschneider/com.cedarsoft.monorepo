@@ -28,42 +28,60 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.inject
+package com.cedarsoft.test.utils.matchers
 
-import java.util.concurrent.locks.ReadWriteLock
-import java.util.concurrent.locks.ReentrantReadWriteLock
-import javax.annotation.concurrent.GuardedBy
-import javax.inject.Provider
-import kotlin.concurrent.withLock
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.filefilter.TrueFileFilter
+import java.io.File
+import java.util.Collections
+import java.util.function.Predicate
 
 /**
- * A provider that caches the value it has created the first time
  *
  */
-class CachingProvider<T>(
-  private val provider: Provider<T>
-) : Provider<T?> {
+class ContainsOnlyFilesMatcher(vararg relativeFilePaths: String) : Predicate<File> {
+  private val filePaths: List<String> = relativeFilePaths.toList()
 
-  private val lock: ReadWriteLock = ReentrantReadWriteLock()
-
-  @GuardedBy("lock")
-  private var ref: T? = null
-
-  override fun get(): T? {
-    //First check with read-lock (only)
-    lock.readLock().withLock {
-      if (ref != null) {
-        return ref
-      }
+  override fun test(dir: File): Boolean {
+    if (!dir.isDirectory) {
+      return false
+    }
+    val files = FileUtils.listFiles(dir, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE)
+    if (files.size != filePaths.size) {
+      return false
     }
 
-    //Now a write-lock is necessary
-    lock.writeLock().withLock {
-      if (ref != null) {
-        return ref
+    //Create the set with the expected files
+    val expected = createExepectedSet(dir)
+    for (file in files) {
+      if (!expected.contains(file)) {
+        return false
       }
-      ref = provider.get()
-      return ref
+    }
+    return true
+  }
+
+  private fun createExepectedSet(baseDir: File): Set<File> {
+    val expected: MutableSet<File> = HashSet()
+    for (filePath in filePaths) {
+      expected.add(File(baseDir, filePath))
+    }
+    return expected
+  }
+
+  fun getFilePaths(): List<String> {
+    return Collections.unmodifiableList(filePaths)
+  }
+
+  companion object {
+    @JvmStatic
+    fun containsOnlyFiles(vararg relativeFilePaths: String): Predicate<File> {
+      return ContainsOnlyFilesMatcher(*relativeFilePaths)
+    }
+
+    @JvmStatic
+    fun toTree(dir: File): String {
+      return ContainsFileMatcher.toTree(dir)
     }
   }
 }

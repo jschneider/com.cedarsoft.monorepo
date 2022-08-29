@@ -28,19 +28,15 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.mail
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
-
-  /**
-   * Represents a hard link
-   */
-  HARD
-}
+data class MailConfiguration(
+  val mailHost: String,
+  val mailFrom: String,
+  val mailPersonal: String,
+  val smtpUser: String,
+  val smtpPass: String,
+  val mailSmtpAuth: String,
+)

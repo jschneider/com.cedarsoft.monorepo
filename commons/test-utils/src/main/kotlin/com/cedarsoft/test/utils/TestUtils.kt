@@ -28,19 +28,38 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import java.io.File
+import java.lang.reflect.Modifier
 
 /**
- * The type of link
+ *
+ * TestUtils class.
+ *
  */
-enum class LinkType {
+object TestUtils {
   /**
-   * Represents a symlink
+   * Cleans up all fields within a given test
+   *
+   * @param test the test that is cleaned up
+   * @throws IllegalAccessException if any.
    */
-  SYMBOLIC,
+  @JvmStatic
+  fun cleanupFields(test: Any?) {
+    if (test == null) {
+      return
+    }
+    for (field in test.javaClass.declaredFields) {
+      if (Modifier.isFinal(field.modifiers)) {
+        continue
+      }
+      field.isAccessible = true
+      field[test] = null
+    }
+  }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @JvmStatic
+  val tmpDir: File
+    get() = File(System.getProperty("java.io.tmpdir"))
 }

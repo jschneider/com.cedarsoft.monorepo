@@ -61,7 +61,7 @@ object LinkUtils {
    * Returns whether the given file is a link
    *
    * @param file a File object.
-   * @return whether the given file is a sym link
+   * @return whether the given file is a symlink
    *
    * @throws IOException if any.
    */

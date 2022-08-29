@@ -28,19 +28,45 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.license
+
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertSame
+import org.junit.jupiter.api.Test
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class LicenseTest {
+  @Test
+  fun testEquals() {
+    assertEquals(License.ALL_RIGHTS_RESERVED, License.ALL_RIGHTS_RESERVED)
+    assertFalse(License.PUBLIC_DOMAIN.equals(License.ALL_RIGHTS_RESERVED))
+    assertFalse(License.PUBLIC_DOMAIN.equals(null))
+    assertFalse(License.PUBLIC_DOMAIN.equals("asdf"))
+  }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @Test
+  fun testUrl() {
+    assertNull(License.ALL_RIGHTS_RESERVED.url)
+    assertNull(License.PUBLIC_DOMAIN.url)
+    assertNull(License.UNKNOWN.url)
+    assertNotNull(License.CDDL.url)
+  }
+
+  @Test
+  fun testResolve() {
+    assertEquals(20, License.LICENSES.size.toLong())
+    assertSame(License.GPL_3, License[License.GPL_3.id])
+    assertSame(License.CC_BY_NC_ND, License[License.CC_BY_NC_ND.id])
+  }
+
+  @Test
+  fun testToString() {
+    assertThat(License.APACHE_20.toString()).isEqualTo("Apache License 2.0 (APACHE 2.0)")
+  }
 }

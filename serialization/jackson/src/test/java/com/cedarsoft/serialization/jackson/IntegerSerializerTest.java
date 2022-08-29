@@ -41,6 +41,7 @@ import java.io.OutputStream;
 
 import javax.annotation.Nonnull;
 
+import org.junit.experimental.theories.*;
 import org.junit.jupiter.api.*;
 
 import com.cedarsoft.serialization.test.utils.AbstractJsonSerializerTest2;
@@ -102,5 +103,6 @@ public class IntegerSerializerTest extends AbstractJsonSerializerTest2<Integer> 
     JsonUtils.assertJsonEquals("12", out.toString());
   }
 
+  @DataPoint
   public static final Entry<?> ENTRY1 = create( 123, "123" );
 }

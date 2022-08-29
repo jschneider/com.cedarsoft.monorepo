@@ -12,5 +12,6 @@ import java.io.OutputStream
 class NonClosableOutputStream(out: OutputStream) : FilterOutputStream(out) {
   @Throws(IOException::class)
   override fun close() {
+    //Do nothing!
   }
 }

@@ -28,19 +28,37 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import com.cedarsoft.test.utils.TestUtils.cleanupFields
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Test
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class TestUtilsTest {
+  @Test
+  fun testCleanup() {
+    val myClass = MyClass()
+    assertNotNull(myClass.message)
+    assertNotNull(myClass.finalMessage)
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+    cleanupFields(myClass)
+
+    //The fields should be null now
+    assertNull(myClass.message)
+    assertNotNull(myClass.finalMessage)
+  }
+
+  @Test
+  fun testCleanupNull() {
+    cleanupFields(null)
+  }
+
+  private class MyClass {
+    var message = "asdf"
+    val finalMessage = "asdf"
+  }
 }

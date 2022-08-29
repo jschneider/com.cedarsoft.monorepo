@@ -28,19 +28,41 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.commons.test
+
+import javafx.application.Application
+import javafx.scene.Scene
+import javafx.scene.control.Button
+import javafx.scene.layout.StackPane
+import javafx.scene.paint.Color
+import javafx.scene.shape.Circle
+import javafx.stage.Stage
+import javafx.stage.StageStyle
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class Fx3dRunner : Application() {
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  override fun start(primaryStage: Stage) {
+    val root = StackPane()
+    val scene = Scene(root, 1920.0, 1080.0)
+    primaryStage.scene = scene
+
+    //scene.getStylesheets().add(getClass().getResource("JavaFxRunner.css").toExternalForm());
+    val circle = Circle(100.0, 100.0, 100.0)
+
+    root.children.add(Button("Hallo"))
+    root.shape = circle
+    primaryStage.scene = scene
+    primaryStage.initStyle(StageStyle.TRANSPARENT)
+    scene.fill = Color.TRANSPARENT
+    primaryStage.show()
+  }
+
+  companion object {
+    @JvmStatic
+    fun main(args: Array<String>) {
+      launch(*args)
+    }
+  }
 }

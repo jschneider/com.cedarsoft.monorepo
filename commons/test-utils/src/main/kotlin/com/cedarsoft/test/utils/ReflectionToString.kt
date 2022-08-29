@@ -28,19 +28,39 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import javax.annotation.Nonnull
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+object ReflectionToString {
+  @Nonnull
+  fun toString(`object`: Any?): String {
+    if (`object` == null) {
+      return "<null>"
+    }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+    return buildString {
+      append(`object`.javaClass.name).append(" {\n")
+
+      var daClass: Class<*>? = `object`.javaClass
+      while (daClass != null) {
+        for (field in daClass.declaredFields) {
+          field.isAccessible = true
+          append("\t")
+          append(field.name).append(": ")
+          try {
+            append(field[`object`])
+          } catch (e: IllegalAccessException) {
+            append("<failed due to ").append(e.message).append(">")
+          }
+          append("\n")
+        }
+        daClass = daClass.superclass
+      }
+      append("}")
+      toString()
+    }
+  }
 }

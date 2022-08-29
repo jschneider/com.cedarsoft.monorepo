@@ -28,19 +28,21 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
-
-  /**
-   * Represents a hard link
-   */
-  HARD
+class MemoryLeakVerifierTest {
+  @Test
+  fun testIt() {
+    val objects: MutableList<Any> = ArrayList()
+    objects.add(Any())
+    val leakVerifier = SwingMemoryLeakVerifier(objects[0])
+    assertThat(leakVerifier.objectUnderTest).isNotNull
+    objects.clear()
+    leakVerifier.assertGarbageCollected()
+  }
 }

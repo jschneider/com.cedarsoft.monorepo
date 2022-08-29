@@ -28,19 +28,52 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import javax.annotation.Nonnull
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+@ExtendWith(SystemOutExtension::class)
+class SystemOutExtensionTest {
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  private lateinit var n: String
+
+  @BeforeEach
+  fun setUp() {
+    n = System.getProperty("line.separator")
+    Assertions.assertThat(n.length).isGreaterThanOrEqualTo(1)
+  }
+
+  @Test
+  fun testIt(@Nonnull systemOutExtension: SystemOutExtension) {
+    println("Hey")
+    println("2")
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.outAsString)
+    println("3")
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.outAsString)
+  }
+
+  @Test
+  fun testOut2(@Nonnull systemOutExtension: SystemOutExtension) {
+    println("2")
+    assertEquals("2$n", systemOutExtension.outAsString)
+    println("3")
+    assertEquals("2" + n + "3" + n + "", systemOutExtension.outAsString)
+  }
+
+  @Test
+  fun testErr(@Nonnull systemOutExtension: SystemOutExtension) {
+    System.err.println("Hey")
+    System.err.println("2")
+    assertEquals("Hey" + n + "2" + n + "", systemOutExtension.errAsString)
+    System.err.println("3")
+    assertEquals("Hey" + n + "2" + n + "3" + n + "", systemOutExtension.errAsString)
+  }
 }

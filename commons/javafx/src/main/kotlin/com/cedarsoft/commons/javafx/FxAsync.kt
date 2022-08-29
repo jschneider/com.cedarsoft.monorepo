@@ -28,19 +28,34 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.commons.javafx
+
+import com.cedarsoft.annotations.NonBlocking
+import com.cedarsoft.concurrent.AbstractAsync
+import javafx.application.Platform
+import javax.annotation.concurrent.ThreadSafe
 
 /**
- * The type of link
+ * Allows lazy calls in the ui thread.
+ * Only the *last* call for each runnable is called.
+ *
+ *
+ * This class is useful if there are many background events and
+ * the UI should only update as fast as possible/necessary.
+ *
+ *
+ * Therefore, not for every change a new event is generated which might
+ * overload the UI thread.
+ *
  */
-enum class LinkType {
+@ThreadSafe
+class FxAsync : AbstractAsync() {
   /**
-   * Represents a symlink
+   * Run in target thread
+   * @param runnable
    */
-  SYMBOLIC,
-
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @NonBlocking
+  override fun runInTargetThread(runnable: Runnable) {
+    Platform.runLater(runnable)
+  }
 }

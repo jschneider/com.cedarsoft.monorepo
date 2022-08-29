@@ -28,19 +28,61 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import com.cedarsoft.test.utils.ThreadExtension
+import org.assertj.core.api.Fail
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+@Disabled
+@ExtendWith(ThreadExtension::class)
+class ThreadExtensionTest {
+  //@Test
+  //public void testFx() throws Exception {
+  //  javafx.application.Platform.isFxApplicationThread();
+  //}
+  @Test
+  fun testThreadRule() {
+    Thread {
+      try {
+        Thread.sleep(500)
+      } catch (e: InterruptedException) {
+        throw RuntimeException(e)
+      }
+    }.start()
+  }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @Test
+  fun testMulti() {
+    Thread {
+      try {
+        Thread.sleep(500)
+      } catch (e: InterruptedException) {
+        throw RuntimeException(e)
+      }
+    }.start()
+    Thread {
+      try {
+        Thread.sleep(500)
+      } catch (e: InterruptedException) {
+        throw RuntimeException(e)
+      }
+    }.start()
+  }
+
+  @Test
+  fun testFailing() {
+    Thread {
+      try {
+        Thread.sleep(500)
+      } catch (e: InterruptedException) {
+        throw RuntimeException(e)
+      }
+    }.start()
+    Fail.fail<Any>("failing...")
+  }
 }

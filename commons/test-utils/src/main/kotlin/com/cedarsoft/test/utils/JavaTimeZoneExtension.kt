@@ -28,19 +28,28 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import java.time.ZoneId
+import java.util.TimeZone
 
 /**
- * The type of link
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class JavaTimeZoneExtension : AbstractConfiguringExtension<ZoneId, WithTimeZone>(
+  storedObjectType = ZoneId::class.java,
+  enumType = WithTimeZone::class.java,
+  key = "timeZone",
+  callback = object : ConfigurationCallback<ZoneId, WithTimeZone> {
+    override fun getOriginalValue(): ZoneId {
+      return ZoneId.systemDefault()
+    }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
-}
+    override fun extract(annotation: WithTimeZone): ZoneId {
+      return ZoneId.of(annotation.value)
+    }
+
+    override fun applyValue(value: ZoneId) {
+      TimeZone.setDefault(TimeZone.getTimeZone(value))
+    }
+  },
+)

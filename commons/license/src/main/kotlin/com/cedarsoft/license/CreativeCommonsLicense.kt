@@ -28,19 +28,61 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.license
+
+import java.net.MalformedURLException
+import java.net.URL
+import java.util.Locale
 
 /**
- * The type of link
+ *
+ * CreativeCommonsLicense class.
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class CreativeCommonsLicense(
+  id: String,
+  name: String,
+  val isRestrictedToNonCommercial: Boolean,
+  val modificationsAllowed: ModificationsAllowed,
+  url: String,
+) : License(id, name, url) {
+
+  val isDerivedWorkAllowed: Boolean
+    get() = modificationsAllowed == ModificationsAllowed.YES
+
+  val isUsableCommercially: Boolean
+    get() = !isRestrictedToNonCommercial
+
+  val isSharedAlikeDerivedWorkAllowed: Boolean
+    get() = modificationsAllowed == ModificationsAllowed.SHARE_ALIKE || modificationsAllowed == ModificationsAllowed.YES
 
   /**
-   * Represents a hard link
+   * Returns the translated URL
+   *
+   * @param locale the locale
+   * @return the URL for the locale
    */
-  HARD
+  fun getUrl(locale: Locale): URL {
+    val urlBase = url!!
+    return try {
+      URL(urlBase.protocol, urlBase.host, urlBase.port, urlBase.file + "/" + locale.language)
+    } catch (e: MalformedURLException) {
+      throw RuntimeException(e)
+    }
+  }
+
+  enum class ModificationsAllowed {
+    YES, SHARE_ALIKE, NO
+  }
+
+  companion object {
+    operator fun get(id: String): License {
+      for (license in CC_LICENSES) {
+        if (license.id == id) {
+          return license
+        }
+      }
+      throw IllegalArgumentException("No license found for id <$id>")
+    }
+  }
 }

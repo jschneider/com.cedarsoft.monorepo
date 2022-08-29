@@ -28,19 +28,25 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import java.time.ZoneId
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class JavaTimeZoneExtensionTest {
+  @WithTimeZone("Europe/London")
+  @Test
+  fun testIt() {
+    assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/London"))
+  }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  @WithTimeZone("Europe/Berlin")
+  @Test
+  fun testBerlin() {
+    assertEquals(ZoneId.systemDefault(), ZoneId.of("Europe/Berlin"))
+  }
 }

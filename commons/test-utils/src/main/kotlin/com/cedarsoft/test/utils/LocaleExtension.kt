@@ -28,19 +28,30 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils
+
+import org.apache.commons.lang3.LocaleUtils
+import java.util.Locale
 
 /**
- * The type of link
+ * Rule that sets the TimeZone
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class LocaleExtension : AbstractConfiguringExtension<Locale, WithLocale>(
+  Locale::class.java,
+  WithLocale::class.java,
+  "locale",
+  object : ConfigurationCallback<Locale, WithLocale> {
+    override fun getOriginalValue(): Locale {
+      return Locale.getDefault()
+    }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
-}
+    override fun extract(annotation: WithLocale): Locale {
+      return LocaleUtils.toLocale(annotation.value)
+    }
+
+    override fun applyValue(value: Locale) {
+      Locale.setDefault(value)
+    }
+  }
+)

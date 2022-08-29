@@ -28,19 +28,22 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.io
+package com.cedarsoft.test.utils.matchers
+
+import java.io.File
+import java.util.function.Predicate
 
 /**
- * The type of link
+ *
  */
-enum class LinkType {
-  /**
-   * Represents a symlink
-   */
-  SYMBOLIC,
+class FileNameMatcher(val fileName: String) : Predicate<File> {
+  override fun test(file: File): Boolean {
+    return file.path.endsWith(fileName)
+  }
 
-  /**
-   * Represents a hard link
-   */
-  HARD
+  companion object {
+    fun fileName(fileName: String): FileNameMatcher {
+      return FileNameMatcher(fileName)
+    }
+  }
 }
