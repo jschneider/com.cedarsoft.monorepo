@@ -25,6 +25,7 @@ package com.cedarsoft.test.utils
 
 import java.io.File
 import java.io.IOException
+import java.util.Locale
 
 /**
  * Represents a temporary folder
@@ -49,7 +50,7 @@ class TemporaryFolder {
   fun newFile(fileName: String): File {
     val file = File(getRoot(), fileName)
     if (!file.createNewFile()) {
-      throw IOException(String.format("failed to create file %s in folder %s", fileName, getRoot()))
+      throw IOException(String.format(Locale.US, "failed to create file %s in folder %s", fileName, getRoot()))
     }
     return file
   }

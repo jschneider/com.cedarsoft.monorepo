@@ -17,8 +17,6 @@ dependencies {
 
   api(Libs.guava)
   api(Libs.commons_io)
-  api(Libs.commons_logging)
-  api(Libs.log4j)
 
   testImplementation(project(Projects.dependencies_sets_jvm_test_basics))
   testImplementation(project(Projects.open_commons_test_utils))

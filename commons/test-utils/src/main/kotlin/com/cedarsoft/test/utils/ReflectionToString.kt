@@ -36,22 +36,22 @@ import javax.annotation.Nonnull
  */
 object ReflectionToString {
   @Nonnull
-  fun toString(`object`: Any?): String {
-    if (`object` == null) {
+  fun toString(value: Any?): String {
+    if (value == null) {
       return "<null>"
     }
 
     return buildString {
-      append(`object`.javaClass.name).append(" {\n")
+      append(value.javaClass.name).append(" {\n")
 
-      var daClass: Class<*>? = `object`.javaClass
+      var daClass: Class<*>? = value.javaClass
       while (daClass != null) {
         for (field in daClass.declaredFields) {
           field.isAccessible = true
           append("\t")
           append(field.name).append(": ")
           try {
-            append(field[`object`])
+            append(field[value])
           } catch (e: IllegalAccessException) {
             append("<failed due to ").append(e.message).append(">")
           }

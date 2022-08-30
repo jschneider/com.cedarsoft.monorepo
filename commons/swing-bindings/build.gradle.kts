@@ -18,8 +18,6 @@ dependencies {
 
   api(Libs.guava)
   api(commons_io)
-  api(Libs.commons_logging)
-  api(Libs.log4j)
 
   testImplementation(Libs.miglayout_swing)
   testImplementation(project(Projects.open_commons_test_utils))

@@ -8,6 +8,7 @@ import com.cedarsoft.unit.other.px_ns
 import com.cedarsoft.unit.si.ns
 import com.google.common.collect.EvictingQueue
 import java.util.Collections
+import java.util.Locale
 import java.util.function.ToDoubleFunction
 import javax.annotation.Nonnull
 
@@ -82,7 +83,7 @@ class MouseDragSpeedCalculator {
 
   class Entry(val time: @ns Long, val deltaTime: @ns Long, val speedX: @px_ns Double, val speedY: @px_ns Double) {
     override fun toString(): String {
-      return String.format("Entry{time=%d, deltaTime=%d, speedX=%s, speedY=%s}", time, deltaTime, speedX, speedY)
+      return String.format(Locale.US, "Entry{time=%d, deltaTime=%d, speedX=%s, speedY=%s}", time, deltaTime, speedX, speedY)
     }
   }
 

@@ -30,8 +30,7 @@
  */
 package com.cedarsoft.mail
 
-import org.apache.log4j.Category
-import org.apache.log4j.Logger
+import org.slf4j.LoggerFactory
 import java.util.Properties
 import javax.mail.Authenticator
 import javax.mail.Message
@@ -67,7 +66,7 @@ class MailManager(
       from.personal = configuration.mailPersonal
       message.setFrom(from)
     } catch (e: Exception) {
-      CAT.error("An error occured while creating message", e)
+      logger.error("An error occured while creating message", e)
     }
     return message
   }
@@ -88,13 +87,13 @@ class MailManager(
       try {
         Transport.send(message)
       } catch (e: Exception) {
-        CAT.error("Error occured on message sending", e)
+        logger.error("Error occured on message sending", e)
       }
     }
   }
 
   companion object {
-    private val CAT: Category = Logger.getLogger(MailManager::class.java)
+    val logger = LoggerFactory.getLogger(MailManager::class.java)
 
     private const val MAIL_HOST = "mail.host"
     private const val MAIL_SMTP_AUTH = "mail.smtp.auth"

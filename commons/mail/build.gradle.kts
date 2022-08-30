@@ -10,9 +10,9 @@ plugins {
 dependencies {
   compileOnlyApi(project(Projects.dependencies_sets_jvm_annotations))
   api(Libs.mail)
-  api(Libs.mail)
-  api(Libs.log4j)
+  implementation(Libs.slf4j_api)
 
   testImplementation(project(Projects.dependencies_sets_jvm_kotlin_test))
   testImplementation(project(Projects.open_commons_test_utils))
+  testImplementation(Libs.logback_classic)
 }
