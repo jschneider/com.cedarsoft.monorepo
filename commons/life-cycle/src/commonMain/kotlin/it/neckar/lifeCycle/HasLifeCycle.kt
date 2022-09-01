@@ -14,6 +14,14 @@ interface HasLifeCycle {
     return lifeCycleState.isActive()
   }
 
+  fun isNearEndOfLive(): Boolean {
+    return lifeCycleState.isNearEndOfLive()
+  }
+
+  fun isNotEndOfLife(): Boolean {
+    return lifeCycleState.isNotEndOfLife()
+  }
+
   fun isEndOfLife(): Boolean {
     return lifeCycleState.isEndOfLife()
   }
@@ -23,19 +31,17 @@ interface HasLifeCycle {
  * Returns a list containing only the active elements
  */
 fun <T : HasLifeCycle> List<T>.onlyActive(): List<T> {
-  return only(LifeCycleState.Active)
+  return only(LifeCycleState::isNotEndOfLife)
 }
 
 /**
- * Returns only the elements with the [expectedLifecycleState].
- * If the [expectedLifecycleState] is set to null, all elements are returned.
+ * Returns only the elements for with the [selector] returns [true].
+ * If the [selector] is set to null, all elements are returned.
  */
-fun <T : HasLifeCycle> List<T>.only(expectedLifecycleState: LifeCycleState?): List<T> {
-  if (expectedLifecycleState == null) {
-    return this
-  }
+fun <T : HasLifeCycle> List<T>.only(selector: ((LifeCycleState) -> Boolean)?): List<T> {
+  if (selector == null) return this
 
   return this.filter {
-    it.lifeCycleState == expectedLifecycleState
+    selector(it.lifeCycleState)
   }
 }

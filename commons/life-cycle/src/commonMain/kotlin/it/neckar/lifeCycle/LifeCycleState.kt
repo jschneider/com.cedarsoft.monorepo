@@ -20,10 +20,15 @@ enum class LifeCycleState {
   Active,
 
   /**
+   * The element is near the end of life. Consider replacing with active elements
+   */
+  NearEndOfLive,
+
+  /**
    * The element is no longer supported.
    * It has been supported - but is no longer
    */
-  EndOfLife
+  EndOfLife,
 
   ;
 
@@ -41,6 +46,10 @@ enum class LifeCycleState {
       return EndOfLife
     }
 
+    if (this == NearEndOfLive || other == NearEndOfLive) {
+      return NearEndOfLive
+    }
+
     require(this == Active && other == Active) {
       "Unexpected combination this: <$this> other: <$other>"
     }
@@ -52,6 +61,14 @@ enum class LifeCycleState {
     return this == Active
   }
 
+  fun isNearEndOfLive(): Boolean {
+    return this == NearEndOfLive
+  }
+
+  fun isNotEndOfLife(): Boolean {
+    return this != EndOfLife
+  }
+
   fun isEndOfLife(): Boolean {
     return this == EndOfLife
   }
@@ -59,6 +76,7 @@ enum class LifeCycleState {
   fun format(): String {
     return when (this) {
       Active -> true.toCheckboxChar()
+      NearEndOfLive -> "Veraltet"
       EndOfLife -> false.toCheckboxChar()
     }
   }

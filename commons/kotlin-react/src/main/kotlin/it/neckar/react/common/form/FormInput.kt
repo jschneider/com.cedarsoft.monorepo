@@ -83,15 +83,17 @@ val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
 
   div(classes = "form-check") {
 
-    input(name = props.fieldName, classes = "form-check-input") {
+    input(name = props.fieldName, type = InputType.checkBox, classes = "form-check-input") {
       attrs {
         id = uniqueId
 
         placeholder = props.title
         title = props.title
         checked = props.value
-
-        type = InputType.checkBox
+        //Workaround to avoid warning on console
+        // https://github.com/JetBrains/kotlin-wrappers/issues/35
+        // https://github.com/Kotlin/kotlinx.html/issues/110
+        set("checked", props.value)
 
         disabled = props.editableStatus == ReadOnly
 

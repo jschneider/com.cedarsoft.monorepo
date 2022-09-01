@@ -237,6 +237,18 @@ fun String.encodeForFileName(): String {
  */
 private val InvalidForFileName: Regex = Regex("[:\\\\/*\"?|<>']")
 
+/**
+ * This is far from perfect.
+ * TODO: Improve using this information: https://www.w3.org/TR/CSS2/syndata.html#characters
+ */
+private val InvalidForCssIdentifier: Regex = Regex("[:\\\\/*\"?|<>' ]")
+
+/**
+ * Returns a valid CSS identifier
+ */
+fun String.encodeForCssIdentifier(): String {
+  return InvalidForCssIdentifier.replace(this, "_")
+}
 
 /**
  * Wraps a single line of text into multiple lines. Words are identified by [wrapOn]
@@ -250,7 +262,7 @@ fun String.wrap(
   /**
    * Wrap on this string - usually an space
    */
-  wrapOn: Char = ' '
+  wrapOn: Char = ' ',
 ): List<String> {
   require(maxLineLength > 1) {
     "Invalid wrap length: $maxLineLength"

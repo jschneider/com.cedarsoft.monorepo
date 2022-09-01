@@ -6,6 +6,13 @@ import org.junit.jupiter.api.Test
 
 class StringExtKtTest {
   @Test
+  fun testCssIdentifier() {
+    assertThat("asdf".encodeForCssIdentifier()).isEqualTo("asdf")
+    assertThat("as df".encodeForCssIdentifier()).isEqualTo("as_df")
+    assertThat("""as :\/df""".encodeForCssIdentifier()).isEqualTo("as____df")
+  }
+
+  @Test
   fun testDeleteTrailing() {
     assertThat(buildString {
       deleteSuffix("x")
