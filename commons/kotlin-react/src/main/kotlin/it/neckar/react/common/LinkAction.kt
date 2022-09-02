@@ -6,12 +6,12 @@ import react.*
 import react.dom.*
 
 /**
- *
+ * Creates a link with callback
  */
 fun RBuilder.linkAction(
-  icon: String? = null,
-  label: String? = null,
-  title: String? = null,
+  icon: (()->String)? = null,
+  label: (()->String)? = null,
+  title: (()->String)? = null,
   action: () -> Unit
 ): Unit = child(linkAction) {
   attrs {
@@ -23,9 +23,14 @@ fun RBuilder.linkAction(
 }
 
 val linkAction: FC<LinkActionProps> = fc("linkAction") { props ->
+
   a("#") {
-    props.label?.let {
-      +it
+    props.icon?.let { icon ->
+      i("${icon()} px-1") { }
+    }
+
+    props.label?.let { label ->
+      +label()
     }
 
     attrs {
@@ -36,16 +41,17 @@ val linkAction: FC<LinkActionProps> = fc("linkAction") { props ->
       }
 
       props.title?.let {
-        title = it
+        title = it()
       }
     }
   }
+
 }
 
 external interface LinkActionProps : Props {
-  var icon: String?
-  var label: String?
-  var title: String?
+  var icon: (()->String)?
+  var label: (()->String)?
+  var title: (()->String)?
 
   var action: () -> Unit
 }

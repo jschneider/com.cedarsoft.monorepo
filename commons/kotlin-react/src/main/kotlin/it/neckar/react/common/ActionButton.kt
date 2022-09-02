@@ -139,6 +139,7 @@ object FontAwesome {
  * Contains font awesome icons
  */
 object FontAwesomeIcons {
+  //const val home: String = "fa-solid fa-house" //TODO update bootstrap
   const val information: String = "fas fa-bars"
   const val login: String = "fa fa-eye"
   const val signIn: String = "fa fa-sign-in-alt"
