@@ -12,12 +12,6 @@ import styled.*
 import kotlinx.html.classes
 
 
-fun RBuilder.bootstrapToastContainer(): Unit = child(bootstrapToastContainer) {
-  attrs {
-  }
-}
-
-
 val bootstrapToastContainer: FC<ToastProps> = fc("bootstrapToastContainer") { props ->
   styledDiv {
     attrs {

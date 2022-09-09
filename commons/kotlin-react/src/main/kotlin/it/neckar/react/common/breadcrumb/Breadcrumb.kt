@@ -7,6 +7,7 @@ import react.dom.*
 /**
  * Shows the breadcrumb
  */
+@Deprecated("use breadcrumb from kotlin-react-router")
 fun RBuilder.breadcrumb(
   /**
    * The leaf (on the right side) of the bread crumb
@@ -19,6 +20,7 @@ fun RBuilder.breadcrumb(
     }
   }
 
+@Deprecated("use breadcrumb from kotlin-react-router")
 val breadcrumb: FC<BreadcrumbProps> = fc("breadcrumb") { props ->
   val navigationState = props.navigationState
   val navigationStates = navigationState.getChainRecursively()
@@ -35,6 +37,7 @@ val breadcrumb: FC<BreadcrumbProps> = fc("breadcrumb") { props ->
   }
 }
 
+@Deprecated("use breadcrumb from kotlin-react-router")
 external interface BreadcrumbProps : Props {
   var navigationState: NavigationState
 }

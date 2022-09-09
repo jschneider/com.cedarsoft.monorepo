@@ -95,7 +95,7 @@ object FontAwesome {
    * Adds a sign-out span
    */
   fun RBuilder.faSignOut() {
-    i(classes = FontAwesomeIcons.signOut) {}
+    icon(FontAwesomeIcons.signOut)
   }
 
   fun RBuilder.faSave() {
@@ -133,13 +133,22 @@ object FontAwesome {
   fun RBuilder.faAddUser() {
     i(classes = FontAwesomeIcons.addUser) {}
   }
+
+  /**
+   * Creates a new icon using "i" with the given icon class
+   */
+  fun RBuilder.icon(iconClass: String) {
+    i(classes = iconClass) {}
+  }
 }
 
 /**
  * Contains font awesome icons
+ *
+ * https://fontawesome.com/search?m=free&o=r
  */
 object FontAwesomeIcons {
-  //const val home: String = "fa-solid fa-house" //TODO update bootstrap
+  const val home: String = "fa-solid fa-house"
   const val information: String = "fas fa-bars"
   const val login: String = "fa fa-eye"
   const val signIn: String = "fa fa-sign-in-alt"
@@ -160,6 +169,8 @@ object FontAwesomeIcons {
   const val gift: String = "fas fa-gift"
   const val user: String = "fas fa-user"
   const val addUser: String = "fa fa-user-plus"
+  const val location: String = "fa-solid fa-location-dot"
+  const val person: String = "fa-solid fa-person"
 
   const val horizontalArrows: String = "fas fa-arrows-alt-h"
   const val verticalArrows: String = "fas fa-arrows-alt-v"

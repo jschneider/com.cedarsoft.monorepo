@@ -7,15 +7,25 @@ import it.neckar.react.common.toast.*
 import kotlinx.coroutines.*
 
 /**
+ * Executes a REST action.
+ * Returns immediately.
  *
+ * Helper methods that does not return anything.
+ * Use [restAsync] if the return type shall be used.
  */
+fun <T> rest(successMessage: String? = null, action: suspend () -> T) {
+  @Suppress("DeferredResultUnused")
+  restAsync(successMessage, action)
+}
 
 /**
  * Executes a REST action.
  * Returns immediately.
+ *
+ * To avoid warnings if the returned value is not used, call [rest] instead.
  */
-fun rest(successMessage: String? = null, action: suspend () -> dynamic) {
-  AppScope.launch {
+fun <T> restAsync(successMessage: String? = null, action: suspend () -> T): Deferred<T> {
+  return AppScope.async {
     restBlocking(successMessage, action)
   }
 }
@@ -24,9 +34,9 @@ fun rest(successMessage: String? = null, action: suspend () -> dynamic) {
  * Executes a REST action within the scope.
  * Suspend function that blocks
  */
-suspend fun restBlocking(successMessage: String?, action: suspend () -> dynamic) {
+suspend fun <T> restBlocking(successMessage: String?, action: suspend () -> T): T {
   delayIfSlowUiEnabled()
-  action()
+  val result = action()
   if (successMessage != null) {
     Toast.info(
       successMessage, options = ToastOptions(
@@ -35,6 +45,8 @@ suspend fun restBlocking(successMessage: String?, action: suspend () -> dynamic)
       )
     )
   }
+
+  return result
 }
 
 /**

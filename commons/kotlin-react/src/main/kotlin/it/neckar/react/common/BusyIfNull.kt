@@ -23,9 +23,25 @@ fun <T> RBuilder.busyIfNull(value: T?, handler: RElementBuilder<*>.(T) -> Unit) 
   }
 }
 
+fun <T1, T2> RBuilder.busyIfNull(value1: T1?, value2: T2?, handler: RElementBuilder<*>.(T1, T2) -> Unit) {
+  contract {
+    callsInPlace(handler, InvocationKind.AT_MOST_ONCE)
+  }
+
+  return child(busyIfNull) {
+    attrs {
+      this.busy = value1 == null || value2 == null
+    }
+
+    if (value1 != null && value2 != null) {
+      this.handler(value1, value2)
+    }
+  }
+}
+
 val busyIfNull: FC<BusyIfNullProps> = fc("busyIfNull") { props ->
   if (props.busy == true) {
-    busyIndicator()
+    busyIndicator {}
   } else {
     props.children()
   }

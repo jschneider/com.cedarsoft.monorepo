@@ -46,9 +46,19 @@ data class FeatureFlag(
     val slowServer: FeatureFlag = FeatureFlag("slowServer", "Delay responses on the server")
 
     /**
+     * Can be used to simulate failure of refreshing the access token
+     */
+    val forceFailRefreshAccessToken: FeatureFlag = FeatureFlag("forceFailRefreshAccessToken", "Forces failure of refreshing the access token")
+
+
+    val tokenDurationVeryShort: FeatureFlag = FeatureFlag("tokenDurationVeryShort", "Reduces the duration for the access/refresh tokens - for testing purposes")
+
+    /**
      * Enable / disable testing
      */
     val testing: FeatureFlag = FeatureFlag("testing", "Testing - non production")
+
+    val forceFailEssentialsLoading: FeatureFlag = FeatureFlag("forceFailEssentialsLoading", "Forces the failure of loading the essentials")
 
     /**
      * Disables the version check on the server and client

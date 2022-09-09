@@ -17,8 +17,9 @@ dependencies {
   implementation(project(Projects.open_commons_i18n))
   implementation(project(Projects.open_commons_uuid))
   implementation(project(Projects.open_commons_kotlin_lang))
-  implementation(project(Projects.open_commons_kotlin_js))
   implementation(project(Projects.open_commons_kotlin_collections))
+
+  implementation(project(Projects.open_commons_kotlin_react))
 
   implementation(Libs.uuid)
 
@@ -30,23 +31,10 @@ dependencies {
 
   implementation("org.jetbrains.kotlin-wrappers:kotlin-styled")
 
-  //State machine (with undo)
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-redux")
-  //
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux")
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom")
-  //
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-css")
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-extensions")
+  implementation("org.jetbrains.kotlin-wrappers:kotlin-redux")
+  implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux")
 
   implementation(npm("react", "_"))
-  //implementation(npm("react-dom", "_"))
-  //implementation(npm("react-is", "_"))
-
-  //implementation(npm("styled-components", "_"))
-
-  implementation(npm("toastr", "_"))
-  //implementation(npm("formik", "_"))
 }
 
 tasks.withType<GenerateModuleMetadata> {

@@ -16,6 +16,7 @@ import react.dom.*
  * The breadcrumb will be generated starting from the leaf (on the right). And the traversing
  * to the parents (like a linked list).
  */
+@Deprecated("Navigation state is held in URLs")
 abstract class NavigationState(
   /**
    * The renderer for the breadcrumb itself
@@ -33,12 +34,22 @@ abstract class NavigationState(
    * Provides the parent in the crumb bar.
    */
   val parent: @UsesHooks (() -> NavigationState)?,
-)
+) {
+
+  /**
+   * Encodes the navigation state into a relative URL
+   */
+  open fun toUrl(): String {
+    //TODO make abstract!
+    return "TODO implement me"
+  }
+}
 
 /**
  * Returns a list containing all navigation states.
  * This is the last element of the list
  */
+@Deprecated("Navigation state is held in URLs")
 fun NavigationState.getChainRecursively(): List<NavigationState> {
   return buildList {
     //iterate recursively over all parents

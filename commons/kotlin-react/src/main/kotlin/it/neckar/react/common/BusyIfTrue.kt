@@ -23,7 +23,7 @@ fun RBuilder.busyIfTrue(value: Boolean, handler: RElementBuilder<*>.(Boolean) ->
 
 val busyIfTrue: FC<BusyIfFalseProps> = fc("busyIfTrue") { props ->
   if (props.busy) {
-    busyIndicator()
+    busyIndicator {}
   } else {
     props.children()
   }

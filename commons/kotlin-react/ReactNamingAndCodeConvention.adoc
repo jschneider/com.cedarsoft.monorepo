@@ -1,0 +1,69 @@
+= Naming conventions for React
+
+== Hooks
+
+* Every Hook has to start with `use`
+* Every method that uses Hooks has to be annotated with `@UsesHooks`
+** (not necessary for Components and/or extension methods of RBuilder)
+
+== Names for concepts
+
+* Loading: Request values (usually from the server) *and* save them to the store
+* Save: Saves something: This sends data to the server *and* updates the store accordingly
+* Fetch: Get values from the server - but does *not* save them to the store
+* Send: Sends values to the server - unrelated to updates to the store
+
+* Lazy Loading: Loads values - as soon as they are required by a component
+* Loading "if necessary": Loads values only if they do not exist in the store, yet.
+Does *not* refresh values
+
+== Components
+
+* First letter in upper case
+* Suffix "Component" is optional
+
+=== Important Components
+
+==== `MainComponent`
+
+This component is *always* called.
+Usually directly from the root.
+
+The store has already been injected.
+The router has already been started.
+
+Example code:
+
+[source]
+----
+createRoot(container).render(createElement<Props> {
+StrictMode {
+  provider(store) {
+    BrowserRouter {
+      MainComponent { }
+    }
+  }
+}
+})
+----
+
+The main component must/should check for logged in users and delegate to the login form if necessary.
+
+==== `MainStage` (when using Routing)
+
+This is the "main stage" for logged-in users.
+This component renders the base stage (e.g. menu, breadcrumb bar, side navigation, footer etc.).
+
+It must contain an `Outlet` where the other components are rendered into.
+
+=== Loading related suffices
+
+* `*FromStore`: Loads (some) data from the Redux store.
+Should delegate to the component with the same name without suffix
+* `*FromUrl`: Loads (some) data from the URL (and store?).
+Should delegate to the component with the same name without suffix
+
+=== more Names
+
+* `*Overview`: ???
+
