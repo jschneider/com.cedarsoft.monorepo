@@ -68,17 +68,6 @@ val breadCrumbElement: FC<BreadCrumbElementProps> = fc("breadCrumbElement") { pr
   val navigationElement = requireNotNull(props.navigationElement) { "props.navigationElement required" }
   val breadcrumbInfo = navigationElement.breadcrumbInfo
 
-  if (navigationElement.completePath() == "/projects/:projectId") {
-    println("###############")
-    println("###############")
-    console.log("####### breadCrumbElement for ${navigationElement.completePath()} ########", navigationElement)
-    println("####### breadCrumbElement for $breadcrumbInfo ########")
-    console.log(breadcrumbInfo)
-    println("###############")
-    println("###############")
-  }
-
-
   val linkContent = breadcrumbInfo?.linkContent ?: {
     span {
       //No breadcrumb info - we use the path fragment

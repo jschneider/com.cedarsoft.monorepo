@@ -98,6 +98,10 @@ object FontAwesome {
     icon(FontAwesomeIcons.signOut)
   }
 
+  fun RBuilder.faHome() {
+    icon(FontAwesomeIcons.home)
+  }
+
   fun RBuilder.faSave() {
     i(classes = FontAwesomeIcons.save) {}
   }
