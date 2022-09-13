@@ -13,6 +13,7 @@ kotlin {
   jvm()
   js {
     browser {
+      configureJsKarma()
     }
   }
 
@@ -28,6 +29,13 @@ kotlin {
       dependencies {
         implementation(Libs.kotlin_test_common)
         implementation(Libs.kotlin_test_annotations_common)
+      }
+    }
+
+    js().compilations["test"].defaultSourceSet {
+      dependencies {
+        implementation(project(Projects.dependencies_sets_js_kotlin_test))
+        implementation(Libs.kotlin_test_js)
       }
     }
 
