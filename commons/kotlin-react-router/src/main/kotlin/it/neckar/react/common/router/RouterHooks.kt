@@ -2,6 +2,7 @@ package it.neckar.react.common.router
 
 import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuidFrom
+import it.neckar.uuid.decodeUuidFromUrl
 import kotlinx.js.get
 import react.router.*
 
@@ -30,4 +31,12 @@ fun useFromParamsInt(variableName: RouterVar): Int {
  */
 fun useFromParamsUuid(variableName: RouterVar): Uuid {
   return uuidFrom(useFromParams(variableName))
+}
+
+/**
+ * Extract a Base64 encoded param and decodes it back
+ * to a UUID
+ * */
+fun useFromParamsUuidBase64(variableName: RouterVar) : Uuid {
+  return decodeUuidFromUrl(useFromParams(variableName))
 }
