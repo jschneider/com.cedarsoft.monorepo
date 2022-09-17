@@ -1,6 +1,7 @@
 package it.neckar.react.common.router
 
 import com.cedarsoft.common.collections.fastForEach
+import it.neckar.commons.kotlin.js.Environment
 import react.*
 import react.dom.*
 import react.router.*
@@ -41,7 +42,7 @@ data class NavigationElement(
   lateinit var routes: List<NavigationElement>
 
   /**
-   * Returns all routes
+   * Returns all routes recursively
    */
   fun routesRecursive(): List<NavigationElement> {
     return buildList {
@@ -57,18 +58,30 @@ data class NavigationElement(
    * Returns the complete chain.
    * This is the *last* element within the returned list
    */
-  fun getChain(): List<NavigationElement> {
+  fun getChain(stopAtAbsoluteElements: Boolean): List<NavigationElement> {
     return buildList {
       var currentElement: NavigationElement? = this@NavigationElement
       while (currentElement != null) {
         add(0, currentElement)
+
+        if (stopAtAbsoluteElements && currentElement.isAbsolute()) {
+          //Return immediately if this is an absolute URL
+          return@buildList
+        }
         currentElement = currentElement.parent
       }
     }
   }
 
+  /**
+   * Returns true if this element is absolute
+   */
+  fun isAbsolute(): Boolean {
+    return pathFragment.startsWith("/")
+  }
+
   fun completePath(): String {
-    val chain = getChain()
+    val chain = getChain(true)
     return chain.joinToString(separator = "/") { it.pathFragment }
   }
 
@@ -93,6 +106,16 @@ data class NavigationElement(
     val routes: MutableList<Builder> = mutableListOf()
 
     var breadcrumbInfo: BreadcrumbInfo? = null
+
+    /**
+     * Can be used to overwrite the parent URL.
+     * This can be used when parallel routes are used to solve issues related to Outlets.
+     *
+     * The parent URL is then used to identify the parent for the breadcrumb url.
+     *
+     * ATTENTION: The order matters. The parent must be created *before* it is referenced.
+     */
+    var parentUrl: String? = null
 
     /**
      * Registers the route
@@ -131,7 +154,18 @@ data class NavigationElement(
     /**
      * Creates a new navigation element - does *not* build the children
      */
-    fun build(parent: NavigationElement?): NavigationElement {
+    fun build(parent: NavigationElement?, context: NavigationBuildingContext): NavigationElement {
+      if (parentUrl != null) {
+        pathFragment.let {
+          require(it != null && it.startsWith("/")) { "Use absolute URLs if the parent URL is configured" }
+        }
+      }
+
+      //Resolve the parent if necessary
+      val parentToUse: NavigationElement? = this.parentUrl?.let {
+        context.findElement(it)
+      } ?: parent
+
       return NavigationElement(
         pathFragment = requireNotNull(pathFragment) {
           "Path required"
@@ -139,24 +173,24 @@ data class NavigationElement(
         element = requireNotNull(element) {
           "element required"
         },
-        parent = parent,
+        parent = parentToUse,
         index = index,
         breadcrumbInfo = breadcrumbInfo
       )
     }
 
-    fun buildRecursively(parent: NavigationElement?): NavigationElement {
-      val thisElement = build(parent)
+    fun buildRecursively(parent: NavigationElement?, context: NavigationBuildingContext): NavigationElement {
+      val thisElement = build(parent, context)
+      context.store(thisElement)
 
       val children = routes.map {
-        it.buildRecursively(thisElement)
+        it.buildRecursively(thisElement, context)
       }
 
       thisElement.routes = children
       return thisElement
     }
   }
-
 }
 
 /**
@@ -167,32 +201,51 @@ fun buildNavigation(block: NavigationRoot.Builder.() -> Unit): NavigationRoot {
   val builder = NavigationRoot.Builder()
     .apply(block)
 
-  return builder.buildRecursively()
+  return builder.buildRecursively(NavigationBuildingContext())
 }
 
+/**
+ * Helper class that is used to build the navigation.
+ *
+ * This object is used to resolve parents
+ */
+class NavigationBuildingContext {
+  /**
+   * Returns the navigation element for the given URL
+   */
+  fun findElement(url: String): NavigationElement {
+    return url2element[url] ?: throw IllegalArgumentException("No element found in NavigationBuildingContext for <$url>")
+  }
+
+  private val url2element = mutableMapOf<String, NavigationElement>()
+
+  fun store(element: NavigationElement) {
+    url2element[element.completePath()] = element
+  }
+}
 
 @NavigationDsl
 data class NavigationRoot(
   /**
-   * The routes - which may contain further notes
+   * The (direct) routes - which may contain further routes
    */
-  val routes: List<NavigationElement>,
-) {
+  val directChildren: List<NavigationElement>,
   /**
    * Contains all routes - flattened list
    */
-  val allRoutesFlat: List<NavigationElement> = buildList {
-    routes.fastForEach {
+  val allRoutes: List<NavigationElement> = buildList {
+    directChildren.fastForEach {
       add(it)
       addAll(it.routesRecursive())
     }
-  }
+  },
+) {
 
   class Builder {
     /**
      * The routes - which may contain further notes
      */
-    val routes: MutableList<NavigationElement.Builder> = mutableListOf()
+    val children: MutableList<NavigationElement.Builder> = mutableListOf()
 
     /**
      * Registers the route
@@ -206,18 +259,17 @@ data class NavigationRoot(
       return NavigationElement.Builder(pathFragment)
         .apply(handler)
         .also {
-          routes.add(it)
+          children.add(it)
         }
     }
 
     @NavigationDsl
-    fun buildRecursively(): NavigationRoot {
-      val children = routes.map {
-        it.buildRecursively(null)
+    fun buildRecursively(context: NavigationBuildingContext): NavigationRoot {
+      val children = children.map {
+        it.buildRecursively(null, context)
       }
 
       return NavigationRoot(children)
-
     }
   }
 }
@@ -246,9 +298,20 @@ fun RBuilder.createRoutes(navigation: NavigationRoot, addFallbackRoute: Boolean 
   }
 }
 
-fun RBuilder.addRoutes(navigation: NavigationRoot) {
-  navigation.routes.fastForEach {
+/**
+ * Adds the route from the provided navigation root
+ */
+fun RBuilder.addRoutes(navigationRoot: NavigationRoot) {
+  navigationRoot.directChildren.fastForEach {
     addRouteRecursively(it)
+  }
+
+  if (Environment.Dev) {
+    val allRoutes = navigationRoot.allRoutes
+    console.log("---------- Added ${allRoutes.size} routes ---------")
+    allRoutes.fastForEach {
+      console.log(it.completePath())
+    }
   }
 }
 
@@ -281,48 +344,56 @@ data class BreadcrumbInfo(
 ) {
   @NavigationDsl
   class Builder {
+    /**
+     * If the link content is set directly, [label] and [icon] are ignored!
+     *
+     * Attention: To avoid hook problems, do *not* use hooks directly in the provided lambda.
+     * Instead, create new functional components that call hooks.
+     */
     var linkContent: (RBuilder.() -> Unit)? = null
 
     /**
-     * Must not use hooks
+     * This value is only used if [linkContent] is *not* set
      */
-    var label: String
-      get() {
-        throw UnsupportedOperationException("only setter supported")
-      }
-      set(value) {
-        linkContent = {
-          linkContentComponent {
-            span {
-              +value
-            }
-          }
-        }
-      }
+    var label: String? = null
 
     /**
-     * Must not use hooks
+     * This value is only used if [linkContent] is *not* set
      */
-    var icon: String
-      get() {
-        throw UnsupportedOperationException("only setter supported")
-      }
-      set(value) {
-        linkContent = {
-          linkContentComponent {
-            i(classes = "$value px-1") {}
-          }
-        }
-      }
+    var icon: String? = null
 
     fun build(): BreadcrumbInfo {
       return BreadcrumbInfo(
-        linkContent,
+        createLinkContent(),
       )
+    }
+
+    private fun createLinkContent(): (RBuilder.() -> Unit)? {
+      if (this.linkContent != null) {
+        //Is configured manually
+        return this.linkContent
+      }
+
+      //Fallback that uses the [label] and [icon]
+      require(label != null || icon != null) {
+        "If no link content is configured, a label and/or an icon must be set"
+      }
+
+      return {
+        LinkContentComponent {
+          icon?.let {
+            i(classes = "$it px-1") {}
+          }
+
+          label?.let {
+            +it
+          }
+        }
+      }
     }
   }
 }
 
-val linkContentComponent: FC<PropsWithChildren> = fc("linkContentComponent") { props ->
+val LinkContentComponent: FC<PropsWithChildren> = fc("linkContentComponent") { props ->
   props.children()
 }

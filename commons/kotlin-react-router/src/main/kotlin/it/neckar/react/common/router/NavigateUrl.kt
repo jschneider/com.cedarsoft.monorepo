@@ -7,6 +7,13 @@ value class NavigateUrl(val value: String) {
   override fun toString(): String {
     return value
   }
+
+  companion object {
+    /**
+     * Empty path - can be used for default routes
+     */
+    val empty: NavigateUrl = NavigateUrl("")
+  }
 }
 
 /**

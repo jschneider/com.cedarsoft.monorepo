@@ -1,12 +1,13 @@
 package it.neckar.react.common
 
+import csstype.ClassName
 import it.neckar.react.common.form.*
-import kotlinx.js.Object
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HTMLTag
 import kotlinx.html.LABEL
 import kotlinx.html.Tag
 import kotlinx.html.classes
+import kotlinx.js.Object
 import react.*
 import react.dom.*
 import kotlin.contracts.InvocationKind
@@ -364,4 +365,14 @@ enum class ValidationState {
   NotValidated,
   Valid,
   Invalid,
+}
+
+
+/**
+ * adds the class
+ */
+fun PropsWithClassName.addClass(newClass: String) {
+  className = className?.let {
+    ClassName("$it $newClass")
+  } ?: ClassName(newClass)
 }

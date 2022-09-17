@@ -437,7 +437,7 @@ val inputArea: FC<TextInputProps> = fc("inputArea") { props ->
         onChange(element.value)
       }
 
-      onKeyDown = useCallback { keyboardEvent ->
+      onKeyPress = useCallback { keyboardEvent ->
         keyboardEvent.stopPropagation()
       }
     }

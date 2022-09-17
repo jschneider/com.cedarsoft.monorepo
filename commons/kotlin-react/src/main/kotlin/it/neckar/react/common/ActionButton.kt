@@ -10,19 +10,26 @@ import react.dom.*
  */
 fun RBuilder.actionButton(
   /**
-   *
+   * The icon for the button
    */
   icon: String,
-
+  /**
+   * The label on the button
+   */
   text: String? = null,
 
+  /**
+   * The css classes
+   */
   classes: String = "btn btn-primary",
 
   /**
    * If set to true, the button will be disabled and a spinner icon is shown instead of the provided icon
    */
   busy: Boolean = false,
-
+  /**
+   * The action that is called
+   */
   action: suspend () -> Unit,
 
   ): Unit = child(actionButton) {

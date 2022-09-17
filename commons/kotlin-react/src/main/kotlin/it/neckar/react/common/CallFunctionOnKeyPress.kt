@@ -13,7 +13,7 @@ fun <T : CommonAttributeGroupFacade> RDOMBuilder<T>.onKeyEvent(
   functionToCall: () -> Unit,
 ) {
   attrs {
-    onKeyDown = { keyboardEvent ->
+    onKeyPress = { keyboardEvent ->
       if (keyEventLambda(keyboardEvent)) {
         functionToCall()
       }

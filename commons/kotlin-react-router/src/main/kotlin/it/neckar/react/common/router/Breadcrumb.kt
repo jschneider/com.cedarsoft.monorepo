@@ -13,7 +13,7 @@ import react.router.dom.*
 /**
  * Creates a breadcrumb bar
  */
-val breadcrumbBar: FC<BreadcrumbBarProps> = fc("breadcrumbBar") { props ->
+val BreadcrumbBar: FC<BreadcrumbBarProps> = fc("breadcrumbBar") { props ->
   check(useInRouterContext()) {
     "Must only be used in router context"
   }
@@ -30,7 +30,7 @@ val breadcrumbBar: FC<BreadcrumbBarProps> = fc("breadcrumbBar") { props ->
   nav {
     ol("breadcrumb") {
 
-      breadcrumbElements {
+      BreadcrumbElements {
         attrs {
           this.navigationElement = matchingNavigationElement
         }
@@ -47,9 +47,9 @@ external interface BreadcrumbBarProps : Props {
 /**
  * Renders the breadcrumb elements
  */
-val breadcrumbElements: FC<BreadcrumbElementsProps> = fc("breadcrumbElements") { props ->
-  props.navigationElement.getChain().fastForEach { navigationElement ->
-    breadCrumbElement {
+val BreadcrumbElements: FC<BreadcrumbElementsProps> = fc("breadcrumbElements") { props ->
+  props.navigationElement.getChain(false).fastForEach { navigationElement ->
+    BreadCrumbElement {
       attrs {
         this.navigationElement = navigationElement
       }
@@ -64,7 +64,7 @@ external interface BreadcrumbElementsProps : Props {
 /**
  * Creates a single breadcrumb element ([li] containing a [NavLink])
  */
-val breadCrumbElement: FC<BreadCrumbElementProps> = fc("breadCrumbElement") { props ->
+val BreadCrumbElement: FC<BreadCrumbElementProps> = fc("breadCrumbElement") { props ->
   val navigationElement = requireNotNull(props.navigationElement) { "props.navigationElement required" }
   val breadcrumbInfo = navigationElement.breadcrumbInfo
 
@@ -101,7 +101,7 @@ external interface BreadCrumbElementProps : Props {
 @UsesHooks
 fun NavigationRoot.useFindBestRoute(): NavigationElement? {
   @Suppress("SimplifiableCallChain")
-  return allRoutesFlat.filter {
+  return allRoutes.filter {
     val completePath = it.completePath()
     val useMatch = useMatch(completePath)
     if (false) {

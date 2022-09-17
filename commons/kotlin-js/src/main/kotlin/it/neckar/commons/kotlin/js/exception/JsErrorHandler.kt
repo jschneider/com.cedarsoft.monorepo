@@ -31,7 +31,7 @@ interface JsErrorHandler {
      */
     fun registerWindowErrorHandler() {
       window.onerror = { message, source, lineno, colno, error ->
-        println("Window error detected <$message>")
+        println("Window error handler called: $message")
 
         when (error) {
           null -> {
