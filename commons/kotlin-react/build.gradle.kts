@@ -1,6 +1,6 @@
 plugins {
   kotlinxSerialization
-  kotlin("js")
+  kotlinJs
 }
 
 kotlin {
