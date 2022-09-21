@@ -11,9 +11,13 @@ import kotlin.reflect.KProperty0
  * ATTENTION: Do not replace this interface with lambdas. Lambdas do not support primitive types (at least in JVM 1.8).
  * Therefore, the index is always boxed!
  *
- * @param IndexContext: The type for the index: To avoid boxing this value is *not* used as parameter for [valueAt] (but should).
+ * @param IndexContext: The type for the index.
+ * This should be either:
+ * - a value class wrapping an index
+ * - an annotation annotated with [MultiProviderIndexContextAnnotation] - if a value class seems to be overkill
+ * To avoid boxing this value is *not* used as parameter for [valueAt] (but should in theory).
  *
- * Please create extension methods for [valueAt] that take the inline class as parameter and delegate accordingly.
+ * Please create extension methods for [valueAt] that take the value class as parameter and delegate accordingly.
  */
 interface MultiProvider<in IndexContext, out T> {
   /**

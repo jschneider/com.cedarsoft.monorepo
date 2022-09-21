@@ -1,0 +1,44 @@
+package com.cedarsoft.commons.provider
+
+import com.cedarsoft.common.collections.getModulo
+
+/**
+ * Provides multiple doubles.
+ *
+ * This is a "copy" of [MultiProvider] to avoid boxing
+ *
+ * Annotate [IndexContext] with [MultiProviderIndexContextAnnotation]
+ */
+interface MultiDoublesProvider<in IndexContext> {
+  /**
+   * Retrieves the value at the given [index].
+   *
+   * Please use extension methods with the correct type instead (if possible)
+   */
+  fun valueAt(index: Int): Double
+
+  companion object {
+    /**
+     * Always returns the given value
+     */
+    fun <IndexContext> always(value: Double): MultiDoublesProvider<IndexContext> {
+      return object : MultiDoublesProvider<IndexContext> {
+        override fun valueAt(index: Int): Double {
+          return value
+        }
+      }
+    }
+
+    /**
+     * Returns the element from the given values array using module if an index is requested,
+     * that is larger than the provided array.
+     */
+    fun <IndexContext> forArrayModulo(values: DoubleArray): MultiDoublesProvider<IndexContext> {
+      return object : MultiDoublesProvider<IndexContext> {
+        override fun valueAt(index: Int): Double {
+          return values.getModulo(index)
+        }
+      }
+    }
+  }
+}

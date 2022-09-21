@@ -5,7 +5,6 @@ import kotlin.jvm.JvmStatic
 /**
  * Provides an index for an index.
  *
- *
  * ATTENTION: It is necessary to copy this interface for value classes - to avoid boxing
  */
 @Deprecated("replaced with copies that use the value classes")

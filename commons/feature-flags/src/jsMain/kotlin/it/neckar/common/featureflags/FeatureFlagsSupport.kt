@@ -12,8 +12,35 @@ object FeatureFlagsSupport {
   var flags: FeatureFlags = FeatureFlags.empty
     private set
 
-  init {
-    //Initialize feature set
+  /**
+   * Adds a feature flag
+   */
+  fun add(additionalFlag: FeatureFlag) {
+    this.flags = this.flags.withAdditional(additionalFlag)
+  }
+
+  /**
+   * Removes a feature flag
+   */
+  fun remove(flag: FeatureFlag) {
+    this.flags = this.flags.withRemovedFlag(flag)
+  }
+
+  /**
+   * Sets the state of the given feature flag
+   */
+  fun set(flag: FeatureFlag, flagState: Boolean) {
+    if (flagState) {
+      add(flag)
+    } else {
+      remove(flag)
+    }
+  }
+
+  /**
+   * Parses the feature flags from the URL and sets the current flags
+   */
+  fun parseFromUrl() {
     /**
      * Parse feature flags URL
      */
@@ -23,10 +50,23 @@ object FeatureFlagsSupport {
   }
 
   /**
-   * Adds a feature flag
+   * Writes the currently set Feature Flags into the URL. Does not refresh the page.
    */
-  fun add(additionalFlag: FeatureFlag) {
-    this.flags = this.flags.withAdditional(additionalFlag)
+  fun writeToUrl() {
+    val flags = FeatureFlagsSupport.flags.encodeToString()
+    val urlWithoutFeatureFlags = getUrlWithoutFeatureFlags(window.location.href)
+    if (flags.isEmpty()){
+      window.history.replaceState(null,"", urlWithoutFeatureFlags)
+    }else{
+      window.history.replaceState(null,"", "$urlWithoutFeatureFlags?featureFlags=$flags")
+    }
+  }
+
+  /**
+   * Returns a String without the feature Flags.
+   */
+  fun getUrlWithoutFeatureFlags(url : String) : String{
+    return url.substringBefore("?featureFlags=")
   }
 }
 
@@ -45,4 +85,5 @@ fun getUrlParameter(paramName: String): String? {
   return null
 }
 
+//TODO move to kotlin-js
 external fun unescape(s: String): String

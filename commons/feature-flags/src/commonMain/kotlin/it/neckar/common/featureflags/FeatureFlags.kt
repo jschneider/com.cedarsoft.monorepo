@@ -33,6 +33,13 @@ data class FeatureFlags(
     return FeatureFlags(this.flags + additionalFlag)
   }
 
+  /**
+   * Creates a new [FeatureFlags] instance without the given feature flag
+   */
+  fun withRemovedFlag(flagToBeRemoved: FeatureFlag): FeatureFlags {
+    return FeatureFlags(this.flags - flagToBeRemoved)
+  }
+
   fun isEmpty(): Boolean {
     return flags.isEmpty()
   }
@@ -50,7 +57,7 @@ data class FeatureFlags(
 
 
     /**
-     * Parses the feature flags from a string created by [asString]
+     * Parses the feature flags from a string created by [encodeToString]
      */
     fun decodeFromString(asString: String?): FeatureFlags {
       if (asString == null) {

@@ -16,6 +16,10 @@ fun <T> Array<T>.getModulo(index: Int): T {
   return this[index.wrapAround(size)]
 }
 
+fun DoubleArray.getModulo(index: Int): Double {
+  return this[index.wrapAround(size)]
+}
+
 /**
  * An [ByteArray] of size 0
  */

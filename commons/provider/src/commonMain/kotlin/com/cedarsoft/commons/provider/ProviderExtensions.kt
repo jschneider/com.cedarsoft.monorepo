@@ -87,25 +87,19 @@ inline fun <T, P1> SizedProvider1<T, P1>.fastForEachIndexed(param1: P1, callback
   }
 }
 
-inline fun IndexProvider.fastForEach(callback: (index: Int) -> Unit) {
+inline fun <T, P1, P2> SizedProvider2<T, P1, P2>.fastForEach(param1: P1, param2: P2, callback: (T) -> Unit) {
   var n = 0
-  val currentSize = size()
+  val currentSize = size(param1, param2)
   while (n < currentSize) {
-    callback(this.valueAt(n++))
+    callback(this.valueAt(n++, param1, param2))
   }
 }
 
-/**
- * Iterates over the provided indices.
- * This method is only useful in very few cases!
- *
- * ATTENTION: "i" is very different to the provided index
- */
-inline fun IndexProvider.fastForEachIndexed(callback: (i: Int, value: Int) -> Unit) {
+inline fun <T, P1, P2> SizedProvider2<T, P1, P2>.fastForEachIndexed(param1: P1, param2: P2, callback: (index: Int, value: T) -> Unit) {
   var n = 0
-  val currentSize = size()
+  val currentSize = size(param1, param2)
   while (n < currentSize) {
-    callback(n, this.valueAt(n))
+    callback(n, this.valueAt(n, param1, param2))
     n++
   }
 }

@@ -73,7 +73,7 @@ data class FeatureFlag(
     /**
      * Contains the available feature flags
      */
-    val available: List<FeatureFlag> = listOf(slowUi, slowServer, testing, disableVersionCheck)
+    val available: List<FeatureFlag> = listOf(slowUi, slowServer, forceFailRefreshAccessToken, tokenDurationVeryShort, testing, forceFailEssentialsLoading, disableVersionCheck ,forceFailVersionCheck)
 
     /**
      * Returns the feature flag for the given key

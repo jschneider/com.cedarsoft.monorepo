@@ -48,7 +48,7 @@ fun RBuilder.tabButton(name: String, url: NavigateUrl, end: Boolean = true) {
 /**
  * Creates Router Tabs
  */
-fun RBuilder.RouterTabs(block: RouterTabsConfig.Builder.() -> Unit) {
+fun RBuilder.routerTabs(block: RouterTabsConfig.Builder.() -> Unit) {
   val config = RouterTabsConfig.Builder()
     .also(block)
     .build()

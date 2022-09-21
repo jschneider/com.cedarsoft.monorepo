@@ -145,6 +145,10 @@ object FontAwesome {
     i(classes = FontAwesomeIcons.addUser) {}
   }
 
+  fun RBuilder.faInformation() {
+    i(classes = FontAwesomeIcons.information) {}
+  }
+
   /**
    * Creates a new icon using "i" with the given icon class
    */
