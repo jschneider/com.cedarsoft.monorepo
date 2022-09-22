@@ -66,7 +66,8 @@ object FeatureFlagsSupport {
    * Returns a String without the feature Flags.
    */
   fun getUrlWithoutFeatureFlags(url : String) : String{
-    return url.substringBefore("?featureFlags=")
+    val result = url.substringBefore("&featureFlags=")
+    return result.substringBefore("?featureFlags=")
   }
 }
 

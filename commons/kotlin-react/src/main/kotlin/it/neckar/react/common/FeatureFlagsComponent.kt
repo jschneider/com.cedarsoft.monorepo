@@ -23,7 +23,7 @@ val FeatureFlagsComponent: FC<FeatureFlagsComponentProps> = fc("FeatureFlagsComp
 
 
     button(classes = "btn btn-primary") {
-      +"Apply Feature Flags"
+      +"Anwenden"
 
       attrs {
         onClickFunction = {
