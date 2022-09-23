@@ -3,6 +3,7 @@ package com.cedarsoft.commons.javafx
 import assertk.*
 import assertk.assertions.*
 import com.cedarsoft.common.time.VirtualNowProvider
+import com.cedarsoft.concurrent.ThreadDeadlockDetector
 import com.cedarsoft.javafx.test.JavaFxTest
 import com.cedarsoft.test.utils.VirtualTime
 import javafx.animation.Animation
@@ -14,12 +15,26 @@ import javafx.event.EventHandler
 import jfxtras.util.PlatformUtil
 import org.awaitility.Awaitility
 import org.awaitility.core.ConditionTimeoutException
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.milliseconds
 
 @JavaFxTest
 class JavaFxTimerTest {
+
+  private lateinit var threadDeadlockDetector: ThreadDeadlockDetector
+
+  @BeforeEach
+  fun setUp() {
+    threadDeadlockDetector = ThreadDeadlockDetector(1_000).also { it.start() }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    threadDeadlockDetector.stop()
+  }
 
   @VirtualTime(5000.0)
   @Test
@@ -37,13 +52,25 @@ class JavaFxTimerTest {
     nowProvider.add(20.0)
     assertThat(nowProvider.nowMillis()).isEqualTo(5020.0)
 
-    JavaFxTimer.waitForPaintPulse()
-    Awaitility.await().atMost(30, TimeUnit.SECONDS)
-      .pollDelay(10, TimeUnit.MILLISECONDS)
-      .until {
-        called
+    try {
+      JavaFxTimer.waitForPaintPulse()
+      Awaitility.await().atMost(30, TimeUnit.SECONDS)
+        .pollDelay(10, TimeUnit.MILLISECONDS)
+        .until {
+          called
+        }
+      assertThat(called).isTrue()
+    } catch (e: ConditionTimeoutException) {
+      println("ConditionTimeoutException caught!!!")
+      Thread.getAllStackTraces().forEach { thread, stackTrace ->
+        println("--------- ${thread.id} - ${thread.name}-------------------")
+        stackTrace.forEach {
+          println(it.toString())
+        }
       }
-    assertThat(called).isTrue()
+
+      throw e
+    }
   }
 
   @VirtualTime(5000.0)

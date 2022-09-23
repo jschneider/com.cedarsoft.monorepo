@@ -45,12 +45,12 @@ import java.util.concurrent.CopyOnWriteArraySet
  */
 class ThreadDeadlockDetector
 /**
- *
- * Constructor for ThreadDeadlockDetector.
- *
- * @param deadlockCheckPeriod a int.
+ * It may be expensive to check for deadlocks, and it is not
+ * critical to know so quickly.
  */
-@JvmOverloads constructor(private val deadlockCheckPeriod: Long = DEFAULT_DEADLOCK_CHECK_PERIOD) {
+@JvmOverloads constructor(
+  val deadlockCheckPeriod: @ms Long = 10_000,
+) {
   private val threadCheck = Timer("ThreadDeadlockDetector", true)
   private val mXBean = ManagementFactory.getThreadMXBean()
   private val listeners = CopyOnWriteArraySet<Listener>()
@@ -125,14 +125,6 @@ class ThreadDeadlockDetector
   }
 
   companion object {
-    /**
-     * The number of milliseconds between checking for deadlocks.
-     * It may be expensive to check for deadlocks, and it is not
-     * critical to know so quickly.
-     */
-    @ms
-    private val DEFAULT_DEADLOCK_CHECK_PERIOD: Long = 10000
-
     private fun findMatchingThread(threadInfo: ThreadInfo): Thread {
       for (thread in Thread.getAllStackTraces().keys) {
         if (thread.id == threadInfo.threadId) {

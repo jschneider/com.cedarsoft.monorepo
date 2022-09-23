@@ -105,6 +105,10 @@ object FontAwesome {
     icon(FontAwesomeIcons.signOut)
   }
 
+  fun RBuilder.faBug() {
+    icon(FontAwesomeIcons.bug)
+  }
+
   fun RBuilder.faHome() {
     icon(FontAwesomeIcons.home)
   }
@@ -168,6 +172,7 @@ object FontAwesomeIcons {
   const val login: String = "fa fa-eye"
   const val signIn: String = "fa fa-sign-in-alt"
   const val signOut: String = "fa fa-sign-out-alt"
+  const val bug: String = "fa-solid fa-bug"
   const val copy: String = "fa fa-copy"
   const val open: String = "fa fa-folder-open"
   const val eye: String = "fas fa-eye"
