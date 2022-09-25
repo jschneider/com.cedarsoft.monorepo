@@ -1,5 +1,8 @@
 package com.cedarsoft.common.kotlin.lang
 
+import kotlinx.js.DEV
+import kotlinx.js.import
+
 /**
  * Returns true if this test is running (probably) in a unit test
  */
@@ -15,3 +18,25 @@ actual fun guessInCIEnvironment(): Boolean {
   //no way to know for sure!
   return false
 }
+
+actual fun guessEnvironmentMode(): EnvironmentMode {
+  if (import.meta.env.DEV) {
+    return EnvironmentMode.Dev
+  }
+
+  //Maybe also check external var __DEV__: Boolean = definedExternally
+  //if (__DEV__ == true) {
+  //  return EnvironmentMode.Dev
+  //}
+
+  return EnvironmentMode.Production
+}
+
+/**
+ * Copied from
+ * https://github.com/Kotlin/js-externals/blob/master/externals/react-native/v0/src/index.global.kt
+ *
+ * Might be set/used if React is used
+ */
+//@Deprecated("Does not work outside of React")
+//external var __DEV__: dynamic = definedExternally

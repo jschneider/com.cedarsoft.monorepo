@@ -1,7 +1,7 @@
 package it.neckar.react.common.router
 
 import com.cedarsoft.common.collections.fastForEach
-import it.neckar.commons.kotlin.js.Environment
+import com.cedarsoft.common.kotlin.lang.ExecutionEnvironment
 import react.*
 import react.dom.*
 import react.router.*
@@ -306,7 +306,7 @@ fun RBuilder.addRoutes(navigationRoot: NavigationRoot) {
     addRouteRecursively(it)
   }
 
-  if (Environment.Dev) {
+  if (ExecutionEnvironment.isDev()) {
     val allRoutes = navigationRoot.allRoutes
     console.log("---------- Added ${allRoutes.size} routes ---------")
     allRoutes.fastForEach {

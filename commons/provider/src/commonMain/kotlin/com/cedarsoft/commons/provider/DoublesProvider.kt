@@ -160,6 +160,21 @@ interface DoublesProvider : HasSize {
         override fun size(): Int = size
       }
     }
+
+    /**
+     * Returns a double provider with a fixed size - the values are returned by the provider
+     */
+    fun fixedSize(size: Int, provider: MultiDoublesProvider<Int>): DoublesProvider {
+      return object : DoublesProvider {
+        override fun size(): Int {
+          return size
+        }
+
+        override fun valueAt(index: Int): Double {
+          return provider.valueAt(index)
+        }
+      }
+    }
   }
 }
 

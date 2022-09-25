@@ -24,17 +24,15 @@ dependencies {
   implementation(Libs.uuid)
 
   //BOM for dependencies
-  implementation(enforcedPlatform("org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom:_"))
+  implementation(enforcedPlatform(Libs.kotlin_wrappers_bom))
 
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react")
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom")
+  implementation(Libs.kotlin_react)
+  implementation(Libs.kotlin_react_dom)
+  implementation(Libs.kotlin_styled)
 
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-styled")
-
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-redux")
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux")
-
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom")
+  implementation(Libs.kotlin_redux)
+  implementation(Libs.kotlin_react_redux)
+  implementation(Libs.kotlin_react_router_dom)
 
   implementation(npm("react", "_"))
 }

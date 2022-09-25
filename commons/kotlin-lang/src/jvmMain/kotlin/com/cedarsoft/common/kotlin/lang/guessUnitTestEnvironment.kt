@@ -15,3 +15,10 @@ actual fun guessInUnitTestEnvironment(): Boolean {
 actual fun guessInCIEnvironment(): Boolean {
   return System.getenv("GITLAB_CI") != null
 }
+
+/**
+ * Guesses the environment mode
+ */
+actual fun guessEnvironmentMode(): EnvironmentMode {
+  return EnvironmentMode.Dev
+}

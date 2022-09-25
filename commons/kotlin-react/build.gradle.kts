@@ -23,12 +23,11 @@ dependencies {
   implementation(Libs.uuid)
 
   //BOM for dependencies
-  implementation(enforcedPlatform("org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom:_"))
+  implementation(enforcedPlatform(Libs.kotlin_wrappers_bom))
 
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react")
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom")
-
-  implementation("org.jetbrains.kotlin-wrappers:kotlin-styled")
+  implementation(Libs.kotlin_react)
+  implementation(Libs.kotlin_react_dom)
+  implementation(Libs.kotlin_styled)
 
   //State machine (with undo)
   //implementation("org.jetbrains.kotlin-wrappers:kotlin-redux")
