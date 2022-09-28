@@ -122,7 +122,7 @@ data class NavigationElement(
      */
     @NavigationDsl
     fun route(variable: RouterVar, handler: Builder.() -> Unit): Builder {
-      return route(":${variable.value}", handler)
+      return route(variable.toPathString(), handler)
     }
 
     @NavigationDsl

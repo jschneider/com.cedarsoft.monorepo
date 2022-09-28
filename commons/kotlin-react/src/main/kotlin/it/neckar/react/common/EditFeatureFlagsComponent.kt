@@ -2,6 +2,7 @@ package it.neckar.react.common
 
 import it.neckar.common.featureflags.FeatureFlag
 import it.neckar.common.featureflags.FeatureFlags
+import it.neckar.react.common.toast.*
 import kotlinx.html.js.onClickFunction
 import react.*
 import react.dom.*
@@ -31,6 +32,8 @@ val EditFeatureFlagsComponent: FC<FeatureFlagsComponentProps> = fc("FeatureFlags
       attrs {
         onClickFunction = {
           featureFlagsContextContent.updater(featureFlagStates.toFeatureFlags())
+          Toast.success("Feature Flags angewendet!", options = ToastOptions(
+            timeOut = 2000, positionClass = ToastPosition.TOPCENTER) )
         }
       }
     }
