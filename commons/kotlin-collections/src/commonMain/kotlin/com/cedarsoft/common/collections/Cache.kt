@@ -130,6 +130,15 @@ class Cache<K, V>
   fun markAsNew(key: K) {
     map.markAsNew(key)
   }
+
+  /**
+   * Calls the callback for each entry
+   */
+  fun forEach(callback: (K, V) -> Unit) {
+    map.forEach { entry ->
+      callback(entry.key, entry.value)
+    }
+  }
 }
 
 /**
