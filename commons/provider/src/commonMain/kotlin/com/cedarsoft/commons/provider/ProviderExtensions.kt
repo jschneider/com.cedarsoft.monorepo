@@ -103,3 +103,39 @@ inline fun <T, P1, P2> SizedProvider2<T, P1, P2>.fastForEachIndexed(param1: P1, 
     n++
   }
 }
+
+
+inline fun CoordinatesProvider.fastForEach(callback: (x: Double, y: Double) -> Unit) {
+  var n = 0
+  val currentSize = size()
+  while (n < currentSize) {
+    callback(this.xAt(n), this.yAt(n))
+    n++
+  }
+}
+
+inline fun CoordinatesProvider.fastForEachIndexed(callback: (index: Int, x: Double, y: Double) -> Unit) {
+  var n = 0
+  val currentSize = size()
+  while (n < currentSize) {
+    callback(n, this.xAt(n), this.yAt(n))
+    n++
+  }
+}
+
+inline fun <T> CoordinatesProvider1<T>.fastForEach(param1: T, callback: (x: Double, y: Double) -> Unit) {
+  var n = 0
+  val currentSize = size(param1)
+  while (n < currentSize) {
+    callback(this.xAt(n, param1), this.yAt(n, param1))
+    n++
+  }
+}
+
+inline fun <T> CoordinatesProvider1<T>.fastForEachIndexed(param1: T, callback: (index: Int, x: Double, y: Double) -> Unit) {
+  var n = 0
+  while (n < size(param1)) {
+    callback(n, this.xAt(n, param1), this.yAt(n, param1))
+    n++
+  }
+}

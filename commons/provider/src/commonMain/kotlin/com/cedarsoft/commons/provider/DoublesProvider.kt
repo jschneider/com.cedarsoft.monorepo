@@ -15,16 +15,7 @@ import kotlin.reflect.KProperty0
  * There exist variants for different number of parameters:
  * *[DoublesProvider1]: Takes one parameter
  */
-interface DoublesProvider : HasSize {
-  /**
-   * Retrieves the value at the given [index].
-   *
-   * The value can be a [@Domain], a [@DomainRelative] *or* a [@pct] value
-   *
-   * @param index a value between 0 (inclusive) and [size] (exclusive)
-   */
-  fun valueAt(index: Int): Double
-
+interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
   operator fun get(index: Int): Double {
     return valueAt(index)
   }

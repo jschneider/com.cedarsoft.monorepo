@@ -1,16 +1,12 @@
 package com.cedarsoft.commons.provider
 
+import com.cedarsoft.charting.annotations.Domain
+import kotlin.reflect.KProperty0
+
 /**
  * A provider that takes one parameter and provides multiple doubles
  */
-interface DoublesProvider1<in P1> : HasSize1<P1> {
-
-  /**
-   * Retrieves the value at the given [index].
-   * @param index a value between 0 (inclusive) and [size] (exclusive)
-   */
-  fun valueAt(index: Int, param1: P1): Double
-
+interface DoublesProvider1<in P1> : HasSize1<P1>, MultiDoublesProvider1<SizedProviderIndex, P1> {
   /**
    * Computes the sum of all values.
    *
@@ -22,6 +18,13 @@ interface DoublesProvider1<in P1> : HasSize1<P1> {
       sum += valueAt(index, param1)
     }
     return sum
+  }
+
+  /**
+   * Creates a new doubles provider with a fixed parameter
+   */
+  fun asDoublesProvider(param: P1): DoublesProvider {
+    return FixedParamsDoublesProvider(param, this)
   }
 
   companion object {
@@ -54,5 +57,41 @@ fun <P1> DoublesProvider.asDoublesProvider1(): DoublesProvider1<P1> {
     override fun size(param1: P1): Int {
       return delegate.size()
     }
+  }
+}
+
+/**
+ * Creates a fixed params doubles provider that always uses the current value for this property
+ */
+fun <P1> KProperty0<DoublesProvider1<P1>>.asDoublesProvider(param1: P1): @Domain DoublesProvider {
+  return FixedParamsDoublesProvider(param1) {
+    get()
+  }
+}
+
+/**
+ * Delegates calls to a [DoublesProvider1] with a fixed parameter
+ */
+class FixedParamsDoublesProvider<P1>(
+  val param1: P1,
+  /**
+   * Provides the delegate.
+   * ATTENTION: This method is called for each call to [size] and [valueAt].
+   * It must be ensured that always the correct delegate is returned.
+   */
+  val delegate: () -> DoublesProvider1<P1>,
+) : DoublesProvider {
+
+  constructor(
+    param1: P1,
+    delegate: DoublesProvider1<P1>,
+  ) : this(param1, { delegate })
+
+  override fun size(): Int {
+    return delegate().size(param1)
+  }
+
+  override fun valueAt(index: Int): Double {
+    return delegate().valueAt(index, param1)
   }
 }
