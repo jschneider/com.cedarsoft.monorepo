@@ -29,23 +29,8 @@ dependencies {
   implementation(Libs.kotlin_react_dom)
   implementation(Libs.kotlin_styled)
 
-  //State machine (with undo)
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-redux")
-  //
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux")
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom")
-  //
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-css")
-  //implementation("org.jetbrains.kotlin-wrappers:kotlin-extensions")
-
   implementation(npm("react", "_"))
-  //implementation(npm("react-dom", "_"))
-  //implementation(npm("react-is", "_"))
-
-  //implementation(npm("styled-components", "_"))
-
   implementation(npm("toastr", "_"))
-  //implementation(npm("formik", "_"))
 }
 
 tasks.withType<GenerateModuleMetadata> {
