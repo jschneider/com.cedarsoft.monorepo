@@ -145,16 +145,19 @@ object JavaFxTimer {
     runAndWait(runnable::run)
   }
 
-  fun runAndWait(runnable: () -> Unit) {
+  /**
+   * Executes the given lambda within the application thread
+   */
+  fun <T> runAndWait(runnable: () -> T): T {
     if (Platform.isFxApplicationThread()) {
       //run inline in fx thread
-      runnable()
-      return
+      return runnable()
     }
 
-    FutureTask<Void?>(runnable, null).also {
-      Platform.runLater(it)
-    }.get()
+    return FutureTask<T>(Callable(runnable))
+      .also {
+        Platform.runLater(it)
+      }.get()
   }
 
   /**

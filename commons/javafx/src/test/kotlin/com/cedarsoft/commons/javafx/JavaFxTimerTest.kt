@@ -6,6 +6,8 @@ import com.cedarsoft.common.time.VirtualNowProvider
 import com.cedarsoft.concurrent.ThreadDeadlockDetector
 import com.cedarsoft.javafx.test.JavaFxTest
 import com.cedarsoft.test.utils.VirtualTime
+import com.cedarsoft.test.utils.isFalse
+import com.cedarsoft.test.utils.isTrue
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -13,12 +15,11 @@ import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import jfxtras.util.PlatformUtil
-import org.awaitility.Awaitility
 import org.awaitility.core.ConditionTimeoutException
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.time.Duration.Companion.milliseconds
 
 @JavaFxTest
@@ -54,11 +55,9 @@ class JavaFxTimerTest {
 
     try {
       JavaFxTimer.waitForPaintPulse()
-      Awaitility.await().atMost(30, TimeUnit.SECONDS)
-        .pollDelay(10, TimeUnit.MILLISECONDS)
-        .until {
-          called
-        }
+      FxUtils.waitFor {
+        called
+      }
       assertThat(called).isTrue()
     } catch (e: ConditionTimeoutException) {
       println("ConditionTimeoutException caught!!!")
@@ -79,11 +78,11 @@ class JavaFxTimerTest {
     try {
       assertThat(Platform.isFxApplicationThread()).isFalse()
 
-      var called = false
+      val called = AtomicBoolean(false)
 
       JavaFxTimer.delay(10.milliseconds) {
         assertThat(called).isFalse()
-        called = true
+        called.set(true)
       }
 
       assertThat(called).isFalse()
@@ -100,11 +99,7 @@ class JavaFxTimerTest {
       assertThat(nowProvider.nowMillis()).isEqualTo(5010.0)
 
       JavaFxTimer.waitForPaintPulse()
-      Awaitility.await().atMost(30, TimeUnit.SECONDS)
-        .pollDelay(10, TimeUnit.MILLISECONDS)
-        .until {
-          called
-        }
+      FxUtils.waitFor { called.get() }
       assertThat(called).isTrue()
     } catch (e: ConditionTimeoutException) {
       println("---------- ConditionTimeoutException ----------")
@@ -131,11 +126,9 @@ class JavaFxTimerTest {
     //wait to ensure the event has been processed
     JavaFxTimer.waitForPaintPulse()
 
-    Awaitility.await().atMost(30, TimeUnit.SECONDS)
-      .pollDelay(10, TimeUnit.MILLISECONDS)
-      .until {
-        called
-      }
+    FxUtils.waitFor {
+      called
+    }
   }
 
   /**

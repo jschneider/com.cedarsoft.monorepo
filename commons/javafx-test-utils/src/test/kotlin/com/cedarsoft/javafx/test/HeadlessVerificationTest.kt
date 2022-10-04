@@ -2,13 +2,12 @@ package com.cedarsoft.javafx.test
 
 import assertk.*
 import assertk.assertions.*
+import com.cedarsoft.commons.javafx.FxUtils
 import javafx.application.Platform
-import org.awaitility.Awaitility
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.testfx.framework.junit5.ApplicationExtension
 import java.awt.GraphicsEnvironment
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 
@@ -31,6 +30,8 @@ class HeadlessVerificationTest {
       run.set(true)
     }
 
-    Awaitility.await().atMost(30, TimeUnit.SECONDS).untilTrue(run)
+    FxUtils.waitFor {
+      run.get()
+    }
   }
 }

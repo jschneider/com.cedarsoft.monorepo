@@ -1,13 +1,14 @@
 package com.cedarsoft.commons.javafx
 
+import com.cedarsoft.common.time.nowMillis
 import com.cedarsoft.unit.other.px
 import com.google.common.base.Strings
 import com.google.common.collect.ImmutableList
+import com.sun.javafx.tk.Toolkit
 import javafx.animation.Interpolator
 import javafx.animation.KeyFrame
 import javafx.animation.KeyValue
 import javafx.animation.Timeline
-import javafx.application.Platform
 import javafx.beans.property.BooleanProperty
 import javafx.geometry.Point2D
 import javafx.scene.Node
@@ -22,6 +23,9 @@ import java.io.PrintStream
 import java.util.Locale
 import java.util.Optional
 import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
+
 
 /**
  */
@@ -109,10 +113,47 @@ object FxUtils {
    * Throws an exception if the current thread is not the JavaFX UI Thread
    */
   fun ensureFxThread() {
-    if (!Platform.isFxApplicationThread()) {
-      throw IllegalThreadStateException("Expected JavaFX Application thread but was <${Thread.currentThread().name}>")
+    Toolkit.getToolkit().checkFxUserThread()
+  }
+
+  /**
+   * Returns all Java FX application thread
+   */
+  @Deprecated("Probably not as useful as you think. Use other stuff instead!")
+  fun getFxThread(): Thread? {
+    //Instantiate very early to ensure the platform is up and running
+    val toolkit = Toolkit.getToolkit()
+
+    val toolkitClass = Toolkit::class.java
+
+    val getFxUserThread = toolkitClass.getDeclaredMethod("getFxUserThread")
+    getFxUserThread.isAccessible = true
+    return getFxUserThread.invoke(toolkit) as Thread?
+  }
+
+  /**
+   * Executes the provided condition at least once until the timeout has been reached or the condition returns true
+   */
+  fun waitFor(
+    timeout: kotlin.time.Duration = 10.seconds,
+    pollInterval: kotlin.time.Duration = 100.milliseconds,
+    condition: () -> Boolean,
+  ) {
+    val start = nowMillis()
+
+    while (JavaFxTimer.runAndWait(condition).not()) {
+      Thread.sleep(pollInterval.inWholeMilliseconds)
+
+      val now = nowMillis()
+      val delta = now - start
+
+      if (delta > timeout.inWholeMilliseconds) {
+        throw TimeoutException()
+      }
     }
   }
+
+  class TimeoutException : Exception()
 
   @JvmStatic
   fun dump(node: Node, out: PrintStream) {
