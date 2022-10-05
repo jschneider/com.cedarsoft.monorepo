@@ -9,7 +9,7 @@ import com.cedarsoft.common.collections.getModulo
  *
  * Annotate [IndexContext] with [MultiProviderIndexContextAnnotation]
  */
-interface MultiDoublesProvider<in IndexContext> {
+fun interface MultiDoublesProvider<in IndexContext> {
   /**
    * Retrieves the value at the given [index].
    *
@@ -22,11 +22,7 @@ interface MultiDoublesProvider<in IndexContext> {
      * Always returns the given value
      */
     fun <IndexContext> always(value: Double): MultiDoublesProvider<IndexContext> {
-      return object : MultiDoublesProvider<IndexContext> {
-        override fun valueAt(index: Int): Double {
-          return value
-        }
-      }
+      return MultiDoublesProvider { value }
     }
 
     /**
@@ -34,11 +30,7 @@ interface MultiDoublesProvider<in IndexContext> {
      * that is larger than the provided array.
      */
     fun <IndexContext> forArrayModulo(values: DoubleArray): MultiDoublesProvider<IndexContext> {
-      return object : MultiDoublesProvider<IndexContext> {
-        override fun valueAt(index: Int): Double {
-          return values.getModulo(index)
-        }
-      }
+      return MultiDoublesProvider { index -> values.getModulo(index) }
     }
   }
 }

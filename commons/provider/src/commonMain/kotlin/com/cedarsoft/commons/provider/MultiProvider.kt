@@ -19,7 +19,7 @@ import kotlin.reflect.KProperty0
  *
  * Please create extension methods for [valueAt] that take the value class as parameter and delegate accordingly.
  */
-interface MultiProvider<in IndexContext, out T> {
+fun interface MultiProvider<in IndexContext, out T> {
   /**
    * Retrieves the value at the given [index].
    *
@@ -34,11 +34,7 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun <IndexContext, T> forListModulo(values: List<T>): MultiProvider<IndexContext, T> {
-      return object : MultiProvider<IndexContext, T> {
-        override fun valueAt(index: Int): T {
-          return values.getModulo(index)
-        }
-      }
+      return MultiProvider { index -> values.getModulo(index) }
     }
 
     @JvmStatic
@@ -65,11 +61,7 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun <IndexContext, T> forListOrNull(values: List<T>): MultiProvider<IndexContext, T?> {
-      return object : MultiProvider<IndexContext, T?> {
-        override fun valueAt(index: Int): T? {
-          return values.getOrNull(index)
-        }
-      }
+      return MultiProvider { index -> values.getOrNull(index) }
     }
 
     /**
@@ -78,11 +70,7 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun <IndexContext, T> forListOr(values: List<T>, fallback: T): MultiProvider<IndexContext, T> {
-      return object : MultiProvider<IndexContext, T> {
-        override fun valueAt(index: Int): T {
-          return values.getOrNull(index) ?: fallback
-        }
-      }
+      return MultiProvider { index -> values.getOrNull(index) ?: fallback }
     }
 
     /**
@@ -90,11 +78,7 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun <IndexContext, T> forListOrException(values: List<T>): MultiProvider<IndexContext, T> {
-      return object : MultiProvider<IndexContext, T> {
-        override fun valueAt(index: Int): T {
-          return values[index]
-        }
-      }
+      return MultiProvider { index -> values[index] }
     }
 
     /**
@@ -102,11 +86,7 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun <IndexContext, T> always(value: T): MultiProvider<IndexContext, T> {
-      return object : MultiProvider<IndexContext, T> {
-        override fun valueAt(index: Int): T {
-          return value
-        }
-      }
+      return MultiProvider { value }
     }
 
     /**
@@ -123,22 +103,14 @@ interface MultiProvider<in IndexContext, out T> {
      */
     @JvmStatic
     fun alwaysNull(): MultiProvider<Any, Nothing?> {
-      return object : MultiProvider<Any, Nothing?> {
-        override fun valueAt(index: Int): Nothing? {
-          return null
-        }
-      }
+      return MultiProvider { null }
     }
 
     /**
      * Wraps the given lambda into a multi provider
      */
     operator fun <IndexContext, T> invoke(lambda: (index: Int) -> T): MultiProvider<IndexContext, T> {
-      return object : MultiProvider<IndexContext, T> {
-        override fun valueAt(index: Int): T {
-          return lambda(index)
-        }
-      }
+      return MultiProvider { index -> lambda(index) }
     }
   }
 }
@@ -147,11 +119,7 @@ interface MultiProvider<in IndexContext, out T> {
  * Returns a [MultiProvider] that delegates all calls to the current value of this property
  */
 fun <IndexContext, T> KProperty0<MultiProvider<IndexContext, T>>.delegate(): MultiProvider<IndexContext, T> {
-  return object : MultiProvider<IndexContext, T> {
-    override fun valueAt(index: Int): T {
-      return this@delegate.get().valueAt(index)
-    }
-  }
+  return MultiProvider { index -> this@delegate.get().valueAt(index) }
 }
 
 /**
@@ -176,5 +144,4 @@ fun <IndexContext, T, R> MultiProvider<IndexContext, T>.mapping(function: (T) ->
 @Target(AnnotationTarget.ANNOTATION_CLASS)
 @MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)
-annotation class MultiProviderIndexContextAnnotation {
-}
+annotation class MultiProviderIndexContextAnnotation

@@ -5,7 +5,7 @@ import com.cedarsoft.charting.annotations.Domain
 /**
  * Takes one parameter to provide values
  */
-interface MultiProvider1<in IndexContext, out T, in P1> {
+fun interface MultiProvider1<in IndexContext, out T, in P1> {
   /**
    * Retrieves the value at the given [index].
    */
@@ -23,11 +23,7 @@ interface MultiProvider1<in IndexContext, out T, in P1> {
      * Creates a new instance of an empty multi provider
      */
     fun <T> empty(): @Domain MultiProvider1<Any, T, Any> {
-      return object : MultiProvider1<Any, T, Any> {
-        override fun valueAt(index: Int, param1: Any): T {
-          throw UnsupportedOperationException()
-        }
-      }
+      return MultiProvider1<Any, T, Any> { _, _ -> throw UnsupportedOperationException() }
     }
   }
 }
