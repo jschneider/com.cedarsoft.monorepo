@@ -2,6 +2,7 @@ package it.neckar.react.common.router
 
 import com.cedarsoft.common.collections.fastForEach
 import it.neckar.react.common.*
+import kotlinx.css.*
 import kotlinx.html.UL
 import kotlinx.html.role
 import react.*
@@ -9,6 +10,7 @@ import react.dom.*
 import react.dom.aria.*
 import react.router.*
 import react.router.dom.*
+import styled.*
 
 
 /**
@@ -71,11 +73,18 @@ class RouterTabsConfig(
       }
 
       Routes {
-        tabs.fastForEach {
+        tabs.fastForEach { routerTabConfig ->
           Route {
             attrs {
-              path = it.path.value
-              element = it.element()
+              path = routerTabConfig.path.value
+              element = createElement<Props> {
+                styledDiv {
+                  css {
+                    overflow = Overflow.auto
+                  }
+                  child(routerTabConfig.tabContent())
+                }
+              }
             }
           }
         }
@@ -105,9 +114,21 @@ class RouterTabsConfig(
   }
 }
 
+/**
+ * Configuration for a router tab
+ */
 class RouterTabConfig(
+  /**
+   * The title for the tab - visible to the user
+   */
   val tabTitle: String,
+  /**
+   * The navigation path (usually relative) that is used to activate the tab
+   */
   val path: NavigateUrl,
-  val element: (() -> ReactElement<out Props>),
+  /**
+   * Provides the content of the tab
+   */
+  val tabContent: (() -> ReactElement<out Props>),
 ) {
 }

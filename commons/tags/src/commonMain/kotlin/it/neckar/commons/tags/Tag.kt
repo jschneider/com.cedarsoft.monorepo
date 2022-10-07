@@ -10,4 +10,8 @@ import kotlin.jvm.JvmInline
 @JvmInline
 @Serializable
 value class Tag(val id: String) {
+
+  operator fun plus(other: Tag): Tags {
+    return Tags(setOf(this, other))
+  }
 }

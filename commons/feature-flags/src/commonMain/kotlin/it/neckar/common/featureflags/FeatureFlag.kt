@@ -74,10 +74,12 @@ data class FeatureFlag(
 
     val throwException: FeatureFlag = FeatureFlag("throwException", "Throws an exception - to test error handling")
 
+    val showProfits: FeatureFlag = FeatureFlag("showProfits", "Shows the profits")
+
     /**
      * Contains the available feature flags
      */
-    val available: List<FeatureFlag> = listOf(slowUi, slowServer, forceFailRefreshAccessToken, tokenDurationVeryShort, testing, forceFailEssentialsLoading, disableVersionCheck, forceFailVersionCheck, showQuoteDump, throwException)
+    val available: List<FeatureFlag> = listOf(slowUi, slowServer, forceFailRefreshAccessToken, tokenDurationVeryShort, testing, forceFailEssentialsLoading, disableVersionCheck, forceFailVersionCheck, showQuoteDump, throwException, showProfits)
 
     /**
      * Returns the feature flag for the given key

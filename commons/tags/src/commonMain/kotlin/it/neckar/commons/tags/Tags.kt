@@ -18,6 +18,13 @@ data class Tags(
     return this.tags.isEmpty()
   }
 
+  operator fun plus(additionalTag: Tag): Tags {
+    return Tags(buildSet {
+      addAll(tags)
+      add(additionalTag)
+    })
+  }
+
   companion object {
     operator fun invoke(tag: Tag): Tags {
       return Tags(setOf(tag))
@@ -33,4 +40,24 @@ data class Tags(
 
     val empty: Tags = Tags(setOf())
   }
+}
+
+fun Tag?.toTags(): Tags? {
+  if (this == null) {
+    return null
+  }
+
+  return toTags()
+}
+
+fun Tag?.toTagsOrEmpty(): Tags {
+  if (this == null) {
+    return Tags.empty
+  }
+
+  return toTags()
+}
+
+fun Tag.toTags(): Tags {
+  return Tags(this)
 }
