@@ -5,6 +5,10 @@ package it.neckar.react.common.router
  * Represents a router variable that is encoded in the URL
  */
 value class RouterVar(val value: String) {
+  operator fun plus(relativeRouterVar: RouterVar): RouterVar {
+    return RouterVar("${value}/${relativeRouterVar.value}")
+  }
+
   operator fun plus(relativePath: String): String {
     require(relativePath.startsWith("/").not()) {
       "Relative path must not start with / but was <$relativePath>"

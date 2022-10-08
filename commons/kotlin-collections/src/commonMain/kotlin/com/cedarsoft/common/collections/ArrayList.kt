@@ -305,9 +305,14 @@ class DoubleArrayList(capacity: Int = 7) {
   operator fun plusAssign(value: DoubleArrayList) = add(value)
   operator fun plusAssign(value: Iterable<Double>) = add(value)
 
+  /**
+   * Adds the values from the given doubles array.
+   * @param offset the offset in the [values] array
+   * @param length the length of the values that is copied
+   */
   fun add(values: DoubleArray, offset: Int = 0, length: Int = values.size) {
     ensure(length)
-    arraycopy(values as DoubleArray, offset, data, this.size, length)
+    arraycopy(values, offset, data, this.size, length)
     this.size += length
   }
 

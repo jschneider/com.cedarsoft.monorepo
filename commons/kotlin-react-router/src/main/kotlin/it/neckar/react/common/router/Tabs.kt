@@ -2,6 +2,7 @@ package it.neckar.react.common.router
 
 import com.cedarsoft.common.collections.fastForEach
 import it.neckar.react.common.*
+import it.neckar.react.common.router.TabButtonStatus.*
 import kotlinx.css.*
 import kotlinx.html.UL
 import kotlinx.html.role
@@ -12,6 +13,10 @@ import react.router.*
 import react.router.dom.*
 import styled.*
 
+enum class TabButtonStatus {
+  Normal,
+  Disabled,
+}
 
 /**
  * The tab pane should be used as container for [tabButton] calls
@@ -26,7 +31,7 @@ fun RBuilder.tabButtonsPane(block: RDOMBuilder<UL>.() -> Unit) {
  * Creates a tab button - using react router.
  * Should be placed within a [tabButtonsPane].
  */
-fun RBuilder.tabButton(name: String, url: NavigateUrl, end: Boolean = true) {
+fun RBuilder.tabButton(name: String, url: NavigateUrl, tabButtonStatus: TabButtonStatus, end: Boolean = true) {
   li("nav-item") {
     attrs {
       role = "presentation"
@@ -41,6 +46,10 @@ fun RBuilder.tabButton(name: String, url: NavigateUrl, end: Boolean = true) {
 
         this.end = end
         role = AriaRole.tab
+
+        if (tabButtonStatus == Disabled) {
+          addClass("disabled")
+        }
       }
     }
   }
@@ -68,7 +77,7 @@ class RouterTabsConfig(
     with(builder) {
       tabButtonsPane {
         tabs.fastForEach {
-          tabButton(it.tabTitle, it.path)
+          tabButton(it.tabTitle, it.path, it.disabled)
         }
       }
 
@@ -101,9 +110,10 @@ class RouterTabsConfig(
     fun tab(
       path: NavigateUrl,
       tabTitle: String,
+      disabled: TabButtonStatus = Normal,
       element: (() -> ReactElement<out Props>),
     ) {
-      this.tabs.add(RouterTabConfig(tabTitle, path, element))
+      this.tabs.add(RouterTabConfig(tabTitle, path, disabled, element))
     }
 
     fun build(): RouterTabsConfig {
@@ -127,8 +137,11 @@ class RouterTabConfig(
    */
   val path: NavigateUrl,
   /**
+   * If the tab button is disabled
+   */
+  val disabled: TabButtonStatus,
+  /**
    * Provides the content of the tab
    */
   val tabContent: (() -> ReactElement<out Props>),
-) {
-}
+)

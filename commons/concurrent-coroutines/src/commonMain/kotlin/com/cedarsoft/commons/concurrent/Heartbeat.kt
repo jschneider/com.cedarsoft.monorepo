@@ -66,17 +66,13 @@ sealed interface HeartbeatState {
    * Returns true if this is a success
    */
   val isServiceAvailable: Boolean
-    get() {
-      return this is Alive
-    }
+    get() = this is Alive
 
   /**
    * Returns true if there is a version mismatch
    */
   val isVersionMismatch: Boolean
-    get() {
-      return this == VersionMismatch
-    }
+    get() = this == VersionMismatch
 }
 
 /**

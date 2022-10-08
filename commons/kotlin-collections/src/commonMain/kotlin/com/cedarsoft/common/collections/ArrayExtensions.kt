@@ -1,6 +1,8 @@
 package com.cedarsoft.common.collections
 
 import com.cedarsoft.common.kotlin.lang.wrapAround
+import com.cedarsoft.unit.other.Exclusive
+import com.cedarsoft.unit.other.Inclusive
 import com.cedarsoft.unit.other.Slow
 
 /**
@@ -77,4 +79,34 @@ fun IntArray.asDoubles(): DoubleArray {
   return map {
     it.toDouble()
   }.toDoubleArray()
+}
+
+/**
+ * Helper methods that simplifies addition of additional checks
+ */
+fun DoubleArray.safeCopyInto(destination: DoubleArray, destinationOffset: Int = 0, startIndex: @Inclusive Int = 0, endIndex: @Exclusive Int = size) {
+  if (false) {
+    //Verify
+    require(startIndex < endIndex) {
+      "startIndex $startIndex must be smaller than endIndex $endIndex"
+    }
+
+    val countToCopy = endIndex - startIndex
+    require(countToCopy > 0) {
+      "countToCopy too small: $countToCopy"
+    }
+
+    require(startIndex < this.size) {
+      "startIndex $startIndex too large for size ${this.size}"
+    }
+    require(endIndex <= this.size) {
+      "startIndex $endIndex too large for size ${this.size}"
+    }
+
+    require(destination.size >= destinationOffset + countToCopy) {
+      "destination too small (size: ${destination.size} to insert $countToCopy starting at index $destinationOffset"
+    }
+  }
+
+  this.copyInto(destination, destinationOffset, startIndex, endIndex)
 }

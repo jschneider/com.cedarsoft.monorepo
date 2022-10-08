@@ -111,7 +111,7 @@ fun <T> RBuilder.floatingSelectNullable(
   )
 }
 
-fun <T : HasUuid> RBuilder.floatingSelectNullable(
+fun <T : HasUuid> RBuilder.floatingSelectUuidNullable(
   valueAndSetter: StateInstance<T?>,
   formatter: (T?) -> String,
   availableOptionsWithoutNull: List<T>,

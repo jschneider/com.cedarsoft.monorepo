@@ -141,6 +141,14 @@ object FontAwesome {
     i(classes = FontAwesomeIcons.verticalArrows) {}
   }
 
+  fun RBuilder.faArrowRight() {
+    i(classes = FontAwesomeIcons.arrowRight) {}
+  }
+
+  fun RBuilder.faArrowLeft() {
+    i(classes = FontAwesomeIcons.arrowLeft) {}
+  }
+
   fun RBuilder.faUser() {
     i(classes = FontAwesomeIcons.user) {}
   }
@@ -194,4 +202,6 @@ object FontAwesomeIcons {
 
   const val horizontalArrows: String = "fas fa-arrows-alt-h"
   const val verticalArrows: String = "fas fa-arrows-alt-v"
+  const val arrowRight: String = "fa-solid fa-arrow-right"
+  const val arrowLeft: String = "fa-solid fa-arrow-left"
 }

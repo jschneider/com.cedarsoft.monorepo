@@ -340,7 +340,7 @@ fun RBuilder.inputField(
 /**
  * an input field
  */
-val inputField: FC<TextInputProps> = fc("inputField") { props ->
+val inputField: FC<InputFieldProps> = fc("inputField") { props ->
 
   input(name = props.fieldName, classes = props.classes) {
     //Contains the string from the model.
@@ -422,7 +422,7 @@ fun RBuilder.inputArea(
 /**
  * Creates a text area
  */
-val inputArea: FC<TextInputProps> = fc("inputArea") { props ->
+val inputArea: FC<InputFieldProps> = fc("inputArea") { props ->
   textarea(classes = "form-control") {
     attrs {
       name = props.fieldName
@@ -449,7 +449,7 @@ val inputArea: FC<TextInputProps> = fc("inputArea") { props ->
 /**
  * Properties for text input
  */
-external interface TextInputProps : Props {
+external interface InputFieldProps : Props {
   /**
    * The (optional) classes
    */
