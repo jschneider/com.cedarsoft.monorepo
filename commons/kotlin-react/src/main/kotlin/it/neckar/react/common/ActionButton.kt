@@ -113,16 +113,20 @@ object FontAwesome {
     icon(FontAwesomeIcons.home)
   }
 
+  fun RBuilder.faEdit() {
+    icon(FontAwesomeIcons.edit)
+  }
+
   fun RBuilder.faSave() {
     i(classes = FontAwesomeIcons.save) {}
   }
 
-  fun RBuilder.faEdit() {
-    i(classes = FontAwesomeIcons.edit) {}
-  }
-
   fun RBuilder.faAdd() {
     i(classes = FontAwesomeIcons.add) {}
+  }
+
+  fun RBuilder.faPhone() {
+    i(classes = FontAwesomeIcons.phone) {}
   }
 
   fun RBuilder.faReload() {
@@ -161,6 +165,38 @@ object FontAwesome {
     i(classes = FontAwesomeIcons.information) {}
   }
 
+  fun RBuilder.faInQuestionCircle() {
+    i(classes = FontAwesomeIcons.questionCircle) {}
+  }
+
+  fun RBuilder.faInExclamationCircle() {
+    i(classes = FontAwesomeIcons.exclamationCircle) {}
+  }
+
+  fun RBuilder.faLockClosed() {
+    i(classes = FontAwesomeIcons.lock) {}
+  }
+
+  fun RBuilder.faLockOpen() {
+    i(classes = FontAwesomeIcons.lockOpen) {}
+  }
+
+  fun RBuilder.faEye() {
+    i(classes = FontAwesomeIcons.eye) {}
+  }
+
+  fun RBuilder.faEyeSlash() {
+    i(classes = FontAwesomeIcons.eyeSlash) {}
+  }
+
+  fun RBuilder.faCircleCheck() {
+    i(classes = FontAwesomeIcons.circleCheck) {}
+  }
+
+  fun RBuilder.faMinus() {
+    i(classes = FontAwesomeIcons.minus) {}
+  }
+
   /**
    * Creates a new icon using "i" with the given icon class
    */
@@ -184,6 +220,7 @@ object FontAwesomeIcons {
   const val copy: String = "fa fa-copy"
   const val open: String = "fa fa-folder-open"
   const val eye: String = "fas fa-eye"
+  const val eyeSlash: String = "fa-regular fa-eye-slash"
   const val save: String = "fa fa-save"
   const val download: String = "fa fa-download"
   const val busy: String = "fa fa-spinner fa-spin"
@@ -199,6 +236,12 @@ object FontAwesomeIcons {
   const val addUser: String = "fa fa-user-plus"
   const val location: String = "fa-solid fa-location-dot"
   const val person: String = "fa-solid fa-person"
+  const val questionCircle: String = "fa-solid fa-circle-question"
+  const val exclamationCircle: String = "fa-solid fa-circle-exclamation"
+  const val lockOpen: String = "fa-solid fa-lock-open"
+  const val lock: String = "fa-solid fa-lock"
+  const val circleCheck: String = "fa-regular fa-circle-check"
+  const val minus: String = "fa-solid fa-minus"
 
   const val horizontalArrows: String = "fas fa-arrows-alt-h"
   const val verticalArrows: String = "fas fa-arrows-alt-v"

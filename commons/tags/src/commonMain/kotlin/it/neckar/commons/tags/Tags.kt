@@ -25,6 +25,10 @@ data class Tags(
     })
   }
 
+  fun format(): String {
+    return tags.joinToString { it.id }
+  }
+
   companion object {
     operator fun invoke(tag: Tag): Tags {
       return Tags(setOf(tag))
@@ -40,6 +44,25 @@ data class Tags(
 
     val empty: Tags = Tags(setOf())
   }
+}
+
+fun Tags?.contains(tag: Tag): Boolean {
+  return this != null && this.contains(tag)
+}
+
+/**
+ * Returns true if this is null or none of the provided tags are within this.
+ *
+ * Attention: This method does not use varargs to avoid unnecessary instantiations of objects
+ */
+fun Tags?.containsNone(tag0: Tag, tag1: Tag, tag2: Tag): Boolean {
+  if (this == null) {
+    return true
+  }
+
+  return this.contains(tag0).not()
+    && this.contains(tag1).not()
+    && this.contains(tag2).not()
 }
 
 fun Tag?.toTags(): Tags? {
