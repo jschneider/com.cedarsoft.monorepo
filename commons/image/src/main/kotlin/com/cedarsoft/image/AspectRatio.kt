@@ -40,6 +40,9 @@ data class AspectRatio(
   val heightFactor: Double,
 ) : Serializable {
 
+  /**
+   * The ratio of width factor to height factor
+   */
   val ratio: Double
     get() = widthFactor / heightFactor
 

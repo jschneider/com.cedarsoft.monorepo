@@ -44,7 +44,6 @@ import javax.imageio.ImageIO
  */
 class ImageConverterTest {
 
-  private val imageConverter = ImageConverter()
   private lateinit var original: BufferedImage
 
   @BeforeEach
@@ -55,7 +54,7 @@ class ImageConverterTest {
   @Test
   @Throws(InterruptedException::class)
   fun testResize() {
-    val resized = ImageConverter().resize(original, Dimension(72, 88))
+    val resized = ImageConverter.resize(original, Dimension(72, 88))
     assertEquals(72, resized.width.toLong())
     assertEquals(88, resized.height.toLong())
 
@@ -82,7 +81,7 @@ class ImageConverterTest {
     assertEquals(72, newWidth.toLong())
     val newHeight = original.height * 72 / 300
     assertEquals(88, newHeight.toLong())
-    val dim = ImageConverter().calculateNewDimensions(original, DPI.DPI_300, DPI.DPI_072)
+    val dim = ImageConverter.calculateNewDimensions(original, DPI.DPI_300, DPI.DPI_072)
     assertEquals(72, dim.width.toLong())
     assertEquals(88, dim.height.toLong())
   }

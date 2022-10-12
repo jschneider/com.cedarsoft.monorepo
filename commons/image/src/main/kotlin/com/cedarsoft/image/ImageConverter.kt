@@ -41,7 +41,7 @@ import java.awt.image.RenderedImage
  * ImageConverter class.
  *
  */
-class ImageConverter {
+object ImageConverter {
   /**
    * Calculates the new dimension of the image
    *
@@ -63,7 +63,7 @@ class ImageConverter {
    * @param targetDimension a Dimension object.
    * @return a BufferedImage object.
    */
-  fun resize(original: Image?, targetDimension: Dimension): BufferedImage {
+  fun resize(original: Image, targetDimension: Dimension): BufferedImage {
     val resized = BufferedImage(targetDimension.width, targetDimension.height, BufferedImage.TYPE_INT_RGB)
     val graphics2D = resized.createGraphics()
     graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)

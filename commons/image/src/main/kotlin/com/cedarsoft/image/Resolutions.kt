@@ -95,6 +95,8 @@ class Resolutions @JvmOverloads constructor(
 
   @Suppress("ObjectPropertyName")
   companion object {
+    val A3_300: Resolution = Resolution(3508, 4961)
+
     val A4_300: Resolution = Resolution(2480, 3508)
 
     val A4_72: Resolution = Resolution(595, 842)
