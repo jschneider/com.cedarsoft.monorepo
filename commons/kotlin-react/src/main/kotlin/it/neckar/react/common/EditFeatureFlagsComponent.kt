@@ -11,13 +11,14 @@ import react.dom.*
  * Renders and edits the feature flags from the [FeatureFlagsContext]
  */
 val EditFeatureFlagsComponent: FC<FeatureFlagsComponentProps> = fc("FeatureFlagsComponent") { props ->
-  val featureFlags = props.featureFlags ?: FeatureFlag.available
+  val featureFlags =  props.specificFlags ?: FeatureFlag.available
 
   val featureFlagsContextContent = useFeatureFlagsContext()
 
   val featureFlagStates: Map<FeatureFlag, StateInstance<Boolean>> = featureFlags.associateWith { flag ->
     useState(featureFlagsContextContent.featureFlags.contains(flag))
   }
+
 
   div {
     FeatureFlagsComponentForm {
@@ -26,14 +27,19 @@ val EditFeatureFlagsComponent: FC<FeatureFlagsComponentProps> = fc("FeatureFlags
       }
     }
 
+
     button(classes = "btn btn-primary") {
       +"Anwenden"
 
       attrs {
         onClickFunction = {
-          featureFlagsContextContent.updater(featureFlagStates.toFeatureFlags())
-          Toast.success("Feature Flags angewendet!", options = ToastOptions(
-            timeOut = 2000, positionClass = ToastPosition.TOPCENTER) )
+          val flags = featureFlagStates.toFeatureFlags()
+          featureFlagsContextContent.updater(flags)
+          Toast.success(
+            "Feature Flags angewendet!", options = ToastOptions(
+              timeOut = 2000, positionClass = ToastPosition.TOPCENTER
+            )
+          )
         }
       }
     }
@@ -55,5 +61,6 @@ private fun Map<FeatureFlag, StateInstance<Boolean>>.toFeatureFlags(): FeatureFl
 }
 
 external interface FeatureFlagsComponentProps : Props {
-  var featureFlags: List<FeatureFlag>?
+  var specificFlags: List<FeatureFlag>?
+
 }
