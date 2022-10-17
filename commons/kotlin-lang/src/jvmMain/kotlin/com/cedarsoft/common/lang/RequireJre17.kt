@@ -9,3 +9,10 @@ fun requireJre17() {
     "Invalid JRE version: <$jreVersion>"
   }
 }
+
+fun requireJre8() {
+  val jreVersion = System.getProperty("java.version")
+  require(jreVersion.startsWith("1.8.")) {
+    "Invalid JRE version: <$jreVersion>"
+  }
+}
