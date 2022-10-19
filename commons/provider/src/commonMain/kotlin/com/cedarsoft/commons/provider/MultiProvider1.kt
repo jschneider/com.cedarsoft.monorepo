@@ -25,5 +25,12 @@ fun interface MultiProvider1<in IndexContext, out T, in P1> {
     fun <T> empty(): @Domain MultiProvider1<Any, T, Any> {
       return MultiProvider1<Any, T, Any> { _, _ -> throw UnsupportedOperationException() }
     }
+
+    /**
+     * Always returns the provided instance
+     */
+    fun <IndexContext, T, P1> always(value: T): MultiProvider1<IndexContext, T, P1> {
+      return MultiProvider1 { _, _ -> value }
+    }
   }
 }
