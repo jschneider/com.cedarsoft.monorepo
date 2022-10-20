@@ -38,7 +38,7 @@ fun RBuilder.wizardFormButtons(
     alignment = Left,
   ),
   cancelText: String = "Zurück",
-  okText: String = "Speichern & Weiter",
+  okText: String = "Weiter",
   okIcon: ButtonIcon? = ButtonIcon(
     icon = FontAwesomeIcons.arrowRight,
     alignment = Right,

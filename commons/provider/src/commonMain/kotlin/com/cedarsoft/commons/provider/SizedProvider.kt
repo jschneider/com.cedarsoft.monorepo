@@ -257,3 +257,11 @@ class DelegatingSizedProvider<T>(
 @Retention(AnnotationRetention.SOURCE)
 @MultiProviderIndexContextAnnotation
 annotation class SizedProviderIndex
+
+
+/**
+ * Casts a sized provider to a multi provider
+ */
+inline fun <IndexContext, T> SizedProvider<T>.asMultiProvider(): MultiProvider<IndexContext, T> {
+  return this as MultiProvider<IndexContext, T>
+}
