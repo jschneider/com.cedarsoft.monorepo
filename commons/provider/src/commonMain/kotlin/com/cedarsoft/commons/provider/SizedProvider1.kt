@@ -38,3 +38,29 @@ interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1
     return valueAt(index, param1)
   }
 }
+
+/**
+ * Converts a sized provider 1 to a sized provider with a fixed param
+ */
+inline fun <T, P1> SizedProvider1<T, P1>.asSizedProvider(p1Value: P1): SizedProvider<T> {
+  return FixedParamsSizedProvider(p1Value) { this }
+}
+
+class FixedParamsSizedProvider<T, P1>(
+  val param1: P1,
+  /**
+   * Provides the delegate.
+   * ATTENTION: This method is called for each call to [size] and [valueAt].
+   * It must be ensured that always the correct delegate is returned.
+   */
+  val delegate: () -> SizedProvider1<T, P1>,
+
+  ) : SizedProvider<T> {
+  override fun size(): Int {
+    return delegate().size(param1)
+  }
+
+  override fun valueAt(index: Int): T {
+    return delegate().valueAt(index, param1)
+  }
+}
