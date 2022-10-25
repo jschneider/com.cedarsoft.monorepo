@@ -2,6 +2,7 @@ package it.neckar.react.common
 
 import it.neckar.common.featureflags.FeatureFlags
 import it.neckar.common.featureflags.FeatureFlagsSupport
+import it.neckar.common.featureflags.writeToLocalStorage
 import it.neckar.common.featureflags.writeToUrl
 import it.neckar.react.common.annotations.*
 import react.*
@@ -33,11 +34,15 @@ data class FeatureFlagsContextContent(
  * Provides the feature flags context
  */
 val FeatureFlagsContextComponent: FC<FeatureFlagsContextComponentProps> = fc("FeatureFlagsContextComponent") { props ->
+  //The state is (only) required to trigger a rerender
   val featureFlagsState = useState(FeatureFlagsSupport.flags)
-  val updater: (FeatureFlags) -> Unit = useCallback() { updatedFeatureFlags ->
+
+  val updater: (FeatureFlags) -> Unit = useCallback { updatedFeatureFlags ->
     //Set the feature flags globally
     FeatureFlagsSupport.flags = updatedFeatureFlags
-    FeatureFlagsSupport.writeToUrl()
+    updatedFeatureFlags.writeToUrl()
+    updatedFeatureFlags.writeToLocalStorage() //save in local storage to be able to retrieve it on reload
+
     //Update the state to trigger a rerender
     featureFlagsState.setter(updatedFeatureFlags)
   }

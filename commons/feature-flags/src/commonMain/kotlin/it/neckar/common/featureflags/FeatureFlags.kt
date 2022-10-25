@@ -33,6 +33,10 @@ data class FeatureFlags(
     return FeatureFlags(this.flags + additionalFlag)
   }
 
+  operator fun plus(additionalFlag: FeatureFlag): FeatureFlags {
+    return withAdditional(additionalFlag)
+  }
+
   /**
    * Creates a new [FeatureFlags] instance without the given feature flag
    */

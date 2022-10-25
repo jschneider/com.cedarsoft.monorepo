@@ -29,6 +29,12 @@ kotlin {
       }
     }
 
+    js().compilations["main"].defaultSourceSet {
+      dependencies {
+        api(project(Projects.open_commons_kotlin_js))
+      }
+    }
+
     jvm().compilations["main"].defaultSourceSet {
       dependencies {
         //implementation(Libs.kotlinx_coroutines_core)
