@@ -361,3 +361,18 @@ inline fun <T> Array<T>.fastMaxBy(minimumValue: Double, callback: (value: T) -> 
 
   return max
 }
+
+inline fun <T> List<T>.fastSumBy(callback: (value: T) -> Double): Double {
+  val currentSize = size
+  if (currentSize == 0) {
+    return 0.0
+  }
+
+  var sum = 0.0
+  var n = 0
+  while (n < currentSize) {
+    sum += callback(this[n++])
+  }
+
+  return sum
+}
