@@ -8,6 +8,11 @@ import java.util.stream.IntStream
  * Generates [MeshView]s.
  */
 object MeshGenerator {
+  /**
+   * Generates the triangle mesh for the provided points
+   * @param divisions: The number of divisions to approach a circle (usually 24)
+   * @param numberOfCoordinates The number of coordinates
+   */
   @JvmStatic
   fun generateMeshFrom3DPoints(points: FloatArray, divisions: Int, numberOfCoordinates: Int): TriangleMesh {
     //if (divisions < 3) {
@@ -80,6 +85,9 @@ object MeshGenerator {
     return flatten(points3D)
   }
 
+  /**
+   * Adds two triangles to the given faces list!
+   */
   private fun addTriangle(faces: MutableList<in Int>, v0: Int, v1: Int, v2: Int, isFirst: Boolean) {
     val textCoords: IntArray
     textCoords = if (isFirst) {
