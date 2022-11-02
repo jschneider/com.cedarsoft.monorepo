@@ -13,3 +13,11 @@ import kotlin.reflect.KMutableProperty0
 inline fun <T> KMutableProperty0<T>.getAndSet(function: (oldValue: T) -> T) {
   set(function(get()))
 }
+
+/**
+ * Toggles a boolean property
+ */
+fun KMutableProperty0<Boolean>.toggle() {
+  set(!get())
+}
+
