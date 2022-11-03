@@ -46,6 +46,18 @@ inline fun <T, P1> SizedProvider1<T, P1>.asSizedProvider(p1Value: P1): SizedProv
   return FixedParamsSizedProvider(p1Value) { this }
 }
 
+fun <T, P1> SizedProvider<T>.asSizedProvider1(): SizedProvider1<T, P1> {
+  return object : SizedProvider1<T, P1> {
+    override fun size(param1: P1): Int {
+      return this@asSizedProvider1.size()
+    }
+
+    override fun valueAt(index: Int, param1: P1): T {
+      return this@asSizedProvider1.valueAt(index)
+    }
+  }
+}
+
 class FixedParamsSizedProvider<T, P1>(
   val param1: P1,
   /**
@@ -62,5 +74,22 @@ class FixedParamsSizedProvider<T, P1>(
 
   override fun valueAt(index: Int): T {
     return delegate().valueAt(index, param1)
+  }
+}
+
+/**
+ * Maps the value.
+ *
+ * ATTENTION: Creates a new instance!
+ */
+fun <T, R, P1> SizedProvider1<T, P1>.mapped(function: (T) -> R): SizedProvider1<R, P1> {
+  return object : SizedProvider1<R, P1> {
+    override fun size(param1: P1): Int {
+      return this@mapped.size(param1)
+    }
+
+    override fun valueAt(index: Int, param1: P1): R {
+      return function(this@mapped.valueAt(index, param1))
+    }
   }
 }

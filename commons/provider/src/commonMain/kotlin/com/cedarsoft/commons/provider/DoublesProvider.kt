@@ -1,6 +1,11 @@
 package com.cedarsoft.commons.provider
 
+import com.cedarsoft.annotations.Boxed
+import com.cedarsoft.common.kotlin.lang.Double2Double
+import com.cedarsoft.common.kotlin.lang.DoubleMapFunction
 import com.cedarsoft.common.kotlin.lang.fastFor
+import com.cedarsoft.unit.other.Index
+import com.cedarsoft.unit.other.Slow
 import com.cedarsoft.unit.other.pct
 import kotlin.jvm.JvmStatic
 import kotlin.jvm.JvmWildcard
@@ -23,7 +28,7 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
   /**
    * Returns the value at the given index or null if the index is >= size
    */
-  fun getOrNull(index: Int): Double? {
+  fun getOrNull(index: Int): @Boxed Double? {
     if (index >= size()) {
       return null
     }
@@ -71,7 +76,7 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
     return currentMax
   }
 
-  fun maxOrNull(): Double? {
+  fun maxOrNull(): @Boxed Double? {
     if (size() == 0) {
       return null
     }
@@ -95,7 +100,7 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
      * Creates a new [DoublesProvider] that returns the given values
      */
     @JvmStatic
-    fun forValues(values: List<Double>): DefaultDoublesProvider {
+    fun forValues(values: @Boxed List<Double>): DefaultDoublesProvider {
       return DefaultDoublesProvider(values)
     }
 
@@ -103,12 +108,12 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
      * Creates a new provider for a mutable list
      */
     @JvmStatic
-    fun forMutableList(values: MutableList<Double>): MutableDoublesProvider {
+    fun forMutableList(values: @Boxed MutableList<Double>): MutableDoublesProvider {
       return MutableDoublesProvider(values)
     }
 
     @JvmStatic
-    fun forList(values: List<Double>): ListBasedDoublesProvider {
+    fun forList(values: @Boxed List<Double>): ListBasedDoublesProvider {
       return ListBasedDoublesProvider(values)
     }
 
@@ -127,7 +132,7 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
      * Attention: this provider gets the [listProvider] for *each* and every call!
      */
     @JvmStatic
-    fun forListProvider(listProvider: () -> List<@JvmWildcard Double>): DoublesProvider {
+    fun forListProvider(listProvider: () -> @Boxed List<@JvmWildcard Double>): DoublesProvider {
       return object : DoublesProvider {
         override fun valueAt(index: Int): Double {
           return listProvider()[index]
@@ -142,28 +147,13 @@ interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
     /**
      * Returns a [DoublesProvider] that uses the given provider to return the doubles
      */
-    fun of(size: Int, provider: (index: Int) -> Double): DoublesProvider {
+    fun of(size: Int, provider: MultiDoublesProvider<Index>): DoublesProvider {
       return object : DoublesProvider {
-        override fun valueAt(index: Int): Double {
-          return provider(index)
-        }
-
-        override fun size(): Int = size
-      }
-    }
-
-    /**
-     * Returns a double provider with a fixed size - the values are returned by the provider
-     */
-    fun fixedSize(size: Int, provider: MultiDoublesProvider<Int>): DoublesProvider {
-      return object : DoublesProvider {
-        override fun size(): Int {
-          return size
-        }
-
         override fun valueAt(index: Int): Double {
           return provider.valueAt(index)
         }
+
+        override fun size(): Int = size
       }
     }
   }
@@ -192,7 +182,7 @@ class DefaultDoublesProvider(private val values: DoubleArray) : DoublesProvider 
  *
  * @see DefaultDoublesProvider
  */
-class MutableDoublesProvider(val values: MutableList<Double> = mutableListOf()) : DoublesProvider {
+class MutableDoublesProvider(val values: @Boxed MutableList<Double> = mutableListOf()) : DoublesProvider {
   override fun size(): Int = values.size
 
   override fun valueAt(index: Int): Double {
@@ -225,7 +215,7 @@ class MutableDoublesProvider(val values: MutableList<Double> = mutableListOf()) 
  *
  * @see DefaultDoublesProvider
  */
-class ListBasedDoublesProvider(var values: List<Double>) : DoublesProvider {
+class ListBasedDoublesProvider(var values: @Boxed List<Double>) : DoublesProvider {
   override fun size(): Int = values.size
 
   override fun valueAt(index: Int): Double {
@@ -239,8 +229,10 @@ class ListBasedDoublesProvider(var values: List<Double>) : DoublesProvider {
 
 /**
  * Converts a values provider to return relative values
+ *
+ * ATTENTION: The implementation is (very) slow - do not use for larger data sets!
  */
-fun DoublesProvider.toRelative(): @pct DoublesProvider {
+fun DoublesProvider.toRelative(): @Slow @pct DoublesProvider {
   return ToRelativeValuesProvider(this)
 }
 
@@ -249,6 +241,7 @@ fun DoublesProvider.toRelative(): @pct DoublesProvider {
  *
  * Beware that this class is not suitable for large value sets.
  */
+@Slow
 class ToRelativeValuesProvider(val delegate: DoublesProvider) : DoublesProvider {
   override fun size(): Int = delegate.size()
 
@@ -292,17 +285,30 @@ fun KProperty0<BooleanValuesProvider>.delegate(): BooleanValuesProvider {
  *
  * `::baseProvider.delegate().map{...}`
  */
-fun DoublesProvider.mapping(modifier: (Double) -> Double): DoublesProvider {
-  val delegate = this
-
+fun DoublesProvider.mapped(mapFunction: Double2Double): DoublesProvider {
   return object : DoublesProvider {
-    override fun valueAt(index: Int): Double {
-      val value = delegate.valueAt(index)
-      return modifier(value)
+    override fun size(): Int {
+      return this@mapped.size()
     }
 
+    override fun valueAt(index: Int): Double {
+      val value = this@mapped.valueAt(index)
+      return mapFunction(value)
+    }
+  }
+}
+
+/**
+ * Maps the double values to another value
+ */
+fun <T> DoublesProvider.mapped(mapFunction: DoubleMapFunction<T>): SizedProvider<T> {
+  return object : SizedProvider<T> {
     override fun size(): Int {
-      return delegate.size()
+      return this@mapped.size()
+    }
+
+    override fun valueAt(index: Int): T {
+      return mapFunction.invoke(this@mapped.valueAt(index))
     }
   }
 }

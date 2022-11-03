@@ -1,6 +1,7 @@
 package com.cedarsoft.commons.provider
 
 import com.cedarsoft.charting.annotations.Domain
+import com.cedarsoft.common.kotlin.lang.DoubleMapFunction
 import kotlin.reflect.KProperty0
 
 /**
@@ -93,5 +94,23 @@ class FixedParamsDoublesProvider<P1>(
 
   override fun valueAt(index: Int): Double {
     return delegate().valueAt(index, param1)
+  }
+}
+
+/**
+ * Maps the value.
+ *
+ * ATTENTION: Creates a new instance!
+ */
+fun <R, P1> DoublesProvider1<P1>.mapped(function: DoubleMapFunction<R>): SizedProvider1<R, P1> {
+  @Suppress("DuplicatedCode")
+  return object : SizedProvider1<R, P1> {
+    override fun size(param1: P1): Int {
+      return this@mapped.size(param1)
+    }
+
+    override fun valueAt(index: Int, param1: P1): R {
+      return function(this@mapped.valueAt(index, param1))
+    }
   }
 }

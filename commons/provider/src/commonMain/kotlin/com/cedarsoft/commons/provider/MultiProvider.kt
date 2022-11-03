@@ -131,7 +131,7 @@ fun <IndexContext, T> KProperty0<MultiProvider<IndexContext, T>>.delegate(): Mul
  *
  * `::baseProvider.delegate().map{...}`
  */
-fun <IndexContext, T, R> MultiProvider<IndexContext, T>.mapping(function: (T) -> R): MultiProvider<IndexContext, R> {
+fun <IndexContext, T, R> MultiProvider<IndexContext, T>.mapped(function: (T) -> R): MultiProvider<IndexContext, R> {
   return MultiProvider.invoke {
     function(this.valueAt(it))
   }

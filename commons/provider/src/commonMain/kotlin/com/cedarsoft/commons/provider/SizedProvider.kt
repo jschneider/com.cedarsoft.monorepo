@@ -265,3 +265,20 @@ annotation class SizedProviderIndex
 inline fun <IndexContext, T> SizedProvider<T>.asMultiProvider(): MultiProvider<IndexContext, T> {
   return this as MultiProvider<IndexContext, T>
 }
+
+/**
+ * Maps the value.
+ *
+ * ATTENTION: Creates a new instance!
+ */
+fun <T, R> SizedProvider<T>.mapped(function: (T) -> R): SizedProvider<R> {
+  return object : SizedProvider<R> {
+    override fun size(): Int {
+      return this@mapped.size()
+    }
+
+    override fun valueAt(index: Int): R {
+      return function(this@mapped.valueAt(index))
+    }
+  }
+}
