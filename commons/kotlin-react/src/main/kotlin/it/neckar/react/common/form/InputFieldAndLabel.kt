@@ -54,7 +54,9 @@ val inputFieldAndLabel: FC<InputFieldAndLabelProps> = fc("inputFieldAndLabel") {
       id = uniqueId
       type = InputType.text
 
-      readonly = props.editableStatus == EditableStatus.ReadOnly
+      if (props.editableStatus == EditableStatus.ReadOnly) {
+        disabled = true
+      }
 
       //Execute the provided config if there is one
       props.config?.let {

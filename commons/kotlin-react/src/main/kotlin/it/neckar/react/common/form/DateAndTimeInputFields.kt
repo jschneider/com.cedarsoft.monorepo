@@ -16,7 +16,7 @@ fun RBuilder.datePicker(
   /**
    * Is state instance to be updated
    */
-  timeState: StateInstance<@ms Double?>,
+  timeState: StateInstance<@ms Double>,
 
   /**
    * Configuration for the input field
@@ -41,7 +41,7 @@ val datePicker: FC<DatePickerProps> = fc("datePicker") { props ->
     "${
       date.getFullYear()
     }-${
-      "${date.getMonth() + 1}".padStart(2, '0')
+      "${date.getMonth().plus(1)}".padStart(2, '0')
     }-${
       "${date.getDate()}".padStart(2, '0')
     }"
@@ -62,9 +62,62 @@ val datePicker: FC<DatePickerProps> = fc("datePicker") { props ->
 
 }
 
+fun RBuilder.datePickerNullable(
+  initialValue: @ms Double?,
+  /**
+   * Is state instance to be updated
+   */
+  timeState: StateInstance<@ms Double?>,
+
+  /**
+   * Configuration for the input field
+   */
+  config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+
+  ): Unit = child(datePickerNullable) {
+
+  attrs {
+    this.initialValue = initialValue
+    this.timeState = timeState
+    this.config = config
+  }
+}
+
+/**
+ * A date picker
+ */
+val datePickerNullable: FC<DatePickerNullableProps> = fc("datePickerNullable") { props ->
+
+  val dateString = props.initialValue.let {
+    val date = it?.let { Date(it) }
+
+    "${
+      date?.getFullYear()
+    }-${
+      "${date?.getMonth()?.plus(1)}".padStart(2, '0')
+    }-${
+      "${date?.getDate()}".padStart(2, '0')
+    }"
+  }
+
+  input(type = InputType.date, classes = "form-control datepicker") {
+    attrs {
+      value = dateString
+      onChangeFunction = useCallback(props.timeState.setter, value) {
+        val updatedDate = (it.target as HTMLInputElement).value
+        // Automatically update the value in element
+        props.timeState.setter(Date.parse(updatedDate))
+      }
+    }
+
+    props.config?.invoke(this)
+  }
+
+}
+
 
 fun RBuilder.timePicker(
-  initialValue: @ms Double,
+  initialValue: @ms Double?,
   /**
    * Is state instance to be updated
    */
@@ -89,12 +142,14 @@ fun RBuilder.timePicker(
 
 val timePicker: FC<TimePickerProps> = fc("timePicker") { props ->
 
-  val timeString = Date(props.initialValue).let { date ->
-    val minutes = (date.getMinutes() + 1).nextMultipleOf(props.timeStep)
+  val timeString = props.initialValue.let {
+    val date = it?.let { Date(it) }
+    val minutes = date?.let { (date.getMinutes() + 1).nextMultipleOf(props.timeStep) }
+
     "${
-      "${(date.getHours() + if (minutes == 60) 1 else 0) % 24}".padStart(2, '0')
+      "${(date?.getHours()?.plus(if (minutes == 60) 1 else 0))?.rem(24)}".padStart(2, '0')
     }:${
-      "${minutes % 60}".padStart(2, '0')
+      "${minutes?.rem(60)}".padStart(2, '0')
     }"
   }
 
@@ -117,7 +172,7 @@ val timePicker: FC<TimePickerProps> = fc("timePicker") { props ->
 }
 
 
-fun RBuilder.dateTimePicker(
+fun RBuilder.dateTimePickerNullable(
   initialValue: @ms Double?,
   /**
    * Is state instance to be updated
@@ -129,7 +184,7 @@ fun RBuilder.dateTimePicker(
    */
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(dateTimePicker) {
+  ): Unit = child(dateTimePickerNullable) {
 
   attrs {
     this.initialValue = initialValue
@@ -138,11 +193,11 @@ fun RBuilder.dateTimePicker(
   }
 }
 
-val dateTimePicker: FC<DateTimePickerProps> = fc("dateTimePicker") { props ->
+val dateTimePickerNullable: FC<DateTimePickerProps> = fc("dateTimePickerNullable") { props ->
 
-  val timeString = props.initialValue.let {
+  val dateTimeString = props.initialValue.let {
     val date = it?.let { Date(it) }
-    val minutes = date?.let { (date.getMinutes() + 1) }
+    val minutes = date?.let { date.getMinutes() }
 
     "${
       date?.getFullYear() ?: "--"
@@ -151,7 +206,7 @@ val dateTimePicker: FC<DateTimePickerProps> = fc("dateTimePicker") { props ->
     }-${
       "${date?.getDate()}".padStart(2, '0')
     } ${
-      "${(date?.getHours()?.plus(if (minutes == 60) 1 else 0))?.rem(24)}".padStart(2, '0')
+      "${date?.getHours()?.rem(24)}".padStart(2, '0')
     }:${
       "${minutes?.rem(60)}".padStart(2, '0')
     }"
@@ -159,7 +214,7 @@ val dateTimePicker: FC<DateTimePickerProps> = fc("dateTimePicker") { props ->
 
   input(type = InputType.dateTimeLocal, classes = "form-control datepicker") {
     attrs {
-      value = timeString
+      value = dateTimeString
       onChangeFunction = useCallback(props.dateTimeState.setter, value) {
         val updatedValue = (it.target as HTMLInputElement).value
         // Automatically update the value in element
@@ -182,6 +237,20 @@ external interface DatePickerProps : Props {
   /**
    * The state instance to be changed
    */
+  var timeState: StateInstance<@ms Double>
+
+  /**
+   * The configuration for the input field
+   */
+  var config: ((RDOMBuilder<INPUT>) -> Unit)?
+}
+
+external interface DatePickerNullableProps : Props {
+  var initialValue: @ms Double?
+
+  /**
+   * The state instance to be changed
+   */
   var timeState: StateInstance<@ms Double?>
 
   /**
@@ -191,7 +260,7 @@ external interface DatePickerProps : Props {
 }
 
 external interface TimePickerProps : Props {
-  var initialValue: @ms Double
+  var initialValue: @ms Double?
 
   /**
    * The state instance to be changed

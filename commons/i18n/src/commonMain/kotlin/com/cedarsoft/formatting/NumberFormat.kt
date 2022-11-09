@@ -155,7 +155,7 @@ fun Double.formatAsPercentage(numberOfDecimals: Int = 2, useGrouping: Boolean = 
  *
  * The value is given in cents.
  */
-fun @EUR Int.formatEuroCents(i18nConfiguration: I18nConfiguration = DefaultI18nConfiguration, delimiter: String = " "): String {
+fun @EUR Int.formatEuroCents(i18nConfiguration: I18nConfiguration = DefaultI18nConfiguration, delimiter: Char = Typography.nbsp): String {
   return decimalFormat2digits.format(this / 100.0, i18nConfiguration) + "$delimiter€"
 }
 
@@ -163,7 +163,7 @@ fun @EUR Int.formatEuroCents(i18nConfiguration: I18nConfiguration = DefaultI18nC
  * Formats the given value in cents using a NBSP as delimiter
  */
 fun @EUR Int.formatEuroCentsNbsp(i18nConfiguration: I18nConfiguration = DefaultI18nConfiguration): String {
-  return formatEuroCents(i18nConfiguration, " ")
+  return formatEuroCents(i18nConfiguration)
 }
 
 /**
