@@ -37,4 +37,7 @@ interface SizedProvider2<out T, in P1, in P2> : MultiProvider2<Any, T, P1, P2>, 
 
     return valueAt(index, param1, param2)
   }
+
+  companion object {
+  }
 }
