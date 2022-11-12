@@ -1,6 +1,7 @@
 package it.neckar.react.common.table
 
 import com.cedarsoft.common.collections.fastForEach
+import it.neckar.react.common.*
 import kotlinx.html.TD
 import kotlinx.html.TH
 import kotlinx.html.ThScope
@@ -44,38 +45,39 @@ fun <T> RBuilder.table(
 
 
 val table: FC<TableProps> = fc("table") { props ->
-
-  table(classes = "table table-hover table-responsive align-middle") {
-    thead {
-      tr {
-        th(scope = ThScope.col) {
-          +props.firstColumn.title()
-        }
-        props.columns.fastForEach { tableColumn ->
+  busyIfNull(props.entries) { entries ->
+    table(classes = "table table-hover table-responsive align-middle") {
+      thead {
+        tr {
           th(scope = ThScope.col) {
-            +tableColumn.title()
+            +props.firstColumn.title()
+          }
+          props.columns.fastForEach { tableColumn ->
+            th(scope = ThScope.col) {
+              +tableColumn.title()
+            }
           }
         }
       }
-    }
 
-    tbody {
-      props.entries?.fastForEach { entry ->
-        tr {
-          attrs {
-            onDoubleClickFunction = props.doubleClickAction
-          }
 
-          th(scope = ThScope.row, block = props.firstColumn.block(entry))
+      tbody {
+        entries.fastForEach { entry ->
+          tr {
+            attrs {
+              onDoubleClickFunction = props.doubleClickAction
+            }
 
-          props.columns.fastForEach { tableColumn ->
-            td(block = tableColumn.block(entry))
+            th(scope = ThScope.row, block = props.firstColumn.block(entry))
+
+            props.columns.fastForEach { tableColumn ->
+              td(block = tableColumn.block(entry))
+            }
           }
         }
       }
     }
   }
-
 }
 
 data class TableFirstColumn<T>(
@@ -92,6 +94,7 @@ data class TableColumn<T>(
 external interface TableProps : Props {
   /**
    * List of the entries to be displayed
+   * can be null and shows busy indicator
    */
   var entries: List<Any>?
 

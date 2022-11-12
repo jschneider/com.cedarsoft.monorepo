@@ -106,7 +106,7 @@ val formButtons: FC<FormButtonsProps> = fc("formButtons") { props ->
 
       props.okIcon?.let {
         if (it.alignment == Right) {
-          i("${it.icon} me-2") {}
+          i("${it.icon} ms-2") {}
         }
       }
 

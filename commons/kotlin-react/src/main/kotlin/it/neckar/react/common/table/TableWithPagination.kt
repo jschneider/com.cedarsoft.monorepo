@@ -24,8 +24,15 @@ fun <T> RBuilder.tableWithPagination(
   }
 
   val currentPage = useState(0)
-  val entriesOnCurrentPage = entryPages.getOrNull(currentPage.value)
 
+  /**
+   * if the list of projects is empty pass empty list to the table
+   * */
+  val entriesOnCurrentPage = if (entries.isEmpty()) {
+    emptyList()
+  } else {
+    entryPages[currentPage.value]
+  }
 
   useEffect(entryPages.size) {
     currentPage.setter(currentPage.value.coerceAtMost((entryPages.size - 1).coerceAtLeast(0)))
