@@ -12,24 +12,32 @@ import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 /**
  * Tests serialization round trip
  */
-inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), serializersModule: SerializersModule = EmptySerializersModule, expectedJsonProvider: () -> String?) {
-  roundTrip(objectToSerialize, serializer, serializersModule, expectedJsonProvider())
+inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, serializersModule: SerializersModule = EmptySerializersModule(), expectedJson: String?) {
+  roundTrip(objectToSerialize, serializer, serializersModule) { expectedJson }
 }
 
 /**
  * Tests the round trip. If the [expectedJson] is null, the resulting JSON will not be checked
  */
-fun <T> roundTrip(objectToSerialize: T, serializer: KSerializer<T>, serializersModule: SerializersModule = EmptySerializersModule, expectedJson: String?) {
-  val encoder = Json {
+inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), serializersModule: SerializersModule = EmptySerializersModule(), expectedJsonProvider: () -> String?) {
+  val encoder: Json = Json {
     this.serializersModule = serializersModule
     prettyPrint = false
   }
 
+  return roundTrip(objectToSerialize, serializer, encoder, expectedJsonProvider)
+}
+
+inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), encoder: Json, expectedJson: String?) {
+  return roundTrip(objectToSerialize, serializer, encoder) { expectedJson }
+}
+
+inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), encoder: Json, expectedJsonProvider: () -> String?) {
   val json = encoder.encodeToString(serializer, objectToSerialize)
 
   //println("JSON length: ${json.toByteArray().size}")
 
-  expectedJson?.let {
+  expectedJsonProvider()?.let { expectedJson ->
     JsonUtils.assertJsonEquals(expectedJson, json)
   }
 
