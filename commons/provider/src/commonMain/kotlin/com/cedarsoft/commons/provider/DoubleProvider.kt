@@ -10,6 +10,18 @@ fun interface DoubleProvider {
    * Provides the double
    */
   operator fun invoke(): Double
+
+  companion object {
+    /**
+     * Always returns [Double.NaN]
+     */
+    val NaN: DoubleProvider = DoubleProvider { Double.NaN }
+
+    /**
+     * Always returns [0.0]
+     */
+    val Zero: DoubleProvider = DoubleProvider { 0.0 }
+  }
 }
 
 /**
