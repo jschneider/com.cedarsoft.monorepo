@@ -13,14 +13,16 @@ dependencies {
   implementation(enforcedPlatform(Libs.kotlin_wrappers_bom))
   api(Libs.kotlin_js)
 
-  testImplementation(Libs.kotlin_test_js)
+  testImplementation(project(Projects.dependencies_sets_js_kotlin_test))
 }
 
 
 kotlin {
   js {
+
     browser {
       binaries.executable()
+      configureJsKarma()
     }
   }
 }

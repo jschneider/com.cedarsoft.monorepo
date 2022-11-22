@@ -59,9 +59,11 @@ It must contain an `Outlet` where the other components are rendered into.
 === Loading related suffices
 
 * `*FromStore`: Loads (some) data from the Redux store.
-Should delegate to the component with the same name without suffix
+Should delegate to the component with the same name without suffix.
+FromStore components are on the uppermost level of the Navigation and so the document title is set in them.
 * `*FromUrl`: Loads (some) data from the URL (and store?).
 Should delegate to the component with the same name without suffix
+FromUrl components are on the uppermost level of the Navigation and so the document title is set in them.
 
 === more Names
 

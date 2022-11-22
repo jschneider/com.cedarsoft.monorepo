@@ -31,6 +31,9 @@ dependencies {
 
   implementation(npm("react", "_"))
   implementation(npm("toastr", "_"))
+
+
+  testImplementation(project(Projects.dependencies_sets_js_kotlin_test))
 }
 
 tasks.withType<GenerateModuleMetadata> {
