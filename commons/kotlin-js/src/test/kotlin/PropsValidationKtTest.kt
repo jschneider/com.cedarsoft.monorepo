@@ -8,6 +8,10 @@ external interface MyPerson {
   var name: String
 }
 
+external class MyPersonClass {
+  var name: String
+}
+
 class PropsValidationKtTest {
 
   @Test
@@ -68,4 +72,16 @@ class PropsValidationKtTest {
       propertyName.safeGet()
     }.isFailure().messageContains("is not set")
   }
+
+  @Test
+  fun testExternalClass() {
+    val jsObject = js("""{ 'name': 'Max Mustermann'}""")
+    val testPerson = jsObject.unsafeCast<MyPersonClass>()
+    val propertyName = testPerson::name
+
+    assertThat {
+      propertyName.safeGet()
+    }.isSuccess()
+  }
+
 }

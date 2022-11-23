@@ -8,11 +8,14 @@ plugins {
   kotlinJvm
 }
 
+configureToolchainJava17LTS()
+
 dependencies {
   //
   // Compile Deps
   //
   api(project(Projects.dependencies_sets_jvm_kotlin))
+  api(project(Projects.open_commons_kotlin_lang))
   api(Libs.guice)
   api(project(Projects.open_commons_io))
   api(project(Projects.open_commons_image))

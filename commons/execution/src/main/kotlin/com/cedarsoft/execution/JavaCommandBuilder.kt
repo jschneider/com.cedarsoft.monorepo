@@ -40,26 +40,16 @@ import java.util.Locale
  * Class that is able to start a new java process
  *
  */
+@Deprecated("No longer used!?")
 class JavaCommandBuilder
 constructor(
-  /**
-   *
-   * Getter for the field `mainClass`.
-   *
-   * @return a String object.
-   */
-  private val mainClass: String
+  val mainClass: String,
 ) {
 
   private val classPathElements = ArrayList<String>()
   private val vmProperties = ArrayList<String>()
   private val arguments = ArrayList<String>()
 
-  /**
-   * Returns the classpath
-   *
-   * @return the classpath
-   */
   val classPath: String?
     get() {
       if (classPathElements.isEmpty()) {
@@ -90,12 +80,6 @@ constructor(
       }
     }
 
-  /**
-   *
-   * getCommandLineElements
-   *
-   * @return a List object.
-   */
   val commandLineElements: List<String>
     get() {
       val elements = ArrayList<String>()
@@ -123,11 +107,9 @@ constructor(
   /**
    * Returns the command line as string. This method should only be used
    * for debugging purposes.
-   * For creating a process use [.getCommandLineElements] instead.
+   * For creating a process use [commandLineElements] instead.
    *
-   * @return the command line as string
-   *
-   * @see .getCommandLineElements
+   * @see [commandLineElements]]
    */
   val commandLine: String
     get() {
@@ -249,6 +231,6 @@ constructor(
   }
 
   companion object {
-    const val javaBin = "java"
+    const val javaBin: String = "java"
   }
 }

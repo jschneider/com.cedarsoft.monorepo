@@ -5,6 +5,11 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.*
 import org.junit.jupiter.api.Test
 
+fun main() {
+  //FlowDemo().testFlowStuff()
+  FlowDemo().testFlowOn()
+}
+
 /**
  *
  */
@@ -27,5 +32,19 @@ class FlowDemo {
       .collectLatest {
         println("$it @ $currentTime")
       }
+  }
+
+  @Test
+  fun testFlowOn() = runTest {
+    val myFlow = flow {
+      emit(1)
+      coroutineScope {
+        emit(2)
+      }
+    }
+
+    myFlow.collect {
+      println("collected: $it")
+    }
   }
 }

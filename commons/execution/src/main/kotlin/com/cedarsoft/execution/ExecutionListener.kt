@@ -35,6 +35,7 @@ package com.cedarsoft.execution
  * Listener that is notified about the execution of a process
  *
  */
+@Deprecated("No longer used!?")
 interface ExecutionListener {
 
   /**

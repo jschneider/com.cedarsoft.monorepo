@@ -5,14 +5,20 @@ package it.neckar.commons.kotlin.js
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty0
 
+/**
+ * Checks if the passed property is valid (not null & correct instance)
+ * and returns it.
+ * @return the value of the property
+ **/
 inline fun <reified T : Any> KProperty0<T>.safeGet(): T {
   return safeGet(T::class)
 }
 
 /**
- * checks if the passed property is valid (not null, correct instance)
+ * Checks if the passed property is valid (not null & correct instance)
  * and returns it.
- * */
+ * @return the value of the property
+ **/
 fun <T : Any> KProperty0<T>.safeGet(type: KClass<T>): T {
   val value = this.get()
 
@@ -21,9 +27,25 @@ fun <T : Any> KProperty0<T>.safeGet(type: KClass<T>): T {
   }
 
   if ((type.isInstance(value)).not()) {
-    throw PropertyValidationFailedException("Property [${this.name}] has invalid value [$value]")
+    if (type.simpleName.equals("StateInstance")) {
+      throw PropertyValidationFailedException("Property has invalid value => expected value: [${type.simpleName}] " +
+        "actual value: [$value]. Use method \"getNotNull()\" for properties with instance [${type.simpleName}]")
+    }
+    throw PropertyValidationFailedException("Property has invalid value => expected value: [${type.simpleName}] actual value: [$value]")
   }
 
+  return value
+}
+
+/**
+ * Throws an exception if the given property is null
+ * @return passed property
+ * */
+fun <T : Any> KProperty0<T>.getNotNull(): T {
+  val value = this.get()
+  if (value == null) {
+    throw PropertyValidationFailedException("Property [${this.name}] is not set")
+  }
   return value
 }
 

@@ -38,6 +38,7 @@ import java.io.OutputStream
  * Executes a process and notifies execution listeners whenever the process has finished
  *
  */
+@Deprecated("No longer used!?")
 class Executor(
   private val processBuilder: ProcessBuilder,
   private val targetOut: OutputRedirector.ByteSink,
@@ -45,36 +46,15 @@ class Executor(
 ) {
   private val executionListeners = ArrayList<ExecutionListener>()
 
-  /**
-   *
-   * isRedirectStreams
-   *
-   * @return a boolean.
-   */
   val isRedirectStreams: Boolean
     @Deprecated("")
     get() = true
 
-  /**
-   *
-   * Constructor for Executor.
-   *
-   * @param processBuilder a ProcessBuilder object.
-   */
   @Deprecated("")
   constructor(processBuilder: ProcessBuilder) : this(processBuilder, OutputStreamByteSink(System.out), OutputStreamByteSink(System.err))
 
   constructor(processBuilder: ProcessBuilder, targetOut: OutputStream, targetErr: OutputStream) : this(processBuilder, OutputStreamByteSink(targetOut), OutputStreamByteSink(targetErr))
 
-  /**
-   *
-   * execute
-   *
-   * @return a int.
-   *
-   * @throws IOException          if any.
-   * @throws InterruptedException if any.
-   */
   @Throws(IOException::class, InterruptedException::class)
   fun execute(): Int {
     val process = processBuilder.start()
@@ -93,8 +73,6 @@ class Executor(
   }
 
   /**
-   * redirectStreams
-   *
    * @param process a Process object.
    * @return the redirecting threads (or an empty array)
    */
@@ -102,12 +80,6 @@ class Executor(
     return OutputRedirector.redirect(process, targetOut, targetErr)
   }
 
-  /**
-   *
-   * executeAsync
-   *
-   * @return the thread
-   */
   fun executeAsync(): Thread {
     val thread = Thread {
       execute()
