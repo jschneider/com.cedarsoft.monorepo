@@ -28,10 +28,10 @@ fun <T : Any> KProperty0<T>.safeGet(type: KClass<T>): T {
 
   if ((type.isInstance(value)).not()) {
     if (type.simpleName.equals("StateInstance")) {
-      throw PropertyValidationFailedException("Property has invalid value => expected value: [${type.simpleName}] " +
+      throw PropertyValidationFailedException("Property [${this.name}] has invalid value => expected value: [${type.simpleName}] " +
         "actual value: [$value]. Use method \"getNotNull()\" for properties with instance [${type.simpleName}]")
     }
-    throw PropertyValidationFailedException("Property has invalid value => expected value: [${type.simpleName}] actual value: [$value]")
+    throw PropertyValidationFailedException("Property [${this.name}] has invalid value => expected value: [${type.simpleName}] actual value: [$value]")
   }
 
   return value

@@ -22,7 +22,11 @@ inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T
 inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T> = serializer(), serializersModule: SerializersModule = EmptySerializersModule(), expectedJsonProvider: () -> String?) {
   val encoder: Json = Json {
     this.serializersModule = serializersModule
-    prettyPrint = false
+    prettyPrint = true
+    /**
+     * encode default properties of Serializable Classes
+     * */
+    encodeDefaults = true
   }
 
   return roundTrip(objectToSerialize, serializer, encoder, expectedJsonProvider)
@@ -51,6 +55,10 @@ inline fun <reified T> roundTrip(objectToSerialize: T, serializer: KSerializer<T
 fun <T> roundTripList(vararg objectsToSerialize: T, expectedJson: String?, serializer: KSerializer<T>) {
   val encoder = Json {
     prettyPrint = false
+    /**
+     * encode default properties of Serializable Classes
+     * */
+    encodeDefaults = true
   }
 
   val listSerializer = ListSerializer(serializer)

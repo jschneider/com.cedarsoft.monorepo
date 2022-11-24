@@ -46,6 +46,11 @@ data class FeatureFlag(
     val slowServer: FeatureFlag = FeatureFlag("slowServer", "Delay responses on the server")
 
     /**
+     *
+     */
+    val forceServerError: FeatureFlag = FeatureFlag("forceServerError", "On Client Request force an internal server error")
+
+    /**
      * Can be used to simulate failure of refreshing the access token
      */
     val forceFailRefreshAccessToken: FeatureFlag = FeatureFlag("forceFailRefreshAccessToken", "Forces failure of refreshing the access token")

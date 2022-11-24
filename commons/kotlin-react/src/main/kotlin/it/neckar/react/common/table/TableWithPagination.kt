@@ -18,24 +18,25 @@ fun <T> RBuilder.tableWithPagination(
 ) {
 
   val pageSize: StateInstance<Int?> = useState(initialPageSize)
+  val currentPage = useState(0)
 
   val entryPages: List<List<T>> = useMemo(entries, pageSize.value) {
     entries.chunked(pageSize.value ?: entries.size.coerceAtLeast(1))
   }
 
-  val currentPage = useState(0)
+  useMemo(entryPages.size) {
+    currentPage.setter(currentPage.value.coerceAtMost((entryPages.size - 1).coerceAtLeast(0)))
+  }
 
   /**
    * if the list of projects is empty pass empty list to the table
    * */
-  val entriesOnCurrentPage = if (entries.isEmpty()) {
-    emptyList()
-  } else {
-    entryPages[currentPage.value]
-  }
-
-  useEffect(entryPages.size) {
-    currentPage.setter(currentPage.value.coerceAtMost((entryPages.size - 1).coerceAtLeast(0)))
+  val entriesOnCurrentPage = useMemo(entries, currentPage.value) {
+    if (entries.isEmpty()) {
+      emptyList()
+    } else {
+      entryPages[currentPage.value.coerceAtMost((entryPages.size - 1).coerceAtLeast(0))]
+    }
   }
 
 

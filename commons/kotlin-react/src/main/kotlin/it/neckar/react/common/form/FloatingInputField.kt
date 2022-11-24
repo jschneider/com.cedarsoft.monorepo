@@ -24,6 +24,8 @@ fun RBuilder.floatingInputField(
   fieldName: String,
   title: String,
 
+  additionalOnChange: ((String) -> Unit)? = null,
+
   editableStatus: EditableStatus = Editable,
 
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
@@ -32,7 +34,10 @@ fun RBuilder.floatingInputField(
   ): Unit = child(floatingInputField) {
   attrs {
     this.value = valueAndSetter.value
-    this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter(it) }
+    this.onChange = useCallback(valueAndSetter.setter) {
+      valueAndSetter.setter(it)
+      additionalOnChange?.invoke(it)
+    }
     this.fieldName = fieldName
     this.title = title
     this.editableStatus = editableStatus
