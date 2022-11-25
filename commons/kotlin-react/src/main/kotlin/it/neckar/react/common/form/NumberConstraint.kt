@@ -32,8 +32,8 @@ object ZeroOrPositive : NumberConstraint {
 }
 
 class CustomIntegerConstraint(
-  private val lowerConstraint: Int,
-  private val upperConstraint: Int,
+  val lowerConstraint: Int,
+  val upperConstraint: Int,
 ) : NumberConstraint {
   init {
     require(lowerConstraint < upperConstraint) {

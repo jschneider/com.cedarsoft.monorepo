@@ -404,6 +404,11 @@ fun RBuilder.inputArea(
    */
   placeHolder: String? = null,
 
+  /**
+   * The classes for the input field
+   */
+  classes: String = "form-control",
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
   ) {
@@ -414,6 +419,7 @@ fun RBuilder.inputArea(
       this.title = title
       this.fieldName = fieldName
       this.placeholder = placeHolder
+      this.classes = classes
       this.config = config as ((RDOMBuilder<*>) -> Unit)?
     }
   }
@@ -595,6 +601,95 @@ val nullableInputField: FC<NullableTextInputProps> = fc("nullableInputField") { 
 
 }
 
+fun RBuilder.nullableInputArea(
+  /**
+   * The value and setter for the value.
+   * Must be created with a useState hook
+   */
+  valueAndSetter: StateInstance<String?>,
+
+  fieldName: String,
+  title: String,
+
+  /**
+   * The (optional) placeholder - if no placeholder is provided, the title is used
+   */
+  placeHolder: String? = null,
+
+  /**
+   * The classes for the input field
+   */
+  classes: String = "form-control",
+
+  config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
+
+  ) {
+  child(nullableInputArea) {
+    attrs {
+      this.value = valueAndSetter.value
+      this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) }
+      this.title = title
+      this.fieldName = fieldName
+      this.placeholder = placeHolder
+      this.classes = classes
+      this.config = config as ((RDOMBuilder<*>) -> Unit)?
+    }
+  }
+}
+
+/**
+ * Creates a text area
+ */
+val nullableInputArea: FC<NullableTextInputProps> = fc("nullableInputArea") { props ->
+
+  textarea(classes = props.classes) {
+    //Contains the string from the model.
+    //This state is used to identify changes to the model
+    //The "valueInElement" is only updated if the model has changed
+    val valueFromModel = useState(props.value)
+
+    //Contains the string that is stored within the element
+    //Is updated by user interactions
+    //Is only updated from the model, if the model changes
+    val valueInElement = useState(props.value)
+
+    //verify if there is a new value in the model
+    if (valueFromModel.value != props.value) {
+      //Remember the change to be able to compare later
+      valueFromModel.setter(props.value)
+
+      //Update the value in the element!
+      valueInElement.setter(props.value)
+    }
+
+    attrs {
+      name = props.fieldName
+
+      placeholder = props.placeholder ?: props.title
+      title = props.title
+
+      //Always assign the value in element
+      valueInElement.value?.let {
+        value = it
+      }
+
+      val onChange = props.onChange
+      onChangeFunction = useCallback(onChange) {
+        val updatedValue = (it.target as HTMLInputElement).value
+
+        //Automatically update the value in element
+        valueInElement.setter(updatedValue)
+
+        //Notify the change listener - this *may* result in model changes, but sometimes does *not*
+        onChange(updatedValue)
+      }
+    }
+
+    props.config?.invoke(this)
+  }
+
+}
+
 /**
  * Properties for nullable text input
  */
@@ -644,6 +739,13 @@ fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
   when (numberConstraint) {
     ZeroOrPositive -> {
       zeroOrPositiveValues()
+    }
+
+    is CustomIntegerConstraint -> {
+      attrs {
+        min = "${numberConstraint.lowerConstraint}"
+        max = "${numberConstraint.upperConstraint}"
+      }
     }
 
     else -> {}
