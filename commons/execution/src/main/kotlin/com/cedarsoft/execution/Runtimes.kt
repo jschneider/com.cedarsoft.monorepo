@@ -1,6 +1,7 @@
 package com.cedarsoft.execution
 
 import com.cedarsoft.common.lang.Os
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -50,7 +51,7 @@ object Runtimes {
     val cpuDuration = info.totalCpuDuration()?.orElse(null)
     val cmdLine = info.commandLine().orElseGet { "" }
 
-    return String.format("%-8s %-6d %-6s %-25s %-10s %s", user, pid, ppid, startTime ?: "", cpuDuration ?: "", cmdLine)
+    return String.format(Locale.US, "%-8s %-6d %-6s %-25s %-10s %s", user, pid, ppid, startTime ?: "", cpuDuration ?: "", cmdLine)
   }
 
   /**
