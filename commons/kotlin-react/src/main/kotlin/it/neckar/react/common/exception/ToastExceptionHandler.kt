@@ -12,7 +12,7 @@ import it.neckar.react.common.toast.*
  * Handles exceptions by showing a toast message
  */
 class ToastExceptionHandler(
-  val formatter: ExceptionFormatter = DefaultExceptionFormatter,
+  val formatter: ExceptionFormatter = StandardExceptionsFormatter,
 ) : JsErrorHandler {
   override fun otherError(message: dynamic, error: Any) {
     Toast.error(
@@ -43,7 +43,7 @@ class ToastExceptionHandler(
     /**
      * Installs this exception handler
      */
-    fun install(formatter: ExceptionFormatter = DefaultExceptionFormatter) {
+    fun install(formatter: ExceptionFormatter = StandardExceptionsFormatter) {
       JsErrorHandler.registerWindowErrorHandler()
       errorHandler = JsErrorHandlerMultiplexer(listOf(ConsoleJsErrorHandler, ToastExceptionHandler(formatter)))
     }
@@ -86,9 +86,9 @@ data class TranslatedExceptionInfo(
 }
 
 /**
- * Default implement for exception formatter
+ * Handles some well known standard exceptions
  */
-object DefaultExceptionFormatter : ExceptionFormatter {
+object StandardExceptionsFormatter : ExceptionFormatter {
   override fun format(throwable: Throwable): TranslatedExceptionInfo? {
     if (throwable.isFailToFetch()) {
       return TranslatedExceptionInfo("Netzwerkfehler", "Der Server ist aktuell nicht erreichbar", TranslatedExceptionInfo.Severity.Error)
