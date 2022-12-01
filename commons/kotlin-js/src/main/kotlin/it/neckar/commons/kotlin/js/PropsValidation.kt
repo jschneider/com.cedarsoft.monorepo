@@ -15,6 +15,15 @@ inline fun <reified T : Any> KProperty0<T>.safeGet(): T {
 }
 
 /**
+ * you can't really check nullable types to not be null
+ * but for symmetrical reasons this method exists
+ * @return the value of the nullable property
+ **/
+inline fun <reified T : Any?> KProperty0<T>.safeGet(): T? {
+  return this.get()
+}
+
+/**
  * Checks if the passed property is valid (not null & correct instance)
  * and returns it.
  * @return the value of the property
