@@ -55,7 +55,7 @@ fun Tags?.contains(tag: Tag): Boolean {
  *
  * Attention: This method does not use varargs to avoid unnecessary instantiations of objects
  */
-fun Tags?.containsNone(tag0: Tag, tag1: Tag, tag2: Tag, tag3: Tag): Boolean {
+fun Tags?.containsNone(tag0: Tag, tag1: Tag, tag2: Tag, tag3: Tag, tag4: Tag): Boolean {
   if (this == null) {
     return true
   }
@@ -64,6 +64,7 @@ fun Tags?.containsNone(tag0: Tag, tag1: Tag, tag2: Tag, tag3: Tag): Boolean {
     && this.contains(tag1).not()
     && this.contains(tag2).not()
     && this.contains(tag3).not()
+    && this.contains(tag4).not()
 }
 
 fun Tag?.toTags(): Tags? {

@@ -15,4 +15,14 @@ class FileUtilsTest {
     assertThat(folder).isDirectory().exists()
     assertThat(folder.createDirectoryIfNotExisting()).isSameAs(folder)
   }
+
+  @Test
+  fun testWriteWithRename(@TempFolder folder: File) {
+    val file = File(folder, "myFile")
+    file.writeTextWithRename("Content")
+    assertThat(file).hasContent("Content")
+  }
 }
+
+
+

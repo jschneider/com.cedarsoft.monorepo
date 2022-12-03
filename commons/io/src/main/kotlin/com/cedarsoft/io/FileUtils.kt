@@ -32,6 +32,7 @@ package com.cedarsoft.io
 
 import java.io.File
 import java.io.IOException
+import java.nio.charset.Charset
 
 /**
  */
@@ -58,3 +59,18 @@ fun File.createDirectoryIfNotExisting(): File {
   FileUtils.ensureDirectoryExists(this)
   return this
 }
+
+/** Writes into a file by first creating a temp file and then renaming the temp file to replace the actual target file.
+ * Should the program crash while executing, the tmp file will remain next to the target file.*/
+fun File.writeTextWithRename(text: String, charset: Charset = Charsets.UTF_8) {
+  val tmpFile: File = this.createTmpFile()
+  tmpFile.writeText(text,charset)
+  tmpFile.renameTo(this)
+}
+
+/** Creates a corresponding tmp file for the given file. The tmp file has an appendix consisting of a TMP suffix (.tmp) and the current nanoTime. */
+fun File.createTmpFile():File {
+  return File(this.parent, this.name + SUFFIX_TMP + "_" + System.nanoTime())
+}
+
+const val SUFFIX_TMP: String = ".tmp"
