@@ -1,6 +1,6 @@
 package it.neckar.react.common
 
-import kotlinx.js.jso
+import js.core.jso
 import react.*
 import react.dom.*
 

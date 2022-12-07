@@ -2,12 +2,12 @@ package it.neckar.react.common
 
 import csstype.ClassName
 import it.neckar.react.common.form.*
+import js.core.Object
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HTMLTag
 import kotlinx.html.LABEL
 import kotlinx.html.Tag
 import kotlinx.html.classes
-import kotlinx.js.Object
 import react.*
 import react.dom.*
 import kotlin.contracts.InvocationKind

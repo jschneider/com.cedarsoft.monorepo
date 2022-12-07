@@ -3,7 +3,7 @@ package it.neckar.react.common.router
 import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuidFrom
 import it.neckar.uuid.decodeUuidFromUrl
-import kotlinx.js.get
+import js.core.get
 import react.router.*
 
 /**

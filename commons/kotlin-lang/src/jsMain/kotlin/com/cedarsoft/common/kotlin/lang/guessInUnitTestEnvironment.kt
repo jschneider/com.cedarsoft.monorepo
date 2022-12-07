@@ -1,7 +1,7 @@
 package com.cedarsoft.common.kotlin.lang
 
-import kotlinx.js.DEV
-import kotlinx.js.import
+import js.import.DEV
+import js.import.import
 
 /**
  * Returns true if this test is running (probably) in a unit test

@@ -68,9 +68,26 @@ fun File.writeTextWithRename(text: String, charset: Charset = Charsets.UTF_8) {
   tmpFile.renameTo(this)
 }
 
-/** Creates a corresponding tmp file for the given file. The tmp file has an appendix consisting of a TMP suffix (.tmp) and the current nanoTime. */
+/** Creates a corresponding tmp file for this file. The tmp file has an appendix consisting of a TMP suffix (.tmp) and the current nanoTime. */
 fun File.createTmpFile():File {
   return File(this.parent, this.name + SUFFIX_TMP + "_" + System.nanoTime())
 }
+
+/** Creates corresponding temporary backup directories for this directory and
+ * then replaces the old directory with the new one, returns the converted File.
+ * This file will be replaced by the source Directory.
+ * Source directory should be on the same partition as this file.
+ * The source directory will be replaced when this method is done.*/
+fun File.replaceDirWithRename(sourceDirectory: File) {
+  val backupDirectory = File(this.parentFile, this.name + ".old")
+  // Replace the old storage directory with the new, converted storage directory
+  // by first renaming storageBaseDirToConvert to a backupDirectory and then renaming newDirectory to storageBaseDirToConvert
+  this.renameTo(backupDirectory)
+  sourceDirectory.renameTo(this)
+
+  // delete backup and temp rename Directory
+  backupDirectory.deleteRecursively()
+}
+
 
 const val SUFFIX_TMP: String = ".tmp"
