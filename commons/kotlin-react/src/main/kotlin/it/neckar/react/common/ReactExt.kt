@@ -152,27 +152,23 @@ fun CommonAttributeGroupFacade.addClasses(newClasses: String) {
  * Does not set values that can not be parsed!
  */
 fun StateInstance<Int>.asOnChangeForInt(numberConstraint: NumberConstraint): (String) -> Unit {
-  return useCallback(setter, numberConstraint) {
-    if (it.isEmpty()) {
-      //setter(0)
-      return@useCallback
-    }
-
-    it.toIntOrNull()?.let { parsedInt ->
-      setter(numberConstraint.constraint(parsedInt))
+  return {
+    if (it.isEmpty().not()) {
+      it.toIntOrNull()?.let { parsedInt ->
+        setter(numberConstraint.constraint(parsedInt))
+      }
     }
   }
 }
 
 fun StateInstance<Int?>.asOnChangeForInt(numberConstraint: NumberConstraint): (String?) -> Unit {
-  return useCallback(setter, numberConstraint) {
+  return {
     if (it.isNullOrEmpty()) {
       setter(null)
-      return@useCallback
-    }
-
-    it.toIntOrNull()?.let { parsedInt ->
-      setter(numberConstraint.constraint(parsedInt))
+    } else {
+      it.toIntOrNull()?.let { parsedInt ->
+        setter(numberConstraint.constraint(parsedInt))
+      }
     }
   }
 }
@@ -182,28 +178,21 @@ fun StateInstance<Int?>.asOnChangeForInt(numberConstraint: NumberConstraint): (S
  * Does not set values that can not be parsed!
  */
 fun StateInstance<Double>.asOnChangeForDouble(numberConstraint: NumberConstraint): (String) -> Unit {
-  return useCallback(setter) {
-    if (it.isEmpty()) {
-      //do *not* set a value, since it is empty
-      return@useCallback
-    }
-
-    it.toDoubleOrNull()?.let { parsedDouble ->
-      setter(numberConstraint.constraint(parsedDouble))
+  return {
+    if (it.isEmpty().not()) {
+      it.toDoubleOrNull()?.let { parsedDouble ->
+        setter(numberConstraint.constraint(parsedDouble))
+      }
     }
   }
 }
 
 fun StateInstance<Boolean>.asOnChangeForBoolean(): (String) -> Unit {
-  return useCallback(setter) {
+  return {
     println("asOnChangeForBoolean called with <$it>")
-
-    if (it.isEmpty()) {
-      //do *not* set a value, since it is empty
-      return@useCallback
+    if (it.isEmpty().not()) {
+      setter(it.toBoolean())
     }
-
-    setter(it.toBoolean())
   }
 }
 

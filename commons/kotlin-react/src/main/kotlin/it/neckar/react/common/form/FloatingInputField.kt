@@ -34,7 +34,7 @@ fun RBuilder.floatingInputField(
   ): Unit = child(floatingInputField) {
   attrs {
     this.value = valueAndSetter.value
-    this.onChange = useCallback(valueAndSetter.setter) {
+    this.onChange = {
       valueAndSetter.setter(it)
       additionalOnChange?.invoke(it)
     }
@@ -64,7 +64,7 @@ fun RBuilder.floatingReadOnlyInputField(
   ): Unit = child(floatingInputField) {
   attrs {
     this.value = value
-    this.onChange = useCallback { throw UnsupportedOperationException("can not change value for read only input field") }
+    this.onChange = { throw UnsupportedOperationException("can not change value for read only input field") }
     this.fieldName = fieldName
     this.title = title
     this.editableStatus = editableStatus
@@ -134,7 +134,7 @@ fun RBuilder.floatingIntInputField(
   ): Unit = child(floatingInputField) {
   attrs {
     this.value = value.toString()
-    this.onChange = useCallback(onChange) { s ->
+    this.onChange = { s ->
       s.toIntOrNull()?.let { parsedInt ->
         onChange(numberConstraint.constraint(parsedInt))
       }
@@ -241,9 +241,7 @@ fun RBuilder.floatingDoubleInputField(
 
   attrs {
     this.value = value.format(numberOfDecimals, 0, 1, false, I18nConfiguration.US) //always format with US, since the input field expects "." as separator
-    this.onChange = useCallback(onChange) {
-      onChange(it)
-    }
+    this.onChange = { onChange(it) }
     this.fieldName = fieldName
     this.title = title
     this.editableStatus = editableStatus

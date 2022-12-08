@@ -167,7 +167,7 @@ fun RBuilder.inputField(
   ) {
   inputField(
     value = valueAndSetter.value,
-    onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
+    onChange = { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
     placeholder = placeholder,
@@ -187,7 +187,7 @@ fun RBuilder.intInput(
 ) {
   intInput(
     value = valueAndSetter.value,
-    onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) },
+    onChange = { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
     numberConstraint = Unconstraint,
@@ -209,9 +209,7 @@ fun RBuilder.intInput(
 ) {
   inputField(
     value = value.toString(),
-    onChange = useCallback(onChange) {
-      onChange.invoke(numberConstraint.constraint(it.parseInt()))
-    },
+    onChange = { onChange.invoke(numberConstraint.constraint(it.parseInt())) },
     fieldName = fieldName,
     title = title,
   ) {
@@ -320,7 +318,7 @@ fun RBuilder.inputField(
 
   ): Unit = child(inputField) {
 
-  ensureSameCallback(onChange, fieldName)
+  //ensureSameCallback(onChange, fieldName)
 
   attrs {
     require(value != undefined) {
@@ -343,38 +341,17 @@ fun RBuilder.inputField(
 val inputField: FC<InputFieldProps> = fc("inputField") { props ->
 
   input(name = props.fieldName, classes = props.classes) {
-    //Contains the string from the model.
-    //This state is used to identify changes to the model
-    //The "valueInElement" is only updated if the model has changed
-    val valueFromModel = useState(props.value)
-
-    //Contains the string that is stored within the element
-    //Is updated by user interactions
-    //Is only updated from the model, if the model changes
-    val valueInElement = useState(props.value)
-
-    //verify if there is a new value in the model
-    if (valueFromModel.value != props.value) {
-      //Remember the change to be able to compare later
-      valueFromModel.setter(props.value)
-
-      //Update the value in the element!
-      valueInElement.setter(props.value)
-    }
 
     attrs {
       placeholder = props.placeholder ?: props.title
       title = props.title
 
       //Always assign the value in element
-      value = valueInElement.value
+      value = props.value
 
       val onChange = props.onChange
-      onChangeFunction = useCallback(onChange) {
+      onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
-
-        //Automatically update the value in element
-        valueInElement.setter(updatedValue)
 
         //Notify the change listener - this *may* result in model changes, but sometimes does *not*
         onChange(updatedValue)
@@ -415,7 +392,7 @@ fun RBuilder.inputArea(
   child(inputArea) {
     attrs {
       this.value = valueAndSetter.value
-      this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) }
+      this.onChange = { valueAndSetter.setter.invoke(it) }
       this.title = title
       this.fieldName = fieldName
       this.placeholder = placeHolder
@@ -438,12 +415,12 @@ val inputArea: FC<InputFieldProps> = fc("inputArea") { props ->
       value = props.value
 
       val onChange = props.onChange
-      onChangeFunction = useCallback(onChange) { event ->
+      onChangeFunction = { event ->
         val element = event.target as HTMLTextAreaElement
         onChange(element.value)
       }
 
-      onKeyPress = useCallback { keyboardEvent ->
+      onKeyPress = { keyboardEvent ->
         keyboardEvent.stopPropagation()
       }
     }
@@ -556,40 +533,19 @@ fun RBuilder.nullableInputField(
 val nullableInputField: FC<NullableTextInputProps> = fc("nullableInputField") { props ->
 
   input(name = props.fieldName, classes = props.classes) {
-    //Contains the string from the model.
-    //This state is used to identify changes to the model
-    //The "valueInElement" is only updated if the model has changed
-    val valueFromModel = useState(props.value)
-
-    //Contains the string that is stored within the element
-    //Is updated by user interactions
-    //Is only updated from the model, if the model changes
-    val valueInElement = useState(props.value)
-
-    //verify if there is a new value in the model
-    if (valueFromModel.value != props.value) {
-      //Remember the change to be able to compare later
-      valueFromModel.setter(props.value)
-
-      //Update the value in the element!
-      valueInElement.setter(props.value)
-    }
 
     attrs {
       placeholder = props.placeholder ?: props.title
       title = props.title
 
       //Always assign the value in element
-      valueInElement.value?.let {
+      props.value?.let {
         value = it
       }
 
       val onChange = props.onChange
-      onChangeFunction = useCallback(onChange) {
+      onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
-
-        //Automatically update the value in element
-        valueInElement.setter(updatedValue)
 
         //Notify the change listener - this *may* result in model changes, but sometimes does *not*
         onChange(updatedValue)
@@ -627,7 +583,7 @@ fun RBuilder.nullableInputArea(
   child(nullableInputArea) {
     attrs {
       this.value = valueAndSetter.value
-      this.onChange = useCallback(valueAndSetter.setter) { valueAndSetter.setter.invoke(it) }
+      this.onChange = { valueAndSetter.setter.invoke(it) }
       this.title = title
       this.fieldName = fieldName
       this.placeholder = placeHolder
@@ -643,24 +599,6 @@ fun RBuilder.nullableInputArea(
 val nullableInputArea: FC<NullableTextInputProps> = fc("nullableInputArea") { props ->
 
   textarea(classes = props.classes) {
-    //Contains the string from the model.
-    //This state is used to identify changes to the model
-    //The "valueInElement" is only updated if the model has changed
-    val valueFromModel = useState(props.value)
-
-    //Contains the string that is stored within the element
-    //Is updated by user interactions
-    //Is only updated from the model, if the model changes
-    val valueInElement = useState(props.value)
-
-    //verify if there is a new value in the model
-    if (valueFromModel.value != props.value) {
-      //Remember the change to be able to compare later
-      valueFromModel.setter(props.value)
-
-      //Update the value in the element!
-      valueInElement.setter(props.value)
-    }
 
     attrs {
       name = props.fieldName
@@ -669,16 +607,13 @@ val nullableInputArea: FC<NullableTextInputProps> = fc("nullableInputArea") { pr
       title = props.title
 
       //Always assign the value in element
-      valueInElement.value?.let {
+      props.value?.let {
         value = it
       }
 
       val onChange = props.onChange
-      onChangeFunction = useCallback(onChange) {
+      onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
-
-        //Automatically update the value in element
-        valueInElement.setter(updatedValue)
 
         //Notify the change listener - this *may* result in model changes, but sometimes does *not*
         onChange(updatedValue)

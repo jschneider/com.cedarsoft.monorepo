@@ -234,9 +234,7 @@ fun <T> RBuilder.floatingSelectNullable(
     this.formatter = formatter.unsafeCast<(Any?) -> String>()
     this.idProvider = idProvider.unsafeCast<(Any?) -> String>()
 
-    val optionsIncludingNull = useMemo(availableOptionsWithoutNull) {
-      availableOptionsWithoutNull.withNullAtFirst()
-    }
+    val optionsIncludingNull = availableOptionsWithoutNull.withNullAtFirst()
 
     this.availableOptions = optionsIncludingNull.unsafeCast<List<Any>>()
     this.fieldName = fieldName
