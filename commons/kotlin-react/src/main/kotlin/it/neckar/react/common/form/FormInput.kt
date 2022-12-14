@@ -7,6 +7,7 @@ import it.neckar.react.common.*
 import it.neckar.react.common.form.EditableStatus.*
 import kotlinx.html.INPUT
 import kotlinx.html.InputType
+import kotlinx.html.LABEL
 import kotlinx.html.TEXTAREA
 import kotlinx.html.id
 import kotlinx.html.js.onChangeFunction
@@ -37,7 +38,8 @@ fun RBuilder.checkbox(
 
   editableStatus: EditableStatus,
 
-  config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+  labelConfig: (RDOMBuilder<LABEL>.() -> Unit)? = null,
+  checkboxConfig: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
   ): Unit = child(checkbox) {
   attrs {
@@ -46,7 +48,8 @@ fun RBuilder.checkbox(
     this.fieldName = fieldName
     this.title = title
     this.editableStatus = editableStatus
-    this.config = config
+    this.labelConfig = labelConfig
+    this.checkboxConfig = checkboxConfig
   }
 }
 
@@ -66,7 +69,8 @@ fun RBuilder.checkbox(
 
   editableStatus: EditableStatus = Editable,
 
-  config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+  labelConfig: (RDOMBuilder<LABEL>.() -> Unit)? = null,
+  checkboxConfig: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   checkbox(
     value = valueAndSetter.value,
@@ -74,12 +78,14 @@ fun RBuilder.checkbox(
     fieldName = fieldName,
     title = title,
     editableStatus = editableStatus,
-    config = config,
+    labelConfig = labelConfig,
+    checkboxConfig = checkboxConfig,
   )
 }
 
 val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
   val uniqueId = uniqueIdMemo("checkbox")
+
 
   div(classes = "form-check") {
 
@@ -103,7 +109,7 @@ val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
         }
       }
 
-      props.config?.invoke(this)
+      props.checkboxConfig?.invoke(this)
     }
 
     label(classes = "form-check-label") {
@@ -112,7 +118,10 @@ val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
       attrs {
         htmlForFixed = uniqueId
       }
+
+      props.labelConfig?.invoke(this)
     }
+
   }
 }
 
@@ -140,7 +149,8 @@ external interface CheckboxProps : Props {
 
   var editableStatus: EditableStatus
 
-  var config: ((RDOMBuilder<INPUT>) -> Unit)?
+  var labelConfig: ((RDOMBuilder<LABEL>) -> Unit)?
+  var checkboxConfig: ((RDOMBuilder<INPUT>) -> Unit)?
 }
 
 

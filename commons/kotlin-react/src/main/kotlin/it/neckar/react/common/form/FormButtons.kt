@@ -1,7 +1,9 @@
 package it.neckar.react.common.form
 
+import it.neckar.commons.kotlin.js.safeGet
 import it.neckar.react.common.*
 import it.neckar.react.common.form.IconAlignment.*
+import kotlinx.html.BUTTON
 import kotlinx.html.js.onClickFunction
 import kotlinx.html.org.w3c.dom.events.Event
 import kotlinx.html.role
@@ -19,6 +21,9 @@ fun RBuilder.formButtons(
     alignment = Left,
   ),
   okText: String = "Speichern",
+
+  cancelConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
+  okConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
   cancelAction: (Event) -> Unit,
   okAction: (Event) -> Unit,
 ): Unit = child(formButtons) {
@@ -27,6 +32,9 @@ fun RBuilder.formButtons(
     this.cancelText = cancelText
     this.okIcon = okIcon
     this.okText = okText
+
+    this.cancelConfig = cancelConfig
+    this.okConfig = okConfig
     this.cancelAction = cancelAction
     this.okAction = okAction
   }
@@ -43,6 +51,9 @@ fun RBuilder.wizardFormButtons(
     icon = FontAwesomeIcons.arrowRight,
     alignment = Right,
   ),
+
+  cancelConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
+  okConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
   cancelAction: (Event) -> Unit,
   okAction: (Event) -> Unit,
 ): Unit = child(formButtons) {
@@ -51,6 +62,9 @@ fun RBuilder.wizardFormButtons(
     this.cancelText = cancelText
     this.okIcon = okIcon
     this.okText = okText
+
+    this.cancelConfig = cancelConfig
+    this.okConfig = okConfig
     this.cancelAction = cancelAction
     this.okAction = okAction
   }
@@ -67,6 +81,17 @@ data class ButtonIcon(
 )
 
 val formButtons: FC<FormButtonsProps> = fc("formButtons") { props ->
+  val cancelIcon = props::cancelIcon.safeGet()
+  val cancelText = props::cancelText.safeGet()
+  val okIcon = props::okIcon.safeGet()
+  val okText = props::okText.safeGet()
+
+  val cancelConfig = props::cancelConfig.safeGet()
+  val okConfig = props::okConfig.safeGet()
+  val cancelAction = props::cancelAction.safeGet()
+  val okAction = props::okAction.safeGet()
+
+
   div(classes = "btn-group mt-3 ") {
     attrs {
       role = "group"
@@ -74,47 +99,52 @@ val formButtons: FC<FormButtonsProps> = fc("formButtons") { props ->
     }
 
     button(classes = "btn btn-secondary") {
-      props.cancelIcon?.let {
+      cancelIcon?.let {
         if (it.alignment == Left) {
           i("${it.icon} me-2") {}
         }
       }
 
-      +props.cancelText
+      +cancelText
 
-      props.cancelIcon?.let {
+      cancelIcon?.let {
         if (it.alignment == Right) {
           i("${it.icon} ms-2") {}
         }
       }
 
       attrs {
-        onClickFunction = props.cancelAction
+        onClickFunction = cancelAction
       }
+
+      cancelConfig?.invoke(this)
     }
 
     button(classes = "btn btn-primary") {
-      props.okIcon?.let {
+      okIcon?.let {
         if (it.alignment == Left) {
           i("${it.icon} me-2") {}
         }
       }
 
       b {
-        +props.okText
+        +okText
       }
 
-      props.okIcon?.let {
+      okIcon?.let {
         if (it.alignment == Right) {
           i("${it.icon} ms-2") {}
         }
       }
 
       attrs {
-        onClickFunction = props.okAction
+        onClickFunction = okAction
       }
+
+      okConfig?.invoke(this)
     }
   }
+
 }
 
 
@@ -123,6 +153,9 @@ external interface FormButtonsProps : Props {
   var cancelText: String
   var okIcon: ButtonIcon?
   var okText: String
+
+  var cancelConfig: ((RDOMBuilder<BUTTON>) -> Unit)?
+  var okConfig: ((RDOMBuilder<BUTTON>) -> Unit)?
   var cancelAction: (Event) -> Unit
   var okAction: (Event) -> Unit
 }

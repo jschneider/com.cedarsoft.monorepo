@@ -165,11 +165,11 @@ object FontAwesome {
     i(classes = FontAwesomeIcons.information) {}
   }
 
-  fun RBuilder.faInQuestionCircle() {
+  fun RBuilder.faCircleQuestion() {
     i(classes = FontAwesomeIcons.questionCircle) {}
   }
 
-  fun RBuilder.faInExclamationCircle() {
+  fun RBuilder.faCircleExclamation() {
     i(classes = FontAwesomeIcons.exclamationCircle) {}
   }
 
