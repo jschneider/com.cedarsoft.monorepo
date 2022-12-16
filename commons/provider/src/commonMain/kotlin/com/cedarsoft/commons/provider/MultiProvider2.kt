@@ -23,8 +23,8 @@ fun interface MultiProvider2<in IndexContext, out T, in P1, in P2> {
     /**
      * Creates a new instance of an empty multi provider
      */
-    fun <T> empty(): @Domain MultiProvider2<Any, T, Any, Any> {
-      return MultiProvider2<Any, T, Any, Any> { _, _, _ -> throw UnsupportedOperationException() }
+    fun <IndexContext, T, P1, P2> empty(): @Domain MultiProvider2<IndexContext, T, P1, P2> {
+      return MultiProvider2<IndexContext, T, P1, P2> { _, _, _ -> throw UnsupportedOperationException() }
     }
 
     /**
@@ -43,4 +43,22 @@ fun interface MultiProvider2<in IndexContext, out T, in P1, in P2> {
  */
 fun <IndexContext, T, P1, P2> KProperty0<MultiProvider2<IndexContext, T, P1, P2>>.delegate(): MultiProvider2<IndexContext, T, P1, P2> {
   return MultiProvider2 { index, param1, param2 -> this@delegate.get().valueAt(index, param1, param2) }
+}
+
+/**
+ * Converts this provider to a [MultiProvider2]
+ */
+fun <IndexContext, T, P1, P2> MultiProvider1<IndexContext, T, P1>.asMultiProvider2(): MultiProvider2<IndexContext, T, P1, P2> {
+  return MultiProvider2 { index, param1, _ ->
+    this[index, param1]
+  }
+}
+
+/**
+ * Converts this provider to a [MultiProvider2] - by using the
+ */
+fun <IndexContext, T, P1, P2> MultiProvider1<IndexContext, T, P2>.asMultiProvider2withParam2(): MultiProvider2<IndexContext, T, P1, P2> {
+  return MultiProvider2 { index, _, param2 ->
+    this[index, param2]
+  }
 }

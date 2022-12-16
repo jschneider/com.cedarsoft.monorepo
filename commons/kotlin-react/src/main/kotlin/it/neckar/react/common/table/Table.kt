@@ -1,6 +1,7 @@
 package it.neckar.react.common.table
 
 import com.cedarsoft.common.collections.fastForEach
+import it.neckar.commons.kotlin.js.safeGet
 import it.neckar.react.common.*
 import kotlinx.html.TD
 import kotlinx.html.TH
@@ -28,16 +29,16 @@ fun <T> RBuilder.table(
    */
   columns: List<TableColumn<T>>,
 
-  doubleClickAction: (T) -> Unit,
+  doubleClickAction: ((T) -> Unit)? = null,
 
   handler: (TableProps) -> Unit = {},
 
   ): Unit = child(table) {
   attrs {
-    this.entries = entries.unsafeCast<List<Any>>()
+    this.tableEntries = entries.unsafeCast<List<Any>>()
     this.firstColumn = firstColumn.unsafeCast<TableFirstColumn<Any>>()
     this.columns = columns.unsafeCast<List<TableColumn<Any>>>()
-    this.doubleClickAction = doubleClickAction.unsafeCast<(Any) -> Unit>()
+    this.doubleClickAction = doubleClickAction.unsafeCast<((Any) -> Unit)?>()
 
     handler(this)
   }
@@ -45,14 +46,21 @@ fun <T> RBuilder.table(
 
 
 val table: FC<TableProps> = fc("table") { props ->
-  busyIfNull(props.entries) { entries ->
+  val tableEntries = props::tableEntries.safeGet()
+  val firstColumn = props::firstColumn.safeGet()
+  val columns = props::columns.safeGet()
+
+  val doubleClickAction = props::doubleClickAction.safeGet()
+
+
+  busyIfNull(tableEntries) { entries ->
     table(classes = "table table-hover table-responsive align-middle") {
       thead {
         tr {
           th(scope = ThScope.col) {
-            +props.firstColumn.title()
+            +firstColumn.title()
           }
-          props.columns.fastForEach { tableColumn ->
+          columns.fastForEach { tableColumn ->
             th(scope = ThScope.col) {
               +tableColumn.title()
             }
@@ -65,17 +73,18 @@ val table: FC<TableProps> = fc("table") { props ->
         entries.fastForEach { entry ->
           tr {
             attrs {
-              onDoubleClickFunction = props.doubleClickAction
+              doubleClickAction?.let { onDoubleClickFunction = it }
             }
 
-            th(scope = ThScope.row, block = props.firstColumn.block(entry))
+            th(scope = ThScope.row, block = firstColumn.block(entry))
 
-            props.columns.fastForEach { tableColumn ->
+            columns.fastForEach { tableColumn ->
               td(block = tableColumn.block(entry))
             }
           }
         }
       }
+
     }
   }
 }
@@ -96,7 +105,7 @@ external interface TableProps : Props {
    * List of the entries to be displayed
    * can be null and shows busy indicator
    */
-  var entries: List<Any>?
+  var tableEntries: List<Any>?
 
   var firstColumn: TableFirstColumn<Any>
 
@@ -105,5 +114,5 @@ external interface TableProps : Props {
    */
   var columns: List<TableColumn<Any>>
 
-  var doubleClickAction: (Any) -> Unit
+  var doubleClickAction: ((Any) -> Unit)?
 }

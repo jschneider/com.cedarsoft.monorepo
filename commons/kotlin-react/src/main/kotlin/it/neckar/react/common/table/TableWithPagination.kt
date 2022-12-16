@@ -12,8 +12,8 @@ fun <T> RBuilder.tableWithPagination(
   entries: List<T>,
   firstColumn: TableFirstColumn<T>,
   columns: List<TableColumn<T>>,
-  doubleClickAction: (T) -> Unit,
   initialPageSize: Int,
+  doubleClickAction: ((T) -> Unit)? = null,
   handler: (TableProps) -> Unit = {},
 ) {
 
@@ -40,7 +40,13 @@ fun <T> RBuilder.tableWithPagination(
   }
 
 
-  table(entriesOnCurrentPage, firstColumn, columns, doubleClickAction, handler)
+  table(
+    entries = entriesOnCurrentPage,
+    firstColumn = firstColumn,
+    columns = columns,
+    doubleClickAction = doubleClickAction,
+    handler = handler,
+  )
 
   div("row") {
     div("col-2") {
