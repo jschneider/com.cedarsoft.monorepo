@@ -254,6 +254,18 @@ constructor(
       }
     }
 
+    /**
+     * Returns null in case of a parse exception
+     */
+    @JvmStatic
+    fun parseOrNull(version: String): Version? {
+      return try {
+        parse(version)
+      } catch (ignore: IllegalArgumentException) {
+        null
+      }
+    }
+
     @JvmStatic
     @Throws(VersionMismatchException::class)
     fun verifyMatch(expected: Version, actual: Version) {
