@@ -6,7 +6,6 @@ import it.neckar.react.common.*
 import kotlinx.html.TD
 import kotlinx.html.TH
 import kotlinx.html.ThScope
-import kotlinx.html.js.onDoubleClickFunction
 import react.*
 import react.dom.*
 
@@ -29,8 +28,6 @@ fun <T> RBuilder.table(
    */
   columns: List<TableColumn<T>>,
 
-  doubleClickAction: ((T) -> Unit)? = null,
-
   handler: (TableProps) -> Unit = {},
 
   ): Unit = child(table) {
@@ -38,7 +35,6 @@ fun <T> RBuilder.table(
     this.tableEntries = entries.unsafeCast<List<Any>>()
     this.firstColumn = firstColumn.unsafeCast<TableFirstColumn<Any>>()
     this.columns = columns.unsafeCast<List<TableColumn<Any>>>()
-    this.doubleClickAction = doubleClickAction.unsafeCast<((Any) -> Unit)?>()
 
     handler(this)
   }
@@ -49,8 +45,6 @@ val table: FC<TableProps> = fc("table") { props ->
   val tableEntries = props::tableEntries.safeGet()
   val firstColumn = props::firstColumn.safeGet()
   val columns = props::columns.safeGet()
-
-  val doubleClickAction = props::doubleClickAction.safeGet()
 
 
   busyIfNull(tableEntries) { entries ->
@@ -72,10 +66,6 @@ val table: FC<TableProps> = fc("table") { props ->
       tbody {
         entries.fastForEach { entry ->
           tr {
-            attrs {
-              doubleClickAction?.let { onDoubleClickFunction = it }
-            }
-
             th(scope = ThScope.row, block = firstColumn.block(entry))
 
             columns.fastForEach { tableColumn ->
@@ -113,6 +103,4 @@ external interface TableProps : Props {
    * List of information how what columns to display and how to format their data
    */
   var columns: List<TableColumn<Any>>
-
-  var doubleClickAction: ((Any) -> Unit)?
 }

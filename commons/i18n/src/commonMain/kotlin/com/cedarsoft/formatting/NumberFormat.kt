@@ -3,6 +3,7 @@ package com.cedarsoft.formatting
 import com.cedarsoft.i18n.DefaultI18nConfiguration
 import com.cedarsoft.i18n.I18nConfiguration
 import com.cedarsoft.unit.currency.EUR
+import kotlin.text.Typography.nbsp
 
 /**
  * Format for numbers
@@ -255,7 +256,7 @@ class NumberFormatWithUnit(
   }
 
   override fun format(value: Double, i18nConfiguration: I18nConfiguration): String {
-    return "${numberFormat.format(value, i18nConfiguration)} $unit"
+    return "${numberFormat.format(value, i18nConfiguration)}$nbsp$unit"
   }
 
   override val precision: Double
