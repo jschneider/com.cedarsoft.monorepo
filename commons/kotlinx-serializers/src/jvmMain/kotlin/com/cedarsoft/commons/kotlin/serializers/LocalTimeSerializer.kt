@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter
 /**
  * Serializer for LocalTime
  */
-@Serializer(forClass = LocalTime::class)
 object LocalTimeSerializer : KSerializer<LocalTime> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalTime", PrimitiveKind.STRING)
 

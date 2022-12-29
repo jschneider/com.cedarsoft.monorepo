@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter
 /**
  * Serializer for LocalDate
  */
-@Serializer(forClass = LocalDate::class)
 object LocalDateSerializer : KSerializer<LocalDate> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDate", PrimitiveKind.STRING)
 

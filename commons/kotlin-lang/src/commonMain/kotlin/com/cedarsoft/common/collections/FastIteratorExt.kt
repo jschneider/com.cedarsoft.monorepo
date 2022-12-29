@@ -57,7 +57,7 @@ inline fun DoubleArray.fastForEach(callback: (value: Double) -> Unit) {
   }
 }
 
-inline fun DoubleArray.fastAny(predicate: (Double) -> Boolean): Boolean {
+inline fun DoubleArray.fastAny(predicate: DoublePredicate): Boolean {
   var n = 0
   val currentSize = size
   while (n < currentSize) {
@@ -73,7 +73,7 @@ inline fun DoubleArray.fastAny(predicate: (Double) -> Boolean): Boolean {
 /**
  * Returns true if [predicate] returns true for all elements
  */
-inline fun DoubleArray.fastAll(predicate: (Double) -> Boolean): Boolean {
+inline fun DoubleArray.fastAll(predicate: DoublePredicate): Boolean {
   var n = 0
   val currentSize = size
   while (n < currentSize) {
@@ -105,6 +105,16 @@ inline fun DoubleArray.fastForEachIndexedReverse(callback: (index: Int, value: D
   for (i in (currentSize - 1) downTo 0) {
     callback(i, this[i], i == currentSize - 1)
   }
+}
+
+fun DoubleArray.fastContains(value: Double): Boolean {
+  this.fastForEach {
+    if (it == value) {
+      return true
+    }
+  }
+
+  return false
 }
 
 /**

@@ -18,7 +18,6 @@ import kotlin.time.Duration
  * ```
  */
 @Deprecated("Replace with (newly) provided kotlinx.serializer")
-@Serializer(forClass = Duration::class)
 object KotlinDurationSerializer : KSerializer<Duration> {
   override val descriptor: SerialDescriptor
     get() = PrimitiveSerialDescriptor("Duration.custom", PrimitiveKind.LONG)

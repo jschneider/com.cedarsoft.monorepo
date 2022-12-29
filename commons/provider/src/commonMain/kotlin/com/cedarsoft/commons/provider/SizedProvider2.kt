@@ -39,5 +39,6 @@ interface SizedProvider2<out T, in P1, in P2> : MultiProvider2<Any, T, P1, P2>, 
   }
 
   companion object {
+    //required for extension methods
   }
 }

@@ -17,7 +17,6 @@ import java.time.Duration
  * @file: UseSerializers(DurationSerializer::class)
  * ```
  */
-@Serializer(forClass = Duration::class)
 object JavaTimeDurationSerializer : KSerializer<Duration> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("java.time.Duration", PrimitiveKind.STRING)
 

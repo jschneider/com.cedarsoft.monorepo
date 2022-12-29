@@ -12,7 +12,6 @@ import java.time.Period
 /**
  * Serializer for Period
  */
-@Serializer(forClass = Period::class)
 object PeriodSerializer : KSerializer<Period> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Period", PrimitiveKind.STRING)
 

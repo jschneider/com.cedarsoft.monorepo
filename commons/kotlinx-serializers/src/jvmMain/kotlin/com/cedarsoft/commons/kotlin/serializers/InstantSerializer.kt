@@ -12,7 +12,6 @@ import java.time.Instant
 /**
  * Serializer for Duration
  */
-@Serializer(forClass = Instant::class)
 object InstantSerializer : KSerializer<Instant> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Instant", PrimitiveKind.STRING)
 

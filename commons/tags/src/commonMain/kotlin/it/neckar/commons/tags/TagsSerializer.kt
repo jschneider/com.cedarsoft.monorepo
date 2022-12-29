@@ -8,7 +8,6 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializer(forClass = Tags::class)
 object TagsSerializer : KSerializer<Tags> {
   private val listSerializer = ListSerializer(String.serializer())
 

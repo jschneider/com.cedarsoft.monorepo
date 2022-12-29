@@ -12,7 +12,6 @@ import java.net.URL
 /**
  * Serializer for URL
  */
-@Serializer(forClass = URL::class)
 object UrlSerializer : KSerializer<URL> {
   override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("URL", PrimitiveKind.STRING)
 
