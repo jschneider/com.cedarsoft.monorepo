@@ -6,7 +6,7 @@ import java.util.UUID
 
 /**
  */
-internal class UuidSerializationTest : AbstractSerializationTest() {
+internal class UuidSerializationTest {
   @Test
   internal fun testJson() {
     roundTrip(UUID.fromString("cbf7a43a-ebf0-4598-9413-52a6ad5d2269"), UUIDSerializer) {
