@@ -198,7 +198,7 @@ class CachedSizedProvider<T>(
   /**
    * The maximum size of the cache
    */
-  val cacheSize: Int = 500,
+  cacheSize: Int = 500,
 ) : SizedProvider<T> {
 
   /**
