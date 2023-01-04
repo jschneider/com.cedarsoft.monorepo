@@ -19,13 +19,17 @@ import kotlin.reflect.KProperty0
  *
  * Please create extension methods for [valueAt] that take the value class as parameter and delegate accordingly.
  */
-fun interface MultiProvider<in IndexContext, out T> {
+fun interface MultiProvider<in IndexContext, out T> : MultiProvider1<IndexContext, T, Any> {
   /**
    * Retrieves the value at the given [index].
    *
    * Please use extension methods with the correct type instead (if possible)
    */
   fun valueAt(index: Int): T
+
+  override fun valueAt(index: Int, param1: Any): T {
+    return valueAt(index)
+  }
 
   companion object {
     /**

@@ -1,9 +1,11 @@
 package com.cedarsoft.commons.provider
 
+import kotlin.jvm.JvmStatic
+
 /**
  * Sized provider that takes one parameter
  */
-interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1> {
+interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1>, SizedProvider2<T, P1, Any> {
   /**
    * Returns the first element
    * Throws a [NoSuchElementException] if there are no elements
@@ -37,6 +39,14 @@ interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1
 
     return valueAt(index, param1)
   }
+
+  override fun size(param1: P1, param2: Any): Int {
+    return size(param1)
+  }
+
+  override fun valueAt(index: Int, param1: P1, param2: Any): T {
+    return valueAt(index, param1)
+  }
 }
 
 /**
@@ -44,18 +54,6 @@ interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1
  */
 inline fun <T, P1> SizedProvider1<T, P1>.asSizedProvider(p1Value: P1): SizedProvider<T> {
   return FixedParamsSizedProvider(p1Value) { this }
-}
-
-fun <T, P1> SizedProvider<T>.asSizedProvider1(): SizedProvider1<T, P1> {
-  return object : SizedProvider1<T, P1> {
-    override fun size(param1: P1): Int {
-      return this@asSizedProvider1.size()
-    }
-
-    override fun valueAt(index: Int, param1: P1): T {
-      return this@asSizedProvider1.valueAt(index)
-    }
-  }
 }
 
 class FixedParamsSizedProvider<T, P1>(
@@ -92,4 +90,18 @@ fun <T, R, P1> SizedProvider1<T, P1>.mapped(function: (T) -> R): SizedProvider1<
       return function(this@mapped.valueAt(index, param1))
     }
   }
+}
+
+/**
+ * Casts this to a multi provider 1
+ */
+fun <IndexContext, T, P1> SizedProvider1<T, P1>.asMultiProvider1(): MultiProvider1<IndexContext, T, P1> {
+  return this as MultiProvider1<IndexContext, T, P1>
+}
+
+/**
+ * Returns this sized provider as a multi provider with a fixed parameter value
+ */
+fun <IndexContext, T, P1> SizedProvider1<T, P1>.asMultiProvider(p1Value: P1): MultiProvider<IndexContext, T> {
+  return MultiProvider { index -> this@asMultiProvider.valueAt(index, p1Value) }
 }

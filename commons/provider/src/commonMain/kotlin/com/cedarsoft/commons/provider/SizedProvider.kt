@@ -2,6 +2,7 @@ package com.cedarsoft.commons.provider
 
 import com.cedarsoft.common.collections.Cache
 import com.cedarsoft.common.collections.cache
+import com.cedarsoft.commons.provider.EmptyProvider.valueAt
 import kotlin.jvm.JvmStatic
 import kotlin.reflect.KProperty0
 
@@ -14,7 +15,7 @@ import kotlin.reflect.KProperty0
  * * [DoublesProvider]
  * * [IndexProvider]
  */
-interface SizedProvider<out T> : MultiProvider<SizedProviderIndex, T>, HasSize {
+interface SizedProvider<out T> : MultiProvider<Any, T>, HasSize, SizedProvider1<T, Any> {
 
   /**
    * Returns the first element
@@ -51,6 +52,14 @@ interface SizedProvider<out T> : MultiProvider<SizedProviderIndex, T>, HasSize {
   }
 
   override fun valueAt(index: @SizedProviderIndex Int): T
+
+  override fun size(param1: Any): Int {
+    return size()
+  }
+
+  override fun valueAt(index: Int, param1: Any): T {
+    return valueAt(index)
+  }
 
   companion object {
     /**

@@ -6,7 +6,7 @@ import kotlin.reflect.KProperty0
 /**
  * Takes one parameter to provide values
  */
-fun interface MultiProvider1<in IndexContext, out T, in P1> {
+fun interface MultiProvider1<in IndexContext, out T, in P1> : MultiProvider2<IndexContext, T, P1, Any> {
   /**
    * Retrieves the value at the given [index].
    */
@@ -16,6 +16,10 @@ fun interface MultiProvider1<in IndexContext, out T, in P1> {
    * Retrieves the value at the given [index].
    */
   operator fun get(index: Int, param1: P1): T {
+    return valueAt(index, param1)
+  }
+
+  override fun valueAt(index: Int, param1: P1, param2: Any): T {
     return valueAt(index, param1)
   }
 
@@ -41,13 +45,4 @@ fun interface MultiProvider1<in IndexContext, out T, in P1> {
  */
 fun <IndexContext, T, P1> KProperty0<MultiProvider1<IndexContext, T, P1>>.delegate(): MultiProvider1<IndexContext, T, P1> {
   return MultiProvider1 { index, param1 -> this@delegate.get().valueAt(index, param1) }
-}
-
-/**
- * Converts this provider to a [MultiProvider2]
- */
-fun <IndexContext, T, P1> MultiProvider<IndexContext, T>.asMultiProvider1(): MultiProvider1<IndexContext, T, P1> {
-  return MultiProvider1 { index, _ ->
-    valueAt(index)
-  }
 }
