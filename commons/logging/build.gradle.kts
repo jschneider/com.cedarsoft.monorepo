@@ -1,5 +1,6 @@
 @file:Suppress("UNUSED_VARIABLE")
-description = """Kotlin Lang - Multiplatform"""
+
+description = """Logging"""
 
 plugins {
   kotlinMultiPlatform
@@ -20,8 +21,8 @@ kotlin {
   sourceSets {
     val commonMain by getting {
       dependencies {
-        api(Kotlin.stdlib.common)
         api(project(Projects.open_unit_unit))
+        api(project(Projects.open_commons_kotlin_lang))
       }
     }
 
@@ -35,6 +36,7 @@ kotlin {
     js().compilations["main"].defaultSourceSet {
       dependencies {
         api(Libs.kotlin_js)
+        implementation(project(Projects.open_commons_kotlin_js))
       }
     }
 
@@ -47,7 +49,13 @@ kotlin {
 
     jvm().compilations["main"].defaultSourceSet {
       dependencies {
+        implementation(Libs.kotlin_reflect)
         api(project(Projects.open_annotations))
+
+        compileOnly(project(Projects.dependencies_sets_jvm_annotations))
+        api(project(Projects.dependencies_sets_jvm_kotlin))
+        api(Libs.slf4j_api)
+        api(Libs.logback_classic)
       }
     }
 
@@ -56,6 +64,7 @@ kotlin {
         implementation(Libs.kotlin_test)
         implementation(Libs.kotlin_test_junit)
 
+        implementation(project(Projects.dependencies_sets_jvm_test_basics))
         implementation(project(Projects.dependencies_sets_jvm_kotlin_test))
         implementation(project(Projects.open_commons_test_utils))
         implementation(project(Projects.open_commons_javafx_test_utils))

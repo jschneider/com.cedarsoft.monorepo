@@ -15,6 +15,7 @@ import ch.qos.logback.core.util.FileSize
 import ch.qos.logback.core.util.StatusPrinter
 import org.slf4j.LoggerFactory
 import java.io.File
+import java.io.OutputStream
 import java.io.PrintStream
 
 /**
@@ -23,14 +24,25 @@ import java.io.PrintStream
  * @see [http://logback.qos.ch/](http://logback.qos.ch/)
  */
 object LogbackConfigurer {
-
+  /**
+   * Configures the logger for console output only
+   */
   fun configureLoggingConsoleOnly(levelForRoot: org.slf4j.event.Level) {
     configureLoggingConsoleOnly(levelForRoot.toLogback())
   }
 
+  fun configureLoggingToStreamOnly(out: OutputStream, levelForRoot: org.slf4j.event.Level) {
+    clearExistingAppenders()
+    addStreamAppender(out)
+    setRootLoggerLevel(levelForRoot)
+  }
+
+  /**
+   * Configures the logger for console output only
+   */
   fun configureLoggingConsoleOnly(levelForRoot: ch.qos.logback.classic.Level = ch.qos.logback.classic.Level.INFO) {
     clearExistingAppenders()
-    configureConsoleAppender()
+    addConsoleAppender()
 
     setRootLoggerLevel(levelForRoot)
   }
@@ -47,8 +59,8 @@ object LogbackConfigurer {
    */
   fun configureLoggingConsoleAndFile(logFile: File, levelForRoot: ch.qos.logback.classic.Level = ch.qos.logback.classic.Level.INFO) {
     clearExistingAppenders()
-    configureConsoleAppender()
-    configureFileAppender(logFile)
+    addConsoleAppender()
+    addFileAppender(logFile)
 
     setRootLoggerLevel(levelForRoot)
   }
@@ -88,12 +100,12 @@ object LogbackConfigurer {
   /**
    * Returns the logback logger for the given name
    */
-  private fun getLogbackLogger(loggerName: String): ch.qos.logback.classic.Logger = loggerContext.getLogger(loggerName)
+  private fun getLogbackLogger(loggerName: String): Logger = loggerContext.getLogger(loggerName)
 
   /**
    * Returns the corresponding logback logger from a slf4j logger
    */
-  fun getLogbackLogger(logger: org.slf4j.Logger): ch.qos.logback.classic.Logger {
+  fun getLogbackLogger(logger: org.slf4j.Logger): Logger {
     return getLogbackLogger(logger.name)
   }
 
@@ -120,23 +132,26 @@ object LogbackConfigurer {
    * Sets the logger level for the logger with the given name
    */
   fun setLoggerLevel(loggerName: String, level: org.slf4j.event.Level) {
-    val logger: ch.qos.logback.classic.Logger = getLogbackLogger(loggerName)
+    val logger: Logger = getLogbackLogger(loggerName)
     setLoggerLevel(logger, level)
   }
 
   /**
    * Sets the logger level for a logback logger
    */
-  fun setLoggerLevel(logger: ch.qos.logback.classic.Logger, level: org.slf4j.event.Level) {
+  fun setLoggerLevel(logger: Logger, level: org.slf4j.event.Level) {
     logger.level = level.toLogback()
   }
 
-  fun getLoggerLevel(logger: ch.qos.logback.classic.Logger): org.slf4j.event.Level {
-    return logger.level.toSlf4j()
+  fun getLoggerLevel(logger: Logger): org.slf4j.event.Level {
+    return logger.effectiveLevel.toSlf4j()
   }
 
+  /**
+   * Returns the logger level - if there is one
+   */
   fun getLoggerLevel(logger: org.slf4j.Logger): org.slf4j.event.Level {
-    return logger.toLogback().level.toSlf4j()
+    return logger.toLogback().effectiveLevel.toSlf4j()
   }
 
   /**
@@ -144,7 +159,7 @@ object LogbackConfigurer {
    *
    * @param logFile the target file where to write the log messages
    */
-  fun configureFileAppender(logFile: File) {
+  fun addFileAppender(logFile: File) {
     val loggerContext = LoggerFactory.getILoggerFactory() as LoggerContext
 
     val fileAppender = RollingFileAppender<ILoggingEvent>()
@@ -159,7 +174,7 @@ object LogbackConfigurer {
     rollingPolicy.setParent(fileAppender)
 
     val triggeringPolicy = SizeBasedTriggeringPolicy<ILoggingEvent>()
-    triggeringPolicy.setMaxFileSize(FileSize.valueOf("5 mb"))
+    triggeringPolicy.maxFileSize = FileSize.valueOf("5 mb")
     triggeringPolicy.context = loggerContext
 
     fileAppender.file = logFile.absolutePath
@@ -175,8 +190,10 @@ object LogbackConfigurer {
 
   /**
    * Creates and adds a console appender to the root logger.
+   *
+   * In most cases [configureLoggingConsoleOnly] should be used instead
    */
-  fun configureConsoleAppender() {
+  fun addConsoleAppender() {
     val loggerContext = LoggerFactory.getILoggerFactory() as LoggerContext
 
     val consoleAppender = ConsoleAppender<ILoggingEvent>()
@@ -194,6 +211,29 @@ object LogbackConfigurer {
     startAppenderAndAddToRoot(loggerContext, consoleAppender)
   }
 
+  /**
+   * Configure logging for the given output stream.
+   * This method is especially useful for unit tests of logging.
+   */
+  fun addStreamAppender(sink: OutputStream) {
+    val loggerContext = LoggerFactory.getILoggerFactory() as LoggerContext
+
+    val appender: OutputStreamAppender<ILoggingEvent> = OutputStreamAppender<ILoggingEvent>()
+    appender.context = loggerContext //set the context first!
+    appender.name = "STREAM_APPENDER"
+    appender.outputStream = sink
+
+    appender.addFilter(object : Filter<ILoggingEvent>() {
+      override fun decide(event: ILoggingEvent): FilterReply {
+        return if (event.loggerName.endsWith(LoggerSuffixFileOnly)) {
+          FilterReply.DENY
+        } else FilterReply.NEUTRAL
+      }
+    })
+
+    startAppenderAndAddToRoot(loggerContext, appender)
+  }
+
   private fun startAppenderAndAddToRoot(loggerContext: LoggerContext, appender: OutputStreamAppender<ILoggingEvent>) {
     val encoder = PatternLayoutEncoder()
     encoder.context = loggerContext
@@ -207,45 +247,3 @@ object LogbackConfigurer {
     rootLogger.addAppender(appender)
   }
 }
-
-fun ch.qos.logback.classic.Level.toSlf4j(): org.slf4j.event.Level {
-  return when (this) {
-    ch.qos.logback.classic.Level.ERROR -> org.slf4j.event.Level.ERROR
-    ch.qos.logback.classic.Level.WARN -> org.slf4j.event.Level.WARN
-    ch.qos.logback.classic.Level.INFO -> org.slf4j.event.Level.INFO
-    ch.qos.logback.classic.Level.DEBUG -> org.slf4j.event.Level.DEBUG
-    ch.qos.logback.classic.Level.TRACE -> org.slf4j.event.Level.TRACE
-    else -> org.slf4j.event.Level.INFO
-  }
-}
-
-/**
- * Converts a slf4j level to a logback level
- */
-fun org.slf4j.event.Level.toLogback(): ch.qos.logback.classic.Level {
-  return when (this) {
-    org.slf4j.event.Level.ERROR -> ch.qos.logback.classic.Level.ERROR
-    org.slf4j.event.Level.WARN -> ch.qos.logback.classic.Level.WARN
-    org.slf4j.event.Level.INFO -> ch.qos.logback.classic.Level.INFO
-    org.slf4j.event.Level.DEBUG -> ch.qos.logback.classic.Level.DEBUG
-    org.slf4j.event.Level.TRACE -> ch.qos.logback.classic.Level.TRACE
-  }
-}
-
-/**
- * Returns the corresponding logback logger
- */
-fun org.slf4j.Logger.toLogback(): Logger {
-  return LogbackConfigurer.getLogbackLogger(this)
-}
-
-/**
- * Allows setting the level on the logger directly
- */
-var org.slf4j.Logger.level: org.slf4j.event.Level
-  get() {
-    return LogbackConfigurer.getLoggerLevel(this)
-  }
-  set(level) {
-    LogbackConfigurer.setLoggerLevel(this, level)
-  }
