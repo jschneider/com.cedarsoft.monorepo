@@ -1,0 +1,39 @@
+package com.cedarsoft.coroutines
+
+import assertk.*
+import assertk.assertions.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.test.*
+import org.junit.jupiter.api.Test
+
+
+class CoroutinesExceptionTest {
+  @Test
+  fun testErrorHandler() = runTest {
+    val errors = mutableListOf<Throwable>()
+
+    val appScope = CoroutineScope(SupervisorJob() + CoroutineExceptionHandler { _, throwable ->
+      errors.add(throwable)
+    })
+
+    assertThat(errors).isEmpty()
+
+    appScope.launch {
+      throw RuntimeException("Uuups")
+    }.join()
+
+    assertThat(errors).hasSize(1)
+    assertThat(errors[0]).isInstanceOf(RuntimeException::class)
+
+
+    //The result of deferred is *not* thrown, instead should be accessed using the deferred
+    val deferred = appScope.async {
+      throw IllegalStateException("bar")
+    }
+
+    assertThat(errors).hasSize(1)
+    deferred.join()
+    assertThat(errors).hasSize(1)
+    assertThat(errors[0]).isInstanceOf(RuntimeException::class)
+  }
+}

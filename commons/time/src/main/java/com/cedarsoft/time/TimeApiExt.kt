@@ -1,10 +1,13 @@
 package com.cedarsoft.time
 
+import com.cedarsoft.common.time.millis2nanos
 import com.cedarsoft.common.time.nanos2millis
 import com.cedarsoft.unit.si.ms
 import com.cedarsoft.unit.si.ns
 import com.cedarsoft.unit.si.s
 import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.time.chrono.ChronoZonedDateTime
 
 /**
@@ -30,3 +33,40 @@ fun ChronoZonedDateTime<*>.toDoubleMillis(): @ms Double {
 fun ChronoZonedDateTime<*>.toEpochMillis(): @ms Long {
   return this.toInstant().toEpochMilli()
 }
+
+fun millis2Instant(@ms millis: Double): Instant {
+  @s val secondsPart = (millis / 1000.0).toLong()
+  @ms val remainingMillis = millis - secondsPart * 1_000
+
+  @s val nanosPart = remainingMillis.millis2nanos()
+  return Instant.ofEpochSecond(secondsPart, nanosPart)
+}
+
+fun millisToUtc(millisInDouble: Double): OffsetDateTime {
+  return millis2Instant(millisInDouble).toUtc()
+}
+
+/**
+ * Converts the instant to the offset date time in UTC
+ */
+fun Instant.toUtc(): @ms OffsetDateTime {
+  return OffsetDateTime.ofInstant(this, ZoneOffset.UTC)
+}
+
+/**
+ * Returns the milliseconds for the entire offset date time
+ */
+val OffsetDateTime.getDateInMillis: Double
+  get() {
+    return this.toInstant().toDoubleMillis()
+  }
+
+/**
+ * Returns the milliseconds of the offset date time
+ */
+val OffsetDateTime.millis: Int
+  get() {
+    return this.nano / 1000000
+  }
+
+

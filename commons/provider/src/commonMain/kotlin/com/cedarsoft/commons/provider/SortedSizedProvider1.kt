@@ -1,5 +1,7 @@
 package com.cedarsoft.commons.provider
 
+import com.cedarsoft.commons.provider.impl.SortedIndexMappingSupport1
+
 /**
  * Sorts the values
  */
@@ -15,7 +17,7 @@ class SortedSizedProvider1<T, P1>(
   val comparator: Comparator<T>,
 ) : SizedProvider1<T, P1>, IndexMapping {
 
-  private val indexMappingSupport: IndexMappingSupport1<P1> = IndexMappingSupport1 { indexA, indexB, param1: P1 ->
+  private val indexMappingSupport: SortedIndexMappingSupport1<P1> = SortedIndexMappingSupport1 { indexA, indexB, param1: P1 ->
     val valueA = delegate.valueAt(indexA, param1)
     val valueB = delegate.valueAt(indexB, param1)
 
@@ -37,8 +39,8 @@ class SortedSizedProvider1<T, P1>(
   }
 
   override fun valueAt(index: Int, param1: P1): T {
-    val mappedIndex = mappedIndex(index)
-    return delegate.valueAt(mappedIndex, param1)
+    val originalIndex = mapped2Original(index)
+    return delegate.valueAt(originalIndex, param1)
   }
 
   /**
@@ -46,14 +48,15 @@ class SortedSizedProvider1<T, P1>(
    *
    * ATTENTION: It is required to call [size] (or [updateIndexMap] in rare circumstances) to update the index mapping first.
    */
-  override fun mappedIndex(originalIndex: Int): Int {
-    return indexMappingSupport.mappedIndex(originalIndex)
+  override fun mapped2Original(mappedIndex: Int): Int {
+    return indexMappingSupport.mapped2Original(mappedIndex)
   }
 
-  /**
-   * Wraps the provided delegate and returns the values matching to the current sorted values
-   */
-  fun <IndexContext, T, P1> wrapMultiProvider(delegate: MultiProvider1<IndexContext, T, P1>): SortedMultiProvider1<IndexContext, T, P1> {
-    return SortedMultiProvider1(delegate, this)
-  }
+}
+
+/**
+ * Wraps the provided delegate and returns the values matching to the current sorted values
+ */
+fun <IndexContext, T, P1> SortedSizedProvider1<T, P1>.wrapMultiProvider(delegate: MultiProvider1<IndexContext, T, P1>): SortedMultiProvider1<IndexContext, T, P1> {
+  return SortedMultiProvider1(delegate, this)
 }

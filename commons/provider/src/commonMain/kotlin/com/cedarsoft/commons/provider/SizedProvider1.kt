@@ -1,7 +1,5 @@
 package com.cedarsoft.commons.provider
 
-import kotlin.jvm.JvmStatic
-
 /**
  * Sized provider that takes one parameter
  */
@@ -46,6 +44,10 @@ interface SizedProvider1<out T, in P1> : MultiProvider1<Any, T, P1>, HasSize1<P1
 
   override fun valueAt(index: Int, param1: P1, param2: Any): T {
     return valueAt(index, param1)
+  }
+
+  companion object {
+    inline fun <T> empty(): SizedProvider<T> = SizedProvider.empty()
   }
 }
 

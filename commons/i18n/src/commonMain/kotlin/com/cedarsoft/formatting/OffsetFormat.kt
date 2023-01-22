@@ -1,6 +1,6 @@
 package com.cedarsoft.formatting
 
-import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.annotations.JavaFriendly
 import com.cedarsoft.i18n.I18nConfiguration
 
 /**

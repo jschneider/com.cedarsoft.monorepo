@@ -69,6 +69,8 @@ kotlin {
     js().compilations["test"].defaultSourceSet {
       dependencies {
         implementation(Libs.kotlin_test_js)
+        api(project(Projects.dependencies_sets_js_kotlin_test))
+
       }
     }
   }

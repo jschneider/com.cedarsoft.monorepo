@@ -60,11 +60,15 @@ fun <T : HasUuid> List<T>.withReplaced(uuid: Uuid, updatedElement: T): List<T> {
       }
 
       if (index < 0) {
-        throw IllegalArgumentException("No index found for ${updatedElement.uuid}")
+        return withAdded(updatedElement)
       }
 
       mutableList[index] = updatedElement
     }
+}
+
+fun <T : HasUuid> List<T>.withAdded(addedElement: T): List<T> {
+  return this.toMutableList() + addedElement
 }
 
 /**

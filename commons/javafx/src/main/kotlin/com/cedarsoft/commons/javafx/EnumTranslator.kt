@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.annotations.JavaFriendly
 
 /**
  * Helper class to translate enum values

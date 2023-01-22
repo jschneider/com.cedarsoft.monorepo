@@ -3,14 +3,17 @@ package it.neckar.react.common.form
 import com.cedarsoft.common.kotlin.lang.parseInt
 import com.cedarsoft.formatting.format
 import com.cedarsoft.i18n.I18nConfiguration
+import it.neckar.commons.kotlin.js.safeGet
 import it.neckar.react.common.*
 import it.neckar.react.common.form.EditableStatus.*
+import kotlinx.html.DIV
 import kotlinx.html.INPUT
 import kotlinx.html.InputType
 import kotlinx.html.LABEL
 import kotlinx.html.TEXTAREA
 import kotlinx.html.id
 import kotlinx.html.js.onChangeFunction
+import kotlinx.html.role
 import kotlinx.html.title
 import org.w3c.dom.HTMLInputElement
 import org.w3c.dom.HTMLTextAreaElement
@@ -151,6 +154,135 @@ external interface CheckboxProps : Props {
 
   var labelConfig: ((RDOMBuilder<LABEL>) -> Unit)?
   var checkboxConfig: ((RDOMBuilder<INPUT>) -> Unit)?
+}
+
+
+fun RBuilder.buttonGroup(classes: String? = null, config: (RDOMBuilder<DIV>.() -> Unit)) {
+  div(classes = "btn-group") {
+    attrs {
+      role = "group"
+      classes?.let { addClass(it) }
+    }
+
+    config(this)
+  }
+}
+
+
+fun RBuilder.radioButton(
+  buttonId: String,
+  /**
+   * The current value
+   */
+  value: Boolean,
+  /**
+   * Is called on change
+   */
+  onChange: OnChange<Boolean>,
+
+  editableStatus: EditableStatus,
+
+  inputClasses: String = "btn btn-outline-primary",
+
+  inputConfig: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+  labelConfig: (RDOMBuilder<LABEL>.() -> Unit)?,
+
+  ): Unit = child(RadioButton) {
+  attrs {
+    this.buttonId = buttonId
+    this.value = value
+    this.onChange = onChange
+    this.editableStatus = editableStatus
+    this.inputClasses = inputClasses
+    this.inputConfig = inputConfig
+    this.labelConfig = labelConfig
+  }
+}
+
+fun RBuilder.radioButton(
+  buttonId: String,
+  /**
+   * The current value
+   */
+  valueAndSetter: StateInstance<Boolean>,
+
+  editableStatus: EditableStatus = Editable,
+
+  inputClasses: String = "btn btn-outline-primary",
+
+  inputConfig: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+  labelConfig: (RDOMBuilder<LABEL>.() -> Unit)?,
+
+  ) {
+  radioButton(
+    buttonId = buttonId,
+    value = valueAndSetter.value,
+    onChange = { valueAndSetter.setter.invoke(it) },
+    editableStatus = editableStatus,
+    inputClasses = inputClasses,
+    inputConfig = inputConfig,
+    labelConfig = labelConfig,
+  )
+}
+
+val RadioButton: FC<RadioButtonProps> = fc("RadioButton") { props ->
+  val buttonId = props::buttonId.safeGet()
+  val value = props::value.safeGet()
+  val onChange = props::onChange.safeGet()
+  val editableStatus = props::editableStatus.safeGet()
+  val buttonClasses = props::inputClasses.safeGet()
+  val inputConfig = props::inputConfig.safeGet()
+  val labelConfig = props::labelConfig.safeGet()
+
+
+  input(type = InputType.radio, classes = "btn-check") {
+    attrs {
+      id = buttonId
+      autoComplete = false
+
+      // Workaround to avoid warning on console
+      // https://github.com/JetBrains/kotlin-wrappers/issues/35
+      // https://github.com/Kotlin/kotlinx.html/issues/110
+      set("checked", value)
+
+      disabled = editableStatus == ReadOnly
+
+      onChangeFunction = {
+        val inputElement = it.target as HTMLInputElement
+        onChange(inputElement.checked)
+      }
+    }
+
+    inputConfig?.invoke(this)
+  }
+  label(classes = buttonClasses) {
+    attrs {
+      htmlForFixed = buttonId
+    }
+
+    labelConfig?.invoke(this)
+  }
+
+}
+
+external interface RadioButtonProps : Props {
+  var buttonId: String
+
+  /**
+   * The current value
+   */
+  var value: Boolean
+
+  /**
+   * Is called on change
+   */
+  var onChange: OnChange<Boolean>
+
+  var editableStatus: EditableStatus
+
+  var inputClasses: String
+  var inputConfig: ((RDOMBuilder<INPUT>) -> Unit)?
+  var labelConfig: ((RDOMBuilder<LABEL>) -> Unit)?
 }
 
 

@@ -13,7 +13,7 @@ class SortedMultiProvider1<in IndexContext, out T, in P1>(
   val indexMapping: IndexMapping,
 ) : MultiProvider1<IndexContext, T, P1> {
   override fun valueAt(index: Int, param1: P1): T {
-    val mappedIndex = indexMapping.mappedIndex(index)
-    return delegate.valueAt(mappedIndex, param1)
+    val originalIndex = indexMapping.mapped2Original(index)
+    return delegate.valueAt(originalIndex, param1)
   }
 }

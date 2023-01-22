@@ -5,6 +5,7 @@ import it.neckar.common.featureflags.FeatureFlagsSupport
 import it.neckar.react.common.*
 import it.neckar.react.common.toast.*
 import kotlinx.coroutines.*
+import react.*
 
 /**
  * Executes a REST action.
@@ -14,8 +15,9 @@ import kotlinx.coroutines.*
  * Use [restAsync] if the return type shall be used.
  */
 fun <T> rest(successMessage: String? = null, action: suspend () -> T) {
-  @Suppress("DeferredResultUnused")
-  restAsync(successMessage, action)
+  AppScope.launch {
+    restBlocking(successMessage, action)
+  }
 }
 
 /**
@@ -23,6 +25,8 @@ fun <T> rest(successMessage: String? = null, action: suspend () -> T) {
  * Returns immediately.
  *
  * To avoid warnings if the returned value is not used, call [rest] instead.
+ *
+ * ATTENTION: Use the return type!
  */
 fun <T> restAsync(successMessage: String? = null, action: suspend () -> T): Deferred<T> {
   return AppScope.async {
@@ -55,5 +59,22 @@ suspend fun <T> restBlocking(successMessage: String?, action: suspend () -> T): 
 suspend fun delayIfSlowUiEnabled() {
   if (FeatureFlagsSupport.flags.contains(FeatureFlag.slowUi)) {
     delay(1000)
+  }
+}
+
+/**
+ * Executes an asynchronous rest call.
+ * Sets the busy state to true - and reverts it after the call has finished.
+ *
+ * This method should be used for buttons that show some kind of busy indicator while the provided action is executed
+ */
+fun <T> restBusy(busy: StateSetter<Boolean>, successMessage: String? = null, action: suspend () -> T) {
+  busy(true)
+  rest(successMessage) {
+    try {
+      action()
+    } finally {
+      busy(false)
+    }
   }
 }

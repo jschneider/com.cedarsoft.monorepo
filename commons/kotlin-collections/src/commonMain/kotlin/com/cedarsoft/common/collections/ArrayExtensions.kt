@@ -3,7 +3,7 @@ package com.cedarsoft.common.collections
 import com.cedarsoft.common.kotlin.lang.wrapAround
 import com.cedarsoft.unit.other.Exclusive
 import com.cedarsoft.unit.other.Inclusive
-import com.cedarsoft.unit.other.Slow
+import com.cedarsoft.annotations.Slow
 
 /**
  *

@@ -43,3 +43,29 @@ fun interface DoublesComparator {
     }
   }
 }
+
+/**
+ * Filters doubles - avoid boxing
+ */
+fun interface DoublesFilter {
+  /**
+   * Filter: If true is returned, the element is added
+   */
+  fun filter(value: Double): Boolean
+
+  companion object {
+    /**
+     * Sorts by natural order
+     */
+    val all: DoublesFilter = DoublesFilter { _ ->
+      true
+    }
+
+    /**
+     * Returns only the finite values
+     */
+    val finite: DoublesFilter = DoublesFilter { value ->
+      value.isFinite()
+    }
+  }
+}

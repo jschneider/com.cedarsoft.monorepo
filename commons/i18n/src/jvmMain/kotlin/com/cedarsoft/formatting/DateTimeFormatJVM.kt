@@ -101,6 +101,17 @@ actual class YearMonthFormat actual constructor() : DateTimeFormat {
   }
 }
 
+actual class YearFormat actual constructor() : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    val dateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(timestamp.toLong()), i18nConfiguration.timeZone.toZoneId())
+    return yearFormat.withLocale(i18nConfiguration.formatLocale.convert()).format(dateTime)
+  }
+
+  companion object {
+    val yearFormat: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy")
+  }
+}
+
 /**
  * Formats a time stamp as second with millis
  */

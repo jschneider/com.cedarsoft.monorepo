@@ -56,7 +56,12 @@ val dateFormat: CachedDateTimeFormat = DateFormat().cached()
 val yearMonthFormat: CachedDateTimeFormat = YearMonthFormat().cached()
 
 /**
- * Formats the second and milli second
+ * Prints the year
+ */
+val yearFormat: CachedDateTimeFormat = YearFormat().cached()
+
+/**
+ * Formats the second and millisecond
  */
 val secondMillisFormat: CachedDateTimeFormat = SecondMillisFormat().cached()
 
@@ -113,6 +118,11 @@ expect class DateFormat() : DateTimeFormat
  * A format that formats a date - but only prints the month and year
  */
 expect class YearMonthFormat() : DateTimeFormat
+
+/**
+ * A format that formats a date - but only prints the year
+ */
+expect class YearFormat() : DateTimeFormat
 
 /**
  * Formats a time stamp as second with millis

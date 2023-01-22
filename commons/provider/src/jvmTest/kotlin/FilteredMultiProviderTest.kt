@@ -12,7 +12,7 @@ class FilteredMultiProviderTest {
   fun testSkip() {
     val provider = SizedProvider.forList(listOf("a", "b", "c"))
 
-    val filteredMultiProvider = FilteredSizedProvider(provider) {
+    val filteredMultiProvider = SkipWithNullSizedProvider(provider) {
       true
     }
 
@@ -23,7 +23,7 @@ class FilteredMultiProviderTest {
   fun testSkip2() {
     val provider = SizedProvider.forList(listOf("a", "b", "c", null))
 
-    val filteredMultiProvider = FilteredSizedProvider(provider) {
+    val filteredMultiProvider = SkipWithNullSizedProvider(provider) {
       it % 2 == 0
     }
 

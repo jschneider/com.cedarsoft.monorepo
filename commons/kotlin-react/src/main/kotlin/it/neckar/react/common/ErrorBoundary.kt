@@ -5,9 +5,9 @@ import react.*
 import react.dom.*
 
 /**
- * Provides the falback component for a given throwable and error info (which is usually null)
+ * Provides the error component for a given throwable and error info (which is usually null)
  */
-typealias FallbackComponentProvider = (Throwable?, ErrorInfo?) -> ReactNode
+typealias ErrorComponentProvider = (Throwable?, ErrorInfo?) -> ReactNode
 
 
 external interface ErrorBoundaryState : State {
@@ -28,7 +28,7 @@ external interface ErrorBoundaryState : State {
 }
 
 external interface ErrorBoundaryProps : PropsWithChildren {
-  var fallbackComponent: FallbackComponentProvider
+  var fallbackComponent: ErrorComponentProvider
 }
 
 /**
@@ -71,7 +71,7 @@ class ErrorBoundary : RComponent<ErrorBoundaryProps, ErrorBoundaryState>() {
  * Creates an error boundary
  */
 fun RBuilder.errorBoundary(
-  fallbackComponent: FallbackComponentProvider = { throwable, errorInfo ->
+  errorComponentComponent: ErrorComponentProvider = { throwable, errorInfo ->
     ErrorFallbackComponent.create {
       this.throwable = throwable
       this.errorInfo = errorInfo
@@ -80,7 +80,7 @@ fun RBuilder.errorBoundary(
   handler: RHandler<Props>,
 ): Unit = child(ErrorBoundary::class) {
   attrs {
-    this.fallbackComponent = fallbackComponent
+    this.fallbackComponent = errorComponentComponent
   }
   handler()
 }

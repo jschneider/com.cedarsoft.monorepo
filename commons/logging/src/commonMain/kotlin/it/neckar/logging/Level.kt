@@ -2,7 +2,7 @@ package it.neckar.logging
 
 /**
  * Represents a log level.
- * Inspired by slf4j
+ * Inspired by slf4j to be able to use a typealias for the JVM
  */
 expect enum class Level
 

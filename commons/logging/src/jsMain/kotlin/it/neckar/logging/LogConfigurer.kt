@@ -7,7 +7,7 @@ import kotlinx.browser.window
 /**
  * The key for the debug root level
  */
-const val LocalStorageKey: String = "debug.rootLevel"
+const val LocalStorageKey: String = "logging.rootLevel"
 
 /**
  * Configures the log levels for JS

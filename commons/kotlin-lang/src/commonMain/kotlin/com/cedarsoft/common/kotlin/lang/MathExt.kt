@@ -4,6 +4,8 @@ import com.cedarsoft.unit.other.Inclusive
 import com.cedarsoft.unit.other.deg
 import com.cedarsoft.unit.other.pct
 import com.cedarsoft.unit.si.rad
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlin.math.*
 
 /**
@@ -421,6 +423,19 @@ internal fun floorCeil(v: Double): Double = if (v < 0.0) ceil(v) else floor(v)
 infix fun Double.ifNaN(fallback: Double): Double {
   return if (this.isNaN()) {
     fallback
+  } else this
+}
+
+/**
+ * Executes the action if this is NaN
+ */
+infix fun Double.ifNaN(action: () -> Double): Double {
+  contract {
+    callsInPlace(action, InvocationKind.AT_MOST_ONCE)
+  }
+
+  return if (this.isNaN()) {
+    action()
   } else this
 }
 

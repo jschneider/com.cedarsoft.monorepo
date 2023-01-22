@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.annotations.JavaFriendly
 import javax.annotation.Nonnull
 
 typealias EnumTranslatorLambda = (item: Enum<*>) -> String?

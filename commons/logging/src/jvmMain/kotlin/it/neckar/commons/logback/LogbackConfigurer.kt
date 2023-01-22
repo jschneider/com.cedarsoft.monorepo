@@ -31,6 +31,9 @@ object LogbackConfigurer {
     configureLoggingConsoleOnly(levelForRoot.toLogback())
   }
 
+  /**
+   * Configures the logging to use only the provided output stream
+   */
   fun configureLoggingToStreamOnly(out: OutputStream, levelForRoot: org.slf4j.event.Level) {
     clearExistingAppenders()
     addStreamAppender(out)

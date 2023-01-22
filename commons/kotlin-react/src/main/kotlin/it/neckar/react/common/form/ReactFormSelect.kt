@@ -33,8 +33,8 @@ fun <T : HasUuid> RBuilder.selectHasUuid(
   ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
-    this.formatter = formatter as (Any?) -> String
-    this.onChange = onChange as OnChange<Any?>
+    this.formatter = formatter.unsafeCast<(Any?) -> String>()
+    this.onChange = onChange.unsafeCast<OnChange<Any?>>()
     this.idProvider = { (it as HasUuid).toString() }
     this.availableOptions = availableOptions
     this.fieldName = fieldName
@@ -67,9 +67,9 @@ fun <E : Enum<E>> RBuilder.selectEnum(
   ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
-    this.formatter = formatter as (Any?) -> String
-    this.onChange = onChange as OnChange<Any?>
-    this.idProvider = useCallback { (it as E).name }
+    this.formatter = formatter.unsafeCast<(Any?) -> String>()
+    this.onChange = onChange.unsafeCast<OnChange<Any?>>()
+    this.idProvider = useCallback { (it.unsafeCast<E>()).name }
     this.availableOptions = availableOptions
     this.fieldName = fieldName
     this.title = title
@@ -138,9 +138,9 @@ fun <T> RBuilder.select(
   ): Unit = child(select) {
   attrs {
     this.selectedValue = selectedValue
-    this.formatter = formatter as (Any?) -> String
-    this.onChange = onChange as OnChange<Any?>
-    this.idProvider = idProvider as (Any) -> String
+    this.formatter = formatter.unsafeCast<(Any?) -> String>()
+    this.onChange = onChange.unsafeCast<OnChange<Any?>>()
+    this.idProvider = idProvider.unsafeCast<(Any) -> String>()
     this.availableOptions = availableOptions
     this.fieldName = fieldName
     this.title = title

@@ -81,20 +81,20 @@ external interface ActionButtonProps : Props {
 }
 
 
-fun RBuilder.editButton(action: suspend () -> Unit) {
-  actionButton(icon = FontAwesomeIcons.edit, classes = "btn btn-link btn-sm", action = action)
+fun RBuilder.editButton(busy: Boolean = false, action: suspend () -> Unit) {
+  actionButton(icon = FontAwesomeIcons.edit, busy = busy, classes = "btn btn-link btn-sm", action = action)
 }
 
-fun RBuilder.addButton(action: suspend () -> Unit) {
-  actionButton(icon = FontAwesomeIcons.add, classes = "btn btn-link btn-sm", action = action)
+fun RBuilder.addButton(busy: Boolean = false, action: suspend () -> Unit) {
+  actionButton(icon = FontAwesomeIcons.add, busy = busy, classes = "btn btn-link btn-sm", action = action)
 }
 
-fun RBuilder.copyButton(action: suspend () -> Unit) {
-  actionButton(icon = FontAwesomeIcons.copy, classes = "btn btn-link btn-sm", action = action)
+fun RBuilder.copyButton(busy: Boolean = false, action: suspend () -> Unit) {
+  actionButton(icon = FontAwesomeIcons.copy, busy = busy, classes = "btn btn-link btn-sm", action = action)
 }
 
-fun RBuilder.deleteButton(action: suspend () -> Unit) {
-  actionButton(icon = FontAwesomeIcons.trash, classes = "btn btn-link btn-sm", action = action)
+fun RBuilder.deleteButton(busy: Boolean = false, action: suspend () -> Unit) {
+  actionButton(icon = FontAwesomeIcons.trash, busy = busy, classes = "btn btn-link btn-sm", action = action)
 }
 
 object FontAwesome {
@@ -197,6 +197,14 @@ object FontAwesome {
     i(classes = FontAwesomeIcons.minus) {}
   }
 
+  fun RBuilder.faInformationCircle() {
+    i(classes = FontAwesomeIcons.informationCircle) {}
+  }
+
+  fun RBuilder.faSpinner() {
+    i(classes = FontAwesomeIcons.busy) {}
+  }
+
   /**
    * Creates a new icon using "i" with the given icon class
    */
@@ -242,6 +250,7 @@ object FontAwesomeIcons {
   const val lock: String = "fa-solid fa-lock"
   const val circleCheck: String = "fa-regular fa-circle-check"
   const val minus: String = "fa-solid fa-minus"
+  const val informationCircle: String = "fa fa-info-circle"
 
   const val horizontalArrows: String = "fas fa-arrows-alt-h"
   const val verticalArrows: String = "fas fa-arrows-alt-v"

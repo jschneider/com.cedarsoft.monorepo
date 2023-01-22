@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.provider
 
-import com.cedarsoft.common.kotlin.lang.DoublesComparator
+import com.cedarsoft.commons.provider.impl.SortedIndexMappingSupport
 
 /**
  * Sorts the values
@@ -15,9 +15,9 @@ class SortedSizedProvider<T>(
    * The comparator that is used to sort the elements.
    */
   val comparator: Comparator<T>,
-) : SizedProvider<T>, IndexMapping {
+) : SizedProvider<T>, IndexMapping, SizedProviderWithIndexMapping<T> {
 
-  private val indexMappingSupport: IndexMappingSupport = IndexMappingSupport { indexA, indexB ->
+  private val sortedIndexMappingSupport: SortedIndexMappingSupport = SortedIndexMappingSupport { indexA, indexB ->
     val valueA = delegate.valueAt(indexA)
     val valueB = delegate.valueAt(indexB)
 
@@ -34,13 +34,13 @@ class SortedSizedProvider<T>(
    */
   fun updateIndexMap(): Int {
     return delegate.size().also {
-      indexMappingSupport.updateMapping(it)
+      sortedIndexMappingSupport.updateMapping(it)
     }
   }
 
   override fun valueAt(index: Int): T {
-    val mappedIndex = mappedIndex(index)
-    return delegate.valueAt(mappedIndex)
+    val originalIndex = mapped2Original(index)
+    return delegate.valueAt(originalIndex)
   }
 
   /**
@@ -48,16 +48,24 @@ class SortedSizedProvider<T>(
    *
    * ATTENTION: It is required to call [size] (or [updateIndexMap] in rare circumstances) to update the index mapping first.
    */
-  override fun mappedIndex(originalIndex: Int): Int {
-    return indexMappingSupport.mappedIndex(originalIndex)
+  override fun mapped2Original(mappedIndex: Int): Int {
+    return sortedIndexMappingSupport.mapped2Original(mappedIndex)
   }
 
-  /**
-   * Wraps the provided delegate and returns the values matching to the current sorted values
-   */
-  fun <IndexContext, T> wrapMultiProvider(delegate: MultiProvider<IndexContext, T>): SortedMultiProvider<IndexContext, T> {
-    return SortedMultiProvider(delegate, this)
-  }
+}
+
+/**
+ * Wraps the provided delegate and returns the values matching to the current sorted values
+ */
+fun <IndexContextOld, IndexContextNew, T> SizedProviderWithIndexMapping<T>.wrapMultiProvider(delegate: MultiProvider<IndexContextOld, T>): MappedIndexMultiProvider<IndexContextNew, T> {
+  return MappedIndexMultiProvider(delegate, this)
+}
+
+/**
+ * Wraps this into a multi provider with mapped indices
+ */
+fun <IndexContextOld, IndexContextNew, T> MultiProvider<IndexContextOld, T>.withMappedIndex(indexMapping: IndexMapping): MappedIndexMultiProvider<IndexContextNew, T> {
+  return MappedIndexMultiProvider(this, indexMapping)
 }
 
 /**

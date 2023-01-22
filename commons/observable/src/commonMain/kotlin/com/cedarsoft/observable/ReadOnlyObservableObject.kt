@@ -1,6 +1,6 @@
 package com.cedarsoft.observable
 
-import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.annotations.JavaFriendly
 import com.cedarsoft.dispose.Disposable
 import kotlin.reflect.KProperty
 

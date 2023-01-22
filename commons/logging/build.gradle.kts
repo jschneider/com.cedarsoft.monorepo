@@ -53,9 +53,14 @@ kotlin {
         api(project(Projects.open_annotations))
 
         compileOnly(project(Projects.dependencies_sets_jvm_annotations))
+
         api(project(Projects.dependencies_sets_jvm_kotlin))
         api(Libs.slf4j_api)
         api(Libs.logback_classic)
+
+        //Compile only - for [ApplicationHomeLogbackConfigurer]
+        compileOnly(project(Projects.open_commons_app))
+        compileOnly(project(Projects.open_commons_io))
       }
     }
 

@@ -1,9 +1,9 @@
 package com.cedarsoft.formatting
 
-import com.cedarsoft.charting.annotations.PositiveOrZero
 import com.cedarsoft.common.collections.cache
 import com.cedarsoft.i18n.I18nConfiguration
 import com.cedarsoft.time.TimeZone
+import com.cedarsoft.unit.number.PositiveOrZero
 import kotlin.js.Date
 
 /**
@@ -19,7 +19,7 @@ actual class DateTimeFormatIso8601 : DateTimeFormat {
 actual class DateFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     val date = Date(timestamp)
-    return "${date.getFullYear()}-${date.getMonth().formatWithLeadingZeros2()}-${date.getDay().formatWithLeadingZeros2()}"
+    return "${date.getFullYear()}-${(date.getMonth() + 1).formatWithLeadingZeros2()}-${date.getDate().formatWithLeadingZeros2()}"
   }
 }
 
@@ -118,6 +118,16 @@ actual class YearMonthFormat actual constructor() : DateTimeFormat {
 
     return date.toLocaleString(i18nConfiguration.formatLocale.locale, localeOptions(i18nConfiguration.timeZone) {
       month = "long"
+      year = "numeric"
+    })
+  }
+}
+
+actual class YearFormat actual constructor() : DateTimeFormat {
+  override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
+    val date = Date(timestamp)
+
+    return date.toLocaleString(i18nConfiguration.formatLocale.locale, localeOptions(i18nConfiguration.timeZone) {
       year = "numeric"
     })
   }

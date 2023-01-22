@@ -2,7 +2,6 @@ package com.cedarsoft.commons.provider
 
 import com.cedarsoft.common.collections.Cache
 import com.cedarsoft.common.collections.cache
-import com.cedarsoft.commons.provider.EmptyProvider.valueAt
 import kotlin.jvm.JvmStatic
 import kotlin.reflect.KProperty0
 
@@ -11,7 +10,22 @@ import kotlin.reflect.KProperty0
  * The index provided to [valueAt] is *always* a value from 0..[size].
  * It is never an index from another context!
  *
- * ATTENTION: For primitive types, use the primitive variants to avoid boxing:
+ *
+ * ## When to call [size]
+ * The [size] method might calculate values that are provided by the [valueAt] method.
+ * Therefore, [size] should be called exactly once before accessing all required values.
+ * * Do *not* call [size] multiple times: This might result in bad performance und unnecessary recalculations
+ * * Do call [size] exactly once to be sure the provider has been initialized correctly.
+ *
+ * ## Using as MultiProvider
+ * Most [SizedProvider]s can be used as [MultiProvider]s. In some cases [size] has to be called
+ * to initialize the provider correctly.
+ *
+ * Since a [MultiProvider] only can be used in conjunction with a [SizedProvider] the user has
+ * to make sure, that the providers are used (and initialized) correctly.
+ *
+ *
+ * ## ATTENTION: For primitive types, use the primitive variants to avoid boxing:
  * * [DoublesProvider]
  * * [IndexProvider]
  */
@@ -141,7 +155,7 @@ open class ListSizedProvider<out T>(
 /**
  * Skips values if the given predicate returns false. Returns null for skipped values
  */
-class FilteredSizedProvider<out T>(
+class SkipWithNullSizedProvider<out T>(
   val delegate: SizedProvider<T>,
   /**
    * The filter that is used to determine whether a value shall be returned.
@@ -192,8 +206,8 @@ object EmptyProvider : SizedProvider<Any> {
 /**
  * Only returns the values if the given condition returns true for the index
  */
-fun <T> SizedProvider<T>.onlyIf(predicate: (index: Int) -> Boolean): FilteredSizedProvider<T> {
-  return FilteredSizedProvider(this, predicate)
+fun <T> SizedProvider<T>.onlyIfElseNull(predicate: (index: Int) -> Boolean): SkipWithNullSizedProvider<T> {
+  return SkipWithNullSizedProvider(this, predicate)
 }
 
 /**

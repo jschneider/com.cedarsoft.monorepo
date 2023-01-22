@@ -79,7 +79,11 @@ sealed interface HeartbeatState {
  * The connection is alive
  */
 @JvmInline
-value class Alive(val latency: @ms Double) : HeartbeatState
+value class Alive(val latency: @ms Double) : HeartbeatState {
+  override fun toString(): String {
+    return "Alive(latency=$latency)"
+  }
+}
 
 /**
  * No response - the connection is dead
@@ -89,12 +93,20 @@ abstract class Dead : HeartbeatState
 /**
  * Connection failed (or timed out)
  */
-object ConnectionFailure : Dead()
+object ConnectionFailure : Dead() {
+  override fun toString(): String {
+    return "ConnectionFailure"
+  }
+}
 
 /**
  * The client/server version do not match. The client should be updated.
  */
-object VersionMismatch : Dead()
+object VersionMismatch : Dead() {
+  override fun toString(): String {
+    return "VersionMismatch"
+  }
+}
 
 /**
  * The server responded with a non success status code (>=400)
@@ -105,3 +117,4 @@ data class ErrorResponse(val status: Int, val message: String?) : Dead()
  * An exception has occurred
  */
 data class ExceptionOccurred(val exception: Throwable) : Dead()
+

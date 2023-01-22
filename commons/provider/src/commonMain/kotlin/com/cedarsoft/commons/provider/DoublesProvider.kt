@@ -1,11 +1,12 @@
 package com.cedarsoft.commons.provider
 
 import com.cedarsoft.annotations.Boxed
+import com.cedarsoft.annotations.CreatesObjects
+import com.cedarsoft.annotations.Slow
 import com.cedarsoft.common.kotlin.lang.Double2Double
 import com.cedarsoft.common.kotlin.lang.DoubleMapFunction
 import com.cedarsoft.common.kotlin.lang.fastFor
 import com.cedarsoft.unit.other.Index
-import com.cedarsoft.unit.other.Slow
 import com.cedarsoft.unit.other.pct
 import kotlin.jvm.JvmStatic
 import kotlin.jvm.JvmWildcard
@@ -16,9 +17,6 @@ import kotlin.reflect.KProperty0
  * Works like the [SizedProvider] but returns double values.
  *
  * This class is an optimization that should be used to avoid boxing of double values.
- *
- * There exist variants for different number of parameters:
- * *[DoublesProvider1]: Takes one parameter
  */
 interface DoublesProvider : HasSize, MultiDoublesProvider<SizedProviderIndex> {
   operator fun get(index: Int): Double {
@@ -285,6 +283,7 @@ fun KProperty0<BooleanValuesProvider>.delegate(): BooleanValuesProvider {
  *
  * `::baseProvider.delegate().map{...}`
  */
+@CreatesObjects
 fun DoublesProvider.mapped(mapFunction: Double2Double): DoublesProvider {
   return object : DoublesProvider {
     override fun size(): Int {
@@ -301,6 +300,7 @@ fun DoublesProvider.mapped(mapFunction: Double2Double): DoublesProvider {
 /**
  * Maps the double values to another value
  */
+@CreatesObjects
 fun <T> DoublesProvider.mapped(mapFunction: DoubleMapFunction<T>): SizedProvider<T> {
   return object : SizedProvider<T> {
     override fun size(): Int {

@@ -255,8 +255,8 @@ val floatingSelect: FC<FloatingSelectProps> = fc("floatingSelect") { props ->
 
   require(availableOptions.contains(selectedValue)) {
     buildString {
-      append("selected value (${selectedValue.toString()}) must be in list of available options.\n")
-      append("Available options:\n")
+      appendLine("selected value (${selectedValue.toString()}) must be in list of available options.")
+      appendLine("Available options:")
       append(availableOptions.joinToString("\n"))
     }
   }

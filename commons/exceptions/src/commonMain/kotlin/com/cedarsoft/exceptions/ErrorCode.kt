@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions
 
-import com.cedarsoft.charting.annotations.JavaFriendly
+import com.cedarsoft.annotations.JavaFriendly
 import com.cedarsoft.exceptions.io.ErrorCodeSerializer
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
