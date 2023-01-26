@@ -108,7 +108,7 @@ abstract class AbstractNameSpaceBasedSerializer<T : Any, S : Any, D : Any> prote
     @JvmStatic
     @Throws(IllegalArgumentException::class, VersionException::class)
     fun parseVersionFromNamespace(namespaceURI: String?): Version {
-      if (namespaceURI == null || namespaceURI.isEmpty()) {
+      if (namespaceURI.isNullOrEmpty()) {
         throw VersionException("No version information found")
       }
 

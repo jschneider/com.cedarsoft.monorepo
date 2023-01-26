@@ -35,10 +35,6 @@ object Stopwatch {
 }
 
 data class Result(val ns: Long) {
-  fun prettyPrint() {
-    println(format())
-  }
-
   @CheckReturnValue
   fun format(): String {
     return "Took ${TimeUnit.NANOSECONDS.toMillis(ns)} ms"

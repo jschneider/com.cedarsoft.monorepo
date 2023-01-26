@@ -66,7 +66,7 @@ object BindingDemo {
     labelComboValue.textProperty().bind(comboBox.valueProperty().asString())
     labelComboValueType.textProperty().bind(
       Bindings.createStringBinding(
-        Callable<String?> { comboBox.valuePropertyEditable().get()?.javaClass?.name ?: "" },
+        Callable<String?> { comboBox.valuePropertyEditable().get()?.javaClass?.name.orEmpty() },
         comboBox.valueProperty()
       )
     )

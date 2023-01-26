@@ -38,7 +38,7 @@ object MeshGenerator {
     val mesh = TriangleMesh()
     mesh.points.addAll(*points)
     mesh.texCoords.addAll(*textCoords)
-    mesh.faces.addAll(*faces.stream().mapToInt { i: Int? -> i!! }.toArray())
+    mesh.faces.addAll(*faces.stream().mapToInt { i: Int -> i }.toArray())
     return mesh
   }
 

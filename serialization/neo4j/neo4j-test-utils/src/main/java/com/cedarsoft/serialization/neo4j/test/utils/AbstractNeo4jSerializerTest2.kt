@@ -94,14 +94,13 @@ abstract class AbstractNeo4jSerializerTest2<T : Any> {
     val serializer = getSerializer()
 
     //Serialize
-    val `object` = entry.`object` as T
-
-    val serialized = serialize(serializer, `object`)
+    val objectToSerialize = entry.objectToSerialize as T
+    val serialized = serialize(serializer, objectToSerialize)
 
     //Verify
     val castEntry = entry as Entry<T>
     verifySerialized(castEntry, serialized)
-    verifyDeserialized(deserialize(serializer, serialized), `object`)
+    verifyDeserialized(deserialize(serializer, serialized), objectToSerialize)
   }
 
   @Throws(Exception::class)
@@ -153,24 +152,24 @@ abstract class AbstractNeo4jSerializerTest2<T : Any> {
 
   companion object {
     @JvmStatic
-    fun <T> create(`object`: T, expected: ByteArray?): Entry<out T> {
-      return Entry(`object`, expected!!)
+    fun <T> create(objectToSerialize: T, expected: ByteArray?): Entry<out T> {
+      return Entry(objectToSerialize, expected!!)
     }
 
     @JvmStatic
-    fun <T> create(`object`: T, expected: URL?): Entry<out T> {
-      checkNotNull(expected) { "No resource found for <$`object`>" }
+    fun <T> create(objectToSerialize: T, expected: URL?): Entry<out T> {
+      checkNotNull(expected) { "No resource found for <$objectToSerialize>" }
       return try {
-        Entry(`object`, IOUtils.toByteArray(expected.openStream()))
+        Entry(objectToSerialize, IOUtils.toByteArray(expected.openStream()))
       } catch (e: IOException) {
         throw RuntimeException(e)
       }
     }
 
     @JvmStatic
-    fun <T> create(`object`: T, expected: InputStream): Entry<out T> {
+    fun <T> create(objectToSerialize: T, expected: InputStream): Entry<out T> {
       return try {
-        Entry(`object`, IOUtils.toByteArray(expected))
+        Entry(objectToSerialize, IOUtils.toByteArray(expected))
       } catch (e: IOException) {
         throw RuntimeException(e)
       }
@@ -182,8 +181,8 @@ abstract class AbstractNeo4jSerializerTest2<T : Any> {
     }
 
     @JvmStatic
-    protected fun <T> create(`object`: T, expected: String): Entry<out T> {
-      return Entry(`object`, expected.toByteArray(StandardCharsets.UTF_8))
+    protected fun <T> create(objectToSerialize: T, expected: String): Entry<out T> {
+      return Entry(objectToSerialize, expected.toByteArray(StandardCharsets.UTF_8))
     }
   }
 }

@@ -98,7 +98,7 @@ object BindingsHelper {
     node.pseudoClassStateChanged(pseudoClass, pseudoClassActive.get())
 
     //Update the pseudo class whenever the property changes
-    pseudoClassActive.addListener { observable: ObservableValue<out Boolean?>, oldValue: Boolean?, newValue: Boolean? -> node.pseudoClassStateChanged(pseudoClass, newValue!!) }
+    pseudoClassActive.addListener { _: ObservableValue<out Boolean>, _: Boolean, newValue: Boolean -> node.pseudoClassStateChanged(pseudoClass, newValue) }
   }
 
   @JvmStatic

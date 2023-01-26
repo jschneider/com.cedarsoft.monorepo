@@ -80,7 +80,7 @@ abstract class AbstractXmlSerializerTest2<T : Any> : AbstractSerializerTest2<T>(
     verify(serialized, entry.expected)
   }
 
-  protected fun addNameSpace(): Boolean {
+  protected open fun addNameSpace(): Boolean {
     return true
   }
 
@@ -105,8 +105,8 @@ abstract class AbstractXmlSerializerTest2<T : Any> : AbstractSerializerTest2<T>(
     }
 
     @JvmStatic
-    protected fun <T> create(`object`: T, expected: String): Entry<out T> {
-      return Entry(`object`, expected.toByteArray(StandardCharsets.UTF_8))
+    protected fun <T> create(objectToSerialize: T, expected: String): Entry<out T> {
+      return Entry(objectToSerialize, expected.toByteArray(StandardCharsets.UTF_8))
     }
   }
 }

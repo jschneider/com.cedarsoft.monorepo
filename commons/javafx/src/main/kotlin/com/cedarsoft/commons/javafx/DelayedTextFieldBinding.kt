@@ -22,7 +22,7 @@ class DelayedTextFieldBinding<T>(
 
   private val text2fieldListener: ChangeListener<T>
 
-  private val focusLostListener: ChangeListener<Boolean?>
+  private val focusLostListener: ChangeListener<Boolean>
 
   /**
    * Constructor
@@ -49,8 +49,8 @@ class DelayedTextFieldBinding<T>(
     property.addListener(text2fieldListener)
 
     //Update the property on focus lost
-    focusLostListener = ChangeListener { _: ObservableValue<out Boolean?>?, _: Boolean?, newValue: Boolean? ->
-      if (!newValue!!) {
+    focusLostListener = ChangeListener { _: ObservableValue<out Boolean>, _: Boolean, newValue: Boolean ->
+      if (!newValue) {
         updateProperty()
       }
     }

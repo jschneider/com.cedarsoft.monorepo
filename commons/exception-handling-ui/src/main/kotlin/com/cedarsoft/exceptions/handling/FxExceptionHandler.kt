@@ -95,7 +95,7 @@ open class FxExceptionHandler @JvmOverloads constructor(
 
   fun handleNotificationException(throwable: NotificationException, original: Throwable) {
     Platform.runLater {
-      val notification = Notification(throwable.title, throwable.message ?: "", object : DetailsCallback {
+      val notification = Notification(throwable.title, throwable.message.orEmpty(), object : DetailsCallback {
         override fun detailsClicked(notification: Notification) {
           handleInternalError(original, original)
         }

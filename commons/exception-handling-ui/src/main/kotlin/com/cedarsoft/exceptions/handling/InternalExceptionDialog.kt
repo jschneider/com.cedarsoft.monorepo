@@ -61,7 +61,7 @@ class InternalExceptionDialog(
 ) : AbstractDialog(parent) {
 
   @UiThread
-  private var stackTraceScrollPane: JScrollPane? = null
+  private lateinit var stackTraceScrollPane: JScrollPane
 
   @px
   private var collapsedHeight: Int = 0
@@ -101,7 +101,7 @@ class InternalExceptionDialog(
     stackTraceField.text = createDetailsText()
 
     stackTraceScrollPane = JScrollPane(stackTraceField)
-    stackTraceScrollPane!!.isVisible = false
+    stackTraceScrollPane.isVisible = false
     panel.add(stackTraceScrollPane)
 
     return panel
@@ -126,20 +126,20 @@ class InternalExceptionDialog(
           throw IllegalStateException("stackTraceScrollPane not found")
         }
 
-        if (stackTraceScrollPane!!.isVisible) {
-          stackTraceScrollPane!!.isVisible = false
+        if (stackTraceScrollPane.isVisible) {
+          stackTraceScrollPane.isVisible = false
           setSize(width, collapsedHeight)
           putValue(Action.NAME, Messages.get("details") + " >>")
         } else {
           collapsedHeight = height
-          stackTraceScrollPane!!.isVisible = true
+          stackTraceScrollPane.isVisible = true
           //fix scroll position
-          (stackTraceScrollPane!!.viewport.view as JTextComponent).caretPosition = 0
+          (stackTraceScrollPane.viewport.view as JTextComponent).caretPosition = 0
           setSize(width, height + 250)
           putValue(Action.NAME, Messages.get("details") + " <<")
         }
 
-        stackTraceScrollPane!!.parent.revalidate()
+        stackTraceScrollPane.parent.revalidate()
       }
     })
 

@@ -71,7 +71,7 @@ protected constructor(
 
   /**
    * Serializes the given object into a sub element of serializeTo
-   * @param `object`        the object that is serialized
+   * @param objectToSerialize        the object that is serialized
    * @param type          the type
    * @param subElementName  the name of the sub element
    * @param serializeTo   the parent element

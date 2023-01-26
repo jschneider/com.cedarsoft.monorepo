@@ -10,12 +10,12 @@ abstract class OneWayConverter<T> : StringConverter<T>() {
     throw UnsupportedOperationException()
   }
 
-  override fun toString(`object`: T): String {
-    if (`object` == null) {
+  override fun toString(value: T): String {
+    if (value == null) {
       return ""
     }
 
-    return format(`object`)
+    return format(value)
   }
 
   /**

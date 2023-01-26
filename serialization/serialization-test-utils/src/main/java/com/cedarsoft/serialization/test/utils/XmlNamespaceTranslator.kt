@@ -117,10 +117,10 @@ class XmlNamespaceTranslator {
       if (this === other) return true
       if (other == null) return false
       if (javaClass != other.javaClass) return false
-      val other = other as Holder<*>
+      val otherHolder = other as Holder<*>
       if (value == null) {
-        if (other.value != null) return false
-      } else if (value != other.value) return false
+        if (otherHolder.value != null) return false
+      } else if (value != otherHolder.value) return false
       return true
     }
   }

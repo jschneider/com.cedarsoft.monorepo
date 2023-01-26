@@ -20,13 +20,13 @@ class EnumListCell<T : Enum<T>> : ListCell<T>() {
 
   fun apply(@Nonnull comboBox: ComboBox<T>) {
     comboBox.buttonCell = this
-    comboBox.cellFactory = Callback { param: ListView<T>? -> EnumListCell() }
+    comboBox.cellFactory = Callback { _: ListView<T>? -> EnumListCell() }
   }
 
   companion object {
     @JvmStatic
-    fun <T : Enum<T>> createFor(@Nonnull comboBox: ComboBox<T>?) {
-      EnumListCell<T>().apply(comboBox!!)
+    fun <T : Enum<T>> createFor(@Nonnull comboBox: ComboBox<T>) {
+      EnumListCell<T>().apply(comboBox)
     }
   }
 }

@@ -41,8 +41,8 @@ import java.lang.reflect.InvocationTargetException
 class SwingMemoryLeakVerifier<T> {
   val reference: WeakReference<T>
 
-  constructor(`object`: T) {
-    reference = WeakReference(`object`)
+  constructor(objectUnderTest: T) {
+    reference = WeakReference(objectUnderTest)
   }
 
   constructor(reference: WeakReference<T>) {

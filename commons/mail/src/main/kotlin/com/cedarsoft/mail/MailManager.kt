@@ -30,6 +30,7 @@
  */
 package com.cedarsoft.mail
 
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.util.Properties
 import javax.mail.Authenticator
@@ -93,7 +94,7 @@ class MailManager(
   }
 
   companion object {
-    val logger = LoggerFactory.getLogger(MailManager::class.java)
+    val logger: Logger = LoggerFactory.getLogger(MailManager::class.java)
 
     private const val MAIL_HOST = "mail.host"
     private const val MAIL_SMTP_AUTH = "mail.smtp.auth"

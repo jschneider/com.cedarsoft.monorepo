@@ -41,7 +41,7 @@ interface ToString<T> {
   /**
    * Returns the string representation
    *
-   * @param `object` the object
+   * @param toConvert the object that is converted
    * @return the string representation
    */
   @Nonnull

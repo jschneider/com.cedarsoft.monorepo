@@ -37,16 +37,16 @@ class Entry<T>(
   /**
    * The expected serialized object
    */
-  val `object`: T,
+  val objectToSerialize: T,
   /**
    * The domain object that is serialized
    */
-  val expected: ByteArray
+  val expected: ByteArray,
 ) {
 
   override fun toString(): String {
     return "Entry{" +
-      "object=" + `object` +
+      "objectToSerialize=" + objectToSerialize +
       '}'
   }
 }

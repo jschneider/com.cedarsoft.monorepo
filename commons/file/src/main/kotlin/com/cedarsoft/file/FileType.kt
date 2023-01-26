@@ -131,7 +131,7 @@ private constructor(
     if (bestBase == null) {
       throw IllegalArgumentException("Cannot get base for $fileName")
     }
-    require(bestExtension != null) { "bestExtension must not be null" }
+    requireNotNull(bestExtension) { "bestExtension must not be null" }
 
     return FileName(bestBase, bestExtension)
   }

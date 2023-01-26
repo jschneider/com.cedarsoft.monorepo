@@ -64,13 +64,13 @@ abstract class AbstractSerializerTest2<T : Any> protected constructor(
     val serializer = getSerializer()
 
     //Serialize
-    val `object` = entry.`object` as T
-    val serialized = serialize(serializer, `object`)
+    val objectToSerialize = entry.objectToSerialize as T
+    val serialized = serialize(serializer, objectToSerialize)
 
     //Verify
     val entryCast = entry as Entry<T>
     verifySerialized(entryCast, serialized)
-    verifyDeserialized(serializer.deserialize(ByteArrayInputStream(serialized)), `object`)
+    verifyDeserialized(serializer.deserialize(ByteArrayInputStream(serialized)), objectToSerialize)
   }
 
 
@@ -115,23 +115,23 @@ abstract class AbstractSerializerTest2<T : Any> protected constructor(
 
   companion object {
     @JvmStatic
-    fun <T> create(`object`: T, expected: ByteArray): Entry<out T> {
-      return Entry(`object`, expected)
+    fun <T> create(objectToSerialize: T, expected: ByteArray): Entry<out T> {
+      return Entry(objectToSerialize, expected)
     }
 
     @JvmStatic
-    fun <T> create(`object`: T, expected: URL): Entry<out T> {
+    fun <T> create(objectToSerialize: T, expected: URL): Entry<out T> {
       return try {
-        Entry(`object`, IOUtils.toByteArray(expected.openStream()))
+        Entry(objectToSerialize, IOUtils.toByteArray(expected.openStream()))
       } catch (e: IOException) {
         throw RuntimeException(e)
       }
     }
 
     @JvmStatic
-    fun <T> create(`object`: T, expected: InputStream): Entry<out T> {
+    fun <T> create(objectToSerialize: T, expected: InputStream): Entry<out T> {
       return try {
-        Entry(`object`, IOUtils.toByteArray(expected))
+        Entry(objectToSerialize, IOUtils.toByteArray(expected))
       } catch (e: IOException) {
         throw RuntimeException(e)
       }

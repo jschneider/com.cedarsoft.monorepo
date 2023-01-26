@@ -76,8 +76,8 @@ class AdvancedTextField : StackPane() {
     textField.textProperty().addListener { observable: ObservableValue<out String?>?, oldValue: String?, newValue: String? -> property.setValue(converter.fromString(newValue)) }
 
     //Update the text field on focus lost
-    textField.focusedProperty().addListener { observable: ObservableValue<out Boolean?>?, oldValue: Boolean?, newValue: Boolean? ->
-      if (!newValue!!) {
+    textField.focusedProperty().addListener { observable: ObservableValue<out Boolean>, oldValue: Boolean, newValue: Boolean ->
+      if (newValue.not()) {
         textField.text = converter.toString(property.value)
       }
     }

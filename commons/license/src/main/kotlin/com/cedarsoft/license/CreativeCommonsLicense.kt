@@ -63,9 +63,12 @@ class CreativeCommonsLicense(
    * @return the URL for the locale
    */
   fun getUrl(locale: Locale): URL {
-    val urlBase = url!!
+    requireNotNull(url) {
+      "Url must not be null"
+    }
+
     return try {
-      URL(urlBase.protocol, urlBase.host, urlBase.port, urlBase.file + "/" + locale.language)
+      URL(url.protocol, url.host, url.port, url.file + "/" + locale.language)
     } catch (e: MalformedURLException) {
       throw RuntimeException(e)
     }

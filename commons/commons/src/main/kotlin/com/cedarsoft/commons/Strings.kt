@@ -44,15 +44,15 @@ object Strings {
    */
   @JvmStatic
   fun stripQuotes(value: String): String {
-    var value = value
+    var updatedValue = value
 
-    if (value.indexOf('\"') == 0) {
-      value = value.substring(1)
+    if (updatedValue.indexOf('\"') == 0) {
+      updatedValue = updatedValue.substring(1)
     }
-    if (value.endsWith("\"")) {
-      value = value.substring(0, value.length - 1)
+    if (updatedValue.endsWith("\"")) {
+      updatedValue = updatedValue.substring(0, updatedValue.length - 1)
     }
-    return value
+    return updatedValue
   }
 
   /**

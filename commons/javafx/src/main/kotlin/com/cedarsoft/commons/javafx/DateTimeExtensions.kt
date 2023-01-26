@@ -19,7 +19,7 @@ import java.util.concurrent.Callable
  */
 fun ObservableValue<LocalTime?>.asHHmm(): StringBinding {
   return Bindings.createStringBinding(Callable {
-    this.value?.asHHmm() ?: ""
+    this.value?.asHHmm().orEmpty()
   }, this)
 }
 
@@ -30,7 +30,7 @@ fun LocalTime.asHHmm(): String {
 
 fun ObservableValue<Duration?>.asWords(): StringBinding {
   return Bindings.createStringBinding(Callable {
-    this.value?.asWords() ?: ""
+    this.value?.asWords().orEmpty()
   }, this)
 }
 
@@ -50,7 +50,7 @@ fun Temporal.formatLocalDateAndOrTime(): String {
 
 fun ObservableValue<Period?>.asWeeksAndDays(): StringBinding {
   return Bindings.createStringBinding(Callable {
-    this.value?.asWeeksAndDays() ?: ""
+    this.value?.asWeeksAndDays().orEmpty()
   }, this)
 }
 

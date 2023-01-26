@@ -13,21 +13,21 @@ import kotlin.reflect.KProperty
 /**
  * Extension methods to allow simplified JavaFX properties
  */
-operator fun <T> ObservableValue<T>.getValue(thisRef: Any, property: KProperty<*>) = value
+operator fun <T> ObservableValue<T>.getValue(thisRef: Any, property: KProperty<*>): T = value
 
-operator fun <T> Property<T>.setValue(thisRef: Any, property: KProperty<*>, value: T?) = setValue(value)
-
-
-operator fun DoubleExpression.getValue(thisRef: Any, property: KProperty<*>) = value
-
-operator fun WritableDoubleValue.setValue(thisRef: Any, property: KProperty<*>, value: Double?) = setValue(value)
+operator fun <T> Property<T>.setValue(thisRef: Any, property: KProperty<*>, value: T?): Unit = setValue(value)
 
 
-operator fun LongExpression.getValue(thisRef: Any, property: KProperty<*>) = value
+operator fun DoubleExpression.getValue(thisRef: Any, property: KProperty<*>): Double = value
 
-operator fun WritableLongValue.setValue(thisRef: Any, property: KProperty<*>, value: Long?) = setValue(value)
+operator fun WritableDoubleValue.setValue(thisRef: Any, property: KProperty<*>, value: Double?): Unit = setValue(value)
 
 
-operator fun IntegerExpression.getValue(thisRef: Any, property: KProperty<*>) = value
+operator fun LongExpression.getValue(thisRef: Any, property: KProperty<*>): Long = value
 
-operator fun WritableIntegerValue.setValue(thisRef: Any, property: KProperty<*>, value: Int?) = setValue(value)
+operator fun WritableLongValue.setValue(thisRef: Any, property: KProperty<*>, value: Long?): Unit = setValue(value)
+
+
+operator fun IntegerExpression.getValue(thisRef: Any, property: KProperty<*>): Int = value
+
+operator fun WritableIntegerValue.setValue(thisRef: Any, property: KProperty<*>, value: Int?): Unit = setValue(value)

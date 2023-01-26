@@ -97,7 +97,7 @@ open class SwingExceptionHandler
 
   fun handleNotificationException(throwable: NotificationException, original: Throwable) {
     SwingUtilities.invokeLater {
-      notificationService.showNotification(Notification(throwable.title, throwable.message ?: "", object : DetailsCallback {
+      notificationService.showNotification(Notification(throwable.title, throwable.message.orEmpty(), object : DetailsCallback {
         override fun detailsClicked(notification: Notification) {
           handleInternalError(original, original)
         }
@@ -144,11 +144,11 @@ open class SwingExceptionHandler
             val reportingExceptionsDialog = ReportingExceptionsDialog(SwingHelper.getFrameSafe())
             reportingExceptionsDialog.setVisibleNonBlocking()
 
-            object : SwingWorker<Void, Void>() {
+            object : SwingWorker<Unit, Unit>() {
               @Throws(Exception::class)
-              override fun doInBackground(): Void? {
+              override fun doInBackground() {
                 exceptionReporter.report(throwable)
-                return null
+                return
               }
 
               override fun done() {

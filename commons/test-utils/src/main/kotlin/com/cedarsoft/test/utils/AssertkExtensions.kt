@@ -49,14 +49,14 @@ fun Assert<Double>.isNaN(): Unit = given {
 fun <E> Assert<Iterable<E>>.first(f: (Assert<E>) -> Unit): Unit = given { actual ->
   all {
     val firstElement = actual.first()
-    f(assertThat(firstElement, name = "${name ?: ""}${show(firstElement, "[]")}"))
+    f(assertThat(firstElement, name = "${name.orEmpty()}${show(firstElement, "[]")}"))
   }
 }
 
 fun <E> Assert<List<E>>.last(f: (Assert<E>) -> Unit): Unit = given { actual ->
   all {
     val lastElement = actual.last()
-    f(assertThat(lastElement, name = "${name ?: ""}${show(lastElement, "[]")}"))
+    f(assertThat(lastElement, name = "${name.orEmpty()}${show(lastElement, "[]")}"))
   }
 }
 

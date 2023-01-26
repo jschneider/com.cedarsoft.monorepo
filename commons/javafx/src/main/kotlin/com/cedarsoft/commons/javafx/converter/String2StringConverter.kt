@@ -7,8 +7,8 @@ import javafx.util.StringConverter
  * Can be used to avoid null checks with converters
  */
 class String2StringConverter : StringConverter<String>() {
-  override fun toString(`object`: String): String {
-    return `object`
+  override fun toString(value: String): String {
+    return value
   }
 
   override fun fromString(string: String): String {
