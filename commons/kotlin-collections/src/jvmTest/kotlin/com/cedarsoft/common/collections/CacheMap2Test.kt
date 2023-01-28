@@ -72,4 +72,5 @@ class CacheMap2Test {
     assertThat(cache[0]).isEqualTo("A")
     assertThat(cache.getOrStore(0) { "B" }).isEqualTo("A")
   }
+
 }

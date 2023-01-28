@@ -2,6 +2,7 @@
 
 plugins {
   kotlinMultiPlatform
+
 }
 
 repositories {
@@ -20,6 +21,7 @@ kotlin {
     val commonMain by getting {
       dependencies {
         api(Kotlin.stdlib.common)
+        api(KotlinX.coroutines.core)
 
         api(project(Projects.open_commons_kotlin_lang))
         api(project(Projects.open_commons_kotlin_collections))

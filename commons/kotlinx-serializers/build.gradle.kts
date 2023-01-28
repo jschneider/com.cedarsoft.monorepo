@@ -19,6 +19,8 @@ kotlin {
       dependencies {
         api(Kotlin.stdlib.common)
         api(KotlinX.serialization.core)
+        compileOnly(project(Projects.open_commons_kotlin_collections)) //required to compile the serializers
+        compileOnly(project(Projects.open_commons_kotlin_bytearray)) //required to compile the serializers
       }
     }
 
@@ -50,6 +52,9 @@ kotlin {
         implementation(project(Projects.open_commons_test_utils))
         implementation(project(Projects.open_commons_commons))
         implementation(project(Projects.open_commons_kotlinx_serialization_test_utils))
+
+        implementation(project(Projects.open_commons_kotlin_collections))
+        implementation(project(Projects.open_commons_kotlin_bytearray))
 
         implementation(Libs.awaitility)
         implementation(Libs.logback_classic)

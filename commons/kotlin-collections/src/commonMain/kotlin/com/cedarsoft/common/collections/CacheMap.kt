@@ -40,7 +40,13 @@ open class CacheMap<K, V> private constructor(
 
   override fun putAll(from: Map<out K, V>) = run { for ((k, v) in from) put(k, v) }
   override fun put(key: K, value: V): V? {
-    while (size >= maxSize && !map.containsKey(key)) remove(map.keys.first())
+    while (size >= maxSize && map.containsKey(key).not()) {
+      val keys = map.keys
+      require(keys.size == size){
+        "Expect same size for keys: <${keys.size}> and map: <$size>"
+      }
+      remove(keys.first())
+    }
 
     val oldValue = map[key]
     if (oldValue != value) {

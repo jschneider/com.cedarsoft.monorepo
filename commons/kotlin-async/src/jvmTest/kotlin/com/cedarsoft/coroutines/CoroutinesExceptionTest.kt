@@ -36,4 +36,28 @@ class CoroutinesExceptionTest {
     assertThat(errors).hasSize(1)
     assertThat(errors[0]).isInstanceOf(RuntimeException::class)
   }
+
+  //@Test
+  //fun testExceptionHandling(): Unit = runBlocking {
+  //  val scope: CoroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+  //
+  //  val job = scope.launch{
+  //    throw IllegalStateException("Hello Exception")
+  //  }
+  //
+  //  val deferred = scope.async {
+  //    throw IllegalStateException("Hello Exception in async")
+  //  }
+  //
+  //
+  //  //assertThat(scope.isActive).isTrue()
+  //  delay(100)
+  //  assertThat(job.isActive).isFalse()
+  //  //assertThat(scope.isActive).isTrue()
+  //
+  //
+  //  println("-----------------")
+  //  deferred.join()
+  //  deferred.getCompleted()
+  //}
 }
