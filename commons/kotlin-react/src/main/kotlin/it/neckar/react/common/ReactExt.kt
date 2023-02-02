@@ -157,6 +157,8 @@ fun StateInstance<Int>.asOnChangeForInt(numberConstraint: NumberConstraint): (St
       it.toIntOrNull()?.let { parsedInt ->
         setter(numberConstraint.constraint(parsedInt))
       }
+    } else {
+      setter(0)
     }
   }
 }
@@ -183,6 +185,8 @@ fun StateInstance<Double>.asOnChangeForDouble(numberConstraint: NumberConstraint
       it.toDoubleOrNull()?.let { parsedDouble ->
         setter(numberConstraint.constraint(parsedDouble))
       }
+    } else {
+      setter(0.0)
     }
   }
 }

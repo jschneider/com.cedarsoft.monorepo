@@ -8,7 +8,7 @@ import kotlin.jvm.JvmOverloads
  * Wraps a [CacheMap] and provides additional features like hit counter or other custom methods
  */
 class Cache<K, V>
-@Deprecated("use cache() method instead to allow use for better", level = DeprecationLevel.WARNING)
+@Deprecated("use cache() method instead to allow use for better logging", level = DeprecationLevel.WARNING)
 @JvmOverloads constructor(
   maxSize: Int = 16,
   /**
