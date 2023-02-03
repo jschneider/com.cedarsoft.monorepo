@@ -191,6 +191,19 @@ fun StateInstance<Double>.asOnChangeForDouble(numberConstraint: NumberConstraint
   }
 }
 
+fun StateInstance<Double?>.asOnChangeForDouble(numberConstraint: NumberConstraint): (String?) -> Unit {
+  return {
+    if (it.isNullOrEmpty()) {
+      setter(null)
+    } else {
+      it.toDoubleOrNull()?.let { parsedDouble ->
+        setter(numberConstraint.constraint(parsedDouble))
+      }
+    }
+  }
+}
+
+
 fun StateInstance<Boolean>.asOnChangeForBoolean(): (String) -> Unit {
   return {
     println("asOnChangeForBoolean called with <$it>")

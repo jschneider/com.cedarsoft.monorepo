@@ -255,6 +255,41 @@ fun RBuilder.floatingDoubleInputField(
   }
 }
 
+fun RBuilder.nullableFloatingDoubleInputField(
+  /**
+   * The value and setter for the value.
+   * Must be created with a useState hook
+   */
+  valueAndSetter: StateInstance<Double?>,
+
+  fieldName: String,
+  title: String,
+  numberConstraint: NumberConstraint = Unconstraint,
+
+  editableStatus: EditableStatus,
+
+  divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
+  config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
+
+  ): Unit = child(nullableFloatingInputField) {
+  attrs {
+    this.value = valueAndSetter.value.toString().nullIfBlank()
+    this.onChange = valueAndSetter.asOnChangeForDouble(numberConstraint)
+    this.fieldName = fieldName
+    this.title = title
+    this.editableStatus = editableStatus
+    this.divConfig = divConfig
+    this.config = {
+      it.attrs {
+        type = InputType.number
+      }
+
+      it.configure(numberConstraint)
+      config?.invoke(it)
+    }
+  }
+}
+
 
 val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") { props ->
 
