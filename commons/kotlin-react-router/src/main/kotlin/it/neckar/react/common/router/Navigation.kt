@@ -171,11 +171,11 @@ data class NavigationElement(
           "Path required"
         },
         element = requireNotNull(element) {
-          "element required"
+          "Element required"
         },
         parent = parentToUse,
         index = index,
-        breadcrumbInfo = breadcrumbInfo
+        breadcrumbInfo = breadcrumbInfo,
       )
     }
 
@@ -210,17 +210,23 @@ fun buildNavigation(block: NavigationRoot.Builder.() -> Unit): NavigationRoot {
  * This object is used to resolve parents
  */
 class NavigationBuildingContext {
-  /**
-   * Returns the navigation element for the given URL
-   */
-  fun findElement(url: String): NavigationElement {
-    return url2element[url] ?: throw IllegalArgumentException("No element found in NavigationBuildingContext for <$url>")
-  }
-
   private val url2element = mutableMapOf<String, NavigationElement>()
 
   fun store(element: NavigationElement) {
     url2element[element.completePath()] = element
+  }
+
+  /**
+   * Returns the navigation element for the given URL
+   */
+  fun findElement(url: String): NavigationElement {
+    return url2element[url] ?: findElementIncludingStar(url) ?: throw IllegalArgumentException("No element found for <$url> in NavigationBuildingContext with url2element pathFragments:\n${url2element.keys}")
+  }
+
+  private fun findElementIncludingStar(url: String): NavigationElement? {
+    val genericUrl = url.substring(0, url.lastIndexOf('/')) + "/*"
+    println("genericUrl: $genericUrl")
+    return url2element[genericUrl]
   }
 }
 

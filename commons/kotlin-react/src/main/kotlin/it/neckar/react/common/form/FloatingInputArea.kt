@@ -25,7 +25,7 @@ fun RBuilder.floatingInputArea(
 
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
-  ): Unit = child(floatingInputArea) {
+  ): Unit = child(FloatingInputArea) {
   attrs {
     this.valueAndSetter = valueAndSetter
     this.fieldName = fieldName
@@ -36,7 +36,7 @@ fun RBuilder.floatingInputArea(
   }
 }
 
-val floatingInputArea: FC<FloatingInputAreaProps> = fc("floatingInputArea") { props ->
+val FloatingInputArea: FC<FloatingInputAreaProps> = fc("FloatingInputArea") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   div("form-floating") {
@@ -83,7 +83,7 @@ fun RBuilder.nullableFloatingInputArea(
 
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
-  ): Unit = child(nullableFloatingInputArea) {
+  ): Unit = child(NullableFloatingInputArea) {
   attrs {
     this.valueAndSetter = valueAndSetter
     this.fieldName = fieldName
@@ -94,7 +94,7 @@ fun RBuilder.nullableFloatingInputArea(
   }
 }
 
-val nullableFloatingInputArea: FC<NullableFloatingInputAreaProps> = fc("nullableFloatingInputArea") { props ->
+val NullableFloatingInputArea: FC<NullableFloatingInputAreaProps> = fc("NullableFloatingInputArea") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   div("form-floating") {

@@ -190,7 +190,7 @@ fun <T> RBuilder.floatingSelect(
   editableStatus: EditableStatus = Editable,
 
   config: ((RDOMBuilder<SELECT>) -> Unit)? = null,
-): Unit = child(floatingSelect) {
+): Unit = child(FloatingSelect) {
   require(availableOptions.isNotEmpty()) {
     "availableOptions must not be empty"
   }
@@ -227,7 +227,7 @@ fun <T> RBuilder.floatingSelectNullable(
   editableStatus: EditableStatus,
 
   config: ((RDOMBuilder<SELECT>) -> Unit)? = null,
-): Unit = child(floatingSelect) {
+): Unit = child(FloatingSelect) {
   attrs {
     this.selectedValue = selectedValue
     this.onChange = onChange.unsafeCast<OnChange<Any?>>()
@@ -246,7 +246,7 @@ fun <T> RBuilder.floatingSelectNullable(
   }
 }
 
-val floatingSelect: FC<FloatingSelectProps> = fc("floatingSelect") { props ->
+val FloatingSelect: FC<FloatingSelectProps> = fc("FloatingSelect") { props ->
   val uniqueId = uniqueIdMemo(props.fieldName)
 
   //Enforce calling onChange if the current value is *not* in available options

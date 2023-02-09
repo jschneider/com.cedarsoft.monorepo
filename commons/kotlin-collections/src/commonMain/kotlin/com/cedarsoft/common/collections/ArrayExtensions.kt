@@ -1,9 +1,9 @@
 package com.cedarsoft.common.collections
 
+import com.cedarsoft.annotations.Slow
 import com.cedarsoft.common.kotlin.lang.wrapAround
 import com.cedarsoft.unit.other.Exclusive
 import com.cedarsoft.unit.other.Inclusive
-import com.cedarsoft.annotations.Slow
 
 /**
  *
@@ -20,6 +20,16 @@ fun <T> Array<T>.getModulo(index: Int): T {
 
 fun DoubleArray.getModulo(index: Int): Double {
   return this[index.wrapAround(size)]
+}
+
+/**
+ * Maps each element of this array to an int
+ */
+fun <T> Array<T>.mapToIntArray(function: (T) -> Int): IntArray {
+  return IntArray(size) {
+    val value = get(it)
+    function(value)
+  }
 }
 
 /**

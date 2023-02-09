@@ -10,6 +10,10 @@ enum class EditableStatus {
     return if (this == Editable && other == Editable) ReadOnly else Editable
   }
 
+  fun and(other: Boolean): EditableStatus {
+    return if (this == Editable && other) Editable else ReadOnly
+  }
+
   companion object {
     fun Boolean.toEditableStatus(): EditableStatus {
       return if (this) Editable else ReadOnly

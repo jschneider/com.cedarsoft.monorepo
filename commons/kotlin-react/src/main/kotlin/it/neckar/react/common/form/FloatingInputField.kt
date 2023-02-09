@@ -31,7 +31,7 @@ fun RBuilder.floatingInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(floatingInputField) {
+  ): Unit = child(FloatingInputField) {
   attrs {
     this.value = valueAndSetter.value
     this.onChange = {
@@ -61,7 +61,7 @@ fun RBuilder.floatingReadOnlyInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(floatingInputField) {
+  ): Unit = child(FloatingInputField) {
   attrs {
     this.value = value
     this.onChange = { throw UnsupportedOperationException("can not change value for read only input field") }
@@ -94,7 +94,7 @@ fun RBuilder.floatingIntInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(floatingInputField) {
+  ): Unit = child(FloatingInputField) {
   attrs {
     this.value = valueAndSetter.value.toString()
     this.onChange = valueAndSetter.asOnChangeForInt(numberConstraint)
@@ -131,7 +131,7 @@ fun RBuilder.floatingIntInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(floatingInputField) {
+  ): Unit = child(FloatingInputField) {
   attrs {
     this.value = value.toString()
     this.onChange = { s ->
@@ -169,7 +169,7 @@ fun RBuilder.nullableFloatingIntInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(nullableFloatingInputField) {
+  ): Unit = child(NullableFloatingInputField) {
   attrs {
     this.value = valueAndSetter.value.toString().nullIfBlank()
     this.onChange = valueAndSetter.asOnChangeForInt(numberConstraint)
@@ -237,7 +237,7 @@ fun RBuilder.floatingDoubleInputField(
   divConfig: (RDOMBuilder<DIV>.() -> Unit)?,
   config: (RDOMBuilder<INPUT>.() -> Unit)?,
 
-  ): Unit = child(floatingInputField) {
+  ): Unit = child(FloatingInputField) {
 
   attrs {
     this.value = value.format(numberOfDecimals, 0, 1, false, I18nConfiguration.US) //always format with US, since the input field expects "." as separator
@@ -271,7 +271,7 @@ fun RBuilder.nullableFloatingDoubleInputField(
   divConfig: ((RDOMBuilder<DIV>).() -> Unit)? = null,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(nullableFloatingInputField) {
+  ): Unit = child(NullableFloatingInputField) {
   attrs {
     this.value = valueAndSetter.value.toString().nullIfBlank()
     this.onChange = valueAndSetter.asOnChangeForDouble(numberConstraint)
@@ -291,7 +291,7 @@ fun RBuilder.nullableFloatingDoubleInputField(
 }
 
 
-val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") { props ->
+val FloatingInputField: FC<FloatingInputFieldProps> = fc("FloatingInputField") { props ->
 
   div("form-floating") {
     attrs {
@@ -310,7 +310,7 @@ val floatingInputField: FC<FloatingInputFieldProps> = fc("floatingInputField") {
 
 }
 
-val nullableFloatingInputField: FC<NullableFloatingInputFieldProps> = fc("nullableFloatingInputField") { props ->
+val NullableFloatingInputField: FC<NullableFloatingInputFieldProps> = fc("NullableFloatingInputField") { props ->
 
   div("form-floating") {
     attrs {

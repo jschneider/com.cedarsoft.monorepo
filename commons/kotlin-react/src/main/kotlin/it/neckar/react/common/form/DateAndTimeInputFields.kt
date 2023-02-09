@@ -50,7 +50,7 @@ val datePicker: FC<DatePickerProps> = fc("datePicker") { props ->
   input(type = InputType.date, classes = "form-control datepicker") {
     attrs {
       value = dateString
-      onChangeFunction = useCallback(props.timeState.setter, value) {
+      onChangeFunction = {
         val updatedDate = (it.target as HTMLInputElement).value
         // Automatically update the value in element
         props.timeState.setter(Date.parse(updatedDate))
@@ -103,7 +103,7 @@ val datePickerNullable: FC<DatePickerNullableProps> = fc("datePickerNullable") {
   input(type = InputType.date, classes = "form-control datepicker") {
     attrs {
       value = dateString
-      onChangeFunction = useCallback(props.timeState.setter, value) {
+      onChangeFunction = {
         val updatedDate = (it.target as HTMLInputElement).value
         // Automatically update the value in element
         props.timeState.setter(Date.parse(updatedDate))
@@ -157,7 +157,7 @@ val timePicker: FC<TimePickerProps> = fc("timePicker") { props ->
     attrs {
       value = timeString
       step = (props.timeStep * 60).toString()
-      onChangeFunction = useCallback(props.timeState.setter, value) {
+      onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
         val updatedValues = updatedValue.split(":").map { it.toInt() }
         val updatedDate = Date(0, 0, 0, updatedValues[0], updatedValues[1])
@@ -215,7 +215,7 @@ val dateTimePickerNullable: FC<DateTimePickerProps> = fc("dateTimePickerNullable
   input(type = InputType.dateTimeLocal, classes = "form-control datepicker") {
     attrs {
       value = dateTimeString
-      onChangeFunction = useCallback(props.dateTimeState.setter, value) {
+      onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
         // Automatically update the value in element
         props.dateTimeState.setter(Date.parse(updatedValue))
