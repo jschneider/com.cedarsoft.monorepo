@@ -74,12 +74,12 @@ class DateFormatTest {
   @Test
   fun testTimeFormat() {
     assertThat(timeFormat.format(time, germanTokyo)).isEqualTo("19:11:59")
-    assertThat(timeFormat.format(time, englishTokyo)).isEqualTo("7:11:59 PM")
-    assertThat(timeFormat.format(time, englishNewYork)).isEqualTo("5:11:59 AM")
+    assertThat(timeFormat.format(time, englishTokyo)).isEqualTo("7:11:59 PM")
+    assertThat(timeFormat.format(time, englishNewYork)).isEqualTo("5:11:59 AM")
 
     assertThat(timeFormatWithMillis.format(time, germanTokyo)).isEqualTo("19:11:59.123")
-    assertThat(timeFormatWithMillis.format(time, englishTokyo)).isEqualTo("7:11:59.123 PM")
-    assertThat(timeFormatWithMillis.format(time, englishNewYork)).isEqualTo("5:11:59.123 AM")
+    assertThat(timeFormatWithMillis.format(time, englishTokyo)).isEqualTo("7:11:59.123 PM")
+    assertThat(timeFormatWithMillis.format(time, englishNewYork)).isEqualTo("5:11:59.123 AM")
   }
 
   @Test
