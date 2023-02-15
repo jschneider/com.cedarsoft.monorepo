@@ -53,7 +53,7 @@ object LocalStorageSupport {
    * saves the filter option in local storage if not null
    * otherwise the given key will be removed from local storage
    */
-  fun <T>saveToLocalStorageNotNull(key: LocalStorageKey, value: T?, serializer: KSerializer<T>) {
+  fun <T> saveToLocalStorageNotNull(key: LocalStorageKey, value: T?, serializer: KSerializer<T>) {
     // Option 'ALL' will be selected
     if (value == null) {
       window.localStorage.removeItem(key.value)

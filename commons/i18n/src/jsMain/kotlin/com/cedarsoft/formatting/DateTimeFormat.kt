@@ -19,30 +19,27 @@ actual class DateTimeFormatIso8601 : DateTimeFormat {
 actual class DateFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     val date = Date(timestamp)
-    return "${date.getFullYear()}-${(date.getMonth() + 1).formatWithLeadingZeros2()}-${date.getDate().formatWithLeadingZeros2()}"
+    return "${date.getFullYear()}-${(date.getMonth() + 1).formatWithLeadingZeros()}-${date.getDate().formatWithLeadingZeros()}"
   }
 }
 
 actual class TimeFormatIso8601 : DateTimeFormat {
   override fun format(timestamp: Double, i18nConfiguration: I18nConfiguration): String {
     val date = Date(timestamp)
-    return "${date.getHours().formatWithLeadingZeros2()}:${date.getMinutes().formatWithLeadingZeros2()}:${date.getSeconds().formatWithLeadingZeros2()}:"
+    return date.toLocaleTimeString(i18nConfiguration.formatLocale.locale, localeOptions(i18nConfiguration.timeZone) {
+      hour12 = false
+      hour = "2-digit"
+      minute = "2-digit"
+      second = "2-digit"
+    }) + "." + date.getMilliseconds().formatWithLeadingZeros(3)
   }
 }
 
 /**
  * ATTENTION! This method must only be used for positive values
  */
-private fun @PositiveOrZero Int.formatWithLeadingZeros2(): String {
-  if (this == 0) {
-    return "00"
-  }
-
-  if (this < 10) {
-    return "0$this"
-  }
-
-  return this.toString()
+private fun @PositiveOrZero Int.formatWithLeadingZeros(length: Int = 2): String {
+  return this.toString().padStart(length, '0')
 }
 
 /**

@@ -3,7 +3,9 @@ package it.neckar.logging
 import it.neckar.logging.impl.LoggerImplJs
 
 /**
- * Logger factory implementation for JS
+ * Logger factory implementation for JS.
+ *
+ * Is configured using [LogConfigurer] - which loads the settings from the local storage ("logging.rootLevel")
  */
 actual object LoggerFactory {
   /**

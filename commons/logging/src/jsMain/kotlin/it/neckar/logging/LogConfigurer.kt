@@ -16,7 +16,8 @@ object LogConfigurer {
   /**
    * The root logger level
    */
-  private var rootLevel: Level = Level.DEBUG
+  var rootLevel: Level = Level.DEBUG
+    private set
 
   /**
    * Sets the root logger level

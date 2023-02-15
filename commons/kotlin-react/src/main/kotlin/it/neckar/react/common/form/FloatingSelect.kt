@@ -251,14 +251,16 @@ val FloatingSelect: FC<FloatingSelectProps> = fc("FloatingSelect") { props ->
 
   //Enforce calling onChange if the current value is *not* in available options
   val availableOptions = props.availableOptions
-  val selectedValue = props.selectedValue
-
-  require(availableOptions.contains(selectedValue)) {
-    buildString {
-      appendLine("selected value (${selectedValue.toString()}) must be in list of available options.")
+  val selectedValue = if (availableOptions.contains(props.selectedValue)) {
+    props.selectedValue
+  } else {
+    println(buildString {
+      appendLine("selected value (${props.selectedValue.toString()}) must be in list of available options.")
       appendLine("Available options:")
       append(availableOptions.joinToString("\n"))
-    }
+      append("Set value to null!")
+    })
+    null
   }
 
   div("form-floating") {

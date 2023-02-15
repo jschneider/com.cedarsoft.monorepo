@@ -65,10 +65,9 @@ class DateFormatTest {
 
   @Test
   fun testIsoTime() {
-    //TODO fix me!!! somehow add time zone
-    //assertThat(timeFormatIso8601.format(time, germanTokyo)).isEqualTo("19:11:59.123")
-    //assertThat(timeFormatIso8601.format(time, englishTokyo)).isEqualTo("19:11:59.123")
-    //assertThat(timeFormatIso8601.format(time, englishNewYork)).isEqualTo("05:11:59.123")
+    assertThat(timeFormatIso8601.format(time, germanTokyo)).isEqualTo("19:11:59.123")
+    assertThat(timeFormatIso8601.format(time, englishTokyo)).isEqualTo("19:11:59.123")
+    assertThat(timeFormatIso8601.format(time, englishNewYork)).isEqualTo("05:11:59.123")
   }
 
   @Test

@@ -17,7 +17,7 @@ class LoggerImplJs(override val name: String) : Logger {
   }
 
   override fun isDebugEnabled(): Boolean {
-    return Level.DEBUG.isEnabled(LogConfigurer.getEffectiveLogLevel(this))
+    return Level.DEBUG.isEnabled(getEffectiveLogLevel())
   }
 
   override fun debug(msg: String?) {
@@ -25,7 +25,7 @@ class LoggerImplJs(override val name: String) : Logger {
   }
 
   override fun isInfoEnabled(): Boolean {
-    return Level.INFO.isEnabled(LogConfigurer.getEffectiveLogLevel(this))
+    return Level.INFO.isEnabled(getEffectiveLogLevel())
   }
 
   override fun info(msg: String?) {
@@ -33,7 +33,7 @@ class LoggerImplJs(override val name: String) : Logger {
   }
 
   override fun isWarnEnabled(): Boolean {
-    return Level.WARN.isEnabled(LogConfigurer.getEffectiveLogLevel(this))
+    return Level.WARN.isEnabled(getEffectiveLogLevel())
   }
 
   override fun warn(msg: String?) {
@@ -41,7 +41,14 @@ class LoggerImplJs(override val name: String) : Logger {
   }
 
   override fun isErrorEnabled(): Boolean {
-    return Level.ERROR.isEnabled(LogConfigurer.getEffectiveLogLevel(this))
+    return Level.ERROR.isEnabled(getEffectiveLogLevel())
+  }
+
+  /**
+   * Returns the effective log level for this logger
+   */
+  fun getEffectiveLogLevel(): Level {
+    return LogConfigurer.getEffectiveLogLevel(this)
   }
 
   override fun error(msg: String?) {
