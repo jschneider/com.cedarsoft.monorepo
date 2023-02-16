@@ -26,7 +26,7 @@ fun RBuilder.formButtons(
   okConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
   cancelAction: (Event) -> Unit,
   okAction: (Event) -> Unit,
-): Unit = child(formButtons) {
+): Unit = child(FormButtons) {
   attrs {
     this.cancelIcon = cancelIcon
     this.cancelText = cancelText
@@ -56,7 +56,7 @@ fun RBuilder.wizardFormButtons(
   okConfig: ((RDOMBuilder<BUTTON>) -> Unit)? = null,
   cancelAction: (Event) -> Unit,
   okAction: (Event) -> Unit,
-): Unit = child(formButtons) {
+): Unit = child(FormButtons) {
   attrs {
     this.cancelIcon = cancelIcon
     this.cancelText = cancelText
@@ -80,7 +80,7 @@ data class ButtonIcon(
   val alignment: IconAlignment = Left,
 )
 
-val formButtons: FC<FormButtonsProps> = fc("formButtons") { props ->
+val FormButtons: FC<FormButtonsProps> = fc("FormButtons") { props ->
   val cancelIcon = props::cancelIcon.safeGet()
   val cancelText = props::cancelText.safeGet()
   val okIcon = props::okIcon.safeGet()

@@ -3,6 +3,7 @@ package it.neckar.react.common.form
 import com.cedarsoft.common.kotlin.lang.parseInt
 import com.cedarsoft.formatting.format
 import com.cedarsoft.i18n.I18nConfiguration
+import it.neckar.commons.kotlin.js.getNotNull
 import it.neckar.commons.kotlin.js.safeGet
 import it.neckar.react.common.*
 import it.neckar.react.common.form.EditableStatus.*
@@ -44,7 +45,7 @@ fun RBuilder.checkbox(
   labelConfig: (RDOMBuilder<LABEL>.() -> Unit)? = null,
   checkboxConfig: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
-  ): Unit = child(checkbox) {
+  ): Unit = child(Checkbox) {
   attrs {
     this.value = value
     this.onChange = onChange
@@ -86,7 +87,7 @@ fun RBuilder.checkbox(
   )
 }
 
-val checkbox: FC<CheckboxProps> = fc("checkbox") { props ->
+val Checkbox: FC<CheckboxProps> = fc("Checkbox") { props ->
   val uniqueId = uniqueIdMemo("checkbox")
 
 
@@ -304,6 +305,8 @@ fun RBuilder.inputField(
    */
   placeholder: String? = null,
 
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 
   ) {
@@ -313,6 +316,7 @@ fun RBuilder.inputField(
     fieldName = fieldName,
     title = title,
     placeholder = placeholder,
+    editableStatus = editableStatus,
     config = config,
   )
 }
@@ -325,6 +329,7 @@ fun RBuilder.intInput(
   valueAndSetter: StateInstance<Int>,
   fieldName: String,
   title: String,
+  editableStatus: EditableStatus = Editable,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   intInput(
@@ -333,6 +338,7 @@ fun RBuilder.intInput(
     fieldName = fieldName,
     title = title,
     numberConstraint = Unconstraint,
+    editableStatus = editableStatus,
     config = config,
   )
 }
@@ -347,6 +353,7 @@ fun RBuilder.intInput(
   fieldName: String,
   title: String,
   numberConstraint: NumberConstraint,
+  editableStatus: EditableStatus = Editable,
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   inputField(
@@ -354,6 +361,7 @@ fun RBuilder.intInput(
     onChange = { onChange.invoke(numberConstraint.constraint(it.parseInt())) },
     fieldName = fieldName,
     title = title,
+    editableStatus = editableStatus,
   ) {
     attrs {
       type = InputType.number
@@ -378,6 +386,7 @@ fun RBuilder.doubleInput(
   numberOfDecimals: Int = 2,
   placeholder: String? = null,
   numberConstraint: NumberConstraint,
+  editableStatus: EditableStatus = Editable,
 
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
@@ -387,6 +396,7 @@ fun RBuilder.doubleInput(
     fieldName = fieldName,
     title = title,
     placeholder = placeholder,
+    editableStatus = editableStatus,
   ) {
     attrs {
       type = InputType.number
@@ -405,6 +415,8 @@ fun RBuilder.passwordField(
   fieldName: String,
   title: String,
   placeholder: String? = null,
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<INPUT>.() -> Unit)? = null,
 ) {
   inputField(
@@ -413,6 +425,7 @@ fun RBuilder.passwordField(
     fieldName = fieldName,
     title = title,
     placeholder = placeholder,
+    editableStatus = editableStatus,
     config = {
       attrs {
         type = InputType.password
@@ -453,12 +466,14 @@ fun RBuilder.inputField(
    */
   classes: String = "form-control",
 
+  editableStatus: EditableStatus = Editable,
+
   /**
    * Configuration for the input field
    */
   config: (RDOMBuilder<INPUT>.() -> Unit)?,
 
-  ): Unit = child(inputField) {
+  ): Unit = child(InputField) {
 
   //ensureSameCallback(onChange, fieldName)
 
@@ -473,6 +488,7 @@ fun RBuilder.inputField(
     this.fieldName = fieldName
     this.placeholder = placeholder
     this.classes = classes
+    this.editableStatus = editableStatus
     this.config = config as ((RDOMBuilder<*>) -> Unit)?
   }
 }
@@ -480,7 +496,7 @@ fun RBuilder.inputField(
 /**
  * an input field
  */
-val inputField: FC<InputFieldProps> = fc("inputField") { props ->
+val InputField: FC<InputFieldProps> = fc("InputField") { props ->
 
   input(name = props.fieldName, classes = props.classes) {
 
@@ -528,10 +544,12 @@ fun RBuilder.inputArea(
    */
   classes: String = "form-control",
 
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
   ) {
-  child(inputArea) {
+  child(InputArea) {
     attrs {
       this.value = valueAndSetter.value
       this.onChange = { valueAndSetter.setter.invoke(it) }
@@ -539,6 +557,7 @@ fun RBuilder.inputArea(
       this.fieldName = fieldName
       this.placeholder = placeHolder
       this.classes = classes
+      this.editableStatus = editableStatus
       this.config = config as ((RDOMBuilder<*>) -> Unit)?
     }
   }
@@ -547,7 +566,7 @@ fun RBuilder.inputArea(
 /**
  * Creates a text area
  */
-val inputArea: FC<InputFieldProps> = fc("inputArea") { props ->
+val InputArea: FC<InputFieldProps> = fc("InputArea") { props ->
   textarea(classes = "form-control") {
     attrs {
       name = props.fieldName
@@ -564,6 +583,10 @@ val inputArea: FC<InputFieldProps> = fc("inputArea") { props ->
 
       onKeyPress = { keyboardEvent ->
         keyboardEvent.stopPropagation()
+      }
+
+      if (props.editableStatus == ReadOnly) {
+        disabled = true
       }
     }
 
@@ -606,6 +629,8 @@ external interface InputFieldProps : Props {
    */
   var placeholder: String?
 
+  var editableStatus: EditableStatus
+
   /**
    * The configuration for the input field
    */
@@ -645,12 +670,14 @@ fun RBuilder.nullableInputField(
    */
   classes: String = "form-control",
 
+  editableStatus: EditableStatus = Editable,
+
   /**
    * Configuration for the input field
    */
   config: (RDOMBuilder<INPUT>.() -> Unit)?,
 
-  ): Unit = child(nullableInputField) {
+  ): Unit = child(NullableInputField) {
 
   ensureSameCallback(onChange, fieldName)
 
@@ -665,6 +692,7 @@ fun RBuilder.nullableInputField(
     this.fieldName = fieldName
     this.placeholder = placeholder
     this.classes = classes
+    this.editableStatus = editableStatus
     this.config = config as ((RDOMBuilder<*>) -> Unit)?
   }
 }
@@ -672,29 +700,37 @@ fun RBuilder.nullableInputField(
 /**
  * an input field
  */
-val nullableInputField: FC<NullableTextInputProps> = fc("nullableInputField") { props ->
+val NullableInputField: FC<NullableTextInputProps> = fc("NullableInputField") { props ->
+  val classes = props::classes.safeGet()
+  val fieldName = props::fieldName.getNotNull()
+  val placeholder = props::placeholder.safeGet()
+  val title = props::title.getNotNull()
+  val value = props::value.safeGet()
+  val onChange = props::onChange.getNotNull()
+  val editableStatus = props::editableStatus.getNotNull()
+  val config = props::config.safeGet()
 
-  input(name = props.fieldName, classes = props.classes) {
+
+  input(name = fieldName, classes = classes) {
 
     attrs {
-      placeholder = props.placeholder ?: props.title
-      title = props.title
+      this.placeholder = placeholder ?: title
+      this.title = title
 
       //Always assign the value in element
-      props.value?.let {
-        value = it
-      }
+      value?.let { this.value = it }
 
-      val onChange = props.onChange
       onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
 
         //Notify the change listener - this *may* result in model changes, but sometimes does *not*
         onChange(updatedValue)
       }
+
+      if (editableStatus == ReadOnly) this.disabled = true
     }
 
-    props.config?.invoke(this)
+    config?.invoke(this)
   }
 
 }
@@ -719,10 +755,12 @@ fun RBuilder.nullableInputArea(
    */
   classes: String = "form-control",
 
+  editableStatus: EditableStatus = Editable,
+
   config: (RDOMBuilder<TEXTAREA>.() -> Unit)? = null,
 
   ) {
-  child(nullableInputArea) {
+  child(NullableInputArea) {
     attrs {
       this.value = valueAndSetter.value
       this.onChange = { valueAndSetter.setter.invoke(it) }
@@ -730,6 +768,7 @@ fun RBuilder.nullableInputArea(
       this.fieldName = fieldName
       this.placeholder = placeHolder
       this.classes = classes
+      this.editableStatus = editableStatus
       this.config = config as ((RDOMBuilder<*>) -> Unit)?
     }
   }
@@ -738,31 +777,39 @@ fun RBuilder.nullableInputArea(
 /**
  * Creates a text area
  */
-val nullableInputArea: FC<NullableTextInputProps> = fc("nullableInputArea") { props ->
+val NullableInputArea: FC<NullableTextInputProps> = fc("NullableInputArea") { props ->
+  val classes = props::classes.safeGet()
+  val fieldName = props::fieldName.getNotNull()
+  val placeholder = props::placeholder.safeGet()
+  val title = props::title.getNotNull()
+  val value = props::value.safeGet()
+  val onChange = props::onChange.getNotNull()
+  val editableStatus = props::editableStatus.getNotNull()
+  val config = props::config.safeGet()
 
-  textarea(classes = props.classes) {
+
+  textarea(classes = classes) {
 
     attrs {
-      name = props.fieldName
+      this.name = fieldName
 
-      placeholder = props.placeholder ?: props.title
-      title = props.title
+      this.placeholder = placeholder ?: title
+      this.title = title
 
       //Always assign the value in element
-      props.value?.let {
-        value = it
-      }
+      value?.let { this.value = it }
 
-      val onChange = props.onChange
-      onChangeFunction = {
+      this.onChangeFunction = {
         val updatedValue = (it.target as HTMLInputElement).value
 
         //Notify the change listener - this *may* result in model changes, but sometimes does *not*
         onChange(updatedValue)
       }
+
+      if (editableStatus == ReadOnly) this.disabled = true
     }
 
-    props.config?.invoke(this)
+    config?.invoke(this)
   }
 
 }
@@ -801,6 +848,8 @@ external interface NullableTextInputProps : Props {
    * If no placeholder is set, the title is used instead
    */
   var placeholder: String?
+
+  var editableStatus: EditableStatus
 
   /**
    * The configuration for the input field

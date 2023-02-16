@@ -32,7 +32,7 @@ fun RBuilder.actionButton(
    */
   action: suspend () -> Unit,
 
-  ): Unit = child(actionButton) {
+  ): Unit = child(ActionButton) {
   attrs {
     this.icon = icon
     this.classes = classes
@@ -42,7 +42,7 @@ fun RBuilder.actionButton(
   }
 }
 
-val actionButton: FC<ActionButtonProps> = fc("actionButton") { props ->
+val ActionButton: FC<ActionButtonProps> = fc("ActionButton") { props ->
 
   val busy = props.busy
 
