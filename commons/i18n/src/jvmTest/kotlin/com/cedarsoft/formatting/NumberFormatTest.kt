@@ -5,11 +5,12 @@ import assertk.assertions.*
 import com.cedarsoft.formatting.NumberFormatPatternParser.parsePattern
 import com.cedarsoft.i18n.I18nConfiguration
 import org.junit.jupiter.api.Test
+import kotlin.text.Typography.nbsp
 
 class NumberFormatTest {
   @Test
   fun testPercentage0Digits() {
-    assertThat(percentageFormat0digits.format(1.234567, I18nConfiguration.US)).isEqualTo("123 %")
+    assertThat(percentageFormat0digits.format(1.234567, I18nConfiguration.US)).isEqualTo("123$nbsp%")
   }
 
   @Test

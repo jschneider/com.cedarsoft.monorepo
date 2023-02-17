@@ -1,6 +1,7 @@
 package com.cedarsoft.formatting
 
 import com.cedarsoft.i18n.I18nConfiguration
+import kotlin.text.Typography.nbsp
 
 /**
  * Formats a percentage value using a delegate.
@@ -10,7 +11,7 @@ import com.cedarsoft.i18n.I18nConfiguration
 @Deprecated("use asPercentageFormat - as soon as precision has been removed!")
 class PercentageFormat(val delegate: NumberFormat) : NumberFormat {
   override fun format(value: Double, i18nConfiguration: I18nConfiguration): String {
-    return delegate.format(value * 100.0, i18nConfiguration) + " %"
+    return delegate.format(value * 100.0, i18nConfiguration) + "$nbsp%"
   }
 
   override val precision: Double

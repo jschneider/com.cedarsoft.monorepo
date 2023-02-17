@@ -3,6 +3,7 @@ package com.cedarsoft.formatting
 import assertk.*
 import assertk.assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.text.Typography.nbsp
 
 class ConvertingFormatTest {
   @Test
@@ -10,7 +11,7 @@ class ConvertingFormatTest {
     ConvertingFormat(percentageFormat) {
       it / 2.0
     }.let {
-      assertThat(it.format(1.7)).isEqualTo("85.00 %")
+      assertThat(it.format(1.7)).isEqualTo("85.00$nbsp%")
     }
   }
 
