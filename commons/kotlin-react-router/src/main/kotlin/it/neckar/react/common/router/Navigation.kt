@@ -345,9 +345,7 @@ private fun RBuilder.addRouteRecursively(navigationElement: NavigationElement) {
 /**
  * The breadcrumb info for this navigation element
  */
-data class BreadcrumbInfo(
-  val linkContent: (RBuilder.() -> Unit)?,
-) {
+data class BreadcrumbInfo(val linkContent: (RBuilder.() -> Unit)?) {
   @NavigationDsl
   class Builder {
     /**
