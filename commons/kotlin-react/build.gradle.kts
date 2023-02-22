@@ -22,6 +22,9 @@ dependencies {
 
   implementation(Libs.uuid)
 
+  implementation(project(Projects.closed_rest_ktor_client)) // todo remove this if no longer required
+
+
   //BOM for dependencies
   implementation(enforcedPlatform(Libs.kotlin_wrappers_bom))
 

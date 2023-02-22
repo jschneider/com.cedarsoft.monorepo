@@ -1,10 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
+import com.cedarsoft.unit.other.px
 
 /**
- * Marks values that are relative to the window origin (visible area).
- * The window is zoomed and translated
+ * A value (in pixels) relative to the origin of a tile
+ *
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -25,5 +25,5 @@ import com.cedarsoft.unit.other.pct
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@pct
-annotation class WindowRelative
+@px
+annotation class Tile

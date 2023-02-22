@@ -1,4 +1,4 @@
-package com.cedarsoft.charting.api.sanitizing
+package com.meistercharts.api.sanitizing
 
 
 /**

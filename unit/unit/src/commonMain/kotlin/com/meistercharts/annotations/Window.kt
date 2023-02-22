@@ -1,10 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
 import com.cedarsoft.unit.other.px
 
 /**
- * Marks values that are related to the paintable origin.
- * The value is zoomed and translated
+ * Marks values that are related to the window origin (visible area).
+ * The window is zoomed and translated
  *
  */
 @Retention(AnnotationRetention.SOURCE)
@@ -27,4 +27,4 @@ import com.cedarsoft.unit.other.px
 )
 @MustBeDocumented
 @px
-annotation class PaintableArea
+annotation class Window

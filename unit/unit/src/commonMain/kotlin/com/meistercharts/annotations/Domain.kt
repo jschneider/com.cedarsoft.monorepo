@@ -1,9 +1,7 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
 /**
- * The domain values as percentage within their value range
- *
+ * Domain values. The unit is specific to the domain.
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -24,5 +22,4 @@ import com.cedarsoft.unit.other.pct
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@pct
-annotation class DomainRelative
+annotation class Domain

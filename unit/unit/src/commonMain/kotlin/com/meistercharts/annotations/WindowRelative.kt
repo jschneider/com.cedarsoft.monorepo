@@ -1,12 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.px
+import com.cedarsoft.unit.other.pct
+
 /**
- * Marked values represent window values in pixels with zoom but *without* translation
- * This is *not* the window (missing the translation).
- *
- * Values are useful to calculate lengths for relative movements/calculations
- *
+ * Marks values that are relative to the window origin (visible area).
+ * The window is zoomed and translated
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -27,5 +25,5 @@ import com.cedarsoft.unit.other.px
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@px
-annotation class Zoomed
+@pct
+annotation class WindowRelative

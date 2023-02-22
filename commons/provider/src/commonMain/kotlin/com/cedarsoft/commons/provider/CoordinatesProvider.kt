@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.provider
 
-import com.cedarsoft.charting.annotations.Window
+import com.meistercharts.annotations.Window
 
 /**
  * Provides coordinates.

@@ -1,4 +1,4 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
 import com.cedarsoft.unit.other.px
 

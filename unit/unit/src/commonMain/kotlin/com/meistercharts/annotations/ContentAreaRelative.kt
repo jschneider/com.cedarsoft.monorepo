@@ -1,7 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
+
+import com.cedarsoft.unit.other.pct
 
 /**
- * A pixel value that corresponds to *real* pixels on the screen
+ * The value as percentage within the content area.
+ * Respects the orientation of the axis [com.meistercharts.algorithms.AxisOrientationX] and [com.meistercharts.algorithms.AxisOrientationY]
  *
  */
 @Retention(AnnotationRetention.SOURCE)
@@ -23,4 +26,5 @@ package com.cedarsoft.charting.annotations
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-annotation class PhysicalPixel
+@pct
+annotation class ContentAreaRelative

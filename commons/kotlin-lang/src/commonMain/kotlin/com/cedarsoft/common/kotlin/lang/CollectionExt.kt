@@ -1,6 +1,6 @@
 package com.cedarsoft.common.kotlin.lang
 
-import com.cedarsoft.charting.annotations.Domain
+import com.meistercharts.annotations.Domain
 import com.cedarsoft.unit.other.pct
 
 /**

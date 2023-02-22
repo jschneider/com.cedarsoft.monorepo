@@ -1,11 +1,7 @@
-package com.cedarsoft.charting.annotations
-
-import com.cedarsoft.unit.other.pct
+package com.meistercharts.annotations
 
 /**
- * The value as percentage within the content area.
- * Respects the orientation of the axis [com.cedarsoft.charting.algorithms.AxisOrientationX] and [com.cedarsoft.charting.algorithms.AxisOrientationY]
- *
+ * Can be used to annotate a method that must be called with a graphics context that has been translated to a given location
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -26,5 +22,4 @@ import com.cedarsoft.unit.other.pct
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@pct
-annotation class ContentAreaRelative
+annotation class ExpectsTranslatedTo(val value: String)

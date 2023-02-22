@@ -1,9 +1,7 @@
-package com.cedarsoft.charting.annotations
-
-import com.cedarsoft.unit.other.pct
+package com.meistercharts.annotations
 
 /**
- * A value (in percentage of the tile size) relative to a tile origin
+ * A pixel value that corresponds to *real* pixels on the screen
  *
  */
 @Retention(AnnotationRetention.SOURCE)
@@ -25,5 +23,4 @@ import com.cedarsoft.unit.other.pct
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@pct
-annotation class TileRelative
+annotation class PhysicalPixel

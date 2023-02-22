@@ -1,7 +1,9 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
+
+import com.cedarsoft.unit.other.px
 
 /**
- * Domain values. The unit is specific to the domain.
+ * Marks values that have been snapped (usually to physical pixels)
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -22,4 +24,5 @@ package com.cedarsoft.charting.annotations
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-annotation class Domain
+@px
+annotation class Snapped

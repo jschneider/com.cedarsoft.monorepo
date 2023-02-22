@@ -113,6 +113,33 @@ var HTMLTag.ariaLabel: String
     attributes["aria-label"] = value
   }
 
+var HTMLTag.ariaValueRange: IntRange
+  @Deprecated("write only", level = DeprecationLevel.HIDDEN)
+  get() {
+    return throw UnsupportedOperationException("not supported")
+  }
+  set(value) {
+    attributes["aria-valuemin"] = value.start.toString()
+    attributes["aria-valuemax"] = value.endInclusive.toString()
+  }
+
+var HTMLTag.ariaValueNow: Int
+  @Deprecated("write only", level = DeprecationLevel.HIDDEN)
+  get() {
+    return throw UnsupportedOperationException("not supported")
+  }
+  set(value) {
+    attributes["aria-valuenow"] = value.toString()
+  }
+
+var HTMLTag.roleHTML: String
+  @Deprecated("write only", level = DeprecationLevel.HIDDEN)
+  get() {
+    return throw UnsupportedOperationException("not supported")
+  }
+  set(value) {
+    attributes["role"] = value
+  }
 /**
  * Sets the "aria-describedby" attribute
  */

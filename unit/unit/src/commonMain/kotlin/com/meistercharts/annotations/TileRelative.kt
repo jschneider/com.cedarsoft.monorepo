@@ -1,7 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
+
+import com.cedarsoft.unit.other.pct
 
 /**
- * Can be used to annotate a method that must be called with a graphics context that has been translated to a given location
+ * A value (in percentage of the tile size) relative to a tile origin
+ *
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -22,4 +25,5 @@ package com.cedarsoft.charting.annotations
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-annotation class ExpectsTranslatedTo(val value: String)
+@pct
+annotation class TileRelative

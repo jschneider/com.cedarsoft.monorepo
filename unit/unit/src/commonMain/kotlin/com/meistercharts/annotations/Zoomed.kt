@@ -1,8 +1,13 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
 import com.cedarsoft.unit.other.px
+
 /**
- * Marks values that have been coerced into the viewport
+ * Marked values represent window values in pixels with zoom but *without* translation
+ * This is *not* the window (missing the translation).
+ *
+ * Values are useful to calculate lengths for relative movements/calculations
+ *
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -24,4 +29,4 @@ import com.cedarsoft.unit.other.px
 )
 @MustBeDocumented
 @px
-annotation class InViewport
+annotation class Zoomed

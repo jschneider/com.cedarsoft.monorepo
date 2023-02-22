@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.provider
 
-import com.cedarsoft.charting.annotations.Domain
+import com.meistercharts.annotations.Domain
 import com.cedarsoft.common.kotlin.lang.DoubleMapFunction
 import kotlin.reflect.KProperty0
 

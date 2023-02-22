@@ -1,8 +1,10 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
+import com.cedarsoft.unit.other.px
+
 /**
- * The time values as percentage within their value range
+ * Marks values that are related to the paintable origin.
+ * The value is zoomed and translated
  *
  */
 @Retention(AnnotationRetention.SOURCE)
@@ -24,5 +26,5 @@ import com.cedarsoft.unit.other.pct
   AnnotationTarget.TYPEALIAS
 )
 @MustBeDocumented
-@pct
-annotation class TimeRelative
+@px
+annotation class PaintableArea

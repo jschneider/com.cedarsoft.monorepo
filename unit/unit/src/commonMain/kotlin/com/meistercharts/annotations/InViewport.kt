@@ -1,10 +1,9 @@
-package com.cedarsoft.charting.annotations
+package com.meistercharts.annotations
 
 import com.cedarsoft.unit.other.px
+
 /**
- * Marks values that are related to the window origin (visible area).
- * The window is zoomed and translated
- *
+ * Marks values that have been coerced into the viewport
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(
@@ -26,4 +25,4 @@ import com.cedarsoft.unit.other.px
 )
 @MustBeDocumented
 @px
-annotation class Window
+annotation class InViewport
