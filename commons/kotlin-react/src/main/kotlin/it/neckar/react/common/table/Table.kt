@@ -30,7 +30,7 @@ fun <T> RBuilder.table(
 
   handler: (TableProps) -> Unit = {},
 
-  ): Unit = child(table) {
+  ): Unit = child(Table) {
   attrs {
     this.tableEntries = entries.unsafeCast<List<Any>>()
     this.firstColumn = firstColumn.unsafeCast<TableFirstColumn<Any>>()
@@ -41,7 +41,7 @@ fun <T> RBuilder.table(
 }
 
 
-val table: FC<TableProps> = fc("table") { props ->
+val Table: FC<TableProps> = fc("Table") { props ->
   val tableEntries = props::tableEntries.safeGet()
   val firstColumn = props::firstColumn.safeGet()
   val columns = props::columns.safeGet()

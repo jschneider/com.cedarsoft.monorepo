@@ -7,11 +7,19 @@ enum class EditableStatus {
   ;
 
   fun and(other: EditableStatus): EditableStatus {
-    return if (this == Editable && other == Editable) ReadOnly else Editable
+    return if (this == Editable && other == Editable) Editable else ReadOnly
   }
 
   fun and(other: Boolean): EditableStatus {
     return if (this == Editable && other) Editable else ReadOnly
+  }
+
+  fun or(other: EditableStatus): EditableStatus {
+    return if (this == Editable || other == Editable) Editable else ReadOnly
+  }
+
+  fun or(other: Boolean): EditableStatus {
+    return if (this == Editable || other) Editable else ReadOnly
   }
 
   companion object {
