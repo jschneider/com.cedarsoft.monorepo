@@ -30,9 +30,10 @@
  */
 package com.cedarsoft.swing.common.dialog;
 
-import com.cedarsoft.annotations.NonBlocking;
-import com.cedarsoft.annotations.NonUiThread;
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.NonBlocking;
+import it.neckar.open.annotations.NonUiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.cedarsoft.swing.common.Borders;
 import com.cedarsoft.swing.common.IconUtils;
 import com.cedarsoft.swing.common.Messages;

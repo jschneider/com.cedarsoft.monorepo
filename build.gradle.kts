@@ -1,5 +1,5 @@
 allprojects {
-  group = "com.cedarsoft.open"
+  group = "it.neckar.open"
 }
 
 subprojects {

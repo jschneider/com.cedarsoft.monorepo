@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling
 
-import com.cedarsoft.annotations.AnyThread
+import it.neckar.open.annotations.AnyThread
 import com.cedarsoft.exceptions.ApplicationException
 import com.cedarsoft.exceptions.NotificationException
 import org.slf4j.LoggerFactory

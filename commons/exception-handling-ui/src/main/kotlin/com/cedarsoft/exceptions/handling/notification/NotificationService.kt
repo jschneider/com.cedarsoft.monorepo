@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling.notification
 
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.UiThread
 import com.cedarsoft.exceptions.handling.Messages
 import com.cedarsoft.swing.common.Fonts
 import com.cedarsoft.swing.common.SwingHelper

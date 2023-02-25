@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.annotations.NonUiThread;
+import it.neckar.open.annotations.NonUiThread;
+
 import com.cedarsoft.crypt.Hash;
 
 import javax.annotation.Nonnull;

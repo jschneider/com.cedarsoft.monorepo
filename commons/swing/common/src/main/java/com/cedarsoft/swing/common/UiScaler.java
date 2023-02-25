@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.cedarsoft.unit.other.Scaled;
 import com.cedarsoft.unit.other.ScalingFactor;
 import com.cedarsoft.unit.other.Unscaled;

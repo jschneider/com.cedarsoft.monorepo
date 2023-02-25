@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.cedarsoft.unit.other.px;
 
 /**

@@ -40,7 +40,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 

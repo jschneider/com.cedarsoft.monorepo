@@ -337,7 +337,7 @@ fun RBuilder.intInput(
     onChange = { valueAndSetter.setter.invoke(it) },
     fieldName = fieldName,
     title = title,
-    numberConstraint = Unconstraint,
+    numberConstraint = Unconstrained,
     editableStatus = editableStatus,
     config = config,
   )
@@ -867,10 +867,10 @@ fun RDOMBuilder<INPUT>.configure(numberConstraint: NumberConstraint) {
       zeroOrPositiveValues()
     }
 
-    is CustomIntegerConstraint -> {
+    is CoerceIn -> {
       attrs {
-        min = "${numberConstraint.lowerConstraint}"
-        max = "${numberConstraint.upperConstraint}"
+        min = "${numberConstraint.lowerLimit}"
+        max = "${numberConstraint.upperLimit}"
       }
     }
 

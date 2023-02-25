@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.commons.swing.jgoodies;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.jgoodies.binding.PresentationModel;
 import com.jgoodies.validation.ValidationResult;
 import com.jgoodies.validation.ValidationResultModel;

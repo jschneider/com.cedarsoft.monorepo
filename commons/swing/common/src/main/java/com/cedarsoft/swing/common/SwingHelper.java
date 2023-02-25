@@ -30,10 +30,11 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.annotations.AnyThread;
-import com.cedarsoft.annotations.NonBlocking;
-import com.cedarsoft.annotations.NonUiThread;
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.AnyThread;
+import it.neckar.open.annotations.NonBlocking;
+import it.neckar.open.annotations.NonUiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.cedarsoft.swing.common.components.CJideButton;
 import com.google.common.collect.Lists;
 import com.jidesoft.popup.JidePopup;

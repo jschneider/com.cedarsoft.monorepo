@@ -1,6 +1,6 @@
 package com.cedarsoft.i18n
 
-import com.cedarsoft.annotations.JavaFriendly
+import it.neckar.open.annotations.JavaFriendly
 import com.cedarsoft.common.collections.fastForEach
 import com.cedarsoft.common.kotlin.lang.inCurlyBraces
 import com.cedarsoft.i18n.resolve.FallbackTextResolver

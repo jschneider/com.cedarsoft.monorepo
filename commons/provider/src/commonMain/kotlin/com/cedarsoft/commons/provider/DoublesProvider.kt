@@ -1,8 +1,8 @@
 package com.cedarsoft.commons.provider
 
-import com.cedarsoft.annotations.Boxed
-import com.cedarsoft.annotations.CreatesObjects
-import com.cedarsoft.annotations.Slow
+import it.neckar.open.annotations.Boxed
+import it.neckar.open.annotations.CreatesObjects
+import it.neckar.open.annotations.Slow
 import com.cedarsoft.common.kotlin.lang.Double2Double
 import com.cedarsoft.common.kotlin.lang.DoubleMapFunction
 import com.cedarsoft.common.kotlin.lang.fastFor

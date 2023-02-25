@@ -1,4 +1,0 @@
-if ( $_ == null ) {
-  throw new IllegalStateException( "Return value must not be null for method annotated with @Nonnull" );
-}
-return $_;

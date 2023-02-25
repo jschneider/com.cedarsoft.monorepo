@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.provider
 
-import com.cedarsoft.annotations.CreatesObjects
+import it.neckar.open.annotations.CreatesObjects
 import com.cedarsoft.common.collections.emptyIntArray
 import com.cedarsoft.common.kotlin.lang.DoublesFilter
 import com.cedarsoft.common.kotlin.lang.fastFor

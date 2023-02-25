@@ -1,7 +1,7 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.annotations.NonBlocking
-import com.cedarsoft.annotations.JavaFriendly
+import it.neckar.open.annotations.NonBlocking
+import it.neckar.open.annotations.JavaFriendly
 import com.cedarsoft.common.time.nowMillis
 import com.cedarsoft.dispose.Disposable
 import com.cedarsoft.unit.si.ms

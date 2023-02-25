@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos.tools.imagemagick;
 
-import com.cedarsoft.annotations.NonUiThread;
+import it.neckar.open.annotations.NonUiThread;
+
 import com.cedarsoft.image.Resolution;
 import com.cedarsoft.io.FileOutputStreamWithMove;
 import com.google.common.base.Joiner;

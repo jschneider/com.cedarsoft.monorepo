@@ -1,6 +1,6 @@
 package com.cedarsoft.formatting
 
-import com.cedarsoft.annotations.JavaFriendly
+import it.neckar.open.annotations.JavaFriendly
 import com.cedarsoft.i18n.I18nConfiguration
 
 /**

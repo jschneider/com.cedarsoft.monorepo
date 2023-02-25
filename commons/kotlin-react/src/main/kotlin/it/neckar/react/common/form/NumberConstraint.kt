@@ -1,14 +1,32 @@
 package it.neckar.react.common.form
 
+import com.cedarsoft.unit.other.Inclusive
+
 /**
- * Constraint for a number
+ * A sealed interface defining number constraints that can be applied to both integers and doubles.
  */
 sealed interface NumberConstraint {
+  /**
+   * Applies a constraint to an integer value.
+   *
+   * @param value the integer value to apply the constraint to.
+   * @return the constrained integer value.
+   */
   fun constraint(value: Int): Int
+
+  /**
+   * Applies a constraint to a double value.
+   *
+   * @param value the double value to apply the constraint to.
+   * @return the constrained double value.
+   */
   fun constraint(value: Double): Double
 }
 
-object Unconstraint : NumberConstraint {
+/**
+ * Does *not* apply any constraint
+ */
+object Unconstrained : NumberConstraint {
   override fun constraint(value: Int): Int {
     return value
   }
@@ -31,21 +49,24 @@ object ZeroOrPositive : NumberConstraint {
   }
 }
 
-class CustomIntegerConstraint(
-  val lowerConstraint: Int,
-  val upperConstraint: Int,
+/**
+ * Keeps a number within the provided values
+ */
+class CoerceIn(
+  val lowerLimit: @Inclusive Int,
+  val upperLimit: @Inclusive Int,
 ) : NumberConstraint {
   init {
-    require(lowerConstraint < upperConstraint) {
-      "Lower constraint $lowerConstraint needs to be lower that upper constraint $upperConstraint but was not!"
+    require(lowerLimit <= upperLimit) {
+      "Lower constraint $lowerLimit needs to be lower (or the same) as that upper constraint $upperLimit but was not!"
     }
   }
 
   override fun constraint(value: Int): Int {
-    return value.coerceIn(lowerConstraint, upperConstraint)
+    return value.coerceIn(lowerLimit, upperLimit)
   }
 
   override fun constraint(value: Double): Double {
-    return constraint(value.toInt()).toDouble()
+    return value.coerceIn(lowerLimit.toDouble(), upperLimit.toDouble())
   }
 }

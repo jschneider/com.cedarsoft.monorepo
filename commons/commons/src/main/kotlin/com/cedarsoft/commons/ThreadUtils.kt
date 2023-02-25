@@ -30,8 +30,7 @@
  */
 package com.cedarsoft.commons
 
-import com.cedarsoft.annotations.Blocking
-import java.lang.reflect.InvocationTargetException
+import it.neckar.open.annotations.Blocking
 import java.util.concurrent.Callable
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Executors

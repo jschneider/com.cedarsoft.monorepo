@@ -30,8 +30,8 @@
  */
 package com.cedarsoft.concurrent
 
-import com.cedarsoft.annotations.Blocking
-import com.cedarsoft.annotations.NonUiThread
+import it.neckar.open.annotations.Blocking
+import it.neckar.open.annotations.NonUiThread
 import javax.annotation.concurrent.ThreadSafe
 
 /**

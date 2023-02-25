@@ -30,8 +30,8 @@
  */
 package com.cedarsoft.concurrent
 
-import com.cedarsoft.annotations.NonUiThread
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.NonUiThread
+import it.neckar.open.annotations.UiThread
 import com.cedarsoft.common.kotlin.lang.fastFor
 import java.util.concurrent.BlockingDeque
 import java.util.concurrent.ExecutorService

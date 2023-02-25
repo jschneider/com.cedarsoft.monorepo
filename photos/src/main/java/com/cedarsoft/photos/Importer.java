@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.annotations.NonUiThread;
+import it.neckar.open.annotations.NonUiThread;
+
 import com.cedarsoft.crypt.Hash;
 import com.cedarsoft.crypt.HashCalculator;
 import com.cedarsoft.io.LinkUtils;
@@ -42,7 +43,6 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Set;
 
 /**
  * Imports photos from a given directory.

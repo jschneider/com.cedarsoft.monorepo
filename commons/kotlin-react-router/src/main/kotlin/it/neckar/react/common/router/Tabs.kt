@@ -83,7 +83,7 @@ class RouterTabsConfig(
 
       Routes {
         tabs.fastForEach { routerTabConfig ->
-          Route {
+          PathRoute {
             attrs {
               path = routerTabConfig.path.value
               element = createElement<Props> {

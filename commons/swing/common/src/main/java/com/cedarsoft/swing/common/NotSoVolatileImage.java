@@ -30,12 +30,13 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.annotations.AnyThread;
-import com.cedarsoft.annotations.NonUiThread;
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.AnyThread;
+import it.neckar.open.annotations.NonUiThread;
+import it.neckar.open.annotations.UiThread;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.GuardedBy;
+
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.Image;

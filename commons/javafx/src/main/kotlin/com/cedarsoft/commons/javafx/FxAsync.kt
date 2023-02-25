@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.annotations.NonBlocking
+import it.neckar.open.annotations.NonBlocking
 import com.cedarsoft.concurrent.AbstractAsync
 import javafx.application.Platform
 import javax.annotation.concurrent.ThreadSafe

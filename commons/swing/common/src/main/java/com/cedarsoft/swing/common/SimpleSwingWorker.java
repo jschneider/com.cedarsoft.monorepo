@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
 
 import javax.annotation.Nullable;
 import javax.swing.SwingWorker;

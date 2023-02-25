@@ -30,8 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling
 
-import com.cedarsoft.annotations.AnyThread
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.AnyThread
 
 /**
  * Reports exceptions to a bug tracker

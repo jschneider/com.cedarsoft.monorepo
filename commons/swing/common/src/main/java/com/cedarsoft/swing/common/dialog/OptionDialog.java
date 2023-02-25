@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.swing.common.dialog;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
+
 import com.cedarsoft.swing.common.Borders;
 import com.cedarsoft.swing.common.Messages;
 import com.cedarsoft.swing.common.SwingHelper;

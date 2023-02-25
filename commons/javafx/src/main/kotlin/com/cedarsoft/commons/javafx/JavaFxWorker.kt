@@ -1,8 +1,7 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.annotations.NonUiThread
-import com.cedarsoft.annotations.UiThread
-import com.cedarsoft.unit.si.t
+import it.neckar.open.annotations.NonUiThread
+import it.neckar.open.annotations.UiThread
 import javafx.application.Platform
 import javafx.concurrent.Task
 import java.util.concurrent.ExecutionException

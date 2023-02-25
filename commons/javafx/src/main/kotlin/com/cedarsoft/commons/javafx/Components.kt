@@ -1,6 +1,6 @@
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.annotations.JavaFriendly
+import it.neckar.open.annotations.JavaFriendly
 import com.cedarsoft.commons.javafx.combo.ItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.combo.ListViewListCellCallbackForItemThatMayBeDisabled
 import com.cedarsoft.commons.javafx.properties.*

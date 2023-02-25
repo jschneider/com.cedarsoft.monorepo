@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling.notification
 
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.UiThread
 import com.cedarsoft.commons.javafx.FxUtils
 import com.cedarsoft.unit.si.ms
 import javafx.beans.InvalidationListener

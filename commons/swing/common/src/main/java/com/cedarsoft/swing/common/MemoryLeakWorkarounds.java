@@ -30,13 +30,14 @@
  */
 package com.cedarsoft.swing.common;
 
-import com.cedarsoft.annotations.NonUiThread;
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.NonUiThread;
+import it.neckar.open.annotations.UiThread;
 import net.miginfocom.layout.LinkHandler;
 
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;

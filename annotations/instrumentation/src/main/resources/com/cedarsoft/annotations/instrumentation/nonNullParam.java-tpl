@@ -1,1 +1,0 @@
-if ( ${0} == null ) throw new IllegalArgumentException( "Parameter {0} must not be null" );

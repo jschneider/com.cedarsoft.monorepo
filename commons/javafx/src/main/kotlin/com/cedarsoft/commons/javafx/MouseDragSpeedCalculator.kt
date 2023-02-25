@@ -2,7 +2,7 @@
 
 package com.cedarsoft.commons.javafx
 
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.UiThread
 import com.cedarsoft.unit.other.px
 import com.cedarsoft.unit.other.px_ns
 import com.cedarsoft.unit.si.ns

@@ -87,7 +87,7 @@ fun RBuilder.floatingIntInputField(
 
   fieldName: String,
   title: String,
-  numberConstraint: NumberConstraint = Unconstraint,
+  numberConstraint: NumberConstraint = Unconstrained,
 
   editableStatus: EditableStatus,
 
@@ -124,7 +124,7 @@ fun RBuilder.floatingIntInputField(
 
   fieldName: String,
   title: String,
-  numberConstraint: NumberConstraint = Unconstraint,
+  numberConstraint: NumberConstraint = Unconstrained,
 
   editableStatus: EditableStatus,
 
@@ -162,7 +162,7 @@ fun RBuilder.nullableFloatingIntInputField(
 
   fieldName: String,
   title: String,
-  numberConstraint: NumberConstraint = Unconstraint,
+  numberConstraint: NumberConstraint = Unconstrained,
 
   editableStatus: EditableStatus,
 
@@ -200,7 +200,7 @@ fun RBuilder.floatingDoubleInputField(
 
   numberOfDecimals: Int = 2,
 
-  numberConstraint: NumberConstraint = Unconstraint,
+  numberConstraint: NumberConstraint = Unconstrained,
 
   editableStatus: EditableStatus,
 
@@ -264,7 +264,7 @@ fun RBuilder.nullableFloatingDoubleInputField(
 
   fieldName: String,
   title: String,
-  numberConstraint: NumberConstraint = Unconstraint,
+  numberConstraint: NumberConstraint = Unconstrained,
 
   editableStatus: EditableStatus,
 

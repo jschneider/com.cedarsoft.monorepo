@@ -2,6 +2,7 @@ package it.neckar.react.common.router
 
 import com.cedarsoft.common.collections.fastForEach
 import com.cedarsoft.common.kotlin.lang.ExecutionEnvironment
+import csstype.UserSelect.Companion.element
 import react.*
 import react.dom.*
 import react.router.*
@@ -292,7 +293,7 @@ annotation class NavigationDsl {
 fun RBuilder.createRoutes(navigation: NavigationRoot, addFallbackRoute: Boolean = true) {
   Routes {
     if (addFallbackRoute) {
-      Route {
+      IndexRoute {
         attrs {
           path = "*"
           element = NoRouteFoundComponent.create()
@@ -325,7 +326,7 @@ fun RBuilder.addRoutes(navigationRoot: NavigationRoot) {
  * Adds all routes recursively
  */
 private fun RBuilder.addRouteRecursively(navigationElement: NavigationElement) {
-  Route {
+  PathRoute {
     attrs {
       path = navigationElement.pathFragment
       element = navigationElement.element()

@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.exceptions.handling
 
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.UiThread
 import com.cedarsoft.swing.common.Borders
 import com.cedarsoft.swing.common.dialog.AbstractDialog
 import com.cedarsoft.unit.other.px

@@ -33,7 +33,7 @@ package com.cedarsoft.swing.components.timeline;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.cedarsoft.annotations.UiThread;
+import it.neckar.open.annotations.UiThread;
 
 /**
  */

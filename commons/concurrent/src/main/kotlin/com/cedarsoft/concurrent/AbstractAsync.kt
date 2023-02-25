@@ -30,9 +30,9 @@
  */
 package com.cedarsoft.concurrent
 
-import com.cedarsoft.annotations.NonBlocking
-import com.cedarsoft.annotations.NonUiThread
-import com.cedarsoft.annotations.UiThread
+import it.neckar.open.annotations.NonBlocking
+import it.neckar.open.annotations.NonUiThread
+import it.neckar.open.annotations.UiThread
 import java.util.HashMap
 import java.util.concurrent.locks.ReentrantReadWriteLock
 import javax.annotation.concurrent.GuardedBy

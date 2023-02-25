@@ -1,6 +1,6 @@
 package com.cedarsoft.common.collections
 
-import com.cedarsoft.annotations.Slow
+import it.neckar.open.annotations.Slow
 import com.cedarsoft.common.kotlin.lang.wrapAround
 import com.cedarsoft.unit.other.Exclusive
 import com.cedarsoft.unit.other.Inclusive
