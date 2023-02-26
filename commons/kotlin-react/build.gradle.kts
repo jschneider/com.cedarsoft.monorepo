@@ -5,7 +5,15 @@ plugins {
 
 kotlin {
   js {
-    browser()
+    browser {
+      configureJsKarma()
+
+      commonWebpackConfig {
+        cssSupport {
+          enabled.set(true) //enable CSS support for all tasks (https://kotlinlang.org/docs/js-project-setup.html#building-executables)
+        }
+      }
+    }
   }
 }
 

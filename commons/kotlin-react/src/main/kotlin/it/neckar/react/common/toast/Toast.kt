@@ -2,13 +2,6 @@ package it.neckar.react.common.toast
 
 import obj
 
-object ToastInit {
-  init {
-    //TODO how to automatically load the css file?
-    //require("toastr/build/toastr.min.css")
-  }
-}
-
 /**
  * Toast message types.
  */
@@ -110,6 +103,10 @@ internal fun ToastOptions.toJs(): dynamic {
  * Toast component object.
  */
 object Toast {
+  init {
+    //Load the CSS file for toastr
+    kotlinext.js.require("toastr/build/toastr.min.css")
+  }
 
   /**
    * Shows a success toast.
@@ -158,10 +155,8 @@ object Toast {
       toastr[type.type](message, title)
     }
   }
-
 }
 
-external fun require(name: String): dynamic
-
-internal val toastr = require("toastr")
+@Suppress("SpellCheckingInspection")
+internal val toastr: dynamic = kotlinext.js.require("toastr")
 

@@ -7,6 +7,13 @@ subprojects {
     return@subprojects
   }
 
+  val projectsToSkip = setOf(
+    Projects.open_unit_unit,
+    Projects.web_fonts,
+  )
+
+  val project = this
+
   if (true) {
     //Relevant for publishing to Maven Central
     apply(plugin = "maven-publish")
@@ -15,7 +22,7 @@ subprojects {
     extensions.configure<PublishingExtension>("publishing") {
       configureMavenReposForPublish(project)
 
-      if (path == ":internal:open:unit:unit") {
+      if (projectsToSkip.contains(path)) {
         //No configuration for unit necessary.
       } else {
         publications {
