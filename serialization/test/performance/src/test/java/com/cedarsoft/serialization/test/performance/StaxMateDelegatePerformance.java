@@ -29,12 +29,12 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
-import com.cedarsoft.serialization.AbstractSerializer;
-import com.cedarsoft.serialization.stax.mate.AbstractStaxMateSerializer;
-import com.cedarsoft.version.Version;
-import com.cedarsoft.version.VersionRange;
+import it.neckar.open.serialization.AbstractSerializer;
+import it.neckar.open.serialization.stax.mate.AbstractStaxMateSerializer;
+import it.neckar.open.version.Version;
+import it.neckar.open.version.VersionRange;
 import org.apache.commons.lang3.time.StopWatch;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.out.SMOutputElement;

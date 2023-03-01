@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.image.Resolution;
+import it.neckar.open.image.Resolution;
+
 import com.cedarsoft.photos.di.Modules;
 import com.cedarsoft.photos.tools.exif.ExifHelper;
 import com.cedarsoft.photos.tools.exif.ExifInfo;

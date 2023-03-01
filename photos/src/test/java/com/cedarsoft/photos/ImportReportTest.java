@@ -38,8 +38,9 @@ import java.util.logging.Logger;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Algorithm;
+import it.neckar.open.crypt.Hash;
+
 import com.google.common.collect.ImmutableList;
 
 /**

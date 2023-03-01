@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -43,9 +43,9 @@ import org.jibx.runtime.JiBXException;
 import org.junit.jupiter.api.*;
 import org.xml.sax.SAXException;
 
-import com.cedarsoft.serialization.test.performance.jaxb.Extension;
-import com.cedarsoft.serialization.test.performance.jaxb.FileType;
-import com.cedarsoft.test.utils.AssertUtils;
+import it.neckar.open.serialization.test.performance.jaxb.Extension;
+import it.neckar.open.serialization.test.performance.jaxb.FileType;
+import it.neckar.open.test.utils.AssertUtils;
 
 /**
  *
@@ -60,7 +60,7 @@ public class JibxTest {
     IMarshallingContext context = bindingFactory.createMarshallingContext();
 
 
-    com.cedarsoft.serialization.test.performance.jaxb.FileType type = new FileType( "jpg", new com.cedarsoft.serialization.test.performance.jaxb.Extension( ".", "jpg", true ), false );
+    it.neckar.open.serialization.test.performance.jaxb.FileType type = new FileType( "jpg", new it.neckar.open.serialization.test.performance.jaxb.Extension( ".", "jpg", true ), false );
 
     StringWriter out = new StringWriter();
     context.marshalDocument( type, "UTF-8", null, out );

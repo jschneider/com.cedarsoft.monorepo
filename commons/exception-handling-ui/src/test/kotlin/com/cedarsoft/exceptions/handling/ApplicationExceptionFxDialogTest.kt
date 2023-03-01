@@ -1,9 +1,9 @@
-package com.cedarsoft.exceptions.handling
+package it.neckar.open.exceptions.handling
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.commons.javafx.FxUtils
-import com.cedarsoft.test.utils.DisableIfHeadless
+import it.neckar.open.javafx.FxUtils
+import it.neckar.open.test.utils.DisableIfHeadless
 import javafx.stage.Stage
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test

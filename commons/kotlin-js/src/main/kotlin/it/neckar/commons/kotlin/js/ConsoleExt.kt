@@ -1,6 +1,6 @@
 package it.neckar.commons.kotlin.js
 
-import com.cedarsoft.unit.si.s
+import it.neckar.open.unit.si.s
 import kotlin.js.Console
 
 

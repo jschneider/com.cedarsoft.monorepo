@@ -1,6 +1,6 @@
-package com.cedarsoft.exceptions.handling.notification
+package it.neckar.open.exceptions.handling.notification
 
-import com.cedarsoft.commons.javafx.FxUtils
+import it.neckar.open.javafx.FxUtils
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene

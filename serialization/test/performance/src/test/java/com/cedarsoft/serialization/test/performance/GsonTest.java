@@ -29,14 +29,14 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.serialization.test.performance.jaxb.Extension;
-import com.cedarsoft.serialization.test.performance.jaxb.FileType;
+import it.neckar.open.serialization.test.performance.jaxb.Extension;
+import it.neckar.open.serialization.test.performance.jaxb.FileType;
 import com.google.gson.Gson;
 
 /**

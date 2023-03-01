@@ -34,7 +34,7 @@ val createVersionConstantsTasks: Task = task("createVersionConstants") {
 
     targetFile.writeText(
       """
-      package com.cedarsoft.version
+      package it.neckar.open.version
 
       object VersionConstants{
         const val monorepoVersion: String = "$version"

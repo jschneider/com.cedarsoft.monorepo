@@ -1,8 +1,8 @@
 package it.neckar.react.common
 
-import com.cedarsoft.common.collections.fastForEach
-import com.cedarsoft.common.kotlin.lang.ceil
-import com.cedarsoft.common.kotlin.lang.floor
+import it.neckar.open.collections.fastForEach
+import it.neckar.open.kotlin.lang.ceil
+import it.neckar.open.kotlin.lang.floor
 import it.neckar.react.common.*
 import it.neckar.react.common.form.*
 import kotlinx.html.js.onClickFunction

@@ -28,7 +28,7 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.exceptions.handling
+package it.neckar.open.exceptions.handling
 
 import javafx.application.Application
 import javafx.stage.Stage

@@ -1,4 +1,4 @@
-package com.cedarsoft.common.collections
+package it.neckar.open.collections
 
 /**
  * A weak hash map implementation for JS

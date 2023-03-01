@@ -2,7 +2,7 @@ package it.neckar.commons.tags
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.commons.serialization.roundTrip
+import it.neckar.open.serialization.roundTrip
 import kotlinx.serialization.Serializable
 import org.junit.jupiter.api.Test
 

@@ -1,6 +1,6 @@
 package it.neckar.react.common.table
 
-import com.cedarsoft.common.collections.fastForEach
+import it.neckar.open.collections.fastForEach
 import it.neckar.commons.kotlin.js.safeGet
 import it.neckar.react.common.*
 import kotlinx.html.TD

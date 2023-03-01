@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 
 import org.simpleframework.xml.Attribute;

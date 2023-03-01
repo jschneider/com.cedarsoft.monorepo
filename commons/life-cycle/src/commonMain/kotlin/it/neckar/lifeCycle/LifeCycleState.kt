@@ -1,6 +1,6 @@
 package it.neckar.lifeCycle
 
-import com.cedarsoft.common.kotlin.lang.toCheckboxChar
+import it.neckar.open.kotlin.lang.toCheckboxChar
 import it.neckar.lifeCycle.LifeCycleState.EndOfLife
 import kotlinx.serialization.Serializable
 

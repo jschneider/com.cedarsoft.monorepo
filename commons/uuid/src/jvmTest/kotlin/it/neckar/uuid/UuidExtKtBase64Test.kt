@@ -4,7 +4,7 @@ import assertk.*
 import assertk.assertions.*
 import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuidFrom
-import com.cedarsoft.test.utils.RandomWithSeed
+import it.neckar.open.test.utils.RandomWithSeed
 import org.junit.jupiter.api.Test
 
 class UuidExtKtBase64Test {

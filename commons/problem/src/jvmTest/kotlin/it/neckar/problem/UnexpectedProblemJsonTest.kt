@@ -2,7 +2,7 @@ package it.neckar.problem
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.commons.serialization.roundTrip
+import it.neckar.open.serialization.roundTrip
 import org.junit.jupiter.api.Test
 
 /**

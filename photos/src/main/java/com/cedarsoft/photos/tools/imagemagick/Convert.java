@@ -32,8 +32,10 @@ package com.cedarsoft.photos.tools.imagemagick;
 
 import it.neckar.open.annotations.NonUiThread;
 
-import com.cedarsoft.image.Resolution;
-import com.cedarsoft.io.FileOutputStreamWithMove;
+import it.neckar.open.image.Resolution;
+
+import it.neckar.open.io.FileOutputStreamWithMove;
+
 import com.google.common.base.Joiner;
 import org.im4java.core.CommandException;
 import org.im4java.core.ConvertCmd;

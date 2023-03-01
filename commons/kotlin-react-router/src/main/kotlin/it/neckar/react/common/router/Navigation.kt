@@ -1,7 +1,7 @@
 package it.neckar.react.common.router
 
-import com.cedarsoft.common.collections.fastForEach
-import com.cedarsoft.common.kotlin.lang.ExecutionEnvironment
+import it.neckar.open.collections.fastForEach
+import it.neckar.open.kotlin.lang.ExecutionEnvironment
 import csstype.UserSelect.Companion.element
 import react.*
 import react.dom.*

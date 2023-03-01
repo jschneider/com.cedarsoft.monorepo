@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Hash;
+
 import com.google.common.collect.ImmutableList;
 
 import javax.annotation.Nonnull;

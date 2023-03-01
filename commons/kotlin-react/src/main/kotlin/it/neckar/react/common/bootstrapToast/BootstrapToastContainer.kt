@@ -2,7 +2,7 @@ package it.neckar.react.common.bootstrapToast
 
 
 
-import com.cedarsoft.common.kotlin.lang.percent
+import it.neckar.open.kotlin.lang.percent
 import csstype.vw
 import it.neckar.react.common.*
 import kotlinx.css.*

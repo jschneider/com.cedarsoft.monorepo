@@ -3,8 +3,8 @@ package it.neckar.uuid
 import assertk.*
 import assertk.assertions.*
 import com.benasher44.uuid.Uuid
-import com.cedarsoft.common.kotlin.lang.random
-import com.cedarsoft.test.utils.RandomWithSeed
+import it.neckar.open.kotlin.lang.random
+import it.neckar.open.test.utils.RandomWithSeed
 import org.junit.jupiter.api.Test
 import java.util.UUID
 

@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.px
+import it.neckar.open.unit.other.px
 
 /**
  * A value (in pixels) relative to the origin of a tile

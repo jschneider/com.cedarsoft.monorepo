@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -38,7 +38,7 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.test.utils.JsonUtils;
+import it.neckar.open.test.utils.JsonUtils;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -62,7 +62,7 @@ public class JacksonTest {
   public void testMapper() throws Exception {
     ObjectMapper mapper = new ObjectMapper();
 
-    com.cedarsoft.serialization.test.performance.jaxb.FileType fileType = new com.cedarsoft.serialization.test.performance.jaxb.FileType( "Canon Raw", new com.cedarsoft.serialization.test.performance.jaxb.Extension( ".", "cr2", true ), false );
+    it.neckar.open.serialization.test.performance.jaxb.FileType fileType = new it.neckar.open.serialization.test.performance.jaxb.FileType( "Canon Raw", new it.neckar.open.serialization.test.performance.jaxb.Extension( ".", "cr2", true ), false );
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     mapper.writeValue( out, fileType );
 

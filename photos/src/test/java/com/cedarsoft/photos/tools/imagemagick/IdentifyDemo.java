@@ -40,7 +40,8 @@ import javax.annotation.Nonnull;
 import org.junit.*;
 import org.junit.jupiter.api.Test;
 
-import com.cedarsoft.image.Resolution;
+import it.neckar.open.image.Resolution;
+
 import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
 
 /**

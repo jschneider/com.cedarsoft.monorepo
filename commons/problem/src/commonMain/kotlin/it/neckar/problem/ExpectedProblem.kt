@@ -1,8 +1,8 @@
 package it.neckar.problem
 
-import com.cedarsoft.exceptions.ApplicationException
-import com.cedarsoft.exceptions.ErrorCode
-import com.cedarsoft.i18n.I18nConfiguration
+import it.neckar.open.exceptions.ApplicationException
+import it.neckar.open.exceptions.ErrorCode
+import it.neckar.open.i18n.I18nConfiguration
 import it.neckar.problem.io.AnySerializer
 import kotlinx.serialization.Serializable
 

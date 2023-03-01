@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos.tools.exif;
 
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Hash;
+
 import com.cedarsoft.photos.ImageStorage;
 import javax.annotation.concurrent.Immutable;
 

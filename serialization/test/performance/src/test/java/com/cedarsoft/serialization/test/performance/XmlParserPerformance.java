@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -270,7 +270,7 @@ public class XmlParserPerformance {
                     @Override
                     public void run() {
                       try {
-                        IBindingFactory bindingFactory = BindingDirectory.getFactory( com.cedarsoft.serialization.test.performance.jaxb.Extension.class );
+                        IBindingFactory bindingFactory = BindingDirectory.getFactory( it.neckar.open.serialization.test.performance.jaxb.Extension.class );
                         IUnmarshallingContext context = bindingFactory.createUnmarshallingContext();
 
                         for ( int i = 0; i < BIG; i++ ) {
@@ -288,7 +288,7 @@ public class XmlParserPerformance {
                     @Override
                     public void run() {
                       try {
-                        Unmarshaller unmarshaller = JAXBContext.newInstance( com.cedarsoft.serialization.test.performance.jaxb.FileType.class ).createUnmarshaller();
+                        Unmarshaller unmarshaller = JAXBContext.newInstance( it.neckar.open.serialization.test.performance.jaxb.FileType.class ).createUnmarshaller();
 
                         for ( int i = 0; i < MEDIUM; i++ ) {
                           assertNotNull( unmarshaller.unmarshal( new StringReader( CONTENT_SAMPLE_JAXB ) ) );
@@ -597,7 +597,7 @@ public class XmlParserPerformance {
                         Gson gson = new Gson();
 
                         for ( int i = 0; i < BIG; i++ ) {
-                          assertNotNull( gson.fromJson( CONTENT_SAMPLE_GSON, com.cedarsoft.serialization.test.performance.jaxb.FileType.class ) );
+                          assertNotNull( gson.fromJson( CONTENT_SAMPLE_GSON, it.neckar.open.serialization.test.performance.jaxb.FileType.class ) );
                         }
 
                       } catch ( Exception e ) {
@@ -789,7 +789,7 @@ public class XmlParserPerformance {
     ObjectMapper mapper = new ObjectMapper();
     for ( int i = 0; i < BIG; i++ ) {
       JsonParser parser = factory.createParser( new StringReader( contentSample ) );
-      assertNotNull( mapper.readValue( parser, com.cedarsoft.serialization.test.performance.jaxb.FileType.class ) );
+      assertNotNull( mapper.readValue( parser, it.neckar.open.serialization.test.performance.jaxb.FileType.class ) );
     }
   }
 

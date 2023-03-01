@@ -1,6 +1,6 @@
-package com.cedarsoft.coroutines
+package it.neckar.open.coroutines
 
-import com.cedarsoft.time.JVMTimerCoroutineSupport
+import it.neckar.open.time.JVMTimerCoroutineSupport
 import kotlinx.coroutines.test.*
 import org.junit.jupiter.api.Test
 import java.time.Duration

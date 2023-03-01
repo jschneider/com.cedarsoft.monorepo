@@ -30,8 +30,10 @@
  */
 package com.cedarsoft.photos.tools.exif;
 
-import com.cedarsoft.exceptions.NotFoundException;
-import com.cedarsoft.image.Resolution;
+import it.neckar.open.exceptions.NotFoundException;
+
+import it.neckar.open.image.Resolution;
+
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.io.IOUtils;

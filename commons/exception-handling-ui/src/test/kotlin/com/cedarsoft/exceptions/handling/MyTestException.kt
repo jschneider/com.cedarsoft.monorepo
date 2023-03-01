@@ -28,12 +28,12 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.exceptions.handling
+package it.neckar.open.exceptions.handling
 
-import com.cedarsoft.exceptions.ApplicationException
-import com.cedarsoft.exceptions.ErrorCode
-import com.cedarsoft.exceptions.ErrorCode.Companion.create
-import com.cedarsoft.i18n.I18nConfiguration
+import it.neckar.open.exceptions.ApplicationException
+import it.neckar.open.exceptions.ErrorCode
+import it.neckar.open.exceptions.ErrorCode.Companion.create
+import it.neckar.open.i18n.I18nConfiguration
 import javax.annotation.concurrent.Immutable
 
 class MyTestException @JvmOverloads constructor(

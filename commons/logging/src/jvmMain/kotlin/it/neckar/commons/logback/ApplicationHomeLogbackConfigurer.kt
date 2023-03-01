@@ -1,8 +1,8 @@
 package it.neckar.commons.logback
 
-import com.cedarsoft.app.ApplicationHomeAccess
-import com.cedarsoft.app.ApplicationHomeAccessFactory
-import com.cedarsoft.io.FileUtils
+import it.neckar.open.app.ApplicationHomeAccess
+import it.neckar.open.app.ApplicationHomeAccessFactory
+import it.neckar.open.io.FileUtils
 import org.slf4j.event.Level
 import java.io.File
 

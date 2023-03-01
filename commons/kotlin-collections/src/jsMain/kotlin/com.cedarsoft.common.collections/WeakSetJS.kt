@@ -1,4 +1,4 @@
-package com.cedarsoft.common.collections
+package it.neckar.open.collections
 
 @JsName("WeakSet")
 external class WeakSetJS {

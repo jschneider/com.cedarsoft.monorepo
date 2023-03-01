@@ -1,6 +1,6 @@
 package it.neckar.react.common.breadcrumb
 
-import com.cedarsoft.common.collections.fastForEach
+import it.neckar.open.collections.fastForEach
 import react.*
 import react.dom.*
 

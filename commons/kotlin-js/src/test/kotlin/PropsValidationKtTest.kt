@@ -1,6 +1,6 @@
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.common.kotlin.lang.EnvironmentMode
+import it.neckar.open.kotlin.lang.EnvironmentMode
 import it.neckar.commons.kotlin.js.safeGet
 import kotlin.test.Test
 

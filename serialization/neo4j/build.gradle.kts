@@ -1,3 +1,3 @@
 subprojects {
-  group = "com.cedarsoft.serialization.neo4j"
+  group = "it.neckar.open.serialization.neo4j"
 }

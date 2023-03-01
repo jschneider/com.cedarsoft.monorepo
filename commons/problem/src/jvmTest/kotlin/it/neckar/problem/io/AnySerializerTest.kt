@@ -1,6 +1,6 @@
 package it.neckar.problem.io
 
-import com.cedarsoft.commons.serialization.roundTrip
+import it.neckar.open.serialization.roundTrip
 import org.junit.jupiter.api.Test
 
 class AnySerializerTest {

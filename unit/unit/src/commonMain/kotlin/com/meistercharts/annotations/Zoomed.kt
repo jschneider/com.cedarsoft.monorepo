@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.px
+import it.neckar.open.unit.other.px
 
 /**
  * Marked values represent window values in pixels with zoom but *without* translation

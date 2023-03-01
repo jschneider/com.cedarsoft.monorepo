@@ -68,6 +68,6 @@ fun String.processForCedarsoft(): String {
 }
 
 fun String.fixPackages(): String {
-  return replace("com.soywiz.kds.internal", "com.cedarsoft.common.collections")
-    .replace("com.soywiz.kds", "com.cedarsoft.common.collections")
+  return replace("com.soywiz.kds.internal", "it.neckar.open.collections")
+    .replace("com.soywiz.kds", "it.neckar.open.collections")
 }

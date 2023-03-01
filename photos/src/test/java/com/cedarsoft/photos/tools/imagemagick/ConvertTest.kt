@@ -30,10 +30,10 @@
  */
 package com.cedarsoft.photos.tools.imagemagick
 
-import com.cedarsoft.common.resources.getResourceSafe
-import com.cedarsoft.image.Resolution
-import com.cedarsoft.test.utils.TemporaryFolder
-import com.cedarsoft.test.utils.WithTempFiles
+import it.neckar.open.resources.getResourceSafe
+import it.neckar.open.image.Resolution
+import it.neckar.open.test.utils.TemporaryFolder
+import it.neckar.open.test.utils.WithTempFiles
 import org.apache.commons.lang3.SystemUtils
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach

@@ -28,11 +28,11 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
 import it.neckar.open.annotations.NonUiThread
 import it.neckar.open.annotations.UiThread
-import com.cedarsoft.common.kotlin.lang.fastFor
+import it.neckar.open.kotlin.lang.fastFor
 import java.util.concurrent.BlockingDeque
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors

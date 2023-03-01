@@ -30,8 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Algorithm;
+import it.neckar.open.crypt.Hash;
 
 import javax.annotation.Nonnull;
 

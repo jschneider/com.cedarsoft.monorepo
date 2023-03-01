@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.px
+import it.neckar.open.unit.other.px
 
 /**
  * Marks values that are related to the window origin (visible area).

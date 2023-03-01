@@ -32,14 +32,17 @@ package com.cedarsoft.photos;
 
 import it.neckar.open.annotations.NonUiThread;
 
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
-import com.cedarsoft.io.LinkUtils;
+import it.neckar.open.crypt.Hash;
+import it.neckar.open.crypt.HashCalculator;
+
+import it.neckar.open.io.LinkUtils;
+
 import com.google.common.collect.ImmutableSet;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

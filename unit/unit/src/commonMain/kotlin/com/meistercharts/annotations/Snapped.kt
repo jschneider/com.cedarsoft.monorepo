@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.px
+import it.neckar.open.unit.other.px
 
 /**
  * Marks values that have been snapped (usually to physical pixels)

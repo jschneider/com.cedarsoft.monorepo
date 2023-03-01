@@ -34,8 +34,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
+import it.neckar.open.crypt.Hash;
+import it.neckar.open.crypt.HashCalculator;
 
 /**
  */

@@ -32,12 +32,15 @@ package com.cedarsoft.photos;
 
 import it.neckar.open.annotations.NonUiThread;
 
-import com.cedarsoft.crypt.Algorithm;
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Algorithm;
+import it.neckar.open.crypt.Hash;
+
 import javax.annotation.concurrent.Immutable;
+
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nonnull;
+
 import java.io.File;
 import java.io.IOException;
 

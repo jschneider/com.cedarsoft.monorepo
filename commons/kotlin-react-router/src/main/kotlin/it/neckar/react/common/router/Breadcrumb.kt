@@ -1,6 +1,6 @@
 package it.neckar.react.common.router
 
-import com.cedarsoft.common.collections.fastForEach
+import it.neckar.open.collections.fastForEach
 import it.neckar.react.common.*
 import it.neckar.react.common.annotations.*
 import react.*

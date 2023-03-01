@@ -1,6 +1,6 @@
 description = """Unit Utils"""
 
-group = "com.cedarsoft.unit"
+group = "it.neckar.open.unit"
 
 plugins {
   // Apply the java-library plugin to add support for Java Library

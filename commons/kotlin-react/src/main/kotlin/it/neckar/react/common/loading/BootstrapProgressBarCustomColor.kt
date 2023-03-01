@@ -1,7 +1,7 @@
 package it.neckar.react.common.loading
 
-import com.cedarsoft.unit.other.pct
-import com.cedarsoft.unit.other.pct100
+import it.neckar.open.unit.other.pct
+import it.neckar.open.unit.other.pct100
 import it.neckar.react.common.*
 import kotlinx.css.*
 import kotlinx.css.properties.*

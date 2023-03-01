@@ -1,6 +1,6 @@
 package it.neckar.react.common.form
 
-import com.cedarsoft.common.kotlin.lang.withNullAtFirst
+import it.neckar.open.kotlin.lang.withNullAtFirst
 import it.neckar.react.common.*
 import it.neckar.react.common.form.EditableStatus.*
 import it.neckar.uuid.HasUuid

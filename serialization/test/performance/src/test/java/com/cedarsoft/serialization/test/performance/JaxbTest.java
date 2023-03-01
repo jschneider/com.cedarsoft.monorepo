@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -45,9 +45,9 @@ import javax.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.*;
 import org.xml.sax.SAXException;
 
-import com.cedarsoft.serialization.test.performance.jaxb.Extension;
-import com.cedarsoft.serialization.test.performance.jaxb.FileType;
-import com.cedarsoft.test.utils.AssertUtils;
+import it.neckar.open.serialization.test.performance.jaxb.Extension;
+import it.neckar.open.serialization.test.performance.jaxb.FileType;
+import it.neckar.open.test.utils.AssertUtils;
 
 /**
  *
@@ -86,7 +86,7 @@ public class JaxbTest {
   public void testUnmarsh() throws JAXBException {
     Unmarshaller unmarshaller = context.createUnmarshaller();
 
-    FileType deserialized = (com.cedarsoft.serialization.test.performance.jaxb.FileType) unmarshaller.unmarshal( new StringReader( XmlParserPerformance.CONTENT_SAMPLE_JAXB ) );
+    FileType deserialized = (it.neckar.open.serialization.test.performance.jaxb.FileType) unmarshaller.unmarshal( new StringReader( XmlParserPerformance.CONTENT_SAMPLE_JAXB ) );
     assertNotNull( deserialized );
   }
 }

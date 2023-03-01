@@ -1,3 +1,3 @@
 allprojects {
-  group = "com.cedarsoft.business"
+  group = "it.neckar.business"
 }

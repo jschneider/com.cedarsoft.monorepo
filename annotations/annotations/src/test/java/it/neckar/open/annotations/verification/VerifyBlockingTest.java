@@ -36,8 +36,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.*;
 import org.junit.jupiter.api.function.*;
 
-import com.cedarsoft.test.utils.CatchAllExceptionsExtension;
-import com.cedarsoft.test.utils.ThreadExtension;
+import it.neckar.open.test.utils.CatchAllExceptionsExtension;
+import it.neckar.open.test.utils.ThreadExtension;
 
 /**
  */

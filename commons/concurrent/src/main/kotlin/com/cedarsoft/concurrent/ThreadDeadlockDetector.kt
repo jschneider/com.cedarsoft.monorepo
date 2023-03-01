@@ -29,9 +29,9 @@
  * have any questions.
  */
 
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
-import com.cedarsoft.unit.si.ms
+import it.neckar.open.unit.si.ms
 import java.lang.management.ManagementFactory
 import java.lang.management.ThreadInfo
 import java.util.Timer

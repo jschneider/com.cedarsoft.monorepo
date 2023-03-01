@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos.tools;
 
-import com.cedarsoft.execution.OutputRedirector;
+import it.neckar.open.execution.OutputRedirector;
+
 import javax.annotation.concurrent.Immutable;
 import org.apache.commons.io.IOUtils;
 

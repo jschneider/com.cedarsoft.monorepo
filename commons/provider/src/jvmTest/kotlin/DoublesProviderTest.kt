@@ -1,8 +1,8 @@
-package com.cedarsoft.commons.provider
+package it.neckar.open.provider
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.unit.other.Index
+import it.neckar.open.unit.other.Index
 import org.junit.jupiter.api.Test
 
 class DoublesProviderTest {

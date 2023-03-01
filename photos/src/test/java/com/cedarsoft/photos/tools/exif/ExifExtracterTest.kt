@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.photos.tools.exif
 
-import com.cedarsoft.common.resources.getResourceSafe
+import it.neckar.open.resources.getResourceSafe
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled

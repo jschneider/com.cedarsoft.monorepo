@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance.jaxb;
+package it.neckar.open.serialization.test.performance.jaxb;
 
 
 import org.simpleframework.xml.Attribute;

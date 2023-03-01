@@ -4,8 +4,8 @@ import assertk.*
 import assertk.assertions.*
 import com.benasher44.uuid.bytes
 import com.benasher44.uuid.uuid4
-import com.cedarsoft.common.kotlin.lang.random
-import com.cedarsoft.test.utils.RandomWithSeed
+import it.neckar.open.kotlin.lang.random
+import it.neckar.open.test.utils.RandomWithSeed
 import org.junit.jupiter.api.Test
 
 class NanoIdUtilsTest {

@@ -28,7 +28,7 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.serialization.test.xalan.bug;
+package it.neckar.open.serialization.test.xalan.bug;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -36,10 +36,10 @@ import javax.xml.transform.Transformer;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.xml.XmlCommons;
+import it.neckar.open.xml.XmlCommons;
 
 /**
- * Reproduces https://github.com/jschneider/com.cedarsoft.serialization/issues/2
+ * Reproduces https://github.com/jschneider/it.neckar.open.serialization/issues/2
  *
  */
 public class XalanBugTest {

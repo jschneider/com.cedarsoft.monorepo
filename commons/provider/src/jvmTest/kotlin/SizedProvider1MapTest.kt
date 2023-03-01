@@ -1,4 +1,4 @@
-package com.cedarsoft.commons.provider
+package it.neckar.open.provider
 
 import assertk.*
 import assertk.assertions.*

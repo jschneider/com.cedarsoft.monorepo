@@ -1,8 +1,8 @@
 package it.neckar.react.common.form
 
-import com.cedarsoft.common.kotlin.lang.nullIfBlank
-import com.cedarsoft.formatting.format
-import com.cedarsoft.i18n.I18nConfiguration
+import it.neckar.open.kotlin.lang.nullIfBlank
+import it.neckar.open.formatting.format
+import it.neckar.open.i18n.I18nConfiguration
 import it.neckar.react.common.*
 import it.neckar.react.common.form.EditableStatus.*
 import kotlinx.html.DIV

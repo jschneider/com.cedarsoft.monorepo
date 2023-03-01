@@ -2,7 +2,7 @@ import Libs.commons_io
 
 description = """Unit"""
 
-group = "com.cedarsoft"
+group = "it.neckar"
 
 plugins {
   // Apply the java-library plugin to add support for Java Library

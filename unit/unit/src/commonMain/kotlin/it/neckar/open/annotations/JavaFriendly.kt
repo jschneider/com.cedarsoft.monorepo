@@ -1,6 +1,6 @@
 package it.neckar.open.annotations
 
-import com.cedarsoft.unit.other.px
+import it.neckar.open.unit.other.px
 
 /**
  * Marks Kotlin code as Java-friendly.

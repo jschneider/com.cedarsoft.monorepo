@@ -39,10 +39,12 @@ import javax.annotation.Nonnull;
 
 import org.junit.jupiter.api.*;
 
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.crypt.HashCalculator;
-import com.cedarsoft.test.utils.TemporaryFolder;
-import com.cedarsoft.test.utils.WithTempFiles;
+import it.neckar.open.crypt.Hash;
+import it.neckar.open.crypt.HashCalculator;
+
+import it.neckar.open.test.utils.TemporaryFolder;
+import it.neckar.open.test.utils.WithTempFiles;
+
 import com.google.common.io.Files;
 
 /**

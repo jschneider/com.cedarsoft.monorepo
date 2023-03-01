@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
+import it.neckar.open.unit.other.pct
 
 /**
  * Marks values that are relative to the window origin (visible area).

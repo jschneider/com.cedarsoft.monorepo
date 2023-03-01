@@ -30,9 +30,12 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Hash;
-import com.cedarsoft.exceptions.NotFoundException;
-import com.cedarsoft.io.LinkUtils;
+import it.neckar.open.crypt.Hash;
+
+import it.neckar.open.exceptions.NotFoundException;
+
+import it.neckar.open.io.LinkUtils;
+
 import com.cedarsoft.photos.tools.exif.ExifExtractor;
 import com.cedarsoft.photos.tools.exif.ExifInfo;
 

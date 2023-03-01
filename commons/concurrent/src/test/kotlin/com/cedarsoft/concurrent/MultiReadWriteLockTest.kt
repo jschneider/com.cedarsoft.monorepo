@@ -28,9 +28,9 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
-import com.cedarsoft.commons.ThreadUtils.invokeInOtherThread
+import it.neckar.open.ThreadUtils.invokeInOtherThread
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.util.concurrent.Callable

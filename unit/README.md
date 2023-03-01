@@ -1,4 +1,4 @@
-com.cedarsoft.unit
+it.neckar.open.unit
 ==================
 
 Contains annotations related to units

@@ -1,3 +1,3 @@
 subprojects {
-  group = "com.cedarsoft.serialization.serializers.commons"
+  group = "it.neckar.open.serialization.serializers.commons"
 }

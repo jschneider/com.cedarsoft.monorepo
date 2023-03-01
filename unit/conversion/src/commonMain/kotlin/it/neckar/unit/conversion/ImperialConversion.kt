@@ -1,15 +1,15 @@
 package it.neckar.unit.conversion
 
-import com.cedarsoft.unit.other.CubicFoot
-import com.cedarsoft.unit.other.UsGallon
-import com.cedarsoft.unit.other.`in`
-import com.cedarsoft.unit.other.ft
-import com.cedarsoft.unit.other.ft.Companion.MM_FEET_RATIO
-import com.cedarsoft.unit.si.L
-import com.cedarsoft.unit.si.degC
-import com.cedarsoft.unit.si.degF
-import com.cedarsoft.unit.si.m
-import com.cedarsoft.unit.si.mm
+import it.neckar.open.unit.other.CubicFoot
+import it.neckar.open.unit.other.UsGallon
+import it.neckar.open.unit.other.`in`
+import it.neckar.open.unit.other.ft
+import it.neckar.open.unit.other.ft.Companion.MM_FEET_RATIO
+import it.neckar.open.unit.si.L
+import it.neckar.open.unit.si.degC
+import it.neckar.open.unit.si.degF
+import it.neckar.open.unit.si.m
+import it.neckar.open.unit.si.mm
 
 
 /**

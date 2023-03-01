@@ -1,7 +1,7 @@
 package it.neckar.react.common.loading
 
-import com.cedarsoft.common.collections.fastForEach
-import com.cedarsoft.ktor.client.plugin.stats.PendingRequestsState
+import it.neckar.open.collections.fastForEach
+import it.neckar.ktor.client.plugin.stats.PendingRequestsState
 import it.neckar.commons.kotlin.js.safeGet
 import react.*
 import react.dom.*

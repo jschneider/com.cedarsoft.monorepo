@@ -54,7 +54,7 @@ object NanoId {
    * @return A randomly generated NanoId String.*
    */
   fun randomNanoId(
-    random: kotlin.random.Random = com.cedarsoft.common.kotlin.lang.random,
+    random: kotlin.random.Random = it.neckar.open.kotlin.lang.random,
     alphabet: CharArray = DEFAULT_ALPHABET,
     size: Int = DEFAULT_SIZE,
   ): String {

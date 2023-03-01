@@ -28,9 +28,9 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
-import com.cedarsoft.unit.si.ms
+import it.neckar.open.unit.si.ms
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.ThreadFactory

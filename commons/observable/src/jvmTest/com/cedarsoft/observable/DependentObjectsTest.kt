@@ -1,8 +1,8 @@
-package com.cedarsoft.observable
+package it.neckar.open.observable
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.test.utils.*
+import it.neckar.open.test.utils.*
 import org.junit.jupiter.api.Test
 import java.lang.ref.WeakReference
 

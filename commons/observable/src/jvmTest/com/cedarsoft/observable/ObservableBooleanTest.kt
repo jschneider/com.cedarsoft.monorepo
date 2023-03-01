@@ -1,4 +1,4 @@
-package com.cedarsoft.observable
+package it.neckar.open.observable
 
 import assertk.assertThat
 import assertk.assertions.isFalse

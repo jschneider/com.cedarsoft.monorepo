@@ -1,9 +1,9 @@
-package com.cedarsoft.observable
+package it.neckar.open.observable
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.dispose.Disposable
-import com.cedarsoft.dispose.DisposeSupport
+import it.neckar.open.dispose.Disposable
+import it.neckar.open.dispose.DisposeSupport
 import org.junit.jupiter.api.Test
 
 class DisposeSupportTest {

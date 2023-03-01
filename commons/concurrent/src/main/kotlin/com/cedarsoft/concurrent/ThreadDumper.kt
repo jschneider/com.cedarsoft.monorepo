@@ -28,7 +28,7 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
 import java.io.StringWriter
 import java.io.Writer

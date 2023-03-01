@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
 import java.util.concurrent.locks.Lock
 import java.util.concurrent.locks.ReadWriteLock

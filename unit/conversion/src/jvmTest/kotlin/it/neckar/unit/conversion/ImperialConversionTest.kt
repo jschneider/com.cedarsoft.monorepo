@@ -2,8 +2,8 @@ package it.neckar.unit.conversion
 
 import assertk.*
 import assertk.assertions.*
-import com.cedarsoft.unit.si.degC
-import com.cedarsoft.unit.si.degF
+import it.neckar.open.unit.si.degC
+import it.neckar.open.unit.si.degF
 import org.junit.jupiter.api.Test
 
 class ImperialConversionTest {

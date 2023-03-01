@@ -1,4 +1,4 @@
-package com.cedarsoft.coroutines
+package it.neckar.open.coroutines
 
 import assertk.*
 import assertk.assertions.*

@@ -46,8 +46,9 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 
 import com.cedarsoft.photos.tools.CmdLineToolNotAvailableException;
-import com.cedarsoft.test.utils.TemporaryFolder;
-import com.cedarsoft.test.utils.WithTempFiles;
+
+import it.neckar.open.test.utils.TemporaryFolder;
+import it.neckar.open.test.utils.WithTempFiles;
 
 /**
  *

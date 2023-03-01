@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
+import it.neckar.open.unit.other.pct
 
 /**
  * The time values as percentage within their value range

@@ -30,7 +30,8 @@
  */
 package com.cedarsoft.photos;
 
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Hash;
+
 import com.cedarsoft.photos.di.Modules;
 import com.google.inject.Guice;
 import com.google.inject.Injector;

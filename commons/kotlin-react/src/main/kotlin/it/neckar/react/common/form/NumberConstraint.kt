@@ -1,6 +1,6 @@
 package it.neckar.react.common.form
 
-import com.cedarsoft.unit.other.Inclusive
+import it.neckar.open.unit.other.Inclusive
 
 /**
  * A sealed interface defining number constraints that can be applied to both integers and doubles.

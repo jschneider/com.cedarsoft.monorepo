@@ -28,10 +28,10 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
-import com.cedarsoft.exceptions.CanceledException
-import com.cedarsoft.unit.si.ms
+import it.neckar.open.exceptions.CanceledException
+import it.neckar.open.unit.si.ms
 import java.lang.ref.WeakReference
 import java.util.ArrayList
 import java.util.Collections

@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -41,7 +41,7 @@ import org.junit.jupiter.api.*;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import com.cedarsoft.test.utils.AssertUtils;
+import it.neckar.open.test.utils.AssertUtils;
 
 /**
  *

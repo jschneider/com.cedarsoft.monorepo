@@ -28,7 +28,7 @@
  * or visit www.cedarsoft.com if you need additional information or
  * have any questions.
  */
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -43,8 +43,8 @@ import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.Serializer;
 
-import com.cedarsoft.test.utils.TemporaryFolder;
-import com.cedarsoft.test.utils.WithTempFiles;
+import it.neckar.open.test.utils.TemporaryFolder;
+import it.neckar.open.test.utils.WithTempFiles;
 
 /**
  */

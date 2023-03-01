@@ -14,9 +14,6 @@ dependencies {
   api(project(Projects.open_unit_unit))
   api(project(Projects.open_commons_exception_handling))
 
-
-  api(project(Projects.open_commons_swing_common))
-
   api(Libs.miglayout_swing)
   api(Libs.miglayout_javafx)
   api(project(Projects.open_commons_version))

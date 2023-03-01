@@ -32,7 +32,7 @@ package com.cedarsoft.photos;
 
 import it.neckar.open.annotations.NonUiThread;
 
-import com.cedarsoft.crypt.Hash;
+import it.neckar.open.crypt.Hash;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

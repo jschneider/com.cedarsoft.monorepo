@@ -1,6 +1,6 @@
 package it.neckar.commons.kotlin.js.exception
 
-import com.cedarsoft.common.collections.fastForEach
+import it.neckar.open.collections.fastForEach
 import kotlinx.browser.window
 
 

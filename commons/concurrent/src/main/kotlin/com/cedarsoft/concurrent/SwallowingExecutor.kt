@@ -1,4 +1,4 @@
-package com.cedarsoft.concurrent
+package it.neckar.open.concurrent
 
 import java.util.concurrent.Executor
 import java.util.concurrent.RejectedExecutionException

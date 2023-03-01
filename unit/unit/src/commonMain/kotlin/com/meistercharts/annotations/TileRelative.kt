@@ -1,6 +1,6 @@
 package com.meistercharts.annotations
 
-import com.cedarsoft.unit.other.pct
+import it.neckar.open.unit.other.pct
 
 /**
  * A value (in percentage of the tile size) relative to a tile origin

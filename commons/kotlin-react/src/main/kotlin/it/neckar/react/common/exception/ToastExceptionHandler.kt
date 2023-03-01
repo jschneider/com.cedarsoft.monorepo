@@ -1,6 +1,6 @@
 package it.neckar.react.common.exception
 
-import com.cedarsoft.exceptions.PermissionDeniedException
+import it.neckar.open.exceptions.PermissionDeniedException
 import it.neckar.commons.kotlin.js.exception.ConsoleJsErrorHandler
 import it.neckar.commons.kotlin.js.exception.JsErrorHandler
 import it.neckar.commons.kotlin.js.exception.JsErrorHandlerMultiplexer

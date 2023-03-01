@@ -29,7 +29,7 @@
  * have any questions.
  */
 
-package com.cedarsoft.serialization.test.performance;
+package it.neckar.open.serialization.test.performance;
 
 import static org.junit.Assert.*;
 
@@ -66,7 +66,7 @@ public class Bson4JacksonTest {
   public void testMapper() throws Exception {
     ObjectMapper mapper = new ObjectMapper( jsonFactory );
 
-    com.cedarsoft.serialization.test.performance.jaxb.FileType fileType = new com.cedarsoft.serialization.test.performance.jaxb.FileType( "Canon Raw", new com.cedarsoft.serialization.test.performance.jaxb.Extension( ".", "cr2", true ), false );
+    it.neckar.open.serialization.test.performance.jaxb.FileType fileType = new it.neckar.open.serialization.test.performance.jaxb.FileType( "Canon Raw", new it.neckar.open.serialization.test.performance.jaxb.Extension( ".", "cr2", true ), false );
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     mapper.writeValue( out, fileType );
 

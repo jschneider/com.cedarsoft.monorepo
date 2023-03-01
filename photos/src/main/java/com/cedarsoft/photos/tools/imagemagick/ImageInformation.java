@@ -30,7 +30,7 @@
  */
 package com.cedarsoft.photos.tools.imagemagick;
 
-import com.cedarsoft.image.Resolution;
+import it.neckar.open.image.Resolution;
 
 import javax.annotation.Nonnull;
 

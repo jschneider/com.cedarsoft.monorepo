@@ -1,7 +1,7 @@
 package it.neckar.react.common.form
 
-import com.cedarsoft.common.kotlin.lang.nextMultipleOf
-import com.cedarsoft.unit.si.ms
+import it.neckar.open.kotlin.lang.nextMultipleOf
+import it.neckar.open.unit.si.ms
 import it.neckar.react.common.*
 import kotlinx.html.INPUT
 import kotlinx.html.InputType

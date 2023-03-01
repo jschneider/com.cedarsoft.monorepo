@@ -1,7 +1,7 @@
 package it.neckar.problem
 
-import com.cedarsoft.commons.serialization.roundTrip
-import com.cedarsoft.exceptions.ErrorCode
+import it.neckar.open.serialization.roundTrip
+import it.neckar.open.exceptions.ErrorCode
 import org.junit.jupiter.api.Test
 
 /**

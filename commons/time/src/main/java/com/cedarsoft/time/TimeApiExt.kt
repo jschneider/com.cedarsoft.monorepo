@@ -1,10 +1,10 @@
-package com.cedarsoft.time
+package it.neckar.open.time
 
-import com.cedarsoft.common.time.millis2nanos
-import com.cedarsoft.common.time.nanos2millis
-import com.cedarsoft.unit.si.ms
-import com.cedarsoft.unit.si.ns
-import com.cedarsoft.unit.si.s
+import it.neckar.open.time.millis2nanos
+import it.neckar.open.time.nanos2millis
+import it.neckar.open.unit.si.ms
+import it.neckar.open.unit.si.ns
+import it.neckar.open.unit.si.s
 import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneOffset

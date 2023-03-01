@@ -1,4 +1,4 @@
-com.cedarsoft.commons
+it.neckar.open
 ==================
 
 Classes commonly used.
